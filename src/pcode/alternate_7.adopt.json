@@ -1,0 +1,25 @@
+{
+  "name": "alternate_7",
+  "source": "src/pcode/alternate_7.s",
+  "config": "src/pcode/alternate_7.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 78592,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 78336,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 78080,
+      "size": 252,
+      "input_offset": 512
+    }
+  ]
+}

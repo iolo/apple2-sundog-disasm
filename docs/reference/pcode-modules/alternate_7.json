@@ -1,0 +1,182 @@
+{
+  "sha256": "0a7751ec039e806dba479877bac1818f18ef7b623d2ef1047d8cd3249cd1f45c",
+  "size": 764,
+  "segment": 7,
+  "procedure_count": 3,
+  "instruction_count": 353,
+  "coverage_bytes": {
+    "local-size": 6,
+    "parameter-size": 6,
+    "exit-pointer": 6,
+    "entry-pointer": 6,
+    "attributes": 6,
+    "instruction": 716,
+    "jump-pointer": 4,
+    "string-data": 4,
+    "alignment": 2,
+    "dictionary-pointer": 6,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 3,
+    "sldc": 129,
+    "sro": 1,
+    "cxp": 40,
+    "lor": 2,
+    "lnot": 1,
+    "fjp": 2,
+    "lae": 28,
+    "csp": 9,
+    "ldci": 32,
+    "ste": 15,
+    "lde": 29,
+    "ldb": 2,
+    "sbi": 10,
+    "stl": 4,
+    "ngi": 1,
+    "sldl": 7,
+    "adi": 18,
+    "str": 4,
+    "lod": 4,
+    "stb": 4,
+    "lsa": 1,
+    "nop": 1,
+    "ujp": 4,
+    "clp": 2
+  },
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 157,
+      "segment": 7,
+      "start_block": 158
+    }
+  ],
+  "control_flow_edges": 352,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 650,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 3
+    },
+    {
+      "offset": 652,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 654,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 656,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 658,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 660,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 699,
+      "size": 4,
+      "kind": "string-data",
+      "consumer": 697
+    },
+    {
+      "offset": 709,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 710,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 712,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 714,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 716,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 718,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 743,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 744,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 722
+    },
+    {
+      "offset": 746,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 748,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 750,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 752,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 754,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 756,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 758,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 760,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 762,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}
