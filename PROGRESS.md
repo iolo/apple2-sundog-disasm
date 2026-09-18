@@ -1146,3 +1146,25 @@ and acceptance criteria.
   reproduce all 266 pixel-index bytes; the final ten are documented data
   continuation with unknown original intended use. No executable gap remains in
   this module. It contains 45 p-code and 18 native procedures.
+
+## 2026-09-18 — Step 06u: reconstruct the split system core
+
+- **Work:** Reconstructed all 39 SYSTEM.PASCAL core procedures, including procedure
+  38 in its separately loaded 170-byte fragment. Retained the existing 36-byte
+  entry component and adopted the remaining 3,258 bytes. The concatenated source
+  uses the captured $F248/$BC72 address relationship for its one cross-region
+  dictionary pointer; no original bytes are hidden in data directives.
+- **Classification:** Complete core/fragment analysis covers 3,294 bytes: 1,891
+  instructions (2,667 bytes), 76 string bytes, 62 branch-pointer bytes, 19 alignment
+  bytes, and explicit procedure metadata/dictionary. One reviewed unreachable UJP
+  at $03BD is code, with independently reachable target $03CB.
+- **Validation:** Thirteen p-code tests pass, including a synthetic split-memory
+  layout and rejection of a wrong dictionary delta. A regenerated listing matches
+  the accepted source. Full component assembly, adoption, and both disk comparisons
+  pass exactly. The existing first-procedure component matches the core prefix.
+- **Coverage:** 145,834 source-built output bytes; 140,886 remain temporary.
+  All distinct valid inventoried Pascal segments are now source-built. This does
+  not classify remaining disk regions, orphan candidates, or provisional native
+  runtime data; it is not full project completion.
+- **Next action:** Refresh the executable audit, investigate remaining regions and
+  the unresolved initialization payload, then continue asset/data reconstruction.

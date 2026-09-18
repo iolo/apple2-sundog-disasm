@@ -106,8 +106,8 @@ def verify_interpreter(binary):
                 raise ValueError('Short load dispatch differs from verified encoding')
 
 
-def analyze(data, segment, *, extra_code_roots=(), native_decoder=None):
-    metadata = procedure_dictionary(data, segment)
+def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=None):
+    metadata = layout if layout is not None else procedure_dictionary(data, segment)
     if not metadata['valid']:
         raise ValueError('Segment has unresolved procedure metadata')
     items, instructions, calls, branch_edges = {}, {}, [], []
@@ -285,8 +285,14 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None):
     if unmatched_roots:
         raise ValueError('Extra code root is outside procedure code areas')
     for proc in metadata['procedures']:
-        claim(proc['dictionary_offset'], 2, 'dictionary-pointer', f'.word * - {label(proc["attribute_offset"])}')
-    claim(len(data) - 2, 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
+        delta = proc.get('dictionary_address_delta', 0)
+        if (proc['dictionary_offset'] - proc['attribute_offset'] + delta) & 0xFFFF != word(data, proc['dictionary_offset']):
+            raise ValueError('Dictionary address mapping disagrees with stored displacement')
+        expression = f'* - {label(proc["attribute_offset"])}'
+        if delta:
+            expression = f'({expression} + ${delta:04X}) & $FFFF'
+        claim(proc['dictionary_offset'], 2, 'dictionary-pointer', '.word ' + expression)
+    claim(metadata.get('trailer_offset', len(data) - 2), 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
     for call in calls:
         if call['instruction'] in ('clp', 'cgp', 'cip') and not 1 <= call['operands'][0] <= metadata['procedure_count']:
             raise ValueError('In-segment call names a nonexistent procedure')

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """P-code boundary tests independent of the original images."""
 import struct
+import copy
 import shutil
 import subprocess
 import tempfile
@@ -8,6 +9,7 @@ from pathlib import Path
 import unittest
 
 from pcode_source import analyze, source
+from pascal_inventory import procedure_dictionary
 
 
 def segment(body, exit_offset):
@@ -129,6 +131,26 @@ class PcodeSourceTests(unittest.TestCase):
             analyze(data, 1, extra_code_roots=[2, 6])
         with self.assertRaisesRegex(ValueError, 'operand|Overlapping'):
             analyze(data, 1, extra_code_roots=[1, 2])
+
+    def test_split_dictionary_uses_distinct_load_addresses(self):
+        # Core at $8000, procedure 2 at $4000. The fragment has no dictionary.
+        proc1 = bytes([0xAD, 0]) + struct.pack('<HHHHBB', 0, 0, 6, 8, 1, 0)
+        fragment = bytes([0xAD, 0]) + struct.pack('<HHHHBB', 0, 0, 6, 8, 2, 0)
+        core = proc1 + struct.pack('<HHBB', 0x4002, 4, 1, 2)
+        layout = procedure_dictionary(core, 1, load_address=0x8000, fragments=[('fragment', 0x4000, fragment)])
+        self.assertTrue(layout['valid'])
+        layout['trailer_offset'] = len(core) - 2
+        split = layout['procedures'][1]
+        for key in ('entry_offset', 'attribute_offset', 'exit_offset', 'attribute_start'):
+            split[key] += len(core)
+        split['dictionary_address_delta'] = 0x4000 + len(core)
+        report = analyze(core + fragment, 1, layout=layout)
+        self.assertEqual(sum(report['coverage_bytes'].values()), len(core + fragment))
+        self.assertIn('.word (* - L_001C + $4012) & $FFFF', source(report))
+        wrong = copy.deepcopy(layout)
+        wrong['procedures'][1]['dictionary_address_delta'] += 1
+        with self.assertRaisesRegex(ValueError, 'Dictionary address mapping'):
+            analyze(core + fragment, 1, layout=wrong)
 
     def test_unexplained_gap_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unexplained procedure byte'):
