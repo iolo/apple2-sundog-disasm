@@ -1,0 +1,156 @@
+{
+  "before_sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+  "after_sha256": "dcc610d358e22007c787d8390d51aae05c8c286640fd16af8233ee53392791c1",
+  "changes": [
+    {
+      "image_offset": 37180,
+      "before": 85,
+      "after": 89
+    },
+    {
+      "image_offset": 37181,
+      "before": 78,
+      "after": 83
+    },
+    {
+      "image_offset": 37182,
+      "before": 68,
+      "after": 84
+    },
+    {
+      "image_offset": 37183,
+      "before": 79,
+      "after": 69
+    },
+    {
+      "image_offset": 37184,
+      "before": 71,
+      "after": 77
+    },
+    {
+      "image_offset": 37186,
+      "before": 76,
+      "after": 83
+    },
+    {
+      "image_offset": 37187,
+      "before": 73,
+      "after": 84
+    },
+    {
+      "image_offset": 37188,
+      "before": 66,
+      "after": 65
+    },
+    {
+      "image_offset": 37190,
+      "before": 65,
+      "after": 84
+    },
+    {
+      "image_offset": 37191,
+      "before": 82,
+      "after": 85
+    },
+    {
+      "image_offset": 37192,
+      "before": 89,
+      "after": 80
+    },
+    {
+      "image_offset": 37196,
+      "before": 58,
+      "after": 234
+    },
+    {
+      "image_offset": 37228,
+      "before": 2,
+      "after": 5
+    },
+    {
+      "image_offset": 37232,
+      "before": 89,
+      "after": 85
+    },
+    {
+      "image_offset": 37233,
+      "before": 83,
+      "after": 78
+    },
+    {
+      "image_offset": 37234,
+      "before": 84,
+      "after": 68
+    },
+    {
+      "image_offset": 37235,
+      "before": 69,
+      "after": 79
+    },
+    {
+      "image_offset": 37236,
+      "before": 77,
+      "after": 71
+    },
+    {
+      "image_offset": 37238,
+      "before": 83,
+      "after": 76
+    },
+    {
+      "image_offset": 37239,
+      "before": 84,
+      "after": 73
+    },
+    {
+      "image_offset": 37240,
+      "before": 65,
+      "after": 66
+    },
+    {
+      "image_offset": 37242,
+      "before": 84,
+      "after": 65
+    },
+    {
+      "image_offset": 37243,
+      "before": 85,
+      "after": 82
+    },
+    {
+      "image_offset": 37244,
+      "before": 80,
+      "after": 89
+    },
+    {
+      "image_offset": 37245,
+      "before": 96,
+      "after": 178
+    },
+    {
+      "image_offset": 37248,
+      "before": 202,
+      "after": 234
+    },
+    {
+      "image_offset": 43266,
+      "before": 27,
+      "after": 87
+    },
+    {
+      "image_offset": 43267,
+      "before": 156,
+      "after": 10
+    },
+    {
+      "image_offset": 43268,
+      "before": 20,
+      "after": 35
+    },
+    {
+      "image_offset": 43269,
+      "before": 166,
+      "after": 133
+    }
+  ]
+}

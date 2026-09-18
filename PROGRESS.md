@@ -78,3 +78,30 @@ and acceptance criteria.
   remain for step 09. MAME's automatic title advance remains unexplained.
 - **Next action:** Step 03: map sectors and custom disk structures, preserve all
   bytes in a reversible extraction, and investigate the utility-side write.
+
+## 2026-09-18 — Step 03: sector map and exact container reconstruction
+
+- **Status:** Complete at the initial classification level required by this step;
+  unresolved content remains explicitly labeled for steps 04–07.
+- **Work:** Added `tools/disk_layout.py`, generated a full sector/track inventory,
+  extracted four Pascal directory views and their file extents, and documented
+  the mapping and findings in `docs/disk-layout.md` and its JSON summary.
+  Added `--image-dir` to the MAME harness to test reconstructed images.
+- **Evidence:** Disk 1 directory views are at logical blocks 79–82, not block 2.
+  a2kit independently extracts the same 40,448-byte SYSTEM.STARTUP when a
+  directory is placed at block 2 in a disposable image. All six entries in the
+  primary directory are retained by our parser, including SYSTEM.PASCAL.
+- **Validation:** `python3 tools/test_disk_layout.py` passes three tests covering
+  mapping completeness, known directory/loader anchors, and rejection of corrupt,
+  overlapping, or escaping track records. Unpack/pack reconstructs both original
+  hashes; both `cmp` checks pass. Repacked disks run the full game-play reference
+  sequence; all six PNGs match the original run byte for byte. `git diff --check`
+  passes, and originals retain their baseline hashes.
+- **Utility writes:** Recorded the 30 changed bytes in
+  `docs/reference/utility-entry-writes.json`: 26 in directory block 79 and four in
+  block 83. The four-byte field's meaning is unresolved.
+- **Limitations:** This repacker uses extracted raw tracks, so it is not a source
+  build. Disk-2 file boundaries, runtime directory selection, executable coverage,
+  p-code dialect, and asset formats still need investigation.
+- **Next action:** Step 04: trace boot and runtime disk reads; identify the native
+  interpreter, p-code files/segments, memory layout, and directory remapping.

@@ -16,3 +16,8 @@ python3 tools/verify_inputs.py
 `src/` holds reconstructed code, `assets/` holds extracted assets, `tools/` holds
 automation, and `docs/` holds investigation notes. Generated files and disposable
 emulator media go under ignored `build/`. A source rebuild is not available yet.
+
+Completed investigations include [reference boot and play sequences](docs/reference/README.md)
+and a [lossless disk inventory and repacker](docs/disk-layout.md). The supplied
+disk filenames are preserved, but disk 1 is the observed title/utility side and
+disk 2 is the play side.

@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "regenerate": "python3 tools/disk_layout.py unpack build/disk-layout",
+  "disks": [
+    {
+      "id": "disk1",
+      "original": "sundog-disk1-game.dsk",
+      "size": 143360,
+      "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+      "directories": [
+        {
+          "logical_block": 79,
+          "image_offsets": [
+            37120,
+            40704
+          ],
+          "volume": "SUNDOG",
+          "total_blocks": 280,
+          "files": [
+            {
+              "name": "SYSTEM.DATA",
+              "start_block": 3,
+              "end_block": 85,
+              "file_type": 5,
+              "size": 41984,
+              "date_raw": 43066,
+              "directory_entry_offset": 26,
+              "path": "disk1/directory-079/SYSTEM.DATA",
+              "sha256": "fa638875ab1fa2e280b1497571ff3d103e3ce99c81861f3cadcd0e20d256374b"
+            },
+            {
+              "name": "SUNDOG.LIBRARY",
+              "start_block": 85,
+              "end_block": 103,
+              "file_type": 2,
+              "size": 9216,
+              "date_raw": 43066,
+              "directory_entry_offset": 52,
+              "path": "disk1/directory-079/SUNDOG.LIBRARY",
+              "sha256": "0583fc42ce868e4ba59b84a98344fa55cf0e2b6c87685af558ff185c40604bee"
+            },
+            {
+              "name": "SYSTEM.LIBRARY",
+              "start_block": 103,
+              "end_block": 140,
+              "file_type": 5,
+              "size": 18944,
+              "date_raw": 43210,
+              "directory_entry_offset": 78,
+              "path": "disk1/directory-079/SYSTEM.LIBRARY",
+              "sha256": "90d3235549bc6369be800172f2984c9843ec07de45430cbca647ecccf38b93d4"
+            },
+            {
+              "name": "SYSTEM.STARTUP",
+              "start_block": 140,
+              "end_block": 219,
+              "file_type": 2,
+              "size": 40448,
+              "date_raw": 43210,
+              "directory_entry_offset": 104,
+              "path": "disk1/directory-079/SYSTEM.STARTUP",
+              "sha256": "0f90d9bde47ccb2038bd75236859ee82e5287ec983b9607fef46b57aea0931fc"
+            },
+            {
+              "name": "SYSTEM.APPLE",
+              "start_block": 219,
+              "end_block": 251,
+              "file_type": 5,
+              "size": 16384,
+              "date_raw": 42908,
+              "directory_entry_offset": 130,
+              "path": "disk1/directory-079/SYSTEM.APPLE",
+              "sha256": "8afb0f786b3ad6903f727657a8506fbc2b92b8dc11b0b7acda62fa00146eb0f5"
+            },
+            {
+              "name": "SYSTEM.PASCAL",
+              "start_block": 251,
+              "end_block": 280,
+              "file_type": 2,
+              "size": 14848,
+              "date_raw": 42908,
+              "directory_entry_offset": 156,
+              "path": "disk1/directory-079/SYSTEM.PASCAL",
+              "sha256": "556980c955e49774b6823a2caddd4ba1c24e08852d4abdb87bbace236d548523"
+            }
+          ],
+          "status": "directory-format verified; runtime selection not yet traced"
+        },
+        {
+          "logical_block": 80,
+          "image_offsets": [
+            40960,
+            44544
+          ],
+          "volume": "SUNDOG",
+          "total_blocks": 280,
+          "files": [
+            {
+              "name": "SYSTEM.DATA",
+              "start_block": 3,
+              "end_block": 85,
+              "file_type": 5,
+              "size": 41984,
+              "date_raw": 43066,
+              "directory_entry_offset": 26,
+              "path": "disk1/directory-080/SYSTEM.DATA",
+              "sha256": "fa638875ab1fa2e280b1497571ff3d103e3ce99c81861f3cadcd0e20d256374b"
+            },
+            {
+              "name": "SYSTEM.STARTUP",
+              "start_block": 85,
+              "end_block": 103,
+              "file_type": 2,
+              "size": 9216,
+              "date_raw": 43242,
+              "directory_entry_offset": 52,
+              "path": "disk1/directory-080/SYSTEM.STARTUP",
+              "sha256": "0583fc42ce868e4ba59b84a98344fa55cf0e2b6c87685af558ff185c40604bee"
+            },
+            {
+              "name": "SYSTEM.LIBRARY",
+              "start_block": 103,
+              "end_block": 140,
+              "file_type": 5,
+              "size": 18944,
+              "date_raw": 43210,
+              "directory_entry_offset": 78,
+              "path": "disk1/directory-080/SYSTEM.LIBRARY",
+              "sha256": "90d3235549bc6369be800172f2984c9843ec07de45430cbca647ecccf38b93d4"
+            },
+            {
+              "name": "SUNDOG.LIBRARY",
+              "start_block": 140,
+              "end_block": 219,
+              "file_type": 5,
+              "size": 40448,
+              "date_raw": 43242,
+              "directory_entry_offset": 104,
+              "path": "disk1/directory-080/SUNDOG.LIBRARY",
+              "sha256": "0f90d9bde47ccb2038bd75236859ee82e5287ec983b9607fef46b57aea0931fc"
+            },
+            {
+              "name": "SYSTEM.APPLE",
+              "start_block": 219,
+              "end_block": 251,
+              "file_type": 5,
+              "size": 16384,
+              "date_raw": 42908,
+              "directory_entry_offset": 130,
+              "path": "disk1/directory-080/SYSTEM.APPLE",
+              "sha256": "8afb0f786b3ad6903f727657a8506fbc2b92b8dc11b0b7acda62fa00146eb0f5"
+            },
+            {
+              "name": "SYSTEM.PASCAL",
+              "start_block": 251,
+              "end_block": 280,
+              "file_type": 2,
+              "size": 14848,
+              "date_raw": 42908,
+              "directory_entry_offset": 156,
+              "path": "disk1/directory-080/SYSTEM.PASCAL",
+              "sha256": "556980c955e49774b6823a2caddd4ba1c24e08852d4abdb87bbace236d548523"
+            }
+          ],
+          "status": "directory-format verified; runtime selection not yet traced"
+        },
+        {
+          "logical_block": 81,
+          "image_offsets": [
+            44288,
+            44032
+          ],
+          "volume": "SUNDOG",
+          "total_blocks": 280,
+          "files": [
+            {
+              "name": "SYSTEM.DATA",
+              "start_block": 3,
+              "end_block": 85,
+              "file_type": 5,
+              "size": 41984,
+              "date_raw": 43066,
+              "directory_entry_offset": 26,
+              "path": "disk1/directory-081/SYSTEM.DATA",
+              "sha256": "fa638875ab1fa2e280b1497571ff3d103e3ce99c81861f3cadcd0e20d256374b"
+            },
+            {
+              "name": "SUNDOG.LIBRARY",
+              "start_block": 85,
+              "end_block": 103,
+              "file_type": 2,
+              "size": 9216,
+              "date_raw": 43066,
+              "directory_entry_offset": 52,
+              "path": "disk1/directory-081/SUNDOG.LIBRARY",
+              "sha256": "0583fc42ce868e4ba59b84a98344fa55cf0e2b6c87685af558ff185c40604bee"
+            },
+            {
+              "name": "SYSTEM.LIBRARY",
+              "start_block": 103,
+              "end_block": 140,
+              "file_type": 5,
+              "size": 18944,
+              "date_raw": 43210,
+              "directory_entry_offset": 78,
+              "path": "disk1/directory-081/SYSTEM.LIBRARY",
+              "sha256": "90d3235549bc6369be800172f2984c9843ec07de45430cbca647ecccf38b93d4"
+            },
+            {
+              "name": "SYSTEM.STARTUP",
+              "start_block": 140,
+              "end_block": 219,
+              "file_type": 2,
+              "size": 40448,
+              "date_raw": 43210,
+              "directory_entry_offset": 104,
+              "path": "disk1/directory-081/SYSTEM.STARTUP",
+              "sha256": "0f90d9bde47ccb2038bd75236859ee82e5287ec983b9607fef46b57aea0931fc"
+            },
+            {
+              "name": "SYSTEM.APPLE",
+              "start_block": 219,
+              "end_block": 251,
+              "file_type": 5,
+              "size": 16384,
+              "date_raw": 42908,
+              "directory_entry_offset": 130,
+              "path": "disk1/directory-081/SYSTEM.APPLE",
+              "sha256": "8afb0f786b3ad6903f727657a8506fbc2b92b8dc11b0b7acda62fa00146eb0f5"
+            },
+            {
+              "name": "SYSTEM.PASCAL",
+              "start_block": 251,
+              "end_block": 280,
+              "file_type": 2,
+              "size": 14848,
+              "date_raw": 42908,
+              "directory_entry_offset": 156,
+              "path": "disk1/directory-081/SYSTEM.PASCAL",
+              "sha256": "556980c955e49774b6823a2caddd4ba1c24e08852d4abdb87bbace236d548523"
+            }
+          ],
+          "status": "directory-format verified; runtime selection not yet traced"
+        },
+        {
+          "logical_block": 82,
+          "image_offsets": [
+            43776,
+            43520
+          ],
+          "volume": "SUNDOG",
+          "total_blocks": 280,
+          "files": [
+            {
+              "name": "SUNDOG.LIBRARY",
+              "start_block": 3,
+              "end_block": 103,
+              "file_type": 5,
+              "size": 51200,
+              "date_raw": 43210,
+              "directory_entry_offset": 26,
+              "path": "disk1/directory-082/SUNDOG.LIBRARY",
+              "sha256": "ff7eb6a8cd3a10453f142a1a377be23b8728c67e8f4bc2e2d7d32c02d926baf9"
+            },
+            {
+              "name": "SYSTEM.LIBRARY",
+              "start_block": 103,
+              "end_block": 140,
+              "file_type": 5,
+              "size": 18944,
+              "date_raw": 43210,
+              "directory_entry_offset": 52,
+              "path": "disk1/directory-082/SYSTEM.LIBRARY",
+              "sha256": "90d3235549bc6369be800172f2984c9843ec07de45430cbca647ecccf38b93d4"
+            },
+            {
+              "name": "DEMO.LIBRARY",
+              "start_block": 140,
+              "end_block": 157,
+              "file_type": 5,
+              "size": 8704,
+              "date_raw": 43210,
+              "directory_entry_offset": 78,
+              "path": "disk1/directory-082/DEMO.LIBRARY",
+              "sha256": "96de0bb90f99f81dccf7c336e1fa40232b8747f8e14940859cf0ace54628af6c"
+            },
+            {
+              "name": "SYSTEM.STARTUP",
+              "start_block": 157,
+              "end_block": 174,
+              "file_type": 2,
+              "size": 8704,
+              "date_raw": 43274,
+              "directory_entry_offset": 104,
+              "path": "disk1/directory-082/SYSTEM.STARTUP",
+              "sha256": "adfe7784c2136f85c54e8dd791be73dea4421b9a409be7317d2efdec396dd3ae"
+            },
+            {
+              "name": "DEMO.DATA",
+              "start_block": 174,
+              "end_block": 219,
+              "file_type": 5,
+              "size": 23040,
+              "date_raw": 43210,
+              "directory_entry_offset": 130,
+              "path": "disk1/directory-082/DEMO.DATA",
+              "sha256": "a313958c785c28dcedac947ff515b5adbb77c2ccd442a1ba5c54d60906db3a8f"
+            },
+            {
+              "name": "SYSTEM.APPLE",
+              "start_block": 219,
+              "end_block": 251,
+              "file_type": 5,
+              "size": 16384,
+              "date_raw": 42908,
+              "directory_entry_offset": 156,
+              "path": "disk1/directory-082/SYSTEM.APPLE",
+              "sha256": "8afb0f786b3ad6903f727657a8506fbc2b92b8dc11b0b7acda62fa00146eb0f5"
+            },
+            {
+              "name": "SYSTEM.PASCAL",
+              "start_block": 251,
+              "end_block": 280,
+              "file_type": 2,
+              "size": 14848,
+              "date_raw": 42908,
+              "directory_entry_offset": 182,
+              "path": "disk1/directory-082/SYSTEM.PASCAL",
+              "sha256": "556980c955e49774b6823a2caddd4ba1c24e08852d4abdb87bbace236d548523"
+            }
+          ],
+          "status": "directory-format verified; runtime selection not yet traced"
+        }
+      ]
+    },
+    {
+      "id": "disk2",
+      "original": "sundog-disk2-util.dsk",
+      "size": 143360,
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+      "directories": []
+    }
+  ],
+  "identical_logical_blocks_between_disks": [
+    3,
+    4,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149
+  ]
+}

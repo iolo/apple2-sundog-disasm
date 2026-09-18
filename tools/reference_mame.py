@@ -27,6 +27,8 @@ def main():
     parser.add_argument("sequence", type=Path)
     parser.add_argument("--rompath", required=True, type=Path)
     parser.add_argument("--mame", default="mame")
+    parser.add_argument("--image-dir", type=Path, default=ROOT,
+                        help="Directory containing images to test (originals by default)")
     args = parser.parse_args()
     verify_inputs()
     sequence = json.loads(args.sequence.read_text())
@@ -36,7 +38,9 @@ def main():
     media = {}
     for key, filename in [("disk1", "sundog-disk1-game.dsk"), ("disk2", "sundog-disk2-util.dsk")]:
         media[key] = output / filename
-        shutil.copyfile(ROOT / filename, media[key])
+        shutil.copyfile(args.image_dir / filename, media[key])
+    initial_hashes = {key: hashlib.sha256(path.read_bytes()).hexdigest() for key, path in media.items()}
+    (output / "initial-media-hashes.json").write_text(json.dumps(initial_hashes, indent=2) + "\n")
     lines = [
         "local machine = manager.machine",
         "local ports = machine.ioport.ports",
