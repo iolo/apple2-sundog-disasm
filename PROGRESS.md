@@ -41,3 +41,21 @@ and acceptance criteria.
   proved by the successful planning commit `f116cc9`.
 - **Next action:** Step 02: inventory tools, boot disposable disk copies, and
   establish manual-backed reference interactions.
+
+## 2026-09-18 — Step 02a: tools, manual, and initial boots
+
+- **Status:** Partial step 02 checkpoint; playable reference still in progress.
+- **Work:** Inventoried tools in `docs/toolchain.md`, visually read manual pages
+  7–10 into `docs/manual-notes.md`, and captured initial apple2ts screens under
+  `docs/reference/` using disposable media copies.
+- **Evidence:** Private apple2ts boots the game disk to a Version 2.0 title with
+  a NUTCRACKER credit. A separate fresh utility-disk session reaches Flip Disk.
+  MAME 0.285 runs with local verified Apple IIe ROMs and scripted joystick input.
+  Neither disk catalogs with a2kit 4.4.2 (`FileSystemMismatch`).
+- **Validation:** MAME's `-verifyroms apple2e` succeeds with the documented local
+  ROM path. `python3 tools/verify_inputs.py` verifies originals. Exploratory
+  MAME sessions changed their disposable game copy, showing that every reference
+  run must begin with fresh copies rather than reuse a prior session's media.
+- **Remaining:** Establish repeatable play and utility sequences, isolate each
+  run's media/configuration, and verify observed disk swaps before completing 02.
+- **Next action:** Implement and run the isolated MAME reference harness.
