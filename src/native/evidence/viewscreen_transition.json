@@ -1,0 +1,78 @@
+{
+  "name": "viewscreen_transition",
+  "size": 944,
+  "base": 6144,
+  "sha256": "36e6af8edb91ab9e07891fdb585b95ead88df957c20ba37de924990c753b73fe",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 86
+    }
+  ],
+  "classification_evidence": "docs/viewscreen-transition.md",
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Game 13 loads blocks 86-87 at $1800 through procedure 31 and calls $1800 at $1F60"
+    }
+  ],
+  "external_targets": {
+    "2549": "JSR at $1B2E targets $09F5 in the $0800 overlay loaded from blocks 81-82 by game 13 at $25EA; native drawing helper returns at $0A53"
+  },
+  "data": [
+    {
+      "offset": 843,
+      "size": 32,
+      "kind": "drawing-columns",
+      "evidence": "$1A75 reads columns with an index wrapped by AND $1F at $1A7F"
+    },
+    {
+      "offset": 875,
+      "size": 32,
+      "kind": "pixel-patterns",
+      "evidence": "$1A78 reads patterns and $1A7B stores them through a screen-row pointer"
+    },
+    {
+      "offset": 907,
+      "size": 20,
+      "kind": "row-copy-buffer",
+      "evidence": "$198C writes and $199D reads with X=19 down to 0"
+    },
+    {
+      "offset": 927,
+      "size": 1,
+      "kind": "metadata-alignment",
+      "evidence": "Zero byte after the 20-byte buffer aligns the native relocation words"
+    },
+    {
+      "offset": 928,
+      "size": 8,
+      "kind": "native-relocation-counts",
+      "evidence": "Four empty relocation lists validated by native_relocations"
+    },
+    {
+      "offset": 936,
+      "size": 2,
+      "kind": "native-entry-pointer",
+      "evidence": "Backward displacement from $1BA8 to entry $1800"
+    },
+    {
+      "offset": 938,
+      "size": 2,
+      "kind": "native-attributes",
+      "evidence": "Native representation and lexical level zero"
+    },
+    {
+      "offset": 940,
+      "size": 2,
+      "kind": "procedure-dictionary",
+      "evidence": "Backward pointer to native attributes at $1BAA"
+    },
+    {
+      "offset": 942,
+      "size": 2,
+      "kind": "segment-trailer",
+      "evidence": "Segment number 1 and procedure count 1; validated by procedure_dictionary"
+    }
+  ]
+}

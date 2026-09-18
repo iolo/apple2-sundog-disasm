@@ -1369,3 +1369,25 @@ and acceptance criteria.
   of provisional regions in older source modules or completion of the overall goal.
 - **Next action:** Follow the adjacent two-block raw overlay loaded from disk-2
   block 86, then continue remaining raw code, assets, and native tails.
+
+## 2026-09-18 — Step 06aa: reconstruct the viewscreen transition
+
+- **Work/evidence:** Followed game 13's two-block load from disk-2 block 86 and
+  native call at $1F60. Reconstructed the 944-byte native container at $1800:
+  410 instructions/843 code bytes and 101 bytes of drawing tables, row-copy
+  buffer, alignment, and metadata. Recorded the $09F5 external drawing dependency
+  in the separately loaded blocks 81–82 overlay.
+- **Classification:** The existing Pascal dictionary/relocation parsers confirm
+  entry zero, four empty relocation lists beginning at offset 928, and the
+  trailer ending at offset 944. The final 80 fetched bytes remain explicitly
+  unresolved. Corrected the warp document: $1F60 calls this replacement overlay,
+  not the earlier warp animation sharing its load address.
+- **Validation:** Preparation and adoption each verify all 944 bytes; typed
+  metadata and symbolic pointers assemble exactly. Full build and disk comparison
+  pass, with original inputs unchanged. No new runtime trace is claimed; final
+  behavior checks remain outstanding.
+- **Coverage:** 151,520 source-built bytes, 18,432 asset bytes, 116,768 temporary
+  bytes (58,444 disk 1; 58,324 disk 2). Older provisional source regions still
+  require the final code/data audit.
+- **Next action:** Reconstruct the shared drawing overlay at disk-2 blocks 81–82,
+  then continue asset classification and unresolved native/container tails.

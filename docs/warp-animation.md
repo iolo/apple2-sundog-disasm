@@ -14,7 +14,9 @@ its enclosing procedure 31 with values `118, 3, 4, 1, 0`. Procedure 31 at
 at relative block `word27 + 4`. Library 22 procedure 53's +3 bias therefore
 selects absolute block 83. The caller displays “Engaging warp engines” and
 subsequently invokes the raw `$1800` entry through library 22 procedure 25.
-Other calls to this entry exist at game-13 offsets `$18A9`, `$194D`, and `$1F60`.
+Calls to this overlay entry exist at game-13 offsets `$18A9` and `$194D`.
+The later `$1F60` call instead executes the viewscreen transition after blocks
+86–87 replace this overlay at the same address.
 
 The overlay updates indexed position/state arrays, plots pixels through the HGR
 row tables, polls its supplied parameters, and optionally toggles the speaker.

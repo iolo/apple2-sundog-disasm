@@ -93,12 +93,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Certificate reveal code and native metadata | `src/native/certificate_reveal.s` | Disk 1 block 21 | 512 |
 | Registration certificate HGR page | `assets/certificate/certificate.hgr` | Disk 1 blocks 5–20 | 8,192 |
 | Warp animation code and embedded data | `src/native/warp_animation.s` | Disk 2 blocks 83–85 | 1,536 |
+| Viewscreen transition and native metadata | `src/native/viewscreen_transition.s` | First 944 bytes of disk 2 blocks 86–87 | 944 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 59,268 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 58,324 |
 
-The 150,576 source-built bytes include instructions and their owned tables,
+The 151,520 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-150,576 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+151,520 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -233,5 +234,11 @@ uniform $80 padding, preserved along with every pixel/phase byte.
 
 Step 06z reconstructs the [warp animation](warp-animation.md), with 586 native
 instructions and fully classified embedded masks, bitmap, and workspace bytes.
-Current ownership is 150,576 source-built bytes, 18,432 classified asset bytes,
+At that checkpoint ownership was 150,576 source-built bytes, 18,432 classified asset bytes,
 and 117,712 temporary bytes. Both complete images still match the originals.
+
+Step 06aa reconstructs the [viewscreen transition](viewscreen-transition.md),
+including its 410 instructions, drawing tables, row-copy buffer, and native
+metadata. Current ownership is 151,520 source-built bytes, 18,432 classified
+asset bytes, and 116,768 temporary bytes. The extra 80 bytes read after the
+944-byte native container remain unresolved. Both full images still match exactly.

@@ -61,3 +61,7 @@ reveal routine, native Pascal metadata, and block padding. See
 `native/warp_animation.s` reconstructs disk-2 blocks 83–85, including both
 verified BIT/SBC overlapping instruction paths and classified embedded data.
 See `docs/warp-animation.md` for load, entry, and runtime-patch evidence.
+
+`native/viewscreen_transition.s` reconstructs the 944-byte native container
+loaded from disk-2 blocks 86–87, with its drawing tables and row-copy buffer.
+The extra 80 fetched bytes remain unresolved; see `docs/viewscreen-transition.md`.

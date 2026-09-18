@@ -1,0 +1,31 @@
+{
+  "name": "viewscreen_transition",
+  "source": "src/native/viewscreen_transition.s",
+  "config": "src/native/viewscreen_transition.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 41728,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 41472,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 41216,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 44800,
+      "size": 176,
+      "input_offset": 768
+    }
+  ]
+}
