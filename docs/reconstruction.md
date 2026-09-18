@@ -74,12 +74,13 @@ byte-identical module replacements reuse the established reference behavior.
 | P-code game_18 | `src/pcode/game_18.s` | disk2 block 218 onward | 6,280 |
 | P-code game_19 | `src/pcode/game_19.s` | disk2 block 231 onward | 5,200 |
 | P-code game_20 | `src/pcode/game_20.s` | disk2 block 242 onward | 6,836 |
+| P-code game_21 | `src/pcode/game_21.s` | disk2 block 256 onward | 8,132 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 101,176 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 85,208 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 77,076 |
 
-The 100,336 source-built bytes include instructions and their owned tables,
+The 108,468 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-100,336 instruction bytes. Most identified executable regions are still in the
+108,468 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
