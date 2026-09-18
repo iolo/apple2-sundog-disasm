@@ -1056,3 +1056,25 @@ and acceptance criteria.
   ca65; six native boundary tests and twelve p-code tests pass. Native code/data
   recipes record bounded table consumers and relocation constraints. A reviewed
   library-24 recipe is prepared for the next module checkpoint.
+
+## 2026-09-18 — Step 06q: reconstruct library_24
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 103, segment 24, block 118; disk2 header 103, segment 24, block 118.
+- **Work:** Reconstructed 4,306 bytes, 17 procedures,
+  2,298 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/library_24.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 124,208 output bytes, with 162,512 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Native classification:** Three native procedures contain 457 instruction
+  bytes, three 12-byte lookup tables and one 33-byte lookup table. Bounded indexed
+  loads establish every table extent; two native alignment bytes are separate.
+  All native relocation and control-flow targets are validated by the mixed decoder.

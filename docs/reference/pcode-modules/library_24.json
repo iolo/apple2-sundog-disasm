@@ -1,0 +1,2165 @@
+{
+  "sha256": "acaadfd85907933575a035fe67f716630e3c3695430008f90a4b48ea6b1fd68c",
+  "size": 4306,
+  "segment": 24,
+  "procedure_count": 17,
+  "instruction_count": 2298,
+  "coverage_bytes": {
+    "local-size": 28,
+    "parameter-size": 28,
+    "exit-pointer": 28,
+    "entry-pointer": 28,
+    "attributes": 28,
+    "instruction": 3493,
+    "jump-pointer": 50,
+    "alignment": 5,
+    "native-instruction": 457,
+    "native-lookup-table": 69,
+    "native-alignment": 2,
+    "relocation-count": 24,
+    "relocation-pointer": 18,
+    "native-entry-pointer": 6,
+    "native-attributes": 6,
+    "dictionary-pointer": 34,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 14,
+    "lod": 22,
+    "sldl": 257,
+    "adi": 82,
+    "cxp": 113,
+    "sbi": 39,
+    "sldc": 570,
+    "stl": 90,
+    "lesi": 24,
+    "fjp": 108,
+    "clp": 8,
+    "ujp": 36,
+    "equi": 38,
+    "leqi": 15,
+    "lde": 102,
+    "ixa": 8,
+    "inc": 6,
+    "ixp": 49,
+    "ldp": 48,
+    "sqi": 1,
+    "lla": 14,
+    "mov": 5,
+    "lae": 124,
+    "gtri": 21,
+    "mpi": 7,
+    "ldb": 17,
+    "ngi": 8,
+    "stp": 28,
+    "land": 27,
+    "neqi": 10,
+    "lor": 11,
+    "stb": 8,
+    "ste": 44,
+    "lnot": 4,
+    "sind": 16,
+    "modi": 4,
+    "sto": 15,
+    "cgp": 15,
+    "dvi": 3,
+    "ldci": 29,
+    "geqi": 4,
+    "str": 3,
+    "nop": 1,
+    "lsa": 1,
+    "sas": 1,
+    "cip": 1
+  },
+  "native_evidence": "src/pcode/evidence/library_24.json",
+  "native_reports": [
+    {
+      "relocation": {
+        "entry": 3688,
+        "attributes": 3932,
+        "tables_start": 3912,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 3928,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 3926,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 3924,
+            "count": 5,
+            "pointers": [
+              {
+                "offset": 3922,
+                "target": 3873,
+                "original_word": 89
+              },
+              {
+                "offset": 3920,
+                "target": 3855,
+                "original_word": 89
+              },
+              {
+                "offset": 3918,
+                "target": 3765,
+                "original_word": 211
+              },
+              {
+                "offset": 3916,
+                "target": 3760,
+                "original_word": 199
+              },
+              {
+                "offset": 3914,
+                "target": 3752,
+                "original_word": 187
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 3912,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          3688,
+          3690
+        ],
+        [
+          3690,
+          3692
+        ],
+        [
+          3692,
+          3693
+        ],
+        [
+          3693,
+          3695
+        ],
+        [
+          3695,
+          3696
+        ],
+        [
+          3696,
+          3697
+        ],
+        [
+          3697,
+          3699
+        ],
+        [
+          3697,
+          3692
+        ],
+        [
+          3699,
+          3701
+        ],
+        [
+          3701,
+          3703
+        ],
+        [
+          3703,
+          3705
+        ],
+        [
+          3705,
+          3707
+        ],
+        [
+          3707,
+          3709
+        ],
+        [
+          3709,
+          3711
+        ],
+        [
+          3709,
+          3719
+        ],
+        [
+          3719,
+          3721
+        ],
+        [
+          3721,
+          3723
+        ],
+        [
+          3723,
+          3725
+        ],
+        [
+          3725,
+          3727
+        ],
+        [
+          3727,
+          3728
+        ],
+        [
+          3728,
+          3730
+        ],
+        [
+          3730,
+          3732
+        ],
+        [
+          3732,
+          3734
+        ],
+        [
+          3734,
+          3736
+        ],
+        [
+          3736,
+          3738
+        ],
+        [
+          3738,
+          3740
+        ],
+        [
+          3740,
+          3742
+        ],
+        [
+          3740,
+          3749
+        ],
+        [
+          3749,
+          3751
+        ],
+        [
+          3751,
+          3754
+        ],
+        [
+          3754,
+          3755
+        ],
+        [
+          3755,
+          3757
+        ],
+        [
+          3757,
+          3759
+        ],
+        [
+          3759,
+          3762
+        ],
+        [
+          3762,
+          3764
+        ],
+        [
+          3764,
+          3767
+        ],
+        [
+          3767,
+          3769
+        ],
+        [
+          3769,
+          3771
+        ],
+        [
+          3771,
+          3773
+        ],
+        [
+          3773,
+          3775
+        ],
+        [
+          3775,
+          3777
+        ],
+        [
+          3777,
+          3779
+        ],
+        [
+          3779,
+          3781
+        ],
+        [
+          3779,
+          3736
+        ],
+        [
+          3781,
+          3783
+        ],
+        [
+          3783,
+          3785
+        ],
+        [
+          3785,
+          3787
+        ],
+        [
+          3785,
+          3796
+        ],
+        [
+          3796,
+          3798
+        ],
+        [
+          3798,
+          3800
+        ],
+        [
+          3800,
+          3802
+        ],
+        [
+          3802,
+          3804
+        ],
+        [
+          3804,
+          3806
+        ],
+        [
+          3806,
+          3808
+        ],
+        [
+          3806,
+          3736
+        ],
+        [
+          3808,
+          3810
+        ],
+        [
+          3810,
+          3812
+        ],
+        [
+          3810,
+          3736
+        ],
+        [
+          3812,
+          3813
+        ],
+        [
+          3813,
+          3816
+        ],
+        [
+          3816,
+          3818
+        ],
+        [
+          3818,
+          3820
+        ],
+        [
+          3820,
+          3823
+        ],
+        [
+          3823,
+          3825
+        ],
+        [
+          3825,
+          3827
+        ],
+        [
+          3827,
+          3829
+        ],
+        [
+          3829,
+          3831
+        ],
+        [
+          3831,
+          3833
+        ],
+        [
+          3833,
+          3835
+        ],
+        [
+          3833,
+          3837
+        ],
+        [
+          3837,
+          3839
+        ],
+        [
+          3839,
+          3841
+        ],
+        [
+          3841,
+          3843
+        ],
+        [
+          3843,
+          3845
+        ],
+        [
+          3845,
+          3847
+        ],
+        [
+          3845,
+          3850
+        ],
+        [
+          3850,
+          3851
+        ],
+        [
+          3851,
+          3852
+        ],
+        [
+          3852,
+          3854
+        ],
+        [
+          3852,
+          3837
+        ],
+        [
+          3854,
+          3777
+        ],
+        [
+          3847,
+          3850
+        ],
+        [
+          3835,
+          3837
+        ],
+        [
+          3835,
+          3857
+        ],
+        [
+          3857,
+          3859
+        ],
+        [
+          3859,
+          3861
+        ],
+        [
+          3861,
+          3863
+        ],
+        [
+          3863,
+          3865
+        ],
+        [
+          3863,
+          3868
+        ],
+        [
+          3868,
+          3869
+        ],
+        [
+          3869,
+          3870
+        ],
+        [
+          3870,
+          3872
+        ],
+        [
+          3870,
+          3857
+        ],
+        [
+          3872,
+          3777
+        ],
+        [
+          3865,
+          3868
+        ],
+        [
+          3787,
+          3789
+        ],
+        [
+          3789,
+          3791
+        ],
+        [
+          3791,
+          3793
+        ],
+        [
+          3793,
+          3794
+        ],
+        [
+          3794,
+          3796
+        ],
+        [
+          3794,
+          3802
+        ],
+        [
+          3742,
+          3744
+        ],
+        [
+          3744,
+          3745
+        ],
+        [
+          3745,
+          3747
+        ],
+        [
+          3747,
+          3748
+        ],
+        [
+          3711,
+          3713
+        ],
+        [
+          3713,
+          3715
+        ],
+        [
+          3713,
+          3717
+        ],
+        [
+          3717,
+          3719
+        ],
+        [
+          3715,
+          3717
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 3934,
+        "attributes": 4110,
+        "tables_start": 4094,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 4106,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 4104,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 4102,
+            "count": 3,
+            "pointers": [
+              {
+                "offset": 4100,
+                "target": 4002,
+                "original_word": 127
+              },
+              {
+                "offset": 4098,
+                "target": 3967,
+                "original_word": 53
+              },
+              {
+                "offset": 4096,
+                "target": 3951,
+                "original_word": 53
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 4094,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          3934,
+          3936
+        ],
+        [
+          3936,
+          3938
+        ],
+        [
+          3938,
+          3939
+        ],
+        [
+          3939,
+          3941
+        ],
+        [
+          3941,
+          3942
+        ],
+        [
+          3942,
+          3943
+        ],
+        [
+          3943,
+          3945
+        ],
+        [
+          3943,
+          3938
+        ],
+        [
+          3945,
+          3947
+        ],
+        [
+          3947,
+          3948
+        ],
+        [
+          3948,
+          3950
+        ],
+        [
+          3950,
+          3953
+        ],
+        [
+          3950,
+          3987
+        ],
+        [
+          3987,
+          3988
+        ],
+        [
+          3988,
+          3989
+        ],
+        [
+          3989,
+          3991
+        ],
+        [
+          3991,
+          3993
+        ],
+        [
+          3993,
+          3995
+        ],
+        [
+          3993,
+          4000
+        ],
+        [
+          4000,
+          4001
+        ],
+        [
+          4001,
+          4004
+        ],
+        [
+          4004,
+          4006
+        ],
+        [
+          4006,
+          4007
+        ],
+        [
+          4007,
+          4009
+        ],
+        [
+          4009,
+          4011
+        ],
+        [
+          4011,
+          4013
+        ],
+        [
+          4013,
+          4015
+        ],
+        [
+          4015,
+          4017
+        ],
+        [
+          4017,
+          4019
+        ],
+        [
+          4019,
+          4020
+        ],
+        [
+          4020,
+          4022
+        ],
+        [
+          4022,
+          4024
+        ],
+        [
+          4024,
+          4026
+        ],
+        [
+          4026,
+          4028
+        ],
+        [
+          4026,
+          4035
+        ],
+        [
+          4035,
+          4036
+        ],
+        [
+          4036,
+          4038
+        ],
+        [
+          4036,
+          4020
+        ],
+        [
+          4038,
+          4040
+        ],
+        [
+          4040,
+          4042
+        ],
+        [
+          4042,
+          4044
+        ],
+        [
+          4044,
+          4045
+        ],
+        [
+          4045,
+          4047
+        ],
+        [
+          4045,
+          4058
+        ],
+        [
+          4058,
+          4060
+        ],
+        [
+          4047,
+          4049
+        ],
+        [
+          4049,
+          4050
+        ],
+        [
+          4050,
+          4052
+        ],
+        [
+          4052,
+          4054
+        ],
+        [
+          4052,
+          4058
+        ],
+        [
+          4054,
+          4056
+        ],
+        [
+          4056,
+          4058
+        ],
+        [
+          4028,
+          4029
+        ],
+        [
+          4029,
+          4031
+        ],
+        [
+          4031,
+          4033
+        ],
+        [
+          4033,
+          4035
+        ],
+        [
+          3995,
+          3997
+        ],
+        [
+          3997,
+          3998
+        ],
+        [
+          3998,
+          4000
+        ],
+        [
+          3953,
+          3955
+        ],
+        [
+          3955,
+          3957
+        ],
+        [
+          3957,
+          3959
+        ],
+        [
+          3959,
+          3960
+        ],
+        [
+          3960,
+          3962
+        ],
+        [
+          3962,
+          3964
+        ],
+        [
+          3964,
+          3966
+        ],
+        [
+          3966,
+          3969
+        ],
+        [
+          3966,
+          3987
+        ],
+        [
+          3969,
+          3971
+        ],
+        [
+          3971,
+          3973
+        ],
+        [
+          3973,
+          3975
+        ],
+        [
+          3975,
+          3976
+        ],
+        [
+          3976,
+          3978
+        ],
+        [
+          3978,
+          3980
+        ],
+        [
+          3980,
+          3982
+        ],
+        [
+          3982,
+          3983
+        ],
+        [
+          3983,
+          3985
+        ],
+        [
+          3985,
+          3986
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 4112,
+        "attributes": 4268,
+        "tables_start": 4256,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 4264,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 4262,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 4260,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 4258,
+                "target": 4253,
+                "original_word": 32
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 4256,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          4112,
+          4113
+        ],
+        [
+          4113,
+          4115
+        ],
+        [
+          4115,
+          4116
+        ],
+        [
+          4116,
+          4118
+        ],
+        [
+          4118,
+          4121
+        ],
+        [
+          4121,
+          4123
+        ],
+        [
+          4123,
+          4125
+        ],
+        [
+          4125,
+          4127
+        ],
+        [
+          4127,
+          4129
+        ],
+        [
+          4129,
+          4131
+        ],
+        [
+          4131,
+          4133
+        ],
+        [
+          4133,
+          4134
+        ],
+        [
+          4134,
+          4136
+        ],
+        [
+          4136,
+          4138
+        ],
+        [
+          4138,
+          4140
+        ],
+        [
+          4140,
+          4142
+        ],
+        [
+          4142,
+          4144
+        ],
+        [
+          4144,
+          4146
+        ],
+        [
+          4146,
+          4148
+        ],
+        [
+          4146,
+          4212
+        ],
+        [
+          4212,
+          4214
+        ],
+        [
+          4214,
+          4215
+        ],
+        [
+          4215,
+          4216
+        ],
+        [
+          4216,
+          4218
+        ],
+        [
+          4218,
+          4220
+        ],
+        [
+          4218,
+          4222
+        ],
+        [
+          4222,
+          4224
+        ],
+        [
+          4224,
+          4226
+        ],
+        [
+          4226,
+          4228
+        ],
+        [
+          4228,
+          4230
+        ],
+        [
+          4228,
+          4232
+        ],
+        [
+          4232,
+          4234
+        ],
+        [
+          4234,
+          4235
+        ],
+        [
+          4235,
+          4237
+        ],
+        [
+          4237,
+          4239
+        ],
+        [
+          4239,
+          4241
+        ],
+        [
+          4239,
+          4249
+        ],
+        [
+          4249,
+          4250
+        ],
+        [
+          4250,
+          4252
+        ],
+        [
+          4250,
+          4222
+        ],
+        [
+          4252,
+          4144
+        ],
+        [
+          4241,
+          4243
+        ],
+        [
+          4243,
+          4245
+        ],
+        [
+          4245,
+          4247
+        ],
+        [
+          4247,
+          4249
+        ],
+        [
+          4247,
+          4197
+        ],
+        [
+          4197,
+          4199
+        ],
+        [
+          4199,
+          4201
+        ],
+        [
+          4201,
+          4203
+        ],
+        [
+          4203,
+          4205
+        ],
+        [
+          4203,
+          4136
+        ],
+        [
+          4205,
+          4207
+        ],
+        [
+          4207,
+          4208
+        ],
+        [
+          4208,
+          4210
+        ],
+        [
+          4210,
+          4211
+        ],
+        [
+          4230,
+          4232
+        ],
+        [
+          4220,
+          4222
+        ],
+        [
+          4148,
+          4150
+        ],
+        [
+          4150,
+          4152
+        ],
+        [
+          4150,
+          4154
+        ],
+        [
+          4154,
+          4155
+        ],
+        [
+          4155,
+          4156
+        ],
+        [
+          4156,
+          4158
+        ],
+        [
+          4158,
+          4160
+        ],
+        [
+          4160,
+          4161
+        ],
+        [
+          4161,
+          4163
+        ],
+        [
+          4163,
+          4164
+        ],
+        [
+          4164,
+          4166
+        ],
+        [
+          4166,
+          4168
+        ],
+        [
+          4168,
+          4170
+        ],
+        [
+          4168,
+          4178
+        ],
+        [
+          4178,
+          4179
+        ],
+        [
+          4179,
+          4180
+        ],
+        [
+          4180,
+          4182
+        ],
+        [
+          4180,
+          4158
+        ],
+        [
+          4182,
+          4184
+        ],
+        [
+          4184,
+          4186
+        ],
+        [
+          4184,
+          4144
+        ],
+        [
+          4186,
+          4188
+        ],
+        [
+          4188,
+          4190
+        ],
+        [
+          4188,
+          4144
+        ],
+        [
+          4190,
+          4191
+        ],
+        [
+          4191,
+          4193
+        ],
+        [
+          4193,
+          4195
+        ],
+        [
+          4193,
+          4197
+        ],
+        [
+          4195,
+          4197
+        ],
+        [
+          4170,
+          4172
+        ],
+        [
+          4172,
+          4174
+        ],
+        [
+          4174,
+          4176
+        ],
+        [
+          4176,
+          4178
+        ],
+        [
+          4176,
+          4190
+        ],
+        [
+          4152,
+          4154
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    }
+  ],
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 103,
+      "segment": 24,
+      "start_block": 118
+    },
+    {
+      "disk": "disk2",
+      "header_block": 103,
+      "segment": 24,
+      "start_block": 118
+    }
+  ],
+  "extra_code_roots": [],
+  "root_evidence": null,
+  "control_flow_edges": 2145,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 54,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 56,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 58,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 60,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 62,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 156,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 81
+    },
+    {
+      "offset": 158,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 160,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 162,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 164,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 166,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 235,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 236,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 177
+    },
+    {
+      "offset": 238,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 240,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 242,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 244,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 246,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 321,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 322,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 324,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 326,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 328,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 330,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 611,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 612,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 529
+    },
+    {
+      "offset": 614,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 386
+    },
+    {
+      "offset": 616,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 400
+    },
+    {
+      "offset": 618,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 620,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 622,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 624,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 626,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 682,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 684,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 686,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 688,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 690,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 1656,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1654
+    },
+    {
+      "offset": 1658,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1577
+    },
+    {
+      "offset": 1660,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1278
+    },
+    {
+      "offset": 1662,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1210
+    },
+    {
+      "offset": 1664,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1136
+    },
+    {
+      "offset": 1666,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1046
+    },
+    {
+      "offset": 1668,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1046
+    },
+    {
+      "offset": 1670,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 1672,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 1674,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 1676,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 1678,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 2703,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 2704,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2595
+    },
+    {
+      "offset": 2706,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2593
+    },
+    {
+      "offset": 2708,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2581
+    },
+    {
+      "offset": 2710,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2301
+    },
+    {
+      "offset": 2712,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2569
+    },
+    {
+      "offset": 2714,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2498
+    },
+    {
+      "offset": 2716,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2124
+    },
+    {
+      "offset": 2718,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2124
+    },
+    {
+      "offset": 2720,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2124
+    },
+    {
+      "offset": 2722,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 2724,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 2726,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 2728,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 2730,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 2755,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 2756,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 2758,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 2760,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 2762,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 2764,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 2894,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 2788
+    },
+    {
+      "offset": 2896,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 2898,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 2900,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 2902,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 2904,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 3032,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 3034,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 3036,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 3038,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 3040,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 3574,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 3436
+    },
+    {
+      "offset": 3576,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 3415
+    },
+    {
+      "offset": 3578,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 3415
+    },
+    {
+      "offset": 3580,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 3582,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 3584,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 3586,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 3588,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 3666,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 3668,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 3670,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 3672,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 3674,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 3678,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 3680,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 3682,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 3684,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 3686,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 3875,
+      "size": 12,
+      "kind": "native-lookup-table"
+    },
+    {
+      "offset": 3887,
+      "size": 12,
+      "kind": "native-lookup-table"
+    },
+    {
+      "offset": 3899,
+      "size": 12,
+      "kind": "native-lookup-table"
+    },
+    {
+      "offset": 3911,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 3912,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3914,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3752
+    },
+    {
+      "offset": 3916,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3760
+    },
+    {
+      "offset": 3918,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3765
+    },
+    {
+      "offset": 3920,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3855
+    },
+    {
+      "offset": 3922,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3873
+    },
+    {
+      "offset": 3924,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3926,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3928,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3930,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 3932,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 4061,
+      "size": 33,
+      "kind": "native-lookup-table"
+    },
+    {
+      "offset": 4094,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4096,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3951
+    },
+    {
+      "offset": 4098,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 3967
+    },
+    {
+      "offset": 4100,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 4002
+    },
+    {
+      "offset": 4102,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4104,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4106,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4108,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 4110,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 4255,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 4256,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4258,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 4253
+    },
+    {
+      "offset": 4260,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4262,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4264,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 4266,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 4268,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 4270,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4272,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4274,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4276,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4278,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4280,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4282,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4284,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4286,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4288,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4290,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4292,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4294,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4296,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4298,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4300,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4302,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 4304,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}
