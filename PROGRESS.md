@@ -148,3 +148,28 @@ and acceptance criteria.
   disk-1 directory extent. A file-boundary-only extractor would miss them.
 - **Next action:** Step 04c: implement a bounded segment/procedure inventory
   across both disks, preserving unresolved entries and split-system references.
+
+## 2026-09-18 — Step 04c: inventory Pascal segments and procedure boundaries
+
+- **Status:** Partial step 04 checkpoint. Structural boundaries established;
+  instruction dialect/reconstruction and runtime overlay tracing remain.
+- **Work:** Added `tools/pascal_inventory.py`, four boundary/corruption tests,
+  `docs/pascal-inventory.json`, and `docs/pascal-segments.md`. Scanned all 560
+  logical blocks across the two disks and retained eight header candidates.
+- **Results:** Found 42 valid segment occurrences (34 distinct payloads), with
+  597 p-code and 41 native procedure entries in the distinct segments. Eleven
+  startup entries point to valid segments on disk 2 despite failing locally on
+  disk 1. Block 84's candidate remains unresolved. DATASEG allocations and unused
+  slots with metadata are explicitly separated from stored executable payloads.
+- **Split system:** Resolved SYSTEM.PASCAL procedure 38 through the captured
+  `$F248`/`$BC72` memory mapping. Header slot 15 holds this procedure fragment,
+  not an independent segment. Without the mapping the parser flags the pointer.
+- **Validation:** `python3 tools/test_pascal_inventory.py` passes four tests
+  covering scanned anchors, wrong-side extents, native procedures, split pointers,
+  and rejection of corrupt counts/offsets/metadata. Regenerating the inventory
+  produces identical JSON. Original hashes and `git diff --check` pass.
+- **Limitations:** These are procedure boundaries, not decoded instructions;
+  standalone native loaders and runtime are outside the procedure totals.
+- **Next action:** Step 04d: validate the bytecode instruction format against
+  the native dispatch table and prove an exact reassembly approach; then finish
+  the architecture gate before step 05's minimal source-to-disk build.

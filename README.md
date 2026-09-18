@@ -21,3 +21,7 @@ Completed investigations include [reference boot and play sequences](docs/refere
 and a [lossless disk inventory and repacker](docs/disk-layout.md). The supplied
 disk filenames are preserved, but disk 1 is the observed title/utility side and
 disk 2 is the play side.
+
+Runtime investigation now includes the [bootstrap and initialization trace](docs/bootstrap.md)
+and a [Pascal segment/procedure inventory](docs/pascal-segments.md), including
+segments on the play disk and native procedures embedded in Pascal libraries.
