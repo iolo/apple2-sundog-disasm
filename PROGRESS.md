@@ -318,3 +318,32 @@ and acceptance criteria.
   Checked Git history and existing progress entries; `git diff --check` passes.
 - **Next action:** Follow the remaining implementation steps in `PLAN.md`,
   beginning with the next step-06 module checkpoint.
+
+## 2026-09-18 — Step 06c: reconstruct the native disk/device/console bank
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Work:** Added `src/native/native_io.s`, its linker configuration, typed
+  disassembly recipe, and adoption mapping for disk-1 blocks 219–226. The
+  complete 4 KB language-card bank contains 1,393 instructions (including three
+  intentional BIT overlaps), occupying 2,778 distinct bytes, plus 1,318 bytes
+  of tables, initial state, and preserved zero fill. Documented boundaries and
+  evidence in `docs/native-io.md`.
+- **Reconstruction:** Preserved ten self-modifying instructions and all timed
+  disk loops. Derived 192 conversion-table entries from reversed bit pairs;
+  retained explicit disk symbols, inverse table, control vectors, and delays.
+  Classified `$D680` as slot-table data and the 875-byte tail as zero fill.
+- **Validation:** `tools/check_native_io.py` checks every declared code span,
+  372 direct/vector targets, overlap encodings, patch operands, and conversion
+  tables. Deliberately corrupted vectors, overlaps, operands, and table entries
+  are rejected. Six reconstruction/adoption tests and `git diff --check` pass.
+- **Build/behavior:** `tools/build_disks.py` and `tools/verify_disks.py` reproduce
+  both original images exactly and verify unchanged input hashes. New MAME
+  play/utility runs match all ten reference screenshots and final media hashes,
+  including the utility-side writes. Results are recorded in
+  `docs/reference/step06c-native-audit.json` and
+  `docs/reference/step06c-build-validation.json`.
+- **Coverage:** 10,249 source-built output bytes; 276,471 still temporary.
+  Counts include owned data and fill, not only instructions. Peripheral paths
+  beyond the reference sessions are not claimed as behaviorally tested.
+- **Next action:** Reconstruct the remaining shared native runtime and copied
+  initialization code, then expand Pascal module reconstruction and assets.

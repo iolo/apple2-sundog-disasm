@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "build_report": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "a15d9fa88aeab47dc82491e9b404083d86f8ebfa9998d49ceaa034a4e7e4d7bb",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 10249,
+      "temporary-unresolved": 276471
+    }
+  },
+  "native_audit": {
+    "sha256": "b3d767f4beb9a26bf79736ec7826a79ba52cef71887b3320bb3cf45cd6b31139",
+    "instruction_count_including_overlaps": 1393,
+    "unique_instruction_bytes": 2778,
+    "data_bytes": 1318,
+    "checked_direct_and_vector_targets": 372,
+    "code_spans_end_exclusive": [
+      [
+        53248,
+        53288
+      ],
+      [
+        53289,
+        53848
+      ],
+      [
+        53849,
+        54165
+      ],
+      [
+        54528,
+        54738
+      ],
+      [
+        54739,
+        54856
+      ],
+      [
+        54872,
+        54912
+      ],
+      [
+        54915,
+        56379
+      ],
+      [
+        56380,
+        56409
+      ]
+    ],
+    "overlapping_bit_instructions": {
+      "D028": "2ca001",
+      "D258": "2438",
+      "D5D2": "2418"
+    },
+    "patched_instructions": {
+      "D560": "ae ec c0",
+      "D577": "ae ec c0",
+      "D58D": "ae ec c0",
+      "D5A1": "ae ec c0",
+      "D5B6": "ae ec c0",
+      "D574": "99 00 10",
+      "D59B": "99 00 10",
+      "D5B3": "99 00 10",
+      "DA18": "49 80",
+      "DBB9": "91 00"
+    },
+    "gcr_symbols": "96979a9b9d9e9fa6a7abacadaeafb2b3b4b5b6b7b9babbbcbdbebfcbcdcecfd3d6d7d9dadbdcdddedfe5e6e7e9eaebecedeeeff2f3f4f5f6f7f9fafbfcfdfeff",
+    "derived_bit_pair_entries": 192,
+    "external_targets": [
+      51200,
+      51277,
+      51626,
+      65254,
+      65467,
+      65486,
+      65492,
+      65496
+    ]
+  },
+  "negative_audit_checks": [
+    "vector into operand rejected",
+    "changed BIT prefix rejected",
+    "changed initial patched operand rejected",
+    "changed conversion entry rejected"
+  ],
+  "mame_runs": [
+    {
+      "rebuilt_run": "build/reference/game-play-a5cjh5uh",
+      "original_reference_run": "build/reference/game-play-6s40gkfz",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-a5cjh5uh/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-a5cjh5uh/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-a5cjh5uh/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-a5cjh5uh/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-a5cjh5uh",
+        "-seconds_to_run",
+        "330"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "05-after-swap.png",
+          "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "06-personal-status.png",
+          "sha256": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    },
+    {
+      "rebuilt_run": "build/reference/game-utilities-x0eyr1cx",
+      "original_reference_run": "build/reference/game-utilities-ykwy1ltx",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-x0eyr1cx/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-x0eyr1cx/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-x0eyr1cx/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-x0eyr1cx/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-x0eyr1cx",
+        "-seconds_to_run",
+        "203"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "22d8fb8461025fa01c60595699fa5ccffbae3bec936ec375701d53a7e29131bb",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "02c408c06cd297156cc3aba716b035873f37bd71fabc082056f09816d8c3668c",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "dcc610d358e22007c787d8390d51aae05c8c286640fd16af8233ee53392791c1",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    }
+  ]
+}

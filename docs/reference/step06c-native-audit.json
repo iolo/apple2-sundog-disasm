@@ -1,0 +1,70 @@
+{
+  "sha256": "b3d767f4beb9a26bf79736ec7826a79ba52cef71887b3320bb3cf45cd6b31139",
+  "instruction_count_including_overlaps": 1393,
+  "unique_instruction_bytes": 2778,
+  "data_bytes": 1318,
+  "checked_direct_and_vector_targets": 372,
+  "code_spans_end_exclusive": [
+    [
+      53248,
+      53288
+    ],
+    [
+      53289,
+      53848
+    ],
+    [
+      53849,
+      54165
+    ],
+    [
+      54528,
+      54738
+    ],
+    [
+      54739,
+      54856
+    ],
+    [
+      54872,
+      54912
+    ],
+    [
+      54915,
+      56379
+    ],
+    [
+      56380,
+      56409
+    ]
+  ],
+  "overlapping_bit_instructions": {
+    "D028": "2ca001",
+    "D258": "2438",
+    "D5D2": "2418"
+  },
+  "patched_instructions": {
+    "D560": "ae ec c0",
+    "D577": "ae ec c0",
+    "D58D": "ae ec c0",
+    "D5A1": "ae ec c0",
+    "D5B6": "ae ec c0",
+    "D574": "99 00 10",
+    "D59B": "99 00 10",
+    "D5B3": "99 00 10",
+    "DA18": "49 80",
+    "DBB9": "91 00"
+  },
+  "gcr_symbols": "96979a9b9d9e9fa6a7abacadaeafb2b3b4b5b6b7b9babbbcbdbebfcbcdcecfd3d6d7d9dadbdcdddedfe5e6e7e9eaebecedeeeff2f3f4f5f6f7f9fafbfcfdfeff",
+  "derived_bit_pair_entries": 192,
+  "external_targets": [
+    51200,
+    51277,
+    51626,
+    65254,
+    65467,
+    65486,
+    65492,
+    65496
+  ]
+}

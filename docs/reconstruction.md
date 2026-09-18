@@ -34,13 +34,14 @@ sector, logical block/half, and mapped reconstruction component.
 | Three-page native bootstrap | `src/native/bootstrap.s` | Disk 1 image offsets `$0000`, `$0E00`, `$0D00`, 256 bytes each | 768 |
 | Early title routine and tables | `src/native/title_draw.s` | Disk 1 logical blocks 201–202 | 1,024 |
 | Native p-code primitives | `src/native/pcode_primitives.s` | Disk 1 blocks 243–250 and first 229 bytes of block 227 | 4,325 |
+| Native disk/device/console bank | `src/native/native_io.s` | Disk 1 blocks 219–226 | 4,096 |
 | SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 137,207 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 133,111 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
 
-The 6,153 source-built bytes include instructions and their owned tables,
+The 10,249 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-6,153 instruction bytes. Most identified executable regions are still in the
+10,249 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -48,7 +49,7 @@ The native source preserves the bootstrap page-count byte as 1, not its runtime
 value 5. It separates the slot-error message, physical-sector order, seek-delay
 tables, padding, and unreferenced tail from instructions. Branches use labels,
 and explicit link addresses reproduce the observed `$0800`–`$0AFF` image.
-No executable bytes are imported with `.incbin` in either source component.
+No executable bytes are imported with `.incbin` in the source components.
 
 Both remaining blobs are categorized `temporary-unresolved`, not assets or
 finished source. `reconstruction/manifest.json` is the byte-level coverage
@@ -64,6 +65,8 @@ command, six screenshot hashes, media hashes, and independent-build/tamper check
 integration and its matching screenshot comparison.
 `reference/step06b-build-validation.json` adds the native primitive bank and
 matching play/utility reference runs.
+`reference/step06c-build-validation.json` adds the native disk/device/console
+bank with matching play/utility reference runs.
 
 - Both full images are 143,360 bytes and match their original SHA-256 hashes
   and every byte. The baseline hashes are in `inputs.json`.
