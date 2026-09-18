@@ -1,0 +1,50 @@
+{
+  "name": "packed_ship_section",
+  "data": "assets/ship-images/ship_section/image.rle",
+  "format": "sundog-stride1-rle-hgr",
+  "classification": "docs/packed-ship-images.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 19712,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 19456,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 19200,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 18944,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 18688,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 18432,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 18176,
+      "size": 24,
+      "input_offset": 1536
+    }
+  ]
+}

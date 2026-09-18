@@ -33,10 +33,11 @@ includes classifying other disk regions, resolving provisional runtime data,
 extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
 Current coverage is 152,679 source-built bytes (including classified header
-tables) plus 20,480 classified asset bytes from the
+tables) plus 25,414 classified asset bytes from the
 [title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
 two copies of the [shared font](docs/shared-font.md), and
-[two play graphics banks](docs/play-glyphs.md); 113,561 bytes remain temporary.
+[two play graphics banks](docs/play-glyphs.md), and
+[compressed ship images](docs/packed-ship-images.md); 108,627 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

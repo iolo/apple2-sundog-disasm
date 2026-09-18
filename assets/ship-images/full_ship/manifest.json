@@ -1,0 +1,27 @@
+{
+  "format": "sundog-stride1-rle-hgr",
+  "size": 1687,
+  "sha256": "4d3032ed5d476749c06691f10fb7effcdd989df356e364aa3387d246296a34ca",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 29,
+      "consumed_bytes": 1687,
+      "excluded_read_tail_bytes": 361
+    },
+    {
+      "disk": "disk1",
+      "block": 188,
+      "consumed_bytes": 1687,
+      "excluded_read_tail_bytes": 361
+    }
+  ],
+  "decoded_size": 8192,
+  "decoded_sha256": "e3f6e1f949b7600953fbacd152c05d8da531a0fd657c9ea19eb7b1fe2c3fdf56",
+  "packet_count": 574,
+  "consumer": "Library 24 procedure 5 at $1010",
+  "classification_evidence": "docs/packed-ship-images.md",
+  "preview": "monochrome.png",
+  "preview_note": "Stored artwork without later overlays or artifact color",
+  "inverse": "encode(packets.json) reproduces image.rle exactly"
+}

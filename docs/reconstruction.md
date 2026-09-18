@@ -97,8 +97,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Shared viewscreen drawing/joystick overlay | `src/native/viewscreen_io.s` | Disk 2 blocks 81–82 | 1,024 |
 | Raw disk-integrity checker and table | `src/native/disk_checksum.s` | First 135 bytes of disk 2 block 54 | 135 |
 | Play graphics banks 1 and 2 | `assets/play-glyphs/bank{1,2}/glyphs.bin` | Disk 2 blocks 5–8 | 2,048 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 55,117 |
+| Compressed ship outlines | `assets/ship-images/{full_ship,ship_section}/image.rle` | Disk 2 blocks 29 and 33; shared stream at disk 1 block 188 | 4,934 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 56,757 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 51,870 |
 
 The 152,679 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -257,6 +258,11 @@ was 152,679 source-built bytes, 18,432 asset bytes, and 115,609 temporary bytes.
 The checker does not establish code/data classification of the bytes it checks.
 
 Step 07d extracts the [two play graphics banks](play-glyphs.md), including
-all 256 glyph records, raw masks, display-order rows, and atlas previews. Current
-ownership is 152,679 source-built bytes, 20,480 asset bytes, and 113,561 temporary
+all 256 glyph records, raw masks, display-order rows, and atlas previews. At that checkpoint
+ownership was 152,679 source-built bytes, 20,480 asset bytes, and 113,561 temporary
 bytes. The bank-2 copy gaps retain their original high bits.
+
+Step 07e extracts the [compressed ship outlines](packed-ship-images.md), with
+lossless packet listings and complete decoded HGR pages. Current ownership is
+152,679 source-built bytes, 25,414 asset bytes, and 108,627 temporary bytes.
+Bytes fetched beyond the consumed RLE streams remain separately unresolved.

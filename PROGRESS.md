@@ -1454,3 +1454,24 @@ and acceptance criteria.
   remain required, including older provisional native regions.
 - **Next action:** Trace the remaining raw block loaders and classify the
   persistent game-state/map buffers and native/container tails with their consumers.
+
+## 2026-09-18 — Step 07e: extract the compressed ship-outline images
+
+- **Work/evidence:** Traced game 15's flag-selected four-block reads from disk-2
+  blocks 29 and 33 to library 24's native HGR decompressor. Extracted the complete
+  1,687-byte and 1,560-byte consumed streams, plus the identical 1,687-byte copy
+  at disk-1 block 188. Added raw streams, reversible packet listings, decoded
+  8 KB HGR pages, previews, manifests, and adoption recipes.
+- **Visual/boundary review:** Decoded previews show a full ship outline and a
+  shorter ship section. Every adopted byte is a header/control/payload byte
+  consumed by the renderer. Fetched tails remain unresolved, including the $01
+  just beyond the second stream; no invented terminator or padding rule is used.
+- **Validation:** Three new codec tests cover literal/repeated runs, high bits,
+  clipping at the native page boundary, malformed input, and trailing packet
+  rejection. All pass. Packet encodings round-trip exactly and the shared copy
+  matches. Adoption, full builds, original hashes, and exact disk checks pass.
+  No fresh emulator rendering of these images is claimed.
+- **Coverage:** 152,679 source-built bytes, 25,414 asset bytes, 108,627 temporary
+  bytes (56,757 disk 1; 51,870 disk 2).
+- **Next action:** Follow the tile-image bank consumer for disk-2 blocks 9–28
+  and its disk-1 copies, then return to remaining raw code and persistent data.

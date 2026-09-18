@@ -45,7 +45,7 @@ Split large steps into independently validated, logged, and committed increments
   outside the Pascal inventory; step 07a extracts
   the independently confirmed title bitmap, step 07b extracts the shared font,
   step 07c extracts the registration certificate, and step 07d extracts two
-  play graphics banks. This overlap does not waive any
+  play graphics banks, followed by compressed ship images in step 07e. This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
   outside the completed classification.

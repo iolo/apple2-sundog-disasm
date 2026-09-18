@@ -1,0 +1,92 @@
+{
+  "name": "packed_full_ship",
+  "data": "assets/ship-images/full_ship/image.rle",
+  "format": "sundog-stride1-rle-hgr",
+  "classification": "docs/packed-ship-images.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 13568,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 13312,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 13056,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 12800,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 12544,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 16128,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 16384,
+      "size": 151,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk1",
+      "offset": 96000,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 95744,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 95488,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 95232,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 94976,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk1",
+      "offset": 94720,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk1",
+      "offset": 94464,
+      "size": 151,
+      "input_offset": 1536
+    }
+  ]
+}

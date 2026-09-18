@@ -19,6 +19,9 @@
   [bank 2 atlas](play-glyphs/bank2/glyphs.png), raw data, row listings, and manifests.
   [Consumer and copy evidence](../docs/play-glyphs.md).
 
+- [Compressed ship images](ship-images/): two RLE HGR streams with packet
+  listings, decoded pages, previews, and [consumer evidence](../docs/packed-ship-images.md).
+
 The normal disk build reads the raw HGR and glyph assets directly; Pillow is needed only
 for preview generation. Other images, glyph banks, maps, sounds, and data still require
 classification and extraction. Unidentified executable regions are not assets.
