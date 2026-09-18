@@ -41,7 +41,8 @@ Split large steps into independently validated, logged, and committed increments
   other-region classification and provisional runtime data. Steps 06w–06y add raw
   screen-initialization, buffer-transformation, and certificate-reveal code
   outside the Pascal inventory; step 07a extracts
-  the independently confirmed title bitmap, and step 07b extracts the shared font. This overlap does not waive any
+  the independently confirmed title bitmap, step 07b extracts the shared font,
+  and step 07c extracts the registration certificate. This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
   outside the completed classification.

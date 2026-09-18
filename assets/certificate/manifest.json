@@ -1,0 +1,28 @@
+{
+  "format": "apple2-hgr-page",
+  "size": 8192,
+  "sha256": "3e3e2d338b78a10c3632fb15bac0580aa17c69f9a907637405730c086fbbe1bc",
+  "disk": "disk1",
+  "logical_blocks": [
+    5,
+    21
+  ],
+  "runtime_addresses": [
+    16384,
+    8192
+  ],
+  "displayed_size": [
+    280,
+    192
+  ],
+  "visible_bytes": 7680,
+  "hole_bytes": 512,
+  "hole_value_counts": {
+    "128": 512
+  },
+  "consumer": "src/native/certificate_reveal.s; src/pcode/library_26_body.inc procedure 7",
+  "classification_evidence": "docs/certificate-bitmap.md",
+  "preview": "certificate-monochrome.png",
+  "preview_note": "Layout only; later variable text, artifact colors, and phase shifts are not simulated.",
+  "round_trip": "pack_page(*split_page(data)) equals original data"
+}

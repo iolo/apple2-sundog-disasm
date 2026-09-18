@@ -91,7 +91,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Raw buffer transformation entry | `src/native/raw_buffer_transform.s` | Disk 1 block 156, first 93 bytes | 93 |
 | Shared font and symbol bank | `assets/font/font.bin` | Both disks, blocks 3–4 | 2,048 |
 | Certificate reveal code and native metadata | `src/native/certificate_reveal.s` | Disk 1 block 21 | 512 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 66,636 |
+| Registration certificate HGR page | `assets/certificate/certificate.hgr` | Disk 1 blocks 5–20 | 8,192 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 60,804 |
 
 The 149,040 source-built bytes include instructions and their owned tables,
@@ -223,3 +224,8 @@ Step 06y reconstructs the [certificate reveal routine](certificate-reveal.md)
 and its complete first-block metadata/padding. Source ownership is 149,040 bytes,
 classified assets occupy 10,240 bytes, and 127,440 bytes remain temporary. The
 extra block fetched by its caller is explicitly excluded from classification.
+
+Step 07c extracts the [registration certificate](certificate-bitmap.md), whose
+row consumer is now disassembled. Current ownership is 149,040 source-built bytes,
+18,432 classified asset bytes, and 119,248 temporary bytes. Its image holes are
+uniform $80 padding, preserved along with every pixel/phase byte.

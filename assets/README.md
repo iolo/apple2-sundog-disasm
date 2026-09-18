@@ -9,6 +9,11 @@
   preserved high bits. [Atlas](font/font.png), [row listing](font/rows.json),
   [manifest](font/manifest.json), and [consumer evidence](../docs/shared-font.md).
 
+- [Registration certificate](certificate/certificate.hgr): 8 KB HGR artwork
+  with [preview](certificate/certificate-monochrome.png),
+  [manifest](certificate/manifest.json), and
+  [consumer evidence](../docs/certificate-bitmap.md).
+
 The normal disk build reads the raw HGR and glyph assets directly; Pillow is needed only
 for preview generation. Other images, glyph banks, maps, sounds, and data still require
 classification and extraction. Unidentified executable regions are not assets.

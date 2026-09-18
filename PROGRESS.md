@@ -1324,3 +1324,23 @@ and acceptance criteria.
   temporary bytes (66,636 disk 1; 60,804 disk 2).
 - **Next action:** Extract the confirmed certificate HGR page, then continue raw
   overlay reconstruction and classify the remaining native metadata/tails.
+
+## 2026-09-18 — Step 07c: extract the registration certificate image
+
+- **Work/evidence:** Extracted disk-1 blocks 5–20 as the starship registration
+  certificate HGR page, separated from its now-reconstructed reveal code. The
+  library's alternate load path displays the same image directly at $2000.
+  Added raw image, monochrome preview, manifest, repeatable extractor, and adoption
+  recipe. Visually reviewed the artwork and documented the blank recipient line
+  and later overlays separately from the stored image.
+- **Classification:** The row consumer accounts for 7,680 display bytes. All 512
+  memory-hole bytes are $80, preserved as image-buffer padding. Extraction checks
+  this pattern and proves the existing split/pack round trip for the whole page.
+- **Validation:** All three HGR tests pass; preparation, adoption, full build,
+  original-input checks, and both exact disk comparisons pass. No new image bytes
+  or game behavior were introduced. Fresh emulator validation of the animated
+  certificate path remains part of the outstanding final behavior work.
+- **Coverage:** 149,040 source-built bytes, 18,432 asset bytes, 119,248 temporary
+  bytes (58,444 disk 1; 60,804 disk 2).
+- **Next action:** Reconstruct additional raw overlays, including game-side native
+  code around block 83, and resolve the remaining native tails and data banks.
