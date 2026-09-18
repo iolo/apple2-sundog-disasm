@@ -1,0 +1,263 @@
+{
+  "sha256": "c8054603d64cdcafa4cfdee95ab756aeb94ac26545b2a42888edd98e59d0d960",
+  "size": 328,
+  "segment": 28,
+  "procedure_count": 6,
+  "instruction_count": 181,
+  "coverage_bytes": {
+    "local-size": 12,
+    "parameter-size": 12,
+    "exit-pointer": 12,
+    "entry-pointer": 12,
+    "attributes": 12,
+    "instruction": 251,
+    "alignment": 3,
+    "dictionary-pointer": 12,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 6,
+    "lla": 8,
+    "sldl": 51,
+    "mov": 5,
+    "sind": 11,
+    "adi": 6,
+    "stl": 6,
+    "inc": 5,
+    "ldci": 6,
+    "modi": 2,
+    "sto": 9,
+    "sldc": 24,
+    "lesi": 3,
+    "fjp": 7,
+    "ngi": 4,
+    "dvi": 2,
+    "gtri": 5,
+    "land": 3,
+    "sbi": 2,
+    "cgp": 1,
+    "cxp": 8,
+    "mpi": 1,
+    "sas": 1,
+    "equi": 2,
+    "ujp": 3
+  },
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 103,
+      "segment": 28,
+      "start_block": 139
+    },
+    {
+      "disk": "disk2",
+      "header_block": 103,
+      "segment": 28,
+      "start_block": 139
+    }
+  ],
+  "control_flow_edges": 182,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 100,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 102,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 104,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 106,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 108,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 130,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 132,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 134,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 136,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 138,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 167,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 168,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 170,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 172,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 174,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 176,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 243,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 244,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 246,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 248,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 250,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 252,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 291,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 292,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 294,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 296,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 298,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 300,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 304,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 306,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 308,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 310,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 312,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 314,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 316,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 318,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 320,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 322,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 324,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 326,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}

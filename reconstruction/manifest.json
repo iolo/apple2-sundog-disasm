@@ -19,15 +19,15 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 113354,
-      "sha256": "201f82c6e92041ad25e1a96bc5c0ec855c573cc4450f7e1635e6b90efc60baa0",
+      "size": 113026,
+      "sha256": "61ac3d8ec839f6c3a4f72f60a60205b6688f000f4311068f47e307934bf8590e",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 140786,
-      "sha256": "be3d9a7fa604320f2f1924e4654498481a24d1ec652878c7257541f0537a803d",
+      "size": 140458,
+      "sha256": "5371348e3140a15fc5763b9b6d369be15934adaed05912106c8758d7c39ef684",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -99,6 +99,13 @@
       "config": "src/pcode/library_27.cfg",
       "size": 1616,
       "sha256": "90687f83d0ea2ae33be2e211b686b174fbf7cee15b886cebb52884f4ce687c80"
+    },
+    "library_28": {
+      "kind": "ca65-source",
+      "source": "src/pcode/library_28.s",
+      "config": "src/pcode/library_28.cfg",
+      "size": 328,
+      "sha256": "c8054603d64cdcafa4cfdee95ab756aeb94ac26545b2a42888edd98e59d0d960"
     }
   },
   "disks": [
@@ -458,9 +465,33 @@
         },
         {
           "offset": 71168,
-          "size": 1280,
+          "size": 512,
           "input": "disk1_unresolved",
           "input_offset": 59454
+        },
+        {
+          "offset": 71680,
+          "size": 72,
+          "input": "library_28",
+          "input_offset": 256
+        },
+        {
+          "offset": 71752,
+          "size": 184,
+          "input": "disk1_unresolved",
+          "input_offset": 59966
+        },
+        {
+          "offset": 71936,
+          "size": 256,
+          "input": "library_28",
+          "input_offset": 0
+        },
+        {
+          "offset": 72192,
+          "size": 256,
+          "input": "disk1_unresolved",
+          "input_offset": 60150
         },
         {
           "offset": 72448,
@@ -472,7 +503,7 @@
           "offset": 72528,
           "size": 176,
           "input": "disk1_unresolved",
-          "input_offset": 60734
+          "input_offset": 60406
         },
         {
           "offset": 72704,
@@ -496,7 +527,7 @@
           "offset": 73472,
           "size": 31488,
           "input": "disk1_unresolved",
-          "input_offset": 60910
+          "input_offset": 60582
         },
         {
           "offset": 104960,
@@ -526,7 +557,7 @@
           "offset": 105984,
           "size": 4864,
           "input": "disk1_unresolved",
-          "input_offset": 92398
+          "input_offset": 92070
         },
         {
           "offset": 110848,
@@ -586,7 +617,7 @@
           "offset": 113152,
           "size": 1280,
           "input": "disk1_unresolved",
-          "input_offset": 97262
+          "input_offset": 96934
         },
         {
           "offset": 114432,
@@ -910,7 +941,7 @@
           "offset": 127232,
           "size": 1536,
           "input": "disk1_unresolved",
-          "input_offset": 98542
+          "input_offset": 98214
         },
         {
           "offset": 128768,
@@ -922,7 +953,7 @@
           "offset": 128804,
           "size": 732,
           "input": "disk1_unresolved",
-          "input_offset": 100078
+          "input_offset": 99750
         },
         {
           "offset": 129536,
@@ -958,7 +989,7 @@
           "offset": 130816,
           "size": 12544,
           "input": "disk1_unresolved",
-          "input_offset": 100810
+          "input_offset": 100482
         }
       ]
     },
@@ -1036,9 +1067,33 @@
         },
         {
           "offset": 69888,
-          "size": 2560,
+          "size": 1792,
           "input": "disk2_unresolved",
           "input_offset": 68162
+        },
+        {
+          "offset": 71680,
+          "size": 72,
+          "input": "library_28",
+          "input_offset": 256
+        },
+        {
+          "offset": 71752,
+          "size": 184,
+          "input": "disk2_unresolved",
+          "input_offset": 69954
+        },
+        {
+          "offset": 71936,
+          "size": 256,
+          "input": "library_28",
+          "input_offset": 0
+        },
+        {
+          "offset": 72192,
+          "size": 256,
+          "input": "disk2_unresolved",
+          "input_offset": 70138
         },
         {
           "offset": 72448,
@@ -1050,7 +1105,7 @@
           "offset": 72528,
           "size": 176,
           "input": "disk2_unresolved",
-          "input_offset": 70722
+          "input_offset": 70394
         },
         {
           "offset": 72704,
@@ -1074,7 +1129,7 @@
           "offset": 73472,
           "size": 69888,
           "input": "disk2_unresolved",
-          "input_offset": 70898
+          "input_offset": 70570
         }
       ]
     }
