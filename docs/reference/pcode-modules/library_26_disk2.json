@@ -1,0 +1,2969 @@
+{
+  "sha256": "188476754bcdeb89a5843ec91e2e626e2680c324ee6d2b3641ad292dc1d99b5d",
+  "size": 3058,
+  "segment": 26,
+  "procedure_count": 18,
+  "instruction_count": 1266,
+  "coverage_bytes": {
+    "local-size": 22,
+    "parameter-size": 22,
+    "exit-pointer": 22,
+    "entry-pointer": 22,
+    "attributes": 22,
+    "instruction": 1462,
+    "alignment": 4,
+    "jump-pointer": 22,
+    "string-data": 362,
+    "native-instruction": 647,
+    "relocation-count": 56,
+    "native-entry-pointer": 14,
+    "native-attributes": 14,
+    "native-alignment": 3,
+    "relocation-pointer": 46,
+    "native-division-table": 280,
+    "dictionary-pointer": 36,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 11,
+    "lda": 10,
+    "sldl": 128,
+    "ixa": 7,
+    "inc": 1,
+    "sto": 4,
+    "sldc": 234,
+    "str": 5,
+    "ldci": 38,
+    "lod": 11,
+    "adi": 21,
+    "clp": 9,
+    "cxp": 64,
+    "stl": 71,
+    "leqi": 8,
+    "fjp": 42,
+    "mpi": 10,
+    "sbi": 18,
+    "cgp": 14,
+    "ujp": 20,
+    "sind": 5,
+    "lesi": 4,
+    "lor": 13,
+    "equi": 14,
+    "gtri": 3,
+    "land": 4,
+    "lla": 15,
+    "sas": 4,
+    "lae": 16,
+    "csp": 4,
+    "ste": 2,
+    "lde": 9,
+    "ngi": 1,
+    "neqi": 5,
+    "ldb": 6,
+    "ldl": 14,
+    "lnot": 6,
+    "stb": 3,
+    "lsa": 25,
+    "nop": 25,
+    "ldp": 5,
+    "ixp": 1,
+    "stp": 1
+  },
+  "native_evidence": "src/pcode/evidence/library_26.json",
+  "native_reports": [
+    {
+      "relocation": {
+        "entry": 1960,
+        "attributes": 1976,
+        "tables_start": 1966,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 1972,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 1970,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 1968,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 1966,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          1960,
+          1963
+        ]
+      ],
+      "external_edges": [
+        {
+          "source": 1963,
+          "target": 50688,
+          "kind": "fixed-address"
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 1978,
+        "attributes": 2046,
+        "tables_start": 2036,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 2042,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 2040,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 2038,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 2036,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          1978,
+          1980
+        ],
+        [
+          1980,
+          1982
+        ],
+        [
+          1982,
+          1983
+        ],
+        [
+          1983,
+          1985
+        ],
+        [
+          1985,
+          1986
+        ],
+        [
+          1986,
+          1987
+        ],
+        [
+          1987,
+          1989
+        ],
+        [
+          1987,
+          1982
+        ],
+        [
+          1989,
+          1991
+        ],
+        [
+          1991,
+          1993
+        ],
+        [
+          1993,
+          1995
+        ],
+        [
+          1995,
+          1997
+        ],
+        [
+          1997,
+          1999
+        ],
+        [
+          1999,
+          2000
+        ],
+        [
+          2000,
+          2002
+        ],
+        [
+          2002,
+          2004
+        ],
+        [
+          2004,
+          2006
+        ],
+        [
+          2006,
+          2007
+        ],
+        [
+          2007,
+          2008
+        ],
+        [
+          2008,
+          2010
+        ],
+        [
+          2010,
+          2012
+        ],
+        [
+          2012,
+          2014
+        ],
+        [
+          2014,
+          2015
+        ],
+        [
+          2015,
+          2017
+        ],
+        [
+          2015,
+          1999
+        ],
+        [
+          2017,
+          2019
+        ],
+        [
+          2019,
+          2021
+        ],
+        [
+          2021,
+          2023
+        ],
+        [
+          2021,
+          1997
+        ],
+        [
+          2023,
+          2025
+        ],
+        [
+          2025,
+          2026
+        ],
+        [
+          2026,
+          2028
+        ],
+        [
+          2028,
+          2029
+        ],
+        [
+          2029,
+          2031
+        ],
+        [
+          2031,
+          2032
+        ],
+        [
+          2032,
+          2034
+        ],
+        [
+          2034,
+          2035
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 2048,
+        "attributes": 2220,
+        "tables_start": 2192,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 2216,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 2214,
+            "count": 4,
+            "pointers": [
+              {
+                "offset": 2212,
+                "target": 2172,
+                "original_word": 2988
+              },
+              {
+                "offset": 2210,
+                "target": 2144,
+                "original_word": 2988
+              },
+              {
+                "offset": 2208,
+                "target": 2116,
+                "original_word": 2988
+              },
+              {
+                "offset": 2206,
+                "target": 2081,
+                "original_word": 2694
+              }
+            ]
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 2204,
+            "count": 5,
+            "pointers": [
+              {
+                "offset": 2202,
+                "target": 2098,
+                "original_word": 59
+              },
+              {
+                "offset": 2200,
+                "target": 2095,
+                "original_word": 87
+              },
+              {
+                "offset": 2198,
+                "target": 2092,
+                "original_word": 115
+              },
+              {
+                "offset": 2196,
+                "target": 2089,
+                "original_word": 87
+              },
+              {
+                "offset": 2194,
+                "target": 2086,
+                "original_word": 59
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 2192,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          2048,
+          2049
+        ],
+        [
+          2049,
+          2051
+        ],
+        [
+          2051,
+          2052
+        ],
+        [
+          2052,
+          2054
+        ],
+        [
+          2054,
+          2055
+        ],
+        [
+          2055,
+          2057
+        ],
+        [
+          2057,
+          2058
+        ],
+        [
+          2058,
+          2060
+        ],
+        [
+          2060,
+          2061
+        ],
+        [
+          2061,
+          2063
+        ],
+        [
+          2063,
+          2064
+        ],
+        [
+          2064,
+          2066
+        ],
+        [
+          2066,
+          2067
+        ],
+        [
+          2067,
+          2069
+        ],
+        [
+          2069,
+          2070
+        ],
+        [
+          2070,
+          2072
+        ],
+        [
+          2072,
+          2074
+        ],
+        [
+          2074,
+          2076
+        ],
+        [
+          2076,
+          2078
+        ],
+        [
+          2078,
+          2080
+        ],
+        [
+          2080,
+          2083
+        ],
+        [
+          2083,
+          2085
+        ],
+        [
+          2085,
+          2088
+        ],
+        [
+          2085,
+          2107
+        ],
+        [
+          2107,
+          2109
+        ],
+        [
+          2109,
+          2111
+        ],
+        [
+          2111,
+          2113
+        ],
+        [
+          2113,
+          2115
+        ],
+        [
+          2115,
+          2118
+        ],
+        [
+          2118,
+          2120
+        ],
+        [
+          2120,
+          2122
+        ],
+        [
+          2122,
+          2124
+        ],
+        [
+          2124,
+          2126
+        ],
+        [
+          2126,
+          2128
+        ],
+        [
+          2128,
+          2130
+        ],
+        [
+          2130,
+          2132
+        ],
+        [
+          2132,
+          2134
+        ],
+        [
+          2132,
+          2111
+        ],
+        [
+          2088,
+          2091
+        ],
+        [
+          2088,
+          2135
+        ],
+        [
+          2135,
+          2137
+        ],
+        [
+          2137,
+          2139
+        ],
+        [
+          2139,
+          2141
+        ],
+        [
+          2141,
+          2143
+        ],
+        [
+          2143,
+          2146
+        ],
+        [
+          2146,
+          2148
+        ],
+        [
+          2148,
+          2150
+        ],
+        [
+          2150,
+          2152
+        ],
+        [
+          2152,
+          2154
+        ],
+        [
+          2154,
+          2156
+        ],
+        [
+          2156,
+          2158
+        ],
+        [
+          2158,
+          2160
+        ],
+        [
+          2160,
+          2162
+        ],
+        [
+          2160,
+          2139
+        ],
+        [
+          2091,
+          2094
+        ],
+        [
+          2091,
+          2163
+        ],
+        [
+          2163,
+          2165
+        ],
+        [
+          2165,
+          2167
+        ],
+        [
+          2167,
+          2169
+        ],
+        [
+          2169,
+          2171
+        ],
+        [
+          2171,
+          2174
+        ],
+        [
+          2174,
+          2176
+        ],
+        [
+          2176,
+          2178
+        ],
+        [
+          2178,
+          2180
+        ],
+        [
+          2180,
+          2182
+        ],
+        [
+          2182,
+          2184
+        ],
+        [
+          2184,
+          2186
+        ],
+        [
+          2186,
+          2188
+        ],
+        [
+          2188,
+          2190
+        ],
+        [
+          2188,
+          2167
+        ],
+        [
+          2094,
+          2097
+        ],
+        [
+          2094,
+          2135
+        ],
+        [
+          2097,
+          2100
+        ],
+        [
+          2097,
+          2107
+        ],
+        [
+          2100,
+          2102
+        ],
+        [
+          2102,
+          2103
+        ],
+        [
+          2103,
+          2105
+        ],
+        [
+          2105,
+          2106
+        ]
+      ],
+      "external_edges": [
+        {
+          "source": 2080,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2115,
+          "target": 2988,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2143,
+          "target": 2988,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2171,
+          "target": 2988,
+          "kind": "segment-code"
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 2222,
+        "attributes": 2368,
+        "tables_start": 2350,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 2364,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 2362,
+            "count": 3,
+            "pointers": [
+              {
+                "offset": 2360,
+                "target": 2300,
+                "original_word": 2988
+              },
+              {
+                "offset": 2358,
+                "target": 2280,
+                "original_word": 2694
+              },
+              {
+                "offset": 2356,
+                "target": 2267,
+                "original_word": 2694
+              }
+            ]
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 2354,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 2352,
+                "target": 2341,
+                "original_word": 73
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 2350,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          2222,
+          2223
+        ],
+        [
+          2223,
+          2225
+        ],
+        [
+          2225,
+          2226
+        ],
+        [
+          2226,
+          2228
+        ],
+        [
+          2228,
+          2229
+        ],
+        [
+          2229,
+          2231
+        ],
+        [
+          2231,
+          2232
+        ],
+        [
+          2232,
+          2234
+        ],
+        [
+          2234,
+          2235
+        ],
+        [
+          2235,
+          2237
+        ],
+        [
+          2237,
+          2238
+        ],
+        [
+          2238,
+          2240
+        ],
+        [
+          2240,
+          2241
+        ],
+        [
+          2241,
+          2243
+        ],
+        [
+          2243,
+          2244
+        ],
+        [
+          2244,
+          2246
+        ],
+        [
+          2246,
+          2247
+        ],
+        [
+          2247,
+          2249
+        ],
+        [
+          2249,
+          2250
+        ],
+        [
+          2250,
+          2252
+        ],
+        [
+          2252,
+          2253
+        ],
+        [
+          2253,
+          2255
+        ],
+        [
+          2255,
+          2256
+        ],
+        [
+          2256,
+          2258
+        ],
+        [
+          2258,
+          2260
+        ],
+        [
+          2260,
+          2262
+        ],
+        [
+          2262,
+          2264
+        ],
+        [
+          2264,
+          2266
+        ],
+        [
+          2266,
+          2269
+        ],
+        [
+          2269,
+          2271
+        ],
+        [
+          2271,
+          2273
+        ],
+        [
+          2273,
+          2275
+        ],
+        [
+          2275,
+          2277
+        ],
+        [
+          2277,
+          2279
+        ],
+        [
+          2279,
+          2282
+        ],
+        [
+          2282,
+          2284
+        ],
+        [
+          2284,
+          2285
+        ],
+        [
+          2285,
+          2287
+        ],
+        [
+          2287,
+          2289
+        ],
+        [
+          2289,
+          2291
+        ],
+        [
+          2291,
+          2293
+        ],
+        [
+          2293,
+          2295
+        ],
+        [
+          2295,
+          2297
+        ],
+        [
+          2297,
+          2299
+        ],
+        [
+          2299,
+          2302
+        ],
+        [
+          2302,
+          2304
+        ],
+        [
+          2304,
+          2306
+        ],
+        [
+          2306,
+          2308
+        ],
+        [
+          2308,
+          2309
+        ],
+        [
+          2309,
+          2311
+        ],
+        [
+          2311,
+          2313
+        ],
+        [
+          2311,
+          2304
+        ],
+        [
+          2313,
+          2314
+        ],
+        [
+          2314,
+          2316
+        ],
+        [
+          2316,
+          2318
+        ],
+        [
+          2318,
+          2320
+        ],
+        [
+          2320,
+          2322
+        ],
+        [
+          2322,
+          2324
+        ],
+        [
+          2324,
+          2326
+        ],
+        [
+          2326,
+          2328
+        ],
+        [
+          2328,
+          2330
+        ],
+        [
+          2328,
+          2332
+        ],
+        [
+          2332,
+          2334
+        ],
+        [
+          2334,
+          2336
+        ],
+        [
+          2336,
+          2338
+        ],
+        [
+          2336,
+          2343
+        ],
+        [
+          2343,
+          2345
+        ],
+        [
+          2345,
+          2346
+        ],
+        [
+          2346,
+          2348
+        ],
+        [
+          2348,
+          2349
+        ],
+        [
+          2338,
+          2340
+        ],
+        [
+          2340,
+          2295
+        ],
+        [
+          2330,
+          2332
+        ]
+      ],
+      "external_edges": [
+        {
+          "source": 2266,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2279,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2299,
+          "target": 2988,
+          "kind": "segment-code"
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 2370,
+        "attributes": 2514,
+        "tables_start": 2498,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 2510,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 2508,
+            "count": 2,
+            "pointers": [
+              {
+                "offset": 2506,
+                "target": 2451,
+                "original_word": 2988
+              },
+              {
+                "offset": 2504,
+                "target": 2431,
+                "original_word": 2694
+              }
+            ]
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 2502,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 2500,
+                "target": 2488,
+                "original_word": 76
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 2498,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          2370,
+          2371
+        ],
+        [
+          2371,
+          2373
+        ],
+        [
+          2373,
+          2374
+        ],
+        [
+          2374,
+          2376
+        ],
+        [
+          2376,
+          2377
+        ],
+        [
+          2377,
+          2379
+        ],
+        [
+          2379,
+          2380
+        ],
+        [
+          2380,
+          2382
+        ],
+        [
+          2382,
+          2383
+        ],
+        [
+          2383,
+          2385
+        ],
+        [
+          2385,
+          2386
+        ],
+        [
+          2386,
+          2388
+        ],
+        [
+          2388,
+          2389
+        ],
+        [
+          2389,
+          2391
+        ],
+        [
+          2391,
+          2392
+        ],
+        [
+          2392,
+          2394
+        ],
+        [
+          2394,
+          2395
+        ],
+        [
+          2395,
+          2397
+        ],
+        [
+          2397,
+          2398
+        ],
+        [
+          2398,
+          2400
+        ],
+        [
+          2400,
+          2402
+        ],
+        [
+          2402,
+          2403
+        ],
+        [
+          2403,
+          2404
+        ],
+        [
+          2404,
+          2406
+        ],
+        [
+          2406,
+          2408
+        ],
+        [
+          2408,
+          2409
+        ],
+        [
+          2409,
+          2411
+        ],
+        [
+          2411,
+          2413
+        ],
+        [
+          2413,
+          2414
+        ],
+        [
+          2414,
+          2415
+        ],
+        [
+          2415,
+          2416
+        ],
+        [
+          2416,
+          2418
+        ],
+        [
+          2418,
+          2420
+        ],
+        [
+          2420,
+          2422
+        ],
+        [
+          2422,
+          2424
+        ],
+        [
+          2424,
+          2426
+        ],
+        [
+          2426,
+          2428
+        ],
+        [
+          2428,
+          2430
+        ],
+        [
+          2430,
+          2433
+        ],
+        [
+          2433,
+          2435
+        ],
+        [
+          2435,
+          2436
+        ],
+        [
+          2436,
+          2438
+        ],
+        [
+          2438,
+          2440
+        ],
+        [
+          2440,
+          2442
+        ],
+        [
+          2442,
+          2444
+        ],
+        [
+          2444,
+          2446
+        ],
+        [
+          2446,
+          2448
+        ],
+        [
+          2448,
+          2450
+        ],
+        [
+          2450,
+          2453
+        ],
+        [
+          2453,
+          2455
+        ],
+        [
+          2455,
+          2457
+        ],
+        [
+          2457,
+          2459
+        ],
+        [
+          2459,
+          2461
+        ],
+        [
+          2461,
+          2462
+        ],
+        [
+          2462,
+          2464
+        ],
+        [
+          2464,
+          2466
+        ],
+        [
+          2464,
+          2455
+        ],
+        [
+          2466,
+          2467
+        ],
+        [
+          2467,
+          2469
+        ],
+        [
+          2469,
+          2471
+        ],
+        [
+          2471,
+          2473
+        ],
+        [
+          2473,
+          2475
+        ],
+        [
+          2475,
+          2477
+        ],
+        [
+          2477,
+          2479
+        ],
+        [
+          2479,
+          2481
+        ],
+        [
+          2481,
+          2483
+        ],
+        [
+          2483,
+          2485
+        ],
+        [
+          2483,
+          2490
+        ],
+        [
+          2490,
+          2492
+        ],
+        [
+          2492,
+          2493
+        ],
+        [
+          2493,
+          2495
+        ],
+        [
+          2495,
+          2496
+        ],
+        [
+          2485,
+          2487
+        ],
+        [
+          2487,
+          2446
+        ]
+      ],
+      "external_edges": [
+        {
+          "source": 2430,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2450,
+          "target": 2988,
+          "kind": "segment-code"
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 2516,
+        "attributes": 2692,
+        "tables_start": 2672,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 2688,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 2686,
+            "count": 4,
+            "pointers": [
+              {
+                "offset": 2684,
+                "target": 2626,
+                "original_word": 2988
+              },
+              {
+                "offset": 2682,
+                "target": 2593,
+                "original_word": 2694
+              },
+              {
+                "offset": 2680,
+                "target": 2580,
+                "original_word": 2694
+              },
+              {
+                "offset": 2678,
+                "target": 2567,
+                "original_word": 2694
+              }
+            ]
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 2676,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 2674,
+                "target": 2662,
+                "original_word": 105
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 2672,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          2516,
+          2517
+        ],
+        [
+          2517,
+          2519
+        ],
+        [
+          2519,
+          2520
+        ],
+        [
+          2520,
+          2522
+        ],
+        [
+          2522,
+          2523
+        ],
+        [
+          2523,
+          2525
+        ],
+        [
+          2525,
+          2526
+        ],
+        [
+          2526,
+          2528
+        ],
+        [
+          2528,
+          2529
+        ],
+        [
+          2529,
+          2531
+        ],
+        [
+          2531,
+          2532
+        ],
+        [
+          2532,
+          2534
+        ],
+        [
+          2534,
+          2535
+        ],
+        [
+          2535,
+          2537
+        ],
+        [
+          2537,
+          2538
+        ],
+        [
+          2538,
+          2540
+        ],
+        [
+          2540,
+          2541
+        ],
+        [
+          2541,
+          2543
+        ],
+        [
+          2543,
+          2544
+        ],
+        [
+          2544,
+          2546
+        ],
+        [
+          2546,
+          2547
+        ],
+        [
+          2547,
+          2549
+        ],
+        [
+          2549,
+          2550
+        ],
+        [
+          2550,
+          2552
+        ],
+        [
+          2552,
+          2553
+        ],
+        [
+          2553,
+          2555
+        ],
+        [
+          2555,
+          2556
+        ],
+        [
+          2556,
+          2558
+        ],
+        [
+          2558,
+          2560
+        ],
+        [
+          2560,
+          2562
+        ],
+        [
+          2562,
+          2564
+        ],
+        [
+          2564,
+          2566
+        ],
+        [
+          2566,
+          2569
+        ],
+        [
+          2569,
+          2571
+        ],
+        [
+          2571,
+          2573
+        ],
+        [
+          2573,
+          2575
+        ],
+        [
+          2575,
+          2577
+        ],
+        [
+          2577,
+          2579
+        ],
+        [
+          2579,
+          2582
+        ],
+        [
+          2582,
+          2584
+        ],
+        [
+          2584,
+          2586
+        ],
+        [
+          2586,
+          2588
+        ],
+        [
+          2588,
+          2590
+        ],
+        [
+          2590,
+          2592
+        ],
+        [
+          2592,
+          2595
+        ],
+        [
+          2595,
+          2597
+        ],
+        [
+          2597,
+          2598
+        ],
+        [
+          2598,
+          2600
+        ],
+        [
+          2600,
+          2602
+        ],
+        [
+          2602,
+          2604
+        ],
+        [
+          2604,
+          2605
+        ],
+        [
+          2605,
+          2607
+        ],
+        [
+          2607,
+          2609
+        ],
+        [
+          2609,
+          2611
+        ],
+        [
+          2611,
+          2613
+        ],
+        [
+          2613,
+          2615
+        ],
+        [
+          2615,
+          2617
+        ],
+        [
+          2617,
+          2619
+        ],
+        [
+          2619,
+          2621
+        ],
+        [
+          2621,
+          2623
+        ],
+        [
+          2623,
+          2625
+        ],
+        [
+          2625,
+          2628
+        ],
+        [
+          2628,
+          2630
+        ],
+        [
+          2630,
+          2632
+        ],
+        [
+          2632,
+          2634
+        ],
+        [
+          2634,
+          2635
+        ],
+        [
+          2635,
+          2637
+        ],
+        [
+          2637,
+          2639
+        ],
+        [
+          2639,
+          2641
+        ],
+        [
+          2641,
+          2643
+        ],
+        [
+          2643,
+          2645
+        ],
+        [
+          2645,
+          2647
+        ],
+        [
+          2647,
+          2649
+        ],
+        [
+          2649,
+          2651
+        ],
+        [
+          2649,
+          2653
+        ],
+        [
+          2653,
+          2655
+        ],
+        [
+          2655,
+          2657
+        ],
+        [
+          2657,
+          2659
+        ],
+        [
+          2657,
+          2664
+        ],
+        [
+          2664,
+          2666
+        ],
+        [
+          2666,
+          2667
+        ],
+        [
+          2667,
+          2669
+        ],
+        [
+          2669,
+          2670
+        ],
+        [
+          2659,
+          2661
+        ],
+        [
+          2661,
+          2621
+        ],
+        [
+          2651,
+          2653
+        ]
+      ],
+      "external_edges": [
+        {
+          "source": 2566,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2579,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2592,
+          "target": 2694,
+          "kind": "segment-code"
+        },
+        {
+          "source": 2625,
+          "target": 2988,
+          "kind": "segment-code"
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 2694,
+        "attributes": 3018,
+        "tables_start": 3004,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 3014,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 3012,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 3010,
+            "count": 2,
+            "pointers": [
+              {
+                "offset": 3008,
+                "target": 2705,
+                "original_word": 270
+              },
+              {
+                "offset": 3006,
+                "target": 2701,
+                "original_word": 14
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 3004,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          2988,
+          2990
+        ],
+        [
+          2990,
+          2993
+        ],
+        [
+          2993,
+          2994
+        ],
+        [
+          2994,
+          2996
+        ],
+        [
+          2996,
+          2998
+        ],
+        [
+          2998,
+          3001
+        ],
+        [
+          3001,
+          3003
+        ],
+        [
+          2694,
+          2696
+        ],
+        [
+          2696,
+          2698
+        ],
+        [
+          2698,
+          2700
+        ],
+        [
+          2698,
+          2704
+        ],
+        [
+          2704,
+          2707
+        ],
+        [
+          2700,
+          2703
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    }
+  ],
+  "origins": [
+    {
+      "disk": "disk2",
+      "header_block": 103,
+      "segment": 26,
+      "start_block": 129
+    }
+  ],
+  "extra_code_roots": [],
+  "root_evidence": null,
+  "control_flow_edges": 942,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 20,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 22,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 24,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 26,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 28,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 115,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 116,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 118,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 120,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 122,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 124,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 430,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 428
+    },
+    {
+      "offset": 432,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 215
+    },
+    {
+      "offset": 434,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 252
+    },
+    {
+      "offset": 436,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 132
+    },
+    {
+      "offset": 438,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 440,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 442,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 444,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 446,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 454,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 456,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 458,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 460,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 462,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 491,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 492,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 494,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 496,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 498,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 500,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 517,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 518,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 520,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 522,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 524,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 526,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 700,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 571
+    },
+    {
+      "offset": 702,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 704,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 706,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 708,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 710,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 915,
+      "size": 5,
+      "kind": "string-data",
+      "consumer": 913
+    },
+    {
+      "offset": 945,
+      "size": 15,
+      "kind": "string-data",
+      "consumer": 943
+    },
+    {
+      "offset": 967,
+      "size": 18,
+      "kind": "string-data",
+      "consumer": 965
+    },
+    {
+      "offset": 991,
+      "size": 19,
+      "kind": "string-data",
+      "consumer": 989
+    },
+    {
+      "offset": 1015,
+      "size": 20,
+      "kind": "string-data",
+      "consumer": 1013
+    },
+    {
+      "offset": 1041,
+      "size": 20,
+      "kind": "string-data",
+      "consumer": 1039
+    },
+    {
+      "offset": 1067,
+      "size": 23,
+      "kind": "string-data",
+      "consumer": 1065
+    },
+    {
+      "offset": 1097,
+      "size": 23,
+      "kind": "string-data",
+      "consumer": 1095
+    },
+    {
+      "offset": 1125,
+      "size": 19,
+      "kind": "string-data",
+      "consumer": 1123
+    },
+    {
+      "offset": 1253,
+      "size": 9,
+      "kind": "string-data",
+      "consumer": 1251
+    },
+    {
+      "offset": 1275,
+      "size": 11,
+      "kind": "string-data",
+      "consumer": 1273
+    },
+    {
+      "offset": 1293,
+      "size": 7,
+      "kind": "string-data",
+      "consumer": 1291
+    },
+    {
+      "offset": 1339,
+      "size": 11,
+      "kind": "string-data",
+      "consumer": 1337
+    },
+    {
+      "offset": 1359,
+      "size": 10,
+      "kind": "string-data",
+      "consumer": 1357
+    },
+    {
+      "offset": 1375,
+      "size": 22,
+      "kind": "string-data",
+      "consumer": 1373
+    },
+    {
+      "offset": 1409,
+      "size": 23,
+      "kind": "string-data",
+      "consumer": 1407
+    },
+    {
+      "offset": 1437,
+      "size": 11,
+      "kind": "string-data",
+      "consumer": 1435
+    },
+    {
+      "offset": 1463,
+      "size": 5,
+      "kind": "string-data",
+      "consumer": 1461
+    },
+    {
+      "offset": 1475,
+      "size": 8,
+      "kind": "string-data",
+      "consumer": 1473
+    },
+    {
+      "offset": 1489,
+      "size": 12,
+      "kind": "string-data",
+      "consumer": 1487
+    },
+    {
+      "offset": 1507,
+      "size": 34,
+      "kind": "string-data",
+      "consumer": 1505
+    },
+    {
+      "offset": 1577,
+      "size": 12,
+      "kind": "string-data",
+      "consumer": 1575
+    },
+    {
+      "offset": 1607,
+      "size": 13,
+      "kind": "string-data",
+      "consumer": 1605
+    },
+    {
+      "offset": 1639,
+      "size": 8,
+      "kind": "string-data",
+      "consumer": 1637
+    },
+    {
+      "offset": 1723,
+      "size": 4,
+      "kind": "string-data",
+      "consumer": 1721
+    },
+    {
+      "offset": 1756,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1741
+    },
+    {
+      "offset": 1758,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1656
+    },
+    {
+      "offset": 1760,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1153
+    },
+    {
+      "offset": 1762,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 1764,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 1766,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 1768,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 1770,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 1877,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 1878,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1814
+    },
+    {
+      "offset": 1880,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1856
+    },
+    {
+      "offset": 1882,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 1796
+    },
+    {
+      "offset": 1884,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 1886,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 1888,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 1890,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 1892,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 1938,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 1940,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 1942,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 1944,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 1946,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 1950,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 1952,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 1954,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 1956,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 1958,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 1966,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 1968,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 1970,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 1972,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 1974,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 1976,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2036,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2038,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2040,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2042,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2044,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 2046,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2191,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 2192,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2194,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2086
+    },
+    {
+      "offset": 2196,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2089
+    },
+    {
+      "offset": 2198,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2092
+    },
+    {
+      "offset": 2200,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2095
+    },
+    {
+      "offset": 2202,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2098
+    },
+    {
+      "offset": 2204,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2206,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2081
+    },
+    {
+      "offset": 2208,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2116
+    },
+    {
+      "offset": 2210,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2144
+    },
+    {
+      "offset": 2212,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2172
+    },
+    {
+      "offset": 2214,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2216,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2218,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 2220,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2350,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2352,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2341
+    },
+    {
+      "offset": 2354,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2356,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2267
+    },
+    {
+      "offset": 2358,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2280
+    },
+    {
+      "offset": 2360,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2300
+    },
+    {
+      "offset": 2362,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2364,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2366,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 2368,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2497,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 2498,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2500,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2488
+    },
+    {
+      "offset": 2502,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2504,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2431
+    },
+    {
+      "offset": 2506,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2451
+    },
+    {
+      "offset": 2508,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2510,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2512,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 2514,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2671,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 2672,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2674,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2662
+    },
+    {
+      "offset": 2676,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2678,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2567
+    },
+    {
+      "offset": 2680,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2580
+    },
+    {
+      "offset": 2682,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2593
+    },
+    {
+      "offset": 2684,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2626
+    },
+    {
+      "offset": 2686,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2688,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 2690,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 2692,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 2708,
+      "size": 280,
+      "kind": "native-division-table"
+    },
+    {
+      "offset": 3004,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3006,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2701
+    },
+    {
+      "offset": 3008,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 2705
+    },
+    {
+      "offset": 3010,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3012,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3014,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 3016,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 3018,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 3020,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3022,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3024,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3026,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3028,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3030,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3032,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3034,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3036,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3038,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3040,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3042,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3044,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3046,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3048,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3050,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3052,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3054,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 3056,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}

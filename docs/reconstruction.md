@@ -82,12 +82,13 @@ byte-identical module replacements reuse the established reference behavior.
 | P-code alternate_1 | `src/pcode/alternate_1.s` | disk1 block 172 onward | 880 |
 | P-code library_24 | `src/pcode/library_24.s` | disk1 block 118 onward; disk2 block 118 onward | 8,612 |
 | P-code library_26_disk1 | `src/pcode/library_26_disk1.s` | disk1 block 129 onward | 3,058 |
+| P-code library_26_disk2 | `src/pcode/library_26_disk2.s` | disk2 block 129 onward | 3,058 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 87,866 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 71,588 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 68,530 |
 
-The 127,266 source-built bytes include instructions and their owned tables,
+The 130,324 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-127,266 instruction bytes. Six distinct inventoried Pascal segments, the split core fragment, and other
+130,324 instruction bytes. Six distinct inventoried Pascal segments, the split core fragment, and other
 unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
