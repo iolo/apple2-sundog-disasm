@@ -100,3 +100,11 @@ capture. It rejects truncated headers, odd segment lengths, bad trailers,
 out-of-buffer dictionaries, unaligned attribute pointers, incorrect procedure
 numbers, and invalid entry/exit pointers. Accepting a dictionary does not yet
 establish that every byte in its procedures has been correctly decoded.
+
+## Raw executable components outside this inventory
+
+The screen initializer at disk-1 block 2 is loaded with block I/O and called
+through library 22 procedure 25. It has no Pascal segment dictionary. See
+[raw-screen-init.md](raw-screen-init.md) for its reconstructed code/table boundary
+and additional raw-overlay leads. Complete segment ownership must not be used
+as a claim that all executable content has been found.

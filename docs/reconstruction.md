@@ -87,12 +87,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Split SYSTEM.PASCAL remainder | `src/pcode/system_core.s` | Disk 1 core block 252 after byte 35; fragment at block 259 | 3,258 |
 | Title HGR image data | `assets/title/title.hgr` | Disk 1 blocks 203–218 | 8,192 |
 | Pascal segment-header tables | `src/data/pascal_header_tables.s` | First 288 bytes of eight headers on both disks | 2,304 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 68,562 |
+| Raw screen-address initializer and table | `src/native/raw_screen_init.s` | Disk 1 block 2, first 297 bytes | 297 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 68,265 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 61,828 |
 
-The 148,138 source-built bytes include instructions and their owned tables,
+The 148,435 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-148,138 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+148,435 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -198,3 +199,8 @@ the unreviewed tails and block 84's invalid segment reference. Generation and
 adoption each checked exact bytes; the complete build still matches both disks.
 No new emulator run is needed for these unchanged outputs; step 07a's fresh
 reference runs remain applicable.
+
+Step 06w adds the [raw screen initializer](raw-screen-init.md): 105 code bytes
+and 192 table bytes outside the Pascal inventory. Current ownership is 148,435
+source-built bytes, 8,192 asset bytes, and 130,093 temporary bytes. Discovery of
+raw overlays reinforces that inventoried-segment coverage is not full code coverage.

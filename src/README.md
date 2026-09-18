@@ -45,3 +45,7 @@ non-segment regions from its completed count. See `docs/pascal-segments.md` for 
 `data/pascal_header_tables.s` reconstructs the first 288 bytes of all eight
 inventoried segment headers as data tables. Header tails are excluded; see
 `docs/pascal-header-tables.md` for evidence and scope.
+
+`native/raw_screen_init.s` reconstructs the callable screen-table initializer
+and its HGR high-address table from disk-1 block 2. This raw code has no Pascal
+procedure dictionary. See `docs/raw-screen-init.md`; other raw overlays remain.

@@ -38,7 +38,8 @@ Split large steps into independently validated, logged, and committed increments
   resolved; every subsequent checkpoint must follow the base rule above.
 - `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06v.
   All inventoried executable segments are source-built. Step 06 remains open for
-  other-region classification and provisional runtime data; step 07a extracts
+  other-region classification and provisional runtime data. Step 06w adds a raw
+  screen initializer found outside the Pascal inventory; step 07a extracts
   the independently confirmed title bitmap. This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

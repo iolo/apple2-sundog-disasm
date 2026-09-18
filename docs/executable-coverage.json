@@ -34,6 +34,7 @@
     }
   ],
   "remaining_work_outside_valid_segments": [
+    "Raw block-loaded executable overlays",
     "Orphan/header candidates",
     "Assets and other data",
     "Unallocated/preserved disk regions",

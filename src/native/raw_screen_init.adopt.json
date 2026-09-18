@@ -1,0 +1,19 @@
+{
+  "name": "raw_screen_init",
+  "source": "src/native/raw_screen_init.s",
+  "config": "src/native/raw_screen_init.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 2816,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 2560,
+      "size": 41,
+      "input_offset": 256
+    }
+  ]
+}

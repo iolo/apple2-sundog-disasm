@@ -1,0 +1,27 @@
+{
+  "name": "raw_screen_init",
+  "size": 297,
+  "base": 3712,
+  "sha256": "a31fbdf8f43e086d89407931e9ad267447ac6120283447f78f196d856f2ddbd1",
+  "origins": [
+    {
+      "disk": "disk1",
+      "block": 2
+    }
+  ],
+  "classification_evidence": "docs/raw-screen-init.md",
+  "roots": [
+    {
+      "offset": 192,
+      "evidence": "Library 22 procedure 54 loads block 2 at $0E80 and calls $0F40 through procedure 25"
+    }
+  ],
+  "data": [
+    {
+      "offset": 0,
+      "size": 192,
+      "kind": "hgr-row-address-high",
+      "evidence": "Formula matches every high byte; library 22 native procedure 15 reads $0E80,Y for Y < 192"
+    }
+  ]
+}

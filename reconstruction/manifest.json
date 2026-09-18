@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 68562,
-      "sha256": "b49da9d083ced2d082114132770de24ae2da52b7222335b9d3cdd418d5a6ca20",
+      "size": 68265,
+      "sha256": "d24f6bcbf271d4b0b53ab688e32bc5f2ef5f04eeec4472f803bdf9ead62d7616",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -331,6 +331,13 @@
       "config": "src/data/pascal_header_tables.cfg",
       "size": 1728,
       "sha256": "5656f53d3fdf1576655e0d24ebe0c703f4d59d6c5003e2c95752de7349f601f3"
+    },
+    "raw_screen_init": {
+      "kind": "ca65-source",
+      "source": "src/native/raw_screen_init.s",
+      "config": "src/native/raw_screen_init.cfg",
+      "size": 297,
+      "sha256": "a31fbdf8f43e086d89407931e9ad267447ac6120283447f78f196d856f2ddbd1"
     }
   },
   "disks": [
@@ -348,9 +355,33 @@
         },
         {
           "offset": 256,
-          "size": 3072,
+          "size": 2304,
           "input": "disk1_unresolved",
           "input_offset": 0
+        },
+        {
+          "offset": 2560,
+          "size": 41,
+          "input": "raw_screen_init",
+          "input_offset": 256
+        },
+        {
+          "offset": 2601,
+          "size": 215,
+          "input": "disk1_unresolved",
+          "input_offset": 2304
+        },
+        {
+          "offset": 2816,
+          "size": 256,
+          "input": "raw_screen_init",
+          "input_offset": 0
+        },
+        {
+          "offset": 3072,
+          "size": 256,
+          "input": "disk1_unresolved",
+          "input_offset": 2519
         },
         {
           "offset": 3328,
@@ -368,7 +399,7 @@
           "offset": 3840,
           "size": 37376,
           "input": "disk1_unresolved",
-          "input_offset": 3072
+          "input_offset": 2775
         },
         {
           "offset": 41216,
@@ -398,7 +429,7 @@
           "offset": 42016,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 40448
+          "input_offset": 40151
         },
         {
           "offset": 42240,
@@ -416,7 +447,7 @@
           "offset": 42528,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 40672
+          "input_offset": 40375
         },
         {
           "offset": 42752,
@@ -428,7 +459,7 @@
           "offset": 43008,
           "size": 1792,
           "input": "disk1_unresolved",
-          "input_offset": 40896
+          "input_offset": 40599
         },
         {
           "offset": 44800,
@@ -554,7 +585,7 @@
           "offset": 49860,
           "size": 60,
           "input": "disk1_unresolved",
-          "input_offset": 42688
+          "input_offset": 42391
         },
         {
           "offset": 49920,
@@ -638,7 +669,7 @@
           "offset": 53024,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 42748
+          "input_offset": 42451
         },
         {
           "offset": 53248,
@@ -764,7 +795,7 @@
           "offset": 58368,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 42972
+          "input_offset": 42675
         },
         {
           "offset": 58624,
@@ -776,7 +807,7 @@
           "offset": 58718,
           "size": 162,
           "input": "disk1_unresolved",
-          "input_offset": 43228
+          "input_offset": 42931
         },
         {
           "offset": 58880,
@@ -800,7 +831,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk1_unresolved",
-          "input_offset": 43390
+          "input_offset": 43093
         },
         {
           "offset": 59648,
@@ -860,7 +891,7 @@
           "offset": 61952,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 43408
+          "input_offset": 43111
         },
         {
           "offset": 62208,
@@ -872,7 +903,7 @@
           "offset": 62418,
           "size": 46,
           "input": "disk1_unresolved",
-          "input_offset": 43664
+          "input_offset": 43367
         },
         {
           "offset": 62464,
@@ -968,7 +999,7 @@
           "offset": 66290,
           "size": 14,
           "input": "disk1_unresolved",
-          "input_offset": 43710
+          "input_offset": 43413
         },
         {
           "offset": 66304,
@@ -1046,7 +1077,7 @@
           "offset": 69310,
           "size": 66,
           "input": "disk1_unresolved",
-          "input_offset": 43724
+          "input_offset": 43427
         },
         {
           "offset": 69376,
@@ -1070,7 +1101,7 @@
           "offset": 70144,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 43790
+          "input_offset": 43493
         },
         {
           "offset": 70400,
@@ -1082,7 +1113,7 @@
           "offset": 70464,
           "size": 192,
           "input": "disk1_unresolved",
-          "input_offset": 44046
+          "input_offset": 43749
         },
         {
           "offset": 70656,
@@ -1106,7 +1137,7 @@
           "offset": 71200,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 44238
+          "input_offset": 43941
         },
         {
           "offset": 71424,
@@ -1124,7 +1155,7 @@
           "offset": 71752,
           "size": 184,
           "input": "disk1_unresolved",
-          "input_offset": 44462
+          "input_offset": 44165
         },
         {
           "offset": 71936,
@@ -1136,7 +1167,7 @@
           "offset": 72192,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 44646
+          "input_offset": 44349
         },
         {
           "offset": 72448,
@@ -1148,7 +1179,7 @@
           "offset": 72528,
           "size": 176,
           "input": "disk1_unresolved",
-          "input_offset": 44902
+          "input_offset": 44605
         },
         {
           "offset": 72704,
@@ -1184,7 +1215,7 @@
           "offset": 73984,
           "size": 2304,
           "input": "disk1_unresolved",
-          "input_offset": 45078
+          "input_offset": 44781
         },
         {
           "offset": 76288,
@@ -1196,7 +1227,7 @@
           "offset": 76364,
           "size": 180,
           "input": "disk1_unresolved",
-          "input_offset": 47382
+          "input_offset": 47085
         },
         {
           "offset": 76544,
@@ -1226,7 +1257,7 @@
           "offset": 77568,
           "size": 512,
           "input": "disk1_unresolved",
-          "input_offset": 47562
+          "input_offset": 47265
         },
         {
           "offset": 78080,
@@ -1238,7 +1269,7 @@
           "offset": 78332,
           "size": 4,
           "input": "disk1_unresolved",
-          "input_offset": 48074
+          "input_offset": 47777
         },
         {
           "offset": 78336,
@@ -1262,7 +1293,7 @@
           "offset": 78880,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 48078
+          "input_offset": 47781
         },
         {
           "offset": 79104,
@@ -1274,7 +1305,7 @@
           "offset": 79360,
           "size": 2560,
           "input": "disk1_unresolved",
-          "input_offset": 48302
+          "input_offset": 48005
         },
         {
           "offset": 81920,
@@ -1298,7 +1329,7 @@
           "offset": 82452,
           "size": 236,
           "input": "disk1_unresolved",
-          "input_offset": 50862
+          "input_offset": 50565
         },
         {
           "offset": 82688,
@@ -1388,7 +1419,7 @@
           "offset": 86272,
           "size": 768,
           "input": "disk1_unresolved",
-          "input_offset": 51098
+          "input_offset": 50801
         },
         {
           "offset": 87040,
@@ -1400,7 +1431,7 @@
           "offset": 87152,
           "size": 144,
           "input": "disk1_unresolved",
-          "input_offset": 51866
+          "input_offset": 51569
         },
         {
           "offset": 87296,
@@ -1430,7 +1461,7 @@
           "offset": 88246,
           "size": 74,
           "input": "disk1_unresolved",
-          "input_offset": 52010
+          "input_offset": 51713
         },
         {
           "offset": 88320,
@@ -1454,7 +1485,7 @@
           "offset": 89088,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 52084
+          "input_offset": 51787
         },
         {
           "offset": 89344,
@@ -1466,7 +1497,7 @@
           "offset": 89532,
           "size": 68,
           "input": "disk1_unresolved",
-          "input_offset": 52340
+          "input_offset": 52043
         },
         {
           "offset": 89600,
@@ -1478,7 +1509,7 @@
           "offset": 89856,
           "size": 12800,
           "input": "disk1_unresolved",
-          "input_offset": 52408
+          "input_offset": 52111
         },
         {
           "offset": 102656,
@@ -1562,7 +1593,7 @@
           "offset": 105984,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 65208
+          "input_offset": 64911
         },
         {
           "offset": 106240,
@@ -2132,7 +2163,7 @@
           "offset": 129056,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 65464
+          "input_offset": 65167
         },
         {
           "offset": 129280,
@@ -2192,7 +2223,7 @@
           "offset": 131348,
           "size": 236,
           "input": "disk1_unresolved",
-          "input_offset": 65688
+          "input_offset": 65391
         },
         {
           "offset": 131584,
@@ -2204,7 +2235,7 @@
           "offset": 131624,
           "size": 216,
           "input": "disk1_unresolved",
-          "input_offset": 65924
+          "input_offset": 65627
         },
         {
           "offset": 131840,
@@ -2228,7 +2259,7 @@
           "offset": 132608,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 66140
+          "input_offset": 65843
         },
         {
           "offset": 132864,
@@ -2240,7 +2271,7 @@
           "offset": 132884,
           "size": 492,
           "input": "disk1_unresolved",
-          "input_offset": 66396
+          "input_offset": 66099
         },
         {
           "offset": 133376,
@@ -2252,7 +2283,7 @@
           "offset": 133546,
           "size": 342,
           "input": "disk1_unresolved",
-          "input_offset": 66888
+          "input_offset": 66591
         },
         {
           "offset": 133888,
@@ -2264,7 +2295,7 @@
           "offset": 133940,
           "size": 204,
           "input": "disk1_unresolved",
-          "input_offset": 67230
+          "input_offset": 66933
         },
         {
           "offset": 134144,
@@ -2288,7 +2319,7 @@
           "offset": 134912,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 67434
+          "input_offset": 67137
         },
         {
           "offset": 135168,
@@ -2306,7 +2337,7 @@
           "offset": 135558,
           "size": 122,
           "input": "disk1_unresolved",
-          "input_offset": 67690
+          "input_offset": 67393
         },
         {
           "offset": 135680,
@@ -2354,7 +2385,7 @@
           "offset": 137422,
           "size": 50,
           "input": "disk1_unresolved",
-          "input_offset": 67812
+          "input_offset": 67515
         },
         {
           "offset": 137472,
@@ -2396,7 +2427,7 @@
           "offset": 139008,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 67862
+          "input_offset": 67565
         },
         {
           "offset": 139264,
@@ -2414,7 +2445,7 @@
           "offset": 139588,
           "size": 188,
           "input": "disk1_unresolved",
-          "input_offset": 68118
+          "input_offset": 67821
         },
         {
           "offset": 139776,
@@ -2498,7 +2529,7 @@
           "offset": 143104,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 68306
+          "input_offset": 68009
         }
       ]
     },

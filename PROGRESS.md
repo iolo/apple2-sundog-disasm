@@ -1231,3 +1231,28 @@ and acceptance criteria.
   These are ownership totals, not instruction counts or completion percentages.
 - **Next action:** Continue classifying header tails, runtime payloads, and other
   disk regions through their consumers, and extract further supported assets.
+
+## 2026-09-18 — Step 06w: reconstruct a raw screen-table initializer
+
+- **Discovery:** Traced library 22 procedure 53's block-I/O wrapper and procedure
+  54's load/call sequence. Startup reads disk-1 block 83 byte 6 (value 2), loads
+  block 2 at $0E80, and calls $0F40 through procedure 25's patched JMP. This is
+  executable content outside the completed Pascal segment inventory.
+- **Classification:** The first 192 bytes are HGR row-address high bytes; every
+  byte matches the row formula, and native drawing consumers index the table.
+  The following 105 bytes decode to 58 native instructions that generate the
+  complementary low-byte and linear-row tables and return at $0FA8. The block's
+  remaining 215 bytes stay unresolved. Added source, recipe, audit, and evidence.
+- **Tooling:** Added strict fixed-address raw decoding and preparation tools.
+  Four tests cover internal calls/branches, unreachable-byte rejection, targets
+  inside operands/data, and evidence requirements for roots/external transfers.
+  Indirect jumps remain rejected until an appropriate target model is supplied.
+- **Validation:** `python3 tools/test_native_raw_source.py` passes all four tests.
+  Preparation assembled and compared all 297 bytes. Adoption, full build, and
+  `python3 tools/verify_disks.py` pass; both disks and original input hashes are
+  unchanged. Existing MAME reference behavior remains applicable.
+- **Coverage:** 148,435 source-built bytes, 8,192 asset bytes, 130,093 temporary
+  bytes (68,265 disk 1; 61,828 disk 2). This does not resolve provisional runtime
+  regions or establish complete executable discovery.
+- **Next action:** Reconstruct the raw routine loaded from disk-1 block 156 into
+  $0F40; follow other raw loads, including native code visible in disk-2 block 83.
