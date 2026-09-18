@@ -1078,3 +1078,27 @@ and acceptance criteria.
   bytes, three 12-byte lookup tables and one 33-byte lookup table. Bounded indexed
   loads establish every table extent; two native alignment bytes are separate.
   All native relocation and control-flow targets are validated by the mixed decoder.
+
+## 2026-09-18 — Step 06r: reconstruct library_26_disk1
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 103, segment 26, block 129.
+- **Work:** Reconstructed 3,058 bytes, 18 procedures,
+  1,266 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/library_26_disk1.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 127,266 output bytes, with 159,454 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Native/data evidence:** Seven native procedures contain 647 instruction bytes;
+  a 280-byte indexed division table is expressed as floor(pixel_x/7). Cross-call
+  relocation targets establish the helper following the table as code. Factored
+  the variant source into a shared include, preserving the 13 differing bytes of
+  the inline identification string. Rebuilt after formula refactoring; both
+  image comparisons pass. The disk-2 variant is the next checkpoint.

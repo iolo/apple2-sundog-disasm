@@ -1,0 +1,15 @@
+{
+  "documentation": "docs/mixed-pcode.md",
+  "procedures": {
+    "18": {
+      "data": [
+        {
+          "offset": 2708,
+          "size": 280,
+          "kind": "native-division-table",
+          "evidence": "Procedure-relative indexed loads at $0A8C/$0A90 read this table. All 280 bytes equal floor(index/7). The following $0BAC helper is called by segment-relative JSRs in procedures 9-12."
+        }
+      ]
+    }
+  }
+}

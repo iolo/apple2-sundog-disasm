@@ -47,3 +47,17 @@ has a 33-byte lookup table at `$0FDD`, accessed after folding its index to 0–3
 Procedure 5 has a single zero alignment byte after its terminal loop jump.
 The recipe describes data boundaries independently of the p-code procedures.
 Adoption status is recorded in PROGRESS.md and the reconstruction manifest.
+
+## Library segment 26 variants
+
+Both 3,058-byte copies contain the same instructions and native lookup data.
+Only 13 bytes in the inline string at `$03F7` (20 bytes total) differ. The source
+uses a shared `library_26_body.inc` with an explicit disk selector for this data.
+Each variant remains independently mapped and compared to its disk bytes.
+
+Procedure 18's loads at `$0A8C` and `$0A90` address a 280-byte table at `$0A94`.
+All entries are exactly `floor(index / 7)`, now expressed as an assembly-time
+formula. The following code at `$0BAC` is a helper reached by relocated direct
+JSRs in procedures 9–12. The decoder discovers this entry from those callers;
+it does not classify the helper as part of the table. Remaining native procedures
+are completely covered by entry/branch/call traversal and alignment rules.
