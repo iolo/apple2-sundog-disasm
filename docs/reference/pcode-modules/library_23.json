@@ -1,0 +1,307 @@
+{
+  "sha256": "af7267c0fb90b5e2e8c477d12d13f90afd98010a140f1e6f09b12bdb69e5529f",
+  "size": 606,
+  "segment": 23,
+  "procedure_count": 4,
+  "instruction_count": 268,
+  "native_instruction_count": 267,
+  "coverage_bytes": {
+    "native_instructions": 482,
+    "pcode_instructions": 2,
+    "data": 122
+  },
+  "code_data_regions": [
+    {
+      "offset": 0,
+      "size": 2,
+      "kind": "p-code-instruction"
+    },
+    {
+      "offset": 2,
+      "size": 10,
+      "kind": "p-code-metadata"
+    },
+    {
+      "offset": 12,
+      "size": 95,
+      "kind": "native-instructions"
+    },
+    {
+      "offset": 168,
+      "size": 10,
+      "kind": "relocation-lists"
+    },
+    {
+      "offset": 178,
+      "size": 4,
+      "kind": "native-metadata"
+    },
+    {
+      "offset": 182,
+      "size": 231,
+      "kind": "native-instructions"
+    },
+    {
+      "offset": 414,
+      "size": 10,
+      "kind": "relocation-lists"
+    },
+    {
+      "offset": 424,
+      "size": 4,
+      "kind": "native-metadata"
+    },
+    {
+      "offset": 428,
+      "size": 156,
+      "kind": "native-instructions"
+    },
+    {
+      "offset": 584,
+      "size": 8,
+      "kind": "relocation-lists"
+    },
+    {
+      "offset": 592,
+      "size": 4,
+      "kind": "native-metadata"
+    },
+    {
+      "offset": 107,
+      "size": 4,
+      "kind": "two-bit-mask-table"
+    },
+    {
+      "offset": 111,
+      "size": 56,
+      "kind": "state-transition-table"
+    },
+    {
+      "offset": 167,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 413,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 596,
+      "size": 10,
+      "kind": "procedure-dictionary-and-trailer"
+    }
+  ],
+  "relocations": [
+    {
+      "entry": 12,
+      "attributes": 180,
+      "tables_start": 168,
+      "groups": [
+        {
+          "kind": "global",
+          "count_offset": 176,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "segment",
+          "count_offset": 174,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "procedure",
+          "count_offset": 172,
+          "count": 1,
+          "pointers": [
+            {
+              "offset": 170,
+              "target": 80,
+              "original_word": 99
+            }
+          ]
+        },
+        {
+          "kind": "interpreter",
+          "count_offset": 168,
+          "count": 0,
+          "pointers": []
+        }
+      ]
+    },
+    {
+      "entry": 182,
+      "attributes": 426,
+      "tables_start": 414,
+      "groups": [
+        {
+          "kind": "global",
+          "count_offset": 422,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "segment",
+          "count_offset": 420,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "procedure",
+          "count_offset": 418,
+          "count": 1,
+          "pointers": [
+            {
+              "offset": 416,
+              "target": 404,
+              "original_word": 50
+            }
+          ]
+        },
+        {
+          "kind": "interpreter",
+          "count_offset": 414,
+          "count": 0,
+          "pointers": []
+        }
+      ]
+    },
+    {
+      "entry": 428,
+      "attributes": 594,
+      "tables_start": 584,
+      "groups": [
+        {
+          "kind": "global",
+          "count_offset": 590,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "segment",
+          "count_offset": 588,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "procedure",
+          "count_offset": 586,
+          "count": 0,
+          "pointers": []
+        },
+        {
+          "kind": "interpreter",
+          "count_offset": 584,
+          "count": 0,
+          "pointers": []
+        }
+      ]
+    }
+  ],
+  "control_flow_edges": [
+    [
+      21,
+      16
+    ],
+    [
+      57,
+      69
+    ],
+    [
+      65,
+      69
+    ],
+    [
+      88,
+      92
+    ],
+    [
+      94,
+      45
+    ],
+    [
+      98,
+      37
+    ],
+    [
+      191,
+      186
+    ],
+    [
+      213,
+      208
+    ],
+    [
+      245,
+      249
+    ],
+    [
+      253,
+      291
+    ],
+    [
+      277,
+      271
+    ],
+    [
+      289,
+      302
+    ],
+    [
+      311,
+      236
+    ],
+    [
+      380,
+      333
+    ],
+    [
+      384,
+      317
+    ],
+    [
+      401,
+      406
+    ],
+    [
+      403,
+      232
+    ],
+    [
+      437,
+      432
+    ],
+    [
+      477,
+      470
+    ],
+    [
+      506,
+      482
+    ],
+    [
+      535,
+      511
+    ],
+    [
+      575,
+      568
+    ]
+  ],
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 103,
+      "segment": 23,
+      "start_block": 116
+    },
+    {
+      "disk": "disk2",
+      "header_block": 103,
+      "segment": 23,
+      "start_block": 116
+    }
+  ],
+  "classification_evidence": "docs/native-pascal.md"
+}

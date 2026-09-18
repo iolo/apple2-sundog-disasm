@@ -976,3 +976,28 @@ and acceptance criteria.
 - **Boundary resolution:** The two statically reviewed UJP roots are explicitly
   recorded in the audit and source. All their targets were confirmed reachable
   independently; no arbitrary gap was classified as code or data.
+
+## 2026-09-18 — Step 06m: reconstruct library_23
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 103, segment 23, block 116; disk2 header 103, segment 23, block 116.
+- **Work:** Reconstructed 606 bytes, 4 procedures,
+  268 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/library_23.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 114,140 output bytes, with 172,580 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Native evidence:** This mixed module contains 267 native instructions plus
+  one p-code instruction. Added a parser for four loader-defined relocation lists
+  and a module audit separating native code, lookup/mask tables, padding, and
+  attributes. The two relocated words are a table address and an internal JMP;
+  both are source label differences. Three parser tests pass; corrupted relocation
+  operands, branch boundaries, and list counts are rejected. One mask table's
+  consumer remains unknown, with its data-classification evidence documented.

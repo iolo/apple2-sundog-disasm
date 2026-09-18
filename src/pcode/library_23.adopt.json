@@ -1,0 +1,43 @@
+{
+  "name": "library_23",
+  "source": "src/pcode/library_23.s",
+  "config": "src/pcode/library_23.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 59136,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 58880,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 58624,
+      "size": 94,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 59136,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 58880,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 58624,
+      "size": 94,
+      "input_offset": 512
+    }
+  ]
+}
