@@ -697,3 +697,21 @@ and acceptance criteria.
   The unchanged-output emulator baseline is reused; no new run was required.
 - **Next action:** Continue remaining p-code modules and resolve mixed native
   procedures and unclassified gaps. Final asset and emulator checks remain open.
+
+## 2026-09-18 — Step 06j-10: reconstruct system_4
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 251, segment 4, block 264.
+- **Work:** Reconstructed 1,998 bytes, 10 procedures,
+  855 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/system_4.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 45,284 output bytes, with 241,436 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
