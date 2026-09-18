@@ -201,3 +201,26 @@ and acceptance criteria.
   procedure proof does not satisfy the step-05 full-image build requirement.
 - **Next action:** Trace the coarser segment-load path into SYSTEM.STARTUP,
   close the step-04 architecture gate, and reconstruct the bootstrap for step 05.
+
+## 2026-09-18 — Step 04e: confirm startup and library loading; close architecture gate
+
+- **Status:** Step 04 complete at the architecture/tool-selection level. Detailed
+  module reconstruction, relocation decoding, and later gameplay overlays remain
+  explicit work for steps 06–09, not completed source coverage.
+- **Work:** Recorded 12 whole segment loads and the first SYSTEM.STARTUP p-code
+  entry in `docs/reference/overlay-loads.json`. Added
+  `docs/runtime-architecture.md` and extended the evidence verifier.
+- **Evidence:** SYSTEM.STARTUP loads 576 bytes from block 141 at `$B2B4` and
+  enters procedure 1 at `$B49C`, with attribute pointer `$B4E4`. Subsequent
+  loads cover library segments 22–28. Segment 22 reloads at a different address,
+  confirming that fixed-address-only disassembly cannot describe its runtime use.
+- **Validation:** `python3 tools/verify_runtime_evidence.py` compares all 29,830
+  new captured load bytes with the disk sources, verifies table-derived block,
+  length, destination, successful read status, and startup pointer relationships.
+  All previous evidence checks and original hashes remain valid.
+- **Decision:** Proceed with ca65 native source and verified p-code encoding
+  macros, keeping relocation structures, embedded data, and unexplained regions
+  distinct. The full module and asset coverage gate remains step 06/07 work.
+- **Next action:** Step 05: reconstruct the three-page bootstrap, integrate the
+  source-built components with explicitly temporary remaining bytes, verify both
+  full disk hashes, and run the reconstructed images through the play reference.

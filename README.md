@@ -27,3 +27,5 @@ and a [Pascal segment/procedure inventory](docs/pascal-segments.md), including
 segments on the play disk and native procedures embedded in Pascal libraries.
 The [p-code toolchain proof](docs/pcode-toolchain.md) reconstructs the first
 system procedure from source with ca65; it does not yet rebuild full disks.
+The [runtime architecture](docs/runtime-architecture.md) documents the confirmed
+startup/library load path and the selected reconstruction tools.
