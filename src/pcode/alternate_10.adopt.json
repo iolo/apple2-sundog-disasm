@@ -1,0 +1,31 @@
+{
+  "name": "alternate_10",
+  "source": "src/pcode/alternate_10.s",
+  "config": "src/pcode/alternate_10.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 88832,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 88576,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 88320,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 88064,
+      "size": 182,
+      "input_offset": 768
+    }
+  ]
+}
