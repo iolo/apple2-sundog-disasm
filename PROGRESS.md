@@ -955,3 +955,24 @@ and acceptance criteria.
   Added explicit reviewed-code-root support, without any automatic gap decoding.
   Twelve decoder tests pass. Evidence also identifies the two analogous segment-6
   gaps for the following module checkpoint.
+
+## 2026-09-18 — Step 06l: reconstruct system_6
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 251, segment 6, block 272.
+- **Work:** Reconstructed 3,652 bytes, 15 procedures,
+  2,332 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/system_6.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 112,928 output bytes, with 173,792 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Boundary resolution:** The two statically reviewed UJP roots are explicitly
+  recorded in the audit and source. All their targets were confirmed reachable
+  independently; no arbitrary gap was classified as code or data.
