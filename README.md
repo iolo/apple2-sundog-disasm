@@ -27,11 +27,12 @@ python3 tools/verify_disks.py
 ```
 
 See [build instructions and coverage](docs/reconstruction.md). The bootstrap,
-early title routine, complete SYSTEM.APPLE runtime, and 28 of the 34 distinct
-inventoried Pascal segments are source-built. Six segments, the split system
-fragment, assets, and other disk regions still require work. The
-[executable coverage report](docs/executable-coverage.json) lists remaining modules.
-Current source-built output is 114,716 bytes; 172,004 bytes remain temporary.
+early title routine, complete SYSTEM.APPLE runtime, all 34 distinct inventoried
+Pascal segments, and the split-system fragment are source-built. Remaining work
+includes classifying other disk regions, resolving provisional runtime data,
+extracting assets, and completing behavioral checks. The
+[executable coverage report](docs/executable-coverage.json) separates these tasks.
+Current source-built output is 145,834 bytes; 140,886 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

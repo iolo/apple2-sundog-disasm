@@ -1,8 +1,8 @@
 {
   "scope": "Source ownership of valid inventoried segments only; not a complete disk classification or semantic audit",
   "unique_segments": 34,
-  "fully_source_built_segments": 28,
-  "remaining_unique_segments": 6,
+  "fully_source_built_segments": 34,
+  "remaining_unique_segments": 0,
   "original_inventory_status_counts": {
     "unresolved": 12,
     "unused-header-slot-with-metadata": 30,
@@ -10,8 +10,30 @@
     "data-segment-allocation": 6,
     "split-system-procedure": 1
   },
+  "split_fragments": [
+    {
+      "sha256": "d7a0563c567adeb865b8e18b9e7d025d11eb715b285a784a1dccbca24f8cac96",
+      "size": 170,
+      "segment": 0,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 259,
+          "coverage_bytes": {
+            "ca65-source": 170
+          },
+          "components": [
+            "system_core"
+          ],
+          "complete_source": true
+        }
+      ],
+      "owner": "disk1:251:0:procedure38",
+      "all_copies_source_built": true
+    }
+  ],
   "remaining_work_outside_valid_segments": [
-    "Split system fragment",
     "Orphan/header candidates",
     "Assets and other data",
     "Unallocated/preserved disk regions",
@@ -48,27 +70,27 @@
           "header": 103,
           "start_block": 104,
           "coverage_bytes": {
-            "temporary-unresolved": 6126
+            "ca65-source": 6126
           },
           "components": [
-            "disk1_unresolved"
+            "library_22"
           ],
-          "complete_source": false
+          "complete_source": true
         },
         {
           "disk": "disk2",
           "header": 103,
           "start_block": 104,
           "coverage_bytes": {
-            "temporary-unresolved": 6126
+            "ca65-source": 6126
           },
           "components": [
-            "disk2_unresolved"
+            "library_22"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "af7267c0fb90b5e2e8c477d12d13f90afd98010a140f1e6f09b12bdb69e5529f",
@@ -112,27 +134,27 @@
           "header": 103,
           "start_block": 118,
           "coverage_bytes": {
-            "temporary-unresolved": 4306
+            "ca65-source": 4306
           },
           "components": [
-            "disk1_unresolved"
+            "library_24"
           ],
-          "complete_source": false
+          "complete_source": true
         },
         {
           "disk": "disk2",
           "header": 103,
           "start_block": 118,
           "coverage_bytes": {
-            "temporary-unresolved": 4306
+            "ca65-source": 4306
           },
           "components": [
-            "disk2_unresolved"
+            "library_24"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "16048527422b435b2f6e811d3abddade3318f4570746a2e8e5b1419d16c9a4b3",
@@ -176,15 +198,15 @@
           "header": 103,
           "start_block": 129,
           "coverage_bytes": {
-            "temporary-unresolved": 3058
+            "ca65-source": 3058
           },
           "components": [
-            "disk1_unresolved"
+            "library_26_disk1"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "90687f83d0ea2ae33be2e211b686b174fbf7cee15b886cebb52884f4ce687c80",
@@ -324,15 +346,15 @@
           "header": 157,
           "start_block": 172,
           "coverage_bytes": {
-            "temporary-unresolved": 880
+            "ca65-source": 880
           },
           "components": [
-            "disk1_unresolved"
+            "alternate_1"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "0a7751ec039e806dba479877bac1818f18ef7b623d2ef1047d8cd3249cd1f45c",
@@ -424,17 +446,16 @@
           "header": 251,
           "start_block": 252,
           "coverage_bytes": {
-            "ca65-source": 36,
-            "temporary-unresolved": 3088
+            "ca65-source": 3124
           },
           "components": [
-            "disk1_unresolved",
+            "system_core",
             "system_entry"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "2be48a418438ab23c5fdb82258eebe9e3252aa86d014a9021f5218b9a5bb366e",
@@ -566,15 +587,15 @@
           "header": 103,
           "start_block": 129,
           "coverage_bytes": {
-            "temporary-unresolved": 3058
+            "ca65-source": 3058
           },
           "components": [
-            "disk2_unresolved"
+            "library_26_disk2"
           ],
-          "complete_source": false
+          "complete_source": true
         }
       ],
-      "all_copies_source_built": false
+      "all_copies_source_built": true
     },
     {
       "sha256": "49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d",

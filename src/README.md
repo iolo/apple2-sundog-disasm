@@ -38,5 +38,5 @@ three native procedures with explicit native relocation lists. Module audits in
 
 Generated exploratory disassembly belongs under `build/` until its addresses
 and code/data boundaries are verified. `docs/executable-coverage.json` tracks the
-six remaining distinct segments and explicitly excludes unresolved non-segment
-regions from its completed count. See `docs/pascal-segments.md` for the inventory.
+complete inventoried-segment ownership and explicitly excludes unresolved
+non-segment regions from its completed count. See `docs/pascal-segments.md` for the inventory.

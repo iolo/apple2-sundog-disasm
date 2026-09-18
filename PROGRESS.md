@@ -1168,3 +1168,16 @@ and acceptance criteria.
   runtime data; it is not full project completion.
 - **Next action:** Refresh the executable audit, investigate remaining regions and
   the unresolved initialization payload, then continue asset/data reconstruction.
+
+## 2026-09-18 — Step 06v: audit complete inventoried executable ownership
+
+- **Work/evidence:** Refreshed the executable coverage tool and report, including
+  the separately inventoried 170-byte procedure-38 fragment. Every disk copy of
+  all 34 distinct valid segments and that fragment is owned by source components.
+  Updated current documentation without changing historical checkpoint records.
+- **Scope limit:** This proves ownership of inventoried executables, not complete
+  disk classification. Orphan/header candidates, asset buffers, unallocated bytes,
+  and provisional native-runtime ranges remain open. In particular, the 42-byte
+  BF56 initialization payload still needs code/data boundaries established.
+- **Next action:** Classify and extract the confirmed title bitmap as an asset;
+  continue investigation of other regions and provisional runtime classifications.

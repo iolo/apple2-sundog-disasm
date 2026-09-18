@@ -12,14 +12,17 @@ def report():
     manifest = json.loads((ROOT / 'reconstruction/manifest.json').read_text())
     inventory = json.loads((ROOT / 'docs/pascal-inventory.json').read_text())
     disks = {d['id']: d for d in manifest['disks']}
-    segments = {}
+    segments, fragments = {}, []
     for header in inventory['headers']:
         for entry in header['entries']:
-            if entry['status'] != 'valid-procedure-dictionary':
+            if entry['status'] not in ('valid-procedure-dictionary', 'split-system-procedure'):
                 continue
-            row = segments.setdefault(entry['sha256'], dict(
-                sha256=entry['sha256'], size=entry['length'], segment=entry['segment_number'],
-                occurrences=[]))
+            row = dict(sha256=entry['sha256'], size=entry['length'], segment=entry['segment_number'], occurrences=[])
+            if entry['status'] == 'split-system-procedure':
+                row['owner'] = entry['owner']
+                fragments.append(row)
+            else:
+                row = segments.setdefault(entry['sha256'], row)
             counts, components = Counter(), set()
             for extent in entry['image_ranges']:
                 start, end = extent['offset'], extent['offset'] + extent['length']
@@ -34,13 +37,14 @@ def report():
                 start_block=entry['start_block'], coverage_bytes=dict(counts),
                 components=sorted(components), complete_source=counts['ca65-source'] == entry['length']))
     rows = list(segments.values())
-    for row in rows:
+    for row in rows + fragments:
         row['all_copies_source_built'] = all(o['complete_source'] for o in row['occurrences'])
     return dict(scope='Source ownership of valid inventoried segments only; not a complete disk classification or semantic audit',
                 unique_segments=len(rows), fully_source_built_segments=sum(r['all_copies_source_built'] for r in rows),
                 remaining_unique_segments=sum(not r['all_copies_source_built'] for r in rows),
                 original_inventory_status_counts=inventory['summary']['entry_status_counts'],
-                remaining_work_outside_valid_segments=['Split system fragment', 'Orphan/header candidates',
+                split_fragments=fragments,
+                remaining_work_outside_valid_segments=([ 'Split system fragment' ] if any(not r['all_copies_source_built'] for r in fragments) else []) + ['Orphan/header candidates',
                     'Assets and other data', 'Unallocated/preserved disk regions',
                     'Review provisional native-runtime data classifications'], segments=rows)
 
