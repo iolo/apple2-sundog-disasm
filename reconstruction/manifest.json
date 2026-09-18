@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 104884,
-      "sha256": "6bc5892e0796e1ab0160ca37f4d08627196078873d54ff5ea733b7601fa55055",
+      "size": 104864,
+      "sha256": "a7e5673498684440c249e9ab25d753abd38a5d8a44d46dd95b760e51d4c8ea38",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -141,6 +141,13 @@
       "config": "src/pcode/alternate_10.cfg",
       "size": 950,
       "sha256": "00fc5609291afd26b58c13fcf51f414bc4280ab27c58f4e281daa85a934c06e9"
+    },
+    "system_1": {
+      "kind": "ca65-source",
+      "source": "src/pcode/system_1.s",
+      "config": "src/pcode/system_1.cfg",
+      "size": 20,
+      "sha256": "2be48a418438ab23c5fdb82258eebe9e3252aa86d014a9021f5218b9a5bb366e"
     }
   },
   "disks": [
@@ -1286,9 +1293,21 @@
         },
         {
           "offset": 130816,
-          "size": 12544,
+          "size": 2048,
           "input": "disk1_unresolved",
           "input_offset": 92340
+        },
+        {
+          "offset": 132864,
+          "size": 20,
+          "input": "system_1",
+          "input_offset": 0
+        },
+        {
+          "offset": 132884,
+          "size": 10476,
+          "input": "disk1_unresolved",
+          "input_offset": 94388
         }
       ]
     },

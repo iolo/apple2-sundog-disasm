@@ -1,0 +1,69 @@
+{
+  "sha256": "2be48a418438ab23c5fdb82258eebe9e3252aa86d014a9021f5218b9a5bb366e",
+  "size": 20,
+  "segment": 1,
+  "procedure_count": 1,
+  "instruction_count": 3,
+  "coverage_bytes": {
+    "local-size": 2,
+    "parameter-size": 2,
+    "exit-pointer": 2,
+    "entry-pointer": 2,
+    "attributes": 2,
+    "instruction": 6,
+    "dictionary-pointer": 2,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rbp": 1,
+    "sldc": 1,
+    "cxp": 1
+  },
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 251,
+      "segment": 1,
+      "start_block": 260
+    }
+  ],
+  "control_flow_edges": 2,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 6,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 8,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 10,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 12,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 14,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 16,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 18,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}
