@@ -1,0 +1,34 @@
+{
+  "format": "sundog-glyph-bank",
+  "size": 1024,
+  "sha256": "eeadc8615ae25ac5611744c0f32589698d4d3cc4c57808a98df85268d08ca775",
+  "glyph_count": 128,
+  "glyph_size": [
+    7,
+    8
+  ],
+  "stored_bytes_per_glyph": 8,
+  "row_order": "Stored bottom to top; bit 0 is the leftmost pixel",
+  "high_bit": "Ignored by the glyph consumer; preserved in font.bin and rows.json",
+  "origins": [
+    {
+      "disk": "disk1",
+      "logical_blocks": [
+        3,
+        5
+      ]
+    },
+    {
+      "disk": "disk2",
+      "logical_blocks": [
+        3,
+        5
+      ]
+    }
+  ],
+  "consumer": "src/pcode/library_22.s, procedures 20 and 9",
+  "classification_evidence": "docs/shared-font.md",
+  "preview": "font.png",
+  "preview_note": "Raw glyph masks; does not simulate positioning, draw modes, or artifact color",
+  "rows": "rows.json uses top-to-bottom display order with all eight bits preserved"
+}

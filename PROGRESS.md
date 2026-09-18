@@ -1279,3 +1279,26 @@ and acceptance criteria.
   bytes (68,172 disk 1; 61,828 disk 2). Original images remain unchanged.
 - **Next action:** Extract the font/tile data loaded by library 22 procedure 20,
   then reconstruct further raw overlays and remaining native metadata/tails.
+
+## 2026-09-18 — Step 07b: extract the shared font and symbol bank
+
+- **Work/evidence:** Traced library 22 procedure 20's two-block bank loader and
+  native procedure 9's eight-byte glyph addressing and reverse-row rendering.
+  Extracted the identical 1,024-byte bank from blocks 3–4 of both disks. Added
+  raw data, a manifest, display-order JSON rows, a 128-glyph atlas, extraction/
+  preview tooling, and the shared adoption recipe. Visually reviewed the atlas's
+  symbols, punctuation, digits, and upper/lowercase letters.
+- **Runtime:** Captured the complete font bank at $1000 in the unpatched apple2ts
+  reference session paused at the title prompt. Every byte equals the extracted
+  asset. Recorded docs/reference/shared-font-runtime.json and extended the runtime
+  evidence verifier to compare the capture, both disks, and packed JSON rows.
+- **Validation:** Two glyph tests verify row order, record boundaries, high-bit
+  preservation, exact round trip, and malformed input rejection. All runtime
+  evidence checks pass. Adoption and the complete build preserve both full-disk
+  hashes and exact bytes; original inputs are unchanged. The build reads only the
+  shared raw font, with no original images or Pillow dependency.
+- **Coverage:** 148,528 source-built bytes, 10,240 identified asset bytes, 127,952
+  temporary bytes (67,148 disk 1; 60,804 disk 2). Other glyph banks, raw overlays,
+  native provisional regions, and remaining disk data are still open.
+- **Next action:** Follow additional raw block-load/call pairs, then extract other
+  tile banks with confirmed renderer consumers and resolve preserved native tails.

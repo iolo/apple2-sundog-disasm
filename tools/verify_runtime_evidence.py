@@ -4,6 +4,7 @@ import json
 
 from disk_layout import ROOT, INPUTS, block_bytes, sha
 from hgr_asset import row_offset
+from glyph_asset import pack_rows
 from verify_inputs import main as verify_inputs
 
 
@@ -80,6 +81,14 @@ def main():
             or bytes.fromhex(tables['hex']) != expected_tables):
         raise ValueError('Raw screen initializer capture or generated tables disagree')
     print('Verified raw screen initializer: 512 loaded bytes and 384 generated address bytes')
+    font_capture = json.loads((ROOT / 'docs/reference/shared-font-runtime.json').read_text())['capture']['value']
+    font = (ROOT / 'assets/font/font.bin').read_bytes()
+    rows = json.loads((ROOT / 'assets/font/rows.json').read_text())
+    if (font_capture['address'] != 0x1000 or font_capture['length'] != 1024
+            or bytes.fromhex(font_capture['hex']) != font or pack_rows(rows) != font
+            or any(block_bytes(image, 3, 5) != font for image in images.values())):
+        raise ValueError('Shared font capture, listing, or disk copy differs')
+    print('Verified shared font: 1024 live bytes, both disk copies, and lossless row listing')
 
 
 if __name__ == "__main__":

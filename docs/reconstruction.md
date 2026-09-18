@@ -89,8 +89,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Pascal segment-header tables | `src/data/pascal_header_tables.s` | First 288 bytes of eight headers on both disks | 2,304 |
 | Raw screen-address initializer and table | `src/native/raw_screen_init.s` | Disk 1 block 2, first 297 bytes | 297 |
 | Raw buffer transformation entry | `src/native/raw_buffer_transform.s` | Disk 1 block 156, first 93 bytes | 93 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 68,172 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 61,828 |
+| Shared font and symbol bank | `assets/font/font.bin` | Both disks, blocks 3–4 | 2,048 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 67,148 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 60,804 |
 
 The 148,528 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -207,6 +208,12 @@ source-built bytes, 8,192 asset bytes, and 130,093 temporary bytes. Discovery of
 raw overlays reinforces that inventoried-segment coverage is not full code coverage.
 
 Step 06x adds 93 raw buffer-transformation instruction bytes and confirms the
-earlier screen initializer in apple2ts. Current ownership is 148,528 source bytes,
+earlier screen initializer in apple2ts. At that checkpoint ownership was 148,528 source bytes,
 8,192 asset bytes, and 130,000 temporary bytes. See [raw-buffer-transform.md](raw-buffer-transform.md)
 and `reference/raw-screen-runtime.json` for the distinct static and runtime evidence.
+
+Step 07b extracts the [shared font](shared-font.md), with all 128 glyphs previewed
+and a lossless display-order row listing. Its 1,024 bytes match live apple2ts
+memory and replace 2,048 disk bytes across both copies. Current ownership is
+148,528 source-built bytes, 10,240 classified asset bytes, and 127,952 temporary
+bytes. The source/data-only completion gate and final gameplay checks remain open.

@@ -1,0 +1,56 @@
+{
+  "name": "shared_font",
+  "data": "assets/font/font.bin",
+  "format": "sundog-glyph-bank",
+  "classification": "docs/shared-font.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 2304,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 2048,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 1792,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 1536,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 2304,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 2048,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 1792,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 1536,
+      "size": 256,
+      "input_offset": 768
+    }
+  ]
+}
