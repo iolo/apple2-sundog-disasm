@@ -25,17 +25,20 @@ Keep original inputs unchanged. Separate observed facts from hypotheses and
 attach disk offsets, memory addresses, traces, or other evidence to findings.
 Split large steps into independently validated, logged, and committed increments.
 
-## Initial observations
+## Verified context and current checkpoint
 
 - Available disks: `sundog-disk1-game.dsk` and `sundog-disk2-util.dsk`, each
-  143,360 bytes. The PRD names the second disk `sundog-disk2-game.dsk`; establish
-  its actual role before changing any filename or treating it as a game disk.
+  143,360 bytes. Filenames are preserved; observed roles are disk 1 for the
+  title/utilities and disk 2 for play, as recorded in the current PRD.
 - `sundog.pdf` is present; the PRD describes it as a scanned manual.
-- The supplied `.git` directory is empty and read-only, and `git status` fails.
-  Restoring a usable Git checkout is a prerequisite for the commit rule.
-- Disk format, sector order, runtime architecture, and executable locations are
-  not yet verified. In particular, do not infer this version's implementation
-  language from the Wizardry or Atari ST references.
+- Git is operational. The original Git prerequisite in step 01 has been
+  resolved; every subsequent checkpoint must follow the base rule above.
+- `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06b.
+  Step 06 remains in progress; the remaining steps below retain their original
+  order and acceptance criteria.
+- The incremental build matches both original disks, but still includes
+  temporary binary inputs. Exact output alone does not establish completion
+  of executable reconstruction or asset extraction.
 
 ## Steps
 

@@ -305,3 +305,16 @@ and acceptance criteria.
   meanings, not presented as executable instructions or fully explained data.
 - **Next action:** Reconstruct bank-2 disk I/O and the remaining shared native
   runtime, retaining self-modifying operands and separating lookup tables.
+
+## 2026-09-18 — Planning checkpoint: review the step-by-step plan
+
+- **Status:** Planning review complete; implementation status is unchanged.
+- **Work:** Reviewed `PRD.md` and `PLAN.md`. Retained the eleven ordered steps,
+  acceptance criteria, and mandatory progress-log-and-commit rule for every
+  step and substep. Updated stale repository assumptions to reflect working
+  Git, the corrected disk roles, and the recorded step-06 checkpoint.
+- **Validation:** Compared the plan with the PRD's required source, asset, and
+  byte-identical build outputs and optional documentation/mechanics scope.
+  Checked Git history and existing progress entries; `git diff --check` passes.
+- **Next action:** Follow the remaining implementation steps in `PLAN.md`,
+  beginning with the next step-06 module checkpoint.
