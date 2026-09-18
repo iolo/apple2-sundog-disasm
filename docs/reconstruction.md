@@ -100,8 +100,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Compressed ship outlines | `assets/ship-images/{full_ship,ship_section}/image.rle` | Disk 2 blocks 29 and 33; shared stream at disk 1 block 188 | 4,934 |
 | Four 32-row tile banks | `assets/tiles/bank{0,1,2,3}/tiles.bin` | Disk 2 blocks 9–24; copies at disk 1 blocks 176–183 | 12,288 |
 | World-map tiles and variants | `assets/world-tiles/tiles.bin` | First 2,016 bytes at disk 2 block 25 and disk 1 block 184 | 4,032 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 50,645 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 41,662 |
+| Packed world-map payloads | `assets/world-maps/maps.bin` | 240-byte payloads in disk 2 blocks 55–63; copies in disk 1 block 194 | 4,800 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 50,165 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 37,342 |
 
 The 152,679 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -275,6 +276,11 @@ source-built bytes, 37,702 asset bytes, and 96,339 temporary bytes. The separate
 24-row bank and its boundaries remain unresolved.
 
 Step 07g extracts the [world-map tiles](world-tiles.md), including seven
-terrain variants selected after map decoding. Current ownership is 152,679
+terrain variants selected after map decoding. At that checkpoint ownership was 152,679
 source-built bytes, 41,734 asset bytes, and 92,307 temporary bytes. The 32-byte
 tail of each four-block read remains unresolved.
+
+Step 07h extracts the [packed world maps](world-maps.md), preserving the exact
+two-bit symbols as well as their state-decoded tile grids. Current ownership is
+152,679 source-built bytes, 46,534 asset bytes, and 87,507 temporary bytes. All
+16-byte record prefixes remain separately unresolved.

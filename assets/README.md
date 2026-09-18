@@ -28,6 +28,9 @@
 - [World-map tiles](world-tiles/): 21 tiles of 28×24 pixels, with an atlas,
   reversible row listing, and [variant/renderer evidence](../docs/world-tiles.md).
 
+- [Packed world maps](world-maps/): 18 two-bit payloads, reversible symbol
+  grids, decoded tile indices, an overview, and [consumer evidence](../docs/world-maps.md).
+
 The normal disk build reads the raw HGR and glyph assets directly; Pillow is needed only
 for preview generation. Other images, glyph banks, maps, sounds, and data still require
 classification and extraction. Unidentified executable regions are not assets.

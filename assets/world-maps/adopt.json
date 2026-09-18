@@ -1,0 +1,128 @@
+{
+  "name": "world_maps",
+  "data": "assets/world-maps/maps.bin",
+  "format": "sundog-world-map-two-bit",
+  "classification": "docs/world-maps.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 24848,
+      "size": 240,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 101136,
+      "size": 240,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 28432,
+      "size": 240,
+      "input_offset": 240
+    },
+    {
+      "disk": "disk1",
+      "offset": 100880,
+      "size": 240,
+      "input_offset": 240
+    },
+    {
+      "disk": "disk2",
+      "offset": 28688,
+      "size": 240,
+      "input_offset": 480
+    },
+    {
+      "disk": "disk2",
+      "offset": 32272,
+      "size": 240,
+      "input_offset": 720
+    },
+    {
+      "disk": "disk2",
+      "offset": 32016,
+      "size": 240,
+      "input_offset": 960
+    },
+    {
+      "disk": "disk2",
+      "offset": 31760,
+      "size": 240,
+      "input_offset": 1200
+    },
+    {
+      "disk": "disk2",
+      "offset": 31504,
+      "size": 240,
+      "input_offset": 1440
+    },
+    {
+      "disk": "disk2",
+      "offset": 31248,
+      "size": 240,
+      "input_offset": 1680
+    },
+    {
+      "disk": "disk2",
+      "offset": 30992,
+      "size": 240,
+      "input_offset": 1920
+    },
+    {
+      "disk": "disk2",
+      "offset": 30736,
+      "size": 240,
+      "input_offset": 2160
+    },
+    {
+      "disk": "disk2",
+      "offset": 30480,
+      "size": 240,
+      "input_offset": 2400
+    },
+    {
+      "disk": "disk2",
+      "offset": 30224,
+      "size": 240,
+      "input_offset": 2640
+    },
+    {
+      "disk": "disk2",
+      "offset": 29968,
+      "size": 240,
+      "input_offset": 2880
+    },
+    {
+      "disk": "disk2",
+      "offset": 29712,
+      "size": 240,
+      "input_offset": 3120
+    },
+    {
+      "disk": "disk2",
+      "offset": 29456,
+      "size": 240,
+      "input_offset": 3360
+    },
+    {
+      "disk": "disk2",
+      "offset": 29200,
+      "size": 240,
+      "input_offset": 3600
+    },
+    {
+      "disk": "disk2",
+      "offset": 28944,
+      "size": 240,
+      "input_offset": 3840
+    },
+    {
+      "disk": "disk2",
+      "offset": 32528,
+      "size": 240,
+      "input_offset": 4080
+    }
+  ]
+}

@@ -1516,3 +1516,27 @@ and acceptance criteria.
   bytes (50,645 disk 1; 41,662 disk 2).
 - **Next action:** Decode and extract the packed world-map records through
   library 23's confirmed two-bit state machine, retaining unclassified prefixes.
+
+## 2026-09-18 — Step 07h: packed world-map payloads; pause checkpoint
+
+- **Work/evidence:** Traced game 21's world-indexed loads to disk-2 blocks 55–63,
+  with 256-byte records and a 16-byte prefix skipped before native decoding.
+  Extracted all 18 240-byte payloads and two exact disk-1 copies at block 194,
+  replacing 4,800 disk bytes. Kept every prefix explicitly unresolved.
+- **Format/artifacts:** Modeled library 23's low-pair-first two-bit reader and
+  14-state table, resetting state 12 per row. Added original payloads, reversible
+  40×24 symbol grids, decoded tile grids, manifest, adoption recipe, and overview.
+  Visually reviewed all maps. Symbols remain the lossless representation because
+  distinct state transitions can produce the same tile. Random variants and city
+  overlays are separate runtime changes.
+- **Validation:** Three map tests pass: bit-pair order/inverse, known state
+  sequences and row resets, and malformed input rejection. Extraction checks
+  the transition table against the source-built native library, both disk hashes,
+  all symbol round trips, and duplicate payloads. Adoption, full build, original
+  input verification, and both exact full-disk comparisons pass.
+- **Coverage:** 152,679 source-built bytes, 46,534 asset bytes, 87,507 temporary
+  bytes (50,165 disk 1; 37,342 disk 2). Final classification and both-emulator
+  behavior checks remain incomplete; no new live map capture is claimed.
+- **Pause:** User requested a pause after the current task. This extraction is
+  complete and committed; no next task is started. On explicit resumption,
+  continue remaining native fragments, persistent data, and record/container tails.

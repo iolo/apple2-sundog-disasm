@@ -1,0 +1,265 @@
+{
+  "format": "sundog-world-map-two-bit",
+  "size": 4320,
+  "sha256": "2778cfabd56b6e6d210c6603c6c98c032766c843183d8578228ae5208f702ff3",
+  "map_count": 18,
+  "map_size": [
+    40,
+    24
+  ],
+  "bytes_per_map": 240,
+  "records": [
+    {
+      "index": 0,
+      "offset": 0,
+      "size": 240,
+      "sha256": "006b03ffe3a48056470bcb78866543f964134c32af5483fa97919107e31b6e33",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 55,
+          "byte_offset": 16
+        },
+        {
+          "disk": "disk1",
+          "block": 194,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "offset": 240,
+      "size": 240,
+      "sha256": "f0495668fde5f295511de44907cd920e29af5c02e34fa592c92dfd2c9a1db547",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 55,
+          "byte_offset": 272
+        },
+        {
+          "disk": "disk1",
+          "block": 194,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "offset": 480,
+      "size": 240,
+      "sha256": "aa57d6de0a0c454f61032f943e3b1761a414991c74b3f03c98a467e97eeffd7c",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 56,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "offset": 720,
+      "size": 240,
+      "sha256": "4c718c9c5866ddf11c906814bf1fb3581892b7a62597017ec7bd2513cf55b671",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 56,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "offset": 960,
+      "size": 240,
+      "sha256": "365d8a597592fb920718b409b156068ea15af22e9572b4a01990237e76c33aaa",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 57,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "offset": 1200,
+      "size": 240,
+      "sha256": "e1c44884bbf4bf9a58718baefd227feefcc585f62ff837e80728c0a56ffb1bbe",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 57,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "offset": 1440,
+      "size": 240,
+      "sha256": "d85a2e49e8ebd6e25f941a218ae9cf88c8ed7a237bc66492a9c7a50b2d335814",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 58,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "offset": 1680,
+      "size": 240,
+      "sha256": "8b133adce45e9e631c34e8488a19bd8618bad5dc5ac2d955e9ec660024e49416",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 58,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "offset": 1920,
+      "size": 240,
+      "sha256": "5740719efe9744965a63ab1f3d095c6ab8f0b9a4b86e89f7796051ece24931a4",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 59,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "offset": 2160,
+      "size": 240,
+      "sha256": "c38ec4a11e5eacb9369c3adbce4eb2099f214bc0152ab2a2de2cd7855d0965c7",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 59,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "offset": 2400,
+      "size": 240,
+      "sha256": "9ebbd3882788b86e14db1e79260d1212f29b7ed59a10f1464bb178b96d0c665b",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 60,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "offset": 2640,
+      "size": 240,
+      "sha256": "674d364a65d8e7b5d417a20bbb806835f5948d9fb393462076a7072589f4502e",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 60,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "offset": 2880,
+      "size": 240,
+      "sha256": "0e123fae50fd90bda1d8c069691823cd9db70dcbfb845b5cd36649eab742a727",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 61,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "offset": 3120,
+      "size": 240,
+      "sha256": "91990599d6d46a669f13670f3b7fd80f693711ae0026a2a705aab83b08da50bc",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 61,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "offset": 3360,
+      "size": 240,
+      "sha256": "dc02a2fcd1cb2936f7fa98430ed57ecf04b6c6b0485d56c9ecaea1f4270c2fa5",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 62,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "offset": 3600,
+      "size": 240,
+      "sha256": "d814aef35a4abefa636f9817db1f1962efedcdab98604574ab99e4b1ea5f2962",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 62,
+          "byte_offset": 272
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "offset": 3840,
+      "size": 240,
+      "sha256": "01bbd3035e1d17da8624136d2d1ad120c5962f5befa20a24839073698b961763",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 63,
+          "byte_offset": 16
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "offset": 4080,
+      "size": 240,
+      "sha256": "238793c5e3e5056968ab0a7895cee0130d42c726c9147da78c14605fa6ca27a7",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 63,
+          "byte_offset": 272
+        }
+      ]
+    }
+  ],
+  "consumer": "Library 23 procedure 2; game 21 $1114-$1133",
+  "state_table_offset": 111,
+  "state_table_hex": "0102090d00070a0a03040b0b0102090d0506080c03040b0b00070a0a0506080c0102090d0506080c00070a0a03040b0b0506080c0102090d",
+  "classification_evidence": "docs/world-maps.md",
+  "excluded_prefix_bytes": 16,
+  "preview": "overview.png",
+  "preview_note": "Colors distinguish decoded tile indices; no gameplay terrain labels, random variants, or city overlays",
+  "inverse": "pack_symbols() reproduces every 240-byte payload; tile decoding alone is not injective"
+}
