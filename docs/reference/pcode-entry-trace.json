@@ -1,0 +1,1068 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "emulator": {
+    "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+    "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+    "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+  },
+  "method": "Repeated address breakpoint at bank-1 $D293; paused memory reads, no state patches.",
+  "observations": [
+    {
+      "stop": {
+        "executionSequence": 26,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 0,
+        "X": 108,
+        "Y": 49,
+        "S": 255,
+        "PStatus": 55,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        58,
+        184,
+        58,
+        184,
+        106,
+        242,
+        122,
+        254,
+        72,
+        242,
+        4,
+        12,
+        56,
+        184,
+        0,
+        0
+      ],
+      "pcode_address": 62024,
+      "bytes": [
+        159,
+        204,
+        5,
+        1,
+        158,
+        38,
+        205,
+        4,
+        1,
+        194,
+        32,
+        220,
+        159,
+        203,
+        161,
+        3
+      ],
+      "mnemonic": "LDCN",
+      "source": {
+        "disk": "disk1",
+        "start_block": 252,
+        "load_address": 62024
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 28,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 0,
+        "X": 108,
+        "Y": 0,
+        "S": 253,
+        "PStatus": 53,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        58,
+        184,
+        58,
+        184,
+        106,
+        242,
+        122,
+        254,
+        73,
+        242,
+        4,
+        12,
+        56,
+        184,
+        0,
+        0
+      ],
+      "pcode_address": 62025,
+      "bytes": [
+        204,
+        5,
+        1,
+        158,
+        38,
+        205,
+        4,
+        1,
+        194,
+        32,
+        220,
+        159,
+        203,
+        161,
+        3,
+        205
+      ],
+      "mnemonic": "STL 5",
+      "source": {
+        "disk": "disk1",
+        "start_block": 252,
+        "load_address": 62024
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 30,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 75,
+        "X": 108,
+        "Y": 11,
+        "S": 255,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        58,
+        184,
+        58,
+        184,
+        106,
+        242,
+        122,
+        254,
+        75,
+        242,
+        4,
+        12,
+        56,
+        184,
+        0,
+        0
+      ],
+      "pcode_address": 62027,
+      "bytes": [
+        1,
+        158,
+        38,
+        205,
+        4,
+        1,
+        194,
+        32,
+        220,
+        159,
+        203,
+        161,
+        3,
+        205,
+        4,
+        1
+      ],
+      "mnemonic": "SLDC 1",
+      "source": {
+        "disk": "disk1",
+        "start_block": 252,
+        "load_address": 62024
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 32,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 1,
+        "X": 1,
+        "Y": 0,
+        "S": 253,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        58,
+        184,
+        58,
+        184,
+        106,
+        242,
+        122,
+        254,
+        76,
+        242,
+        4,
+        12,
+        56,
+        184,
+        0,
+        0
+      ],
+      "pcode_address": 62028,
+      "bytes": [
+        158,
+        38,
+        205,
+        4,
+        1,
+        194,
+        32,
+        220,
+        159,
+        203,
+        161,
+        3,
+        205,
+        4,
+        1,
+        0
+      ],
+      "mnemonic": "CSP 38",
+      "source": {
+        "disk": "disk1",
+        "start_block": 252,
+        "load_address": 62024
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 34,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 78,
+        "X": 0,
+        "Y": 1,
+        "S": 255,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        58,
+        184,
+        58,
+        184,
+        106,
+        242,
+        122,
+        254,
+        78,
+        242,
+        4,
+        12,
+        56,
+        184,
+        0,
+        0
+      ],
+      "pcode_address": 62030,
+      "bytes": [
+        205,
+        4,
+        1,
+        194,
+        32,
+        220,
+        159,
+        203,
+        161,
+        3,
+        205,
+        4,
+        1,
+        0,
+        161,
+        246
+      ],
+      "mnemonic": "CXP 4, 1",
+      "source": {
+        "disk": "disk1",
+        "start_block": 252,
+        "load_address": 62024
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 36,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 173,
+        "X": 253,
+        "Y": 1,
+        "S": 253,
+        "PStatus": 181,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        116,
+        182,
+        4,
+        12,
+        248,
+        173,
+        0,
+        0
+      ],
+      "pcode_address": 46708,
+      "bytes": [
+        185,
+        238,
+        182,
+        1,
+        5,
+        159,
+        195,
+        184,
+        1,
+        128,
+        229,
+        182,
+        1,
+        128,
+        229,
+        161
+      ],
+      "mnemonic": "UJP -18",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 38,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 184,
+        "X": 253,
+        "Y": 1,
+        "S": 253,
+        "PStatus": 181,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        5,
+        184,
+        4,
+        12,
+        248,
+        173,
+        0,
+        0
+      ],
+      "pcode_address": 47109,
+      "bytes": [
+        6,
+        158,
+        21,
+        185,
+        236,
+        193,
+        0,
+        150,
+        1,
+        9,
+        0,
+        16,
+        0,
+        21,
+        0,
+        183
+      ],
+      "mnemonic": "SLDC 6",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 40,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 6,
+        "X": 6,
+        "Y": 0,
+        "S": 251,
+        "PStatus": 53,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        6,
+        184,
+        4,
+        12,
+        248,
+        173,
+        0,
+        0
+      ],
+      "pcode_address": 47110,
+      "bytes": [
+        158,
+        21,
+        185,
+        236,
+        193,
+        0,
+        150,
+        1,
+        9,
+        0,
+        16,
+        0,
+        21,
+        0,
+        183,
+        0
+      ],
+      "mnemonic": "CSP 21",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 42,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 8,
+        "X": 0,
+        "Y": 0,
+        "S": 253,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        8,
+        184,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 47112,
+      "bytes": [
+        185,
+        236,
+        193,
+        0,
+        150,
+        1,
+        9,
+        0,
+        16,
+        0,
+        21,
+        0,
+        183,
+        0,
+        188,
+        0
+      ],
+      "mnemonic": "UJP -20",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 44,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 182,
+        "X": 0,
+        "Y": 1,
+        "S": 253,
+        "PStatus": 181,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        118,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46710,
+      "bytes": [
+        182,
+        1,
+        5,
+        159,
+        195,
+        184,
+        1,
+        128,
+        229,
+        182,
+        1,
+        128,
+        229,
+        161,
+        4,
+        206
+      ],
+      "mnemonic": "LOD 1, 5",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 46,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 121,
+        "X": 0,
+        "Y": 10,
+        "S": 251,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        121,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46713,
+      "bytes": [
+        159,
+        195,
+        184,
+        1,
+        128,
+        229,
+        182,
+        1,
+        128,
+        229,
+        161,
+        4,
+        206,
+        9,
+        185,
+        5
+      ],
+      "mnemonic": "LDCN",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 48,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 0,
+        "X": 0,
+        "Y": 0,
+        "S": 249,
+        "PStatus": 53,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        122,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46714,
+      "bytes": [
+        195,
+        184,
+        1,
+        128,
+        229,
+        182,
+        1,
+        128,
+        229,
+        161,
+        4,
+        206,
+        9,
+        185,
+        5,
+        178
+      ],
+      "mnemonic": "EQUI",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 50,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 1,
+        "X": 0,
+        "Y": 0,
+        "S": 251,
+        "PStatus": 53,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        123,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46715,
+      "bytes": [
+        184,
+        1,
+        128,
+        229,
+        182,
+        1,
+        128,
+        229,
+        161,
+        4,
+        206,
+        9,
+        185,
+        5,
+        178,
+        1
+      ],
+      "mnemonic": "STR 1, 229",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 52,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 127,
+        "X": 0,
+        "Y": 11,
+        "S": 253,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        127,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46719,
+      "bytes": [
+        182,
+        1,
+        128,
+        229,
+        161,
+        4,
+        206,
+        9,
+        185,
+        5,
+        178,
+        1,
+        5,
+        158,
+        33,
+        178
+      ],
+      "mnemonic": "LOD 1, 229",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 54,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 131,
+        "X": 0,
+        "Y": 10,
+        "S": 251,
+        "PStatus": 180,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        131,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46723,
+      "bytes": [
+        161,
+        4,
+        206,
+        9,
+        185,
+        5,
+        178,
+        1,
+        5,
+        158,
+        33,
+        178,
+        1,
+        130,
+        17,
+        215
+      ],
+      "mnemonic": "FJP +4",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    },
+    {
+      "stop": {
+        "executionSequence": 56,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:53907",
+          "address": 53907
+        },
+        "memoryWrite": null,
+        "PC": 53907,
+        "A": 133,
+        "X": 1,
+        "Y": 0,
+        "S": 253,
+        "PStatus": 180,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      },
+      "zero_page_50": [
+        250,
+        173,
+        250,
+        173,
+        32,
+        184,
+        54,
+        184,
+        133,
+        182,
+        4,
+        12,
+        180,
+        159,
+        0,
+        0
+      ],
+      "pcode_address": 46725,
+      "bytes": [
+        206,
+        9,
+        185,
+        5,
+        178,
+        1,
+        5,
+        158,
+        33,
+        178,
+        1,
+        130,
+        17,
+        215,
+        166,
+        0
+      ],
+      "mnemonic": "CLP 9",
+      "source": {
+        "disk": "disk1",
+        "start_block": 264,
+        "load_address": 45162
+      }
+    }
+  ]
+}

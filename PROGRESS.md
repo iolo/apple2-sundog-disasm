@@ -173,3 +173,31 @@ and acceptance criteria.
 - **Next action:** Step 04d: validate the bytecode instruction format against
   the native dispatch table and prove an exact reassembly approach; then finish
   the architecture gate before step 05's minimal source-to-disk build.
+
+## 2026-09-18 — Step 04d: prove exact p-code assembly and trace an external call
+
+- **Status:** Toolchain proof complete; step 04 remains open for coarse overlay
+  tracing through SYSTEM.STARTUP and the remaining native load conventions.
+- **Work:** Added source for the first SYSTEM.PASCAL procedure, a checked ca65
+  encoding subset, linker configuration, and `tools/build_pcode_probe.py`.
+  Added `docs/pcode-toolchain.md` and a 16-stop p-code dispatch trace. Extended
+  the evidence verifier to compare those snapshots with original disk bytes.
+- **Evidence:** The native dispatch table and operand reader confirm the used
+  opcode subset and one-/two-byte variable operands. Captured CXP 4,1 entering
+  segment 4 procedure 1 at `$B674`, with segment load base `$B06A`. Its attribute
+  pointer and all eleven sampled instruction windows agree with disk block 264.
+- **Validation:** `python3 tools/build_pcode_probe.py` assembles 36 bytes exactly
+  from editable source, including label-based branches, jump-table pointer, and
+  attributes. SHA-256 is
+  `ef70020a699c0a1201d839a50e0cf38a7c8fe4c69971c0a68b621ce38c3cdfc3`.
+  `python3 tools/verify_runtime_evidence.py` verifies the five earlier capture
+  ranges and all 16 dispatch snapshots. Original hashes and whitespace checks
+  pass. Assembly reads no original image; the separate comparison does.
+- **Decision:** Use ca65 macros for explicit p-code instructions and metadata,
+  plus native ca65 assembly, preserving operand widths and relocation records.
+  The include is deliberately a tested subset, not a complete UCSD assembler.
+- **Remaining:** Full p-code decoding, native relocation records, startup/overlay
+  load trace, source-to-disk integration, and the rest of PLAN.md. This small
+  procedure proof does not satisfy the step-05 full-image build requirement.
+- **Next action:** Trace the coarser segment-load path into SYSTEM.STARTUP,
+  close the step-04 architecture gate, and reconstruct the bootstrap for step 05.
