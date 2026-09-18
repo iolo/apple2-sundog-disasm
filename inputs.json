@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "inputs": [
+    {
+      "path": "sundog-disk1-game.dsk",
+      "size": 143360,
+      "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+      "role": "supplied game disk; boot behavior pending verification"
+    },
+    {
+      "path": "sundog-disk2-util.dsk",
+      "size": 143360,
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+      "role": "supplied utility disk; boot behavior pending verification"
+    },
+    {
+      "path": "sundog.pdf",
+      "size": 1302733,
+      "sha256": "dadc5fb2aac8a5a88f6bedb6f8a4742367a62eec313a8f9c058bad602aabc2a1",
+      "role": "scanned game manual"
+    }
+  ]
+}

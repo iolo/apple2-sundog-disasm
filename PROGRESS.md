@@ -28,3 +28,16 @@ and acceptance criteria.
   inspected `main` branch has no commits yet, so this checkpoint establishes the
   initial commit, including the original inputs and planning documents.
 - **Next action:** Step 01: create and verify the input manifest and project layout.
+
+## 2026-09-18 — Step 01: input baseline and layout
+
+- **Status:** Complete.
+- **Work:** Recorded all three original inputs in `inputs.json`, added
+  `tools/verify_inputs.py`, established `src/`, `assets/`, `docs/`, and ignored
+  generated `build/` output. Corrected the second filename in `PRD.md` and
+  documented that its actual behavior remains unverified.
+- **Validation:** `python3 tools/verify_inputs.py` passes for both 143,360-byte
+  disks and the 1,302,733-byte PDF. `git diff --check` passes. Git prerequisite
+  proved by the successful planning commit `f116cc9`.
+- **Next action:** Step 02: inventory tools, boot disposable disk copies, and
+  establish manual-backed reference interactions.
