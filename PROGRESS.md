@@ -895,3 +895,21 @@ and acceptance criteria.
   The unchanged-output emulator baseline is reused; no new run was required.
 - **Next action:** Continue remaining p-code modules and resolve mixed native
   procedures and unclassified gaps. Final asset and emulator checks remain open.
+
+## 2026-09-18 — Step 06j-21: reconstruct game_20
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk2 header 140, segment 20, block 242.
+- **Work:** Reconstructed 6,836 bytes, 32 procedures,
+  3,385 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/game_20.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 100,336 output bytes, with 186,384 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.

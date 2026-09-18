@@ -1,0 +1,169 @@
+{
+  "name": "game_20",
+  "source": "src/pcode/game_20.s",
+  "config": "src/pcode/game_20.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 125696,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 125440,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 125184,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 124928,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 124672,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 124416,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 124160,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 123904,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk2",
+      "offset": 123648,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk2",
+      "offset": 123392,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk2",
+      "offset": 123136,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk2",
+      "offset": 126720,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk2",
+      "offset": 126976,
+      "size": 256,
+      "input_offset": 3072
+    },
+    {
+      "disk": "disk2",
+      "offset": 130560,
+      "size": 256,
+      "input_offset": 3328
+    },
+    {
+      "disk": "disk2",
+      "offset": 130304,
+      "size": 256,
+      "input_offset": 3584
+    },
+    {
+      "disk": "disk2",
+      "offset": 130048,
+      "size": 256,
+      "input_offset": 3840
+    },
+    {
+      "disk": "disk2",
+      "offset": 129792,
+      "size": 256,
+      "input_offset": 4096
+    },
+    {
+      "disk": "disk2",
+      "offset": 129536,
+      "size": 256,
+      "input_offset": 4352
+    },
+    {
+      "disk": "disk2",
+      "offset": 129280,
+      "size": 256,
+      "input_offset": 4608
+    },
+    {
+      "disk": "disk2",
+      "offset": 129024,
+      "size": 256,
+      "input_offset": 4864
+    },
+    {
+      "disk": "disk2",
+      "offset": 128768,
+      "size": 256,
+      "input_offset": 5120
+    },
+    {
+      "disk": "disk2",
+      "offset": 128512,
+      "size": 256,
+      "input_offset": 5376
+    },
+    {
+      "disk": "disk2",
+      "offset": 128256,
+      "size": 256,
+      "input_offset": 5632
+    },
+    {
+      "disk": "disk2",
+      "offset": 128000,
+      "size": 256,
+      "input_offset": 5888
+    },
+    {
+      "disk": "disk2",
+      "offset": 127744,
+      "size": 256,
+      "input_offset": 6144
+    },
+    {
+      "disk": "disk2",
+      "offset": 127488,
+      "size": 256,
+      "input_offset": 6400
+    },
+    {
+      "disk": "disk2",
+      "offset": 127232,
+      "size": 180,
+      "input_offset": 6656
+    }
+  ]
+}
