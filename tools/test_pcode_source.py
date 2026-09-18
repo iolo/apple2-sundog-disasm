@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """P-code boundary tests independent of the original images."""
 import struct
+import shutil
+import subprocess
+import tempfile
+from pathlib import Path
 import unittest
 
 from pcode_source import analyze, source
@@ -58,6 +62,61 @@ class PcodeSourceTests(unittest.TestCase):
                                            ([0xCC, 0x80], 0, 'Truncated operand')):
             with self.subTest(body=body), self.assertRaisesRegex(ValueError, message):
                 analyze(segment(body, exit_offset), 1)
+
+    def test_inline_bytes_are_data_not_instructions(self):
+        for opcode, kind in ((0xA6, 'string-data'), (0xD0, 'packed-array-data')):
+            body = [opcode, 4, 0x81, 0xAD, 0, 0xFF, 0xAD, 0]
+            report = analyze(segment(body, 6), 1)
+            self.assertEqual(report['instruction_count'], 2)
+            self.assertEqual(report['coverage_bytes'][kind], 4)
+            self.assertEqual(report['control_flow_edges'], [(0, 6)])
+        # Forward branch targets a byte owned by the LSA payload.
+        with self.assertRaisesRegex(ValueError, 'Overlapping|operand'):
+            analyze(segment([0xA1, 3, 0xA6, 2, 0x81, 0, 0xAD, 0], 6), 1)
+        with self.assertRaisesRegex(ValueError, 'Inline data'):
+            analyze(segment([0xA6, 4, 0xAD, 0], 2), 1)
+
+    def test_constant_words_align_after_count(self):
+        for prefix in ([], [0]):
+            padding = [0xA5] if prefix else []
+            body = prefix + [0xB3, 2] + padding + [0x81, 0xFF, 0x34, 0x12, 0xAD, 0]
+            report = analyze(segment(body, len(body) - 2), 1)
+            self.assertEqual(report['coverage_bytes']['constant-words'], 4)
+            self.assertIn('.word $FF81, $1234', source(report))
+            self.assertIn(f'p_ldc 2, {len(prefix)}, ${0xA5 if prefix else 0:02X}', source(report))
+        for count in (0, 127, 255):
+            with self.assertRaisesRegex(ValueError, 'constant-word count'):
+                analyze(segment([0xB3, count, 0xAD, 0], 2), 1)
+
+    def test_typed_comparisons_and_short_loads(self):
+        body = [0xAF, 4, 0xB7, 10, 0x80, 3, 0xE8, 0xF7, 0xF8, 0xFF, 0xAD, 0]
+        listing = source(analyze(segment(body, 10), 1))
+        for expected in ('p_equ 4', 'p_neq 10, 3, 2', 'p_sldo 1', 'p_sldo 16', 'p_sind 0', 'p_sind 7'):
+            self.assertIn(expected, listing)
+        with self.assertRaisesRegex(ValueError, 'comparison type'):
+            analyze(segment([0xAF, 3, 0xAD, 0], 2), 1)
+
+    @unittest.skipUnless(shutil.which('ca65') and shutil.which('ld65'), 'cc65 required')
+    def test_extended_formats_assemble_to_original_bytes(self):
+        bodies = [
+            [0xA6, 4, 0x81, 0xAD, 0, 0xFF, 0xAD, 0],
+            [0xD0, 4, 0x81, 0xAD, 0, 0xFF, 0xAD, 0],
+            [0xB3, 2, 0x81, 0xFF, 0x34, 0x12, 0xAD, 0],
+            [0, 0xB3, 2, 0xA5, 0x81, 0xFF, 0x34, 0x12, 0xAD, 0],
+            [0xAF, 4, 0xB7, 10, 0x80, 3, 0xE8, 0xF7, 0xF8, 0xFF, 0xAD, 0],
+        ]
+        include = Path(__file__).resolve().parents[1] / 'src/pcode'
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)
+            for body in bodies:
+                data = segment(body, len(body) - 2)
+                (path / 'test.s').write_text(source(analyze(data, 1)))
+                (path / 'test.cfg').write_text(
+                    f'MEMORY {{ IMAGE: start = 0, size = {len(data)}, file = %O; }}\n'
+                    'SEGMENTS { PCODE: load = IMAGE, type = ro; }\n')
+                subprocess.run(['ca65', '-I', str(include), str(path / 'test.s'), '-o', str(path / 'test.o')], check=True, capture_output=True)
+                subprocess.run(['ld65', '-C', str(path / 'test.cfg'), str(path / 'test.o'), '-o', str(path / 'test.bin')], check=True, capture_output=True)
+                self.assertEqual((path / 'test.bin').read_bytes(), data)
 
     def test_unexplained_gap_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unexplained procedure byte'):

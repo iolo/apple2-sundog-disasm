@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Decode supported Apple Pascal p-code into ca65 source with explicit tables.
 
-Only formats checked against the shipped interpreter are accepted. This initial
-module supports the startup segment; unknown instructions and unexplained gaps
+Only formats checked against the shipped interpreter are accepted.
+Unknown instructions and unexplained gaps
 fail instead of becoming executable byte blobs. Segment origins must be even.
 """
 import argparse
@@ -17,21 +17,74 @@ from pascal_inventory import procedure_dictionary, word
 # opcode: mnemonic, operand format, native dispatch target. Format b is the
 # interpreter's one/two-byte big value; u is a fixed byte, w a little-endian word.
 SPECS = {
-    0x8D: ('lor', '', 0xD5C2), 0x95: ('sbi', '', 0xD747),
-    0x9D: ('lde', 'ub', 0xD442), 0x9E: ('csp', 'u', 0xE67F),
-    0x9F: ('ldcn', '', 0xD2D7), 0xA1: ('fjp', 'jump', 0xD2A0),
-    0xA7: ('lae', 'ub', 0xD48C), 0xAC: ('xjp', 'case', 0xD5E2),
-    0xAD: ('rnp', 'u', 0xE371), 0xB2: ('lda', 'ub', 0xD3EE),
-    0xB6: ('lod', 'ub', 0xD3C8), 0xB9: ('ujp', 'jump', 0xD2A8),
-    0xBA: ('ldp', '', 0xDA60), 0xBB: ('stp', '', 0xDAB6),
-    0xBE: ('ldb', '', 0xD567), 0xC0: ('ixp', 'uu', 0xDA1D),
-    0xC1: ('rbp', 'u', 0xE35C), 0xC2: ('cbp', 'u', 0xE32B),
-    0xC3: ('equi', '', 0xDFA9), 0xC4: ('geqi', '', 0xDF7B),
-    0xC6: ('lla', 'b', 0xD315), 0xC7: ('ldci', 'w', 0xD2DE),
-    0xC8: ('leqi', '', 0xDF77), 0xCB: ('neqi', '', 0xDF7F),
-    0xCC: ('stl', 'b', 0xD33B), 0xCD: ('cxp', 'uu', 0xE306),
-    0xCE: ('clp', 'u', 0xE2D3), 0xCF: ('cgp', 'u', 0xE2EF),
-    0xD1: ('ste', 'ub', 0xD467), 0xD6: ('xit', '', 0xD6E4),
+    0x80: ('abi', '', 0xD6FF),
+    0x82: ('adi', '', 0xD71D),
+    0x84: ('land', '', 0xD5AF),
+    0x86: ('dvi', '', 0xD87D),
+    0x88: ('chk', '', 0xD8C2),
+    0x8D: ('lor', '', 0xD5C2),
+    0x8E: ('modi', '', 0xD8AA),
+    0x8F: ('mpi', '', 0xD786),
+    0x91: ('ngi', '', 0xD735),
+    0x93: ('lnot', '', 0xD5D5),
+    0x95: ('sbi', '', 0xD747),
+    0x98: ('sqi', '', 0xD7CD),
+    0x9A: ('sto', '', 0xD4BC),
+    0x9B: ('ixs', '', 0xD98C),
+    0x9D: ('lde', 'ub', 0xD442),
+    0x9E: ('csp', 'u', 0xE67F),
+    0x9F: ('ldcn', '', 0xD2D7),
+    0xA1: ('fjp', 'jump', 0xD2A0),
+    0xA2: ('inc', 'b', 0xD9CB),
+    0xA3: ('ind', 'b', 0xD9AF),
+    0xA4: ('ixa', 'b', 0xD9DE),
+    0xA5: ('lao', 'b', 0xD384),
+    0xA6: ('lsa', 'inline', 0xD929),
+    0xA7: ('lae', 'ub', 0xD48C),
+    0xA8: ('mov', 'b', 0xD59B),
+    0xA9: ('ldo', 'b', 0xD366),
+    0xAA: ('sas', 'u', 0xD94B),
+    0xAB: ('sro', 'b', 0xD3AA),
+    0xAC: ('xjp', 'case', 0xD5E2),
+    0xAD: ('rnp', 'u', 0xE371),
+    0xAE: ('cip', 'u', 0xE285),
+    0xAF: ('equ', 'typed', 0xDE2C),
+    0xB0: ('geq', 'typed', 0xDE24),
+    0xB1: ('grt', 'typed', 0xDE1C),
+    0xB2: ('lda', 'ub', 0xD3EE),
+    0xB3: ('ldc', 'words', 0xD4D6),
+    0xB4: ('leq', 'typed', 0xDE28),
+    0xB5: ('les', 'typed', 0xDE20),
+    0xB6: ('lod', 'ub', 0xD3C8),
+    0xB7: ('neq', 'typed', 0xDE18),
+    0xB8: ('str', 'ub', 0xD41C),
+    0xB9: ('ujp', 'jump', 0xD2A8),
+    0xBA: ('ldp', '', 0xDA60),
+    0xBB: ('stp', '', 0xDAB6),
+    0xBC: ('ldm', 'u', 0xD50A),
+    0xBD: ('stm', 'u', 0xD539),
+    0xBE: ('ldb', '', 0xD567),
+    0xBF: ('stb', '', 0xD581),
+    0xC0: ('ixp', 'uu', 0xDA1D),
+    0xC1: ('rbp', 'u', 0xE35C),
+    0xC2: ('cbp', 'u', 0xE32B),
+    0xC3: ('equi', '', 0xDFA9),
+    0xC4: ('geqi', '', 0xDF7B),
+    0xC5: ('gtri', '', 0xDF73),
+    0xC6: ('lla', 'b', 0xD315),
+    0xC7: ('ldci', 'w', 0xD2DE),
+    0xC8: ('leqi', '', 0xDF77),
+    0xC9: ('lesi', '', 0xDF6F),
+    0xCA: ('ldl', 'b', 0xD2F7),
+    0xCB: ('neqi', '', 0xDF7F),
+    0xCC: ('stl', 'b', 0xD33B),
+    0xCD: ('cxp', 'uu', 0xE306),
+    0xCE: ('clp', 'u', 0xE2D3),
+    0xCF: ('cgp', 'u', 0xE2EF),
+    0xD0: ('lpa', 'inline', 0xD911),
+    0xD1: ('ste', 'ub', 0xD467),
+    0xD5: ('bpt', 'b', 0xE803),
+    0xD6: ('xit', '', 0xD6E4),
     0xD7: ('nop', '', 0xD28D),
 }
 
@@ -46,9 +99,11 @@ def verify_interpreter(binary):
     for opcode, (name, _, expected) in SPECS.items():
         if word(binary, (opcode - 128) * 2) != expected:
             raise ValueError(f'Interpreter handler for {name} differs from verified encoding')
-    for opcode in range(0xD8, 0xE8):
-        if word(binary, (opcode - 128) * 2) != 0xD2EA:
-            raise ValueError('Short local dispatch differs from verified encoding')
+    for first, last, target in ((0xD8, 0xE8, 0xD2EA), (0xE8, 0xF8, 0xD359),
+                                (0xF8, 0xF9, 0xD4AB), (0xF9, 0x100, 0xD4A8)):
+        for opcode in range(first, last):
+            if word(binary, (opcode - 128) * 2) != target:
+                raise ValueError('Short load dispatch differs from verified encoding')
 
 
 def analyze(data, segment):
@@ -96,6 +151,10 @@ def analyze(data, segment):
                 name, form, args = 'sldc', '', [op]
             elif 0xD8 <= op <= 0xE7:
                 name, form, args = 'sldl', '', [op - 0xD7]
+            elif 0xE8 <= op <= 0xF7:
+                name, form, args = 'sldo', '', [op - 0xE7]
+            elif 0xF8 <= op <= 0xFF:
+                name, form, args = 'sind', '', [op - 0xF8]
             elif op in SPECS:
                 name, form, _ = SPECS[op]
             else:
@@ -110,6 +169,7 @@ def analyze(data, segment):
                 return value
 
             successors = []
+            instruction_end = None
             if form == 'jump':
                 operand = byte()
                 if operand < 128:
@@ -142,7 +202,41 @@ def analyze(data, segment):
                 successors.append(default)
                 cursor = default
                 assembly = f'p_xjp {low}, {high}, {aligned - pc - 1}, ${padding:02X}'
+            elif form in ('inline', 'words'):
+                count = byte()
+                if form == 'words':
+                    # D4D6 reads count, rounds IP up to even, then skips
+                    # 2 * (count + 1). The byte-sized increment must not wrap.
+                    if not 1 <= count <= 126:
+                        raise ValueError('Unsupported constant-word count')
+                    padding = byte() if pc & 1 else 0
+                    instruction_end = cursor
+                    assembly = f'p_ldc {count}, {pc & 1}, ${padding:02X}'
+                    size, kind = count * 2, 'constant-words'
+                else:
+                    instruction_end = cursor
+                    assembly = f'p_{name} {count}'
+                    size = count
+                    kind = 'string-data' if name == 'lsa' else 'packed-array-data'
+                if cursor + size > limit:
+                    raise ValueError('Inline data exceeds procedure bounds')
+                if size:
+                    if form == 'words':
+                        values = [f'${word(data, i):04X}' for i in range(cursor, cursor + size, 2)]
+                        directive = '.word '
+                    else:
+                        values = [f'${v:02X}' for v in data[cursor:cursor + size]]
+                        directive = '.byte '
+                    claim(cursor, size, kind, directive + ', '.join(values), consumer=pc)
+                cursor += size
+                successors = [cursor]
             else:
+                if form == 'typed':
+                    tag = byte()
+                    if tag not in (2, 4, 6, 8, 10, 12):
+                        raise ValueError(f'Unsupported comparison type {tag}')
+                    args.append(tag)
+                    form = 'b' if tag in (10, 12) else ''
                 for operand in form:
                     first = byte()
                     if operand == 'u':
@@ -155,11 +249,11 @@ def analyze(data, segment):
                 assembly = f'p_{name}' + (' ' + ', '.join(map(str, args)) if args else '')
                 if name not in ('rnp', 'rbp', 'xit'):
                     successors = [cursor]
-                if name in ('cxp', 'clp', 'cgp', 'cbp', 'csp'):
+                if name in ('cxp', 'clp', 'cgp', 'cip', 'cbp', 'csp'):
                     calls.append(dict(offset=pc, instruction=name, operands=args))
             if cursor > limit:
                 raise ValueError('Instruction overlaps procedure attributes')
-            claim(pc, cursor - pc, 'instruction', assembly, opcode=op,
+            claim(pc, (instruction_end or cursor) - pc, 'instruction', assembly, opcode=op,
                   mnemonic=name, successors=successors, procedure=proc['number'])
             instructions[pc] = items[pc]
             for target in successors:
@@ -180,7 +274,7 @@ def analyze(data, segment):
         claim(proc['dictionary_offset'], 2, 'dictionary-pointer', f'.word * - {label(proc["attribute_offset"])}')
     claim(len(data) - 2, 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
     for call in calls:
-        if call['instruction'] in ('clp', 'cgp') and not 1 <= call['operands'][0] <= metadata['procedure_count']:
+        if call['instruction'] in ('clp', 'cgp', 'cip') and not 1 <= call['operands'][0] <= metadata['procedure_count']:
             raise ValueError('In-segment call names a nonexistent procedure')
     if len(occupied) != len(data):
         missing = next(i for i in range(len(data)) if i not in occupied)

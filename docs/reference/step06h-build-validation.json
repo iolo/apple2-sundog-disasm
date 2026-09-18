@@ -1,0 +1,28 @@
+{
+  "build": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "0add11bbf322f82d19cad20486a37b4f577925d558dbe7509ea473b9ea9de075",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 27432,
+      "temporary-unresolved": 259288
+    }
+  },
+  "decoder_tests": 11,
+  "adoption_tests": 3,
+  "reconstruction_tests": 3,
+  "exact_disk_comparison": true,
+  "behavior_evidence_reused": "step06g-build-validation.json",
+  "reason": "Both disk outputs are byte-identical to the validated baseline; no new emulator run."
+}

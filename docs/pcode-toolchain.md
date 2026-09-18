@@ -27,8 +27,10 @@ alongside ca65 native 6502 assembly**, with explicit data/relocation structures.
 Macros avoid a dependency on a historical Pascal compiler reproducing original
 instruction choices. The include now also supports the six-procedure
 [disk-1 startup segment](startup-pcode.md), including its case tables and
-explicit alignment. Other instruction formats, inline constants, and native
-procedure relocation records still require further work.
+explicit alignment, and the 50-procedure [utility segment](utility-pcode.md).
+The extended decoder separates inline strings, packed arrays, and word constants
+from instructions. Native procedure relocations and remaining unexplained
+procedure bytes still require further work.
 
 ## Interpreter evidence
 

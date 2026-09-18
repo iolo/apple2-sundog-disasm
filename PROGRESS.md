@@ -493,3 +493,24 @@ and acceptance criteria.
   objective text or resume its paused scheduling state. No completion claimed.
 - **Next action:** Continue p-code format coverage and reconstruct additional
   complete modules, retaining explicit failures for unclassified bytes.
+
+## 2026-09-18 — Step 06h: extend p-code formats and reconstruct utility segment
+
+- **Status:** Checkpoint complete; overall step 06 remains in progress.
+- **Work:** Extended the decoder and ca65 macros using the shipped native handlers
+  for integer/addressing operations, compact loads, typed comparisons, inline
+  strings/arrays/words, CIP and BPT. Data payloads have separate owners and
+  consumer offsets; undecodable or unexplained chunks still fail.
+- **Reconstruction:** Complete disk-1 UTILITY segment: 8,644 bytes, 50 procedures,
+  4,073 instructions. Separated 1,239 inline string bytes, 150 pointer-table
+  bytes, 25 alignment bytes, and 602 metadata/dictionary bytes from instructions.
+  Added source, configuration, adoption mapping, audit, and utility documentation.
+- **Validation:** Eleven decoder tests pass, including ca65/ld65 round trips for
+  new inline formats; three adoption and three reconstruction tests pass.
+  Utility assembly and both complete images match exactly. `git diff --check`
+  passes. Reused unchanged-output MAME evidence; no redundant emulator run.
+- **Coverage:** 27,432 source-built output bytes; 259,288 remain temporary.
+  A dry run now decodes most remaining pure p-code segments; mixed native
+  procedures, split-system metadata, and two unexplained gaps remain rejected.
+- **Next action:** Adopt the successfully classified p-code modules, then resolve
+  the mixed native procedures and unexplained gaps without hiding them as data.
