@@ -1,0 +1,800 @@
+{
+  "scope": "Source ownership of valid inventoried segments only; not a complete disk classification or semantic audit",
+  "unique_segments": 34,
+  "fully_source_built_segments": 28,
+  "remaining_unique_segments": 6,
+  "original_inventory_status_counts": {
+    "unresolved": 12,
+    "unused-header-slot-with-metadata": 30,
+    "valid-procedure-dictionary": 42,
+    "data-segment-allocation": 6,
+    "split-system-procedure": 1
+  },
+  "remaining_work_outside_valid_segments": [
+    "Split system fragment",
+    "Orphan/header candidates",
+    "Assets and other data",
+    "Unallocated/preserved disk regions",
+    "Review provisional native-runtime data classifications"
+  ],
+  "segments": [
+    {
+      "sha256": "3d0ad5c10da8631faabef1aabb87a42f8892fc13b51dd8a0d7bf814dfb724553",
+      "size": 8644,
+      "segment": 1,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 85,
+          "start_block": 86,
+          "coverage_bytes": {
+            "ca65-source": 8644
+          },
+          "components": [
+            "utility_disk1"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49",
+      "size": 6126,
+      "segment": 22,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 104,
+          "coverage_bytes": {
+            "temporary-unresolved": 6126
+          },
+          "components": [
+            "disk1_unresolved"
+          ],
+          "complete_source": false
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 104,
+          "coverage_bytes": {
+            "temporary-unresolved": 6126
+          },
+          "components": [
+            "disk2_unresolved"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "af7267c0fb90b5e2e8c477d12d13f90afd98010a140f1e6f09b12bdb69e5529f",
+      "size": 606,
+      "segment": 23,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 116,
+          "coverage_bytes": {
+            "ca65-source": 606
+          },
+          "components": [
+            "library_23"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 116,
+          "coverage_bytes": {
+            "ca65-source": 606
+          },
+          "components": [
+            "library_23"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "acaadfd85907933575a035fe67f716630e3c3695430008f90a4b48ea6b1fd68c",
+      "size": 4306,
+      "segment": 24,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 118,
+          "coverage_bytes": {
+            "temporary-unresolved": 4306
+          },
+          "components": [
+            "disk1_unresolved"
+          ],
+          "complete_source": false
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 118,
+          "coverage_bytes": {
+            "temporary-unresolved": 4306
+          },
+          "components": [
+            "disk2_unresolved"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "16048527422b435b2f6e811d3abddade3318f4570746a2e8e5b1419d16c9a4b3",
+      "size": 958,
+      "segment": 25,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 127,
+          "coverage_bytes": {
+            "ca65-source": 958
+          },
+          "components": [
+            "library_25"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 127,
+          "coverage_bytes": {
+            "ca65-source": 958
+          },
+          "components": [
+            "library_25"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "b0ae9ea678899ce9e39cbb54ce416786c775b8bfd1a270d8cd1769bf4c8deecd",
+      "size": 3058,
+      "segment": 26,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 129,
+          "coverage_bytes": {
+            "temporary-unresolved": 3058
+          },
+          "components": [
+            "disk1_unresolved"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "90687f83d0ea2ae33be2e211b686b174fbf7cee15b886cebb52884f4ce687c80",
+      "size": 1616,
+      "segment": 27,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 135,
+          "coverage_bytes": {
+            "ca65-source": 1616
+          },
+          "components": [
+            "library_27"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 135,
+          "coverage_bytes": {
+            "ca65-source": 1616
+          },
+          "components": [
+            "library_27"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "c8054603d64cdcafa4cfdee95ab756aeb94ac26545b2a42888edd98e59d0d960",
+      "size": 328,
+      "segment": 28,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 103,
+          "start_block": 139,
+          "coverage_bytes": {
+            "ca65-source": 328
+          },
+          "components": [
+            "library_28"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 139,
+          "coverage_bytes": {
+            "ca65-source": 328
+          },
+          "components": [
+            "library_28"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "c01644b696e7b2bdef1e9773c6b98cc12ad139230edcf4a7994047c2396fcdc6",
+      "size": 576,
+      "segment": 1,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 140,
+          "start_block": 141,
+          "coverage_bytes": {
+            "ca65-source": 576
+          },
+          "components": [
+            "startup_disk1"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 141,
+          "coverage_bytes": {
+            "ca65-source": 576
+          },
+          "components": [
+            "startup_disk2"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "2c4cdfee9d22a90d65b09a47a3f6bd895301952e21bc6bbfd3116e410cffa370",
+      "size": 1868,
+      "segment": 7,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 140,
+          "start_block": 143,
+          "coverage_bytes": {
+            "ca65-source": 1868
+          },
+          "components": [
+            "startup_7"
+          ],
+          "complete_source": true
+        },
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 143,
+          "coverage_bytes": {
+            "ca65-source": 1868
+          },
+          "components": [
+            "startup_7"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "f59d3948e8139391ec5e385282b93b9080b83d2a2df37a2f97a9a2be0a9cc790",
+      "size": 880,
+      "segment": 1,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 157,
+          "start_block": 172,
+          "coverage_bytes": {
+            "temporary-unresolved": 880
+          },
+          "components": [
+            "disk1_unresolved"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "0a7751ec039e806dba479877bac1818f18ef7b623d2ef1047d8cd3249cd1f45c",
+      "size": 764,
+      "segment": 7,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 157,
+          "start_block": 158,
+          "coverage_bytes": {
+            "ca65-source": 764
+          },
+          "components": [
+            "alternate_7"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "faffb0b22d01352485ee8293b78cdcb2619b58d30ea9bb712777f75ce46de93b",
+      "size": 3348,
+      "segment": 8,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 157,
+          "start_block": 160,
+          "coverage_bytes": {
+            "ca65-source": 3348
+          },
+          "components": [
+            "alternate_8"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "4774966eb94e9f469d2206b88b3d228a9f22b4eeb022437557e98a96d85cf857",
+      "size": 1212,
+      "segment": 9,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 157,
+          "start_block": 167,
+          "coverage_bytes": {
+            "ca65-source": 1212
+          },
+          "components": [
+            "alternate_9"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "00fc5609291afd26b58c13fcf51f414bc4280ab27c58f4e281daa85a934c06e9",
+      "size": 950,
+      "segment": 10,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 157,
+          "start_block": 170,
+          "coverage_bytes": {
+            "ca65-source": 950
+          },
+          "components": [
+            "alternate_10"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "86892248a50710111ef9ee4611887fbc449248646b71c3095c58b998b81b7b3c",
+      "size": 3124,
+      "segment": 0,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 252,
+          "coverage_bytes": {
+            "ca65-source": 36,
+            "temporary-unresolved": 3088
+          },
+          "components": [
+            "disk1_unresolved",
+            "system_entry"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "2be48a418438ab23c5fdb82258eebe9e3252aa86d014a9021f5218b9a5bb366e",
+      "size": 20,
+      "segment": 1,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 260,
+          "coverage_bytes": {
+            "ca65-source": 20
+          },
+          "components": [
+            "system_1"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "8a9dd883672a6bdfd37ef06130b65b46e60f7f7fc71d0d8c4cf0899bfe2e936d",
+      "size": 808,
+      "segment": 2,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 261,
+          "coverage_bytes": {
+            "ca65-source": 808
+          },
+          "components": [
+            "system_2"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "156552bd66e54134b733a7befff51eab606572b1ae1d502d4be379762deaac65",
+      "size": 20,
+      "segment": 3,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 263,
+          "coverage_bytes": {
+            "ca65-source": 20
+          },
+          "components": [
+            "system_3"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "eb44e9cfed57e6d922bb071270c1e7bcc668ca9d01dc0ce60939a0fc374c9588",
+      "size": 1998,
+      "segment": 4,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 264,
+          "coverage_bytes": {
+            "ca65-source": 1998
+          },
+          "components": [
+            "system_4"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "b0d893a6c4e2ef89913699de1f87c76f11a5003b834cc5b088af9c117a790752",
+      "size": 1670,
+      "segment": 5,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 268,
+          "coverage_bytes": {
+            "ca65-source": 1670
+          },
+          "components": [
+            "system_5"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "6d7d68690c762bba59560ebae4d65148dbd832b268a7e0cb4bd03f7991260a79",
+      "size": 3652,
+      "segment": 6,
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "header": 251,
+          "start_block": 272,
+          "coverage_bytes": {
+            "ca65-source": 3652
+          },
+          "components": [
+            "system_6"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "188476754bcdeb89a5843ec91e2e626e2680c324ee6d2b3641ad292dc1d99b5d",
+      "size": 3058,
+      "segment": 26,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 103,
+          "start_block": 129,
+          "coverage_bytes": {
+            "temporary-unresolved": 3058
+          },
+          "components": [
+            "disk2_unresolved"
+          ],
+          "complete_source": false
+        }
+      ],
+      "all_copies_source_built": false
+    },
+    {
+      "sha256": "49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d",
+      "size": 3130,
+      "segment": 8,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 147,
+          "coverage_bytes": {
+            "ca65-source": 3130
+          },
+          "components": [
+            "game_8"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "d25276540ce23c69bdbebed12a7e5122e0818181e92d404b3c350ddf8bc6e3dd",
+      "size": 5546,
+      "segment": 12,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 174,
+          "coverage_bytes": {
+            "ca65-source": 5546
+          },
+          "components": [
+            "game_12"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "2c876905d523d89fc2c5216cbc199b01a18bf5dcc223addc188dc1510388211d",
+      "size": 10214,
+      "segment": 13,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 154,
+          "coverage_bytes": {
+            "ca65-source": 10214
+          },
+          "components": [
+            "game_13"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "709a79599c6310b3930316bb849b9fc6ac9f4267f474ba0ab7165d893c9718d8",
+      "size": 2544,
+      "segment": 14,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 185,
+          "coverage_bytes": {
+            "ca65-source": 2544
+          },
+          "components": [
+            "game_14"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "874bbe8ddf38a0b63f2304b63392a9ad9cbf9058ca107a8febb2c2ed5e28d8bb",
+      "size": 2654,
+      "segment": 15,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 190,
+          "coverage_bytes": {
+            "ca65-source": 2654
+          },
+          "components": [
+            "game_15"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "742200779e4e74ba6a93f984190b40284c5bf6d255584cb4572132dff65944a7",
+      "size": 7446,
+      "segment": 16,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 196,
+          "coverage_bytes": {
+            "ca65-source": 7446
+          },
+          "components": [
+            "game_16"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "40a1e9a4fa6e0ea4276826a25cf91b480bada8c2b6392d3967c9aa33cee09515",
+      "size": 3532,
+      "segment": 17,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 211,
+          "coverage_bytes": {
+            "ca65-source": 3532
+          },
+          "components": [
+            "game_17"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4",
+      "size": 6280,
+      "segment": 18,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 218,
+          "coverage_bytes": {
+            "ca65-source": 6280
+          },
+          "components": [
+            "game_18"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "9005760c7e42480562e06ce711baa4cd6edd2376bb46d8866af74b8461eb7b2f",
+      "size": 5200,
+      "segment": 19,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 231,
+          "coverage_bytes": {
+            "ca65-source": 5200
+          },
+          "components": [
+            "game_19"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "f93e6492e63ad109ab1f4484b1fe9e61bc6de7c63b67dc7c69abf976f07aecdf",
+      "size": 6836,
+      "segment": 20,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 242,
+          "coverage_bytes": {
+            "ca65-source": 6836
+          },
+          "components": [
+            "game_20"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    },
+    {
+      "sha256": "8f58c7e696db4e1b7c2e6eae4f51cd40eee8d4dc1019dc926bdb2f70248260cb",
+      "size": 8132,
+      "segment": 21,
+      "occurrences": [
+        {
+          "disk": "disk2",
+          "header": 140,
+          "start_block": 256,
+          "coverage_bytes": {
+            "ca65-source": 8132
+          },
+          "components": [
+            "game_21"
+          ],
+          "complete_source": true
+        }
+      ],
+      "all_copies_source_built": true
+    }
+  ]
+}

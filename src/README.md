@@ -30,6 +30,13 @@ the entire SYSTEM.APPLE image, with unresolved data meanings documented.
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.
 
+The remaining `pcode/` sources now reconstruct the utility module, shared library
+segments 25/27/28, startup segment 7, alternate-startup modules, system segments
+1–6, and the compatible game segments. `library_23.s` combines one p-code and
+three native procedures with explicit native relocation lists. Module audits in
+`docs/reference/pcode-modules/` record code/data classification and provenance.
+
 Generated exploratory disassembly belongs under `build/` until its addresses
-and code/data boundaries are verified. Most executable regions still await
-reconstruction; see `docs/pascal-segments.md` for the structural inventory.
+and code/data boundaries are verified. `docs/executable-coverage.json` tracks the
+six remaining distinct segments and explicitly excludes unresolved non-segment
+regions from its completed count. See `docs/pascal-segments.md` for the inventory.

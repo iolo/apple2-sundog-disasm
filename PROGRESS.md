@@ -1012,3 +1012,24 @@ and acceptance criteria.
 - **Coverage:** 114,716 source-built output bytes; 172,004 remain temporary.
 - **Next action:** Audit current executable coverage and build independence, then
   continue the remaining mixed native modules, split system core, and assets.
+
+## 2026-09-18 — Step 06o: audit executable coverage and independent build
+
+- **Status:** Integration checkpoint complete; project completion is not claimed.
+- **Coverage:** Added a reproducible executable ownership report. All disk copies
+  of 28 of 34 distinct valid inventoried Pascal segments are source-built. Six
+  remain: libraries 22/24, both distinct library-26 variants, alternate startup 1,
+  and system core 0. The split fragment and non-segment regions remain separate
+  open work. Overall totals: 114,716 source-built bytes; 172,004 temporary bytes.
+- **Validation:** A new isolated tree containing only tools, source, and
+  reconstruction inputs builds both identical disks without originals or docs.
+  Rechecked 5,598 initialization capture bytes, 16 dispatch snapshots, and 12
+  full overlay loads. Twelve decoder and three relocation-parser tests passed in
+  their implementation checkpoints; module checks reject malformed boundaries.
+  Exact output supports reuse of existing emulator evidence; final both-emulator
+  behavior/save-load validation remains outstanding.
+- **Documentation:** Refreshed root/source/reconstruction READMEs and current
+  coverage guidance. Historical progress and original evidence are preserved.
+- **Next action:** Apply the native relocation layout to libraries 22, 24, and 26
+  and alternate startup, then reconstruct the split core, classify remaining
+  regions and extract assets. Unidentified chunks remain unacceptable at finish.

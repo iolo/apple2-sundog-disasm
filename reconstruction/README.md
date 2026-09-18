@@ -17,8 +17,8 @@ python3 tools/seed_reconstruction.py reconstruction
 That command refuses an existing destination. It is an archival extraction tool,
 not a build prerequisite. Do not rerun it over an evolving reconstruction.
 
-For disk 1, the remainder concatenates the gaps between the source-built ranges
-in image order. Disk 2 is entirely temporary at this checkpoint. Each manifest
+For each disk, the remainder concatenates the gaps between source-built ranges
+in image order. Both disks now contain reconstructed Pascal modules. Each manifest
 region names its output offset, size, input component, and offset within that
 component. Component hashes catch changed or damaged inputs; complete-coverage
 checks reject gaps, overlaps, and out-of-bounds slices.

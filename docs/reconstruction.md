@@ -84,8 +84,8 @@ byte-identical module replacements reuse the established reference behavior.
 
 The 114,716 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-114,716 instruction bytes. Most identified executable regions are still in the
-temporary inputs. The [Pascal inventory](pascal-segments.md) and
+114,716 instruction bytes. Six distinct inventoried Pascal segments, the split core fragment, and other
+unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
 All 16,384 bytes of SYSTEM.APPLE now come from the five native runtime
@@ -149,3 +149,20 @@ python3 tools/reference_mame.py docs/reference/game-play.json \
 
 This checkpoint does not validate every game interaction, save/load, sound, or
 the final required gameplay checks in both emulators. Those remain step 09.
+
+## Current executable inventory audit
+
+Run `python3 tools/executable_coverage.py --output docs/executable-coverage.json`
+to reproduce source ownership for inventoried segments. All copies of 28 of 34
+distinct segments are now source-built. Remaining segments are libraries 22 and
+24, the two distinct copies of library 26, alternate startup segment 1, and
+system core segment 0. The split-system fragment, orphan/header candidates,
+assets, unallocated regions, and provisional native-runtime data classifications
+still need work; they are not silently included in the completed count.
+
+`reference/step06o-build-validation.json` records a fresh build using only copied
+`tools/`, `src/`, and `reconstruction/` directories, with no original images or
+docs available. Both outputs equal the current exact baseline. Recorded runtime
+captures were rechecked: 5,598 initialization bytes, 16 p-code dispatch snapshots,
+and 12 whole overlay loads. No new emulator session was run for this checkpoint;
+final behavior checks in both emulators, including save/load, remain outstanding.
