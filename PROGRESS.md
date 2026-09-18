@@ -105,3 +105,25 @@ and acceptance criteria.
   p-code dialect, and asset formats still need investigation.
 - **Next action:** Step 04: trace boot and runtime disk reads; identify the native
   interpreter, p-code files/segments, memory layout, and directory remapping.
+
+## 2026-09-18 — Step 04a: confirm bootstrap and native runtime loads
+
+- **Status:** Partial step 04 checkpoint; architecture investigation continues.
+- **Work:** Followed apple2ts breakpoints at `$08FF`, `$4000`, `$FEF2`, and bank-1
+  `$D152`. Recorded captures and load parameters in
+  `docs/reference/boot1-at-reader.json`, and documented reproduction and memory
+  mapping in `docs/bootstrap.md`.
+- **Validation:** The three-page bootstrap matches original disk sectors except
+  its runtime count byte (1 → 5). The entire 9,216-byte `$4000` component matches
+  blocks 201–218. The primary 12 KB and alternate 4 KB language-card banks match
+  SYSTEM.APPLE exactly before interpreter initialization. All expected breakpoint
+  stops were confirmed by the emulator. No CPU/memory patches were used.
+- **Investigation note:** Exploratory MAME memory taps returned empty logs and
+  were removed; they provide no trace evidence. Read the UCSD cross-tool source
+  for code-file metadata, but have not yet established a compatible p-code
+  dialect or build tool.
+- **Remaining:** Runtime disk-service tracing, directory remapping, complete
+  native/bytecode module inventory, runtime patches, and p-code reconstruction
+  strategy. Step 05's minimal source build has not started.
+- **Next action:** Continue from bank-1 `$D152`, identify its disk-read path and
+  parse the segment dictionaries of the extracted files.
