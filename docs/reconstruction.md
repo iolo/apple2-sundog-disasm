@@ -86,12 +86,13 @@ byte-identical module replacements reuse the established reference behavior.
 | P-code library_22 | `src/pcode/library_22.s` | disk1 block 104 onward; disk2 block 104 onward | 12,252 |
 | Split SYSTEM.PASCAL remainder | `src/pcode/system_core.s` | Disk 1 core block 252 after byte 35; fragment at block 259 | 3,258 |
 | Title HGR image data | `assets/title/title.hgr` | Disk 1 blocks 203–218 | 8,192 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 70,290 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 62,404 |
+| Pascal segment-header tables | `src/data/pascal_header_tables.s` | First 288 bytes of eight headers on both disks | 2,304 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 68,562 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 61,828 |
 
-The 145,834 source-built bytes include instructions and their owned tables,
-attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-145,834 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+The 148,138 source-built bytes include instructions and their owned tables,
+attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
+148,138 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -176,8 +177,9 @@ final behavior checks in both emulators, including save/load, remain outstanding
 
 ## First classified asset
 
-The title HGR page contributes 8,192 `identified-data` bytes, separate from the
-145,834 `ca65-source` bytes. There are 132,694 temporary bytes left. The build
+The title HGR page contributes 8,192 `identified-data` bytes. At step 07a it
+accompanied 145,834 `ca65-source` bytes and 132,694 temporary bytes. Step 08a
+raises source ownership to 148,138 bytes and reduces temporary inputs to 130,390 bytes. The build
 requires asset format and evidence metadata, checks its size/hash, and reads its
 repository-relative asset path. It does not extract data during a normal build.
 
@@ -186,3 +188,13 @@ repository-relative asset path. It does not extract data during a normal build.
 runs. All ten screenshots and normalized final media hashes match the original
 references. The title PNG is a monochrome layout preview; its limitations and
 lossless row/hole round trip are documented in [title-bitmap.md](title-bitmap.md).
+
+## Classified segment-header tables
+
+Step 08a adds 2,304 data bytes as typed ca65 declarations: the first 288 bytes
+of each inventoried header. Six unique tables serve eight disk locations. The
+[header evidence](pascal-header-tables.md) distinguishes the table layout from
+the unreviewed tails and block 84's invalid segment reference. Generation and
+adoption each checked exact bytes; the complete build still matches both disks.
+No new emulator run is needed for these unchanged outputs; step 07a's fresh
+reference runs remain applicable.

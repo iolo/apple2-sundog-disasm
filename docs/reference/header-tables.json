@@ -1,0 +1,558 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/pascal-header-tables.md",
+  "header_occurrences": 8,
+  "unique_tables": 6,
+  "source_output_bytes": 1728,
+  "disk_output_bytes": 2304,
+  "sha256": "5656f53d3fdf1576655e0d24ebe0c703f4d59d6c5003e2c95752de7349f601f3",
+  "table_regions": [
+    {
+      "offset": 0,
+      "size": 64,
+      "kind": "relative-block-and-length"
+    },
+    {
+      "offset": 64,
+      "size": 128,
+      "kind": "segment-names"
+    },
+    {
+      "offset": 192,
+      "size": 32,
+      "kind": "segment-kind"
+    },
+    {
+      "offset": 224,
+      "size": 32,
+      "kind": "text-block"
+    },
+    {
+      "offset": 256,
+      "size": 32,
+      "kind": "segment-info"
+    }
+  ],
+  "tables": [
+    {
+      "label": "disk1_header_84",
+      "input_offset": 0,
+      "sha256": "470652e87bfda8be03c2aecbf6b7d38ff9006a180002dbc4960ad77592d127ef",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 84,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "unresolved"
+            },
+            {
+              "slot": 1,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 2,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 3,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 4,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 5,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 6,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 7,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 8,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 9,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 10,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 11,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 12,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 13,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 14,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 15,
+              "status": "unused-header-slot-with-metadata"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "disk1_header_85",
+      "input_offset": 288,
+      "sha256": "ed0409d95fd7a071d6ecbbc9a137be9c6d0ec2ac1ceee1d57ea06309593834cf",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 85,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 1,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 2,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 3,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 4,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 5,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 6,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 7,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 8,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 9,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 10,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 11,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 12,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 13,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 14,
+              "status": "unused-header-slot-with-metadata"
+            },
+            {
+              "slot": 15,
+              "status": "unused-header-slot-with-metadata"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "disk1_header_103",
+      "input_offset": 576,
+      "sha256": "10a0edc68a0e3b822765ce45f1115b31af61c1e38a58c94c3ddc0aa33ecc4ab8",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 103,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 3,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 4,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 5,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 6,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 7,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 8,
+              "status": "data-segment-allocation"
+            },
+            {
+              "slot": 9,
+              "status": "data-segment-allocation"
+            },
+            {
+              "slot": 10,
+              "status": "data-segment-allocation"
+            }
+          ]
+        },
+        {
+          "disk": "disk2",
+          "block": 103,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 3,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 4,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 5,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 6,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 7,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 8,
+              "status": "data-segment-allocation"
+            },
+            {
+              "slot": 9,
+              "status": "data-segment-allocation"
+            },
+            {
+              "slot": 10,
+              "status": "data-segment-allocation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "disk1_header_140",
+      "input_offset": 864,
+      "sha256": "26cff4969b263be3087752d1447291000d3e5641ae597a1aea71195770cc38aa",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 140,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "unresolved"
+            },
+            {
+              "slot": 6,
+              "status": "unresolved"
+            },
+            {
+              "slot": 7,
+              "status": "unresolved"
+            },
+            {
+              "slot": 8,
+              "status": "unresolved"
+            },
+            {
+              "slot": 9,
+              "status": "unresolved"
+            },
+            {
+              "slot": 10,
+              "status": "unresolved"
+            },
+            {
+              "slot": 11,
+              "status": "unresolved"
+            },
+            {
+              "slot": 12,
+              "status": "unresolved"
+            },
+            {
+              "slot": 13,
+              "status": "unresolved"
+            },
+            {
+              "slot": 14,
+              "status": "unresolved"
+            },
+            {
+              "slot": 15,
+              "status": "unresolved"
+            }
+          ]
+        },
+        {
+          "disk": "disk2",
+          "block": 140,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 6,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 7,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 8,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 9,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 10,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 11,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 12,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 13,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 14,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 15,
+              "status": "valid-procedure-dictionary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "disk1_header_157",
+      "input_offset": 1152,
+      "sha256": "e50bfa2d4cc59b14fe4bf106b2a6a68462be017d7039d7f35d5c6a593cd392f9",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 157,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 3,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 4,
+              "status": "valid-procedure-dictionary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "disk1_header_251",
+      "input_offset": 1440,
+      "sha256": "32cef57ba4e5f84bc4d78d9b79140781c6e689bac950a66d9098373e4ae5977e",
+      "occurrences": [
+        {
+          "disk": "disk1",
+          "block": 251,
+          "table_range": [
+            0,
+            288
+          ],
+          "remaining_tail_range": [
+            288,
+            512
+          ],
+          "segment_statuses": [
+            {
+              "slot": 0,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 1,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 2,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 3,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 4,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 5,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 6,
+              "status": "valid-procedure-dictionary"
+            },
+            {
+              "slot": 15,
+              "status": "split-system-procedure"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "byte_identical_assembly": true,
+  "scope_limit": "Tables only; does not classify header tails or validate orphan segment references"
+}

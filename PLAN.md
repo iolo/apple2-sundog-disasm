@@ -40,7 +40,9 @@ Split large steps into independently validated, logged, and committed increments
   All inventoried executable segments are source-built. Step 06 remains open for
   other-region classification and provisional runtime data; step 07a extracts
   the independently confirmed title bitmap. This overlap does not waive any
-  classification or final validation requirement.
+  classification or final validation requirement. Step 08a now reconstructs the
+  first 288 bytes of all eight segment headers as metadata; their tails remain
+  outside the completed classification.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

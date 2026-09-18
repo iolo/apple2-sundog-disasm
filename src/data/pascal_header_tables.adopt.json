@@ -1,0 +1,103 @@
+{
+  "name": "pascal_header_tables",
+  "source": "src/data/pascal_header_tables.s",
+  "config": "src/data/pascal_header_tables.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 42752,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 42496,
+      "size": 32,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 42240,
+      "size": 256,
+      "input_offset": 288
+    },
+    {
+      "disk": "disk1",
+      "offset": 41984,
+      "size": 32,
+      "input_offset": 544
+    },
+    {
+      "disk": "disk1",
+      "offset": 49408,
+      "size": 256,
+      "input_offset": 576
+    },
+    {
+      "disk": "disk1",
+      "offset": 52992,
+      "size": 32,
+      "input_offset": 832
+    },
+    {
+      "disk": "disk1",
+      "offset": 71424,
+      "size": 256,
+      "input_offset": 864
+    },
+    {
+      "disk": "disk1",
+      "offset": 71168,
+      "size": 32,
+      "input_offset": 1120
+    },
+    {
+      "disk": "disk1",
+      "offset": 79104,
+      "size": 256,
+      "input_offset": 1152
+    },
+    {
+      "disk": "disk1",
+      "offset": 78848,
+      "size": 32,
+      "input_offset": 1408
+    },
+    {
+      "disk": "disk1",
+      "offset": 129280,
+      "size": 256,
+      "input_offset": 1440
+    },
+    {
+      "disk": "disk1",
+      "offset": 129024,
+      "size": 32,
+      "input_offset": 1696
+    },
+    {
+      "disk": "disk2",
+      "offset": 49408,
+      "size": 256,
+      "input_offset": 576
+    },
+    {
+      "disk": "disk2",
+      "offset": 52992,
+      "size": 32,
+      "input_offset": 832
+    },
+    {
+      "disk": "disk2",
+      "offset": 71424,
+      "size": 256,
+      "input_offset": 864
+    },
+    {
+      "disk": "disk2",
+      "offset": 71168,
+      "size": 32,
+      "input_offset": 1120
+    }
+  ]
+}

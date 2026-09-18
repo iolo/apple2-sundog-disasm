@@ -1205,3 +1205,29 @@ and acceptance criteria.
   and final both-emulator/save-load checks are not yet done.
 - **Next action:** Investigate provisional runtime bytes and orphan/header regions,
   map the remaining data consumers, and extract further images/fonts/game data.
+
+## 2026-09-18 — Step 08a: reconstruct classified segment-header tables
+
+- **Work/evidence:** Reconstructed the first 288 bytes of all eight inventoried
+  headers as explicit extent/name/kind/text/info tables. Six unique tables serve
+  eight locations. The initializer's sixteen-record walk at $6B34–$6B7A and its
+  version check supply consumer evidence, alongside the validated segment extents.
+  Added source, linker configuration, adoption recipe, repeatable preparation
+  tool, and docs/reference/header-tables.json with locations and classifications.
+- **Scope:** The 224-byte tail of each header remains outside this classification.
+  Block 103 has a command prompt and surrounding unexplained words there; it is
+  not blanket-classified as padding. Block 84's tables are established metadata,
+  but its mismatched segment reference remains unresolved. The 42-byte runtime
+  initialization payload also remains open after reviewing its copy and pointer
+  setup; no unsupported data classification was substituted for that question.
+- **Validation:** `python3 tools/prepare_header_tables.py` assembled all six tables
+  and compared their bytes before producing source. Adoption checked all 2,304
+  mapped output bytes. `python3 tools/build_disks.py` and
+  `python3 tools/verify_disks.py` pass, including original input hashes and exact
+  comparisons of both complete disks. Unchanged outputs reuse step 07a's MAME
+  references; final both-emulator/save-load validation remains required.
+- **Coverage:** 148,138 source-built bytes, including typed metadata; 8,192
+  identified asset bytes; 130,390 temporary bytes (68,562 disk 1; 61,828 disk 2).
+  These are ownership totals, not instruction counts or completion percentages.
+- **Next action:** Continue classifying header tails, runtime payloads, and other
+  disk regions through their consumers, and extract further supported assets.

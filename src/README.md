@@ -1,6 +1,6 @@
 # Source
 
-Reconstructed executable source belongs here. `pcode/system_entry.s` is the
+Reconstructed executable source and typed data declarations belong here. `pcode/system_entry.s` is the
 first 36-byte procedure of SYSTEM.PASCAL, rebuilt using the verified encoding
 subset in `pcode/encoding.inc`. Run `python3 tools/build_pcode_probe.py` to
 assemble it and compare its bytes with the original disk. This is a toolchain
@@ -25,7 +25,8 @@ execution address; `docs/native-init.md` records original-address aliases and
 the unresolved 42-byte initialization payload.
 `native/native_high.s` reconstructs the final bank-switch/service stubs and
 preserved tail; see `docs/native-high.md`. These five runtime components cover
-the entire SYSTEM.APPLE image, with unresolved data meanings documented.
+the entire SYSTEM.APPLE image, with provisional code/data boundaries and
+unresolved data meanings documented.
 `python3 tools/build_disks.py` assembles these components and combines them with
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.
@@ -40,3 +41,7 @@ Generated exploratory disassembly belongs under `build/` until its addresses
 and code/data boundaries are verified. `docs/executable-coverage.json` tracks the
 complete inventoried-segment ownership and explicitly excludes unresolved
 non-segment regions from its completed count. See `docs/pascal-segments.md` for the inventory.
+
+`data/pascal_header_tables.s` reconstructs the first 288 bytes of all eight
+inventoried segment headers as data tables. Header tails are excluded; see
+`docs/pascal-header-tables.md` for evidence and scope.

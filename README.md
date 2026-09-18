@@ -19,7 +19,7 @@ python3 tools/verify_inputs.py
 `src/` holds reconstructed code, `assets/` holds extracted assets, `tools/` holds
 automation, and `docs/` holds investigation notes. Generated files and disposable
 emulator media go under ignored `build/`. An incremental exact-disk build is now
-available, with most bytes still explicitly marked as temporary and unresolved:
+available, with unresolved bytes explicitly tracked as temporary inputs:
 
 ```sh
 python3 tools/build_disks.py
@@ -32,8 +32,9 @@ Pascal segments, and the split-system fragment are source-built. Remaining work
 includes classifying other disk regions, resolving provisional runtime data,
 extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
-Current coverage is 145,834 source-built bytes plus an 8,192-byte extracted
-[title bitmap](docs/title-bitmap.md); 132,694 bytes remain temporary.
+Current coverage is 148,138 source-built bytes (including classified header
+tables) plus an 8,192-byte extracted
+[title bitmap](docs/title-bitmap.md); 130,390 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)
