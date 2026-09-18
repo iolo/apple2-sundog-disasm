@@ -1344,3 +1344,28 @@ and acceptance criteria.
   bytes (58,444 disk 1; 60,804 disk 2).
 - **Next action:** Reconstruct additional raw overlays, including game-side native
   code around block 83, and resolve the remaining native tails and data banks.
+
+## 2026-09-18 — Step 06z: reconstruct warp animation and clarify completion scope
+
+- **Goal/criteria:** Confirmed the revised PRD and PLAN allow explained,
+  behaviorally validated byte differences but require evidence-backed code/data
+  classification everywhere. Explicitly included unused executable routines.
+  The active goal references PLAN.md; its tool supports status changes only,
+  so its existing title was retained with the revised plan as acceptance criteria.
+- **Work/evidence:** Reconstructed all 1,536 bytes of disk-2 blocks 83–85 loaded
+  at $1800 by game segment 13. The caller and library block bias establish the
+  extent and entry. The source contains 586 instructions (1,216 distinct code
+  bytes) and 320 classified bytes of masks, arithmetic state, bitmap, and workspace.
+- **Decoder:** Added explicitly evidenced BIT-prefix overlaps for independently
+  reachable embedded instructions. Both BIT/SBC paths are retained. Other overlaps
+  remain errors; diagnostic gap inspection cannot emit adoptable source. Documented
+  two runtime opcode patches without changing the original stored instructions.
+- **Validation:** Five raw-decoder tests pass, including a real ca65/ld65 overlap
+  round trip and rejection cases. Preparation/adoption compare all 1,536 bytes.
+  Full build and verify_disks.py pass: both complete disk images remain exact,
+  and all original input hashes are unchanged. No fresh warp runtime trace is claimed.
+- **Coverage:** 150,576 source-built bytes, 18,432 asset bytes, 117,712 temporary
+  bytes (58,444 disk 1; 59,268 disk 2). This does not claim complete classification
+  of provisional regions in older source modules or completion of the overall goal.
+- **Next action:** Follow the adjacent two-block raw overlay loaded from disk-2
+  block 86, then continue remaining raw code, assets, and native tails.

@@ -1,0 +1,43 @@
+{
+  "name": "warp_animation",
+  "source": "src/native/warp_animation.s",
+  "config": "src/native/warp_animation.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 43264,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 43008,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 42752,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 42496,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 42240,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 41984,
+      "size": 256,
+      "input_offset": 1280
+    }
+  ]
+}

@@ -4,7 +4,8 @@
 
 Produce disassembled source, extracted assets, and a reproducible build that
 recreates runnable versions of both supplied disk images. Every region must be
-classified as code or data with evidence, and all code must be disassembled.
+classified as code or data with evidence, and all code must be disassembled,
+including unused executable routines.
 Byte-for-byte identity is preferred, not required; any differences must be mapped,
 explained, and behaviorally validated. Detailed code documentation and game
 mechanics analysis remain optional follow-up work, as specified in `PRD.md`.
@@ -38,8 +39,8 @@ Split large steps into independently validated, logged, and committed increments
   resolved; every subsequent checkpoint must follow the base rule above.
 - `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06v.
   All inventoried executable segments are source-built. Step 06 remains open for
-  other-region classification and provisional runtime data. Steps 06w–06y add raw
-  screen-initialization, buffer-transformation, and certificate-reveal code
+  other-region classification and provisional runtime data. Steps 06w–06z add raw
+  screen-initialization, buffer-transformation, certificate-reveal, and warp-animation code
   outside the Pascal inventory; step 07a extracts
   the independently confirmed title bitmap, step 07b extracts the shared font,
   and step 07c extracts the registration certificate. This overlap does not waive any

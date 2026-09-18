@@ -57,3 +57,7 @@ and metadata remain separately tracked; see `docs/raw-buffer-transform.md`.
 `native/certificate_reveal.s` reconstructs disk-1 block 21: the raw screen-row
 reveal routine, native Pascal metadata, and block padding. See
 `docs/certificate-reveal.md` for the separate image and extra-read boundaries.
+
+`native/warp_animation.s` reconstructs disk-2 blocks 83–85, including both
+verified BIT/SBC overlapping instruction paths and classified embedded data.
+See `docs/warp-animation.md` for load, entry, and runtime-patch evidence.

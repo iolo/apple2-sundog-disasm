@@ -1,0 +1,57 @@
+{
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Game 13 procedure 35 loads three blocks from word27+4+3 = 83 at $1800 and calls $1800 through library 22 procedure 25"
+    }
+  ],
+  "data": [
+    {
+      "offset": 1026,
+      "size": 7,
+      "kind": "pixel-bit-masks",
+      "evidence": "$1BDA indexes this table by a pixel coordinate remainder modulo seven"
+    },
+    {
+      "offset": 1037,
+      "size": 4,
+      "kind": "arithmetic-scratch-words",
+      "evidence": "$1C13/$1C18/$1C1D/$1C22 initialize these bytes, and $1C27-$1C41 shift/add them"
+    },
+    {
+      "offset": 1122,
+      "size": 70,
+      "kind": "hgr-bitmap-strip",
+      "evidence": "$1CEC reads $1C61+X for X=70 down to 1; row loop draws seven ten-byte rows"
+    },
+    {
+      "offset": 1297,
+      "size": 239,
+      "kind": "initial-work-arrays",
+      "evidence": "Zero initial contents of arrays at $1D11,$1D47,$1D7D,$1DB3 and the loaded prefix of $1DE9; direct indexed native accesses and stores establish data"
+    }
+  ],
+  "bit_overlaps": [
+    {
+      "offset": 750,
+      "hex": "2ce946",
+      "evidence": "BIT skips alternative SBC immediate on the branch fall-through path"
+    },
+    {
+      "offset": 781,
+      "hex": "2ce938",
+      "evidence": "BIT skips alternative SBC immediate on the branch fall-through path"
+    }
+  ],
+  "name": "warp_animation",
+  "size": 1536,
+  "base": 6144,
+  "sha256": "ea26feead3a6333158463dde08b62bfa5a961b595e40e7406686e1447aaec74e",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 83
+    }
+  ],
+  "classification_evidence": "docs/warp-animation.md"
+}

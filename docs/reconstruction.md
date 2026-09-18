@@ -92,12 +92,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Shared font and symbol bank | `assets/font/font.bin` | Both disks, blocks 3–4 | 2,048 |
 | Certificate reveal code and native metadata | `src/native/certificate_reveal.s` | Disk 1 block 21 | 512 |
 | Registration certificate HGR page | `assets/certificate/certificate.hgr` | Disk 1 blocks 5–20 | 8,192 |
+| Warp animation code and embedded data | `src/native/warp_animation.s` | Disk 2 blocks 83–85 | 1,536 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 60,804 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 59,268 |
 
-The 149,040 source-built bytes include instructions and their owned tables,
+The 150,576 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-149,040 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+150,576 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -221,11 +222,16 @@ memory and replace 2,048 disk bytes across both copies. At that checkpoint owner
 bytes. The source/data-only completion gate and final gameplay checks remain open.
 
 Step 06y reconstructs the [certificate reveal routine](certificate-reveal.md)
-and its complete first-block metadata/padding. Source ownership is 149,040 bytes,
+and its complete first-block metadata/padding. At that checkpoint source ownership was 149,040 bytes,
 classified assets occupy 10,240 bytes, and 127,440 bytes remain temporary. The
 extra block fetched by its caller is explicitly excluded from classification.
 
 Step 07c extracts the [registration certificate](certificate-bitmap.md), whose
-row consumer is now disassembled. Current ownership is 149,040 source-built bytes,
+row consumer is now disassembled. At that checkpoint ownership was 149,040 source-built bytes,
 18,432 classified asset bytes, and 119,248 temporary bytes. Its image holes are
 uniform $80 padding, preserved along with every pixel/phase byte.
+
+Step 06z reconstructs the [warp animation](warp-animation.md), with 586 native
+instructions and fully classified embedded masks, bitmap, and workspace bytes.
+Current ownership is 150,576 source-built bytes, 18,432 classified asset bytes,
+and 117,712 temporary bytes. Both complete images still match the originals.

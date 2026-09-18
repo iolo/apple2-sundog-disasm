@@ -36,7 +36,8 @@ GOAL: Reverse [Sundog](https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy) for 
 - Classify every disk region as code or data with recorded evidence and source
   locations. No unidentified byte chunks may remain in the final deliverable.
 - Represent all executable content as disassembled instructions, including
-  native code and Pascal p-code. Do not hide code in binary data files.
+  native code and Pascal p-code, including unused executable routines. Do not
+  hide code in binary data files.
 - Separate data from code. A data region's precise meaning may remain unknown
   if its classification is supported by evidence; a filename or lack of observed
   execution alone is not sufficient. Identify and extract assets where supported.
