@@ -1,0 +1,13 @@
+{
+  "name": "raw_buffer_transform",
+  "source": "src/native/raw_buffer_transform.s",
+  "config": "src/native/raw_buffer_transform.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 79616,
+      "size": 93,
+      "input_offset": 0
+    }
+  ]
+}

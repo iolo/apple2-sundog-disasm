@@ -1,0 +1,149 @@
+{
+  "source": "Continued existing unpatched apple2ts reference session; original disk 1 mounted",
+  "observations": {
+    "rawEntryFirst": {
+      "emulator": {
+        "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+        "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+        "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+      },
+      "outcome": "stopped",
+      "expectationMatched": true,
+      "state": {
+        "executionSequence": 108,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:3904",
+          "address": 3904
+        },
+        "memoryWrite": null,
+        "PC": 3904,
+        "A": 125,
+        "X": 58,
+        "Y": 1,
+        "S": 247,
+        "PStatus": 53,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      }
+    },
+    "rawScreenInitCapture": {
+      "emulator": {
+        "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+        "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+        "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+      },
+      "value": {
+        "address": 3712,
+        "length": 512,
+        "requestedSpace": "main",
+        "effectiveSegments": [
+          {
+            "address": 3712,
+            "length": 512,
+            "space": "main"
+          }
+        ],
+        "mapping": {
+          "RAMRD": false,
+          "RAMWRT": false,
+          "ALTZP": false,
+          "80STORE": false,
+          "PAGE2": false,
+          "HIRES": true
+        },
+        "hex": "2024282c3034383c2024282c3034383c2125292d3135393d2125292d3135393d22262a2e32363a3e22262a2e32363a3e23272b2f33373b3f23272b2f33373b3f2024282c3034383c2024282c3034383c2125292d3135393d2125292d3135393d22262a2e32363a3e22262a2e32363a3e23272b2f33373b3f23272b2f33373b3f2024282c3034383c2024282c3034383c2125292d3135393d2125292d3135393d22262a2e32363a3e22262a2e32363a3e23272b2f33373b3f23272b2f33373b3f688500688501688502688503a2008604a9038506a9048508a504a0089dc00de888d0f90980a0089dc00de888d0f9c608d0e6a5041869288504c606d0d7a200a0608604a9188505a5049d000da5059d600d18a50469148504a50569008505e888d0e5a50148a50048600000000000000000003201000002000101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "rawScreenInitStack": {
+      "emulator": {
+        "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+        "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+        "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+      },
+      "value": {
+        "address": 504,
+        "length": 8,
+        "requestedSpace": "main",
+        "effectiveSegments": [
+          {
+            "address": 504,
+            "length": 8,
+            "space": "main"
+          }
+        ],
+        "mapping": {
+          "RAMRD": false,
+          "RAMWRT": false,
+          "ALTZP": false,
+          "80STORE": false,
+          "PAGE2": false,
+          "HIRES": true
+        },
+        "hex": "7de1e2ad2cb83ab8"
+      }
+    },
+    "rawScreenInitExit": {
+      "emulator": {
+        "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+        "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+        "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+      },
+      "outcome": "stopped",
+      "expectationMatched": true,
+      "state": {
+        "executionSequence": 110,
+        "state": "paused",
+        "pauseReason": "breakpoint",
+        "breakpoint": {
+          "breakpointId": "bp:4008",
+          "address": 4008
+        },
+        "memoryWrite": null,
+        "PC": 4008,
+        "A": 125,
+        "X": 96,
+        "Y": 0,
+        "S": 249,
+        "PStatus": 52,
+        "machineName": "APPLE2EE",
+        "memoryConfiguration": {
+          "slot3Card": "aux",
+          "ramWorksKb": 64
+        }
+      }
+    },
+    "rawScreenTables": {
+      "emulator": {
+        "serverInstanceId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b",
+        "rendererId": "aa1958a4-624e-4848-9a97-aa9a8a6662ab",
+        "targetId": "b915e047-454c-4d5a-b2af-bcea9d94bf1b:aa1958a4-624e-4848-9a97-aa9a8a6662ab"
+      },
+      "value": {
+        "address": 3328,
+        "length": 384,
+        "requestedSpace": "main",
+        "effectiveSegments": [
+          {
+            "address": 3328,
+            "length": 384,
+            "space": "main"
+          }
+        ],
+        "mapping": {
+          "RAMRD": false,
+          "RAMWRT": false,
+          "ALTZP": false,
+          "80STORE": false,
+          "PAGE2": false,
+          "HIRES": true
+        },
+        "hex": "0014283c5064788ca0b4c8dcf004182c4054687c90a4b8cce0f4081c3044586c8094a8bcd0e4f80c2034485c708498acc0d4e8fc1024384c6074889cb0c4d8ec0014283c5064788ca0b4c8dcf004182c4054687c90a4b8cce0f4081c3044586c18181818181818181818181818191919191919191919191919191a1a1a1a1a1a1a1a1a1a1a1a1a1b1b1b1b1b1b1b1b1b1b1b1b1b1c1c1c1c1c1c1c1c1c1c1c1c1d1d1d1d1d1d1d1d1d1d1d1d1d1e1e1e1e1e1e1e1e1e1e1e1e1e1f1f1f1f1f1f000000000000000080808080808080800000000000000000808080808080808000000000000000008080808080808080000000000000000080808080808080802828282828282828a8a8a8a8a8a8a8a82828282828282828a8a8a8a8a8a8a8a82828282828282828a8a8a8a8a8a8a8a82828282828282828a8a8a8a8a8a8a8a85050505050505050d0d0d0d0d0d0d0d05050505050505050d0d0d0d0d0d0d0d05050505050505050d0d0d0d0d0d0d0d05050505050505050d0d0d0d0d0d0d0d0"
+      }
+    }
+  }
+}

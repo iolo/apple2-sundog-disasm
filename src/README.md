@@ -49,3 +49,7 @@ inventoried segment headers as data tables. Header tails are excluded; see
 `native/raw_screen_init.s` reconstructs the callable screen-table initializer
 and its HGR high-address table from disk-1 block 2. This raw code has no Pascal
 procedure dictionary. See `docs/raw-screen-init.md`; other raw overlays remain.
+
+`native/raw_buffer_transform.s` reconstructs the evidenced 93-byte entry path
+of the raw block-156 transformation routine. Its trailing indirect-jump candidate
+and metadata remain separately tracked; see `docs/raw-buffer-transform.md`.

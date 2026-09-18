@@ -1,0 +1,19 @@
+{
+  "name": "raw_buffer_transform",
+  "size": 93,
+  "base": 3904,
+  "sha256": "9daf776fada9f557febbfc5cb55454b3a9613e250ecbf6e4dee29937df385359",
+  "origins": [
+    {
+      "disk": "disk1",
+      "block": 156
+    }
+  ],
+  "classification_evidence": "docs/raw-buffer-transform.md",
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Startup segment 7 loads block 156 to $0F40 and calls it through library 22 procedure 25"
+    }
+  ]
+}

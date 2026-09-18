@@ -3,6 +3,7 @@
 import json
 
 from disk_layout import ROOT, INPUTS, block_bytes, sha
+from hgr_asset import row_offset
 from verify_inputs import main as verify_inputs
 
 
@@ -65,6 +66,20 @@ def main():
     if captured != expected[entry["entry_offset"]:entry["entry_offset"] + len(captured)]:
         raise ValueError("Startup entry bytes differ from disk")
     print(f"Verified {len(overlays['loads'])} whole overlay loads and SYSTEM.STARTUP entry")
+    raw = json.loads((ROOT / 'docs/reference/raw-screen-runtime.json').read_text())['observations']
+    entry, exit_state = raw['rawEntryFirst']['state'], raw['rawScreenInitExit']['state']
+    loaded, tables = raw['rawScreenInitCapture']['value'], raw['rawScreenTables']['value']
+    expected_tables = (bytes((0x1800+y*20) & 255 for y in range(96)) +
+                       bytes((0x1800+y*20) >> 8 for y in range(96)) +
+                       bytes(row_offset(y) & 255 for y in range(192)))
+    if (entry['PC'] != 0x0F40 or exit_state['PC'] != 0x0FA8
+            or exit_state['S'] != entry['S']+2
+            or loaded['address'] != 0x0E80 or loaded['length'] != 512
+            or bytes.fromhex(loaded['hex']) != block_bytes(images['disk1'], 2, 3)
+            or tables['address'] != 0x0D00 or tables['length'] != 384
+            or bytes.fromhex(tables['hex']) != expected_tables):
+        raise ValueError('Raw screen initializer capture or generated tables disagree')
+    print('Verified raw screen initializer: 512 loaded bytes and 384 generated address bytes')
 
 
 if __name__ == "__main__":

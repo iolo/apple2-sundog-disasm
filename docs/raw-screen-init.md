@@ -17,8 +17,8 @@ Procedure 54 loads that selected block through the same wrapper into `$0E80`
 and invokes procedure 25 with target `$0F40`. Procedure 25 patches its JMP
 operand from that argument. Thus the observed disk bytes select block 2,
 load it at `$0E80`, and enter it at byte 192 (`$0F40`). These statements follow
-the reconstructed instructions and input bytes; a new runtime capture is not
-claimed here. The same startup source on disk 2 does not imply block 2 on that
+the reconstructed instructions and input bytes. The subsequent step-06x apple2ts
+capture confirms entry at $0F40 and all 512 loaded bytes. The same startup source on disk 2 does not imply block 2 on that
 side contains the same component: startup selection happens before the play-side
 swap. Only the verified disk-1 extent is adopted.
 
@@ -49,3 +49,14 @@ Further raw overlays exist. Startup segment 7 loads disk-1 block 156 at `$0F40`
 and later calls that address, replacing this initializer. Disk-2 block 83 also
 contains native-looking code at a different load address; its consumer and full
 extent need separate reconstruction. Neither is counted as completed here.
+
+## Runtime confirmation
+
+`docs/reference/raw-screen-runtime.json` records the continued unpatched apple2ts
+reference session stopped at $0F40 and then $0FA8. All 512 bytes at $0E80 match
+disk-1 block 2. At the return instruction, all 384 generated table bytes at $0D00
+match the 96 linear low/high row addresses and 192 HGR low row addresses. The
+stack pointer advances by two bytes, consistent with consuming one pointer
+argument while retaining the return address. `tools/verify_runtime_evidence.py`
+rechecks these facts. The session then reaches the title prompt and is paused;
+no joystick interaction or buffer-transform execution was claimed in this trace.

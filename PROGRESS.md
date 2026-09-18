@@ -1256,3 +1256,26 @@ and acceptance criteria.
   regions or establish complete executable discovery.
 - **Next action:** Reconstruct the raw routine loaded from disk-1 block 156 into
   $0F40; follow other raw loads, including native code visible in disk-2 block 83.
+
+## 2026-09-18 — Step 06x: raw buffer transform and live screen-table validation
+
+- **Work:** Reconstructed the 93-byte/53-instruction entry path loaded from disk-1
+  block 156 at $0F40. The p-code caller and block bias establish its origin. It
+  adds an incrementing byte value across a page-counted buffer, writes SHIP at
+  $1801–$1804, and returns. Recorded the four-byte parameter source in utility
+  code. Kept the trailing indirect-jump candidate and metadata outside adoption;
+  no unsupported classification was introduced to fill the rest of the block.
+- **Runtime evidence:** Revalidated the existing private apple2ts session paused
+  at $E4DE. Without changing CPU/memory/media, continued to the screen initializer
+  at $0F40, captured its whole 512-byte load, then stopped before RTS at $0FA8.
+  Its 384 generated table bytes exactly match the HGR/linear row formulas.
+  Continued to the title prompt and paused. The second raw routine has static
+  call evidence but was not reached in this runtime trace.
+- **Validation:** Preparation/adoption checked all 93 new bytes; full build and
+  exact-disk verification pass. Extended `tools/verify_runtime_evidence.py` to
+  verify the new 512-byte load, 384-byte output, entry/exit PCs, and stack change.
+  All earlier initialization, p-code, and overlay capture checks still pass.
+- **Coverage:** 148,528 source-built bytes, 8,192 asset bytes, 130,000 temporary
+  bytes (68,172 disk 1; 61,828 disk 2). Original images remain unchanged.
+- **Next action:** Extract the font/tile data loaded by library 22 procedure 20,
+  then reconstruct further raw overlays and remaining native metadata/tails.
