@@ -535,3 +535,21 @@ and acceptance criteria.
 - **Tooling:** Added `prepare_pcode_component.py` to reproduce source preparation,
   per-byte classification, assembly verification, and mapping of identical copies
   without reading originals. It refuses already reconstructed regions or outputs.
+
+## 2026-09-18 — Step 06j-01: reconstruct library_27
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 103, segment 27, block 135; disk2 header 103, segment 27, block 135.
+- **Work:** Reconstructed 1,616 bytes, 15 procedures,
+  913 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/library_27.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 32,580 output bytes, with 254,140 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
