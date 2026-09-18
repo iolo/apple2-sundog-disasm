@@ -408,3 +408,37 @@ and acceptance criteria.
 - **Next action:** Reconstruct the remaining `$F790`–`$FFFF` native/data region,
   resolve its preserved fragments and the initialization payload, then continue
   with Pascal executable modules and assets.
+
+## 2026-09-18 — Step 06f: reconstruct high-memory services and preserved tail
+
+- **Status:** Module checkpoint complete. All SYSTEM.APPLE bytes are now
+  source-built; overall step 06 and unresolved data analysis remain active.
+- **Work:** Added `native_high.s`, typed recipe, linker configuration, and
+  adoption mapping for `$F790`–`$FFFF`: 2,160 bytes containing 168 instructions
+  (390 bytes) and 1,770 table/preservation bytes. Documented bank switching,
+  service dispatch, keyboard translation, and open questions in
+  `docs/native-high.md`.
+- **Evidence:** The 95-byte fragment at `$F7A1` exactly duplicates initializer
+  bytes `$F5A1`–`$F5FF`. It is represented as a truncated instruction fragment,
+  without claiming it executes. Preserved the unknown `THISISIT` records,
+  metadata, and zero fill. The 42-byte initialization payload remains open
+  until its later consumer can be established during Pascal reconstruction.
+- **Validation:** `tools/check_native_high.py` checks all code spans, 79
+  direct/vector targets against the correct banks, 22 computed service
+  targets, switch operands, keyboard tables, and the duplicate fragment.
+  Corrupt bank-2 destinations, bank switches, and fragment bytes are rejected.
+  Whitespace checks pass.
+- **Build/behavior:** Both disks compare byte for byte. A new isolated tree
+  containing only `tools/`, `src/`, and `reconstruction/` builds identical
+  reports and images without originals. New MAME play/utility runs match all
+  ten screenshots and expected final media hashes. Reports are in
+  `docs/reference/step06f-native-audit.json` and
+  `docs/reference/step06f-build-validation.json`.
+- **Coverage:** Audited every byte of logical blocks 219–250: all 16,384
+  SYSTEM.APPLE bytes belong to the five assembled runtime components, with no
+  temporary owner. Overall source-built output is 18,212 bytes; 268,508 remain
+  temporary. Counts include owned data/fill and do not imply complete semantic
+  understanding or completion of the other executable regions.
+- **Next action:** Expand the p-code decoder/assembler from the entry proof to
+  complete Pascal procedures and modules, using native handler behavior to
+  resolve instruction encodings and later revisit unknown runtime payloads.

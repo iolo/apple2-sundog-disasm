@@ -19,6 +19,9 @@ and device routines, and the initializer-copy stub; see `docs/native-shared.md`.
 `native/native_init.s` reconstructs the five-page initializer at its copied
 execution address; `docs/native-init.md` records original-address aliases and
 the unresolved 42-byte initialization payload.
+`native/native_high.s` reconstructs the final bank-switch/service stubs and
+preserved tail; see `docs/native-high.md`. These five runtime components cover
+the entire SYSTEM.APPLE image, with unresolved data meanings documented.
 `python3 tools/build_disks.py` assembles these components and combines them with
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.

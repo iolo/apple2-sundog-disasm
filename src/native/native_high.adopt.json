@@ -1,0 +1,61 @@
+{
+  "name": "native_high",
+  "source": "src/native/native_high.s",
+  "config": "src/native/native_high.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 119440,
+      "size": 112,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 119040,
+      "size": 256,
+      "input_offset": 112
+    },
+    {
+      "disk": "disk1",
+      "offset": 122624,
+      "size": 256,
+      "input_offset": 368
+    },
+    {
+      "disk": "disk1",
+      "offset": 122880,
+      "size": 256,
+      "input_offset": 624
+    },
+    {
+      "disk": "disk1",
+      "offset": 126464,
+      "size": 256,
+      "input_offset": 880
+    },
+    {
+      "disk": "disk1",
+      "offset": 126208,
+      "size": 256,
+      "input_offset": 1136
+    },
+    {
+      "disk": "disk1",
+      "offset": 125952,
+      "size": 256,
+      "input_offset": 1392
+    },
+    {
+      "disk": "disk1",
+      "offset": 125696,
+      "size": 256,
+      "input_offset": 1648
+    },
+    {
+      "disk": "disk1",
+      "offset": 125440,
+      "size": 256,
+      "input_offset": 1904
+    }
+  ]
+}

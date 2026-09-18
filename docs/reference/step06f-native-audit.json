@@ -1,0 +1,164 @@
+{
+  "sha256": "e1124caf0a14e2cba497ceaa5e296991d8d462c73867715edf806d1d43a9fa19",
+  "instruction_count": 168,
+  "instruction_bytes": 390,
+  "data_bytes": 1770,
+  "checked_direct_and_vector_targets": 79,
+  "code_spans_end_exclusive": [
+    [
+      63393,
+      63488
+    ],
+    [
+      65152,
+      65200
+    ],
+    [
+      65240,
+      65272
+    ],
+    [
+      65280,
+      65359
+    ],
+    [
+      65368,
+      65504
+    ]
+  ],
+  "service_dispatch": [
+    {
+      "entry": 65280,
+      "derived_target": 65372
+    },
+    {
+      "entry": 65283,
+      "derived_target": 65375
+    },
+    {
+      "entry": 65286,
+      "derived_target": 65378
+    },
+    {
+      "entry": 65289,
+      "derived_target": 65381
+    },
+    {
+      "entry": 65292,
+      "derived_target": 65384
+    },
+    {
+      "entry": 65295,
+      "derived_target": 65387
+    },
+    {
+      "entry": 65298,
+      "derived_target": 65390
+    },
+    {
+      "entry": 65301,
+      "derived_target": 65393
+    },
+    {
+      "entry": 65304,
+      "derived_target": 65396
+    },
+    {
+      "entry": 65307,
+      "derived_target": 65399
+    },
+    {
+      "entry": 65310,
+      "derived_target": 65402
+    },
+    {
+      "entry": 65313,
+      "derived_target": 65405
+    },
+    {
+      "entry": 65316,
+      "derived_target": 65408
+    },
+    {
+      "entry": 65319,
+      "derived_target": 65411
+    },
+    {
+      "entry": 65322,
+      "derived_target": 65414
+    },
+    {
+      "entry": 65325,
+      "derived_target": 65417
+    },
+    {
+      "entry": 65328,
+      "derived_target": 65420
+    },
+    {
+      "entry": 65331,
+      "derived_target": 65423
+    },
+    {
+      "entry": 65334,
+      "derived_target": 65426
+    },
+    {
+      "entry": 65337,
+      "derived_target": 65429
+    },
+    {
+      "entry": 65340,
+      "derived_target": 65432
+    },
+    {
+      "entry": 65343,
+      "derived_target": 65435
+    }
+  ],
+  "preserved_duplicate_fragment": {
+    "address": 63393,
+    "size": 95,
+    "original_initializer_address": 62881,
+    "copied_initializer_address": 27409,
+    "sha256": "1cc7c04a60387d5535618702cddf2c9934505f888cf7eb4b689d4339281e0fb9",
+    "execution_not_established": true
+  },
+  "unresolved_preservation_ranges": [
+    [
+      63376,
+      63393
+    ],
+    [
+      63488,
+      63528
+    ],
+    [
+      65526,
+      65528
+    ]
+  ],
+  "bank1_entry": 53586,
+  "bank2_targets": [
+    53286,
+    53289,
+    54915,
+    54949,
+    55279,
+    55326,
+    55357,
+    55368,
+    55377,
+    55425,
+    55429,
+    55480,
+    55554,
+    55593,
+    55627,
+    55977,
+    56167,
+    56323,
+    56336,
+    56380
+  ]
+}
