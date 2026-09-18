@@ -1,0 +1,31 @@
+{
+  "name": "viewscreen_io",
+  "source": "src/native/viewscreen_io.s",
+  "config": "src/native/viewscreen_io.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 44288,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 44032,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 43776,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 43520,
+      "size": 256,
+      "input_offset": 768
+    }
+  ]
+}

@@ -32,10 +32,10 @@ Pascal segments, and the split-system fragment are source-built. Remaining work
 includes classifying other disk regions, resolving provisional runtime data,
 extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
-Current coverage is 151,520 source-built bytes (including classified header
+Current coverage is 152,544 source-built bytes (including classified header
 tables) plus 18,432 classified asset bytes from the
 [title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
-and two copies of the [shared font](docs/shared-font.md); 116,768 bytes remain temporary.
+and two copies of the [shared font](docs/shared-font.md); 115,744 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

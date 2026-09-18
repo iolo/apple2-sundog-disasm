@@ -65,3 +65,7 @@ See `docs/warp-animation.md` for load, entry, and runtime-patch evidence.
 `native/viewscreen_transition.s` reconstructs the 944-byte native container
 loaded from disk-2 blocks 86–87, with its drawing tables and row-copy buffer.
 The extra 80 fetched bytes remain unresolved; see `docs/viewscreen-transition.md`.
+
+`native/viewscreen_io.s` reconstructs all of disk-2 blocks 81–82: drawing
+routines, joystick input, lookup tables, and initial runtime workspace. See
+`docs/viewscreen-io.md` for the independently called entries and table writer.

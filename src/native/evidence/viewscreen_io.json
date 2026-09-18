@@ -1,0 +1,123 @@
+{
+  "name": "viewscreen_io",
+  "size": 1024,
+  "base": 2048,
+  "sha256": "3220ae4b311c128879eb11f8d60b2040fac03a8c4d652be943c7674b14d3dd11",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 81
+    }
+  ],
+  "classification_evidence": "docs/viewscreen-io.md",
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Game 12 calls $0800 through library 22 procedure 25 at $02DA/$02E5"
+    },
+    {
+      "offset": 470,
+      "evidence": "Game 12 calls $09D6 at $041F/$0627"
+    },
+    {
+      "offset": 501,
+      "evidence": "Viewscreen transition calls $09F5 directly at $1B2E"
+    },
+    {
+      "offset": 627,
+      "evidence": "Game 12 calls $0A73 at $09FE"
+    }
+  ],
+  "data": [
+    {
+      "offset": 311,
+      "size": 53,
+      "kind": "drawing-columns",
+      "evidence": "$08A5/$08B0 read this table"
+    },
+    {
+      "offset": 364,
+      "size": 53,
+      "kind": "first-drawing-masks",
+      "evidence": "$08BA/$08D3 read this table"
+    },
+    {
+      "offset": 417,
+      "size": 53,
+      "kind": "second-drawing-masks",
+      "evidence": "$08C6/$08E2/$08E7 read this table"
+    },
+    {
+      "offset": 596,
+      "size": 7,
+      "kind": "pixel-masks",
+      "evidence": "$0A1A indexes only when unsigned X < 7"
+    },
+    {
+      "offset": 603,
+      "size": 8,
+      "kind": "mark-address-high",
+      "evidence": "$0A44 reads with X=7 down to 0"
+    },
+    {
+      "offset": 611,
+      "size": 8,
+      "kind": "mark-address-low",
+      "evidence": "$0A3F reads with X=7 down to 0"
+    },
+    {
+      "offset": 619,
+      "size": 8,
+      "kind": "mark-or-masks",
+      "evidence": "$0A49 reads with X=7 down to 0"
+    },
+    {
+      "offset": 735,
+      "size": 32,
+      "kind": "signed-paddle-motion",
+      "evidence": "$0AB7/$0AC7 read using counters limited and shifted to 0-31"
+    },
+    {
+      "offset": 767,
+      "size": 1,
+      "kind": "metadata-alignment",
+      "evidence": "Zero byte between motion table and aligned native relocation words"
+    },
+    {
+      "offset": 768,
+      "size": 8,
+      "kind": "native-relocation-counts",
+      "evidence": "Four empty lists independently validated by native_relocations"
+    },
+    {
+      "offset": 776,
+      "size": 2,
+      "kind": "native-entry-pointer",
+      "evidence": "Backward pointer to $0800"
+    },
+    {
+      "offset": 778,
+      "size": 2,
+      "kind": "native-attributes",
+      "evidence": "Native representation and lexical level zero"
+    },
+    {
+      "offset": 780,
+      "size": 2,
+      "kind": "procedure-dictionary",
+      "evidence": "Backward pointer to $0B0A"
+    },
+    {
+      "offset": 782,
+      "size": 2,
+      "kind": "segment-trailer",
+      "evidence": "Segment and procedure count 1,1"
+    },
+    {
+      "offset": 784,
+      "size": 240,
+      "kind": "initial-drawing-workspace",
+      "evidence": "Game 13 procedure 2 overwrites the entire $0B00-$0BFF page immediately after loading; native $0A06 indexes it"
+    }
+  ]
+}

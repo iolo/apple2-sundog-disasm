@@ -24,8 +24,8 @@ This supports the transition role without claiming detailed gameplay semantics.
 The external JSR at `$1B2E` calls `$09F5`. Game 13 at `$25EA` loads the two-block
 `$0800` overlay from `word27 + 2 + 3 = 81`. In those bytes, `$09F5` reads the
 transition's `$2B/$2D/$2C` parameters, calls `$091A`, and writes through `($24),Y`,
-returning at `$0A53`. This records the external dependency; the remaining overlay
-at blocks 81–82 still requires separate reconstruction.
+returning at `$0A53`. This records the external dependency; the complete overlay
+at blocks 81–82 is now reconstructed in [viewscreen-io.md](viewscreen-io.md).
 
 ## Classification
 

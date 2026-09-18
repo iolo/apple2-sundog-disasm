@@ -39,9 +39,9 @@ Split large steps into independently validated, logged, and committed increments
   resolved; every subsequent checkpoint must follow the base rule above.
 - `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06v.
   All inventoried executable segments are source-built. Step 06 remains open for
-  other-region classification and provisional runtime data. Steps 06w–06aa add raw
+  other-region classification and provisional runtime data. Steps 06w–06ab add raw
   screen-initialization, buffer-transformation, certificate-reveal, warp-animation,
-  and viewscreen-transition code
+  viewscreen-transition, and shared drawing/joystick code
   outside the Pascal inventory; step 07a extracts
   the independently confirmed title bitmap, step 07b extracts the shared font,
   and step 07c extracts the registration certificate. This overlap does not waive any

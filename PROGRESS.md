@@ -1391,3 +1391,24 @@ and acceptance criteria.
   require the final code/data audit.
 - **Next action:** Reconstruct the shared drawing overlay at disk-2 blocks 81–82,
   then continue asset classification and unresolved native/container tails.
+
+## 2026-09-18 — Step 06ab: shared viewscreen drawing and joystick overlay
+
+- **Work/evidence:** Reconstructed all 1,024 bytes of disk-2 blocks 81–82 at
+  $0800. P-code callers establish three argument-consuming entries and the
+  viewscreen transition establishes the direct $09F5 helper. Classified 290
+  instructions/545 code bytes and 479 data bytes: drawing masks/columns, mark
+  addresses, signed paddle mapping, native metadata, and initial table workspace.
+- **Workspace evidence:** Game 13 calls procedure 2 immediately after the block
+  read. Its bounded loop writes all 256 bytes of $0B00–$0BFF, which native $0A06
+  indexes. This accounts for the metadata-overwritten page and its nonzero final
+  stored byte without guessing padding or changing the on-disk representation.
+- **Validation:** The existing dictionary/relocation parsers confirm the 784-byte
+  native container. Preparation and adoption verify all 1,024 bytes, including
+  typed metadata. Full build, original-input hashes, and both complete disk
+  comparisons pass. No new emulator trace is claimed for these routines.
+- **Coverage:** 152,544 source-built bytes, 18,432 asset bytes, 115,744 temporary
+  bytes (58,444 disk 1; 57,300 disk 2). Final classification and behavior gates
+  remain open, including provisional regions in older native source.
+- **Next action:** Trace the scene-display raw loader in game 21 and its image
+  consumers, then continue remaining native tails and data banks.

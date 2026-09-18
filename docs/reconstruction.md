@@ -94,12 +94,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Registration certificate HGR page | `assets/certificate/certificate.hgr` | Disk 1 blocks 5–20 | 8,192 |
 | Warp animation code and embedded data | `src/native/warp_animation.s` | Disk 2 blocks 83–85 | 1,536 |
 | Viewscreen transition and native metadata | `src/native/viewscreen_transition.s` | First 944 bytes of disk 2 blocks 86–87 | 944 |
+| Shared viewscreen drawing/joystick overlay | `src/native/viewscreen_io.s` | Disk 2 blocks 81–82 | 1,024 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 58,324 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 57,300 |
 
-The 151,520 source-built bytes include instructions and their owned tables,
+The 152,544 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-151,520 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+152,544 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -239,6 +240,11 @@ and 117,712 temporary bytes. Both complete images still match the originals.
 
 Step 06aa reconstructs the [viewscreen transition](viewscreen-transition.md),
 including its 410 instructions, drawing tables, row-copy buffer, and native
-metadata. Current ownership is 151,520 source-built bytes, 18,432 classified
+metadata. At that checkpoint ownership was 151,520 source-built bytes, 18,432 classified
 asset bytes, and 116,768 temporary bytes. The extra 80 bytes read after the
 944-byte native container remain unresolved. Both full images still match exactly.
+
+Step 06ab reconstructs the [shared viewscreen drawing/joystick overlay](viewscreen-io.md),
+including its 290 instructions and all lookup tables/workspace. Current ownership
+is 152,544 source-built bytes, 18,432 classified asset bytes, and 115,744 temporary
+bytes. Both complete disk images still match exactly.
