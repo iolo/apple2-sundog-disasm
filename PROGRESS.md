@@ -1475,3 +1475,26 @@ and acceptance criteria.
   bytes (56,757 disk 1; 51,870 disk 2).
 - **Next action:** Follow the tile-image bank consumer for disk-2 blocks 9–28
   and its disk-1 copies, then return to remaining raw code and persistent data.
+
+## 2026-09-18 — Step 07f: extract four complete 32-row tile banks
+
+- **Work/evidence:** Traced game 21's four-block indexed loader and modulo-four
+  bank selection to disk-2 blocks 9–24. Library 23 procedure 3's 32-row path
+  multiplies map indices by 128 and copies four bytes per row from the two
+  adjacent buffers. Extracted all 64 tiles and the exact disk-1 copies of banks
+  0/1 at blocks 176–183, replacing 12,288 temporary disk bytes.
+- **Artifacts/review:** Added per-bank raw data, reversible row listings, atlases,
+  manifests, adoption recipes, extractor, and consumer documentation. Visually
+  reviewed the dotted terrain and building-like frames/shapes. Preserved all HGR
+  phase bits; previews are monochrome masks with numeric tile labels.
+- **Validation:** Two tile tests verify row/record boundaries, full-byte round
+  trips, and malformed inputs. Extraction independently checks baseline hashes,
+  shared-copy equality, and every row-list inverse. All four adoptions, builds,
+  original-input checks, and complete disk comparisons pass.
+- **Limits:** The fifth, 24-row bank is excluded pending its separate format/tail
+  analysis. No fresh emulator trace or rendered-map comparison is claimed.
+- **Coverage:** 152,679 source-built bytes, 37,702 asset bytes, 96,339 temporary
+  bytes (52,661 disk 1; 43,678 disk 2). Overall completion still requires full
+  classification, older provisional native-region review, and final behavior checks.
+- **Next action:** Resolve the 24-row tile bank and packed world-map consumer,
+  then continue the remaining native fragments and persistent data buffers.

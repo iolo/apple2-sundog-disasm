@@ -1,0 +1,56 @@
+{
+  "name": "tile_bank3",
+  "data": "assets/tiles/bank3/tiles.bin",
+  "format": "sundog-32-row-tiles",
+  "classification": "docs/tile-banks.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 9472,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 9216,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 8960,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 8704,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 8448,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 12032,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 12288,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 15872,
+      "size": 256,
+      "input_offset": 1792
+    }
+  ]
+}

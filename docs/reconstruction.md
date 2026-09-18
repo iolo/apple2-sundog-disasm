@@ -98,8 +98,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Raw disk-integrity checker and table | `src/native/disk_checksum.s` | First 135 bytes of disk 2 block 54 | 135 |
 | Play graphics banks 1 and 2 | `assets/play-glyphs/bank{1,2}/glyphs.bin` | Disk 2 blocks 5–8 | 2,048 |
 | Compressed ship outlines | `assets/ship-images/{full_ship,ship_section}/image.rle` | Disk 2 blocks 29 and 33; shared stream at disk 1 block 188 | 4,934 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 56,757 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 51,870 |
+| Four 32-row tile banks | `assets/tiles/bank{0,1,2,3}/tiles.bin` | Disk 2 blocks 9–24; copies at disk 1 blocks 176–183 | 12,288 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 52,661 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 43,678 |
 
 The 152,679 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -263,6 +264,11 @@ ownership was 152,679 source-built bytes, 20,480 asset bytes, and 113,561 tempor
 bytes. The bank-2 copy gaps retain their original high bits.
 
 Step 07e extracts the [compressed ship outlines](packed-ship-images.md), with
-lossless packet listings and complete decoded HGR pages. Current ownership is
+lossless packet listings and complete decoded HGR pages. At that checkpoint ownership was
 152,679 source-built bytes, 25,414 asset bytes, and 108,627 temporary bytes.
 Bytes fetched beyond the consumed RLE streams remain separately unresolved.
+
+Step 07f extracts the [four 32-row tile banks](tile-banks.md), including all
+64 tiles and the two identical disk-1 copies. Current ownership is 152,679
+source-built bytes, 37,702 asset bytes, and 96,339 temporary bytes. The separate
+24-row bank and its boundaries remain unresolved.

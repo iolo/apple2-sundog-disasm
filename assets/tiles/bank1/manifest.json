@@ -1,0 +1,36 @@
+{
+  "bank": 1,
+  "format": "sundog-32-row-tiles",
+  "size": 2048,
+  "sha256": "8b01f5ccc9805e43be29419ea9c6fc24c400f69174922f09e8afc320ef63680c",
+  "origins": [
+    {
+      "disk": "disk2",
+      "logical_blocks": [
+        13,
+        17
+      ]
+    },
+    {
+      "disk": "disk1",
+      "logical_blocks": [
+        180,
+        184
+      ]
+    }
+  ],
+  "tile_count": 16,
+  "tile_size": [
+    28,
+    32
+  ],
+  "bytes_per_row": 4,
+  "bytes_per_tile": 128,
+  "layout": "Tile-major, top-to-bottom rows, four bytes left-to-right; low bits 0-6 are pixels",
+  "phase_bits": "High bits copied by renderer and preserved in raw data and row listing",
+  "consumer": "Library 23 procedure 3, 32-row path",
+  "classification_evidence": "docs/tile-banks.md",
+  "preview": "atlas.png",
+  "preview_note": "Monochrome masks; no artifact color or map composition",
+  "inverse": "pack_tiles(rows.json) exactly reproduces tiles.bin"
+}
