@@ -3,8 +3,11 @@
 ## Objective
 
 Produce disassembled source, extracted assets, and a reproducible build that
-recreates both supplied disk images byte for byte. Code documentation and game
-mechanics analysis are optional follow-up work, as specified in `PRD.md`.
+recreates runnable versions of both supplied disk images. Every region must be
+classified as code or data with evidence, and all code must be disassembled.
+Byte-for-byte identity is preferred, not required; any differences must be mapped,
+explained, and behaviorally validated. Detailed code documentation and game
+mechanics analysis remain optional follow-up work, as specified in `PRD.md`.
 
 ## Base rule: log and commit every step
 
@@ -125,7 +128,9 @@ images match the originals, and the reference boot still works.
   areas in a coverage ledger; do not disguise executable blobs as assets.
 
 **Done when:** every identified executable region has a source representation
-that rebuilds exactly, and the coverage ledger contains no unexplained code.
+that assembles, and every executable/data boundary has recorded evidence. No
+unclassified code/data chunks remain in the reconstructed modules; detailed
+meaning of established data regions may remain unknown.
 
 ### 07 — Extract assets and preserve their encodings
 
@@ -138,13 +143,15 @@ that rebuilds exactly, and the coverage ledger contains no unexplained code.
 - Rebuild asset regions from extracted representations; retain explicitly
   documented raw data only where that is the appropriate lossless format.
 
-**Done when:** all identified assets are extracted, converted assets round-trip
-exactly, and representative previews agree with the running game.
+**Done when:** all identified assets are extracted, converted assets have
+reproducible encodings (with any changes documented), and representative previews
+agree with the running game.
 
-### 08 — Complete the standalone, byte-identical disk build
+### 08 — Complete the standalone disk build and classification audit
 
 - Replace remaining temporary reconstruction inputs with source-built code,
-  extracted assets, or explicitly documented preservation data.
+  extracted assets, or evidence-backed data. Preservation data must be classified
+  as data with evidence; it cannot conceal undecoded code or mixed regions.
 - Generate both full images, including filesystem metadata, boot structures,
   sector placement, unused contents, and padding.
 - Make the build independent of reading or copying the original disk images;
@@ -153,7 +160,10 @@ exactly, and representative previews agree with the running game.
   checks image sizes, hashes, and byte equality with nonzero exit on mismatch.
 
 **Done when:** a clean build using only project source, assets, preservation data,
-and declared tools produces both original images byte for byte.
+and declared tools produces both runnable images, every byte is classified as
+code or data, and no temporary/unidentified chunks remain. Both images either
+match the originals exactly or have a complete, explained difference report
+supported by behavioral validation.
 
 ### 09 — Validate behavior and reproducibility
 
@@ -165,8 +175,11 @@ and declared tools produces both original images byte for byte.
   inputs were never modified. Add lightweight automated regression checks for
   the build and exact-image comparison.
 
-**Done when:** both builds match the baseline hashes, the documented emulator
-checks pass, and any untested behavior is explicitly listed.
+**Done when:** clean builds are deterministic, exact comparisons or explained
+difference reports are recorded, the documented emulator checks pass, and any
+untested behavior is explicitly listed. Run full emulator checks at integration
+milestones and whenever output bytes change; identical-output module checkpoints
+can reuse the recorded behavior baseline after byte comparison.
 
 ### 10 — Deliver usage documentation and coverage report
 
@@ -194,8 +207,12 @@ core deliverables.
 
 ## Completion criteria
 
-The required work is complete after steps 01–10 when both disks rebuild exactly
-from the delivered source and assets, all executable regions are accounted for,
-assets have been extracted, behavioral checks are documented, and every step has
-a corresponding progress entry and commit. A disk copy or an unexplained binary
-payload is insufficient to satisfy the disassembled-source requirement.
+The required work is complete after steps 01–10 when both runnable disks rebuild
+from delivered source and data/assets, every region is classified as code or data
+with evidence, all code is disassembled, assets have been extracted, behavioral
+checks are documented, and every step has a progress entry and commit. Exact
+identity is preferred; differences require location mapping, explanation, and
+behavioral validation. A disk copy, executable blob, or unidentified byte chunk
+is insufficient. Unknown data semantics are allowed only after data classification
+is established. Existing temporary remainders are work in progress, not an
+accepted final input category.

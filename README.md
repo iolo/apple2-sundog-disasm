@@ -1,7 +1,10 @@
 # apple2-sundog-disasm
 
 Reverse engineering the supplied Apple II SunDog disks, with the goal of a
-byte-identical rebuild from disassembled source and extracted assets.
+runnable rebuild from disassembled source and extracted data/assets. Every region
+must be classified as code or data with evidence. Byte identity is preferred;
+any differences must be explained and validated. Unidentified chunks are not
+acceptable in the final deliverable (see [PRD.md](PRD.md)).
 
 See [PLAN.md](PLAN.md) for the implementation sequence and
 [PROGRESS.md](PROGRESS.md) for evidence and per-step checkpoints.
@@ -24,8 +27,8 @@ python3 tools/verify_disks.py
 ```
 
 See [build instructions and coverage](docs/reconstruction.md). The native
-bootstrap, early title routine, native p-code primitive bank, and first system
-p-code procedure are assembled from source. The remaining executable modules
+bootstrap, early title routine, complete SYSTEM.APPLE runtime, first system
+p-code procedure, and complete disk-1 startup segment are assembled from source. The remaining executable modules
 and assets still require reconstruction.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

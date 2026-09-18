@@ -27,6 +27,17 @@ checks the originals, then exact byte equality; any mismatch exits nonzero and
 reports the first image offset, expected/actual byte, track, image/physical
 sector, logical block/half, and mapped reconstruction component.
 
+## Acceptance criteria
+
+Every region must be classified as code or data with evidence. All executable
+content must be represented as instructions; identified data may retain unknown
+semantics. Temporary unresolved inputs are never accepted as final data simply
+because the build succeeds. Byte identity is preferred rather than mandatory;
+any deviations need a mapped, explained difference report and behavioral checks.
+The current pipeline remains strict because its outputs still match exactly.
+Full emulator runs are reserved for integration milestones or changed output;
+byte-identical module replacements reuse the established reference behavior.
+
 ## Source coverage at this checkpoint
 
 | Component | Source | Output locations | Bytes |

@@ -473,3 +473,23 @@ and acceptance criteria.
 - **Next action:** Apply the decoder to the remaining segment inventory,
   extend it for newly encountered formats using the shipped handlers, and
   reconstruct further system/library/game modules in validated checkpoints.
+
+## 2026-09-18 — Goal revision: classification required, byte identity preferred
+
+- **Authorization:** User requested adjustment of the goal and related documents,
+  then continuation. Unidentified chunks are unacceptable; every region must be
+  distinguished as code or data at minimum.
+- **Changes:** Updated PRD, PLAN, README, and reconstruction guidance. Require
+  evidence-backed classification and disassembly of all executable content.
+  Established data may retain unknown semantics. Byte identity is preferred,
+  with mapped/explained and behaviorally validated differences permitted.
+  Source/data-only builds, asset extraction, final emulator checks, and logging
+  and committing every checkpoint remain required.
+- **Validation:** Reviewed acceptance language for consistency; no code or output
+  changed. Existing exact build comparisons remain useful and strict. Full
+  emulator reruns are now reserved for integration milestones or changed outputs.
+- **Goal tracking:** The session goal refers to implementing PLAN.md; the revised
+  PLAN is its current acceptance specification. The goal tool cannot edit the
+  objective text or resume its paused scheduling state. No completion claimed.
+- **Next action:** Continue p-code format coverage and reconstruct additional
+  complete modules, retaining explicit failures for unclassified bytes.
