@@ -1001,3 +1001,14 @@ and acceptance criteria.
   both are source label differences. Three parser tests pass; corrupted relocation
   operands, branch boundaries, and list counts are rejected. One mask table's
   consumer remains unknown, with its data-classification evidence documented.
+
+## 2026-09-18 — Step 06n: replace the duplicate disk-2 startup payload
+
+- **Work:** Mapped the disk-2 copy of the 576-byte startup segment to the existing
+  startup source/configuration. No duplicate instruction listing was introduced.
+- **Evidence/validation:** Inventory hash and adoption byte comparison establish
+  identity with the reconstructed disk-1 segment. All replacement ranges were
+  temporary. The full build and exact comparisons pass for both disks.
+- **Coverage:** 114,716 source-built output bytes; 172,004 remain temporary.
+- **Next action:** Audit current executable coverage and build independence, then
+  continue the remaining mixed native modules, split system core, and assets.
