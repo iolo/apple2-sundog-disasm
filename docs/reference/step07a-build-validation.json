@@ -1,0 +1,76 @@
+{
+  "isolated_directory": "build/asset-build-h4yxmk5z",
+  "copied_directories": [
+    "tools",
+    "src",
+    "reconstruction",
+    "assets"
+  ],
+  "original_inputs_present": false,
+  "both_images_equal": true,
+  "build": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "6f325275d34144bf3d16bd16cb49abdd759671887e6a2d519fa2b62ae4f192b7",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 145834,
+      "temporary-unresolved": 132694,
+      "identified-data": 8192
+    }
+  },
+  "tests": {
+    "native_decoder": 6,
+    "pcode_decoder": 13,
+    "native_relocation": 3,
+    "hgr_asset": 3,
+    "adoption": 4,
+    "reconstruction": 3
+  },
+  "mame_runs": [
+    {
+      "baseline": "build/reference/game-play-6s40gkfz",
+      "current": "build/reference/game-play-gg57e66v",
+      "screenshots": {
+        "01-title.png": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+        "02-menu.png": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+        "03-selection.png": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+        "04-result.png": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+        "05-after-swap.png": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+        "06-personal-status.png": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754"
+      },
+      "all_screenshots_byte_equal": true,
+      "final_media_hashes": {
+        "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "final_media_equal": true
+    },
+    {
+      "baseline": "build/reference/game-utilities-ykwy1ltx",
+      "current": "build/reference/game-utilities-xlyo9doe",
+      "screenshots": {
+        "01-title.png": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+        "02-menu.png": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+        "03-selection.png": "22d8fb8461025fa01c60595699fa5ccffbae3bec936ec375701d53a7e29131bb",
+        "04-result.png": "02c408c06cd297156cc3aba716b035873f37bd71fabc082056f09816d8c3668c"
+      },
+      "all_screenshots_byte_equal": true,
+      "final_media_hashes": {
+        "disk1": "dcc610d358e22007c787d8390d51aae05c8c286640fd16af8233ee53392791c1",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "final_media_equal": true
+    }
+  ]
+}

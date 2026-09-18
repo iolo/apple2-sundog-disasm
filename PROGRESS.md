@@ -1181,3 +1181,27 @@ and acceptance criteria.
   BF56 initialization payload still needs code/data boundaries established.
 - **Next action:** Classify and extract the confirmed title bitmap as an asset;
   continue investigation of other regions and provisional runtime classifications.
+
+## 2026-09-18 — Step 07a: classify and extract the title bitmap
+
+- **Work:** Extracted the complete 8,192-byte title HGR buffer with a manifest,
+  adoption recipe, and monochrome PNG preview. Its native consumer addresses
+  7,680 displayed bytes; 512 non-display bytes remain losslessly preserved as
+  image-buffer padding. Recorded the eight non-$FF padding bytes individually.
+  The preview's ship/planet artwork was visually compared with the MAME reference;
+  later text/menu overlays and artifact colors are explicitly outside this preview.
+- **Build integration:** Added `identified-data` components with required format
+  and classification evidence, separate from source and temporary remainders.
+  The normal build reads the committed asset; no extraction or original images
+  are required. Kept the remaining classification work in step 06 explicitly open.
+- **Validation:** Three HGR tests verify known row addresses, complete/disjoint
+  byte coverage, preservation of high bits/holes, and bad-size rejection. Four
+  adoption tests and three reconstruction tests pass. Both disks compare exactly.
+  A fresh build with only tools/source/reconstruction/assets produces identical
+  disks. New MAME play and utility runs match all ten reference screenshots and
+  expected final media hashes; report: step07a-build-validation.json.
+- **Coverage:** 145,834 source-built bytes; 8,192 identified asset bytes; 132,694
+  bytes remain temporary. Complete disk classification, remaining asset extraction,
+  and final both-emulator/save-load checks are not yet done.
+- **Next action:** Investigate provisional runtime bytes and orphan/header regions,
+  map the remaining data consumers, and extract further images/fonts/game data.

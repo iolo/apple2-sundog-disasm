@@ -1,0 +1,200 @@
+{
+  "name": "title_bitmap",
+  "data": "assets/title/title.hgr",
+  "format": "apple2-hgr-page",
+  "classification": "docs/title-bitmap.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 104704,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 104448,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 104192,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 103936,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 103680,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk1",
+      "offset": 103424,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk1",
+      "offset": 103168,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk1",
+      "offset": 102912,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk1",
+      "offset": 102656,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk1",
+      "offset": 106240,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk1",
+      "offset": 106496,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk1",
+      "offset": 110080,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk1",
+      "offset": 109824,
+      "size": 256,
+      "input_offset": 3072
+    },
+    {
+      "disk": "disk1",
+      "offset": 109568,
+      "size": 256,
+      "input_offset": 3328
+    },
+    {
+      "disk": "disk1",
+      "offset": 109312,
+      "size": 256,
+      "input_offset": 3584
+    },
+    {
+      "disk": "disk1",
+      "offset": 109056,
+      "size": 256,
+      "input_offset": 3840
+    },
+    {
+      "disk": "disk1",
+      "offset": 108800,
+      "size": 256,
+      "input_offset": 4096
+    },
+    {
+      "disk": "disk1",
+      "offset": 108544,
+      "size": 256,
+      "input_offset": 4352
+    },
+    {
+      "disk": "disk1",
+      "offset": 108288,
+      "size": 256,
+      "input_offset": 4608
+    },
+    {
+      "disk": "disk1",
+      "offset": 108032,
+      "size": 256,
+      "input_offset": 4864
+    },
+    {
+      "disk": "disk1",
+      "offset": 107776,
+      "size": 256,
+      "input_offset": 5120
+    },
+    {
+      "disk": "disk1",
+      "offset": 107520,
+      "size": 256,
+      "input_offset": 5376
+    },
+    {
+      "disk": "disk1",
+      "offset": 107264,
+      "size": 256,
+      "input_offset": 5632
+    },
+    {
+      "disk": "disk1",
+      "offset": 107008,
+      "size": 256,
+      "input_offset": 5888
+    },
+    {
+      "disk": "disk1",
+      "offset": 106752,
+      "size": 256,
+      "input_offset": 6144
+    },
+    {
+      "disk": "disk1",
+      "offset": 110336,
+      "size": 256,
+      "input_offset": 6400
+    },
+    {
+      "disk": "disk1",
+      "offset": 110592,
+      "size": 256,
+      "input_offset": 6656
+    },
+    {
+      "disk": "disk1",
+      "offset": 114176,
+      "size": 256,
+      "input_offset": 6912
+    },
+    {
+      "disk": "disk1",
+      "offset": 113920,
+      "size": 256,
+      "input_offset": 7168
+    },
+    {
+      "disk": "disk1",
+      "offset": 113664,
+      "size": 256,
+      "input_offset": 7424
+    },
+    {
+      "disk": "disk1",
+      "offset": 113408,
+      "size": 256,
+      "input_offset": 7680
+    },
+    {
+      "disk": "disk1",
+      "offset": 113152,
+      "size": 256,
+      "input_offset": 7936
+    }
+  ]
+}

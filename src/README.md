@@ -13,7 +13,7 @@ segment, including case tables, procedure attributes, and dictionary. See
 `native/bootstrap.s` reconstructs all 768 bytes of the native boot component,
 including its identified tables and text, padding, and preserved tail bytes.
 `native/title_draw.s` reconstructs the next native routine and its scanline tables
-at `$4000`–`$43FF`; its source bitmap remains temporary.
+at `$4000`–`$43FF`; its bitmap is extracted under `assets/title/`.
 `native/pcode_primitives.s` reconstructs the interpreter's alternate bank and
 shared comparison tail; see `docs/pcode-native.md` for its boundaries and tables.
 `native/native_io.s` reconstructs bank-2 disk, device, and console services;

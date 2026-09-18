@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Replace temporary disk ranges with a verified newly assembled component.
+"""Replace temporary disk ranges with verified source or classified data.
 
 Maintenance tool, not a normal build dependency. A recipe supplies name, source,
-config, and mappings with disk/offset/size/input_offset. Baseline rebuilt disks
+config (or data/format/classification), and disk byte mappings. Baseline rebuilt disks
 must match the current manifest. No original disk image is read.
 """
 import argparse
@@ -23,6 +23,14 @@ def replacement_plan(manifest, images, recipe, binary):
         raise ValueError("Component name is invalid or already adopted")
     if not binary or not recipe["mappings"]:
         raise ValueError("Component and mappings must be nonempty")
+    if 'data' in recipe:
+        if 'source' in recipe or 'config' in recipe or not recipe.get('classification') or not recipe.get('format'):
+            raise ValueError('Identified data needs format/evidence and cannot also be source')
+        new_spec = dict(kind='identified-data', path=recipe['data'], format=recipe['format'],
+                        classification_evidence=recipe['classification'])
+    else:
+        new_spec = dict(kind='ca65-source', source=recipe['source'], config=recipe['config'])
+    new_spec.update(size=len(binary), sha256=sha(binary))
     result = copy.deepcopy(manifest)
     disks = {disk["id"]: disk for disk in result["disks"]}
     for disk_id, disk in disks.items():
@@ -76,8 +84,7 @@ def replacement_plan(manifest, images, recipe, binary):
             raise ValueError("Temporary files must not be shared between disks")
         files[spec["path"]] = bytes(remainder)
         spec.update(size=len(remainder), sha256=sha(remainder))
-    result["components"][name] = {"kind": "ca65-source", "source": recipe["source"],
-                                   "config": recipe["config"], "size": len(binary), "sha256": sha(binary)}
+    result["components"][name] = new_spec
     return result, files
 
 
@@ -92,11 +99,15 @@ def main():
         raise ValueError("Invalid component name")
     output = ROOT / "build/adoption"
     output.mkdir(parents=True, exist_ok=True)
-    source = contained_file(ROOT, recipe["source"])
-    config = contained_file(ROOT, recipe["config"])
-    obj, binary_file = (output / (recipe["name"] + suffix) for suffix in (".o", ".bin"))
-    subprocess.run(["ca65", "-I", str(source.parent), "-o", str(obj), str(source)], check=True)
-    subprocess.run(["ld65", "-C", str(config), "-o", str(binary_file), str(obj)], check=True)
+    if 'data' in recipe:
+        contained_file(ROOT, recipe['classification'])
+        binary_file = contained_file(ROOT, recipe['data'])
+    else:
+        source = contained_file(ROOT, recipe["source"])
+        config = contained_file(ROOT, recipe["config"])
+        obj, binary_file = (output / (recipe["name"] + suffix) for suffix in (".o", ".bin"))
+        subprocess.run(["ca65", "-I", str(source.parent), "-o", str(obj), str(source)], check=True)
+        subprocess.run(["ld65", "-C", str(config), "-o", str(binary_file), str(obj)], check=True)
     images = {d["id"]: contained_file(args.baseline, d["filename"]).read_bytes() for d in manifest["disks"]}
     planned, replacements = replacement_plan(manifest, images, recipe, binary_file.read_bytes())
     destinations = {}
@@ -109,7 +120,7 @@ def main():
     for path, data in destinations.items():
         path.write_bytes(data)
     args.manifest.write_text(json.dumps(planned, indent=2) + "\n")
-    print(f"Adopted {recipe['name']}: {len(binary_file.read_bytes())} source-built bytes")
+    print(f"Adopted {recipe['name']}: {len(binary_file.read_bytes())} verified bytes")
 
 
 if __name__ == "__main__":

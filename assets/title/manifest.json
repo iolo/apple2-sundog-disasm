@@ -1,0 +1,67 @@
+{
+  "format": "apple2-hgr-page",
+  "size": 8192,
+  "sha256": "2b21fb1fc35477e73882e6f4003788631aa28e32d7cc6ed7991cdbaa317d17c1",
+  "disk": "disk1",
+  "logical_blocks": [
+    203,
+    219
+  ],
+  "runtime_address": 17408,
+  "displayed_size": [
+    280,
+    192
+  ],
+  "visible_bytes": 7680,
+  "hole_bytes": 512,
+  "hole_value_counts": {
+    "254": 1,
+    "27": 1,
+    "234": 1,
+    "31": 1,
+    "251": 1,
+    "211": 1,
+    "240": 1,
+    "255": 504,
+    "235": 1
+  },
+  "non_ff_holes": [
+    {
+      "offset": 120,
+      "value": 254
+    },
+    {
+      "offset": 121,
+      "value": 27
+    },
+    {
+      "offset": 122,
+      "value": 234
+    },
+    {
+      "offset": 123,
+      "value": 31
+    },
+    {
+      "offset": 124,
+      "value": 251
+    },
+    {
+      "offset": 125,
+      "value": 211
+    },
+    {
+      "offset": 126,
+      "value": 240
+    },
+    {
+      "offset": 249,
+      "value": 235
+    }
+  ],
+  "consumer": "src/native/title_draw.s",
+  "classification_evidence": "docs/title-bitmap.md",
+  "preview": "title-monochrome.png",
+  "preview_note": "Layout only; artifact colors and half-pixel phase are not simulated. High bits and holes remain intact in title.hgr.",
+  "round_trip": "pack_page(*split_page(data)) equals original data"
+}

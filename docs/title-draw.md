@@ -12,7 +12,7 @@ original [bootstrap capture](bootstrap.md). Step 06a reconstructs its first
 | `$4210`–`$42CF` | 192 | Low bytes of HGR page-1 scanline addresses |
 | `$42D0`–`$438F` | 192 | High bytes of those addresses |
 | `$4390`–`$43FF` | 112 | Unreferenced tail, preserved with no claimed interpretation |
-| `$4400`–`$63FF` | 8,192 | Bitmap source region; still temporary pending asset extraction |
+| `$4400`–`$63FF` | 8,192 | Extracted bitmap; see `assets/title/title.hgr` |
 
 The helper takes A as byte column and X as scanline, and returns the screen
 address in `$18/$19`. Both 192-byte tables match the formula:
@@ -36,9 +36,9 @@ later code and must not be inferred from the title image alone.
 
 The routine and helper are contiguous instruction ranges with direct branches
 and calls; the following two tables are addressed explicitly by the helper.
-The unreferenced 112-byte tail is kept separate in source. The bitmap region,
-including non-displayed HGR holes, remains in the temporary remainder and is
-not yet claimed as a fully classified asset.
+The unreferenced 112-byte tail is kept separate in source. The bitmap region, including its non-displayed HGR holes, is now extracted
+and classified as image-buffer data; see [title-bitmap.md](title-bitmap.md).
+The 112-byte prefix tail still requires a final code/data classification audit.
 
 The incremental manifest now replaces four more disk sectors with the assembled
 prefix. `python3 tools/build_disks.py` checks its exact component hash, and

@@ -1,12 +1,13 @@
 # Incremental reconstruction inputs
 
 `manifest.json` accounts for every output byte of both disk images. It combines
-assembled source components with the explicitly **temporary, unresolved** bytes
+assembled source components, evidence-backed `identified-data` assets, and the
+explicitly **temporary, unresolved** bytes
 in `temporary/`. These binary files include executable code awaiting disassembly;
 they are not extracted assets or accepted final preservation data.
 
 Build with `python3 tools/build_disks.py`. The normal build reads this directory
-and `src/`; it never invokes extraction or reads the original `.dsk` files.
+plus `src/` and classified files under `assets/`; it never invokes extraction or reads the original `.dsk` files.
 
 The initial remainder files were generated once with:
 
@@ -37,3 +38,8 @@ the baseline images and every replacement byte, rejects overlapping or already
 reconstructed ranges, and repacks the affected temporary remainder before
 updating the manifest. It does not read the originals. Adoption is a one-time
 maintenance operation; do not rerun an already adopted recipe as a build step.
+
+For classified raw data, an adoption recipe supplies `data` (repository-relative
+path), `format`, and `classification` (an existing evidence document), plus the
+usual mappings. Source and data fields cannot be mixed. The manifest retains
+this distinction and its size/hash checks. See `assets/title/adopt.json`.

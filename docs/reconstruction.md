@@ -1,7 +1,7 @@
 # Incremental exact-disk build
 
 The incremental build reconstructs both disk images using assembled source components and
-explicitly temporary binary inputs for the remaining bytes. It is a working
+classified asset data and explicitly temporary binary inputs for remaining bytes. It is a working
 source-to-disk pipeline, not the completed source-and-assets reconstruction.
 
 ## Build and verify
@@ -21,7 +21,7 @@ Output goes to `build/disks/`, including the two original filenames,
 and pass that directory to `verify_disks.py`.
 
 The build reads only source, linker configurations, and the reconstruction
-manifest and its component files. It checks component sizes/hashes, complete
+manifest and its component files, plus identified data under `assets/`. It checks component sizes/hashes, complete
 image coverage, and final image hashes. The comparison command separately
 checks the originals, then exact byte equality; any mismatch exits nonzero and
 reports the first image offset, expected/actual byte, track, image/physical
@@ -85,7 +85,8 @@ byte-identical module replacements reuse the established reference behavior.
 | P-code library_26_disk2 | `src/pcode/library_26_disk2.s` | disk2 block 129 onward | 3,058 |
 | P-code library_22 | `src/pcode/library_22.s` | disk1 block 104 onward; disk2 block 104 onward | 12,252 |
 | Split SYSTEM.PASCAL remainder | `src/pcode/system_core.s` | Disk 1 core block 252 after byte 35; fragment at block 259 | 3,258 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 78,482 |
+| Title HGR image data | `assets/title/title.hgr` | Disk 1 blocks 203–218 | 8,192 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 70,290 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 62,404 |
 
 The 145,834 source-built bytes include instructions and their owned tables,
@@ -172,3 +173,16 @@ docs available. Both outputs equal the current exact baseline. Recorded runtime
 captures were rechecked: 5,598 initialization bytes, 16 p-code dispatch snapshots,
 and 12 whole overlay loads. No new emulator session was run for this checkpoint;
 final behavior checks in both emulators, including save/load, remain outstanding.
+
+## First classified asset
+
+The title HGR page contributes 8,192 `identified-data` bytes, separate from the
+145,834 `ca65-source` bytes. There are 132,694 temporary bytes left. The build
+requires asset format and evidence metadata, checks its size/hash, and reads its
+repository-relative asset path. It does not extract data during a normal build.
+
+`reference/step07a-build-validation.json` records a new clean build with only
+`tools/`, `src/`, `reconstruction/`, and `assets/`, plus fresh MAME play and utility
+runs. All ten screenshots and normalized final media hashes match the original
+references. The title PNG is a monochrome layout preview; its limitations and
+lossless row/hole round trip are documented in [title-bitmap.md](title-bitmap.md).

@@ -1,6 +1,6 @@
 ; Early title-reveal routine loaded at $4000, before the Pascal runtime.
 ; Disk 1 blocks 201..202. Instructions end at $420F; row tables follow.
-; The 8 KB HGR source bitmap is loaded at $4400 and remains temporary for now.
+; The 8 KB HGR source bitmap at $4400 is extracted as assets/title/title.hgr.
 .setcpu "6502"
 .segment "TITLE_DRAW"
 

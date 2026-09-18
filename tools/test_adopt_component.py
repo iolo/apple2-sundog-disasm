@@ -24,6 +24,21 @@ class AdoptionTests(unittest.TestCase):
         self.assertEqual(files["raw.bin"], b"ABDEGH")
         self.assertEqual(compose_image(result["disks"][0], {"code": b"FC", "raw": files["raw.bin"]}), self.image)
 
+    def test_identified_data_is_separate_and_requires_evidence(self):
+        recipe = dict(name='asset', data='assets/example.bin', format='test-data',
+                      classification='docs/example.md', mappings=self.recipe['mappings'])
+        result, files = replacement_plan(self.manifest, {'disk1': self.image}, recipe, b'FC')
+        self.assertEqual(result['components']['asset']['kind'], 'identified-data')
+        self.assertEqual(compose_image(result['disks'][0], {'asset': b'FC', 'raw': files['raw.bin']}), self.image)
+        for field in ('classification', 'format'):
+            missing = copy.deepcopy(recipe)
+            del missing[field]
+            with self.assertRaisesRegex(ValueError, 'format/evidence'):
+                replacement_plan(self.manifest, {'disk1': self.image}, missing, b'FC')
+        recipe['source'] = 'src/ambiguous.s'
+        with self.assertRaisesRegex(ValueError, 'cannot also be source'):
+            replacement_plan(self.manifest, {'disk1': self.image}, recipe, b'FC')
+
     def test_wrong_source_or_stale_baseline_cannot_be_adopted(self):
         for image, source in [(self.image, b"FX"), (b"ABCDEFGX", b"FC"), (self.image, b"FCZ")]:
             with self.subTest(image=image, source=source), self.assertRaises(ValueError):

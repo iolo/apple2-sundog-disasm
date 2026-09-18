@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build both disks from source plus explicitly temporary reconstruction inputs.
+"""Build both disks from source, identified data, and temporary inputs.
 
 Does not read the original images or invoke extraction. This incremental build
 is not the final source/assets-only deliverable while temporary inputs remain.
@@ -59,6 +59,10 @@ def build(manifest_path, output):
             subprocess.run(["ld65", "-C", str(config), "-o", str(binary),
                             "-m", str(objects / (name + ".map")), str(obj)], check=True)
             data = binary.read_bytes()
+        elif spec["kind"] == "identified-data":
+            if not spec.get('classification_evidence') or not spec.get('format'):
+                raise ValueError('Identified data component lacks format or evidence')
+            data = contained_file(ROOT, spec['path']).read_bytes()
         elif spec["kind"] == "temporary-unresolved":
             data = contained_file(manifest_path.parent, spec["path"]).read_bytes()
         else:
