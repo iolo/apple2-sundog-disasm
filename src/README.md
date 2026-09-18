@@ -16,6 +16,9 @@ shared comparison tail; see `docs/pcode-native.md` for its boundaries and tables
 see `docs/native-io.md` for overlapping instructions and runtime operand patches.
 `native/native_shared.s` reconstructs common procedure/segment handling, numeric
 and device routines, and the initializer-copy stub; see `docs/native-shared.md`.
+`native/native_init.s` reconstructs the five-page initializer at its copied
+execution address; `docs/native-init.md` records original-address aliases and
+the unresolved 42-byte initialization payload.
 `python3 tools/build_disks.py` assembles these components and combines them with
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.

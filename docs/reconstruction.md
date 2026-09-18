@@ -36,13 +36,14 @@ sector, logical block/half, and mapped reconstruction component.
 | Native p-code primitives | `src/native/pcode_primitives.s` | Disk 1 blocks 243–250 and first 229 bytes of block 227 | 4,325 |
 | Native disk/device/console bank | `src/native/native_io.s` | Disk 1 blocks 219–226 | 4,096 |
 | Shared native interpreter/device runtime | `src/native/native_shared.s` | Disk 1 block 227 byte 229 through block 236 byte 143 | 4,523 |
+| Copied runtime initializer | `src/native/native_init.s` | Disk 1 block 236 byte 144 through block 238 byte 399 | 1,280 |
 | SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 128,588 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 127,308 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
 
-The 14,772 source-built bytes include instructions and their owned tables,
+The 16,052 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-14,772 instruction bytes. Most identified executable regions are still in the
+16,052 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -70,6 +71,8 @@ matching play/utility reference runs.
 bank with matching play/utility reference runs.
 `reference/step06d-build-validation.json` adds the shared native runtime and
 its matching reference comparisons.
+`reference/step06e-build-validation.json` adds the copied initializer, matching
+the complete captured memory image and the play/utility reference sessions.
 
 - Both full images are 143,360 bytes and match their original SHA-256 hashes
   and every byte. The baseline hashes are in `inputs.json`.

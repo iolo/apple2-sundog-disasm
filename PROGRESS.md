@@ -377,3 +377,34 @@ and acceptance criteria.
   Numeric/peripheral paths beyond the recorded runs are not claimed as tested.
 - **Next action:** Reconstruct the copied initializer and high-memory native
   entry stubs, then continue with Pascal executable modules and assets.
+
+## 2026-09-18 — Step 06e: reconstruct the copied runtime initializer
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Work:** Added `native_init.s`, its typed recipe, linker configuration, and
+  adoption mapping. Assemble the five-page image at `$6800`, placing its bytes
+  back at original `$F290`–`$F78F`. The source contains 498 instructions (1,032
+  bytes) and 248 data bytes. Documented the dual-address behavior and data
+  boundaries in `docs/native-init.md`.
+- **Evidence:** All 1,280 assembled bytes equal the complete recorded emulator
+  capture. Preserved two calls to the checksum helper at original `$F69A`,
+  original-address data aliases, synthetic device-init returns, version-mask
+  check, and final erase/dispatch loop. A 42-byte payload copied to `$BF56`
+  remains explicitly unclassified; its format/consumer is a coverage question
+  for later work, not a claimed decoded routine or identified asset.
+- **Validation:** `tools/check_native_init.py` checks every code span and 90
+  direct/synthetic-return targets, including the original/copy address mapping.
+  It rejects a redirected checksum call, a return into an operand, and a
+  changed version check. An initial source-expression syntax issue was fixed
+  using explicit absolute addressing; the resulting component matches exactly.
+  Whitespace checks pass.
+- **Build/behavior:** Both disk images match the originals byte for byte.
+  New MAME play and utility runs match all ten reference screenshots and
+  expected final media hashes. Evidence is recorded in
+  `docs/reference/step06e-native-audit.json` and
+  `docs/reference/step06e-build-validation.json`.
+- **Coverage:** 16,052 source-built output bytes; 270,668 remain temporary.
+  Source totals include owned data and preserved fill, not just instructions.
+- **Next action:** Reconstruct the remaining `$F790`–`$FFFF` native/data region,
+  resolve its preserved fragments and the initialization payload, then continue
+  with Pascal executable modules and assets.

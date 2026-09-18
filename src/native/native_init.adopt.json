@@ -1,0 +1,43 @@
+{
+  "name": "native_init",
+  "source": "src/native/native_init.s",
+  "config": "src/native/native_init.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 120720,
+      "size": 112,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 120320,
+      "size": 256,
+      "input_offset": 112
+    },
+    {
+      "disk": "disk1",
+      "offset": 120064,
+      "size": 256,
+      "input_offset": 368
+    },
+    {
+      "disk": "disk1",
+      "offset": 119808,
+      "size": 256,
+      "input_offset": 624
+    },
+    {
+      "disk": "disk1",
+      "offset": 119552,
+      "size": 256,
+      "input_offset": 880
+    },
+    {
+      "disk": "disk1",
+      "offset": 119296,
+      "size": 144,
+      "input_offset": 1136
+    }
+  ]
+}

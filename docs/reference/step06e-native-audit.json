@@ -1,0 +1,60 @@
+{
+  "sha256": "c7c1a2160f3a266852f528c27cd396b0a97b3e6ae8761b0687ee6511a74c82c0",
+  "instruction_count": 498,
+  "instruction_bytes": 1032,
+  "data_bytes": 248,
+  "checked_direct_and_return_targets": 90,
+  "code_spans_end_exclusive": [
+    [
+      26624,
+      26828
+    ],
+    [
+      26832,
+      27016
+    ],
+    [
+      27058,
+      27672
+    ],
+    [
+      27688,
+      27718
+    ]
+  ],
+  "original_address_calls": [
+    {
+      "call": 26660,
+      "original_target": 63130,
+      "copied_target": 27658
+    },
+    {
+      "call": 26667,
+      "original_target": 63130,
+      "copied_target": 27658
+    }
+  ],
+  "original_load_address": 62096,
+  "execution_address": 26624,
+  "unresolved_payload": {
+    "copied_address": 27016,
+    "original_address": 62488,
+    "destination": 48982,
+    "size": 42
+  },
+  "external_targets": [
+    53262,
+    53907,
+    57573,
+    58477,
+    58601,
+    62052,
+    65283,
+    65286,
+    65298,
+    65301,
+    65334,
+    65340
+  ],
+  "byte_identical_to_recorded_emulator_capture": true
+}
