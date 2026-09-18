@@ -127,3 +127,24 @@ and acceptance criteria.
   strategy. Step 05's minimal source build has not started.
 - **Next action:** Continue from bank-1 `$D152`, identify its disk-read path and
   parse the segment dictionaries of the extracted files.
+
+## 2026-09-18 — Step 04b: trace initialization through the first p-code entry
+
+- **Status:** Partial step 04 checkpoint; module inventory and bytecode tooling
+  remain unfinished.
+- **Work:** Continued the live apple2ts session through five initialization
+  breakpoints. Added `docs/reference/runtime-init.json`, expanded
+  `docs/bootstrap.md`, and added `tools/verify_runtime_evidence.py`.
+- **Evidence:** Initialization relocates to `$6800`, explicitly reads directory
+  block 79, then loads the SYSTEM.PASCAL header from block 251. Its two initial
+  code parts load at `$BC72` and `$F248`; the first p-code pointer is `$F248`.
+  Recorded initialization erasure and the dispatcher's self-modifying operand.
+  Segment version 5 is required by an explicit native comparison.
+- **Validation:** `python3 tools/verify_runtime_evidence.py` verifies all 5,598
+  captured source bytes against the disk images. Original input hashes and
+  `git diff --check` pass. No CPU/register/memory edits were used in the emulator.
+- **New lead:** The startup header's later segments have valid procedure tails
+  on disk 2 at the same absolute block addresses, including entries beyond the
+  disk-1 directory extent. A file-boundary-only extractor would miss them.
+- **Next action:** Step 04c: implement a bounded segment/procedure inventory
+  across both disks, preserving unresolved entries and split-system references.

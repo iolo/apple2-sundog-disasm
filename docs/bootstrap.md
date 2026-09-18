@@ -56,8 +56,8 @@ not a substitute for the selected language-card bank.
 
 ## Remaining architecture work
 
-- Trace the bank-1 bootstrap and native disk services to identify directory
-  redirection (conventional logical block 2 versus stored blocks 79–82).
+- Trace subsequent directory reads and alternate directory selection. The first
+  directory read is now confirmed as an explicit block-79 request (see below).
 - Identify code-file segments and their procedure dictionaries, including files
   on disk 2 that have no local directory record.
 - Determine the exact p-code instruction dialect from segment metadata and the
@@ -78,3 +78,54 @@ An attempted MAME Lua memory-tap probe produced empty logs despite successful
 reference gameplay; it did not establish any execution evidence and was not
 retained as a project tool. The confirmed observations above come from apple2ts
 breakpoint receipts and memory reads.
+
+## Runtime initialization (step 04b)
+
+The continuation of that same private emulator session is recorded in
+`reference/runtime-init.json`. Run `python3 tools/verify_runtime_evidence.py`
+to compare its five captured source ranges with the original disks.
+
+Bank-1 `$D152` jumps to common-memory `$F269`. That routine copies five pages
+from `$F290`–`$F78F` to `$6800`–`$6CFF` and jumps to `$6800`. All 1,280 bytes
+at the destination were verified before execution. Absolute references within
+this initialization code use both its copied addresses and its original
+language-card addresses; disassembling it only at `$F290` is misleading.
+
+The initialization begins by clearing `$0000`–`$1FFF` (static loop at `$680A`).
+At `$69EB`, it pushes literal `$4F` as the low block number for the `$FF12`
+read service. At the return breakpoint `$6A02`, all 512 bytes at `$6000` match
+disk-1 block 79. Thus this initial directory lookup needs no block-2 remapping.
+This observation does not establish the behavior of later directory calls.
+
+The directory search finds SYSTEM.PASCAL starting at block 251. At `$6B32`,
+the 512-byte header at `$6000` matches block 251, and `$84/$85` contains `$00FB`.
+The check at `$6B15` masks the header's version bits with `$E0` and requires
+`$A0`, i.e. segment format version 5. This is consistent with Apple Pascal 1.2
+in the independently researched [Apple Pascal technical reference](https://www.mgsdl.com/apple-pascal-notes.html).
+It establishes the required segment version, not blanket compatibility with
+an off-the-shelf UCSD II.1 disassembler.
+
+The loop at `$6B34` constructs a 16-entry table at `$BE3E`: each six-byte
+record contains device 4, absolute disk block, and segment byte length. It adds
+the file's block-251 base to the relative block numbers in the header.
+Initialization then loads header slot 15 and slot 0. At `$6BBA`:
+
+| Part | Disk-1 source | Memory | Verified bytes |
+| --- | --- | --- | ---: |
+| Header slot 15 | Block 259 | `$BC72`–`$BD1B` | 170 |
+| Header slot 0 | Blocks 252–258, first 3,124 bytes | `$F248`–`$FE7B` | 3,124 |
+
+Loading slot 0 overwrites the original language-card initialization code. This
+explains why it had to be copied to main RAM first. At `$6C43`, the p-code
+instruction pointer `$58/$59` is `$F248`, and `$6000`–`$6C30` has been cleared
+to zero, including most of the copied initialization code. The final jump goes
+to bank-1 `$D293`, whose dispatcher reads an opcode through `$58/$59`.
+For opcodes with the high bit set, `$D29A` writes the doubled opcode into the
+low operand byte at `$D29E` of `JMP ($D000)`. This is intentional self-modifying
+dispatch code; the on-disk operand is zero and must stay zero in reconstruction.
+
+To repeat this continuation, start at the bank-1 `$D152` stop above and move
+the breakpoint successively to `$6800`, `$6A02`, `$6B32`, `$6BBA`, and `$6C43`,
+clearing the preceding breakpoint each time. Use physical main reads for the
+copied code and directory/header, and active mapped reads for `$F248` and the
+bank-1 dispatcher. No emulated memory or register edits were used.
