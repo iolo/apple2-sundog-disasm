@@ -53,3 +53,7 @@ procedure dictionary. See `docs/raw-screen-init.md`; other raw overlays remain.
 `native/raw_buffer_transform.s` reconstructs the evidenced 93-byte entry path
 of the raw block-156 transformation routine. Its trailing indirect-jump candidate
 and metadata remain separately tracked; see `docs/raw-buffer-transform.md`.
+
+`native/certificate_reveal.s` reconstructs disk-1 block 21: the raw screen-row
+reveal routine, native Pascal metadata, and block padding. See
+`docs/certificate-reveal.md` for the separate image and extra-read boundaries.

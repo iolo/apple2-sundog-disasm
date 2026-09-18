@@ -1302,3 +1302,25 @@ and acceptance criteria.
   native provisional regions, and remaining disk data are still open.
 - **Next action:** Follow additional raw block-load/call pairs, then extract other
   tile banks with confirmed renderer consumers and resolve preserved native tails.
+
+## 2026-09-18 — Step 06y: reconstruct the certificate reveal routine
+
+- **Work/evidence:** Traced library 26 procedure 7's 18-block read from disk-1
+  blocks 5–22 into $4000, followed by its native call to $6000. Reconstructed
+  block 21 as 176 instructions/307 code bytes, native metadata, and zero block
+  padding. Its 40-byte row copy and two bounded row counters establish the HGR
+  certificate consumer. The extra fetched block 22 remains unresolved.
+- **Classification:** The native body ends at RTS $6132. Independently validated
+  its 324-byte one-procedure Pascal container and four empty relocation lists;
+  expressed entry/dictionary pointers symbolically. The remaining 188 block bytes
+  are uniformly zero after the explicit segment trailer. Source and audit retain
+  these data boundaries; no guessed data fills an undecoded executable body.
+- **Validation:** Raw preparation and adoption each compare every byte. The full
+  build and exact comparison pass for both disks and original input hashes.
+  The image preview identifies a starship registration certificate; extraction
+  is the next separately committed checkpoint. No fresh emulator execution of
+  this reveal routine is claimed.
+- **Coverage:** 149,040 source-built bytes, 10,240 identified asset bytes, 127,440
+  temporary bytes (66,636 disk 1; 60,804 disk 2).
+- **Next action:** Extract the confirmed certificate HGR page, then continue raw
+  overlay reconstruction and classify the remaining native metadata/tails.

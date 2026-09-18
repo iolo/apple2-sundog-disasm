@@ -90,12 +90,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Raw screen-address initializer and table | `src/native/raw_screen_init.s` | Disk 1 block 2, first 297 bytes | 297 |
 | Raw buffer transformation entry | `src/native/raw_buffer_transform.s` | Disk 1 block 156, first 93 bytes | 93 |
 | Shared font and symbol bank | `assets/font/font.bin` | Both disks, blocks 3–4 | 2,048 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 67,148 |
+| Certificate reveal code and native metadata | `src/native/certificate_reveal.s` | Disk 1 block 21 | 512 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 66,636 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 60,804 |
 
-The 148,528 source-built bytes include instructions and their owned tables,
+The 149,040 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-148,528 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+149,040 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -214,6 +215,11 @@ and `reference/raw-screen-runtime.json` for the distinct static and runtime evid
 
 Step 07b extracts the [shared font](shared-font.md), with all 128 glyphs previewed
 and a lossless display-order row listing. Its 1,024 bytes match live apple2ts
-memory and replace 2,048 disk bytes across both copies. Current ownership is
+memory and replace 2,048 disk bytes across both copies. At that checkpoint ownership was
 148,528 source-built bytes, 10,240 classified asset bytes, and 127,952 temporary
 bytes. The source/data-only completion gate and final gameplay checks remain open.
+
+Step 06y reconstructs the [certificate reveal routine](certificate-reveal.md)
+and its complete first-block metadata/padding. Source ownership is 149,040 bytes,
+classified assets occupy 10,240 bytes, and 127,440 bytes remain temporary. The
+extra block fetched by its caller is explicitly excluded from classification.

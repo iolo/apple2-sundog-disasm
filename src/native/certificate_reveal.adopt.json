@@ -1,0 +1,19 @@
+{
+  "name": "certificate_reveal",
+  "source": "src/native/certificate_reveal.s",
+  "config": "src/native/certificate_reveal.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 9472,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 9216,
+      "size": 256,
+      "input_offset": 256
+    }
+  ]
+}

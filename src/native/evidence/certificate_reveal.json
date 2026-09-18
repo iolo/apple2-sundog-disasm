@@ -1,0 +1,63 @@
+{
+  "name": "certificate_reveal",
+  "size": 512,
+  "base": 24576,
+  "sha256": "ebe5c20eed93369a78146fd6df316e260ba26db0172e22b23b65f227a6a22306",
+  "origins": [
+    {
+      "disk": "disk1",
+      "block": 21
+    }
+  ],
+  "classification_evidence": "docs/certificate-reveal.md",
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Library 26 procedure 7 loads blocks 5-22 at $4000 and calls $6000"
+    }
+  ],
+  "data": [
+    {
+      "offset": 307,
+      "size": 1,
+      "kind": "native-alignment",
+      "evidence": "Single zero between terminal RTS and word-aligned relocation counts"
+    },
+    {
+      "offset": 308,
+      "size": 8,
+      "kind": "native-relocation-counts",
+      "evidence": "All four relocation lists have zero entries"
+    },
+    {
+      "offset": 316,
+      "size": 2,
+      "kind": "native-entry-pointer",
+      "evidence": "Backward displacement $013C points to offset zero"
+    },
+    {
+      "offset": 318,
+      "size": 2,
+      "kind": "native-attributes",
+      "evidence": "Native marker zero and lexical level zero"
+    },
+    {
+      "offset": 320,
+      "size": 2,
+      "kind": "procedure-dictionary",
+      "evidence": "Backward displacement 2 points to native attributes at $013E"
+    },
+    {
+      "offset": 322,
+      "size": 2,
+      "kind": "segment-trailer",
+      "evidence": "Segment 1 with one procedure; dictionary validates"
+    },
+    {
+      "offset": 324,
+      "size": 188,
+      "kind": "block-alignment-padding",
+      "evidence": "Uniform zero extension after complete 324-byte native segment to 512-byte block boundary"
+    }
+  ]
+}
