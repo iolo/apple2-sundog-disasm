@@ -8,7 +8,9 @@ proof now integrated into the incremental disk build.
 
 `native/bootstrap.s` reconstructs all 768 bytes of the native boot component,
 including its identified tables and text, padding, and preserved tail bytes.
-`python3 tools/build_disks.py` assembles both components and combines them with
+`native/title_draw.s` reconstructs the next native routine and its scanline tables
+at `$4000`–`$43FF`; its source bitmap remains temporary.
+`python3 tools/build_disks.py` assembles these components and combines them with
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.
 

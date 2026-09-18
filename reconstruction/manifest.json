@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 142556,
-      "sha256": "6fce33bb0917c50469957a00ccfcfa61426734d063efdd088bbcfa1a5c03dee7",
+      "size": 141532,
+      "sha256": "7bff45775b183732a3b4aaafc21aa8eb66397beedbbdcb6bca7ed943f5a7a42b",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -29,6 +29,13 @@
       "size": 143360,
       "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
+    },
+    "title_draw": {
+      "kind": "ca65-source",
+      "source": "src/native/title_draw.s",
+      "config": "src/native/title_draw.cfg",
+      "size": 1024,
+      "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
     }
   },
   "disks": [
@@ -64,9 +71,39 @@
         },
         {
           "offset": 3840,
-          "size": 124928,
+          "size": 101120,
           "input": "disk1_unresolved",
           "input_offset": 3072
+        },
+        {
+          "offset": 104960,
+          "size": 256,
+          "input": "title_draw",
+          "input_offset": 768
+        },
+        {
+          "offset": 105216,
+          "size": 256,
+          "input": "title_draw",
+          "input_offset": 512
+        },
+        {
+          "offset": 105472,
+          "size": 256,
+          "input": "title_draw",
+          "input_offset": 256
+        },
+        {
+          "offset": 105728,
+          "size": 256,
+          "input": "title_draw",
+          "input_offset": 0
+        },
+        {
+          "offset": 105984,
+          "size": 22784,
+          "input": "disk1_unresolved",
+          "input_offset": 104192
         },
         {
           "offset": 128768,
@@ -78,7 +115,7 @@
           "offset": 128804,
           "size": 14556,
           "input": "disk1_unresolved",
-          "input_offset": 128000
+          "input_offset": 126976
         }
       ]
     },

@@ -253,3 +253,28 @@ and acceptance criteria.
 - **Next action:** Step 06: replace temporary executable regions module by module,
   starting with the remaining early native component and interpreter, then
   expanding p-code/source coverage and preserving native relocation records.
+
+## 2026-09-18 — Step 06a: reconstruct the early title routine and scanline tables
+
+- **Status:** First step-06 module checkpoint complete; overall executable
+  reconstruction remains in progress.
+- **Work:** Added `src/native/title_draw.s` and its linker configuration for
+  `$4000`–`$43FF`: 528 instruction bytes, two 192-byte scanline tables, and
+  112 explicitly unreferenced tail bytes. Integrated the assembled prefix into
+  the manifest and removed its 1,024 bytes from the temporary disk-1 component.
+  Documented the routine and its limits in `docs/title-draw.md`.
+- **Evidence:** Its full containing load was already captured at `$4000` in
+  step 04a. Both scanline tables exactly match the HGR addressing formula and
+  are generated from that formula in source. Native code copies bitmap strips
+  from `$4400` to page 1, expanding to the full 40-byte by 192-line display.
+- **Validation:** The entire 1,024-byte prefix assembles exactly. The full build
+  and comparison commands reproduce both baseline hashes and byte equality.
+  A new MAME play run matches all six reference screenshots byte for byte and
+  leaves disposable media unchanged. Evidence is in
+  `docs/reference/step06a-build-validation.json`. Whitespace checks pass.
+- **Coverage:** 1,828 output bytes now come from assembled source; 284,892 remain
+  temporary. Source totals include owned data, not just instruction bytes.
+  The 8 KB bitmap region and its HGR holes remain temporary pending step 07.
+- **Next action:** Continue step 06 with the banked native interpreter/I/O
+  modules, expanding source and relocation coverage without treating tables or
+  preserved unknown bytes as decoded instructions.

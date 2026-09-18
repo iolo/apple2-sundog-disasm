@@ -28,8 +28,9 @@ The reader turns the low block byte in `$0F` and high byte in A into track and
 sector coordinates, then uses the physical-sector table at `$093E`. A requested
 page count in `$02` is consumed while the high destination byte `$3F` advances.
 The slot-specific reader begins at `$094E`, with `X=$60`, and reads Disk II data
-via `$C08C,X` (slot 6's `$C0EC`). Static disassembly is currently exploratory
-output under `build/`; it is not yet accepted reconstructed source.
+via `$C08C,X` (slot 6's `$C0EC`). The bootstrap is now reconstructed in
+`src/native/bootstrap.s` and assembled in the exact-disk build. Its `$4000`
+callee's native prefix is documented in [title-draw.md](title-draw.md).
 
 The capture includes `$0B00`–`$0CFF` as context. Those pages were **not** loaded
 as part of the three-page bootstrap and must not be treated as code merely

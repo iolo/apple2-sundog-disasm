@@ -1,6 +1,6 @@
 # Incremental exact-disk build
 
-Step 05 reconstructs both disk images using two assembled source components and
+The incremental build reconstructs both disk images using assembled source components and
 explicitly temporary binary inputs for the remaining bytes. It is a working
 source-to-disk pipeline, not the completed source-and-assets reconstruction.
 
@@ -32,13 +32,14 @@ sector, logical block/half, and mapped reconstruction component.
 | Component | Source | Output locations | Bytes |
 | --- | --- | --- | ---: |
 | Three-page native bootstrap | `src/native/bootstrap.s` | Disk 1 image offsets `$0000`, `$0E00`, `$0D00`, 256 bytes each | 768 |
+| Early title routine and tables | `src/native/title_draw.s` | Disk 1 logical blocks 201–202 | 1,024 |
 | SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 142,556 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 141,532 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
 
-The 804 source-built bytes include instructions and their owned tables,
+The 1,828 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-804 instruction bytes. Most identified executable regions are still in the
+1,828 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -56,8 +57,10 @@ needed only to repeat the initial archival extraction or perform comparison.
 
 ## Validation evidence
 
-`reference/step05-build-validation.json` records the build report, emulator
+`reference/step05-build-validation.json` records the initial build report, emulator
 command, six screenshot hashes, media hashes, and independent-build/tamper checks.
+`reference/step06a-build-validation.json` records the subsequent title-routine
+integration and its matching screenshot comparison.
 
 - Both full images are 143,360 bytes and match their original SHA-256 hashes
   and every byte. The baseline hashes are in `inputs.json`.

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "build_report": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "246176388f1f7e01cb99daa3ce005d45db73fab0b8cb7669b3ee3ec991fe2818",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 1828,
+      "temporary-unresolved": 284892
+    }
+  },
+  "rebuilt_run": "build/reference/game-play-sn4a9n6c",
+  "original_reference_run": "build/reference/game-play-6s40gkfz",
+  "mame_command": [
+    "/usr/games/mame",
+    "apple2e",
+    "-rompath",
+    "/home/iolo/workspace/retro/a2x/mame/roms",
+    "-gameio",
+    "joy",
+    "-flop1",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-sn4a9n6c/sundog-disk1-game.dsk",
+    "-video",
+    "none",
+    "-sound",
+    "none",
+    "-nothrottle",
+    "-skip_gameinfo",
+    "-autoboot_delay",
+    "0",
+    "-autoboot_script",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-sn4a9n6c/sequence.lua",
+    "-cfg_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-sn4a9n6c/cfg",
+    "-nvram_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-sn4a9n6c/nvram",
+    "-snapshot_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-sn4a9n6c",
+    "-seconds_to_run",
+    "330"
+  ],
+  "screenshots": [
+    {
+      "name": "01-title.png",
+      "frame": 4200,
+      "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "02-menu.png",
+      "frame": 4800,
+      "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "03-selection.png",
+      "frame": 5200,
+      "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "04-result.png",
+      "frame": 11000,
+      "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "05-after-swap.png",
+      "frame": 18000,
+      "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "06-personal-status.png",
+      "frame": 18600,
+      "sha256": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754",
+      "byte_identical_to_reference": true
+    }
+  ],
+  "final_media_hashes": {
+    "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+  }
+}
