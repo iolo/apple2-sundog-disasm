@@ -1,0 +1,31 @@
+{
+  "format": "sundog-24-row-tiles",
+  "size": 2016,
+  "sha256": "314f9b57168a19795a27f21b0d8c162bc4fac7af1d2a8ad37f9b71f6f4f18065",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 25,
+      "size": 2016,
+      "excluded_read_tail_bytes": 32
+    },
+    {
+      "disk": "disk1",
+      "block": 184,
+      "size": 2016,
+      "excluded_read_tail_bytes": 32
+    }
+  ],
+  "tile_count": 21,
+  "tile_size": [
+    28,
+    24
+  ],
+  "bytes_per_row": 4,
+  "bytes_per_tile": 96,
+  "consumer": "Library 23 procedure 3, 24-row path; game 21 $1185-$1199 supplies variants 14-20",
+  "classification_evidence": "docs/world-tiles.md",
+  "preview": "atlas.png",
+  "preview_note": "Monochrome masks; phase bits preserved in raw data and row listing",
+  "inverse": "pack_tiles(rows.json,height=24,count=21) equals tiles.bin"
+}

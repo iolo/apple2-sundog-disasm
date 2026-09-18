@@ -50,6 +50,6 @@ Normal builds consume only committed `tiles.bin` files; originals and Pillow
 are not build dependencies. Complete disk comparisons remain exact.
 
 The fifth bank at disk-2 blocks 25–28 uses the renderer's other, 24-row path.
-Its complete format and tail boundaries remain separate work and are not
-silently interpreted as another sixteen-tile 32-row bank. No new emulator
+Its 21 confirmed records are now extracted separately in
+[world-tiles.md](world-tiles.md); the last 32 fetched bytes remain unresolved. No new emulator
 trace or rendered-map comparison is claimed for these extracted atlases.

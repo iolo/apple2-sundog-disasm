@@ -25,6 +25,9 @@
 - [Map tile banks](tiles/): four banks of sixteen 28×32 tiles, with atlases,
   reversible row listings, and [loader/renderer evidence](../docs/tile-banks.md).
 
+- [World-map tiles](world-tiles/): 21 tiles of 28×24 pixels, with an atlas,
+  reversible row listing, and [variant/renderer evidence](../docs/world-tiles.md).
+
 The normal disk build reads the raw HGR and glyph assets directly; Pillow is needed only
 for preview generation. Other images, glyph banks, maps, sounds, and data still require
 classification and extraction. Unidentified executable regions are not assets.

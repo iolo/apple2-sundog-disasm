@@ -1498,3 +1498,21 @@ and acceptance criteria.
   classification, older provisional native-region review, and final behavior checks.
 - **Next action:** Resolve the 24-row tile bank and packed world-map consumer,
   then continue the remaining native fragments and persistent data buffers.
+
+## 2026-09-18 — Step 07g: world-map tiles and terrain variants
+
+- **Work/evidence:** Resolved the fifth image bank's 24-row layout. Library 23
+  draws 96-byte records; its map decoder emits indices 0–13, and game 21's
+  postprocessing explicitly replaces index 13 with variants 14–20. Extracted
+  all 21 records and the exact disk-1 copy, replacing 4,032 disk bytes.
+- **Artifacts/limits:** Added raw tile data, reversible row listing, atlas,
+  manifest, adoption recipe, and consumer notes. Extended the tile tool with
+  explicit height/count layouts. The 32 fetched bytes after each confirmed
+  bank remain excluded. The atlas shows stored masks, not runtime variant choices.
+- **Validation:** All three tile tests pass, including 96-byte boundary checks
+  and rejection of the extra tail. Shared copies and inverse packing match.
+  Adoption, build, original hashes, and both exact full-disk comparisons pass.
+- **Coverage:** 152,679 source-built bytes, 41,734 asset bytes, 92,307 temporary
+  bytes (50,645 disk 1; 41,662 disk 2).
+- **Next action:** Decode and extract the packed world-map records through
+  library 23's confirmed two-bit state machine, retaining unclassified prefixes.

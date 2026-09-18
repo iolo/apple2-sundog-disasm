@@ -7,16 +7,16 @@ from pathlib import Path
 from disk_layout import ROOT, block_bytes, logical_sector_offset, sha
 
 
-def unpack_tiles(data):
-    if len(data) != 2048:
-        raise ValueError('Expected a 2048-byte tile bank')
-    return [[list(data[tile*128+row*4:tile*128+row*4+4])
-             for row in range(32)] for tile in range(16)]
+def unpack_tiles(data, *, height=32, count=16):
+    if height not in (24, 32) or count <= 0 or len(data) != count*height*4:
+        raise ValueError('Tile bank extent disagrees with its record layout')
+    return [[list(data[tile*height*4+row*4:tile*height*4+row*4+4])
+             for row in range(height)] for tile in range(count)]
 
 
-def pack_tiles(tiles):
-    if len(tiles) != 16 or any(len(tile) != 32 for tile in tiles):
-        raise ValueError('Expected sixteen 32-row tiles')
+def pack_tiles(tiles, *, height=32, count=16):
+    if height not in (24, 32) or count <= 0 or len(tiles) != count or any(len(tile) != height for tile in tiles):
+        raise ValueError('Tile records disagree with the specified layout')
     if any(len(row) != 4 for tile in tiles for row in tile):
         raise ValueError('Expected four bytes per row')
     if any(type(value) is not int or not 0 <= value <= 255
@@ -25,13 +25,14 @@ def pack_tiles(tiles):
     return bytes(value for tile in tiles for row in tile for value in row)
 
 
-def preview(data, output):
+def preview(data, output, *, height=32, count=16):
     from PIL import Image, ImageDraw
-    tiles = unpack_tiles(data)
-    image = Image.new('RGB', (8*64, 2*82), '#17191f')
+    tiles = unpack_tiles(data, height=height, count=count)
+    cell_height = height*2+18
+    image = Image.new('RGB', (8*64, ((count+7)//8)*cell_height), '#17191f')
     draw = ImageDraw.Draw(image)
     for tile, rows in enumerate(tiles):
-        x, y = tile % 8 * 64, tile // 8 * 82
+        x, y = tile % 8 * 64, tile // 8 * cell_height
         draw.text((x, y), f'{tile:02X}', fill='#a0a0a0')
         for row, values in enumerate(rows):
             for col, value in enumerate(values):
@@ -93,8 +94,50 @@ def extract(output):
     return reports
 
 
+def extract_world(output):
+    if output.exists():
+        raise ValueError('World tile output already exists')
+    manifest = json.loads((ROOT/'reconstruction/manifest.json').read_text())
+    data, origins, mappings = None, [], []
+    for disk_id, block in [('disk2',25), ('disk1',184)]:
+        disk = next(d for d in manifest['disks'] if d['id'] == disk_id)
+        image = (ROOT/'build/disks'/disk['filename']).read_bytes()
+        if sha(image) != disk['sha256']:
+            raise ValueError('Rebuild baseline before extracting world tiles')
+        raw = block_bytes(image,block,block+4)[:2016]
+        if data is not None and data != raw:
+            raise ValueError('Shared world tile copies differ')
+        data = raw
+        origins.append(dict(disk=disk_id,block=block,size=2016,excluded_read_tail_bytes=32))
+        mappings.extend(dict(disk=disk_id,offset=logical_sector_offset(block*2+pos//256),
+                             size=min(256,2016-pos),input_offset=pos) for pos in range(0,2016,256))
+    tiles = unpack_tiles(data,height=24,count=21)
+    if pack_tiles(tiles,height=24,count=21) != data:
+        raise ValueError('World tile row round trip failed')
+    output.mkdir(parents=True)
+    (output/'tiles.bin').write_bytes(data)
+    (output/'rows.json').write_text(json.dumps(tiles,indent=2)+'\n')
+    preview(data,output/'atlas.png',height=24,count=21)
+    report = dict(format='sundog-24-row-tiles',size=2016,sha256=sha(data),origins=origins,
+        tile_count=21,tile_size=[28,24],bytes_per_row=4,bytes_per_tile=96,
+        consumer='Library 23 procedure 3, 24-row path; game 21 $1185-$1199 supplies variants 14-20',
+        classification_evidence='docs/world-tiles.md',preview='atlas.png',
+        preview_note='Monochrome masks; phase bits preserved in raw data and row listing',
+        inverse='pack_tiles(rows.json,height=24,count=21) equals tiles.bin')
+    (output/'manifest.json').write_text(json.dumps(report,indent=2)+'\n')
+    recipe=dict(name='world_tiles',data=str((output/'tiles.bin').relative_to(ROOT)),
+        format=report['format'],classification=report['classification_evidence'],mappings=mappings)
+    (output/'adopt.json').write_text(json.dumps(recipe,indent=2)+'\n')
+    return report
+
+
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--extract',type=Path,required=True)
+    group=parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--extract',type=Path)
+    group.add_argument('--extract-world',type=Path)
     args=parser.parse_args()
-    print(json.dumps(extract(args.extract.resolve()),indent=2))
+    if args.extract:
+        print(json.dumps(extract(args.extract.resolve()),indent=2))
+    else:
+        print(json.dumps(extract_world(args.extract_world.resolve()),indent=2))

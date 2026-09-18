@@ -99,8 +99,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Play graphics banks 1 and 2 | `assets/play-glyphs/bank{1,2}/glyphs.bin` | Disk 2 blocks 5–8 | 2,048 |
 | Compressed ship outlines | `assets/ship-images/{full_ship,ship_section}/image.rle` | Disk 2 blocks 29 and 33; shared stream at disk 1 block 188 | 4,934 |
 | Four 32-row tile banks | `assets/tiles/bank{0,1,2,3}/tiles.bin` | Disk 2 blocks 9–24; copies at disk 1 blocks 176–183 | 12,288 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 52,661 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 43,678 |
+| World-map tiles and variants | `assets/world-tiles/tiles.bin` | First 2,016 bytes at disk 2 block 25 and disk 1 block 184 | 4,032 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 50,645 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 41,662 |
 
 The 152,679 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -269,6 +270,11 @@ lossless packet listings and complete decoded HGR pages. At that checkpoint owne
 Bytes fetched beyond the consumed RLE streams remain separately unresolved.
 
 Step 07f extracts the [four 32-row tile banks](tile-banks.md), including all
-64 tiles and the two identical disk-1 copies. Current ownership is 152,679
+64 tiles and the two identical disk-1 copies. At that checkpoint ownership was 152,679
 source-built bytes, 37,702 asset bytes, and 96,339 temporary bytes. The separate
 24-row bank and its boundaries remain unresolved.
+
+Step 07g extracts the [world-map tiles](world-tiles.md), including seven
+terrain variants selected after map decoding. Current ownership is 152,679
+source-built bytes, 41,734 asset bytes, and 92,307 temporary bytes. The 32-byte
+tail of each four-block read remains unresolved.

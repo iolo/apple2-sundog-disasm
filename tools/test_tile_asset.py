@@ -14,6 +14,15 @@ class TileTests(unittest.TestCase):
         self.assertEqual(tiles[15][31],list(raw[-4:]))
         self.assertEqual(pack_tiles(tiles),raw)
 
+    def test_world_tiles_have_96_byte_records(self):
+        raw=bytes((i*67+i//96)&255 for i in range(2016))
+        rows=unpack_tiles(raw,height=24,count=21)
+        self.assertEqual(rows[1][0],list(raw[96:100]))
+        self.assertEqual(rows[20][23],list(raw[-4:]))
+        self.assertEqual(pack_tiles(rows,height=24,count=21),raw)
+        with self.assertRaises(ValueError):
+            unpack_tiles(raw+bytes(32),height=24,count=21)
+
     def test_bad_shapes_and_values(self):
         with self.assertRaises(ValueError):
             unpack_tiles(bytes(2047))
