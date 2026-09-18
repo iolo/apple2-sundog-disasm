@@ -26,8 +26,8 @@
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 119700,
-      "sha256": "e3144d1c2ff1b19f5300eeef1df78a2e3cc450a0f16f66cfcc747b5666d09ee2",
+      "size": 117156,
+      "sha256": "fc4d79769cd0108adc124ad9a7208ff802e8fac52fca89933924b7345f617ee1",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -190,6 +190,13 @@
       "config": "src/pcode/game_13.cfg",
       "size": 10214,
       "sha256": "2c876905d523d89fc2c5216cbc199b01a18bf5dcc223addc188dc1510388211d"
+    },
+    "game_14": {
+      "kind": "ca65-source",
+      "source": "src/pcode/game_14.s",
+      "config": "src/pcode/game_14.cfg",
+      "size": 2544,
+      "sha256": "709a79599c6310b3930316bb849b9fc6ac9f4267f474ba0ab7165d893c9718d8"
     }
   },
   "disks": [
@@ -2123,9 +2130,75 @@
         },
         {
           "offset": 94464,
-          "size": 3328,
+          "size": 768,
           "input": "disk2_unresolved",
           "input_offset": 70974
+        },
+        {
+          "offset": 95232,
+          "size": 240,
+          "input": "game_14",
+          "input_offset": 2304
+        },
+        {
+          "offset": 95472,
+          "size": 16,
+          "input": "disk2_unresolved",
+          "input_offset": 71742
+        },
+        {
+          "offset": 95488,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 2048
+        },
+        {
+          "offset": 95744,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 1792
+        },
+        {
+          "offset": 96000,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 1536
+        },
+        {
+          "offset": 96256,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 1280
+        },
+        {
+          "offset": 96512,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 1024
+        },
+        {
+          "offset": 96768,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 768
+        },
+        {
+          "offset": 97024,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 512
+        },
+        {
+          "offset": 97280,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 256
+        },
+        {
+          "offset": 97536,
+          "size": 256,
+          "input": "game_14",
+          "input_offset": 0
         },
         {
           "offset": 97792,
@@ -2137,7 +2210,7 @@
           "offset": 97962,
           "size": 45398,
           "input": "disk2_unresolved",
-          "input_offset": 74302
+          "input_offset": 71758
         }
       ]
     }

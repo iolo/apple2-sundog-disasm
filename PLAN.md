@@ -36,7 +36,7 @@ Split large steps into independently validated, logged, and committed increments
 - `sundog.pdf` is present; the PRD describes it as a scanned manual.
 - Git is operational. The original Git prerequisite in step 01 has been
   resolved; every subsequent checkpoint must follow the base rule above.
-- `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06j-14.
+- `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06j-15.
   Step 06 remains in progress; the remaining steps below retain their original
   order and acceptance criteria.
 - The incremental build matches both original disks, but still includes
