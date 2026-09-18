@@ -104,3 +104,20 @@ instead of stopping on every interpreted instruction. Whole-load captures and
 current calling-convention findings are documented in
 [runtime-architecture.md](runtime-architecture.md); further per-module
 semantics remain part of executable reconstruction.
+
+## Preparing further modules
+
+After a current build, a maintenance command can prepare one complete module:
+
+```sh
+python3 tools/prepare_pcode_component.py library_25 disk1 103 25
+```
+
+It reads the recorded inventory and rebuilt images, verifies their hashes,
+decodes and classifies every byte, assembles the generated listing for an exact
+comparison, then writes source/configuration, an adoption recipe, and an audit
+under `docs/reference/pcode-modules/`. Matching copies on both disks share source.
+It refuses unknown instruction/data boundaries, overlap with reconstructed
+content, or existing output files. It does not change the disk manifest; review
+and `tools/adopt_component.py` perform that separate step. The example module is
+already adopted, so the command now intentionally refuses to overwrite it.

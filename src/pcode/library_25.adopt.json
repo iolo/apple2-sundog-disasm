@@ -1,0 +1,55 @@
+{
+  "name": "library_25",
+  "source": "src/pcode/library_25.s",
+  "config": "src/pcode/library_25.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 61696,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 65280,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 65536,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 69120,
+      "size": 190,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 61696,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 65280,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 65536,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 69120,
+      "size": 190,
+      "input_offset": 768
+    }
+  ]
+}
