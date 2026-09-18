@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "build_report": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "c2b62275485560a29e8c6440abe42907473a243c335e645aee54a549209415f0",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 18788,
+      "temporary-unresolved": 267932
+    }
+  },
+  "pcode_audit": "step06g-pcode-audit.json",
+  "decoder_tests": {
+    "count": 7,
+    "passed": true
+  },
+  "regenerated_listing_assembles_identically": true,
+  "mame_runs": [
+    {
+      "rebuilt_run": "build/reference/game-play-j1bj8l0z",
+      "original_reference_run": "build/reference/game-play-6s40gkfz",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-j1bj8l0z/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-j1bj8l0z/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-j1bj8l0z/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-j1bj8l0z/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-j1bj8l0z",
+        "-seconds_to_run",
+        "330"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "05-after-swap.png",
+          "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "06-personal-status.png",
+          "sha256": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    },
+    {
+      "rebuilt_run": "build/reference/game-utilities-hsdf2dq1",
+      "original_reference_run": "build/reference/game-utilities-ykwy1ltx",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-hsdf2dq1/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-hsdf2dq1/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-hsdf2dq1/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-hsdf2dq1/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-hsdf2dq1",
+        "-seconds_to_run",
+        "203"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "22d8fb8461025fa01c60595699fa5ccffbae3bec936ec375701d53a7e29131bb",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "02c408c06cd297156cc3aba716b035873f37bd71fabc082056f09816d8c3668c",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "dcc610d358e22007c787d8390d51aae05c8c286640fd16af8233ee53392791c1",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    }
+  ]
+}

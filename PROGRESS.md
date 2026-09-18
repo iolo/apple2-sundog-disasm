@@ -442,3 +442,34 @@ and acceptance criteria.
 - **Next action:** Expand the p-code decoder/assembler from the entry proof to
   complete Pascal procedures and modules, using native handler behavior to
   resolve instruction encodings and later revisit unknown runtime payloads.
+
+## 2026-09-18 — Step 06g: reconstruct the complete disk-1 startup p-code segment
+
+- **Status:** First full p-code segment checkpoint complete; overall step 06
+  remains in progress.
+- **Work:** Added `tools/pcode_source.py` and expanded `encoding.inc` with
+  verified startup instruction formats. Added `startup_disk1.s`, configuration,
+  and adoption mapping for the 576-byte segment at disk-1 block 141. Its six
+  procedures contain 243 instructions, 447 instruction-encoding bytes, eight
+  branch words, eighteen case words, three alignment bytes, and explicit
+  procedure attributes/dictionary. Every segment byte is accounted for.
+- **Evidence:** Decoder control flow follows entry/exit roots and branches,
+  preserving big-operand widths, signed word constants, both case alignments,
+  and 16-bit pointer subtraction. It checks supported opcode dispatch targets
+  against the assembled interpreter and rejects unknown encodings/gaps rather
+  than outputting executable blobs. Documentation is in `docs/startup-pcode.md`.
+- **Validation:** Seven decoder tests pass, including malformed targets,
+  selectors, truncated/unsupported instructions, wrapped case pointers, and
+  nonzero padding. All 263 control-flow edges resolve to instruction boundaries.
+  A newly generated listing assembles identically. All 576 bytes also match the
+  recorded loader capture at `$B2B4`. Whitespace checks pass.
+- **Build/behavior:** Both full disk images remain byte-identical. New MAME
+  play/utility runs match all ten reference screenshots and expected final
+  media hashes. Reports are in `docs/reference/step06g-pcode-audit.json` and
+  `docs/reference/step06g-build-validation.json`.
+- **Coverage:** 18,788 source-built output bytes; 267,932 remain temporary.
+  The decoder is intentionally incomplete outside its verified subset; other
+  p-code formats, inline data, and native-procedure relocations remain work.
+- **Next action:** Apply the decoder to the remaining segment inventory,
+  extend it for newly encountered formats using the shipped handlers, and
+  reconstruct further system/library/game modules in validated checkpoints.

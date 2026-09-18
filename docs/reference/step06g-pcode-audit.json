@@ -1,0 +1,787 @@
+{
+  "sha256": "c01644b696e7b2bdef1e9773c6b98cc12ad139230edcf4a7994047c2396fcdc6",
+  "size": 576,
+  "segment": 1,
+  "procedure_count": 6,
+  "procedures": [
+    {
+      "number": 1,
+      "dictionary_offset": 572,
+      "backward_offset": 12,
+      "attribute_offset": 560,
+      "entry_offset": 488,
+      "representation": "p-code",
+      "lexical_level": 0,
+      "exit_offset": 513,
+      "parameter_bytes": 4,
+      "local_bytes": 0,
+      "attribute_start": 552,
+      "storage": "segment",
+      "status": "structurally-valid"
+    },
+    {
+      "number": 2,
+      "dictionary_offset": 570,
+      "backward_offset": 540,
+      "attribute_offset": 30,
+      "entry_offset": 0,
+      "representation": "p-code",
+      "lexical_level": 1,
+      "exit_offset": 18,
+      "parameter_bytes": 0,
+      "local_bytes": 0,
+      "attribute_start": 22,
+      "storage": "segment",
+      "status": "structurally-valid"
+    },
+    {
+      "number": 3,
+      "dictionary_offset": 568,
+      "backward_offset": 424,
+      "attribute_offset": 144,
+      "entry_offset": 32,
+      "representation": "p-code",
+      "lexical_level": 1,
+      "exit_offset": 120,
+      "parameter_bytes": 0,
+      "local_bytes": 0,
+      "attribute_start": 136,
+      "storage": "segment",
+      "status": "structurally-valid"
+    },
+    {
+      "number": 4,
+      "dictionary_offset": 566,
+      "backward_offset": 182,
+      "attribute_offset": 384,
+      "entry_offset": 206,
+      "representation": "p-code",
+      "lexical_level": 1,
+      "exit_offset": 371,
+      "parameter_bytes": 0,
+      "local_bytes": 18,
+      "attribute_start": 376,
+      "storage": "segment",
+      "status": "structurally-valid"
+    },
+    {
+      "number": 5,
+      "dictionary_offset": 564,
+      "backward_offset": 360,
+      "attribute_offset": 204,
+      "entry_offset": 146,
+      "representation": "p-code",
+      "lexical_level": 2,
+      "exit_offset": 181,
+      "parameter_bytes": 0,
+      "local_bytes": 0,
+      "attribute_start": 196,
+      "storage": "segment",
+      "status": "structurally-valid"
+    },
+    {
+      "number": 6,
+      "dictionary_offset": 562,
+      "backward_offset": 76,
+      "attribute_offset": 486,
+      "entry_offset": 386,
+      "representation": "p-code",
+      "lexical_level": 1,
+      "exit_offset": 462,
+      "parameter_bytes": 0,
+      "local_bytes": 2,
+      "attribute_start": 478,
+      "storage": "segment",
+      "status": "structurally-valid"
+    }
+  ],
+  "instruction_count": 243,
+  "coverage_bytes": {
+    "local-size": 12,
+    "parameter-size": 12,
+    "exit-pointer": 12,
+    "entry-pointer": 12,
+    "attributes": 12,
+    "instruction": 447,
+    "jump-pointer": 16,
+    "case-pointer": 36,
+    "alignment": 3,
+    "dictionary-pointer": 12,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 5,
+    "cxp": 25,
+    "sldc": 68,
+    "csp": 21,
+    "fjp": 8,
+    "ujp": 28,
+    "ste": 3,
+    "lae": 16,
+    "ldp": 10,
+    "xjp": 2,
+    "geqi": 3,
+    "equi": 4,
+    "lor": 3,
+    "lda": 1,
+    "lod": 4,
+    "stl": 2,
+    "ixp": 2,
+    "stp": 2,
+    "leqi": 3,
+    "clp": 2,
+    "sldl": 8,
+    "ldci": 3,
+    "lla": 14,
+    "lde": 1,
+    "ldb": 1,
+    "sbi": 1,
+    "cgp": 2,
+    "rbp": 1
+  },
+  "calls": [
+    {
+      "offset": 0,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        6
+      ]
+    },
+    {
+      "offset": 5,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        12
+      ]
+    },
+    {
+      "offset": 8,
+      "instruction": "csp",
+      "operands": [
+        34
+      ]
+    },
+    {
+      "offset": 12,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        39
+      ]
+    },
+    {
+      "offset": 121,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 126,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 60,
+      "instruction": "cxp",
+      "operands": [
+        16,
+        1
+      ]
+    },
+    {
+      "offset": 52,
+      "instruction": "cxp",
+      "operands": [
+        15,
+        1
+      ]
+    },
+    {
+      "offset": 47,
+      "instruction": "cxp",
+      "operands": [
+        13,
+        1
+      ]
+    },
+    {
+      "offset": 182,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 187,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 167,
+      "instruction": "cxp",
+      "operands": [
+        14,
+        1
+      ]
+    },
+    {
+      "offset": 178,
+      "instruction": "cxp",
+      "operands": [
+        8,
+        1
+      ]
+    },
+    {
+      "offset": 238,
+      "instruction": "csp",
+      "operands": [
+        33
+      ]
+    },
+    {
+      "offset": 316,
+      "instruction": "clp",
+      "operands": [
+        5
+      ]
+    },
+    {
+      "offset": 323,
+      "instruction": "cxp",
+      "operands": [
+        16,
+        1
+      ]
+    },
+    {
+      "offset": 275,
+      "instruction": "cxp",
+      "operands": [
+        19,
+        1
+      ]
+    },
+    {
+      "offset": 281,
+      "instruction": "cxp",
+      "operands": [
+        20,
+        1
+      ]
+    },
+    {
+      "offset": 299,
+      "instruction": "cxp",
+      "operands": [
+        17,
+        1
+      ]
+    },
+    {
+      "offset": 311,
+      "instruction": "cxp",
+      "operands": [
+        18,
+        1
+      ]
+    },
+    {
+      "offset": 264,
+      "instruction": "cxp",
+      "operands": [
+        21,
+        1
+      ]
+    },
+    {
+      "offset": 463,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 468,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 391,
+      "instruction": "csp",
+      "operands": [
+        32
+      ]
+    },
+    {
+      "offset": 396,
+      "instruction": "csp",
+      "operands": [
+        32
+      ]
+    },
+    {
+      "offset": 407,
+      "instruction": "csp",
+      "operands": [
+        33
+      ]
+    },
+    {
+      "offset": 415,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        53
+      ]
+    },
+    {
+      "offset": 425,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        54
+      ]
+    },
+    {
+      "offset": 429,
+      "instruction": "cxp",
+      "operands": [
+        7,
+        1
+      ]
+    },
+    {
+      "offset": 442,
+      "instruction": "cgp",
+      "operands": [
+        3
+      ]
+    },
+    {
+      "offset": 459,
+      "instruction": "cxp",
+      "operands": [
+        7,
+        1
+      ]
+    },
+    {
+      "offset": 446,
+      "instruction": "cgp",
+      "operands": [
+        4
+      ]
+    },
+    {
+      "offset": 514,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 517,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 520,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 523,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 526,
+      "instruction": "csp",
+      "operands": [
+        22
+      ]
+    },
+    {
+      "offset": 531,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 534,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 537,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 540,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 543,
+      "instruction": "csp",
+      "operands": [
+        21
+      ]
+    },
+    {
+      "offset": 490,
+      "instruction": "cxp",
+      "operands": [
+        22,
+        1
+      ]
+    },
+    {
+      "offset": 493,
+      "instruction": "cxp",
+      "operands": [
+        23,
+        1
+      ]
+    },
+    {
+      "offset": 496,
+      "instruction": "cxp",
+      "operands": [
+        24,
+        1
+      ]
+    },
+    {
+      "offset": 499,
+      "instruction": "cxp",
+      "operands": [
+        25,
+        1
+      ]
+    },
+    {
+      "offset": 502,
+      "instruction": "cxp",
+      "operands": [
+        26,
+        1
+      ]
+    },
+    {
+      "offset": 505,
+      "instruction": "cxp",
+      "operands": [
+        27,
+        1
+      ]
+    },
+    {
+      "offset": 508,
+      "instruction": "cxp",
+      "operands": [
+        28,
+        1
+      ]
+    },
+    {
+      "offset": 511,
+      "instruction": "clp",
+      "operands": [
+        6
+      ]
+    }
+  ],
+  "control_flow_edge_count": 263,
+  "verified_native_handlers": {
+    "8D": "D5C2",
+    "95": "D747",
+    "9D": "D442",
+    "9E": "E67F",
+    "9F": "D2D7",
+    "A1": "D2A0",
+    "A7": "D48C",
+    "AC": "D5E2",
+    "AD": "E371",
+    "B2": "D3EE",
+    "B6": "D3C8",
+    "B9": "D2A8",
+    "BA": "DA60",
+    "BB": "DAB6",
+    "BE": "D567",
+    "C0": "DA1D",
+    "C1": "E35C",
+    "C2": "E32B",
+    "C3": "DFA9",
+    "C4": "DF7B",
+    "C6": "D315",
+    "C7": "D2DE",
+    "C8": "DF77",
+    "CB": "DF7F",
+    "CC": "D33B",
+    "CD": "E306",
+    "CE": "E2D3",
+    "CF": "E2EF",
+    "D1": "D467",
+    "D6": "D6E4",
+    "D7": "D28D"
+  },
+  "case_headers": [
+    {
+      "offset": 65,
+      "size": 5,
+      "kind": "instruction",
+      "assembly": "p_xjp 0, 9, 0, $00",
+      "opcode": 172,
+      "mnemonic": "xjp",
+      "successors": [
+        47,
+        47,
+        52,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        57,
+        70
+      ],
+      "procedure": 3
+    },
+    {
+      "offset": 328,
+      "size": 6,
+      "kind": "instruction",
+      "assembly": "p_xjp 3, 10, 1, $00",
+      "opcode": 172,
+      "mnemonic": "xjp",
+      "successors": [
+        248,
+        248,
+        286,
+        269,
+        316,
+        316,
+        320,
+        316,
+        334
+      ],
+      "procedure": 4
+    }
+  ],
+  "branch_and_case_words": [
+    {
+      "offset": 20,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_000F) & $FFFF",
+      "target": 15
+    },
+    {
+      "offset": 72,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_002F) & $FFFF",
+      "target": 47
+    },
+    {
+      "offset": 74,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_002F) & $FFFF",
+      "target": 47
+    },
+    {
+      "offset": 76,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0034) & $FFFF",
+      "target": 52
+    },
+    {
+      "offset": 78,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 80,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 82,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 84,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 86,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 88,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0046) & $FFFF",
+      "target": 70
+    },
+    {
+      "offset": 90,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0039) & $FFFF",
+      "target": 57
+    },
+    {
+      "offset": 132,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_0022) & $FFFF",
+      "target": 34
+    },
+    {
+      "offset": 134,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_0027) & $FFFF",
+      "target": 39
+    },
+    {
+      "offset": 194,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_0094) & $FFFF",
+      "target": 148
+    },
+    {
+      "offset": 336,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_00F8) & $FFFF",
+      "target": 248
+    },
+    {
+      "offset": 338,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_00F8) & $FFFF",
+      "target": 248
+    },
+    {
+      "offset": 340,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_011E) & $FFFF",
+      "target": 286
+    },
+    {
+      "offset": 342,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_010D) & $FFFF",
+      "target": 269
+    },
+    {
+      "offset": 344,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_013C) & $FFFF",
+      "target": 316
+    },
+    {
+      "offset": 346,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_013C) & $FFFF",
+      "target": 316
+    },
+    {
+      "offset": 348,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_0140) & $FFFF",
+      "target": 320
+    },
+    {
+      "offset": 350,
+      "size": 2,
+      "kind": "case-pointer",
+      "assembly": ".word (* - L_013C) & $FFFF",
+      "target": 316
+    },
+    {
+      "offset": 374,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_00E6) & $FFFF",
+      "target": 230
+    },
+    {
+      "offset": 474,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_0184) & $FFFF",
+      "target": 388
+    },
+    {
+      "offset": 476,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_01B0) & $FFFF",
+      "target": 432
+    },
+    {
+      "offset": 550,
+      "size": 2,
+      "kind": "jump-pointer",
+      "assembly": ".word (* - L_01EA) & $FFFF",
+      "target": 490
+    }
+  ],
+  "recorded_load": {
+    "destination": 45748,
+    "length": 576,
+    "block": 141,
+    "byte_identical": true
+  }
+}

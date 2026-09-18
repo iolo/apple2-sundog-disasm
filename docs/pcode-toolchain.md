@@ -25,9 +25,10 @@ after XIT, procedure number, and signed lexical level preserve the disk bytes.
 The chosen reconstruction approach is **ca65 instruction macros for p-code,
 alongside ca65 native 6502 assembly**, with explicit data/relocation structures.
 Macros avoid a dependency on a historical Pascal compiler reproducing original
-instruction choices. The current include implements only this first procedure's
-subset. It must be expanded with evidence for other instructions, constants,
-case tables, native-procedure relocation records, and alignment behavior.
+instruction choices. The include now also supports the six-procedure
+[disk-1 startup segment](startup-pcode.md), including its case tables and
+explicit alignment. Other instruction formats, inline constants, and native
+procedure relocation records still require further work.
 
 ## Interpreter evidence
 
@@ -97,6 +98,7 @@ word points to `$B805`; operand -20 at `$B808` selects `$B80C` and returns to
 To continue the trace, leave breakpoint `$D293` set and resume once per opcode;
 read `$58/$59` for the p-code pointer and `$54/$55` for the attribute address.
 For coarse overlay tracing, use the segment-load routines near `$E46D`/`$E4E9`
-instead of stopping on every interpreted instruction. Their complete call
-convention and boot-to-startup sequence remain to be documented before the
-step-04 architecture gate is closed.
+instead of stopping on every interpreted instruction. Whole-load captures and
+current calling-convention findings are documented in
+[runtime-architecture.md](runtime-architecture.md); further per-module
+semantics remain part of executable reconstruction.

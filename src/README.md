@@ -6,6 +6,10 @@ subset in `pcode/encoding.inc`. Run `python3 tools/build_pcode_probe.py` to
 assemble it and compare its bytes with the original disk. This is a toolchain
 proof now integrated into the incremental disk build.
 
+`pcode/startup_disk1.s` reconstructs the complete six-procedure disk-1 startup
+segment, including case tables, procedure attributes, and dictionary. See
+`docs/startup-pcode.md` for decoder scope and verified interpreter formats.
+
 `native/bootstrap.s` reconstructs all 768 bytes of the native boot component,
 including its identified tables and text, padding, and preserved tail bytes.
 `native/title_draw.s` reconstructs the next native routine and its scanline tables

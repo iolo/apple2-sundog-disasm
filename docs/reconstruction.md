@@ -39,12 +39,13 @@ sector, logical block/half, and mapped reconstruction component.
 | Copied runtime initializer | `src/native/native_init.s` | Disk 1 block 236 byte 144 through block 238 byte 399 | 1,280 |
 | High-memory native services and preserved tail | `src/native/native_high.s` | Disk 1 block 238 byte 400 through block 242 byte 511 | 2,160 |
 | SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 125,148 |
+| Disk-1 SYSTEM.STARTUP segment 1 | `src/pcode/startup_disk1.s` | Disk 1 block 141 through first 64 bytes of block 142 | 576 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 124,572 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
 
-The 18,212 source-built bytes include instructions and their owned tables,
+The 18,788 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-18,212 instruction bytes. Most identified executable regions are still in the
+18,788 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -80,6 +81,8 @@ its matching reference comparisons.
 the complete captured memory image and the play/utility reference sessions.
 `reference/step06f-build-validation.json` completes SYSTEM.APPLE byte coverage
 and repeats the isolated build without original inputs and reference sessions.
+`reference/step06g-build-validation.json` adds the complete disk-1 startup p-code
+segment and matching loader capture and play/utility reference sessions.
 
 - Both full images are 143,360 bytes and match their original SHA-256 hashes
   and every byte. The baseline hashes are in `inputs.json`.
