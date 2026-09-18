@@ -1,0 +1,91 @@
+{
+  "name": "alternate_8",
+  "source": "src/pcode/alternate_8.s",
+  "config": "src/pcode/alternate_8.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 81920,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 85504,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 85248,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 84992,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 84736,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk1",
+      "offset": 84480,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk1",
+      "offset": 84224,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk1",
+      "offset": 83968,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk1",
+      "offset": 83712,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk1",
+      "offset": 83456,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk1",
+      "offset": 83200,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk1",
+      "offset": 82944,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk1",
+      "offset": 82688,
+      "size": 256,
+      "input_offset": 3072
+    },
+    {
+      "disk": "disk1",
+      "offset": 82432,
+      "size": 20,
+      "input_offset": 3328
+    }
+  ]
+}
