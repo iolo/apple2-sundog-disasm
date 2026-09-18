@@ -347,3 +347,33 @@ and acceptance criteria.
   beyond the reference sessions are not claimed as behaviorally tested.
 - **Next action:** Reconstruct the remaining shared native runtime and copied
   initialization code, then expand Pascal module reconstruction and assets.
+
+## 2026-09-18 — Step 06d: reconstruct the shared native runtime
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Work:** Added `native_shared.s`, its typed recipe, linker configuration,
+  and adoption mapping for `$E0E5`–`$F28F`. This adds 4,523 source-built bytes:
+  2,192 instructions occupying 4,212 bytes, plus 311 data bytes. Documented
+  procedure/segment handling, device wrappers, synthetic returns, messages,
+  constants, and the initializer-copy stub in `docs/native-shared.md`.
+- **Evidence:** Preserved the patched standard-procedure jump and expressed
+  two synthetic RTS addresses as return-label-minus-one. Classified 39
+  power-of-ten constants by their word order and finite binary32 encodings.
+  The original last entry is three units in the last place above correctly
+  rounded `10^38`; retained it exactly and recorded the anomaly.
+- **Validation:** `tools/check_native_shared.py` verifies all code spans,
+  464 outgoing/vector/return targets, 27 incoming primitive vectors, messages,
+  dispatch encoding, initializer endpoints, and all numeric constants. Bad
+  return targets, a changed dispatch operand, and a normalized last constant
+  are rejected. Integer rounding was checked in both nearest-even tie
+  directions. Existing captured initialization and overlay evidence still
+  matches its disk sources; `git diff --check` passes.
+- **Build/behavior:** Both rebuilt disk images match the originals byte for
+  byte. New MAME play/utility runs match all ten reference screenshots and
+  expected final media hashes. Results are in
+  `docs/reference/step06d-native-audit.json` and
+  `docs/reference/step06d-build-validation.json`.
+- **Coverage:** 14,772 source-built output bytes; 271,948 remain temporary.
+  Numeric/peripheral paths beyond the recorded runs are not claimed as tested.
+- **Next action:** Reconstruct the copied initializer and high-memory native
+  entry stubs, then continue with Pascal executable modules and assets.

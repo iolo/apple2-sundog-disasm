@@ -1,0 +1,121 @@
+{
+  "name": "native_shared",
+  "source": "src/native/native_shared.s",
+  "config": "src/native/native_shared.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 117221,
+      "size": 27,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 116736,
+      "size": 256,
+      "input_offset": 27
+    },
+    {
+      "disk": "disk1",
+      "offset": 116480,
+      "size": 256,
+      "input_offset": 283
+    },
+    {
+      "disk": "disk1",
+      "offset": 116224,
+      "size": 256,
+      "input_offset": 539
+    },
+    {
+      "disk": "disk1",
+      "offset": 115968,
+      "size": 256,
+      "input_offset": 795
+    },
+    {
+      "disk": "disk1",
+      "offset": 115712,
+      "size": 256,
+      "input_offset": 1051
+    },
+    {
+      "disk": "disk1",
+      "offset": 115456,
+      "size": 256,
+      "input_offset": 1307
+    },
+    {
+      "disk": "disk1",
+      "offset": 115200,
+      "size": 256,
+      "input_offset": 1563
+    },
+    {
+      "disk": "disk1",
+      "offset": 114944,
+      "size": 256,
+      "input_offset": 1819
+    },
+    {
+      "disk": "disk1",
+      "offset": 118528,
+      "size": 256,
+      "input_offset": 2075
+    },
+    {
+      "disk": "disk1",
+      "offset": 118784,
+      "size": 256,
+      "input_offset": 2331
+    },
+    {
+      "disk": "disk1",
+      "offset": 122368,
+      "size": 256,
+      "input_offset": 2587
+    },
+    {
+      "disk": "disk1",
+      "offset": 122112,
+      "size": 256,
+      "input_offset": 2843
+    },
+    {
+      "disk": "disk1",
+      "offset": 121856,
+      "size": 256,
+      "input_offset": 3099
+    },
+    {
+      "disk": "disk1",
+      "offset": 121600,
+      "size": 256,
+      "input_offset": 3355
+    },
+    {
+      "disk": "disk1",
+      "offset": 121344,
+      "size": 256,
+      "input_offset": 3611
+    },
+    {
+      "disk": "disk1",
+      "offset": 121088,
+      "size": 256,
+      "input_offset": 3867
+    },
+    {
+      "disk": "disk1",
+      "offset": 120832,
+      "size": 256,
+      "input_offset": 4123
+    },
+    {
+      "disk": "disk1",
+      "offset": 120576,
+      "size": 144,
+      "input_offset": 4379
+    }
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "build_report": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "532a99fb2aba978768d96cf329d8b4acb688c111fcc649e9e08cd1f0a3627198",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 14772,
+      "temporary-unresolved": 271948
+    }
+  },
+  "native_audit": {
+    "sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6",
+    "instruction_count": 2192,
+    "instruction_bytes": 4212,
+    "data_bytes": 311,
+    "checked_direct_vector_and_return_targets": 464,
+    "checked_incoming_primitive_vectors": 27,
+    "code_spans_end_exclusive": [
+      [
+        57573,
+        57737
+      ],
+      [
+        57740,
+        60902
+      ],
+      [
+        61093,
+        61899
+      ],
+      [
+        61901,
+        61939
+      ],
+      [
+        62052,
+        62055
+      ],
+      [
+        62057,
+        62096
+      ]
+    ],
+    "external_targets": [
+      0,
+      26624,
+      53589,
+      53648,
+      53695,
+      53699,
+      53727,
+      53731,
+      53735,
+      53739,
+      53747,
+      53883,
+      53901,
+      53907,
+      55012,
+      65280,
+      65283,
+      65286,
+      65289,
+      65292,
+      65295,
+      65298,
+      65301,
+      65304,
+      65307,
+      65310,
+      65313,
+      65316,
+      65322,
+      65325,
+      65328,
+      65331,
+      65337,
+      65340
+    ],
+    "power_of_ten_entries": [
+      {
+        "exponent": 0,
+        "stored_bits": "3f800000",
+        "nearest_bits": "3f800000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 1,
+        "stored_bits": "41200000",
+        "nearest_bits": "41200000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 2,
+        "stored_bits": "42c80000",
+        "nearest_bits": "42c80000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 3,
+        "stored_bits": "447a0000",
+        "nearest_bits": "447a0000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 4,
+        "stored_bits": "461c4000",
+        "nearest_bits": "461c4000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 5,
+        "stored_bits": "47c35000",
+        "nearest_bits": "47c35000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 6,
+        "stored_bits": "49742400",
+        "nearest_bits": "49742400",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 7,
+        "stored_bits": "4b189680",
+        "nearest_bits": "4b189680",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 8,
+        "stored_bits": "4cbebc20",
+        "nearest_bits": "4cbebc20",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 9,
+        "stored_bits": "4e6e6b28",
+        "nearest_bits": "4e6e6b28",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 10,
+        "stored_bits": "501502f9",
+        "nearest_bits": "501502f9",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 11,
+        "stored_bits": "51ba43b7",
+        "nearest_bits": "51ba43b7",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 12,
+        "stored_bits": "5368d4a5",
+        "nearest_bits": "5368d4a5",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 13,
+        "stored_bits": "551184e7",
+        "nearest_bits": "551184e7",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 14,
+        "stored_bits": "56b5e621",
+        "nearest_bits": "56b5e621",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 15,
+        "stored_bits": "58635fa9",
+        "nearest_bits": "58635fa9",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 16,
+        "stored_bits": "5a0e1bca",
+        "nearest_bits": "5a0e1bca",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 17,
+        "stored_bits": "5bb1a2bc",
+        "nearest_bits": "5bb1a2bc",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 18,
+        "stored_bits": "5d5e0b6b",
+        "nearest_bits": "5d5e0b6b",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 19,
+        "stored_bits": "5f0ac723",
+        "nearest_bits": "5f0ac723",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 20,
+        "stored_bits": "60ad78ec",
+        "nearest_bits": "60ad78ec",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 21,
+        "stored_bits": "6258d727",
+        "nearest_bits": "6258d727",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 22,
+        "stored_bits": "64078678",
+        "nearest_bits": "64078678",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 23,
+        "stored_bits": "65a96816",
+        "nearest_bits": "65a96816",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 24,
+        "stored_bits": "6753c21c",
+        "nearest_bits": "6753c21c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 25,
+        "stored_bits": "69045951",
+        "nearest_bits": "69045951",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 26,
+        "stored_bits": "6aa56fa6",
+        "nearest_bits": "6aa56fa6",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 27,
+        "stored_bits": "6c4ecb8f",
+        "nearest_bits": "6c4ecb8f",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 28,
+        "stored_bits": "6e013f39",
+        "nearest_bits": "6e013f39",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 29,
+        "stored_bits": "6fa18f08",
+        "nearest_bits": "6fa18f08",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 30,
+        "stored_bits": "7149f2ca",
+        "nearest_bits": "7149f2ca",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 31,
+        "stored_bits": "72fc6f7c",
+        "nearest_bits": "72fc6f7c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 32,
+        "stored_bits": "749dc5ae",
+        "nearest_bits": "749dc5ae",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 33,
+        "stored_bits": "76453719",
+        "nearest_bits": "76453719",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 34,
+        "stored_bits": "77f684df",
+        "nearest_bits": "77f684df",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 35,
+        "stored_bits": "799a130c",
+        "nearest_bits": "799a130c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 36,
+        "stored_bits": "7b4097ce",
+        "nearest_bits": "7b4097ce",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 37,
+        "stored_bits": "7cf0bdc2",
+        "nearest_bits": "7cf0bdc2",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 38,
+        "stored_bits": "7e96769c",
+        "nearest_bits": "7e967699",
+        "ulp_difference": 3
+      }
+    ],
+    "initializer_source": 62096,
+    "initializer_destination": 26624
+  },
+  "negative_audit_checks": [
+    "synthetic return into operand rejected",
+    "changed dispatch operand rejected",
+    "normalized final power constant rejected"
+  ],
+  "integer_rounding_checks": [
+    "nearest-even tie rounds down from 16777217",
+    "nearest-even tie rounds up from 16777219"
+  ],
+  "runtime_evidence": "5598 captured initialization bytes, 16 p-code dispatch snapshots, and 12 whole overlay loads verified",
+  "mame_runs": [
+    {
+      "rebuilt_run": "build/reference/game-play-6kve9dlo",
+      "original_reference_run": "build/reference/game-play-6s40gkfz",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-6kve9dlo/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-6kve9dlo/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-6kve9dlo/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-6kve9dlo/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-6kve9dlo",
+        "-seconds_to_run",
+        "330"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "05-after-swap.png",
+          "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "06-personal-status.png",
+          "sha256": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    },
+    {
+      "rebuilt_run": "build/reference/game-utilities-o7j9rn39",
+      "original_reference_run": "build/reference/game-utilities-ykwy1ltx",
+      "command": [
+        "/usr/games/mame",
+        "apple2e",
+        "-rompath",
+        "/home/iolo/workspace/retro/a2x/mame/roms",
+        "-gameio",
+        "joy",
+        "-flop1",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-o7j9rn39/sundog-disk1-game.dsk",
+        "-video",
+        "none",
+        "-sound",
+        "none",
+        "-nothrottle",
+        "-skip_gameinfo",
+        "-autoboot_delay",
+        "0",
+        "-autoboot_script",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-o7j9rn39/sequence.lua",
+        "-cfg_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-o7j9rn39/cfg",
+        "-nvram_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-o7j9rn39/nvram",
+        "-snapshot_directory",
+        "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-utilities-o7j9rn39",
+        "-seconds_to_run",
+        "203"
+      ],
+      "screenshots": [
+        {
+          "name": "01-title.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "02-menu.png",
+          "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "03-selection.png",
+          "sha256": "22d8fb8461025fa01c60595699fa5ccffbae3bec936ec375701d53a7e29131bb",
+          "byte_identical_to_reference": true
+        },
+        {
+          "name": "04-result.png",
+          "sha256": "02c408c06cd297156cc3aba716b035873f37bd71fabc082056f09816d8c3668c",
+          "byte_identical_to_reference": true
+        }
+      ],
+      "final_media_hashes": {
+        "disk1": "dcc610d358e22007c787d8390d51aae05c8c286640fd16af8233ee53392791c1",
+        "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      },
+      "historical_media_key_mapping": {
+        "game": "disk1",
+        "utility": "disk2"
+      }
+    }
+  ]
+}

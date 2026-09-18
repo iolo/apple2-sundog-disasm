@@ -14,6 +14,8 @@ at `$4000`–`$43FF`; its source bitmap remains temporary.
 shared comparison tail; see `docs/pcode-native.md` for its boundaries and tables.
 `native/native_io.s` reconstructs bank-2 disk, device, and console services;
 see `docs/native-io.md` for overlapping instructions and runtime operand patches.
+`native/native_shared.s` reconstructs common procedure/segment handling, numeric
+and device routines, and the initializer-copy stub; see `docs/native-shared.md`.
 `python3 tools/build_disks.py` assembles these components and combines them with
 explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
 this is not yet the final source-and-assets-only build.
