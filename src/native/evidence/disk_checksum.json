@@ -1,0 +1,27 @@
+{
+  "name": "disk_checksum",
+  "size": 135,
+  "base": 6144,
+  "sha256": "fa689ce3974c124a8315e56d977b00e2dc24e882157e06f01c5c6bb049319755",
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 54
+    }
+  ],
+  "classification_evidence": "docs/disk-checksum.md",
+  "roots": [
+    {
+      "offset": 64,
+      "evidence": "Game 21 at $13C9 calls base $1800 + 64 after loading absolute block 54"
+    }
+  ],
+  "data": [
+    {
+      "offset": 0,
+      "size": 64,
+      "kind": "block-checksum-pairs",
+      "evidence": "Game 21 compares entries indexed by block >> 2; 31 checked eight-block groups match separate even/odd sums, with group 48 explicitly skipped"
+    }
+  ]
+}

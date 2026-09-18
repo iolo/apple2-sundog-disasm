@@ -1,0 +1,13 @@
+{
+  "name": "disk_checksum",
+  "source": "src/native/disk_checksum.s",
+  "config": "src/native/disk_checksum.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 25344,
+      "size": 135,
+      "input_offset": 0
+    }
+  ]
+}

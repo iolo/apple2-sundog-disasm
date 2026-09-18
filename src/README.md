@@ -69,3 +69,7 @@ The extra 80 fetched bytes remain unresolved; see `docs/viewscreen-transition.md
 `native/viewscreen_io.s` reconstructs all of disk-2 blocks 81–82: drawing
 routines, joystick input, lookup tables, and initial runtime workspace. See
 `docs/viewscreen-io.md` for the independently called entries and table writer.
+
+`native/disk_checksum.s` reconstructs the 64-byte checksum table and 71-byte
+integrity-check routine in disk-2 block 54. The table matches all 31 checked
+eight-block groups; see `docs/disk-checksum.md`. The rest of the block is unresolved.

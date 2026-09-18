@@ -1412,3 +1412,23 @@ and acceptance criteria.
   remain open, including provisional regions in older native source.
 - **Next action:** Trace the scene-display raw loader in game 21 and its image
   consumers, then continue remaining native tails and data banks.
+
+## 2026-09-18 — Step 06ac: raw disk-integrity checker and checksum table
+
+- **Work/evidence:** Traced the game-21 raw load to disk-2 block 54 and entry
+  $1840. The routine is an integrity checker, not a scene renderer: 41
+  instructions/71 bytes sum alternating bytes of a 4,096-byte buffer into two
+  independent modulo-256 accumulators. Reconstructed the preceding 64-byte
+  table; its caller indexes by block >> 2 and explicitly skips group 48.
+- **Validation:** Added verify_block_checksums.py and its 32-group report. All
+  31 checked groups match the native algorithm; the skipped self-containing
+  group mismatch is recorded, not altered. A one-byte mutation is detected in
+  the correct group. Preparation/adoption verify all 135 reconstructed bytes;
+  full build, original hashes, and both exact disk comparisons pass.
+- **Limits:** The other 377 bytes of block 54 remain unresolved. Checksums prove
+  content integrity, not code/data classification of their input. No fresh
+  runtime trace of the checker is claimed.
+- **Coverage:** 152,679 source-built bytes, 18,432 asset bytes, 115,609 temporary
+  bytes (58,444 disk 1; 57,165 disk 2).
+- **Next action:** Extract additional glyph/tile banks through the confirmed
+  library-22 bank loader and renderer; continue classifying remaining raw tails.
