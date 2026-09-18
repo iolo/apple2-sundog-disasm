@@ -61,3 +61,34 @@ formula. The following code at `$0BAC` is a helper reached by relocated direct
 JSRs in procedures 9–12. The decoder discovers this entry from those callers;
 it does not classify the helper as part of the table. Remaining native procedures
 are completely covered by entry/branch/call traversal and alignment rules.
+
+## Shared library segment 22
+
+The 6,126-byte segment contains 45 p-code and 18 native procedures. Its 2,710
+instructions occupy 2,552 p-code and 2,126 native bytes. All other bytes are
+classified in the recipe and audit, including state arrays, lookup/mask tables,
+relocation lists, procedure metadata, and twelve inline packed-array bytes.
+
+Procedure 2's relocated pointer at `$0CD2` resolves to helper `$0CDD`. Loads at
+`$0C62/$0C68` install it in interpreter opcode vector `$D004/$D005`. Stores at
+`$0C59/$0C5F` save the prior vector into the operand of JMP at `$0CF3`. The helper
+updates two input-state bytes and then executes that patched jump. Its additional
+code entry is therefore supported by the installed pointer, not guessed from
+unvisited bytes. The BEQ at `$0CD0` immediately follows LDA #0, so it cannot fall
+through into the pointer and state arrays at `$0CD2`–`$0CDC`.
+
+Procedure 25 also patches a JMP: stores at `$0F4B/$0F4F` write a caller-supplied
+address into `$0F59/$0F5A`, the operand of JMP at `$0F58`. The initial zero word
+is an instruction operand, not an unexplained data region. The module audit
+records the four patch stores and their resolved destinations.
+
+Relocated calls establish helper `$1607` within procedure 55. It reads the
+256-byte table at `$1656` using an eight-bit index. Entries equal
+`(index + floor(index / 7)) & 255`; the following ten bytes continue that exact
+sequence through index 265. They are preserved as data continuation, with their
+original intended use unproven. Both parts are expressed with assembly-time
+formulas. Two preceding 12-byte pixel-pattern tables are referenced from
+procedures 7 and 9. Procedure 7 has four seven-byte masks; procedure 8 has seven
+bit masks and two four-byte lookup tables. Their consumers are recorded in the
+recipe. Procedure 4's two-byte feedback state is written and shifted by native
+instructions and is separate from its alignment byte.

@@ -1123,3 +1123,26 @@ and acceptance criteria.
 - **Variant handling:** Disk 2 uses the shared library-26 instruction/table source
   with its own original inline string. Both variants were independently decoded,
   assembled, and compared; their native code and data classifications are equal.
+
+## 2026-09-18 — Step 06t: reconstruct library_22
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 103, segment 22, block 104; disk2 header 103, segment 22, block 104.
+- **Work:** Reconstructed 6,126 bytes, 63 procedures,
+  2,710 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/library_22.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 142,576 output bytes, with 144,144 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Runtime patch evidence:** Verified the dispatch-hook pointer, helper root,
+  unconditional BEQ outcome, and four stores into two JMP operands. Table formulas
+  reproduce all 266 pixel-index bytes; the final ten are documented data
+  continuation with unknown original intended use. No executable gap remains in
+  this module. It contains 45 p-code and 18 native procedures.

@@ -1,0 +1,141 @@
+{
+  "documentation": "docs/mixed-pcode.md",
+  "procedures": {
+    "2": {
+      "code_roots": [
+        3293
+      ],
+      "code_root_evidence": "The relocated word at $0CD2 resolves to $0CDD and is installed in opcode vector $D004/$D005 by $0C62-$0C6B.",
+      "nonfallthrough_branches": [
+        3280
+      ],
+      "branch_evidence": "LDA #0 at $0CCE immediately precedes BEQ at $0CD0, so its fall-through is impossible.",
+      "data": [
+        {
+          "offset": 3282,
+          "size": 2,
+          "kind": "native-code-pointer",
+          "evidence": "Procedure-relocated vector loaded bytewise at $0C62/$0C68 and installed into opcode dispatch $D004/$D005."
+        },
+        {
+          "offset": 3284,
+          "size": 4,
+          "kind": "native-state-array",
+          "evidence": "Procedure-relative ORA/LDA/STA indexed by (argument AND 3); hook also updates the first two bytes."
+        },
+        {
+          "offset": 3288,
+          "size": 4,
+          "kind": "native-state-array",
+          "evidence": "Procedure-relative LDA/STA at $0CA9/$0CB5 indexed by argument AND 3."
+        },
+        {
+          "offset": 3292,
+          "size": 1,
+          "kind": "native-state-byte",
+          "evidence": "Procedure-relative LDA and INC at $0C4A/$0C6E track whether the hook was installed."
+        }
+      ]
+    },
+    "4": {
+      "data": [
+        {
+          "offset": 3471,
+          "size": 2,
+          "kind": "native-state-word",
+          "evidence": "Procedure-relative ASL/ROL/LDA/STA at $0D56/$0D59/$0D61/$0D66 update this feedback state."
+        },
+        {
+          "offset": 3473,
+          "size": 1,
+          "kind": "native-alignment",
+          "evidence": "Zero after the two-byte feedback state and before the aligned relocation lists."
+        }
+      ]
+    },
+    "7": {
+      "data": [
+        {
+          "offset": 4906,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Indexed LDA at $126C; X is pixel remainder supplied by helper $1607."
+        },
+        {
+          "offset": 4913,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Indexed AND at $127E; same remainder index."
+        },
+        {
+          "offset": 4920,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Indexed LDA at $1285; ending pixel remainder."
+        },
+        {
+          "offset": 4927,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Indexed AND at $1297; same ending remainder."
+        }
+      ]
+    },
+    "8": {
+      "data": [
+        {
+          "offset": 4336,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Indexed LDA/EOR at $10CA/$10D2/$10DE; X from remainder byte $34 set by helper $1607."
+        },
+        {
+          "offset": 4343,
+          "size": 4,
+          "kind": "native-lookup-table",
+          "evidence": "LDA at $1065; X obtained from AND #3 at $1060."
+        },
+        {
+          "offset": 4347,
+          "size": 4,
+          "kind": "native-lookup-table",
+          "evidence": "LDA at $106A; same two-bit index."
+        },
+        {
+          "offset": 4351,
+          "size": 1,
+          "kind": "native-alignment",
+          "evidence": "Zero after bounded lookup tables and before aligned relocation lists."
+        }
+      ]
+    },
+    "55": {
+      "data": [
+        {
+          "offset": 5694,
+          "size": 12,
+          "kind": "native-pixel-pattern-table",
+          "evidence": "Segment-relative LDA indexed,Y at $125C and $13CA; paired with the table at $164A."
+        },
+        {
+          "offset": 5706,
+          "size": 12,
+          "kind": "native-pixel-pattern-table",
+          "evidence": "Segment-relative LDA indexed,Y at $1257 and $13C4; paired pixel patterns."
+        },
+        {
+          "offset": 5718,
+          "size": 256,
+          "kind": "native-pixel-index-table",
+          "evidence": "Procedure-relative LDA at $1612 uses an 8-bit X. Each byte is (index + floor(index/7)) modulo 256."
+        },
+        {
+          "offset": 5974,
+          "size": 10,
+          "kind": "native-table-continuation",
+          "evidence": "The ten following bytes continue exactly the same pixel-index formula through index 265, immediately before relocation metadata. No code entry or control flow points here; retained as table continuation with unknown original intended use."
+        }
+      ]
+    }
+  }
+}
