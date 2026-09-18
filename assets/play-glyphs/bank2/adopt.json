@@ -1,0 +1,32 @@
+{
+  "name": "play_glyph_bank2",
+  "data": "assets/play-glyphs/bank2/glyphs.bin",
+  "format": "sundog-glyph-bank",
+  "classification": "docs/play-glyphs.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 256,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 3840,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 4096,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 7680,
+      "size": 256,
+      "input_offset": 768
+    }
+  ]
+}

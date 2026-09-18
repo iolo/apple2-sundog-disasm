@@ -1,0 +1,52 @@
+{
+  "bank": 2,
+  "format": "sundog-glyph-bank",
+  "size": 1024,
+  "sha256": "f4f8bebc8c2e2ab5fce16b89b02cf679ff05125f21d615e3222b818b3f091a1f",
+  "disk": "disk2",
+  "logical_blocks": [
+    7,
+    9
+  ],
+  "glyph_count": 128,
+  "glyph_size": [
+    7,
+    8
+  ],
+  "stored_bytes_per_glyph": 8,
+  "row_order": "Stored bottom to top; bit 0 is the leftmost pixel",
+  "high_bit": "Preserved in raw data and row listing; renderer masks it out",
+  "classification_evidence": "docs/play-glyphs.md",
+  "consumer": "Library 22 procedures 20/21 (bank pointers) and 9 (glyph renderer)",
+  "preview": "glyphs.png",
+  "rows": "rows.json",
+  "preview_note": "Stored masks; no artifact color, placement, or runtime mutation simulated",
+  "runtime_copy": {
+    "source": 4096,
+    "destination": 1024,
+    "groups": 8,
+    "stride": 128,
+    "bytes_per_group": 120,
+    "omitted_glyph_indices": [
+      15,
+      31,
+      47,
+      63,
+      79,
+      95,
+      111,
+      127
+    ],
+    "omitted_stored_hex": [
+      "0000000000000000",
+      "8080808080808080",
+      "0000000000000000",
+      "8080808080808080",
+      "0000000000000000",
+      "8080808080808080",
+      "0000000000000000",
+      "8080808080808080"
+    ],
+    "evidence": "Startup 7 $0355-$0388; game 12 $04E1 selects the $0400 bank"
+  }
+}

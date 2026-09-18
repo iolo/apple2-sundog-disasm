@@ -1432,3 +1432,25 @@ and acceptance criteria.
   bytes (58,444 disk 1; 57,165 disk 2).
 - **Next action:** Extract additional glyph/tile banks through the confirmed
   library-22 bank loader and renderer; continue classifying remaining raw tails.
+
+## 2026-09-18 — Step 07d: extract both play-side graphics banks
+
+- **Work/evidence:** Extracted bank 1 from disk-2 blocks 5–6 and bank 2 from
+  blocks 7–8. Traced the startup/game-13 bank loads, library-22 glyph renderer,
+  and bank-2 copy to $0400 followed by game-12's explicit pointer selection.
+  Added all 256 records as raw bytes, display-order row listings, atlases,
+  manifests, adoption recipes, repeatable extraction tool, and consumer notes.
+- **Visual/boundary review:** Both atlases show graphics masks, symbols, and
+  digits. Bank 2's eight omitted runtime-copy records alternate all $00/all $80;
+  all are blank under the renderer mask. The extractor checks their exact stored
+  values and preserves them. Runtime destination gaps are not falsely equated
+  with source records; the previews represent stored masks only.
+- **Validation:** Both complete row listings pack exactly to their raw banks.
+  Existing glyph tests pass. Both adoptions and full builds preserve every byte;
+  original-input checks and complete disk comparisons pass. No live capture of
+  these two banks is claimed; the previous font capture covers bank zero.
+- **Coverage:** 152,679 source-built bytes, 20,480 asset bytes, 113,561 temporary
+  bytes (58,444 disk 1; 55,117 disk 2). Code/data audit and final behavior checks
+  remain required, including older provisional native regions.
+- **Next action:** Trace the remaining raw block loaders and classify the
+  persistent game-state/map buffers and native/container tails with their consumers.

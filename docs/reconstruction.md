@@ -96,8 +96,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Viewscreen transition and native metadata | `src/native/viewscreen_transition.s` | First 944 bytes of disk 2 blocks 86–87 | 944 |
 | Shared viewscreen drawing/joystick overlay | `src/native/viewscreen_io.s` | Disk 2 blocks 81–82 | 1,024 |
 | Raw disk-integrity checker and table | `src/native/disk_checksum.s` | First 135 bytes of disk 2 block 54 | 135 |
+| Play graphics banks 1 and 2 | `assets/play-glyphs/bank{1,2}/glyphs.bin` | Disk 2 blocks 5–8 | 2,048 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 58,444 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 57,165 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 55,117 |
 
 The 152,679 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -251,6 +252,11 @@ was 152,544 source-built bytes, 18,432 classified asset bytes, and 115,744 tempo
 bytes. Both complete disk images still match exactly.
 
 Step 06ac reconstructs the [raw disk-integrity checker](disk-checksum.md) and
-validates its table against all 31 checked eight-block groups. Current ownership
-is 152,679 source-built bytes, 18,432 asset bytes, and 115,609 temporary bytes.
+validates its table against all 31 checked eight-block groups. At that checkpoint ownership
+was 152,679 source-built bytes, 18,432 asset bytes, and 115,609 temporary bytes.
 The checker does not establish code/data classification of the bytes it checks.
+
+Step 07d extracts the [two play graphics banks](play-glyphs.md), including
+all 256 glyph records, raw masks, display-order rows, and atlas previews. Current
+ownership is 152,679 source-built bytes, 20,480 asset bytes, and 113,561 temporary
+bytes. The bank-2 copy gaps retain their original high bits.

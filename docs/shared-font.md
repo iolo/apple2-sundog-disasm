@@ -41,8 +41,9 @@ the raw bank, row listing, preview, manifest, and adoption recipe. It refuses to
 overwrite an existing output directory. Normal disk builds read the committed
 raw bank only; neither Pillow nor the original images are build dependencies.
 
-Only bank zero is classified here. Other banks selected by the same routine
-may contain tile graphics or different content and require separate inspection.
+This document covers bank zero. The separately inspected play-side banks one
+and two are now extracted; see [play-glyphs.md](play-glyphs.md) for their callers,
+renderer, and copied-bank boundaries.
 
 ## Runtime and visual checks
 

@@ -1,0 +1,24 @@
+{
+  "bank": 1,
+  "format": "sundog-glyph-bank",
+  "size": 1024,
+  "sha256": "c5631199d734fdcf503e18619442d99ce0a65424b3f176f6feccc16eb45d0024",
+  "disk": "disk2",
+  "logical_blocks": [
+    5,
+    7
+  ],
+  "glyph_count": 128,
+  "glyph_size": [
+    7,
+    8
+  ],
+  "stored_bytes_per_glyph": 8,
+  "row_order": "Stored bottom to top; bit 0 is the leftmost pixel",
+  "high_bit": "Preserved in raw data and row listing; renderer masks it out",
+  "classification_evidence": "docs/play-glyphs.md",
+  "consumer": "Library 22 procedures 20/21 (bank pointers) and 9 (glyph renderer)",
+  "preview": "glyphs.png",
+  "rows": "rows.json",
+  "preview_note": "Stored masks; no artifact color, placement, or runtime mutation simulated"
+}

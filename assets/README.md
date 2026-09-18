@@ -14,6 +14,11 @@
   [manifest](certificate/manifest.json), and
   [consumer evidence](../docs/certificate-bitmap.md).
 
+- [Play graphics banks](play-glyphs/): two 128-glyph banks, with separate
+  [bank 1 atlas](play-glyphs/bank1/glyphs.png) and
+  [bank 2 atlas](play-glyphs/bank2/glyphs.png), raw data, row listings, and manifests.
+  [Consumer and copy evidence](../docs/play-glyphs.md).
+
 The normal disk build reads the raw HGR and glyph assets directly; Pillow is needed only
 for preview generation. Other images, glyph banks, maps, sounds, and data still require
 classification and extraction. Unidentified executable regions are not assets.
