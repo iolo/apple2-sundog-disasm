@@ -1,0 +1,13 @@
+{
+  "name": "system_3",
+  "source": "src/pcode/system_3.s",
+  "config": "src/pcode/system_3.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 131328,
+      "size": 20,
+      "input_offset": 0
+    }
+  ]
+}
