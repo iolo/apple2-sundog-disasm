@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-18",
+  "build_report": {
+    "status": "incremental proof; temporary executable bytes remain",
+    "manifest_sha256": "8b26d455644ed12e4066909a7fc3c26be9ccb0ad007be9e4137c8b7356625551",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 804,
+      "temporary-unresolved": 285916
+    }
+  },
+  "mame_command": [
+    "/usr/games/mame",
+    "apple2e",
+    "-rompath",
+    "/home/iolo/workspace/retro/a2x/mame/roms",
+    "-gameio",
+    "joy",
+    "-flop1",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-x55ldh9y/sundog-disk1-game.dsk",
+    "-video",
+    "none",
+    "-sound",
+    "none",
+    "-nothrottle",
+    "-skip_gameinfo",
+    "-autoboot_delay",
+    "0",
+    "-autoboot_script",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-x55ldh9y/sequence.lua",
+    "-cfg_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-x55ldh9y/cfg",
+    "-nvram_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-x55ldh9y/nvram",
+    "-snapshot_directory",
+    "/home/iolo/workspace/retro/apple2-sundog-disasm/build/reference/game-play-x55ldh9y",
+    "-seconds_to_run",
+    "330"
+  ],
+  "rebuilt_run": "build/reference/game-play-x55ldh9y",
+  "original_reference_run": "build/reference/game-play-6s40gkfz",
+  "screenshots": [
+    {
+      "name": "01-title.png",
+      "frame": 4200,
+      "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "02-menu.png",
+      "frame": 4800,
+      "sha256": "da657341527a0a00a3b96c385ba12de1f108baf0232b3176039688645d396b8e",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "03-selection.png",
+      "frame": 5200,
+      "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "04-result.png",
+      "frame": 11000,
+      "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "05-after-swap.png",
+      "frame": 18000,
+      "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5",
+      "byte_identical_to_reference": true
+    },
+    {
+      "name": "06-personal-status.png",
+      "frame": 18600,
+      "sha256": "677c386921f1d03b7a3e8e2a32c20f9784769db34b2b7d72832de9ed6be6a754",
+      "byte_identical_to_reference": true
+    }
+  ],
+  "final_media_hashes": {
+    "disk1": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "disk2": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+  },
+  "additional_validation": {
+    "isolated_build": "build/build-without-originals-dki15os2",
+    "no_originals_present": true,
+    "tamper_exit_code": 1,
+    "tamper_diagnostic": "sundog-disk1-game.dsk: first difference at $00E07 (3591), expected $00, got $01; track 0, image sector 14, physical sector 2, logical block 0, half 1, byte 7; component bootstrap"
+  }
+}

@@ -4,7 +4,13 @@ Reconstructed executable source belongs here. `pcode/system_entry.s` is the
 first 36-byte procedure of SYSTEM.PASCAL, rebuilt using the verified encoding
 subset in `pcode/encoding.inc`. Run `python3 tools/build_pcode_probe.py` to
 assemble it and compare its bytes with the original disk. This is a toolchain
-proof; no full source-to-disk build is available yet.
+proof now integrated into the incremental disk build.
+
+`native/bootstrap.s` reconstructs all 768 bytes of the native boot component,
+including its identified tables and text, padding, and preserved tail bytes.
+`python3 tools/build_disks.py` assembles both components and combines them with
+explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
+this is not yet the final source-and-assets-only build.
 
 Generated exploratory disassembly belongs under `build/` until its addresses
 and code/data boundaries are verified. Most executable regions still await

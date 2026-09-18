@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "status": "incremental proof; temporary executable bytes remain",
+  "components": {
+    "bootstrap": {
+      "kind": "ca65-source",
+      "source": "src/native/bootstrap.s",
+      "config": "src/native/bootstrap.cfg",
+      "size": 768,
+      "sha256": "068b86236cbe9512a8cf53ab49a0db20887e1b3d150f9f5e609e811bb10a473f"
+    },
+    "system_entry": {
+      "kind": "ca65-source",
+      "source": "src/pcode/system_entry.s",
+      "config": "src/pcode/probe.cfg",
+      "size": 36,
+      "sha256": "ef70020a699c0a1201d839a50e0cf38a7c8fe4c69971c0a68b621ce38c3cdfc3"
+    },
+    "disk1_unresolved": {
+      "kind": "temporary-unresolved",
+      "path": "temporary/disk1-unresolved.bin",
+      "size": 142556,
+      "sha256": "6fce33bb0917c50469957a00ccfcfa61426734d063efdd088bbcfa1a5c03dee7",
+      "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
+    },
+    "disk2_unresolved": {
+      "kind": "temporary-unresolved",
+      "path": "temporary/disk2-unresolved.bin",
+      "size": 143360,
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+      "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
+    }
+  },
+  "disks": [
+    {
+      "id": "disk1",
+      "filename": "sundog-disk1-game.dsk",
+      "size": 143360,
+      "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+      "regions": [
+        {
+          "offset": 0,
+          "size": 256,
+          "input": "bootstrap",
+          "input_offset": 0
+        },
+        {
+          "offset": 256,
+          "size": 3072,
+          "input": "disk1_unresolved",
+          "input_offset": 0
+        },
+        {
+          "offset": 3328,
+          "size": 256,
+          "input": "bootstrap",
+          "input_offset": 512
+        },
+        {
+          "offset": 3584,
+          "size": 256,
+          "input": "bootstrap",
+          "input_offset": 256
+        },
+        {
+          "offset": 3840,
+          "size": 124928,
+          "input": "disk1_unresolved",
+          "input_offset": 3072
+        },
+        {
+          "offset": 128768,
+          "size": 36,
+          "input": "system_entry",
+          "input_offset": 0
+        },
+        {
+          "offset": 128804,
+          "size": 14556,
+          "input": "disk1_unresolved",
+          "input_offset": 128000
+        }
+      ]
+    },
+    {
+      "id": "disk2",
+      "filename": "sundog-disk2-util.dsk",
+      "size": 143360,
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+      "regions": [
+        {
+          "offset": 0,
+          "size": 143360,
+          "input": "disk2_unresolved",
+          "input_offset": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+# Incremental exact-disk build
+
+Step 05 reconstructs both disk images using two assembled source components and
+explicitly temporary binary inputs for the remaining bytes. It is a working
+source-to-disk pipeline, not the completed source-and-assets reconstruction.
+
+## Build and verify
+
+Prerequisites are Python 3.9 or newer and `ca65`/`ld65` on PATH. Tested versions
+are recorded in [toolchain.md](toolchain.md). From the repository root:
+
+```sh
+python3 tools/build_disks.py
+python3 tools/verify_disks.py
+python3 tools/test_reconstruction.py
+```
+
+Output goes to `build/disks/`, including the two original filenames,
+`build-report.json`, and assembled component binaries/listings/maps under
+`components/`. Use `--output /path/to/new-output` for a different build location
+and pass that directory to `verify_disks.py`.
+
+The build reads only source, linker configurations, and the reconstruction
+manifest and its component files. It checks component sizes/hashes, complete
+image coverage, and final image hashes. The comparison command separately
+checks the originals, then exact byte equality; any mismatch exits nonzero and
+reports the first image offset, expected/actual byte, track, image/physical
+sector, logical block/half, and mapped reconstruction component.
+
+## Source coverage at this checkpoint
+
+| Component | Source | Output locations | Bytes |
+| --- | --- | --- | ---: |
+| Three-page native bootstrap | `src/native/bootstrap.s` | Disk 1 image offsets `$0000`, `$0E00`, `$0D00`, 256 bytes each | 768 |
+| SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 142,556 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
+
+The 804 source-built bytes include instructions and their owned tables,
+attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
+804 instruction bytes. Most identified executable regions are still in the
+temporary inputs. The [Pascal inventory](pascal-segments.md) and
+[runtime architecture](runtime-architecture.md) identify the next modules.
+
+The native source preserves the bootstrap page-count byte as 1, not its runtime
+value 5. It separates the slot-error message, physical-sector order, seek-delay
+tables, padding, and unreferenced tail from instructions. Branches use labels,
+and explicit link addresses reproduce the observed `$0800`–`$0AFF` image.
+No executable bytes are imported with `.incbin` in either source component.
+
+Both remaining blobs are categorized `temporary-unresolved`, not assets or
+finished source. `reconstruction/manifest.json` is the byte-level coverage
+ledger: replace those ranges as executable modules and assets are reconstructed.
+The normal build does not run `seed_reconstruction.py`; original disks are
+needed only to repeat the initial archival extraction or perform comparison.
+
+## Validation evidence
+
+`reference/step05-build-validation.json` records the build report, emulator
+command, six screenshot hashes, media hashes, and independent-build/tamper checks.
+
+- Both full images are 143,360 bytes and match their original SHA-256 hashes
+  and every byte. The baseline hashes are in `inputs.json`.
+- A fresh isolated tree containing only the needed tools, `src/`, and
+  `reconstruction/` builds the same disks with no original images present.
+  This proves the build dependency boundary, not completeness of the temporary
+  inputs' reconstruction.
+- A modified byte at image offset `$00E07` is rejected with exit status 1 and
+  correctly reported as track 0, physical sector 2, block 0 half 1, bootstrap.
+  Unit tests also reject coverage gaps/overlaps, bad slices, missing inputs,
+  and path escapes, and check truncated/extended-image differences.
+- MAME runs the rebuilt pair through `game-play.json`: title/menu, selection,
+  play-side prompt, disk swap, ship interior, and personal-status screen.
+  All six PNG files are byte-identical to the original reference run, and both
+  disposable media copies retain their initial hashes.
+
+Repeat the behavior check using the ROM path on your machine:
+
+```sh
+python3 tools/reference_mame.py docs/reference/game-play.json \
+  --rompath /path/to/mame/roms --image-dir build/disks
+```
+
+This checkpoint does not validate every game interaction, save/load, sound, or
+the final required gameplay checks in both emulators. Those remain step 09.

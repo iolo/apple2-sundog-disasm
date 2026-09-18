@@ -224,3 +224,32 @@ and acceptance criteria.
 - **Next action:** Step 05: reconstruct the three-page bootstrap, integrate the
   source-built components with explicitly temporary remaining bytes, verify both
   full disk hashes, and run the reconstructed images through the play reference.
+
+## 2026-09-18 — Step 05: exact source-component-to-disk build
+
+- **Status:** Complete. This is the planned minimal integration proof, not the
+  completed PRD reconstruction; temporary executable and asset bytes remain.
+- **Work:** Reconstructed the 768-byte native bootstrap with ca65, separating
+  instructions, text, tables, padding, and unreferenced tail bytes. Integrated it
+  and the 36-byte p-code entry into `reconstruction/manifest.json`. Added build,
+  comparison, initial extraction, and boundary-test tools, plus usage/coverage
+  documentation. Every remaining byte is explicitly `temporary-unresolved`.
+- **Build validation:** `python3 tools/build_disks.py` followed by
+  `python3 tools/verify_disks.py` produces and compares both complete 143,360-byte
+  images exactly. Source-built component coverage is 804 bytes; the remaining
+  285,916 bytes are temporary. An isolated tree without the original disks builds
+  identical outputs from the committed source and temporary components.
+- **Failure checks:** Three reconstruction tests pass. A deliberately flipped
+  byte at `$00E07` is rejected with exit code 1 and the correct sector/block and
+  bootstrap component diagnostic. Gaps, overlaps, truncations, invalid slices,
+  missing inputs, and escaping input paths are covered by the tests.
+- **Behavior:** Rebuilt media pass the MAME `game-play.json` sequence. All six
+  screenshots match the original reference byte for byte, including play-side
+  swap, ship interior, and personal status. Disposable media hashes remain
+  unchanged. Evidence is in `docs/reference/step05-build-validation.json`.
+- **Integrity:** Original input hashes and `git diff --check` pass. The normal
+  build does not read originals or rerun extraction. Binary inputs are explicitly
+  temporary and include unreconstructed code; they are not presented as assets.
+- **Next action:** Step 06: replace temporary executable regions module by module,
+  starting with the remaining early native component and interpreter, then
+  expanding p-code/source coverage and preserving native relocation records.
