@@ -278,3 +278,30 @@ and acceptance criteria.
 - **Next action:** Continue step 06 with the banked native interpreter/I/O
   modules, expanding source and relocation coverage without treating tables or
   preserved unknown bytes as decoded instructions.
+
+## 2026-09-18 — Step 06b: reconstruct the native p-code primitive bank
+
+- **Status:** Module checkpoint complete; step 06 remains in progress.
+- **Work:** Added `pcode_primitives.s`, its linker configuration and typed da65
+  recipe. Reconstructed the complete alternate bank plus shared `$E000`–`$E0E4`
+  continuation: 2,146 instructions (3,899 bytes) and 426 table/data bytes.
+  Preserved the self-modifying dispatch operand and the instruction crossing
+  `$DFFF`/`$E000`. Added the module to the disk build and removed 4,325 temporary
+  bytes. Detailed boundaries are in `docs/pcode-native.md`.
+- **Automation:** Added `tools/adopt_component.py` to assemble and validate new
+  source replacements before updating the manifest/remainder. Three tests cover
+  scattered bank mappings, wrong/stale bytes, omissions, overlaps, out-of-bounds
+  slices, and refusal to replace already reconstructed ranges.
+- **Structural validation:** `python3 tools/check_pcode_native.py` verifies all
+  code spans and 555 direct/vector targets. A deliberately corrupted vector into
+  an operand byte is rejected. Masks match formula-generated tables exactly.
+- **Build/behavior:** Both complete disk images remain byte-identical. New MAME
+  play and utility runs match all ten reference PNGs; final media hashes match
+  the original runs, including expected utility-side writes. Reports are in
+  `docs/reference/step06b-native-audit.json` and `step06b-build-validation.json`.
+  Original hashes and whitespace checks pass.
+- **Coverage:** 6,153 source-built output bytes; 280,567 still temporary. The
+  ten-byte descriptor at `$D1AD` is explicitly preserved with unresolved field
+  meanings, not presented as executable instructions or fully explained data.
+- **Next action:** Reconstruct bank-2 disk I/O and the remaining shared native
+  runtime, retaining self-modifying operands and separating lookup tables.

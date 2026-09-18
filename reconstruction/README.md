@@ -26,3 +26,12 @@ checks reject gaps, overlaps, and out-of-bounds slices.
 Replace these temporary ranges incrementally during steps 06 and 07. The final
 step-08 build cannot be declared complete while either temporary component
 remains. See `docs/reconstruction.md` for the current coverage and verification.
+
+To adopt a newly reconstructed component, first build the current baseline, then
+run `python3 tools/adopt_component.py path/to/recipe.json`. A recipe identifies
+the ca65 source/config and byte mappings; `src/native/pcode_primitives.adopt.json`
+is an example spanning two bank regions. The tool assembles the source, checks
+the baseline images and every replacement byte, rejects overlapping or already
+reconstructed ranges, and repacks the affected temporary remainder before
+updating the manifest. It does not read the originals. Adoption is a one-time
+maintenance operation; do not rerun an already adopted recipe as a build step.

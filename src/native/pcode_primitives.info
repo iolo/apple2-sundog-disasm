@@ -1,0 +1,64 @@
+# da65 analysis recipe, for the alternate 4 KB bank followed by common E000-E0E4.
+# See docs/pcode-native.md for boundaries and generation command.
+GLOBAL { STARTADDR $D000; CPU "6502"; PAGELENGTH 0; };
+SEGMENT { START $D000; END $E0E4; NAME "PCODE_NATIVE"; };
+RANGE { START $D000; END $D0FF; TYPE AddrTable; NAME "opcode_vectors"; };
+RANGE { START $D100; END $D151; TYPE AddrTable; NAME "standard_proc_vectors"; };
+RANGE { START $D152; END $D1AC; TYPE Code; };
+RANGE { START $D1AD; END $D1B6; TYPE WordTable; NAME "descriptor_d1ad"; };
+RANGE { START $D1B7; END $DCF5; TYPE Code; };
+RANGE { START $DCF6; END $DCFD; TYPE ByteTable; NAME "single_bit_masks"; };
+RANGE { START $DCFE; END $DDD5; TYPE Code; };
+RANGE { START $DDD6; END $DDF7; TYPE WordTable; };
+RANGE { START $DDF8; END $DE17; TYPE WordTable; };
+RANGE { START $DE18; END $DEA3; TYPE Code; };
+RANGE { START $DEA4; END $DEA7; TYPE WordTable; };
+RANGE { START $DEA8; END $E0E4; TYPE Code; };
+
+LABEL { ADDR $D152; NAME "runtime_entry"; };
+LABEL { ADDR $D155; NAME "read_big_word_offset"; };
+LABEL { ADDR $D171; NAME "follow_static_links"; };
+LABEL { ADDR $D1EF; NAME "unsupported_opcode"; };
+LABEL { ADDR $D1FB; NAME "runtime_error"; };
+LABEL { ADDR $D27B; NAME "advance_two"; };
+LABEL { ADDR $D288; NAME "push_short_constant"; };
+LABEL { ADDR $D28D; NAME "advance_one"; };
+LABEL { ADDR $D293; NAME "dispatch"; };
+LABEL { ADDR $D29D; NAME "dispatch_jump"; SIZE 3; };
+LABEL { ADDR $D2A0; NAME "false_jump"; };
+LABEL { ADDR $D2A8; NAME "unconditional_jump"; };
+LABEL { ADDR $D2D7; NAME "load_nil"; };
+LABEL { ADDR $D2DE; NAME "load_integer_constant"; };
+LABEL { ADDR $D315; NAME "load_local_address"; };
+LABEL { ADDR $D33B; NAME "store_local"; };
+LABEL { ADDR $D366; NAME "load_global"; };
+LABEL { ADDR $D384; NAME "load_global_address"; };
+LABEL { ADDR $D3AA; NAME "store_global"; };
+LABEL { ADDR $D3C8; NAME "load_intermediate"; };
+LABEL { ADDR $D3EE; NAME "load_intermediate_address"; };
+LABEL { ADDR $D41C; NAME "store_intermediate"; };
+LABEL { ADDR $D442; NAME "load_extended"; };
+LABEL { ADDR $D467; NAME "store_extended"; };
+LABEL { ADDR $D48C; NAME "load_extended_address"; };
+LABEL { ADDR $D4D6; NAME "load_constant_words"; };
+LABEL { ADDR $D5E2; NAME "case_jump"; };
+LABEL { ADDR $D6FF; NAME "absolute_integer"; };
+LABEL { ADDR $D71D; NAME "add_integers"; };
+LABEL { ADDR $D735; NAME "negate_integer"; };
+LABEL { ADDR $D747; NAME "subtract_integers"; };
+LABEL { ADDR $D786; NAME "multiply_integers"; };
+LABEL { ADDR $D7CD; NAME "square_integer"; };
+LABEL { ADDR $D87D; NAME "divide_integers"; };
+LABEL { ADDR $D8AA; NAME "modulo_integers"; };
+LABEL { ADDR $D8C2; NAME "check_bounds"; };
+LABEL { ADDR $D911; NAME "load_packed_array_address"; };
+LABEL { ADDR $D929; NAME "load_string_address"; };
+LABEL { ADDR $D94B; NAME "assign_string"; };
+LABEL { ADDR $D98C; NAME "index_string"; };
+LABEL { ADDR $DA60; NAME "load_packed_field"; };
+LABEL { ADDR $DAB6; NAME "store_packed_field"; };
+
+# Sizes prevent writes to operand bytes from splitting real instructions.
+LABEL { ADDR $DDD6; NAME "low_bit_masks"; SIZE 34; };
+LABEL { ADDR $DDF8; NAME "high_bit_masks"; SIZE 32; };
+LABEL { ADDR $DEA4; NAME "string_scratch_pointers"; SIZE 4; };

@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 141532,
-      "sha256": "7bff45775b183732a3b4aaafc21aa8eb66397beedbbdcb6bca7ed943f5a7a42b",
+      "size": 137207,
+      "sha256": "03e4a3a0e6d2a6d82629410988fcb00cf4c4315cb4e88d71c4de353650f5c929",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -36,6 +36,13 @@
       "config": "src/native/title_draw.cfg",
       "size": 1024,
       "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
+    },
+    "pcode_primitives": {
+      "kind": "ca65-source",
+      "source": "src/native/pcode_primitives.s",
+      "config": "src/native/pcode_primitives.cfg",
+      "size": 4325,
+      "sha256": "902a7339ff7e54071c3f9748bf2bd213a46c96405c88183ebc10159c8b1a6d9c"
     }
   },
   "disks": [
@@ -101,9 +108,99 @@
         },
         {
           "offset": 105984,
-          "size": 22784,
+          "size": 11008,
           "input": "disk1_unresolved",
           "input_offset": 104192
+        },
+        {
+          "offset": 116992,
+          "size": 229,
+          "input": "pcode_primitives",
+          "input_offset": 4096
+        },
+        {
+          "offset": 117221,
+          "size": 5915,
+          "input": "disk1_unresolved",
+          "input_offset": 115200
+        },
+        {
+          "offset": 123136,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 2048
+        },
+        {
+          "offset": 123392,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 1792
+        },
+        {
+          "offset": 123648,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 1536
+        },
+        {
+          "offset": 123904,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 1280
+        },
+        {
+          "offset": 124160,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 1024
+        },
+        {
+          "offset": 124416,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 768
+        },
+        {
+          "offset": 124672,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 512
+        },
+        {
+          "offset": 124928,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 256
+        },
+        {
+          "offset": 125184,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 0
+        },
+        {
+          "offset": 125440,
+          "size": 1280,
+          "input": "disk1_unresolved",
+          "input_offset": 121115
+        },
+        {
+          "offset": 126720,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 2304
+        },
+        {
+          "offset": 126976,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 2560
+        },
+        {
+          "offset": 127232,
+          "size": 1536,
+          "input": "disk1_unresolved",
+          "input_offset": 122395
         },
         {
           "offset": 128768,
@@ -113,9 +210,45 @@
         },
         {
           "offset": 128804,
-          "size": 14556,
+          "size": 732,
           "input": "disk1_unresolved",
-          "input_offset": 126976
+          "input_offset": 123931
+        },
+        {
+          "offset": 129536,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 3840
+        },
+        {
+          "offset": 129792,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 3584
+        },
+        {
+          "offset": 130048,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 3328
+        },
+        {
+          "offset": 130304,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 3072
+        },
+        {
+          "offset": 130560,
+          "size": 256,
+          "input": "pcode_primitives",
+          "input_offset": 2816
+        },
+        {
+          "offset": 130816,
+          "size": 12544,
+          "input": "disk1_unresolved",
+          "input_offset": 124663
         }
       ]
     },

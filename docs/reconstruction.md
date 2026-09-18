@@ -33,13 +33,14 @@ sector, logical block/half, and mapped reconstruction component.
 | --- | --- | --- | ---: |
 | Three-page native bootstrap | `src/native/bootstrap.s` | Disk 1 image offsets `$0000`, `$0E00`, `$0D00`, 256 bytes each | 768 |
 | Early title routine and tables | `src/native/title_draw.s` | Disk 1 logical blocks 201–202 | 1,024 |
+| Native p-code primitives | `src/native/pcode_primitives.s` | Disk 1 blocks 243–250 and first 229 bytes of block 227 | 4,325 |
 | SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 141,532 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 137,207 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | All disk-2 bytes | 143,360 |
 
-The 1,828 source-built bytes include instructions and their owned tables,
+The 6,153 source-built bytes include instructions and their owned tables,
 attributes, text, padding, and bootstrap tail bytes. This is **not** a count of
-1,828 instruction bytes. Most identified executable regions are still in the
+6,153 instruction bytes. Most identified executable regions are still in the
 temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -61,6 +62,8 @@ needed only to repeat the initial archival extraction or perform comparison.
 command, six screenshot hashes, media hashes, and independent-build/tamper checks.
 `reference/step06a-build-validation.json` records the subsequent title-routine
 integration and its matching screenshot comparison.
+`reference/step06b-build-validation.json` adds the native primitive bank and
+matching play/utility reference runs.
 
 - Both full images are 143,360 bytes and match their original SHA-256 hashes
   and every byte. The baseline hashes are in `inputs.json`.

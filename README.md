@@ -24,9 +24,9 @@ python3 tools/verify_disks.py
 ```
 
 See [build instructions and coverage](docs/reconstruction.md). The native
-bootstrap, early title routine, and first system p-code procedure are assembled
-from source; the remaining executable modules and assets still require
-reconstruction.
+bootstrap, early title routine, native p-code primitive bank, and first system
+p-code procedure are assembled from source. The remaining executable modules
+and assets still require reconstruction.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)
 and a [lossless disk inventory and repacker](docs/disk-layout.md). The supplied
