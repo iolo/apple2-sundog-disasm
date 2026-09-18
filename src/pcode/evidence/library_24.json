@@ -1,0 +1,43 @@
+{
+  "documentation": "docs/mixed-pcode.md",
+  "procedures": {
+    "3": {
+      "data": [
+        {
+          "offset": 3875,
+          "size": 12,
+          "kind": "native-lookup-table",
+          "evidence": "LDA at $0EA7 with procedure-relative operand $00BB; Y from $19 bounded by CPY #12."
+        },
+        {
+          "offset": 3887,
+          "size": 12,
+          "kind": "native-lookup-table",
+          "evidence": "LDA at $0EAF with procedure-relative operand $00C7; same bounded Y."
+        },
+        {
+          "offset": 3899,
+          "size": 12,
+          "kind": "native-lookup-table",
+          "evidence": "LDA at $0EB4 with procedure-relative operand $00D3; same bounded Y."
+        },
+        {
+          "offset": 3911,
+          "size": 1,
+          "kind": "native-alignment",
+          "evidence": "Single zero between the end of three 12-byte tables and an aligned relocation list."
+        }
+      ]
+    },
+    "4": {
+      "data": [
+        {
+          "offset": 4061,
+          "size": 33,
+          "kind": "native-lookup-table",
+          "evidence": "Procedure-relative LDA at $0FA1; AND #$3F then reflection at CMP #$21 bounds X to 0..32."
+        }
+      ]
+    }
+  }
+}

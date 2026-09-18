@@ -1,0 +1,33 @@
+{
+  "documentation": "docs/mixed-pcode.md",
+  "procedures": {
+    "3": {
+      "data": [
+        {
+          "offset": 653,
+          "size": 7,
+          "kind": "native-mask-table",
+          "evidence": "Procedure-relative LDA at $0251; CMP #7 bounds X to 0..6."
+        },
+        {
+          "offset": 660,
+          "size": 8,
+          "kind": "native-address-high-table",
+          "evidence": "Procedure-relative LDA at $027D supplies destination high byte; X starts at 7 and decrements."
+        },
+        {
+          "offset": 668,
+          "size": 8,
+          "kind": "native-address-low-table",
+          "evidence": "Procedure-relative LDA at $0278 supplies destination low byte; same bounded loop."
+        },
+        {
+          "offset": 676,
+          "size": 8,
+          "kind": "native-mask-table",
+          "evidence": "Procedure-relative LDA at $0282 feeds ORA into destination bytes; same bounded loop."
+        }
+      ]
+    }
+  }
+}

@@ -1033,3 +1033,26 @@ and acceptance criteria.
 - **Next action:** Apply the native relocation layout to libraries 22, 24, and 26
   and alternate startup, then reconstruct the split core, classify remaining
   regions and extract assets. Unidentified chunks remain unacceptable at finish.
+
+## 2026-09-18 — Step 06p: reconstruct alternate_1
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 157, segment 1, block 172.
+- **Work:** Reconstructed 880 bytes, 8 procedures,
+  413 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/alternate_1.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 115,596 output bytes, with 171,124 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Mixed-module tooling:** Added a native control-flow decoder and integration
+  with p-code byte ownership. Its 151 standard opcode encodings round-trip through
+  ca65; six native boundary tests and twelve p-code tests pass. Native code/data
+  recipes record bounded table consumers and relocation constraints. A reviewed
+  library-24 recipe is prepared for the next module checkpoint.

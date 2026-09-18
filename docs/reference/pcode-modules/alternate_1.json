@@ -1,0 +1,1857 @@
+{
+  "sha256": "f59d3948e8139391ec5e385282b93b9080b83d2a2df37a2f97a9a2be0a9cc790",
+  "size": 880,
+  "segment": 1,
+  "procedure_count": 8,
+  "instruction_count": 413,
+  "coverage_bytes": {
+    "local-size": 10,
+    "parameter-size": 10,
+    "exit-pointer": 10,
+    "entry-pointer": 10,
+    "attributes": 10,
+    "instruction": 197,
+    "jump-pointer": 8,
+    "alignment": 1,
+    "native-instruction": 525,
+    "native-alignment": 2,
+    "relocation-count": 24,
+    "relocation-pointer": 12,
+    "native-entry-pointer": 6,
+    "native-attributes": 6,
+    "native-mask-table": 15,
+    "native-address-high-table": 8,
+    "native-address-low-table": 8,
+    "dictionary-pointer": 16,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "rnp": 4,
+    "sldc": 37,
+    "stl": 7,
+    "sldl": 7,
+    "adi": 3,
+    "cxp": 14,
+    "lor": 6,
+    "cgp": 2,
+    "sro": 4,
+    "ldci": 3,
+    "geqi": 1,
+    "sldo": 6,
+    "fjp": 3,
+    "lesi": 1,
+    "sbi": 1,
+    "leqi": 1,
+    "ngi": 1,
+    "ldb": 1,
+    "gtri": 1,
+    "csp": 12,
+    "ujp": 6,
+    "rbp": 1,
+    "clp": 1
+  },
+  "native_evidence": "src/pcode/evidence/alternate_1.json",
+  "native_reports": [
+    {
+      "relocation": {
+        "entry": 256,
+        "attributes": 518,
+        "tables_start": 506,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 514,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 512,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 510,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 508,
+                "target": 496,
+                "original_word": 50
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 506,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          256,
+          258
+        ],
+        [
+          258,
+          260
+        ],
+        [
+          260,
+          261
+        ],
+        [
+          261,
+          263
+        ],
+        [
+          263,
+          264
+        ],
+        [
+          264,
+          265
+        ],
+        [
+          265,
+          267
+        ],
+        [
+          265,
+          260
+        ],
+        [
+          267,
+          268
+        ],
+        [
+          268,
+          270
+        ],
+        [
+          270,
+          272
+        ],
+        [
+          272,
+          274
+        ],
+        [
+          274,
+          276
+        ],
+        [
+          276,
+          278
+        ],
+        [
+          278,
+          280
+        ],
+        [
+          280,
+          282
+        ],
+        [
+          282,
+          284
+        ],
+        [
+          284,
+          286
+        ],
+        [
+          286,
+          287
+        ],
+        [
+          287,
+          289
+        ],
+        [
+          287,
+          282
+        ],
+        [
+          289,
+          290
+        ],
+        [
+          290,
+          292
+        ],
+        [
+          292,
+          294
+        ],
+        [
+          294,
+          296
+        ],
+        [
+          296,
+          298
+        ],
+        [
+          298,
+          300
+        ],
+        [
+          300,
+          302
+        ],
+        [
+          302,
+          304
+        ],
+        [
+          304,
+          306
+        ],
+        [
+          306,
+          308
+        ],
+        [
+          308,
+          310
+        ],
+        [
+          310,
+          312
+        ],
+        [
+          312,
+          314
+        ],
+        [
+          314,
+          316
+        ],
+        [
+          316,
+          317
+        ],
+        [
+          317,
+          319
+        ],
+        [
+          319,
+          321
+        ],
+        [
+          319,
+          323
+        ],
+        [
+          323,
+          325
+        ],
+        [
+          325,
+          327
+        ],
+        [
+          327,
+          329
+        ],
+        [
+          327,
+          365
+        ],
+        [
+          365,
+          367
+        ],
+        [
+          367,
+          368
+        ],
+        [
+          368,
+          369
+        ],
+        [
+          369,
+          371
+        ],
+        [
+          371,
+          373
+        ],
+        [
+          373,
+          374
+        ],
+        [
+          374,
+          376
+        ],
+        [
+          376,
+          377
+        ],
+        [
+          377,
+          379
+        ],
+        [
+          379,
+          381
+        ],
+        [
+          381,
+          383
+        ],
+        [
+          383,
+          384
+        ],
+        [
+          384,
+          385
+        ],
+        [
+          385,
+          387
+        ],
+        [
+          385,
+          310
+        ],
+        [
+          387,
+          389
+        ],
+        [
+          389,
+          391
+        ],
+        [
+          391,
+          393
+        ],
+        [
+          393,
+          396
+        ],
+        [
+          396,
+          398
+        ],
+        [
+          398,
+          401
+        ],
+        [
+          401,
+          403
+        ],
+        [
+          403,
+          405
+        ],
+        [
+          405,
+          407
+        ],
+        [
+          407,
+          408
+        ],
+        [
+          408,
+          410
+        ],
+        [
+          410,
+          412
+        ],
+        [
+          412,
+          414
+        ],
+        [
+          414,
+          416
+        ],
+        [
+          416,
+          418
+        ],
+        [
+          418,
+          420
+        ],
+        [
+          420,
+          422
+        ],
+        [
+          422,
+          424
+        ],
+        [
+          424,
+          426
+        ],
+        [
+          426,
+          428
+        ],
+        [
+          426,
+          442
+        ],
+        [
+          442,
+          444
+        ],
+        [
+          444,
+          446
+        ],
+        [
+          446,
+          448
+        ],
+        [
+          448,
+          449
+        ],
+        [
+          449,
+          451
+        ],
+        [
+          451,
+          453
+        ],
+        [
+          453,
+          454
+        ],
+        [
+          454,
+          456
+        ],
+        [
+          456,
+          458
+        ],
+        [
+          458,
+          459
+        ],
+        [
+          459,
+          461
+        ],
+        [
+          461,
+          463
+        ],
+        [
+          463,
+          464
+        ],
+        [
+          464,
+          466
+        ],
+        [
+          466,
+          468
+        ],
+        [
+          468,
+          470
+        ],
+        [
+          470,
+          471
+        ],
+        [
+          471,
+          472
+        ],
+        [
+          472,
+          474
+        ],
+        [
+          472,
+          407
+        ],
+        [
+          474,
+          476
+        ],
+        [
+          476,
+          478
+        ],
+        [
+          476,
+          391
+        ],
+        [
+          478,
+          479
+        ],
+        [
+          479,
+          481
+        ],
+        [
+          481,
+          483
+        ],
+        [
+          483,
+          485
+        ],
+        [
+          485,
+          487
+        ],
+        [
+          487,
+          489
+        ],
+        [
+          489,
+          491
+        ],
+        [
+          491,
+          493
+        ],
+        [
+          493,
+          495
+        ],
+        [
+          493,
+          498
+        ],
+        [
+          498,
+          500
+        ],
+        [
+          500,
+          501
+        ],
+        [
+          501,
+          503
+        ],
+        [
+          503,
+          504
+        ],
+        [
+          495,
+          306
+        ],
+        [
+          428,
+          430
+        ],
+        [
+          430,
+          432
+        ],
+        [
+          430,
+          442
+        ],
+        [
+          432,
+          434
+        ],
+        [
+          434,
+          436
+        ],
+        [
+          436,
+          438
+        ],
+        [
+          436,
+          442
+        ],
+        [
+          438,
+          440
+        ],
+        [
+          440,
+          442
+        ],
+        [
+          440,
+          463
+        ],
+        [
+          329,
+          330
+        ],
+        [
+          330,
+          332
+        ],
+        [
+          332,
+          334
+        ],
+        [
+          334,
+          336
+        ],
+        [
+          336,
+          338
+        ],
+        [
+          338,
+          340
+        ],
+        [
+          340,
+          342
+        ],
+        [
+          342,
+          343
+        ],
+        [
+          343,
+          345
+        ],
+        [
+          345,
+          346
+        ],
+        [
+          346,
+          348
+        ],
+        [
+          348,
+          350
+        ],
+        [
+          350,
+          351
+        ],
+        [
+          351,
+          353
+        ],
+        [
+          351,
+          345
+        ],
+        [
+          353,
+          354
+        ],
+        [
+          354,
+          356
+        ],
+        [
+          356,
+          358
+        ],
+        [
+          358,
+          360
+        ],
+        [
+          360,
+          362
+        ],
+        [
+          362,
+          363
+        ],
+        [
+          363,
+          365
+        ],
+        [
+          363,
+          376
+        ],
+        [
+          321,
+          323
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 520,
+        "attributes": 702,
+        "tables_start": 684,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 698,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 696,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 694,
+            "count": 4,
+            "pointers": [
+              {
+                "offset": 692,
+                "target": 643,
+                "original_word": 156
+              },
+              {
+                "offset": 690,
+                "target": 638,
+                "original_word": 140
+              },
+              {
+                "offset": 688,
+                "target": 633,
+                "original_word": 148
+              },
+              {
+                "offset": 686,
+                "target": 594,
+                "original_word": 133
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 684,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          520,
+          521
+        ],
+        [
+          521,
+          523
+        ],
+        [
+          523,
+          524
+        ],
+        [
+          524,
+          526
+        ],
+        [
+          526,
+          527
+        ],
+        [
+          527,
+          529
+        ],
+        [
+          529,
+          530
+        ],
+        [
+          530,
+          532
+        ],
+        [
+          532,
+          534
+        ],
+        [
+          534,
+          535
+        ],
+        [
+          535,
+          537
+        ],
+        [
+          537,
+          538
+        ],
+        [
+          538,
+          540
+        ],
+        [
+          540,
+          542
+        ],
+        [
+          542,
+          544
+        ],
+        [
+          544,
+          546
+        ],
+        [
+          546,
+          548
+        ],
+        [
+          548,
+          549
+        ],
+        [
+          549,
+          552
+        ],
+        [
+          552,
+          554
+        ],
+        [
+          554,
+          556
+        ],
+        [
+          556,
+          559
+        ],
+        [
+          559,
+          561
+        ],
+        [
+          561,
+          563
+        ],
+        [
+          563,
+          565
+        ],
+        [
+          565,
+          567
+        ],
+        [
+          567,
+          568
+        ],
+        [
+          568,
+          570
+        ],
+        [
+          570,
+          571
+        ],
+        [
+          571,
+          572
+        ],
+        [
+          572,
+          573
+        ],
+        [
+          573,
+          576
+        ],
+        [
+          576,
+          577
+        ],
+        [
+          577,
+          579
+        ],
+        [
+          579,
+          581
+        ],
+        [
+          581,
+          583
+        ],
+        [
+          583,
+          585
+        ],
+        [
+          585,
+          586
+        ],
+        [
+          586,
+          588
+        ],
+        [
+          588,
+          589
+        ],
+        [
+          589,
+          591
+        ],
+        [
+          591,
+          593
+        ],
+        [
+          591,
+          606
+        ],
+        [
+          606,
+          608
+        ],
+        [
+          608,
+          610
+        ],
+        [
+          610,
+          611
+        ],
+        [
+          611,
+          612
+        ],
+        [
+          612,
+          614
+        ],
+        [
+          614,
+          616
+        ],
+        [
+          614,
+          585
+        ],
+        [
+          616,
+          618
+        ],
+        [
+          618,
+          620
+        ],
+        [
+          620,
+          622
+        ],
+        [
+          620,
+          546
+        ],
+        [
+          622,
+          624
+        ],
+        [
+          624,
+          626
+        ],
+        [
+          626,
+          628
+        ],
+        [
+          626,
+          652
+        ],
+        [
+          628,
+          630
+        ],
+        [
+          630,
+          632
+        ],
+        [
+          632,
+          635
+        ],
+        [
+          635,
+          637
+        ],
+        [
+          637,
+          640
+        ],
+        [
+          640,
+          642
+        ],
+        [
+          642,
+          645
+        ],
+        [
+          645,
+          647
+        ],
+        [
+          647,
+          649
+        ],
+        [
+          649,
+          650
+        ],
+        [
+          650,
+          652
+        ],
+        [
+          650,
+          632
+        ],
+        [
+          593,
+          596
+        ],
+        [
+          596,
+          598
+        ],
+        [
+          598,
+          599
+        ],
+        [
+          599,
+          600
+        ],
+        [
+          600,
+          602
+        ],
+        [
+          602,
+          604
+        ],
+        [
+          602,
+          585
+        ],
+        [
+          604,
+          606
+        ],
+        [
+          604,
+          616
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    },
+    {
+      "relocation": {
+        "entry": 704,
+        "attributes": 860,
+        "tables_start": 848,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 856,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 854,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 852,
+            "count": 1,
+            "pointers": [
+              {
+                "offset": 850,
+                "target": 845,
+                "original_word": 32
+              }
+            ]
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 848,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "control_flow_edges": [
+        [
+          704,
+          705
+        ],
+        [
+          705,
+          707
+        ],
+        [
+          707,
+          708
+        ],
+        [
+          708,
+          710
+        ],
+        [
+          710,
+          713
+        ],
+        [
+          713,
+          715
+        ],
+        [
+          715,
+          717
+        ],
+        [
+          717,
+          719
+        ],
+        [
+          719,
+          721
+        ],
+        [
+          721,
+          723
+        ],
+        [
+          723,
+          725
+        ],
+        [
+          725,
+          726
+        ],
+        [
+          726,
+          728
+        ],
+        [
+          728,
+          730
+        ],
+        [
+          730,
+          732
+        ],
+        [
+          732,
+          734
+        ],
+        [
+          734,
+          736
+        ],
+        [
+          736,
+          738
+        ],
+        [
+          738,
+          740
+        ],
+        [
+          738,
+          804
+        ],
+        [
+          804,
+          806
+        ],
+        [
+          806,
+          807
+        ],
+        [
+          807,
+          808
+        ],
+        [
+          808,
+          810
+        ],
+        [
+          810,
+          812
+        ],
+        [
+          810,
+          814
+        ],
+        [
+          814,
+          816
+        ],
+        [
+          816,
+          818
+        ],
+        [
+          818,
+          820
+        ],
+        [
+          820,
+          822
+        ],
+        [
+          820,
+          824
+        ],
+        [
+          824,
+          826
+        ],
+        [
+          826,
+          827
+        ],
+        [
+          827,
+          829
+        ],
+        [
+          829,
+          831
+        ],
+        [
+          831,
+          833
+        ],
+        [
+          831,
+          841
+        ],
+        [
+          841,
+          842
+        ],
+        [
+          842,
+          844
+        ],
+        [
+          842,
+          814
+        ],
+        [
+          844,
+          736
+        ],
+        [
+          833,
+          835
+        ],
+        [
+          835,
+          837
+        ],
+        [
+          837,
+          839
+        ],
+        [
+          839,
+          841
+        ],
+        [
+          839,
+          789
+        ],
+        [
+          789,
+          791
+        ],
+        [
+          791,
+          793
+        ],
+        [
+          793,
+          795
+        ],
+        [
+          795,
+          797
+        ],
+        [
+          795,
+          728
+        ],
+        [
+          797,
+          799
+        ],
+        [
+          799,
+          800
+        ],
+        [
+          800,
+          802
+        ],
+        [
+          802,
+          803
+        ],
+        [
+          822,
+          824
+        ],
+        [
+          812,
+          814
+        ],
+        [
+          740,
+          742
+        ],
+        [
+          742,
+          744
+        ],
+        [
+          742,
+          746
+        ],
+        [
+          746,
+          747
+        ],
+        [
+          747,
+          748
+        ],
+        [
+          748,
+          750
+        ],
+        [
+          750,
+          752
+        ],
+        [
+          752,
+          753
+        ],
+        [
+          753,
+          755
+        ],
+        [
+          755,
+          756
+        ],
+        [
+          756,
+          758
+        ],
+        [
+          758,
+          760
+        ],
+        [
+          760,
+          762
+        ],
+        [
+          760,
+          770
+        ],
+        [
+          770,
+          771
+        ],
+        [
+          771,
+          772
+        ],
+        [
+          772,
+          774
+        ],
+        [
+          772,
+          750
+        ],
+        [
+          774,
+          776
+        ],
+        [
+          776,
+          778
+        ],
+        [
+          776,
+          736
+        ],
+        [
+          778,
+          780
+        ],
+        [
+          780,
+          782
+        ],
+        [
+          780,
+          736
+        ],
+        [
+          782,
+          783
+        ],
+        [
+          783,
+          785
+        ],
+        [
+          785,
+          787
+        ],
+        [
+          785,
+          789
+        ],
+        [
+          787,
+          789
+        ],
+        [
+          762,
+          764
+        ],
+        [
+          764,
+          766
+        ],
+        [
+          766,
+          768
+        ],
+        [
+          768,
+          770
+        ],
+        [
+          768,
+          782
+        ],
+        [
+          744,
+          746
+        ]
+      ],
+      "external_edges": [],
+      "gaps": []
+    }
+  ],
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 157,
+      "segment": 1,
+      "start_block": 172
+    }
+  ],
+  "extra_code_roots": [],
+  "root_evidence": null,
+  "control_flow_edges": 121,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 46,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 3
+    },
+    {
+      "offset": 48,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 50,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 52,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 54,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 56,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 102,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 104,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 106,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 108,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 110,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 130,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 132,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 134,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 136,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 138,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 174,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 142
+    },
+    {
+      "offset": 176,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 146
+    },
+    {
+      "offset": 178,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 180,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 182,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 184,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 186,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 243,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 244,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 190
+    },
+    {
+      "offset": 246,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 248,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 250,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 252,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 254,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 505,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 506,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 508,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 496
+    },
+    {
+      "offset": 510,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 512,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 514,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 516,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 518,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 653,
+      "size": 7,
+      "kind": "native-mask-table"
+    },
+    {
+      "offset": 660,
+      "size": 8,
+      "kind": "native-address-high-table"
+    },
+    {
+      "offset": 668,
+      "size": 8,
+      "kind": "native-address-low-table"
+    },
+    {
+      "offset": 676,
+      "size": 8,
+      "kind": "native-mask-table"
+    },
+    {
+      "offset": 684,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 686,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 594
+    },
+    {
+      "offset": 688,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 633
+    },
+    {
+      "offset": 690,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 638
+    },
+    {
+      "offset": 692,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 643
+    },
+    {
+      "offset": 694,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 696,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 698,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 700,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 702,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 847,
+      "size": 1,
+      "kind": "native-alignment"
+    },
+    {
+      "offset": 848,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 850,
+      "size": 2,
+      "kind": "relocation-pointer",
+      "target": 845
+    },
+    {
+      "offset": 852,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 854,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 856,
+      "size": 2,
+      "kind": "relocation-count"
+    },
+    {
+      "offset": 858,
+      "size": 2,
+      "kind": "native-entry-pointer"
+    },
+    {
+      "offset": 860,
+      "size": 2,
+      "kind": "native-attributes"
+    },
+    {
+      "offset": 862,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 864,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 866,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 868,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 870,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 872,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 874,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 876,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 878,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}
