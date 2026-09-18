@@ -1,0 +1,74 @@
+{
+  "name": "game-play",
+  "boot_disk": "disk1",
+  "end_frame": 18600,
+  "events": [
+    {
+      "frame": 4200,
+      "snapshot": "01-title.png"
+    },
+    {
+      "frame": 4210,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 4240,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 4800,
+      "snapshot": "02-menu.png",
+      "x": 170,
+      "y": 175
+    },
+    {
+      "frame": 5200,
+      "snapshot": "03-selection.png",
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 5230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 11000,
+      "snapshot": "04-result.png"
+    },
+    {
+      "frame": 11100,
+      "mount": "disk2"
+    },
+    {
+      "frame": 11160,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 11190,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 18000,
+      "snapshot": "05-after-swap.png"
+    },
+    {
+      "frame": 18100,
+      "button": 1,
+      "pressed": true
+    },
+    {
+      "frame": 18120,
+      "button": 1,
+      "pressed": false
+    },
+    {
+      "frame": 18600,
+      "snapshot": "06-personal-status.png"
+    }
+  ]
+}

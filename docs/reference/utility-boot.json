@@ -1,0 +1,11 @@
+{
+  "name": "utility-boot",
+  "boot_disk": "disk2",
+  "end_frame": 4200,
+  "events": [
+    {
+      "frame": 4200,
+      "snapshot": "01-utility-boot.png"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "game-utilities",
+  "boot_disk": "disk1",
+  "end_frame": 11000,
+  "events": [
+    {
+      "frame": 4200,
+      "snapshot": "01-title.png"
+    },
+    {
+      "frame": 4210,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 4240,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 4800,
+      "snapshot": "02-menu.png",
+      "x": 185,
+      "y": 190
+    },
+    {
+      "frame": 5200,
+      "snapshot": "03-selection.png",
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 5230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 11000,
+      "snapshot": "04-result.png"
+    }
+  ]
+}

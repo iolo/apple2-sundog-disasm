@@ -59,3 +59,22 @@ and acceptance criteria.
 - **Remaining:** Establish repeatable play and utility sequences, isolate each
   run's media/configuration, and verify observed disk swaps before completing 02.
 - **Next action:** Implement and run the isolated MAME reference harness.
+
+## 2026-09-18 — Step 02b: reproducible playable reference
+
+- **Status:** Step 02 complete, with emulator differences documented.
+- **Work:** Added `tools/reference_mame.py` and three frame-indexed input
+  sequences. Captured and visually inspected title/menu, play-side swap prompt,
+  ship interior, personal status, utility slots, and disk-2 cold boot screens.
+- **Finding:** Disk 1 contains title/menu and utilities; disk 2 is the play side.
+  Preserved filenames and corrected observed roles in the manifest and docs.
+  Utilities display four slots, unlike the manual's eight-slot description.
+- **Validation:** All three reference scenarios run in MAME 0.285, produce the
+  requested screenshots, and verify the originals before and after. Gameplay
+  responds to button 1 by opening personal status. Utility entry changes only
+  its disposable disk-1 copy. `git diff --check` passes.
+- **Limitations:** apple2ts title and disk-2 cold boot verified, but its private
+  MCP controls lack joystick input. Full gameplay there and save/load validation
+  remain for step 09. MAME's automatic title advance remains unexplained.
+- **Next action:** Step 03: map sectors and custom disk structures, preserve all
+  bytes in a reversible extraction, and investigate the utility-side write.

@@ -5,7 +5,7 @@ GOAL: Reverse [Sundog](https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy) for 
 ## input
 
 - two disk images: [sundog-disk1-game.dsk], [sundog-disk2-util.dsk]
-  (second filename corrected to match the supplied input; disk role to be verified)
+  (filenames preserved; observed roles: disk 1 title/utilities, disk 2 play side)
 - scaned manual(no text): [sundog.pdf]
 
 ## output

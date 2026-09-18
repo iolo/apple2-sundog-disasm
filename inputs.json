@@ -5,13 +5,13 @@
       "path": "sundog-disk1-game.dsk",
       "size": 143360,
       "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
-      "role": "supplied game disk; boot behavior pending verification"
+      "role": "observed title/menu and utility side; supplied filename preserved"
     },
     {
       "path": "sundog-disk2-util.dsk",
       "size": 143360,
       "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
-      "role": "supplied utility disk; boot behavior pending verification"
+      "role": "observed play side; inserted after selecting Play SunDog on disk 1"
     },
     {
       "path": "sundog.pdf",
