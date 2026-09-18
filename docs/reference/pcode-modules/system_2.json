@@ -1,0 +1,257 @@
+{
+  "sha256": "8a9dd883672a6bdfd37ef06130b65b46e60f7f7fc71d0d8c4cf0899bfe2e936d",
+  "size": 808,
+  "segment": 2,
+  "procedure_count": 5,
+  "instruction_count": 510,
+  "coverage_bytes": {
+    "local-size": 10,
+    "parameter-size": 10,
+    "exit-pointer": 10,
+    "entry-pointer": 10,
+    "attributes": 10,
+    "instruction": 736,
+    "jump-pointer": 8,
+    "alignment": 2,
+    "dictionary-pointer": 10,
+    "segment-trailer": 2
+  },
+  "instructions_by_mnemonic": {
+    "ujp": 14,
+    "sldl": 136,
+    "stl": 31,
+    "gtri": 10,
+    "fjp": 31,
+    "sldc": 63,
+    "inc": 31,
+    "ind": 44,
+    "sind": 23,
+    "csp": 11,
+    "adi": 16,
+    "sto": 23,
+    "sbi": 12,
+    "equi": 9,
+    "lnot": 3,
+    "ldci": 10,
+    "neqi": 4,
+    "rnp": 5,
+    "geqi": 2,
+    "ldb": 3,
+    "cxp": 5,
+    "leqi": 1,
+    "land": 4,
+    "stb": 2,
+    "lla": 2,
+    "mov": 2,
+    "ldl": 9,
+    "lesi": 1,
+    "ldp": 1,
+    "lod": 2
+  },
+  "origins": [
+    {
+      "disk": "disk1",
+      "header_block": 251,
+      "segment": 2,
+      "start_block": 261
+    }
+  ],
+  "extra_code_roots": [
+    40,
+    467
+  ],
+  "root_evidence": "docs/pcode-unreachable-branches.md",
+  "control_flow_edges": 536,
+  "classification_evidence": "docs/utility-pcode.md",
+  "data_regions": [
+    {
+      "offset": 209,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 210,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 207
+    },
+    {
+      "offset": 212,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 18
+    },
+    {
+      "offset": 214,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 216,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 218,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 220,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 222,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 280,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 282,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 284,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 286,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 288,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 374,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 376,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 378,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 380,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 382,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 769,
+      "size": 1,
+      "kind": "alignment"
+    },
+    {
+      "offset": 770,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 767
+    },
+    {
+      "offset": 772,
+      "size": 2,
+      "kind": "jump-pointer",
+      "target": 402
+    },
+    {
+      "offset": 774,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 776,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 778,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 780,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 782,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 786,
+      "size": 2,
+      "kind": "local-size"
+    },
+    {
+      "offset": 788,
+      "size": 2,
+      "kind": "parameter-size"
+    },
+    {
+      "offset": 790,
+      "size": 2,
+      "kind": "exit-pointer"
+    },
+    {
+      "offset": 792,
+      "size": 2,
+      "kind": "entry-pointer"
+    },
+    {
+      "offset": 794,
+      "size": 2,
+      "kind": "attributes"
+    },
+    {
+      "offset": 796,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 798,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 800,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 802,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 804,
+      "size": 2,
+      "kind": "dictionary-pointer"
+    },
+    {
+      "offset": 806,
+      "size": 2,
+      "kind": "segment-trailer"
+    }
+  ]
+}

@@ -16,9 +16,11 @@ from disk_layout import ROOT, block_bytes, logical_sector_offset, sha
 from pcode_source import analyze, source, verify_interpreter
 
 
-def prepare(name, disk_id, header_block, segment_number):
+def prepare(name, disk_id, header_block, segment_number, *, code_roots=(), root_evidence=None):
     if not re.fullmatch(r'[a-z0-9_]+', name):
         raise ValueError('Invalid component name')
+    if code_roots and (not root_evidence or not (ROOT / root_evidence).is_file()):
+        raise ValueError('Additional code roots require an existing evidence document')
     manifest = json.loads((ROOT / 'reconstruction/manifest.json').read_text())
     if name in manifest['components']:
         raise ValueError('Component already exists')
@@ -57,7 +59,7 @@ def prepare(name, disk_id, header_block, segment_number):
             if len(owners) != 1 or manifest['components'][owners[0]['input']]['kind'] != 'temporary-unresolved':
                 raise ValueError('Module copy overlaps reconstructed content')
             mappings.append(dict(disk=disk['id'], offset=offset, size=size, input_offset=position))
-    report = analyze(data, segment_number)
+    report = analyze(data, segment_number, extra_code_roots=code_roots)
     stem = Path('src/pcode') / name
     audit_path = Path('docs/reference/pcode-modules') / (name + '.json')
     paths = [stem.with_suffix(suffix) for suffix in ('.s', '.cfg', '.adopt.json')] + [audit_path]
@@ -77,7 +79,7 @@ def prepare(name, disk_id, header_block, segment_number):
     recipe = dict(name=name, source=str(paths[0]), config=str(paths[1]), mappings=mappings)
     summary = {key: report[key] for key in ('sha256', 'size', 'segment', 'procedure_count',
                'instruction_count', 'coverage_bytes', 'instructions_by_mnemonic')}
-    summary.update(origins=origins, control_flow_edges=len(report['control_flow_edges']),
+    summary.update(origins=origins, extra_code_roots=list(code_roots), root_evidence=root_evidence, control_flow_edges=len(report['control_flow_edges']),
                    classification_evidence='docs/utility-pcode.md',
                    data_regions=[{k: i[k] for k in ('offset', 'size', 'kind', 'consumer', 'target') if k in i}
                                  for i in report['items'] if i['kind'] != 'instruction'])
@@ -98,8 +100,10 @@ def main():
     parser.add_argument('disk', choices=('disk1', 'disk2'))
     parser.add_argument('header', type=int)
     parser.add_argument('segment', type=int)
+    parser.add_argument('--code-root', type=lambda value: int(value, 0), action='append', default=[])
+    parser.add_argument('--root-evidence', help='Repository-relative evidence document for additional code roots')
     args = parser.parse_args()
-    print(json.dumps(prepare(args.name, args.disk, args.header, args.segment)))
+    print(json.dumps(prepare(args.name, args.disk, args.header, args.segment, code_roots=args.code_root, root_evidence=args.root_evidence)))
 
 
 if __name__ == '__main__':

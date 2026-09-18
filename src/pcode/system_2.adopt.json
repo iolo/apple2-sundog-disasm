@@ -1,0 +1,31 @@
+{
+  "name": "system_2",
+  "source": "src/pcode/system_2.s",
+  "config": "src/pcode/system_2.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 132352,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 132096,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 131840,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 131584,
+      "size": 40,
+      "input_offset": 768
+    }
+  ]
+}

@@ -106,13 +106,14 @@ def verify_interpreter(binary):
                 raise ValueError('Short load dispatch differs from verified encoding')
 
 
-def analyze(data, segment):
+def analyze(data, segment, *, extra_code_roots=()):
     metadata = procedure_dictionary(data, segment)
     if not metadata['valid']:
         raise ValueError('Segment has unresolved procedure metadata')
     items, instructions, calls, branch_edges = {}, {}, [], []
     occupied = {}
     procedures = sorted(metadata['procedures'], key=lambda p: p['entry_offset'])
+    unmatched_roots = set(extra_code_roots)
 
     def claim(offset, size, kind, assembly, **details):
         if offset < 0 or size <= 0 or offset + size > len(data):
@@ -136,7 +137,9 @@ def analyze(data, segment):
         claim(limit + 4, 2, 'exit-pointer', f'.word * - {label(proc["exit_offset"])}')
         claim(limit + 6, 2, 'entry-pointer', f'.word * - {label(entry)}')
         claim(attr, 2, 'attributes', f'.byte {proc["number"]}, ${proc["lexical_level"] & 255:02X}')
-        pending = [entry, proc['exit_offset']]
+        reviewed_roots = [pc for pc in extra_code_roots if entry <= pc < limit]
+        unmatched_roots.difference_update(reviewed_roots)
+        pending = [entry, proc['exit_offset'], *reviewed_roots]
         targets = set(pending)
         while pending:
             pc = pending.pop()
@@ -270,6 +273,8 @@ def analyze(data, segment):
                 if data[pc] or pc % 2 != 1 or pc + 1 not in occupied or occupied.get(pc - 1) is None or items[occupied[pc + 1]]['kind'] not in ('jump-pointer', 'local-size'):
                     raise ValueError(f'Unexplained procedure byte at ${pc:04X}')
                 claim(pc, 1, 'alignment', '.byte 0')
+    if unmatched_roots:
+        raise ValueError('Extra code root is outside procedure code areas')
     for proc in metadata['procedures']:
         claim(proc['dictionary_offset'], 2, 'dictionary-pointer', f'.word * - {label(proc["attribute_offset"])}')
     claim(len(data) - 2, 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
@@ -281,6 +286,7 @@ def analyze(data, segment):
         raise ValueError(f'Unclassified segment byte at ${missing:04X}')
     return {'sha256': sha(data), 'size': len(data), 'segment': segment,
             'procedure_count': metadata['procedure_count'], 'procedures': metadata['procedures'],
+            'extra_code_roots': sorted(set(extra_code_roots)),
             'instruction_count': len(instructions), 'coverage_bytes': dict(sum_counts(items)),
             'instructions_by_mnemonic': dict(Counter(i['mnemonic'] for i in instructions.values())),
             'control_flow_edges': branch_edges, 'calls': calls, 'items': [items[i] for i in sorted(items)]}
@@ -300,6 +306,8 @@ def source(report):
     entries = {p['entry_offset']: p['number'] for p in report['procedures']}
     for item in report['items']:
         offset = item['offset']
+        if offset in report.get('extra_code_roots', []):
+            lines.append('; Statically reviewed code root; runtime reachability is not established.')
         if offset in entries:
             lines.extend(['', f'; Procedure {entries[offset]}, segment-relative offset ${offset:04X}.'])
         lines.extend([label(offset) + ':', '    ' + item['assembly'] + f' ; {item["kind"]}'])
@@ -311,12 +319,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('binary', type=Path)
     parser.add_argument('--segment', type=int, required=True)
+    parser.add_argument('--code-root', type=lambda value: int(value, 0), action='append', default=[],
+                        help='Explicit statically reviewed instruction entry; never inferred from gaps')
     parser.add_argument('--source', type=Path)
     parser.add_argument('--report', type=Path)
     parser.add_argument('--interpreter', type=Path, default=ROOT / 'build/disks/components/pcode_primitives.bin')
     args = parser.parse_args()
     verify_interpreter(args.interpreter.read_bytes())
-    report = analyze(args.binary.read_bytes(), args.segment)
+    report = analyze(args.binary.read_bytes(), args.segment, extra_code_roots=args.code_root)
     report['verified_native_handlers'] = {f'{op:02X}': f'{spec[2]:04X}' for op, spec in SPECS.items()}
     if args.source:
         args.source.write_text(source(report))

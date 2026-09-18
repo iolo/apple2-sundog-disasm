@@ -931,3 +931,27 @@ and acceptance criteria.
   The unchanged-output emulator baseline is reused; no new run was required.
 - **Next action:** Continue remaining p-code modules and resolve mixed native
   procedures and unclassified gaps. Final asset and emulator checks remain open.
+
+## 2026-09-18 — Step 06k: reconstruct system_2
+
+- **Status:** Module checkpoint complete; overall step 06 remains in progress.
+- **Origin:** disk1 header 251, segment 2, block 261.
+- **Work:** Reconstructed 808 bytes, 5 procedures,
+  510 instructions; all bytes classified by control flow,
+  inline-data consumers, pointer tables, or procedure metadata. Equivalent disk
+  copies share one source component. No unidentified fallback data is accepted.
+- **Evidence:** `docs/reference/pcode-modules/system_2.json` records origins,
+  classification totals, and every data range. The source retains numeric call
+  names where semantics are not established.
+- **Validation:** Generated listing assembles byte for byte; adoption checks each
+  disk mapping. Full build and comparison pass for both disks. Source coverage
+  is 109,276 output bytes, with 177,444 remaining temporary.
+  The unchanged-output emulator baseline is reused; no new run was required.
+- **Next action:** Continue remaining p-code modules and resolve mixed native
+  procedures and unclassified gaps. Final asset and emulator checks remain open.
+- **Boundary resolution:** Classified two unreachable UJP instructions from their
+  encoding and repeated conditional-join context. Their targets are independently
+  reachable from existing procedure roots; the extra roots themselves are not.
+  Added explicit reviewed-code-root support, without any automatic gap decoding.
+  Twelve decoder tests pass. Evidence also identifies the two analogous segment-6
+  gaps for the following module checkpoint.

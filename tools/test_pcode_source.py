@@ -118,6 +118,18 @@ class PcodeSourceTests(unittest.TestCase):
                 subprocess.run(['ld65', '-C', str(path / 'test.cfg'), str(path / 'test.o'), '-o', str(path / 'test.bin')], check=True, capture_output=True)
                 self.assertEqual((path / 'test.bin').read_bytes(), data)
 
+    def test_reviewed_unreachable_code_is_explicit(self):
+        data = segment([0xB9, 2, 0xB9, 0, 0xAD, 0], 4)
+        with self.assertRaisesRegex(ValueError, 'Unexplained'):
+            analyze(data, 1)
+        report = analyze(data, 1, extra_code_roots=[2])
+        self.assertEqual(report['instruction_count'], 3)
+        self.assertIn('Statically reviewed code root', source(report))
+        with self.assertRaisesRegex(ValueError, 'outside procedure'):
+            analyze(data, 1, extra_code_roots=[2, 6])
+        with self.assertRaisesRegex(ValueError, 'operand|Overlapping'):
+            analyze(data, 1, extra_code_roots=[1, 2])
+
     def test_unexplained_gap_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unexplained procedure byte'):
             analyze(segment([0xAD, 0, 0x42, 0], 0), 1)
