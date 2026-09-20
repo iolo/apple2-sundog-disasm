@@ -33,10 +33,21 @@ LDC3C           := $DC3C
 .segment        "NATIVE_HIGH"
 native_high_start:
 
-preserved_prefix:
-        .byte   $00,$00,$00,$00,$00,$00,$00,$00 ; F790 00 00 00 00 00 00 00 00  ........
-        .byte   $98,$27,$00,$00,$02,$00,$01,$01 ; F798 98 27 00 00 02 00 01 01  .'......
-        .byte   $03                             ; F7A0 03                       .
+; Retained native Pascal container footer; docs/native-high-metadata.md.
+native_container_relocation_counts:
+        .word   0,0,0,0                         ; interpreter, procedure, segment, global
+native_container_entry:
+        .word   * - $D000                       ; F798: entry displacement
+native_container_attributes:
+        .byte   0,0                             ; native marker, lexical level
+native_container_dictionary:
+        .word   * - native_container_attributes
+native_container_trailer:
+        .byte   1,1                             ; segment number, procedure count
+preserved_initializer_operand:
+        .byte   $03                             ; F7A0: immediate operand of LDY #$03
+; Original instruction is A0 03 at F59F / copied view 6B0F.
+; Its opcode lies before the retained copy; no executable entry is invented here.
 ; ----------------------------------------------------------------------------
 ; Exact duplicate of initializer bytes $F5A1-$F5FF (copied view $6B11-$6B6F).
 preserved_initializer_fragment:
@@ -90,13 +101,20 @@ LF7D9:  ldy     #$00                            ; F7D9 A0 00                    
         inc     $7F                             ; F7FC E6 7F                    ..
 LF7FE:  lda     $80                             ; F7FE A5 80                    ..
 ; The preceding LDA $80 is complete, but the duplicated routine ends here.
-preserved_thisisit_records:
-; Two original 16-byte records followed by eight spaces. Field meanings unresolved.
-        .byte "THISISIT", $0B,0,1,0,0,0,0,0
-        .byte "THISISIT", $06,0,1,0,0,0,0,0
+; Sixteen-byte Pascal linker records, not runtime instructions.
+linker_separate_procedure:
+        .byte "THISISIT"
+        .word 11,1,0,0              ; SEPPROC, source procedure, parameter words, spare
+linker_global_definition:
+        .byte "THISISIT"
+        .word 6,1,0,0               ; GLOBDEF, home procedure, byte offset, spare
+linker_end_marker:
         .byte "        "
+        .word 0,0,0,0               ; EOFMARK, allocation fields and spare
+linker_block_zero_storage:
+        .res $01D0, 0               ; F830-F9FF: after complete linker records
 preserved_zero_area:
-        .res $0658, 0                  ; $F828-$FE7F
+        .res $0480, 0               ; FA00-FE7F: zero storage before fixed slot stubs
 
 slot_jump_stubs:
         jmp     L0000                           ; FE80 4C 00 00                 L..
@@ -357,8 +375,8 @@ key_translation_inputs:
 key_translation_outputs:
         .byte   $5B,$0A,$0B,$4D,$4E,$50,$5D,$5E ; FFED 5B 0A 0B 4D 4E 50 5D 5E  [..MNP]^
         .byte   $40                             ; FFF5 40                       @
-preserved_keyboard_tail:
-        .byte   $03,$00                         ; FFF6 03 00                    ..
+system_apple_file_version:
+        .word   3                               ; FFF6: stored file version, not runtime VERSION byte
 ; ----------------------------------------------------------------------------
 boot_vector:
         .addr   enter_interpreter               ; FFF8 F2 FE                    ..

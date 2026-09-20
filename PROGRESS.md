@@ -2225,3 +2225,40 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Finish clipped procedure remnants and other orphan code/data,
   audit provisional runtime regions, and complete the final emulator checks.
+
+## 2026-09-20 — Step 06am: high-memory provisional classification audit
+
+- **Evidence:** Reconstructed the contiguous bank-2/common $D000–$F79F view
+  from actual assembled components. Its stored footer parses as one native
+  procedure with entry $D000, four zero relocation counts and a complete
+  dictionary/trailer. The formerly literal byte at $F7A0 is the immediate
+  operand of the copied LDY #$03 at original $F59F / copied $6B0F, established
+  by the complete 96-byte retained-copy comparison.
+- **Format evidence:** Apple's Pascal Technical Note 16 defines the retained
+  THISISIT SEPPROC/GLOBDEF records and blank-name EOFMARK at $F800–$F82F.
+  Apple's system-location table separately identifies $FFF6 as a stored file
+  version word. The local value is 3; no release-name mapping is inferred.
+  Primary PDF page links are recorded in docs/native-high-metadata.md. The
+  research PDF was downloaded to /tmp only; it is not a build dependency.
+- **Work/artifacts:** Replaced preservation literals with explicit metadata
+  words, named linker fields and a documented one-byte instruction fragment;
+  separated linker-block zero storage from the later fixed-stub gap. Added
+  tools/native_high_metadata.py, two mutation tests and the current full audit
+  docs/reference/native-high-metadata-audit.json. Extended the existing native
+  high-memory checker and updated its da65 information, documentation and plan.
+  Historical step-06f evidence remains intact.
+- **Validation:** Two tests pass for metadata/record/version mutation, clipped
+  instruction provenance and component extents. The extended audit retains 79
+  direct/vector checks, bank-specific targets, 22 derived service entries and
+  exact copied instructions. Full build, regenerated audit comparison, original
+  disk/manual verification and git diff --check pass. No image bytes changed
+  and no new emulator execution is claimed.
+- **Coverage:** All 59 bytes in this component's three formerly provisional
+  ranges are now classified. Native high-memory coverage is 390 complete
+  instruction bytes, one operand-fragment byte and 1,769 data bytes. Disk
+  ownership totals stay 174,757 source-built, 100,324 identified assets and
+  11,639 temporary bytes. The initializer's separate 42-byte payload and other
+  remaining work are not silently counted as resolved.
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Continue the initializer payload, clipped/orphan source,
+  remaining disk data classification and final emulator validation.

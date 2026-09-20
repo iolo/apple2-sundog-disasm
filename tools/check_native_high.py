@@ -9,6 +9,7 @@ import subprocess
 import tempfile
 
 from disk_layout import ROOT, sha
+from native_high_metadata import audit_metadata
 
 BASE, END = 0xF790, 0x10000
 CODE_SPANS = [(0xF7A1, 0xF800), (0xFE80, 0xFEB0), (0xFED8, 0xFEF8),
@@ -26,9 +27,10 @@ def instructions_for(binary, recipe):
     return {int(m[2], 16): bytes.fromhex(m[3]) for m in pattern.finditer(text)}
 
 
-def audit(binary, initializer, io_bank, primitives):
+def audit(binary, initializer, io_bank, primitives, shared):
     if len(binary) != END - BASE:
         raise ValueError("High native region must contain $0870 bytes")
+    metadata = audit_metadata(binary,initializer,io_bank,primitives,shared)
     instructions = instructions_for(binary, "native_high")
     for address, data in instructions.items():
         if not any(lo <= address < hi for lo, hi in CODE_SPANS):
@@ -85,14 +87,17 @@ def audit(binary, initializer, io_bank, primitives):
     if binary[0xFFE4 - BASE:0xFFF6 - BASE] != bytes.fromhex("0b 0c 0f 5d 5e 40 1d 1e 00 5b 0a 0b 4d 4e 50 5d 5e 40"):
         raise ValueError("Keyboard translation tables changed")
     return {"sha256": sha(binary), "instruction_count": len(instructions),
-            "instruction_bytes": sum(map(len, instructions.values())),
-            "data_bytes": len(binary) - sum(map(len, instructions.values())),
+            "instruction_bytes": sum(map(len, instructions.values()))+1,
+            "complete_instruction_bytes": sum(map(len, instructions.values())),
+            "instruction_fragment_bytes": 1,
+            "data_bytes": len(binary) - sum(map(len, instructions.values()))-1,
             "checked_direct_and_vector_targets": len(edges),
             "code_spans_end_exclusive": CODE_SPANS, "service_dispatch": dispatch,
             "preserved_duplicate_fragment": {"address": 0xF7A1, "size": 95,
                 "original_initializer_address": 0xF5A1, "copied_initializer_address": 0x6B11,
                 "sha256": sha(fragment), "execution_not_established": True},
-            "unresolved_preservation_ranges": [[0xF790, 0xF7A1], [0xF800, 0xF828], [0xFFF6, 0xFFF8]],
+            "preservation_metadata": metadata,
+            "unresolved_preservation_ranges": [],
             "bank1_entry": 0xD152, "bank2_targets": sorted({t for a, t in edges if 0xD000 <= t < 0xE000 and a != 0xFEF5})}
 
 
@@ -103,7 +108,7 @@ def main():
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     report = audit(args.binary.read_bytes(), *((args.components / f"{name}.bin").read_bytes()
-                   for name in ("native_init", "native_io", "pcode_primitives")))
+                   for name in ("native_init", "native_io", "pcode_primitives", "native_shared")))
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n")

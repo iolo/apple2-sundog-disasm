@@ -8,8 +8,8 @@ This is a byte-coverage milestone; some preserved data still needs explanation,
 and the Pascal executable modules remain separate work.
 
 The region contains 168 decoded instructions occupying 390 bytes, including a
-95-byte preserved duplicate fragment. Its other 1,770 bytes are tables,
-pointers, metadata of unresolved meaning, and zero fill.
+95-byte preserved duplicate fragment, plus one identified instruction-operand
+byte. Its other 1,769 bytes are tables, pointers, metadata and zero storage.
 
 ## Preserved fragment and records
 
@@ -20,12 +20,12 @@ following bytes are records rather than the rest of that initializer routine.
 No executed path into this duplicate has been established. Its presence is
 not evidence of an additional working initialization path.
 
-The 17 bytes at `$F790`–`$F7A0` remain literal preservation data. At `$F800` and
-`$F810` are two 16-byte records beginning with `THISISIT`, followed by eight
-spaces at `$F820`. Their field meanings and provenance remain unresolved.
-The following 1,624 bytes, `$F828`–`$FE7F`, are zero and are emitted as fill.
-These records and the two bytes at `$FFF6/$FFF7` are explicitly listed as open
-preservation ranges in the audit report.
+The [metadata audit](native-high-metadata.md) now identifies `$F790`–`$F79F`
+as a native Pascal footer and `$F7A0` as the retained operand of an original
+`LDY #$03`. Three linker records at `$F800`–`$F82F` define `THISISIT` and end
+the list, followed by zero storage. `$FFF6/$FFF7` hold the stored SYSTEM.APPLE
+file-version word. The high-memory audit has no remaining provisional
+preservation range; the older step-06f report records the earlier state.
 
 ## Runtime entry points
 
@@ -97,8 +97,8 @@ and duplicate bytes are rejected.
 `reference/step06f-build-validation.json` records exact full-disk comparisons,
 an isolated build with no original disks, and MAME play/utility comparisons.
 
-Unresolved preservation records, the unused-looking duplicate and trailing
-service entry, the ten-byte primitive descriptor, and the initializer's
-42-byte payload remain documented questions. Source-built byte coverage does
+The duplicate's runtime use, the trailing service entry, the ten-byte primitive
+descriptor's precise semantics, and the initializer's 42-byte payload remain
+documented questions. Source-built byte coverage does
 not prove their meanings or substitute for reconstructing the remaining
 Pascal modules, extracting assets, and completing the final behavior checks.
