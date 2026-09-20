@@ -26,8 +26,8 @@
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 1580,
-      "sha256": "f7e695e8fa4ebe6caeb113f731e1b727454f89ab1c2464bae6ade925aa25b55d",
+      "size": 1500,
+      "sha256": "9b008ae0ae69d361ec3e161dfa6d276052134eb334c0b0bb39976458d6ba4094",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1420,6 +1420,13 @@
       },
       "size": 2,
       "sha256": "573d19f31911ee1af32463c9cba5e3711d9cd542b8813a19df8cb2c4225a3206"
+    },
+    "viewscreen_output_storage": {
+      "kind": "ca65-source",
+      "source": "src/data/viewscreen_output_storage.s",
+      "config": "src/data/viewscreen_output_storage.cfg",
+      "size": 80,
+      "sha256": "a7a1dfde58eb792ac7773781ae8bafa3ff0aa0632ac6905fca3bef87757891c6"
     }
   },
   "disks": [
@@ -7452,8 +7459,8 @@
         {
           "offset": 44976,
           "size": 80,
-          "input": "disk2_unresolved",
-          "input_offset": 1266
+          "input": "viewscreen_output_storage",
+          "input_offset": 0
         },
         {
           "offset": 45056,
@@ -8611,7 +8618,7 @@
           "offset": 48168,
           "size": 216,
           "input": "disk2_unresolved",
-          "input_offset": 1346
+          "input_offset": 1266
         },
         {
           "offset": 48384,
@@ -9697,7 +9704,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 1562
+          "input_offset": 1482
         },
         {
           "offset": 59648,

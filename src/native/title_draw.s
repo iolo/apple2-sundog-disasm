@@ -318,12 +318,11 @@ title_native_attributes:
     .byte 0, 0                   ; Native marker and lexical level.
     .word * - title_native_attributes
     .byte 1, 1                   ; Segment number and procedure count.
-; Remaining 96 bytes are still provisional, including the final nonzero $04.
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$04
+; Native assembler output-buffer storage; docs/native-output-storage.md.
+; The historic assembler clears 1023 of its 1024 buffer bytes.
+title_output_zero_storage:
+    .res 95, 0
+title_output_retained_byte:
+    .byte $04
 
 .assert * - entry = $400, error, "Title routine prefix size changed"

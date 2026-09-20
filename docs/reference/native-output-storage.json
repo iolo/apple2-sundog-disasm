@@ -1,0 +1,50 @@
+{
+  "classification_evidence": "docs/native-output-storage.md",
+  "assembler_evidence": "docs/reference/assembler-buffer-evidence.json",
+  "buffer_behavior": {
+    "buffer_bytes": 1024,
+    "cleared_bytes": 1023,
+    "write_block_bytes": 512,
+    "uncleared_offset": 1023,
+    "external_replayed": false
+  },
+  "data_bytes": 176,
+  "newly_source_built_bytes": 80,
+  "already_source_built_bytes": 96,
+  "records": [
+    {
+      "name": "title_draw",
+      "allocation_size": 1024,
+      "container_size": 928,
+      "classification": "data",
+      "zero_range": [
+        928,
+        1023
+      ],
+      "retained_byte_offset": 1023,
+      "retained_byte_value": 4,
+      "data_bytes": 96,
+      "historical_producer_identity_proved": false,
+      "disk": "disk1",
+      "block": 201,
+      "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
+    },
+    {
+      "name": "viewscreen_transition",
+      "allocation_size": 1024,
+      "container_size": 944,
+      "classification": "data",
+      "zero_range": [
+        944,
+        1023
+      ],
+      "retained_byte_offset": 1023,
+      "retained_byte_value": 4,
+      "data_bytes": 80,
+      "historical_producer_identity_proved": false,
+      "disk": "disk2",
+      "block": 86,
+      "sha256": "6e5a42ecc36304ab784570bb094834d2ea7a770468ec391e0966359bae8357b0"
+    }
+  ]
+}

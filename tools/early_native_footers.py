@@ -7,6 +7,7 @@ import subprocess
 from disk_layout import ROOT, sha
 from native_relocations import native_relocations
 from pascal_inventory import procedure_dictionary
+from native_output_storage import classify_tail, check_proof, PROOF
 
 AUDIT = ROOT/'docs/reference/early-native-footers.json'
 EVIDENCE = 'docs/early-native-footers.md'
@@ -46,8 +47,12 @@ def classify(raw, name):
         items.append(dict(offset=end, size=len(raw)-end, classification='data',
                           kind='zero-storage-to-three-page-loader-boundary'))
     else:
-        unresolved.append(dict(offset=end, size=len(raw)-end, sha256=sha(raw[end:]),
-                               reason='Nonzero tail has no complete classification evidence'))
+        check_proof(json.loads(PROOF.read_text()))
+        classify_tail(raw, name)
+        items += [dict(offset=end, size=1023-end, classification='data',
+                       kind='cleared-native-output-buffer-storage'),
+                  dict(offset=1023, size=1, classification='data',
+                       kind='retained-uncleared-output-buffer-byte', value=4)]
     return dict(name=name, **layout, dictionary=dictionary, relocations=relocations,
                 items=items, newly_classified_data_bytes=sum(i['size'] for i in items),
                 remaining_provisional_ranges=unresolved)

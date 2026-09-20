@@ -156,9 +156,15 @@ Split large steps into independently validated, logged, and committed increments
 - Step 06au reconstructs the disconnected jump stubs, their pointer words and
   retained track-sequence addresses in both encoded banks, including suffix
   copies. Their invalid continuation into known data is recorded without
-  altering the strict graph. Six bytes per bank remain unresolved. Current
+  altering the strict graph. Six bytes per bank remain unresolved. Checkpoint
   ownership is 183,352 source-built bytes, 101,152 identified data/asset bytes
   and 2,216 temporary bytes (636 disk 1; 1,580 disk 2).
+- Step 08o classifies title/viewscreen native output-buffer tails using the
+  Apple Pascal assembler's verified 1,024-byte allocation, 1,023-byte clear
+  and block-rounded write. This resolves 96 already source-built bytes and
+  adopts 80 temporary bytes. Current ownership is 183,432 source-built bytes,
+  101,152 identified data/asset bytes and 2,136 temporary bytes
+  (636 disk 1; 1,500 disk 2). Historical producer identity is not asserted.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

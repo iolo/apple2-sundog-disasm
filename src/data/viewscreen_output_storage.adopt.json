@@ -1,0 +1,13 @@
+{
+  "name": "viewscreen_output_storage",
+  "source": "src/data/viewscreen_output_storage.s",
+  "config": "src/data/viewscreen_output_storage.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 44976,
+      "size": 80,
+      "input_offset": 0
+    }
+  ]
+}

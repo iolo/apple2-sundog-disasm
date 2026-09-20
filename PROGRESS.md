@@ -3072,3 +3072,41 @@ and acceptance criteria.
   the remaining symbol/buffer bytes, altered title fragment and small storage
   tails, plus already source-built provisional ranges. User PRD.md edits and
   ref/ remain untouched and excluded. The goal remains active.
+
+## 2026-09-20 — Step 08o: classify native assembler output-buffer storage
+
+- **New evidence:** The historical UCSD assembler source defines a two-block
+  output buffer and BUFLIMIT=1023, then clears BUFLIMIT bytes. Independently
+  extracted Apple Pascal 1.2 SYSTEM.ASSMBLER confirms this on the relevant
+  platform: its fully decoded PROCEND segment allocates two 256-word objects,
+  clears 1,023 bytes from the first pointer and writes a block-rounded length.
+  The 1,024th byte is not initialized by that clear. Recorded full disk/file/
+  segment hashes, 85 instruction bytes, their disassembly and source references.
+- **Classification:** The title and viewscreen native containers have complete
+  validated footers at offsets 928 and 944, followed by zeros through offset
+  1022 and the same retained $04 at offset 1023. Their boundaries, matching
+  sparse-tail placement and verified historical writer behavior support data
+  classification as output-buffer storage. The classification is an inference;
+  it does not prove the historical assembler release/build session or the
+  retained byte's earlier meaning. It is not generalized to other sparse tails.
+- **Artifacts:** Named the title's existing 96-byte storage declarations and
+  added an 80-byte source component/adoption recipe for the viewscreen tail.
+  Added the writer/tail audit, two focused tests, evidence/report and
+  docs/native-output-storage.md. Extended the early-footer audit/tests so these
+  two native components no longer report provisional tails. Updated related
+  docs, PLAN.md and reconstruction ownership.
+- **Validation:** Four tests pass across the new storage and early-footer
+  suites, rejecting altered footers, every tail byte, truncation and every
+  historical evidence byte. External replay decodes all nine historical
+  PROCEND procedures and checks both bounded excerpts. Fresh assembly, both
+  audit verifiers, strict adoption, full rebuild, tools/verify_disks.py and
+  git diff --check pass. Both disks remain exact; original media/manual are
+  unchanged and recent dual-emulator behavior baselines remain applicable.
+- **Other research/next:** Existing symbol-search/read-buffer paths still do
+  not directly consume the six remaining encoded-bank bytes. A general
+  substitution-pattern search at 14/18/24-byte windows finds no known-component
+  donor for the mixed checksum-block tail. Neither search changes ownership.
+  Continue remaining asset/storage tails and encoded symbols. Current totals:
+  183,432 source-built bytes, 101,152 identified data/asset bytes and 2,136
+  temporary bytes (636 disk 1; 1,500 disk 2). User PRD.md edits and ref/ remain
+  untouched and excluded; the goal remains active.

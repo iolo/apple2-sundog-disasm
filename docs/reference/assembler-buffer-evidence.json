@@ -1,0 +1,256 @@
+{
+  "source_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/pascal/ucsd/UCSD%20Pascal%201.2_2.DSK",
+  "disk_sha256": "6576fccbf64f0b512d72561e6094d5754cdd8b0bb3530c00ce8b8ee8cffa9f21",
+  "file": "SYSTEM.ASSMBLER",
+  "file_sha256": "595659812b4d2a15486f9b09a1dd2e97d20126424b315ee38498b88cb958ddbe",
+  "file_size": 26624,
+  "segment_name": "PROCEND",
+  "segment_number": 9,
+  "relative_file_block": 30,
+  "segment_size": 3224,
+  "segment_sha256": "99b875b7cea9f8cf04a824c2c69bf5aa17e90e1d3e61250493742788665820af",
+  "segment_procedure_count": 9,
+  "segment_instruction_count": 1449,
+  "source_repository": "https://github.com/jdykstra/ucsd-psystem-os",
+  "source_revision": "f0a8e66f6aff82e95207300e11e310155d2d1599",
+  "windows": [
+    {
+      "name": "allocate-and-clear",
+      "offset": 1792,
+      "size": 59,
+      "hex": "c601c700019e01d8ab48a58346a583c6a8808002b8010302cc02b60103d9c8a111c601c700019e01b601030182b80103b9f6a94800c7ff03009e0a",
+      "sha256": "abe2a723ff585ad55727d805ab50b0c2be14edb0f9a838b55861f5fc80de2ef3",
+      "instructions": [
+        {
+          "offset": 1792,
+          "size": 2,
+          "assembly": "p_lla 1, 1"
+        },
+        {
+          "offset": 1794,
+          "size": 3,
+          "assembly": "p_ldci 256"
+        },
+        {
+          "offset": 1797,
+          "size": 2,
+          "assembly": "p_csp 1"
+        },
+        {
+          "offset": 1799,
+          "size": 1,
+          "assembly": "p_sldl 1"
+        },
+        {
+          "offset": 1800,
+          "size": 2,
+          "assembly": "p_sro 72, 1"
+        },
+        {
+          "offset": 1802,
+          "size": 3,
+          "assembly": "p_lao 838, 2"
+        },
+        {
+          "offset": 1805,
+          "size": 3,
+          "assembly": "p_lao 966, 2"
+        },
+        {
+          "offset": 1808,
+          "size": 3,
+          "assembly": "p_mov 128, 2"
+        },
+        {
+          "offset": 1811,
+          "size": 1,
+          "assembly": "p_sldc 2"
+        },
+        {
+          "offset": 1812,
+          "size": 3,
+          "assembly": "p_str 1, 3, 1"
+        },
+        {
+          "offset": 1815,
+          "size": 1,
+          "assembly": "p_sldc 2"
+        },
+        {
+          "offset": 1816,
+          "size": 2,
+          "assembly": "p_stl 2, 1"
+        },
+        {
+          "offset": 1818,
+          "size": 3,
+          "assembly": "p_lod 1, 3, 1"
+        },
+        {
+          "offset": 1821,
+          "size": 1,
+          "assembly": "p_sldl 2"
+        },
+        {
+          "offset": 1822,
+          "size": 1,
+          "assembly": "p_leqi"
+        },
+        {
+          "offset": 1823,
+          "size": 2,
+          "assembly": "p_fjp_direct L_0732"
+        },
+        {
+          "offset": 1825,
+          "size": 2,
+          "assembly": "p_lla 1, 1"
+        },
+        {
+          "offset": 1827,
+          "size": 3,
+          "assembly": "p_ldci 256"
+        },
+        {
+          "offset": 1830,
+          "size": 2,
+          "assembly": "p_csp 1"
+        },
+        {
+          "offset": 1832,
+          "size": 3,
+          "assembly": "p_lod 1, 3, 1"
+        },
+        {
+          "offset": 1835,
+          "size": 1,
+          "assembly": "p_sldc 1"
+        },
+        {
+          "offset": 1836,
+          "size": 1,
+          "assembly": "p_adi"
+        },
+        {
+          "offset": 1837,
+          "size": 3,
+          "assembly": "p_str 1, 3, 1"
+        },
+        {
+          "offset": 1840,
+          "size": 2,
+          "assembly": "p_ujp_table L_083E, L_0848"
+        },
+        {
+          "offset": 1842,
+          "size": 2,
+          "assembly": "p_ldo 72, 1"
+        },
+        {
+          "offset": 1844,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 1845,
+          "size": 3,
+          "assembly": "p_ldci 1023"
+        },
+        {
+          "offset": 1848,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 1849,
+          "size": 2,
+          "assembly": "p_csp 10"
+        }
+      ]
+    },
+    {
+      "name": "round-and-write",
+      "offset": 2216,
+      "size": 26,
+      "hex": "a935c7ff0182c7000286cc03b60208a94800daf0000000cd001c",
+      "sha256": "562a83b3b1ac0ed9384d72fe4996ae2ec98af8308f73124d9f3276cdcf0d678c",
+      "instructions": [
+        {
+          "offset": 2216,
+          "size": 2,
+          "assembly": "p_ldo 53, 1"
+        },
+        {
+          "offset": 2218,
+          "size": 3,
+          "assembly": "p_ldci 511"
+        },
+        {
+          "offset": 2221,
+          "size": 1,
+          "assembly": "p_adi"
+        },
+        {
+          "offset": 2222,
+          "size": 3,
+          "assembly": "p_ldci 512"
+        },
+        {
+          "offset": 2225,
+          "size": 1,
+          "assembly": "p_dvi"
+        },
+        {
+          "offset": 2226,
+          "size": 2,
+          "assembly": "p_stl 3, 1"
+        },
+        {
+          "offset": 2228,
+          "size": 3,
+          "assembly": "p_lod 2, 8, 1"
+        },
+        {
+          "offset": 2231,
+          "size": 2,
+          "assembly": "p_ldo 72, 1"
+        },
+        {
+          "offset": 2233,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 2234,
+          "size": 1,
+          "assembly": "p_sldl 3"
+        },
+        {
+          "offset": 2235,
+          "size": 1,
+          "assembly": "p_sldo 9"
+        },
+        {
+          "offset": 2236,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 2237,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 2238,
+          "size": 1,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 2239,
+          "size": 3,
+          "assembly": "p_cxp 0, 28"
+        }
+      ]
+    }
+  ]
+}

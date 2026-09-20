@@ -18,8 +18,8 @@ class EarlyFooterTests(unittest.TestCase):
         title = classify(self.fixture('title_draw'), 'title_draw')
         self.assertEqual(boot['newly_classified_data_bytes'], 32)
         self.assertEqual(boot['remaining_provisional_ranges'], [])
-        self.assertEqual(title['newly_classified_data_bytes'], 16)
-        self.assertEqual([(r['offset'], r['size']) for r in title['remaining_provisional_ranges']], [(928,96)])
+        self.assertEqual(title['newly_classified_data_bytes'], 112)
+        self.assertEqual(title['remaining_provisional_ranges'], [])
         for record in (boot, title):
             self.assertTrue(all(i['classification'] == 'data' for i in record['items']))
             self.assertEqual(record['dictionary']['procedures'][0]['entry_offset'], 0)

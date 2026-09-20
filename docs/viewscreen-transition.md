@@ -2,8 +2,10 @@
 
 `src/native/viewscreen_transition.s` reconstructs the first 944 bytes of disk-2
 blocks 86–87, loaded at `$1800`. The two-block read also fetches 80 bytes after
-this component. Those bytes remain unresolved; their mostly zero contents and
-final `$04` byte are not sufficient evidence to classify them as padding.
+this component. Those bytes are now separately classified as
+[native output-buffer storage](native-output-storage.md), using historical
+assembler allocation/clear/write behavior as additional evidence for the
+79 zero bytes and retained final `$04`.
 
 ## Entry and load evidence
 

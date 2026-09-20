@@ -230,21 +230,27 @@
           "size": 2,
           "classification": "data",
           "kind": "segment-trailer"
-        }
-      ],
-      "newly_classified_data_bytes": 16,
-      "remaining_provisional_ranges": [
+        },
         {
           "offset": 928,
-          "size": 96,
-          "sha256": "737cab9732f8a5518df9f81e81dd30b6ff1e491b042d6b62e9976ef30a0f493e",
-          "reason": "Nonzero tail has no complete classification evidence"
+          "size": 95,
+          "classification": "data",
+          "kind": "cleared-native-output-buffer-storage"
+        },
+        {
+          "offset": 1023,
+          "size": 1,
+          "classification": "data",
+          "kind": "retained-uncleared-output-buffer-byte",
+          "value": 4
         }
       ],
+      "newly_classified_data_bytes": 112,
+      "remaining_provisional_ranges": [],
       "source": "src/native/title_draw.s",
       "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
     }
   ],
-  "newly_classified_data_bytes": 48,
+  "newly_classified_data_bytes": 144,
   "source_ownership_bytes_changed": 0
 }

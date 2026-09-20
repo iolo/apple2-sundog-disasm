@@ -4,13 +4,15 @@ Two existing source components retained provisional tails before native Pascal
 footers were understood. The same dictionary and relocation parsers used for
 the [raw block overlays](native-block-tails.md) now validate their metadata.
 This audit classifies **48 already source-built bytes as data**; it does not
-reduce the manifest's temporary-byte count or claim every provisional region
-in these components is resolved.
+reduce the manifest's temporary-byte count at that checkpoint. Step 08o adds
+historical [assembler output-buffer evidence](native-output-storage.md) for
+the title's final 96 bytes. The current audit covers 144 data bytes and leaves
+no provisional ranges in these two components.
 
 | Component | Footer offsets | Entry word and destination | Attributes | Dictionary/trailer | Following storage |
 | --- | --- | --- | --- | --- | --- |
 | Bootstrap, origin $0800 | $02E0–$02EF | At $02E8, value $02E8 → offset 0 | $02EA: native, level 0 | $02EC: displacement 2; $02EE: segment 1, count 1 | Sixteen zero bytes to the verified three-page loader boundary at $0300 |
-| Title prefix, origin $4000 | $0390–$039F | At $0398, value $0398 → offset 0 | $039A: native, level 0 | $039C: displacement 2; $039E: segment 1, count 1 | 96 bytes at $03A0–$03FF remain provisional, including final $04 |
+| Title prefix, origin $4000 | $0390–$039F | At $0398, value $0398 → offset 0 | $039A: native, level 0 | $039C: displacement 2; $039E: segment 1, count 1 | 95 cleared storage bytes and a retained final byte; see the output-buffer audit |
 
 Each footer begins with four zero relocation counts in interpreter, procedure,
 segment and global order. Its displacement resolves to the component start,
@@ -25,7 +27,8 @@ the complete native container, ending at the three-page load boundary confirmed
 by the [bootstrap capture](bootstrap.md). This uses the established load extent
 and parsed footer, not merely a scan for zero bytes. The fourth boot sector is
 outside this component and remains separate work. The title tail's nonzero
-ending prevents applying the same complete-zero-storage rule there.
+ending prevented applying the same complete-zero-storage rule there. Its later
+classification uses separate historical writer evidence, not that zero-only rule.
 
 The bootstrap metadata points to its page-count byte at offset zero; the boot
 entry is offset one. This retained container metadata is not used to infer a
@@ -34,7 +37,7 @@ loader use of either footer is asserted. Their structural data classification
 does not depend on current execution.
 
 Both assembly sources now emit named fields and symbolic backward displacements.
-The title source explicitly labels its remaining 96-byte range as provisional.
+The title source now explicitly names its cleared storage and retained byte.
 `tools/early_native_footers.py` freshly assembles both sources, checks the exact
 component hashes, reruns the dictionary/relocation parsers and records each data
 field and remaining provisional extent. The machine-readable audit is

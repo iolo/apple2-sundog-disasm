@@ -12,7 +12,7 @@ original [bootstrap capture](bootstrap.md). Step 06a reconstructs its first
 | `$4210`–`$42CF` | 192 | Low bytes of HGR page-1 scanline addresses |
 | `$42D0`–`$438F` | 192 | High bytes of those addresses |
 | `$4390`–`$439F` | 16 | Retained native Pascal footer; [field audit](early-native-footers.md) |
-| `$43A0`–`$43FF` | 96 | Provisional tail, not yet fully classified |
+| `$43A0`–`$43FF` | 96 | Native output-buffer storage; [writer evidence](native-output-storage.md) |
 | `$4400`–`$63FF` | 8,192 | Extracted bitmap; see `assets/title/title.hgr` |
 
 The helper takes A as byte column and X as scanline, and returns the screen
