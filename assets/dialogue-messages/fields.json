@@ -1,0 +1,2586 @@
+[
+  {
+    "block": 90,
+    "bank_offset": 184,
+    "input_offset": 0,
+    "length": 4,
+    "alignment_bytes": 1,
+    "stored_characters": "\u0015\u0016\u001e?",
+    "high_bit_positions": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 190,
+    "input_offset": 6,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0016\u001e,2?",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 196,
+    "input_offset": 12,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "*now,\u0013?",
+    "high_bit_positions": [
+      0,
+      4,
+      6
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 204,
+    "input_offset": 20,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001f+\u0001,1.",
+    "high_bit_positions": [
+      0,
+      1,
+      3,
+      5
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 212,
+    "input_offset": 28,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "\u000f2,takeit!",
+    "high_bit_positions": [
+      0,
+      2,
+      6,
+      9
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 224,
+    "input_offset": 40,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "Takeit,\u0013!",
+    "high_bit_positions": [
+      3,
+      6,
+      8
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 234,
+    "input_offset": 50,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "Hey,2!+wantthis%)?",
+    "high_bit_positions": [
+      3,
+      5,
+      6,
+      10,
+      14,
+      17
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 254,
+    "input_offset": 70,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "\u001cIhelp+)?",
+    "high_bit_positions": [
+      0,
+      1,
+      5,
+      8
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 264,
+    "input_offset": 80,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0004\u0005.Do+wantto\u0006)?",
+    "high_bit_positions": [
+      0,
+      2,
+      4,
+      5,
+      9,
+      11,
+      14
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 280,
+    "input_offset": 96,
+    "length": 12,
+    "alignment_bytes": 1,
+    "stored_characters": "\u000f\u0013,orderor\u001d!",
+    "high_bit_positions": [
+      0,
+      2,
+      7,
+      9,
+      11
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 294,
+    "input_offset": 110,
+    "length": 12,
+    "alignment_bytes": 1,
+    "stored_characters": "If+'ll\u0018me...",
+    "high_bit_positions": [
+      1,
+      5,
+      6,
+      11
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 308,
+    "input_offset": 124,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "Whydon't+runalong,2?",
+    "high_bit_positions": [
+      2,
+      7,
+      8,
+      11,
+      17,
+      19
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 330,
+    "input_offset": 146,
+    "length": 22,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001d,\u0013,+'rewastingmytime!",
+    "high_bit_positions": [
+      1,
+      3,
+      7,
+      14,
+      16,
+      21
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 354,
+    "input_offset": 170,
+    "length": 14,
+    "alignment_bytes": 1,
+    "stored_characters": "\bisitworthto+?",
+    "high_bit_positions": [
+      0,
+      2,
+      4,
+      9,
+      11,
+      13
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 380,
+    "input_offset": 186,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "*\tofinfodo+\r?",
+    "high_bit_positions": [
+      0,
+      1,
+      3,
+      7,
+      9,
+      10,
+      12
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 394,
+    "input_offset": 200,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Showme*+\rtosell.",
+    "high_bit_positions": [
+      3,
+      5,
+      6,
+      7,
+      8,
+      10,
+      15
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 412,
+    "input_offset": 218,
+    "length": 34,
+    "alignment_bytes": 1,
+    "stored_characters": "4waitinabooth.I'llsendsomeoneover.",
+    "high_bit_positions": [
+      0,
+      4,
+      6,
+      7,
+      13,
+      17,
+      21,
+      28,
+      33
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 448,
+    "input_offset": 254,
+    "length": 11,
+    "alignment_bytes": 0,
+    "stored_characters": "*do+\rtobuy?",
+    "high_bit_positions": [
+      0,
+      2,
+      3,
+      4,
+      6,
+      10
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 460,
+    "input_offset": 266,
+    "length": 21,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0014,-.Trysomewhereelse.",
+    "high_bit_positions": [
+      1,
+      3,
+      6,
+      15,
+      20
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 482,
+    "input_offset": 288,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "\u0007the\u000b,2.I'll\f+later.",
+    "high_bit_positions": [
+      0,
+      3,
+      5,
+      7,
+      11,
+      12,
+      13,
+      19
+    ]
+  },
+  {
+    "block": 90,
+    "bank_offset": 504,
+    "input_offset": 310,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "Hmm...",
+    "high_bit_positions": [
+      5
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 302,
+    "input_offset": 318,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "I\u0017+\rto/a%.",
+    "high_bit_positions": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      9
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 314,
+    "input_offset": 330,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "4sell+a%for$.",
+    "high_bit_positions": [
+      0,
+      4,
+      5,
+      6,
+      7,
+      10,
+      12
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 328,
+    "input_offset": 344,
+    "length": 4,
+    "alignment_bytes": 1,
+    "stored_characters": "48$.",
+    "high_bit_positions": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 334,
+    "input_offset": 350,
+    "length": 12,
+    "alignment_bytes": 1,
+    "stored_characters": "$ismy7offer.",
+    "high_bit_positions": [
+      0,
+      2,
+      4,
+      5,
+      11
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 348,
+    "input_offset": 364,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "$takeitorleaveit!",
+    "high_bit_positions": [
+      0,
+      4,
+      6,
+      8,
+      13,
+      16
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 366,
+    "input_offset": 382,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "4\n$for+r%.",
+    "high_bit_positions": [
+      0,
+      1,
+      2,
+      5,
+      7,
+      9
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 378,
+    "input_offset": 394,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "I5\n6$.",
+    "high_bit_positions": [
+      0,
+      1,
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 386,
+    "input_offset": 402,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "Do+\rto/the%).",
+    "high_bit_positions": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      9,
+      12
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 400,
+    "input_offset": 416,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "Discuss*?",
+    "high_bit_positions": [
+      6,
+      8
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 410,
+    "input_offset": 426,
+    "length": 11,
+    "alignment_bytes": 0,
+    "stored_characters": "Handitover!",
+    "high_bit_positions": [
+      3,
+      5,
+      10
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 422,
+    "input_offset": 438,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "Takeit!",
+    "high_bit_positions": [
+      3,
+      6
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 430,
+    "input_offset": 446,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "Dowehaveadeal)?",
+    "high_bit_positions": [
+      1,
+      3,
+      7,
+      8,
+      14
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 446,
+    "input_offset": 462,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0018me,1.\u001cI\u001ato+?",
+    "high_bit_positions": [
+      0,
+      3,
+      5,
+      6,
+      7,
+      8,
+      10,
+      12
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 460,
+    "input_offset": 476,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001b,fine1.\u001cI:+inadeal?",
+    "high_bit_positions": [
+      1,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      19
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 482,
+    "input_offset": 498,
+    "length": 11,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0018me1Imust9.",
+    "high_bit_positions": [
+      0,
+      2,
+      3,
+      4,
+      8,
+      10
+    ]
+  },
+  {
+    "block": 91,
+    "bank_offset": 494,
+    "input_offset": 510,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Would+be:edina%?",
+    "high_bit_positions": [
+      4,
+      5,
+      7,
+      10,
+      12,
+      13,
+      15
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 180,
+    "input_offset": 528,
+    "length": 32,
+    "alignment_bytes": 1,
+    "stored_characters": "Seeyoulater2.Youcanhavethetable!",
+    "high_bit_positions": [
+      2,
+      5,
+      10,
+      12,
+      15,
+      18,
+      22,
+      25,
+      31
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 214,
+    "input_offset": 562,
+    "length": 24,
+    "alignment_bytes": 1,
+    "stored_characters": "Sorrypal,I'mjustleaving.",
+    "high_bit_positions": [
+      4,
+      8,
+      11,
+      15,
+      23
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 240,
+    "input_offset": 588,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "Hey!\u0013Iwassittinhere!",
+    "high_bit_positions": [
+      3,
+      4,
+      5,
+      8,
+      14,
+      19
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 262,
+    "input_offset": 610,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Can+spare$for56?",
+    "high_bit_positions": [
+      2,
+      3,
+      8,
+      9,
+      12,
+      13,
+      15
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 300,
+    "input_offset": 628,
+    "length": 32,
+    "alignment_bytes": 1,
+    "stored_characters": "TrafficControlhere.*'s+rproblem?",
+    "high_bit_positions": [
+      6,
+      13,
+      18,
+      21,
+      23,
+      31
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 334,
+    "input_offset": 662,
+    "length": 38,
+    "alignment_bytes": 1,
+    "stored_characters": "\u000fSunDog,it's4.We'redockingyou$,though.",
+    "high_bit_positions": [
+      0,
+      7,
+      11,
+      13,
+      18,
+      25,
+      28,
+      30,
+      37
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 374,
+    "input_offset": 702,
+    "length": 30,
+    "alignment_bytes": 1,
+    "stored_characters": "It'llcostyou$,SunDog,butit's4.",
+    "high_bit_positions": [
+      4,
+      8,
+      11,
+      13,
+      20,
+      23,
+      27,
+      29
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 406,
+    "input_offset": 734,
+    "length": 47,
+    "alignment_bytes": 0,
+    "stored_characters": "Totalchargesare$,SunDog.Itshouldbethereinwhile.",
+    "high_bit_positions": [
+      4,
+      11,
+      14,
+      16,
+      23,
+      25,
+      31,
+      33,
+      38,
+      40,
+      46
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 454,
+    "input_offset": 782,
+    "length": 21,
+    "alignment_bytes": 0,
+    "stored_characters": "Aquicksearchturnsup$.",
+    "high_bit_positions": [
+      0,
+      5,
+      11,
+      16,
+      18,
+      20
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 476,
+    "input_offset": 804,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "Youfind$.",
+    "high_bit_positions": [
+      2,
+      6,
+      8
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 486,
+    "input_offset": 814,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "$isfoundinawallet.",
+    "high_bit_positions": [
+      0,
+      2,
+      7,
+      9,
+      10,
+      17
+    ]
+  },
+  {
+    "block": 92,
+    "bank_offset": 506,
+    "input_offset": 834,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "87a%.",
+    "high_bit_positions": [
+      0,
+      1,
+      2,
+      4
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 252,
+    "input_offset": 840,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "5+rcargo,or&'ll6!",
+    "high_bit_positions": [
+      0,
+      2,
+      8,
+      10,
+      14,
+      16
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 270,
+    "input_offset": 858,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "+haveoneminutebefore&6!",
+    "high_bit_positions": [
+      0,
+      4,
+      7,
+      13,
+      19,
+      20,
+      22
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 294,
+    "input_offset": 882,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Doitnow,or&'ll6!",
+    "high_bit_positions": [
+      1,
+      3,
+      7,
+      9,
+      13,
+      15
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 312,
+    "input_offset": 900,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "\u000f0,+'refreetogo.",
+    "high_bit_positions": [
+      0,
+      2,
+      6,
+      10,
+      12,
+      15
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 330,
+    "input_offset": 918,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "\u000f0,it's+rfuneral!",
+    "high_bit_positions": [
+      0,
+      2,
+      6,
+      8,
+      16
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 348,
+    "input_offset": 936,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "Hope+canbreathvacuum,0!",
+    "high_bit_positions": [
+      3,
+      4,
+      7,
+      13,
+      20,
+      22
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 372,
+    "input_offset": 960,
+    "length": 3,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0002*?",
+    "high_bit_positions": [
+      0,
+      2
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 376,
+    "input_offset": 964,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "*'sto\u0002?",
+    "high_bit_positions": [
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 384,
+    "input_offset": 972,
+    "length": 14,
+    "alignment_bytes": 1,
+    "stored_characters": "Howwill+stop(?",
+    "high_bit_positions": [
+      2,
+      6,
+      7,
+      11,
+      13
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 400,
+    "input_offset": 988,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "4+rcashordie!",
+    "high_bit_positions": [
+      0,
+      2,
+      6,
+      8,
+      12
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 414,
+    "input_offset": 1002,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "Whynot?",
+    "high_bit_positions": [
+      2,
+      6
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 422,
+    "input_offset": 1010,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "&'lljusthavealook...",
+    "high_bit_positions": [
+      3,
+      7,
+      11,
+      12,
+      19
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 444,
+    "input_offset": 1032,
+    "length": 3,
+    "alignment_bytes": 0,
+    "stored_characters": "\u000f\u001d!",
+    "high_bit_positions": [
+      0,
+      2
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 448,
+    "input_offset": 1036,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "\u000f\u0013,&'llgetitthehardway.",
+    "high_bit_positions": [
+      0,
+      2,
+      6,
+      9,
+      11,
+      14,
+      18,
+      22
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 472,
+    "input_offset": 1060,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "Lastchance,\u0013...",
+    "high_bit_positions": [
+      3,
+      10,
+      14
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 488,
+    "input_offset": 1076,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0010\u0011,2.",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "block": 93,
+    "bank_offset": 494,
+    "input_offset": 1082,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "\u000f\u0013,+askedforit...",
+    "high_bit_positions": [
+      0,
+      2,
+      3,
+      8,
+      11,
+      16
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 300,
+    "input_offset": 1100,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "WhatelsecanIshow+.",
+    "high_bit_positions": [
+      3,
+      7,
+      10,
+      11,
+      15,
+      17
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 320,
+    "input_offset": 1120,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0016\u001e,2?",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 326,
+    "input_offset": 1126,
+    "length": 8,
+    "alignment_bytes": 1,
+    "stored_characters": "*else,\u0013?",
+    "high_bit_positions": [
+      0,
+      5,
+      7
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 336,
+    "input_offset": 1136,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001f+\u0001,1.",
+    "high_bit_positions": [
+      0,
+      1,
+      3,
+      5
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 344,
+    "input_offset": 1144,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "\u000f2,5!",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 350,
+    "input_offset": 1150,
+    "length": 4,
+    "alignment_bytes": 1,
+    "stored_characters": "5,\u0013!",
+    "high_bit_positions": [
+      1,
+      3
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 356,
+    "input_offset": 1156,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "Hey,2!+wantthis%)?",
+    "high_bit_positions": [
+      3,
+      5,
+      6,
+      10,
+      14,
+      17
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 376,
+    "input_offset": 1176,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "\u001cIhelp+)?",
+    "high_bit_positions": [
+      0,
+      1,
+      5,
+      8
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 386,
+    "input_offset": 1186,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "\u0004\u0005.Do+wantto\u0006)?",
+    "high_bit_positions": [
+      0,
+      2,
+      4,
+      5,
+      9,
+      11,
+      14
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 402,
+    "input_offset": 1202,
+    "length": 12,
+    "alignment_bytes": 1,
+    "stored_characters": "\u000f\u0013,orderor\u001d!",
+    "high_bit_positions": [
+      0,
+      2,
+      7,
+      9,
+      11
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 416,
+    "input_offset": 1216,
+    "length": 12,
+    "alignment_bytes": 1,
+    "stored_characters": "If+'ll\u0018me...",
+    "high_bit_positions": [
+      1,
+      5,
+      6,
+      11
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 430,
+    "input_offset": 1230,
+    "length": 30,
+    "alignment_bytes": 1,
+    "stored_characters": "runalong,2,I'vegot6thingstodo!",
+    "high_bit_positions": [
+      2,
+      8,
+      10,
+      14,
+      17,
+      18,
+      24,
+      26,
+      29
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 462,
+    "input_offset": 1262,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001d,\u0013,+'re7!",
+    "high_bit_positions": [
+      1,
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 474,
+    "input_offset": 1274,
+    "length": 8,
+    "alignment_bytes": 1,
+    "stored_characters": "Sorry,4!",
+    "high_bit_positions": [
+      5,
+      7
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 484,
+    "input_offset": 1284,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "a%costs$.",
+    "high_bit_positions": [
+      0,
+      1,
+      6,
+      8
+    ]
+  },
+  {
+    "block": 94,
+    "bank_offset": 494,
+    "input_offset": 1294,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "thatwillbe$fora%.",
+    "high_bit_positions": [
+      3,
+      7,
+      9,
+      10,
+      13,
+      14,
+      16
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 378,
+    "input_offset": 1312,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "Room,1?",
+    "high_bit_positions": [
+      4,
+      6
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 386,
+    "input_offset": 1320,
+    "length": 31,
+    "alignment_bytes": 0,
+    "stored_characters": "well,then,if+'ll\u0018meIhaveother;.",
+    "high_bit_positions": [
+      4,
+      9,
+      11,
+      15,
+      16,
+      18,
+      19,
+      23,
+      28,
+      30
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 418,
+    "input_offset": 1352,
+    "length": 34,
+    "alignment_bytes": 1,
+    "stored_characters": "I'msorry,butwe're9full:6.perhaps7.",
+    "high_bit_positions": [
+      2,
+      8,
+      11,
+      16,
+      21,
+      24,
+      31,
+      33
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 454,
+    "input_offset": 1388,
+    "length": 24,
+    "alignment_bytes": 1,
+    "stored_characters": "8,thatwillbe$,inadvance.",
+    "high_bit_positions": [
+      1,
+      5,
+      9,
+      11,
+      13,
+      15,
+      23
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 480,
+    "input_offset": 1414,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "Thankyou,1.5.",
+    "high_bit_positions": [
+      4,
+      8,
+      10,
+      12
+    ]
+  },
+  {
+    "block": 95,
+    "bank_offset": 494,
+    "input_offset": 1428,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "Sorry,+raccount<!",
+    "high_bit_positions": [
+      5,
+      7,
+      14,
+      16
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 168,
+    "input_offset": 1446,
+    "length": 33,
+    "alignment_bytes": 0,
+    "stored_characters": "wellremember,charitybeginsathome!",
+    "high_bit_positions": [
+      3,
+      12,
+      19,
+      25,
+      27,
+      32
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 202,
+    "input_offset": 1480,
+    "length": 25,
+    "alignment_bytes": 0,
+    "stored_characters": "justremember,+reap*+sow!!",
+    "high_bit_positions": [
+      3,
+      12,
+      13,
+      17,
+      18,
+      19,
+      24
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 228,
+    "input_offset": 1506,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "+'llregretitsomeday!",
+    "high_bit_positions": [
+      3,
+      9,
+      11,
+      19
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 250,
+    "input_offset": 1528,
+    "length": 32,
+    "alignment_bytes": 1,
+    "stored_characters": "well,nexttimeI'llbewatchingfor+!",
+    "high_bit_positions": [
+      4,
+      8,
+      12,
+      16,
+      18,
+      26,
+      29,
+      31
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 284,
+    "input_offset": 1562,
+    "length": 25,
+    "alignment_bytes": 0,
+    "stored_characters": "\"\u0013,we'llseewholaughslast!",
+    "high_bit_positions": [
+      0,
+      2,
+      7,
+      10,
+      13,
+      19,
+      24
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 310,
+    "input_offset": 1588,
+    "length": 34,
+    "alignment_bytes": 1,
+    "stored_characters": "nexttime,don'twalkthestreetsalone!",
+    "high_bit_positions": [
+      3,
+      8,
+      13,
+      17,
+      20,
+      27,
+      33
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 346,
+    "input_offset": 1624,
+    "length": 28,
+    "alignment_bytes": 1,
+    "stored_characters": "mayall+rtravelsendonWoremed!",
+    "high_bit_positions": [
+      2,
+      5,
+      7,
+      14,
+      17,
+      19,
+      27
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 376,
+    "input_offset": 1654,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "thanksfornothing\u0013!",
+    "high_bit_positions": [
+      5,
+      8,
+      15,
+      17
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 396,
+    "input_offset": 1674,
+    "length": 4,
+    "alignment_bytes": 1,
+    "stored_characters": "*a4!",
+    "high_bit_positions": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 402,
+    "input_offset": 1680,
+    "length": 21,
+    "alignment_bytes": 0,
+    "stored_characters": "Ihope+rshoesfittight!",
+    "high_bit_positions": [
+      0,
+      4,
+      6,
+      11,
+      14,
+      20
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 424,
+    "input_offset": 1702,
+    "length": 17,
+    "alignment_bytes": 0,
+    "stored_characters": "Oh!Blessyoukind1!",
+    "high_bit_positions": [
+      2,
+      7,
+      10,
+      14,
+      16
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 442,
+    "input_offset": 1720,
+    "length": 26,
+    "alignment_bytes": 1,
+    "stored_characters": "Thanks2,I'llneverforgetit!",
+    "high_bit_positions": [
+      5,
+      7,
+      11,
+      16,
+      22,
+      25
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 470,
+    "input_offset": 1748,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "Thankyou!Nowmy5canget6!",
+    "high_bit_positions": [
+      4,
+      8,
+      11,
+      13,
+      14,
+      17,
+      20,
+      22
+    ]
+  },
+  {
+    "block": 96,
+    "bank_offset": 494,
+    "input_offset": 1772,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "boy,whatasucker!",
+    "high_bit_positions": [
+      3,
+      7,
+      8,
+      15
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 196,
+    "input_offset": 1790,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "do+want6?",
+    "high_bit_positions": [
+      1,
+      2,
+      6,
+      8
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 206,
+    "input_offset": 1800,
+    "length": 27,
+    "alignment_bytes": 0,
+    "stored_characters": "istheresomethingIcandofor+?",
+    "high_bit_positions": [
+      1,
+      6,
+      15,
+      16,
+      19,
+      21,
+      24,
+      26
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 234,
+    "input_offset": 1828,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "canIhelp+with6?",
+    "high_bit_positions": [
+      2,
+      3,
+      7,
+      8,
+      12,
+      14
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 250,
+    "input_offset": 1844,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "looking56?",
+    "high_bit_positions": [
+      6,
+      7,
+      9
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 262,
+    "input_offset": 1856,
+    "length": 20,
+    "alignment_bytes": 1,
+    "stored_characters": "are+buyingorselling?",
+    "high_bit_positions": [
+      2,
+      3,
+      9,
+      11,
+      19
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 284,
+    "input_offset": 1878,
+    "length": 10,
+    "alignment_bytes": 1,
+    "stored_characters": "do+want56?",
+    "high_bit_positions": [
+      1,
+      2,
+      6,
+      7,
+      9
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 296,
+    "input_offset": 1890,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "whatdo+wanttosell?",
+    "high_bit_positions": [
+      3,
+      5,
+      6,
+      10,
+      12,
+      17
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 316,
+    "input_offset": 1910,
+    "length": 42,
+    "alignment_bytes": 1,
+    "stored_characters": "sorry,I'mnotinterested.Anythingelsetosell?",
+    "high_bit_positions": [
+      5,
+      8,
+      11,
+      22,
+      30,
+      34,
+      36,
+      41
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 360,
+    "input_offset": 1954,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "hey!,+got6tosell)?",
+    "high_bit_positions": [
+      4,
+      5,
+      8,
+      9,
+      11,
+      17
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 380,
+    "input_offset": 1974,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "do+wanttotalktomeornot?",
+    "high_bit_positions": [
+      1,
+      2,
+      6,
+      8,
+      12,
+      14,
+      16,
+      18,
+      22
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 404,
+    "input_offset": 1998,
+    "length": 9,
+    "alignment_bytes": 0,
+    "stored_characters": "sorry,I4!",
+    "high_bit_positions": [
+      5,
+      8
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 414,
+    "input_offset": 2008,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "thenI'll\f+later",
+    "high_bit_positions": [
+      3,
+      7,
+      8,
+      9,
+      14
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 430,
+    "input_offset": 2024,
+    "length": 14,
+    "alignment_bytes": 1,
+    "stored_characters": "thenplease\u0018me!",
+    "high_bit_positions": [
+      3,
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 446,
+    "input_offset": 2040,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "\u001b.Caretositdown?",
+    "high_bit_positions": [
+      1,
+      5,
+      7,
+      10,
+      15
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 464,
+    "input_offset": 2058,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "Hi2.Caretochat?",
+    "high_bit_positions": [
+      1,
+      3,
+      7,
+      9,
+      14
+    ]
+  },
+  {
+    "block": 97,
+    "bank_offset": 480,
+    "input_offset": 2074,
+    "length": 30,
+    "alignment_bytes": 1,
+    "stored_characters": "Haveaseat1.Wouldyouliketotalk?",
+    "high_bit_positions": [
+      3,
+      4,
+      8,
+      10,
+      15,
+      18,
+      22,
+      24,
+      29
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 126,
+    "input_offset": 2106,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "*canItellyouabout?",
+    "high_bit_positions": [
+      0,
+      3,
+      4,
+      8,
+      11,
+      17
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 146,
+    "input_offset": 2126,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Anotherquestion?",
+    "high_bit_positions": [
+      6,
+      15
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 164,
+    "input_offset": 2144,
+    "length": 55,
+    "alignment_bytes": 0,
+    "stored_characters": "Isuggestyoupackatleastoneshieldandsomesortofhandweapon!",
+    "high_bit_positions": [
+      0,
+      7,
+      10,
+      14,
+      16,
+      21,
+      24,
+      30,
+      33,
+      37,
+      41,
+      43,
+      47,
+      54
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 220,
+    "input_offset": 2200,
+    "length": 72,
+    "alignment_bytes": 1,
+    "stored_characters": "Our%sareguaranteedtorestorehealth,butyoumayneedseveralifyou'rebadlyhurt!",
+    "high_bit_positions": [
+      2,
+      4,
+      7,
+      17,
+      19,
+      26,
+      33,
+      36,
+      39,
+      42,
+      46,
+      53,
+      55,
+      61,
+      66,
+      71
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 294,
+    "input_offset": 2274,
+    "length": 64,
+    "alignment_bytes": 1,
+    "stored_characters": "TheMarkIVbody%isareallifesaver!absorbsuptosevendirectweaponhits!",
+    "high_bit_positions": [
+      2,
+      6,
+      8,
+      12,
+      13,
+      15,
+      16,
+      20,
+      30,
+      37,
+      39,
+      41,
+      46,
+      52,
+      58,
+      63
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 360,
+    "input_offset": 2340,
+    "length": 81,
+    "alignment_bytes": 0,
+    "stored_characters": "Finepieceofhardware,theNelson%,goodforunlimitedshots,butnotasdeadlyasascattergun!",
+    "high_bit_positions": [
+      3,
+      8,
+      10,
+      19,
+      22,
+      28,
+      30,
+      34,
+      37,
+      46,
+      52,
+      55,
+      58,
+      60,
+      66,
+      68,
+      69,
+      80
+    ]
+  },
+  {
+    "block": 98,
+    "bank_offset": 442,
+    "input_offset": 2422,
+    "length": 68,
+    "alignment_bytes": 1,
+    "stored_characters": "Ah!Yes,a%isagreatwaytoevenuptheodds,butbeware...ithasonlysevenshots!",
+    "high_bit_positions": [
+      2,
+      6,
+      7,
+      8,
+      10,
+      11,
+      16,
+      19,
+      21,
+      25,
+      27,
+      30,
+      35,
+      38,
+      44,
+      45,
+      46,
+      47,
+      49,
+      52,
+      56,
+      61,
+      67
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 172,
+    "input_offset": 2492,
+    "length": 18,
+    "alignment_bytes": 1,
+    "stored_characters": "*canItellyouabout?",
+    "high_bit_positions": [
+      0,
+      3,
+      4,
+      8,
+      11,
+      17
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 192,
+    "input_offset": 2512,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "*else?",
+    "high_bit_positions": [
+      0,
+      5
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 200,
+    "input_offset": 2520,
+    "length": 19,
+    "alignment_bytes": 0,
+    "stored_characters": "7GeneralIndustron%.",
+    "high_bit_positions": [
+      0,
+      7,
+      16,
+      18
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 220,
+    "input_offset": 2540,
+    "length": 45,
+    "alignment_bytes": 0,
+    "stored_characters": "7nMBI%switchingcircuit.Itfitstacandpilotbays.",
+    "high_bit_positions": [
+      1,
+      4,
+      5,
+      14,
+      22,
+      24,
+      28,
+      31,
+      34,
+      39,
+      44
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 266,
+    "input_offset": 2586,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "7%for8.",
+    "high_bit_positions": [
+      0,
+      1,
+      4,
+      6
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 274,
+    "input_offset": 2594,
+    "length": 49,
+    "alignment_bytes": 0,
+    "stored_characters": "7%.NotasaccurateasaG%,butit'llgetyaintoStarports.",
+    "high_bit_positions": [
+      0,
+      2,
+      5,
+      7,
+      15,
+      17,
+      18,
+      19,
+      21,
+      24,
+      29,
+      32,
+      34,
+      38,
+      48
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 324,
+    "input_offset": 2644,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "7%forshields,8.",
+    "high_bit_positions": [
+      0,
+      1,
+      4,
+      12,
+      14
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 340,
+    "input_offset": 2660,
+    "length": 27,
+    "alignment_bytes": 0,
+    "stored_characters": "That'sourcustommade%with45!",
+    "high_bit_positions": [
+      5,
+      8,
+      14,
+      18,
+      19,
+      23,
+      24,
+      26
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 368,
+    "input_offset": 2688,
+    "length": 31,
+    "alignment_bytes": 0,
+    "stored_characters": "7TecCoSpaceTimedistorter.Very6!",
+    "high_bit_positions": [
+      0,
+      5,
+      10,
+      14,
+      24,
+      28,
+      30
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 400,
+    "input_offset": 2720,
+    "length": 48,
+    "alignment_bytes": 1,
+    "stored_characters": "7standardMicroP%.Yacan'tshuntitsopackafewspares!",
+    "high_bit_positions": [
+      0,
+      8,
+      14,
+      16,
+      18,
+      23,
+      28,
+      30,
+      32,
+      36,
+      37,
+      40,
+      47
+    ]
+  },
+  {
+    "block": 99,
+    "bank_offset": 450,
+    "input_offset": 2770,
+    "length": 60,
+    "alignment_bytes": 1,
+    "stored_characters": "7generalpurpose%.It'llreplacemostparts,butit'snotasreliable!",
+    "high_bit_positions": [
+      0,
+      7,
+      14,
+      16,
+      21,
+      28,
+      32,
+      38,
+      41,
+      45,
+      48,
+      50,
+      59
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 308,
+    "input_offset": 2832,
+    "length": 5,
+    "alignment_bytes": 0,
+    "stored_characters": "54eh?",
+    "high_bit_positions": [
+      0,
+      1,
+      4
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 314,
+    "input_offset": 2838,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Ijustgot8from#:!",
+    "high_bit_positions": [
+      0,
+      4,
+      7,
+      8,
+      12,
+      13,
+      15
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 332,
+    "input_offset": 2856,
+    "length": 6,
+    "alignment_bytes": 1,
+    "stored_characters": "+new9?",
+    "high_bit_positions": [
+      0,
+      3,
+      5
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 340,
+    "input_offset": 2864,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "+comehereoften?",
+    "high_bit_positions": [
+      0,
+      4,
+      8,
+      14
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 356,
+    "input_offset": 2880,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "Ijustdeliveredsome7to#.",
+    "high_bit_positions": [
+      0,
+      4,
+      13,
+      17,
+      18,
+      20,
+      22
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 380,
+    "input_offset": 2904,
+    "length": 25,
+    "alignment_bytes": 0,
+    "stored_characters": "+rshipistheSunDogisn'tit?",
+    "high_bit_positions": [
+      1,
+      5,
+      7,
+      10,
+      16,
+      21,
+      24
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 406,
+    "input_offset": 2930,
+    "length": 24,
+    "alignment_bytes": 1,
+    "stored_characters": "Boy!Thatwassomegame:,eh?",
+    "high_bit_positions": [
+      3,
+      7,
+      10,
+      14,
+      18,
+      20,
+      23
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 432,
+    "input_offset": 2956,
+    "length": 13,
+    "alignment_bytes": 0,
+    "stored_characters": "Are+<outsoon?",
+    "high_bit_positions": [
+      2,
+      3,
+      4,
+      7,
+      12
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 446,
+    "input_offset": 2970,
+    "length": 27,
+    "alignment_bytes": 0,
+    "stored_characters": "Lotof;onWoremed,isn'tthere?",
+    "high_bit_positions": [
+      2,
+      4,
+      5,
+      7,
+      15,
+      20,
+      26
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 474,
+    "input_offset": 2998,
+    "length": 19,
+    "alignment_bytes": 0,
+    "stored_characters": "do+wanttotalktome)?",
+    "high_bit_positions": [
+      1,
+      2,
+      6,
+      8,
+      12,
+      14,
+      18
+    ]
+  },
+  {
+    "block": 100,
+    "bank_offset": 494,
+    "input_offset": 3018,
+    "length": 16,
+    "alignment_bytes": 1,
+    "stored_characters": "Hey!Areyouawake?",
+    "high_bit_positions": [
+      3,
+      6,
+      9,
+      15
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 122,
+    "input_offset": 3036,
+    "length": 38,
+    "alignment_bytes": 1,
+    "stored_characters": "Hey!Whydidn'tthesandsharkeattheRithan?",
+    "high_bit_positions": [
+      3,
+      6,
+      12,
+      15,
+      19,
+      24,
+      27,
+      30,
+      37
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 162,
+    "input_offset": 3076,
+    "length": 22,
+    "alignment_bytes": 1,
+    "stored_characters": "Professionalcourtesy!6",
+    "high_bit_positions": [
+      11,
+      20,
+      21
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 186,
+    "input_offset": 3100,
+    "length": 26,
+    "alignment_bytes": 1,
+    "stored_characters": "4repairtechs5pluginashunt?",
+    "high_bit_positions": [
+      0,
+      6,
+      11,
+      12,
+      16,
+      18,
+      19,
+      25
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 214,
+    "input_offset": 3128,
+    "length": 46,
+    "alignment_bytes": 1,
+    "stored_characters": "five!7forceitwithahammerandfourtogoforspares!6",
+    "high_bit_positions": [
+      4,
+      5,
+      10,
+      12,
+      16,
+      17,
+      23,
+      26,
+      30,
+      32,
+      34,
+      37,
+      44,
+      45
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 262,
+    "input_offset": 3176,
+    "length": 31,
+    "alignment_bytes": 0,
+    "stored_characters": "4Rithans5openaUnitelleraccount!",
+    "high_bit_positions": [
+      0,
+      7,
+      8,
+      12,
+      13,
+      22,
+      30
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 294,
+    "input_offset": 3208,
+    "length": 43,
+    "alignment_bytes": 0,
+    "stored_characters": "Ten!7opentheaccountandninetostealthemoney!6",
+    "high_bit_positions": [
+      3,
+      4,
+      8,
+      11,
+      18,
+      21,
+      25,
+      27,
+      32,
+      35,
+      41,
+      42
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 338,
+    "input_offset": 3252,
+    "length": 25,
+    "alignment_bytes": 0,
+    "stored_characters": "4streettraders5makeadeal?",
+    "high_bit_positions": [
+      0,
+      6,
+      13,
+      14,
+      18,
+      19,
+      24
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 364,
+    "input_offset": 3278,
+    "length": 43,
+    "alignment_bytes": 0,
+    "stored_characters": "four!7dealandthreetoprotecthimfrommuggers!6",
+    "high_bit_positions": [
+      4,
+      5,
+      9,
+      12,
+      17,
+      19,
+      26,
+      29,
+      33,
+      41,
+      42
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 408,
+    "input_offset": 3322,
+    "length": 26,
+    "alignment_bytes": 1,
+    "stored_characters": "4NewFaithSocietyMembers58?",
+    "high_bit_positions": [
+      0,
+      3,
+      8,
+      15,
+      22,
+      23,
+      25
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 436,
+    "input_offset": 3350,
+    "length": 23,
+    "alignment_bytes": 0,
+    "stored_characters": "None.They'reallfrozen!6",
+    "high_bit_positions": [
+      4,
+      11,
+      14,
+      21,
+      22
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 460,
+    "input_offset": 3374,
+    "length": 15,
+    "alignment_bytes": 0,
+    "stored_characters": "4bureaucrats58?",
+    "high_bit_positions": [
+      0,
+      11,
+      12,
+      14
+    ]
+  },
+  {
+    "block": 101,
+    "bank_offset": 476,
+    "input_offset": 3390,
+    "length": 35,
+    "alignment_bytes": 0,
+    "stored_characters": "two!Onetoscrewitin,onetoscrewitup!6",
+    "high_bit_positions": [
+      3,
+      6,
+      8,
+      13,
+      15,
+      18,
+      21,
+      23,
+      28,
+      30,
+      33,
+      34
+    ]
+  },
+  {
+    "block": 102,
+    "bank_offset": 504,
+    "input_offset": 3426,
+    "length": 7,
+    "alignment_bytes": 0,
+    "stored_characters": "54.\u0019,2.",
+    "high_bit_positions": [
+      0,
+      2,
+      4,
+      6
+    ]
+  }
+]

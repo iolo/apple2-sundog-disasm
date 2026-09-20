@@ -1,0 +1,1016 @@
+{
+  "name": "dialogue_messages",
+  "data": "assets/dialogue-messages/messages.bin",
+  "format": "Counted word-aligned dialogue text with dictionary/glyph substitution tokens",
+  "classification": "docs/dialogue-scripts.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 48056,
+      "size": 6,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 48062,
+      "size": 6,
+      "input_offset": 6
+    },
+    {
+      "disk": "disk2",
+      "offset": 48068,
+      "size": 8,
+      "input_offset": 12
+    },
+    {
+      "disk": "disk2",
+      "offset": 48076,
+      "size": 8,
+      "input_offset": 20
+    },
+    {
+      "disk": "disk2",
+      "offset": 48084,
+      "size": 12,
+      "input_offset": 28
+    },
+    {
+      "disk": "disk2",
+      "offset": 48096,
+      "size": 10,
+      "input_offset": 40
+    },
+    {
+      "disk": "disk2",
+      "offset": 48106,
+      "size": 20,
+      "input_offset": 50
+    },
+    {
+      "disk": "disk2",
+      "offset": 48126,
+      "size": 2,
+      "input_offset": 70
+    },
+    {
+      "disk": "disk2",
+      "offset": 47616,
+      "size": 8,
+      "input_offset": 72
+    },
+    {
+      "disk": "disk2",
+      "offset": 47624,
+      "size": 16,
+      "input_offset": 80
+    },
+    {
+      "disk": "disk2",
+      "offset": 47640,
+      "size": 14,
+      "input_offset": 96
+    },
+    {
+      "disk": "disk2",
+      "offset": 47654,
+      "size": 14,
+      "input_offset": 110
+    },
+    {
+      "disk": "disk2",
+      "offset": 47668,
+      "size": 22,
+      "input_offset": 124
+    },
+    {
+      "disk": "disk2",
+      "offset": 47690,
+      "size": 24,
+      "input_offset": 146
+    },
+    {
+      "disk": "disk2",
+      "offset": 47714,
+      "size": 16,
+      "input_offset": 170
+    },
+    {
+      "disk": "disk2",
+      "offset": 47740,
+      "size": 14,
+      "input_offset": 186
+    },
+    {
+      "disk": "disk2",
+      "offset": 47754,
+      "size": 18,
+      "input_offset": 200
+    },
+    {
+      "disk": "disk2",
+      "offset": 47772,
+      "size": 36,
+      "input_offset": 218
+    },
+    {
+      "disk": "disk2",
+      "offset": 47808,
+      "size": 12,
+      "input_offset": 254
+    },
+    {
+      "disk": "disk2",
+      "offset": 47820,
+      "size": 22,
+      "input_offset": 266
+    },
+    {
+      "disk": "disk2",
+      "offset": 47842,
+      "size": 22,
+      "input_offset": 288
+    },
+    {
+      "disk": "disk2",
+      "offset": 47864,
+      "size": 8,
+      "input_offset": 310
+    },
+    {
+      "disk": "disk2",
+      "offset": 47150,
+      "size": 12,
+      "input_offset": 318
+    },
+    {
+      "disk": "disk2",
+      "offset": 47162,
+      "size": 14,
+      "input_offset": 330
+    },
+    {
+      "disk": "disk2",
+      "offset": 47176,
+      "size": 6,
+      "input_offset": 344
+    },
+    {
+      "disk": "disk2",
+      "offset": 47182,
+      "size": 14,
+      "input_offset": 350
+    },
+    {
+      "disk": "disk2",
+      "offset": 47196,
+      "size": 18,
+      "input_offset": 364
+    },
+    {
+      "disk": "disk2",
+      "offset": 47214,
+      "size": 12,
+      "input_offset": 382
+    },
+    {
+      "disk": "disk2",
+      "offset": 47226,
+      "size": 8,
+      "input_offset": 394
+    },
+    {
+      "disk": "disk2",
+      "offset": 47234,
+      "size": 14,
+      "input_offset": 402
+    },
+    {
+      "disk": "disk2",
+      "offset": 47248,
+      "size": 10,
+      "input_offset": 416
+    },
+    {
+      "disk": "disk2",
+      "offset": 47258,
+      "size": 12,
+      "input_offset": 426
+    },
+    {
+      "disk": "disk2",
+      "offset": 47270,
+      "size": 8,
+      "input_offset": 438
+    },
+    {
+      "disk": "disk2",
+      "offset": 47278,
+      "size": 16,
+      "input_offset": 446
+    },
+    {
+      "disk": "disk2",
+      "offset": 47294,
+      "size": 14,
+      "input_offset": 462
+    },
+    {
+      "disk": "disk2",
+      "offset": 47308,
+      "size": 22,
+      "input_offset": 476
+    },
+    {
+      "disk": "disk2",
+      "offset": 47330,
+      "size": 12,
+      "input_offset": 498
+    },
+    {
+      "disk": "disk2",
+      "offset": 47342,
+      "size": 18,
+      "input_offset": 510
+    },
+    {
+      "disk": "disk2",
+      "offset": 47028,
+      "size": 34,
+      "input_offset": 528
+    },
+    {
+      "disk": "disk2",
+      "offset": 47062,
+      "size": 26,
+      "input_offset": 562
+    },
+    {
+      "disk": "disk2",
+      "offset": 47088,
+      "size": 16,
+      "input_offset": 588
+    },
+    {
+      "disk": "disk2",
+      "offset": 46592,
+      "size": 6,
+      "input_offset": 604
+    },
+    {
+      "disk": "disk2",
+      "offset": 46598,
+      "size": 18,
+      "input_offset": 610
+    },
+    {
+      "disk": "disk2",
+      "offset": 46636,
+      "size": 34,
+      "input_offset": 628
+    },
+    {
+      "disk": "disk2",
+      "offset": 46670,
+      "size": 40,
+      "input_offset": 662
+    },
+    {
+      "disk": "disk2",
+      "offset": 46710,
+      "size": 32,
+      "input_offset": 702
+    },
+    {
+      "disk": "disk2",
+      "offset": 46742,
+      "size": 48,
+      "input_offset": 734
+    },
+    {
+      "disk": "disk2",
+      "offset": 46790,
+      "size": 22,
+      "input_offset": 782
+    },
+    {
+      "disk": "disk2",
+      "offset": 46812,
+      "size": 10,
+      "input_offset": 804
+    },
+    {
+      "disk": "disk2",
+      "offset": 46822,
+      "size": 20,
+      "input_offset": 814
+    },
+    {
+      "disk": "disk2",
+      "offset": 46842,
+      "size": 6,
+      "input_offset": 834
+    },
+    {
+      "disk": "disk2",
+      "offset": 46588,
+      "size": 4,
+      "input_offset": 840
+    },
+    {
+      "disk": "disk2",
+      "offset": 46080,
+      "size": 14,
+      "input_offset": 844
+    },
+    {
+      "disk": "disk2",
+      "offset": 46094,
+      "size": 24,
+      "input_offset": 858
+    },
+    {
+      "disk": "disk2",
+      "offset": 46118,
+      "size": 18,
+      "input_offset": 882
+    },
+    {
+      "disk": "disk2",
+      "offset": 46136,
+      "size": 18,
+      "input_offset": 900
+    },
+    {
+      "disk": "disk2",
+      "offset": 46154,
+      "size": 18,
+      "input_offset": 918
+    },
+    {
+      "disk": "disk2",
+      "offset": 46172,
+      "size": 24,
+      "input_offset": 936
+    },
+    {
+      "disk": "disk2",
+      "offset": 46196,
+      "size": 4,
+      "input_offset": 960
+    },
+    {
+      "disk": "disk2",
+      "offset": 46200,
+      "size": 8,
+      "input_offset": 964
+    },
+    {
+      "disk": "disk2",
+      "offset": 46208,
+      "size": 16,
+      "input_offset": 972
+    },
+    {
+      "disk": "disk2",
+      "offset": 46224,
+      "size": 14,
+      "input_offset": 988
+    },
+    {
+      "disk": "disk2",
+      "offset": 46238,
+      "size": 8,
+      "input_offset": 1002
+    },
+    {
+      "disk": "disk2",
+      "offset": 46246,
+      "size": 22,
+      "input_offset": 1010
+    },
+    {
+      "disk": "disk2",
+      "offset": 46268,
+      "size": 4,
+      "input_offset": 1032
+    },
+    {
+      "disk": "disk2",
+      "offset": 46272,
+      "size": 24,
+      "input_offset": 1036
+    },
+    {
+      "disk": "disk2",
+      "offset": 46296,
+      "size": 16,
+      "input_offset": 1060
+    },
+    {
+      "disk": "disk2",
+      "offset": 46312,
+      "size": 6,
+      "input_offset": 1076
+    },
+    {
+      "disk": "disk2",
+      "offset": 46318,
+      "size": 18,
+      "input_offset": 1082
+    },
+    {
+      "disk": "disk2",
+      "offset": 45612,
+      "size": 20,
+      "input_offset": 1100
+    },
+    {
+      "disk": "disk2",
+      "offset": 45632,
+      "size": 6,
+      "input_offset": 1120
+    },
+    {
+      "disk": "disk2",
+      "offset": 45638,
+      "size": 10,
+      "input_offset": 1126
+    },
+    {
+      "disk": "disk2",
+      "offset": 45648,
+      "size": 8,
+      "input_offset": 1136
+    },
+    {
+      "disk": "disk2",
+      "offset": 45656,
+      "size": 6,
+      "input_offset": 1144
+    },
+    {
+      "disk": "disk2",
+      "offset": 45662,
+      "size": 6,
+      "input_offset": 1150
+    },
+    {
+      "disk": "disk2",
+      "offset": 45668,
+      "size": 20,
+      "input_offset": 1156
+    },
+    {
+      "disk": "disk2",
+      "offset": 45688,
+      "size": 10,
+      "input_offset": 1176
+    },
+    {
+      "disk": "disk2",
+      "offset": 45698,
+      "size": 16,
+      "input_offset": 1186
+    },
+    {
+      "disk": "disk2",
+      "offset": 45714,
+      "size": 14,
+      "input_offset": 1202
+    },
+    {
+      "disk": "disk2",
+      "offset": 45728,
+      "size": 14,
+      "input_offset": 1216
+    },
+    {
+      "disk": "disk2",
+      "offset": 45742,
+      "size": 32,
+      "input_offset": 1230
+    },
+    {
+      "disk": "disk2",
+      "offset": 45774,
+      "size": 12,
+      "input_offset": 1262
+    },
+    {
+      "disk": "disk2",
+      "offset": 45786,
+      "size": 10,
+      "input_offset": 1274
+    },
+    {
+      "disk": "disk2",
+      "offset": 45796,
+      "size": 10,
+      "input_offset": 1284
+    },
+    {
+      "disk": "disk2",
+      "offset": 45806,
+      "size": 18,
+      "input_offset": 1294
+    },
+    {
+      "disk": "disk2",
+      "offset": 49018,
+      "size": 8,
+      "input_offset": 1312
+    },
+    {
+      "disk": "disk2",
+      "offset": 49026,
+      "size": 32,
+      "input_offset": 1320
+    },
+    {
+      "disk": "disk2",
+      "offset": 49058,
+      "size": 36,
+      "input_offset": 1352
+    },
+    {
+      "disk": "disk2",
+      "offset": 49094,
+      "size": 26,
+      "input_offset": 1388
+    },
+    {
+      "disk": "disk2",
+      "offset": 49120,
+      "size": 14,
+      "input_offset": 1414
+    },
+    {
+      "disk": "disk2",
+      "offset": 49134,
+      "size": 18,
+      "input_offset": 1428
+    },
+    {
+      "disk": "disk2",
+      "offset": 49320,
+      "size": 34,
+      "input_offset": 1446
+    },
+    {
+      "disk": "disk2",
+      "offset": 49354,
+      "size": 26,
+      "input_offset": 1480
+    },
+    {
+      "disk": "disk2",
+      "offset": 49380,
+      "size": 22,
+      "input_offset": 1506
+    },
+    {
+      "disk": "disk2",
+      "offset": 49402,
+      "size": 6,
+      "input_offset": 1528
+    },
+    {
+      "disk": "disk2",
+      "offset": 52736,
+      "size": 28,
+      "input_offset": 1534
+    },
+    {
+      "disk": "disk2",
+      "offset": 52764,
+      "size": 26,
+      "input_offset": 1562
+    },
+    {
+      "disk": "disk2",
+      "offset": 52790,
+      "size": 36,
+      "input_offset": 1588
+    },
+    {
+      "disk": "disk2",
+      "offset": 52826,
+      "size": 30,
+      "input_offset": 1624
+    },
+    {
+      "disk": "disk2",
+      "offset": 52856,
+      "size": 20,
+      "input_offset": 1654
+    },
+    {
+      "disk": "disk2",
+      "offset": 52876,
+      "size": 6,
+      "input_offset": 1674
+    },
+    {
+      "disk": "disk2",
+      "offset": 52882,
+      "size": 22,
+      "input_offset": 1680
+    },
+    {
+      "disk": "disk2",
+      "offset": 52904,
+      "size": 18,
+      "input_offset": 1702
+    },
+    {
+      "disk": "disk2",
+      "offset": 52922,
+      "size": 28,
+      "input_offset": 1720
+    },
+    {
+      "disk": "disk2",
+      "offset": 52950,
+      "size": 24,
+      "input_offset": 1748
+    },
+    {
+      "disk": "disk2",
+      "offset": 52974,
+      "size": 18,
+      "input_offset": 1772
+    },
+    {
+      "disk": "disk2",
+      "offset": 52676,
+      "size": 10,
+      "input_offset": 1790
+    },
+    {
+      "disk": "disk2",
+      "offset": 52686,
+      "size": 28,
+      "input_offset": 1800
+    },
+    {
+      "disk": "disk2",
+      "offset": 52714,
+      "size": 16,
+      "input_offset": 1828
+    },
+    {
+      "disk": "disk2",
+      "offset": 52730,
+      "size": 6,
+      "input_offset": 1844
+    },
+    {
+      "disk": "disk2",
+      "offset": 52224,
+      "size": 6,
+      "input_offset": 1850
+    },
+    {
+      "disk": "disk2",
+      "offset": 52230,
+      "size": 22,
+      "input_offset": 1856
+    },
+    {
+      "disk": "disk2",
+      "offset": 52252,
+      "size": 12,
+      "input_offset": 1878
+    },
+    {
+      "disk": "disk2",
+      "offset": 52264,
+      "size": 20,
+      "input_offset": 1890
+    },
+    {
+      "disk": "disk2",
+      "offset": 52284,
+      "size": 44,
+      "input_offset": 1910
+    },
+    {
+      "disk": "disk2",
+      "offset": 52328,
+      "size": 20,
+      "input_offset": 1954
+    },
+    {
+      "disk": "disk2",
+      "offset": 52348,
+      "size": 24,
+      "input_offset": 1974
+    },
+    {
+      "disk": "disk2",
+      "offset": 52372,
+      "size": 10,
+      "input_offset": 1998
+    },
+    {
+      "disk": "disk2",
+      "offset": 52382,
+      "size": 16,
+      "input_offset": 2008
+    },
+    {
+      "disk": "disk2",
+      "offset": 52398,
+      "size": 16,
+      "input_offset": 2024
+    },
+    {
+      "disk": "disk2",
+      "offset": 52414,
+      "size": 18,
+      "input_offset": 2040
+    },
+    {
+      "disk": "disk2",
+      "offset": 52432,
+      "size": 16,
+      "input_offset": 2058
+    },
+    {
+      "disk": "disk2",
+      "offset": 52448,
+      "size": 32,
+      "input_offset": 2074
+    },
+    {
+      "disk": "disk2",
+      "offset": 52094,
+      "size": 20,
+      "input_offset": 2106
+    },
+    {
+      "disk": "disk2",
+      "offset": 52114,
+      "size": 18,
+      "input_offset": 2126
+    },
+    {
+      "disk": "disk2",
+      "offset": 52132,
+      "size": 56,
+      "input_offset": 2144
+    },
+    {
+      "disk": "disk2",
+      "offset": 52188,
+      "size": 36,
+      "input_offset": 2200
+    },
+    {
+      "disk": "disk2",
+      "offset": 51712,
+      "size": 38,
+      "input_offset": 2236
+    },
+    {
+      "disk": "disk2",
+      "offset": 51750,
+      "size": 66,
+      "input_offset": 2274
+    },
+    {
+      "disk": "disk2",
+      "offset": 51816,
+      "size": 82,
+      "input_offset": 2340
+    },
+    {
+      "disk": "disk2",
+      "offset": 51898,
+      "size": 70,
+      "input_offset": 2422
+    },
+    {
+      "disk": "disk2",
+      "offset": 51628,
+      "size": 20,
+      "input_offset": 2492
+    },
+    {
+      "disk": "disk2",
+      "offset": 51648,
+      "size": 8,
+      "input_offset": 2512
+    },
+    {
+      "disk": "disk2",
+      "offset": 51656,
+      "size": 20,
+      "input_offset": 2520
+    },
+    {
+      "disk": "disk2",
+      "offset": 51676,
+      "size": 36,
+      "input_offset": 2540
+    },
+    {
+      "disk": "disk2",
+      "offset": 51200,
+      "size": 10,
+      "input_offset": 2576
+    },
+    {
+      "disk": "disk2",
+      "offset": 51210,
+      "size": 8,
+      "input_offset": 2586
+    },
+    {
+      "disk": "disk2",
+      "offset": 51218,
+      "size": 50,
+      "input_offset": 2594
+    },
+    {
+      "disk": "disk2",
+      "offset": 51268,
+      "size": 16,
+      "input_offset": 2644
+    },
+    {
+      "disk": "disk2",
+      "offset": 51284,
+      "size": 28,
+      "input_offset": 2660
+    },
+    {
+      "disk": "disk2",
+      "offset": 51312,
+      "size": 32,
+      "input_offset": 2688
+    },
+    {
+      "disk": "disk2",
+      "offset": 51344,
+      "size": 50,
+      "input_offset": 2720
+    },
+    {
+      "disk": "disk2",
+      "offset": 51394,
+      "size": 62,
+      "input_offset": 2770
+    },
+    {
+      "disk": "disk2",
+      "offset": 50740,
+      "size": 6,
+      "input_offset": 2832
+    },
+    {
+      "disk": "disk2",
+      "offset": 50746,
+      "size": 18,
+      "input_offset": 2838
+    },
+    {
+      "disk": "disk2",
+      "offset": 50764,
+      "size": 8,
+      "input_offset": 2856
+    },
+    {
+      "disk": "disk2",
+      "offset": 50772,
+      "size": 16,
+      "input_offset": 2864
+    },
+    {
+      "disk": "disk2",
+      "offset": 50788,
+      "size": 24,
+      "input_offset": 2880
+    },
+    {
+      "disk": "disk2",
+      "offset": 50812,
+      "size": 26,
+      "input_offset": 2904
+    },
+    {
+      "disk": "disk2",
+      "offset": 50838,
+      "size": 26,
+      "input_offset": 2930
+    },
+    {
+      "disk": "disk2",
+      "offset": 50864,
+      "size": 14,
+      "input_offset": 2956
+    },
+    {
+      "disk": "disk2",
+      "offset": 50878,
+      "size": 28,
+      "input_offset": 2970
+    },
+    {
+      "disk": "disk2",
+      "offset": 50906,
+      "size": 20,
+      "input_offset": 2998
+    },
+    {
+      "disk": "disk2",
+      "offset": 50926,
+      "size": 18,
+      "input_offset": 3018
+    },
+    {
+      "disk": "disk2",
+      "offset": 50554,
+      "size": 40,
+      "input_offset": 3036
+    },
+    {
+      "disk": "disk2",
+      "offset": 50594,
+      "size": 24,
+      "input_offset": 3076
+    },
+    {
+      "disk": "disk2",
+      "offset": 50618,
+      "size": 28,
+      "input_offset": 3100
+    },
+    {
+      "disk": "disk2",
+      "offset": 50646,
+      "size": 42,
+      "input_offset": 3128
+    },
+    {
+      "disk": "disk2",
+      "offset": 50176,
+      "size": 6,
+      "input_offset": 3170
+    },
+    {
+      "disk": "disk2",
+      "offset": 50182,
+      "size": 32,
+      "input_offset": 3176
+    },
+    {
+      "disk": "disk2",
+      "offset": 50214,
+      "size": 44,
+      "input_offset": 3208
+    },
+    {
+      "disk": "disk2",
+      "offset": 50258,
+      "size": 26,
+      "input_offset": 3252
+    },
+    {
+      "disk": "disk2",
+      "offset": 50284,
+      "size": 44,
+      "input_offset": 3278
+    },
+    {
+      "disk": "disk2",
+      "offset": 50328,
+      "size": 28,
+      "input_offset": 3322
+    },
+    {
+      "disk": "disk2",
+      "offset": 50356,
+      "size": 24,
+      "input_offset": 3350
+    },
+    {
+      "disk": "disk2",
+      "offset": 50380,
+      "size": 16,
+      "input_offset": 3374
+    },
+    {
+      "disk": "disk2",
+      "offset": 50396,
+      "size": 36,
+      "input_offset": 3390
+    },
+    {
+      "disk": "disk2",
+      "offset": 49912,
+      "size": 8,
+      "input_offset": 3426
+    }
+  ]
+}

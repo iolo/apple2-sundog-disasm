@@ -1,0 +1,12 @@
+{
+  "classification_evidence": "docs/dialogue-scripts.md",
+  "script_record_count": 96,
+  "script_bytes": 979,
+  "entry_table_bytes": 196,
+  "source_bytes": 1175,
+  "source_sha256": "8e563e05a9ed98901d7bf7ac5f2bebc1cde0622222ba4c2c9fc0ea2942e166cc",
+  "message_count": 160,
+  "message_bytes": 3434,
+  "message_sha256": "88c1f94a85a16fcae3f20ed8b5cc7200f00d5f0d1a729c85553a78046c7fedf7",
+  "excluded": "Unvisited bank gaps/tails and any unreferenced messages remain unresolved"
+}

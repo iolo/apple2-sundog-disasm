@@ -26,8 +26,8 @@
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 19903,
-      "sha256": "b62fe32c665a9a44f311de7c90aa179dd35609d705be408aa062d30bdd7e5e7b",
+      "size": 15294,
+      "sha256": "a1a592559a7e0118e7e981128ec900d994591d198afb248a361d5b6f0f4106d6",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -578,6 +578,21 @@
       "classification_evidence": "docs/dialogue-dictionary.md",
       "size": 1930,
       "sha256": "31489d907b725901f8936487dbf85aae4b9142a47eb439fafcbb2ccc3ff7221f"
+    },
+    "dialogue_scripts": {
+      "kind": "ca65-source",
+      "source": "src/dialogue/scripts.s",
+      "config": "src/dialogue/scripts.cfg",
+      "size": 1175,
+      "sha256": "8e563e05a9ed98901d7bf7ac5f2bebc1cde0622222ba4c2c9fc0ea2942e166cc"
+    },
+    "dialogue_messages": {
+      "kind": "identified-data",
+      "path": "assets/dialogue-messages/messages.bin",
+      "format": "Counted word-aligned dialogue text with dictionary/glyph substitution tokens",
+      "classification_evidence": "docs/dialogue-scripts.md",
+      "size": 3434,
+      "sha256": "88c1f94a85a16fcae3f20ed8b5cc7200f00d5f0d1a729c85553a78046c7fedf7"
     }
   },
   "disks": [
@@ -5854,8 +5869,8 @@
         {
           "offset": 45313,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 5061
+          "input": "dialogue_scripts",
+          "input_offset": 707
         },
         {
           "offset": 45328,
@@ -5865,9 +5880,45 @@
         },
         {
           "offset": 45330,
-          "size": 140,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 722
+        },
+        {
+          "offset": 45346,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 738
+        },
+        {
+          "offset": 45351,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 743
+        },
+        {
+          "offset": 45356,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 748
+        },
+        {
+          "offset": 45368,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 760
+        },
+        {
+          "offset": 45373,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 765
+        },
+        {
+          "offset": 45378,
+          "size": 92,
           "input": "disk2_unresolved",
-          "input_offset": 5076
+          "input_offset": 5061
         },
         {
           "offset": 45470,
@@ -5883,9 +5934,105 @@
         },
         {
           "offset": 45606,
-          "size": 218,
+          "size": 6,
           "input": "disk2_unresolved",
-          "input_offset": 5216
+          "input_offset": 5153
+        },
+        {
+          "offset": 45612,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 1100
+        },
+        {
+          "offset": 45632,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1120
+        },
+        {
+          "offset": 45638,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1126
+        },
+        {
+          "offset": 45648,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 1136
+        },
+        {
+          "offset": 45656,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1144
+        },
+        {
+          "offset": 45662,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1150
+        },
+        {
+          "offset": 45668,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 1156
+        },
+        {
+          "offset": 45688,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1176
+        },
+        {
+          "offset": 45698,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 1186
+        },
+        {
+          "offset": 45714,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 1202
+        },
+        {
+          "offset": 45728,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 1216
+        },
+        {
+          "offset": 45742,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 1230
+        },
+        {
+          "offset": 45774,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 1262
+        },
+        {
+          "offset": 45786,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1274
+        },
+        {
+          "offset": 45796,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1284
+        },
+        {
+          "offset": 45806,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 1294
         },
         {
           "offset": 45824,
@@ -5896,8 +6043,8 @@
         {
           "offset": 45825,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 5434
+          "input": "dialogue_scripts",
+          "input_offset": 580
         },
         {
           "offset": 45840,
@@ -5907,9 +6054,69 @@
         },
         {
           "offset": 45842,
-          "size": 186,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 595
+        },
+        {
+          "offset": 45850,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 603
+        },
+        {
+          "offset": 45858,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 611
+        },
+        {
+          "offset": 45874,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 627
+        },
+        {
+          "offset": 45890,
+          "size": 13,
+          "input": "dialogue_scripts",
+          "input_offset": 643
+        },
+        {
+          "offset": 45903,
+          "size": 14,
+          "input": "dialogue_scripts",
+          "input_offset": 656
+        },
+        {
+          "offset": 45917,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 670
+        },
+        {
+          "offset": 45926,
+          "size": 15,
+          "input": "dialogue_scripts",
+          "input_offset": 679
+        },
+        {
+          "offset": 45941,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 694
+        },
+        {
+          "offset": 45949,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 702
+        },
+        {
+          "offset": 45954,
+          "size": 74,
           "input": "disk2_unresolved",
-          "input_offset": 5449
+          "input_offset": 5159
         },
         {
           "offset": 46028,
@@ -5919,9 +6126,105 @@
         },
         {
           "offset": 46080,
-          "size": 256,
-          "input": "disk2_unresolved",
-          "input_offset": 5635
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 844
+        },
+        {
+          "offset": 46094,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 858
+        },
+        {
+          "offset": 46118,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 882
+        },
+        {
+          "offset": 46136,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 900
+        },
+        {
+          "offset": 46154,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 918
+        },
+        {
+          "offset": 46172,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 936
+        },
+        {
+          "offset": 46196,
+          "size": 4,
+          "input": "dialogue_messages",
+          "input_offset": 960
+        },
+        {
+          "offset": 46200,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 964
+        },
+        {
+          "offset": 46208,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 972
+        },
+        {
+          "offset": 46224,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 988
+        },
+        {
+          "offset": 46238,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 1002
+        },
+        {
+          "offset": 46246,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 1010
+        },
+        {
+          "offset": 46268,
+          "size": 4,
+          "input": "dialogue_messages",
+          "input_offset": 1032
+        },
+        {
+          "offset": 46272,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 1036
+        },
+        {
+          "offset": 46296,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 1060
+        },
+        {
+          "offset": 46312,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1076
+        },
+        {
+          "offset": 46318,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 1082
         },
         {
           "offset": 46336,
@@ -5932,8 +6235,8 @@
         {
           "offset": 46337,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 5891
+          "input": "dialogue_scripts",
+          "input_offset": 419
         },
         {
           "offset": 46352,
@@ -5943,9 +6246,93 @@
         },
         {
           "offset": 46354,
-          "size": 152,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 434
+        },
+        {
+          "offset": 46370,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 450
+        },
+        {
+          "offset": 46386,
+          "size": 7,
+          "input": "dialogue_scripts",
+          "input_offset": 466
+        },
+        {
+          "offset": 46393,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 473
+        },
+        {
+          "offset": 46398,
+          "size": 7,
+          "input": "dialogue_scripts",
+          "input_offset": 478
+        },
+        {
+          "offset": 46405,
+          "size": 15,
+          "input": "dialogue_scripts",
+          "input_offset": 485
+        },
+        {
+          "offset": 46420,
+          "size": 13,
+          "input": "dialogue_scripts",
+          "input_offset": 500
+        },
+        {
+          "offset": 46433,
+          "size": 17,
+          "input": "dialogue_scripts",
+          "input_offset": 513
+        },
+        {
+          "offset": 46450,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 530
+        },
+        {
+          "offset": 46455,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 535
+        },
+        {
+          "offset": 46460,
+          "size": 7,
+          "input": "dialogue_scripts",
+          "input_offset": 540
+        },
+        {
+          "offset": 46467,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 547
+        },
+        {
+          "offset": 46476,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 556
+        },
+        {
+          "offset": 46481,
+          "size": 19,
+          "input": "dialogue_scripts",
+          "input_offset": 561
+        },
+        {
+          "offset": 46500,
+          "size": 6,
           "input": "disk2_unresolved",
-          "input_offset": 5906
+          "input_offset": 5233
         },
         {
           "offset": 46506,
@@ -5955,9 +6342,75 @@
         },
         {
           "offset": 46588,
-          "size": 260,
+          "size": 4,
+          "input": "dialogue_messages",
+          "input_offset": 840
+        },
+        {
+          "offset": 46592,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 604
+        },
+        {
+          "offset": 46598,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 610
+        },
+        {
+          "offset": 46616,
+          "size": 20,
           "input": "disk2_unresolved",
-          "input_offset": 6058
+          "input_offset": 5239
+        },
+        {
+          "offset": 46636,
+          "size": 34,
+          "input": "dialogue_messages",
+          "input_offset": 628
+        },
+        {
+          "offset": 46670,
+          "size": 40,
+          "input": "dialogue_messages",
+          "input_offset": 662
+        },
+        {
+          "offset": 46710,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 702
+        },
+        {
+          "offset": 46742,
+          "size": 48,
+          "input": "dialogue_messages",
+          "input_offset": 734
+        },
+        {
+          "offset": 46790,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 782
+        },
+        {
+          "offset": 46812,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 804
+        },
+        {
+          "offset": 46822,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 814
+        },
+        {
+          "offset": 46842,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 834
         },
         {
           "offset": 46848,
@@ -5968,8 +6421,8 @@
         {
           "offset": 46849,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 6318
+          "input": "dialogue_scripts",
+          "input_offset": 340
         },
         {
           "offset": 46864,
@@ -5979,9 +6432,51 @@
         },
         {
           "offset": 46866,
-          "size": 84,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 355
+        },
+        {
+          "offset": 46872,
+          "size": 15,
+          "input": "dialogue_scripts",
+          "input_offset": 361
+        },
+        {
+          "offset": 46887,
+          "size": 7,
+          "input": "dialogue_scripts",
+          "input_offset": 376
+        },
+        {
+          "offset": 46894,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 383
+        },
+        {
+          "offset": 46906,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 395
+        },
+        {
+          "offset": 46914,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 403
+        },
+        {
+          "offset": 46922,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 411
+        },
+        {
+          "offset": 46930,
+          "size": 20,
           "input": "disk2_unresolved",
-          "input_offset": 6333
+          "input_offset": 5259
         },
         {
           "offset": 46950,
@@ -5991,9 +6486,21 @@
         },
         {
           "offset": 47028,
-          "size": 76,
-          "input": "disk2_unresolved",
-          "input_offset": 6417
+          "size": 34,
+          "input": "dialogue_messages",
+          "input_offset": 528
+        },
+        {
+          "offset": 47062,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 562
+        },
+        {
+          "offset": 47088,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 588
         },
         {
           "offset": 47104,
@@ -6003,9 +6510,99 @@
         },
         {
           "offset": 47150,
-          "size": 210,
-          "input": "disk2_unresolved",
-          "input_offset": 6493
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 318
+        },
+        {
+          "offset": 47162,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 330
+        },
+        {
+          "offset": 47176,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 344
+        },
+        {
+          "offset": 47182,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 350
+        },
+        {
+          "offset": 47196,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 364
+        },
+        {
+          "offset": 47214,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 382
+        },
+        {
+          "offset": 47226,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 394
+        },
+        {
+          "offset": 47234,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 402
+        },
+        {
+          "offset": 47248,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 416
+        },
+        {
+          "offset": 47258,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 426
+        },
+        {
+          "offset": 47270,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 438
+        },
+        {
+          "offset": 47278,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 446
+        },
+        {
+          "offset": 47294,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 462
+        },
+        {
+          "offset": 47308,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 476
+        },
+        {
+          "offset": 47330,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 498
+        },
+        {
+          "offset": 47342,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 510
         },
         {
           "offset": 47360,
@@ -6016,8 +6613,8 @@
         {
           "offset": 47361,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 6703
+          "input": "dialogue_scripts",
+          "input_offset": 161
         },
         {
           "offset": 47376,
@@ -6027,9 +6624,105 @@
         },
         {
           "offset": 47378,
-          "size": 206,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 176
+        },
+        {
+          "offset": 47387,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 185
+        },
+        {
+          "offset": 47399,
+          "size": 20,
+          "input": "dialogue_scripts",
+          "input_offset": 197
+        },
+        {
+          "offset": 47419,
+          "size": 20,
+          "input": "dialogue_scripts",
+          "input_offset": 217
+        },
+        {
+          "offset": 47439,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 237
+        },
+        {
+          "offset": 47445,
+          "size": 10,
+          "input": "dialogue_scripts",
+          "input_offset": 243
+        },
+        {
+          "offset": 47455,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 253
+        },
+        {
+          "offset": 47461,
+          "size": 17,
+          "input": "dialogue_scripts",
+          "input_offset": 259
+        },
+        {
+          "offset": 47478,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 276
+        },
+        {
+          "offset": 47486,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 284
+        },
+        {
+          "offset": 47498,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 296
+        },
+        {
+          "offset": 47504,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 302
+        },
+        {
+          "offset": 47513,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 311
+        },
+        {
+          "offset": 47522,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 320
+        },
+        {
+          "offset": 47531,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 329
+        },
+        {
+          "offset": 47536,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 334
+        },
+        {
+          "offset": 47542,
+          "size": 42,
           "input": "disk2_unresolved",
-          "input_offset": 6718
+          "input_offset": 5279
         },
         {
           "offset": 47584,
@@ -6039,9 +6732,93 @@
         },
         {
           "offset": 47616,
-          "size": 256,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 72
+        },
+        {
+          "offset": 47624,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 80
+        },
+        {
+          "offset": 47640,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 96
+        },
+        {
+          "offset": 47654,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 110
+        },
+        {
+          "offset": 47668,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 124
+        },
+        {
+          "offset": 47690,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 146
+        },
+        {
+          "offset": 47714,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 170
+        },
+        {
+          "offset": 47730,
+          "size": 10,
           "input": "disk2_unresolved",
-          "input_offset": 6924
+          "input_offset": 5321
+        },
+        {
+          "offset": 47740,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 186
+        },
+        {
+          "offset": 47754,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 200
+        },
+        {
+          "offset": 47772,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 218
+        },
+        {
+          "offset": 47808,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 254
+        },
+        {
+          "offset": 47820,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 266
+        },
+        {
+          "offset": 47842,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 288
+        },
+        {
+          "offset": 47864,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 310
         },
         {
           "offset": 47872,
@@ -6052,8 +6829,8 @@
         {
           "offset": 47873,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 7180
+          "input": "dialogue_scripts",
+          "input_offset": 0
         },
         {
           "offset": 47888,
@@ -6063,9 +6840,105 @@
         },
         {
           "offset": 47890,
-          "size": 150,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 15
+        },
+        {
+          "offset": 47906,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 31
+        },
+        {
+          "offset": 47914,
+          "size": 14,
+          "input": "dialogue_scripts",
+          "input_offset": 39
+        },
+        {
+          "offset": 47928,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 53
+        },
+        {
+          "offset": 47937,
+          "size": 15,
+          "input": "dialogue_scripts",
+          "input_offset": 62
+        },
+        {
+          "offset": 47952,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 77
+        },
+        {
+          "offset": 47960,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 85
+        },
+        {
+          "offset": 47972,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 97
+        },
+        {
+          "offset": 47980,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 105
+        },
+        {
+          "offset": 47988,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 113
+        },
+        {
+          "offset": 47994,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 119
+        },
+        {
+          "offset": 48003,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 128
+        },
+        {
+          "offset": 48011,
+          "size": 10,
+          "input": "dialogue_scripts",
+          "input_offset": 136
+        },
+        {
+          "offset": 48021,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 146
+        },
+        {
+          "offset": 48026,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 151
+        },
+        {
+          "offset": 48031,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 156
+        },
+        {
+          "offset": 48036,
+          "size": 4,
           "input": "disk2_unresolved",
-          "input_offset": 7195
+          "input_offset": 5331
         },
         {
           "offset": 48040,
@@ -6075,9 +6948,57 @@
         },
         {
           "offset": 48050,
-          "size": 78,
+          "size": 6,
           "input": "disk2_unresolved",
-          "input_offset": 7345
+          "input_offset": 5335
+        },
+        {
+          "offset": 48056,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 0
+        },
+        {
+          "offset": 48062,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 6
+        },
+        {
+          "offset": 48068,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 12
+        },
+        {
+          "offset": 48076,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 20
+        },
+        {
+          "offset": 48084,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 28
+        },
+        {
+          "offset": 48096,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 40
+        },
+        {
+          "offset": 48106,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 50
+        },
+        {
+          "offset": 48126,
+          "size": 2,
+          "input": "dialogue_messages",
+          "input_offset": 70
         },
         {
           "offset": 48128,
@@ -6089,7 +7010,7 @@
           "offset": 48168,
           "size": 216,
           "input": "disk2_unresolved",
-          "input_offset": 7423
+          "input_offset": 5341
         },
         {
           "offset": 48384,
@@ -6111,9 +7032,45 @@
         },
         {
           "offset": 49000,
-          "size": 152,
+          "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 7639
+          "input_offset": 5557
+        },
+        {
+          "offset": 49018,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 1312
+        },
+        {
+          "offset": 49026,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 1320
+        },
+        {
+          "offset": 49058,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 1352
+        },
+        {
+          "offset": 49094,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 1388
+        },
+        {
+          "offset": 49120,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 1414
+        },
+        {
+          "offset": 49134,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 1428
         },
         {
           "offset": 49152,
@@ -6124,8 +7081,8 @@
         {
           "offset": 49153,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 7791
+          "input": "dialogue_scripts",
+          "input_offset": 770
         },
         {
           "offset": 49168,
@@ -6135,9 +7092,21 @@
         },
         {
           "offset": 49170,
-          "size": 62,
+          "size": 15,
+          "input": "dialogue_scripts",
+          "input_offset": 785
+        },
+        {
+          "offset": 49185,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 800
+        },
+        {
+          "offset": 49194,
+          "size": 38,
           "input": "disk2_unresolved",
-          "input_offset": 7806
+          "input_offset": 5575
         },
         {
           "offset": 49232,
@@ -6147,9 +7116,27 @@
         },
         {
           "offset": 49320,
-          "size": 88,
-          "input": "disk2_unresolved",
-          "input_offset": 7868
+          "size": 34,
+          "input": "dialogue_messages",
+          "input_offset": 1446
+        },
+        {
+          "offset": 49354,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 1480
+        },
+        {
+          "offset": 49380,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 1506
+        },
+        {
+          "offset": 49402,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1528
         },
         {
           "offset": 49408,
@@ -6161,7 +7148,7 @@
           "offset": 49664,
           "size": 188,
           "input": "disk2_unresolved",
-          "input_offset": 7956
+          "input_offset": 5613
         },
         {
           "offset": 49852,
@@ -6172,8 +7159,8 @@
         {
           "offset": 49912,
           "size": 8,
-          "input": "disk2_unresolved",
-          "input_offset": 8144
+          "input": "dialogue_messages",
+          "input_offset": 3426
         },
         {
           "offset": 49920,
@@ -6184,8 +7171,8 @@
         {
           "offset": 49921,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 8152
+          "input": "dialogue_scripts",
+          "input_offset": 1155
         },
         {
           "offset": 49936,
@@ -6195,9 +7182,69 @@
         },
         {
           "offset": 49938,
-          "size": 494,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 1170
+        },
+        {
+          "offset": 49943,
+          "size": 233,
           "input": "disk2_unresolved",
-          "input_offset": 8167
+          "input_offset": 5801
+        },
+        {
+          "offset": 50176,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 3170
+        },
+        {
+          "offset": 50182,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 3176
+        },
+        {
+          "offset": 50214,
+          "size": 44,
+          "input": "dialogue_messages",
+          "input_offset": 3208
+        },
+        {
+          "offset": 50258,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 3252
+        },
+        {
+          "offset": 50284,
+          "size": 44,
+          "input": "dialogue_messages",
+          "input_offset": 3278
+        },
+        {
+          "offset": 50328,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 3322
+        },
+        {
+          "offset": 50356,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 3350
+        },
+        {
+          "offset": 50380,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 3374
+        },
+        {
+          "offset": 50396,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 3390
         },
         {
           "offset": 50432,
@@ -6208,8 +7255,8 @@
         {
           "offset": 50433,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 8661
+          "input": "dialogue_scripts",
+          "input_offset": 1116
         },
         {
           "offset": 50448,
@@ -6219,9 +7266,21 @@
         },
         {
           "offset": 50450,
-          "size": 32,
+          "size": 13,
+          "input": "dialogue_scripts",
+          "input_offset": 1131
+        },
+        {
+          "offset": 50463,
+          "size": 11,
+          "input": "dialogue_scripts",
+          "input_offset": 1144
+        },
+        {
+          "offset": 50474,
+          "size": 8,
           "input": "disk2_unresolved",
-          "input_offset": 8676
+          "input_offset": 6034
         },
         {
           "offset": 50482,
@@ -6231,9 +7290,27 @@
         },
         {
           "offset": 50554,
-          "size": 134,
-          "input": "disk2_unresolved",
-          "input_offset": 8708
+          "size": 40,
+          "input": "dialogue_messages",
+          "input_offset": 3036
+        },
+        {
+          "offset": 50594,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 3076
+        },
+        {
+          "offset": 50618,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 3100
+        },
+        {
+          "offset": 50646,
+          "size": 42,
+          "input": "dialogue_messages",
+          "input_offset": 3128
         },
         {
           "offset": 50688,
@@ -6243,9 +7320,69 @@
         },
         {
           "offset": 50740,
-          "size": 204,
-          "input": "disk2_unresolved",
-          "input_offset": 8842
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 2832
+        },
+        {
+          "offset": 50746,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 2838
+        },
+        {
+          "offset": 50764,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 2856
+        },
+        {
+          "offset": 50772,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 2864
+        },
+        {
+          "offset": 50788,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 2880
+        },
+        {
+          "offset": 50812,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 2904
+        },
+        {
+          "offset": 50838,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 2930
+        },
+        {
+          "offset": 50864,
+          "size": 14,
+          "input": "dialogue_messages",
+          "input_offset": 2956
+        },
+        {
+          "offset": 50878,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 2970
+        },
+        {
+          "offset": 50906,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 2998
+        },
+        {
+          "offset": 50926,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 3018
         },
         {
           "offset": 50944,
@@ -6256,8 +7393,8 @@
         {
           "offset": 50945,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 9046
+          "input": "dialogue_scripts",
+          "input_offset": 1044
         },
         {
           "offset": 50960,
@@ -6267,9 +7404,39 @@
         },
         {
           "offset": 50962,
-          "size": 96,
+          "size": 14,
+          "input": "dialogue_scripts",
+          "input_offset": 1059
+        },
+        {
+          "offset": 50976,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 1073
+        },
+        {
+          "offset": 50982,
+          "size": 14,
+          "input": "dialogue_scripts",
+          "input_offset": 1079
+        },
+        {
+          "offset": 50996,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 1093
+        },
+        {
+          "offset": 51008,
+          "size": 11,
+          "input": "dialogue_scripts",
+          "input_offset": 1105
+        },
+        {
+          "offset": 51019,
+          "size": 39,
           "input": "disk2_unresolved",
-          "input_offset": 9061
+          "input_offset": 6042
         },
         {
           "offset": 51058,
@@ -6279,9 +7446,51 @@
         },
         {
           "offset": 51200,
-          "size": 256,
-          "input": "disk2_unresolved",
-          "input_offset": 9157
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 2576
+        },
+        {
+          "offset": 51210,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 2586
+        },
+        {
+          "offset": 51218,
+          "size": 50,
+          "input": "dialogue_messages",
+          "input_offset": 2594
+        },
+        {
+          "offset": 51268,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 2644
+        },
+        {
+          "offset": 51284,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 2660
+        },
+        {
+          "offset": 51312,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 2688
+        },
+        {
+          "offset": 51344,
+          "size": 50,
+          "input": "dialogue_messages",
+          "input_offset": 2720
+        },
+        {
+          "offset": 51394,
+          "size": 62,
+          "input": "dialogue_messages",
+          "input_offset": 2770
         },
         {
           "offset": 51456,
@@ -6292,8 +7501,8 @@
         {
           "offset": 51457,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 9413
+          "input": "dialogue_scripts",
+          "input_offset": 983
         },
         {
           "offset": 51472,
@@ -6303,9 +7512,27 @@
         },
         {
           "offset": 51474,
-          "size": 64,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 998
+        },
+        {
+          "offset": 51486,
+          "size": 22,
+          "input": "dialogue_scripts",
+          "input_offset": 1010
+        },
+        {
+          "offset": 51508,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 1032
+        },
+        {
+          "offset": 51520,
+          "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 9428
+          "input_offset": 6081
         },
         {
           "offset": 51538,
@@ -6315,9 +7542,189 @@
         },
         {
           "offset": 51628,
-          "size": 852,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 2492
+        },
+        {
+          "offset": 51648,
+          "size": 8,
+          "input": "dialogue_messages",
+          "input_offset": 2512
+        },
+        {
+          "offset": 51656,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 2520
+        },
+        {
+          "offset": 51676,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 2540
+        },
+        {
+          "offset": 51712,
+          "size": 38,
+          "input": "dialogue_messages",
+          "input_offset": 2236
+        },
+        {
+          "offset": 51750,
+          "size": 66,
+          "input": "dialogue_messages",
+          "input_offset": 2274
+        },
+        {
+          "offset": 51816,
+          "size": 82,
+          "input": "dialogue_messages",
+          "input_offset": 2340
+        },
+        {
+          "offset": 51898,
+          "size": 70,
+          "input": "dialogue_messages",
+          "input_offset": 2422
+        },
+        {
+          "offset": 51968,
+          "size": 16,
+          "input": "dialogue_scripts",
+          "input_offset": 926
+        },
+        {
+          "offset": 51984,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 942
+        },
+        {
+          "offset": 51996,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 954
+        },
+        {
+          "offset": 52001,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 959
+        },
+        {
+          "offset": 52013,
+          "size": 12,
+          "input": "dialogue_scripts",
+          "input_offset": 971
+        },
+        {
+          "offset": 52025,
+          "size": 69,
           "input": "disk2_unresolved",
-          "input_offset": 9492
+          "input_offset": 6099
+        },
+        {
+          "offset": 52094,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 2106
+        },
+        {
+          "offset": 52114,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 2126
+        },
+        {
+          "offset": 52132,
+          "size": 56,
+          "input": "dialogue_messages",
+          "input_offset": 2144
+        },
+        {
+          "offset": 52188,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 2200
+        },
+        {
+          "offset": 52224,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1850
+        },
+        {
+          "offset": 52230,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 1856
+        },
+        {
+          "offset": 52252,
+          "size": 12,
+          "input": "dialogue_messages",
+          "input_offset": 1878
+        },
+        {
+          "offset": 52264,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 1890
+        },
+        {
+          "offset": 52284,
+          "size": 44,
+          "input": "dialogue_messages",
+          "input_offset": 1910
+        },
+        {
+          "offset": 52328,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 1954
+        },
+        {
+          "offset": 52348,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 1974
+        },
+        {
+          "offset": 52372,
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1998
+        },
+        {
+          "offset": 52382,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 2008
+        },
+        {
+          "offset": 52398,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 2024
+        },
+        {
+          "offset": 52414,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 2040
+        },
+        {
+          "offset": 52432,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 2058
+        },
+        {
+          "offset": 52448,
+          "size": 32,
+          "input": "dialogue_messages",
+          "input_offset": 2074
         },
         {
           "offset": 52480,
@@ -6328,8 +7735,8 @@
         {
           "offset": 52481,
           "size": 15,
-          "input": "disk2_unresolved",
-          "input_offset": 10344
+          "input": "dialogue_scripts",
+          "input_offset": 809
         },
         {
           "offset": 52496,
@@ -6339,9 +7746,69 @@
         },
         {
           "offset": 52498,
-          "size": 136,
+          "size": 17,
+          "input": "dialogue_scripts",
+          "input_offset": 824
+        },
+        {
+          "offset": 52515,
+          "size": 14,
+          "input": "dialogue_scripts",
+          "input_offset": 841
+        },
+        {
+          "offset": 52529,
+          "size": 18,
+          "input": "dialogue_scripts",
+          "input_offset": 855
+        },
+        {
+          "offset": 52547,
+          "size": 8,
+          "input": "dialogue_scripts",
+          "input_offset": 873
+        },
+        {
+          "offset": 52555,
+          "size": 6,
+          "input": "dialogue_scripts",
+          "input_offset": 881
+        },
+        {
+          "offset": 52561,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 887
+        },
+        {
+          "offset": 52570,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 896
+        },
+        {
+          "offset": 52579,
+          "size": 5,
+          "input": "dialogue_scripts",
+          "input_offset": 905
+        },
+        {
+          "offset": 52584,
+          "size": 7,
+          "input": "dialogue_scripts",
+          "input_offset": 910
+        },
+        {
+          "offset": 52591,
+          "size": 9,
+          "input": "dialogue_scripts",
+          "input_offset": 917
+        },
+        {
+          "offset": 52600,
+          "size": 34,
           "input": "disk2_unresolved",
-          "input_offset": 10359
+          "input_offset": 6168
         },
         {
           "offset": 52634,
@@ -6351,9 +7818,93 @@
         },
         {
           "offset": 52676,
-          "size": 316,
-          "input": "disk2_unresolved",
-          "input_offset": 10495
+          "size": 10,
+          "input": "dialogue_messages",
+          "input_offset": 1790
+        },
+        {
+          "offset": 52686,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 1800
+        },
+        {
+          "offset": 52714,
+          "size": 16,
+          "input": "dialogue_messages",
+          "input_offset": 1828
+        },
+        {
+          "offset": 52730,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1844
+        },
+        {
+          "offset": 52736,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 1534
+        },
+        {
+          "offset": 52764,
+          "size": 26,
+          "input": "dialogue_messages",
+          "input_offset": 1562
+        },
+        {
+          "offset": 52790,
+          "size": 36,
+          "input": "dialogue_messages",
+          "input_offset": 1588
+        },
+        {
+          "offset": 52826,
+          "size": 30,
+          "input": "dialogue_messages",
+          "input_offset": 1624
+        },
+        {
+          "offset": 52856,
+          "size": 20,
+          "input": "dialogue_messages",
+          "input_offset": 1654
+        },
+        {
+          "offset": 52876,
+          "size": 6,
+          "input": "dialogue_messages",
+          "input_offset": 1674
+        },
+        {
+          "offset": 52882,
+          "size": 22,
+          "input": "dialogue_messages",
+          "input_offset": 1680
+        },
+        {
+          "offset": 52904,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 1702
+        },
+        {
+          "offset": 52922,
+          "size": 28,
+          "input": "dialogue_messages",
+          "input_offset": 1720
+        },
+        {
+          "offset": 52950,
+          "size": 24,
+          "input": "dialogue_messages",
+          "input_offset": 1748
+        },
+        {
+          "offset": 52974,
+          "size": 18,
+          "input": "dialogue_messages",
+          "input_offset": 1772
         },
         {
           "offset": 52992,
@@ -6365,7 +7916,7 @@
           "offset": 53024,
           "size": 224,
           "input": "disk2_unresolved",
-          "input_offset": 10811
+          "input_offset": 6202
         },
         {
           "offset": 53248,
@@ -6491,7 +8042,7 @@
           "offset": 58368,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 11035
+          "input_offset": 6426
         },
         {
           "offset": 58624,
@@ -6503,7 +8054,7 @@
           "offset": 58718,
           "size": 162,
           "input": "disk2_unresolved",
-          "input_offset": 11291
+          "input_offset": 6682
         },
         {
           "offset": 58880,
@@ -6527,7 +8078,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 11453
+          "input_offset": 6844
         },
         {
           "offset": 59648,
@@ -6587,7 +8138,7 @@
           "offset": 61952,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 11471
+          "input_offset": 6862
         },
         {
           "offset": 62208,
@@ -6599,7 +8150,7 @@
           "offset": 62418,
           "size": 46,
           "input": "disk2_unresolved",
-          "input_offset": 11727
+          "input_offset": 7118
         },
         {
           "offset": 62464,
@@ -6695,7 +8246,7 @@
           "offset": 66290,
           "size": 14,
           "input": "disk2_unresolved",
-          "input_offset": 11773
+          "input_offset": 7164
         },
         {
           "offset": 66304,
@@ -6773,7 +8324,7 @@
           "offset": 69310,
           "size": 66,
           "input": "disk2_unresolved",
-          "input_offset": 11787
+          "input_offset": 7178
         },
         {
           "offset": 69376,
@@ -6797,7 +8348,7 @@
           "offset": 70144,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 11853
+          "input_offset": 7244
         },
         {
           "offset": 70400,
@@ -6809,7 +8360,7 @@
           "offset": 70464,
           "size": 192,
           "input": "disk2_unresolved",
-          "input_offset": 12109
+          "input_offset": 7500
         },
         {
           "offset": 70656,
@@ -6833,7 +8384,7 @@
           "offset": 71200,
           "size": 224,
           "input": "disk2_unresolved",
-          "input_offset": 12301
+          "input_offset": 7692
         },
         {
           "offset": 71424,
@@ -6851,7 +8402,7 @@
           "offset": 71752,
           "size": 184,
           "input": "disk2_unresolved",
-          "input_offset": 12525
+          "input_offset": 7916
         },
         {
           "offset": 71936,
@@ -6863,7 +8414,7 @@
           "offset": 72192,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 12709
+          "input_offset": 8100
         },
         {
           "offset": 72448,
@@ -6875,7 +8426,7 @@
           "offset": 72528,
           "size": 176,
           "input": "disk2_unresolved",
-          "input_offset": 12965
+          "input_offset": 8356
         },
         {
           "offset": 72704,
@@ -6971,7 +8522,7 @@
           "offset": 76364,
           "size": 180,
           "input": "disk2_unresolved",
-          "input_offset": 13141
+          "input_offset": 8532
         },
         {
           "offset": 76544,
@@ -7079,7 +8630,7 @@
           "offset": 80896,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 13321
+          "input_offset": 8712
         },
         {
           "offset": 81152,
@@ -7091,7 +8642,7 @@
           "offset": 81210,
           "size": 198,
           "input": "disk2_unresolved",
-          "input_offset": 13577
+          "input_offset": 8968
         },
         {
           "offset": 81408,
@@ -7235,7 +8786,7 @@
           "offset": 87270,
           "size": 26,
           "input": "disk2_unresolved",
-          "input_offset": 13775
+          "input_offset": 9166
         },
         {
           "offset": 87296,
@@ -7433,7 +8984,7 @@
           "offset": 95472,
           "size": 16,
           "input": "disk2_unresolved",
-          "input_offset": 13801
+          "input_offset": 9192
         },
         {
           "offset": 95488,
@@ -7499,7 +9050,7 @@
           "offset": 97962,
           "size": 86,
           "input": "disk2_unresolved",
-          "input_offset": 13817
+          "input_offset": 9208
         },
         {
           "offset": 98048,
@@ -7559,7 +9110,7 @@
           "offset": 100352,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 13903
+          "input_offset": 9294
         },
         {
           "offset": 100608,
@@ -7571,7 +9122,7 @@
           "offset": 100702,
           "size": 162,
           "input": "disk2_unresolved",
-          "input_offset": 14159
+          "input_offset": 9550
         },
         {
           "offset": 100864,
@@ -7775,7 +9326,7 @@
           "offset": 109078,
           "size": 234,
           "input": "disk2_unresolved",
-          "input_offset": 14321
+          "input_offset": 9712
         },
         {
           "offset": 109312,
@@ -7889,7 +9440,7 @@
           "offset": 113868,
           "size": 52,
           "input": "disk2_unresolved",
-          "input_offset": 14555
+          "input_offset": 9946
         },
         {
           "offset": 113920,
@@ -7925,7 +9476,7 @@
           "offset": 115200,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 14607
+          "input_offset": 9998
         },
         {
           "offset": 115456,
@@ -7937,7 +9488,7 @@
           "offset": 115592,
           "size": 120,
           "input": "disk2_unresolved",
-          "input_offset": 14863
+          "input_offset": 10254
         },
         {
           "offset": 115712,
@@ -8183,7 +9734,7 @@
           "offset": 125952,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 14983
+          "input_offset": 10374
         },
         {
           "offset": 126208,
@@ -8195,7 +9746,7 @@
           "offset": 126288,
           "size": 176,
           "input": "disk2_unresolved",
-          "input_offset": 15239
+          "input_offset": 10630
         },
         {
           "offset": 126464,
@@ -8225,7 +9776,7 @@
           "offset": 127412,
           "size": 76,
           "input": "disk2_unresolved",
-          "input_offset": 15415
+          "input_offset": 10806
         },
         {
           "offset": 127488,
@@ -8309,7 +9860,7 @@
           "offset": 130816,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 15491
+          "input_offset": 10882
         },
         {
           "offset": 131072,
@@ -8507,7 +10058,7 @@
           "offset": 139204,
           "size": 4156,
           "input": "disk2_unresolved",
-          "input_offset": 15747
+          "input_offset": 11138
         }
       ]
     }

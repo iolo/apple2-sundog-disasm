@@ -113,11 +113,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Compressed FLIP DISK boot notice | `assets/play-boot/image.rle` | Disk 2 logical bytes 256–831 | 576 |
 | Interaction bounds/style/parameter records | `assets/interaction-records/records.bin` | Disk 2 block 79 and disk 1 block 196 offsets 128–511 | 896 |
 | Base and supplemental dialogue dictionary | `assets/dialogue-dictionary/dictionary.bin` | Disk 2 blocks 88–89 first 808 bytes; reviewed metadata/text in twelve blocks 90–102 | 1,930 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 19,903 |
+| Custom dialogue scripts and entry tables | `src/dialogue/scripts.s` | Reviewed records/table bytes in disk 2 blocks 90–102 | 1,175 |
+| Counted dialogue messages | `assets/dialogue-messages/messages.bin` | 160 referenced word-aligned records in disk 2 blocks 90–102 | 3,434 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 15,294 |
 
-The 154,920 source-built bytes include instructions and their owned tables,
+The 156,095 source-built bytes include instructions, custom script records and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-154,920 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+156,095 native instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -352,8 +354,14 @@ temporary bytes (17,788 disk 1; 21,833 disk 2).
 
 Step 07p extracts the [base dialogue dictionary and supplemental text](dialogue-dictionary.md):
 808 base bytes plus 1,122 bytes from twelve banks. Script regions and unrelated
-tails remain unresolved. Current ownership is 154,920 source-built bytes,
+tails remain unresolved. Ownership then was 154,920 source-built bytes,
 94,109 classified data/asset bytes, and 37,691 temporary bytes (17,788 disk 1;
 19,903 disk 2).
+
+Step 06ae reconstructs the [custom dialogue scripts](dialogue-scripts.md) and
+extracts their counted messages: 979 script bytes, 196 additional table bytes,
+and 3,434 message bytes. Current ownership is 156,095 source-built bytes,
+97,543 classified data/asset bytes, and 33,082 temporary bytes (17,788 disk 1;
+15,294 disk 2).
 Both rebuilt images remain exact; final classification and behavioral validation
 remain incomplete.

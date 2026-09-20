@@ -1808,3 +1808,34 @@ and acceptance criteria.
   37,691 temporary bytes (17,788 disk 1; 19,903 disk 2).
 - **Next action:** Trace the custom dialogue script decoder and remaining text,
   then continue mixed fragments, full classification and both-emulator checks.
+
+## 2026-09-20 — Step 06ae: custom dialogue scripts and referenced messages
+
+- **Work/evidence:** Traced game 16 procedures 15 and 23–29 to establish the
+  packed script header, state/message selectors, conditional transitions,
+  reply pairs and variable-length actions. Confirmed the early EXIT(16,23)
+  through the native CSP 4 vector/handler, preventing a false fall-through into
+  text. Parsed every nonzero entry in the sixteen-byte tables of blocks 90–102:
+  96 records, 979 script bytes. All internal record ends agree independently
+  with the next stored pointer. Reconstructed 196 remaining entry-table bytes;
+  twelve dual-use entry-zero bytes remain owned by the prior dictionary asset.
+- **Artifacts:** Added tools/dialogue_script.py and preparation/verification
+  tool, four tests, src/dialogue with explicit ca65 script-format macros and
+  disassembled records, and docs/reference/dialogue-scripts.json with every
+  operation, boundary and reference. Added docs/dialogue-scripts.md and extracted
+  assets/dialogue-messages: 160 length-prefixed messages, 3,195 text bytes,
+  160 length bytes and 79 checked zero alignment bytes. Source and message
+  adoption recipes map the selected ranges; arbitrary gaps/tails remain unresolved.
+- **Validation:** Tests pass for early conditional transfer termination, mood
+  selectors, predicate-dependent operand lengths, action operands, overlapping
+  entry/text rejection, unsupported selectors/actions and alignment mutations.
+  Preparation verifies the exact rebuilt image, temporary ownership, all text
+  bounds and byte-identical ca65 assembly. Asset verification also reruns the
+  complete bank parser against its recorded audit and checks macro definitions.
+  Both adoptions, full builds and original comparisons pass; both images remain
+  exact and original inputs unchanged. No new live dialogue interaction or final
+  both-emulator completion is claimed.
+- **Coverage:** 156,095 source-built disk bytes, 97,543 identified data/asset bytes,
+  33,082 temporary bytes (17,788 disk 1; 15,294 disk 2).
+- **Next action:** Review unreferenced dialogue/text residues and remaining mixed
+  fragments, then finish the full code/data audit and both-emulator checks.

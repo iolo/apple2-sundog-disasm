@@ -55,6 +55,8 @@ Split large steps into independently validated, logged, and committed increments
   base dialogue dictionary plus twelve supplemental text banks in step 07p.
   Step 06ad also extracts the compressed FLIP DISK boot notice and verifies its
   decoded page against a live MAME capture.
+  Step 06ae reconstructs all 96 pointed-to custom dialogue script records in
+  blocks 90–102 and extracts their 160 referenced message records separately.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
