@@ -1,0 +1,305 @@
+{
+  "classification_evidence": "docs/retained-pascal-stack.md",
+  "source_output_bytes": 492,
+  "disk_output_bytes": 984,
+  "disk": "disk1",
+  "blocks": [
+    260,
+    263
+  ],
+  "block_range": [
+    20,
+    512
+  ],
+  "classification": "data",
+  "memory_origin": 60902,
+  "window_start": 60922,
+  "window_end_exclusive": 61414,
+  "sha256": "6bf0f1396813b8016f98f664af037e4c03d716dc6d2215f85244be7581c82c12",
+  "items": [
+    {
+      "offset": 20,
+      "size": 4,
+      "kind": "clipped-string-node",
+      "next_address": 60926,
+      "length": 1,
+      "text": "/",
+      "missing_original_address_bytes": 2
+    },
+    {
+      "offset": 24,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 17993,
+      "next_address": 60932,
+      "length": 1,
+      "text": "/",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 30,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 17897,
+      "next_address": 60938,
+      "length": 1,
+      "text": ".",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 36,
+      "size": 62,
+      "kind": "copied-string-node",
+      "original_pcode_address": 17767,
+      "next_address": 61000,
+      "length": 56,
+      "text": "7CONSOLE1:7SYSTERM2:7GRAPHIC3:7PRINTER6:5REMIN7:6REMOUT8",
+      "alignment_bytes": "ef"
+    },
+    {
+      "offset": 98,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 17679,
+      "next_address": 0,
+      "length": 1,
+      "text": "/",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 104,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61010,
+      "saved_string_head": 0,
+      "saved_stack_top": 61362,
+      "static_link": 62958,
+      "dynamic_link": 61366,
+      "saved_jtab": 19430,
+      "saved_segment": 23016,
+      "saved_ipc": 19211,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61022,
+      "local_storage_end": 61362
+    },
+    {
+      "offset": 120,
+      "size": 202,
+      "kind": "activation-local-storage",
+      "frame_address": 61010,
+      "clipped_at_window_end": false
+    },
+    {
+      "offset": 322,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 25171,
+      "next_address": 61230,
+      "length": 1,
+      "text": ":",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 328,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 25149,
+      "next_address": 61236,
+      "length": 1,
+      "text": "/",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 334,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 25123,
+      "next_address": 61242,
+      "length": 0,
+      "text": "",
+      "alignment_bytes": "00"
+    },
+    {
+      "offset": 340,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 25031,
+      "next_address": 61248,
+      "length": 1,
+      "text": ":",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 346,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 24869,
+      "next_address": 61254,
+      "length": 1,
+      "text": ":",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 352,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 24827,
+      "next_address": 61260,
+      "length": 1,
+      "text": "!",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 358,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 24649,
+      "next_address": 61266,
+      "length": 1,
+      "text": "[",
+      "alignment_bytes": ""
+    },
+    {
+      "offset": 364,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 24623,
+      "next_address": 61272,
+      "length": 0,
+      "text": "",
+      "alignment_bytes": "00"
+    },
+    {
+      "offset": 370,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 24617,
+      "next_address": 0,
+      "length": 0,
+      "text": "",
+      "alignment_bytes": "00"
+    },
+    {
+      "offset": 376,
+      "size": 60,
+      "kind": "activation-local-storage",
+      "frame_address": 61010,
+      "clipped_at_window_end": false
+    },
+    {
+      "offset": 436,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61342,
+      "saved_string_head": 61356,
+      "saved_stack_top": 61356,
+      "static_link": 62958,
+      "dynamic_link": 61366,
+      "saved_jtab": 19430,
+      "saved_segment": 23016,
+      "saved_ipc": 19417,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61354,
+      "local_storage_end": 61356
+    },
+    {
+      "offset": 452,
+      "size": 2,
+      "kind": "activation-local-storage",
+      "frame_address": 61342,
+      "clipped_at_window_end": false
+    },
+    {
+      "offset": 454,
+      "size": 6,
+      "kind": "copied-string-node",
+      "original_pcode_address": 19231,
+      "next_address": 0,
+      "length": 0,
+      "text": "",
+      "alignment_bytes": "00"
+    },
+    {
+      "offset": 460,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61366,
+      "saved_string_head": 0,
+      "saved_stack_top": 61486,
+      "static_link": 62958,
+      "dynamic_link": 61490,
+      "saved_jtab": 8418,
+      "saved_segment": 13484,
+      "saved_ipc": 8043,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61378,
+      "local_storage_end": 61486
+    },
+    {
+      "offset": 476,
+      "size": 36,
+      "kind": "activation-local-storage",
+      "frame_address": 61366,
+      "clipped_at_window_end": true
+    }
+  ],
+  "frames": [
+    {
+      "offset": 104,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61010,
+      "saved_string_head": 0,
+      "saved_stack_top": 61362,
+      "static_link": 62958,
+      "dynamic_link": 61366,
+      "saved_jtab": 19430,
+      "saved_segment": 23016,
+      "saved_ipc": 19211,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61022,
+      "local_storage_end": 61362
+    },
+    {
+      "offset": 436,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61342,
+      "saved_string_head": 61356,
+      "saved_stack_top": 61356,
+      "static_link": 62958,
+      "dynamic_link": 61366,
+      "saved_jtab": 19430,
+      "saved_segment": 23016,
+      "saved_ipc": 19417,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61354,
+      "local_storage_end": 61356
+    },
+    {
+      "offset": 460,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 61366,
+      "saved_string_head": 0,
+      "saved_stack_top": 61486,
+      "static_link": 62958,
+      "dynamic_link": 61490,
+      "saved_jtab": 8418,
+      "saved_segment": 13484,
+      "saved_ipc": 8043,
+      "saved_cpu_sp": 249,
+      "retained_unused_byte": 131,
+      "local_storage_start": 61378,
+      "local_storage_end": 61486
+    }
+  ],
+  "complete_string_nodes": 14,
+  "activation_local_semantics": "Parameters, local variables and retained earlier stack values; individual fields are not all named",
+  "live_sundog_activation_claimed": false
+}

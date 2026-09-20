@@ -2399,3 +2399,36 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Continue the remaining retained memory/code fragments and
   data allocations, then final dual-emulator behavior/reproducibility validation.
+
+## 2026-09-20 — Step 08f: retained 128K Pascal stack data
+
+- **Evidence/work:** Disk-1 blocks 260 and 263 retain identical 492-byte tails.
+  Two independent linked lists of copied counted strings establish one memory
+  origin, $EDE6. Fourteen complete nodes and one clipped node agree with the
+  128K conditional string-copy paths in the historical Pascal interpreter
+  disassembly. Three call frames share coherent dynamic links, saved stack
+  bounds and the extra saved-string-list prefix used by that interpreter.
+- **Classification:** Every tail byte is data: copied string records, alignment
+  storage, saved call-frame fields, or parameter/local storage bounded by those
+  frames. Both child links reach the retained parent; one saved string head and
+  stack top point to the same complete empty-string node. Unnamed local fields
+  retain their bytes and evidenced activation bounds. These are historical,
+  partly reused stack contents; simultaneous live frames or a 128K SunDog
+  runtime are not asserted. The different 20-byte code prefixes are excluded.
+- **Artifacts:** Added typed source/config/adoption artifacts, a full ownership
+  audit, docs/retained-pascal-stack.md, tools/retained_pascal_stack.py and three
+  tests. Updated PLAN.md and adopted 492 source bytes for 984 disk bytes.
+  Normal builds use committed declarations without downloaded evidence.
+- **Validation:** Three tests pass, checking the common address mapping and
+  rejecting changed links, lengths, frame bounds, window extents and unreviewed
+  local bytes. Preparation assembles the exact tail; --verify regenerates all
+  artifacts, checks both copies and confirms manifest ownership. Full rebuild
+  and tools/verify_disks.py preserve both original disk hashes and the manual
+  hash. git diff --check passes. No fresh emulator execution is claimed.
+- **Coverage:** 177,415 source-built disk bytes, 100,324 identified data/asset
+  bytes and 8,981 temporary bytes (2,131 disk 1; 6,850 disk 2). This checkpoint
+  removes 984 temporary bytes, all classified as data.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded from this checkpoint.
+- **Next action:** Continue remaining retained memory/code fragments and data
+  allocations, then final dual-emulator behavior/reproducibility validation.

@@ -1,0 +1,31 @@
+{
+  "name": "retained_pascal_stack",
+  "source": "src/data/retained_pascal_stack.s",
+  "config": "src/data/retained_pascal_stack.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 132884,
+      "size": 236,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 132608,
+      "size": 256,
+      "input_offset": 236
+    },
+    {
+      "disk": "disk1",
+      "offset": 131348,
+      "size": 236,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 134912,
+      "size": 256,
+      "input_offset": 236
+    }
+  ]
+}

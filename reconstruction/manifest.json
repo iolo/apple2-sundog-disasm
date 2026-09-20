@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 3115,
-      "sha256": "1430867dbcb2d704de2d904239d631e5f9b1b9b84b5ffb3c8aa5806785f6b1c8",
+      "size": 2131,
+      "sha256": "31d2208aed42f85b7a03b512a23e0f0d580770af337b1a3a1f40a3a056b023eb",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -1109,6 +1109,13 @@
       "config": "src/data/retained_pascal_metadata.cfg",
       "size": 760,
       "sha256": "8d8b0d38f86108edca7aebf3a7bfb5289f963f4d4daea9d97a920fb3ebd87ec4"
+    },
+    "retained_pascal_stack": {
+      "kind": "ca65-source",
+      "source": "src/data/retained_pascal_stack.s",
+      "config": "src/data/retained_pascal_stack.cfg",
+      "size": 492,
+      "sha256": "6bf0f1396813b8016f98f664af037e4c03d716dc6d2215f85244be7581c82c12"
     }
   },
   "disks": [
@@ -4835,8 +4842,8 @@
         {
           "offset": 131348,
           "size": 236,
-          "input": "disk1_unresolved",
-          "input_offset": 1671
+          "input": "retained_pascal_stack",
+          "input_offset": 0
         },
         {
           "offset": 131584,
@@ -4871,8 +4878,8 @@
         {
           "offset": 132608,
           "size": 256,
-          "input": "disk1_unresolved",
-          "input_offset": 1907
+          "input": "retained_pascal_stack",
+          "input_offset": 236
         },
         {
           "offset": 132864,
@@ -4883,8 +4890,8 @@
         {
           "offset": 132884,
           "size": 236,
-          "input": "disk1_unresolved",
-          "input_offset": 2163
+          "input": "retained_pascal_stack",
+          "input_offset": 0
         },
         {
           "offset": 133120,
@@ -4908,7 +4915,7 @@
           "offset": 133632,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 2399
+          "input_offset": 1671
         },
         {
           "offset": 133888,
@@ -4920,7 +4927,7 @@
           "offset": 133940,
           "size": 204,
           "input": "disk1_unresolved",
-          "input_offset": 2655
+          "input_offset": 1927
         },
         {
           "offset": 134144,
@@ -4943,8 +4950,8 @@
         {
           "offset": 134912,
           "size": 256,
-          "input": "disk1_unresolved",
-          "input_offset": 2859
+          "input": "retained_pascal_stack",
+          "input_offset": 236
         },
         {
           "offset": 135168,

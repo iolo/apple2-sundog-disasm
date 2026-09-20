@@ -103,6 +103,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 08e reconstructs 1,178 bytes of retained Pascal directory/header fields:
   the identical block-117 directory tails and disk-1 block-259 header suffix,
   preserving cleared-name records and clipped fields without inventing allocations.
+  Step 08f reconstructs the identical 492-byte tails of disk-1 blocks 260 and
+  263 as retained 128K Pascal stack data, with linked string copies, call frames
+  and bounded local storage establishing all 984 disk bytes as data.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.
