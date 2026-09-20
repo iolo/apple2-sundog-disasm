@@ -1,0 +1,122 @@
+{
+  "name": "dialogue_bank_storage",
+  "data": "assets/dialogue-bank-storage/data.bin",
+  "format": "Bounded zero-filled script capacity and counted word-aligned unused messages",
+  "classification": "docs/dialogue-bank-layout.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 48036,
+      "size": 4,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 48050,
+      "size": 6,
+      "input_offset": 4
+    },
+    {
+      "disk": "disk2",
+      "offset": 47730,
+      "size": 10,
+      "input_offset": 10
+    },
+    {
+      "disk": "disk2",
+      "offset": 47542,
+      "size": 42,
+      "input_offset": 20
+    },
+    {
+      "disk": "disk2",
+      "offset": 46930,
+      "size": 20,
+      "input_offset": 62
+    },
+    {
+      "disk": "disk2",
+      "offset": 46616,
+      "size": 20,
+      "input_offset": 82
+    },
+    {
+      "disk": "disk2",
+      "offset": 46500,
+      "size": 6,
+      "input_offset": 102
+    },
+    {
+      "disk": "disk2",
+      "offset": 45954,
+      "size": 74,
+      "input_offset": 108
+    },
+    {
+      "disk": "disk2",
+      "offset": 45606,
+      "size": 6,
+      "input_offset": 182
+    },
+    {
+      "disk": "disk2",
+      "offset": 45378,
+      "size": 92,
+      "input_offset": 188
+    },
+    {
+      "disk": "disk2",
+      "offset": 49000,
+      "size": 18,
+      "input_offset": 280
+    },
+    {
+      "disk": "disk2",
+      "offset": 49194,
+      "size": 38,
+      "input_offset": 298
+    },
+    {
+      "disk": "disk2",
+      "offset": 52600,
+      "size": 34,
+      "input_offset": 336
+    },
+    {
+      "disk": "disk2",
+      "offset": 52025,
+      "size": 69,
+      "input_offset": 370
+    },
+    {
+      "disk": "disk2",
+      "offset": 51520,
+      "size": 18,
+      "input_offset": 439
+    },
+    {
+      "disk": "disk2",
+      "offset": 51019,
+      "size": 39,
+      "input_offset": 457
+    },
+    {
+      "disk": "disk2",
+      "offset": 50474,
+      "size": 8,
+      "input_offset": 496
+    },
+    {
+      "disk": "disk2",
+      "offset": 49943,
+      "size": 233,
+      "input_offset": 504
+    },
+    {
+      "disk": "disk2",
+      "offset": 49664,
+      "size": 188,
+      "input_offset": 737
+    }
+  ]
+}

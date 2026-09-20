@@ -11,6 +11,9 @@ dialogue instructions are hidden in the extracted text. The separate 128-byte
 prefix in disk-1 block 196 has no exact match in the current reconstructed
 components and remains unresolved; its appearance alone does not establish
 whether it is p-code, other code, or data.
+Subsequent [script reconstruction](dialogue-scripts.md) and the
+[complete bank audit](dialogue-bank-layout.md) finish blocks 90–102; the
+exclusions described below record this dictionary extraction's narrower scope.
 
 ## Base dictionary loader and pointers
 

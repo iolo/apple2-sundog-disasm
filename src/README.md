@@ -77,5 +77,7 @@ eight-block groups; see `docs/disk-checksum.md`. The rest of the block is unreso
 `dialogue/scripts.s` reconstructs 96 custom dialogue control records and their
 remaining entry-table bytes with the explicit format macros in `dialogue/encoding.inc`.
 This format is interpreted by game 16, separate from UCSD p-code. Its 160
-referenced messages are data under `assets/dialogue-messages/`; unvisited bank
-gaps remain unresolved. See `docs/dialogue-scripts.md` and the per-bank audit.
+referenced messages are data under `assets/dialogue-messages/`. Step 07q identifies
+the remaining unused messages and bounded spare storage under
+`assets/dialogue-bank-storage/`, completing these thirteen banks. See
+`docs/dialogue-scripts.md`, `docs/dialogue-bank-layout.md` and the per-bank audits.

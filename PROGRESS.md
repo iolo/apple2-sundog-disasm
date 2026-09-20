@@ -1839,3 +1839,29 @@ and acceptance criteria.
   33,082 temporary bytes (17,788 disk 1; 15,294 disk 2).
 - **Next action:** Review unreferenced dialogue/text residues and remaining mixed
   fragments, then finish the full code/data audit and both-emulator checks.
+
+## 2026-09-20 — Step 07q: complete dialogue-bank layout classification
+
+- **Work/evidence:** Walked every counted message from the end of each bank's
+  supplemental dictionary (or first referenced text in unsupplemented block 98).
+  Every known reference is on a sequential record boundary, and all thirteen
+  walks end exactly at byte 512. Identified five additional complete messages
+  occupying 60 bytes. The 865 bytes between decoded script ends and evidenced
+  text starts are zero-filled spare script storage within these structured banks;
+  classification uses the complete bank layout, not arbitrary zero runs or lack
+  of execution. Nonzero spare bytes are rejected rather than classified.
+- **Artifacts:** Added tools/dialogue_bank_remainder.py, two tests,
+  docs/dialogue-bank-layout.md, and assets/dialogue-bank-storage with typed fill/
+  message fields, data, adoption mappings, and every complete message boundary.
+- **Validation:** Tests pass for unused-message discovery and rejection of
+  nonzero gaps, truncated/zero-length records, and references into record interiors.
+  Extraction verifies rebuilt hash, temporary ownership and exact field inversion;
+  asset verification reruns all thirteen layout audits. Adoption, full build and
+  original comparison pass; both disks remain exact and original inputs unchanged.
+  Independently checked every byte of blocks 90–102: 1,175 source-built bytes,
+  5,481 identified-data bytes, and zero temporary bytes. No new live dialogue or
+  final emulator-validation completion is claimed.
+- **Coverage:** 156,095 source-built disk bytes, 98,468 identified data/asset bytes,
+  32,157 temporary bytes (17,788 disk 1; 14,369 disk 2).
+- **Next action:** Continue encrypted/packed graphics and mixed residual regions,
+  then complete the whole-disk classification audit and both-emulator checks.

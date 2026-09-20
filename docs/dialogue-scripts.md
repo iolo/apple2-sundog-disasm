@@ -10,6 +10,8 @@ The interpreter itself is already disassembled in `src/pcode/game_16.s`.
 Every adopted range has an explicit map back to its bank offset. Unvisited
 gaps/tails remain unresolved, including any as-yet unreferenced records. This
 checkpoint does not infer classification for the complete 512-byte allocations.
+The subsequent [step 07q bank audit](dialogue-bank-layout.md) identifies the
+remaining messages and spare storage, completing these thirteen allocations.
 
 ## Dispatch and record layout
 

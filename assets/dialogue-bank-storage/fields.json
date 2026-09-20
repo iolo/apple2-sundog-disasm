@@ -1,0 +1,177 @@
+[
+  {
+    "kind": "spare",
+    "block": 90,
+    "bank_offset": 164,
+    "input_offset": 0,
+    "size": 4,
+    "fill_byte": 0
+  },
+  {
+    "kind": "message",
+    "block": 90,
+    "bank_offset": 178,
+    "input_offset": 4,
+    "size": 6,
+    "stored_characters": "*\u0015,1?",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "kind": "message",
+    "block": 90,
+    "bank_offset": 370,
+    "input_offset": 10,
+    "size": 10,
+    "stored_characters": "\u0007thetip!",
+    "high_bit_positions": [
+      0,
+      3,
+      7
+    ]
+  },
+  {
+    "kind": "spare",
+    "block": 91,
+    "bank_offset": 182,
+    "input_offset": 20,
+    "size": 42,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 92,
+    "bank_offset": 82,
+    "input_offset": 62,
+    "size": 20,
+    "fill_byte": 0
+  },
+  {
+    "kind": "message",
+    "block": 92,
+    "bank_offset": 280,
+    "input_offset": 82,
+    "size": 20,
+    "stored_characters": "Would+liketobuya%?",
+    "high_bit_positions": [
+      4,
+      5,
+      9,
+      11,
+      14,
+      15,
+      17
+    ]
+  },
+  {
+    "kind": "spare",
+    "block": 93,
+    "bank_offset": 164,
+    "input_offset": 102,
+    "size": 6,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 94,
+    "bank_offset": 130,
+    "input_offset": 108,
+    "size": 74,
+    "fill_byte": 0
+  },
+  {
+    "kind": "message",
+    "block": 94,
+    "bank_offset": 294,
+    "input_offset": 182,
+    "size": 6,
+    "stored_characters": "*\u0015,-?",
+    "high_bit_positions": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "kind": "spare",
+    "block": 95,
+    "bank_offset": 66,
+    "input_offset": 188,
+    "size": 92,
+    "fill_byte": 0
+  },
+  {
+    "kind": "message",
+    "block": 95,
+    "bank_offset": 360,
+    "input_offset": 280,
+    "size": 18,
+    "stored_characters": "Welcome1.4aroom?",
+    "high_bit_positions": [
+      6,
+      8,
+      9,
+      10,
+      15
+    ]
+  },
+  {
+    "kind": "spare",
+    "block": 96,
+    "bank_offset": 42,
+    "input_offset": 298,
+    "size": 38,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 97,
+    "bank_offset": 120,
+    "input_offset": 336,
+    "size": 34,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 98,
+    "bank_offset": 57,
+    "input_offset": 370,
+    "size": 69,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 99,
+    "bank_offset": 64,
+    "input_offset": 439,
+    "size": 18,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 100,
+    "bank_offset": 75,
+    "input_offset": 457,
+    "size": 39,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 101,
+    "bank_offset": 42,
+    "input_offset": 496,
+    "size": 8,
+    "fill_byte": 0
+  },
+  {
+    "kind": "spare",
+    "block": 102,
+    "bank_offset": 23,
+    "input_offset": 504,
+    "size": 421,
+    "fill_byte": 0
+  }
+]

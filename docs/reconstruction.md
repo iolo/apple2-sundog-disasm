@@ -115,7 +115,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Base and supplemental dialogue dictionary | `assets/dialogue-dictionary/dictionary.bin` | Disk 2 blocks 88–89 first 808 bytes; reviewed metadata/text in twelve blocks 90–102 | 1,930 |
 | Custom dialogue scripts and entry tables | `src/dialogue/scripts.s` | Reviewed records/table bytes in disk 2 blocks 90–102 | 1,175 |
 | Counted dialogue messages | `assets/dialogue-messages/messages.bin` | 160 referenced word-aligned records in disk 2 blocks 90–102 | 3,434 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 15,294 |
+| Dialogue bank spare storage and unused messages | `assets/dialogue-bank-storage/data.bin` | Final reviewed ranges in disk 2 blocks 90–102 | 925 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 14,369 |
 
 The 156,095 source-built bytes include instructions, custom script records and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -360,8 +361,14 @@ tails remain unresolved. Ownership then was 154,920 source-built bytes,
 
 Step 06ae reconstructs the [custom dialogue scripts](dialogue-scripts.md) and
 extracts their counted messages: 979 script bytes, 196 additional table bytes,
-and 3,434 message bytes. Current ownership is 156,095 source-built bytes,
+and 3,434 message bytes. Ownership then was 156,095 source-built bytes,
 97,543 classified data/asset bytes, and 33,082 temporary bytes (17,788 disk 1;
 15,294 disk 2).
+
+Step 07q finishes [dialogue-bank classification](dialogue-bank-layout.md) with
+five additional counted messages and bounded zero-filled spare script storage.
+All 6,656 bytes in blocks 90–102 are now classified. Current ownership is
+156,095 source-built bytes, 98,468 classified data/asset bytes, and 32,157
+temporary bytes (17,788 disk 1; 14,369 disk 2).
 Both rebuilt images remain exact; final classification and behavioral validation
 remain incomplete.

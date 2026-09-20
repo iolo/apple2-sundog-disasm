@@ -1,0 +1,1191 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/dialogue-bank-layout.md",
+  "size": 925,
+  "sha256": "36b66340c5f1d37964a6c9c5634b383b5c53b404a03814a47840b1aac180a1f7",
+  "banks": [
+    {
+      "block": 90,
+      "spare_range": [
+        164,
+        168
+      ],
+      "message_start": 178,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 178,
+          "end": 184,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 184,
+          "end": 190,
+          "length": 4,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 190,
+          "end": 196,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 196,
+          "end": 204,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 204,
+          "end": 212,
+          "length": 6,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 212,
+          "end": 224,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 224,
+          "end": 234,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 234,
+          "end": 254,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 254,
+          "end": 264,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 264,
+          "end": 280,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 280,
+          "end": 294,
+          "length": 12,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 294,
+          "end": 308,
+          "length": 12,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 308,
+          "end": 330,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 330,
+          "end": 354,
+          "length": 22,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 354,
+          "end": 370,
+          "length": 14,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 370,
+          "end": 380,
+          "length": 8,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 380,
+          "end": 394,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 394,
+          "end": 412,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 412,
+          "end": 448,
+          "length": 34,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 448,
+          "end": 460,
+          "length": 11,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 460,
+          "end": 482,
+          "length": 21,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 482,
+          "end": 504,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 504,
+          "end": 512,
+          "length": 6,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": [
+        {
+          "offset": 178,
+          "end": 184,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 370,
+          "end": 380,
+          "length": 8,
+          "alignment_bytes": 1
+        }
+      ]
+    },
+    {
+      "block": 91,
+      "spare_range": [
+        182,
+        224
+      ],
+      "message_start": 302,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 302,
+          "end": 314,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 314,
+          "end": 328,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 328,
+          "end": 334,
+          "length": 4,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 334,
+          "end": 348,
+          "length": 12,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 348,
+          "end": 366,
+          "length": 17,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 366,
+          "end": 378,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 378,
+          "end": 386,
+          "length": 6,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 386,
+          "end": 400,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 400,
+          "end": 410,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 410,
+          "end": 422,
+          "length": 11,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 422,
+          "end": 430,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 430,
+          "end": 446,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 446,
+          "end": 460,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 460,
+          "end": 482,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 482,
+          "end": 494,
+          "length": 11,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 16,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 92,
+      "spare_range": [
+        82,
+        102
+      ],
+      "message_start": 180,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 180,
+          "end": 214,
+          "length": 32,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 214,
+          "end": 240,
+          "length": 24,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 240,
+          "end": 262,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 262,
+          "end": 280,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 280,
+          "end": 300,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 300,
+          "end": 334,
+          "length": 32,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 334,
+          "end": 374,
+          "length": 38,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 374,
+          "end": 406,
+          "length": 30,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 406,
+          "end": 454,
+          "length": 47,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 454,
+          "end": 476,
+          "length": 21,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 476,
+          "end": 486,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 486,
+          "end": 506,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 506,
+          "end": 512,
+          "length": 5,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": [
+        {
+          "offset": 280,
+          "end": 300,
+          "length": 18,
+          "alignment_bytes": 1
+        }
+      ]
+    },
+    {
+      "block": 93,
+      "spare_range": [
+        164,
+        170
+      ],
+      "message_start": 252,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 252,
+          "end": 270,
+          "length": 17,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 270,
+          "end": 294,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 294,
+          "end": 312,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 312,
+          "end": 330,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 330,
+          "end": 348,
+          "length": 17,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 348,
+          "end": 372,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 372,
+          "end": 376,
+          "length": 3,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 376,
+          "end": 384,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 384,
+          "end": 400,
+          "length": 14,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 400,
+          "end": 414,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 414,
+          "end": 422,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 422,
+          "end": 444,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 444,
+          "end": 448,
+          "length": 3,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 448,
+          "end": 472,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 472,
+          "end": 488,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 488,
+          "end": 494,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 17,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 94,
+      "spare_range": [
+        130,
+        204
+      ],
+      "message_start": 294,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 294,
+          "end": 300,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 300,
+          "end": 320,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 320,
+          "end": 326,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 326,
+          "end": 336,
+          "length": 8,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 336,
+          "end": 344,
+          "length": 6,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 344,
+          "end": 350,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 350,
+          "end": 356,
+          "length": 4,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 356,
+          "end": 376,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 376,
+          "end": 386,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 386,
+          "end": 402,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 402,
+          "end": 416,
+          "length": 12,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 416,
+          "end": 430,
+          "length": 12,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 430,
+          "end": 462,
+          "length": 30,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 462,
+          "end": 474,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 474,
+          "end": 484,
+          "length": 8,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 484,
+          "end": 494,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 17,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": [
+        {
+          "offset": 294,
+          "end": 300,
+          "length": 5,
+          "alignment_bytes": 0
+        }
+      ]
+    },
+    {
+      "block": 95,
+      "spare_range": [
+        66,
+        158
+      ],
+      "message_start": 360,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 360,
+          "end": 378,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 378,
+          "end": 386,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 386,
+          "end": 418,
+          "length": 31,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 418,
+          "end": 454,
+          "length": 34,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 454,
+          "end": 480,
+          "length": 24,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 480,
+          "end": 494,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 17,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": [
+        {
+          "offset": 360,
+          "end": 378,
+          "length": 16,
+          "alignment_bytes": 1
+        }
+      ]
+    },
+    {
+      "block": 96,
+      "spare_range": [
+        42,
+        80
+      ],
+      "message_start": 168,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 168,
+          "end": 202,
+          "length": 33,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 202,
+          "end": 228,
+          "length": 25,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 228,
+          "end": 250,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 250,
+          "end": 284,
+          "length": 32,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 284,
+          "end": 310,
+          "length": 25,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 310,
+          "end": 346,
+          "length": 34,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 346,
+          "end": 376,
+          "length": 28,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 376,
+          "end": 396,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 396,
+          "end": 402,
+          "length": 4,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 402,
+          "end": 424,
+          "length": 21,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 424,
+          "end": 442,
+          "length": 17,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 442,
+          "end": 470,
+          "length": 26,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 470,
+          "end": 494,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 16,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 97,
+      "spare_range": [
+        120,
+        154
+      ],
+      "message_start": 196,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 196,
+          "end": 206,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 206,
+          "end": 234,
+          "length": 27,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 234,
+          "end": 250,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 250,
+          "end": 262,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 262,
+          "end": 284,
+          "length": 20,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 284,
+          "end": 296,
+          "length": 10,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 296,
+          "end": 316,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 316,
+          "end": 360,
+          "length": 42,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 360,
+          "end": 380,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 380,
+          "end": 404,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 404,
+          "end": 414,
+          "length": 9,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 414,
+          "end": 430,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 430,
+          "end": 446,
+          "length": 14,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 446,
+          "end": 464,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 464,
+          "end": 480,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 480,
+          "end": 512,
+          "length": 30,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 98,
+      "spare_range": [
+        57,
+        126
+      ],
+      "message_start": 126,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 126,
+          "end": 146,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 146,
+          "end": 164,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 164,
+          "end": 220,
+          "length": 55,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 220,
+          "end": 294,
+          "length": 72,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 294,
+          "end": 360,
+          "length": 64,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 360,
+          "end": 442,
+          "length": 81,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 442,
+          "end": 512,
+          "length": 68,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 99,
+      "spare_range": [
+        64,
+        82
+      ],
+      "message_start": 172,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 172,
+          "end": 192,
+          "length": 18,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 192,
+          "end": 200,
+          "length": 6,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 200,
+          "end": 220,
+          "length": 19,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 220,
+          "end": 266,
+          "length": 45,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 266,
+          "end": 274,
+          "length": 7,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 274,
+          "end": 324,
+          "length": 49,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 324,
+          "end": 340,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 340,
+          "end": 368,
+          "length": 27,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 368,
+          "end": 400,
+          "length": 31,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 400,
+          "end": 450,
+          "length": 48,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 450,
+          "end": 512,
+          "length": 60,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 100,
+      "spare_range": [
+        75,
+        114
+      ],
+      "message_start": 308,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 308,
+          "end": 314,
+          "length": 5,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 314,
+          "end": 332,
+          "length": 16,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 332,
+          "end": 340,
+          "length": 6,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 340,
+          "end": 356,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 356,
+          "end": 380,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 380,
+          "end": 406,
+          "length": 25,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 406,
+          "end": 432,
+          "length": 24,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 432,
+          "end": 446,
+          "length": 13,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 446,
+          "end": 474,
+          "length": 27,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 474,
+          "end": 494,
+          "length": 19,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 494,
+          "end": 512,
+          "length": 16,
+          "alignment_bytes": 1
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 101,
+      "spare_range": [
+        42,
+        50
+      ],
+      "message_start": 122,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 122,
+          "end": 162,
+          "length": 38,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 162,
+          "end": 186,
+          "length": 22,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 186,
+          "end": 214,
+          "length": 26,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 214,
+          "end": 262,
+          "length": 46,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 262,
+          "end": 294,
+          "length": 31,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 294,
+          "end": 338,
+          "length": 43,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 338,
+          "end": 364,
+          "length": 25,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 364,
+          "end": 408,
+          "length": 43,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 408,
+          "end": 436,
+          "length": 26,
+          "alignment_bytes": 1
+        },
+        {
+          "offset": 436,
+          "end": 460,
+          "length": 23,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 460,
+          "end": 476,
+          "length": 15,
+          "alignment_bytes": 0
+        },
+        {
+          "offset": 476,
+          "end": 512,
+          "length": 35,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": []
+    },
+    {
+      "block": 102,
+      "spare_range": [
+        23,
+        444
+      ],
+      "message_start": 504,
+      "message_end": 512,
+      "messages": [
+        {
+          "offset": 504,
+          "end": 512,
+          "length": 7,
+          "alignment_bytes": 0
+        }
+      ],
+      "unreferenced_messages": []
+    }
+  ],
+  "spare_bytes": 865,
+  "message_bytes": 60,
+  "unreferenced_message_count": 5
+}

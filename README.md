@@ -34,7 +34,7 @@ extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
 Current coverage is 156,095 source-built bytes (including classified header
 tables, [Pascal directories](docs/pascal-directories.md), and
-[custom dialogue scripts](docs/dialogue-scripts.md)) plus 97,543 classified data/asset bytes from the
+[custom dialogue scripts](docs/dialogue-scripts.md)) plus 98,468 classified data/asset bytes from the
 [title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
 two copies of the [shared font](docs/shared-font.md), and
 [two play graphics banks](docs/play-glyphs.md), and
@@ -51,7 +51,8 @@ two copies of the [shared font](docs/shared-font.md), and
 [the play-disk boot notice](docs/play-disk-boot.md), and
 [interaction records](docs/interaction-records.md), and
 [dialogue dictionary text](docs/dialogue-dictionary.md) and
-[dialogue messages](docs/dialogue-scripts.md); 33,082 bytes remain temporary.
+[dialogue messages](docs/dialogue-scripts.md), including
+[unused messages and bank storage](docs/dialogue-bank-layout.md); 32,157 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)
