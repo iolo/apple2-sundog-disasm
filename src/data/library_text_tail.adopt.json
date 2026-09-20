@@ -1,0 +1,19 @@
+{
+  "name": "library_text_tail",
+  "source": "src/data/library_text_tail.s",
+  "config": "src/data/library_text_tail.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 59630,
+      "size": 18,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 59630,
+      "size": 18,
+      "input_offset": 0
+    }
+  ]
+}

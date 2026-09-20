@@ -3331,3 +3331,31 @@ and acceptance criteria.
   bytes and 620 temporary bytes remain (121 disk 1; 499 disk 2). Continue boot,
   save and dictionary tails, template/text fragments and mixed checksum bytes.
   User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.
+
+## 2026-09-20 — Step 08u: reconstruct retained text after library 22
+
+- **Evidence:** Both complete library-22 copies end at module offset 6,126,
+  after a valid 63-procedure dictionary. Their block-115 tails identically
+  contain ASCII an;, CR and fourteen NULs. Historical UCSD text routines
+  establish CR line endings and zero-filled final storage; compiler WRITECODE
+  separately demonstrates whole-block writes without clearing the suffix after
+  the recorded code extent. These support retained text/fill classification.
+- **Limits:** This is a format inference, not a recovered source file or proof
+  of the historical producer. The missing prefix is not expanded to a guessed
+  word, and no game text consumer is invented. Source-code text is data, not
+  executable p-code. Other allocation tails may still contain retained code.
+- **Artifacts:** Added named text/fill ca65 source, config and two-disk adoption
+  recipe, tools/library_text_tail.py, focused boundary/mutation test, generated
+  audit and docs/library-text-tail.md with historical-source references.
+  Updated PLAN.md and current reconstruction coverage.
+- **Validation:** The test, complete-module hash/dictionary/ownership audit,
+  source assembly, strict adoption, full rebuild and tools/verify_disks.py pass.
+  git diff --check passes. Both output disks and original media/manual retain
+  exact hashes, so existing emulator baselines apply.
+- **Other research:** No 32-byte low-two-bit copy match was found for the mixed
+  checksum tail among 165 current/historical source and data components. This
+  negative result does not establish a classification.
+- **Coverage/next:** 184,732 source-built bytes, 101,404 identified asset/data
+  bytes and 584 temporary bytes remain (103 disk 1; 481 disk 2). Continue the
+  boot/save/dictionary tails, repeated template suffix and mixed checksum tail.
+  User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.

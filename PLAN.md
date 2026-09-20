@@ -204,9 +204,15 @@ Split large steps into independently validated, logged, and committed increments
   differential 6-and-2 comparison: after separating phase and excluding the
   control record, only 16 of 686 symbols differ from the independently classified
   title. All 504 retained image bytes now have data ownership; their historical
-  alteration cause remains open. Current ownership is 184,696 source-built bytes,
+  alteration cause remains open. Checkpoint ownership is 184,696 source-built bytes,
   101,404 identified data/asset bytes and 620 temporary bytes
   (121 disk 1; 499 disk 2).
+- Step 08u classifies the identical 18-byte tails after both library-22 copies
+  as retained CR-terminated text and NUL fill. The complete procedure dictionary,
+  text/storage structure and historical text conventions support this inference;
+  the missing text prefix and actual producer remain unknown. Current ownership
+  is 184,732 source-built bytes, 101,404 identified data/asset bytes and
+  584 temporary bytes (103 disk 1; 481 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

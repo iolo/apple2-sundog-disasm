@@ -1,0 +1,58 @@
+{
+  "classification_evidence": "docs/library-text-tail.md",
+  "source_bytes": 18,
+  "disk_data_bytes": 36,
+  "module_sha256": "7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49",
+  "records": [
+    {
+      "disk": "disk1",
+      "block": 115,
+      "block_offset": 494,
+      "classification": "data",
+      "classification_basis": "retained-text-format-inference",
+      "allocation_bytes": 6144,
+      "module_bytes": 6126,
+      "dictionary_start": 5998,
+      "procedure_count": 63,
+      "text": {
+        "offset": 6126,
+        "ascii_suffix": "an;",
+        "line_ending": 13,
+        "size": 4
+      },
+      "nul_fill": {
+        "offset": 6130,
+        "size": 14
+      },
+      "classified_bytes": 18,
+      "missing_prefix_recovered": false,
+      "historical_producer_proved": false,
+      "storage_sha256": "a2a18326f013e6a1223a2d6ab24545c93b712f9a32dbbee8a3f2e31581463119"
+    },
+    {
+      "disk": "disk2",
+      "block": 115,
+      "block_offset": 494,
+      "classification": "data",
+      "classification_basis": "retained-text-format-inference",
+      "allocation_bytes": 6144,
+      "module_bytes": 6126,
+      "dictionary_start": 5998,
+      "procedure_count": 63,
+      "text": {
+        "offset": 6126,
+        "ascii_suffix": "an;",
+        "line_ending": 13,
+        "size": 4
+      },
+      "nul_fill": {
+        "offset": 6130,
+        "size": 14
+      },
+      "classified_bytes": 18,
+      "missing_prefix_recovered": false,
+      "historical_producer_proved": false,
+      "storage_sha256": "a2a18326f013e6a1223a2d6ab24545c93b712f9a32dbbee8a3f2e31581463119"
+    }
+  ]
+}

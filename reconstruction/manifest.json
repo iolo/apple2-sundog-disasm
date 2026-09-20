@@ -19,15 +19,15 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 121,
-      "sha256": "43d45a848830edc8539d8046fa3d788d95a51eda7dd3f012e0d0b74ffe65922e",
+      "size": 103,
+      "sha256": "624f550b5c728fd939f1ee7ec7a5ed3e384660521e5cd8449969c417c5c85bc4",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 499,
-      "sha256": "d510b5a1bea51b0aef1e9125133c983a5dbb84f823cd0f73670268d4e60b1025",
+      "size": 481,
+      "sha256": "993c1ef6126cfd572b4d6c884bca95d334e0c976500d2629fe55c484519ab337",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1589,6 +1589,13 @@
       "classification_evidence": "docs/retained-title-changes.md",
       "size": 252,
       "sha256": "3dbbb69d3380dde04b03a9426ef88139d1feaa724307f104a9e6a78841ab962f"
+    },
+    "library_text_tail": {
+      "kind": "ca65-source",
+      "source": "src/data/library_text_tail.s",
+      "config": "src/data/library_text_tail.cfg",
+      "size": 18,
+      "sha256": "a2a18326f013e6a1223a2d6ab24545c93b712f9a32dbbee8a3f2e31581463119"
     }
   },
   "disks": [
@@ -3119,8 +3126,8 @@
         {
           "offset": 59630,
           "size": 18,
-          "input": "disk1_unresolved",
-          "input_offset": 103
+          "input": "library_text_tail",
+          "input_offset": 0
         },
         {
           "offset": 59648,
@@ -9871,8 +9878,8 @@
         {
           "offset": 59630,
           "size": 18,
-          "input": "disk2_unresolved",
-          "input_offset": 481
+          "input": "library_text_tail",
+          "input_offset": 0
         },
         {
           "offset": 59648,
