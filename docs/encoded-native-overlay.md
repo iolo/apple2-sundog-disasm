@@ -65,7 +65,10 @@ accesses. The body audit resolves 126 jump vectors per bank; complete
 instruction/data ownership and runtime invocation remain open.
 In the currently traced game-15 path, the transformer itself writes `SHIP`,
 and the $4000 buffer is subsequently overwritten by the known ship-image read.
-No call to the decoded entry has yet been established in that path.
+No call to the decoded entry has yet been established in that path. The later
+[native-tail audit](native-block-tails.md) identifies a retained `JMP ($0004)`
+after the transformer's RTS; its prepared pointer would enter the decoded
+buffer, but the current return bypasses that transfer.
 
 ## Build and validation
 

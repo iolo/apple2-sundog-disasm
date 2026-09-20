@@ -1,0 +1,271 @@
+{
+  "classification_evidence": "docs/native-block-tails.md",
+  "source_bytes": 634,
+  "sha256": "076c8ff60217a41922b2697b6a9b785b7dc438e0fabf56c0d86a91ffa0a64d0f",
+  "records": [
+    {
+      "name": "raw_screen_init",
+      "block": 2,
+      "prefix_size": 297,
+      "segment_size": 314,
+      "base": 3712,
+      "table_start": 298,
+      "dictionary": {
+        "procedure_count": 1,
+        "dictionary_start": 310,
+        "valid": true,
+        "procedures": [
+          {
+            "number": 1,
+            "dictionary_offset": 310,
+            "backward_offset": 2,
+            "attribute_offset": 308,
+            "entry_offset": 0,
+            "representation": "native-6502",
+            "lexical_level": 0,
+            "storage": "segment",
+            "status": "structurally-valid"
+          }
+        ]
+      },
+      "relocation": {
+        "entry": 0,
+        "attributes": 308,
+        "tables_start": 298,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 304,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 302,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 300,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 298,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "items": [
+        {
+          "offset": 297,
+          "size": 1,
+          "classification": "data",
+          "kind": "native-alignment"
+        },
+        {
+          "offset": 298,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-interpreter",
+          "value": 0
+        },
+        {
+          "offset": 300,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-procedure",
+          "value": 0
+        },
+        {
+          "offset": 302,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-segment",
+          "value": 0
+        },
+        {
+          "offset": 304,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-global",
+          "value": 0
+        },
+        {
+          "offset": 306,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-entry-displacement",
+          "value": 306
+        },
+        {
+          "offset": 308,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-attributes"
+        },
+        {
+          "offset": 310,
+          "size": 2,
+          "classification": "data",
+          "kind": "procedure-dictionary-pointer",
+          "value": 2
+        },
+        {
+          "offset": 312,
+          "size": 2,
+          "classification": "data",
+          "kind": "segment-trailer"
+        },
+        {
+          "offset": 314,
+          "size": 198,
+          "classification": "data",
+          "kind": "zero-block-storage"
+        }
+      ],
+      "code_bytes": 0,
+      "data_bytes": 215,
+      "block_sha256": "97924eabc04dcd2667f88c973b0ee36cc53bf9495378343f0feedc3a7df1c6ae",
+      "prefix_component_sha256": "a31fbdf8f43e086d89407931e9ad267447ac6120283447f78f196d856f2ddbd1"
+    },
+    {
+      "name": "raw_buffer_transform",
+      "block": 156,
+      "prefix_size": 93,
+      "segment_size": 112,
+      "base": 3904,
+      "table_start": 96,
+      "dictionary": {
+        "procedure_count": 1,
+        "dictionary_start": 108,
+        "valid": true,
+        "procedures": [
+          {
+            "number": 1,
+            "dictionary_offset": 108,
+            "backward_offset": 2,
+            "attribute_offset": 106,
+            "entry_offset": 0,
+            "representation": "native-6502",
+            "lexical_level": 0,
+            "storage": "segment",
+            "status": "structurally-valid"
+          }
+        ]
+      },
+      "relocation": {
+        "entry": 0,
+        "attributes": 106,
+        "tables_start": 96,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 102,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 100,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 98,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 96,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "items": [
+        {
+          "offset": 93,
+          "size": 3,
+          "classification": "code",
+          "assembly": "jmp ($0004)",
+          "kind": "unused-indirect-transfer",
+          "runtime_address": 3997,
+          "evidence": "Pointer $04/$05 is the restored transformed-buffer start; preceding RTS bypasses this retained instruction."
+        },
+        {
+          "offset": 96,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-interpreter",
+          "value": 0
+        },
+        {
+          "offset": 98,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-procedure",
+          "value": 0
+        },
+        {
+          "offset": 100,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-segment",
+          "value": 0
+        },
+        {
+          "offset": 102,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-global",
+          "value": 0
+        },
+        {
+          "offset": 104,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-entry-displacement",
+          "value": 104
+        },
+        {
+          "offset": 106,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-attributes"
+        },
+        {
+          "offset": 108,
+          "size": 2,
+          "classification": "data",
+          "kind": "procedure-dictionary-pointer",
+          "value": 2
+        },
+        {
+          "offset": 110,
+          "size": 2,
+          "classification": "data",
+          "kind": "segment-trailer"
+        },
+        {
+          "offset": 112,
+          "size": 400,
+          "classification": "data",
+          "kind": "zero-block-storage"
+        }
+      ],
+      "code_bytes": 3,
+      "data_bytes": 416,
+      "block_sha256": "f1cfbd03b456d79036080eee4f2912d7dfeb83856717e12fdf09dd2e4fc9d6cd",
+      "prefix_component_sha256": "9daf776fada9f557febbfc5cb55454b3a9613e250ecbf6e4dee29937df385359"
+    }
+  ],
+  "byte_identical_assembly": true,
+  "code_bytes": 3,
+  "data_bytes": 631
+}

@@ -70,6 +70,8 @@ Split large steps into independently validated, logged, and committed increments
   ownership and clipped instruction boundaries recorded.
   Step 06aj adds 15 exact ranges / 2,538 bytes covered by the earlier startup
   and utility module audits, retaining nearby modified utility bytes as unresolved.
+  Step 06ak completes the two single-block native overlays with an unused buffer
+  transfer, validated native footers and bounded zero block storage.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   This overlap does not waive any

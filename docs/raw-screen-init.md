@@ -3,7 +3,8 @@
 Disk-1 block 2 is mixed native code and data, outside the Pascal segment
 inventory. Its first 192 bytes are the high bytes of HGR page-1 row addresses.
 The following 105 bytes are a callable native initializer. This component adopts
-only these 297 bytes; the rest of the block remains under investigation.
+only these 297 bytes; the subsequent [native-tail audit](native-block-tails.md)
+reconstructs the remaining metadata and bounded zero storage separately.
 
 ## Load and call evidence
 
@@ -38,7 +39,8 @@ It restores the return address and returns at `$0FA8`. All branches stay within
 the decoded instructions. The popped pointer is not used by this initializer.
 
 These consumer and call boundaries distinguish the 192 data bytes from the 105
-instruction bytes. The following bytes are not automatically called padding.
+instruction bytes. The subsequent tail classification uses the complete native
+footer and one-block loader extent, rather than automatically labeling zeroes.
 The audit and recipe are under `docs/reference/raw-modules/` and
 `src/native/evidence/`; `native_raw_source.py` rejects code/data overlaps,
 branches into operands, unclassified bytes, and unsupported indirect transfers.

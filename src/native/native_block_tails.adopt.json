@@ -1,0 +1,25 @@
+{
+  "name": "native_block_tails",
+  "source": "src/native/native_block_tails.s",
+  "config": "src/native/native_block_tails.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 2601,
+      "size": 215,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 79709,
+      "size": 163,
+      "input_offset": 215
+    },
+    {
+      "disk": "disk1",
+      "offset": 79360,
+      "size": 256,
+      "input_offset": 378
+    }
+  ]
+}

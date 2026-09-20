@@ -27,13 +27,15 @@ are not claimed. Inverse asset encoding must also account for the explicit
 
 All 93 bytes on the evidenced entry path are native instructions, with bounded
 internal branches and an RTS at offset 92. The next three bytes decode as
-`JMP ($0004)` but have no demonstrated entry or consumer yet, so they remain
-outside this adopted component. At offset 96, four zero relocation counts,
+`JMP ($0004)` and remain outside this prefix component. The later
+[native-tail audit](native-block-tails.md) disassembles that unused transfer:
+$04/$05 is the restored transformed-buffer pointer, but the preceding RTS
+bypasses the jump on the known path. At offset 96, four zero relocation counts,
 an entry displacement, native attributes, one dictionary pointer, and trailer
 form a structurally valid one-procedure Pascal native segment ending at offset
-112. This is evidence for the surrounding layout, not a claim that the remaining
-block has been fully classified. The analogous metadata following the raw
-screen initializer in block 2 also remains outside its adopted range.
+112. The tail audit reconstructs this metadata and the bounded zero block
+storage, as well as the corresponding fields after the screen initializer in
+block 2. Both complete blocks are now classified.
 
 Preparation uses the same strict raw decoder as the screen initializer; generated
 source must assemble identically before adoption. No new runtime execution of

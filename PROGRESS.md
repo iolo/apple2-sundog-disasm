@@ -2095,3 +2095,40 @@ and acceptance criteria.
   from this implementation commit.
 - **Next action:** Continue remaining bounded asset storage, orphan/variant code
   and provisional runtime classifications, then final checks in both emulators.
+
+## 2026-09-20 — Step 06ak: complete two single-block native overlays
+
+- **Work/evidence:** Identified the retained JMP ($0004) after the transformer's
+  RTS as an unused native tail transfer. The existing instructions zero $04,
+  save and restore the initial page in $05, and preserve the caller's return
+  address; the resulting pointer addresses the transformed $4000/$5800 buffer.
+  The known path returns before this instruction, so live body execution is not
+  claimed. The three-byte instruction is emitted as JMP rather than data.
+- **Metadata/storage:** Independently parsed complete one-procedure native
+  containers ending at byte 314 in disk-1 block 2 and byte 112 in block 156.
+  Reconstructed alignment, four empty relocation lists, entry displacements,
+  attributes, dictionary pointers and trailers. Classified the following 198
+  and 400 zero bytes as bounded storage within their evidenced one-block overlay
+  reads, after the validated container ends; nonzero tails are rejected. The
+  screen block's footer points to offset zero, but its actual raw entry remains
+  offset 192; no execution through its HGR address table is inferred.
+- **Artifacts:** Added src/native/native_block_tails.s/config/adoption,
+  tools/native_block_tail.py, three tests, the complete raw-tail audit and
+  docs/native-block-tails.md. Updated the initializer, transformer and encoded
+  loader documents plus PLAN.md. The component holds 634 bytes: 3 code and
+  631 data. Both full 512-byte blocks now have source/code-data ownership.
+- **Validation:** Three tests pass for the metadata boundaries, unused indirect
+  transfer, and rejection of changed opcodes/operands, malformed footers,
+  nonzero alignment or nonzero block storage. Preparation verifies both exact
+  source prefixes, both native dictionaries/relocation structures, complete tail
+  coverage and exact assembly. Adoption, full exact build, --verify artifact
+  regeneration and original disk/manual comparison pass. A separate per-byte
+  check confirms complete source ownership of both blocks. git diff --check
+  passes. No new live emulator validation is claimed.
+- **Coverage:** 172,997 source-built disk bytes, 99,300 identified data/asset bytes,
+  14,423 temporary bytes (6,682 disk 1; 7,741 disk 2).
+- **Workspace:** The concurrent PRD reference-link edit remains preserved and
+  excluded from this implementation commit.
+- **Next action:** Continue the remaining asset tails, orphan/variant code and
+  provisional runtime audit, then final gameplay/save/load/swap/utility checks
+  in both emulators. The full classification requirement remains in force.
