@@ -5,7 +5,9 @@ The first eight bytes of disk-1 block 83 are control data, reconstructed by
 are `00 01 1B 9C 14 A6 02 4F`, SHA-256
 `caceb39c7b5f9c9f1707f60a9b659a1e53533250a015ac99ae6a48b5ed04b98d`.
 Every field has a direct consumer in already reconstructed code. The other
-504 bytes of the block remain unresolved and are excluded from this component.
+504 bytes are excluded from this component. Of those, 252 are now separately
+classified [retained title-image fragments](retained-title-fragments.md);
+the other 252 remain unresolved.
 
 | Offset | Size | Stored value | Evidence |
 | --- | ---: | --- | --- |

@@ -1,0 +1,26 @@
+{
+  "name": "retained_title_fragments",
+  "data": "assets/retained-title/fragments.bin",
+  "format": "apple2-hgr-retained-fragments",
+  "classification": "docs/retained-title-fragments.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 43272,
+      "size": 80,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 43354,
+      "size": 75,
+      "input_offset": 80
+    },
+    {
+      "disk": "disk1",
+      "offset": 43008,
+      "size": 97,
+      "input_offset": 155
+    }
+  ]
+}

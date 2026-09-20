@@ -1,9 +1,9 @@
 # Incremental exact-disk build
 
-Current checkpoint: step 08m has 183,316 source-built disk bytes (including
-explicit data declarations), 100,900 identified asset/data bytes, and 2,504
-temporary bytes: 906 on disk 1 and 1,598 on disk 2. The final play-side track
-is now [classified container fill](play-disk-final-track.md). Historical counts
+Current checkpoint: step 07v has 183,316 source-built disk bytes (including
+explicit data declarations), 101,152 identified asset/data bytes, and 2,252
+temporary bytes: 654 on disk 1 and 1,598 on disk 2. The latest extraction adds
+[retained title-image fragments](retained-title-fragments.md). Historical counts
 below describe their individual checkpoints; the manifest is authoritative.
 
 The incremental build reconstructs both disk images using assembled source components and

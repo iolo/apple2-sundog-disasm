@@ -3011,3 +3011,32 @@ and acceptance criteria.
   so totals remain 183,316 source bytes, 100,900 identified data/asset bytes
   and 2,504 temporary bytes (906 disk 1; 1,598 disk 2). Continue those remaining
   small tails and provisional metadata. User PRD edits and ref/ remain excluded.
+
+## 2026-09-20 — Step 07v: extract bounded retained title-image fragments
+
+- **Evidence:** Disk-1 block 83 offsets 8–87, 90–164 and 256–352 map to the
+  classified title bitmap at offset 4096 plus the block offset. All seven pixel
+  bits match in 244 visible bytes; eight HGR-hole bytes match exactly. Of the
+  252 bytes, 191 match all bits and 61 differ only in the HGR phase bit. The
+  spatial correspondence supports retained image data; no live rendering or
+  historical write sequence for this copy is asserted.
+- **Research boundary:** The archived clean side-A DSK and decoded side-A NIB
+  have the same complete 504-byte tail and donor title bitmap. Their full hashes
+  and decoding order are recorded in docs/retained-title-fragments.md. They
+  corroborate the stored bytes but do not explain the other 252 bytes' changed
+  pixel bits. Those bytes remain unresolved; constant-XOR similarity alone is
+  not used to adopt them. Archives are reference-only, not build dependencies.
+- **Artifacts:** Added the 252-byte asset, per-byte reversible pixel/phase or
+  hole records, manifest/adoption recipe, bounded extraction/verifier and one
+  mutation/boundary test. Updated the disk-control and reconstruction documents,
+  PLAN.md and reconstruction manifest; reduced disk-1 temporary input by 252.
+- **Validation:** tools/test_retained_title_asset.py passes, including all 504
+  individual pixel/phase mutations, wrong donor, length and explicit range
+  checks. Strict adoption, tools/retained_title_asset.py --verify, full rebuild,
+  tools/verify_disks.py and git diff --check pass. Both disk hashes and the
+  original manual are unchanged; existing dual-emulator behavior baselines apply.
+- **Coverage/next:** 183,316 source-built bytes, 101,152 identified data/asset
+  bytes and 2,252 temporary bytes remain (654 disk 1; 1,598 disk 2). Continue
+  the changed title tail, small storage tails, encoded-bank gaps and already
+  source-built provisional data. The resumed goal remains active. User PRD.md
+  edits and ref/ are untouched and excluded from this checkpoint.

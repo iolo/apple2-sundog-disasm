@@ -1,0 +1,51 @@
+{
+  "classification": "data",
+  "format": "apple2-hgr-retained-fragments",
+  "size": 252,
+  "sha256": "e11d3928139623d4c98c6b36ffb6b41cb18eae5d4e95305610ff9c76fb5e8bcc",
+  "disk": "disk1",
+  "logical_block": 83,
+  "block_ranges": [
+    [
+      8,
+      88
+    ],
+    [
+      90,
+      165
+    ],
+    [
+      256,
+      353
+    ]
+  ],
+  "donor_component": "title_bitmap",
+  "donor_sha256": "2b21fb1fc35477e73882e6f4003788631aa28e32d7cc6ed7991cdbaa317d17c1",
+  "donor_offset_bias": 4096,
+  "pixel_bytes": 244,
+  "hole_bytes": 8,
+  "phase_differences": 61,
+  "exact_bytes": 191,
+  "classification_evidence": "docs/retained-title-fragments.md",
+  "records": "pixels.json",
+  "comparison": "All seven pixel bits match; hole bytes match all eight bits.",
+  "direct_rendering_of_copies_established": false,
+  "excluded_block_ranges": [
+    [
+      0,
+      8
+    ],
+    [
+      88,
+      90
+    ],
+    [
+      165,
+      256
+    ],
+    [
+      353,
+      512
+    ]
+  ]
+}

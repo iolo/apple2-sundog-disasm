@@ -1,0 +1,2490 @@
+[
+  {
+    "block_offset": 8,
+    "donor_offset": 4104,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 8,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 9,
+    "donor_offset": 4105,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 9,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 10,
+    "donor_offset": 4106,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 10,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 11,
+    "donor_offset": 4107,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 11,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 12,
+    "donor_offset": 4108,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 13,
+    "donor_offset": 4109,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 14,
+    "donor_offset": 4110,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 14,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 15,
+    "donor_offset": 4111,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 15,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 16,
+    "donor_offset": 4112,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 16,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 17,
+    "donor_offset": 4113,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 17,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 18,
+    "donor_offset": 4114,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 18,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 19,
+    "donor_offset": 4115,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 19,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 20,
+    "donor_offset": 4116,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 20,
+    "pixels": 84,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 21,
+    "donor_offset": 4117,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 21,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 22,
+    "donor_offset": 4118,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 22,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 23,
+    "donor_offset": 4119,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 23,
+    "pixels": 18,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 24,
+    "donor_offset": 4120,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 24,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 25,
+    "donor_offset": 4121,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 25,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 26,
+    "donor_offset": 4122,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 26,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 27,
+    "donor_offset": 4123,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 27,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 28,
+    "donor_offset": 4124,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 28,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 29,
+    "donor_offset": 4125,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 29,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 30,
+    "donor_offset": 4126,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 30,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 31,
+    "donor_offset": 4127,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 31,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 32,
+    "donor_offset": 4128,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 32,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 33,
+    "donor_offset": 4129,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 33,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 34,
+    "donor_offset": 4130,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 34,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 35,
+    "donor_offset": 4131,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 35,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 36,
+    "donor_offset": 4132,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 36,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 37,
+    "donor_offset": 4133,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 37,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 38,
+    "donor_offset": 4134,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 38,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 39,
+    "donor_offset": 4135,
+    "kind": "pixels",
+    "row": 4,
+    "byte_column": 39,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 40,
+    "donor_offset": 4136,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 41,
+    "donor_offset": 4137,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 42,
+    "donor_offset": 4138,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 43,
+    "donor_offset": 4139,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 44,
+    "donor_offset": 4140,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 4,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 45,
+    "donor_offset": 4141,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 5,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 46,
+    "donor_offset": 4142,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 6,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 47,
+    "donor_offset": 4143,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 7,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 48,
+    "donor_offset": 4144,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 8,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 49,
+    "donor_offset": 4145,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 9,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 50,
+    "donor_offset": 4146,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 10,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 51,
+    "donor_offset": 4147,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 11,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 52,
+    "donor_offset": 4148,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 53,
+    "donor_offset": 4149,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 54,
+    "donor_offset": 4150,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 14,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 55,
+    "donor_offset": 4151,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 15,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 56,
+    "donor_offset": 4152,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 16,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 57,
+    "donor_offset": 4153,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 17,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 58,
+    "donor_offset": 4154,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 18,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 59,
+    "donor_offset": 4155,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 19,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 60,
+    "donor_offset": 4156,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 20,
+    "pixels": 64,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 61,
+    "donor_offset": 4157,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 21,
+    "pixels": 63,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 62,
+    "donor_offset": 4158,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 22,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 63,
+    "donor_offset": 4159,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 23,
+    "pixels": 106,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 64,
+    "donor_offset": 4160,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 24,
+    "pixels": 119,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 65,
+    "donor_offset": 4161,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 25,
+    "pixels": 43,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 66,
+    "donor_offset": 4162,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 26,
+    "pixels": 87,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 67,
+    "donor_offset": 4163,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 27,
+    "pixels": 110,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 68,
+    "donor_offset": 4164,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 28,
+    "pixels": 95,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 69,
+    "donor_offset": 4165,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 29,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 70,
+    "donor_offset": 4166,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 30,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 71,
+    "donor_offset": 4167,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 31,
+    "pixels": 18,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 72,
+    "donor_offset": 4168,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 32,
+    "pixels": 21,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 73,
+    "donor_offset": 4169,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 33,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 74,
+    "donor_offset": 4170,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 34,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 75,
+    "donor_offset": 4171,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 35,
+    "pixels": 33,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 76,
+    "donor_offset": 4172,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 36,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 77,
+    "donor_offset": 4173,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 37,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 78,
+    "donor_offset": 4174,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 38,
+    "pixels": 125,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 79,
+    "donor_offset": 4175,
+    "kind": "pixels",
+    "row": 68,
+    "byte_column": 39,
+    "pixels": 59,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 80,
+    "donor_offset": 4176,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 81,
+    "donor_offset": 4177,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 82,
+    "donor_offset": 4178,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 83,
+    "donor_offset": 4179,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 84,
+    "donor_offset": 4180,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 4,
+    "pixels": 32,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 85,
+    "donor_offset": 4181,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 5,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 86,
+    "donor_offset": 4182,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 6,
+    "pixels": 6,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 87,
+    "donor_offset": 4183,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 7,
+    "pixels": 62,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 90,
+    "donor_offset": 4186,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 10,
+    "pixels": 126,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 91,
+    "donor_offset": 4187,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 11,
+    "pixels": 119,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 92,
+    "donor_offset": 4188,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 93,
+    "donor_offset": 4189,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 94,
+    "donor_offset": 4190,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 14,
+    "pixels": 56,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 95,
+    "donor_offset": 4191,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 15,
+    "pixels": 115,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 96,
+    "donor_offset": 4192,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 16,
+    "pixels": 103,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 97,
+    "donor_offset": 4193,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 17,
+    "pixels": 115,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 98,
+    "donor_offset": 4194,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 18,
+    "pixels": 113,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 99,
+    "donor_offset": 4195,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 19,
+    "pixels": 115,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 100,
+    "donor_offset": 4196,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 20,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 101,
+    "donor_offset": 4197,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 21,
+    "pixels": 59,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 102,
+    "donor_offset": 4198,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 22,
+    "pixels": 12,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 103,
+    "donor_offset": 4199,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 23,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 104,
+    "donor_offset": 4200,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 24,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 105,
+    "donor_offset": 4201,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 25,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 106,
+    "donor_offset": 4202,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 26,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 107,
+    "donor_offset": 4203,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 27,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 108,
+    "donor_offset": 4204,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 28,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 109,
+    "donor_offset": 4205,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 29,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 110,
+    "donor_offset": 4206,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 30,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 111,
+    "donor_offset": 4207,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 31,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 112,
+    "donor_offset": 4208,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 32,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 113,
+    "donor_offset": 4209,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 33,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 114,
+    "donor_offset": 4210,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 34,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 115,
+    "donor_offset": 4211,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 35,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 116,
+    "donor_offset": 4212,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 36,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 117,
+    "donor_offset": 4213,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 37,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 118,
+    "donor_offset": 4214,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 38,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 119,
+    "donor_offset": 4215,
+    "kind": "pixels",
+    "row": 132,
+    "byte_column": 39,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 120,
+    "donor_offset": 4216,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 121,
+    "donor_offset": 4217,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 122,
+    "donor_offset": 4218,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 123,
+    "donor_offset": 4219,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 124,
+    "donor_offset": 4220,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 125,
+    "donor_offset": 4221,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 126,
+    "donor_offset": 4222,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 127,
+    "donor_offset": 4223,
+    "kind": "hgr-hole",
+    "value": 255
+  },
+  {
+    "block_offset": 128,
+    "donor_offset": 4224,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 129,
+    "donor_offset": 4225,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 130,
+    "donor_offset": 4226,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 131,
+    "donor_offset": 4227,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 132,
+    "donor_offset": 4228,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 4,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 133,
+    "donor_offset": 4229,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 5,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 134,
+    "donor_offset": 4230,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 6,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 135,
+    "donor_offset": 4231,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 7,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 136,
+    "donor_offset": 4232,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 8,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 137,
+    "donor_offset": 4233,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 9,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 138,
+    "donor_offset": 4234,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 10,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 139,
+    "donor_offset": 4235,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 11,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 140,
+    "donor_offset": 4236,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 141,
+    "donor_offset": 4237,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 142,
+    "donor_offset": 4238,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 14,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 143,
+    "donor_offset": 4239,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 15,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 144,
+    "donor_offset": 4240,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 16,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 145,
+    "donor_offset": 4241,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 17,
+    "pixels": 68,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 146,
+    "donor_offset": 4242,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 18,
+    "pixels": 8,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 147,
+    "donor_offset": 4243,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 19,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 148,
+    "donor_offset": 4244,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 20,
+    "pixels": 37,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 149,
+    "donor_offset": 4245,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 21,
+    "pixels": 92,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 150,
+    "donor_offset": 4246,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 22,
+    "pixels": 75,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 151,
+    "donor_offset": 4247,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 23,
+    "pixels": 10,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 152,
+    "donor_offset": 4248,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 24,
+    "pixels": 34,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 153,
+    "donor_offset": 4249,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 25,
+    "pixels": 68,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 154,
+    "donor_offset": 4250,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 26,
+    "pixels": 8,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 155,
+    "donor_offset": 4251,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 27,
+    "pixels": 17,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 156,
+    "donor_offset": 4252,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 28,
+    "pixels": 34,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 157,
+    "donor_offset": 4253,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 29,
+    "pixels": 116,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 158,
+    "donor_offset": 4254,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 30,
+    "pixels": 62,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 159,
+    "donor_offset": 4255,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 31,
+    "pixels": 31,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 160,
+    "donor_offset": 4256,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 32,
+    "pixels": 35,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 161,
+    "donor_offset": 4257,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 33,
+    "pixels": 40,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 162,
+    "donor_offset": 4258,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 34,
+    "pixels": 85,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 163,
+    "donor_offset": 4259,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 35,
+    "pixels": 42,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 164,
+    "donor_offset": 4260,
+    "kind": "pixels",
+    "row": 12,
+    "byte_column": 36,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 256,
+    "donor_offset": 4352,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 257,
+    "donor_offset": 4353,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 258,
+    "donor_offset": 4354,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 259,
+    "donor_offset": 4355,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 260,
+    "donor_offset": 4356,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 4,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 261,
+    "donor_offset": 4357,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 5,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 262,
+    "donor_offset": 4358,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 6,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 263,
+    "donor_offset": 4359,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 7,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 264,
+    "donor_offset": 4360,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 8,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 265,
+    "donor_offset": 4361,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 9,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 266,
+    "donor_offset": 4362,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 10,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 267,
+    "donor_offset": 4363,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 11,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 268,
+    "donor_offset": 4364,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 269,
+    "donor_offset": 4365,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 270,
+    "donor_offset": 4366,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 14,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 271,
+    "donor_offset": 4367,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 15,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 272,
+    "donor_offset": 4368,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 16,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 273,
+    "donor_offset": 4369,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 17,
+    "pixels": 68,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 274,
+    "donor_offset": 4370,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 18,
+    "pixels": 72,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 275,
+    "donor_offset": 4371,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 19,
+    "pixels": 126,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 276,
+    "donor_offset": 4372,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 20,
+    "pixels": 125,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 277,
+    "donor_offset": 4373,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 21,
+    "pixels": 78,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 278,
+    "donor_offset": 4374,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 22,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 279,
+    "donor_offset": 4375,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 23,
+    "pixels": 41,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 280,
+    "donor_offset": 4376,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 24,
+    "pixels": 33,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 281,
+    "donor_offset": 4377,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 25,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 282,
+    "donor_offset": 4378,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 26,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 283,
+    "donor_offset": 4379,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 27,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 284,
+    "donor_offset": 4380,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 28,
+    "pixels": 82,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 285,
+    "donor_offset": 4381,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 29,
+    "pixels": 68,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 286,
+    "donor_offset": 4382,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 30,
+    "pixels": 24,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 287,
+    "donor_offset": 4383,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 31,
+    "pixels": 19,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 288,
+    "donor_offset": 4384,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 32,
+    "pixels": 34,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 289,
+    "donor_offset": 4385,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 33,
+    "pixels": 4,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 290,
+    "donor_offset": 4386,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 34,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 291,
+    "donor_offset": 4387,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 35,
+    "pixels": 18,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 292,
+    "donor_offset": 4388,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 36,
+    "pixels": 34,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 293,
+    "donor_offset": 4389,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 37,
+    "pixels": 68,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 294,
+    "donor_offset": 4390,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 38,
+    "pixels": 8,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 295,
+    "donor_offset": 4391,
+    "kind": "pixels",
+    "row": 20,
+    "byte_column": 39,
+    "pixels": 17,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 296,
+    "donor_offset": 4392,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 297,
+    "donor_offset": 4393,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 298,
+    "donor_offset": 4394,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 299,
+    "donor_offset": 4395,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 300,
+    "donor_offset": 4396,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 4,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 301,
+    "donor_offset": 4397,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 5,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 302,
+    "donor_offset": 4398,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 6,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 303,
+    "donor_offset": 4399,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 7,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 304,
+    "donor_offset": 4400,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 8,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 305,
+    "donor_offset": 4401,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 9,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 306,
+    "donor_offset": 4402,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 10,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 307,
+    "donor_offset": 4403,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 11,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 308,
+    "donor_offset": 4404,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 12,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 309,
+    "donor_offset": 4405,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 13,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 310,
+    "donor_offset": 4406,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 14,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 311,
+    "donor_offset": 4407,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 15,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 312,
+    "donor_offset": 4408,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 16,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 313,
+    "donor_offset": 4409,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 17,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 314,
+    "donor_offset": 4410,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 18,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 315,
+    "donor_offset": 4411,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 19,
+    "pixels": 64,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 316,
+    "donor_offset": 4412,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 20,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 317,
+    "donor_offset": 4413,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 21,
+    "pixels": 4,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 318,
+    "donor_offset": 4414,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 22,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 319,
+    "donor_offset": 4415,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 23,
+    "pixels": 27,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 320,
+    "donor_offset": 4416,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 24,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 321,
+    "donor_offset": 4417,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 25,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 322,
+    "donor_offset": 4418,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 26,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 323,
+    "donor_offset": 4419,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 27,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 324,
+    "donor_offset": 4420,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 28,
+    "pixels": 93,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 325,
+    "donor_offset": 4421,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 29,
+    "pixels": 62,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 326,
+    "donor_offset": 4422,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 30,
+    "pixels": 85,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 327,
+    "donor_offset": 4423,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 31,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 328,
+    "donor_offset": 4424,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 32,
+    "pixels": 33,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 329,
+    "donor_offset": 4425,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 33,
+    "pixels": 68,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 330,
+    "donor_offset": 4426,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 34,
+    "pixels": 95,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 331,
+    "donor_offset": 4427,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 35,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 332,
+    "donor_offset": 4428,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 36,
+    "pixels": 117,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 333,
+    "donor_offset": 4429,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 37,
+    "pixels": 42,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 334,
+    "donor_offset": 4430,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 38,
+    "pixels": 87,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 335,
+    "donor_offset": 4431,
+    "kind": "pixels",
+    "row": 84,
+    "byte_column": 39,
+    "pixels": 58,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 336,
+    "donor_offset": 4432,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 0,
+    "pixels": 0,
+    "phase": 0,
+    "donor_phase": 0
+  },
+  {
+    "block_offset": 337,
+    "donor_offset": 4433,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 1,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 338,
+    "donor_offset": 4434,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 2,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 339,
+    "donor_offset": 4435,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 3,
+    "pixels": 0,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 340,
+    "donor_offset": 4436,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 4,
+    "pixels": 112,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 341,
+    "donor_offset": 4437,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 5,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 342,
+    "donor_offset": 4438,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 6,
+    "pixels": 121,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 343,
+    "donor_offset": 4439,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 7,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 344,
+    "donor_offset": 4440,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 8,
+    "pixels": 1,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 345,
+    "donor_offset": 4441,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 9,
+    "pixels": 120,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 346,
+    "donor_offset": 4442,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 10,
+    "pixels": 63,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 347,
+    "donor_offset": 4443,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 11,
+    "pixels": 120,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 348,
+    "donor_offset": 4444,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 12,
+    "pixels": 79,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 349,
+    "donor_offset": 4445,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 13,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 350,
+    "donor_offset": 4446,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 14,
+    "pixels": 108,
+    "phase": 0,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 351,
+    "donor_offset": 4447,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 15,
+    "pixels": 127,
+    "phase": 1,
+    "donor_phase": 1
+  },
+  {
+    "block_offset": 352,
+    "donor_offset": 4448,
+    "kind": "pixels",
+    "row": 148,
+    "byte_column": 16,
+    "pixels": 3,
+    "phase": 0,
+    "donor_phase": 1
+  }
+]

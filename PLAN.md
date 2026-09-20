@@ -142,12 +142,17 @@ Split large steps into independently validated, logged, and committed increments
 - Step 08m reconstructs disk 2's final 4,096 zero bytes as sector-image fill.
   Independent nibble evidence has no standard sectors on that track; 532 of
   544 readable sectors, including the complete neighboring segment allocation,
-  match exactly. Current ownership is 183,316 source-built bytes, 100,900
+  match exactly. Ownership at that checkpoint is 183,316 source-built bytes, 100,900
   identified data/asset bytes and 2,504 temporary bytes (906 disk 1; 1,598 disk 2).
 - Step 08n resolves the primitive-bank descriptor as an interpreter relocation
   base and four address fields, using its direct consumer and historical layout.
   Named declarations and mutation checks preserve the exact component output.
   These ten bytes were already source-built; temporary totals do not change.
+- Step 07v extracts 252 retained title-image bytes from disk-1 block 83.
+  All pixel bits and eight hole bytes match the classified donor; 61 phase
+  differences are preserved separately. The other 252 tail bytes stay unresolved.
+  Current ownership is 183,316 source-built bytes, 101,152 identified data/asset
+  bytes and 2,252 temporary bytes (654 disk 1; 1,598 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk
