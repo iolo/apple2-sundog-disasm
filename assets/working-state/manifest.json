@@ -1,0 +1,94 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/working-state.md",
+  "source_bytes": 5017,
+  "disk_bytes": 6027,
+  "sha256": "3b6fb86a647752b9a44e12f21609412730ebd3cbb261065e8f0cf28ec415bc16",
+  "groups": [
+    {
+      "kind": "record_templates",
+      "input_offset": 0,
+      "size": 505,
+      "sha256": "0639e7e3dfa58f659a5d0fb7e5d0d9e371dde36efc146672fa750b8b9f0a2419",
+      "origins": [
+        {
+          "disk": "disk1",
+          "block": 22
+        },
+        {
+          "disk": "disk2",
+          "block": 2
+        },
+        {
+          "disk": "disk2",
+          "block": 45
+        }
+      ],
+      "layout": [
+        {
+          "name": "templates",
+          "size": 504,
+          "words_per_record": 14
+        },
+        {
+          "name": "selector",
+          "size": 1,
+          "words_per_record": 0
+        }
+      ]
+    },
+    {
+      "kind": "world_defaults",
+      "input_offset": 505,
+      "size": 1440,
+      "sha256": "34de4057edf5b15401c120753f8ef138c1537f5592ce78ad47a25f3d5a5442cc",
+      "origins": [
+        {
+          "disk": "disk1",
+          "block": 23
+        }
+      ],
+      "layout": [
+        {
+          "name": "table_23",
+          "size": 240,
+          "words_per_record": 120
+        },
+        {
+          "name": "table_24",
+          "size": 288,
+          "words_per_record": 144
+        },
+        {
+          "name": "table_25",
+          "size": 912,
+          "words_per_record": 456
+        }
+      ]
+    },
+    {
+      "kind": "working_records",
+      "input_offset": 1945,
+      "size": 3072,
+      "sha256": "b62825f46d331b284d0e4e26ea1c4feb5b1717fdffdcd8d1a5a3ddad5b144937",
+      "origins": [
+        {
+          "disk": "disk2",
+          "block": 48
+        }
+      ],
+      "layout": [
+        {
+          "name": "records16",
+          "size": 1024,
+          "words_per_record": 8
+        },
+        {
+          "name": "records32",
+          "size": 2048,
+          "words_per_record": 16
+        }
+      ]
+    }
+  ]
+}

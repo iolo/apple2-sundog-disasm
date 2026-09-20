@@ -1645,3 +1645,31 @@ and acceptance criteria.
 - **Next action:** Trace the initial/working-state copies, world-table templates,
   and remaining native fragments. Final both-emulator save/load and gameplay
   checks remain required.
+
+## 2026-09-20 — Step 07l: templates and working gameplay data
+
+- **Work/evidence:** Utility procedure 14 identifies disk-1 block 22 as eighteen
+  28-byte record templates plus a selector at byte 504. Game 20 independently
+  consumes the identical template at disk-2 block 45; block 2 is another exact
+  stored copy. These are templates, not globals snapshots. Classified only 505
+  bytes per occurrence and retained the seven-byte tails as temporary.
+- **Further data:** Utility initialization copies 1,440 bytes from disk-1 blocks
+  23–25 into the three world-table regions; retained its 96-byte allocation tail.
+  Startup 7's inverse save/load transfers and game 20's indexed edits identify
+  disk-2 blocks 48–53 as working 16-/32-byte gameplay records. Preserved their
+  original contents independently of the four saved-game snapshots.
+- **Artifacts:** Added tools/working_state_asset.py, three tests,
+  docs/working-state.md, and assets/working-state with packed data, reversible
+  fields, manifest, and adoption recipe. The 5,017 unique source bytes map to
+  6,027 disk bytes. Individual packed-field meanings remain optional analysis;
+  data classification rests on the explicit consumers and transfer boundaries.
+- **Validation:** Tests pass for template/selector separation, every word layout,
+  malformed dimensions/values, and rejection of unreviewed tails. Extraction
+  verifies both rebuilt hashes, three template copies, temporary ownership,
+  and exact field round trips. Asset verification, adoption, full build, and
+  tools/verify_disks.py pass; both disk images are exact and inputs unchanged.
+  No new emulator observation or live save/load completion is claimed.
+- **Coverage:** 154,727 source-built disk bytes, 82,641 identified data/asset bytes,
+  49,352 temporary bytes (24,316 disk 1; 25,036 disk 2).
+- **Next action:** Continue remaining graphics/raw-code consumers and record tails;
+  final complete code/data audit and both-emulator validation remain required.

@@ -1,0 +1,152 @@
+{
+  "name": "working_state_data",
+  "data": "assets/working-state/data.bin",
+  "format": "Traced gameplay record templates, world defaults, and working data; see manifest",
+  "classification": "docs/working-state.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 8960,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 8704,
+      "size": 249,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 2816,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 2560,
+      "size": 249,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 21760,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 21504,
+      "size": 249,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 8448,
+      "size": 256,
+      "input_offset": 505
+    },
+    {
+      "disk": "disk1",
+      "offset": 12032,
+      "size": 256,
+      "input_offset": 761
+    },
+    {
+      "disk": "disk1",
+      "offset": 12288,
+      "size": 256,
+      "input_offset": 1017
+    },
+    {
+      "disk": "disk1",
+      "offset": 15872,
+      "size": 256,
+      "input_offset": 1273
+    },
+    {
+      "disk": "disk1",
+      "offset": 15616,
+      "size": 256,
+      "input_offset": 1529
+    },
+    {
+      "disk": "disk1",
+      "offset": 15360,
+      "size": 160,
+      "input_offset": 1785
+    },
+    {
+      "disk": "disk2",
+      "offset": 24576,
+      "size": 256,
+      "input_offset": 1945
+    },
+    {
+      "disk": "disk2",
+      "offset": 28160,
+      "size": 256,
+      "input_offset": 2201
+    },
+    {
+      "disk": "disk2",
+      "offset": 27904,
+      "size": 256,
+      "input_offset": 2457
+    },
+    {
+      "disk": "disk2",
+      "offset": 27648,
+      "size": 256,
+      "input_offset": 2713
+    },
+    {
+      "disk": "disk2",
+      "offset": 27392,
+      "size": 256,
+      "input_offset": 2969
+    },
+    {
+      "disk": "disk2",
+      "offset": 27136,
+      "size": 256,
+      "input_offset": 3225
+    },
+    {
+      "disk": "disk2",
+      "offset": 26880,
+      "size": 256,
+      "input_offset": 3481
+    },
+    {
+      "disk": "disk2",
+      "offset": 26624,
+      "size": 256,
+      "input_offset": 3737
+    },
+    {
+      "disk": "disk2",
+      "offset": 26368,
+      "size": 256,
+      "input_offset": 3993
+    },
+    {
+      "disk": "disk2",
+      "offset": 26112,
+      "size": 256,
+      "input_offset": 4249
+    },
+    {
+      "disk": "disk2",
+      "offset": 25856,
+      "size": 256,
+      "input_offset": 4505
+    },
+    {
+      "disk": "disk2",
+      "offset": 25600,
+      "size": 256,
+      "input_offset": 4761
+    }
+  ]
+}

@@ -105,8 +105,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Inventory/cargo name-table variants | `assets/item-names/{demo,play}/records.bin` | Disk 1 blocks 192–193; disk 2 blocks 46–47 | 2,048 |
 | Packed city-map payloads | `assets/city-maps/maps.bin` | 120-byte payloads in disk 2 blocks 64–78 and disk 1 block 195 | 7,680 |
 | Saved-game payloads and descriptors | `assets/save-states/{payloads,slots}.bin` | Disk 1 first 5,024 bytes of banks at 27, 37, 47, 57; first 256 bytes of block 26 | 20,352 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 26,261 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 29,118 |
+| Record templates, world defaults, working state | `assets/working-state/data.bin` | Reviewed regions at disk 1 blocks 22–25; disk 2 blocks 2, 45, 48–53 | 6,027 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 24,316 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 25,036 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -309,7 +310,14 @@ full classification and final behavioral validation are still incomplete.
 
 Step 07k extracts the evidenced portions of four [saved-game banks](save-state-banks.md)
 and their slot descriptors, with exact structured-record round trips and matching
-full-bank checksums. Their 96-byte bank tails remain unresolved. Current ownership
-is 154,727 source-built bytes, 76,614 classified data/asset bytes, and 55,379
+full-bank checksums. Their 96-byte bank tails remain unresolved. Ownership then
+was 154,727 source-built bytes, 76,614 classified data/asset bytes, and 55,379
 temporary bytes. Both disks remain exact; final classification and live save/load
 validation in both emulators remain open.
+
+Step 07l extracts [working-state records and templates](working-state.md),
+including three copies of a 505-byte template table, 1,440 bytes of default
+world tables, and six blocks of working records. Current ownership is 154,727
+source-built bytes, 82,641 classified data/asset bytes, and 49,352 temporary
+bytes. Both rebuilt images remain exact; the remaining template/allocation tails
+and final emulator validation are still open.
