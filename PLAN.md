@@ -213,6 +213,11 @@ Split large steps into independently validated, logged, and committed increments
   the missing text prefix and actual producer remain unknown. Current ownership
   is 184,732 source-built bytes, 101,404 identified data/asset bytes and
   584 temporary bytes (103 disk 1; 481 disk 2).
+- Step 08v consolidates the five resident native-runtime audits and rechecks
+  interpreter linkage. All 16,384 unique component bytes are accounted for:
+  12,345 code bytes (including two instruction-fragment bytes) and 4,039 data
+  bytes. Earlier provisional runtime checks are resolved. This separate scope
+  does not close full-disk classification; disk ownership counts are unchanged.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

@@ -32,8 +32,9 @@ not imply that every device path or peripheral configuration has been exercised.
 
 Common-memory jump entries at `$FF6B/$FF6E` target the write/read wrappers.
 Other entries in `$FF59`–`$FF92` target polling, console, and device routines.
-The common-memory code is still awaiting source reconstruction; its original
-bytes provide static cross-references, not evidence that all entries execute.
+The common-memory code is source-built and checked with the other
+[resident runtime components](runtime-classification.md). Those static
+cross-references do not establish that every entry executes.
 
 The source retains address-based labels for routines whose full conventions
 remain unresolved. External calls into `$C800/$C84D/$C9AA` are retained without

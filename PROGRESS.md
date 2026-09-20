@@ -3359,3 +3359,36 @@ and acceptance criteria.
   bytes and 584 temporary bytes remain (103 disk 1; 481 disk 2). Continue the
   boot/save/dictionary tails, repeated template suffix and mixed checksum tail.
   User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.
+
+## 2026-09-20 — Step 08v: consolidate resident-runtime classification audits
+
+- **Audit:** Re-ran all five resident runtime instruction/data audits plus
+  interpreter linkage against current assembled components. Their 16,384 unique
+  source bytes total 12,345 instruction/fragment bytes and 4,039 data bytes.
+  Native I/O storage, initializer FORTRAN payload, high-memory metadata and
+  interpreter linkage have no remaining provisional classification fields.
+  I/O overlapping opcode bytes and two identified instruction-fragment bytes
+  are accounted for explicitly, without double-counting.
+- **Artifacts:** Added tools/runtime_classification.py, a reproducible combined
+  report and docs/runtime-classification.md. The checker invokes the existing
+  substantive audits, checks source component hashes/sizes, complete source
+  mapping and normalized totals, and verifies the committed report. Updated
+  executable inventory scope/status, stale native-I/O cross-reference wording,
+  PLAN.md, reconstruction notes and README's outdated coverage/behavior status.
+- **Limits:** This consolidates existing runtime evidence and classifies no new
+  disk byte. Its totals are unique component-source bytes, not disk occurrence
+  counts. The complete disk-wide audit and 584 temporary bytes remain open;
+  no claim is made that every routine or peripheral path was exercised.
+- **Validation:** Report generation followed by an independent rerun/verification
+  passes all underlying runtime checks. Executable coverage still reports all
+  34 inventoried unique segments source-built. Documentation links resolve and
+  git diff --check passes. No source, asset or disk output bytes changed.
+- **Other research:** A search over 4,096 rotation/XOR/additive transforms of the
+  checksum tail found no long native-instruction stream (maximum 23 consecutive
+  legal instructions, without control-flow evidence); no classification follows.
+  The sparse save tail has no exact donor among extracted raw/decoded assets or
+  current assembled components. These remain research leads, not final data.
+- **Coverage/next:** Ownership stays 184,732 source-built bytes, 101,404 identified
+  asset/data bytes and 584 temporary bytes (103 disk 1; 481 disk 2). Continue the
+  remaining tails and disk-wide evidence audit. User PRD.md edits and ref/ are
+  preserved and excluded. The goal remains active.

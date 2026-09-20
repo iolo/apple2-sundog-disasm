@@ -34,11 +34,18 @@
     }
   ],
   "remaining_work_outside_valid_segments": [
+    "Complete classification of temporary disk remainders",
+    "Final disk-wide classification evidence audit"
+  ],
+  "excluded_scope": [
+    "Resident native runtime",
     "Raw block-loaded executable overlays",
     "Orphan/header candidates",
     "Assets and other data",
-    "Unallocated/preserved disk regions",
-    "Review provisional native-runtime data classifications"
+    "Unallocated/preserved disk regions"
+  ],
+  "companion_reports": [
+    "docs/reference/runtime-classification.json"
   ],
   "segments": [
     {

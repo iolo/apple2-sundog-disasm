@@ -28,33 +28,30 @@ python3 tools/verify_disks.py
 
 See [build instructions and coverage](docs/reconstruction.md). The bootstrap,
 early title routine, complete SYSTEM.APPLE runtime, all 34 distinct inventoried
-Pascal segments, and the split-system fragment are source-built. Remaining work
-includes classifying other disk regions, resolving provisional runtime data,
-extracting assets, and completing behavioral checks. The
-[executable coverage report](docs/executable-coverage.json) separates these tasks.
-Current coverage is 156,221 source-built bytes (including classified header
-tables, [Pascal directories](docs/pascal-directories.md), and
-[custom dialogue scripts](docs/dialogue-scripts.md) and
-[encoded native loaders](docs/encoded-native-overlay.md)) plus 98,468 classified data/asset bytes from the
-[title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
-two copies of the [shared font](docs/shared-font.md), and
-[two play graphics banks](docs/play-glyphs.md), and
-[compressed ship images](docs/packed-ship-images.md), and
-[four tile banks](docs/tile-banks.md), and
-[world-map tiles](docs/world-tiles.md), and
-[packed world maps](docs/world-maps.md), and
-[inventory/cargo names](docs/item-names.md), and
-[city maps](docs/city-maps.md), and
-[saved-game records](docs/save-state-banks.md), and
-[working data and templates](docs/working-state.md), and
-[animated logo frames](docs/logo-frames.md), and
-[the interaction-window bitmap](docs/interaction-window.md), and
-[the play-disk boot notice](docs/play-disk-boot.md), and
-[interaction records](docs/interaction-records.md), and
-[dialogue dictionary text](docs/dialogue-dictionary.md) and
-[dialogue messages](docs/dialogue-scripts.md), including
-[unused messages and bank storage](docs/dialogue-bank-layout.md); 32,031 bytes remain temporary.
-These are disk-byte ownership totals, not instruction counts or completion percentages.
+Pascal segments, the split-system fragment, raw overlays and encoded native
+banks are source-built. The [resident runtime audit](docs/runtime-classification.md)
+resolves its earlier provisional fields; the [Pascal inventory report](docs/executable-coverage.json)
+has a separate, narrower scope.
+
+Current disk ownership is **184,732 source-built bytes**, **101,404 identified
+asset/data bytes**, and **584 temporary unclassified bytes** (103 on disk 1;
+481 on disk 2). Source-built totals include explicit data declarations and are
+not instruction counts. The remaining tails, a final disk-wide classification
+audit, clean reproducibility checks and delivery documentation are still open.
+Exact output alone does not establish completion.
+
+Extracted assets include [title artwork](docs/title-bitmap.md),
+[fonts](docs/shared-font.md), [compressed images](docs/packed-ship-images.md),
+[tiles](docs/tile-banks.md), [world maps](docs/world-maps.md),
+[city maps](docs/city-maps.md), [saved-game data](docs/save-state-banks.md),
+[dialogue text](docs/dialogue-dictionary.md), and their documented retained
+variants. [Custom dialogue scripts](docs/dialogue-scripts.md) are reconstructed
+as instructions separately from their text.
+
+Behavior checks cover gameplay, disk swaps, utilities, saving and fresh-session
+reloads in [MAME](docs/save-reload-validation.md) and
+[Apple2TS](docs/apple2ts-behavior-validation.md). Those reports state their
+limits; the identical-output reconstruction checkpoints reuse those baselines.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)
 and a [lossless disk inventory and repacker](docs/disk-layout.md). The supplied

@@ -44,9 +44,13 @@ def report():
                 remaining_unique_segments=sum(not r['all_copies_source_built'] for r in rows),
                 original_inventory_status_counts=inventory['summary']['entry_status_counts'],
                 split_fragments=fragments,
-                remaining_work_outside_valid_segments=([ 'Split system fragment' ] if any(not r['all_copies_source_built'] for r in fragments) else []) + ['Raw block-loaded executable overlays', 'Orphan/header candidates',
-                    'Assets and other data', 'Unallocated/preserved disk regions',
-                    'Review provisional native-runtime data classifications'], segments=rows)
+                remaining_work_outside_valid_segments=([ 'Split system fragment' ] if any(not r['all_copies_source_built'] for r in fragments) else []) + [
+                    'Complete classification of temporary disk remainders',
+                    'Final disk-wide classification evidence audit'],
+                excluded_scope=['Resident native runtime','Raw block-loaded executable overlays',
+                                'Orphan/header candidates','Assets and other data',
+                                'Unallocated/preserved disk regions'],
+                companion_reports=['docs/reference/runtime-classification.json'], segments=rows)
 
 
 def main():

@@ -1,0 +1,285 @@
+{
+  "scope": "Five resident runtime source components; not all disk bytes or Pascal segments",
+  "unique_source_bytes": 16384,
+  "code_bytes": 12345,
+  "data_bytes": 4039,
+  "formerly_provisional_checks": [
+    "native I/O state/storage",
+    "initializer FORTRAN payload",
+    "high-memory metadata",
+    "interpreter linkage descriptor"
+  ],
+  "unresolved_provisional_runtime_ranges": [],
+  "interpreter_linkage": {
+    "classification": "data",
+    "classification_evidence": "docs/interpreter-linkage.md",
+    "address": 53677,
+    "size": 10,
+    "sha256": "dd7aadbc48165832664e05c83590078fa279f6ef3d4f27047d76e5ba52464b25",
+    "fields": [
+      {
+        "offset": 0,
+        "size": 2,
+        "name": "interpreter_linkage_base",
+        "value": 53679,
+        "meaning": "Pointer to the following interpreter-linkage vector table",
+        "address": 53677
+      },
+      {
+        "offset": 2,
+        "size": 2,
+        "name": "runtime_error_vector",
+        "value": 53755,
+        "meaning": "Native runtime error entry",
+        "address": 53679
+      },
+      {
+        "offset": 4,
+        "size": 2,
+        "name": "system_service_base_vector",
+        "value": 65280,
+        "meaning": "Base of the high-memory three-byte service entries",
+        "address": 53681
+      },
+      {
+        "offset": 6,
+        "size": 2,
+        "name": "io_result_address",
+        "value": 48606,
+        "meaning": "Address of the two-byte I/O-result cell",
+        "address": 53683
+      },
+      {
+        "offset": 8,
+        "size": 2,
+        "name": "zero_page_workspace_address",
+        "value": 126,
+        "meaning": "Address of the current runtime scratch-pointer workspace",
+        "address": 53685
+      }
+    ],
+    "relocation_base": 53679,
+    "relocation_call": 58928,
+    "relocation_routine": 58365,
+    "checked_windows": 5,
+    "live_use_of_every_vector_claimed": false,
+    "unresolved_descriptor_bytes": 0
+  },
+  "components": [
+    {
+      "component": "pcode_primitives",
+      "size": 4325,
+      "sha256": "902a7339ff7e54071c3f9748bf2bd213a46c96405c88183ebc10159c8b1a6d9c",
+      "code_bytes": 3899,
+      "data_bytes": 426,
+      "source": "src/native/pcode_primitives.s",
+      "classification_documents": [
+        "docs/pcode-native.md",
+        "docs/interpreter-linkage.md"
+      ],
+      "instruction_fragment_bytes": 0,
+      "extra_overlapping_opcode_bytes": 0,
+      "code_spans_end_exclusive": [
+        [
+          53586,
+          53677
+        ],
+        [
+          53687,
+          56566
+        ],
+        [
+          56574,
+          56790
+        ],
+        [
+          56856,
+          56996
+        ],
+        [
+          57000,
+          57573
+        ]
+      ],
+      "mapping_count": 17,
+      "disk_mapped_bytes": 4325
+    },
+    {
+      "component": "native_io",
+      "size": 4096,
+      "sha256": "b3d767f4beb9a26bf79736ec7826a79ba52cef71887b3320bb3cf45cd6b31139",
+      "code_bytes": 2778,
+      "data_bytes": 1318,
+      "source": "src/native/native_io.s",
+      "classification_documents": [
+        "docs/native-io.md",
+        "docs/native-io-storage.md"
+      ],
+      "instruction_fragment_bytes": 0,
+      "extra_overlapping_opcode_bytes": 3,
+      "code_spans_end_exclusive": [
+        [
+          53248,
+          53288
+        ],
+        [
+          53289,
+          53848
+        ],
+        [
+          53849,
+          54165
+        ],
+        [
+          54528,
+          54738
+        ],
+        [
+          54739,
+          54856
+        ],
+        [
+          54872,
+          54912
+        ],
+        [
+          54915,
+          56379
+        ],
+        [
+          56380,
+          56409
+        ]
+      ],
+      "mapping_count": 16,
+      "disk_mapped_bytes": 4096
+    },
+    {
+      "component": "native_shared",
+      "size": 4523,
+      "sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6",
+      "code_bytes": 4212,
+      "data_bytes": 311,
+      "source": "src/native/native_shared.s",
+      "classification_documents": [
+        "docs/native-shared.md"
+      ],
+      "instruction_fragment_bytes": 0,
+      "extra_overlapping_opcode_bytes": 0,
+      "code_spans_end_exclusive": [
+        [
+          57573,
+          57737
+        ],
+        [
+          57740,
+          60902
+        ],
+        [
+          61093,
+          61899
+        ],
+        [
+          61901,
+          61939
+        ],
+        [
+          62052,
+          62055
+        ],
+        [
+          62057,
+          62096
+        ]
+      ],
+      "mapping_count": 20,
+      "disk_mapped_bytes": 4619
+    },
+    {
+      "component": "native_init",
+      "size": 1280,
+      "sha256": "c7c1a2160f3a266852f528c27cd396b0a97b3e6ae8761b0687ee6511a74c82c0",
+      "code_bytes": 1065,
+      "data_bytes": 215,
+      "source": "src/native/native_init.s",
+      "classification_documents": [
+        "docs/native-init.md",
+        "docs/initializer-fortran-protection.md"
+      ],
+      "instruction_fragment_bytes": 1,
+      "extra_overlapping_opcode_bytes": 0,
+      "code_spans_end_exclusive": [
+        [
+          26624,
+          26828
+        ],
+        [
+          26832,
+          27016
+        ],
+        [
+          27024,
+          27029
+        ],
+        [
+          27030,
+          27036
+        ],
+        [
+          27037,
+          27672
+        ],
+        [
+          27688,
+          27718
+        ]
+      ],
+      "mapping_count": 6,
+      "disk_mapped_bytes": 1280
+    },
+    {
+      "component": "native_high",
+      "size": 2160,
+      "sha256": "e1124caf0a14e2cba497ceaa5e296991d8d462c73867715edf806d1d43a9fa19",
+      "code_bytes": 391,
+      "data_bytes": 1769,
+      "source": "src/native/native_high.s",
+      "classification_documents": [
+        "docs/native-high.md",
+        "docs/native-high-metadata.md"
+      ],
+      "instruction_fragment_bytes": 1,
+      "extra_overlapping_opcode_bytes": 0,
+      "code_spans_end_exclusive": [
+        [
+          63393,
+          63488
+        ],
+        [
+          65152,
+          65200
+        ],
+        [
+          65240,
+          65272
+        ],
+        [
+          65280,
+          65359
+        ],
+        [
+          65368,
+          65504
+        ]
+      ],
+      "mapping_count": 9,
+      "disk_mapped_bytes": 2160
+    }
+  ],
+  "does_not_prove": [
+    "full-disk classification",
+    "execution of every routine",
+    "all peripheral behavior",
+    "historical data semantics"
+  ]
+}
