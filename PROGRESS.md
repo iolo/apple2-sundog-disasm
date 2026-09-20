@@ -2287,3 +2287,37 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Continue the initializer payload and other orphan code/data,
   then complete final behavior and reproducibility checks in both emulators.
+
+## 2026-09-20 — Step 06ao: short p-code copies and utility edge changes
+
+- **Evidence/work:** Reviewed eight exact 36–60-byte copies from five fully
+  audited p-code components. Five are complete remaining block tails, and
+  three lie in the clipped final utility procedure. Their item audits retain
+  every instruction/string/metadata boundary and any clipped endpoints.
+  They account for 396 bytes: 300 code and 96 data. The frozen recipe explicitly
+  uses a 32-byte review minimum; ordinary copy recipes retain 64. Exact hashes,
+  nontrivial bytes and complete source classification remain mandatory.
+- **Variant edges:** Independently classified the remaining four changed utility
+  bytes: a procedure marker 32→31, two LAO address operands 12→11, and a CGP
+  operand 44→42. Source emits the complete ten-byte footer and three complete
+  instructions, with twelve unchanged context bytes checked against their old
+  source ownership. The target procedure 42 is present in the independently
+  decoded variant. No missing source body or dictionary is invented.
+- **Artifacts:** Added the short-copy evidence recipe/full audit,
+  tools/utility_variant_edges.py, sixteen-byte ca65 context source/config/adoption,
+  its field audit and docs/short-pcode-copies.md. Updated the earlier variant
+  document and PLAN.md. The normal build continues to use assembled source.
+- **Validation:** Four source-copy tests and five adoption tests pass, including
+  explicit short-match opt-in, minimum rejection, wrong/trivial bytes, source
+  context ownership and overlap handling. New copy/edge verification and both
+  earlier copy sets pass after adoption. A per-byte check confirms all 2,560
+  bytes in disk-1 blocks 151–155 have source ownership: 1,774 primary-copy bytes,
+  782 independently decoded variant bytes and four contextual edge bytes.
+  Both full disks rebuild exactly, original disk/manual checks pass and
+  git diff --check passes. No new live emulator validation is claimed.
+- **Coverage:** 175,253 source-built disk bytes, 100,324 identified data/asset
+  bytes, 11,143 temporary bytes (3,875 disk 1; 7,268 disk 2). This checkpoint
+  removes 400 temporary bytes: 303 code and 97 data.
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Continue other orphan fragments, remaining data and provisional
+  runtime payload classification, followed by final dual-emulator validation.

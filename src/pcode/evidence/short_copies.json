@@ -1,0 +1,94 @@
+{
+  "classification_evidence": "docs/short-pcode-copies.md",
+  "minimum_copy_bytes": 32,
+  "copies": [
+    {
+      "disk": "disk1",
+      "block": 102,
+      "byte_offset": 452,
+      "size": 60,
+      "component": "utility_disk1",
+      "input_offset": 8132,
+      "source_audit": "docs/reference/step06h-pcode-audit.json",
+      "sha256": "f770ca2738a6610500c601ef8f3a9887af3f004a2807952a80195c69ec04c387",
+      "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit."
+    },
+    {
+      "disk": "disk1",
+      "block": 155,
+      "byte_offset": 156,
+      "size": 52,
+      "component": "utility_disk1",
+      "input_offset": 7148,
+      "source_audit": "docs/reference/step06h-pcode-audit.json",
+      "sha256": "9b483f7d54e91cef10cb420aa17ff6a15d436d4955bb9d75f004cc432e90d9b2",
+      "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata."
+    },
+    {
+      "disk": "disk1",
+      "block": 155,
+      "byte_offset": 209,
+      "size": 44,
+      "component": "utility_disk1",
+      "input_offset": 7201,
+      "source_audit": "docs/reference/step06h-pcode-audit.json",
+      "sha256": "827892809c83eebd168705b7b5d630460ebd12787ba925d8d31c06bdda0289a8",
+      "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata."
+    },
+    {
+      "disk": "disk1",
+      "block": 155,
+      "byte_offset": 254,
+      "size": 36,
+      "component": "utility_disk1",
+      "input_offset": 7246,
+      "source_audit": "docs/reference/step06h-pcode-audit.json",
+      "sha256": "16f69b106c8ea5877bfcbbc1925a537b25394833d7c21adab2f078b452462db6",
+      "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata."
+    },
+    {
+      "disk": "disk1",
+      "block": 173,
+      "byte_offset": 470,
+      "size": 42,
+      "component": "alternate_9",
+      "input_offset": 1024,
+      "source_audit": "docs/reference/pcode-modules/alternate_9.json",
+      "sha256": "3e430913387b1aa3ddc634b19570aaf0584ff5ea2fa248f3cfe65d47f424fc8c",
+      "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit."
+    },
+    {
+      "disk": "disk1",
+      "block": 267,
+      "byte_offset": 462,
+      "size": 50,
+      "component": "system_4",
+      "input_offset": 1486,
+      "source_audit": "docs/reference/pcode-modules/system_4.json",
+      "sha256": "b85c0f493be2f6a7492f3347424d5295294b4b2e66b38c8cba0332ee4d4e79c8",
+      "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit."
+    },
+    {
+      "disk": "disk2",
+      "block": 217,
+      "byte_offset": 460,
+      "size": 52,
+      "component": "game_17",
+      "input_offset": 3020,
+      "source_audit": "docs/reference/pcode-modules/game_17.json",
+      "sha256": "fec89ccb73a7bec0be1b184f52e078a4a5a80c28ca814f60b789c5f65d4e80b3",
+      "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit."
+    },
+    {
+      "disk": "disk2",
+      "block": 271,
+      "byte_offset": 452,
+      "size": 60,
+      "component": "game_21",
+      "input_offset": 7620,
+      "source_audit": "docs/reference/pcode-modules/game_21.json",
+      "sha256": "6309d65919963c2db1edf707775e38f9d44ae028d75fc97014b7997c4ada757c",
+      "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit."
+    }
+  ]
+}

@@ -6,10 +6,28 @@ import unittest
 from adopt_component import source_copy_plan
 from build_disks import compose_image
 from disk_layout import sha
-from pcode_copies import copy_items, verify_ownership
+from pcode_copies import copy_items, verify_ownership, validate_copy_match
 
 
 class SourceCopyTests(unittest.TestCase):
+    def test_short_match_requires_explicit_review_and_nontrivial_bytes(self):
+        raw = bytes(range(40))
+        row = dict(size=len(raw),sha256=sha(raw),evidence='Reviewed complete tail with source-item boundaries')
+        validate_copy_match(row,raw,32)
+        with self.assertRaises(ValueError):
+            validate_copy_match(row,raw)
+        for minimum in (0,16,33):
+            with self.assertRaises(ValueError):
+                validate_copy_match(row,raw,minimum)
+        for changed in (raw[:-1],raw[:-1]+b'X'):
+            with self.assertRaises(ValueError):
+                validate_copy_match(row,changed,32)
+        for replacement in (dict(row,evidence=''),dict(row,size=31)):
+            with self.assertRaises(ValueError):
+                validate_copy_match(replacement,raw,32)
+        with self.assertRaises(ValueError):
+            validate_copy_match(dict(row,sha256=sha(bytes(40))),bytes(40),32)
+
     def setUp(self):
         self.image = b'ABCDEFABCDEF'
         self.binary = b'ABCDEF'

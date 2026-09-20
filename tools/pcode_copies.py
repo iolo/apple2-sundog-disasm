@@ -18,6 +18,15 @@ RECIPE = ROOT/'src/pcode/evidence/preserved_copies.json'
 AUDIT = ROOT/'docs/reference/preserved-pcode-copies.json'
 
 
+def validate_copy_match(row, raw, minimum=64):
+    if minimum not in (32,64):
+        raise ValueError('Copy recipe needs a reviewed 32- or 64-byte minimum')
+    if not row.get('evidence') or row['size'] < minimum:
+        raise ValueError('Copy needs reviewed evidence and an extended exact match')
+    if len(raw) != row['size'] or sha(raw) != row['sha256'] or len(set(raw[:64])) < 10:
+        raise ValueError('Copy differs from reviewed nontrivial source bytes')
+
+
 def copy_items(report, start, size):
     if start < 0 or size <= 0 or start+size > report['size']:
         raise ValueError('Copy interval outside audited source')
@@ -77,8 +86,6 @@ def run(adopt=False, verify=False, recipe_path=RECIPE, audit_path=AUDIT):
     output.mkdir(parents=True,exist_ok=True)
     binaries, reports, copies, mappings, counts = {}, {}, [], [], Counter()
     for row in recipe['copies']:
-        if not row.get('evidence') or row['size'] < 64:
-            raise ValueError('Copy needs reviewed evidence and an extended exact match')
         name = row['component']
         spec = manifest['components'][name]
         if spec['kind'] != 'ca65-source' or 'storage_encoding' in spec:
@@ -102,8 +109,7 @@ def run(adopt=False, verify=False, recipe_path=RECIPE, audit_path=AUDIT):
             binaries[name],reports[name] = data,report
         items = copy_items(reports[name],row['input_offset'],row['size'])
         raw = binaries[name][row['input_offset']:row['input_offset']+row['size']]
-        if sha(raw) != row['sha256'] or len(set(raw[:64])) < 10:
-            raise ValueError('Copy differs from reviewed nontrivial source bytes')
+        validate_copy_match(row,raw,recipe.get('minimum_copy_bytes',64))
         if not 0 <= row['byte_offset'] < 512 or not 0 <= row['block'] < 280:
             raise ValueError('Copy disk origin is invalid')
         position = 0

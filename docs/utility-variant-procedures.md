@@ -53,8 +53,9 @@ The fragment contains calls to procedure numbers 3, 4 and 31 outside this
 captured range. These remain explicit absent-fragment references. A dictionary
 or segment trailer is not present in this range and is not fabricated. This is
 not a claim that the complete retained program or its original loader has been
-recovered. The clipped procedures before `$0042` and after `$089C` still have
-unresolved bytes. The variant's historical date and live reachability are not
+recovered. The retained bytes of the clipped procedures before `$0042` and
+after `$089C` were subsequently classified by the [short-copy and edge
+review](short-pcode-copies.md). The variant's historical date and live reachability are not
 established.
 
 ## Source context and adoption

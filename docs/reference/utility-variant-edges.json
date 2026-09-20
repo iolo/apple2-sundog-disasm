@@ -1,0 +1,74 @@
+{
+  "classification_evidence": "docs/short-pcode-copies.md",
+  "source_bytes": 16,
+  "new_bytes": {
+    "code": 3,
+    "data": 1
+  },
+  "existing_context_bytes": 12,
+  "sha256": "a67034948edd7048b3bbf232500304454db738f0516a957bf5644da4f16c252f",
+  "records": [
+    {
+      "block": 151,
+      "byte_offset": 56,
+      "size": 10,
+      "primary_offset": 4686,
+      "changed_offset": 8,
+      "expected": "1a00080008007e001f02",
+      "original": "1a00080008007e002002",
+      "kind": "procedure-footer",
+      "input_offset": 0,
+      "classification": "data"
+    },
+    {
+      "block": 155,
+      "byte_offset": 207,
+      "size": 2,
+      "primary_offset": 7199,
+      "changed_offset": 1,
+      "expected": "a50b",
+      "original": "a50c",
+      "kind": "instruction",
+      "assembly": "p_lao 11, 1",
+      "input_offset": 10,
+      "classification": "code"
+    },
+    {
+      "block": 155,
+      "byte_offset": 252,
+      "size": 2,
+      "primary_offset": 7244,
+      "changed_offset": 1,
+      "expected": "a50b",
+      "original": "a50c",
+      "kind": "instruction",
+      "assembly": "p_lao 11, 1",
+      "input_offset": 12,
+      "classification": "code"
+    },
+    {
+      "block": 155,
+      "byte_offset": 289,
+      "size": 2,
+      "primary_offset": 7281,
+      "changed_offset": 1,
+      "expected": "cf2a",
+      "original": "cf2c",
+      "kind": "instruction",
+      "assembly": "p_cgp 42",
+      "input_offset": 14,
+      "classification": "code"
+    }
+  ],
+  "variant_call_target": {
+    "attribute_offset": 2136,
+    "entry_offset": 1978,
+    "representation": "p-code",
+    "lexical_level": 1,
+    "exit_offset": 2124,
+    "parameter_bytes": 2,
+    "local_bytes": 0,
+    "attribute_start": 2128,
+    "number": 42
+  }
+}

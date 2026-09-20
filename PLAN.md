@@ -80,6 +80,9 @@ Split large steps into independently validated, logged, and committed increments
   provisional ranges, including the initializer payload, remain open.
   Step 06an identifies the complete 96-byte tail after the world-default table
   as an exact copy of two native-runtime vector words and 92 instruction bytes.
+  Step 06ao classifies eight shorter exact p-code copies and four contextual
+  utility changes (400 bytes), completing ownership of the retained five-block
+  utility area without inventing its missing procedures or dictionary.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its
