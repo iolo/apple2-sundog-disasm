@@ -1,0 +1,263 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/dialogue-dictionary.md",
+  "size": 1930,
+  "sha256": "31489d907b725901f8936487dbf85aae4b9142a47eb439fafcbb2ccc3ff7221f",
+  "base_consumed_bytes": 808,
+  "supplemental_banks": 12,
+  "sections": [
+    {
+      "kind": "base",
+      "block": 88,
+      "input_offset": 0,
+      "size": 808,
+      "bank_ranges": [
+        [
+          0,
+          808
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 90,
+      "input_offset": 808,
+      "size": 13,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          168,
+          178
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 91,
+      "input_offset": 821,
+      "size": 81,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          224,
+          302
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 92,
+      "input_offset": 902,
+      "size": 81,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          102,
+          180
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 93,
+      "input_offset": 983,
+      "size": 85,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          170,
+          252
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 94,
+      "input_offset": 1068,
+      "size": 93,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          204,
+          294
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 95,
+      "input_offset": 1161,
+      "size": 205,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          158,
+          360
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 96,
+      "input_offset": 1366,
+      "size": 91,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          80,
+          168
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 97,
+      "input_offset": 1457,
+      "size": 45,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          154,
+          196
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 99,
+      "input_offset": 1502,
+      "size": 93,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          82,
+          172
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 100,
+      "input_offset": 1595,
+      "size": 197,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          114,
+          308
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 101,
+      "input_offset": 1792,
+      "size": 75,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          50,
+          122
+        ]
+      ]
+    },
+    {
+      "kind": "supplement",
+      "block": 102,
+      "input_offset": 1867,
+      "size": 63,
+      "bank_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          18
+        ],
+        [
+          444,
+          504
+        ]
+      ]
+    }
+  ],
+  "excluded": "Script ranges, base bytes 808\u20131023, bank 98, and all other block tails"
+}

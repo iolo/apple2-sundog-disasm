@@ -1777,3 +1777,34 @@ and acceptance criteria.
 - **Next action:** Investigate the mixed disk-1 prefix and remaining dialogue,
   graphics, and native fragments; finish full classification and both-emulator
   validation before declaring completion.
+
+## 2026-09-20 — Step 07p: base dialogue dictionary and supplemental text
+
+- **Investigation:** The mixed 128-byte prefix in disk-1 block 196 has no exact
+  match among current reconstructed components. Kept it unresolved; appearance
+  alone does not establish p-code. Continued with evidenced dialogue consumers.
+- **Work/evidence:** Game 16 procedure 37 reads blocks 88–89 to $4A00.
+  Procedures 31/12 reconstruct 65 low-byte offsets using page-crossing indices;
+  the initial dictionary ends at byte 808. Procedure 13 reads its text with
+  alternative markers, high-bit word spacing and character substitutions.
+  Procedures 34/32 load twelve supplemental banks and copy 57 counted text
+  records, aligning each next record to an even address. Verified the FJP
+  bit-zero test in the native interpreter rather than treating it as nonzero.
+- **Artifacts:** Added tools/dialogue_dictionary_asset.py, three tests,
+  docs/dialogue-dictionary.md, and assets/dialogue-dictionary with readable,
+  reversible stored characters/high-bit positions, raw dictionary bytes,
+  manifest and sparse adoption mappings. Classified 808 base bytes and 1,122
+  supplemental bytes: 1,002 text, 57 lengths, 27 zero alignment, 36 metadata.
+  Script regions, block 98, base tail 808–1023 (including final nonzero $A0),
+  and other bank tails remain excluded and unresolved.
+- **Validation:** Tests pass for wrapped low-byte pointers, empty entries, all
+  stored byte values, counted-record boundaries, word alignment, invalid flags,
+  malformed lengths and exclusion of extra tails. Extraction verifies rebuilt
+  hash, temporary ownership, all pointers/counts and exact inverse encoding.
+  Asset verification, adoption, full build and original comparison pass; both
+  disks remain exact and original inputs unchanged. No new live dialogue
+  observation or final both-emulator completion is claimed.
+- **Coverage:** 154,920 source-built disk bytes, 94,109 identified data/asset bytes,
+  37,691 temporary bytes (17,788 disk 1; 19,903 disk 2).
+- **Next action:** Trace the custom dialogue script decoder and remaining text,
+  then continue mixed fragments, full classification and both-emulator checks.

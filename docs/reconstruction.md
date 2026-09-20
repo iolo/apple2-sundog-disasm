@@ -112,7 +112,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Play-disk boot native code and count | `src/native/play_boot.s` | Disk 2 block 0 bytes 0–192 | 193 |
 | Compressed FLIP DISK boot notice | `assets/play-boot/image.rle` | Disk 2 logical bytes 256–831 | 576 |
 | Interaction bounds/style/parameter records | `assets/interaction-records/records.bin` | Disk 2 block 79 and disk 1 block 196 offsets 128–511 | 896 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 21,833 |
+| Base and supplemental dialogue dictionary | `assets/dialogue-dictionary/dictionary.bin` | Disk 2 blocks 88–89 first 808 bytes; reviewed metadata/text in twelve blocks 90–102 | 1,930 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 19,903 |
 
 The 154,920 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -345,8 +346,14 @@ validation remain open.
 
 Step 07o extracts sixteen [interaction records](interaction-records.md) and twelve
 exact stored copies, classifying 896 disk bytes. The differing 128-byte disk-1
-prefix and adjacent disk-2 glyph-like block remain unresolved. Current ownership
-is 154,920 source-built bytes, 92,179 classified data/asset bytes, and 39,621
+prefix and adjacent disk-2 glyph-like block remain unresolved. Ownership then
+was 154,920 source-built bytes, 92,179 classified data/asset bytes, and 39,621
 temporary bytes (17,788 disk 1; 21,833 disk 2).
+
+Step 07p extracts the [base dialogue dictionary and supplemental text](dialogue-dictionary.md):
+808 base bytes plus 1,122 bytes from twelve banks. Script regions and unrelated
+tails remain unresolved. Current ownership is 154,920 source-built bytes,
+94,109 classified data/asset bytes, and 37,691 temporary bytes (17,788 disk 1;
+19,903 disk 2).
 Both rebuilt images remain exact; final classification and behavioral validation
 remain incomplete.
