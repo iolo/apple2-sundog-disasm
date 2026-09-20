@@ -1,0 +1,220 @@
+{
+  "source_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/pascal/ucsd/UCSD%20Pascal%201.2_3.DSK",
+  "disk_sha256": "488bc4bd76afd4cd074fe2b598f2e8a96af2e48e9f3cd323e1cf0e14c210d275",
+  "file": "SYSTEM.APPLE",
+  "extraction": "a2kit get -d IMAGE -f SYSTEM.APPLE -t raw",
+  "file_size": 16384,
+  "file_sha256": "7ce54508b9f1564c47d1db921b530c9702c6e91cee177ccbf89bc40f88a1bd5f",
+  "historical_state_address": 57185,
+  "historical_zero_storage_start": 57191,
+  "bank_end": 57344,
+  "listing_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/programming/pascal/Apple%202%20Pascal%2011%20PCodeIntDism.pdf",
+  "listing_printed_page": 292,
+  "listing_state_address": 57338,
+  "fields": [
+    {
+      "offset": 0,
+      "size": 1,
+      "name": "write_slot_offset"
+    },
+    {
+      "offset": 1,
+      "size": 2,
+      "name": "current_track_storage"
+    },
+    {
+      "offset": 3,
+      "size": 1,
+      "name": "address_retries"
+    },
+    {
+      "offset": 4,
+      "size": 1,
+      "name": "sector_retries"
+    },
+    {
+      "offset": 5,
+      "size": 1,
+      "name": "seek_retries"
+    }
+  ],
+  "windows": [
+    {
+      "offset": 619,
+      "size": 33,
+      "original_hex": "0a48bd80c0bd82c0bd84c0bd86c0a4c7b978048d62df6899780420dad54e62df60",
+      "state_operand_changes": [
+        {
+          "instruction_offset": 638,
+          "old_address": 57186,
+          "new_address": 56464
+        },
+        {
+          "instruction_offset": 648,
+          "old_address": 57186,
+          "new_address": 56464
+        }
+      ]
+    },
+    {
+      "offset": 652,
+      "size": 21,
+      "original_hex": "3886ce8e61dfbd8dc0bd8ec0307cad000385cfa9ff",
+      "state_operand_changes": [
+        {
+          "instruction_offset": 655,
+          "old_address": 57185,
+          "new_address": 56463
+        }
+      ]
+    },
+    {
+      "offset": 733,
+      "size": 23,
+      "original_hex": "a5cfea590002aabd03d4ae61df9d8dc0bd8cc0b90002c8",
+      "state_operand_changes": [
+        {
+          "instruction_offset": 743,
+          "old_address": 57185,
+          "new_address": 56463
+        }
+      ]
+    },
+    {
+      "offset": 1498,
+      "size": 52,
+      "original_hex": "86c885c9cd62dff053a90085cfad62df85ce38e5c9f033b00749ffee62df900569fece62dfc5cf9002a5cfc908b001a8382028d6",
+      "state_operand_changes": [
+        {
+          "instruction_offset": 1502,
+          "old_address": 57186,
+          "new_address": 56464
+        },
+        {
+          "instruction_offset": 1511,
+          "old_address": 57186,
+          "new_address": 56464
+        },
+        {
+          "instruction_offset": 1525,
+          "old_address": 57186,
+          "new_address": 56464
+        },
+        {
+          "instruction_offset": 1532,
+          "old_address": 57186,
+          "new_address": 56464
+        }
+      ]
+    },
+    {
+      "offset": 1572,
+      "size": 19,
+      "original_hex": "20a2d618ad62df29032a05c8aabd80c0a6c860",
+      "state_operand_changes": [
+        {
+          "instruction_offset": 1576,
+          "old_address": 57186,
+          "new_address": 56464
+        }
+      ]
+    }
+  ],
+  "current_state_references": [
+    {
+      "address": 53486,
+      "hex": "8c94dc",
+      "field_offset": 5
+    },
+    {
+      "address": 53491,
+      "hex": "8c92dc",
+      "field_offset": 3
+    },
+    {
+      "address": 53636,
+      "hex": "8c93dc",
+      "field_offset": 4
+    },
+    {
+      "address": 53639,
+      "hex": "ce93dc",
+      "field_offset": 4
+    },
+    {
+      "address": 53657,
+      "hex": "cd90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 53668,
+      "hex": "ad90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 53671,
+      "hex": "ce92dc",
+      "field_offset": 3
+    },
+    {
+      "address": 53676,
+      "hex": "ce94dc",
+      "field_offset": 5
+    },
+    {
+      "address": 53681,
+      "hex": "ad90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 53687,
+      "hex": "8d92dc",
+      "field_offset": 3
+    },
+    {
+      "address": 53886,
+      "hex": "8d90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 53896,
+      "hex": "4e90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 53903,
+      "hex": "8e8fdc",
+      "field_offset": 0
+    },
+    {
+      "address": 53991,
+      "hex": "ae8fdc",
+      "field_offset": 0
+    },
+    {
+      "address": 54750,
+      "hex": "cd90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 54759,
+      "hex": "ad90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 54773,
+      "hex": "ee90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 54780,
+      "hex": "ce90dc",
+      "field_offset": 1
+    },
+    {
+      "address": 54824,
+      "hex": "ad90dc",
+      "field_offset": 1
+    }
+  ]
+}

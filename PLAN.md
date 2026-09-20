@@ -135,6 +135,10 @@ Split large steps into independently validated, logged, and committed increments
   footers in the bootstrap/title prefix and bounded bootstrap zero storage.
   The title prefix's final 96 bytes remain explicitly provisional; source
   ownership totals alone are not treated as classification evidence.
+  Step 08l verifies the native I/O bank's relocated six-byte state record and
+  bounded zero remainder using historical field layout and matching consumers.
+  The unused track-field byte and 875 spare-bank bytes now have explicit data
+  evidence without changing source ownership totals or disk output.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

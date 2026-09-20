@@ -2820,3 +2820,46 @@ and acceptance criteria.
 - **Workspace/next:** User PRD edits and ref/ remain excluded. Continue the
   remaining native provisional ranges, disk tails and allocation evidence,
   followed by final clean-build and dual-emulator behavior validation.
+
+## 2026-09-20 — Step 08l: audit native I/O state and spare bank storage
+
+- **Evidence/work:** The Pascal 1.1 interpreter listing, printed page 292,
+  declares the driver's six-byte state group with a two-byte CURTRK field.
+  Its unused second byte accounts for SunDog $DC91. Independently extracted
+  Pascal 1.2 SYSTEM.APPLE retains the same group at $DF61–$DF66. Five bounded
+  consumer spans totaling 148 bytes match SunDog exactly after only nine
+  state-address operand relocations. All nineteen current state references
+  retain offsets 0, 1, 3, 4 and 5, consistent with the same field boundaries.
+- **Storage classification:** After the complete six-byte state record, the
+  fixed 4 KB I/O bank has 875 zero bytes to $DFFF. The historical 1.2 bank has
+  the corresponding state-followed-by-zero-storage layout, with 153 spare bytes;
+  moving the state 722 bytes earlier yields the present 875-byte remainder.
+  The matched consumers, record boundary, captured bank allocation and complete
+  zero fill jointly establish data storage. No live use of the spare area or
+  particular historical editing process is inferred. Five state bytes already
+  had consumers; the formerly provisional high byte plus 875 storage bytes
+  now have explicit classification evidence.
+- **Artifacts:** Added src/native/evidence/native_io_storage.json with exact
+  disk/file hashes, bounded historical windows and local references. Added
+  tools/native_io_storage.py, two tests and docs/native-io-storage.md; integrated
+  the checks into check_native_io.py and recorded its complete audit. Named the
+  unused track byte in native source/da65 info and updated source comments,
+  native-I/O documentation and PLAN.md.
+- **Validation:** Both new tests pass, rejecting altered state/storage,
+  consumer bytes/operands, missing references and a truncated bank. The complete
+  native I/O check validates 1,393 instructions including overlaps and 372
+  direct/vector targets. The external verifier confirms the full 16,384-byte
+  historical file hash, all consumer excerpts and historical zero storage.
+  A fresh download of the cited APPLE3 disk independently matches its frozen
+  hash. Full rebuild, tools/verify_disks.py and git diff --check pass. Native
+  component bytes, both full disks and the manual remain exact; no new emulator
+  or peripheral execution is claimed.
+- **Coverage:** This resolves data evidence for 876 already source-built bytes.
+  Manifest totals remain 179,220 source bytes, 100,900 identified data/asset
+  bytes and 6,600 temporary bytes (906 disk 1; 5,694 disk 2). The native I/O
+  preservation audit now reports no unresolved ranges within its scope.
+- **Other research/next:** Seven-byte template tails and the text-like block-115
+  tails had no exact matches in the current components or four historical 1.2
+  disks; they remain unresolved. Continue other provisional native data and
+  disk-allocation evidence before final behavioral validation. User PRD edits
+  and ref/ remain untouched and excluded.

@@ -12,6 +12,7 @@ import subprocess
 import tempfile
 
 from disk_layout import ROOT, sha
+from native_io_storage import audit_storage
 
 BASE, END = 0xD000, 0xE000
 CODE_SPANS = [(0xD000, 0xD028), (0xD029, 0xD258), (0xD259, 0xD395),
@@ -87,6 +88,7 @@ def audit(binary):
         raise ValueError("Bit-pair conversion table mismatch")
     if any(binary[0xC8F:]):
         raise ValueError("Initial state and preserved zero tail changed")
+    storage = audit_storage(binary, instructions)
     code_bytes = sum(map(len, instructions.values())) + len(OVERLAPS)
     return {"sha256": sha(binary), "instruction_count_including_overlaps": len(instructions) + len(OVERLAPS),
             "unique_instruction_bytes": code_bytes, "data_bytes": len(binary) - code_bytes,
@@ -95,7 +97,8 @@ def audit(binary):
             "overlapping_bit_instructions": {f"{a:04X}": b.hex() for a, b in OVERLAPS.items()},
             "patched_instructions": {f"{a:04X}": b for a, b in PATCHED_INSTRUCTIONS.items()},
             "gcr_symbols": symbols.hex(), "derived_bit_pair_entries": 192,
-            "external_targets": sorted({t for _, t in edges if not BASE <= t < END})}
+            "external_targets": sorted({t for _, t in edges if not BASE <= t < END}),
+            "preservation_data": storage, "unresolved_preservation_ranges": []}
 
 
 def main():

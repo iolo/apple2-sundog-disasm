@@ -1733,11 +1733,12 @@ control_handlers:
 ; ----------------------------------------------------------------------------
 write_slot_offset: .byte 0              ; $DC8F
 current_halftrack: .byte 0              ; $DC90
-        .byte 0                        ; $DC91: preserved, no direct reference found
+current_track_unused_high: .byte 0      ; $DC91: second byte of historical CURTRK storage.
 address_retries: .byte 0                ; $DC92
 sector_retries: .byte 0                 ; $DC93
 seek_retries: .byte 0                   ; $DC94
-; Original zero-filled remainder; not decoded as BRK instructions.
+; Spare storage after the relocated six-byte state record, to bank end.
+; Field/allocation evidence: docs/native-io-storage.md.
 preserved_zero_tail:
         .res $036B, 0                  ; $DC95-$DFFF
 .assert * - native_io_start = $1000, error, "Native I/O bank size changed"

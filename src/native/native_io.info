@@ -64,6 +64,7 @@ LABEL { ADDR $DC59; NAME "control_characters"; };
 LABEL { ADDR $DC6B; NAME "control_handlers"; };
 LABEL { ADDR $DC8F; NAME "write_slot_offset"; };
 LABEL { ADDR $DC90; NAME "current_halftrack"; };
+LABEL { ADDR $DC91; NAME "current_track_unused_high"; };
 LABEL { ADDR $DC92; NAME "address_retries"; };
 LABEL { ADDR $DC93; NAME "sector_retries"; };
 LABEL { ADDR $DC94; NAME "seek_retries"; };

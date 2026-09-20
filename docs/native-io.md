@@ -82,10 +82,11 @@ disk bytes. Polling-loop branches, delays, and instruction choices remain exact.
 - `$DC3B`: mutable shift-register byte used by the status routine.
 - `$DC59`–`$DC6A`: 18 control-character values; `$DC6B`–`$DC8E`: the matching
   18 handler addresses consumed by `$DA1D`–`$DA37`.
-- `$DC8F`–`$DC94`: zero-initialized disk state/retry bytes, including an
-  unreferenced preserved byte at `$DC91`.
-- `$DC95`–`$DFFF`: 875 preserved zero bytes, emitted with `.res`; they are
-  not presented as BRK instructions or as newly understood runtime storage.
+- `$DC8F`–`$DC94`: the six-byte disk-state record. The historical two-byte
+  track field accounts for the unused byte at `$DC91`; see the
+  [state/storage audit](native-io-storage.md).
+- `$DC95`–`$DFFF`: 875 zero bytes of spare fixed-bank storage after that
+  complete state record, emitted with `.res` and checked by the same audit.
 
 ## Reproduction and validation
 

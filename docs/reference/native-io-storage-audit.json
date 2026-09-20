@@ -1,0 +1,224 @@
+{
+  "sha256": "b3d767f4beb9a26bf79736ec7826a79ba52cef71887b3320bb3cf45cd6b31139",
+  "instruction_count_including_overlaps": 1393,
+  "unique_instruction_bytes": 2778,
+  "data_bytes": 1318,
+  "checked_direct_and_vector_targets": 372,
+  "code_spans_end_exclusive": [
+    [
+      53248,
+      53288
+    ],
+    [
+      53289,
+      53848
+    ],
+    [
+      53849,
+      54165
+    ],
+    [
+      54528,
+      54738
+    ],
+    [
+      54739,
+      54856
+    ],
+    [
+      54872,
+      54912
+    ],
+    [
+      54915,
+      56379
+    ],
+    [
+      56380,
+      56409
+    ]
+  ],
+  "overlapping_bit_instructions": {
+    "D028": "2ca001",
+    "D258": "2438",
+    "D5D2": "2418"
+  },
+  "patched_instructions": {
+    "D560": "ae ec c0",
+    "D577": "ae ec c0",
+    "D58D": "ae ec c0",
+    "D5A1": "ae ec c0",
+    "D5B6": "ae ec c0",
+    "D574": "99 00 10",
+    "D59B": "99 00 10",
+    "D5B3": "99 00 10",
+    "DA18": "49 80",
+    "DBB9": "91 00"
+  },
+  "gcr_symbols": "96979a9b9d9e9fa6a7abacadaeafb2b3b4b5b6b7b9babbbcbdbebfcbcdcecfd3d6d7d9dadbdcdddedfe5e6e7e9eaebecedeeeff2f3f4f5f6f7f9fafbfcfdfeff",
+  "derived_bit_pair_entries": 192,
+  "external_targets": [
+    51200,
+    51277,
+    51626,
+    65254,
+    65467,
+    65486,
+    65492,
+    65496
+  ],
+  "preservation_data": {
+    "classification_evidence": "docs/native-io-storage.md",
+    "source_evidence": "src/native/evidence/native_io_storage.json",
+    "state_address": 56463,
+    "state_size": 6,
+    "fields": [
+      {
+        "offset": 0,
+        "size": 1,
+        "name": "write_slot_offset",
+        "address": 56463,
+        "classification": "data"
+      },
+      {
+        "offset": 1,
+        "size": 2,
+        "name": "current_track_storage",
+        "address": 56464,
+        "classification": "data"
+      },
+      {
+        "offset": 3,
+        "size": 1,
+        "name": "address_retries",
+        "address": 56466,
+        "classification": "data"
+      },
+      {
+        "offset": 4,
+        "size": 1,
+        "name": "sector_retries",
+        "address": 56467,
+        "classification": "data"
+      },
+      {
+        "offset": 5,
+        "size": 1,
+        "name": "seek_retries",
+        "address": 56468,
+        "classification": "data"
+      }
+    ],
+    "checked_state_references": [
+      {
+        "address": 53486,
+        "hex": "8c94dc",
+        "field_offset": 5
+      },
+      {
+        "address": 53491,
+        "hex": "8c92dc",
+        "field_offset": 3
+      },
+      {
+        "address": 53636,
+        "hex": "8c93dc",
+        "field_offset": 4
+      },
+      {
+        "address": 53639,
+        "hex": "ce93dc",
+        "field_offset": 4
+      },
+      {
+        "address": 53657,
+        "hex": "cd90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 53668,
+        "hex": "ad90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 53671,
+        "hex": "ce92dc",
+        "field_offset": 3
+      },
+      {
+        "address": 53676,
+        "hex": "ce94dc",
+        "field_offset": 5
+      },
+      {
+        "address": 53681,
+        "hex": "ad90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 53687,
+        "hex": "8d92dc",
+        "field_offset": 3
+      },
+      {
+        "address": 53886,
+        "hex": "8d90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 53896,
+        "hex": "4e90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 53903,
+        "hex": "8e8fdc",
+        "field_offset": 0
+      },
+      {
+        "address": 53991,
+        "hex": "ae8fdc",
+        "field_offset": 0
+      },
+      {
+        "address": 54750,
+        "hex": "cd90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 54759,
+        "hex": "ad90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 54773,
+        "hex": "ee90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 54780,
+        "hex": "ce90dc",
+        "field_offset": 1
+      },
+      {
+        "address": 54824,
+        "hex": "ad90dc",
+        "field_offset": 1
+      }
+    ],
+    "historical_consumer_bytes": 148,
+    "historical_state_address": 57185,
+    "unused_track_high_byte": {
+      "address": 56465,
+      "size": 1,
+      "classification": "data"
+    },
+    "zero_bank_storage": {
+      "address": 56469,
+      "size": 875,
+      "classification": "data"
+    },
+    "unresolved_preservation_ranges": []
+  },
+  "unresolved_preservation_ranges": []
+}
