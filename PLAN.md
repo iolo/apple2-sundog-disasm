@@ -100,6 +100,9 @@ Split large steps into independently validated, logged, and committed increments
   unresolved.
   Step 08d reconstructs 978 bytes of bounded zero storage after the two full-ship
   image copies and the four-record save descriptor table.
+  Step 08e reconstructs 1,178 bytes of retained Pascal directory/header fields:
+  the identical block-117 directory tails and disk-1 block-259 header suffix,
+  preserving cleared-name records and clipped fields without inventing allocations.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

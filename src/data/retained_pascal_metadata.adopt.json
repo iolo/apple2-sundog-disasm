@@ -1,0 +1,43 @@
+{
+  "name": "retained_pascal_metadata",
+  "source": "src/data/retained_pascal_metadata.s",
+  "config": "src/data/retained_pascal_metadata.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 58718,
+      "size": 162,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 58368,
+      "size": 256,
+      "input_offset": 162
+    },
+    {
+      "disk": "disk2",
+      "offset": 58718,
+      "size": 162,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 58368,
+      "size": 256,
+      "input_offset": 162
+    },
+    {
+      "disk": "disk1",
+      "offset": 133546,
+      "size": 86,
+      "input_offset": 418
+    },
+    {
+      "disk": "disk1",
+      "offset": 133120,
+      "size": 256,
+      "input_offset": 504
+    }
+  ]
+}

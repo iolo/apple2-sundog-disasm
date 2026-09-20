@@ -2359,3 +2359,43 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Continue remaining orphan fragments and disk data, then
   complete final behavior and reproducibility checks in both emulators.
+
+## 2026-09-20 — Step 08e: retained Pascal directory and header metadata
+
+- **Evidence/work:** The identical tails of block 117 on both disks contain
+  nine consecutive 26-byte Pascal directory records: four counted development
+  filenames and five cleared-name records with retained filename/numeric storage.
+  Record structure, sizes, dates and aligned field boundaries establish data
+  ownership. The leading two bytes are a clipped preceding date word; 182 zero
+  bytes follow the final complete record. These historical records are not
+  asserted to be a current allocation map, and overwritten inactive fields
+  are preserved without repair or invented file meanings.
+- **Header fragment:** Disk-1 block 259 bytes 170–511 retain a segment-header
+  suffix with its old origin at byte 12: name storage, sixteen kind words,
+  sixteen text-address words, sixteen version/machine/segment words, intrinsic
+  set $44, zero library information and an empty clipped comment field. The
+  sequence matches the documented header layout. Its missing 158-byte prefix
+  and twelve-byte suffix are excluded rather than reconstructed by assumption.
+- **Artifacts:** Added tools/retained_pascal_metadata.py, three tests, typed
+  source/config/adoption artifacts, a complete field audit and
+  docs/retained-pascal-metadata.md. Updated PLAN.md and adopted the 760-byte
+  source component for 1,178 disk bytes, sharing the directory fragment between
+  disks. No uninterpreted binary component was introduced.
+- **Validation:** All three tests pass. An initial test incorrectly expected
+  a changed inactive date field to fail despite its intentionally unspecified
+  semantics; the corrected rejection case mutates the structurally checked
+  final-block byte count. Preparation assembles every field exactly; --verify
+  regenerates source/audit/mappings and confirms manifest ownership after
+  adoption. An independent per-byte ownership check covers all 418+342 disk-1
+  and 418 disk-2 bytes. Full rebuild, original disk/manual checks, exact disk
+  comparisons and git diff --check pass. No fresh emulator execution is claimed.
+- **Coverage:** 176,431 source-built disk bytes, 100,324 identified data/asset
+  bytes and 9,965 temporary bytes (3,115 disk 1; 6,850 disk 2). This checkpoint
+  removes 1,178 temporary bytes, all classified as data.
+- **Open evidence:** The final play-disk track remains unresolved. Its all-zero
+  contents and position beyond the last Pascal module do not supply a complete
+  allocation/consumer argument by themselves; this checkpoint does not classify
+  it or other unrelated tails by analogy.
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Continue the remaining retained memory/code fragments and
+  data allocations, then final dual-emulator behavior/reproducibility validation.

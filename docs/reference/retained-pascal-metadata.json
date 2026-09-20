@@ -1,0 +1,949 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/retained-pascal-metadata.md",
+  "source_output_bytes": 760,
+  "disk_output_bytes": 1178,
+  "records": [
+    {
+      "disk": "disk1",
+      "block": 117,
+      "sha256": "6019c6640cccce9725b91ab7c5912d5cbc8a62ee64144a262cc34a13d3525226",
+      "start": 94,
+      "end": 512,
+      "items": [
+        {
+          "offset": 94,
+          "size": 2,
+          "kind": "clipped-directory-date",
+          "values": [
+            43511
+          ]
+        },
+        {
+          "offset": 96,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            229,
+            233,
+            3
+          ]
+        },
+        {
+          "offset": 102,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            14
+          ]
+        },
+        {
+          "offset": 103,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "MAINB.LIB.TEXT"
+        },
+        {
+          "offset": 118,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 122,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            233,
+            237,
+            3
+          ]
+        },
+        {
+          "offset": 128,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            13
+          ]
+        },
+        {
+          "offset": 129,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "GRND.LIB.TEXT"
+        },
+        {
+          "offset": 144,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 148,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            237,
+            241,
+            3
+          ]
+        },
+        {
+          "offset": 154,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            13
+          ]
+        },
+        {
+          "offset": 155,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SHIP.LIB.TEXT"
+        },
+        {
+          "offset": 170,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 174,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            254,
+            258,
+            2
+          ]
+        },
+        {
+          "offset": 180,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            10
+          ]
+        },
+        {
+          "offset": 181,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "DUMMY.CODE"
+        },
+        {
+          "offset": 196,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 200,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            254,
+            320,
+            42850
+          ]
+        },
+        {
+          "offset": 206,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 207,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "DUMMY.CODE"
+        },
+        {
+          "offset": 222,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 226,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            253,
+            257,
+            3
+          ]
+        },
+        {
+          "offset": 232,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 233,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SETPRINT.TEXT"
+        },
+        {
+          "offset": 248,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            42805
+          ]
+        },
+        {
+          "offset": 252,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            301,
+            320,
+            42851
+          ]
+        },
+        {
+          "offset": 258,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 259,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SHIP.RDMAP.TEXT"
+        },
+        {
+          "offset": 274,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 278,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            271,
+            274,
+            5
+          ]
+        },
+        {
+          "offset": 284,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 285,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "CHAIN.LIBRARY"
+        },
+        {
+          "offset": 300,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43335
+          ]
+        },
+        {
+          "offset": 304,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            274,
+            320,
+            42851
+          ]
+        },
+        {
+          "offset": 310,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 311,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "WCHAR.ASM.TEXT"
+        },
+        {
+          "offset": 326,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 330,
+          "size": 182,
+          "kind": "zero-directory-storage"
+        }
+      ],
+      "records": [
+        {
+          "offset": 96,
+          "first_block": 229,
+          "end_block": 233,
+          "type_storage": 3,
+          "name_length": 14,
+          "retained_name": "MAINB.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 122,
+          "first_block": 233,
+          "end_block": 237,
+          "type_storage": 3,
+          "name_length": 13,
+          "retained_name": "GRND.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 148,
+          "first_block": 237,
+          "end_block": 241,
+          "type_storage": 3,
+          "name_length": 13,
+          "retained_name": "SHIP.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 174,
+          "first_block": 254,
+          "end_block": 258,
+          "type_storage": 2,
+          "name_length": 10,
+          "retained_name": "DUMMY.CODE",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 200,
+          "first_block": 254,
+          "end_block": 320,
+          "type_storage": 42850,
+          "name_length": 0,
+          "retained_name": "DUMMY.CODE",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        },
+        {
+          "offset": 226,
+          "first_block": 253,
+          "end_block": 257,
+          "type_storage": 3,
+          "name_length": 0,
+          "retained_name": "SETPRINT.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 42805
+        },
+        {
+          "offset": 252,
+          "first_block": 301,
+          "end_block": 320,
+          "type_storage": 42851,
+          "name_length": 0,
+          "retained_name": "SHIP.RDMAP.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        },
+        {
+          "offset": 278,
+          "first_block": 271,
+          "end_block": 274,
+          "type_storage": 5,
+          "name_length": 0,
+          "retained_name": "CHAIN.LIBRARY",
+          "final_block_bytes": 512,
+          "date_storage": 43335
+        },
+        {
+          "offset": 304,
+          "first_block": 274,
+          "end_block": 320,
+          "type_storage": 42851,
+          "name_length": 0,
+          "retained_name": "WCHAR.ASM.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        }
+      ],
+      "interpretation": "Directory residue; no enclosing volume header or current allocation claimed"
+    },
+    {
+      "disk": "disk2",
+      "block": 117,
+      "sha256": "6019c6640cccce9725b91ab7c5912d5cbc8a62ee64144a262cc34a13d3525226",
+      "start": 94,
+      "end": 512,
+      "items": [
+        {
+          "offset": 94,
+          "size": 2,
+          "kind": "clipped-directory-date",
+          "values": [
+            43511
+          ]
+        },
+        {
+          "offset": 96,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            229,
+            233,
+            3
+          ]
+        },
+        {
+          "offset": 102,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            14
+          ]
+        },
+        {
+          "offset": 103,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "MAINB.LIB.TEXT"
+        },
+        {
+          "offset": 118,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 122,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            233,
+            237,
+            3
+          ]
+        },
+        {
+          "offset": 128,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            13
+          ]
+        },
+        {
+          "offset": 129,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "GRND.LIB.TEXT"
+        },
+        {
+          "offset": 144,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 148,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            237,
+            241,
+            3
+          ]
+        },
+        {
+          "offset": 154,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            13
+          ]
+        },
+        {
+          "offset": 155,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SHIP.LIB.TEXT"
+        },
+        {
+          "offset": 170,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 174,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            254,
+            258,
+            2
+          ]
+        },
+        {
+          "offset": 180,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            10
+          ]
+        },
+        {
+          "offset": 181,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "DUMMY.CODE"
+        },
+        {
+          "offset": 196,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43112
+          ]
+        },
+        {
+          "offset": 200,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            254,
+            320,
+            42850
+          ]
+        },
+        {
+          "offset": 206,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 207,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "DUMMY.CODE"
+        },
+        {
+          "offset": 222,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 226,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            253,
+            257,
+            3
+          ]
+        },
+        {
+          "offset": 232,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 233,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SETPRINT.TEXT"
+        },
+        {
+          "offset": 248,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            42805
+          ]
+        },
+        {
+          "offset": 252,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            301,
+            320,
+            42851
+          ]
+        },
+        {
+          "offset": 258,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 259,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "SHIP.RDMAP.TEXT"
+        },
+        {
+          "offset": 274,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 278,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            271,
+            274,
+            5
+          ]
+        },
+        {
+          "offset": 284,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 285,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "CHAIN.LIBRARY"
+        },
+        {
+          "offset": 300,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            43335
+          ]
+        },
+        {
+          "offset": 304,
+          "size": 6,
+          "kind": "directory-extent-and-type",
+          "values": [
+            274,
+            320,
+            42851
+          ]
+        },
+        {
+          "offset": 310,
+          "size": 1,
+          "kind": "directory-name-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 311,
+          "size": 15,
+          "kind": "directory-name-storage",
+          "text": "WCHAR.ASM.TEXT"
+        },
+        {
+          "offset": 326,
+          "size": 4,
+          "kind": "directory-size-and-date",
+          "values": [
+            512,
+            51200
+          ]
+        },
+        {
+          "offset": 330,
+          "size": 182,
+          "kind": "zero-directory-storage"
+        }
+      ],
+      "records": [
+        {
+          "offset": 96,
+          "first_block": 229,
+          "end_block": 233,
+          "type_storage": 3,
+          "name_length": 14,
+          "retained_name": "MAINB.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 122,
+          "first_block": 233,
+          "end_block": 237,
+          "type_storage": 3,
+          "name_length": 13,
+          "retained_name": "GRND.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 148,
+          "first_block": 237,
+          "end_block": 241,
+          "type_storage": 3,
+          "name_length": 13,
+          "retained_name": "SHIP.LIB.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 174,
+          "first_block": 254,
+          "end_block": 258,
+          "type_storage": 2,
+          "name_length": 10,
+          "retained_name": "DUMMY.CODE",
+          "final_block_bytes": 512,
+          "date_storage": 43112
+        },
+        {
+          "offset": 200,
+          "first_block": 254,
+          "end_block": 320,
+          "type_storage": 42850,
+          "name_length": 0,
+          "retained_name": "DUMMY.CODE",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        },
+        {
+          "offset": 226,
+          "first_block": 253,
+          "end_block": 257,
+          "type_storage": 3,
+          "name_length": 0,
+          "retained_name": "SETPRINT.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 42805
+        },
+        {
+          "offset": 252,
+          "first_block": 301,
+          "end_block": 320,
+          "type_storage": 42851,
+          "name_length": 0,
+          "retained_name": "SHIP.RDMAP.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        },
+        {
+          "offset": 278,
+          "first_block": 271,
+          "end_block": 274,
+          "type_storage": 5,
+          "name_length": 0,
+          "retained_name": "CHAIN.LIBRARY",
+          "final_block_bytes": 512,
+          "date_storage": 43335
+        },
+        {
+          "offset": 304,
+          "first_block": 274,
+          "end_block": 320,
+          "type_storage": 42851,
+          "name_length": 0,
+          "retained_name": "WCHAR.ASM.TEXT",
+          "final_block_bytes": 512,
+          "date_storage": 51200
+        }
+      ],
+      "interpretation": "Directory residue; no enclosing volume header or current allocation claimed"
+    },
+    {
+      "disk": "disk1",
+      "block": 259,
+      "sha256": "1e40484db4d60aa2a4f2f407a81f496c4fcfa129dc2bccc892aae03d4b051931",
+      "start": 170,
+      "end": 512,
+      "header_origin_in_containing_block": 12,
+      "missing_prefix_bytes": 158,
+      "missing_suffix_bytes": 12,
+      "items": [
+        {
+          "offset": 170,
+          "size": 34,
+          "kind": "clipped-header-name-storage",
+          "text": "                                  "
+        },
+        {
+          "offset": 204,
+          "size": 32,
+          "kind": "segment-kind-words",
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "offset": 236,
+          "size": 32,
+          "kind": "segment-text-address-words",
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "offset": 268,
+          "size": 32,
+          "kind": "segment-information-words",
+          "values": [
+            41472,
+            41473,
+            41475,
+            41476,
+            41477,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472,
+            41472
+          ]
+        },
+        {
+          "offset": 300,
+          "size": 4,
+          "kind": "intrinsic-segment-set",
+          "values": [
+            68
+          ]
+        },
+        {
+          "offset": 304,
+          "size": 140,
+          "kind": "zero-library-information"
+        },
+        {
+          "offset": 444,
+          "size": 1,
+          "kind": "comment-length",
+          "values": [
+            0
+          ]
+        },
+        {
+          "offset": 445,
+          "size": 67,
+          "kind": "zero-clipped-comment-storage"
+        }
+      ],
+      "intrinsic_segments": [
+        2,
+        6
+      ]
+    }
+  ]
+}
