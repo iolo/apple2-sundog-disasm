@@ -120,6 +120,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 08h reconstructs the 460-byte disk-1 block-258 compiler heap tail.
   Identifier/parameter links and constructor allocation/write evidence classify
   the native-looking remnants as unused fields inside bounded data records.
+  Step 08j reconstructs the eight-byte disk-1 block-83 control record from
+  direct consumers: mode, save slot, persisted globals and two block selectors.
+  The remaining 504 bytes of that block still require separate classification.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

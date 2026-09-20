@@ -1,0 +1,8 @@
+{
+  "name": "disk_control",
+  "source": "src/data/disk_control.s",
+  "config": "src/data/disk_control.cfg",
+  "mappings": [
+    {"disk": "disk1", "offset": 43264, "size": 8, "input_offset": 0}
+  ]
+}

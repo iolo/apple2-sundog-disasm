@@ -46,7 +46,8 @@ zero or nonzero tails of executable files elsewhere on the disks.
 - Applying the 30 recorded changes in `docs/reference/utility-entry-writes.json`
   to the clean rebuilt image makes the entire block-79 directory identical to
   block 80. Twenty-six changes select the utility directory; four changes are
-  outside these directories in block 83. Their meaning remains a separate task.
+  outside these directories in block 83, in the four-byte persisted-globals
+  field of the [disk control record](disk-control.md).
 - Block 82 has the same validated directory structure and coherent demo file
   extents. Its classification is structural evidence; this checkpoint does not
   claim a new live trace selecting that view.

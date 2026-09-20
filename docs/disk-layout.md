@@ -96,7 +96,8 @@ The clean reference utility sequence changes 30 bytes, recorded exactly in
 sector `$9100` (logical block 79): the two directory entries at blocks 85 and
 140 exchange startup/library names and type/date fields, consistent with the
 utility directory view. Four more bytes change at `$A902`–`$A905` (logical block
-83); their meaning is still unresolved. These observations explain the changed
+83); the later [disk control audit](disk-control.md) identifies them as a
+four-byte persisted-globals field. These observations explain the changed
 working-copy hash without assuming that saved characters were modified.
 
 No source rebuild, complete asset classification, allocation interpretation for

@@ -2645,3 +2645,35 @@ and acceptance criteria.
   untouched and excluded.
 - **Next action:** Continue remaining record/template tails and retained code
   fragments, then finish allocation evidence and final dual-emulator checks.
+
+## 2026-09-20 — Step 08j: reconstruct the disk control record
+
+- **Evidence/work:** Traced all eight leading bytes of disk-1 block 83 to
+  direct consumers in library 26 procedure 6 and startup: the mode flag,
+  save-slot selector, four bytes copied to/from data-segment 29 words 21–22,
+  screen-initializer block selector and directory destination selector.
+  The two readers independently select absolute block 83 through library 22's
+  three-block bias. The directory write uses byte 7, selecting absolute block
+  79; byte 6 independently selects the already reconstructed block-2 initializer.
+  Existing utility-entry capture changes at image offsets $A902–$A905 exactly
+  match the four-byte persisted-globals field. Its detailed algorithm remains
+  unspecified; the direct copy operations establish data classification.
+- **Artifacts:** Added eight-byte typed ca65 source, linker configuration and
+  adoption recipe under src/data/disk_control, plus docs/disk-control.md with
+  every field's instruction offsets. Updated PLAN.md, disk-layout and Pascal
+  directory documentation to explain the previously unresolved utility writes.
+  No classification claim extends into the remaining 504 bytes of block 83.
+- **Validation:** Generic adoption assembled and compared all eight bytes,
+  checking exclusive prior temporary ownership. Full rebuild and
+  tools/verify_disks.py pass; both disks and the manual retain their reference
+  hashes. Independently checked all four captured write offsets and before/after
+  values against the documented field. git diff --check passes. No new tool or
+  emulator run was needed for this data-declaration checkpoint.
+- **Coverage:** 179,023 source-built disk bytes, 100,836 identified data/asset
+  bytes and 6,861 temporary bytes (1,093 disk 1; 5,768 disk 2). The eight newly
+  source-built bytes are data, not executable instructions.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Continue the block-83 remainder and other retained fragments;
+  establish evidence for the final-track allocation before classifying it.
+  Final clean-build and dual-emulator behavior validation remain pending.
