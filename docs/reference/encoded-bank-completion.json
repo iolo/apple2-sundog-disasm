@@ -1,0 +1,3661 @@
+{
+  "classification_evidence": "docs/encoded-bank-completion.md",
+  "records": [
+    {
+      "coverage_bytes": {
+        "code": 1475,
+        "data": 573
+      },
+      "layers": {
+        "loader": {
+          "code": 63
+        },
+        "body": {
+          "data": 418,
+          "code": 1079
+        },
+        "footer_and_copies": {
+          "data": 137,
+          "code": 327
+        },
+        "retained_stubs": {
+          "code": 6,
+          "data": 12
+        },
+        "symbols": {
+          "data": 6
+        }
+      },
+      "byte_classification_runs": [
+        {
+          "offset": 0,
+          "size": 63,
+          "classification": "code"
+        },
+        {
+          "offset": 63,
+          "size": 10,
+          "classification": "data"
+        },
+        {
+          "offset": 73,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 78,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 81,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 92,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 93,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 96,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 99,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 104,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 107,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 113,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 116,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 121,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 124,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 127,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 130,
+          "size": 12,
+          "classification": "code"
+        },
+        {
+          "offset": 142,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 145,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 151,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 154,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 159,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 162,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 168,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 171,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 177,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 180,
+          "size": 37,
+          "classification": "code"
+        },
+        {
+          "offset": 217,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 220,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 225,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 228,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 234,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 237,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 242,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 245,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 248,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 251,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 255,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 258,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 264,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 267,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 270,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 271,
+          "size": 19,
+          "classification": "code"
+        },
+        {
+          "offset": 290,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 291,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 297,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 298,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 304,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 307,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 313,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 316,
+          "size": 19,
+          "classification": "code"
+        },
+        {
+          "offset": 335,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 338,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 345,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 348,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 354,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 357,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 360,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 363,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 371,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 374,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 379,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 382,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 387,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 388,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 399,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 402,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 406,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 409,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 412,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 413,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 427,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 428,
+          "size": 18,
+          "classification": "code"
+        },
+        {
+          "offset": 446,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 447,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 452,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 453,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 459,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 460,
+          "size": 9,
+          "classification": "code"
+        },
+        {
+          "offset": 469,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 470,
+          "size": 34,
+          "classification": "code"
+        },
+        {
+          "offset": 504,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 505,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 508,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 511,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 515,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 518,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 521,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 524,
+          "size": 1,
+          "classification": "code"
+        },
+        {
+          "offset": 525,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 527,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 532,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 535,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 541,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 544,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 547,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 550,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 555,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 558,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 563,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 566,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 572,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 575,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 579,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 582,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 585,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 588,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 593,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 596,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 602,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 605,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 610,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 613,
+          "size": 21,
+          "classification": "code"
+        },
+        {
+          "offset": 634,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 637,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 643,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 646,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 659,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 662,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 666,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 669,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 672,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 675,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 678,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 681,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 684,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 687,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 692,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 695,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 706,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 709,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 717,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 718,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 721,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 724,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 728,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 731,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 736,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 739,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 744,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 747,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 753,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 756,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 761,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 764,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 769,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 772,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 778,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 781,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 787,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 790,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 795,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 798,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 803,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 806,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 811,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 814,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 820,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 823,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 828,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 831,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 837,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 840,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 846,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 849,
+          "size": 1,
+          "classification": "code"
+        },
+        {
+          "offset": 850,
+          "size": 5,
+          "classification": "data"
+        },
+        {
+          "offset": 855,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 858,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 861,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 864,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 867,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 873,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 876,
+          "size": 36,
+          "classification": "code"
+        },
+        {
+          "offset": 912,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 915,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 920,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 923,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 927,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 930,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 935,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 938,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 944,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 947,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 955,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 958,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 965,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 966,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 972,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 975,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 978,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 981,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 987,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 990,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 995,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 998,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1004,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1007,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 1014,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1017,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1022,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1025,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1029,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1032,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1037,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1040,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1045,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1048,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1056,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1059,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1064,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1067,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1073,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1076,
+          "size": 34,
+          "classification": "code"
+        },
+        {
+          "offset": 1110,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1113,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1118,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1121,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 1134,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1137,
+          "size": 41,
+          "classification": "code"
+        },
+        {
+          "offset": 1178,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1181,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1186,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1189,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1192,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1195,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1198,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1201,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1207,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1210,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1213,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1216,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1222,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1225,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 1236,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1239,
+          "size": 27,
+          "classification": "code"
+        },
+        {
+          "offset": 1266,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1269,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1275,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1278,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1282,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1285,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1288,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1291,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1297,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1300,
+          "size": 10,
+          "classification": "code"
+        },
+        {
+          "offset": 1310,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 1312,
+          "size": 29,
+          "classification": "code"
+        },
+        {
+          "offset": 1341,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1344,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1349,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1352,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1357,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1360,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1363,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 1364,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1369,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1372,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1378,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1381,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1386,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1389,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1394,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1397,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1411,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1414,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1422,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1425,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1439,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1442,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1448,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1451,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1455,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1458,
+          "size": 16,
+          "classification": "code"
+        },
+        {
+          "offset": 1474,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1477,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1482,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1485,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1490,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1493,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1499,
+          "size": 33,
+          "classification": "data"
+        },
+        {
+          "offset": 1532,
+          "size": 43,
+          "classification": "code"
+        },
+        {
+          "offset": 1575,
+          "size": 17,
+          "classification": "data"
+        },
+        {
+          "offset": 1592,
+          "size": 30,
+          "classification": "code"
+        },
+        {
+          "offset": 1622,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1625,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1630,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1633,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 1646,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1649,
+          "size": 41,
+          "classification": "code"
+        },
+        {
+          "offset": 1690,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1693,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1698,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1701,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1704,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1707,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1710,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1713,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1719,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1722,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1725,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1728,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1734,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1737,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 1748,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1751,
+          "size": 27,
+          "classification": "code"
+        },
+        {
+          "offset": 1778,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1781,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1787,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1790,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1794,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1797,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1800,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1803,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1809,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1812,
+          "size": 10,
+          "classification": "code"
+        },
+        {
+          "offset": 1822,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 1824,
+          "size": 29,
+          "classification": "code"
+        },
+        {
+          "offset": 1853,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1856,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1861,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1864,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1869,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1872,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1875,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 1876,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1881,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1884,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1890,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1893,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1898,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1901,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1906,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1909,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1923,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1926,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1934,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1937,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1951,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1954,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1960,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1963,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1967,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1970,
+          "size": 16,
+          "classification": "code"
+        },
+        {
+          "offset": 1986,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1989,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1994,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1997,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 2002,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 2005,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 2011,
+          "size": 33,
+          "classification": "data"
+        },
+        {
+          "offset": 2044,
+          "size": 4,
+          "classification": "code"
+        }
+      ],
+      "unclassified_bytes": 0,
+      "variant": "play",
+      "origin": {
+        "disk": "disk2",
+        "block": 41
+      },
+      "sha256": "7be65fcb8d7dd7109fa2f3a8a7f1b7e9fd5d749cb6d93678740ae3ddb09293b9",
+      "storage_sha256": "3321a9c99ccce1d3eb524835d969af96eed6023b022a40204d9704c1f9897ae3",
+      "symbol_items": [
+        {
+          "offset": 1520,
+          "size": 1,
+          "classification": "data",
+          "kind": "retained-disk-fill-symbol",
+          "source_offset": 1520,
+          "hex": "ff"
+        },
+        {
+          "offset": 1526,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-disk-marker",
+          "source_offset": 1526,
+          "hex": "d5d7"
+        },
+        {
+          "offset": 2032,
+          "size": 1,
+          "classification": "data",
+          "kind": "retained-disk-fill-symbol",
+          "source_offset": 1520,
+          "hex": "ff"
+        },
+        {
+          "offset": 2038,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-disk-marker",
+          "source_offset": 1526,
+          "hex": "d5d7"
+        }
+      ],
+      "live_body_execution_established": false,
+      "raw_track_sha256": "98ebd274cb813d4a9020d696fcf7a9d120277d0181da7cb2b8bc5d605ce67788",
+      "raw_marker_offset": 848
+    },
+    {
+      "coverage_bytes": {
+        "code": 1475,
+        "data": 573
+      },
+      "layers": {
+        "loader": {
+          "code": 63
+        },
+        "body": {
+          "data": 418,
+          "code": 1079
+        },
+        "footer_and_copies": {
+          "data": 137,
+          "code": 327
+        },
+        "retained_stubs": {
+          "code": 6,
+          "data": 12
+        },
+        "symbols": {
+          "data": 6
+        }
+      },
+      "byte_classification_runs": [
+        {
+          "offset": 0,
+          "size": 63,
+          "classification": "code"
+        },
+        {
+          "offset": 63,
+          "size": 10,
+          "classification": "data"
+        },
+        {
+          "offset": 73,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 78,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 81,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 92,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 93,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 96,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 99,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 104,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 107,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 113,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 116,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 121,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 124,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 127,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 130,
+          "size": 12,
+          "classification": "code"
+        },
+        {
+          "offset": 142,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 145,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 151,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 154,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 159,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 162,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 168,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 171,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 177,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 180,
+          "size": 37,
+          "classification": "code"
+        },
+        {
+          "offset": 217,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 220,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 225,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 228,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 234,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 237,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 242,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 245,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 248,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 251,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 255,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 258,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 264,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 267,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 270,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 271,
+          "size": 19,
+          "classification": "code"
+        },
+        {
+          "offset": 290,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 291,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 297,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 298,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 304,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 307,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 313,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 316,
+          "size": 19,
+          "classification": "code"
+        },
+        {
+          "offset": 335,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 338,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 345,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 348,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 354,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 357,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 360,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 363,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 371,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 374,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 379,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 382,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 387,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 388,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 399,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 402,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 406,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 409,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 412,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 413,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 427,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 428,
+          "size": 18,
+          "classification": "code"
+        },
+        {
+          "offset": 446,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 447,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 452,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 453,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 459,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 460,
+          "size": 9,
+          "classification": "code"
+        },
+        {
+          "offset": 469,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 470,
+          "size": 34,
+          "classification": "code"
+        },
+        {
+          "offset": 504,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 505,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 508,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 511,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 515,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 518,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 521,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 524,
+          "size": 1,
+          "classification": "code"
+        },
+        {
+          "offset": 525,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 527,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 532,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 535,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 541,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 544,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 547,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 550,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 555,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 558,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 563,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 566,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 572,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 575,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 579,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 582,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 585,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 588,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 593,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 596,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 602,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 605,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 610,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 613,
+          "size": 21,
+          "classification": "code"
+        },
+        {
+          "offset": 634,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 637,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 643,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 646,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 659,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 662,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 666,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 669,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 672,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 675,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 678,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 681,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 684,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 687,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 692,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 695,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 706,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 709,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 717,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 718,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 721,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 724,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 728,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 731,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 736,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 739,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 744,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 747,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 753,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 756,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 761,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 764,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 769,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 772,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 778,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 781,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 787,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 790,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 795,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 798,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 803,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 806,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 811,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 814,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 820,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 823,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 828,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 831,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 837,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 840,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 846,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 849,
+          "size": 1,
+          "classification": "code"
+        },
+        {
+          "offset": 850,
+          "size": 5,
+          "classification": "data"
+        },
+        {
+          "offset": 855,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 858,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 861,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 864,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 867,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 873,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 876,
+          "size": 36,
+          "classification": "code"
+        },
+        {
+          "offset": 912,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 915,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 920,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 923,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 927,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 930,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 935,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 938,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 944,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 947,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 955,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 958,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 965,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 966,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 972,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 975,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 978,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 981,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 987,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 990,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 995,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 998,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1004,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1007,
+          "size": 7,
+          "classification": "code"
+        },
+        {
+          "offset": 1014,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1017,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1022,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1025,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1029,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1032,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1037,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1040,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1045,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1048,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1056,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1059,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1064,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1067,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1073,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1076,
+          "size": 34,
+          "classification": "code"
+        },
+        {
+          "offset": 1110,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1113,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1118,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1121,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 1134,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1137,
+          "size": 41,
+          "classification": "code"
+        },
+        {
+          "offset": 1178,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1181,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1186,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1189,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1192,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1195,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1198,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1201,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1207,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1210,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1213,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1216,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1222,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1225,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 1236,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1239,
+          "size": 27,
+          "classification": "code"
+        },
+        {
+          "offset": 1266,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1269,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1275,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1278,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1282,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1285,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1288,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1291,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1297,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1300,
+          "size": 10,
+          "classification": "code"
+        },
+        {
+          "offset": 1310,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 1312,
+          "size": 29,
+          "classification": "code"
+        },
+        {
+          "offset": 1341,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1344,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1349,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1352,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1357,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1360,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1363,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 1364,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1369,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1372,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1378,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1381,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1386,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1389,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1394,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1397,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1411,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1414,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1422,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1425,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1439,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1442,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1448,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1451,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1455,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1458,
+          "size": 16,
+          "classification": "code"
+        },
+        {
+          "offset": 1474,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1477,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1482,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1485,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1490,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1493,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1499,
+          "size": 33,
+          "classification": "data"
+        },
+        {
+          "offset": 1532,
+          "size": 43,
+          "classification": "code"
+        },
+        {
+          "offset": 1575,
+          "size": 17,
+          "classification": "data"
+        },
+        {
+          "offset": 1592,
+          "size": 30,
+          "classification": "code"
+        },
+        {
+          "offset": 1622,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1625,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1630,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1633,
+          "size": 13,
+          "classification": "code"
+        },
+        {
+          "offset": 1646,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1649,
+          "size": 41,
+          "classification": "code"
+        },
+        {
+          "offset": 1690,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1693,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1698,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1701,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1704,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1707,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1710,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1713,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1719,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1722,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1725,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1728,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1734,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1737,
+          "size": 11,
+          "classification": "code"
+        },
+        {
+          "offset": 1748,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1751,
+          "size": 27,
+          "classification": "code"
+        },
+        {
+          "offset": 1778,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1781,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1787,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1790,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1794,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1797,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1800,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1803,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1809,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1812,
+          "size": 10,
+          "classification": "code"
+        },
+        {
+          "offset": 1822,
+          "size": 2,
+          "classification": "data"
+        },
+        {
+          "offset": 1824,
+          "size": 29,
+          "classification": "code"
+        },
+        {
+          "offset": 1853,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1856,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1861,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1864,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1869,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1872,
+          "size": 3,
+          "classification": "code"
+        },
+        {
+          "offset": 1875,
+          "size": 1,
+          "classification": "data"
+        },
+        {
+          "offset": 1876,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1881,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1884,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1890,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1893,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1898,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1901,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1906,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1909,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1923,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1926,
+          "size": 8,
+          "classification": "code"
+        },
+        {
+          "offset": 1934,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1937,
+          "size": 14,
+          "classification": "code"
+        },
+        {
+          "offset": 1951,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1954,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 1960,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1963,
+          "size": 4,
+          "classification": "code"
+        },
+        {
+          "offset": 1967,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1970,
+          "size": 16,
+          "classification": "code"
+        },
+        {
+          "offset": 1986,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1989,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 1994,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 1997,
+          "size": 5,
+          "classification": "code"
+        },
+        {
+          "offset": 2002,
+          "size": 3,
+          "classification": "data"
+        },
+        {
+          "offset": 2005,
+          "size": 6,
+          "classification": "code"
+        },
+        {
+          "offset": 2011,
+          "size": 33,
+          "classification": "data"
+        },
+        {
+          "offset": 2044,
+          "size": 4,
+          "classification": "code"
+        }
+      ],
+      "unclassified_bytes": 0,
+      "variant": "alternate",
+      "origin": {
+        "disk": "disk1",
+        "block": 197
+      },
+      "sha256": "2f3a3f75d513683a79c6035af5ac76e95753e240a96fd49bf39bec5425f04451",
+      "storage_sha256": "51dec1a6f0c9734761c46459e929f57151bd4451c703f816240801233ebe048f",
+      "symbol_items": [
+        {
+          "offset": 1520,
+          "size": 1,
+          "classification": "data",
+          "kind": "retained-disk-fill-symbol",
+          "source_offset": 1520,
+          "hex": "ff"
+        },
+        {
+          "offset": 1526,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-disk-marker",
+          "source_offset": 1526,
+          "hex": "d5d7"
+        },
+        {
+          "offset": 2032,
+          "size": 1,
+          "classification": "data",
+          "kind": "retained-disk-fill-symbol",
+          "source_offset": 1520,
+          "hex": "ff"
+        },
+        {
+          "offset": 2038,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-disk-marker",
+          "source_offset": 1526,
+          "hex": "d5d7"
+        }
+      ],
+      "live_body_execution_established": false,
+      "raw_track_sha256": "98ebd274cb813d4a9020d696fcf7a9d120277d0181da7cb2b8bc5d605ce67788",
+      "raw_marker_offset": 848
+    }
+  ]
+}

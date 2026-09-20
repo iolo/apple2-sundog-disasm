@@ -3110,3 +3110,36 @@ and acceptance criteria.
   183,432 source-built bytes, 101,152 identified data/asset bytes and 2,136
   temporary bytes (636 disk 1; 1,500 disk 2). User PRD.md edits and ref/ remain
   untouched and excluded; the goal remains active.
+
+## 2026-09-20 — Step 06av: complete both encoded native banks
+
+- **Evidence:** The remaining $FF and $D5,$D7 bytes occupy the existing
+  disk-symbol/read-buffer data record in both relocated banks and recur in
+  their exact suffix copies. Native disk-latch reads compare incoming values
+  against immediate $FF at $0141 and $D5/$D7 at $0480/$0489 and $04DC/$04EB.
+  The independently validated raw protection track contains D5,D7 at $0350
+  followed by FF, its predominant fill. This combined format/layout evidence
+  supports retained disk-format constants, not new instructions in those slots.
+- **Limits:** The comparison instructions use immediates, not these stored
+  fields. No live consumer, terminator role or historical reason for retaining
+  the fields is invented. Classification is an inference from the positive
+  layout/format evidence; live execution of either encoded body remains unproved.
+- **Artifacts:** Added eight tiny source slices with exact stream phases,
+  recipes, the complete-bank auditor, two focused tests and generated full
+  code/data maps. The auditor reruns the loader/body/metadata/copied-tail/stub
+  analyses, rejects overlap/gaps/unknown ownership, and verifies that every bank
+  byte maps to correctly phased ca65 source. Updated encoded-bank documents,
+  PLAN.md, reconstruction coverage and both temporary inputs.
+- **Validation:** The two new tests, two retained-stub tests and three copied-
+  tail tests pass. Mutations cover all new bytes, native comparisons/reads,
+  adjacent data, raw-track evidence and combined ownership gaps/overlaps.
+  Strict adoption, fresh assembly/re-encoding, complete-bank --verify, full
+  rebuild, tools/verify_disks.py and git diff --check pass. Original media/manual
+  and both rebuilt disk hashes remain unchanged; emulator baselines apply.
+- **Coverage/next:** All 4,096 encoded-bank bytes are now classified: each bank
+  has 1,475 instruction bytes and 573 data bytes, including the documented
+  copied/clipped instructions and disconnected stubs. Global ownership is
+  183,444 source-built bytes, 101,152 identified data/asset bytes and 2,124
+  temporary bytes (630 disk 1; 1,494 disk 2). Continue the remaining mixed,
+  image and storage tails; whole-project completion is still unproved.
+  User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.

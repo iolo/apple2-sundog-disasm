@@ -1,0 +1,20 @@
+{
+  "name": "encoded_symbols_play_05f6",
+  "source": "src/native/encoded_symbols_play_05f6.s",
+  "config": "src/native/encoded_symbols_play_05f6.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 1526,
+    "evidence": "docs/encoded-bank-completion.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 22774,
+      "size": 2,
+      "input_offset": 0
+    }
+  ]
+}

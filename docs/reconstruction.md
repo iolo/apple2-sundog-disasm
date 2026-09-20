@@ -1,9 +1,9 @@
 # Incremental exact-disk build
 
-Current checkpoint: step 08o has 183,432 source-built disk bytes (including
-explicit data declarations), 101,152 identified asset/data bytes, and 2,136
-temporary bytes: 636 on disk 1 and 1,500 on disk 2. The latest reconstruction adds
-[native output-buffer storage](native-output-storage.md). Historical counts
+Current checkpoint: step 06av has 183,444 source-built disk bytes (including
+explicit data declarations), 101,152 identified asset/data bytes, and 2,124
+temporary bytes: 630 on disk 1 and 1,494 on disk 2. The latest reconstruction
+[completes both encoded native banks](encoded-bank-completion.md). Historical counts
 below describe their individual checkpoints; the manifest is authoritative.
 
 The incremental build reconstructs both disk images using assembled source components and

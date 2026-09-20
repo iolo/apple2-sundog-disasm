@@ -7,7 +7,9 @@ reconstructs **464 additional bytes per bank**, keeping nine suffix bytes and
 15 earlier body bytes unresolved. Both encoded banks therefore had
 **24 unresolved bytes each** at this checkpoint. The later
 [retained-stub audit](encoded-retained-stubs.md) classifies 18 of those bytes
-per bank, leaving six each. Runtime execution of the bodies remains unproved.
+per bank, leaving six each at that checkpoint. The
+[completion audit](encoded-bank-completion.md) resolves those final data bytes
+and verifies both entire banks. Runtime execution of the bodies remains unproved.
 
 ## Native segment footer
 

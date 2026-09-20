@@ -162,9 +162,16 @@ Split large steps into independently validated, logged, and committed increments
 - Step 08o classifies title/viewscreen native output-buffer tails using the
   Apple Pascal assembler's verified 1,024-byte allocation, 1,023-byte clear
   and block-rounded write. This resolves 96 already source-built bytes and
-  adopts 80 temporary bytes. Current ownership is 183,432 source-built bytes,
+  adopts 80 temporary bytes. Checkpoint ownership is 183,432 source-built bytes,
   101,152 identified data/asset bytes and 2,136 temporary bytes
   (636 disk 1; 1,500 disk 2). Historical producer identity is not asserted.
+- Step 06av completes both encoded native banks. Retained disk-format constants
+  match surrounding data layout, native immediate comparisons and independent
+  raw-track evidence. Each full bank now has 1,475 code bytes and 573 data bytes;
+  the combined audit rejects gaps/overlaps and checks every source encoding
+  phase. Live body execution remains unproved. Current ownership is 183,444
+  source-built bytes, 101,152 identified data/asset bytes and 2,124 temporary
+  bytes (630 disk 1; 1,494 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

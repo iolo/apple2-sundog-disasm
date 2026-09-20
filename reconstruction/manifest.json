@@ -19,15 +19,15 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 636,
-      "sha256": "275836933b3d453410f64fef4a1568e61ba3cc28b942d45f7dd6a63127068bf5",
+      "size": 630,
+      "sha256": "375160dbdc8a94167f198643144b466350a0d47af03b397c3cae16875a7f7212",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 1500,
-      "sha256": "9b008ae0ae69d361ec3e161dfa6d276052134eb334c0b0bb39976458d6ba4094",
+      "size": 1494,
+      "sha256": "09b3629a8c40b36c1296e272ce6d2db4231e38fb8a0ae74ef24676ab9efdcd30",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1427,6 +1427,118 @@
       "config": "src/data/viewscreen_output_storage.cfg",
       "size": 80,
       "sha256": "a7a1dfde58eb792ac7773781ae8bafa3ff0aa0632ac6905fca3bef87757891c6"
+    },
+    "encoded_symbols_alternate_05f0": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_alternate_05f0.s",
+      "config": "src/native/encoded_symbols_alternate_05f0.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1520,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 1,
+      "sha256": "67c872d4912c71f15d2d6134ddf1d33d46f4bab2b56fe787522e7e4c9b58657d"
+    },
+    "encoded_symbols_alternate_05f6": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_alternate_05f6.s",
+      "config": "src/native/encoded_symbols_alternate_05f6.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1526,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 2,
+      "sha256": "d98074887051e685a9477db1ae669f16374b692f91508da5d2ab6167957e1ec3"
+    },
+    "encoded_symbols_alternate_07f0": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_alternate_07f0.s",
+      "config": "src/native/encoded_symbols_alternate_07f0.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 2032,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 1,
+      "sha256": "67c872d4912c71f15d2d6134ddf1d33d46f4bab2b56fe787522e7e4c9b58657d"
+    },
+    "encoded_symbols_alternate_07f6": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_alternate_07f6.s",
+      "config": "src/native/encoded_symbols_alternate_07f6.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 2038,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 2,
+      "sha256": "d98074887051e685a9477db1ae669f16374b692f91508da5d2ab6167957e1ec3"
+    },
+    "encoded_symbols_play_05f0": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_play_05f0.s",
+      "config": "src/native/encoded_symbols_play_05f0.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1520,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 1,
+      "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1"
+    },
+    "encoded_symbols_play_05f6": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_play_05f6.s",
+      "config": "src/native/encoded_symbols_play_05f6.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1526,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 2,
+      "sha256": "d384da96b8f881098e6f5d3ce4c1a799b5c0aa3b08e580309a8e10a81b2fd43c"
+    },
+    "encoded_symbols_play_07f0": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_play_07f0.s",
+      "config": "src/native/encoded_symbols_play_07f0.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 2032,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 1,
+      "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1"
+    },
+    "encoded_symbols_play_07f6": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_symbols_play_07f6.s",
+      "config": "src/native/encoded_symbols_play_07f6.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 2038,
+        "evidence": "docs/encoded-bank-completion.md"
+      },
+      "size": 2,
+      "sha256": "d384da96b8f881098e6f5d3ce4c1a799b5c0aa3b08e580309a8e10a81b2fd43c"
     }
   },
   "disks": [
@@ -4385,8 +4497,8 @@
         {
           "offset": 102384,
           "size": 1,
-          "input": "disk1_unresolved",
-          "input_offset": 630
+          "input": "encoded_symbols_alternate_05f0",
+          "input_offset": 0
         },
         {
           "offset": 102385,
@@ -4397,8 +4509,8 @@
         {
           "offset": 102390,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 631
+          "input": "encoded_symbols_alternate_05f6",
+          "input_offset": 0
         },
         {
           "offset": 102392,
@@ -4547,8 +4659,8 @@
         {
           "offset": 106224,
           "size": 1,
-          "input": "disk1_unresolved",
-          "input_offset": 633
+          "input": "encoded_symbols_alternate_07f0",
+          "input_offset": 0
         },
         {
           "offset": 106225,
@@ -4559,8 +4671,8 @@
         {
           "offset": 106230,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 634
+          "input": "encoded_symbols_alternate_07f6",
+          "input_offset": 0
         },
         {
           "offset": 106232,
@@ -6127,8 +6239,8 @@
         {
           "offset": 22256,
           "size": 1,
-          "input": "disk2_unresolved",
-          "input_offset": 757
+          "input": "encoded_symbols_play_07f0",
+          "input_offset": 0
         },
         {
           "offset": 22257,
@@ -6139,8 +6251,8 @@
         {
           "offset": 22262,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 758
+          "input": "encoded_symbols_play_07f6",
+          "input_offset": 0
         },
         {
           "offset": 22264,
@@ -6211,8 +6323,8 @@
         {
           "offset": 22768,
           "size": 1,
-          "input": "disk2_unresolved",
-          "input_offset": 760
+          "input": "encoded_symbols_play_05f0",
+          "input_offset": 0
         },
         {
           "offset": 22769,
@@ -6223,8 +6335,8 @@
         {
           "offset": 22774,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 761
+          "input": "encoded_symbols_play_05f6",
+          "input_offset": 0
         },
         {
           "offset": 22776,
@@ -6302,7 +6414,7 @@
           "offset": 24192,
           "size": 80,
           "input": "disk2_unresolved",
-          "input_offset": 763
+          "input_offset": 757
         },
         {
           "offset": 24272,
@@ -6314,7 +6426,7 @@
           "offset": 24274,
           "size": 46,
           "input": "disk2_unresolved",
-          "input_offset": 843
+          "input_offset": 837
         },
         {
           "offset": 24320,
@@ -6344,7 +6456,7 @@
           "offset": 25088,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 889
+          "input_offset": 883
         },
         {
           "offset": 25344,
@@ -6356,7 +6468,7 @@
           "offset": 25479,
           "size": 121,
           "input": "disk2_unresolved",
-          "input_offset": 1145
+          "input_offset": 1139
         },
         {
           "offset": 25600,
@@ -8618,7 +8730,7 @@
           "offset": 48168,
           "size": 216,
           "input": "disk2_unresolved",
-          "input_offset": 1266
+          "input_offset": 1260
         },
         {
           "offset": 48384,
@@ -9704,7 +9816,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 1482
+          "input_offset": 1476
         },
         {
           "offset": 59648,

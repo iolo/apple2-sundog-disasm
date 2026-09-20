@@ -64,8 +64,10 @@ The later [footer and copied-tail audit](encoded-native-overlay-tail.md) resolve
 the original body audit unchanged and bring the current bank remainder to 24
 bytes per variant. A subsequent [retained-stub audit](encoded-retained-stubs.md)
 classifies another 18 bytes per bank while preserving this graph's data
-ownership and strict decoding rules. The current remainder is six bytes per
-variant. The historical scope of this report is described below.
+ownership and strict decoding rules. The final
+[bank-completion audit](encoded-bank-completion.md) classifies the six remaining
+bytes as retained disk-format data and combines all layers without gaps.
+The historical scope of this report is described below.
 
 At this body checkpoint, the jump-shaped stubs at $0357 and $035D, associated
 words at $0572 and $05DB, the word at $05E3, and isolated bytes at

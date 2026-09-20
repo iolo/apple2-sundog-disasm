@@ -4,7 +4,9 @@ Two indirect jump instructions remain in each encoded native bank outside the
 reviewed entry graph. Their block structure and address relocation establish
 them as **unused native instructions**, even though following their chain does
 not produce a valid executable path. This audit supplies 12 instruction bytes
-and 24 pointer-data bytes across the two banks; six bytes per bank remain open.
+and 24 pointer-data bytes across the two banks; six bytes per bank remained open
+at this checkpoint. They are now covered by the
+[complete-bank audit](encoded-bank-completion.md).
 
 Offsets below refer to the decoded 2,048-byte bank. Add `$0C00` for the play
 variant or `$1000` for the alternate variant to obtain original runtime addresses.
@@ -46,7 +48,7 @@ and `$07E3`. They contain the original target addresses, not addresses adjusted
 to the copied storage location. No copies of the two new instructions lie in
 that suffix. Each bank gains six instruction bytes and twelve data bytes.
 
-Remaining bank offsets are `$05F0`, `$05F6`, `$05F7` and their copies `$07F0`,
+Remaining bank offsets at this checkpoint were `$05F0`, `$05F6`, `$05F7` and their copies `$07F0`,
 `$07F6`, `$07F7`. The stored values are `FF`, `D5`, `D7`; their proximity to
 symbol/buffer data does not by itself complete their classification.
 
