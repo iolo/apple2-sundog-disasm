@@ -2132,3 +2132,29 @@ and acceptance criteria.
 - **Next action:** Continue the remaining asset tails, orphan/variant code and
   provisional runtime audit, then final gameplay/save/load/swap/utility checks
   in both emulators. The full classification requirement remains in force.
+
+## 2026-09-20 — Step 07s: alternate-program graphics glyph bank
+
+- **Evidence:** Alternate 7 stores relative block 171 in data-segment 29 word
+  32, installs the $0800 glyph pointer through library 22 procedure 20, then
+  immediately replaces that buffer with a two-block read through procedure 53.
+  Its +3 block adjustment selects disk-1 blocks 174–175. The existing native
+  glyph renderer's eight-byte stride and reversed row reads establish all
+  128 records as graphics data, independently of their visual appearance.
+- **Artifacts:** Added tools/alternate_glyph_asset.py, assets/alternate-glyphs/
+  (binary, lossless row listing, mask atlas, manifest and adoption recipe), and
+  docs/alternate-glyphs.md. Linked the bank from the shared-font document and
+  recorded the checkpoint in PLAN.md. Visually reviewed the atlas; individual
+  gameplay meanings remain unasserted. All high bits are retained.
+- **Validation:** The two existing glyph conversion tests pass. Extraction
+  verifies the exact rebuilt disk and reviewed assembled loader/renderer hashes;
+  row listing inversion and artifact verification pass. Adoption, full disk
+  build, original disk/manual verification and git diff --check pass. Both
+  images remain byte-identical to their originals. No new live emulator check
+  is claimed.
+- **Coverage:** 172,997 source-built disk bytes, 100,324 identified data/asset
+  bytes, 13,399 temporary bytes (5,658 disk 1; 7,741 disk 2).
+- **Workspace:** The user's PRD reference-link edit remains untouched and is
+  excluded from this implementation commit. The goal is active after resume.
+- **Next action:** Continue remaining asset storage and orphan/variant code,
+  provisional runtime classifications, and final checks in both emulators.

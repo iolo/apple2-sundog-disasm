@@ -1,0 +1,32 @@
+{
+  "name": "alternate_glyph_bank",
+  "data": "assets/alternate-glyphs/glyphs.bin",
+  "format": "sundog-glyph-bank",
+  "classification": "docs/alternate-glyphs.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 86784,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 86528,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 86272,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 89856,
+      "size": 256,
+      "input_offset": 768
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "format": "sundog-glyph-bank",
+  "classification": "data",
+  "size": 1024,
+  "sha256": "c5631199d734fdcf503e18619442d99ce0a65424b3f176f6feccc16eb45d0024",
+  "disk": "disk1",
+  "logical_blocks": [
+    174,
+    176
+  ],
+  "glyph_count": 128,
+  "glyph_size": [
+    7,
+    8
+  ],
+  "stored_bytes_per_glyph": 8,
+  "row_order": "Stored bottom to top; bit 0 is the leftmost pixel",
+  "high_bit": "Preserved in raw data and row listing; renderer masks it out",
+  "classification_evidence": "docs/alternate-glyphs.md",
+  "consumer_component_hashes": {
+    "alternate_7": "0a7751ec039e806dba479877bac1818f18ef7b623d2ef1047d8cd3249cd1f45c",
+    "library_22": "7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49"
+  },
+  "loader": {
+    "component": "alternate_7",
+    "relative_block_assignment": 197,
+    "relative_block": 171,
+    "pointer_install_call": 331,
+    "direct_read_call": 342,
+    "blocks_read": 2,
+    "buffer_address": 2048
+  },
+  "renderer": "Library 22 procedure 9, bank pointer at data-segment 29 word 355",
+  "preview": "glyphs.png",
+  "rows": "rows.json",
+  "preview_note": "Stored glyph masks, without runtime placement, mutation or artifact colors"
+}

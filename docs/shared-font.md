@@ -44,6 +44,8 @@ raw bank only; neither Pillow nor the original images are build dependencies.
 This document covers bank zero. The separately inspected play-side banks one
 and two are now extracted; see [play-glyphs.md](play-glyphs.md) for their callers,
 renderer, and copied-bank boundaries.
+The alternate program directly replaces its graphics buffer with a separate
+[bank from disk-1 blocks 174–175](alternate-glyphs.md).
 
 ## Runtime and visual checks
 
