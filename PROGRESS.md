@@ -1673,3 +1673,27 @@ and acceptance criteria.
   49,352 temporary bytes (24,316 disk 1; 25,036 disk 2).
 - **Next action:** Continue remaining graphics/raw-code consumers and record tails;
   final complete code/data audit and both-emulator validation remain required.
+
+## 2026-09-20 — Step 07m: animated SUNDOG letter frames
+
+- **Work/evidence:** Library 26 procedure 14 loads disk-1 blocks 67–78 into
+  $4000. Native procedure 11 addresses $4000 + letter*1024 + selector*128 and
+  copies four bytes per row for 24 rows, forcing the video phase bit high.
+  Extracted six groups of eight stored 28x24 frames; visually confirmed the
+  SUNDOG letters in the atlas. Recorded the selector-eight boundary behavior
+  without inventing a ninth stored frame or claiming a live trace.
+- **Artifacts:** Added tools/logo_frame_asset.py, three tests, docs/logo-frames.md,
+  and assets/logo-frames with full records, reversible row bytes, manifest,
+  adoption recipe, and atlas. Classified all 6,144 bytes: 4,608 bitmap bytes and
+  1,536 zero bytes in the repeated aligned record-padding fields. The extractor
+  rejects nonzero padding and preserves every source bitmap bit.
+- **Validation:** Tests pass for record/group strides, last-row boundaries,
+  full-byte preservation, padding mutation rejection, and invalid extent/shape.
+  Extraction checks the rebuilt disk hash, temporary ownership, every padding
+  field, and exact record round trips. Asset verification, adoption, full build,
+  and tools/verify_disks.py pass; both disks remain exact and originals unchanged.
+  Reviewed all 48 frames visually. No new live animation capture is claimed.
+- **Coverage:** 154,727 source-built disk bytes, 88,785 identified data/asset bytes,
+  43,208 temporary bytes (18,172 disk 1; 25,036 disk 2).
+- **Next action:** Continue remaining play-side graphics/data, native fragments,
+  and record tails; final both-emulator behavioral validation remains required.

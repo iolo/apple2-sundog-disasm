@@ -106,7 +106,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Packed city-map payloads | `assets/city-maps/maps.bin` | 120-byte payloads in disk 2 blocks 64–78 and disk 1 block 195 | 7,680 |
 | Saved-game payloads and descriptors | `assets/save-states/{payloads,slots}.bin` | Disk 1 first 5,024 bytes of banks at 27, 37, 47, 57; first 256 bytes of block 26 | 20,352 |
 | Record templates, world defaults, working state | `assets/working-state/data.bin` | Reviewed regions at disk 1 blocks 22–25; disk 2 blocks 2, 45, 48–53 | 6,027 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 24,316 |
+| Animated logo letter frames | `assets/logo-frames/frames.bin` | Disk 1 blocks 67–78 | 6,144 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 18,172 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 25,036 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
@@ -317,7 +318,12 @@ validation in both emulators remain open.
 
 Step 07l extracts [working-state records and templates](working-state.md),
 including three copies of a 505-byte template table, 1,440 bytes of default
-world tables, and six blocks of working records. Current ownership is 154,727
+world tables, and six blocks of working records. Ownership then was 154,727
 source-built bytes, 82,641 classified data/asset bytes, and 49,352 temporary
 bytes. Both rebuilt images remain exact; the remaining template/allocation tails
 and final emulator validation are still open.
+
+Step 07m extracts the 48 [animated logo frames](logo-frames.md), including their
+explicit zero record padding. Current ownership is 154,727 source-built bytes,
+88,785 classified data/asset bytes, and 43,208 temporary bytes. Both images
+remain exact; the final complete classification and emulator checks remain open.
