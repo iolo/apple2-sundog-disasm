@@ -1,0 +1,38 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/interaction-window.md",
+  "size": 1922,
+  "sha256": "722424db50f38fdd7aa84efeed868ec4513a4570850c92a6301184641be99dc6",
+  "disk": "disk2",
+  "blocks": [
+    37,
+    41
+  ],
+  "width": 140,
+  "height": 96,
+  "row_bytes": 20,
+  "bitmap_bytes": 1920,
+  "position_fields": [
+    {
+      "name": "x_byte",
+      "bank_offset": 2000,
+      "input_offset": 1920
+    },
+    {
+      "name": "y_row",
+      "bank_offset": 2001,
+      "input_offset": 1921
+    }
+  ],
+  "excluded_bank_ranges": [
+    [
+      1920,
+      2000
+    ],
+    [
+      2002,
+      2048
+    ]
+  ],
+  "preview_note": "Monochrome lower seven bits; raw bytes retain video phase bits"
+}

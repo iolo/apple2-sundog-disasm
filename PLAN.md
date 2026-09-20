@@ -49,7 +49,8 @@ Split large steps into independently validated, logged, and committed increments
   tile banks in step 07f, world-map tiles in step 07g, and packed maps in
   step 07h, inventory/cargo name-table variants in step 07i, and packed city-map
   payloads in step 07j, four saved-game payloads/descriptors in step 07k,
-  working-state data/templates in step 07l, and animated logo frames in step 07m.
+  working-state data/templates in step 07l, animated logo frames in step 07m,
+  and the interaction-window bitmap/position fields in step 07n.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

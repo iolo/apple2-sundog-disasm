@@ -1697,3 +1697,27 @@ and acceptance criteria.
   43,208 temporary bytes (18,172 disk 1; 25,036 disk 2).
 - **Next action:** Continue remaining play-side graphics/data, native fragments,
   and record tails; final both-emulator behavioral validation remains required.
+
+## 2026-09-20 — Step 07n: interaction-window bitmap and position fields
+
+- **Work/evidence:** Game 18 procedure 20 reads disk-2 blocks 37–40 into $1800
+  for its type-16 interaction branch. Library 22 procedure 15 swaps/copies exactly
+  96 rows of twenty bytes, using the previously runtime-verified linear row tables.
+  This identifies a 140x96 bitmap. Game 18 and library 22 also write/read saved
+  byte-column and row fields at allocation offsets 2000–2001.
+- **Artifacts:** Added tools/window_asset.py, two tests,
+  docs/interaction-window.md, and assets/interaction-window with packed bitmap/
+  position bytes, reversible fields, manifest, adoption recipe, and monochrome
+  preview. Visually reviewed the framed container/panel shape. Preserved all
+  source phase bits. Adopted 1,922 bytes; retained the other 126 allocation bytes,
+  including nonzero file-record-like residue, as temporary.
+- **Validation:** Tests pass for row boundaries, full-byte/phase preservation,
+  coordinate separation, and invalid extent/shape/value rejection. Extraction
+  verifies the rebuilt disk hash, temporary ownership, and exact field round trip.
+  Asset verification, adoption, full build, and tools/verify_disks.py pass: both
+  disk images remain exact and originals unchanged. No new live window interaction
+  or final emulator-validation completion is claimed.
+- **Coverage:** 154,727 source-built disk bytes, 90,707 identified data/asset bytes,
+  41,286 temporary bytes (18,172 disk 1; 23,114 disk 2).
+- **Next action:** Continue remaining native fragments, dialogue/data banks, and
+  record tails; final full classification and both-emulator checks remain required.

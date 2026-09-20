@@ -1,0 +1,62 @@
+{
+  "name": "interaction_window",
+  "data": "assets/interaction-window/window.bin",
+  "format": "Linear 20-byte x 96-row bitmap followed by two saved-position bytes",
+  "classification": "docs/interaction-window.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 17664,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 17408,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 17152,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 16896,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 16640,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 20224,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 20480,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 24064,
+      "size": 128,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk2",
+      "offset": 24272,
+      "size": 2,
+      "input_offset": 1920
+    }
+  ]
+}

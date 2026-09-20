@@ -108,7 +108,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Record templates, world defaults, working state | `assets/working-state/data.bin` | Reviewed regions at disk 1 blocks 22–25; disk 2 blocks 2, 45, 48–53 | 6,027 |
 | Animated logo letter frames | `assets/logo-frames/frames.bin` | Disk 1 blocks 67–78 | 6,144 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 18,172 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 25,036 |
+| Interaction-window bitmap and position fields | `assets/interaction-window/window.bin` | Disk 2 blocks 37–40: first 1,920 bytes and offsets 2000–2001 | 1,922 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 23,114 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -324,6 +325,12 @@ bytes. Both rebuilt images remain exact; the remaining template/allocation tails
 and final emulator validation are still open.
 
 Step 07m extracts the 48 [animated logo frames](logo-frames.md), including their
-explicit zero record padding. Current ownership is 154,727 source-built bytes,
+explicit zero record padding. Ownership then was 154,727 source-built bytes,
 88,785 classified data/asset bytes, and 43,208 temporary bytes. Both images
 remain exact; the final complete classification and emulator checks remain open.
+
+Step 07n extracts the [interaction-window bitmap and position fields](interaction-window.md),
+leaving 126 unrelated allocation bytes unresolved. Current ownership is 154,727
+source-built bytes, 90,707 classified data/asset bytes, and 41,286 temporary bytes.
+Both rebuilt images remain exact; final classification and behavioral validation
+remain incomplete.
