@@ -1,0 +1,1085 @@
+{
+  "stride": 4,
+  "packets": [
+    {
+      "control": 14,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "40"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "38"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "67"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "6c"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "07"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "63"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "67"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "70"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "63"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "63"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "67"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "63"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "6c"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "63"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "60"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "67"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "67"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "07"
+    },
+    {
+      "control": 40,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "40"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "6c"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "38"
+    },
+    {
+      "control": 25,
+      "payload": "00"
+    },
+    {
+      "control": 14,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "07"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4007"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "400c"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "400c"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4018"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "07"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "400c"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "701f"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4007"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4018"
+    },
+    {
+      "control": 93,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "701f"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "40"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "400c"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "40"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4006"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "03"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 61,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "40"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4001"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 40,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 29,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "3018"
+    },
+    {
+      "control": 93,
+      "payload": "00"
+    },
+    {
+      "control": 129,
+      "payload": "4006"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 25,
+      "payload": "00"
+    },
+    {
+      "control": 13,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "18"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "73"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4f"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "19"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "0c"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "03"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "0f"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "47"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "0f"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "19"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "1f"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "19"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "03"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "19"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "0f"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "19"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "60"
+    },
+    {
+      "control": 26,
+      "payload": "00"
+    },
+    {
+      "control": 109,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "04"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "48"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "41"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "66"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4c"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "30"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4f"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "78"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4f"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7f"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "30"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "66"
+    },
+    {
+      "control": 127,
+      "payload": "00"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "48"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "66"
+    },
+    {
+      "control": 126,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "78"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "48"
+    },
+    {
+      "control": 62,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4f"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "46"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "7e"
+    },
+    {
+      "control": 104,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "4c"
+    },
+    {
+      "control": 30,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "48"
+    },
+    {
+      "control": 94,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "06"
+    },
+    {
+      "control": 20,
+      "payload": "00"
+    },
+    {
+      "control": 128,
+      "payload": "01"
+    },
+    {
+      "control": 26,
+      "payload": "00"
+    }
+  ]
+}

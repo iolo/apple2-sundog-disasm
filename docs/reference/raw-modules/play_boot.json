@@ -1,0 +1,1320 @@
+{
+  "base": 2048,
+  "size": 193,
+  "sha256": "e15615c9551721fc77e7e3f4abbf9580392625061228a59cfe7e8b16e1c6650a",
+  "roots": [
+    {
+      "offset": 1,
+      "evidence": "Disk II boot firmware loads $0800 and transfers to $0801; captured native wait loop at $08AC."
+    }
+  ],
+  "coverage_bytes": {
+    "data": 1,
+    "code": 192
+  },
+  "instruction_count": 93,
+  "items": [
+    {
+      "offset": 0,
+      "size": 1,
+      "kind": "boot-sector-count-limit",
+      "evidence": "Disk II ROM compares its sector counter with $0800; boot entry increments this limit by two until it reaches eleven in RAM.",
+      "classification": "data"
+    },
+    {
+      "offset": 1,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 2048,
+      "assembly": "lda a:$0800",
+      "classification": "code"
+    },
+    {
+      "offset": 4,
+      "size": 2,
+      "mnemonic": "cmp",
+      "mode": "Im",
+      "operand_value": 10,
+      "assembly": "cmp #$0A",
+      "classification": "code"
+    },
+    {
+      "offset": 6,
+      "size": 2,
+      "mnemonic": "bcs",
+      "mode": "Lb",
+      "operand_value": 10,
+      "assembly": "bcs L_0012",
+      "classification": "code"
+    },
+    {
+      "offset": 8,
+      "size": 2,
+      "mnemonic": "adc",
+      "mode": "Im",
+      "operand_value": 2,
+      "assembly": "adc #$02",
+      "classification": "code"
+    },
+    {
+      "offset": 10,
+      "size": 3,
+      "mnemonic": "sta",
+      "mode": "Ab",
+      "operand_value": 2048,
+      "assembly": "sta a:$0800",
+      "classification": "code"
+    },
+    {
+      "offset": 13,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 61,
+      "assembly": "inc $3D",
+      "classification": "code"
+    },
+    {
+      "offset": 15,
+      "size": 3,
+      "mnemonic": "jmp",
+      "mode": "Ab",
+      "operand_value": 50780,
+      "assembly": "jmp a:$C65C",
+      "classification": "code"
+    },
+    {
+      "offset": 18,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 2304,
+      "assembly": "lda a:$0900",
+      "classification": "code"
+    },
+    {
+      "offset": 21,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 4,
+      "assembly": "sta $04",
+      "classification": "code"
+    },
+    {
+      "offset": 23,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Im",
+      "operand_value": 1,
+      "assembly": "lda #$01",
+      "classification": "code"
+    },
+    {
+      "offset": 25,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "sta $02",
+      "classification": "code"
+    },
+    {
+      "offset": 27,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Im",
+      "operand_value": 9,
+      "assembly": "lda #$09",
+      "classification": "code"
+    },
+    {
+      "offset": 29,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "sta $03",
+      "classification": "code"
+    },
+    {
+      "offset": 31,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Im",
+      "operand_value": 0,
+      "assembly": "lda #$00",
+      "classification": "code"
+    },
+    {
+      "offset": 33,
+      "size": 1,
+      "mnemonic": "tax",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "tax",
+      "classification": "code"
+    },
+    {
+      "offset": 34,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 5,
+      "assembly": "sta $05",
+      "classification": "code"
+    },
+    {
+      "offset": 36,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Im",
+      "operand_value": 32,
+      "assembly": "lda #$20",
+      "classification": "code"
+    },
+    {
+      "offset": 38,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 1,
+      "assembly": "sta $01",
+      "classification": "code"
+    },
+    {
+      "offset": 40,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 5,
+      "assembly": "lda $05",
+      "classification": "code"
+    },
+    {
+      "offset": 42,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 0,
+      "assembly": "sta $00",
+      "classification": "code"
+    },
+    {
+      "offset": 44,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Ix",
+      "operand_value": 2,
+      "assembly": "lda ($02,x)",
+      "classification": "code"
+    },
+    {
+      "offset": 46,
+      "size": 2,
+      "mnemonic": "bmi",
+      "mode": "Lb",
+      "operand_value": 60,
+      "assembly": "bmi L_006C",
+      "classification": "code"
+    },
+    {
+      "offset": 48,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "inc $02",
+      "classification": "code"
+    },
+    {
+      "offset": 50,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 2,
+      "assembly": "bne L_0036",
+      "classification": "code"
+    },
+    {
+      "offset": 52,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "inc $03",
+      "classification": "code"
+    },
+    {
+      "offset": 54,
+      "size": 1,
+      "mnemonic": "tay",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "tay",
+      "classification": "code"
+    },
+    {
+      "offset": 55,
+      "size": 1,
+      "mnemonic": "iny",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "iny",
+      "classification": "code"
+    },
+    {
+      "offset": 56,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Ix",
+      "operand_value": 2,
+      "assembly": "lda ($02,x)",
+      "classification": "code"
+    },
+    {
+      "offset": 58,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Ix",
+      "operand_value": 0,
+      "assembly": "sta ($00,x)",
+      "classification": "code"
+    },
+    {
+      "offset": 60,
+      "size": 1,
+      "mnemonic": "pha",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "pha",
+      "classification": "code"
+    },
+    {
+      "offset": 61,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 0,
+      "assembly": "lda $00",
+      "classification": "code"
+    },
+    {
+      "offset": 63,
+      "size": 1,
+      "mnemonic": "clc",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "clc",
+      "classification": "code"
+    },
+    {
+      "offset": 64,
+      "size": 2,
+      "mnemonic": "adc",
+      "mode": "Z",
+      "operand_value": 4,
+      "assembly": "adc $04",
+      "classification": "code"
+    },
+    {
+      "offset": 66,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 0,
+      "assembly": "sta $00",
+      "classification": "code"
+    },
+    {
+      "offset": 68,
+      "size": 2,
+      "mnemonic": "bcc",
+      "mode": "Lb",
+      "operand_value": 8,
+      "assembly": "bcc L_004E",
+      "classification": "code"
+    },
+    {
+      "offset": 70,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 1,
+      "assembly": "inc $01",
+      "classification": "code"
+    },
+    {
+      "offset": 72,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 1,
+      "assembly": "lda $01",
+      "classification": "code"
+    },
+    {
+      "offset": 74,
+      "size": 2,
+      "mnemonic": "cmp",
+      "mode": "Im",
+      "operand_value": 64,
+      "assembly": "cmp #$40",
+      "classification": "code"
+    },
+    {
+      "offset": 76,
+      "size": 2,
+      "mnemonic": "beq",
+      "mode": "Lb",
+      "operand_value": 12,
+      "assembly": "beq L_005A",
+      "classification": "code"
+    },
+    {
+      "offset": 78,
+      "size": 1,
+      "mnemonic": "pla",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "pla",
+      "classification": "code"
+    },
+    {
+      "offset": 79,
+      "size": 1,
+      "mnemonic": "dey",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "dey",
+      "classification": "code"
+    },
+    {
+      "offset": 80,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 232,
+      "assembly": "bne L_003A",
+      "classification": "code"
+    },
+    {
+      "offset": 82,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "inc $02",
+      "classification": "code"
+    },
+    {
+      "offset": 84,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 214,
+      "assembly": "bne L_002C",
+      "classification": "code"
+    },
+    {
+      "offset": 86,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "inc $03",
+      "classification": "code"
+    },
+    {
+      "offset": 88,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 210,
+      "assembly": "bne L_002C",
+      "classification": "code"
+    },
+    {
+      "offset": 90,
+      "size": 1,
+      "mnemonic": "pla",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "pla",
+      "classification": "code"
+    },
+    {
+      "offset": 91,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "inc $02",
+      "classification": "code"
+    },
+    {
+      "offset": 93,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 2,
+      "assembly": "bne L_0061",
+      "classification": "code"
+    },
+    {
+      "offset": 95,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "inc $03",
+      "classification": "code"
+    },
+    {
+      "offset": 97,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 5,
+      "assembly": "inc $05",
+      "classification": "code"
+    },
+    {
+      "offset": 99,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 5,
+      "assembly": "lda $05",
+      "classification": "code"
+    },
+    {
+      "offset": 101,
+      "size": 2,
+      "mnemonic": "cmp",
+      "mode": "Z",
+      "operand_value": 4,
+      "assembly": "cmp $04",
+      "classification": "code"
+    },
+    {
+      "offset": 103,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 187,
+      "assembly": "bne L_0024",
+      "classification": "code"
+    },
+    {
+      "offset": 105,
+      "size": 3,
+      "mnemonic": "jmp",
+      "mode": "Ab",
+      "operand_value": 2199,
+      "assembly": "jmp L_0097",
+      "classification": "code"
+    },
+    {
+      "offset": 108,
+      "size": 2,
+      "mnemonic": "eor",
+      "mode": "Im",
+      "operand_value": 128,
+      "assembly": "eor #$80",
+      "classification": "code"
+    },
+    {
+      "offset": 110,
+      "size": 1,
+      "mnemonic": "tay",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "tay",
+      "classification": "code"
+    },
+    {
+      "offset": 111,
+      "size": 1,
+      "mnemonic": "iny",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "iny",
+      "classification": "code"
+    },
+    {
+      "offset": 112,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "inc $02",
+      "classification": "code"
+    },
+    {
+      "offset": 114,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 2,
+      "assembly": "bne L_0076",
+      "classification": "code"
+    },
+    {
+      "offset": 116,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "inc $03",
+      "classification": "code"
+    },
+    {
+      "offset": 118,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Ix",
+      "operand_value": 2,
+      "assembly": "lda ($02,x)",
+      "classification": "code"
+    },
+    {
+      "offset": 120,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Ix",
+      "operand_value": 0,
+      "assembly": "sta ($00,x)",
+      "classification": "code"
+    },
+    {
+      "offset": 122,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 2,
+      "assembly": "inc $02",
+      "classification": "code"
+    },
+    {
+      "offset": 124,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 2,
+      "assembly": "bne L_0080",
+      "classification": "code"
+    },
+    {
+      "offset": 126,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 3,
+      "assembly": "inc $03",
+      "classification": "code"
+    },
+    {
+      "offset": 128,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 0,
+      "assembly": "lda $00",
+      "classification": "code"
+    },
+    {
+      "offset": 130,
+      "size": 1,
+      "mnemonic": "clc",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "clc",
+      "classification": "code"
+    },
+    {
+      "offset": 131,
+      "size": 2,
+      "mnemonic": "adc",
+      "mode": "Z",
+      "operand_value": 4,
+      "assembly": "adc $04",
+      "classification": "code"
+    },
+    {
+      "offset": 133,
+      "size": 2,
+      "mnemonic": "sta",
+      "mode": "Z",
+      "operand_value": 0,
+      "assembly": "sta $00",
+      "classification": "code"
+    },
+    {
+      "offset": 135,
+      "size": 2,
+      "mnemonic": "bcc",
+      "mode": "Lb",
+      "operand_value": 8,
+      "assembly": "bcc L_0091",
+      "classification": "code"
+    },
+    {
+      "offset": 137,
+      "size": 2,
+      "mnemonic": "inc",
+      "mode": "Z",
+      "operand_value": 1,
+      "assembly": "inc $01",
+      "classification": "code"
+    },
+    {
+      "offset": 139,
+      "size": 2,
+      "mnemonic": "lda",
+      "mode": "Z",
+      "operand_value": 1,
+      "assembly": "lda $01",
+      "classification": "code"
+    },
+    {
+      "offset": 141,
+      "size": 2,
+      "mnemonic": "cmp",
+      "mode": "Im",
+      "operand_value": 64,
+      "assembly": "cmp #$40",
+      "classification": "code"
+    },
+    {
+      "offset": 143,
+      "size": 2,
+      "mnemonic": "beq",
+      "mode": "Lb",
+      "operand_value": 208,
+      "assembly": "beq L_0061",
+      "classification": "code"
+    },
+    {
+      "offset": 145,
+      "size": 1,
+      "mnemonic": "dey",
+      "mode": "Ip",
+      "operand_value": 0,
+      "assembly": "dey",
+      "classification": "code"
+    },
+    {
+      "offset": 146,
+      "size": 2,
+      "mnemonic": "bne",
+      "mode": "Lb",
+      "operand_value": 226,
+      "assembly": "bne L_0076",
+      "classification": "code"
+    },
+    {
+      "offset": 148,
+      "size": 3,
+      "mnemonic": "jmp",
+      "mode": "Ab",
+      "operand_value": 2092,
+      "assembly": "jmp L_002C",
+      "classification": "code"
+    },
+    {
+      "offset": 151,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49239,
+      "assembly": "lda a:$C057",
+      "classification": "code"
+    },
+    {
+      "offset": 154,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49236,
+      "assembly": "lda a:$C054",
+      "classification": "code"
+    },
+    {
+      "offset": 157,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49234,
+      "assembly": "lda a:$C052",
+      "classification": "code"
+    },
+    {
+      "offset": 160,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49232,
+      "assembly": "lda a:$C050",
+      "classification": "code"
+    },
+    {
+      "offset": 163,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49384,
+      "assembly": "lda a:$C0E8",
+      "classification": "code"
+    },
+    {
+      "offset": 166,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49384,
+      "assembly": "lda a:$C0E8",
+      "classification": "code"
+    },
+    {
+      "offset": 169,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49168,
+      "assembly": "lda a:$C010",
+      "classification": "code"
+    },
+    {
+      "offset": 172,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49249,
+      "assembly": "lda a:$C061",
+      "classification": "code"
+    },
+    {
+      "offset": 175,
+      "size": 2,
+      "mnemonic": "bmi",
+      "mode": "Lb",
+      "operand_value": 10,
+      "assembly": "bmi L_00BB",
+      "classification": "code"
+    },
+    {
+      "offset": 177,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49250,
+      "assembly": "lda a:$C062",
+      "classification": "code"
+    },
+    {
+      "offset": 180,
+      "size": 2,
+      "mnemonic": "bmi",
+      "mode": "Lb",
+      "operand_value": 5,
+      "assembly": "bmi L_00BB",
+      "classification": "code"
+    },
+    {
+      "offset": 182,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49168,
+      "assembly": "lda a:$C010",
+      "classification": "code"
+    },
+    {
+      "offset": 185,
+      "size": 2,
+      "mnemonic": "bpl",
+      "mode": "Lb",
+      "operand_value": 241,
+      "assembly": "bpl L_00AC",
+      "classification": "code"
+    },
+    {
+      "offset": 187,
+      "size": 3,
+      "mnemonic": "lda",
+      "mode": "Ab",
+      "operand_value": 49290,
+      "assembly": "lda a:$C08A",
+      "classification": "code"
+    },
+    {
+      "offset": 190,
+      "size": 3,
+      "mnemonic": "jmp",
+      "mode": "Ab",
+      "operand_value": 50688,
+      "assembly": "jmp a:$C600",
+      "classification": "code"
+    }
+  ],
+  "edges": [
+    {
+      "source": 1,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 6
+    },
+    {
+      "source": 6,
+      "target": 8
+    },
+    {
+      "source": 6,
+      "target": 18
+    },
+    {
+      "source": 18,
+      "target": 21
+    },
+    {
+      "source": 21,
+      "target": 23
+    },
+    {
+      "source": 23,
+      "target": 25
+    },
+    {
+      "source": 25,
+      "target": 27
+    },
+    {
+      "source": 27,
+      "target": 29
+    },
+    {
+      "source": 29,
+      "target": 31
+    },
+    {
+      "source": 31,
+      "target": 33
+    },
+    {
+      "source": 33,
+      "target": 34
+    },
+    {
+      "source": 34,
+      "target": 36
+    },
+    {
+      "source": 36,
+      "target": 38
+    },
+    {
+      "source": 38,
+      "target": 40
+    },
+    {
+      "source": 40,
+      "target": 42
+    },
+    {
+      "source": 42,
+      "target": 44
+    },
+    {
+      "source": 44,
+      "target": 46
+    },
+    {
+      "source": 46,
+      "target": 48
+    },
+    {
+      "source": 46,
+      "target": 108
+    },
+    {
+      "source": 108,
+      "target": 110
+    },
+    {
+      "source": 110,
+      "target": 111
+    },
+    {
+      "source": 111,
+      "target": 112
+    },
+    {
+      "source": 112,
+      "target": 114
+    },
+    {
+      "source": 114,
+      "target": 116
+    },
+    {
+      "source": 114,
+      "target": 118
+    },
+    {
+      "source": 118,
+      "target": 120
+    },
+    {
+      "source": 120,
+      "target": 122
+    },
+    {
+      "source": 122,
+      "target": 124
+    },
+    {
+      "source": 124,
+      "target": 126
+    },
+    {
+      "source": 124,
+      "target": 128
+    },
+    {
+      "source": 128,
+      "target": 130
+    },
+    {
+      "source": 130,
+      "target": 131
+    },
+    {
+      "source": 131,
+      "target": 133
+    },
+    {
+      "source": 133,
+      "target": 135
+    },
+    {
+      "source": 135,
+      "target": 137
+    },
+    {
+      "source": 135,
+      "target": 145
+    },
+    {
+      "source": 145,
+      "target": 146
+    },
+    {
+      "source": 146,
+      "target": 148
+    },
+    {
+      "source": 146,
+      "target": 118
+    },
+    {
+      "source": 148,
+      "target": 44
+    },
+    {
+      "source": 137,
+      "target": 139
+    },
+    {
+      "source": 139,
+      "target": 141
+    },
+    {
+      "source": 141,
+      "target": 143
+    },
+    {
+      "source": 143,
+      "target": 145
+    },
+    {
+      "source": 143,
+      "target": 97
+    },
+    {
+      "source": 97,
+      "target": 99
+    },
+    {
+      "source": 99,
+      "target": 101
+    },
+    {
+      "source": 101,
+      "target": 103
+    },
+    {
+      "source": 103,
+      "target": 105
+    },
+    {
+      "source": 103,
+      "target": 36
+    },
+    {
+      "source": 105,
+      "target": 151
+    },
+    {
+      "source": 151,
+      "target": 154
+    },
+    {
+      "source": 154,
+      "target": 157
+    },
+    {
+      "source": 157,
+      "target": 160
+    },
+    {
+      "source": 160,
+      "target": 163
+    },
+    {
+      "source": 163,
+      "target": 166
+    },
+    {
+      "source": 166,
+      "target": 169
+    },
+    {
+      "source": 169,
+      "target": 172
+    },
+    {
+      "source": 172,
+      "target": 175
+    },
+    {
+      "source": 175,
+      "target": 177
+    },
+    {
+      "source": 175,
+      "target": 187
+    },
+    {
+      "source": 187,
+      "target": 190
+    },
+    {
+      "source": 190,
+      "external_address": 50688,
+      "evidence": "Slot-six Disk II ROM $C600 restarts boot after button/key acknowledgement."
+    },
+    {
+      "source": 177,
+      "target": 180
+    },
+    {
+      "source": 180,
+      "target": 182
+    },
+    {
+      "source": 180,
+      "target": 187
+    },
+    {
+      "source": 182,
+      "target": 185
+    },
+    {
+      "source": 185,
+      "target": 187
+    },
+    {
+      "source": 185,
+      "target": 172
+    },
+    {
+      "source": 126,
+      "target": 128
+    },
+    {
+      "source": 116,
+      "target": 118
+    },
+    {
+      "source": 48,
+      "target": 50
+    },
+    {
+      "source": 50,
+      "target": 52
+    },
+    {
+      "source": 50,
+      "target": 54
+    },
+    {
+      "source": 54,
+      "target": 55
+    },
+    {
+      "source": 55,
+      "target": 56
+    },
+    {
+      "source": 56,
+      "target": 58
+    },
+    {
+      "source": 58,
+      "target": 60
+    },
+    {
+      "source": 60,
+      "target": 61
+    },
+    {
+      "source": 61,
+      "target": 63
+    },
+    {
+      "source": 63,
+      "target": 64
+    },
+    {
+      "source": 64,
+      "target": 66
+    },
+    {
+      "source": 66,
+      "target": 68
+    },
+    {
+      "source": 68,
+      "target": 70
+    },
+    {
+      "source": 68,
+      "target": 78
+    },
+    {
+      "source": 78,
+      "target": 79
+    },
+    {
+      "source": 79,
+      "target": 80
+    },
+    {
+      "source": 80,
+      "target": 82
+    },
+    {
+      "source": 80,
+      "target": 58
+    },
+    {
+      "source": 82,
+      "target": 84
+    },
+    {
+      "source": 84,
+      "target": 86
+    },
+    {
+      "source": 84,
+      "target": 44
+    },
+    {
+      "source": 86,
+      "target": 88
+    },
+    {
+      "source": 88,
+      "target": 90
+    },
+    {
+      "source": 88,
+      "target": 44
+    },
+    {
+      "source": 90,
+      "target": 91
+    },
+    {
+      "source": 91,
+      "target": 93
+    },
+    {
+      "source": 93,
+      "target": 95
+    },
+    {
+      "source": 93,
+      "target": 97
+    },
+    {
+      "source": 95,
+      "target": 97
+    },
+    {
+      "source": 70,
+      "target": 72
+    },
+    {
+      "source": 72,
+      "target": 74
+    },
+    {
+      "source": 74,
+      "target": 76
+    },
+    {
+      "source": 76,
+      "target": 78
+    },
+    {
+      "source": 76,
+      "target": 90
+    },
+    {
+      "source": 52,
+      "target": 54
+    },
+    {
+      "source": 8,
+      "target": 10
+    },
+    {
+      "source": 10,
+      "target": 13
+    },
+    {
+      "source": 13,
+      "target": 15
+    },
+    {
+      "source": 15,
+      "external_address": 50780,
+      "evidence": "Slot-six Disk II ROM $C65C continues sector loading, then returns to $0801."
+    }
+  ],
+  "unclassified_offsets": [],
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 0
+    }
+  ],
+  "classification_evidence": "docs/play-disk-boot.md",
+  "disk_output_bytes": 193,
+  "byte_identical_assembly": true
+}

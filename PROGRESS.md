@@ -1721,3 +1721,34 @@ and acceptance criteria.
   41,286 temporary bytes (18,172 disk 1; 23,114 disk 2).
 - **Next action:** Continue remaining native fragments, dialogue/data banks, and
   record tails; final full classification and both-emulator checks remain required.
+
+## 2026-09-20 — Step 06ad: play-disk boot native code and FLIP DISK notice
+
+- **Work/evidence:** Reconstructed the play disk's first 193 bytes as 93 native
+  instructions (192 bytes) and one ROM boot-count field. Traced the four-plane
+  RLE decoder at $0812–$0896 and extracted its exact 576-byte input at logical
+  offsets 256–831. The decoded HGR page contains a floppy icon and FLIP DISK.
+  Boot-sector bytes 193–255 and block-1 bytes 320–511 remain unresolved.
+- **Artifacts:** Added ca65 source/config, evidence/adoption recipes, full raw
+  instruction audit, tools/play_boot_asset.py, and assets/play-boot with packet
+  description, compressed input, decoded page, preview, and manifest. Extended
+  the existing RLE codec to evidenced stride four; retained exact packet controls
+  and plane-boundary clipping. Added docs/play-disk-boot.md and runtime capture
+  metadata/screenshot under docs/reference/play-boot.*.
+- **Runtime validation:** Used the a2-mame skill with an owned MAME 0.285 apple2e
+  process, verified ROMs, and isolated rebuilt media. Unmodified execution reached
+  PC $08AC. Captured $0800–$0DFF matches the first six logical sectors except
+  $0800 changes from one to eleven. Decoder input ends at $0B40, stride/plane are
+  both four, and all 8,192 live HGR bytes match the static decode. Reviewed the
+  screenshot; copied media remained unchanged and the owned process exited cleanly.
+  This does not claim acknowledgement, disk-swap, save/load, or final dual-emulator
+  completion.
+- **Validation:** All four RLE tests pass, including interleaved planes and
+  clipped literal/repeat packets at each plane boundary. Existing ship assets
+  still decode/repack exactly. Native preparation covers every selected byte and
+  assembles exactly; notice verification, adoption, full build, and disk verifier
+  pass. Both rebuilt disks remain exact and original inputs are unchanged.
+- **Coverage:** 154,920 source-built disk bytes, 91,283 identified data/asset bytes,
+  40,517 temporary bytes (18,172 disk 1; 22,345 disk 2).
+- **Next action:** Continue remaining record/dialogue banks and native fragments,
+  then finish the full classification audit and both-emulator validation.

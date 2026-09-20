@@ -5,6 +5,24 @@ from packed_hgr_asset import decode, encode
 
 
 class PackedHgrTests(unittest.TestCase):
+    def test_stride_four_plane_boundaries(self):
+        # Each plane ends inside a packet. Excess repeat/literal count does
+        # not spill into the next plane or consume unstored literal bytes.
+        raw = bytearray([4])
+        expected = bytearray(8192)
+        for plane in range(4):
+            value = 0x81+plane
+            raw.extend(bytes([127,value])*15)
+            raw.extend(bytes([126,value]))
+            raw.extend(bytes([255 if plane & 1 else 127, 0xF0+plane]))
+            expected[plane::4] = bytes([value])*2047+bytes([0xF0+plane])
+        page, packets, consumed = decode(bytes(raw)+b'excluded tail')
+        self.assertEqual(page, expected)
+        self.assertEqual(consumed, len(raw))
+        self.assertEqual(encode(packets), raw)
+        with self.assertRaises(ValueError):
+            decode(raw[:-1])
+
     def test_literal_repeat_and_high_bits(self):
         literals = bytes(range(128,256))
         raw = b'\x01\xff' + literals + b'\x7f\x80' * 63

@@ -1,0 +1,13 @@
+{
+  "name": "play_boot",
+  "source": "src/native/play_boot.s",
+  "config": "src/native/play_boot.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 0,
+      "size": 193,
+      "input_offset": 0
+    }
+  ]
+}

@@ -39,9 +39,9 @@ Split large steps into independently validated, logged, and committed increments
   resolved; every subsequent checkpoint must follow the base rule above.
 - `PROGRESS.md` records completed steps 01–05 and module checkpoints 06a–06v.
   All inventoried executable segments are source-built. Step 06 remains open for
-  other-region classification and provisional runtime data. Steps 06w–06ac add raw
+  other-region classification and provisional runtime data. Steps 06w–06ad add raw
   screen-initialization, buffer-transformation, certificate-reveal, warp-animation,
-  viewscreen-transition, shared drawing/joystick, and disk-checksum code
+  viewscreen-transition, shared drawing/joystick, disk-checksum, and play-disk boot code
   outside the Pascal inventory; step 07a extracts
   the independently confirmed title bitmap, step 07b extracts the shared font,
   step 07c extracts the registration certificate, and step 07d extracts two
@@ -51,6 +51,8 @@ Split large steps into independently validated, logged, and committed increments
   payloads in step 07j, four saved-game payloads/descriptors in step 07k,
   working-state data/templates in step 07l, animated logo frames in step 07m,
   and the interaction-window bitmap/position fields in step 07n.
+  Step 06ad also extracts the compressed FLIP DISK boot notice and verifies its
+  decoded page against a live MAME capture.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

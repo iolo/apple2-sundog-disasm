@@ -109,11 +109,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Animated logo letter frames | `assets/logo-frames/frames.bin` | Disk 1 blocks 67–78 | 6,144 |
 | Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 18,172 |
 | Interaction-window bitmap and position fields | `assets/interaction-window/window.bin` | Disk 2 blocks 37–40: first 1,920 bytes and offsets 2000–2001 | 1,922 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 23,114 |
+| Play-disk boot native code and count | `src/native/play_boot.s` | Disk 2 block 0 bytes 0–192 | 193 |
+| Compressed FLIP DISK boot notice | `assets/play-boot/image.rle` | Disk 2 logical bytes 256–831 | 576 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 22,345 |
 
-The 154,727 source-built bytes include instructions and their owned tables,
+The 154,920 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-154,727 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+154,920 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -330,7 +332,14 @@ explicit zero record padding. Ownership then was 154,727 source-built bytes,
 remain exact; the final complete classification and emulator checks remain open.
 
 Step 07n extracts the [interaction-window bitmap and position fields](interaction-window.md),
-leaving 126 unrelated allocation bytes unresolved. Current ownership is 154,727
+leaving 126 unrelated allocation bytes unresolved. Ownership then was 154,727
 source-built bytes, 90,707 classified data/asset bytes, and 41,286 temporary bytes.
+
+Step 06ad reconstructs the [play-disk boot program and FLIP DISK notice](play-disk-boot.md):
+192 native instruction bytes, one boot-count byte, and 576 compressed data bytes.
+The static HGR decode matches the live MAME page exactly. Current ownership is
+154,920 source-built bytes, 91,283 classified data/asset bytes, and 40,517 temporary
+bytes (18,172 disk 1; 22,345 disk 2). Final classification and both-emulator
+validation remain open.
 Both rebuilt images remain exact; final classification and behavioral validation
 remain incomplete.

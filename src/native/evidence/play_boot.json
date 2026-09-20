@@ -1,0 +1,14 @@
+{
+  "name": "play_boot",
+  "size": 193,
+  "base": 2048,
+  "sha256": "e15615c9551721fc77e7e3f4abbf9580392625061228a59cfe7e8b16e1c6650a",
+  "origins": [{"disk": "disk2", "block": 0}],
+  "classification_evidence": "docs/play-disk-boot.md",
+  "roots": [{"offset": 1, "evidence": "Disk II boot firmware loads $0800 and transfers to $0801; captured native wait loop at $08AC."}],
+  "data": [{"offset": 0, "size": 1, "kind": "boot-sector-count-limit", "evidence": "Disk II ROM compares its sector counter with $0800; boot entry increments this limit by two until it reaches eleven in RAM."}],
+  "external_targets": {
+    "50780": "Slot-six Disk II ROM $C65C continues sector loading, then returns to $0801.",
+    "50688": "Slot-six Disk II ROM $C600 restarts boot after button/key acknowledgement."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "classification": "data",
+  "format": "sundog-stride4-rle-hgr",
+  "classification_evidence": "docs/play-disk-boot.md",
+  "disk": "disk2",
+  "logical_byte_offset": 256,
+  "size": 576,
+  "sha256": "3351c7c1b032af1ade101fbd371901f9fc9ddfd32c85ac85ca2a6d3348518309",
+  "decoded_size": 8192,
+  "decoded_sha256": "22fd11bbf71e1e914cdfa73f463a5c3b795fd653981ffb01682a2ba63a146da1",
+  "packet_count": 270,
+  "consumer": "Native boot decoder $0812\u2013$0896",
+  "inverse": "encode(packets.json) reproduces image.rle exactly",
+  "preview_note": "Monochrome HGR preview; raw stream retains all bits"
+}

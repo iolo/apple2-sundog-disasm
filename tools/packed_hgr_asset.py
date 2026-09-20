@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decode/repack the stride-one RLE HGR streams consumed by library 24 procedure 5."""
+"""Decode/repack the evidenced stride-one ship and stride-four boot HGR streams."""
 import argparse
 import json
 from pathlib import Path
@@ -9,29 +9,36 @@ from hgr_asset import preview
 
 
 def decode(raw):
-    if not raw or raw[0] != 1:
-        raise ValueError('Only the evidenced stride-one HGR encoding is supported')
-    page, packets, position = bytearray(), [], 1
-    while len(page) < 8192:
-        if position >= len(raw):
-            raise ValueError('Truncated RLE control')
-        control = raw[position]
-        position += 1
-        count = min((control & 127) + 1, 8192 - len(page))
-        size = count if control & 128 else 1
-        payload = raw[position:position+size]
-        if len(payload) != size:
-            raise ValueError('Truncated RLE payload')
-        position += size
-        page.extend(payload if control & 128 else payload * count)
-        packets.append(dict(control=control, payload=payload.hex()))
-    return bytes(page), dict(stride=1, packets=packets), position
+    if not raw or raw[0] not in (1, 4):
+        raise ValueError('Only the evidenced strides one and four are supported')
+    stride = raw[0]
+    page, packets, position = bytearray(8192), [], 1
+    for plane in range(stride):
+        address = plane
+        while address < 8192:
+            if position >= len(raw):
+                raise ValueError('Truncated RLE control')
+            control = raw[position]
+            position += 1
+            count = min((control & 127) + 1, (8191-address)//stride+1)
+            size = count if control & 128 else 1
+            payload = raw[position:position+size]
+            if len(payload) != size:
+                raise ValueError('Truncated RLE payload')
+            position += size
+            values = payload if control & 128 else payload * count
+            for value in values:
+                page[address] = value
+                address += stride
+            packets.append(dict(control=control, payload=payload.hex()))
+    return bytes(page), dict(stride=stride, packets=packets), position
 
 
 def encode(description):
-    if description.get('stride') != 1:
-        raise ValueError('Only stride one is supported')
-    result = bytearray([1])
+    stride = description.get('stride')
+    if type(stride) is not int or stride not in (1, 4):
+        raise ValueError('Only strides one and four are supported')
+    result = bytearray([stride])
     for packet in description['packets']:
         control = packet['control']
         if type(control) is not int or not 0 <= control <= 255:
