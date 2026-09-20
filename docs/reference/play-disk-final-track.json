@@ -1,0 +1,29 @@
+{
+  "classification": "data",
+  "kind": "sector-image-zero-fill-for-non-sector-track",
+  "offset": 139264,
+  "size": 4096,
+  "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+  "preceding_segment": 21,
+  "preceding_procedures": 41,
+  "raw_reference_track_sha256": "98ebd274cb813d4a9020d696fcf7a9d120277d0181da7cb2b8bc5d605ce67788",
+  "standard_sector_markers": 0,
+  "external_verification": {
+    "matching_sectors": 532,
+    "different_bytes": 378,
+    "different_tracks": [
+      6
+    ],
+    "different_bytes_by_logical_block": {
+      "48": 33,
+      "52": 83,
+      "49": 18,
+      "53": 44,
+      "50": 78,
+      "51": 122
+    },
+    "final_standard_sector_read": "SectorNotFound",
+    "clean_reference_checked": true
+  },
+  "fresh_assembly_verified": true
+}

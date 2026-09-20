@@ -102,3 +102,10 @@ working-copy hash without assuming that saved characters were modified.
 
 No source rebuild, complete asset classification, allocation interpretation for
 disk 2, or p-code dialect identification is claimed at this stage.
+
+## Final-track classification update (step 08m)
+
+Disk 2's final track is now classified as [sector-image fill](play-disk-final-track.md),
+using a closely matching nibble image with no standard sectors on track 34 and
+an independently matching clean-crack DSK ending. This is container evidence,
+not a newly inferred Pascal directory. The 4,096 bytes remain exactly zero.

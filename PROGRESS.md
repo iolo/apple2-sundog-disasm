@@ -2941,3 +2941,40 @@ and acceptance criteria.
   Return to remaining classification and final integration: 179,220 source
   bytes, 100,900 identified data/asset bytes and 6,600 temporary bytes remain
   unchanged (906 disk 1; 5,694 disk 2). User PRD edits and ref/ stay excluded.
+
+## 2026-09-20 — Step 08m: classify the play-side final track as container fill
+
+- **Evidence:** The archived sundog_ver2_disk2.zip contains the exact supplied
+  disk-2 image. A separately archived side-B nibble image yields all 544 standard
+  sectors on tracks 0–33 through a2kit 4.4.2; 532 sectors match exactly, and all
+  378 differing bytes lie in known working-state blocks 48–53. The complete
+  preceding segment-21 allocation on tracks 32–33 matches exactly. Raw track 34
+  is 6,626 FF bytes plus 30 frozen exceptions, with no standard address/data
+  markers even across the circular seam. A sector read returns SectorNotFound.
+  An independent clean-crack DSK has the identical final segment allocation and
+  zero final track. Source URLs and full hashes are frozen in the evidence file.
+- **Classification:** Disk-2 image offsets 139264–143359 / logical blocks 272–279
+  are sector-image container fill, not decoded contents of the nibble track.
+  This uses independent representation/track evidence and the final segment
+  boundary, not zero contents alone or a fictitious disk-2 Pascal directory.
+  No particular historical converter or raw-protection preservation is claimed.
+- **Artifacts:** Added explicit ca65 zero-fill declarations, linker config,
+  adoption recipe, sparse raw-track evidence, local/external verifier, two
+  mutation/boundary tests and docs/play-disk-final-track.md. Updated PLAN.md,
+  disk-layout/reconstruction docs and the manifest; removed 4,096 bytes from
+  the temporary disk-2 input. Historical reference images are not build inputs.
+- **Validation:** External replay verifies full nibble/clean-image hashes,
+  all decoded sector correspondences and logical difference blocks, missing
+  final standard sector, identical final allocation, and the raw-track hash.
+  Local checks validate the 41-procedure final segment, header/allocation end,
+  neighboring tracks, zero extent and fresh assembly. Tests reject truncation,
+  changed fill/neighbor/header boundaries, duplicate sparse entries and markers
+  crossing the track seam. Strict adoption, rebuild, full disk/manual verifier
+  and git diff --check pass. Both disks retain their original exact hashes;
+  the recent dual-emulator behavior checkpoints therefore remain applicable.
+- **Coverage/next:** 183,316 source-built disk bytes (including this data fill),
+  100,900 identified data/asset bytes and 2,504 temporary bytes remain: 906 on
+  disk 1 and 1,598 on disk 2. The primitive-bank descriptor also has a direct
+  native-relocation consumer; its documentation/audit can be tightened next.
+  Continue the remaining small tails, encoded-bank gaps and provisional data.
+  User PRD edits and ref/ remain untouched and excluded.

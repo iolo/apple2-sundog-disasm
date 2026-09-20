@@ -1,0 +1,183 @@
+{
+  "classification": "data",
+  "kind": "sector-image-zero-fill-for-non-sector-track",
+  "disk": "disk2",
+  "logical_blocks": [
+    272,
+    280
+  ],
+  "image_offset": 139264,
+  "size": 4096,
+  "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+  "disk_sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+  "header_block": 140,
+  "final_segment": {
+    "number": 21,
+    "first_block": 256,
+    "length": 8132,
+    "allocation_end_block": 272,
+    "allocation_sha256": "69d4b9319c1bc0953edf4d0b57df1781bcec92beaead214b7bb36e282e42a796"
+  },
+  "nibble_reference": {
+    "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/Sundog%2C%20Frozen%20Legacy%20side%20B.nib",
+    "size": 232960,
+    "sha256": "5922c66fe4124069cf94326751c71413a98ab35cb934e9085e4daf6fb9e2dee2",
+    "track_number": 34,
+    "track_size": 6656,
+    "track_sha256": "98ebd274cb813d4a9020d696fcf7a9d120277d0181da7cb2b8bc5d605ce67788",
+    "fill": 255,
+    "nonfill_bytes": [
+      {
+        "offset": 494,
+        "value": 175
+      },
+      {
+        "offset": 497,
+        "value": 253
+      },
+      {
+        "offset": 498,
+        "value": 254
+      },
+      {
+        "offset": 507,
+        "value": 251
+      },
+      {
+        "offset": 508,
+        "value": 253
+      },
+      {
+        "offset": 509,
+        "value": 254
+      },
+      {
+        "offset": 778,
+        "value": 175
+      },
+      {
+        "offset": 781,
+        "value": 253
+      },
+      {
+        "offset": 782,
+        "value": 254
+      },
+      {
+        "offset": 791,
+        "value": 251
+      },
+      {
+        "offset": 792,
+        "value": 253
+      },
+      {
+        "offset": 793,
+        "value": 254
+      },
+      {
+        "offset": 809,
+        "value": 215
+      },
+      {
+        "offset": 810,
+        "value": 213
+      },
+      {
+        "offset": 811,
+        "value": 170
+      },
+      {
+        "offset": 812,
+        "value": 171
+      },
+      {
+        "offset": 813,
+        "value": 238
+      },
+      {
+        "offset": 814,
+        "value": 254
+      },
+      {
+        "offset": 815,
+        "value": 234
+      },
+      {
+        "offset": 826,
+        "value": 128
+      },
+      {
+        "offset": 827,
+        "value": 128
+      },
+      {
+        "offset": 828,
+        "value": 128
+      },
+      {
+        "offset": 829,
+        "value": 159
+      },
+      {
+        "offset": 830,
+        "value": 247
+      },
+      {
+        "offset": 831,
+        "value": 251
+      },
+      {
+        "offset": 832,
+        "value": 253
+      },
+      {
+        "offset": 833,
+        "value": 254
+      },
+      {
+        "offset": 848,
+        "value": 213
+      },
+      {
+        "offset": 849,
+        "value": 215
+      },
+      {
+        "offset": 851,
+        "value": 239
+      }
+    ],
+    "standard_address_marker_count": 0,
+    "standard_data_marker_count": 0,
+    "standard_sector_read": "a2kit 4.4.2: SectorNotFound",
+    "readable_tracks_physical_sector_order_sha256": "693a2af65f6119f6884c5006d0a0487990b94422911764a543e31aaffc55abca",
+    "readable_sector_count": 544,
+    "matching_sector_count": 532,
+    "different_byte_count": 378,
+    "differences_confined_to_tracks": [
+      6
+    ],
+    "different_bytes_by_logical_block": {
+      "48": 33,
+      "49": 18,
+      "50": 78,
+      "51": 122,
+      "52": 83,
+      "53": 44
+    }
+  },
+  "clean_dsk_reference": {
+    "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/Sundog%2C%20Frozen%20Legacy%20(Clean%20Crack)%20-%20Side%20B.DSK",
+    "size": 143360,
+    "sha256": "195365435fce72dbfb85b73a0bc051fe1f05eab48b4f6fb2ac907ed87d00a663",
+    "matching_final_segment_allocation": true,
+    "zero_final_track": true
+  },
+  "original_archive": {
+    "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/sundog_ver2_disk2.zip",
+    "sha256": "6903be2cb1980b27fc0055bcd69a3fa3be9f18b121467584a192edaf7fb915d3",
+    "member": "SUNDOG2.DSK",
+    "member_sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+  }
+}

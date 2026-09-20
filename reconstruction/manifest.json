@@ -26,8 +26,8 @@
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 5694,
-      "sha256": "7734551e80b78ecc0f4b8e647433bac9c490a6e44f70afc428ecfd8e0df271af",
+      "size": 1598,
+      "sha256": "1aa42a9bb4d9e711254cc1872dfb5eebc652b9afbff51d1823a28a7a1c6fa07c",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1181,6 +1181,13 @@
       "classification_evidence": "docs/retained-tile-rows.md",
       "size": 32,
       "sha256": "8c11793b90a788cecdb01e0ed01cd5d361bda07b2e8efa02172950aedd660fc7"
+    },
+    "play_disk_final_track": {
+      "kind": "ca65-source",
+      "source": "src/data/play_disk_final_track.s",
+      "config": "src/data/play_disk_final_track.cfg",
+      "size": 4096,
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
     }
   },
   "disks": [
@@ -11419,8 +11426,8 @@
         {
           "offset": 139264,
           "size": 4096,
-          "input": "disk2_unresolved",
-          "input_offset": 1598
+          "input": "play_disk_final_track",
+          "input_offset": 0
         }
       ]
     }

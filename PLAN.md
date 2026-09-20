@@ -139,6 +139,11 @@ Split large steps into independently validated, logged, and committed increments
   bounded zero remainder using historical field layout and matching consumers.
   The unused track-field byte and 875 spare-bank bytes now have explicit data
   evidence without changing source ownership totals or disk output.
+- Step 08m reconstructs disk 2's final 4,096 zero bytes as sector-image fill.
+  Independent nibble evidence has no standard sectors on that track; 532 of
+  544 readable sectors, including the complete neighboring segment allocation,
+  match exactly. Current ownership is 183,316 source-built bytes, 100,900
+  identified data/asset bytes and 2,504 temporary bytes (906 disk 1; 1,598 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

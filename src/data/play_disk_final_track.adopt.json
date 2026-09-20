@@ -1,0 +1,13 @@
+{
+  "name": "play_disk_final_track",
+  "source": "src/data/play_disk_final_track.s",
+  "config": "src/data/play_disk_final_track.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 139264,
+      "size": 4096,
+      "input_offset": 0
+    }
+  ]
+}
