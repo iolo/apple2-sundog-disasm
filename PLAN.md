@@ -70,6 +70,8 @@ Split large steps into independently validated, logged, and committed increments
   ownership and clipped instruction boundaries recorded.
   Step 06aj adds 15 exact ranges / 2,538 bytes covered by the earlier startup
   and utility module audits, retaining nearby modified utility bytes as unresolved.
+  Step 07r classifies all 832 bounded world/city map prefix bytes, completing
+  code/data ownership of those fixed map-record banks.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

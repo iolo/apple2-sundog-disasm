@@ -1,0 +1,512 @@
+{
+  "name": "map_record_prefixes",
+  "data": "assets/map-record-prefixes/prefixes.bin",
+  "format": "Fixed data prefixes: twenty 16-byte world records and sixty-four 8-byte city records",
+  "classification": "docs/map-record-prefixes.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 24832,
+      "size": 16,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 28416,
+      "size": 16,
+      "input_offset": 16
+    },
+    {
+      "disk": "disk2",
+      "offset": 28672,
+      "size": 16,
+      "input_offset": 32
+    },
+    {
+      "disk": "disk2",
+      "offset": 32256,
+      "size": 16,
+      "input_offset": 48
+    },
+    {
+      "disk": "disk2",
+      "offset": 32000,
+      "size": 16,
+      "input_offset": 64
+    },
+    {
+      "disk": "disk2",
+      "offset": 31744,
+      "size": 16,
+      "input_offset": 80
+    },
+    {
+      "disk": "disk2",
+      "offset": 31488,
+      "size": 16,
+      "input_offset": 96
+    },
+    {
+      "disk": "disk2",
+      "offset": 31232,
+      "size": 16,
+      "input_offset": 112
+    },
+    {
+      "disk": "disk2",
+      "offset": 30976,
+      "size": 16,
+      "input_offset": 128
+    },
+    {
+      "disk": "disk2",
+      "offset": 30720,
+      "size": 16,
+      "input_offset": 144
+    },
+    {
+      "disk": "disk2",
+      "offset": 30464,
+      "size": 16,
+      "input_offset": 160
+    },
+    {
+      "disk": "disk2",
+      "offset": 30208,
+      "size": 16,
+      "input_offset": 176
+    },
+    {
+      "disk": "disk2",
+      "offset": 29952,
+      "size": 16,
+      "input_offset": 192
+    },
+    {
+      "disk": "disk2",
+      "offset": 29696,
+      "size": 16,
+      "input_offset": 208
+    },
+    {
+      "disk": "disk2",
+      "offset": 29440,
+      "size": 16,
+      "input_offset": 224
+    },
+    {
+      "disk": "disk2",
+      "offset": 29184,
+      "size": 16,
+      "input_offset": 240
+    },
+    {
+      "disk": "disk2",
+      "offset": 28928,
+      "size": 16,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 32512,
+      "size": 16,
+      "input_offset": 272
+    },
+    {
+      "disk": "disk1",
+      "offset": 101120,
+      "size": 16,
+      "input_offset": 288
+    },
+    {
+      "disk": "disk1",
+      "offset": 100864,
+      "size": 16,
+      "input_offset": 304
+    },
+    {
+      "disk": "disk2",
+      "offset": 32768,
+      "size": 8,
+      "input_offset": 320
+    },
+    {
+      "disk": "disk2",
+      "offset": 32896,
+      "size": 8,
+      "input_offset": 328
+    },
+    {
+      "disk": "disk2",
+      "offset": 36352,
+      "size": 8,
+      "input_offset": 336
+    },
+    {
+      "disk": "disk2",
+      "offset": 36480,
+      "size": 8,
+      "input_offset": 344
+    },
+    {
+      "disk": "disk2",
+      "offset": 36096,
+      "size": 8,
+      "input_offset": 352
+    },
+    {
+      "disk": "disk2",
+      "offset": 36224,
+      "size": 8,
+      "input_offset": 360
+    },
+    {
+      "disk": "disk2",
+      "offset": 35840,
+      "size": 8,
+      "input_offset": 368
+    },
+    {
+      "disk": "disk2",
+      "offset": 35968,
+      "size": 8,
+      "input_offset": 376
+    },
+    {
+      "disk": "disk2",
+      "offset": 35584,
+      "size": 8,
+      "input_offset": 384
+    },
+    {
+      "disk": "disk2",
+      "offset": 35712,
+      "size": 8,
+      "input_offset": 392
+    },
+    {
+      "disk": "disk2",
+      "offset": 35328,
+      "size": 8,
+      "input_offset": 400
+    },
+    {
+      "disk": "disk2",
+      "offset": 35456,
+      "size": 8,
+      "input_offset": 408
+    },
+    {
+      "disk": "disk2",
+      "offset": 35072,
+      "size": 8,
+      "input_offset": 416
+    },
+    {
+      "disk": "disk2",
+      "offset": 35200,
+      "size": 8,
+      "input_offset": 424
+    },
+    {
+      "disk": "disk2",
+      "offset": 34816,
+      "size": 8,
+      "input_offset": 432
+    },
+    {
+      "disk": "disk2",
+      "offset": 34944,
+      "size": 8,
+      "input_offset": 440
+    },
+    {
+      "disk": "disk2",
+      "offset": 34560,
+      "size": 8,
+      "input_offset": 448
+    },
+    {
+      "disk": "disk2",
+      "offset": 34688,
+      "size": 8,
+      "input_offset": 456
+    },
+    {
+      "disk": "disk2",
+      "offset": 34304,
+      "size": 8,
+      "input_offset": 464
+    },
+    {
+      "disk": "disk2",
+      "offset": 34432,
+      "size": 8,
+      "input_offset": 472
+    },
+    {
+      "disk": "disk2",
+      "offset": 34048,
+      "size": 8,
+      "input_offset": 480
+    },
+    {
+      "disk": "disk2",
+      "offset": 34176,
+      "size": 8,
+      "input_offset": 488
+    },
+    {
+      "disk": "disk2",
+      "offset": 33792,
+      "size": 8,
+      "input_offset": 496
+    },
+    {
+      "disk": "disk2",
+      "offset": 33920,
+      "size": 8,
+      "input_offset": 504
+    },
+    {
+      "disk": "disk2",
+      "offset": 33536,
+      "size": 8,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 33664,
+      "size": 8,
+      "input_offset": 520
+    },
+    {
+      "disk": "disk2",
+      "offset": 33280,
+      "size": 8,
+      "input_offset": 528
+    },
+    {
+      "disk": "disk2",
+      "offset": 33408,
+      "size": 8,
+      "input_offset": 536
+    },
+    {
+      "disk": "disk2",
+      "offset": 33024,
+      "size": 8,
+      "input_offset": 544
+    },
+    {
+      "disk": "disk2",
+      "offset": 33152,
+      "size": 8,
+      "input_offset": 552
+    },
+    {
+      "disk": "disk2",
+      "offset": 36608,
+      "size": 8,
+      "input_offset": 560
+    },
+    {
+      "disk": "disk2",
+      "offset": 36736,
+      "size": 8,
+      "input_offset": 568
+    },
+    {
+      "disk": "disk2",
+      "offset": 36864,
+      "size": 8,
+      "input_offset": 576
+    },
+    {
+      "disk": "disk2",
+      "offset": 36992,
+      "size": 8,
+      "input_offset": 584
+    },
+    {
+      "disk": "disk2",
+      "offset": 40448,
+      "size": 8,
+      "input_offset": 592
+    },
+    {
+      "disk": "disk2",
+      "offset": 40576,
+      "size": 8,
+      "input_offset": 600
+    },
+    {
+      "disk": "disk2",
+      "offset": 40192,
+      "size": 8,
+      "input_offset": 608
+    },
+    {
+      "disk": "disk2",
+      "offset": 40320,
+      "size": 8,
+      "input_offset": 616
+    },
+    {
+      "disk": "disk2",
+      "offset": 39936,
+      "size": 8,
+      "input_offset": 624
+    },
+    {
+      "disk": "disk2",
+      "offset": 40064,
+      "size": 8,
+      "input_offset": 632
+    },
+    {
+      "disk": "disk2",
+      "offset": 39680,
+      "size": 8,
+      "input_offset": 640
+    },
+    {
+      "disk": "disk2",
+      "offset": 39808,
+      "size": 8,
+      "input_offset": 648
+    },
+    {
+      "disk": "disk2",
+      "offset": 39424,
+      "size": 8,
+      "input_offset": 656
+    },
+    {
+      "disk": "disk2",
+      "offset": 39552,
+      "size": 8,
+      "input_offset": 664
+    },
+    {
+      "disk": "disk2",
+      "offset": 39168,
+      "size": 8,
+      "input_offset": 672
+    },
+    {
+      "disk": "disk2",
+      "offset": 39296,
+      "size": 8,
+      "input_offset": 680
+    },
+    {
+      "disk": "disk2",
+      "offset": 38912,
+      "size": 8,
+      "input_offset": 688
+    },
+    {
+      "disk": "disk2",
+      "offset": 39040,
+      "size": 8,
+      "input_offset": 696
+    },
+    {
+      "disk": "disk2",
+      "offset": 38656,
+      "size": 8,
+      "input_offset": 704
+    },
+    {
+      "disk": "disk2",
+      "offset": 38784,
+      "size": 8,
+      "input_offset": 712
+    },
+    {
+      "disk": "disk2",
+      "offset": 38400,
+      "size": 8,
+      "input_offset": 720
+    },
+    {
+      "disk": "disk2",
+      "offset": 38528,
+      "size": 8,
+      "input_offset": 728
+    },
+    {
+      "disk": "disk2",
+      "offset": 38144,
+      "size": 8,
+      "input_offset": 736
+    },
+    {
+      "disk": "disk2",
+      "offset": 38272,
+      "size": 8,
+      "input_offset": 744
+    },
+    {
+      "disk": "disk2",
+      "offset": 37888,
+      "size": 8,
+      "input_offset": 752
+    },
+    {
+      "disk": "disk2",
+      "offset": 38016,
+      "size": 8,
+      "input_offset": 760
+    },
+    {
+      "disk": "disk2",
+      "offset": 37632,
+      "size": 8,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 37760,
+      "size": 8,
+      "input_offset": 776
+    },
+    {
+      "disk": "disk2",
+      "offset": 37376,
+      "size": 8,
+      "input_offset": 784
+    },
+    {
+      "disk": "disk2",
+      "offset": 37504,
+      "size": 8,
+      "input_offset": 792
+    },
+    {
+      "disk": "disk1",
+      "offset": 100608,
+      "size": 8,
+      "input_offset": 800
+    },
+    {
+      "disk": "disk1",
+      "offset": 100736,
+      "size": 8,
+      "input_offset": 808
+    },
+    {
+      "disk": "disk1",
+      "offset": 100352,
+      "size": 8,
+      "input_offset": 816
+    },
+    {
+      "disk": "disk1",
+      "offset": 100480,
+      "size": 8,
+      "input_offset": 824
+    }
+  ]
+}

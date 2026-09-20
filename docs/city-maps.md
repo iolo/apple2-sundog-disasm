@@ -4,8 +4,9 @@
 64–78 and four distinct demo payloads from disk-1 block 195. Each 128-byte
 record contains an eight-byte prefix followed by a 120-byte map. Only the
 payloads are classified and adopted here, replacing 7,680 disk bytes. The
-512 prefix bytes remain unresolved; their values are recorded in the manifest
-to make the exclusion explicit.
+512 prefix bytes are now separately classified in
+[map-record-prefixes.md](map-record-prefixes.md); their values remain recorded
+in this manifest to make the payload asset's exclusion explicit.
 
 Each payload encodes a 20-column by 12-row grid of four-bit tile indices.
 Columns are consecutive, with six bytes per column. Each byte stores the

@@ -2030,3 +2030,33 @@ and acceptance criteria.
   excluded from this implementation commit.
 - **Next action:** Continue the remaining variant/orphan code and bounded asset
   headers/storage, followed by the whole-disk audit and both-emulator checks.
+
+## 2026-09-20 — Step 07r: bounded world/city map record prefixes
+
+- **Work/evidence:** Classified the 16-byte prefixes of twenty world-map records
+  and eight-byte prefixes of sixty-four city-map records as structured data.
+  The consumer code independently establishes each record stride, explicit
+  prefix skip and exact payload extent. Repeated prefix patterns, the complete
+  fixed-record layout, and exact adjacent payload ownership support classification;
+  precise field meanings remain unspecified. Retained the exceptional world
+  bit pattern, alternating D5/AA prefixes, city-0 prefix and all-$11 city-59 prefix.
+- **Artifacts:** Added assets/map-record-prefixes with all 832 bytes, reversible
+  first-word/remaining-byte fields, record-to-payload provenance, and adoption
+  mappings. Added tools/map_prefix_asset.py, three tests, docs/map-record-prefixes.md,
+  and updated the world/city map documents and PLAN.md. No bytes outside the
+  evidenced records or unrelated zero runs are included.
+- **Validation:** Three tests pass for all 84 record identities, inverse field
+  encoding and rejection of changed patterns, wrong identities, field sizes and
+  byte bounds. Extraction checks both disk hashes, both existing payload sources,
+  each adjacent payload's exact bytes and actual manifest ownership, and every
+  reviewed prefix pattern. Adoption, full exact build, independent asset
+  verification and original disk/manual comparison pass. A separate per-byte
+  ownership check confirms that all 13,312 bytes of the complete world/city map
+  banks are identified data, with no temporary byte remaining in those banks.
+  git diff --check passes. No new live-map/emulator completion is claimed.
+- **Coverage:** 170,711 source-built disk bytes, 99,300 identified data/asset bytes,
+  16,709 temporary bytes (8,590 disk 1; 8,119 disk 2).
+- **Workspace:** The concurrent PRD reference-link edit remains untouched and
+  excluded from this implementation commit.
+- **Next action:** Continue remaining variant/orphan code, bounded file/asset
+  storage, and provisional classification audits; complete final emulator checks.

@@ -3,8 +3,9 @@
 `assets/world-maps/` contains 18 packed payloads from disk-2 blocks 55–63,
 and records the two identical payload copies at disk-1 block 194. Each payload
 is 240 bytes representing 40×24 two-bit symbols. Together they replace 4,800
-disk bytes. The 16-byte prefix of each 256-byte disk record is excluded and
-remains unresolved; decoding starts after that prefix.
+disk bytes. The 16-byte prefix of each 256-byte disk record is excluded from
+this payload asset; it is now separately classified in
+[map-record-prefixes.md](map-record-prefixes.md). Decoding starts after that prefix.
 
 ## Loader and native format
 
