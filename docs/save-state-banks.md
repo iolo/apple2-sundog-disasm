@@ -106,5 +106,6 @@ round trips before writing assets. Normal builds read only committed data.
 Asset verification covers the adopted payload/descriptor bytes, not the
 excluded tails; full-disk verification includes their separately recorded
 source or temporary inputs.
-No live save/load round trip is claimed here. Final save/load behavior checks
-in both emulators remain required.
+The extraction checkpoint did not execute a save. Step 09a subsequently records
+a [MAME save and fresh-process reload](save-reload-validation.md), including the
+changed slot checksum. Apple2TS save/load and final integration remain required.

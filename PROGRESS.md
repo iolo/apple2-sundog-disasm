@@ -2863,3 +2863,40 @@ and acceptance criteria.
   disks; they remain unresolved. Continue other provisional native data and
   disk-allocation evidence before final behavioral validation. User PRD edits
   and ref/ remain untouched and excluded.
+
+## 2026-09-20 — Step 09a: validate MAME game save and fresh-process reload
+
+- **Work:** Resumed with the existing classification criteria intact. Used the
+  a2-mame skill launcher, an owned persistent console, verified MAME 0.285
+  apple2e ROMs, joystick inputs and disposable rebuilt media. The enhanced
+  apple2ee ROM set is unavailable; no matched-model comparison is claimed.
+  Completed menu, play-side swap, ship entry, personal status, Save Game,
+  utility-side swap, and a separate fresh-process boot of the saved disk.
+  No game-memory patches, CPU changes or emulator save states were used.
+- **Evidence:** Four initial screens match existing reference RGB pixels exactly.
+  The final flushed saved disk differs in 98 bytes: two slot-1 checksum bytes
+  in block 26, seven globals bytes in block 37 and 89 tail bytes in block 46.
+  The complete ten-block slot checksum is $5851 and matches its descriptor.
+  The saved disk hash is feab3f940cd18cdea8a306cb8dd6f432e3c14ebc9ce58a3a942256f2c2e23af3.
+  A fresh process loads the ship and responds to personal-status input; both
+  reload media copies remain unchanged after shutdown. An intermediate 265-byte
+  difference was observed before final flushing and is explicitly excluded from
+  the final save result. Both owned emulator processes have exited.
+- **Artifacts:** Added the full game-save event sequence, configuration and
+  per-byte save/reload report, three inspected screenshots, and
+  docs/save-reload-validation.md. Updated PLAN.md, the reference runbook and
+  save-state documentation. This is a smoke test; persistence of every field,
+  additional utility actions, sound, travel and combat are not claimed.
+- **Validation:** Recomputed the bank checksum, checked all 98 changed-byte
+  coordinates, compared four reference images, and checked final reload hashes.
+  tools/verify_disks.py, tools/verify_inputs.py and git diff --check pass.
+  Original media/manual and baseline rebuilt images remain exact and unchanged.
+  No source output changed, so a redundant rebuild was unnecessary.
+- **Other research:** Twelve-byte distinctive-fragment and explicit short-tail
+  searches across eight additional Pascal 1.0/1.1 images found no new exact
+  matches. These negative searches do not classify remaining bytes.
+- **Coverage/next:** Totals remain 179,220 source bytes, 100,900 identified
+  data/asset bytes and 6,600 temporary bytes (906 disk 1; 5,694 disk 2).
+  Continue Apple2TS gameplay/save-load capability checks and remaining native
+  provisional/allocation evidence. Final classification and integration are
+  incomplete. User PRD edits and ref/ remain untouched and excluded.

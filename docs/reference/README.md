@@ -61,6 +61,11 @@ buttons, so gameplay interaction was established in MAME. Full apple2ts gameplay
 validation remains required in step 09; use an appropriate frontend/API session
 there rather than patch game memory to bypass controls.
 
-These observations do not identify an unmodified commercial release. Save/load,
-starting/deleting games, combat, travel, sound, and long-running behavior have
+Step 09a adds a [rebuilt-image save and fresh-process reload](../save-reload-validation.md)
+in MAME. The four initial reference screens match exactly, and the saved bank's
+updated checksum verifies. See `game-save.json` and `mame-save-reload.json`.
+Apple2TS gameplay/save-load remains open.
+
+These observations do not identify an unmodified commercial release.
+Starting/deleting games, combat, travel, sound, and long-running behavior have
 not yet been validated. Original state may contain prior players' saved games.

@@ -1,0 +1,766 @@
+{
+  "checkpoint": "09a",
+  "emulator": {
+    "name": "MAME",
+    "version": "0.285",
+    "driver": "apple2e",
+    "rom_verification": "passed",
+    "requested_comparison_profile": "apple2ee ROMs unavailable",
+    "joystick": "gameio joy",
+    "drive": ":sl6:diskiing:0:525",
+    "speed": "unthrottled, input scheduled by emulated frames",
+    "sound": "disabled"
+  },
+  "sequence": "docs/reference/game-save.json",
+  "session_control": "Owned persistent console through a2-mame launch.py; pauses between bounded input batches; no CPU/memory writes or emulator save states",
+  "source_commit": "ede8465",
+  "saved_disk1_sha256": "feab3f940cd18cdea8a306cb8dd6f432e3c14ebc9ce58a3a942256f2c2e23af3",
+  "original_disk1_sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+  "disk2_sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+  "saved_disk1_changed_bytes": 98,
+  "changes": [
+    {
+      "image_offset": 15198,
+      "logical_block": 26,
+      "block_offset": 94,
+      "before": 41,
+      "after": 81
+    },
+    {
+      "image_offset": 15199,
+      "logical_block": 26,
+      "block_offset": 95,
+      "before": 238,
+      "after": 88
+    },
+    {
+      "image_offset": 17676,
+      "logical_block": 37,
+      "block_offset": 12,
+      "before": 48,
+      "after": 6
+    },
+    {
+      "image_offset": 17677,
+      "logical_block": 37,
+      "block_offset": 13,
+      "before": 16,
+      "after": 22
+    },
+    {
+      "image_offset": 17692,
+      "logical_block": 37,
+      "block_offset": 28,
+      "before": 10,
+      "after": 16
+    },
+    {
+      "image_offset": 17712,
+      "logical_block": 37,
+      "block_offset": 48,
+      "before": 227,
+      "after": 237
+    },
+    {
+      "image_offset": 17713,
+      "logical_block": 37,
+      "block_offset": 49,
+      "before": 255,
+      "after": 231
+    },
+    {
+      "image_offset": 17715,
+      "logical_block": 37,
+      "block_offset": 51,
+      "before": 243,
+      "after": 225
+    },
+    {
+      "image_offset": 17770,
+      "logical_block": 37,
+      "block_offset": 106,
+      "before": 81,
+      "after": 65
+    },
+    {
+      "image_offset": 21152,
+      "logical_block": 46,
+      "block_offset": 416,
+      "before": 13,
+      "after": 0
+    },
+    {
+      "image_offset": 21153,
+      "logical_block": 46,
+      "block_offset": 417,
+      "before": 2,
+      "after": 0
+    },
+    {
+      "image_offset": 21154,
+      "logical_block": 46,
+      "block_offset": 418,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21155,
+      "logical_block": 46,
+      "block_offset": 419,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21156,
+      "logical_block": 46,
+      "block_offset": 420,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21157,
+      "logical_block": 46,
+      "block_offset": 421,
+      "before": 35,
+      "after": 0
+    },
+    {
+      "image_offset": 21158,
+      "logical_block": 46,
+      "block_offset": 422,
+      "before": 192,
+      "after": 0
+    },
+    {
+      "image_offset": 21159,
+      "logical_block": 46,
+      "block_offset": 423,
+      "before": 16,
+      "after": 0
+    },
+    {
+      "image_offset": 21160,
+      "logical_block": 46,
+      "block_offset": 424,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21161,
+      "logical_block": 46,
+      "block_offset": 425,
+      "before": 186,
+      "after": 0
+    },
+    {
+      "image_offset": 21162,
+      "logical_block": 46,
+      "block_offset": 426,
+      "before": 147,
+      "after": 0
+    },
+    {
+      "image_offset": 21163,
+      "logical_block": 46,
+      "block_offset": 427,
+      "before": 161,
+      "after": 0
+    },
+    {
+      "image_offset": 21164,
+      "logical_block": 46,
+      "block_offset": 428,
+      "before": 47,
+      "after": 0
+    },
+    {
+      "image_offset": 21165,
+      "logical_block": 46,
+      "block_offset": 429,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21166,
+      "logical_block": 46,
+      "block_offset": 430,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21167,
+      "logical_block": 46,
+      "block_offset": 431,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21168,
+      "logical_block": 46,
+      "block_offset": 432,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21169,
+      "logical_block": 46,
+      "block_offset": 433,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21170,
+      "logical_block": 46,
+      "block_offset": 434,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21171,
+      "logical_block": 46,
+      "block_offset": 435,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21172,
+      "logical_block": 46,
+      "block_offset": 436,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21173,
+      "logical_block": 46,
+      "block_offset": 437,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21174,
+      "logical_block": 46,
+      "block_offset": 438,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21175,
+      "logical_block": 46,
+      "block_offset": 439,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21176,
+      "logical_block": 46,
+      "block_offset": 440,
+      "before": 81,
+      "after": 0
+    },
+    {
+      "image_offset": 21177,
+      "logical_block": 46,
+      "block_offset": 441,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21178,
+      "logical_block": 46,
+      "block_offset": 442,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21179,
+      "logical_block": 46,
+      "block_offset": 443,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21180,
+      "logical_block": 46,
+      "block_offset": 444,
+      "before": 80,
+      "after": 0
+    },
+    {
+      "image_offset": 21181,
+      "logical_block": 46,
+      "block_offset": 445,
+      "before": 15,
+      "after": 0
+    },
+    {
+      "image_offset": 21182,
+      "logical_block": 46,
+      "block_offset": 446,
+      "before": 149,
+      "after": 0
+    },
+    {
+      "image_offset": 21183,
+      "logical_block": 46,
+      "block_offset": 447,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21184,
+      "logical_block": 46,
+      "block_offset": 448,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21185,
+      "logical_block": 46,
+      "block_offset": 449,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21186,
+      "logical_block": 46,
+      "block_offset": 450,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21187,
+      "logical_block": 46,
+      "block_offset": 451,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21188,
+      "logical_block": 46,
+      "block_offset": 452,
+      "before": 22,
+      "after": 0
+    },
+    {
+      "image_offset": 21189,
+      "logical_block": 46,
+      "block_offset": 453,
+      "before": 18,
+      "after": 0
+    },
+    {
+      "image_offset": 21190,
+      "logical_block": 46,
+      "block_offset": 454,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21191,
+      "logical_block": 46,
+      "block_offset": 455,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21192,
+      "logical_block": 46,
+      "block_offset": 456,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21193,
+      "logical_block": 46,
+      "block_offset": 457,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21194,
+      "logical_block": 46,
+      "block_offset": 458,
+      "before": 8,
+      "after": 0
+    },
+    {
+      "image_offset": 21195,
+      "logical_block": 46,
+      "block_offset": 459,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21196,
+      "logical_block": 46,
+      "block_offset": 460,
+      "before": 22,
+      "after": 0
+    },
+    {
+      "image_offset": 21197,
+      "logical_block": 46,
+      "block_offset": 461,
+      "before": 19,
+      "after": 0
+    },
+    {
+      "image_offset": 21198,
+      "logical_block": 46,
+      "block_offset": 462,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21199,
+      "logical_block": 46,
+      "block_offset": 463,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21200,
+      "logical_block": 46,
+      "block_offset": 464,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21201,
+      "logical_block": 46,
+      "block_offset": 465,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21202,
+      "logical_block": 46,
+      "block_offset": 466,
+      "before": 184,
+      "after": 0
+    },
+    {
+      "image_offset": 21203,
+      "logical_block": 46,
+      "block_offset": 467,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21204,
+      "logical_block": 46,
+      "block_offset": 468,
+      "before": 10,
+      "after": 0
+    },
+    {
+      "image_offset": 21205,
+      "logical_block": 46,
+      "block_offset": 469,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21206,
+      "logical_block": 46,
+      "block_offset": 470,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21207,
+      "logical_block": 46,
+      "block_offset": 471,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21208,
+      "logical_block": 46,
+      "block_offset": 472,
+      "before": 80,
+      "after": 0
+    },
+    {
+      "image_offset": 21209,
+      "logical_block": 46,
+      "block_offset": 473,
+      "before": 184,
+      "after": 0
+    },
+    {
+      "image_offset": 21210,
+      "logical_block": 46,
+      "block_offset": 474,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21211,
+      "logical_block": 46,
+      "block_offset": 475,
+      "before": 9,
+      "after": 0
+    },
+    {
+      "image_offset": 21212,
+      "logical_block": 46,
+      "block_offset": 476,
+      "before": 173,
+      "after": 0
+    },
+    {
+      "image_offset": 21218,
+      "logical_block": 46,
+      "block_offset": 482,
+      "before": 6,
+      "after": 0
+    },
+    {
+      "image_offset": 21220,
+      "logical_block": 46,
+      "block_offset": 484,
+      "before": 66,
+      "after": 0
+    },
+    {
+      "image_offset": 21222,
+      "logical_block": 46,
+      "block_offset": 486,
+      "before": 14,
+      "after": 0
+    },
+    {
+      "image_offset": 21223,
+      "logical_block": 46,
+      "block_offset": 487,
+      "before": 2,
+      "after": 0
+    },
+    {
+      "image_offset": 21224,
+      "logical_block": 46,
+      "block_offset": 488,
+      "before": 198,
+      "after": 0
+    },
+    {
+      "image_offset": 21225,
+      "logical_block": 46,
+      "block_offset": 489,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21226,
+      "logical_block": 46,
+      "block_offset": 490,
+      "before": 216,
+      "after": 0
+    },
+    {
+      "image_offset": 21227,
+      "logical_block": 46,
+      "block_offset": 491,
+      "before": 170,
+      "after": 0
+    },
+    {
+      "image_offset": 21228,
+      "logical_block": 46,
+      "block_offset": 492,
+      "before": 15,
+      "after": 0
+    },
+    {
+      "image_offset": 21229,
+      "logical_block": 46,
+      "block_offset": 493,
+      "before": 217,
+      "after": 0
+    },
+    {
+      "image_offset": 21230,
+      "logical_block": 46,
+      "block_offset": 494,
+      "before": 198,
+      "after": 0
+    },
+    {
+      "image_offset": 21231,
+      "logical_block": 46,
+      "block_offset": 495,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21232,
+      "logical_block": 46,
+      "block_offset": 496,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21233,
+      "logical_block": 46,
+      "block_offset": 497,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21234,
+      "logical_block": 46,
+      "block_offset": 498,
+      "before": 4,
+      "after": 0
+    },
+    {
+      "image_offset": 21235,
+      "logical_block": 46,
+      "block_offset": 499,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21236,
+      "logical_block": 46,
+      "block_offset": 500,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21237,
+      "logical_block": 46,
+      "block_offset": 501,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21238,
+      "logical_block": 46,
+      "block_offset": 502,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21239,
+      "logical_block": 46,
+      "block_offset": 503,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21240,
+      "logical_block": 46,
+      "block_offset": 504,
+      "before": 5,
+      "after": 0
+    },
+    {
+      "image_offset": 21241,
+      "logical_block": 46,
+      "block_offset": 505,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21242,
+      "logical_block": 46,
+      "block_offset": 506,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21243,
+      "logical_block": 46,
+      "block_offset": 507,
+      "before": 5,
+      "after": 0
+    },
+    {
+      "image_offset": 21244,
+      "logical_block": 46,
+      "block_offset": 508,
+      "before": 10,
+      "after": 0
+    },
+    {
+      "image_offset": 21245,
+      "logical_block": 46,
+      "block_offset": 509,
+      "before": 130,
+      "after": 0
+    },
+    {
+      "image_offset": 21246,
+      "logical_block": 46,
+      "block_offset": 510,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21247,
+      "logical_block": 46,
+      "block_offset": 511,
+      "before": 25,
+      "after": 0
+    }
+  ],
+  "save_slot": 1,
+  "save_bank_blocks": [
+    37,
+    47
+  ],
+  "checksum_before": 60969,
+  "checksum_after": 22609,
+  "checksum_stored": 22609,
+  "reload": {
+    "sequence": "docs/reference/game-play.json",
+    "fresh_process": true,
+    "emulator_save_state": false,
+    "disk1_before_sha256": "feab3f940cd18cdea8a306cb8dd6f432e3c14ebc9ce58a3a942256f2c2e23af3",
+    "disk1_after_sha256": "feab3f940cd18cdea8a306cb8dd6f432e3c14ebc9ce58a3a942256f2c2e23af3",
+    "disk2_after_sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+    "observations": [
+      "Ship interior loaded",
+      "Personal status opened through button 1"
+    ]
+  },
+  "screens": [
+    {
+      "capture": "02-menu.png",
+      "reference": "mame-title-menu.png",
+      "identical_rgb_pixels": true
+    },
+    {
+      "capture": "04-result.png",
+      "reference": "mame-play-side-prompt.png",
+      "identical_rgb_pixels": true
+    },
+    {
+      "capture": "05-after-swap.png",
+      "reference": "mame-ship-interior.png",
+      "identical_rgb_pixels": true
+    },
+    {
+      "capture": "06-personal-status.png",
+      "reference": "mame-personal-status.png",
+      "identical_rgb_pixels": true
+    },
+    {
+      "reference": "mame-save-menu.png",
+      "sha256": "50f3732f46b4441f28992de1cc342e75cab2071470e7a33e68dade105105999f",
+      "visually_reviewed": true
+    },
+    {
+      "reference": "mame-save-side-prompt.png",
+      "sha256": "fde2a4214103908b676cfce8e283297962d99d25314ac833da1b48e71a122b2d",
+      "visually_reviewed": true
+    },
+    {
+      "reference": "mame-saved-personal-status.png",
+      "sha256": "e51259d0234cd287d8f3ca403e6bb0245d7072915e2ae0542a17ac693af52fcf",
+      "visually_reviewed": true
+    }
+  ]
+}

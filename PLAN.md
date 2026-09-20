@@ -139,6 +139,11 @@ Split large steps into independently validated, logged, and committed increments
   bounded zero remainder using historical field layout and matching consumers.
   The unused track-field byte and 875 spare-bank bytes now have explicit data
   evidence without changing source ownership totals or disk output.
+- Step 09a validates the rebuilt disks in MAME through play-side swapping,
+  personal status, an actual game save, and a fresh-process reload. Four initial
+  screens match the reference pixels; the saved bank checksum and final disk
+  changes are recorded in docs/save-reload-validation.md. Apple2TS gameplay and
+  final integration checks remain open; this does not waive classification.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

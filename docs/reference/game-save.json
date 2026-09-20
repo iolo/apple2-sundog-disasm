@@ -1,0 +1,214 @@
+{
+  "name": "game-save",
+  "boot_disk": "disk1",
+  "end_frame": 28600,
+  "events": [
+    {
+      "frame": 4200,
+      "snapshot": "01-title.png"
+    },
+    {
+      "frame": 4210,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 4240,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 4800,
+      "snapshot": "02-menu.png",
+      "x": 170,
+      "y": 175
+    },
+    {
+      "frame": 5200,
+      "snapshot": "03-selection.png",
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 5230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 11000,
+      "snapshot": "04-result.png"
+    },
+    {
+      "frame": 11100,
+      "mount": "disk2"
+    },
+    {
+      "frame": 11160,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 11190,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 18000,
+      "snapshot": "05-after-swap.png"
+    },
+    {
+      "frame": 18100,
+      "button": 1,
+      "pressed": true
+    },
+    {
+      "frame": 18120,
+      "button": 1,
+      "pressed": false
+    },
+    {
+      "frame": 18600,
+      "snapshot": "06-personal-status.png"
+    },
+    {
+      "frame": 18600,
+      "x": 85,
+      "y": 77
+    },
+    {
+      "frame": 19100,
+      "snapshot": "07-disk-icon.png"
+    },
+    {
+      "frame": 19100,
+      "x": 88,
+      "y": 65
+    },
+    {
+      "frame": 19200,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 19230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 19600,
+      "snapshot": "08-save-menu.png"
+    },
+    {
+      "frame": 19600,
+      "x": 135,
+      "y": 123
+    },
+    {
+      "frame": 19700,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 19730,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 20100,
+      "snapshot": "09-save-request.png"
+    },
+    {
+      "frame": 20100,
+      "x": 140,
+      "y": 165
+    },
+    {
+      "frame": 20200,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 20230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 20600,
+      "snapshot": "10-save-confirm.png"
+    },
+    {
+      "frame": 20600,
+      "x": 140,
+      "y": 180
+    },
+    {
+      "frame": 20700,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 20730,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 21100,
+      "snapshot": "11-save-swap.png"
+    },
+    {
+      "frame": 21100,
+      "x": 128,
+      "y": 128
+    },
+    {
+      "frame": 21100,
+      "mount": "disk1"
+    },
+    {
+      "frame": 21200,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 21230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 21600,
+      "snapshot": "12-save-writing.png"
+    },
+    {
+      "frame": 21600,
+      "x": 128,
+      "y": 128
+    },
+    {
+      "frame": 22100,
+      "snapshot": "13-save-return.png"
+    },
+    {
+      "frame": 28100,
+      "x": 128,
+      "y": 128
+    },
+    {
+      "frame": 28100,
+      "snapshot": "14-save-settled.png"
+    },
+    {
+      "frame": 28200,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 28230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 28600,
+      "snapshot": "15-after-save.png"
+    }
+  ]
+}
