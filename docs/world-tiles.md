@@ -3,7 +3,8 @@
 `assets/world-tiles/` contains 21 tiles of 28×24 pixels: four bytes per row,
 96 bytes per record, and 2,016 bytes total. The stream starts at disk-2 block
 25 and has an identical copy at disk-1 block 184. Both copies are adopted;
-the additional 32 bytes fetched by each four-block load remain unresolved.
+the additional 32 bytes fetched by each four-block load are separately
+classified as [retained rows from graphics bank 3](retained-tile-rows.md).
 
 Game 21 procedure 3's non-city path at `$0070` selects image bank 4. Procedure
 4 reads four blocks from `6+4*4` plus the library's block bias 3, hence absolute
@@ -35,5 +36,6 @@ python3 tools/tile_asset.py --extract-world build/world-tiles-check
 
 Extraction validates the baseline images, shared-copy equality, and exact
 24-row packing. It writes raw data, display-order rows, an atlas, manifest, and
-adoption recipe. The extent test explicitly rejects appending the unclassified
-32-byte tail. Normal builds use only the raw asset and retain every stored bit.
+adoption recipe. The extent test explicitly rejects appending the separate
+32-byte tail as another world-tile record. The retained-row asset now owns that
+tail separately. Normal builds use only the raw assets and retain every stored bit.

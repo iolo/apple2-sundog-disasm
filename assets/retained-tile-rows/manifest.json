@@ -1,0 +1,40 @@
+{
+  "classification": "data",
+  "format": "sundog-retained-tile-rows",
+  "size": 32,
+  "disk_bytes": 64,
+  "sha256": "8c11793b90a788cecdb01e0ed01cd5d361bda07b2e8efa02172950aedd660fc7",
+  "origins": [
+    {
+      "disk": "disk1",
+      "block": 187,
+      "byte_offset": 480,
+      "size": 32
+    },
+    {
+      "disk": "disk2",
+      "block": 28,
+      "byte_offset": 480,
+      "size": 32
+    }
+  ],
+  "classification_evidence": "docs/retained-tile-rows.md",
+  "donor_component": "tile_bank3",
+  "donor_sha256": "6e5d341c0f8e1ad5234b067e848c1755fd59ea0ac8e05df9a226de0c51f8d3ef",
+  "donor_offset": 2016,
+  "donor_tile": 15,
+  "donor_rows": [
+    24,
+    32
+  ],
+  "bytes_per_row": 4,
+  "fragment_size_pixels": [
+    28,
+    8
+  ],
+  "transform": "Exact copy, preserving all eight bits",
+  "row_order": "Top to bottom, four bytes left to right; low bits 0\u20136 are pixels",
+  "rows": "rows.json",
+  "preview_context": "assets/tiles/bank3/atlas.png, tile 0F, bottom eight rows",
+  "direct_rendering_of_copies_established": false
+}

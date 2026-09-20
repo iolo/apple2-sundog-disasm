@@ -1,0 +1,20 @@
+{
+  "name": "retained_tile_rows",
+  "data": "assets/retained-tile-rows/rows.bin",
+  "format": "sundog-retained-tile-rows",
+  "classification": "docs/retained-tile-rows.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 96480,
+      "size": 32,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 14048,
+      "size": 32,
+      "input_offset": 0
+    }
+  ]
+}

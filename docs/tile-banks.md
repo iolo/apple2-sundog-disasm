@@ -51,5 +51,6 @@ are not build dependencies. Complete disk comparisons remain exact.
 
 The fifth bank at disk-2 blocks 25–28 uses the renderer's other, 24-row path.
 Its 21 confirmed records are now extracted separately in
-[world-tiles.md](world-tiles.md); the last 32 fetched bytes remain unresolved. No new emulator
+[world-tiles.md](world-tiles.md); its last 32 fetched bytes are exact
+[retained copies of bank-3 tile rows](retained-tile-rows.md). No new emulator
 trace or rendered-map comparison is claimed for these extracted atlases.

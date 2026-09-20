@@ -105,6 +105,8 @@ Split large steps into independently validated, logged, and committed increments
   direct two-block buffer replacement and existing glyph renderer as evidence.
   Step 07t extracts disk-2 block 80 as a 512-byte retained half-font: all 64
   records match shared-font masks, with five blank glyphs and cleared high bits.
+  Step 07u identifies both 32-byte world-tile tails as exact copies of bank-3
+  tile 15 rows 24–31, classifying another 64 disk bytes as image data.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata. Step 08b reconstructs the four disk-1

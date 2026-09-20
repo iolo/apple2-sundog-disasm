@@ -2756,3 +2756,32 @@ and acceptance criteria.
   Continue residual image/template/allocation evidence and the provisional
   data audit of early native components; final dual-emulator validation remains
   pending.
+
+## 2026-09-20 — Step 07u: extract retained tile rows from both world-image tails
+
+- **Discovery/evidence:** An affine-byte comparison against the classified
+  components found that disk-1 block 187 offsets 480–511 and disk-2 block 28
+  offsets 480–511 exactly equal tile_bank3 offsets 2016–2047, with no transform.
+  The donor's traced four-byte/32-row layout identifies all 32 bytes as tile
+  15 rows 24–31. Bank 1 has a similar ending but differs in the first two bytes;
+  the exact bank-3 donor is frozen. The full 64 disk bytes are image data.
+- **Artifacts:** Added assets/retained-tile-rows with one shared 32-byte fragment,
+  eight reversible four-byte rows, provenance/record coordinates and two-copy
+  adoption recipe. Added the extractor/verifier, a mutation test and
+  docs/retained-tile-rows.md. Updated PLAN.md and both tile-bank documents. The
+  existing bank-3 atlas was visually checked as context for tile 0F; no missing
+  rows or additional world-tile record is invented.
+- **Validation:** One new test exercises every byte's pixel/phase-bit mutation,
+  both length errors, wrong-donor rejection and row round trip. Three existing
+  tile tests pass. Extraction, strict adoption and --verify pass; verification
+  rechecks donor hash/layout, both exact copies, all artifacts and final disk
+  ownership. Full rebuild, tools/verify_disks.py and git diff --check pass.
+  Both disk images and the manual remain exact. No new emulator run or direct
+  rendering of the retained copies is claimed.
+- **Coverage:** 179,220 source-built disk bytes, 100,900 identified data/asset
+  bytes and 6,600 temporary bytes (906 disk 1; 5,694 disk 2). This checkpoint
+  removes 64 temporary bytes, all classified as retained image rows.
+- **Workspace/next:** User PRD edits and ref/ remain untouched and excluded.
+  Continue the early-native provisional metadata audit and remaining allocation
+  evidence. The affine search found no other new nontrivial transformed copies;
+  block-83 title correspondences remain partial evidence only.
