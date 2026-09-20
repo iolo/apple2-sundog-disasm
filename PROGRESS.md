@@ -1752,3 +1752,28 @@ and acceptance criteria.
   40,517 temporary bytes (18,172 disk 1; 22,345 disk 2).
 - **Next action:** Continue remaining record/dialogue banks and native fragments,
   then finish the full classification audit and both-emulator validation.
+
+## 2026-09-20 — Step 07o: interaction bounds/style/parameter records
+
+- **Work/evidence:** Game 18 procedure 16 reads disk-2 block 79 into $4000,
+  selects records with a 16-word/32-byte stride, and consumes five packed bounds
+  groups, two style nibbles, one drawing value, two biased offsets, and two numeric
+  parameters. Procedure 17 unpacks each bounds group and calls library 22's
+  bounds/drawing routines. Classified the repeated six-byte zero tails as aligned
+  record storage, with nonzero tails rejected. Disk-1 block 196 offsets 128–511
+  exactly duplicate records 4–15; its differing first 128 bytes remain unresolved.
+- **Artifacts:** Added tools/interaction_record_asset.py, three tests,
+  docs/interaction-records.md, and assets/interaction-records with reversible
+  fields, 512 source bytes, manifest, and adoption mappings for 896 disk bytes.
+  The adjacent glyph-like block 80 remains unresolved pending consumer evidence.
+- **Validation:** Tests pass for field and record boundaries, nibble order,
+  biased offset extremes, exact round trips, padding mutation, and invalid shapes
+  or values. Extraction checks rebuilt hashes, every stored-copy byte, temporary
+  ownership, and full field inversion. Verification, adoption, build, and disk
+  comparison pass; both images remain exact and original inputs unchanged.
+  No fresh live interaction trace or final dual-emulator completion is claimed.
+- **Coverage:** 154,920 source-built disk bytes, 92,179 identified data/asset bytes,
+  39,621 temporary bytes (17,788 disk 1; 21,833 disk 2).
+- **Next action:** Investigate the mixed disk-1 prefix and remaining dialogue,
+  graphics, and native fragments; finish full classification and both-emulator
+  validation before declaring completion.

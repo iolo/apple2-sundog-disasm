@@ -1,0 +1,38 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/interaction-records.md",
+  "size": 512,
+  "sha256": "7a960bda7f95de8f55f2053d636aac481999b76f67159aa5ce815dbea0efb283",
+  "record_count": 16,
+  "record_size": 32,
+  "fields_per_record_bytes": 26,
+  "zero_padding_per_record_bytes": 6,
+  "disk_output_bytes": 896,
+  "origins": [
+    {
+      "disk": "disk2",
+      "block": 79,
+      "byte_range": [
+        0,
+        512
+      ],
+      "record_indices": [
+        0,
+        16
+      ]
+    },
+    {
+      "disk": "disk1",
+      "block": 196,
+      "byte_range": [
+        128,
+        512
+      ],
+      "record_indices": [
+        4,
+        16
+      ]
+    }
+  ],
+  "excluded": "Disk 1 block 196 bytes 0\u2013127 and disk 2 block 80 remain unresolved"
+}

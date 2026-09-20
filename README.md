@@ -33,7 +33,7 @@ includes classifying other disk regions, resolving provisional runtime data,
 extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
 Current coverage is 154,920 source-built bytes (including classified header
-tables and [Pascal directories](docs/pascal-directories.md)) plus 91,283 classified data/asset bytes from the
+tables and [Pascal directories](docs/pascal-directories.md)) plus 92,179 classified data/asset bytes from the
 [title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
 two copies of the [shared font](docs/shared-font.md), and
 [two play graphics banks](docs/play-glyphs.md), and
@@ -47,7 +47,8 @@ two copies of the [shared font](docs/shared-font.md), and
 [working data and templates](docs/working-state.md), and
 [animated logo frames](docs/logo-frames.md), and
 [the interaction-window bitmap](docs/interaction-window.md), and
-[the play-disk boot notice](docs/play-disk-boot.md); 40,517 bytes remain temporary.
+[the play-disk boot notice](docs/play-disk-boot.md), and
+[interaction records](docs/interaction-records.md); 39,621 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

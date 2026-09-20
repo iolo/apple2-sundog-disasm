@@ -1,0 +1,32 @@
+{
+  "name": "interaction_records",
+  "data": "assets/interaction-records/records.bin",
+  "format": "Sixteen 32-byte interaction bounds/style/parameter records with six-byte zero padding",
+  "classification": "docs/interaction-records.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 37120,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 40704,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 100224,
+      "size": 128,
+      "input_offset": 128
+    },
+    {
+      "disk": "disk1",
+      "offset": 99840,
+      "size": 256,
+      "input_offset": 256
+    }
+  ]
+}

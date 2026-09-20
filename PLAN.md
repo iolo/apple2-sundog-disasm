@@ -50,7 +50,8 @@ Split large steps into independently validated, logged, and committed increments
   step 07h, inventory/cargo name-table variants in step 07i, and packed city-map
   payloads in step 07j, four saved-game payloads/descriptors in step 07k,
   working-state data/templates in step 07l, animated logo frames in step 07m,
-  and the interaction-window bitmap/position fields in step 07n.
+  the interaction-window bitmap/position fields in step 07n, and interaction
+  bounds/style/parameter records and their stored copies in step 07o.
   Step 06ad also extracts the compressed FLIP DISK boot notice and verifies its
   decoded page against a live MAME capture.
   This overlap does not waive any
