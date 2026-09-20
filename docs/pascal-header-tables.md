@@ -34,9 +34,10 @@ open; no additional executable region is claimed from that reference.
 The remaining 224 bytes of every header block are excluded from this table
 component. The subsequent [header-extension audit](pascal-header-extensions.md)
 uses Apple's format reference and local field boundaries to classify 1,652 of
-those disk bytes separately. Six tails are complete; both block-103 copies
-retain 70 unresolved bytes surrounding an independently identified counted
-prompt. Merely being adjacent to a header is not used to classify those words.
+those disk bytes separately. Step 08g's [retained command-stack
+analysis](retained-command-stack.md) classifies the remaining 70 bytes in each
+block-103 copy through matching activation frames and string pointers. All
+eight header blocks are now classified across these separate source components.
 
 `tools/prepare_header_tables.py` is a one-time maintenance generator that reads
 the rebuilt disks, checks the inventory hashes and current ownership, generates

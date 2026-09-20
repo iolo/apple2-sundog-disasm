@@ -1,0 +1,309 @@
+{
+  "classification_evidence": "docs/retained-command-stack.md",
+  "source_output_bytes": 184,
+  "disk_output_bytes": 508,
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 71752,
+      "size": 184,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 53110,
+      "size": 44,
+      "input_offset": 46
+    },
+    {
+      "disk": "disk1",
+      "offset": 53222,
+      "size": 26,
+      "input_offset": 158
+    },
+    {
+      "disk": "disk2",
+      "offset": 71752,
+      "size": 184,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 53110,
+      "size": 44,
+      "input_offset": 46
+    },
+    {
+      "disk": "disk2",
+      "offset": 53222,
+      "size": 26,
+      "input_offset": 158
+    }
+  ],
+  "existing_counted_prompt_bytes_preserved": 136,
+  "classification": "data",
+  "memory_origin": 46476,
+  "window_start": 46804,
+  "window_end_exclusive": 46988,
+  "sha256": "544f86ba1b65bb684cbee59560a913362cd5e6a21ccd81157e181a89c3b3f4db",
+  "items": [
+    {
+      "offset": 328,
+      "size": 10,
+      "kind": "clipped-call-frame",
+      "mark_address": 46802,
+      "missing_prefix_and_static_bytes": 6,
+      "words": [
+        46830,
+        64806,
+        65018,
+        64796
+      ],
+      "saved_cpu_sp": 239,
+      "unused_byte": 252
+    },
+    {
+      "offset": 338,
+      "size": 12,
+      "kind": "interframe-activation-storage",
+      "child_mark": 46802,
+      "parent_prefix": 46826
+    },
+    {
+      "offset": 350,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46830,
+      "words": [
+        0,
+        46848,
+        47050,
+        46852,
+        48410,
+        65018,
+        48400
+      ],
+      "saved_string_head": 0,
+      "saved_stack_top": 46848,
+      "static_link": 47050,
+      "dynamic_link": 46852,
+      "saved_jtab": 48410,
+      "saved_segment": 65018,
+      "saved_ipc": 48400,
+      "saved_cpu_sp": 241,
+      "unused_byte": 0
+    },
+    {
+      "offset": 366,
+      "size": 6,
+      "kind": "activation-local-storage",
+      "frame_address": 46830,
+      "saved_stack_top": 46848,
+      "clipped_at_end": false
+    },
+    {
+      "offset": 372,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46852,
+      "words": [
+        0,
+        46870,
+        47050,
+        46874,
+        46766,
+        65018,
+        46744
+      ],
+      "saved_string_head": 0,
+      "saved_stack_top": 46870,
+      "static_link": 47050,
+      "dynamic_link": 46874,
+      "saved_jtab": 46766,
+      "saved_segment": 65018,
+      "saved_ipc": 46744,
+      "saved_cpu_sp": 243,
+      "unused_byte": 182
+    },
+    {
+      "offset": 388,
+      "size": 6,
+      "kind": "activation-local-storage",
+      "frame_address": 46852,
+      "saved_stack_top": 46870,
+      "clipped_at_end": false
+    },
+    {
+      "offset": 394,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46874,
+      "words": [
+        46890,
+        46890,
+        47050,
+        46966,
+        41418,
+        41474,
+        40964
+      ],
+      "saved_string_head": 46890,
+      "saved_stack_top": 46890,
+      "static_link": 47050,
+      "dynamic_link": 46966,
+      "saved_jtab": 41418,
+      "saved_segment": 41474,
+      "saved_ipc": 40964,
+      "saved_cpu_sp": 245,
+      "unused_byte": 0
+    },
+    {
+      "offset": 410,
+      "size": 4,
+      "kind": "activation-local-storage",
+      "frame_address": 46874,
+      "saved_stack_top": 46890,
+      "clipped_at_end": false
+    },
+    {
+      "offset": 414,
+      "size": 72,
+      "kind": "copied-string-node",
+      "original_pcode_address": 40879,
+      "next_address": 0,
+      "length": 67,
+      "text": "Command: E(dit, R(un, F(ile, C(omp, L(ink, X(ecute, A(ssem, ? [1.2]"
+    },
+    {
+      "offset": 486,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46966,
+      "words": [
+        46990,
+        46990,
+        47050,
+        47000,
+        49088,
+        65018,
+        48863
+      ],
+      "saved_string_head": 46990,
+      "saved_stack_top": 46990,
+      "static_link": 47050,
+      "dynamic_link": 47000,
+      "saved_jtab": 49088,
+      "saved_segment": 65018,
+      "saved_ipc": 48863,
+      "saved_cpu_sp": 247,
+      "unused_byte": 183
+    },
+    {
+      "offset": 502,
+      "size": 10,
+      "kind": "activation-local-storage",
+      "frame_address": 46966,
+      "saved_stack_top": 46990,
+      "clipped_at_end": true
+    }
+  ],
+  "complete_frames": [
+    {
+      "offset": 350,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46830,
+      "words": [
+        0,
+        46848,
+        47050,
+        46852,
+        48410,
+        65018,
+        48400
+      ],
+      "saved_string_head": 0,
+      "saved_stack_top": 46848,
+      "static_link": 47050,
+      "dynamic_link": 46852,
+      "saved_jtab": 48410,
+      "saved_segment": 65018,
+      "saved_ipc": 48400,
+      "saved_cpu_sp": 241,
+      "unused_byte": 0
+    },
+    {
+      "offset": 372,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46852,
+      "words": [
+        0,
+        46870,
+        47050,
+        46874,
+        46766,
+        65018,
+        46744
+      ],
+      "saved_string_head": 0,
+      "saved_stack_top": 46870,
+      "static_link": 47050,
+      "dynamic_link": 46874,
+      "saved_jtab": 46766,
+      "saved_segment": 65018,
+      "saved_ipc": 46744,
+      "saved_cpu_sp": 243,
+      "unused_byte": 182
+    },
+    {
+      "offset": 394,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46874,
+      "words": [
+        46890,
+        46890,
+        47050,
+        46966,
+        41418,
+        41474,
+        40964
+      ],
+      "saved_string_head": 46890,
+      "saved_stack_top": 46890,
+      "static_link": 47050,
+      "dynamic_link": 46966,
+      "saved_jtab": 41418,
+      "saved_segment": 41474,
+      "saved_ipc": 40964,
+      "saved_cpu_sp": 245,
+      "unused_byte": 0
+    },
+    {
+      "offset": 486,
+      "size": 16,
+      "kind": "call-frame-with-128k-prefix",
+      "mark_address": 46966,
+      "words": [
+        46990,
+        46990,
+        47050,
+        47000,
+        49088,
+        65018,
+        48863
+      ],
+      "saved_string_head": 46990,
+      "saved_stack_top": 46990,
+      "static_link": 47050,
+      "dynamic_link": 47000,
+      "saved_jtab": 49088,
+      "saved_segment": 65018,
+      "saved_ipc": 48863,
+      "saved_cpu_sp": 247,
+      "unused_byte": 183
+    }
+  ],
+  "live_sundog_activation_claimed": false
+}

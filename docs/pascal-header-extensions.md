@@ -1,9 +1,10 @@
 # Pascal header extension data
 
 `src/data/pascal_header_extensions.s` reconstructs **1,652 disk bytes** following
-the already classified 288-byte segment-header tables. Six header tails are now
-completely classified. The two block-103 library headers retain **70 unresolved
-bytes each**, explicitly excluded from the generated source and mappings.
+the already classified 288-byte segment-header tables. It completes six header
+tails and excludes 70 bytes in each block-103 library header. Step 08g now
+classifies those excluded bytes separately as [retained command-stack
+data](retained-command-stack.md), completing all eight headers.
 
 ## Format evidence and local checks
 
@@ -44,9 +45,10 @@ or lack-of-execution heuristic.
 ## Library-header exception
 
 Both block-103 copies have zero library storage at $0124–$0175. Their bytes
-$0176–$01A1 and $01E6–$01FF contain nonzero word-like values. Those **44+26 bytes
-per header remain unresolved**; the unspecified library format alone is not
-used to conceal them as a generic binary remainder.
+$0176–$01A1 and $01E6–$01FF contain nonzero word-like values. These **44+26 bytes
+per header were left unresolved in step 08c** because the unspecified library
+format did not establish their classification. Step 08g identifies their copied
+Pascal frame and string fields using a longer matching stack window in block 139.
 
 Between those ranges, $01A2 is a count of 67 followed by exactly 67 printable
 characters forming the Pascal command prompt with its `[1.2]` suffix. This
@@ -54,8 +56,8 @@ self-contained counted text is data inside the documented header-information
 storage. It is separately emitted, retaining the original spelling and count.
 Its location crosses the comment location observed in the other headers;
 therefore this block is not falsely parsed as an ordinary compiler comment.
-No particular allocator history or runtime-address meaning is assigned to the
-surrounding unresolved words.
+The later stack analysis identifies the prompt as a copied string at historical
+address $B72A, with frame pointers and allocation bounds establishing its context.
 
 ## Validation
 
@@ -71,5 +73,7 @@ checks, malformed text/length rejection, and exclusion of the library words on
 both sides of the counted prompt. The tool verifies existing table hashes,
 all selected fields, exact assembly, deduplicated copies and generated artifacts.
 Its six unique source slices occupy 1,050 bytes and map to 1,652 disk bytes.
+The tool's `unresolved_offsets` describe exclusions from this component; the
+separate command-stack audit and manifest now account for those bytes.
 Normal builds depend on committed source only, not this extractor or the online
 manual. No new emulator-validation completion is claimed.

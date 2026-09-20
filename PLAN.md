@@ -106,6 +106,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 08f reconstructs the identical 492-byte tails of disk-1 blocks 260 and
   263 as retained 128K Pascal stack data, with linked string copies, call frames
   and bounded local storage establishing all 984 disk bytes as data.
+  Step 08g reconstructs another 508 bytes of retained command-prompt stack data
+  in blocks 103 and 139 on both disks, completing the library-header residue.
+  A linked frame chain and its copied-string node bound all intervening storage.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

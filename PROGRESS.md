@@ -2432,3 +2432,39 @@ and acceptance criteria.
   untouched and excluded from this checkpoint.
 - **Next action:** Continue remaining retained memory/code fragments and data
   allocations, then final dual-emulator behavior/reproducibility validation.
+
+## 2026-09-20 — Step 08g: retained command-prompt activation stack
+
+- **Evidence/work:** The duplicate block-139 tails contain four complete Pascal
+  call frames plus ten bytes of a clipped fifth frame. Four dynamic links resolve
+  successively under the common origin $B58C; the saved CPU stack bytes increase
+  from $EF to $F7. A frame's saved stack top and string-list head both resolve to
+  the complete copied command-prompt node at $B72A. Its 72-byte allocation ends
+  exactly at the next frame's prefix. These independent constraints identify
+  retained 128K Pascal stack data using the interpreter format established in
+  step 08f; no current SunDog activation is asserted.
+- **Classification:** All 184 bytes per block-139 tail are saved frame fields,
+  copied string data or bounded activation storage. The clipped frame's missing
+  saved KP/static link are not invented; its surviving dynamic link bounds the
+  interframe data. The final locals are clipped two bytes before their saved
+  stack top. Detailed local-field meanings remain optional after classification.
+  Block 103 retains the same final 138 bytes on each disk. Its existing 68-byte
+  prompt mapping remains intact; the newly classified 44+26 surrounding bytes
+  complete the library-header residue and all eight inventoried header blocks.
+- **Artifacts:** Added tools/retained_command_stack.py, three mutation/boundary
+  tests, typed source/config/adoption artifacts, a complete audit and
+  docs/retained-command-stack.md. Updated PLAN.md and the two affected header
+  documentation pages. Adopted 184 source bytes for 508 new disk bytes.
+- **Validation:** Three tests pass, including altered links, stack bounds,
+  saved string heads, prompt fields and unreviewed local storage. Preparation
+  assembles the exact window; --verify checks regenerated artifacts, duplicate
+  tails and partial copies, plus manifest ownership. Full rebuild and
+  tools/verify_disks.py preserve both original disk hashes and the manual hash.
+  git diff --check passes. No fresh emulator execution is claimed.
+- **Coverage:** 177,923 source-built disk bytes, 100,324 identified data/asset
+  bytes and 8,473 temporary bytes (1,877 disk 1; 6,596 disk 2). This checkpoint
+  removes 508 temporary bytes, all classified as data.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Continue remaining orphan code and data allocations, then
+  complete final dual-emulator behavior/reproducibility validation.

@@ -1,0 +1,43 @@
+{
+  "name": "retained_command_stack",
+  "source": "src/data/retained_command_stack.s",
+  "config": "src/data/retained_command_stack.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 71752,
+      "size": 184,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 53110,
+      "size": 44,
+      "input_offset": 46
+    },
+    {
+      "disk": "disk1",
+      "offset": 53222,
+      "size": 26,
+      "input_offset": 158
+    },
+    {
+      "disk": "disk2",
+      "offset": 71752,
+      "size": 184,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 53110,
+      "size": 44,
+      "input_offset": 46
+    },
+    {
+      "disk": "disk2",
+      "offset": 53222,
+      "size": 26,
+      "input_offset": 158
+    }
+  ]
+}
