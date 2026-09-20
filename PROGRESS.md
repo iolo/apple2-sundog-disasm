@@ -1593,3 +1593,26 @@ and acceptance criteria.
   83,411 temporary bytes (47,093 disk 1; 36,318 disk 2).
 - **Next action:** Continue persistent-state/map-record classification and raw
   executable fragments. Final both-emulator behavioral validation remains open.
+
+## 2026-09-20 — Step 07j: packed city-map payloads
+
+- **Work/evidence:** Traced game 21 procedure 26's city-indexed reads to
+  disk-2 blocks 64–78: four 128-byte records per block, each skipping eight
+  bytes before a 120-byte map. Alternate 7/9's demo path identifies four more
+  distinct records at disk-1 block 195. Extracted only the evidenced payloads.
+- **Format/artifacts:** Added tools/city_map_asset.py, three tests,
+  docs/city-maps.md, and assets/city-maps with packed bytes, reversible tile
+  grids, manifest, adoption recipe, and overview. The p-code loops and native
+  packed-field handlers establish 20 columns by 12 rows, six bytes per column,
+  low nibble first. Runtime random variants and clipping remain separate.
+  Visually reviewed all 64 decoded grids. The 512 prefix bytes remain temporary.
+- **Validation:** Three tests pass for explicit column/nibble order, bidirectional
+  packing, and malformed shape/value rejection. Extraction verifies both rebuilt
+  disk hashes, temporary ownership, and every payload round trip; asset verification
+  passes for all 7,680 bytes. Adoption, full build, and tools/verify_disks.py pass:
+  original inputs unchanged and both rebuilt images exact. No new live emulator
+  capture or final behavior-validation completion is claimed.
+- **Coverage:** 154,727 source-built disk bytes, 56,262 identified data/asset
+  bytes, 75,731 temporary bytes (46,613 disk 1; 29,118 disk 2).
+- **Next action:** Trace persistent-state banks and remaining raw code/data;
+  keep unknown record prefixes and file tails explicit until evidenced.

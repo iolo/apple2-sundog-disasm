@@ -103,8 +103,9 @@ byte-identical module replacements reuse the established reference behavior.
 | Packed world-map payloads | `assets/world-maps/maps.bin` | 240-byte payloads in disk 2 blocks 55–63; copies in disk 1 block 194 | 4,800 |
 | Pascal directory views | `src/data/pascal_directories.s` | Disk 1 blocks 79–82 | 2,048 |
 | Inventory/cargo name-table variants | `assets/item-names/{demo,play}/records.bin` | Disk 1 blocks 192–193; disk 2 blocks 46–47 | 2,048 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 47,093 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 36,318 |
+| Packed city-map payloads | `assets/city-maps/maps.bin` | 120-byte payloads in disk 2 blocks 64–78 and disk 1 block 195 | 7,680 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 46,613 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 29,118 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -294,7 +295,13 @@ source-built bytes, 46,534 asset bytes, and 85,459 temporary bytes. Both rebuilt
 images remained exact; the final code/data audit and emulator checks remained open.
 
 Step 07i extracts the two [inventory/cargo name tables](item-names.md) as counted
-strings, residual fixed-width string storage, and numeric bytes. Current ownership
-is 154,727 source-built bytes, 48,582 classified data/asset bytes, and 83,411
+strings, residual fixed-width string storage, and numeric bytes. Ownership then
+was 154,727 source-built bytes, 48,582 classified data/asset bytes, and 83,411
 temporary bytes. Both full disks remain exact; final classification and behavior
 validation are still incomplete.
+
+Step 07j extracts 60 play and four demo [city maps](city-maps.md), preserving
+each 20×12 grid as reversible four-bit values. Their eight-byte record prefixes
+remain unresolved. Current ownership is 154,727 source-built bytes, 56,262
+identified data/asset bytes, and 75,731 temporary bytes. Both disks remain exact;
+full classification and final behavioral validation are still incomplete.

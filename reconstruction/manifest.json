@@ -19,15 +19,15 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 47093,
-      "sha256": "a7601bf08d745325c1ecb9f98a24c4f600828204631a571bef345e76a38e6855",
+      "size": 46613,
+      "sha256": "543c323c332971a3f2a0fc3cfbaad06ebee5a8c62edc6c0d5a146ea5308022a0",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 36318,
-      "sha256": "d4a36f05a03fe24bb5ec4f0dc2c68abcb1be99acc64e6d79bb6c76e7fd06ec2e",
+      "size": 29118,
+      "sha256": "62d8d8c601eef58446e6f4108aac0168a5334485eaac9cb2d128176bf5ec67f1",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -499,6 +499,14 @@
       "classification_evidence": "docs/item-names.md",
       "size": 1024,
       "sha256": "595790e626bec3bcc68293b736861333a5247f9ee380f9c01f927fb3bf1c7faa"
+    },
+    "city_maps": {
+      "kind": "identified-data",
+      "path": "assets/city-maps/maps.bin",
+      "format": "64 city maps: 20 columns x 12 rows, low-nibble-first, column-major",
+      "classification_evidence": "docs/city-maps.md",
+      "size": 7680,
+      "sha256": "e9c6acd949666209de7378a5e5267dcb9466cd9b35ba877872680a9ac77aa370"
     }
   },
   "disks": [
@@ -2178,9 +2186,57 @@
         },
         {
           "offset": 98560,
-          "size": 2320,
+          "size": 1800,
           "input": "disk1_unresolved",
           "input_offset": 40891
+        },
+        {
+          "offset": 100360,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 7440
+        },
+        {
+          "offset": 100480,
+          "size": 8,
+          "input": "disk1_unresolved",
+          "input_offset": 42691
+        },
+        {
+          "offset": 100488,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 7560
+        },
+        {
+          "offset": 100608,
+          "size": 8,
+          "input": "disk1_unresolved",
+          "input_offset": 42699
+        },
+        {
+          "offset": 100616,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 7200
+        },
+        {
+          "offset": 100736,
+          "size": 8,
+          "input": "disk1_unresolved",
+          "input_offset": 42707
+        },
+        {
+          "offset": 100744,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 7320
+        },
+        {
+          "offset": 100864,
+          "size": 16,
+          "input": "disk1_unresolved",
+          "input_offset": 42715
         },
         {
           "offset": 100880,
@@ -2192,7 +2248,7 @@
           "offset": 101120,
           "size": 16,
           "input": "disk1_unresolved",
-          "input_offset": 43211
+          "input_offset": 42731
         },
         {
           "offset": 101136,
@@ -2222,7 +2278,7 @@
           "offset": 102144,
           "size": 512,
           "input": "disk1_unresolved",
-          "input_offset": 43227
+          "input_offset": 42747
         },
         {
           "offset": 102656,
@@ -2306,7 +2362,7 @@
           "offset": 105984,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 43739
+          "input_offset": 43259
         },
         {
           "offset": 106240,
@@ -2876,7 +2932,7 @@
           "offset": 129056,
           "size": 224,
           "input": "disk1_unresolved",
-          "input_offset": 43995
+          "input_offset": 43515
         },
         {
           "offset": 129280,
@@ -2936,7 +2992,7 @@
           "offset": 131348,
           "size": 236,
           "input": "disk1_unresolved",
-          "input_offset": 44219
+          "input_offset": 43739
         },
         {
           "offset": 131584,
@@ -2948,7 +3004,7 @@
           "offset": 131624,
           "size": 216,
           "input": "disk1_unresolved",
-          "input_offset": 44455
+          "input_offset": 43975
         },
         {
           "offset": 131840,
@@ -2972,7 +3028,7 @@
           "offset": 132608,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 44671
+          "input_offset": 44191
         },
         {
           "offset": 132864,
@@ -2984,7 +3040,7 @@
           "offset": 132884,
           "size": 492,
           "input": "disk1_unresolved",
-          "input_offset": 44927
+          "input_offset": 44447
         },
         {
           "offset": 133376,
@@ -2996,7 +3052,7 @@
           "offset": 133546,
           "size": 342,
           "input": "disk1_unresolved",
-          "input_offset": 45419
+          "input_offset": 44939
         },
         {
           "offset": 133888,
@@ -3008,7 +3064,7 @@
           "offset": 133940,
           "size": 204,
           "input": "disk1_unresolved",
-          "input_offset": 45761
+          "input_offset": 45281
         },
         {
           "offset": 134144,
@@ -3032,7 +3088,7 @@
           "offset": 134912,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 45965
+          "input_offset": 45485
         },
         {
           "offset": 135168,
@@ -3050,7 +3106,7 @@
           "offset": 135558,
           "size": 122,
           "input": "disk1_unresolved",
-          "input_offset": 46221
+          "input_offset": 45741
         },
         {
           "offset": 135680,
@@ -3098,7 +3154,7 @@
           "offset": 137422,
           "size": 50,
           "input": "disk1_unresolved",
-          "input_offset": 46343
+          "input_offset": 45863
         },
         {
           "offset": 137472,
@@ -3140,7 +3196,7 @@
           "offset": 139008,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 46393
+          "input_offset": 45913
         },
         {
           "offset": 139264,
@@ -3158,7 +3214,7 @@
           "offset": 139588,
           "size": 188,
           "input": "disk1_unresolved",
-          "input_offset": 46649
+          "input_offset": 46169
         },
         {
           "offset": 139776,
@@ -3242,7 +3298,7 @@
           "offset": 143104,
           "size": 256,
           "input": "disk1_unresolved",
-          "input_offset": 46837
+          "input_offset": 46357
         }
       ]
     },
@@ -3944,9 +4000,729 @@
         },
         {
           "offset": 32768,
-          "size": 8448,
+          "size": 8,
           "input": "disk2_unresolved",
           "input_offset": 10762
+        },
+        {
+          "offset": 32776,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 0
+        },
+        {
+          "offset": 32896,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10770
+        },
+        {
+          "offset": 32904,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 120
+        },
+        {
+          "offset": 33024,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10778
+        },
+        {
+          "offset": 33032,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3360
+        },
+        {
+          "offset": 33152,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10786
+        },
+        {
+          "offset": 33160,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3480
+        },
+        {
+          "offset": 33280,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10794
+        },
+        {
+          "offset": 33288,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3120
+        },
+        {
+          "offset": 33408,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10802
+        },
+        {
+          "offset": 33416,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3240
+        },
+        {
+          "offset": 33536,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10810
+        },
+        {
+          "offset": 33544,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2880
+        },
+        {
+          "offset": 33664,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10818
+        },
+        {
+          "offset": 33672,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3000
+        },
+        {
+          "offset": 33792,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10826
+        },
+        {
+          "offset": 33800,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2640
+        },
+        {
+          "offset": 33920,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10834
+        },
+        {
+          "offset": 33928,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2760
+        },
+        {
+          "offset": 34048,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10842
+        },
+        {
+          "offset": 34056,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2400
+        },
+        {
+          "offset": 34176,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10850
+        },
+        {
+          "offset": 34184,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2520
+        },
+        {
+          "offset": 34304,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10858
+        },
+        {
+          "offset": 34312,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2160
+        },
+        {
+          "offset": 34432,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10866
+        },
+        {
+          "offset": 34440,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2280
+        },
+        {
+          "offset": 34560,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10874
+        },
+        {
+          "offset": 34568,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1920
+        },
+        {
+          "offset": 34688,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10882
+        },
+        {
+          "offset": 34696,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 2040
+        },
+        {
+          "offset": 34816,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10890
+        },
+        {
+          "offset": 34824,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1680
+        },
+        {
+          "offset": 34944,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10898
+        },
+        {
+          "offset": 34952,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1800
+        },
+        {
+          "offset": 35072,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10906
+        },
+        {
+          "offset": 35080,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1440
+        },
+        {
+          "offset": 35200,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10914
+        },
+        {
+          "offset": 35208,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1560
+        },
+        {
+          "offset": 35328,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10922
+        },
+        {
+          "offset": 35336,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1200
+        },
+        {
+          "offset": 35456,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10930
+        },
+        {
+          "offset": 35464,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1320
+        },
+        {
+          "offset": 35584,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10938
+        },
+        {
+          "offset": 35592,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 960
+        },
+        {
+          "offset": 35712,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10946
+        },
+        {
+          "offset": 35720,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 1080
+        },
+        {
+          "offset": 35840,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10954
+        },
+        {
+          "offset": 35848,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 720
+        },
+        {
+          "offset": 35968,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10962
+        },
+        {
+          "offset": 35976,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 840
+        },
+        {
+          "offset": 36096,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10970
+        },
+        {
+          "offset": 36104,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 480
+        },
+        {
+          "offset": 36224,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10978
+        },
+        {
+          "offset": 36232,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 600
+        },
+        {
+          "offset": 36352,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10986
+        },
+        {
+          "offset": 36360,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 240
+        },
+        {
+          "offset": 36480,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 10994
+        },
+        {
+          "offset": 36488,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 360
+        },
+        {
+          "offset": 36608,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11002
+        },
+        {
+          "offset": 36616,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3600
+        },
+        {
+          "offset": 36736,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11010
+        },
+        {
+          "offset": 36744,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3720
+        },
+        {
+          "offset": 36864,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11018
+        },
+        {
+          "offset": 36872,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3840
+        },
+        {
+          "offset": 36992,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11026
+        },
+        {
+          "offset": 37000,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 3960
+        },
+        {
+          "offset": 37120,
+          "size": 264,
+          "input": "disk2_unresolved",
+          "input_offset": 11034
+        },
+        {
+          "offset": 37384,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6960
+        },
+        {
+          "offset": 37504,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11298
+        },
+        {
+          "offset": 37512,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 7080
+        },
+        {
+          "offset": 37632,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11306
+        },
+        {
+          "offset": 37640,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6720
+        },
+        {
+          "offset": 37760,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11314
+        },
+        {
+          "offset": 37768,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6840
+        },
+        {
+          "offset": 37888,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11322
+        },
+        {
+          "offset": 37896,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6480
+        },
+        {
+          "offset": 38016,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11330
+        },
+        {
+          "offset": 38024,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6600
+        },
+        {
+          "offset": 38144,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11338
+        },
+        {
+          "offset": 38152,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6240
+        },
+        {
+          "offset": 38272,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11346
+        },
+        {
+          "offset": 38280,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6360
+        },
+        {
+          "offset": 38400,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11354
+        },
+        {
+          "offset": 38408,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6000
+        },
+        {
+          "offset": 38528,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11362
+        },
+        {
+          "offset": 38536,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 6120
+        },
+        {
+          "offset": 38656,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11370
+        },
+        {
+          "offset": 38664,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5760
+        },
+        {
+          "offset": 38784,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11378
+        },
+        {
+          "offset": 38792,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5880
+        },
+        {
+          "offset": 38912,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11386
+        },
+        {
+          "offset": 38920,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5520
+        },
+        {
+          "offset": 39040,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11394
+        },
+        {
+          "offset": 39048,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5640
+        },
+        {
+          "offset": 39168,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11402
+        },
+        {
+          "offset": 39176,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5280
+        },
+        {
+          "offset": 39296,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11410
+        },
+        {
+          "offset": 39304,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5400
+        },
+        {
+          "offset": 39424,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11418
+        },
+        {
+          "offset": 39432,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5040
+        },
+        {
+          "offset": 39552,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11426
+        },
+        {
+          "offset": 39560,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 5160
+        },
+        {
+          "offset": 39680,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11434
+        },
+        {
+          "offset": 39688,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4800
+        },
+        {
+          "offset": 39808,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11442
+        },
+        {
+          "offset": 39816,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4920
+        },
+        {
+          "offset": 39936,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11450
+        },
+        {
+          "offset": 39944,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4560
+        },
+        {
+          "offset": 40064,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11458
+        },
+        {
+          "offset": 40072,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4680
+        },
+        {
+          "offset": 40192,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11466
+        },
+        {
+          "offset": 40200,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4320
+        },
+        {
+          "offset": 40320,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11474
+        },
+        {
+          "offset": 40328,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4440
+        },
+        {
+          "offset": 40448,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11482
+        },
+        {
+          "offset": 40456,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4080
+        },
+        {
+          "offset": 40576,
+          "size": 8,
+          "input": "disk2_unresolved",
+          "input_offset": 11490
+        },
+        {
+          "offset": 40584,
+          "size": 120,
+          "input": "city_maps",
+          "input_offset": 4200
+        },
+        {
+          "offset": 40704,
+          "size": 512,
+          "input": "disk2_unresolved",
+          "input_offset": 11498
         },
         {
           "offset": 41216,
@@ -4030,7 +4806,7 @@
           "offset": 44544,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 19210
+          "input_offset": 12010
         },
         {
           "offset": 44800,
@@ -4042,7 +4818,7 @@
           "offset": 44976,
           "size": 4432,
           "input": "disk2_unresolved",
-          "input_offset": 19466
+          "input_offset": 12266
         },
         {
           "offset": 49408,
@@ -4054,7 +4830,7 @@
           "offset": 49664,
           "size": 3328,
           "input": "disk2_unresolved",
-          "input_offset": 23898
+          "input_offset": 16698
         },
         {
           "offset": 52992,
@@ -4066,7 +4842,7 @@
           "offset": 53024,
           "size": 224,
           "input": "disk2_unresolved",
-          "input_offset": 27226
+          "input_offset": 20026
         },
         {
           "offset": 53248,
@@ -4192,7 +4968,7 @@
           "offset": 58368,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 27450
+          "input_offset": 20250
         },
         {
           "offset": 58624,
@@ -4204,7 +4980,7 @@
           "offset": 58718,
           "size": 162,
           "input": "disk2_unresolved",
-          "input_offset": 27706
+          "input_offset": 20506
         },
         {
           "offset": 58880,
@@ -4228,7 +5004,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 27868
+          "input_offset": 20668
         },
         {
           "offset": 59648,
@@ -4288,7 +5064,7 @@
           "offset": 61952,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 27886
+          "input_offset": 20686
         },
         {
           "offset": 62208,
@@ -4300,7 +5076,7 @@
           "offset": 62418,
           "size": 46,
           "input": "disk2_unresolved",
-          "input_offset": 28142
+          "input_offset": 20942
         },
         {
           "offset": 62464,
@@ -4396,7 +5172,7 @@
           "offset": 66290,
           "size": 14,
           "input": "disk2_unresolved",
-          "input_offset": 28188
+          "input_offset": 20988
         },
         {
           "offset": 66304,
@@ -4474,7 +5250,7 @@
           "offset": 69310,
           "size": 66,
           "input": "disk2_unresolved",
-          "input_offset": 28202
+          "input_offset": 21002
         },
         {
           "offset": 69376,
@@ -4498,7 +5274,7 @@
           "offset": 70144,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 28268
+          "input_offset": 21068
         },
         {
           "offset": 70400,
@@ -4510,7 +5286,7 @@
           "offset": 70464,
           "size": 192,
           "input": "disk2_unresolved",
-          "input_offset": 28524
+          "input_offset": 21324
         },
         {
           "offset": 70656,
@@ -4534,7 +5310,7 @@
           "offset": 71200,
           "size": 224,
           "input": "disk2_unresolved",
-          "input_offset": 28716
+          "input_offset": 21516
         },
         {
           "offset": 71424,
@@ -4552,7 +5328,7 @@
           "offset": 71752,
           "size": 184,
           "input": "disk2_unresolved",
-          "input_offset": 28940
+          "input_offset": 21740
         },
         {
           "offset": 71936,
@@ -4564,7 +5340,7 @@
           "offset": 72192,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 29124
+          "input_offset": 21924
         },
         {
           "offset": 72448,
@@ -4576,7 +5352,7 @@
           "offset": 72528,
           "size": 176,
           "input": "disk2_unresolved",
-          "input_offset": 29380
+          "input_offset": 22180
         },
         {
           "offset": 72704,
@@ -4672,7 +5448,7 @@
           "offset": 76364,
           "size": 180,
           "input": "disk2_unresolved",
-          "input_offset": 29556
+          "input_offset": 22356
         },
         {
           "offset": 76544,
@@ -4780,7 +5556,7 @@
           "offset": 80896,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 29736
+          "input_offset": 22536
         },
         {
           "offset": 81152,
@@ -4792,7 +5568,7 @@
           "offset": 81210,
           "size": 198,
           "input": "disk2_unresolved",
-          "input_offset": 29992
+          "input_offset": 22792
         },
         {
           "offset": 81408,
@@ -4936,7 +5712,7 @@
           "offset": 87270,
           "size": 26,
           "input": "disk2_unresolved",
-          "input_offset": 30190
+          "input_offset": 22990
         },
         {
           "offset": 87296,
@@ -5134,7 +5910,7 @@
           "offset": 95472,
           "size": 16,
           "input": "disk2_unresolved",
-          "input_offset": 30216
+          "input_offset": 23016
         },
         {
           "offset": 95488,
@@ -5200,7 +5976,7 @@
           "offset": 97962,
           "size": 86,
           "input": "disk2_unresolved",
-          "input_offset": 30232
+          "input_offset": 23032
         },
         {
           "offset": 98048,
@@ -5260,7 +6036,7 @@
           "offset": 100352,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 30318
+          "input_offset": 23118
         },
         {
           "offset": 100608,
@@ -5272,7 +6048,7 @@
           "offset": 100702,
           "size": 162,
           "input": "disk2_unresolved",
-          "input_offset": 30574
+          "input_offset": 23374
         },
         {
           "offset": 100864,
@@ -5476,7 +6252,7 @@
           "offset": 109078,
           "size": 234,
           "input": "disk2_unresolved",
-          "input_offset": 30736
+          "input_offset": 23536
         },
         {
           "offset": 109312,
@@ -5590,7 +6366,7 @@
           "offset": 113868,
           "size": 52,
           "input": "disk2_unresolved",
-          "input_offset": 30970
+          "input_offset": 23770
         },
         {
           "offset": 113920,
@@ -5626,7 +6402,7 @@
           "offset": 115200,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 31022
+          "input_offset": 23822
         },
         {
           "offset": 115456,
@@ -5638,7 +6414,7 @@
           "offset": 115592,
           "size": 120,
           "input": "disk2_unresolved",
-          "input_offset": 31278
+          "input_offset": 24078
         },
         {
           "offset": 115712,
@@ -5884,7 +6660,7 @@
           "offset": 125952,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 31398
+          "input_offset": 24198
         },
         {
           "offset": 126208,
@@ -5896,7 +6672,7 @@
           "offset": 126288,
           "size": 176,
           "input": "disk2_unresolved",
-          "input_offset": 31654
+          "input_offset": 24454
         },
         {
           "offset": 126464,
@@ -5926,7 +6702,7 @@
           "offset": 127412,
           "size": 76,
           "input": "disk2_unresolved",
-          "input_offset": 31830
+          "input_offset": 24630
         },
         {
           "offset": 127488,
@@ -6010,7 +6786,7 @@
           "offset": 130816,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 31906
+          "input_offset": 24706
         },
         {
           "offset": 131072,
@@ -6208,7 +6984,7 @@
           "offset": 139204,
           "size": 4156,
           "input": "disk2_unresolved",
-          "input_offset": 32162
+          "input_offset": 24962
         }
       ]
     }

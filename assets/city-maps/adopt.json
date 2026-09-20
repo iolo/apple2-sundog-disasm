@@ -1,0 +1,392 @@
+{
+  "name": "city_maps",
+  "data": "assets/city-maps/maps.bin",
+  "format": "64 city maps: 20 columns x 12 rows, low-nibble-first, column-major",
+  "classification": "docs/city-maps.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 32776,
+      "size": 120,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 32904,
+      "size": 120,
+      "input_offset": 120
+    },
+    {
+      "disk": "disk2",
+      "offset": 36360,
+      "size": 120,
+      "input_offset": 240
+    },
+    {
+      "disk": "disk2",
+      "offset": 36488,
+      "size": 120,
+      "input_offset": 360
+    },
+    {
+      "disk": "disk2",
+      "offset": 36104,
+      "size": 120,
+      "input_offset": 480
+    },
+    {
+      "disk": "disk2",
+      "offset": 36232,
+      "size": 120,
+      "input_offset": 600
+    },
+    {
+      "disk": "disk2",
+      "offset": 35848,
+      "size": 120,
+      "input_offset": 720
+    },
+    {
+      "disk": "disk2",
+      "offset": 35976,
+      "size": 120,
+      "input_offset": 840
+    },
+    {
+      "disk": "disk2",
+      "offset": 35592,
+      "size": 120,
+      "input_offset": 960
+    },
+    {
+      "disk": "disk2",
+      "offset": 35720,
+      "size": 120,
+      "input_offset": 1080
+    },
+    {
+      "disk": "disk2",
+      "offset": 35336,
+      "size": 120,
+      "input_offset": 1200
+    },
+    {
+      "disk": "disk2",
+      "offset": 35464,
+      "size": 120,
+      "input_offset": 1320
+    },
+    {
+      "disk": "disk2",
+      "offset": 35080,
+      "size": 120,
+      "input_offset": 1440
+    },
+    {
+      "disk": "disk2",
+      "offset": 35208,
+      "size": 120,
+      "input_offset": 1560
+    },
+    {
+      "disk": "disk2",
+      "offset": 34824,
+      "size": 120,
+      "input_offset": 1680
+    },
+    {
+      "disk": "disk2",
+      "offset": 34952,
+      "size": 120,
+      "input_offset": 1800
+    },
+    {
+      "disk": "disk2",
+      "offset": 34568,
+      "size": 120,
+      "input_offset": 1920
+    },
+    {
+      "disk": "disk2",
+      "offset": 34696,
+      "size": 120,
+      "input_offset": 2040
+    },
+    {
+      "disk": "disk2",
+      "offset": 34312,
+      "size": 120,
+      "input_offset": 2160
+    },
+    {
+      "disk": "disk2",
+      "offset": 34440,
+      "size": 120,
+      "input_offset": 2280
+    },
+    {
+      "disk": "disk2",
+      "offset": 34056,
+      "size": 120,
+      "input_offset": 2400
+    },
+    {
+      "disk": "disk2",
+      "offset": 34184,
+      "size": 120,
+      "input_offset": 2520
+    },
+    {
+      "disk": "disk2",
+      "offset": 33800,
+      "size": 120,
+      "input_offset": 2640
+    },
+    {
+      "disk": "disk2",
+      "offset": 33928,
+      "size": 120,
+      "input_offset": 2760
+    },
+    {
+      "disk": "disk2",
+      "offset": 33544,
+      "size": 120,
+      "input_offset": 2880
+    },
+    {
+      "disk": "disk2",
+      "offset": 33672,
+      "size": 120,
+      "input_offset": 3000
+    },
+    {
+      "disk": "disk2",
+      "offset": 33288,
+      "size": 120,
+      "input_offset": 3120
+    },
+    {
+      "disk": "disk2",
+      "offset": 33416,
+      "size": 120,
+      "input_offset": 3240
+    },
+    {
+      "disk": "disk2",
+      "offset": 33032,
+      "size": 120,
+      "input_offset": 3360
+    },
+    {
+      "disk": "disk2",
+      "offset": 33160,
+      "size": 120,
+      "input_offset": 3480
+    },
+    {
+      "disk": "disk2",
+      "offset": 36616,
+      "size": 120,
+      "input_offset": 3600
+    },
+    {
+      "disk": "disk2",
+      "offset": 36744,
+      "size": 120,
+      "input_offset": 3720
+    },
+    {
+      "disk": "disk2",
+      "offset": 36872,
+      "size": 120,
+      "input_offset": 3840
+    },
+    {
+      "disk": "disk2",
+      "offset": 37000,
+      "size": 120,
+      "input_offset": 3960
+    },
+    {
+      "disk": "disk2",
+      "offset": 40456,
+      "size": 120,
+      "input_offset": 4080
+    },
+    {
+      "disk": "disk2",
+      "offset": 40584,
+      "size": 120,
+      "input_offset": 4200
+    },
+    {
+      "disk": "disk2",
+      "offset": 40200,
+      "size": 120,
+      "input_offset": 4320
+    },
+    {
+      "disk": "disk2",
+      "offset": 40328,
+      "size": 120,
+      "input_offset": 4440
+    },
+    {
+      "disk": "disk2",
+      "offset": 39944,
+      "size": 120,
+      "input_offset": 4560
+    },
+    {
+      "disk": "disk2",
+      "offset": 40072,
+      "size": 120,
+      "input_offset": 4680
+    },
+    {
+      "disk": "disk2",
+      "offset": 39688,
+      "size": 120,
+      "input_offset": 4800
+    },
+    {
+      "disk": "disk2",
+      "offset": 39816,
+      "size": 120,
+      "input_offset": 4920
+    },
+    {
+      "disk": "disk2",
+      "offset": 39432,
+      "size": 120,
+      "input_offset": 5040
+    },
+    {
+      "disk": "disk2",
+      "offset": 39560,
+      "size": 120,
+      "input_offset": 5160
+    },
+    {
+      "disk": "disk2",
+      "offset": 39176,
+      "size": 120,
+      "input_offset": 5280
+    },
+    {
+      "disk": "disk2",
+      "offset": 39304,
+      "size": 120,
+      "input_offset": 5400
+    },
+    {
+      "disk": "disk2",
+      "offset": 38920,
+      "size": 120,
+      "input_offset": 5520
+    },
+    {
+      "disk": "disk2",
+      "offset": 39048,
+      "size": 120,
+      "input_offset": 5640
+    },
+    {
+      "disk": "disk2",
+      "offset": 38664,
+      "size": 120,
+      "input_offset": 5760
+    },
+    {
+      "disk": "disk2",
+      "offset": 38792,
+      "size": 120,
+      "input_offset": 5880
+    },
+    {
+      "disk": "disk2",
+      "offset": 38408,
+      "size": 120,
+      "input_offset": 6000
+    },
+    {
+      "disk": "disk2",
+      "offset": 38536,
+      "size": 120,
+      "input_offset": 6120
+    },
+    {
+      "disk": "disk2",
+      "offset": 38152,
+      "size": 120,
+      "input_offset": 6240
+    },
+    {
+      "disk": "disk2",
+      "offset": 38280,
+      "size": 120,
+      "input_offset": 6360
+    },
+    {
+      "disk": "disk2",
+      "offset": 37896,
+      "size": 120,
+      "input_offset": 6480
+    },
+    {
+      "disk": "disk2",
+      "offset": 38024,
+      "size": 120,
+      "input_offset": 6600
+    },
+    {
+      "disk": "disk2",
+      "offset": 37640,
+      "size": 120,
+      "input_offset": 6720
+    },
+    {
+      "disk": "disk2",
+      "offset": 37768,
+      "size": 120,
+      "input_offset": 6840
+    },
+    {
+      "disk": "disk2",
+      "offset": 37384,
+      "size": 120,
+      "input_offset": 6960
+    },
+    {
+      "disk": "disk2",
+      "offset": 37512,
+      "size": 120,
+      "input_offset": 7080
+    },
+    {
+      "disk": "disk1",
+      "offset": 100616,
+      "size": 120,
+      "input_offset": 7200
+    },
+    {
+      "disk": "disk1",
+      "offset": 100744,
+      "size": 120,
+      "input_offset": 7320
+    },
+    {
+      "disk": "disk1",
+      "offset": 100360,
+      "size": 120,
+      "input_offset": 7440
+    },
+    {
+      "disk": "disk1",
+      "offset": 100488,
+      "size": 120,
+      "input_offset": 7560
+    }
+  ]
+}
