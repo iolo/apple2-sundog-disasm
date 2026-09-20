@@ -1,0 +1,118 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/save-state-banks.md",
+  "payload_bytes": 20096,
+  "slot_bytes": 256,
+  "payload_sha256": "e0091114ce36ca41198c82638a82489784961ddd0cf8f1b0897754e2ac425b85",
+  "slot_sha256": "793ac5444a98999fc062e43911375c777b2496b5392c5122e15e29e3e6362051",
+  "sections": [
+    {
+      "name": "globals",
+      "offset": 0,
+      "size": 512,
+      "words_per_record": 256,
+      "record_count": 1
+    },
+    {
+      "name": "records16",
+      "offset": 512,
+      "size": 1024,
+      "words_per_record": 8,
+      "record_count": 64
+    },
+    {
+      "name": "records32",
+      "offset": 1536,
+      "size": 2048,
+      "words_per_record": 16,
+      "record_count": 64
+    },
+    {
+      "name": "world_table_23",
+      "offset": 3584,
+      "size": 240,
+      "words_per_record": 120,
+      "record_count": 1
+    },
+    {
+      "name": "world_table_24",
+      "offset": 3824,
+      "size": 288,
+      "words_per_record": 144,
+      "record_count": 1
+    },
+    {
+      "name": "world_table_25",
+      "offset": 4112,
+      "size": 912,
+      "words_per_record": 456,
+      "record_count": 1
+    }
+  ],
+  "banks": [
+    {
+      "slot": 0,
+      "name": "Hawkmoon",
+      "block": 27,
+      "input_offset": 0,
+      "payload_size": 5024,
+      "payload_sha256": "111869f75ff1704024410197f12d20f900cdc4311263e69e3c3623f6073e5f6c",
+      "full_bank_sha256": "1d1d7e0b7663ac0a055556595d15abe6925ab6d6f0e45147ca467d96ab826d70",
+      "stored_checksum": 36015,
+      "computed_checksum": 36015,
+      "unresolved_tail": {
+        "offset": 5024,
+        "size": 96,
+        "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f"
+      }
+    },
+    {
+      "slot": 1,
+      "name": "Starrion",
+      "block": 37,
+      "input_offset": 5024,
+      "payload_size": 5024,
+      "payload_sha256": "78c5581c11489b85e471a243888a3d374f8435fdc0ae1091c4a8df118ba14cc9",
+      "full_bank_sha256": "a9043e3d7a4a95b7131644c18aa0c7c76d4ebb2133dc02ce2c735177177ba016",
+      "stored_checksum": 60969,
+      "computed_checksum": 60969,
+      "unresolved_tail": {
+        "offset": 5024,
+        "size": 96,
+        "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f"
+      }
+    },
+    {
+      "slot": 2,
+      "name": "Brother Wolf",
+      "block": 47,
+      "input_offset": 10048,
+      "payload_size": 5024,
+      "payload_sha256": "11bdb5f0c3be261297e9e52bef50a3816a29c0df882252f5ac4e55de29d733e5",
+      "full_bank_sha256": "a3b483531717331ac909b667447d7614b1e88910a48943d28c755f0332114c63",
+      "stored_checksum": 62481,
+      "computed_checksum": 62481,
+      "unresolved_tail": {
+        "offset": 5024,
+        "size": 96,
+        "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f"
+      }
+    },
+    {
+      "slot": 3,
+      "name": "Blackblade",
+      "block": 57,
+      "input_offset": 15072,
+      "payload_size": 5024,
+      "payload_sha256": "ed4065497b269ab348b4c29e6269e4cb6c7c00ca6d98b9210a6362de37b64d62",
+      "full_bank_sha256": "1904f79219fe2c8e5a000d112ff48f42fe81644e420633869f54b5b86fbb06b4",
+      "stored_checksum": 46970,
+      "computed_checksum": 46970,
+      "unresolved_tail": {
+        "offset": 5024,
+        "size": 96,
+        "sha256": "5891d9839ddecd69ae8934e7e6ee9f3e363fbd521fe204a4121e71dc009cccd9"
+      }
+    }
+  ]
+}

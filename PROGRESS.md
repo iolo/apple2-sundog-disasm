@@ -1616,3 +1616,32 @@ and acceptance criteria.
   bytes, 75,731 temporary bytes (46,613 disk 1; 29,118 disk 2).
 - **Next action:** Trace persistent-state banks and remaining raw code/data;
   keep unknown record prefixes and file tails explicit until evidenced.
+
+## 2026-09-20 — Step 07k: saved-game payloads and slot descriptors
+
+- **Work/evidence:** Traced library 26's save selection and startup 7's inverse
+  load/save transfers. Disk-1 banks at blocks 27, 37, 47, and 57 contain a
+  512-byte globals snapshot, 3,072 bytes of indexed gameplay records, and
+  1,440 bytes of world-table data. Game 20 supplies the 16-/32-byte record
+  consumers. Extracted only those 5,024 evidenced bytes per bank, leaving each
+  nonzero 96-byte tail unresolved. Utility iteration identifies four 64-byte
+  slot descriptors in the first half of block 26; its other half stays temporary.
+- **Artifacts:** Added tools/save_state_asset.py, three tests, field/source evidence
+  in docs/save-state-banks.md, and packed/structured assets with explicit section
+  boundaries. Preserved names, residual name storage, packed words, and all
+  descriptor fields without assigning unsupported meanings. Classified 20,352
+  disk bytes as data; no executable classification is implied by checksums.
+- **Validation:** Native library 26's independent even/odd byte-sum model matches
+  every full ten-block bank and descriptor: Hawkmoon $8CAF, Starrion $EE29,
+  Brother Wolf $F411, Blackblade $B77A. Tests cover independent-lane overflow,
+  checksum mutation, section boundaries/record round trips, malformed dimensions,
+  and descriptor residue/checksum preservation. Extraction checks current rebuilt
+  disk hash and exclusive temporary ownership; asset verification passes.
+  Adopted payloads and descriptors with rebuilds between adoptions. Full build
+  and tools/verify_disks.py pass: both images exact and original inputs unchanged.
+- **Coverage:** 154,727 source-built disk bytes, 76,614 identified data/asset bytes,
+  55,379 temporary bytes (26,261 disk 1; 29,118 disk 2). Existing exact-image
+  emulator baselines are reused; no live save/load validation is newly claimed.
+- **Next action:** Trace the initial/working-state copies, world-table templates,
+  and remaining native fragments. Final both-emulator save/load and gameplay
+  checks remain required.

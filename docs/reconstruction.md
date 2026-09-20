@@ -104,7 +104,8 @@ byte-identical module replacements reuse the established reference behavior.
 | Pascal directory views | `src/data/pascal_directories.s` | Disk 1 blocks 79–82 | 2,048 |
 | Inventory/cargo name-table variants | `assets/item-names/{demo,play}/records.bin` | Disk 1 blocks 192–193; disk 2 blocks 46–47 | 2,048 |
 | Packed city-map payloads | `assets/city-maps/maps.bin` | 120-byte payloads in disk 2 blocks 64–78 and disk 1 block 195 | 7,680 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 46,613 |
+| Saved-game payloads and descriptors | `assets/save-states/{payloads,slots}.bin` | Disk 1 first 5,024 bytes of banks at 27, 37, 47, 57; first 256 bytes of block 26 | 20,352 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 26,261 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 29,118 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
@@ -302,6 +303,13 @@ validation are still incomplete.
 
 Step 07j extracts 60 play and four demo [city maps](city-maps.md), preserving
 each 20×12 grid as reversible four-bit values. Their eight-byte record prefixes
-remain unresolved. Current ownership is 154,727 source-built bytes, 56,262
+remain unresolved. Ownership then was 154,727 source-built bytes, 56,262
 identified data/asset bytes, and 75,731 temporary bytes. Both disks remain exact;
 full classification and final behavioral validation are still incomplete.
+
+Step 07k extracts the evidenced portions of four [saved-game banks](save-state-banks.md)
+and their slot descriptors, with exact structured-record round trips and matching
+full-bank checksums. Their 96-byte bank tails remain unresolved. Current ownership
+is 154,727 source-built bytes, 76,614 classified data/asset bytes, and 55,379
+temporary bytes. Both disks remain exact; final classification and live save/load
+validation in both emulators remain open.

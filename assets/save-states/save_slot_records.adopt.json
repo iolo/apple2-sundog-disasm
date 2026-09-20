@@ -1,0 +1,14 @@
+{
+  "name": "save_slot_records",
+  "data": "assets/save-states/slots.bin",
+  "format": "Saved-game data records; field layout in manifest.json",
+  "classification": "docs/save-state-banks.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 15104,
+      "size": 256,
+      "input_offset": 0
+    }
+  ]
+}
