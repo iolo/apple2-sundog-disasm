@@ -1,0 +1,814 @@
+{
+  "checkpoint": "09b",
+  "frontend_commit": "62508079ea0c0e3dff314c73778d641159cec92f",
+  "server_commit": "8f4cd0df38a142dbfe4212f815cff5f094715bc2",
+  "browser": "HeadlessChrome/153.0.0.0",
+  "machine": "APPLE2EE",
+  "ramWorksKb": 64,
+  "speedMode": 0,
+  "source_disk_commit": "3d5f194",
+  "input": "Virtual browser Gamepad API device; existing frontend/worker joystick path; no game-memory or CPU writes",
+  "server_instance_id": "99748e0e-bd27-44ec-805a-db1fb04efb7f",
+  "configured_mcp_session": "idle and untouched",
+  "browser_processes": {
+    "save": 1134482,
+    "reload": 1164742
+  },
+  "build_artifact_sha256": {
+    "index.html": "5e46baa52eb307f1477ace5c2b60763b361ed6f24c27b1a0ef75e2784b35f0a8",
+    "assets/index-mShRbQbN.js": "eebb7b47b05840cd157105adc178663d19fec1700c4b922e07790b5a4c248551",
+    "assets/redirect_bridge-CryWB6ho.js": "ae3cb8992b7cdcb0f40e8384805e95692cec9c7d4409b83d0d8e8b54711d796f",
+    "assets/vtoc_worker-mroasDTh.js": "91ddf81ada2afc4343c951250d7795e2e3d065e7358e484fe9841273af3f4f42",
+    "assets/worker2main-IXw8PCVI.js": "8c6cf65c7babe226d74e4bdc8188bbd88cd973dd7dc6b3ad2fe604b91c47c946"
+  },
+  "original_disk1_sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+  "saved_disk1_sha256": "4358c66ff69d43cdc9f489568594eb3a04cbfaa1b34579082765ec48d3f7fb1b",
+  "changed_bytes": 99,
+  "changes": [
+    {
+      "image_offset": 15198,
+      "logical_block": 26,
+      "block_offset": 94,
+      "before": 41,
+      "after": 111
+    },
+    {
+      "image_offset": 15199,
+      "logical_block": 26,
+      "block_offset": 95,
+      "before": 238,
+      "after": 111
+    },
+    {
+      "image_offset": 17676,
+      "logical_block": 37,
+      "block_offset": 12,
+      "before": 48,
+      "after": 46
+    },
+    {
+      "image_offset": 17677,
+      "logical_block": 37,
+      "block_offset": 13,
+      "before": 16,
+      "after": 18
+    },
+    {
+      "image_offset": 17692,
+      "logical_block": 37,
+      "block_offset": 28,
+      "before": 10,
+      "after": 12
+    },
+    {
+      "image_offset": 17712,
+      "logical_block": 37,
+      "block_offset": 48,
+      "before": 227,
+      "after": 231
+    },
+    {
+      "image_offset": 17713,
+      "logical_block": 37,
+      "block_offset": 49,
+      "before": 255,
+      "after": 247
+    },
+    {
+      "image_offset": 17715,
+      "logical_block": 37,
+      "block_offset": 51,
+      "before": 243,
+      "after": 237
+    },
+    {
+      "image_offset": 17770,
+      "logical_block": 37,
+      "block_offset": 106,
+      "before": 81,
+      "after": 65
+    },
+    {
+      "image_offset": 21123,
+      "logical_block": 46,
+      "block_offset": 387,
+      "before": 0,
+      "after": 255
+    },
+    {
+      "image_offset": 21152,
+      "logical_block": 46,
+      "block_offset": 416,
+      "before": 13,
+      "after": 0
+    },
+    {
+      "image_offset": 21153,
+      "logical_block": 46,
+      "block_offset": 417,
+      "before": 2,
+      "after": 0
+    },
+    {
+      "image_offset": 21154,
+      "logical_block": 46,
+      "block_offset": 418,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21155,
+      "logical_block": 46,
+      "block_offset": 419,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21156,
+      "logical_block": 46,
+      "block_offset": 420,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21157,
+      "logical_block": 46,
+      "block_offset": 421,
+      "before": 35,
+      "after": 0
+    },
+    {
+      "image_offset": 21158,
+      "logical_block": 46,
+      "block_offset": 422,
+      "before": 192,
+      "after": 0
+    },
+    {
+      "image_offset": 21159,
+      "logical_block": 46,
+      "block_offset": 423,
+      "before": 16,
+      "after": 0
+    },
+    {
+      "image_offset": 21160,
+      "logical_block": 46,
+      "block_offset": 424,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21161,
+      "logical_block": 46,
+      "block_offset": 425,
+      "before": 186,
+      "after": 0
+    },
+    {
+      "image_offset": 21162,
+      "logical_block": 46,
+      "block_offset": 426,
+      "before": 147,
+      "after": 0
+    },
+    {
+      "image_offset": 21163,
+      "logical_block": 46,
+      "block_offset": 427,
+      "before": 161,
+      "after": 0
+    },
+    {
+      "image_offset": 21164,
+      "logical_block": 46,
+      "block_offset": 428,
+      "before": 47,
+      "after": 0
+    },
+    {
+      "image_offset": 21165,
+      "logical_block": 46,
+      "block_offset": 429,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21166,
+      "logical_block": 46,
+      "block_offset": 430,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21167,
+      "logical_block": 46,
+      "block_offset": 431,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21168,
+      "logical_block": 46,
+      "block_offset": 432,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21169,
+      "logical_block": 46,
+      "block_offset": 433,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21170,
+      "logical_block": 46,
+      "block_offset": 434,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21171,
+      "logical_block": 46,
+      "block_offset": 435,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21172,
+      "logical_block": 46,
+      "block_offset": 436,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21173,
+      "logical_block": 46,
+      "block_offset": 437,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21174,
+      "logical_block": 46,
+      "block_offset": 438,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21175,
+      "logical_block": 46,
+      "block_offset": 439,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21176,
+      "logical_block": 46,
+      "block_offset": 440,
+      "before": 81,
+      "after": 0
+    },
+    {
+      "image_offset": 21177,
+      "logical_block": 46,
+      "block_offset": 441,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21178,
+      "logical_block": 46,
+      "block_offset": 442,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21179,
+      "logical_block": 46,
+      "block_offset": 443,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21180,
+      "logical_block": 46,
+      "block_offset": 444,
+      "before": 80,
+      "after": 0
+    },
+    {
+      "image_offset": 21181,
+      "logical_block": 46,
+      "block_offset": 445,
+      "before": 15,
+      "after": 0
+    },
+    {
+      "image_offset": 21182,
+      "logical_block": 46,
+      "block_offset": 446,
+      "before": 149,
+      "after": 0
+    },
+    {
+      "image_offset": 21183,
+      "logical_block": 46,
+      "block_offset": 447,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21184,
+      "logical_block": 46,
+      "block_offset": 448,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21185,
+      "logical_block": 46,
+      "block_offset": 449,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21186,
+      "logical_block": 46,
+      "block_offset": 450,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21187,
+      "logical_block": 46,
+      "block_offset": 451,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21188,
+      "logical_block": 46,
+      "block_offset": 452,
+      "before": 22,
+      "after": 0
+    },
+    {
+      "image_offset": 21189,
+      "logical_block": 46,
+      "block_offset": 453,
+      "before": 18,
+      "after": 0
+    },
+    {
+      "image_offset": 21190,
+      "logical_block": 46,
+      "block_offset": 454,
+      "before": 167,
+      "after": 0
+    },
+    {
+      "image_offset": 21191,
+      "logical_block": 46,
+      "block_offset": 455,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21192,
+      "logical_block": 46,
+      "block_offset": 456,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21193,
+      "logical_block": 46,
+      "block_offset": 457,
+      "before": 79,
+      "after": 0
+    },
+    {
+      "image_offset": 21194,
+      "logical_block": 46,
+      "block_offset": 458,
+      "before": 8,
+      "after": 0
+    },
+    {
+      "image_offset": 21195,
+      "logical_block": 46,
+      "block_offset": 459,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21196,
+      "logical_block": 46,
+      "block_offset": 460,
+      "before": 22,
+      "after": 0
+    },
+    {
+      "image_offset": 21197,
+      "logical_block": 46,
+      "block_offset": 461,
+      "before": 19,
+      "after": 0
+    },
+    {
+      "image_offset": 21198,
+      "logical_block": 46,
+      "block_offset": 462,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21199,
+      "logical_block": 46,
+      "block_offset": 463,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21200,
+      "logical_block": 46,
+      "block_offset": 464,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21201,
+      "logical_block": 46,
+      "block_offset": 465,
+      "before": 82,
+      "after": 0
+    },
+    {
+      "image_offset": 21202,
+      "logical_block": 46,
+      "block_offset": 466,
+      "before": 184,
+      "after": 0
+    },
+    {
+      "image_offset": 21203,
+      "logical_block": 46,
+      "block_offset": 467,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21204,
+      "logical_block": 46,
+      "block_offset": 468,
+      "before": 10,
+      "after": 0
+    },
+    {
+      "image_offset": 21205,
+      "logical_block": 46,
+      "block_offset": 469,
+      "before": 157,
+      "after": 0
+    },
+    {
+      "image_offset": 21206,
+      "logical_block": 46,
+      "block_offset": 470,
+      "before": 29,
+      "after": 0
+    },
+    {
+      "image_offset": 21207,
+      "logical_block": 46,
+      "block_offset": 471,
+      "before": 129,
+      "after": 0
+    },
+    {
+      "image_offset": 21208,
+      "logical_block": 46,
+      "block_offset": 472,
+      "before": 80,
+      "after": 0
+    },
+    {
+      "image_offset": 21209,
+      "logical_block": 46,
+      "block_offset": 473,
+      "before": 184,
+      "after": 0
+    },
+    {
+      "image_offset": 21210,
+      "logical_block": 46,
+      "block_offset": 474,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21211,
+      "logical_block": 46,
+      "block_offset": 475,
+      "before": 9,
+      "after": 0
+    },
+    {
+      "image_offset": 21212,
+      "logical_block": 46,
+      "block_offset": 476,
+      "before": 173,
+      "after": 0
+    },
+    {
+      "image_offset": 21218,
+      "logical_block": 46,
+      "block_offset": 482,
+      "before": 6,
+      "after": 0
+    },
+    {
+      "image_offset": 21220,
+      "logical_block": 46,
+      "block_offset": 484,
+      "before": 66,
+      "after": 0
+    },
+    {
+      "image_offset": 21222,
+      "logical_block": 46,
+      "block_offset": 486,
+      "before": 14,
+      "after": 0
+    },
+    {
+      "image_offset": 21223,
+      "logical_block": 46,
+      "block_offset": 487,
+      "before": 2,
+      "after": 0
+    },
+    {
+      "image_offset": 21224,
+      "logical_block": 46,
+      "block_offset": 488,
+      "before": 198,
+      "after": 0
+    },
+    {
+      "image_offset": 21225,
+      "logical_block": 46,
+      "block_offset": 489,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21226,
+      "logical_block": 46,
+      "block_offset": 490,
+      "before": 216,
+      "after": 0
+    },
+    {
+      "image_offset": 21227,
+      "logical_block": 46,
+      "block_offset": 491,
+      "before": 170,
+      "after": 0
+    },
+    {
+      "image_offset": 21228,
+      "logical_block": 46,
+      "block_offset": 492,
+      "before": 15,
+      "after": 0
+    },
+    {
+      "image_offset": 21229,
+      "logical_block": 46,
+      "block_offset": 493,
+      "before": 217,
+      "after": 0
+    },
+    {
+      "image_offset": 21230,
+      "logical_block": 46,
+      "block_offset": 494,
+      "before": 198,
+      "after": 0
+    },
+    {
+      "image_offset": 21231,
+      "logical_block": 46,
+      "block_offset": 495,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21232,
+      "logical_block": 46,
+      "block_offset": 496,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21233,
+      "logical_block": 46,
+      "block_offset": 497,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21234,
+      "logical_block": 46,
+      "block_offset": 498,
+      "before": 4,
+      "after": 0
+    },
+    {
+      "image_offset": 21235,
+      "logical_block": 46,
+      "block_offset": 499,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21236,
+      "logical_block": 46,
+      "block_offset": 500,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21237,
+      "logical_block": 46,
+      "block_offset": 501,
+      "before": 3,
+      "after": 0
+    },
+    {
+      "image_offset": 21238,
+      "logical_block": 46,
+      "block_offset": 502,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21239,
+      "logical_block": 46,
+      "block_offset": 503,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21240,
+      "logical_block": 46,
+      "block_offset": 504,
+      "before": 5,
+      "after": 0
+    },
+    {
+      "image_offset": 21241,
+      "logical_block": 46,
+      "block_offset": 505,
+      "before": 182,
+      "after": 0
+    },
+    {
+      "image_offset": 21242,
+      "logical_block": 46,
+      "block_offset": 506,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "image_offset": 21243,
+      "logical_block": 46,
+      "block_offset": 507,
+      "before": 5,
+      "after": 0
+    },
+    {
+      "image_offset": 21244,
+      "logical_block": 46,
+      "block_offset": 508,
+      "before": 10,
+      "after": 0
+    },
+    {
+      "image_offset": 21245,
+      "logical_block": 46,
+      "block_offset": 509,
+      "before": 130,
+      "after": 0
+    },
+    {
+      "image_offset": 21246,
+      "logical_block": 46,
+      "block_offset": 510,
+      "before": 205,
+      "after": 0
+    },
+    {
+      "image_offset": 21247,
+      "logical_block": 46,
+      "block_offset": 511,
+      "before": 25,
+      "after": 0
+    }
+  ],
+  "slot": 1,
+  "bank_blocks": [
+    37,
+    47
+  ],
+  "checksum_before": 60969,
+  "checksum_after": 28527,
+  "checksum_stored": 28527,
+  "reload": {
+    "fresh_browser_process": true,
+    "emulator_save_state": false,
+    "ship_loaded": true,
+    "personal_status_opened": true,
+    "play_side_dirty": true,
+    "play_side_exported": false,
+    "note": "No unchanged-media claim for reload; API reported play disk dirty before it was replaced with a disposable baseline utility disk."
+  },
+  "utility": {
+    "fresh_baseline_disk1": true,
+    "slots": 4,
+    "states": [
+      "suspended",
+      "being played",
+      "suspended",
+      "suspended"
+    ],
+    "selected_name": "Hawkmoon",
+    "actions_visible": [
+      "Delete game",
+      "Play game"
+    ],
+    "button1_returned_to_slots": true,
+    "selected_action": null
+  },
+  "cleanup": {
+    "virtual_inputs_released": true,
+    "save_browser_closed": true,
+    "reload_browser_closed": true,
+    "owned_http_server_exited": true,
+    "configured_mcp_lifecycle_after": {
+      "sequence": 0,
+      "state": "idle",
+      "emulator": null
+    }
+  },
+  "screens": [
+    {
+      "path": "docs/reference/apple2ts-rebuilt-play-prompt.png",
+      "sha256": "05d81f1cc4ebe2e095f1420c5a10b1811adddd1411c5a5080b54e1c4660d3a3b",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-rebuilt-ship.png",
+      "sha256": "cd9fc6e57c7c1d137f3002d41b6b92978b0d83ee509ce024f58a58ee38e19e4a",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-rebuilt-status.png",
+      "sha256": "abb735453d9b9f0971f0f832ede63df0596ab9c23e26710a92165d5d2e28e8a1",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-save-menu.png",
+      "sha256": "a7785fe117eb203fa1e70ccbb9af568bb5054e3f8cbe1165bc8e1d2d61b356df",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-save-side-prompt.png",
+      "sha256": "5fae61625f7627458337aab5d019eaebeebc9ccd85621e5f7213c3ea3c95d584",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-saved-status.png",
+      "sha256": "abb735453d9b9f0971f0f832ede63df0596ab9c23e26710a92165d5d2e28e8a1",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-utility-slots.png",
+      "sha256": "5831f24f5b3f4c923236b5e4c4ff7f60a369a6115ebbd9b97648386889d53d83",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-utility-actions.png",
+      "sha256": "c9fbb4980fee937e7496e2a5bf8675042a089ca5a82754a3010aa53f32eebcf0",
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/reference/apple2ts-utility-back.png",
+      "sha256": "f2ccfd92d10fc7f804eecc1ba1730402ea67d38f39b11d82c8e131f7120a991e",
+      "visually_reviewed": true
+    }
+  ]
+}

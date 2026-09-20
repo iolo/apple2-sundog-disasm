@@ -71,6 +71,6 @@ The repository's `tools/reference_mame.py` accepts both sequence formats and
 `--image-dir` for rebuilt or saved media. The checked-in sequence was recorded
 from the console run; a separate unattended replay is not claimed here.
 
-Apple2TS gameplay/save-load, the remaining classification work, and final
-integration checks remain outstanding. The original disks and manual were
+Step 09b subsequently adds [Apple2TS gameplay/save-load](apple2ts-behavior-validation.md).
+Remaining classification work and final integration checks are still outstanding. The original disks and manual were
 verified unchanged after both processes exited.

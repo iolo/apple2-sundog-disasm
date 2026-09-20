@@ -54,17 +54,18 @@ The cause and modified regions remain to be analyzed; the original is intact.
 
 ## Scope and limitations
 
-The checked-in MAME images were visually inspected. apple2ts captures establish
-title rendering (Version 2.0 and NUTCRACKER credit) and disk-2 cold boot. Its
-private MCP interface currently exposes keyboard input but no joystick axes or
-buttons, so gameplay interaction was established in MAME. Full apple2ts gameplay
-validation remains required in step 09; use an appropriate frontend/API session
-there rather than patch game memory to bypass controls.
+The checked-in emulator images were visually inspected. Original Apple2TS
+captures established title rendering and disk-2 cold boot. Its private MCP
+interface has no joystick axes/buttons, so step 09b uses a separately owned
+browser and its normal Gamepad API input path for gameplay.
 
-Step 09a adds a [rebuilt-image save and fresh-process reload](../save-reload-validation.md)
-in MAME. The four initial reference screens match exactly, and the saved bank's
-updated checksum verifies. See `game-save.json` and `mame-save-reload.json`.
-Apple2TS gameplay/save-load remains open.
+Step 09a adds a [MAME save and fresh-process reload](../save-reload-validation.md).
+The four initial reference screens match exactly and the saved bank checksum
+verifies. Step 09b adds [Apple2TS save/reload and utility navigation](../apple2ts-behavior-validation.md)
+with a valid exported saved-bank checksum and a separate browser-process reload.
+See `game-save.json`, `mame-save-reload.json`, and `apple2ts-save-reload.json`.
+Model, timing and rendering differences are recorded; synchronized cross-emulator
+pixel equality or complete gameplay coverage is not claimed.
 
 These observations do not identify an unmodified commercial release.
 Starting/deleting games, combat, travel, sound, and long-running behavior have

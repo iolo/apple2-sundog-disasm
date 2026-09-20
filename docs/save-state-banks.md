@@ -108,4 +108,6 @@ excluded tails; full-disk verification includes their separately recorded
 source or temporary inputs.
 The extraction checkpoint did not execute a save. Step 09a subsequently records
 a [MAME save and fresh-process reload](save-reload-validation.md), including the
-changed slot checksum. Apple2TS save/load and final integration remain required.
+changed slot checksum. Step 09b adds the corresponding
+[Apple2TS saved-disk reload](apple2ts-behavior-validation.md). Final integration
+and remaining classification requirements still apply.

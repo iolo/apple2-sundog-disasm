@@ -2900,3 +2900,44 @@ and acceptance criteria.
   Continue Apple2TS gameplay/save-load capability checks and remaining native
   provisional/allocation evidence. Final classification and integration are
   incomplete. User PRD edits and ref/ remain untouched and excluded.
+
+## 2026-09-20 — Step 09b: validate Apple2TS gameplay, save/reload and utilities
+
+- **Work:** The configured Apple2TS MCP session was idle and lacks joystick
+  controls. Used the installed frontend/server in a separate owned localhost
+  server and two fresh Playwright browser processes, without reconfiguring MCP
+  or editing installed emulator code. Browser Gamepad API input followed the
+  normal frontend/worker joystick path; no CPU changes, memory patches or
+  emulator save-state imports were used. Sandbox listener/browser access needed
+  the existing authorized escalation workflow.
+- **Behavior:** Verified title/menu, Play SunDog, play-side disk swap, ship
+  interior and personal status. Selected the disk icon and Save Game, swapped
+  to the utility side, and exported the resulting DSK through Download Disk.
+  Closed that browser, cold-booted the exported disk in a distinct process,
+  swapped to a fresh play side, and again reached the ship and personal status.
+  A separate baseline utility boot displayed all four slots; Hawkmoon's action
+  menu opened and button 1 returned to the list without selecting an action.
+- **Save evidence:** Exported disk 1 is 143,360 bytes with SHA-256
+  4358c66ff69d43cdc9f489568594eb3a04cbfaa1b34579082765ec48d3f7fb1b.
+  Exactly 99 bytes differ: two checksum bytes in block 26, seven globals bytes
+  in block 37 and 90 bank-tail bytes in block 46. Recomputed checksum $6F6F
+  matches the slot descriptor. The reload API marked the play-side working copy
+  dirty; it was not exported, so unchanged reload media is explicitly unclaimed.
+- **Artifacts:** Added docs/apple2ts-behavior-validation.md, a configuration /
+  artifact-hash / byte-difference / cleanup report, and nine inspected screens.
+  Updated PLAN.md, the reference runbook, MAME/save-state cross-references and
+  .gitignore for disposable output/playwright artifacts. Recorded normalized
+  axes, button pulses, browser/model versions and known timing/model limits.
+- **Validation:** Reconstructed the exact exported save from all 99 reported
+  original-byte changes, checked logical/image coordinates, checksum, nine
+  screenshot hashes and three recorded boot configurations. tools/verify_disks.py,
+  tools/verify_inputs.py and git diff --check pass. No build output changed.
+  Both owned browsers and the HTTP server exited; configured MCP lifecycle
+  remained idle at sequence 0. Original media/manual are untouched.
+- **Limits/next:** This closes the previously missing Apple2TS interaction path
+  and establishes save/reload smoke checks in both emulators. It does not prove
+  every saved field, utility mutation, combat, travel, sound, or synchronized
+  cross-emulator timing. MAME uses unenhanced IIe; Apple2TS uses enhanced IIe.
+  Return to remaining classification and final integration: 179,220 source
+  bytes, 100,900 identified data/asset bytes and 6,600 temporary bytes remain
+  unchanged (906 disk 1; 5,694 disk 2). User PRD edits and ref/ stay excluded.
