@@ -1,0 +1,122 @@
+{
+  "sha256": "902a7339ff7e54071c3f9748bf2bd213a46c96405c88183ebc10159c8b1a6d9c",
+  "instruction_count": 2146,
+  "instruction_bytes": 3899,
+  "data_bytes": 426,
+  "checked_direct_and_vector_targets": 555,
+  "external_targets": [
+    0,
+    57573,
+    57989,
+    58067,
+    58095,
+    58118,
+    58155,
+    58204,
+    58225,
+    58601,
+    58987,
+    58997,
+    59007,
+    59018,
+    59087,
+    59228,
+    59395,
+    59403,
+    59417,
+    59512,
+    59562,
+    59612,
+    61137,
+    61148,
+    61159,
+    61173,
+    61183,
+    61309,
+    61505,
+    61510,
+    62057
+  ],
+  "code_spans_end_exclusive": [
+    [
+      53586,
+      53677
+    ],
+    [
+      53687,
+      56566
+    ],
+    [
+      56574,
+      56790
+    ],
+    [
+      56856,
+      56996
+    ],
+    [
+      57000,
+      57573
+    ]
+  ],
+  "cross_bank_instruction": {
+    "address": 57343,
+    "bytes": "8588",
+    "instruction": "STA $88"
+  },
+  "interpreter_linkage": {
+    "classification": "data",
+    "classification_evidence": "docs/interpreter-linkage.md",
+    "address": 53677,
+    "size": 10,
+    "sha256": "dd7aadbc48165832664e05c83590078fa279f6ef3d4f27047d76e5ba52464b25",
+    "fields": [
+      {
+        "offset": 0,
+        "size": 2,
+        "name": "interpreter_linkage_base",
+        "value": 53679,
+        "meaning": "Pointer to the following interpreter-linkage vector table",
+        "address": 53677
+      },
+      {
+        "offset": 2,
+        "size": 2,
+        "name": "runtime_error_vector",
+        "value": 53755,
+        "meaning": "Native runtime error entry",
+        "address": 53679
+      },
+      {
+        "offset": 4,
+        "size": 2,
+        "name": "system_service_base_vector",
+        "value": 65280,
+        "meaning": "Base of the high-memory three-byte service entries",
+        "address": 53681
+      },
+      {
+        "offset": 6,
+        "size": 2,
+        "name": "io_result_address",
+        "value": 48606,
+        "meaning": "Address of the two-byte I/O-result cell",
+        "address": 53683
+      },
+      {
+        "offset": 8,
+        "size": 2,
+        "name": "zero_page_workspace_address",
+        "value": 126,
+        "meaning": "Address of the current runtime scratch-pointer workspace",
+        "address": 53685
+      }
+    ],
+    "relocation_base": 53679,
+    "relocation_call": 58928,
+    "relocation_routine": 58365,
+    "checked_windows": 5,
+    "live_use_of_every_vector_claimed": false,
+    "unresolved_descriptor_bytes": 0
+  }
+}

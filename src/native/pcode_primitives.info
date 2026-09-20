@@ -5,7 +5,7 @@ SEGMENT { START $D000; END $E0E4; NAME "PCODE_NATIVE"; };
 RANGE { START $D000; END $D0FF; TYPE AddrTable; NAME "opcode_vectors"; };
 RANGE { START $D100; END $D151; TYPE AddrTable; NAME "standard_proc_vectors"; };
 RANGE { START $D152; END $D1AC; TYPE Code; };
-RANGE { START $D1AD; END $D1B6; TYPE WordTable; NAME "descriptor_d1ad"; };
+RANGE { START $D1AD; END $D1B6; TYPE WordTable; NAME "interpreter_linkage_base"; };
 RANGE { START $D1B7; END $DCF5; TYPE Code; };
 RANGE { START $DCF6; END $DCFD; TYPE ByteTable; NAME "single_bit_masks"; };
 RANGE { START $DCFE; END $DDD5; TYPE Code; };

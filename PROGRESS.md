@@ -2978,3 +2978,36 @@ and acceptance criteria.
   native-relocation consumer; its documentation/audit can be tightened next.
   Continue the remaining small tails, encoded-bank gaps and provisional data.
   User PRD edits and ref/ remain untouched and excluded.
+
+## 2026-09-20 — Step 08n: resolve the native interpreter linkage descriptor
+
+- **Evidence/work:** The primitive bank's ten-byte provisional descriptor is a
+  pointer to a four-word interpreter linkage table. Shared runtime $E626–$E630
+  loads $D1AD/$D1AE into $92/$93 for the fourth relocation pass; the $E3FD
+  walker adds that base to relocation targets. The table points to the native
+  error entry $D1FB, service-entry array $FF00, I/O-result cell $BDDE and
+  scratch-pointer workspace $007E. Local consumer/target windows verify these
+  address roles. The Pascal 1.1 listing, printed pages 21 and 137, has the same
+  layout and base consumer; its final workspace address is $0074 instead.
+- **Artifacts:** Replaced generic word declarations with named fields and
+  symbolic table/error-entry references, updated the da65 recipe, and added
+  bounded evidence, an audit integrated into check_pcode_native.py, two tests,
+  docs/interpreter-linkage.md and its generated native audit. Updated PLAN.md
+  and the primitive-bank document. No new instruction entries are invented.
+- **Limits:** Inventoried SunDog native procedures have empty interpreter
+  relocation lists. This identifies retained linkage data, not new live use of
+  every vector. Detailed historical workspace uses are not transferred to the
+  different SunDog workspace address without evidence.
+- **Validation:** Both tests pass, rejecting all ten individual field-byte
+  mutations, changed relocation operands/base-adds, changed consumers and
+  truncated components. The complete native audit still validates 2,146
+  instructions, 3,899 instruction bytes, 426 data bytes and 555 targets.
+  Rebuild and tools/verify_disks.py pass; component and both full disk hashes
+  remain exact. git diff --check passes. Recent emulator baselines apply.
+- **Research/next:** Twelve historical Pascal boot tails are all zero and do
+  not explain SunDog's final $01; that boot tail stays unresolved. Encoded-bank
+  disconnected jumps and post-image nonzero tails likewise remain separate.
+  This checkpoint resolves evidence for ten already source-built data bytes,
+  so totals remain 183,316 source bytes, 100,900 identified data/asset bytes
+  and 2,504 temporary bytes (906 disk 1; 1,598 disk 2). Continue those remaining
+  small tails and provisional metadata. User PRD edits and ref/ remain excluded.

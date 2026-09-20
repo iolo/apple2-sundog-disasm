@@ -1,0 +1,103 @@
+{
+  "classification": "data",
+  "address": 53677,
+  "size": 10,
+  "hex": "afd1fbd100ffdebd7e00",
+  "fields": [
+    {
+      "offset": 0,
+      "size": 2,
+      "name": "interpreter_linkage_base",
+      "value": 53679,
+      "meaning": "Pointer to the following interpreter-linkage vector table"
+    },
+    {
+      "offset": 2,
+      "size": 2,
+      "name": "runtime_error_vector",
+      "value": 53755,
+      "meaning": "Native runtime error entry"
+    },
+    {
+      "offset": 4,
+      "size": 2,
+      "name": "system_service_base_vector",
+      "value": 65280,
+      "meaning": "Base of the high-memory three-byte service entries"
+    },
+    {
+      "offset": 6,
+      "size": 2,
+      "name": "io_result_address",
+      "value": 48606,
+      "meaning": "Address of the two-byte I/O-result cell"
+    },
+    {
+      "offset": 8,
+      "size": 2,
+      "name": "zero_page_workspace_address",
+      "value": 126,
+      "meaning": "Address of the current runtime scratch-pointer workspace"
+    }
+  ],
+  "windows": [
+    {
+      "component": "native_shared",
+      "base": 57573,
+      "address": 58893,
+      "size": 38,
+      "hex": "20fde3a5988592a599859320fde3a5948592a595859320fde3adadd18592adaed1859320fde3",
+      "evidence": "Four native relocation passes; final pass loads D1AD/D1AE into 92/93"
+    },
+    {
+      "component": "native_shared",
+      "base": 57573,
+      "address": 58365,
+      "size": 64,
+      "hex": "a000b186aae8c8b186858e4c2ae4a00038a586f186857ec8a587f186857f1888b17e6592917ec8b17e6593917ea58638e9028586b002c687cad0d3c68e10cf60",
+      "evidence": "Relocation-count/offset walker adds the 92/93 base to target words"
+    },
+    {
+      "component": "pcode_primitives",
+      "base": 53248,
+      "address": 53755,
+      "size": 15,
+      "hex": "c90af00b1869648ddebda9008ddfbd",
+      "evidence": "Runtime error handler writes the I/O-result word"
+    },
+    {
+      "component": "pcode_primitives",
+      "base": 53248,
+      "address": 53946,
+      "size": 29,
+      "hex": "6554857ea9ff6555857fa57e38a000f17e8558a57fc8f17e85594c93d2",
+      "evidence": "Local use of the 7E/7F scratch-pointer workspace"
+    },
+    {
+      "component": "native_high",
+      "base": 63376,
+      "address": 65280,
+      "size": 6,
+      "hex": "209eff209eff",
+      "evidence": "Beginning of the three-byte system-service entry array"
+    }
+  ],
+  "historical": {
+    "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/programming/pascal/Apple%202%20Pascal%2011%20PCodeIntDism.pdf",
+    "listing_pages": [
+      21,
+      137
+    ],
+    "descriptor_hex": "afd1fbd100ffdebd7400",
+    "labels": [
+      "INXBC",
+      "AD1AF",
+      "INXBK",
+      "JCREAD",
+      "IORSLT",
+      "A74"
+    ],
+    "difference": "Final scratch-workspace pointer is 0074 in Pascal 1.1 and 007E in SunDog"
+  },
+  "limits": "The inventoried SunDog native procedures have empty interpreter relocation lists; no new live dereference through every table slot is claimed."
+}

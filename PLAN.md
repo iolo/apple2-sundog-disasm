@@ -144,6 +144,10 @@ Split large steps into independently validated, logged, and committed increments
   544 readable sectors, including the complete neighboring segment allocation,
   match exactly. Current ownership is 183,316 source-built bytes, 100,900
   identified data/asset bytes and 2,504 temporary bytes (906 disk 1; 1,598 disk 2).
+- Step 08n resolves the primitive-bank descriptor as an interpreter relocation
+  base and four address fields, using its direct consumer and historical layout.
+  Named declarations and mutation checks preserve the exact component output.
+  These ten bytes were already source-built; temporary totals do not change.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 
 from disk_layout import ROOT, sha
+from interpreter_linkage import audit_linkage
 
 BASE = 0xD000
 END = 0xE0E5
@@ -76,8 +77,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", type=Path, default=ROOT / "build/disks/components/pcode_primitives.bin")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--components", type=Path, default=ROOT / "build/disks/components")
     args = parser.parse_args()
     report = audit(args.binary.read_bytes())
+    report['interpreter_linkage'] = audit_linkage(args.binary.read_bytes(),
+        (args.components/'native_shared.bin').read_bytes(),
+        (args.components/'native_high.bin').read_bytes())
     formatted = json.dumps(report, indent=2) + "\n"
     if args.output:
         args.output.write_text(formatted)

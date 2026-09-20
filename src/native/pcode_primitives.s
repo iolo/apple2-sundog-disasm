@@ -283,10 +283,19 @@ LD19B:  sta     $5A ; $D19B
         rts ; $D1AC
 
 ; ----------------------------------------------------------------------------
-; Ten-byte descriptor between routines. Field semantics remain unresolved.
-descriptor_d1ad:
-        .word   $D1AF,$D1FB,$FF00,$BDDE ; $D1AD
-        .word   $007E ; $D1B5
+; Native interpreter relocation base and address vectors.
+; E626-E630 loads the first word for the fourth native relocation pass.
+; See docs/interpreter-linkage.md; these fields are data, not instructions.
+interpreter_linkage_base:
+        .word   interpreter_linkage_vectors ; $D1AD
+interpreter_linkage_vectors:
+        .word   runtime_error       ; $D1AF
+system_service_base_vector:
+        .word   $FF00               ; $D1B1: high-memory service entry array
+io_result_address:
+        .word   $BDDE               ; $D1B3: two-byte I/O result
+zero_page_workspace_address:
+        .word   $007E               ; $D1B5: current scratch-pointer workspace
 ; ----------------------------------------------------------------------------
 LD1B7:  lda     #$01 ; $D1B7
         bpl     runtime_error ; $D1B9

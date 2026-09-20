@@ -13,7 +13,7 @@ them into the disk image.
 | `$D000`–`$D0FF` | 128 opcode handler addresses for opcodes `$80`–`$FF` |
 | `$D100`–`$D151` | 41 standard-procedure selector entries, including preserved unused zero entries |
 | `$D152`–`$D1AC` | Runtime entry, variable operand reader, static-link helper, allocation helper |
-| `$D1AD`–`$D1B6` | Ten-byte descriptor, fields still unresolved |
+| `$D1AD`–`$D1B6` | Interpreter-relocation base pointer and four address vectors |
 | `$D1B7`–`$DCF5` | Native error, dispatch, load/store, arithmetic, indexing, and other handlers |
 | `$DCF6`–`$DCFD` | Eight one-bit masks |
 | `$DCFE`–`$DDD5` | Native routines |
@@ -25,7 +25,8 @@ them into the disk image.
 
 The three mask tables are emitted from their formulas in source. The scratch
 pointers are loaded by the character/string comparison conversion paths.
-The descriptor is kept as data without inventing field meanings. The source
+The [linkage audit](interpreter-linkage.md) identifies the five word fields
+from their relocation consumer and historical table layout. The source
 also preserves handlers not selected by this runtime's normal opcode table;
 decoded instructions do not imply that every routine has been exercised.
 
@@ -81,3 +82,7 @@ The rebuilt MAME play and utility sequences match all ten reference screenshots,
 and final disposable media hashes match the corresponding original runs,
 including the utility program's expected disk-1 writes. This does not claim
 coverage of every interpreter handler or all gameplay paths.
+
+Step 08n integrates the linkage-field and consumer checks into the native audit.
+See `reference/interpreter-linkage-audit.json`; no executable or output bytes
+changed, and no new live use of the retained vector table is claimed.
