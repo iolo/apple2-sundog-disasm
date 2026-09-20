@@ -2582,3 +2582,32 @@ and acceptance criteria.
   untouched and excluded.
 - **Next action:** Investigate allocation evidence for the remaining boot-block
   tails, then continue other fragments and final dual-emulator checks.
+
+## 2026-09-20 — Step 08i investigation: boot allocation tails remain open
+
+- **Evidence/work:** Rechecked the exact rebuilt first two blocks against the
+  bootstrap load capture, play-boot instruction audit and boot-notice decoder.
+  Disk 1 loads only its three reconstructed bootstrap pages. The play notice
+  consumes exactly 576 bytes and its last packet is a 27-zero repeat; its
+  following nonzero byte is not an unconsumed literal from that packet.
+- **Remaining bytes:** Disk-1 block 1 offsets 256–511 contain 255 zeros followed
+  by $01. Disk-2 block 0 offsets 193–255 contain 59 zeros, $09 at offset 252,
+  then three zeros. Disk-2 block 1 offsets 320–511 contain $78 followed by
+  191 zeros. These total 511 bytes, including three isolated nonzero bytes.
+- **Allocation check:** Installed a2kit 4.4.2's Pascal formatter reserves and
+  initializes boot blocks 0/1; its volume begin-block field also points to zero.
+  This supports the outer allocation boundary, but does not identify the three
+  retained nonzero values in SunDog's customized boot area. The four downloaded
+  Apple Pascal 1.2 disk images have completely zero fourth boot sectors, so none
+  supplies an exact provenance match for disk 1's trailing $01.
+- **Decision:** Do not classify these tails wholesale as zero padding or infer
+  a new code entry from isolated opcode-shaped bytes. No source adoption or
+  coverage change follows from this investigation. Existing code and image
+  ownership stays intact; no emulator execution was performed.
+- **Validation:** Read-only comparisons used the exact rebuilt images checked
+  in step 06ar. The boot packet re-decode reproduces the existing packet audit;
+  git diff --check passes for this log update.
+- **Next action:** Seek direct provenance/consumer evidence for the three boot
+  values while advancing other unresolved fragments. In particular, the encoded
+  banks retain two disconnected JMP stubs, unconsumed pointer-shaped words and
+  bytes adjacent to their table/buffer; their code/data roles still need proof.
