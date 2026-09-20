@@ -13,7 +13,8 @@ from pcode_copies import verify_ownership
 
 EVIDENCE = 'docs/native-output-storage.md'
 PROOF = ROOT/'docs/reference/assembler-buffer-evidence.json'
-LAYOUTS = {'title_draw': (928, 912), 'viewscreen_transition': (944, 928)}
+LAYOUTS = {'title_draw': (928, 912), 'viewscreen_transition': (944, 928),
+           'bootstrap': (752, 736)}
 WINDOW_HASHES = ['abe2a723ff585ad55727d805ab50b0c2be14edb0f9a838b55861f5fc80de2ef3',
                  '562a83b3b1ac0ed9384d72fe4996ae2ec98af8308f73124d9f3276cdcf0d678c']
 
@@ -73,7 +74,8 @@ def run(verify=False, external=None):
     check_proof(proof, external.read_bytes() if external else None)
     manifest = json.loads((ROOT/'reconstruction/manifest.json').read_text())
     records = []
-    for name, disk_id, block in [('title_draw','disk1',201),('viewscreen_transition','disk2',86)]:
+    for name, disk_id, block in [('title_draw','disk1',201),('viewscreen_transition','disk2',86),
+                                 ('bootstrap','disk1',0)]:
         disk = next(d for d in manifest['disks'] if d['id'] == disk_id)
         image = (ROOT/'build/disks'/disk['filename']).read_bytes()
         if sha(image) != disk['sha256']:
@@ -90,12 +92,15 @@ def run(verify=False, external=None):
         if sha(binary) != spec['sha256'] or binary != raw[:spec['size']]:
             raise ValueError('Existing native source differs')
         records.append(dict(classify_tail(raw,name), disk=disk_id, block=block, sha256=sha(raw)))
-    mapping = dict(disk='disk2',offset=logical_sector_offset(175)+176,size=80,input_offset=0)
+    mappings = [dict(disk='disk2',offset=logical_sector_offset(175)+176,size=80,input_offset=0,
+                     input='viewscreen_output_storage'),
+                dict(disk='disk1',offset=logical_sector_offset(3),size=256,input_offset=0,
+                     input='bootstrap_output_storage')]
     if verify:
-        verify_ownership(manifest,[dict(mapping,input='viewscreen_output_storage')])
+        verify_ownership(manifest,mappings)
     report = dict(classification_evidence=EVIDENCE, assembler_evidence=str(PROOF.relative_to(ROOT)),
-                  buffer_behavior=check_proof(proof), data_bytes=176,
-                  newly_source_built_bytes=80, already_source_built_bytes=96, records=records)
+                  buffer_behavior=check_proof(proof), data_bytes=448,
+                  newly_source_built_bytes=336, already_source_built_bytes=112, records=records)
     path = ROOT/'docs/reference/native-output-storage.json'
     content = json.dumps(report,indent=2)+'\n'
     if verify:
@@ -103,7 +108,7 @@ def run(verify=False, external=None):
             raise ValueError('Native output storage report differs')
     else:
         path.write_text(content)
-    print(json.dumps(dict(data_bytes=176, newly_source_built_bytes=80, verified=verify,
+    print(json.dumps(dict(data_bytes=448, newly_source_built_bytes=336, verified=verify,
                           external_replayed=external is not None)))
 
 

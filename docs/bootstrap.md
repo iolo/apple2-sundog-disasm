@@ -40,7 +40,11 @@ for the bootstrap equality claim.
 The later [native-footer audit](early-native-footers.md) classifies the final
 32 bytes within the verified three-page component as a sixteen-byte native
 Pascal footer and sixteen bytes of bounded zero allocation storage. It does not
-classify any of the unloaded context pages or the fourth boot sector.
+classify any of the unloaded context pages or the fourth boot sector by itself.
+The subsequent [output-buffer audit](native-output-storage.md) classifies the
+fourth logical disk sector as 255 cleared buffer bytes and one retained `$04`
+at the assembler buffer's final offset. This does not extend the observed
+three-page live load or assign those disk bytes to the captured context RAM.
 
 ## Repeat the breakpoint sequence
 

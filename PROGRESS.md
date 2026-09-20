@@ -3005,7 +3005,8 @@ and acceptance criteria.
   Rebuild and tools/verify_disks.py pass; component and both full disk hashes
   remain exact. git diff --check passes. Recent emulator baselines apply.
 - **Research/next:** Twelve historical Pascal boot tails are all zero and do
-  not explain SunDog's final $01; that boot tail stays unresolved. Encoded-bank
+  not explain SunDog's nonzero final byte; that boot tail stays unresolved.
+  (The earlier $01 value here was corrected to $04 by the disk re-read in 08p.) Encoded-bank
   disconnected jumps and post-image nonzero tails likewise remain separate.
   This checkpoint resolves evidence for ten already source-built data bytes,
   so totals remain 183,316 source bytes, 100,900 identified data/asset bytes
@@ -3143,3 +3144,34 @@ and acceptance criteria.
   temporary bytes (630 disk 1; 1,494 disk 2). Continue the remaining mixed,
   image and storage tails; whole-project completion is still unproved.
   User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.
+
+## 2026-09-20 — Step 08p: reconstruct the fourth boot sector as output storage
+
+- **Evidence/correction:** Re-read the complete first two logical disk blocks.
+  The native bootstrap container ends at offset 752; zeros continue through
+  1022 and the final byte is $04, exactly matching the title/viewscreen output
+  buffers. An earlier progress note mistakenly recorded $01; corrected that
+  note. The original bytes and their hashes have not changed. The verified
+  Apple Pascal assembler behavior from 08o clears 1,023 of 1,024 buffer bytes
+  and writes two blocks for this 752-byte native container.
+- **Classification:** Extend the same bounded output-storage inference to the
+  256-byte fourth logical boot sector, disk image offsets $0C00–$0CFF. It contains
+  255 cleared bytes and the retained final $04. The 16 preceding zero storage
+  bytes were already classified inside the 768-byte bootstrap component.
+  This does not extend the observed three-page boot load, classify context RAM,
+  or identify the historical build session or retained byte's earlier meaning.
+- **Artifacts:** Added explicit ca65 storage, configuration and adoption recipe.
+  Extended native_output_storage.py and its generated audit to all three native
+  allocations, totaling 448 storage bytes. Existing parameterized tests now
+  check bootstrap footer/tail mutations as well. Updated bootstrap, footer,
+  storage and reconstruction documents plus PLAN.md and manifest ownership.
+- **Validation:** Both storage tests pass, including the new bootstrap case.
+  Fresh assembly, native-output-storage --verify, early-native-footers --verify,
+  strict adoption, full rebuild, tools/verify_disks.py and git diff --check pass.
+  Both rebuilt disk hashes and original media/manual are unchanged; existing
+  emulator baselines still apply.
+- **Coverage/next:** 183,700 source-built bytes, 101,152 identified data/asset
+  bytes and 1,868 temporary bytes remain (374 disk 1; 1,494 disk 2). Continue
+  the altered image, sparse data allocations, mixed checksum tail and retained
+  record/text fragments. User PRD.md edits and ref/ remain untouched and excluded.
+  The full goal remains active and is not yet complete.

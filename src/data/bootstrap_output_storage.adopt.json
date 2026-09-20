@@ -1,0 +1,8 @@
+{
+  "name": "bootstrap_output_storage",
+  "source": "src/data/bootstrap_output_storage.s",
+  "config": "src/data/bootstrap_output_storage.cfg",
+  "mappings": [
+    {"disk": "disk1", "offset": 3072, "size": 256, "input_offset": 0}
+  ]
+}

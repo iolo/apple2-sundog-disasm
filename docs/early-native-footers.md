@@ -26,7 +26,8 @@ The bootstrap's remaining sixteen zeros are bounded allocation storage after
 the complete native container, ending at the three-page load boundary confirmed
 by the [bootstrap capture](bootstrap.md). This uses the established load extent
 and parsed footer, not merely a scan for zero bytes. The fourth boot sector is
-outside this component and remains separate work. The title tail's nonzero
+outside this component; it is now separately classified by the
+[output-buffer audit](native-output-storage.md). The title tail's nonzero
 ending prevented applying the same complete-zero-storage rule there. Its later
 classification uses separate historical writer evidence, not that zero-only rule.
 

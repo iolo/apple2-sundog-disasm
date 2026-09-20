@@ -8,9 +8,9 @@
     "uncleared_offset": 1023,
     "external_replayed": false
   },
-  "data_bytes": 176,
-  "newly_source_built_bytes": 80,
-  "already_source_built_bytes": 96,
+  "data_bytes": 448,
+  "newly_source_built_bytes": 336,
+  "already_source_built_bytes": 112,
   "records": [
     {
       "name": "title_draw",
@@ -45,6 +45,23 @@
       "disk": "disk2",
       "block": 86,
       "sha256": "6e5a42ecc36304ab784570bb094834d2ea7a770468ec391e0966359bae8357b0"
+    },
+    {
+      "name": "bootstrap",
+      "allocation_size": 1024,
+      "container_size": 752,
+      "classification": "data",
+      "zero_range": [
+        752,
+        1023
+      ],
+      "retained_byte_offset": 1023,
+      "retained_byte_value": 4,
+      "data_bytes": 272,
+      "historical_producer_identity_proved": false,
+      "disk": "disk1",
+      "block": 0,
+      "sha256": "3427de5271b030eec8defca192bde554e5d81f8a77bf126e5c52d266ad99bd92"
     }
   ]
 }

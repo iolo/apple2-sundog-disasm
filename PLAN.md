@@ -169,9 +169,14 @@ Split large steps into independently validated, logged, and committed increments
   match surrounding data layout, native immediate comparisons and independent
   raw-track evidence. Each full bank now has 1,475 code bytes and 573 data bytes;
   the combined audit rejects gaps/overlaps and checks every source encoding
-  phase. Live body execution remains unproved. Current ownership is 183,444
+  phase. Live body execution remains unproved. Checkpoint ownership is 183,444
   source-built bytes, 101,152 identified data/asset bytes and 2,124 temporary
   bytes (630 disk 1; 1,494 disk 2).
+- Step 08p extends the native output-buffer audit to the bootstrap's fourth
+  logical disk sector. Its complete footer and zero tail end at the same
+  uncleared offset 1,023, with retained value $04. The recorded three-page live
+  load is unchanged. Current ownership is 183,700 source-built bytes, 101,152
+  identified data/asset bytes and 1,868 temporary bytes (374 disk 1; 1,494 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk
