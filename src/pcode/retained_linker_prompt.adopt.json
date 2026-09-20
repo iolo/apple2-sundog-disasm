@@ -1,0 +1,19 @@
+{
+  "name": "retained_linker_prompt",
+  "source": "src/pcode/retained_linker_prompt.s",
+  "config": "src/pcode/retained_linker_prompt.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 66290,
+      "size": 14,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 66290,
+      "size": 14,
+      "input_offset": 0
+    }
+  ]
+}

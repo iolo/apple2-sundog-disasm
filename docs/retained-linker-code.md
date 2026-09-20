@@ -54,6 +54,22 @@ surviving operand as `p_big 295, 2`. The last instruction is the complete
 ending operand. The per-byte audit distinguishes 248 code bytes and 54 data
 bytes per copy, including the strings and procedure-22 metadata between bodies.
 
+## Short reading-prompt copy (step 06ar)
+
+Both block-134 tails, offsets 498–511, also match procedure 22: combined-context
+offsets 46–59, historical segment offsets 3366–3379. The first two bytes are
+the lexical-level and variable-offset operands of `LOD 3,3`; its opcode lies
+just before the copied window. NOP, LSA 8, the eight-byte `Reading ` string and
+SLDC 0 follow. This resolves another **28 disk bytes: 12 code and 16 data**.
+
+`src/pcode/retained_linker_prompt.s` emits the surviving LOD operands explicitly,
+then the complete instructions and counted data. `tools/retained_linker_prompt.py`
+reuses the complete donor validation and decoding, checks these exact item
+boundaries and both disk copies, and assembles the fourteen bytes exactly.
+Its `--verify` option checks artifacts and manifest ownership. The audit is
+`docs/reference/retained-linker-prompt.json`. No neighboring bytes or missing
+opcode are added to the images, and no live execution is claimed.
+
 ## Historical set-membership opcode
 
 These procedures use opcode `$8B`, `INN` (set membership). Willi Kusche's

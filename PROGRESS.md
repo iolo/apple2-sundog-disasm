@@ -2557,3 +2557,28 @@ and acceptance criteria.
   untouched and excluded.
 - **Next action:** Reconstruct that short linker copy, then continue remaining
   allocations/fragments and final dual-emulator behavior/reproducibility checks.
+
+## 2026-09-20 — Step 06ar: reconstruct the short linker reading-prompt copy
+
+- **Evidence/work:** Both block-134 tails match offsets 46–59 in the complete
+  historical linker context already validated in step 06aq. Independent decoding
+  locates the preceding LOD opcode at offset 45; the copy begins with its two
+  operands. NOP, LSA 8, the Reading string and SLDC 0 follow with complete
+  boundaries. The missing opcode and neighboring bytes remain excluded.
+- **Artifacts:** Added a fourteen-byte source/config/adoption component,
+  tools/retained_linker_prompt.py and its classification audit. Updated PLAN.md
+  and the existing linker provenance document. The tool reuses complete donor
+  validation/decoding rather than inferring a stream from the short string.
+- **Validation:** Preparation checks the exact five instruction/data items,
+  assembles the source exactly and compares both copies. --verify regenerates
+  all artifacts and checks manifest ownership. Full rebuild and
+  tools/verify_disks.py preserve both original disk hashes and the manual hash;
+  git diff --check passes. No new decoder behavior or emulator run is introduced.
+- **Coverage:** 179,015 source-built disk bytes, 100,324 identified data/asset
+  bytes and 7,381 temporary bytes (1,101 disk 1; 6,280 disk 2). This checkpoint
+  removes 28 bytes: twelve code, including four clipped operand bytes, and
+  sixteen string-data bytes.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Investigate allocation evidence for the remaining boot-block
+  tails, then continue other fragments and final dual-emulator checks.
