@@ -3175,3 +3175,35 @@ and acceptance criteria.
   the altered image, sparse data allocations, mixed checksum tail and retained
   record/text fragments. User PRD.md edits and ref/ remain untouched and excluded.
   The full goal remains active and is not yet complete.
+
+## 2026-09-20 — Step 08q: classify retained native-reader word alignment
+
+- **Evidence:** The historical Apple Pascal assembler PROCEND code tests the
+  low bit of its output position and appends zero if it is odd. Independently
+  decoded segment-1 procedure 12 writes the supplied byte and increments that
+  position. Froze 20 instruction bytes and their listings; optional replay
+  checks them against full decoding of both historical segments. Related source
+  explicitly uses IF ODD(BUFFERPOS) THEN PUTBYTE(0).
+- **Classification:** The retained reader has a complete 127-byte instruction
+  body ending in RTS, followed by stored $A5, which decodes to zero with the
+  same constant transform. The next even offset, 128, starts independently
+  classified interaction-record copies. This supports one retained native
+  alignment data byte. It does not assert an original producer/version, surviving
+  complete footer or live entry. The strict CFG still rejects automatically
+  absorbing the trailing byte; no new BRK entry or metadata at 128 is invented.
+- **Artifacts:** Added one-byte encoded source/configuration/adoption recipe,
+  bounded assembler evidence and alignment verifier. Extended the existing
+  reader tests and updated reader/interaction-record docs, PLAN.md and coverage.
+  Disk-1 block 196 now has complete ownership: 127 native instruction bytes,
+  one alignment byte and 384 bytes of interaction-record copies.
+- **Validation:** All four encoded-reader tests pass, covering the unchanged
+  66-instruction graph, call targets, altered control flow, explicit alignment,
+  neighboring record boundaries and historical evidence mutations. External
+  assembler replay, strict adoption, full rebuild, tools/verify_disks.py and
+  git diff --check pass. Both disk hashes and original media/manual remain
+  unchanged; recorded emulator baselines remain applicable.
+- **Coverage/next:** 183,701 source-built bytes, 101,152 identified data/asset
+  bytes and 1,867 temporary bytes remain (373 disk 1; 1,494 disk 2). Continue
+  the remaining sparse allocations, changed image bytes and mixed/record/text
+  fragments. User PRD.md edits and ref/ remain untouched and excluded.
+  The full goal remains active.

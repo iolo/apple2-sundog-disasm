@@ -2,8 +2,8 @@
 
 Disk-1 block 196 offsets 0–126 contain **127 encoded instruction bytes**.
 `src/native/encoded_disk_reader.s` reconstructs all 66 instructions, including
-the NOP delay subroutine at the end. The single byte at offset 127 remains
-unresolved; offsets 128–511 are the independently classified
+the NOP delay subroutine at the end. The byte at offset 127 is now separately
+classified as retained native word-alignment data; offsets 128–511 are the independently classified
 [interaction-record copies](interaction-records.md).
 
 ## Encoding and address evidence
@@ -70,12 +70,50 @@ python3 tools/build_disks.py
 python3 tools/verify_disks.py
 ```
 
-Tests assemble the committed source, reproduce its stored hash and complete
+Tests assemble the committed instruction source, reproduce its stored hash and complete
 control-flow audit, check all twelve local calls, and reject a branch into an
 operand, an external call and automatic inclusion of the trailing byte. The
-stored byte at offset 127 is `$A5`, which would decode to zero under the same
-transform. Neither a padding interpretation nor a BRK entry is established,
-so it is excluded rather than hidden in a data declaration.
+stored byte at offset 127 is `$A5`, which decodes to zero under the same
+transform. It remains excluded from the strict instruction graph; its separate
+alignment classification uses the writer evidence below.
+
+## Retained native word alignment
+
+The historical Apple Pascal assembler pads odd-length native bodies with one
+zero byte before emitting relocation data. This is independently visible in
+the source's `IF ODD(BUFFERPOS) THEN PUTBYTE(0)` and the Apple 1.2 binary:
+
+- PROCEND segment 9, `$06AF–$06B6`: load the output position, skip the zero-byte
+  call when its low bit is clear, otherwise push zero and call segment 1,
+  procedure 12. The interpreter's FJP tests bit zero of its Boolean operand.
+- Segment 1, procedure 12, `$08E5–$08F0`: write the parameter byte at the output
+  buffer plus its current position, then increment that position by one.
+
+The source reference is [the UCSD assembler's procedure completion](https://github.com/jdykstra/ucsd-psystem-os/blob/f0a8e66f6aff82e95207300e11e310155d2d1599/arch/z80/assembler/asm2.text#L440).
+That source is for Z80; the matching Apple 6502 assembler behavior is checked
+by full procedure-aware decoding of both relevant segments from the historical
+`SYSTEM.ASSMBLER` identified in [native-output-storage.md](native-output-storage.md).
+The 20 instruction bytes and their disassembly are frozen in
+`src/native/evidence/encoded_reader_alignment.json`.
+
+Here, the 127-byte instruction body ends with RTS at offset 126. Its following
+decoded zero is precisely the byte needed to reach the next even boundary,
+128, where independently classified interaction-record copies begin. This
+combination supports a **retained assembler alignment byte**. It does not
+establish the historical assembler release, imply that a complete footer
+survives, or invent a live decoding/entry path. The current record data at 128
+is not reinterpreted as the reader's relocation metadata.
+
+`src/native/encoded_reader_alignment.s` emits one explicit zero with the same
+inverse encoding, reproducing stored `$A5`. The combined disk-reader prefix is
+therefore 127 instruction bytes plus one classified data byte. Verification
+also checks the independently classified record donor and exact ownership:
+
+```sh
+python3 tools/encoded_reader_alignment.py
+# Optional full historical-segment replay:
+python3 tools/encoded_reader_alignment.py --external-assembler /path/to/SYSTEM.ASSMBLER
+```
 
 Normal builds assemble instructions and apply the inverse transform without
 reading either original disk. Full-image equality preserves the existing

@@ -1,0 +1,80 @@
+{
+  "assembler_reference": "docs/reference/assembler-buffer-evidence.json",
+  "source_revision": "f0a8e66f6aff82e95207300e11e310155d2d1599",
+  "source_file": "arch/z80/assembler/asm2.text",
+  "source_line": 440,
+  "windows": [
+    {
+      "segment": 9,
+      "file_block": 30,
+      "segment_size": 3224,
+      "segment_sha256": "99b875b7cea9f8cf04a824c2c69bf5aa17e90e1d3e61250493742788665820af",
+      "offset": 1711,
+      "size": 8,
+      "hex": "a935a10400cd010c",
+      "sha256": "075bc799ec86734fd45b189bdaf16153098684bbf3f2f1844ce699aa2d7e8638",
+      "instructions": [
+        {
+          "offset": 1711,
+          "assembly": "p_ldo 53, 1"
+        },
+        {
+          "offset": 1713,
+          "assembly": "p_fjp_direct L_06B7"
+        },
+        {
+          "offset": 1715,
+          "assembly": "p_sldc 0"
+        },
+        {
+          "offset": 1716,
+          "assembly": "p_cxp 1, 12"
+        }
+      ]
+    },
+    {
+      "segment": 1,
+      "file_block": 1,
+      "segment_size": 10142,
+      "segment_sha256": "761d6423f9bbc7fa1b056ae50876c87ff30719503fb2f389813cee760d5fca12",
+      "offset": 2277,
+      "size": 12,
+      "hex": "a948a935d8bfa9350182ab35",
+      "sha256": "380c26dad515b0dba09ac6615cfe42d7b09a9dbdf36cdf1e352b071d7d460e2a",
+      "instructions": [
+        {
+          "offset": 2277,
+          "assembly": "p_ldo 72, 1"
+        },
+        {
+          "offset": 2279,
+          "assembly": "p_ldo 53, 1"
+        },
+        {
+          "offset": 2281,
+          "assembly": "p_sldl 1"
+        },
+        {
+          "offset": 2282,
+          "assembly": "p_stb"
+        },
+        {
+          "offset": 2283,
+          "assembly": "p_ldo 53, 1"
+        },
+        {
+          "offset": 2285,
+          "assembly": "p_sldc 1"
+        },
+        {
+          "offset": 2286,
+          "assembly": "p_adi"
+        },
+        {
+          "offset": 2287,
+          "assembly": "p_sro 53, 1"
+        }
+      ]
+    }
+  ]
+}

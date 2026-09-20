@@ -8,6 +8,7 @@ import unittest
 from disk_layout import ROOT, sha
 from native_raw_source import analyze
 from storage_encoding import transform
+from encoded_reader_alignment import classify, check_evidence, PROOF
 
 
 class EncodedDiskReaderTests(unittest.TestCase):
@@ -54,6 +55,32 @@ class EncodedDiskReaderTests(unittest.TestCase):
     def test_trailing_byte_is_not_implicitly_classified(self):
         with self.assertRaisesRegex(ValueError, 'Unclassified'):
             analyze(self.raw+b'\0', self.recipe['base'], self.recipe)
+
+    def test_explicit_alignment_and_independent_record_boundary(self):
+        records = (ROOT/'assets/interaction-records/records.bin').read_bytes()
+        block = transform(self.raw+b'\0',self.recipe['storage_encoding'])+records[128:]
+        report = classify(block,records,self.recipe)
+        self.assertEqual(report['classification'],'data')
+        self.assertEqual((report['offset'],report['decoded_value'],report['stored_value']),(127,0,165))
+        for offset in (126,127,128,511):
+            changed = bytearray(block)
+            changed[offset] ^= 1
+            with self.subTest(offset=offset),self.assertRaises(ValueError):
+                classify(changed,records,self.recipe)
+        with self.assertRaises(ValueError):
+            classify(block[:-1],records,self.recipe)
+        proof = json.loads(PROOF.read_text())
+        check_evidence(proof)
+        for window in proof['windows']:
+            original = window['hex']
+            data = bytearray.fromhex(original)
+            for offset in range(len(data)):
+                changed = bytearray(data)
+                changed[offset] ^= 1
+                window['hex'] = changed.hex()
+                with self.subTest(evidence=offset),self.assertRaises(ValueError):
+                    check_evidence(proof)
+            window['hex'] = original
 
 
 if __name__ == '__main__':
