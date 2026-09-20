@@ -12,9 +12,11 @@ numeric values rather than guessed labels.
 | World-table defaults | Disk 1 blocks 23–25, first 1,440 bytes | 1,440 |
 | Working gameplay records | Disk 2 blocks 48–53 | 3,072 |
 
-The seven trailing bytes in each template block and the final 96 bytes in the
-world-default allocation remain unresolved. This checkpoint does not classify
-them from adjacency. The template block is not a globals snapshot: its actual
+The seven trailing bytes in each template block remain unresolved. The final
+96 bytes in the world-default allocation are now independently identified as a
+[retained native-runtime copy](preserved-native-shared-copy.md), containing
+code and device-vector data rather than additional world defaults.
+The template block is not a globals snapshot: its actual
 consumer uses 28-byte records, unlike the 512-byte globals area in saved banks.
 
 ## Template record consumer

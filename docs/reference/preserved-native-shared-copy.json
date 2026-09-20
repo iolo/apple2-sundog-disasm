@@ -1,0 +1,805 @@
+{
+  "classification_evidence": "docs/preserved-native-shared-copy.md",
+  "disk": "disk1",
+  "block": 25,
+  "byte_offset": 416,
+  "size": 96,
+  "sha256": "7ffbd45f5bb38439b0099f947003fe20e42f8d1d703a03590d495621cf344360",
+  "source": "src/native/native_shared.s",
+  "source_sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6",
+  "source_address": 61089,
+  "source_offset": 3516,
+  "source_audit": {
+    "sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6",
+    "instruction_count": 2192,
+    "instruction_bytes": 4212,
+    "data_bytes": 311,
+    "checked_direct_vector_and_return_targets": 464,
+    "checked_incoming_primitive_vectors": 27,
+    "code_spans_end_exclusive": [
+      [
+        57573,
+        57737
+      ],
+      [
+        57740,
+        60902
+      ],
+      [
+        61093,
+        61899
+      ],
+      [
+        61901,
+        61939
+      ],
+      [
+        62052,
+        62055
+      ],
+      [
+        62057,
+        62096
+      ]
+    ],
+    "external_targets": [
+      0,
+      26624,
+      53589,
+      53648,
+      53695,
+      53699,
+      53727,
+      53731,
+      53735,
+      53739,
+      53747,
+      53883,
+      53901,
+      53907,
+      55012,
+      65280,
+      65283,
+      65286,
+      65289,
+      65292,
+      65295,
+      65298,
+      65301,
+      65304,
+      65307,
+      65310,
+      65313,
+      65316,
+      65322,
+      65325,
+      65328,
+      65331,
+      65337,
+      65340
+    ],
+    "power_of_ten_entries": [
+      {
+        "exponent": 0,
+        "stored_bits": "3f800000",
+        "nearest_bits": "3f800000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 1,
+        "stored_bits": "41200000",
+        "nearest_bits": "41200000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 2,
+        "stored_bits": "42c80000",
+        "nearest_bits": "42c80000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 3,
+        "stored_bits": "447a0000",
+        "nearest_bits": "447a0000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 4,
+        "stored_bits": "461c4000",
+        "nearest_bits": "461c4000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 5,
+        "stored_bits": "47c35000",
+        "nearest_bits": "47c35000",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 6,
+        "stored_bits": "49742400",
+        "nearest_bits": "49742400",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 7,
+        "stored_bits": "4b189680",
+        "nearest_bits": "4b189680",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 8,
+        "stored_bits": "4cbebc20",
+        "nearest_bits": "4cbebc20",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 9,
+        "stored_bits": "4e6e6b28",
+        "nearest_bits": "4e6e6b28",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 10,
+        "stored_bits": "501502f9",
+        "nearest_bits": "501502f9",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 11,
+        "stored_bits": "51ba43b7",
+        "nearest_bits": "51ba43b7",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 12,
+        "stored_bits": "5368d4a5",
+        "nearest_bits": "5368d4a5",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 13,
+        "stored_bits": "551184e7",
+        "nearest_bits": "551184e7",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 14,
+        "stored_bits": "56b5e621",
+        "nearest_bits": "56b5e621",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 15,
+        "stored_bits": "58635fa9",
+        "nearest_bits": "58635fa9",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 16,
+        "stored_bits": "5a0e1bca",
+        "nearest_bits": "5a0e1bca",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 17,
+        "stored_bits": "5bb1a2bc",
+        "nearest_bits": "5bb1a2bc",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 18,
+        "stored_bits": "5d5e0b6b",
+        "nearest_bits": "5d5e0b6b",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 19,
+        "stored_bits": "5f0ac723",
+        "nearest_bits": "5f0ac723",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 20,
+        "stored_bits": "60ad78ec",
+        "nearest_bits": "60ad78ec",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 21,
+        "stored_bits": "6258d727",
+        "nearest_bits": "6258d727",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 22,
+        "stored_bits": "64078678",
+        "nearest_bits": "64078678",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 23,
+        "stored_bits": "65a96816",
+        "nearest_bits": "65a96816",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 24,
+        "stored_bits": "6753c21c",
+        "nearest_bits": "6753c21c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 25,
+        "stored_bits": "69045951",
+        "nearest_bits": "69045951",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 26,
+        "stored_bits": "6aa56fa6",
+        "nearest_bits": "6aa56fa6",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 27,
+        "stored_bits": "6c4ecb8f",
+        "nearest_bits": "6c4ecb8f",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 28,
+        "stored_bits": "6e013f39",
+        "nearest_bits": "6e013f39",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 29,
+        "stored_bits": "6fa18f08",
+        "nearest_bits": "6fa18f08",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 30,
+        "stored_bits": "7149f2ca",
+        "nearest_bits": "7149f2ca",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 31,
+        "stored_bits": "72fc6f7c",
+        "nearest_bits": "72fc6f7c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 32,
+        "stored_bits": "749dc5ae",
+        "nearest_bits": "749dc5ae",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 33,
+        "stored_bits": "76453719",
+        "nearest_bits": "76453719",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 34,
+        "stored_bits": "77f684df",
+        "nearest_bits": "77f684df",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 35,
+        "stored_bits": "799a130c",
+        "nearest_bits": "799a130c",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 36,
+        "stored_bits": "7b4097ce",
+        "nearest_bits": "7b4097ce",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 37,
+        "stored_bits": "7cf0bdc2",
+        "nearest_bits": "7cf0bdc2",
+        "ulp_difference": 0
+      },
+      {
+        "exponent": 38,
+        "stored_bits": "7e96769c",
+        "nearest_bits": "7e967699",
+        "ulp_difference": 3
+      }
+    ],
+    "initializer_source": 62096,
+    "initializer_destination": 26624
+  },
+  "instruction_count": 50,
+  "coverage_bytes": {
+    "code": 92,
+    "data": 4
+  },
+  "items": [
+    {
+      "offset": 0,
+      "source_offset": 3516,
+      "size": 2,
+      "address": 61089,
+      "classification": "data",
+      "assembly": ".addr $FF18",
+      "kind": "input-device-vector"
+    },
+    {
+      "offset": 2,
+      "source_offset": 3518,
+      "size": 2,
+      "address": 61091,
+      "classification": "data",
+      "assembly": ".addr $0000",
+      "kind": "input-device-vector"
+    },
+    {
+      "offset": 4,
+      "source_offset": 3520,
+      "size": 2,
+      "address": 61093,
+      "classification": "code",
+      "assembly": "and #$80",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 6,
+      "source_offset": 3522,
+      "size": 2,
+      "address": 61095,
+      "classification": "code",
+      "assembly": "bne $EEB3",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 8,
+      "source_offset": 3524,
+      "size": 1,
+      "address": 61097,
+      "classification": "code",
+      "assembly": "txa",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 9,
+      "source_offset": 3525,
+      "size": 2,
+      "address": 61098,
+      "classification": "code",
+      "assembly": "cmp #$15",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 11,
+      "source_offset": 3527,
+      "size": 2,
+      "address": 61100,
+      "classification": "code",
+      "assembly": "bcs $EEC7",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 13,
+      "source_offset": 3529,
+      "size": 2,
+      "address": 61102,
+      "classification": "code",
+      "assembly": "cmp #$01",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 15,
+      "source_offset": 3531,
+      "size": 2,
+      "address": 61104,
+      "classification": "code",
+      "assembly": "bcc $EEC7",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 17,
+      "source_offset": 3533,
+      "size": 1,
+      "address": 61106,
+      "classification": "code",
+      "assembly": "rts",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 18,
+      "source_offset": 3534,
+      "size": 1,
+      "address": 61107,
+      "classification": "code",
+      "assembly": "txa",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 19,
+      "source_offset": 3535,
+      "size": 2,
+      "address": 61108,
+      "classification": "code",
+      "assembly": "and #$7F",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 21,
+      "source_offset": 3537,
+      "size": 2,
+      "address": 61110,
+      "classification": "code",
+      "assembly": "sta $96",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 23,
+      "source_offset": 3539,
+      "size": 2,
+      "address": 61112,
+      "classification": "code",
+      "assembly": "cmp #$10",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 25,
+      "source_offset": 3541,
+      "size": 2,
+      "address": 61114,
+      "classification": "code",
+      "assembly": "bcs $EEC7",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 27,
+      "source_offset": 3543,
+      "size": 1,
+      "address": 61116,
+      "classification": "code",
+      "assembly": "asl a",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 28,
+      "source_offset": 3544,
+      "size": 2,
+      "address": 61117,
+      "classification": "code",
+      "assembly": "adc $96",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 30,
+      "source_offset": 3546,
+      "size": 1,
+      "address": 61119,
+      "classification": "code",
+      "assembly": "tay",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 31,
+      "source_offset": 3547,
+      "size": 3,
+      "address": 61120,
+      "classification": "code",
+      "assembly": "lda a:$FE82,y",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 34,
+      "source_offset": 3550,
+      "size": 2,
+      "address": 61123,
+      "classification": "code",
+      "assembly": "beq $EEC7",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 36,
+      "source_offset": 3552,
+      "size": 1,
+      "address": 61125,
+      "classification": "code",
+      "assembly": "txa",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 37,
+      "source_offset": 3553,
+      "size": 1,
+      "address": 61126,
+      "classification": "code",
+      "assembly": "rts",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 38,
+      "source_offset": 3554,
+      "size": 2,
+      "address": 61127,
+      "classification": "code",
+      "assembly": "ldx #$02",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 40,
+      "source_offset": 3556,
+      "size": 3,
+      "address": 61129,
+      "classification": "code",
+      "assembly": "stx a:$BDDE",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 43,
+      "source_offset": 3559,
+      "size": 1,
+      "address": 61132,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 44,
+      "source_offset": 3560,
+      "size": 1,
+      "address": 61133,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 45,
+      "source_offset": 3561,
+      "size": 3,
+      "address": 61134,
+      "classification": "code",
+      "assembly": "jmp a:$D27B",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 48,
+      "source_offset": 3564,
+      "size": 3,
+      "address": 61137,
+      "classification": "code",
+      "assembly": "lda a:$BDDF",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 51,
+      "source_offset": 3567,
+      "size": 1,
+      "address": 61140,
+      "classification": "code",
+      "assembly": "pha",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 52,
+      "source_offset": 3568,
+      "size": 3,
+      "address": 61141,
+      "classification": "code",
+      "assembly": "lda a:$BDDE",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 55,
+      "source_offset": 3571,
+      "size": 1,
+      "address": 61144,
+      "classification": "code",
+      "assembly": "pha",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 56,
+      "source_offset": 3572,
+      "size": 3,
+      "address": 61145,
+      "classification": "code",
+      "assembly": "jmp a:$D27B",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 59,
+      "source_offset": 3575,
+      "size": 3,
+      "address": 61148,
+      "classification": "code",
+      "assembly": "lda a:$BDDE",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 62,
+      "source_offset": 3578,
+      "size": 2,
+      "address": 61151,
+      "classification": "code",
+      "assembly": "beq $EEE4",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 64,
+      "source_offset": 3580,
+      "size": 3,
+      "address": 61153,
+      "classification": "code",
+      "assembly": "jmp a:$D1EB",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 67,
+      "source_offset": 3583,
+      "size": 3,
+      "address": 61156,
+      "classification": "code",
+      "assembly": "jmp a:$D27B",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 70,
+      "source_offset": 3586,
+      "size": 1,
+      "address": 61159,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 71,
+      "source_offset": 3587,
+      "size": 1,
+      "address": 61160,
+      "classification": "code",
+      "assembly": "tax",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 72,
+      "source_offset": 3588,
+      "size": 1,
+      "address": 61161,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 73,
+      "source_offset": 3589,
+      "size": 1,
+      "address": 61162,
+      "classification": "code",
+      "assembly": "txa",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 74,
+      "source_offset": 3590,
+      "size": 3,
+      "address": 61163,
+      "classification": "code",
+      "assembly": "jsr a:$EEA5",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 77,
+      "source_offset": 3593,
+      "size": 2,
+      "address": 61166,
+      "classification": "code",
+      "assembly": "lda #$00",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 79,
+      "source_offset": 3595,
+      "size": 1,
+      "address": 61168,
+      "classification": "code",
+      "assembly": "pha",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 80,
+      "source_offset": 3596,
+      "size": 1,
+      "address": 61169,
+      "classification": "code",
+      "assembly": "pha",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 81,
+      "source_offset": 3597,
+      "size": 3,
+      "address": 61170,
+      "classification": "code",
+      "assembly": "jmp a:$D27B",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 84,
+      "source_offset": 3600,
+      "size": 1,
+      "address": 61173,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 85,
+      "source_offset": 3601,
+      "size": 1,
+      "address": 61174,
+      "classification": "code",
+      "assembly": "tax",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 86,
+      "source_offset": 3602,
+      "size": 1,
+      "address": 61175,
+      "classification": "code",
+      "assembly": "pla",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 87,
+      "source_offset": 3603,
+      "size": 1,
+      "address": 61176,
+      "classification": "code",
+      "assembly": "txa",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 88,
+      "source_offset": 3604,
+      "size": 3,
+      "address": 61177,
+      "classification": "code",
+      "assembly": "jsr a:$EEA5",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 91,
+      "source_offset": 3607,
+      "size": 3,
+      "address": 61180,
+      "classification": "code",
+      "assembly": "jmp a:$D27B",
+      "kind": "native-instruction"
+    },
+    {
+      "offset": 94,
+      "source_offset": 3610,
+      "size": 2,
+      "address": 61183,
+      "classification": "code",
+      "assembly": "lda #$04",
+      "kind": "native-instruction"
+    }
+  ],
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 15520,
+      "size": 96,
+      "input": "native_shared",
+      "input_offset": 3516
+    }
+  ],
+  "execution_at_copy_not_established": true
+}

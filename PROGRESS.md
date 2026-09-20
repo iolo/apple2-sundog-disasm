@@ -2262,3 +2262,28 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Continue the initializer payload, clipped/orphan source,
   remaining disk data classification and final emulator validation.
+
+## 2026-09-20 — Step 06an: native runtime copy after world defaults
+
+- **Evidence/work:** Disk-1 block 25 bytes 416–511 exactly copy native_shared
+  offsets $0DBC–$0E1B, originally at $EEA1–$EF00. The first four bytes are two
+  input-device vector words, $FF18 and zero; the remaining 92 bytes contain
+  fifty complete native instructions. The range starts at a vector boundary
+  and ends after LDA #$04. The copy is not classified as world-table padding
+  or assigned an unproven execution address.
+- **Artifacts:** Added tools/native_shared_copy.py, a complete item/provenance
+  audit and docs/preserved-native-shared-copy.md. The manifest maps the 96 bytes
+  to the existing assembled source; no additional executable blob or duplicate
+  assembly component is introduced. Updated the plan and working-state boundary
+  documentation.
+- **Validation:** Fresh assembly and the original shared-runtime audit pass,
+  including device-vector targets and all code spans. Every copied instruction
+  boundary matches the independent native listing. Exact-copy and post-adoption
+  ownership verification, the three existing source-reuse tests, full rebuild,
+  original disk/manual checks and git diff --check pass. No image byte changes
+  or new emulator execution are claimed.
+- **Coverage:** 174,853 source-built disk bytes, 100,324 identified data/asset
+  bytes, 11,543 temporary bytes (4,163 disk 1; 7,380 disk 2).
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Continue the initializer payload and other orphan code/data,
+  then complete final behavior and reproducibility checks in both emulators.
