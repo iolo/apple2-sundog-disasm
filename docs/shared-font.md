@@ -46,6 +46,8 @@ and two are now extracted; see [play-glyphs.md](play-glyphs.md) for their caller
 renderer, and copied-bank boundaries.
 The alternate program directly replaces its graphics buffer with a separate
 [bank from disk-1 blocks 174–175](alternate-glyphs.md).
+Disk-2 block 80 contains a separately extracted [64-glyph variant](retained-font-half.md)
+whose masks match this bank, with five blank slots and all high bits cleared.
 
 ## Runtime and visual checks
 

@@ -7,25 +7,25 @@ from pathlib import Path
 from disk_layout import ROOT, block_bytes, logical_sector_offset, sha
 
 
-def display_rows(data):
-    if len(data) != 1024:
-        raise ValueError('Glyph bank must contain exactly 1024 bytes')
-    return [list(reversed(data[index*8:index*8+8])) for index in range(128)]
+def display_rows(data, *, count=128):
+    if count not in (64,128) or len(data) != count*8:
+        raise ValueError(f'Glyph bank must contain exactly {count} eight-byte records')
+    return [list(reversed(data[index*8:index*8+8])) for index in range(count)]
 
 
-def pack_rows(glyphs):
-    if len(glyphs) != 128 or any(len(rows) != 8 for rows in glyphs):
-        raise ValueError('Expected 128 glyphs of eight rows each')
+def pack_rows(glyphs, *, count=128):
+    if count not in (64,128) or len(glyphs) != count or any(len(rows) != 8 for rows in glyphs):
+        raise ValueError(f'Expected {count} glyphs of eight rows each')
     if any(not isinstance(value, int) or not 0 <= value <= 255 for rows in glyphs for value in rows):
         raise ValueError('Glyph row must be a byte')
     return bytes(value for rows in glyphs for value in reversed(rows))
 
 
-def preview(data, output):
+def preview(data, output, *, count=128):
     from PIL import Image, ImageDraw
-    glyphs = display_rows(data)
+    glyphs = display_rows(data,count=count)
     cell_width, cell_height, scale = 30, 44, 3
-    image = Image.new('RGB', (16*cell_width, 8*cell_height), '#16191d')
+    image = Image.new('RGB', (16*cell_width, (count//16)*cell_height), '#16191d')
     draw = ImageDraw.Draw(image)
     for index, rows in enumerate(glyphs):
         x, y = (index % 16)*cell_width, (index//16)*cell_height

@@ -1,0 +1,20 @@
+{
+  "name": "retained_font_half",
+  "data": "assets/retained-font-half/glyphs.bin",
+  "format": "sundog-retained-glyph-half-bank",
+  "classification": "docs/retained-font-half.md",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 40960,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 44544,
+      "size": 256,
+      "input_offset": 256
+    }
+  ]
+}

@@ -2611,3 +2611,37 @@ and acceptance criteria.
   values while advancing other unresolved fragments. In particular, the encoded
   banks retain two disconnected JMP stubs, unconsumed pointer-shaped words and
   bytes adjacent to their table/buffer; their code/data roles still need proof.
+
+## 2026-09-20 — Step 07t: extract the retained 64-glyph font variant
+
+- **Evidence/work:** Every glyph in disk-2 block 80 matches a mask from the
+  independently verified shared font. Slots 0–2 and 8–63 keep their indices;
+  slots 3–7 match the blank space at shared index 32. Every stored byte has its
+  high bit cleared. This complete 64-record relationship accounts for all 512
+  bytes using the established eight-row glyph format and renderer's $7F mask.
+  It establishes a retained font variant without inventing a direct reader or
+  inferring which version was created first.
+- **Artifacts:** Extracted assets/retained-font-half with exact glyph bytes,
+  a reversible 64-record display-order listing, labeled atlas, provenance/index
+  mapping manifest and adoption recipe. Added tools/retained_font_asset.py and
+  two relationship/mutation tests. Extended the existing glyph converter and
+  preview to accept an explicit 64-glyph count, preserving the 128-glyph default;
+  added a half-bank shape/row-order test. Updated PLAN.md, shared-font and
+  interaction-record documentation, and added docs/retained-font-half.md.
+- **Validation:** Five tests pass: three shared glyph tests and two retained-font
+  tests, including pixel/high-bit/blank-slot and donor mutation rejection. The
+  atlas was visually reviewed, showing symbols, five blanked slots, punctuation
+  and digits. --verify checks all transformed donor bytes, source/renderer hashes,
+  reversible rows, regenerated artifacts and manifest ownership. Full rebuild,
+  tools/verify_disks.py and git diff --check pass. Both original disk hashes and
+  the manual hash remain exact. No new emulator execution or live variant use
+  is claimed.
+- **Coverage:** 179,015 source-built disk bytes, 100,836 identified data/asset
+  bytes and 6,869 temporary bytes (1,101 disk 1; 5,768 disk 2). This checkpoint
+  removes 512 temporary bytes, all classified as glyph data. The encoded-bank
+  remainder stays separate; its conflicting stub/vector interpretation is not
+  forced into a new code or data claim.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Continue remaining record/template tails and retained code
+  fragments, then finish allocation evidence and final dual-emulator checks.

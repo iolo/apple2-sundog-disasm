@@ -26,8 +26,8 @@
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 6280,
-      "sha256": "616b8faae7399321b3dbc04976076c23e7091de1ece8b4819b5a889616d47b11",
+      "size": 5768,
+      "sha256": "68976c1611a75799c983e40c6ae010413db11880d51bf23f97c52a593be5cf39",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1144,6 +1144,14 @@
       "config": "src/pcode/retained_linker_prompt.cfg",
       "size": 14,
       "sha256": "9992150e53e29a7f26cbb3d6f61fae07aef9089a5a730913504b50553b723e5c"
+    },
+    "retained_font_half": {
+      "kind": "identified-data",
+      "path": "assets/retained-font-half/glyphs.bin",
+      "format": "sundog-retained-glyph-half-bank",
+      "classification_evidence": "docs/retained-font-half.md",
+      "size": 512,
+      "sha256": "e26c063faef229917fc2e2374f3ef29661786b501cb75edb283bfe14254c0426"
     }
   },
   "disks": [
@@ -7038,8 +7046,8 @@
         {
           "offset": 40960,
           "size": 256,
-          "input": "disk2_unresolved",
-          "input_offset": 1316
+          "input": "retained_font_half",
+          "input_offset": 0
         },
         {
           "offset": 41216,
@@ -7122,8 +7130,8 @@
         {
           "offset": 44544,
           "size": 256,
-          "input": "disk2_unresolved",
-          "input_offset": 1572
+          "input": "retained_font_half",
+          "input_offset": 256
         },
         {
           "offset": 44800,
@@ -7135,7 +7143,7 @@
           "offset": 44976,
           "size": 80,
           "input": "disk2_unresolved",
-          "input_offset": 1828
+          "input_offset": 1316
         },
         {
           "offset": 45056,
@@ -8293,7 +8301,7 @@
           "offset": 48168,
           "size": 216,
           "input": "disk2_unresolved",
-          "input_offset": 1908
+          "input_offset": 1396
         },
         {
           "offset": 48384,
@@ -9379,7 +9387,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 2124
+          "input_offset": 1612
         },
         {
           "offset": 59648,
@@ -10087,7 +10095,7 @@
           "offset": 87270,
           "size": 26,
           "input": "disk2_unresolved",
-          "input_offset": 2142
+          "input_offset": 1630
         },
         {
           "offset": 87296,
@@ -10285,7 +10293,7 @@
           "offset": 95472,
           "size": 16,
           "input": "disk2_unresolved",
-          "input_offset": 2168
+          "input_offset": 1656
         },
         {
           "offset": 95488,
@@ -11365,7 +11373,7 @@
           "offset": 139264,
           "size": 4096,
           "input": "disk2_unresolved",
-          "input_offset": 2184
+          "input_offset": 1672
         }
       ]
     }

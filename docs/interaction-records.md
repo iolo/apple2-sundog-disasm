@@ -4,8 +4,9 @@
 block 79. Disk-1 block 196 offsets 128–511 contain exact copies of records
 4–15. One 512-byte source therefore reconstructs **896 disk bytes**. The first
 128 bytes of that disk-1 block differ and remain unresolved; they are not
-silently classified as records. The neighboring glyph-like disk-2 block 80
-also remains outside this extraction pending evidence for its consumer.
+silently classified as records. The neighboring disk-2 block 80 is separately
+classified as a [retained half-font](retained-font-half.md), through its complete
+row-mask relationship to the verified shared font.
 
 ## Loader and field evidence
 

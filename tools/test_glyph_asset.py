@@ -25,6 +25,17 @@ class GlyphTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             pack_rows(rows)
 
+    def test_explicit_half_bank_keeps_all_rows_without_inventing_glyphs(self):
+        raw=bytes((i*53+(i//8)*19)&255 for i in range(512))
+        rows=display_rows(raw,count=64)
+        self.assertEqual(len(rows),64)
+        self.assertEqual(rows[63],list(raw[504:512][::-1]))
+        self.assertEqual(pack_rows(rows,count=64),raw)
+        with self.assertRaises(ValueError):
+            display_rows(raw)
+        with self.assertRaises(ValueError):
+            pack_rows(rows)
+
 
 if __name__ == '__main__':
     unittest.main()
