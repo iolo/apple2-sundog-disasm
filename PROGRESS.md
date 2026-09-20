@@ -2321,3 +2321,41 @@ and acceptance criteria.
 - **Workspace:** The user's PRD link edit remains untouched and excluded.
 - **Next action:** Continue other orphan fragments, remaining data and provisional
   runtime payload classification, followed by final dual-emulator validation.
+
+## 2026-09-20 — Step 06ap: identify the initializer's FORTRAN protection table
+
+- **Evidence/work:** Apple's original ATTACH-BIOS listing reserves $BF56–$BF7F
+  for FORTRAN protection. A historical SYSTEM.COMPILER provides the actual
+  consumer: segment 9 native procedure 4, established from its dictionary and
+  relocation footer. Its copy/patch loops identify four address words, four
+  three-byte patches, one helper displacement, and two native helper routines.
+  Frozen evidence records source URL, disk/file/segment hashes, native metadata
+  and bounded consumer excerpts; the external compiler is not a build input.
+- **Classification:** All 42 initializer bytes are now identified: nine data
+  bytes, seventeen complete instructions totaling 32 bytes, and one STA opcode
+  fragment. That opcode retains operand $CF at bank-2 $D55F. The adjacent $4C
+  starts a separate JMP template, rather than supplying the STA operand. The
+  compiler's scratch operands are procedure-relative relocations, not literal
+  stack-page addresses. The first three patch sites select bank 2; the fourth
+  selects bank 1. No SunDog activation of these retained patches is asserted.
+- **Artifacts:** Replaced the unresolved payload literals with typed words,
+  mnemonic patch templates/helpers and the explicitly identified opcode
+  fragment. Updated the independent da65 layout and initializer audit; added
+  tools/initializer_protection.py, three tests, the external consumer evidence,
+  a current full initializer audit and docs/initializer-fortran-protection.md.
+  Updated PLAN.md and both affected native documentation pages.
+- **Validation:** Full source build and tools/verify_disks.py preserve both exact
+  disk hashes and the manual hash. The initializer audit reports 515 complete
+  instructions / 1,064 bytes, one code-fragment byte and 215 data bytes, checks
+  94 direct/synthetic-return targets, and matches all 1,280 recorded emulator
+  bytes. --fortran-compiler independently verifies the downloaded consumer's
+  hash, native procedure/relocations and all frozen excerpts. Three tests pass,
+  covering classification, copy/patch mutations, the retained operand and
+  rejection of an unrelated external compiler. git diff --check passes.
+- **Coverage:** This resolves provisional classification within an already
+  source-built component. Disk ownership remains 175,253 source-built bytes,
+  100,324 identified data/asset bytes and 11,143 temporary bytes (3,875 disk 1;
+  7,268 disk 2). No new live emulator execution is claimed.
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Continue remaining orphan fragments and disk data, then
+  complete final behavior and reproducibility checks in both emulators.

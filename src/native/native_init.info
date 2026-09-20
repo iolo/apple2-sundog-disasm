@@ -4,7 +4,12 @@ SEGMENT { START $6800; END $6CFF; NAME "NATIVE_INIT"; };
 RANGE { START $6800; END $68CB; TYPE Code; };
 RANGE { START $68CC; END $68CF; TYPE WordTable; };
 RANGE { START $68D0; END $6987; TYPE Code; };
-RANGE { START $6988; END $69B1; TYPE ByteTable; };
+RANGE { START $6988; END $698F; TYPE WordTable; };
+RANGE { START $6990; END $6994; TYPE Code; };
+RANGE { START $6995; END $6995; TYPE ByteTable; }; # STA opcode fragment, operand retained at patch site
+RANGE { START $6996; END $699B; TYPE Code; };
+RANGE { START $699C; END $699C; TYPE ByteTable; }; # offset between the two helpers
+RANGE { START $699D; END $69B1; TYPE Code; };
 RANGE { START $69B2; END $6C17; TYPE Code; };
 RANGE { START $6C18; END $6C1F; TYPE ByteTable; };
 RANGE { START $6C20; END $6C27; TYPE WordTable; };
@@ -16,6 +21,13 @@ LABEL { ADDR $68B9; NAME "after_first_device_init"; };
 LABEL { ADDR $68C4; NAME "after_second_device_init"; };
 LABEL { ADDR $68CC; NAME "device_init_return_addresses"; SIZE 4; };
 LABEL { ADDR $6988; NAME "initialization_payload"; };
+LABEL { ADDR $6990; NAME "fortran_patch_call"; };
+LABEL { ADDR $6993; NAME "fortran_patch_read"; };
+LABEL { ADDR $6996; NAME "fortran_patch_checksum"; };
+LABEL { ADDR $6999; NAME "fortran_patch_restore"; };
+LABEL { ADDR $699C; NAME "fortran_helper_delta"; };
+LABEL { ADDR $699D; NAME "fortran_checksum_helper"; };
+LABEL { ADDR $69AB; NAME "fortran_write_helper"; };
 LABEL { ADDR $69B7; NAME "find_system_directory"; };
 LABEL { ADDR $6A02; NAME "directory_read_result"; };
 LABEL { ADDR $6B15; NAME "system_version_check"; };

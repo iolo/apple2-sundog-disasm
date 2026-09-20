@@ -1,6 +1,6 @@
 ; SYSTEM.APPLE initializer, stored at $F290-$F78F and copied to $6800-$6CFF.
 ; Absolute calls/data accesses to the original image are intentional.
-; See docs/native-init.md for aliases, copy/erase behavior, and unresolved payload.
+; See docs/native-init.md and docs/initializer-fortran-protection.md for evidence.
 
 INIT_STORAGE_DELTA = $F290 - $6800
         .setcpu "6502"
@@ -215,14 +215,37 @@ L6964:  lda     a:initialization_payload + INIT_STORAGE_DELTA,y                 
         clc                                     ; 6985 18                       .
         bcc     find_system_directory           ; 6986 90 2F                    ./
 initialization_payload:
-; Copied verbatim from the original image to $BF56-$BF7F; format unresolved.
-; This is not claimed as decoded native code or a fully classified asset.
-        .byte   $C0,$D2,$5C,$D5,$7A,$D3,$0F,$D2 ; 6988 C0 D2 5C D5 7A D3 0F D2  ..\.z...
-        .byte   $20,$B3,$B3,$A5,$46,$85,$4C,$B3 ; 6990 20 B3 B3 A5 46 85 4C B3   ...F.L.
-        .byte   $B3,$4C,$B3,$B3,$0E,$49,$AB,$45 ; 6998 B3 4C B3 B3 0E 49 AB 45  .L...I.E
-        .byte   $CD,$48,$4A,$68,$2A,$C9,$04,$2A ; 69A0 CD 48 4A 68 2A C9 04 2A  .HJh*..*
-        .byte   $85,$46,$60,$A4,$46,$24,$00,$4C ; 69A8 85 46 60 A4 46 24 00 4C  .F`.F$.L
-        .byte   $10,$D3                         ; 69B0 10 D3                    ..
+; FORTRAN protection table, installed at $BF56. The external FORTRAN compiler
+; stages four three-byte patches at procedure-relative offsets $0163-$016E.
+; SunDog retains this
+; runtime facility; no activation of these patches by SunDog is asserted.
+        .word   $D2C0,$D55C,$D37A,$D20F          ; bank 2, bank 2, bank 2, bank 1
+fortran_patch_call:
+        jsr     $B3B3                           ; patched to $BF79 before installation
+fortran_patch_read:
+        lda     $46
+        .byte   $85                             ; STA zp opcode only; $D55F supplies $CF
+fortran_patch_checksum:
+        jmp     $B3B3                           ; patched to $BF6B
+fortran_patch_restore:
+        jmp     $B3B3                           ; patched to caller-provided restore buffer
+fortran_helper_delta:
+        .byte   fortran_write_helper - fortran_checksum_helper
+fortran_checksum_helper:                        ; executes at $BF6B
+        eor     #$AB
+        eor     $CD
+        pha
+        lsr     a
+        pla
+        rol     a
+        cmp     #$04
+        rol     a
+        sta     $46
+        rts
+fortran_write_helper:                           ; executes at $BF79
+        ldy     $46
+        bit     $00
+        jmp     $D310                           ; bank-2 disk-write continuation
 ; ----------------------------------------------------------------------------
 L69B2:  lda     #$04                            ; 69B2 A9 04                    ..
         jsr     LFF15                           ; 69B4 20 15 FF                  ..

@@ -77,12 +77,16 @@ Split large steps into independently validated, logged, and committed increments
   exact-copy mappings and their per-byte code/data classification.
   Step 06am resolves the high-memory runtime's provisional footer, instruction
   operand fragment, linker records and stored file-version word. Other runtime
-  provisional ranges, including the initializer payload, remain open.
+  provisional ranges remained open at that checkpoint.
   Step 06an identifies the complete 96-byte tail after the world-default table
   as an exact copy of two native-runtime vector words and 92 instruction bytes.
   Step 06ao classifies eight shorter exact p-code copies and four contextual
   utility changes (400 bytes), completing ownership of the retained five-block
   utility area without inventing its missing procedures or dictionary.
+  Step 06ap identifies the initializer's retained FORTRAN protection table using
+  its original compiler consumer: four address words, four code patches including
+  one opcode fragment, a displacement byte and two native helpers. All 42 bytes
+  are now classified, without claiming SunDog activates this runtime facility.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its

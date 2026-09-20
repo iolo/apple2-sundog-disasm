@@ -97,8 +97,8 @@ and duplicate bytes are rejected.
 `reference/step06f-build-validation.json` records exact full-disk comparisons,
 an isolated build with no original disks, and MAME play/utility comparisons.
 
-The duplicate's runtime use, the trailing service entry, the ten-byte primitive
-descriptor's precise semantics, and the initializer's 42-byte payload remain
-documented questions. Source-built byte coverage does
-not prove their meanings or substitute for reconstructing the remaining
-Pascal modules, extracting assets, and completing the final behavior checks.
+The duplicate's runtime use and the ten-byte primitive descriptor's precise
+semantics remain documentation questions. The initializer's 42-byte payload is
+now classified as [retained FORTRAN protection support](initializer-fortran-protection.md).
+Source-built byte coverage does not substitute for classifying the remaining
+disk regions or completing the final behavior checks.

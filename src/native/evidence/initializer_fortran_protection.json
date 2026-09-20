@@ -1,0 +1,178 @@
+{
+  "source_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/fortran/187_Fortran_FORT2.dsk",
+  "disk_sha256": "d05da5357cdcfa5c5f20d31196578e3b088793b4eb4d5ba20bcc06255c9d0413",
+  "file": "SYSTEM.COMPILER",
+  "extraction": "a2kit get -d IMAGE -f SYSTEM.COMPILER -t raw --trunc",
+  "file_size": 46592,
+  "file_sha256": "babb8f8268f863c08c332a27ee501e5bd719c26c9c79095e5f6293d44a60f0ea",
+  "segment_number": 9,
+  "segment_file_offset": 8704,
+  "segment_size": 1666,
+  "segment_sha256": "558d26309612b9d5356fe8aaa822c7fdd5cd8a2619f6afacb8596d7b65380956",
+  "native_procedure": {
+    "number": 4,
+    "dictionary_offset": 1656,
+    "backward_offset": 62,
+    "attribute_offset": 1594,
+    "entry_offset": 1176,
+    "representation": "native-6502",
+    "lexical_level": 0,
+    "storage": "segment",
+    "status": "structurally-valid"
+  },
+  "relocations": {
+    "entry": 1176,
+    "attributes": 1594,
+    "tables_start": 1544,
+    "groups": [
+      {
+        "kind": "global",
+        "count_offset": 1590,
+        "count": 0,
+        "pointers": []
+      },
+      {
+        "kind": "segment",
+        "count_offset": 1588,
+        "count": 0,
+        "pointers": []
+      },
+      {
+        "kind": "procedure",
+        "count_offset": 1586,
+        "count": 20,
+        "pointers": [
+          {
+            "offset": 1584,
+            "target": 1422,
+            "original_word": 353
+          },
+          {
+            "offset": 1582,
+            "target": 1418,
+            "original_word": 354
+          },
+          {
+            "offset": 1580,
+            "target": 1408,
+            "original_word": 250
+          },
+          {
+            "offset": 1578,
+            "target": 1401,
+            "original_word": 366
+          },
+          {
+            "offset": 1576,
+            "target": 1396,
+            "original_word": 365
+          },
+          {
+            "offset": 1574,
+            "target": 1388,
+            "original_word": 364
+          },
+          {
+            "offset": 1572,
+            "target": 1376,
+            "original_word": 361
+          },
+          {
+            "offset": 1570,
+            "target": 1367,
+            "original_word": 358
+          },
+          {
+            "offset": 1568,
+            "target": 1358,
+            "original_word": 355
+          },
+          {
+            "offset": 1566,
+            "target": 1312,
+            "original_word": 357
+          },
+          {
+            "offset": 1564,
+            "target": 1307,
+            "original_word": 363
+          },
+          {
+            "offset": 1562,
+            "target": 1304,
+            "original_word": 356
+          },
+          {
+            "offset": 1560,
+            "target": 1301,
+            "original_word": 362
+          },
+          {
+            "offset": 1558,
+            "target": 1293,
+            "original_word": 363
+          },
+          {
+            "offset": 1556,
+            "target": 1283,
+            "original_word": 362
+          },
+          {
+            "offset": 1554,
+            "target": 1272,
+            "original_word": 366
+          },
+          {
+            "offset": 1552,
+            "target": 1258,
+            "original_word": 365
+          },
+          {
+            "offset": 1550,
+            "target": 1238,
+            "original_word": 355
+          },
+          {
+            "offset": 1548,
+            "target": 1182,
+            "original_word": 354
+          },
+          {
+            "offset": 1546,
+            "target": 1178,
+            "original_word": 353
+          }
+        ]
+      },
+      {
+        "kind": "interpreter",
+        "count_offset": 1544,
+        "count": 0,
+        "pointers": []
+      }
+    ]
+  },
+  "consumer_windows": [
+    {
+      "file_offset": 9915,
+      "size": 35,
+      "sha256": "f254313af344f464a01962a4a3229e7115141cf5d0553592cc0ca1f296261b8b",
+      "hex": "ad23bf8512ad24bf8513a007b1129900008810f8a008a200b1129d6301e8c8e00cd0f5",
+      "purpose": "Read table pointer, copy eight address bytes to zero page, and twelve patch bytes to procedure-relative scratch +$0163"
+    },
+    {
+      "file_offset": 9950,
+      "size": 68,
+      "sha256": "6dfac9644b8912acfa287b7f4a16cc8a816da5b917c21473b329a6dfc2bfb589",
+      "hex": "a5088dfcff8dfaff8dfeff8d6d01a5098dfdff8dfbff8dffff8d6e0118ad23bf851269158d6a01ad24bf851369008d6b01a01418b1126d6a018d6401ad6b0169008d6501",
+      "purpose": "Patch restore target, checksum helper target, and write helper target using table offset $14"
+    },
+    {
+      "file_offset": 10052,
+      "size": 47,
+      "sha256": "13c720fdd68e814f799a3b947fc8eb00e43cb1a05387e4ba5760318ef50bac19",
+      "hex": "a002ad83c0b100910ab963019100b102910cb966019102b104910eb969019104ad8bc0b1069110b96c0191068810d3",
+      "purpose": "Install three bytes at each of four sites, with explicit bank-2 and bank-1 selection"
+    }
+  ]
+}

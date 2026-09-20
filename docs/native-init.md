@@ -9,7 +9,8 @@ byte 399. The copy stub at `$F269` belongs to
 All 1,280 assembled bytes match the recorded `relocated-init` capture in
 `reference/runtime-init.json`, before the initializer modifies memory. This
 proves the chosen execution address and complete copied input. The typed source
-contains 498 instructions (1,032 bytes) and 248 data bytes.
+contains 515 complete instructions (1,064 bytes), one opcode-fragment byte,
+and 215 data bytes. This includes the retained FORTRAN protection facility.
 
 ## Original and copied addresses
 
@@ -41,7 +42,7 @@ then continues in low memory, as established by the initialization trace.
 | `$6800`–`$68CB` | Clear low memory, probe slots, prepare device setup |
 | `$68CC`–`$68CF` | Two synthetic return words |
 | `$68D0`–`$6987` | Machine/device setup and copies of initial state |
-| `$6988`–`$69B1` | Unresolved 42-byte payload copied to `$BF56`–`$BF7F` |
+| `$6988`–`$69B1` | FORTRAN protection table: nine data bytes, 32 complete-instruction bytes, one opcode fragment |
 | `$69B2`–`$6C17` | Directory/system loading, runtime setup, and checksum helper |
 | `$6C18`–`$6C1F` | Eight slot-signature bytes, consumed by indexed comparisons at `$6840/$6849` |
 | `$6C20`–`$6C27` | Four initial pointers `$FE80,$FEB0,$FF00,$FF5C` |
@@ -55,12 +56,12 @@ After loading the core and split segment, `$6C43` jumps to p-code dispatch at
 `$D293`. Its preceding erase loop stops before its own still-running loop body,
 removing the earlier copied initializer and load scratch area.
 
-The 42-byte payload remains an explicit open question. Its destination and
-pointer setup at `$BF23/$BF24` are known; its internal format and later consumer
-have not been established. It remains visible as literal bytes in source and
-in the audit report, not as a claimed decoded routine or identified asset.
-This unknown must be resolved or properly classified before final coverage is
-declared complete.
+The 42-byte payload is fully classified in
+[initializer-fortran-protection.md](initializer-fortran-protection.md).
+The historical FORTRAN compiler consumes its four address words, four patch
+templates, helper displacement and two small routines. One template contains
+only the STA opcode; its operand remains at the destination patch site.
+No SunDog activation of these retained FORTRAN patches is asserted.
 
 ## Validation
 
@@ -72,15 +73,17 @@ da65 -i src/native/native_init.info --comments 4 \
   -o build/native-init-review.s build/disks/components/native_init.bin
 ```
 
-The structural audit checks all code spans and 90 direct/synthetic-return
+The structural audit checks all code spans and 94 direct/synthetic-return
 targets. Calls into the original image are checked against the corresponding
 copied instruction boundaries and required to retain their original operands.
 It also checks both return words, the system version test, final dispatch,
 zero tail, and complete equality with the recorded emulator capture. Tests
-reject a checksum call redirected to the copied address, a return into an
-operand byte, and a changed version test.
+reject changes to the protection table's copy boundaries, templates and retained
+STA operand. Existing checks also reject a redirected checksum call, a return
+into an operand byte, and a changed version test.
 
-Evidence is in `reference/step06e-native-audit.json` and
+The original checkpoint evidence is in `reference/step06e-native-audit.json` and
 `reference/step06e-build-validation.json`. The latter records exact full-disk
 comparisons and MAME play/utility reference results. The remaining high-memory
-entry stubs and preserved fragments are not part of this component.
+entry stubs and preserved fragments are not part of this component. The current
+initializer audit is `reference/initializer-fortran-protection-audit.json`.

@@ -9,12 +9,14 @@ import subprocess
 import tempfile
 
 from disk_layout import ROOT, sha
+from initializer_protection import audit_payload
 
 BASE, END, STORAGE_DELTA = 0x6800, 0x6D00, 0x8A90
-CODE_SPANS = [(BASE, 0x68CC), (0x68D0, 0x6988), (0x69B2, 0x6C18), (0x6C28, 0x6C46)]
+CODE_SPANS = [(BASE, 0x68CC), (0x68D0, 0x6988), (0x6990, 0x6995),
+              (0x6996, 0x699C), (0x699D, 0x6C18), (0x6C28, 0x6C46)]
 
 
-def audit(binary):
+def audit(binary, io_bank, compiler=None):
     if len(binary) != END - BASE:
         raise ValueError("Initializer must contain five pages")
     with tempfile.TemporaryDirectory(prefix="sundog-init-") as temporary:
@@ -69,14 +71,15 @@ def audit(binary):
         raise ValueError("Final p-code dispatch changed")
     if any(binary[0x479:]):
         raise ValueError("Preserved zero tail changed")
+    protection = audit_payload(binary, io_bank, compiler)
     return {"sha256": sha(binary), "instruction_count": len(instructions),
             "instruction_bytes": sum(map(len, instructions.values())),
-            "data_bytes": len(binary) - sum(map(len, instructions.values())),
+            "instruction_fragment_bytes": protection['code_fragment_bytes'],
+            "data_bytes": len(binary) - sum(map(len, instructions.values())) - protection['code_fragment_bytes'],
             "checked_direct_and_return_targets": len(edges),
             "code_spans_end_exclusive": CODE_SPANS, "original_address_calls": aliases,
             "original_load_address": BASE + STORAGE_DELTA, "execution_address": BASE,
-            "unresolved_payload": {"copied_address": 0x6988, "original_address": 0xF418,
-                                   "destination": 0xBF56, "size": 42},
+            "fortran_protection": protection, "unresolved_payload": None,
             "external_targets": sorted({t for _, t in edges if not BASE <= t < END})}
 
 
@@ -84,9 +87,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", type=Path, default=ROOT / "build/disks/components/native_init.bin")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--io-binary", type=Path, default=ROOT / "build/disks/components/native_io.bin")
+    parser.add_argument("--fortran-compiler", type=Path,
+                        help="Optionally verify external consumer evidence against extracted SYSTEM.COMPILER")
     args = parser.parse_args()
     binary = args.binary.read_bytes()
-    report = audit(binary)
+    report = audit(binary, args.io_binary.read_bytes(),
+                   args.fortran_compiler.read_bytes() if args.fortran_compiler else None)
     evidence = json.loads((ROOT / "docs/reference/runtime-init.json").read_text())
     capture = next(item["capture"] for item in evidence["observations"] if item["id"] == "relocated-init")
     if capture["address"] != BASE or capture["length"] != len(binary) or bytes.fromhex(capture["hex"]) != binary:

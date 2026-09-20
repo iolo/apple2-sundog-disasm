@@ -1,0 +1,352 @@
+{
+  "sha256": "c7c1a2160f3a266852f528c27cd396b0a97b3e6ae8761b0687ee6511a74c82c0",
+  "instruction_count": 515,
+  "instruction_bytes": 1064,
+  "instruction_fragment_bytes": 1,
+  "data_bytes": 215,
+  "checked_direct_and_return_targets": 94,
+  "code_spans_end_exclusive": [
+    [
+      26624,
+      26828
+    ],
+    [
+      26832,
+      27016
+    ],
+    [
+      27024,
+      27029
+    ],
+    [
+      27030,
+      27036
+    ],
+    [
+      27037,
+      27672
+    ],
+    [
+      27688,
+      27718
+    ]
+  ],
+  "original_address_calls": [
+    {
+      "call": 26660,
+      "original_target": 63130,
+      "copied_target": 27658
+    },
+    {
+      "call": 26667,
+      "original_target": 63130,
+      "copied_target": 27658
+    }
+  ],
+  "original_load_address": 62096,
+  "execution_address": 26624,
+  "fortran_protection": {
+    "evidence": "docs/initializer-fortran-protection.md",
+    "source_address": 62488,
+    "copied_address": 27016,
+    "installed_address": 48982,
+    "size": 42,
+    "sha256": "3b58b5c14faf0f9cef6cf9222ef788cead69894794ad27298c77ac78e7e7c6fe",
+    "instruction_count": 17,
+    "complete_instruction_bytes": 32,
+    "code_fragment_bytes": 1,
+    "data_bytes": 9,
+    "items": [
+      {
+        "offset": 0,
+        "size": 2,
+        "classification": "data",
+        "kind": "patch-site-address",
+        "bank": 2,
+        "value": 53952
+      },
+      {
+        "offset": 2,
+        "size": 2,
+        "classification": "data",
+        "kind": "patch-site-address",
+        "bank": 2,
+        "value": 54620
+      },
+      {
+        "offset": 4,
+        "size": 2,
+        "classification": "data",
+        "kind": "patch-site-address",
+        "bank": 2,
+        "value": 54138
+      },
+      {
+        "offset": 6,
+        "size": 2,
+        "classification": "data",
+        "kind": "patch-site-address",
+        "bank": 1,
+        "value": 53775
+      },
+      {
+        "offset": 8,
+        "size": 3,
+        "mnemonic": "jsr",
+        "mode": "Ab",
+        "operand_value": 46003,
+        "assembly": "jsr a:$B3B3",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 11,
+        "size": 2,
+        "mnemonic": "lda",
+        "mode": "Z",
+        "operand_value": 70,
+        "assembly": "lda $46",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 13,
+        "size": 1,
+        "classification": "code",
+        "kind": "opcode-fragment",
+        "assembly": "sta $CF ; operand retained at bank-2 $D55F",
+        "installed_address": 54622,
+        "retained_operand_address": 54623
+      },
+      {
+        "offset": 14,
+        "size": 3,
+        "mnemonic": "jmp",
+        "mode": "Ab",
+        "operand_value": 46003,
+        "assembly": "jmp a:$B3B3",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 17,
+        "size": 3,
+        "mnemonic": "jmp",
+        "mode": "Ab",
+        "operand_value": 46003,
+        "assembly": "jmp a:$B3B3",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 20,
+        "size": 1,
+        "classification": "data",
+        "kind": "helper-displacement",
+        "value": 14
+      },
+      {
+        "offset": 21,
+        "size": 2,
+        "mnemonic": "eor",
+        "mode": "Im",
+        "operand_value": 171,
+        "assembly": "eor #$AB",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 23,
+        "size": 2,
+        "mnemonic": "eor",
+        "mode": "Z",
+        "operand_value": 205,
+        "assembly": "eor $CD",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 25,
+        "size": 1,
+        "mnemonic": "pha",
+        "mode": "Ip",
+        "operand_value": 0,
+        "assembly": "pha",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 26,
+        "size": 1,
+        "mnemonic": "lsr",
+        "mode": "A",
+        "operand_value": 0,
+        "assembly": "lsr a",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 27,
+        "size": 1,
+        "mnemonic": "pla",
+        "mode": "Ip",
+        "operand_value": 0,
+        "assembly": "pla",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 28,
+        "size": 1,
+        "mnemonic": "rol",
+        "mode": "A",
+        "operand_value": 0,
+        "assembly": "rol a",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 29,
+        "size": 2,
+        "mnemonic": "cmp",
+        "mode": "Im",
+        "operand_value": 4,
+        "assembly": "cmp #$04",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 31,
+        "size": 1,
+        "mnemonic": "rol",
+        "mode": "A",
+        "operand_value": 0,
+        "assembly": "rol a",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 32,
+        "size": 2,
+        "mnemonic": "sta",
+        "mode": "Z",
+        "operand_value": 70,
+        "assembly": "sta $46",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 34,
+        "size": 1,
+        "mnemonic": "rts",
+        "mode": "Ip",
+        "operand_value": 0,
+        "assembly": "rts",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 35,
+        "size": 2,
+        "mnemonic": "ldy",
+        "mode": "Z",
+        "operand_value": 70,
+        "assembly": "ldy $46",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 37,
+        "size": 2,
+        "mnemonic": "bit",
+        "mode": "Z",
+        "operand_value": 0,
+        "assembly": "bit $00",
+        "classification": "code",
+        "kind": "complete-instruction"
+      },
+      {
+        "offset": 39,
+        "size": 3,
+        "mnemonic": "jmp",
+        "mode": "Ab",
+        "operand_value": 54032,
+        "assembly": "jmp a:$D310",
+        "classification": "code",
+        "kind": "complete-instruction"
+      }
+    ],
+    "patches": [
+      {
+        "offset": 8,
+        "size": 3,
+        "site": 53952,
+        "bank": 2,
+        "installed_hex": "2079bf"
+      },
+      {
+        "offset": 11,
+        "size": 3,
+        "site": 54620,
+        "bank": 2,
+        "installed_hex": "a54685",
+        "completed_instructions": [
+          {
+            "offset": 0,
+            "size": 2,
+            "mnemonic": "lda",
+            "mode": "Z",
+            "operand_value": 70,
+            "assembly": "lda $46"
+          },
+          {
+            "offset": 2,
+            "size": 2,
+            "mnemonic": "sta",
+            "mode": "Z",
+            "operand_value": 207,
+            "assembly": "sta $CF"
+          }
+        ]
+      },
+      {
+        "offset": 14,
+        "size": 3,
+        "site": 54138,
+        "bank": 2,
+        "installed_hex": "4c6bbf"
+      },
+      {
+        "offset": 17,
+        "size": 3,
+        "site": 53775,
+        "bank": 1,
+        "installed_target": "caller-supplied restore buffer, from $BF25/$BF26"
+      }
+    ],
+    "checksum_helper": 49003,
+    "write_helper": 49017,
+    "external_consumer_sha256": "babb8f8268f863c08c332a27ee501e5bd719c26c9c79095e5f6293d44a60f0ea",
+    "external_file_verified": true,
+    "sundog_activation_observed": false,
+    "unresolved_ranges": []
+  },
+  "unresolved_payload": null,
+  "external_targets": [
+    46003,
+    53262,
+    53907,
+    54032,
+    57573,
+    58477,
+    58601,
+    62052,
+    65283,
+    65286,
+    65298,
+    65301,
+    65334,
+    65340
+  ],
+  "byte_identical_to_recorded_emulator_capture": true
+}
