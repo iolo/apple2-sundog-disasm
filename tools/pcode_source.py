@@ -12,7 +12,7 @@ from pathlib import Path
 import struct
 
 from disk_layout import ROOT, sha
-from pascal_inventory import procedure_dictionary, word
+from pascal_inventory import procedure_attributes, procedure_dictionary, word
 
 # opcode: mnemonic, operand format, native dispatch target. Format b is the
 # interpreter's one/two-byte big value; u is a fixed byte, w a little-endian word.
@@ -104,6 +104,31 @@ def verify_interpreter(binary):
         for opcode in range(first, last):
             if word(binary, (opcode - 128) * 2) != target:
                 raise ValueError('Short load dispatch differs from verified encoding')
+
+
+def analyze_fragment(data, segment, attributes, *, extra_code_roots=()):
+    """Decode complete reviewed procedures without inventing a missing dictionary.
+
+    Attribute locations must come from external provenance review. This is not
+    a scanner. Every supplied byte must still receive ordinary CFG/data ownership.
+    Calls to absent procedures remain unresolved fragment references.
+    """
+    if not attributes or len(set(attributes)) != len(attributes):
+        raise ValueError('Fragment needs distinct reviewed attribute offsets')
+    procedures = []
+    for offset in attributes:
+        if not 0 <= offset < len(data):
+            raise ValueError('Fragment attribute exceeds stored bytes')
+        number = data[offset]
+        proc = procedure_attributes(data, offset, number)
+        if proc['representation'] != 'p-code':
+            raise ValueError('Fragment decoder requires p-code attributes')
+        procedures.append(dict(proc,number=number))
+    if len({p['number'] for p in procedures}) != len(procedures):
+        raise ValueError('Fragment procedure numbers repeat')
+    layout = dict(valid=True,procedure_count=len(procedures),procedures=procedures,
+                  fragment=True)
+    return analyze(data,segment,extra_code_roots=extra_code_roots,layout=layout)
 
 
 def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=None):
@@ -284,7 +309,7 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=N
                 claim(pc, 1, 'alignment', '.byte 0')
     if unmatched_roots:
         raise ValueError('Extra code root is outside procedure code areas')
-    for proc in metadata['procedures']:
+    for proc in ([] if metadata.get('fragment') else metadata['procedures']):
         delta = proc.get('dictionary_address_delta', 0)
         if (proc['dictionary_offset'] - proc['attribute_offset'] + delta) & 0xFFFF != word(data, proc['dictionary_offset']):
             raise ValueError('Dictionary address mapping disagrees with stored displacement')
@@ -292,9 +317,11 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=N
         if delta:
             expression = f'({expression} + ${delta:04X}) & $FFFF'
         claim(proc['dictionary_offset'], 2, 'dictionary-pointer', '.word ' + expression)
-    claim(metadata.get('trailer_offset', len(data) - 2), 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
+    if not metadata.get('fragment'):
+        claim(metadata.get('trailer_offset', len(data) - 2), 2, 'segment-trailer', f'.byte {segment}, {metadata["procedure_count"]}')
     for call in calls:
-        if call['instruction'] in ('clp', 'cgp', 'cip') and not 1 <= call['operands'][0] <= metadata['procedure_count']:
+        limit = 255 if metadata.get('fragment') else metadata['procedure_count']
+        if call['instruction'] in ('clp', 'cgp', 'cip') and not 1 <= call['operands'][0] <= limit:
             raise ValueError('In-segment call names a nonexistent procedure')
     if len(occupied) != len(data):
         missing = next(i for i in range(len(data)) if i not in occupied)
@@ -303,13 +330,19 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=N
         for edge in native['external_edges']:
             if edge['kind'] == 'segment-code' and (edge['target'] not in items or items[edge['target']]['kind'] != 'native-instruction'):
                 raise ValueError('Native cross-procedure target is not an instruction boundary')
-    return {'sha256': sha(data), 'size': len(data), 'segment': segment,
+    report = {'sha256': sha(data), 'size': len(data), 'segment': segment,
             'procedure_count': metadata['procedure_count'], 'procedures': metadata['procedures'],
             'extra_code_roots': sorted(set(extra_code_roots)),
             'native_reports': native_reports,
             'instruction_count': len(instructions) + sum(i['kind'] == 'native-instruction' for i in items.values()), 'coverage_bytes': dict(sum_counts(items)),
             'instructions_by_mnemonic': dict(Counter(i['mnemonic'] for i in instructions.values())),
             'control_flow_edges': branch_edges, 'calls': calls, 'items': [items[i] for i in sorted(items)]}
+    if metadata.get('fragment'):
+        present = {p['number'] for p in metadata['procedures']}
+        report.update(scope='procedure-fragment',absent_call_procedures=sorted({
+            c['operands'][0] for c in calls if c['instruction'] in ('clp','cgp','cip')
+            and c['operands'][0] not in present}))
+    return report
 
 
 def sum_counts(items):

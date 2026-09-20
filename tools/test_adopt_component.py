@@ -8,6 +8,36 @@ from disk_layout import sha
 
 
 class AdoptionTests(unittest.TestCase):
+    def test_source_context_preserves_existing_mapping(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest['components']['old'] = dict(kind='ca65-source')
+        manifest['disks'][0]['regions'] = [
+            dict(offset=0,size=2,input='old',input_offset=7),
+            dict(offset=2,size=6,input='raw',input_offset=0)]
+        recipe = dict(name='new',source='new.s',config='new.cfg',context_evidence='review.md',
+            mappings=[dict(disk='disk1',offset=2,size=1,input_offset=2)],
+            context_mappings=[dict(disk='disk1',offset=0,size=2,input_offset=0,
+                                   existing_input='old',existing_input_offset=7)])
+        before = copy.deepcopy(manifest)
+        result,files = replacement_plan(manifest,{'disk1':self.image},recipe,b'ABC')
+        self.assertEqual(manifest,before)
+        self.assertEqual(result['disks'][0]['regions'][0],manifest['disks'][0]['regions'][0])
+        self.assertEqual(files['raw.bin'],b'DEFGH')
+        self.assertEqual(compose_image(result['disks'][0],
+                         {'new':b'ABC','old':b'-------AB','raw':files['raw.bin']}),self.image)
+        for field,value in [('existing_input','raw'),('existing_input_offset',0),
+                            ('size',3),('input_offset',1)]:
+            bad = copy.deepcopy(recipe)
+            bad['context_mappings'][0][field] = value
+            with self.assertRaises(ValueError):
+                replacement_plan(manifest,{'disk1':self.image},bad,b'ABC')
+        for binary in (b'AXC',b'ABCD'):
+            with self.assertRaises(ValueError):
+                replacement_plan(manifest,{'disk1':self.image},recipe,binary)
+        manifest['components']['old']['storage_encoding'] = {}
+        with self.assertRaisesRegex(ValueError,'existing source owner'):
+            replacement_plan(manifest,{'disk1':self.image},recipe,b'ABC')
+
     def setUp(self):
         self.image = b"ABCDEFGH"
         self.manifest = {"components": {"raw": {"kind": "temporary-unresolved", "path": "raw.bin"}},

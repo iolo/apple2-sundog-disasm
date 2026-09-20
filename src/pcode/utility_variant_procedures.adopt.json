@@ -1,0 +1,220 @@
+{
+  "name": "utility_variant_procedures",
+  "source": "src/pcode/utility_variant_procedures.s",
+  "config": "src/pcode/utility_variant_procedures.cfg",
+  "context_evidence": "docs/utility-variant-procedures.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 74174,
+      "size": 41,
+      "input_offset": 124
+    },
+    {
+      "disk": "disk1",
+      "offset": 77626,
+      "size": 1,
+      "input_offset": 248
+    },
+    {
+      "disk": "disk1",
+      "offset": 77702,
+      "size": 35,
+      "input_offset": 324
+    },
+    {
+      "disk": "disk1",
+      "offset": 77808,
+      "size": 16,
+      "input_offset": 430
+    },
+    {
+      "disk": "disk1",
+      "offset": 77824,
+      "size": 23,
+      "input_offset": 446
+    },
+    {
+      "disk": "disk1",
+      "offset": 78000,
+      "size": 8,
+      "input_offset": 622
+    },
+    {
+      "disk": "disk1",
+      "offset": 81488,
+      "size": 1,
+      "input_offset": 782
+    },
+    {
+      "disk": "disk1",
+      "offset": 81579,
+      "size": 85,
+      "input_offset": 873
+    },
+    {
+      "disk": "disk1",
+      "offset": 81152,
+      "size": 74,
+      "input_offset": 958
+    },
+    {
+      "disk": "disk1",
+      "offset": 81298,
+      "size": 110,
+      "input_offset": 1104
+    },
+    {
+      "disk": "disk1",
+      "offset": 80896,
+      "size": 25,
+      "input_offset": 1214
+    },
+    {
+      "disk": "disk1",
+      "offset": 81003,
+      "size": 149,
+      "input_offset": 1321
+    },
+    {
+      "disk": "disk1",
+      "offset": 80640,
+      "size": 67,
+      "input_offset": 1470
+    },
+    {
+      "disk": "disk1",
+      "offset": 80452,
+      "size": 145,
+      "input_offset": 1794
+    },
+    {
+      "disk": "disk1",
+      "offset": 80282,
+      "size": 2,
+      "input_offset": 2136
+    }
+  ],
+  "context_mappings": [
+    {
+      "disk": "disk1",
+      "offset": 74050,
+      "size": 124,
+      "input_offset": 0,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 4696
+    },
+    {
+      "disk": "disk1",
+      "offset": 74215,
+      "size": 25,
+      "input_offset": 165,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 4861
+    },
+    {
+      "disk": "disk1",
+      "offset": 77568,
+      "size": 58,
+      "input_offset": 190,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 4886
+    },
+    {
+      "disk": "disk1",
+      "offset": 77627,
+      "size": 75,
+      "input_offset": 249,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 4945
+    },
+    {
+      "disk": "disk1",
+      "offset": 77737,
+      "size": 71,
+      "input_offset": 359,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5055
+    },
+    {
+      "disk": "disk1",
+      "offset": 77847,
+      "size": 153,
+      "input_offset": 469,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5165
+    },
+    {
+      "disk": "disk1",
+      "offset": 78008,
+      "size": 72,
+      "input_offset": 630,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5326
+    },
+    {
+      "disk": "disk1",
+      "offset": 81408,
+      "size": 80,
+      "input_offset": 702,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5398
+    },
+    {
+      "disk": "disk1",
+      "offset": 81489,
+      "size": 90,
+      "input_offset": 783,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5479
+    },
+    {
+      "disk": "disk1",
+      "offset": 81226,
+      "size": 72,
+      "input_offset": 1032,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5728
+    },
+    {
+      "disk": "disk1",
+      "offset": 80921,
+      "size": 82,
+      "input_offset": 1239,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 5935
+    },
+    {
+      "disk": "disk1",
+      "offset": 80707,
+      "size": 189,
+      "input_offset": 1537,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 6499
+    },
+    {
+      "disk": "disk1",
+      "offset": 80384,
+      "size": 68,
+      "input_offset": 1726,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 6688
+    },
+    {
+      "disk": "disk1",
+      "offset": 80597,
+      "size": 43,
+      "input_offset": 1939,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 6949
+    },
+    {
+      "disk": "disk1",
+      "offset": 80128,
+      "size": 154,
+      "input_offset": 1982,
+      "existing_input": "utility_disk1",
+      "existing_input_offset": 6992
+    }
+  ]
+}

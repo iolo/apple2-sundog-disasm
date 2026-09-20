@@ -61,6 +61,30 @@ def replacement_plan(manifest, images, recipe, binary):
         covered[source:source + size] = bytes([1]) * size
         groups.setdefault(disk["id"], []).append({"offset": offset, "size": size,
                                                   "input": name, "input_offset": source})
+    # Complete disassembly may need surrounding bytes already reconstructed by
+    # another source component. Verify those bytes and their exact owner without
+    # replacing their mappings. Every new source byte still needs disk evidence.
+    if recipe.get('context_mappings'):
+        if 'data' in recipe or 'storage_encoding' in recipe or not recipe.get('context_evidence'):
+            raise ValueError('Context mappings require ordinary source and review evidence')
+        new_spec['classification_evidence'] = recipe['context_evidence']
+        for mapping in recipe['context_mappings']:
+            disk = disks[mapping['disk']]
+            offset,size,source = (mapping[k] for k in ('offset','size','input_offset'))
+            if (size <= 0 or offset < 0 or offset+size > disk['size']
+                    or source < 0 or source+size > len(binary)):
+                raise ValueError('Context mapping exceeds input/output bounds')
+            owners = [r for r in disk['regions'] if r['offset'] <= offset
+                      and offset+size <= r['offset']+r['size']]
+            if (len(owners) != 1 or owners[0]['input'] != mapping['existing_input']
+                    or result['components'][owners[0]['input']]['kind'] != 'ca65-source'
+                    or 'storage_encoding' in result['components'][owners[0]['input']]
+                    or owners[0]['input_offset']+offset-owners[0]['offset'] != mapping['existing_input_offset']):
+                raise ValueError('Context must match its existing source owner')
+            if (images[disk['id']][offset:offset+size] != binary[source:source+size]
+                    or any(covered[source:source+size])):
+                raise ValueError('Context bytes differ or duplicate source coverage')
+            covered[source:source+size] = bytes([1])*size
     if not all(covered):
         raise ValueError("Not every assembled byte has an output mapping")
     result["components"][name] = new_spec
@@ -144,6 +168,8 @@ def main():
     parser.add_argument("--baseline", type=Path, default=ROOT / "build/disks")
     args = parser.parse_args()
     recipe, manifest = (json.loads(path.read_text()) for path in (args.recipe, args.manifest))
+    if recipe.get('context_mappings'):
+        contained_file(ROOT,recipe['context_evidence'])
     if not re.fullmatch(r"[a-z0-9_]+", recipe["name"]):
         raise ValueError("Invalid component name")
     output = ROOT / "build/adoption"

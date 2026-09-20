@@ -8,7 +8,7 @@ import tempfile
 from pathlib import Path
 import unittest
 
-from pcode_source import analyze, source
+from pcode_source import analyze, analyze_fragment, source
 from pascal_inventory import procedure_dictionary
 
 
@@ -19,6 +19,23 @@ def segment(body, exit_offset):
 
 
 class PcodeSourceTests(unittest.TestCase):
+    def test_complete_fragment_has_no_invented_dictionary(self):
+        raw = segment([0xCF, 20, 0xAD, 0],2)[:-4]
+        report = analyze_fragment(raw,1,[len(raw)-2])
+        self.assertEqual(report['scope'],'procedure-fragment')
+        self.assertEqual(report['absent_call_procedures'],[20])
+        self.assertEqual(sum(report['coverage_bytes'].values()),len(raw))
+        self.assertNotIn('dictionary-pointer',report['coverage_bytes'])
+        self.assertNotIn('segment-trailer',report['coverage_bytes'])
+        for attrs in ([],[len(raw)],[len(raw)-2]*2):
+            with self.assertRaises(ValueError):
+                analyze_fragment(raw,1,attrs)
+        with self.assertRaisesRegex(ValueError,'Unclassified'):
+            analyze_fragment(raw+b'\0\0',1,[len(raw)-2])
+        bad = bytes([0x81])+raw[1:]
+        with self.assertRaisesRegex(ValueError,'Unsupported'):
+            analyze_fragment(bad,1,[len(raw)-2])
+
     def test_nonminimal_big_operand_and_signed_word(self):
         data = segment([0xCC, 0x80, 5, 0xC7, 0xFF, 0xFF, 0xAD, 0], 6)
         listing = source(analyze(data, 1))

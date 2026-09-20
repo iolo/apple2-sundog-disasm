@@ -15,6 +15,10 @@ five-block area an exact copy, classify the differences as data, or infer a
 complete older utility version. Only the individually hashed matching extents
 below are adopted.
 
+The later [utility-variant procedure reconstruction](utility-variant-procedures.md)
+independently decodes fifteen complete procedures in that area. It preserves
+these exact-copy mappings while classifying 782 previously unresolved bytes.
+
 The [existing copy workflow](preserved-pcode-copies.md) freshly assembles both
 modules, reruns their complete p-code analysis, and compares the resulting
 classification to the early audits. Per-item reports retain complete original

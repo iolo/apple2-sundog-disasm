@@ -72,6 +72,9 @@ Split large steps into independently validated, logged, and committed increments
   and utility module audits, retaining nearby modified utility bytes as unresolved.
   Step 06ak completes the two single-block native overlays with an unused buffer
   transfer, validated native footers and bounded zero block storage.
+  Step 06al independently decodes fifteen complete retained utility-variant
+  procedures, classifying 782 changed/intervening bytes while preserving prior
+  exact-copy mappings and their per-byte code/data classification.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its

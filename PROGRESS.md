@@ -2188,3 +2188,40 @@ and acceptance criteria.
   from this commit.
 - **Next action:** Continue nonzero residuals, orphan/variant code and provisional
   runtime classification audits, followed by final checks in both emulators.
+
+## 2026-09-20 — Step 06al: retained utility-variant procedures
+
+- **Evidence:** The exact-copy anchors in disk-1 blocks 151–155 surround fifteen
+  complete procedures with stored local/parameter sizes, entry/exit pointers,
+  attributes and branch tables. Independent decoding of offsets $0042–$089B
+  relative to block 151 accounts for all 2,138 bytes: 785 instructions occupying
+  1,413 bytes and 725 bytes of explicit data/metadata. No additional code root,
+  opaque gap, invented dictionary or trailer is needed. Calls to absent
+  fragment procedures 3, 4 and 31 remain explicit; live reachability and the
+  variant's date are not asserted.
+- **Work:** Added reviewed complete-procedure fragment analysis to the existing
+  p-code decoder while retaining all whole-module dictionary and call-count
+  checks. Added source-context mappings to adoption: each contextual byte must
+  match an existing ordinary source owner and offset; no prior mapping changes,
+  and every new assembled byte still requires verified disk provenance.
+- **Artifacts:** Added tools/utility_variant_source.py, complete ca65 source,
+  config/adoption, full per-item/control-flow audit and
+  docs/utility-variant-procedures.md. Updated the earlier copy document and plan.
+  The complete source keeps surrounding instructions visible when the new disk
+  mapping selects only a changed operand. Its 1,356 contextual bytes independently
+  agree with the previous utility-copy code/data classifications.
+- **Validation:** Fourteen p-code tests, five adoption tests and three source-copy
+  tests pass. New checks cover fragment metadata/absence boundaries, unsupported
+  encodings, absent calls, source-context preservation and invalid context.
+  All 2,138 source bytes assemble exactly. Adoption maps 782 new disk bytes
+  (575 code, 207 data). Regenerated fragment artifacts and every old early-copy
+  mapping verify after adoption. Full rebuild, original disk/manual verification
+  and git diff --check pass; both disks remain exact. No new emulator execution
+  is claimed.
+- **Coverage:** 174,757 source-built disk bytes, 100,324 identified data/asset
+  bytes, 11,639 temporary bytes (4,259 disk 1; 7,380 disk 2). The retained
+  five-block utility area now has 136 unresolved bytes in its clipped edge
+  procedures, rather than 918 before this checkpoint.
+- **Workspace:** The user's PRD link edit remains untouched and excluded.
+- **Next action:** Finish clipped procedure remnants and other orphan code/data,
+  audit provisional runtime regions, and complete the final emulator checks.
