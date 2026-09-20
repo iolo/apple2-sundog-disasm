@@ -11,7 +11,8 @@ original [bootstrap capture](bootstrap.md). Step 06a reconstructs its first
 | `$4200`–`$420F` | 16 | Native scanline/column address helper |
 | `$4210`–`$42CF` | 192 | Low bytes of HGR page-1 scanline addresses |
 | `$42D0`–`$438F` | 192 | High bytes of those addresses |
-| `$4390`–`$43FF` | 112 | Unreferenced tail, preserved with no claimed interpretation |
+| `$4390`–`$439F` | 16 | Retained native Pascal footer; [field audit](early-native-footers.md) |
+| `$43A0`–`$43FF` | 96 | Provisional tail, not yet fully classified |
 | `$4400`–`$63FF` | 8,192 | Extracted bitmap; see `assets/title/title.hgr` |
 
 The helper takes A as byte column and X as scanline, and returns the screen
@@ -36,9 +37,10 @@ later code and must not be inferred from the title image alone.
 
 The routine and helper are contiguous instruction ranges with direct branches
 and calls; the following two tables are addressed explicitly by the helper.
-The unreferenced 112-byte tail is kept separate in source. The bitmap region, including its non-displayed HGR holes, is now extracted
-and classified as image-buffer data; see [title-bitmap.md](title-bitmap.md).
-The 112-byte prefix tail still requires a final code/data classification audit.
+The later [footer audit](early-native-footers.md) identifies sixteen metadata
+bytes after the tables; the following 96 bytes still require classification.
+The bitmap region, including its non-displayed HGR holes, is extracted and
+classified as image-buffer data; see [title-bitmap.md](title-bitmap.md).
 
 The incremental manifest now replaces four more disk sectors with the assembled
 prefix. `python3 tools/build_disks.py` checks its exact component hash, and

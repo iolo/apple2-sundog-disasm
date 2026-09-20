@@ -37,6 +37,11 @@ as part of the three-page bootstrap and must not be treated as code merely
 because the modified count byte is 5. Only the first 768 captured bytes are used
 for the bootstrap equality claim.
 
+The later [native-footer audit](early-native-footers.md) classifies the final
+32 bytes within the verified three-page component as a sixteen-byte native
+Pascal footer and sixteen bytes of bounded zero allocation storage. It does not
+classify any of the unloaded context pages or the fourth boot sector.
+
 ## Repeat the breakpoint sequence
 
 1. Pause the private emulator, mount the original disk-1 bytes via an upload

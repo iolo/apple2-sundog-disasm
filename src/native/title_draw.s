@@ -310,9 +310,15 @@ hgr_row_high:
     .byte >($2000 + (row & 7) * $400 + ((row >> 3) & 7) * $80 + (row >> 6) * 40)
 .endrepeat
 
-; Unreferenced bytes in the loaded prefix. Preserve their values without
-; promoting them to code or assigning an unverified metadata interpretation.
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$98,$03,$00,$00,$02,$00,$01,$01
+; Retained native Pascal footer; docs/early-native-footers.md.
+title_native_footer:
+    .word 0, 0, 0, 0             ; Empty interpreter/procedure/segment/global relocation lists.
+    .word * - entry              ; Native entry displacement ($0398).
+title_native_attributes:
+    .byte 0, 0                   ; Native marker and lexical level.
+    .word * - title_native_attributes
+    .byte 1, 1                   ; Segment number and procedure count.
+; Remaining 96 bytes are still provisional, including the final nonzero $04.
     .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
     .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
     .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00

@@ -2785,3 +2785,38 @@ and acceptance criteria.
   Continue the early-native provisional metadata audit and remaining allocation
   evidence. The affine search found no other new nontrivial transformed copies;
   block-83 title correspondences remain partial evidence only.
+
+## 2026-09-20 — Step 08k: classify early native footer metadata
+
+- **Evidence/work:** Both the bootstrap and title prefix retain complete
+  sixteen-byte native Pascal footers immediately after independently identified
+  tables. Existing dictionary and relocation parsers validate four empty
+  relocation lists, an entry displacement resolving to component offset zero,
+  native attributes at lexical level zero, a dictionary pointer and segment-1 /
+  one-procedure trailer. Footer extents are bootstrap $02E0–$02EF and title
+  $0390–$039F. The bootstrap's subsequent sixteen zeros end exactly at its
+  independently captured three-page loader boundary and are bounded allocation
+  storage. The fourth boot sector remains outside this claim.
+- **Limits:** The bootstrap metadata's entry includes its page-count byte,
+  whereas the actual boot enters at +1. No new call through that byte or runtime
+  use of the footers is invented. The title's final 96 bytes, ending in $04,
+  remain provisional and are not automatically treated as zero allocation fill.
+- **Artifacts:** Replaced opaque footer declarations in both existing native
+  sources with named fields and symbolic displacements; emitted bootstrap's
+  sixteen storage zeros explicitly. Added docs/early-native-footers.md, a fresh
+  assembly/metadata verifier, two mutation/boundary tests and the per-field
+  audit. Updated PLAN.md, bootstrap and title documentation.
+- **Validation:** Both new tests pass, covering valid field/storage boundaries,
+  malformed relocation counts, entry/dictionary pointers, native attributes,
+  trailer values and nonzero bootstrap storage. Fresh assembly preserves both
+  exact component hashes. Metadata generation and --verify pass. Full rebuild,
+  tools/verify_disks.py and git diff --check pass; both disk images and the
+  manual retain their reference hashes. No new emulator execution is claimed.
+- **Coverage:** 48 previously provisional source bytes now have data evidence
+  (32 bootstrap; 16 title). These bytes were already source-built, so manifest
+  ownership remains 179,220 source bytes, 100,900 identified data/asset bytes
+  and 6,600 temporary bytes (906 disk 1; 5,694 disk 2). This distinction keeps
+  the classification audit separate from exact-build ownership statistics.
+- **Workspace/next:** User PRD edits and ref/ remain excluded. Continue the
+  remaining native provisional ranges, disk tails and allocation evidence,
+  followed by final clean-build and dual-emulator behavior validation.

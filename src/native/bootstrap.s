@@ -473,8 +473,15 @@ phase_on_delays:
 phase_off_delays:
     .byte $70,$2C,$26,$22,$1F,$1E,$1D,$1C,$1C,$1C,$1C,$1C
 
-; Unreferenced trailing bytes, preserved without claiming they are instructions.
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$E8,$02,$00,$00,$02,$00,$01,$01
-    .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+; Retained native Pascal footer; docs/early-native-footers.md.
+; Metadata entry offset zero includes the page-count byte, whereas boot enters +1.
+bootstrap_native_footer:
+    .word 0, 0, 0, 0             ; Empty interpreter/procedure/segment/global relocation lists.
+    .word * - boot_page_count    ; Native entry displacement ($02E8).
+bootstrap_native_attributes:
+    .byte 0, 0                   ; Native marker and lexical level.
+    .word * - bootstrap_native_attributes
+    .byte 1, 1                   ; Segment number and procedure count.
+    .res $10, 0                  ; Zero storage to the three-page loader boundary.
 
 .assert * - boot_page_count = $300, error, "Bootstrap size changed"

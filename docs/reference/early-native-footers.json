@@ -1,0 +1,250 @@
+{
+  "classification_evidence": "docs/early-native-footers.md",
+  "records": [
+    {
+      "name": "bootstrap",
+      "size": 768,
+      "segment_end": 752,
+      "footer_start": 736,
+      "dictionary": {
+        "procedure_count": 1,
+        "dictionary_start": 748,
+        "valid": true,
+        "procedures": [
+          {
+            "number": 1,
+            "dictionary_offset": 748,
+            "backward_offset": 2,
+            "attribute_offset": 746,
+            "entry_offset": 0,
+            "representation": "native-6502",
+            "lexical_level": 0,
+            "storage": "segment",
+            "status": "structurally-valid"
+          }
+        ]
+      },
+      "relocations": {
+        "entry": 0,
+        "attributes": 746,
+        "tables_start": 736,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 742,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 740,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 738,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 736,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "items": [
+        {
+          "offset": 736,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-interpreter",
+          "value": 0
+        },
+        {
+          "offset": 738,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-procedure",
+          "value": 0
+        },
+        {
+          "offset": 740,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-segment",
+          "value": 0
+        },
+        {
+          "offset": 742,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-global",
+          "value": 0
+        },
+        {
+          "offset": 744,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-entry-displacement",
+          "value": 744
+        },
+        {
+          "offset": 746,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-attributes"
+        },
+        {
+          "offset": 748,
+          "size": 2,
+          "classification": "data",
+          "kind": "procedure-dictionary-pointer",
+          "value": 2
+        },
+        {
+          "offset": 750,
+          "size": 2,
+          "classification": "data",
+          "kind": "segment-trailer"
+        },
+        {
+          "offset": 752,
+          "size": 16,
+          "classification": "data",
+          "kind": "zero-storage-to-three-page-loader-boundary"
+        }
+      ],
+      "newly_classified_data_bytes": 32,
+      "remaining_provisional_ranges": [],
+      "source": "src/native/bootstrap.s",
+      "sha256": "068b86236cbe9512a8cf53ab49a0db20887e1b3d150f9f5e609e811bb10a473f"
+    },
+    {
+      "name": "title_draw",
+      "size": 1024,
+      "segment_end": 928,
+      "footer_start": 912,
+      "dictionary": {
+        "procedure_count": 1,
+        "dictionary_start": 924,
+        "valid": true,
+        "procedures": [
+          {
+            "number": 1,
+            "dictionary_offset": 924,
+            "backward_offset": 2,
+            "attribute_offset": 922,
+            "entry_offset": 0,
+            "representation": "native-6502",
+            "lexical_level": 0,
+            "storage": "segment",
+            "status": "structurally-valid"
+          }
+        ]
+      },
+      "relocations": {
+        "entry": 0,
+        "attributes": 922,
+        "tables_start": 912,
+        "groups": [
+          {
+            "kind": "global",
+            "count_offset": 918,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "segment",
+            "count_offset": 916,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "procedure",
+            "count_offset": 914,
+            "count": 0,
+            "pointers": []
+          },
+          {
+            "kind": "interpreter",
+            "count_offset": 912,
+            "count": 0,
+            "pointers": []
+          }
+        ]
+      },
+      "items": [
+        {
+          "offset": 912,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-interpreter",
+          "value": 0
+        },
+        {
+          "offset": 914,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-procedure",
+          "value": 0
+        },
+        {
+          "offset": 916,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-segment",
+          "value": 0
+        },
+        {
+          "offset": 918,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-relocation-count-global",
+          "value": 0
+        },
+        {
+          "offset": 920,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-entry-displacement",
+          "value": 920
+        },
+        {
+          "offset": 922,
+          "size": 2,
+          "classification": "data",
+          "kind": "native-attributes"
+        },
+        {
+          "offset": 924,
+          "size": 2,
+          "classification": "data",
+          "kind": "procedure-dictionary-pointer",
+          "value": 2
+        },
+        {
+          "offset": 926,
+          "size": 2,
+          "classification": "data",
+          "kind": "segment-trailer"
+        }
+      ],
+      "newly_classified_data_bytes": 16,
+      "remaining_provisional_ranges": [
+        {
+          "offset": 928,
+          "size": 96,
+          "sha256": "737cab9732f8a5518df9f81e81dd30b6ff1e491b042d6b62e9976ef30a0f493e",
+          "reason": "Nonzero tail has no complete classification evidence"
+        }
+      ],
+      "source": "src/native/title_draw.s",
+      "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
+    }
+  ],
+  "newly_classified_data_bytes": 48,
+  "source_ownership_bytes_changed": 0
+}

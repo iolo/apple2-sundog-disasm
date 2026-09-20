@@ -131,6 +131,10 @@ Split large steps into independently validated, logged, and committed increments
   Step 08j reconstructs the eight-byte disk-1 block-83 control record from
   direct consumers: mode, save slot, persisted globals and two block selectors.
   The remaining 504 bytes of that block still require separate classification.
+  Step 08k audits 48 already source-built provisional bytes: native Pascal
+  footers in the bootstrap/title prefix and bounded bootstrap zero storage.
+  The title prefix's final 96 bytes remain explicitly provisional; source
+  ownership totals alone are not treated as classification evidence.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.
