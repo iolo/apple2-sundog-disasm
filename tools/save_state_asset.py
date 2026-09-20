@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract evidenced save-state data, excluding unclassified 96-byte bank tails."""
+"""Extract evidenced save-state data, excluding separately audited bank tails."""
 import argparse
 import json
 from pathlib import Path
@@ -138,7 +138,7 @@ def verify(output):
             raise ValueError('State field round trip differs')
         if decode_slot(descriptor) != record['descriptor'] or encode_slot(record['descriptor']) != descriptor:
             raise ValueError('State descriptor round trip differs')
-    print('Verified 20,352 classified state/descriptor bytes; bank tails remain unresolved')
+    print('Verified 20,352 classified state/descriptor bytes; bank tails are outside this asset')
 
 
 if __name__ == '__main__':

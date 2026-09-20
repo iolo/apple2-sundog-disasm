@@ -83,6 +83,8 @@ Split large steps into independently validated, logged, and committed increments
   Step 08c uses the original Apple format documentation plus verified local fields
   to reconstruct 1,652 additional header bytes; 140 library-header bytes remain
   unresolved.
+  Step 08d reconstructs 978 bytes of bounded zero storage after the two full-ship
+  image copies and the four-record save descriptor table.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

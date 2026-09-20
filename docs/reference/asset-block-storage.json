@@ -1,0 +1,47 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/asset-block-storage.md",
+  "source_output_bytes": 617,
+  "disk_output_bytes": 978,
+  "records": [
+    {
+      "disk": "disk2",
+      "block": 29,
+      "allocation_size": 2048,
+      "allocation_sha256": "209f8b3f34028b49db627e52a31e77f04b99689aea578a4ad6a09ea690ec40f0",
+      "payload_component": "packed_full_ship",
+      "payload_sha256": "4d3032ed5d476749c06691f10fb7effcdd989df356e364aa3387d246296a34ca",
+      "offset": 1687,
+      "size": 361,
+      "classification": "data",
+      "kind": "zero-storage-after-full_ship",
+      "sha256": "fe8837bac731cba91411f9c3f3cc80bde5949c9f290bd3d9de385e9185864a35"
+    },
+    {
+      "disk": "disk1",
+      "block": 188,
+      "allocation_size": 2048,
+      "allocation_sha256": "209f8b3f34028b49db627e52a31e77f04b99689aea578a4ad6a09ea690ec40f0",
+      "payload_component": "packed_full_ship",
+      "payload_sha256": "4d3032ed5d476749c06691f10fb7effcdd989df356e364aa3387d246296a34ca",
+      "offset": 1687,
+      "size": 361,
+      "classification": "data",
+      "kind": "zero-storage-after-full_ship",
+      "sha256": "fe8837bac731cba91411f9c3f3cc80bde5949c9f290bd3d9de385e9185864a35"
+    },
+    {
+      "disk": "disk1",
+      "block": 26,
+      "allocation_size": 512,
+      "allocation_sha256": "627de66a8704adbeb567b29d36c8b29f3bbabbdb45ed09e3d354ef747becdda3",
+      "payload_component": "save_slot_records",
+      "payload_sha256": "793ac5444a98999fc062e43911375c777b2496b5392c5122e15e29e3e6362051",
+      "offset": 256,
+      "size": 256,
+      "classification": "data",
+      "kind": "zero-storage-after-save_descriptors",
+      "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+    }
+  ]
+}

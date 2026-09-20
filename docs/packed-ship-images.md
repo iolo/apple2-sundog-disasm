@@ -31,7 +31,9 @@ It retains high bits and all HGR memory-hole bytes in the decoded output.
 Every adopted byte belongs to the header or a consumed compression packet.
 The four-block reads fetch additional bytes after the complete streams: 361
 for each full-ship copy and 488 for the section. Those bytes are excluded from
-this adoption and remain in the unresolved regions. In particular, the section
+the compressed-stream adoption. The full-ship copies' zero tails are now
+separately reconstructed as [bounded allocation storage](asset-block-storage.md).
+The section's tail remains unresolved. In particular, the section
 has a `$01` immediately after its consumed stream; it is not silently absorbed
 as an unexplained terminator or normalized into padding.
 

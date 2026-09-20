@@ -2158,3 +2158,33 @@ and acceptance criteria.
   excluded from this implementation commit. The goal is active after resume.
 - **Next action:** Continue remaining asset storage and orphan/variant code,
   provisional runtime classifications, and final checks in both emulators.
+
+## 2026-09-20 — Step 08d: bounded asset-allocation zero storage
+
+- **Evidence:** The full-ship RLE image ends exactly after a 56-byte repeat
+  packet, at consumed byte 1,687 of its evidenced four-block read. Its 361-byte
+  zero remainder is unused allocation storage, with a completely identical
+  disk-1 allocation. Separately, the one-block save-descriptor read and bounded
+  four-slot, 64-byte indexing establish a 256-byte table and 256-byte zero spare
+  remainder. Classification uses complete payloads and allocation boundaries;
+  arbitrary zero runs and the nonzero section-image tail remain excluded.
+- **Artifacts:** Added tools/asset_block_storage.py, two tests, explicit .res
+  declarations/config/adoption under src/data, a per-allocation reference audit,
+  and docs/asset-block-storage.md. Updated ship/save documentation and PLAN.md.
+  The save document now also reflects the previously adopted p-code copies in
+  three bank tails; the save verifier's message describes its actual scope.
+- **Validation:** Both new tests pass, covering exact extents, changed payloads,
+  malformed allocation lengths, nonzero tail rejection and section-image
+  exclusion. Preparation verifies existing asset hashes and every payload
+  byte's current manifest ownership, format boundaries and all-zero remainders.
+  The 617 source bytes assemble exactly and map to 978 disk bytes. Adoption,
+  full build, regenerated artifact verification, original disk/manual checks
+  and git diff --check pass. Both images remain exact. No new emulator result
+  is claimed.
+- **Coverage:** 173,975 source-built disk bytes, 100,324 identified data/asset
+  bytes, 12,421 temporary bytes (5,041 disk 1; 7,380 disk 2). All 978 bytes in
+  this checkpoint are data storage, not newly decoded instructions.
+- **Workspace:** The user's PRD reference-link edit is preserved and excluded
+  from this commit.
+- **Next action:** Continue nonzero residuals, orphan/variant code and provisional
+  runtime classification audits, followed by final checks in both emulators.

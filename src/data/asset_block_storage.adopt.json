@@ -1,0 +1,37 @@
+{
+  "name": "asset_block_storage",
+  "source": "src/data/asset_block_storage.s",
+  "config": "src/data/asset_block_storage.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 16535,
+      "size": 105,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 19968,
+      "size": 256,
+      "input_offset": 105
+    },
+    {
+      "disk": "disk1",
+      "offset": 94615,
+      "size": 105,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 98048,
+      "size": 256,
+      "input_offset": 105
+    },
+    {
+      "disk": "disk1",
+      "offset": 14848,
+      "size": 256,
+      "input_offset": 361
+    }
+  ]
+}

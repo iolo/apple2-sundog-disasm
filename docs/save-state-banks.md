@@ -4,11 +4,14 @@ Disk 1 contains four saved-game banks starting at logical blocks 27, 37, 47,
 and 57. Each spans ten blocks (5,120 bytes). The first 5,024 bytes of each
 bank have evidenced data consumers and serialization paths. They are extracted
 in `assets/save-states/payloads.bin`, with reversible structured word records
-in `records.json`. The final 96 bytes of each bank remain explicitly unresolved.
+in `records.json`. The final 96 bytes of the first three banks are now mapped to
+[preserved p-code source copies](preserved-pcode-copies.md); the fourth bank's
+96-byte tail remains unresolved.
 
 Four corresponding 64-byte descriptors occupy the first 256 bytes of block 26,
-extracted as `slots.bin`. The remaining half of that block is not classified
-by this checkpoint. Total newly classified data is `4*5024 + 4*64 = 20,352`
+extracted as `slots.bin`. The remaining zero half of that block is separately
+reconstructed as [bounded descriptor-block storage](asset-block-storage.md).
+The original asset extraction classified `4*5024 + 4*64 = 20,352`
 disk bytes. No executable region is adopted by this component.
 
 ## State layout and evidence
@@ -23,7 +26,7 @@ Offsets below are relative to each ten-block bank. Endpoint offsets are exclusiv
 | 3584–3824 | 240 | World-table data addressed by segment-29 word 23 |
 | 3824–4112 | 288 | World-table data addressed by segment-29 word 24 |
 | 4112–5024 | 912 | Remaining world-table data addressed by segment-29 word 25 |
-| 5024–5120 | 96 | Unresolved; excluded even though included in the bank checksum |
+| 5024–5120 | 96 | Excluded from the state asset; preserved p-code in slots 0–2, unresolved in slot 3 |
 
 The word arrays retain every bit, including packed fields, text storage, and
 unused storage inside the typed records. Many individual field meanings remain
@@ -101,6 +104,7 @@ directory and the current exact rebuilt disk. It verifies all four full-bank
 checksums, exclusive temporary ownership, and lossless structured-record
 round trips before writing assets. Normal builds read only committed data.
 Asset verification covers the adopted payload/descriptor bytes, not the
-excluded tails; full-disk verification retains the latter via temporary inputs.
+excluded tails; full-disk verification includes their separately recorded
+source or temporary inputs.
 No live save/load round trip is claimed here. Final save/load behavior checks
 in both emulators remain required.
