@@ -1,0 +1,13 @@
+{
+  "name": "dialogue_workspace",
+  "source": "src/data/dialogue_workspace.s",
+  "config": "src/data/dialogue_workspace.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 48168,
+      "size": 189,
+      "input_offset": 0
+    }
+  ]
+}

@@ -187,8 +187,13 @@ Split large steps into independently validated, logged, and committed increments
   bounded zero-storage bytes and a retained 16-byte Pascal identifier prefix.
   Historical compiler layout and native tree-search offsets support the record
   classification; missing variant fields and pointer targets are not invented.
-  Current ownership is 183,827 source-built bytes, 101,152 identified data/asset
+  Checkpoint ownership is 183,827 source-built bytes, 101,152 identified data/asset
   bytes and 1,741 temporary bytes (373 disk 1; 1,368 disk 2).
+- Step 08s identifies 189 bytes after the base dialogue dictionary as mutable
+  supplement workspace. The shipped copy routine and all twelve supplemental
+  banks establish exact writes through offset 996; the final 27 bytes remain
+  unresolved. Current ownership is 184,016 source-built bytes, 101,152 identified
+  data/asset bytes and 1,552 temporary bytes (373 disk 1; 1,179 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

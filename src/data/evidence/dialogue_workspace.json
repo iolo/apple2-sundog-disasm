@@ -1,0 +1,27 @@
+{
+  "component": "game_16",
+  "component_sha256": "742200779e4e74ba6a93f984190b40284c5bf6d255584cb4572132dff65944a7",
+  "windows": [
+    {
+      "name": "base-end-selection",
+      "offset": 5750,
+      "size": 34,
+      "hex": "40cc06b601808dddbecc07deb601808ddd0195bec3a107dd0195cc06b9f6ddb8011a",
+      "sha256": "15e6b870299b306ce6af1750c629595f88bd91b2caa8c0c2be7eb5eb57b6df34"
+    },
+    {
+      "name": "supplement-copy",
+      "offset": 3800,
+      "size": 145,
+      "hex": "c70048c601cd1617d800be10cba1f2d810becc06d811becc05dcdc82cc05b6011acc04dd00c5a142d8dcbecc03db0000ae0ccc02d8dc0182b601808dd9da9e02b601808ddb0182d9da82c700018ebfdc0182da82cc05dca105dc0182cc05db0182cc04dd0195cc06b9f6db40c9a115b601808ddb0182b601808ddbbebfdb0182cc04b9f4b2012f00a401009a000000ae1f",
+      "sha256": "0bcebb9ad1ecf452da9842abc8581b90bc406be78766835542ea23dc84db3daf"
+    },
+    {
+      "name": "offset-reader",
+      "offset": 1412,
+      "size": 8,
+      "hex": "b601808ddabecc05",
+      "sha256": "b8087df72b577706219ab819b15be12c1d67e84d6eb1c48ed08e36e80d7dc134"
+    }
+  ]
+}

@@ -3145,6 +3145,35 @@ and acceptance criteria.
   image and storage tails; whole-project completion is still unproved.
   User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.
 
+## 2026-09-20 — Step 08s: reconstruct mutable supplemental-dialogue workspace
+
+- **Direct consumer evidence:** Game 16 initializes the first free dictionary
+  entry by scanning backward from pointer 64 through equal end pointers, yielding
+  entry 52 and byte offset 808. Procedure 32 copies supplemental text into that
+  buffer, updates low-byte end pointers, fills remaining slots and rebuilds
+  the wrap-index table. The twelve supplied supplemental banks write 9–189
+  bytes; block 95's nine records cover every offset 808–996.
+- **Classification:** These 189 initial zero bytes are mutable dialogue-text
+  workspace, established by copy destinations. The final 27 bytes at 997–1023
+  are untouched by the current supplements and remain unresolved. The static
+  model does not constitute a new runtime dialogue trace or prove execution of
+  all branches. Original initializer bytes are preserved.
+- **Artifacts:** Added explicit workspace source/configuration/adoption recipe,
+  bounded consumer evidence, per-entry copy/pointer-update report, verifier,
+  two tests and docs/dialogue-workspace.md. Updated dictionary documentation,
+  PLAN.md and reconstruction ownership. Existing text assets remain unchanged.
+- **Validation:** Both tests pass, covering index/boundary changes, nonzero
+  workspace, truncation, missing maximum-write evidence and an overlong
+  supplement. Varying all 27 excluded bytes confirms they remain untouched.
+  Fresh assembly, workspace and dictionary verifiers, strict adoption, full
+  rebuild, tools/verify_disks.py and git diff --check pass. Both disk outputs
+  retain exact hashes; original media/manual and emulator baselines are unchanged.
+- **Coverage/next:** 184,016 source-built bytes, 101,152 identified data/asset
+  bytes and 1,552 temporary bytes remain (373 disk 1; 1,179 disk 2). Continue
+  sparse RLE/boot/save tails, retained record/text fragments, changed image
+  bytes and the mixed checksum remainder. User PRD.md edits and ref/ remain
+  untouched and excluded. The full goal remains active.
+
 ## 2026-09-20 — Step 08p: reconstruct the fourth boot sector as output storage
 
 - **Evidence/correction:** Re-read the complete first two logical disk blocks.

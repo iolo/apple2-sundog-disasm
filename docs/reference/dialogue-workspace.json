@@ -1,0 +1,400 @@
+{
+  "initial_entry_index": 52,
+  "workspace_range": [
+    808,
+    997
+  ],
+  "data_bytes": 189,
+  "unused_unclassified_range": [
+    997,
+    1024
+  ],
+  "supplements": [
+    {
+      "block": 90,
+      "entries": 1,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 9
+        }
+      ],
+      "final_offset": 817,
+      "updated_dictionary_sha256": "b5c1a3e958e170a01907dc2429dc5c4ada8bbe4bbe3a559da374dd875d0e8568"
+    },
+    {
+      "block": 91,
+      "entries": 7,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 4
+        },
+        {
+          "entry": 53,
+          "offset": 812,
+          "size": 10
+        },
+        {
+          "entry": 54,
+          "offset": 822,
+          "size": 12
+        },
+        {
+          "entry": 55,
+          "offset": 834,
+          "size": 9
+        },
+        {
+          "entry": 56,
+          "offset": 843,
+          "size": 10
+        },
+        {
+          "entry": 57,
+          "offset": 853,
+          "size": 13
+        },
+        {
+          "entry": 58,
+          "offset": 866,
+          "size": 8
+        }
+      ],
+      "final_offset": 874,
+      "updated_dictionary_sha256": "95ad181bb154addcbdf7a27e4f17b585bb1d6993094fe69f80e06a762a8d6022"
+    },
+    {
+      "block": 92,
+      "entries": 5,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 14
+        },
+        {
+          "entry": 53,
+          "offset": 822,
+          "size": 10
+        },
+        {
+          "entry": 54,
+          "offset": 832,
+          "size": 20
+        },
+        {
+          "entry": 55,
+          "offset": 852,
+          "size": 18
+        },
+        {
+          "entry": 56,
+          "offset": 870,
+          "size": 7
+        }
+      ],
+      "final_offset": 877,
+      "updated_dictionary_sha256": "e4808d2fe11354d3451cac4dacb30e87070073596f1bcb32e4c72b41464ba49a"
+    },
+    {
+      "block": 93,
+      "entries": 3,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 21
+        },
+        {
+          "entry": 53,
+          "offset": 829,
+          "size": 23
+        },
+        {
+          "entry": 54,
+          "offset": 852,
+          "size": 34
+        }
+      ],
+      "final_offset": 886,
+      "updated_dictionary_sha256": "f061d90e01fbe5881fffdf790185b4bbd5bde2ad44e27bb6123e67c07e3693d8"
+    },
+    {
+      "block": 94,
+      "entries": 5,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 24
+        },
+        {
+          "entry": 53,
+          "offset": 832,
+          "size": 14
+        },
+        {
+          "entry": 54,
+          "offset": 846,
+          "size": 11
+        },
+        {
+          "entry": 55,
+          "offset": 857,
+          "size": 21
+        },
+        {
+          "entry": 56,
+          "offset": 878,
+          "size": 13
+        }
+      ],
+      "final_offset": 891,
+      "updated_dictionary_sha256": "93a1d6c6c6016ae8613d8de2eac303dbd3e5a0ad95f978e8277a6842c923df17"
+    },
+    {
+      "block": 95,
+      "entries": 9,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 24
+        },
+        {
+          "entry": 53,
+          "offset": 832,
+          "size": 34
+        },
+        {
+          "entry": 54,
+          "offset": 866,
+          "size": 23
+        },
+        {
+          "entry": 55,
+          "offset": 889,
+          "size": 19
+        },
+        {
+          "entry": 56,
+          "offset": 908,
+          "size": 14
+        },
+        {
+          "entry": 57,
+          "offset": 922,
+          "size": 5
+        },
+        {
+          "entry": 58,
+          "offset": 927,
+          "size": 2
+        },
+        {
+          "entry": 59,
+          "offset": 929,
+          "size": 27
+        },
+        {
+          "entry": 60,
+          "offset": 956,
+          "size": 41
+        }
+      ],
+      "final_offset": 997,
+      "updated_dictionary_sha256": "ceb1c8bbc23b6dcf577a98e43c61d10c5cdfaaab299537b92f5d388a3321d42e"
+    },
+    {
+      "block": 96,
+      "entries": 3,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 17
+        },
+        {
+          "entry": 53,
+          "offset": 825,
+          "size": 25
+        },
+        {
+          "entry": 54,
+          "offset": 850,
+          "size": 42
+        }
+      ],
+      "final_offset": 892,
+      "updated_dictionary_sha256": "74f054a66a2d25cc807aac602df760458645bd1b6bfb424c7422e8aa25c8f9be"
+    },
+    {
+      "block": 97,
+      "entries": 3,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 19
+        },
+        {
+          "entry": 53,
+          "offset": 827,
+          "size": 11
+        },
+        {
+          "entry": 54,
+          "offset": 838,
+          "size": 9
+        }
+      ],
+      "final_offset": 847,
+      "updated_dictionary_sha256": "b96502048a35b657c6bae7fbc6a997472a8633e113ea61602c46e645d90596e2"
+    },
+    {
+      "block": 99,
+      "entries": 5,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 23
+        },
+        {
+          "entry": 53,
+          "offset": 831,
+          "size": 10
+        },
+        {
+          "entry": 54,
+          "offset": 841,
+          "size": 21
+        },
+        {
+          "entry": 55,
+          "offset": 862,
+          "size": 7
+        },
+        {
+          "entry": 56,
+          "offset": 869,
+          "size": 22
+        }
+      ],
+      "final_offset": 891,
+      "updated_dictionary_sha256": "6c5f9d1db9ec82b046aa19a1fd257b28cc73863d472d83e87de977d54d2527e6"
+    },
+    {
+      "block": 100,
+      "entries": 9,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 15
+        },
+        {
+          "entry": 53,
+          "offset": 823,
+          "size": 17
+        },
+        {
+          "entry": 54,
+          "offset": 840,
+          "size": 28
+        },
+        {
+          "entry": 55,
+          "offset": 868,
+          "size": 23
+        },
+        {
+          "entry": 56,
+          "offset": 891,
+          "size": 6
+        },
+        {
+          "entry": 57,
+          "offset": 897,
+          "size": 20
+        },
+        {
+          "entry": 58,
+          "offset": 917,
+          "size": 31
+        },
+        {
+          "entry": 59,
+          "offset": 948,
+          "size": 20
+        },
+        {
+          "entry": 60,
+          "offset": 968,
+          "size": 20
+        }
+      ],
+      "final_offset": 988,
+      "updated_dictionary_sha256": "30c252fb94acfa87e44ad4ed360537db87b81f8e635527f79e0a101b14df67e2"
+    },
+    {
+      "block": 101,
+      "entries": 5,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 7
+        },
+        {
+          "entry": 53,
+          "offset": 815,
+          "size": 12
+        },
+        {
+          "entry": 54,
+          "offset": 827,
+          "size": 25
+        },
+        {
+          "entry": 55,
+          "offset": 852,
+          "size": 5
+        },
+        {
+          "entry": 56,
+          "offset": 857,
+          "size": 16
+        }
+      ],
+      "final_offset": 873,
+      "updated_dictionary_sha256": "f1a29106a1c36de93958a2fbb1486f7860b4d6d63514990d36c4b82893619113"
+    },
+    {
+      "block": 102,
+      "entries": 2,
+      "write_ranges": [
+        {
+          "entry": 52,
+          "offset": 808,
+          "size": 30
+        },
+        {
+          "entry": 53,
+          "offset": 838,
+          "size": 27
+        }
+      ],
+      "final_offset": 865,
+      "updated_dictionary_sha256": "946a167a10171f9bc8a972e63e80495cf0e5d19bf850b75e0f9efaf614717fb9"
+    }
+  ],
+  "classification": "data",
+  "classification_evidence": "docs/dialogue-workspace.md",
+  "dictionary_sha256": "cbccfad29054e77a675817d793f08adcb0cc8f174a4614c9cda1f8d9f2b4e1b9",
+  "consumer_sha256": "742200779e4e74ba6a93f984190b40284c5bf6d255584cb4572132dff65944a7",
+  "runtime_execution_claimed": false
+}

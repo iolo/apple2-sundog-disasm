@@ -8,9 +8,8 @@ with each high-bit position listed separately. It repacks exactly to
 
 The remaining script regions are outside this data extraction. No custom
 dialogue instructions are hidden in the extracted text. The separate 128-byte
-prefix in disk-1 block 196 has no exact match in the current reconstructed
-components and remains unresolved; its appearance alone does not establish
-whether it is p-code, other code, or data.
+prefix in disk-1 block 196 is now a separately reconstructed
+[encoded native reader and alignment byte](encoded-disk-reader.md).
 Subsequent [script reconstruction](dialogue-scripts.md) and the
 [complete bank audit](dialogue-bank-layout.md) finish blocks 90–102; the
 exclusions described below record this dictionary extraction's narrower scope.
@@ -35,9 +34,10 @@ empty entries. Entries 0–31 include dialogue choices and synonym groups; other
 entries include pronoun/phrase fragments and a repeated dummy group. The
 base asset includes all 65 pointer bytes and all 743 addressed text bytes.
 
-Bytes 808–1023 remain unresolved: they are outside the initial dictionary
-extent, and the last byte is nonzero ($A0). They are not claimed as harmless
-padding merely because most of the tail is zero.
+Bytes 808–996 are now separately reconstructed as
+[supplemental-text workspace](dialogue-workspace.md), established by the actual
+copy destinations. Bytes 997–1023 remain unresolved; current supplements do not
+reach that range, whose last byte is nonzero ($A0).
 
 ## Text consumers
 
