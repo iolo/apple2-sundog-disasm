@@ -1,0 +1,32 @@
+{
+  "name": "item_names_demo",
+  "data": "assets/item-names/demo/records.bin",
+  "format": "64 records: counted ASCII name, residual string storage, value byte",
+  "classification": "docs/item-names.md",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 98304,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 101888,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 101632,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 101376,
+      "size": 256,
+      "input_offset": 768
+    }
+  ]
+}

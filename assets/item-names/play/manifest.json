@@ -1,0 +1,18 @@
+{
+  "disk": "disk2",
+  "block": 46,
+  "size": 1024,
+  "sha256": "595790e626bec3bcc68293b736861333a5247f9ee380f9c01f927fb3bf1c7faa",
+  "record_size": 16,
+  "record_count": 64,
+  "inventory_records": [
+    0,
+    32
+  ],
+  "cargo_records": [
+    32,
+    64
+  ],
+  "classification": "data",
+  "classification_evidence": "docs/item-names.md"
+}

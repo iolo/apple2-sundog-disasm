@@ -1568,3 +1568,28 @@ and acceptance criteria.
   85,459 temporary bytes (48,117 disk 1; 37,342 disk 2).
 - **Next action:** Continue tracing persistent game-data records and remaining
   native fragments; retain evidence requirements for every unresolved tail.
+
+## 2026-09-20 — Step 07i: inventory and cargo name-table variants
+
+- **Work/evidence:** Traced play and demo startup loads to disk-2 blocks 46–47
+  and disk-1 blocks 192–193. Library 27 indexes inventory names at $1600 with
+  a 16-byte stride and passes counted strings to the renderer. Game 20 loads
+  cargo names at $5800, checks record 31 against `cryogens`, and independently
+  reads record byte 15 using a five-bit cargo ID. Demo loading and matching
+  record structure identify the corresponding variant.
+- **Artifacts:** Added tools/item_name_asset.py, three codec tests,
+  docs/item-names.md, and demo/play assets with original record bytes,
+  reversible JSON, manifests, and adoption recipes. All 128 records retain the
+  counted name, residual fixed-width storage, and numeric byte. Zero-length
+  names are not inferred from stale text; original variant differences remain.
+  Exact meanings of all numeric values are optional further analysis.
+- **Validation:** Three tests pass for nontext residue/value preservation,
+  zero-length names, and rejection of malformed records or field-width edits.
+  Extraction checks both rebuilt disk hashes, temporary ownership, and exact
+  record round trips. `--verify assets/item-names` passes. Adopted each variant
+  with a rebuild between adoptions, then ran tools/verify_disks.py: both images
+  are exact and original inputs unchanged. No new live emulator run is claimed.
+- **Coverage:** 154,727 source-built bytes, 48,582 identified data/asset bytes,
+  83,411 temporary bytes (47,093 disk 1; 36,318 disk 2).
+- **Next action:** Continue persistent-state/map-record classification and raw
+  executable fragments. Final both-emulator behavioral validation remains open.

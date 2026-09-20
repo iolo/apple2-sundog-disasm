@@ -47,7 +47,8 @@ Split large steps into independently validated, logged, and committed increments
   step 07c extracts the registration certificate, and step 07d extracts two
   play graphics banks, followed by compressed ship images in step 07e and four
   tile banks in step 07f, world-map tiles in step 07g, and packed maps in
-  step 07h. This overlap does not waive any
+  step 07h, and inventory/cargo name-table variants in step 07i.
+  This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
   outside the completed classification. Step 08b reconstructs the four disk-1

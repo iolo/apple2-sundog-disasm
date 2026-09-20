@@ -102,8 +102,9 @@ byte-identical module replacements reuse the established reference behavior.
 | World-map tiles and variants | `assets/world-tiles/tiles.bin` | First 2,016 bytes at disk 2 block 25 and disk 1 block 184 | 4,032 |
 | Packed world-map payloads | `assets/world-maps/maps.bin` | 240-byte payloads in disk 2 blocks 55–63; copies in disk 1 block 194 | 4,800 |
 | Pascal directory views | `src/data/pascal_directories.s` | Disk 1 blocks 79–82 | 2,048 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 48,117 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 37,342 |
+| Inventory/cargo name-table variants | `assets/item-names/{demo,play}/records.bin` | Disk 1 blocks 192–193; disk 2 blocks 46–47 | 2,048 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 47,093 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 36,318 |
 
 The 154,727 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
@@ -288,6 +289,12 @@ two-bit symbols as well as their state-decoded tile grids. Current ownership is
 
 Step 08b reconstructs all four disk-1 directory blocks from typed declarations,
 including inactive records and unused directory capacity; see
-[Pascal directories](pascal-directories.md). Current ownership is 154,727
+[Pascal directories](pascal-directories.md). At that checkpoint ownership was 154,727
 source-built bytes, 46,534 asset bytes, and 85,459 temporary bytes. Both rebuilt
-images remain exact; the final code/data audit and emulator checks remain open.
+images remained exact; the final code/data audit and emulator checks remained open.
+
+Step 07i extracts the two [inventory/cargo name tables](item-names.md) as counted
+strings, residual fixed-width string storage, and numeric bytes. Current ownership
+is 154,727 source-built bytes, 48,582 classified data/asset bytes, and 83,411
+temporary bytes. Both full disks remain exact; final classification and behavior
+validation are still incomplete.
