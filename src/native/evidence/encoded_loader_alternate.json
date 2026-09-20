@@ -1,0 +1,30 @@
+{
+  "name": "encoded_loader_alternate",
+  "size": 63,
+  "base": 22528,
+  "sha256": "21f97d89c6eec6ed0ee8f13f0bc7f3f8a8afd2b7e596b17f95b9dbae22618400",
+  "origins": [
+    {
+      "disk": "disk1",
+      "block": 197
+    }
+  ],
+  "classification_evidence": "docs/encoded-native-overlay.md",
+  "roots": [
+    {
+      "offset": 0,
+      "evidence": "Decoded position-independent loader with coherent complete swap/call/restore paths; matching relocated loader structure on both disks. Actual invocation is not claimed."
+    }
+  ],
+  "external_targets": {
+    "0": "The loader writes RTS ($60) at zero-page $0000 before JSR $0000 to recover its own program address from the stack.",
+    "4601": "Fixed call into the swapped native body; full body classification remains open."
+  },
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 251,
+    "step": 185,
+    "offset": 0,
+    "evidence": "docs/encoded-native-overlay.md"
+  }
+}

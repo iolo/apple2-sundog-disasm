@@ -14,6 +14,7 @@ import subprocess
 
 from build_disks import contained_file
 from disk_layout import ROOT, sha
+from storage_encoding import transform, validate_encoding
 
 
 def replacement_plan(manifest, images, recipe, binary):
@@ -24,12 +25,17 @@ def replacement_plan(manifest, images, recipe, binary):
     if not binary or not recipe["mappings"]:
         raise ValueError("Component and mappings must be nonempty")
     if 'data' in recipe:
+        if 'storage_encoding' in recipe:
+            raise ValueError('Storage encoding is reserved for disassembled source')
         if 'source' in recipe or 'config' in recipe or not recipe.get('classification') or not recipe.get('format'):
             raise ValueError('Identified data needs format/evidence and cannot also be source')
         new_spec = dict(kind='identified-data', path=recipe['data'], format=recipe['format'],
                         classification_evidence=recipe['classification'])
     else:
         new_spec = dict(kind='ca65-source', source=recipe['source'], config=recipe['config'])
+        if 'storage_encoding' in recipe:
+            validate_encoding(recipe['storage_encoding'])
+            new_spec['storage_encoding'] = copy.deepcopy(recipe['storage_encoding'])
     new_spec.update(size=len(binary), sha256=sha(binary))
     result = copy.deepcopy(manifest)
     disks = {disk["id"]: disk for disk in result["disks"]}
@@ -109,7 +115,13 @@ def main():
         subprocess.run(["ca65", "-I", str(source.parent), "-o", str(obj), str(source)], check=True)
         subprocess.run(["ld65", "-C", str(config), "-o", str(binary_file), str(obj)], check=True)
     images = {d["id"]: contained_file(args.baseline, d["filename"]).read_bytes() for d in manifest["disks"]}
-    planned, replacements = replacement_plan(manifest, images, recipe, binary_file.read_bytes())
+    binary = binary_file.read_bytes()
+    if 'storage_encoding' in recipe:
+        if 'data' in recipe:
+            raise ValueError('Cannot encode a binary data asset as executable source')
+        contained_file(ROOT,recipe['storage_encoding']['evidence'])
+        binary = transform(binary,recipe['storage_encoding'])
+    planned, replacements = replacement_plan(manifest, images, recipe, binary)
     destinations = {}
     for path, data in replacements.items():
         target = contained_file(args.manifest.parent, path)

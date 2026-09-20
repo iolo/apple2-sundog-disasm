@@ -7,6 +7,7 @@ import subprocess
 
 from disk_layout import ROOT, block_bytes, logical_sector_offset, sha
 from native_raw_source import analyze, source
+from storage_encoding import transform
 
 
 def prepare(recipe_path):
@@ -50,6 +51,12 @@ def prepare(recipe_path):
             position += length
     if data is None:
         raise ValueError('Raw component needs at least one origin')
+    storage_sha256 = sha(data)
+    if 'storage_encoding' in recipe:
+        encoding = recipe['storage_encoding']
+        if not (ROOT/encoding['evidence']).is_file():
+            raise ValueError('Missing storage encoding evidence')
+        data = transform(data,encoding,decode=True)
     report = analyze(data, recipe['base'], recipe)
     text = '; Evidence: '+recipe['classification_evidence']+'\n'+source(data, report)
     config = (f'MEMORY {{ IMAGE: start = ${recipe["base"]:04X}, size = {size}, file = %O; }}\n'
@@ -65,6 +72,9 @@ def prepare(recipe_path):
         raise ValueError('Raw source does not assemble exactly')
     adoption = dict(name=name, source=str(paths[0].relative_to(ROOT)),
                     config=str(paths[1].relative_to(ROOT)), mappings=mappings)
+    if 'storage_encoding' in recipe:
+        adoption['storage_encoding'] = recipe['storage_encoding']
+        report.update(storage_encoding=recipe['storage_encoding'],storage_sha256=storage_sha256)
     report.update(origins=recipe['origins'], classification_evidence=recipe['classification_evidence'],
                   disk_output_bytes=sum(m['size'] for m in mappings), byte_identical_assembly=True)
     for path, content in zip(paths, (text, config, json.dumps(adoption, indent=2)+'\n')):

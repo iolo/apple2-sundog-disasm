@@ -32,9 +32,10 @@ Pascal segments, and the split-system fragment are source-built. Remaining work
 includes classifying other disk regions, resolving provisional runtime data,
 extracting assets, and completing behavioral checks. The
 [executable coverage report](docs/executable-coverage.json) separates these tasks.
-Current coverage is 156,095 source-built bytes (including classified header
+Current coverage is 156,221 source-built bytes (including classified header
 tables, [Pascal directories](docs/pascal-directories.md), and
-[custom dialogue scripts](docs/dialogue-scripts.md)) plus 98,468 classified data/asset bytes from the
+[custom dialogue scripts](docs/dialogue-scripts.md) and
+[encoded native loaders](docs/encoded-native-overlay.md)) plus 98,468 classified data/asset bytes from the
 [title bitmap](docs/title-bitmap.md), [registration certificate](docs/certificate-bitmap.md),
 two copies of the [shared font](docs/shared-font.md), and
 [two play graphics banks](docs/play-glyphs.md), and
@@ -52,7 +53,7 @@ two copies of the [shared font](docs/shared-font.md), and
 [interaction records](docs/interaction-records.md), and
 [dialogue dictionary text](docs/dialogue-dictionary.md) and
 [dialogue messages](docs/dialogue-scripts.md), including
-[unused messages and bank storage](docs/dialogue-bank-layout.md); 32,157 bytes remain temporary.
+[unused messages and bank storage](docs/dialogue-bank-layout.md); 32,031 bytes remain temporary.
 These are disk-byte ownership totals, not instruction counts or completion percentages.
 
 Completed investigations include [reference boot and play sequences](docs/reference/README.md)

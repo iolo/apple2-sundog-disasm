@@ -1865,3 +1865,36 @@ and acceptance criteria.
   32,157 temporary bytes (17,788 disk 1; 14,369 disk 2).
 - **Next action:** Continue encrypted/packed graphics and mixed residual regions,
   then complete the whole-disk classification audit and both-emulator checks.
+
+## 2026-09-20 — Step 06af: encoded native overlay loader entries
+
+- **Finding:** The play bank at blocks 41–44 decodes to obfuscated native code,
+  not graphics. Utility's word-58 parameters provide seed 189/increment 243;
+  the game-15 loader/transform call independently establishes that decoding.
+  Word-56's seed 251/increment 185 reveals a related native bank at disk-1
+  blocks 197–200, with its destination/body call relocated by $0400. A live
+  load or invocation of the latter bank is not claimed.
+- **Work/evidence:** Disassembled both 63-byte position-independent entry loaders,
+  37 instructions each. Each obtains its own address through an RTS written at
+  zero page zero, swaps a 1,994-byte region into low memory, calls the body, and
+  swaps it back before returning. Recorded the nine-byte overread beyond the
+  four-block source buffer without inventing its runtime contents. The following
+  NOP and obfuscated bodies remain unresolved; no executable bank is hidden in
+  an identified-data asset.
+- **Artifacts:** Added tools/storage_encoding.py and four tests; taught raw
+  preparation, source adoption and the build to preserve a documented additive
+  storage encoding after assembly. Added both source/config/evidence/adoption
+  sets, complete raw entry audits, and docs/encoded-native-overlay.md. The normal
+  build retains both decoded and disk-encoded component artifacts and reads no
+  original images. The existing raw transform's SHIP writes are outside the
+  encoded buffers and do not affect reversible disk encoding.
+- **Validation:** Thirteen encoding/adoption/raw-decoder tests pass, including
+  known byte vectors, full byte-domain round trips, split-stream phase, malformed
+  encodings, and rejection of unencoded adoption input. Both native preparations
+  cover every selected byte and assemble exactly. Both adoptions, full builds
+  and comparisons pass; both disk images remain exact and originals unchanged.
+  No live execution of the decoded entries or final emulator completion is claimed.
+- **Coverage:** 156,221 source-built disk bytes, 98,468 identified data/asset bytes,
+  32,031 temporary bytes (17,725 disk 1; 14,306 disk 2).
+- **Next action:** Trace the swapped native bodies and their indirect-jump layout;
+  continue the remaining whole-disk classification and both-emulator validation.

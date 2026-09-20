@@ -12,6 +12,7 @@ import re
 import subprocess
 
 from disk_layout import ROOT, sha
+from storage_encoding import transform
 
 
 def contained_file(root, name):
@@ -59,6 +60,12 @@ def build(manifest_path, output):
             subprocess.run(["ld65", "-C", str(config), "-o", str(binary),
                             "-m", str(objects / (name + ".map")), str(obj)], check=True)
             data = binary.read_bytes()
+            if 'storage_encoding' in spec:
+                contained_file(ROOT, spec['storage_encoding']['evidence'])
+                data = transform(data,spec['storage_encoding'])
+                # Keep the normal component artifact in its mapped disk encoding.
+                binary.with_suffix('.decoded.bin').write_bytes(binary.read_bytes())
+                binary.write_bytes(data)
         elif spec["kind"] == "identified-data":
             if not spec.get('classification_evidence') or not spec.get('format'):
                 raise ValueError('Identified data component lacks format or evidence')

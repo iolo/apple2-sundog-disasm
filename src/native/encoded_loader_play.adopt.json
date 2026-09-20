@@ -1,0 +1,20 @@
+{
+  "name": "encoded_loader_play",
+  "source": "src/native/encoded_loader_play.s",
+  "config": "src/native/encoded_loader_play.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 23808,
+      "size": 63,
+      "input_offset": 0
+    }
+  ],
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 0,
+    "evidence": "docs/encoded-native-overlay.md"
+  }
+}

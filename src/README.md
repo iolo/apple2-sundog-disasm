@@ -81,3 +81,8 @@ referenced messages are data under `assets/dialogue-messages/`. Step 07q identif
 the remaining unused messages and bounded spare storage under
 `assets/dialogue-bank-storage/`, completing these thirteen banks. See
 `docs/dialogue-scripts.md`, `docs/dialogue-bank-layout.md` and the per-bank audits.
+
+`native/encoded_loader_{play,alternate}.s` reconstruct the 63-byte entry routines
+of two encoded native banks. The builder applies their documented storage
+encoding after assembly; decoded build artifacts remain available for review.
+Their obfuscated bodies remain unresolved. See `docs/encoded-native-overlay.md`.

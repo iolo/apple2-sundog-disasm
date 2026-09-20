@@ -107,7 +107,7 @@ byte-identical module replacements reuse the established reference behavior.
 | Saved-game payloads and descriptors | `assets/save-states/{payloads,slots}.bin` | Disk 1 first 5,024 bytes of banks at 27, 37, 47, 57; first 256 bytes of block 26 | 20,352 |
 | Record templates, world defaults, working state | `assets/working-state/data.bin` | Reviewed regions at disk 1 blocks 22–25; disk 2 blocks 2, 45, 48–53 | 6,027 |
 | Animated logo letter frames | `assets/logo-frames/frames.bin` | Disk 1 blocks 67–78 | 6,144 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 17,788 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 17,725 |
 | Interaction-window bitmap and position fields | `assets/interaction-window/window.bin` | Disk 2 blocks 37–40: first 1,920 bytes and offsets 2000–2001 | 1,922 |
 | Play-disk boot native code and count | `src/native/play_boot.s` | Disk 2 block 0 bytes 0–192 | 193 |
 | Compressed FLIP DISK boot notice | `assets/play-boot/image.rle` | Disk 2 logical bytes 256–831 | 576 |
@@ -116,11 +116,12 @@ byte-identical module replacements reuse the established reference behavior.
 | Custom dialogue scripts and entry tables | `src/dialogue/scripts.s` | Reviewed records/table bytes in disk 2 blocks 90–102 | 1,175 |
 | Counted dialogue messages | `assets/dialogue-messages/messages.bin` | 160 referenced word-aligned records in disk 2 blocks 90–102 | 3,434 |
 | Dialogue bank spare storage and unused messages | `assets/dialogue-bank-storage/data.bin` | Final reviewed ranges in disk 2 blocks 90–102 | 925 |
-| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 14,369 |
+| Encoded native loader entries | `src/native/encoded_loader_{play,alternate}.s` | First 63 bytes at disk 2 block 41 and disk 1 block 197 | 126 |
+| Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 14,306 |
 
-The 156,095 source-built bytes include instructions, custom script records and their owned tables,
+The 156,221 source-built bytes include instructions, custom script records and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-156,095 native instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+156,221 native instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -367,8 +368,15 @@ and 3,434 message bytes. Ownership then was 156,095 source-built bytes,
 
 Step 07q finishes [dialogue-bank classification](dialogue-bank-layout.md) with
 five additional counted messages and bounded zero-filled spare script storage.
-All 6,656 bytes in blocks 90–102 are now classified. Current ownership is
+All 6,656 bytes in blocks 90–102 are now classified. Ownership then was
 156,095 source-built bytes, 98,468 classified data/asset bytes, and 32,157
 temporary bytes (17,788 disk 1; 14,369 disk 2).
+
+Step 06af reconstructs two [encoded native loader entries](encoded-native-overlay.md).
+The builder assembles plain instructions and applies their reversible storage
+encoding before placement; `.decoded.bin` component artifacts retain the plain
+assembly output for review. The encoded bodies remain unresolved. Current
+ownership is 156,221 source-built bytes, 98,468 classified data/asset bytes,
+and 32,031 temporary bytes (17,725 disk 1; 14,306 disk 2).
 Both rebuilt images remain exact; final classification and behavioral validation
 remain incomplete.

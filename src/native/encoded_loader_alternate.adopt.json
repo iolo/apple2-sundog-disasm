@@ -1,0 +1,20 @@
+{
+  "name": "encoded_loader_alternate",
+  "source": "src/native/encoded_loader_alternate.s",
+  "config": "src/native/encoded_loader_alternate.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 99584,
+      "size": 63,
+      "input_offset": 0
+    }
+  ],
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 251,
+    "step": 185,
+    "offset": 0,
+    "evidence": "docs/encoded-native-overlay.md"
+  }
+}

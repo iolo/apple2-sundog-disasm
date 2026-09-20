@@ -37,5 +37,7 @@ screen initializer in block 2 also remains outside its adopted range.
 
 Preparation uses the same strict raw decoder as the screen initializer; generated
 source must assemble identically before adoption. No new runtime execution of
-this particular routine is claimed. The current apple2ts session reached the
-title screen after validating the earlier screen initializer and is paused there.
+this particular routine is claimed. The earlier apple2ts capture reached the
+title screen after validating the screen initializer. Subsequent analysis
+identifies [encoded native overlays](encoded-native-overlay.md) under both
+parameter sets; their entry routines are now separately reconstructed.
