@@ -82,7 +82,7 @@ def verify(output):
     report = json.loads((output/'manifest.json').read_text())
     if sha(data) != report['sha256'] or decode(data) != fields or encode(fields) != data:
         raise ValueError('Window asset bytes/fields differ')
-    print('Verified 1,922 window bytes; 126 allocation bytes remain excluded')
+    print('Verified 1,922 window bytes; allocation tail is audited by window_allocation_tail.py')
 
 
 if __name__ == '__main__':

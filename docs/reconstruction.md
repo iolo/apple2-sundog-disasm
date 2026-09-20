@@ -1,9 +1,9 @@
 # Incremental exact-disk build
 
-Current checkpoint: step 08q has 183,701 source-built disk bytes (including
-explicit data declarations), 101,152 identified asset/data bytes, and 1,867
-temporary bytes: 373 on disk 1 and 1,494 on disk 2. The latest reconstruction
-completes the [retained encoded reader](encoded-disk-reader.md). Historical counts
+Current checkpoint: step 08r has 183,827 source-built disk bytes (including
+explicit data declarations), 101,152 identified asset/data bytes, and 1,741
+temporary bytes: 373 on disk 1 and 1,368 on disk 2. The latest reconstruction
+completes the [interaction-window allocation](window-allocation-tail.md). Historical counts
 below describe their individual checkpoints; the manifest is authoritative.
 
 The incremental build reconstructs both disk images using assembled source components and

@@ -1,0 +1,19 @@
+{
+  "name": "window_allocation_tail",
+  "source": "src/data/window_allocation_tail.s",
+  "config": "src/data/window_allocation_tail.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 24192,
+      "size": 80,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 24274,
+      "size": 46,
+      "input_offset": 80
+    }
+  ]
+}

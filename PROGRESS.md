@@ -3207,3 +3207,33 @@ and acceptance criteria.
   the remaining sparse allocations, changed image bytes and mixed/record/text
   fragments. User PRD.md edits and ref/ remain untouched and excluded.
   The full goal remains active.
+
+## 2026-09-20 — Step 08r: complete interaction-window allocation classification
+
+- **Evidence:** The existing four-block window data allocation has a 1,920-byte
+  rendered bitmap, saved positions at 2000/2001, and a retained 16-byte prefix
+  at 2032. The latter matches the Pascal compiler IDENTIFIER common layout:
+  eight-byte padded INFILE name, then LLINK/RLINK/IDTYPE/NEXT words $484E,
+  $4822, $4806, $333C. The historical compiler declaration gives all fields;
+  Apple TREESEARCH independently compares eight name bytes and loads links at
+  offsets 8/10. This supports retained record data. The missing variant tag,
+  original pointer targets and historical compiler session remain unestablished.
+- **Storage:** The remaining two gaps, 1920–1999 and 2002–2031, are entirely
+  zero between the established payload/state/record boundaries. Classify their
+  110 bytes as bounded storage within this identified data allocation, without
+  inventing extra rendered rows or applying a general zero-data rule elsewhere.
+- **Artifacts:** Added explicit ca65 zero storage and named record fields,
+  configuration/adoption recipe, reversible field audit/report, one focused
+  mutation/boundary test and docs/window-allocation-tail.md. Updated the window
+  document/verifier message, PLAN.md and reconstruction ownership. The existing
+  bitmap/position asset remains unchanged and separate.
+- **Validation:** The test rejects every altered new byte, changes across the
+  bitmap/position boundaries and truncated/extended allocations. Fresh assembly,
+  window-tail and original asset verifiers, strict adoption, rebuild,
+  tools/verify_disks.py and git diff --check pass. Both full disks and original
+  media/manual retain exact hashes; existing emulator baselines apply.
+- **Coverage/next:** All 2,048 window-allocation bytes are classified. Global
+  ownership is 183,827 source-built bytes, 101,152 identified data/asset bytes
+  and 1,741 temporary bytes (373 disk 1; 1,368 disk 2). Continue sparse RLE,
+  boot/save/dictionary tails, changed image bytes and the mixed checksum tail.
+  User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.

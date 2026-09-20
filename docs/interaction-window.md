@@ -15,14 +15,16 @@ and the `x_byte`/`y_row` fields.
 | Offset in four-block allocation | Classification | Extracted offset |
 | --- | --- | --- |
 | 0–1919 | Bitmap rows | 0–1919 |
-| 1920–1999 | Unresolved; excluded | — |
+| 1920–1999 | Separately reconstructed zero storage | — |
 | 2000 | Saved horizontal position, measured in HGR bytes | 1920 |
 | 2001 | Saved vertical row | 1921 |
-| 2002–2047 | Unresolved; excluded | — |
+| 2002–2031 | Separately reconstructed zero storage | — |
+| 2032–2047 | Retained Pascal identifier-record prefix | — |
 
-The trailing allocation includes nonzero `INFILE`-like record residue. It is
-not classified as bitmap padding. In total 1,922 bytes are adopted and 126
-bytes remain temporary.
+The trailing allocation's `INFILE` record prefix and two bounded zero gaps are
+now independently classified in [window-allocation-tail.md](window-allocation-tail.md).
+This asset still contains exactly 1,922 bitmap/position bytes; the separate
+source component reconstructs the other 126 bytes. All four blocks are classified.
 
 ## Load, draw, and restore evidence
 

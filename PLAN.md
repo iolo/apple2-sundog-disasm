@@ -180,9 +180,15 @@ Split large steps into independently validated, logged, and committed increments
 - Step 08q classifies the byte after the retained encoded reader as native
   word alignment, using its complete odd-length instruction body, the decoded
   zero and independently verified assembler padding behavior. Disk-1 block 196
-  is now fully classified. Current ownership is 183,701 source-built bytes,
+  is now fully classified. Checkpoint ownership is 183,701 source-built bytes,
   101,152 identified data/asset bytes and 1,867 temporary bytes
   (373 disk 1; 1,494 disk 2).
+- Step 08r completes the four-block interaction-window allocation with 110
+  bounded zero-storage bytes and a retained 16-byte Pascal identifier prefix.
+  Historical compiler layout and native tree-search offsets support the record
+  classification; missing variant fields and pointer targets are not invented.
+  Current ownership is 183,827 source-built bytes, 101,152 identified data/asset
+  bytes and 1,741 temporary bytes (373 disk 1; 1,368 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk
