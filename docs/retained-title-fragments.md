@@ -29,11 +29,12 @@ repack exactly to `fragments.bin`, SHA-256
 The build retains the original phase bits; it does not substitute donor bytes.
 
 The eight-byte [disk-control record](disk-control.md) is a separate component.
-Offsets `$058–$059`, `$0A5–$0FF`, and `$161–$1FF` remain **252 unresolved bytes**.
-Some have long constant-XOR relationships to the title, but those pixel changes
-are not explained by phase selection. Neither this classification nor the
-archive comparison below establishes their code/data status. The historical
-copy/write sequence and cause of the phase differences are also unestablished.
+Offsets `$058–$059`, `$0A5–$0FF`, and `$161–$1FF` are separately classified as
+[252 altered image bytes](retained-title-changes.md). Their long constant-XOR
+relationships are not phase changes: the later audit reproduces their pixel
+values with a sparse differential 6-and-2 symbol model. The strict same-pixel
+classification here is unchanged. The historical copy/write sequence and cause
+of the alterations remain unestablished.
 
 ## Archive comparison
 

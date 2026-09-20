@@ -3296,3 +3296,38 @@ and acceptance criteria.
   save and dictionary tails, retained template/text fragments, changed title
   pixels and the mixed checksum tail. User PRD.md edits and ref/ are preserved
   and excluded from the commit. The full goal remains active and incomplete.
+
+## 2026-09-20 — Step 07w: classify altered retained title-image bytes
+
+- **Evidence:** The remaining block-83 pixel differences include long XOR runs
+  confined mostly to bits 2–6. Comparing the title and retained sectors in
+  differential 6-and-2 form, with HGR phase represented separately and the
+  eight-byte control record excluded, leaves only eight changed symbols per
+  sector: 670 of 686 symbols match. Frozen symbol edits and an inverse recover
+  every low-seven-bit value, including the previously unexplained ranges.
+  This extends the established spatial correspondence from step 07v.
+- **Classification/limits:** Adopted 252 altered image-data bytes: 228 visible
+  pixel/phase bytes and 24 HGR holes. All 504 bytes after the block's control
+  record now have image-data ownership. This is evidence for an altered retained
+  image, not proof of historical media corruption, a particular writer, live
+  rendering, or only 16 physical nibble-byte changes. Stored bytes, including
+  phase and holes, are preserved exactly; no disk repair is performed.
+- **Artifacts:** Added assets/retained-title-changes with exact fragments,
+  coordinates/fields, sparse symbol edits, provenance and adoption recipe.
+  Added tools/retained_title_changes.py, two tests and the classification
+  document. Updated prior-fragment status, PLAN.md and reconstruction coverage.
+  Symbol packing was checked against installed a2kit 4.4.2 source; its GCR
+  translation is one-to-one and is not needed for this symbol comparison.
+- **Validation:** Two new tests and the earlier fragment test pass, covering
+  full-byte 6-and-2 round trips, checksum rejection, each new byte's pixel-model
+  constraint, excluded control bytes and separate phase fields. Strict adoption,
+  full build, both title-fragment verifiers, tools/verify_disks.py and git diff
+  --check pass. Both disk outputs and original media/manual remain exact;
+  existing emulator baselines still apply.
+- **Other research:** Forty feedback/differential byte transforms of the mixed
+  checksum tail produced no 16-byte matches against 164 current/historical
+  components. This negative search does not classify that tail.
+- **Coverage/next:** 184,696 source-built bytes, 101,404 identified asset/data
+  bytes and 620 temporary bytes remain (121 disk 1; 499 disk 2). Continue boot,
+  save and dictionary tails, template/text fragments and mixed checksum bytes.
+  User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.

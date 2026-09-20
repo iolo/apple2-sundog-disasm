@@ -1,0 +1,120 @@
+{
+  "classification": "data",
+  "classification_basis": "sparse-encoded-image-correspondence",
+  "classification_evidence": "docs/retained-title-changes.md",
+  "format": "apple2-hgr-altered-retained-fragments",
+  "size": 252,
+  "sha256": "3dbbb69d3380dde04b03a9426ef88139d1feaa724307f104a9e6a78841ab962f",
+  "disk": "disk1",
+  "logical_block": 83,
+  "block_ranges": [
+    [
+      88,
+      90
+    ],
+    [
+      165,
+      256
+    ],
+    [
+      353,
+      512
+    ]
+  ],
+  "donor_component": "title_bitmap",
+  "donor_sha256": "2b21fb1fc35477e73882e6f4003788631aa28e32d7cc6ed7991cdbaa317d17c1",
+  "donor_offset_bias": 4096,
+  "pixel_bytes": 228,
+  "hole_bytes": 24,
+  "sectors": [
+    {
+      "sector": 0,
+      "symbols": 343,
+      "changed_symbols": 8,
+      "unchanged_symbols": 335,
+      "xor_edits": [
+        {
+          "index": 3,
+          "xor": 8
+        },
+        {
+          "index": 4,
+          "xor": 8
+        },
+        {
+          "index": 174,
+          "xor": 16
+        },
+        {
+          "index": 175,
+          "xor": 16
+        },
+        {
+          "index": 251,
+          "xor": 6
+        },
+        {
+          "index": 301,
+          "xor": 20
+        },
+        {
+          "index": 307,
+          "xor": 12
+        },
+        {
+          "index": 342,
+          "xor": 30
+        }
+      ],
+      "normalized_pixel_sha256": "d59486de59246d3a25792e00e896acfc7b47700b966601bbf470b776b286b948"
+    },
+    {
+      "sector": 1,
+      "symbols": 343,
+      "changed_symbols": 8,
+      "unchanged_symbols": 335,
+      "xor_edits": [
+        {
+          "index": 45,
+          "xor": 32
+        },
+        {
+          "index": 46,
+          "xor": 32
+        },
+        {
+          "index": 47,
+          "xor": 16
+        },
+        {
+          "index": 48,
+          "xor": 16
+        },
+        {
+          "index": 183,
+          "xor": 23
+        },
+        {
+          "index": 305,
+          "xor": 7
+        },
+        {
+          "index": 306,
+          "xor": 7
+        },
+        {
+          "index": 342,
+          "xor": 23
+        }
+      ],
+      "normalized_pixel_sha256": "501e6a63c31b6b80df251f356d384830009b1dbed660216a665b09d9163b6599"
+    }
+  ],
+  "phase_bits_preserved": true,
+  "excluded_control_range": [
+    0,
+    8
+  ],
+  "historical_corruption_proved": false,
+  "direct_rendering_established": false
+}

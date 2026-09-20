@@ -197,9 +197,16 @@ Split large steps into independently validated, logged, and committed increments
 - Step 08t classifies the 680 bytes after the ship-section and FLIP DISK RLE
   images as retained repeat-zero records and bounded zero storage. This is an
   explicit format/allocation inference; neither decoder consumes these records,
-  and no historical compressor or terminator convention is asserted. Current
+  and no historical compressor or terminator convention is asserted. Checkpoint
   ownership is 184,696 source-built bytes, 101,152 identified data/asset bytes
   and 872 temporary bytes (373 disk 1; 499 disk 2).
+- Step 07w classifies the remaining 252 title-fragment bytes through a sparse
+  differential 6-and-2 comparison: after separating phase and excluding the
+  control record, only 16 of 686 symbols differ from the independently classified
+  title. All 504 retained image bytes now have data ownership; their historical
+  alteration cause remains open. Current ownership is 184,696 source-built bytes,
+  101,404 identified data/asset bytes and 620 temporary bytes
+  (121 disk 1; 499 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

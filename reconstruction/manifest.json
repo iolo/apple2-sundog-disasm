@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 373,
-      "sha256": "3c43adced7fd168cdba5547321bab233195f35ef8e9ded993d87f9b02d2e281f",
+      "size": 121,
+      "sha256": "43d45a848830edc8539d8046fa3d788d95a51eda7dd3f012e0d0b74ffe65922e",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -1581,6 +1581,14 @@
       "config": "src/data/packed_image_storage.cfg",
       "size": 680,
       "sha256": "cce995d8db69eac99715dd540c8115f3679cd886882f27369f01167c6e94b1a9"
+    },
+    "retained_title_changes": {
+      "kind": "identified-data",
+      "path": "assets/retained-title-changes/fragments.bin",
+      "format": "apple2-hgr-altered-retained-fragments",
+      "classification_evidence": "docs/retained-title-changes.md",
+      "size": 252,
+      "sha256": "3dbbb69d3380dde04b03a9426ef88139d1feaa724307f104a9e6a78841ab962f"
     }
   },
   "disks": [
@@ -2661,8 +2669,8 @@
         {
           "offset": 43105,
           "size": 159,
-          "input": "disk1_unresolved",
-          "input_offset": 103
+          "input": "retained_title_changes",
+          "input_offset": 93
         },
         {
           "offset": 43264,
@@ -2679,8 +2687,8 @@
         {
           "offset": 43352,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 262
+          "input": "retained_title_changes",
+          "input_offset": 0
         },
         {
           "offset": 43354,
@@ -2691,8 +2699,8 @@
         {
           "offset": 43429,
           "size": 91,
-          "input": "disk1_unresolved",
-          "input_offset": 264
+          "input": "retained_title_changes",
+          "input_offset": 2
         },
         {
           "offset": 43520,
@@ -3112,7 +3120,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk1_unresolved",
-          "input_offset": 355
+          "input_offset": 103
         },
         {
           "offset": 59648,
