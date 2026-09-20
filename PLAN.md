@@ -151,8 +151,14 @@ Split large steps into independently validated, logged, and committed increments
 - Step 07v extracts 252 retained title-image bytes from disk-1 block 83.
   All pixel bits and eight hole bytes match the classified donor; 61 phase
   differences are preserved separately. The other 252 tail bytes stay unresolved.
-  Current ownership is 183,316 source-built bytes, 101,152 identified data/asset
+  Ownership at that checkpoint is 183,316 source-built bytes, 101,152 identified data/asset
   bytes and 2,252 temporary bytes (654 disk 1; 1,598 disk 2).
+- Step 06au reconstructs the disconnected jump stubs, their pointer words and
+  retained track-sequence addresses in both encoded banks, including suffix
+  copies. Their invalid continuation into known data is recorded without
+  altering the strict graph. Six bytes per bank remain unresolved. Current
+  ownership is 183,352 source-built bytes, 101,152 identified data/asset bytes
+  and 2,216 temporary bytes (636 disk 1; 1,580 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

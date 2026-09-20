@@ -4,8 +4,10 @@ The [body audit](encoded-native-overlay-body.md) leaves the end of each decoded
 2,048-byte bank unresolved. Further structural analysis identifies a complete
 native Pascal footer and a bounded copy of earlier code/data. This checkpoint
 reconstructs **464 additional bytes per bank**, keeping nine suffix bytes and
-15 earlier body bytes unresolved. Both encoded banks therefore now have
-**24 unresolved bytes each**. Runtime execution of the bodies remains unproved.
+15 earlier body bytes unresolved. Both encoded banks therefore had
+**24 unresolved bytes each** at this checkpoint. The later
+[retained-stub audit](encoded-retained-stubs.md) classifies 18 of those bytes
+per bank, leaving six each. Runtime execution of the bodies remains unproved.
 
 ## Native segment footer
 

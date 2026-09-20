@@ -6,8 +6,9 @@ are disassembled in `src/native/encoded_loader_play.s` and
 `encoded_loader_alternate.s`. The subsequent [body audit](encoded-native-overlay-body.md)
 reconstructs another 1,497 bytes per bank as instructions and evidenced data;
 the [footer and copied-tail audit](encoded-native-overlay-tail.md) reconstructs
-another 464 bytes per bank. The remaining 24 bytes per bank are unresolved and
-are not adopted as an opaque asset.
+another 464 bytes per bank. The [retained-stub audit](encoded-retained-stubs.md)
+adds 18 bytes per bank as unused jump instructions and pointer data. The six
+remaining bytes per bank are unresolved and are not adopted as an opaque asset.
 
 ## Encoding evidence
 

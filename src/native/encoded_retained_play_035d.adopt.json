@@ -1,0 +1,20 @@
+{
+  "name": "encoded_retained_play_035d",
+  "source": "src/native/encoded_retained_play_035d.s",
+  "config": "src/native/encoded_retained_play_035d.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 861,
+    "evidence": "docs/encoded-retained-stubs.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 23133,
+      "size": 3,
+      "input_offset": 0
+    }
+  ]
+}

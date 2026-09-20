@@ -3040,3 +3040,35 @@ and acceptance criteria.
   the changed title tail, small storage tails, encoded-bank gaps and already
   source-built provisional data. The resumed goal remains active. User PRD.md
   edits and ref/ are untouched and excluded from this checkpoint.
+
+## 2026-09-20 — Step 06au: reconstruct disconnected encoded-bank instructions
+
+- **Evidence:** Both relocated banks retain JMP-indirect instructions at $0357
+  and $035D in the same delimiter/instruction/vector slots as neighboring
+  shuffled blocks. Their operands use pointer words at $0572 and $05DB, targeting
+  $035D and $05DD. The latter is already consumed pointer data. The instructions
+  are reconstructed as unused code; their invalid continuation is not forced
+  into the executable graph. No live use or historical repair is claimed.
+- **Data:** Word $05E3 occupies the aligned slot between consumed vectors,
+  relocates with the bank and points exactly to known track-sequence data at
+  $0352. It is a retained address field without a claimed live consumer. All
+  three words have exact suffix copies at +$0200. Each bank gains six code
+  bytes and twelve pointer-data bytes; the graph's existing ownership is intact.
+- **Artifacts:** Added sixteen separately encoded ca65 slices and adoption
+  recipes, bounded joint-bank audit/preparer, two focused tests, generated
+  evidence and docs/encoded-retained-stubs.md. Updated encoded-bank documents,
+  PLAN.md, reconstruction coverage and both temporary inputs. Six bytes per
+  bank remain unresolved: $05F0/$05F6/$05F7 and their stored suffix copies.
+- **Validation:** Both focused tests pass, rejecting mutations to every newly
+  classified byte in both variants, changed neighboring ownership and an
+  unexpected incoming edge. Forcing the retained chain into the original graph
+  still fails; all eight existing raw-decoder tests pass. The new verifier
+  reruns the strict graph and footer/copy audits, checks combined coverage,
+  relocations, ownership, fresh assembly and exact re-encoding. Strict adoption,
+  rebuild, tools/verify_disks.py and git diff --check pass. Original disks/manual
+  and both rebuilt disk hashes are unchanged; existing emulator baselines apply.
+- **Coverage/next:** 183,352 source-built bytes, 101,152 identified data/asset
+  bytes and 2,216 temporary bytes remain (636 disk 1; 1,580 disk 2). Continue
+  the remaining symbol/buffer bytes, altered title fragment and small storage
+  tails, plus already source-built provisional ranges. User PRD.md edits and
+  ref/ remain untouched and excluded. The goal remains active.

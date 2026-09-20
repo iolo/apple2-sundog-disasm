@@ -1,0 +1,20 @@
+{
+  "name": "encoded_retained_alternate_07e3",
+  "source": "src/native/encoded_retained_alternate_07e3.s",
+  "config": "src/native/encoded_retained_alternate_07e3.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 251,
+    "step": 185,
+    "offset": 2019,
+    "evidence": "docs/encoded-retained-stubs.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 106211,
+      "size": 2,
+      "input_offset": 0
+    }
+  ]
+}

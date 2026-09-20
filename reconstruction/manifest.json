@@ -19,15 +19,15 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 654,
-      "sha256": "2fbaf1644be2ea113e6f331642e55b1454b2590852b0a5395387bcdfeae2090e",
+      "size": 636,
+      "sha256": "275836933b3d453410f64fef4a1568e61ba3cc28b942d45f7dd6a63127068bf5",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk2-unresolved.bin",
-      "size": 1598,
-      "sha256": "1aa42a9bb4d9e711254cc1872dfb5eebc652b9afbff51d1823a28a7a1c6fa07c",
+      "size": 1580,
+      "sha256": "f7e695e8fa4ebe6caeb113f731e1b727454f89ab1c2464bae6ade925aa25b55d",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
@@ -1196,6 +1196,230 @@
       "classification_evidence": "docs/retained-title-fragments.md",
       "size": 252,
       "sha256": "e11d3928139623d4c98c6b36ffb6b41cb18eae5d4e95305610ff9c76fb5e8bcc"
+    },
+    "encoded_retained_alternate_0357": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_0357.s",
+      "config": "src/native/encoded_retained_alternate_0357.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 855,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 3,
+      "sha256": "2573accac9de46faed62409be896d0136fe74d2ac2760201c36d9363f6d41f77"
+    },
+    "encoded_retained_alternate_035d": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_035d.s",
+      "config": "src/native/encoded_retained_alternate_035d.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 861,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 3,
+      "sha256": "33b5a1f1437e1db6928f80f2bbb6d51779825f84369df135804f34fb7f64f13c"
+    },
+    "encoded_retained_alternate_0572": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_0572.s",
+      "config": "src/native/encoded_retained_alternate_0572.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1394,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "de491b86b68fa1c865616d081ca4209851640c8cf8f9ca95932f39ec2d8128f3"
+    },
+    "encoded_retained_alternate_05db": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_05db.s",
+      "config": "src/native/encoded_retained_alternate_05db.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1499,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "62ea40ec5e23bd5208b32e02f2e9e4d651d0c5d80a4e15b344d453686c580e32"
+    },
+    "encoded_retained_alternate_05e3": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_05e3.s",
+      "config": "src/native/encoded_retained_alternate_05e3.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1507,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "61835352dfbbfbfae4345655fc7451e580272b28a4aa3377fe008701ac7ebf34"
+    },
+    "encoded_retained_alternate_0772": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_0772.s",
+      "config": "src/native/encoded_retained_alternate_0772.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 1906,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "de491b86b68fa1c865616d081ca4209851640c8cf8f9ca95932f39ec2d8128f3"
+    },
+    "encoded_retained_alternate_07db": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_07db.s",
+      "config": "src/native/encoded_retained_alternate_07db.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 2011,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "62ea40ec5e23bd5208b32e02f2e9e4d651d0c5d80a4e15b344d453686c580e32"
+    },
+    "encoded_retained_alternate_07e3": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_alternate_07e3.s",
+      "config": "src/native/encoded_retained_alternate_07e3.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 251,
+        "step": 185,
+        "offset": 2019,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "61835352dfbbfbfae4345655fc7451e580272b28a4aa3377fe008701ac7ebf34"
+    },
+    "encoded_retained_play_0357": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_0357.s",
+      "config": "src/native/encoded_retained_play_0357.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 855,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 3,
+      "sha256": "f8f7fe0b23e27af34106b0df6fb9b8cb55db51f3d72f2238bf5744ba7322ab41"
+    },
+    "encoded_retained_play_035d": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_035d.s",
+      "config": "src/native/encoded_retained_play_035d.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 861,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 3,
+      "sha256": "3db3db9cd31a277b2a972b6c0979629512be3e288f81b2de57fbf8c8d2e87940"
+    },
+    "encoded_retained_play_0572": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_0572.s",
+      "config": "src/native/encoded_retained_play_0572.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1394,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "99e9842bdbcadf340de5b0ca9c09dccb021f96609f9a10c240a0d99cc1defea4"
+    },
+    "encoded_retained_play_05db": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_05db.s",
+      "config": "src/native/encoded_retained_play_05db.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1499,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "a61bd4f32f37c5ec218bd8fb21f81939343ae6294e19d5e4457d6ba21bece4dd"
+    },
+    "encoded_retained_play_05e3": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_05e3.s",
+      "config": "src/native/encoded_retained_play_05e3.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1507,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "573d19f31911ee1af32463c9cba5e3711d9cd542b8813a19df8cb2c4225a3206"
+    },
+    "encoded_retained_play_0772": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_0772.s",
+      "config": "src/native/encoded_retained_play_0772.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 1906,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "99e9842bdbcadf340de5b0ca9c09dccb021f96609f9a10c240a0d99cc1defea4"
+    },
+    "encoded_retained_play_07db": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_07db.s",
+      "config": "src/native/encoded_retained_play_07db.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 2011,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "a61bd4f32f37c5ec218bd8fb21f81939343ae6294e19d5e4457d6ba21bece4dd"
+    },
+    "encoded_retained_play_07e3": {
+      "kind": "ca65-source",
+      "source": "src/native/encoded_retained_play_07e3.s",
+      "config": "src/native/encoded_retained_play_07e3.cfg",
+      "storage_encoding": {
+        "kind": "additive-byte-sequence",
+        "seed": 189,
+        "step": 243,
+        "offset": 2019,
+        "evidence": "docs/encoded-retained-stubs.md"
+      },
+      "size": 2,
+      "sha256": "573d19f31911ee1af32463c9cba5e3711d9cd542b8813a19df8cb2c4225a3206"
     }
   },
   "disks": [
@@ -3950,8 +4174,8 @@
         {
           "offset": 98903,
           "size": 3,
-          "input": "disk1_unresolved",
-          "input_offset": 629
+          "input": "encoded_retained_alternate_0357",
+          "input_offset": 0
         },
         {
           "offset": 98906,
@@ -3962,8 +4186,8 @@
         {
           "offset": 98909,
           "size": 3,
-          "input": "disk1_unresolved",
-          "input_offset": 632
+          "input": "encoded_retained_alternate_035d",
+          "input_offset": 0
         },
         {
           "offset": 98912,
@@ -4011,7 +4235,7 @@
           "offset": 100223,
           "size": 1,
           "input": "disk1_unresolved",
-          "input_offset": 635
+          "input_offset": 629
         },
         {
           "offset": 100224,
@@ -4118,8 +4342,8 @@
         {
           "offset": 102258,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 636
+          "input": "encoded_retained_alternate_0572",
+          "input_offset": 0
         },
         {
           "offset": 102260,
@@ -4130,8 +4354,8 @@
         {
           "offset": 102363,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 638
+          "input": "encoded_retained_alternate_05db",
+          "input_offset": 0
         },
         {
           "offset": 102365,
@@ -4142,8 +4366,8 @@
         {
           "offset": 102371,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 640
+          "input": "encoded_retained_alternate_05e3",
+          "input_offset": 0
         },
         {
           "offset": 102373,
@@ -4155,7 +4379,7 @@
           "offset": 102384,
           "size": 1,
           "input": "disk1_unresolved",
-          "input_offset": 642
+          "input_offset": 630
         },
         {
           "offset": 102385,
@@ -4167,7 +4391,7 @@
           "offset": 102390,
           "size": 2,
           "input": "disk1_unresolved",
-          "input_offset": 643
+          "input_offset": 631
         },
         {
           "offset": 102392,
@@ -4280,8 +4504,8 @@
         {
           "offset": 106098,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 645
+          "input": "encoded_retained_alternate_0772",
+          "input_offset": 0
         },
         {
           "offset": 106100,
@@ -4292,8 +4516,8 @@
         {
           "offset": 106203,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 647
+          "input": "encoded_retained_alternate_07db",
+          "input_offset": 0
         },
         {
           "offset": 106205,
@@ -4304,8 +4528,8 @@
         {
           "offset": 106211,
           "size": 2,
-          "input": "disk1_unresolved",
-          "input_offset": 649
+          "input": "encoded_retained_alternate_07e3",
+          "input_offset": 0
         },
         {
           "offset": 106213,
@@ -4317,7 +4541,7 @@
           "offset": 106224,
           "size": 1,
           "input": "disk1_unresolved",
-          "input_offset": 651
+          "input_offset": 633
         },
         {
           "offset": 106225,
@@ -4329,7 +4553,7 @@
           "offset": 106230,
           "size": 2,
           "input": "disk1_unresolved",
-          "input_offset": 652
+          "input_offset": 634
         },
         {
           "offset": 106232,
@@ -5860,8 +6084,8 @@
         {
           "offset": 22130,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 757
+          "input": "encoded_retained_play_0772",
+          "input_offset": 0
         },
         {
           "offset": 22132,
@@ -5872,8 +6096,8 @@
         {
           "offset": 22235,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 759
+          "input": "encoded_retained_play_07db",
+          "input_offset": 0
         },
         {
           "offset": 22237,
@@ -5884,8 +6108,8 @@
         {
           "offset": 22243,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 761
+          "input": "encoded_retained_play_07e3",
+          "input_offset": 0
         },
         {
           "offset": 22245,
@@ -5897,7 +6121,7 @@
           "offset": 22256,
           "size": 1,
           "input": "disk2_unresolved",
-          "input_offset": 763
+          "input_offset": 757
         },
         {
           "offset": 22257,
@@ -5909,7 +6133,7 @@
           "offset": 22262,
           "size": 2,
           "input": "disk2_unresolved",
-          "input_offset": 764
+          "input_offset": 758
         },
         {
           "offset": 22264,
@@ -5944,8 +6168,8 @@
         {
           "offset": 22642,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 766
+          "input": "encoded_retained_play_0572",
+          "input_offset": 0
         },
         {
           "offset": 22644,
@@ -5956,8 +6180,8 @@
         {
           "offset": 22747,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 768
+          "input": "encoded_retained_play_05db",
+          "input_offset": 0
         },
         {
           "offset": 22749,
@@ -5968,8 +6192,8 @@
         {
           "offset": 22755,
           "size": 2,
-          "input": "disk2_unresolved",
-          "input_offset": 770
+          "input": "encoded_retained_play_05e3",
+          "input_offset": 0
         },
         {
           "offset": 22757,
@@ -5981,7 +6205,7 @@
           "offset": 22768,
           "size": 1,
           "input": "disk2_unresolved",
-          "input_offset": 772
+          "input_offset": 760
         },
         {
           "offset": 22769,
@@ -5993,7 +6217,7 @@
           "offset": 22774,
           "size": 2,
           "input": "disk2_unresolved",
-          "input_offset": 773
+          "input_offset": 761
         },
         {
           "offset": 22776,
@@ -6016,8 +6240,8 @@
         {
           "offset": 23127,
           "size": 3,
-          "input": "disk2_unresolved",
-          "input_offset": 775
+          "input": "encoded_retained_play_0357",
+          "input_offset": 0
         },
         {
           "offset": 23130,
@@ -6028,8 +6252,8 @@
         {
           "offset": 23133,
           "size": 3,
-          "input": "disk2_unresolved",
-          "input_offset": 778
+          "input": "encoded_retained_play_035d",
+          "input_offset": 0
         },
         {
           "offset": 23136,
@@ -6071,7 +6295,7 @@
           "offset": 24192,
           "size": 80,
           "input": "disk2_unresolved",
-          "input_offset": 781
+          "input_offset": 763
         },
         {
           "offset": 24272,
@@ -6083,7 +6307,7 @@
           "offset": 24274,
           "size": 46,
           "input": "disk2_unresolved",
-          "input_offset": 861
+          "input_offset": 843
         },
         {
           "offset": 24320,
@@ -6113,7 +6337,7 @@
           "offset": 25088,
           "size": 256,
           "input": "disk2_unresolved",
-          "input_offset": 907
+          "input_offset": 889
         },
         {
           "offset": 25344,
@@ -6125,7 +6349,7 @@
           "offset": 25479,
           "size": 121,
           "input": "disk2_unresolved",
-          "input_offset": 1163
+          "input_offset": 1145
         },
         {
           "offset": 25600,
@@ -7229,7 +7453,7 @@
           "offset": 44976,
           "size": 80,
           "input": "disk2_unresolved",
-          "input_offset": 1284
+          "input_offset": 1266
         },
         {
           "offset": 45056,
@@ -8387,7 +8611,7 @@
           "offset": 48168,
           "size": 216,
           "input": "disk2_unresolved",
-          "input_offset": 1364
+          "input_offset": 1346
         },
         {
           "offset": 48384,
@@ -9473,7 +9697,7 @@
           "offset": 59630,
           "size": 18,
           "input": "disk2_unresolved",
-          "input_offset": 1580
+          "input_offset": 1562
         },
         {
           "offset": 59648,

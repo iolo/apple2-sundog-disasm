@@ -1,0 +1,199 @@
+{
+  "classification_evidence": "docs/encoded-retained-stubs.md",
+  "code_bytes": 12,
+  "data_bytes": 24,
+  "records": [
+    {
+      "base": 3072,
+      "sha256": "7be65fcb8d7dd7109fa2f3a8a7f1b7e9fd5d749cb6d93678740ae3ddb09293b9",
+      "items": [
+        {
+          "offset": 855,
+          "size": 3,
+          "classification": "code",
+          "kind": "disconnected-indirect-jump",
+          "vector_offset": 1394,
+          "target_offset": 861,
+          "assembly": "jmp ($1172)"
+        },
+        {
+          "offset": 861,
+          "size": 3,
+          "classification": "code",
+          "kind": "disconnected-indirect-jump",
+          "vector_offset": 1499,
+          "target_offset": 1501,
+          "assembly": "jmp ($11DB)"
+        },
+        {
+          "offset": 1394,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 861,
+          "source_offset": 1394,
+          "assembly": ".word $0F5D"
+        },
+        {
+          "offset": 1499,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 1501,
+          "source_offset": 1499,
+          "assembly": ".word $11DD"
+        },
+        {
+          "offset": 1507,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-track-sequence-address",
+          "target_offset": 850,
+          "source_offset": 1507,
+          "assembly": ".word $0F52"
+        },
+        {
+          "offset": 1906,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 861,
+          "source_offset": 1394,
+          "assembly": ".word $0F5D"
+        },
+        {
+          "offset": 2011,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 1501,
+          "source_offset": 1499,
+          "assembly": ".word $11DD"
+        },
+        {
+          "offset": 2019,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-track-sequence-address",
+          "target_offset": 850,
+          "source_offset": 1507,
+          "assembly": ".word $0F52"
+        }
+      ],
+      "code_bytes": 6,
+      "data_bytes": 12,
+      "target_data_offset": 1501,
+      "live_execution_established": false,
+      "remaining_bank_offsets": [
+        1520,
+        1526,
+        1527,
+        2032,
+        2038,
+        2039
+      ],
+      "variant": "play",
+      "origin": {
+        "disk": "disk2",
+        "block": 41
+      },
+      "storage_sha256": "3321a9c99ccce1d3eb524835d969af96eed6023b022a40204d9704c1f9897ae3"
+    },
+    {
+      "base": 4096,
+      "sha256": "2f3a3f75d513683a79c6035af5ac76e95753e240a96fd49bf39bec5425f04451",
+      "items": [
+        {
+          "offset": 855,
+          "size": 3,
+          "classification": "code",
+          "kind": "disconnected-indirect-jump",
+          "vector_offset": 1394,
+          "target_offset": 861,
+          "assembly": "jmp ($1572)"
+        },
+        {
+          "offset": 861,
+          "size": 3,
+          "classification": "code",
+          "kind": "disconnected-indirect-jump",
+          "vector_offset": 1499,
+          "target_offset": 1501,
+          "assembly": "jmp ($15DB)"
+        },
+        {
+          "offset": 1394,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 861,
+          "source_offset": 1394,
+          "assembly": ".word $135D"
+        },
+        {
+          "offset": 1499,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 1501,
+          "source_offset": 1499,
+          "assembly": ".word $15DD"
+        },
+        {
+          "offset": 1507,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-track-sequence-address",
+          "target_offset": 850,
+          "source_offset": 1507,
+          "assembly": ".word $1352"
+        },
+        {
+          "offset": 1906,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 861,
+          "source_offset": 1394,
+          "assembly": ".word $135D"
+        },
+        {
+          "offset": 2011,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-jump-vector",
+          "target_offset": 1501,
+          "source_offset": 1499,
+          "assembly": ".word $15DD"
+        },
+        {
+          "offset": 2019,
+          "size": 2,
+          "classification": "data",
+          "kind": "retained-track-sequence-address",
+          "target_offset": 850,
+          "source_offset": 1507,
+          "assembly": ".word $1352"
+        }
+      ],
+      "code_bytes": 6,
+      "data_bytes": 12,
+      "target_data_offset": 1501,
+      "live_execution_established": false,
+      "remaining_bank_offsets": [
+        1520,
+        1526,
+        1527,
+        2032,
+        2038,
+        2039
+      ],
+      "variant": "alternate",
+      "origin": {
+        "disk": "disk1",
+        "block": 197
+      },
+      "storage_sha256": "51dec1a6f0c9734761c46459e929f57151bd4451c703f816240801233ebe048f"
+    }
+  ]
+}

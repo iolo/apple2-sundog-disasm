@@ -62,13 +62,17 @@ The evidence recipes explicitly enumerate 418 data bytes per variant:
 The later [footer and copied-tail audit](encoded-native-overlay-tail.md) resolves
 464 of the 488 bytes left by this body checkpoint. Its separate components leave
 the original body audit unchanged and bring the current bank remainder to 24
-bytes per variant. The historical scope of this report is described below.
+bytes per variant. A subsequent [retained-stub audit](encoded-retained-stubs.md)
+classifies another 18 bytes per bank while preserving this graph's data
+ownership and strict decoding rules. The current remainder is six bytes per
+variant. The historical scope of this report is described below.
 
-The jump-shaped stubs at $0357 and $035D, associated words at $0572 and $05DB,
-the word at $05E3, and isolated bytes at $05F0/$05F6/$05F7 remain unresolved.
+At this body checkpoint, the jump-shaped stubs at $0357 and $035D, associated
+words at $0572 and $05DB, the word at $05E3, and isolated bytes at
+$05F0/$05F6/$05F7 remained unresolved.
 Following the disconnected stubs leads into pointer-shaped bytes and an
 unsupported opcode; no code/data decision is forced for that path. The bank
-suffix beginning at $0627 also remains unresolved. It contains both short
+suffix beginning at $0627 also remained unresolved. It contains both short
 metadata-like bytes and a substantial copy of earlier native material, so it
 cannot be classified wholesale as padding or an image.
 
