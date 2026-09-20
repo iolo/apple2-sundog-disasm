@@ -63,6 +63,13 @@ def replacement_plan(manifest, images, recipe, binary):
                                                   "input": name, "input_offset": source})
     if not all(covered):
         raise ValueError("Not every assembled byte has an output mapping")
+    result["components"][name] = new_spec
+    return replace_temporary_regions(result, images, groups)
+
+
+def replace_temporary_regions(result, images, groups):
+    """Apply validated, possibly mixed-component additions to a copied manifest."""
+    disks = {disk['id']: disk for disk in result['disks']}
     files = {}
     for disk_id, additions in groups.items():
         disk = disks[disk_id]
@@ -90,8 +97,44 @@ def replacement_plan(manifest, images, recipe, binary):
             raise ValueError("Temporary files must not be shared between disks")
         files[spec["path"]] = bytes(remainder)
         spec.update(size=len(remainder), sha256=sha(remainder))
-    result["components"][name] = new_spec
     return result, files
+
+
+def source_copy_plan(manifest, images, mappings, binaries):
+    """Reuse existing assembled source ranges after independent copy review.
+
+    Complete source components already have their original disk mappings. New
+    copies may select instruction/data subranges, including clipped boundaries.
+    This routine verifies bytes/ownership; the caller must retain the source
+    classification and copy-provenance audit.
+    """
+    if not mappings:
+        raise ValueError('No source copies selected')
+    result = copy.deepcopy(manifest)
+    disks = {d['id']:d for d in result['disks']}
+    for disk_id,disk in disks.items():
+        if len(images[disk_id]) != disk['size'] or sha(images[disk_id]) != disk['sha256']:
+            raise ValueError('Stale copy baseline')
+    groups = {}
+    for mapping in mappings:
+        name = mapping['input']
+        spec = result['components'][name]
+        data = binaries[name]
+        if spec['kind'] != 'ca65-source' or len(data) != spec['size'] or sha(data) != spec['sha256']:
+            raise ValueError('Copy source is not the verified assembled component')
+        if not any(r['input']==name for d in disks.values() for r in d['regions']):
+            raise ValueError('Copy source has no existing disk ownership')
+        disk = disks[mapping['disk']]
+        offset,size,start = (mapping[k] for k in ('offset','size','input_offset'))
+        if size <= 0 or offset < 0 or offset+size > disk['size'] or start < 0 or start+size > len(data):
+            raise ValueError('Source copy exceeds input/output bounds')
+        owners = [r for r in disk['regions'] if r['offset'] <= offset and offset+size <= r['offset']+r['size']]
+        if len(owners) != 1 or result['components'][owners[0]['input']]['kind'] != 'temporary-unresolved':
+            raise ValueError('Source copy must replace only temporary bytes')
+        if images[disk['id']][offset:offset+size] != data[start:start+size]:
+            raise ValueError('Source copy bytes differ')
+        groups.setdefault(disk['id'],[]).append(dict(offset=offset,size=size,input=name,input_offset=start))
+    return replace_temporary_regions(result,images,groups)
 
 
 def main():

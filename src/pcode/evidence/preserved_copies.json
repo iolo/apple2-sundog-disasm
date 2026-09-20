@@ -1,0 +1,291 @@
+{
+  "classification_evidence": "docs/preserved-pcode-copies.md",
+  "copies": [
+    {
+      "disk": "disk1",
+      "block": 36,
+      "byte_offset": 416,
+      "size": 96,
+      "component": "game_12",
+      "input_offset": 3184,
+      "source_audit": "docs/reference/pcode-modules/game_12.json",
+      "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 46,
+      "byte_offset": 416,
+      "size": 96,
+      "component": "game_12",
+      "input_offset": 3184,
+      "source_audit": "docs/reference/pcode-modules/game_12.json",
+      "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 56,
+      "byte_offset": 416,
+      "size": 96,
+      "component": "game_12",
+      "input_offset": 3184,
+      "source_audit": "docs/reference/pcode-modules/game_12.json",
+      "sha256": "b6f8bf1ce2eaf8762c96e721fa0300bce0f5fff2791e56a519c51d49b2194b5f",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 128,
+      "byte_offset": 446,
+      "size": 66,
+      "component": "library_25",
+      "input_offset": 446,
+      "source_audit": "docs/reference/pcode-modules/library_25.json",
+      "sha256": "8654f4faf774fdeb05591e2e6b338dfebea2774097a6c1becf533b986cbcedff",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 138,
+      "byte_offset": 80,
+      "size": 432,
+      "component": "library_27",
+      "input_offset": 1104,
+      "source_audit": "docs/reference/pcode-modules/library_27.json",
+      "sha256": "b53270151a9d715b18ab6b2338d3a8454c23e50a96ca17034842b1ad35a0ce96",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 146,
+      "byte_offset": 332,
+      "size": 180,
+      "component": "startup_7",
+      "input_offset": 1356,
+      "source_audit": "docs/reference/pcode-modules/startup_7.json",
+      "sha256": "3690135f7e26b5b3f5f51bab469f8c060278175661c88fc0a560b97ba9be23db",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 147,
+      "byte_offset": 0,
+      "size": 1536,
+      "component": "game_8",
+      "input_offset": 0,
+      "source_audit": "docs/reference/pcode-modules/game_8.json",
+      "sha256": "da58a2bc3da6a2310450f817906a1c01cbbc7d3c07140a15bb62fd64f7d50fb7",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 150,
+      "byte_offset": 0,
+      "size": 512,
+      "component": "game_8",
+      "input_offset": 1024,
+      "source_audit": "docs/reference/pcode-modules/game_8.json",
+      "sha256": "46b0cc1aaf95ab19948164908778477941812ae0d8eae625b44cb9522baaee26",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 159,
+      "byte_offset": 252,
+      "size": 260,
+      "component": "alternate_7",
+      "input_offset": 252,
+      "source_audit": "docs/reference/pcode-modules/alternate_7.json",
+      "sha256": "c29474b549b3be15ec5ea10e5355b911eedfcba742806b6a3073ab5978ecc08a",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 166,
+      "byte_offset": 276,
+      "size": 236,
+      "component": "alternate_8",
+      "input_offset": 2836,
+      "source_audit": "docs/reference/pcode-modules/alternate_8.json",
+      "sha256": "6c0fff01c36317fa6cf9965eef6fd32a62f0fad5f8706e02a4e078d6c0b43c85",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 169,
+      "byte_offset": 188,
+      "size": 324,
+      "component": "alternate_9",
+      "input_offset": 700,
+      "source_audit": "docs/reference/pcode-modules/alternate_9.json",
+      "sha256": "15ebcee6edbbf3877cd38a99a8f6d0eba4e75cbf44533685499094c5470db02a",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 171,
+      "byte_offset": 438,
+      "size": 74,
+      "component": "alternate_10",
+      "input_offset": 438,
+      "source_audit": "docs/reference/pcode-modules/alternate_10.json",
+      "sha256": "bd7c5ba8afd0c5cc14e771a17e8b5594468c175d8234efd65143c35ffa50f271",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 173,
+      "byte_offset": 396,
+      "size": 74,
+      "component": "alternate_10",
+      "input_offset": 438,
+      "source_audit": "docs/reference/pcode-modules/alternate_10.json",
+      "sha256": "bd7c5ba8afd0c5cc14e771a17e8b5594468c175d8234efd65143c35ffa50f271",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 262,
+      "byte_offset": 296,
+      "size": 216,
+      "component": "system_2",
+      "input_offset": 296,
+      "source_audit": "docs/reference/pcode-modules/system_2.json",
+      "sha256": "4c4063b3a643e78b54a2b8255bd59169b6d7585e7c894d43b120e67c791417c4",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 271,
+      "byte_offset": 134,
+      "size": 378,
+      "component": "system_5",
+      "input_offset": 1158,
+      "source_audit": "docs/reference/pcode-modules/system_5.json",
+      "sha256": "b0139f41bc434d31f72e9f3901a450ec964c8ca6a0408cc27db2d04291f31303",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk1",
+      "block": 279,
+      "byte_offset": 68,
+      "size": 444,
+      "component": "system_6",
+      "input_offset": 3140,
+      "source_audit": "docs/reference/pcode-modules/system_6.json",
+      "sha256": "3ba91a87560bc5e6190539e5895dbb512aee3a39a21d49a4b15abfc9638380d0",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 128,
+      "byte_offset": 446,
+      "size": 66,
+      "component": "library_25",
+      "input_offset": 446,
+      "source_audit": "docs/reference/pcode-modules/library_25.json",
+      "sha256": "8654f4faf774fdeb05591e2e6b338dfebea2774097a6c1becf533b986cbcedff",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 138,
+      "byte_offset": 80,
+      "size": 432,
+      "component": "library_27",
+      "input_offset": 1104,
+      "source_audit": "docs/reference/pcode-modules/library_27.json",
+      "sha256": "b53270151a9d715b18ab6b2338d3a8454c23e50a96ca17034842b1ad35a0ce96",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 146,
+      "byte_offset": 332,
+      "size": 180,
+      "component": "startup_7",
+      "input_offset": 1356,
+      "source_audit": "docs/reference/pcode-modules/startup_7.json",
+      "sha256": "3690135f7e26b5b3f5f51bab469f8c060278175661c88fc0a560b97ba9be23db",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 153,
+      "byte_offset": 58,
+      "size": 454,
+      "component": "game_8",
+      "input_offset": 2618,
+      "source_audit": "docs/reference/pcode-modules/game_8.json",
+      "sha256": "012aeab8ba749a31e3291b55e443d97e3aee75eaf4b5163812c2d98ba00f252e",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 184,
+      "byte_offset": 426,
+      "size": 86,
+      "component": "game_12",
+      "input_offset": 5034,
+      "source_audit": "docs/reference/pcode-modules/game_12.json",
+      "sha256": "bf43d87faffc1aa94152cce9954865497f52726ed517697baf07dce4abcfcbc2",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 195,
+      "byte_offset": 94,
+      "size": 418,
+      "component": "game_15",
+      "input_offset": 2142,
+      "source_audit": "docs/reference/pcode-modules/game_15.json",
+      "sha256": "92192965af6fdd5ab73de6922e254f08ab4d528543ebd68850bf5a55b22cea87",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 210,
+      "byte_offset": 278,
+      "size": 234,
+      "component": "game_16",
+      "input_offset": 6934,
+      "source_audit": "docs/reference/pcode-modules/game_16.json",
+      "sha256": "2185b0918fe19951020ce6bc79eb6ddf55f6497cef7ecc49c471f31c2b44e2d8",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 230,
+      "byte_offset": 136,
+      "size": 376,
+      "component": "game_18",
+      "input_offset": 5768,
+      "source_audit": "docs/reference/pcode-modules/game_18.json",
+      "sha256": "995eee597c90f5aeeffc21fe43bcabe59473533fb56cc7b339e773e9e972476a",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 241,
+      "byte_offset": 80,
+      "size": 432,
+      "component": "game_19",
+      "input_offset": 4688,
+      "source_audit": "docs/reference/pcode-modules/game_19.json",
+      "sha256": "5be30a36b098d85d482a30cb89c70e5515514c04c9efc8044c3f873a93ea0130",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    },
+    {
+      "disk": "disk2",
+      "block": 255,
+      "byte_offset": 180,
+      "size": 332,
+      "component": "game_20",
+      "input_offset": 6324,
+      "source_audit": "docs/reference/pcode-modules/game_20.json",
+      "sha256": "29f358b56f3fcb2d0b2f835221ec1bb23180c9eda4c03141ac80ffe2f93601e2",
+      "evidence": "Exact extended copy of the specified completely disassembled Pascal module range; retain original instruction/data ownership and identify clipped item boundaries."
+    }
+  ]
+}

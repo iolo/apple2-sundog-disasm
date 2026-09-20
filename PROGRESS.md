@@ -1969,3 +1969,39 @@ and acceptance criteria.
 - **Next action:** Continue the unresolved native stubs/state fields and the
   remaining disk regions, retaining the complete classification requirement;
   complete gameplay/save/load/swap/utility checks in both emulators afterward.
+
+## 2026-09-20 — Step 06ai: preserved copies of disassembled p-code ranges
+
+- **Work/evidence:** Reviewed 26 extended exact copies of 17 fully disassembled
+  Pascal source components in previously unresolved disk extents. Each frozen
+  extent matches at least 64 consecutive, nontrivial bytes, with its entire copy
+  hash and source audit recorded. Freshly assembled every source module, checked
+  hashes and interpreter dispatch evidence, and reran complete module analysis.
+  Transferred explicit per-item instruction/data ownership, not a generic label
+  based only on byte matching. The copies include disk-1 blocks 147–149, repeated
+  block 150, numerous partial module tails, and three saved-bank suffixes.
+- **Representation:** Added disk mappings to existing assembled components. No
+  additional executable binary input, extraction dependency, or opaque source
+  fragment is introduced. The audit records each copied item's complete source
+  assembly, source boundaries, classification and clipped ends. Twenty-three
+  instruction items have clipped boundaries; their full instructions remain in
+  the existing source. All 8,030 selected disk bytes have evidenced ownership.
+- **Artifacts:** Added src/pcode/evidence/preserved_copies.json,
+  docs/reference/preserved-pcode-copies.json, docs/preserved-pcode-copies.md,
+  tools/pcode_copies.py and three tests. Factored the existing adoption tool's
+  temporary-region replacement so verified source slices can be reused safely;
+  updated PLAN.md. The concurrent PRD reference edit remains preserved/uncommitted.
+- **Validation:** Eleven copy/adoption/encoding tests pass, including unchanged
+  input manifests, exact rebuilt bytes, clipped code/data boundaries, rejection
+  of uncovered source bytes, changed sources/disks, stale baselines, overlapping
+  outputs, invalid bounds and replacement of already classified bytes. Complete
+  source reanalysis agrees with all 17 prior coverage audits. Batch adoption,
+  full build, post-adoption ownership/audit verification and original comparison
+  pass; original disks/manual remain unchanged. git diff --check passes.
+  No runtime use of preserved copies or final emulator completion is claimed.
+- **Coverage:** 168,173 source-built disk bytes, 98,468 identified data/asset bytes,
+  20,079 temporary bytes (10,744 disk 1; 9,335 disk 2). This checkpoint removes
+  8,030 temporary bytes: 6,805 code bytes and 1,225 source-owned data bytes.
+- **Next action:** Analyze remaining source variants/orphan fragments, structured
+  asset headers and bank padding; continue the complete classification audit and
+  final gameplay/save/load/swap/utility checks in both emulators.

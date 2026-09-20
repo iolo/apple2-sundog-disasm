@@ -65,6 +65,9 @@ Split large steps into independently validated, logged, and committed increments
   ownership. Step 06ah adds 464 bytes per bank of native Pascal footer data and
   copied instructions/data, including two precisely bounded instruction fragments;
   24 bytes in each bank remain unresolved.
+  Step 06ai identifies 26 extended copies of already disassembled p-code ranges
+  and maps their 8,030 bytes to existing assembled source, with per-item code/data
+  ownership and clipped instruction boundaries recorded.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
