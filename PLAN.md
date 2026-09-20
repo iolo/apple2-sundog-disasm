@@ -60,7 +60,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 07q classifies the five remaining messages and bounded spare storage,
   completing code/data ownership for all thirteen dialogue banks.
   Step 06af identifies two encoded native banks and reconstructs their 63-byte
-  loader entries with reversible build encoding; their bodies remain unresolved.
+  loader entries with reversible build encoding. Step 06ag reconstructs 1,497
+  additional bytes per bank through reviewed indirect flow and embedded-data
+  ownership; 488 bytes in each bank remain unresolved.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

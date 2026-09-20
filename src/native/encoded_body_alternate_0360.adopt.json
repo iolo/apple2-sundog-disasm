@@ -1,0 +1,32 @@
+{
+  "name": "encoded_body_alternate_0360",
+  "source": "src/native/encoded_body_alternate_0360.s",
+  "config": "src/native/encoded_body_alternate_0360.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 251,
+    "step": 185,
+    "offset": 864,
+    "evidence": "docs/encoded-native-overlay-body.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 98912,
+      "size": 160,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 98560,
+      "size": 256,
+      "input_offset": 160
+    },
+    {
+      "disk": "disk1",
+      "offset": 102144,
+      "size": 114,
+      "input_offset": 416
+    }
+  ]
+}

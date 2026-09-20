@@ -1,0 +1,38 @@
+{
+  "name": "encoded_body_play_003f",
+  "source": "src/native/encoded_body_play_003f.s",
+  "config": "src/native/encoded_body_play_003f.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 63,
+    "evidence": "docs/encoded-native-overlay-body.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 23871,
+      "size": 193,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 23552,
+      "size": 256,
+      "input_offset": 193
+    },
+    {
+      "disk": "disk2",
+      "offset": 23296,
+      "size": 256,
+      "input_offset": 449
+    },
+    {
+      "disk": "disk2",
+      "offset": 23040,
+      "size": 87,
+      "input_offset": 705
+    }
+  ]
+}

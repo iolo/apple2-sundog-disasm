@@ -5,6 +5,7 @@ Unlike native Pascal procedures these components have no relocation dictionary.
 Never turn unreachable bytes into data automatically: every byte must be owned.
 """
 from collections import Counter
+import re
 
 from disk_layout import sha
 from native_pascal_source import instruction, label
@@ -34,6 +35,10 @@ def analyze(data, base, recipe, *, inspect_gaps=False):
         raise ValueError('Raw code roots require evidence')
     pending = [root['offset'] for root in roots]
     external = recipe.get('external_targets', {})
+    indirect = {entry['offset']: entry for entry in recipe.get('indirect_jumps', [])}
+    if len(indirect) != len(recipe.get('indirect_jumps', [])):
+        raise ValueError('Duplicate indirect raw jump model')
+    used_indirect = set()
     overlaps = {entry['offset']: entry for entry in recipe.get('bit_overlaps', [])}
     if len(overlaps) != len(recipe.get('bit_overlaps', [])):
         raise ValueError('Duplicate raw BIT overlap')
@@ -65,7 +70,23 @@ def analyze(data, base, recipe, *, inspect_gaps=False):
         elif name in ('jsr', 'jmp') and mode == 'Ab':
             target = item['operand_value'] - base
         elif name == 'jmp' and mode == 'In':
-            raise ValueError('Indirect raw jump requires a reviewed target model')
+            model = indirect.get(pc)
+            if not model or not model.get('evidence'):
+                raise ValueError('Indirect raw jump requires a reviewed target model')
+            vector = item['operand_value']
+            # NMOS 6502 wraps the high-byte fetch within the vector's page.
+            positions = [vector-base, ((vector & 0xFF00) | ((vector+1) & 255))-base]
+            if any(p not in owners or items[owners[p]]['classification'] != 'data'
+                   for p in positions):
+                raise ValueError('Indirect vector bytes require explicit data ownership')
+            address = data[positions[0]] | data[positions[1]] << 8
+            if (model.get('vector_address') != vector
+                    or model.get('target_address') != address):
+                raise ValueError('Indirect vector differs from reviewed addresses')
+            target = address-base
+            used_indirect.add(pc)
+            items[pc]['indirect_evidence'] = model['evidence']
+            items[pc]['indirect_vector_offsets'] = positions
         if target is not None:
             if 0 <= target < len(data):
                 successors.append(target)
@@ -79,6 +100,8 @@ def analyze(data, base, recipe, *, inspect_gaps=False):
         for destination in successors:
             edges.append(dict(source=pc, target=destination))
             pending.append(destination)
+    if used_indirect != set(indirect):
+        raise ValueError('Unused indirect raw jump model')
     missing = [offset for offset in range(len(data)) if offset not in owners]
     if missing and not inspect_gaps:
         raise ValueError(f'Unclassified raw byte at +${missing[0]:04X} ({len(missing)} total)')
@@ -125,3 +148,40 @@ def source(data, report):
                 lines += ['    .byte '+','.join(f'${b:02X}' for b in raw)]
     lines += [f'.assert * - component_start = {len(data)}, error, "Raw component size"']
     return '\n'.join(lines)+'\n'
+
+
+def source_slice(data, report, start, end):
+    """Emit a fully classified interval of a larger, possibly incomplete audit.
+
+    Omitted bytes are not emitted as padding or silently called data. The caller
+    must map only this interval and retain the complete audit separately.
+    """
+    if sha(data) != report['sha256'] or not 0 <= start < end <= len(data):
+        raise ValueError('Invalid raw source slice or changed analysis input')
+    selected, cursor, constants = [], start, {}
+
+    def reference(match):
+        offset = int(match.group()[2:], 16)
+        if start <= offset < end:
+            return label(offset-start)
+        name = 'EXT_'+label(offset)
+        constants[name] = offset-start
+        return name
+
+    for item in report['items']:
+        if item['offset'] < end and item['offset']+item['size'] > start:
+            if item['offset'] != cursor or cursor+item['size'] > end:
+                raise ValueError('Raw source slice crosses a gap or item boundary')
+            copied = dict(item, offset=cursor-start)
+            if copied['classification'] == 'code':
+                copied['assembly'] = re.sub(r'L_[0-9A-F]+', reference, copied['assembly'])
+            selected.append(copied)
+            cursor += item['size']
+    if cursor != end:
+        raise ValueError('Raw source slice contains unclassified bytes')
+    fragment = data[start:end]
+    sliced = dict(report, base=report['base']+start, size=len(fragment), sha256=sha(fragment),
+                  items=selected, unclassified_offsets=[])
+    definitions = ''.join(f'{name} = component_start + ({offset})\n'
+                          for name, offset in sorted(constants.items()))
+    return definitions+source(fragment, sliced)

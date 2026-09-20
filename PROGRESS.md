@@ -1898,3 +1898,39 @@ and acceptance criteria.
   32,031 temporary bytes (17,725 disk 1; 14,306 disk 2).
 - **Next action:** Trace the swapped native bodies and their indirect-jump layout;
   continue the remaining whole-disk classification and both-emulator validation.
+
+## 2026-09-20 — Step 06ag: encoded native body graphs and bounded source slices
+
+- **Work/evidence:** Followed the loader's fixed body entry through 126 reviewed
+  indirect vectors per bank. The reachable graph plus one evidenced disconnected
+  stub comprises 448 instructions / 1,079 code bytes in each variant, without
+  code/data overlap. Identified 418 data bytes per bank: vector words, constants,
+  track/symbol tables, mutable read/seek state, wipe-start pointer, and individually
+  reviewed repeated obfuscation delimiters. Both variants have matching edges and
+  delimiter bytes. Ordinary writes do not modify the reviewed jump vectors; the
+  separate nonreturning memory-wipe path is explicitly excluded from that premise.
+- **Boundaries:** Two other disconnected jump-shaped stubs lead into ambiguous
+  pointer/opcode bytes and remain unresolved with their associated gaps. The
+  suffix includes copied native material and is not classified as padding. Eight
+  fully classified intervals per bank are emitted as separate components, with
+  their actual runtime addresses and encoding phases. No omitted byte is emitted,
+  and every assembled byte has a disk mapping. There remain 488 unresolved bytes
+  per encoded bank; full reconstruction and live invocation are not claimed.
+- **Artifacts:** Added strict reviewed indirect-jump handling and classified-slice
+  emission to tools/native_raw_source.py; added tools/prepare_encoded_overlay.py,
+  both full-bank evidence/graph reports, sixteen source/config/adoption sets,
+  docs/encoded-native-overlay-body.md, and updated the loader document and plan.
+- **Validation:** Sixteen raw-decoder/encoding/adoption tests pass, including
+  NMOS indirect-vector page wrapping, changed-pointer and missing-data rejection,
+  partial-instruction/gap rejection, and assembling a cross-slice relative branch.
+  Preparation independently assembles and re-encodes all sixteen slices exactly;
+  both --verify runs reproduce every artifact. Each adoption was followed by a
+  full exact build. tools/verify_disks.py confirms both originals and rebuilt disk
+  hashes, plus unchanged manual input. git diff --check passes. No new live
+  emulator or final behavioral-validation completion is claimed.
+- **Coverage:** 159,215 source-built disk bytes, 98,468 identified data/asset bytes,
+  29,037 temporary bytes (16,228 disk 1; 12,809 disk 2). This checkpoint removes
+  2,994 temporary bytes: 2,158 instructions and 836 source-owned data bytes.
+- **Next action:** Resolve the encoded-bank disconnected stubs and duplicated
+  suffix code/data, then continue remaining disk classification and final checks
+  in both emulators. The resumed goal remains active.

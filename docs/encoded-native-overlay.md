@@ -2,9 +2,10 @@
 
 The four-block bank at disk-2 block 41 decodes to **native code**, not an image.
 Disk-1 block 197 contains a related encoded native bank. Their first 63 bytes
-are now disassembled in `src/native/encoded_loader_play.s` and
-`encoded_loader_alternate.s`. The rest of each bank remains unresolved pending
-indirect-flow and embedded-data analysis; it is not adopted as an opaque asset.
+are disassembled in `src/native/encoded_loader_play.s` and
+`encoded_loader_alternate.s`. The subsequent [body audit](encoded-native-overlay-body.md)
+reconstructs another 1,497 bytes per bank as instructions and evidenced data;
+488 bytes per bank remain unresolved and are not adopted as an opaque asset.
 
 ## Encoding evidence
 
@@ -53,11 +54,13 @@ After restoring flags, the initial zero flag permits the fixed call to $0DF9
 or $11F9 in the swapped body. A is then set to $FF and control branches back
 to offset two. The second swap restores the previous memory contents; restoring
 the saved nonzero flags skips the body call and reaches RTS at offset $3E.
-All 63 selected bytes are instructions. The following NOP at offset $3F is
-part of the exchanged region and remains outside the adopted entry routine.
+All 63 selected bytes are instructions. The following NOP-shaped byte at offset
+$3F is part of the exchanged region and remains outside the entry routine.
+The body audit classifies it with the explicitly reviewed obfuscation delimiters.
 
 The body starts with dense indirect-jump structures and includes disk-controller
-accesses. Full instruction/data ownership and runtime invocation remain open.
+accesses. The body audit resolves 126 jump vectors per bank; complete
+instruction/data ownership and runtime invocation remain open.
 In the currently traced game-15 path, the transformer itself writes `SHIP`,
 and the $4000 buffer is subsequently overwritten by the known ship-image read.
 No call to the decoded entry has yet been established in that path.

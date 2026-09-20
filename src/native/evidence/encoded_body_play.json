@@ -1,0 +1,2487 @@
+{
+  "name": "encoded_body_play",
+  "size": 2048,
+  "base": 3072,
+  "sha256": "3321a9c99ccce1d3eb524835d969af96eed6023b022a40204d9704c1f9897ae3",
+  "origin": {
+    "disk": "disk2",
+    "block": 41
+  },
+  "classification_evidence": "docs/encoded-native-overlay-body.md",
+  "roots": [
+    {
+      "offset": 505,
+      "evidence": "Fixed body call from the source-built swap loader."
+    },
+    {
+      "offset": 93,
+      "evidence": "Disconnected JMP indirect stub with the same block structure and relocation as reachable stubs; vector at $0214 leads to the established $0220 instruction boundary."
+    }
+  ],
+  "external_targets": {
+    "64680": "Apple II monitor WAIT routine; called by drive motor/step timing helpers."
+  },
+  "indirect_jumps": [
+    {
+      "offset": 75,
+      "vector_address": 4285,
+      "target_address": 3226,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 86,
+      "vector_address": 3136,
+      "target_address": 3700,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 89,
+      "vector_address": 4581,
+      "target_address": 4565,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 93,
+      "vector_address": 3604,
+      "target_address": 3616,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 101,
+      "vector_address": 3580,
+      "target_address": 4209,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 110,
+      "vector_address": 4076,
+      "target_address": 3188,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 118,
+      "vector_address": 4117,
+      "target_address": 3853,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 124,
+      "vector_address": 3478,
+      "target_address": 4530,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 148,
+      "vector_address": 3778,
+      "target_address": 3718,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 156,
+      "vector_address": 3793,
+      "target_address": 3171,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 165,
+      "vector_address": 4050,
+      "target_address": 3435,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 174,
+      "vector_address": 3231,
+      "target_address": 4253,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 214,
+      "vector_address": 3185,
+      "target_address": 3870,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 222,
+      "vector_address": 3892,
+      "target_address": 3454,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 231,
+      "vector_address": 3674,
+      "target_address": 3638,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 239,
+      "vector_address": 3682,
+      "target_address": 3709,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 245,
+      "vector_address": 4027,
+      "target_address": 3196,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 252,
+      "vector_address": 3731,
+      "target_address": 4557,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 261,
+      "vector_address": 3909,
+      "target_address": 4053,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 301,
+      "vector_address": 4059,
+      "target_address": 4444,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 310,
+      "vector_address": 3619,
+      "target_address": 3410,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 332,
+      "vector_address": 3240,
+      "target_address": 3811,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 342,
+      "vector_address": 3800,
+      "target_address": 4120,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 351,
+      "vector_address": 3850,
+      "target_address": 3234,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 357,
+      "vector_address": 4554,
+      "target_address": 3630,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 368,
+      "vector_address": 3249,
+      "target_address": 4079,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 376,
+      "vector_address": 4562,
+      "target_address": 3862,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 384,
+      "vector_address": 4575,
+      "target_address": 3786,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 393,
+      "vector_address": 4577,
+      "target_address": 3790,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 396,
+      "vector_address": 4338,
+      "target_address": 4185,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 403,
+      "vector_address": 3841,
+      "target_address": 3583,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 505,
+      "vector_address": 3635,
+      "target_address": 4267,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 512,
+      "vector_address": 3738,
+      "target_address": 4104,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 518,
+      "vector_address": 3150,
+      "target_address": 4261,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 529,
+      "vector_address": 4044,
+      "target_address": 4010,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 538,
+      "vector_address": 3443,
+      "target_address": 3622,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 544,
+      "vector_address": 4101,
+      "target_address": 4357,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 552,
+      "vector_address": 4458,
+      "target_address": 3819,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 560,
+      "vector_address": 4494,
+      "target_address": 3995,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 569,
+      "vector_address": 3808,
+      "target_address": 4432,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 576,
+      "vector_address": 3432,
+      "target_address": 3446,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 582,
+      "vector_address": 3665,
+      "target_address": 3803,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 590,
+      "vector_address": 4527,
+      "target_address": 3836,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 599,
+      "vector_address": 3999,
+      "target_address": 3339,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 607,
+      "vector_address": 3859,
+      "target_address": 3647,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 631,
+      "vector_address": 4182,
+      "target_address": 4288,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 640,
+      "vector_address": 4007,
+      "target_address": 4453,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 656,
+      "vector_address": 4520,
+      "target_address": 3747,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 663,
+      "vector_address": 3328,
+      "target_address": 4139,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 669,
+      "vector_address": 4086,
+      "target_address": 3317,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 675,
+      "vector_address": 4450,
+      "target_address": 4047,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 681,
+      "vector_address": 3376,
+      "target_address": 4282,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 689,
+      "vector_address": 3613,
+      "target_address": 4062,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 700,
+      "vector_address": 3142,
+      "target_address": 4357,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 703,
+      "vector_address": 3945,
+      "target_address": 3796,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 711,
+      "vector_address": 3140,
+      "target_address": 3616,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 718,
+      "vector_address": 4413,
+      "target_address": 3481,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 725,
+      "vector_address": 3417,
+      "target_address": 3607,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 733,
+      "vector_address": 3992,
+      "target_address": 3300,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 741,
+      "vector_address": 3657,
+      "target_address": 4486,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 750,
+      "vector_address": 3451,
+      "target_address": 4565,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 758,
+      "vector_address": 4294,
+      "target_address": 4424,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 766,
+      "vector_address": 3176,
+      "target_address": 4461,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 775,
+      "vector_address": 3715,
+      "target_address": 4070,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 784,
+      "vector_address": 4128,
+      "target_address": 3878,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 792,
+      "vector_address": 3875,
+      "target_address": 4148,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 800,
+      "vector_address": 4264,
+      "target_address": 4497,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 808,
+      "vector_address": 4145,
+      "target_address": 3886,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 817,
+      "vector_address": 4190,
+      "target_address": 3895,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 825,
+      "vector_address": 4206,
+      "target_address": 3903,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 834,
+      "vector_address": 4429,
+      "target_address": 3912,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 843,
+      "vector_address": 4441,
+      "target_address": 3921,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 870,
+      "vector_address": 4369,
+      "target_address": 4019,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 909,
+      "vector_address": 3314,
+      "target_address": 3379,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 917,
+      "vector_address": 3306,
+      "target_address": 3243,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 924,
+      "vector_address": 4067,
+      "target_address": 4549,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 932,
+      "vector_address": 3936,
+      "target_address": 3828,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 941,
+      "vector_address": 4279,
+      "target_address": 4363,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 952,
+      "vector_address": 4308,
+      "target_address": 4341,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 962,
+      "vector_address": 3138,
+      "target_address": 4038,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 969,
+      "vector_address": 3289,
+      "target_address": 3677,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 975,
+      "vector_address": 3320,
+      "target_address": 3948,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 984,
+      "vector_address": 3744,
+      "target_address": 3844,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 992,
+      "vector_address": 3168,
+      "target_address": 3660,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1001,
+      "vector_address": 4354,
+      "target_address": 4131,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1011,
+      "vector_address": 3918,
+      "target_address": 3939,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1019,
+      "vector_address": 3426,
+      "target_address": 4311,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1026,
+      "vector_address": 3297,
+      "target_address": 4002,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1034,
+      "vector_address": 3825,
+      "target_address": 3759,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1042,
+      "vector_address": 3833,
+      "target_address": 4469,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1053,
+      "vector_address": 3223,
+      "target_address": 3330,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1061,
+      "vector_address": 4360,
+      "target_address": 3420,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1070,
+      "vector_address": 3930,
+      "target_address": 4523,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1081,
+      "vector_address": 4577,
+      "target_address": 3790,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1107,
+      "vector_address": 4511,
+      "target_address": 4350,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1115,
+      "vector_address": 3336,
+      "target_address": 3781,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1131,
+      "vector_address": 3867,
+      "target_address": 4416,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1175,
+      "vector_address": 3593,
+      "target_address": 4273,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1183,
+      "vector_address": 3627,
+      "target_address": 3734,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1189,
+      "vector_address": 3644,
+      "target_address": 3753,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1195,
+      "vector_address": 4546,
+      "target_address": 3590,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1204,
+      "vector_address": 4109,
+      "target_address": 3741,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1210,
+      "vector_address": 3900,
+      "target_address": 3685,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1219,
+      "vector_address": 3407,
+      "target_address": 3767,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1233,
+      "vector_address": 3471,
+      "target_address": 3153,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1263,
+      "vector_address": 3883,
+      "target_address": 3429,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1272,
+      "vector_address": 3385,
+      "target_address": 4514,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1279,
+      "vector_address": 4483,
+      "target_address": 3292,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1285,
+      "vector_address": 4136,
+      "target_address": 3654,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1294,
+      "vector_address": 4250,
+      "target_address": 3252,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1307,
+      "vector_address": 4573,
+      "target_address": 3630,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1338,
+      "vector_address": 3706,
+      "target_address": 4089,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1346,
+      "vector_address": 3199,
+      "target_address": 3388,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1354,
+      "vector_address": 4016,
+      "target_address": 4112,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1366,
+      "vector_address": 4094,
+      "target_address": 3668,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1375,
+      "vector_address": 4421,
+      "target_address": 3309,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1383,
+      "vector_address": 3816,
+      "target_address": 3179,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1391,
+      "vector_address": 3984,
+      "target_address": 3596,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1408,
+      "vector_address": 3756,
+      "target_address": 3474,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1419,
+      "vector_address": 3587,
+      "target_address": 4372,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1436,
+      "vector_address": 4347,
+      "target_address": 3202,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1445,
+      "vector_address": 3193,
+      "target_address": 3987,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1452,
+      "vector_address": 4258,
+      "target_address": 4030,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1471,
+      "vector_address": 4270,
+      "target_address": 4193,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1479,
+      "vector_address": 3764,
+      "target_address": 3323,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1487,
+      "vector_address": 3750,
+      "target_address": 4097,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    },
+    {
+      "offset": 1496,
+      "vector_address": 3651,
+      "target_address": 4297,
+      "evidence": "Fixed pointer in the relocated body; ordinary stores target separate scratch/parameter bytes. Terminal wipe is explicitly outside the immutable-flow assumption."
+    }
+  ],
+  "data": [
+    {
+      "offset": 63,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$EA decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 64,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E74. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 66,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FC6. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 68,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E20. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 70,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1105. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 72,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 78,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10A5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 80,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 92,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 96,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E4C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 98,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 104,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $116D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 106,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 113,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F1E. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 115,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 121,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F93. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 123,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 127,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D3C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 129,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 142,
+      "size": 2,
+      "kind": "entry-address",
+      "evidence": "Stored $0DF9/$11F9 body-entry address, matching the loader call and the relocated counterpart."
+    },
+    {
+      "offset": 144,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 151,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D02. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 153,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 159,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $109D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 161,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 168,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EE3. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 170,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 177,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FEF. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 179,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 217,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E5D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 219,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 225,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FA2. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 227,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 234,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CAB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 236,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 242,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D33. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 244,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 248,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F6C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 250,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 255,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 256,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $102B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 264,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EC5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 266,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 270,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 290,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 297,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 304,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10BA. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 306,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 313,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11A2. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 315,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 335,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EB7. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 337,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 345,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E17. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 347,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 354,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10D7. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 356,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 360,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D76. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 362,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 371,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E26. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 373,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 379,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11D5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 381,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 387,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 399,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C51. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 401,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 406,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11B2. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 408,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 412,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 427,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 446,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 452,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 459,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 469,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 504,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 508,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1071. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 510,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 515,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1114. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 517,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 521,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10B1. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 523,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 525,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 526,
+      "size": 1,
+      "kind": "xor-constant",
+      "evidence": "EOR absolute at body offsets $03B3 and $03E6 reads this $2C constant."
+    },
+    {
+      "offset": 532,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E20. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 534,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 541,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FDE. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 543,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 547,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D52. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 549,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 555,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E96. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 557,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 563,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10AB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 565,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 572,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EA9. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 574,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 579,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10C9. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 581,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 585,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1186. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 587,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 593,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EDB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 595,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 602,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E36. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 604,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 610,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E7D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 612,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 634,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FF9. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 636,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 643,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FE6. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 645,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 659,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11CD. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 661,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 666,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1008. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 668,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 672,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F04. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 674,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 678,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1001. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 680,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 684,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D92. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 686,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 692,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CFB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 694,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 706,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E86. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 708,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 717,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 721,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C63. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 723,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 728,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1018. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 730,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 736,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1150. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 738,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 744,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C6B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 746,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 753,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EAF. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 755,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 761,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1175. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 763,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 769,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0DFF. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 771,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 778,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CA2. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 780,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 787,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E3F. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 789,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 795,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1140. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 797,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 803,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1034. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 805,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 811,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D65. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 813,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 820,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D7E. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 822,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 828,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E65. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 830,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 837,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FD5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 839,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 846,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F63. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 848,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 850,
+      "size": 4,
+      "kind": "track-sequence",
+      "evidence": "LDA indexed at $02B7 reads $22,$23,$22,$FF; negative final byte selects failure, the others supply seek tracks."
+    },
+    {
+      "offset": 854,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 858,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11AB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 860,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 864,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EF4. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 866,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 873,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0ED4. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 875,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 912,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E0C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 914,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 920,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CE4. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 922,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 927,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D0B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 929,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 935,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1165. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 937,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 944,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1010. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 946,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 955,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C7C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 957,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 965,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 972,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FAA. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 974,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 978,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D6B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 980,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 987,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $115C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 989,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 995,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11C5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 997,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1004,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C74. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1006,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1014,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CF5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1016,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1022,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E54. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1024,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1029,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1105. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1031,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1037,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E9D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1039,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1045,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F0D. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1047,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1056,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F26. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1058,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1064,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E46. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1066,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1073,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F2E. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1075,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1110,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10C0. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1112,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1118,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F37. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1120,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1134,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F3F. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1136,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1178,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CB4. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1180,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1186,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FBE. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1188,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1192,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1191. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1194,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1198,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1061. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1200,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1207,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $110B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1209,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1213,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C9A. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1215,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1222,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1148. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1224,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1236,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10F5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1238,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1266,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1059. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1268,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1275,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0C82. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1277,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1282,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $1023. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1284,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1288,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D5C. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1290,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1297,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FB3. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1299,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1310,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1311,
+      "size": 1,
+      "kind": "xor-constant",
+      "evidence": "EOR absolute at $0304 reads this $DA constant."
+    },
+    {
+      "offset": 1341,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0D99. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1343,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1349,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CED. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1351,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1357,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F48. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1359,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1363,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1369,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F51. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1371,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1378,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0FCF. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1380,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$84 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1386,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EEB. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1388,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$A9 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1396,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$AD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1411,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0CDC. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1413,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$E6 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1422,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F9B. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1424,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$D0 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1439,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $10FE. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1441,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$CD decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1448,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EA3. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1450,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$4C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1455,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0EFC. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1457,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6C decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1474,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E06. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1476,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$20 decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1482,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E2E. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1484,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$6D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1490,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0F16. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1492,
+      "size": 1,
+      "kind": "obfuscation-delimiter",
+      "evidence": "$8D decoy opcode at a reviewed block boundary; repeated delimiter vocabulary/order matches both relocated banks. See body layout audit."
+    },
+    {
+      "offset": 1501,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0E2E. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1503,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0ECA. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1505,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $0ECE. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1509,
+      "size": 2,
+      "kind": "jump-vector",
+      "evidence": "Read by reviewed JMP indirect; stored target $11D5. See static-write audit in docs/encoded-native-overlay-body.md."
+    },
+    {
+      "offset": 1511,
+      "size": 1,
+      "kind": "retry-counter",
+      "evidence": "STA at $02EB initializes this counter; DEC at $04CE consumes it."
+    },
+    {
+      "offset": 1512,
+      "size": 8,
+      "kind": "disk-symbol-table",
+      "evidence": "CMP indexed at $0575 searches this table with Y initialized to seven at $0410 and decremented through zero."
+    },
+    {
+      "offset": 1521,
+      "size": 5,
+      "kind": "disk-read-buffer",
+      "evidence": "STA indexed at $0596 writes read bytes with Y=5 or Y=2; absolute reads consume $05F1..$05F5."
+    },
+    {
+      "offset": 1528,
+      "size": 1,
+      "kind": "track-sequence-index",
+      "evidence": "STY at $0271, LDY at $0274 and INC at $04C0 manage the track index."
+    },
+    {
+      "offset": 1529,
+      "size": 1,
+      "kind": "read-mode",
+      "evidence": "STA at $00AB/$03AA and BIT/LDA at $0184/$048F/$0516 select disk-read mode."
+    },
+    {
+      "offset": 1530,
+      "size": 2,
+      "kind": "wipe-start-address",
+      "evidence": "LDA at $0602/$0607 loads this little-endian initial address into zero page for the terminal memory-wipe routine."
+    }
+  ],
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 0,
+    "evidence": "docs/encoded-native-overlay-body.md"
+  },
+  "selected_ranges": [
+    [
+      63,
+      855
+    ],
+    [
+      858,
+      861
+    ],
+    [
+      864,
+      1394
+    ],
+    [
+      1396,
+      1499
+    ],
+    [
+      1501,
+      1507
+    ],
+    [
+      1509,
+      1520
+    ],
+    [
+      1521,
+      1526
+    ],
+    [
+      1528,
+      1575
+    ]
+  ]
+}

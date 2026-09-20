@@ -5,7 +5,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 
-from native_raw_source import analyze, source
+from native_raw_source import analyze, source, source_slice
 
 
 def roots(offset=0):
@@ -13,6 +13,55 @@ def roots(offset=0):
 
 
 class RawNativeTests(unittest.TestCase):
+    def test_reviewed_indirect_vector_and_target_ownership(self):
+        raw = bytes.fromhex('6c 03 20 05 20 60')
+        recipe = roots()
+        recipe['data'] = [dict(offset=3, size=2, kind='jump-vector', evidence='Reviewed immutable pointer')]
+        recipe['indirect_jumps'] = [dict(offset=0, vector_address=0x2003,
+                                        target_address=0x2005, evidence='No writes to vector')]
+        report = analyze(raw, 0x2000, recipe)
+        self.assertEqual(report['coverage_bytes'], {'code': 4, 'data': 2})
+        with self.assertRaisesRegex(ValueError, 'differs'):
+            analyze(raw[:3]+bytes.fromhex('04 20 60'), 0x2000, recipe)
+        recipe['data'] = []
+        with self.assertRaisesRegex(ValueError, 'data ownership'):
+            analyze(raw, 0x2000, recipe)
+
+    def test_indirect_vector_uses_nmos_page_wrap(self):
+        raw = bytearray(0x103)
+        raw[0] = 0x21
+        raw[0x10:0x13] = bytes.fromhex('6c ff 20')
+        raw[0xff] = 2
+        raw[0x100] = 0x99  # Incorrect linear high-byte fetch must not be used.
+        raw[0x102] = 0x60
+        recipe = roots(0x10)
+        recipe['data'] = [dict(offset=p, size=1, kind='vector-byte', evidence='Wrap fixture')
+                          for p in (0,0xff)]
+        recipe['indirect_jumps'] = [dict(offset=0x10, vector_address=0x20ff,
+                                        target_address=0x2102, evidence='NMOS fixture')]
+        report = analyze(raw, 0x2000, recipe, inspect_gaps=True)
+        self.assertIn(dict(source=0x10,target=0x102), report['edges'])
+        recipe['indirect_jumps'].append(dict(recipe['indirect_jumps'][0]))
+        with self.assertRaisesRegex(ValueError, 'Duplicate'):
+            analyze(raw, 0x2000, recipe, inspect_gaps=True)
+
+    def test_slice_retains_addresses_and_rejects_unknown_bytes(self):
+        raw = bytes.fromhex('d0 03 60 ff ff 60')
+        report = analyze(raw, 0x2000, roots(), inspect_gaps=True)
+        text = source_slice(raw, report, 0, 3)
+        self.assertIn('EXT_L_0005 = component_start + (5)', text)
+        with self.assertRaisesRegex(ValueError, 'gap|unclassified'):
+            source_slice(raw, report, 0, 6)
+        with self.assertRaisesRegex(ValueError, 'boundary'):
+            source_slice(raw, report, 1, 3)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'test.s').write_text(text)
+            (root/'test.cfg').write_text('MEMORY { M: start = $2000, size = 3, file = %O; }\nSEGMENTS { RAW_NATIVE: load = M, type = ro; }\n')
+            subprocess.run(['ca65', str(root/'test.s'), '-o', str(root/'test.o')], check=True)
+            subprocess.run(['ld65', '-C', str(root/'test.cfg'), str(root/'test.o'), '-o', str(root/'test.bin')], check=True)
+            self.assertEqual((root/'test.bin').read_bytes(), raw[:3])
+
     def test_fixed_address_call_and_backward_branch(self):
         # JSR $2006; BNE back to entry; RTS; helper RTS.
         result = analyze(bytes.fromhex('20 06 20 d0 fb 60 60'), 0x2000, roots())
