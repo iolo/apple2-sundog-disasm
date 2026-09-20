@@ -1,0 +1,19 @@
+{
+  "name": "encoded_disk_reader",
+  "size": 127,
+  "base": 57344,
+  "sha256": "13c4a642cb28d57f9a9d59026e589f1100af7e1c6761d76a8cfbf89b65a01957",
+  "origins": [{"disk": "disk1", "block": 196}],
+  "classification_evidence": "docs/encoded-disk-reader.md",
+  "roots": [{
+    "offset": 0,
+    "evidence": "Constant decoding reveals a pointer-consuming native entry, coherent disk-controller polling and matching return. Absolute JSRs to E070/E074/E07A address the local NOP/RTS delay tail at inferred origin E000; all 127 bytes are reached from this single entry. Current loading, decoding and execution are not established."
+  }],
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 91,
+    "step": 0,
+    "offset": 0,
+    "evidence": "docs/encoded-disk-reader.md"
+  }
+}

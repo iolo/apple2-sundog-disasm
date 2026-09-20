@@ -3,8 +3,10 @@
 `assets/interaction-records/` contains sixteen 32-byte records from disk-2
 block 79. Disk-1 block 196 offsets 128–511 contain exact copies of records
 4–15. One 512-byte source therefore reconstructs **896 disk bytes**. The first
-128 bytes of that disk-1 block differ and remain unresolved; they are not
-silently classified as records. The neighboring disk-2 block 80 is separately
+128 bytes of that disk-1 block differ: offsets 0–126 are a separately
+reconstructed [encoded native disk reader](encoded-disk-reader.md), and byte
+127 remains unresolved. They are not classified as interaction records.
+The neighboring disk-2 block 80 is separately
 classified as a [retained half-font](retained-font-half.md), through its complete
 row-mask relationship to the verified shared font.
 

@@ -2677,3 +2677,44 @@ and acceptance criteria.
 - **Next action:** Continue the block-83 remainder and other retained fragments;
   establish evidence for the final-track allocation before classifying it.
   Final clean-build and dual-emulator behavior validation remain pending.
+
+## 2026-09-20 — Step 06as: reconstruct the encoded native disk reader
+
+- **Discovery:** A constant-transform search against existing components found
+  the screen initializer's twelve-byte native calling prologue in disk-1 block
+  196 after adding $5B modulo 256. The remainder is a distinct disk-reader
+  routine. Its absolute JSR operands $E070/$E074/$E07A resolve to three entries
+  in its own fourteen-NOP/RTS delay tail when assembled at inferred origin
+  $E000. This establishes a single-entry, fully connected 127-byte code graph
+  rather than relying on the short prologue match or guessing external callees.
+- **Classification:** All 66 instructions are reconstructed, including slot-6
+  controller accesses, the $AA/$D5/$A7 marker scan, twelve delay calls, one-byte
+  read/result stores and native return sequence. The retry counter does not
+  bound every polling loop. Current loading, decoding and live invocation are
+  not established. Byte 127 remains unresolved: its stored $A5 would decode to
+  zero, but neither alignment nor an executed BRK is evidenced. The already
+  classified interaction records at offsets 128–511 remain separate.
+- **Artifacts:** Added encoded_disk_reader source/configuration/adoption recipe,
+  explicit evidence recipe and full raw instruction/edge audit. Added
+  docs/encoded-disk-reader.md, three focused tests and updated PLAN.md and
+  interaction-record documentation. Existing additive encoding support uses
+  seed 91, step zero; normal builds assemble source then encode it.
+- **Validation:** Three new tests, four storage-encoding tests and eight raw
+  decoder tests pass. The first branch-mutation test initially expected an
+  overlap error, but traversal encountered the unsupported operand byte first;
+  the assertion now accepts that valid rejection as well. Tests verify exact
+  plain/stored hashes, the complete saved graph, all twelve internal calls,
+  malformed branch/call rejection and refusal to absorb the trailing byte.
+  Generic preparation and adoption both prove exact source assembly/encoding.
+  Full rebuild, tools/verify_disks.py and git diff --check pass. Both disk images
+  and the manual retain their reference hashes; no new emulator run is claimed.
+- **Coverage:** 179,150 source-built disk bytes, 100,836 identified data/asset
+  bytes and 6,734 temporary bytes (966 disk 1; 5,768 disk 2). This checkpoint
+  removes 127 temporary bytes, all reconstructed as native instructions.
+- **Other research:** The block-83 remainder has extensive masked/XOR title
+  bitmap correspondences, but differing bytes remain unexplained; no adoption
+  follows from those partial matches. The short-fragment search also found
+  exact p-code matches in disk-2 blocks 173 and 189 and a near-match in disk-1
+  block 173, to be reviewed with their complete procedure contexts next.
+- **Workspace/next:** User PRD edits and ref/ remain excluded. Continue those
+  retained fragments, then allocation evidence and final emulator validation.

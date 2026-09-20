@@ -93,6 +93,9 @@ Split large steps into independently validated, logged, and committed increments
   INN decoding is explicit because SunDog's trimmed interpreter omits it.
   Step 06ar reconstructs 28 more linker-copy bytes in both block-134 tails:
   clipped LOD operands, three complete instructions and their Reading string.
+  Step 06as reconstructs 127 encoded native bytes at disk-1 block 196. Constant
+  addition reveals a disk reader and its internally called NOP delay subroutine;
+  all 66 instructions are reached from one entry. The final byte remains open.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its
