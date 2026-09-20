@@ -31,11 +31,12 @@ at block 85, which itself contains a different header. This does not turn the
 table into executable code. Its provenance and intended segment reference remain
 open; no additional executable region is claimed from that reference.
 
-The remaining 224 bytes of every header block are deliberately excluded from
-this component. In particular, both copies of block 103 contain a Pascal command
-prompt and surrounding nonzero words in that tail. Merely being adjacent to a
-header does not establish all of those bytes as padding or data. They remain in
-the temporary input until their boundaries have independent evidence.
+The remaining 224 bytes of every header block are excluded from this table
+component. The subsequent [header-extension audit](pascal-header-extensions.md)
+uses Apple's format reference and local field boundaries to classify 1,652 of
+those disk bytes separately. Six tails are complete; both block-103 copies
+retain 70 unresolved bytes surrounding an independently identified counted
+prompt. Merely being adjacent to a header is not used to classify those words.
 
 `tools/prepare_header_tables.py` is a one-time maintenance generator that reads
 the rebuilt disks, checks the inventory hashes and current ownership, generates

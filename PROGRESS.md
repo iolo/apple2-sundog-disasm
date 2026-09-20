@@ -2060,3 +2060,38 @@ and acceptance criteria.
   excluded from this implementation commit.
 - **Next action:** Continue remaining variant/orphan code, bounded file/asset
   storage, and provisional classification audits; complete final emulator checks.
+
+## 2026-09-20 — Step 08c: intrinsic sets and bounded header-extension data
+
+- **New evidence:** Followed the newly added p-system reference links to Apple's
+  original Operating System Reference Manual, Appendix C, printed pages 267–269.
+  It locates the 32-bit INTRINS_SEGS set immediately after SEGINFO, followed by
+  library information and optional compiler comment text. This supplies format
+  evidence beyond simple adjacency to the previously classified header tables.
+  The online manual is cited in docs/pascal-header-extensions.md; no build or
+  verifier downloads it. The second reference site returned HTTP 502; progress
+  used the accessible primary Apple manual.
+- **Work:** Verified intrinsic segment sets in all eight header occurrences.
+  Six tails have zero library storage and bounded empty/copyright strings at
+  $01B0, with verified zero remainder. Both block-103 copies have a separate
+  counted 67-character command prompt at $01A2 plus bounded zero storage. Their
+  surrounding 44+26 word-like bytes remain unresolved; an unspecified private
+  format is not used to absorb potentially executable residual bytes.
+- **Artifacts:** Added src/data/pascal_header_extensions.s/config/adoption,
+  tools/header_extension_source.py, three tests, docs/reference/header-extensions.json,
+  and docs/pascal-header-extensions.md. Updated the earlier table document and plan.
+  Six unique data slices assemble to 1,050 bytes and map to 1,652 disk bytes.
+- **Validation:** Three tests pass for bit numbering, counted comments, malformed
+  lengths/text/masks, nonzero library/comment storage rejection, and explicit
+  exclusion of unknown words around the prompt. Preparation checks each existing
+  288-byte table hash, all new field boundaries, exact assembly and generated
+  artifacts. Adoption, full exact disk build, and original disk/manual comparison
+  pass. git diff --check passes. No new emulator validation is claimed.
+- **Coverage:** 172,363 source-built disk bytes, 99,300 identified data/asset bytes,
+  15,057 temporary bytes (7,316 disk 1; 7,741 disk 2). All 1,652 newly source-built
+  bytes are classified data, not instructions. Six complete headers are now
+  classified; only 140 bytes remain unresolved across the eight header blocks.
+- **Workspace:** The concurrent PRD reference-link edit is preserved and excluded
+  from this implementation commit.
+- **Next action:** Continue remaining bounded asset storage, orphan/variant code
+  and provisional runtime classifications, then final checks in both emulators.

@@ -1,0 +1,67 @@
+{
+  "name": "pascal_header_extensions",
+  "source": "src/data/pascal_header_extensions.s",
+  "config": "src/data/pascal_header_extensions.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 42528,
+      "size": 224,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 42016,
+      "size": 224,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 53024,
+      "size": 86,
+      "input_offset": 224
+    },
+    {
+      "disk": "disk1",
+      "offset": 53154,
+      "size": 68,
+      "input_offset": 310
+    },
+    {
+      "disk": "disk1",
+      "offset": 71200,
+      "size": 224,
+      "input_offset": 378
+    },
+    {
+      "disk": "disk1",
+      "offset": 78880,
+      "size": 224,
+      "input_offset": 602
+    },
+    {
+      "disk": "disk1",
+      "offset": 129056,
+      "size": 224,
+      "input_offset": 826
+    },
+    {
+      "disk": "disk2",
+      "offset": 53024,
+      "size": 86,
+      "input_offset": 224
+    },
+    {
+      "disk": "disk2",
+      "offset": 53154,
+      "size": 68,
+      "input_offset": 310
+    },
+    {
+      "disk": "disk2",
+      "offset": 71200,
+      "size": 224,
+      "input_offset": 378
+    }
+  ]
+}

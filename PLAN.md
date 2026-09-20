@@ -74,9 +74,11 @@ Split large steps into independently validated, logged, and committed increments
   code/data ownership of those fixed map-record banks.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
-  first 288 bytes of all eight segment headers as metadata; their tails remain
-  outside the completed classification. Step 08b reconstructs the four disk-1
+  first 288 bytes of all eight segment headers as metadata. Step 08b reconstructs the four disk-1
   directory blocks, including typed inactive records and directory spare space.
+  Step 08c uses the original Apple format documentation plus verified local fields
+  to reconstruct 1,652 additional header bytes; 140 library-header bytes remain
+  unresolved.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.
