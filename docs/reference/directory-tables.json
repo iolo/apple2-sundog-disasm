@@ -1,0 +1,234 @@
+{
+  "classification": "data",
+  "classification_evidence": "docs/pascal-directories.md",
+  "disk_output_bytes": 2048,
+  "source_output_bytes": 1536,
+  "sha256": "6877d2c78cd7f614c4965a5ac20b87cc8ad8d2379540f63f7c5b22bfcd360b30",
+  "byte_identical_assembly": true,
+  "directories": [
+    {
+      "label": "directory_79",
+      "input_offset": 0,
+      "sha256": "53eb9221831976646bffe3034839b2fbeee171ef6acf5e73006977cb6c4972f3",
+      "fields": {
+        "active_entries": 6,
+        "inactive_entries": [],
+        "zero_spare_offset": 182,
+        "zero_spare_size": 330
+      },
+      "files": [
+        {
+          "name": "SYSTEM.DATA",
+          "start_block": 3,
+          "end_block": 85,
+          "file_type": 5,
+          "size": 41984,
+          "date_raw": 43066,
+          "directory_entry_offset": 26
+        },
+        {
+          "name": "SUNDOG.LIBRARY",
+          "start_block": 85,
+          "end_block": 103,
+          "file_type": 2,
+          "size": 9216,
+          "date_raw": 43066,
+          "directory_entry_offset": 52
+        },
+        {
+          "name": "SYSTEM.LIBRARY",
+          "start_block": 103,
+          "end_block": 140,
+          "file_type": 5,
+          "size": 18944,
+          "date_raw": 43210,
+          "directory_entry_offset": 78
+        },
+        {
+          "name": "SYSTEM.STARTUP",
+          "start_block": 140,
+          "end_block": 219,
+          "file_type": 2,
+          "size": 40448,
+          "date_raw": 43210,
+          "directory_entry_offset": 104
+        },
+        {
+          "name": "SYSTEM.APPLE",
+          "start_block": 219,
+          "end_block": 251,
+          "file_type": 5,
+          "size": 16384,
+          "date_raw": 42908,
+          "directory_entry_offset": 130
+        },
+        {
+          "name": "SYSTEM.PASCAL",
+          "start_block": 251,
+          "end_block": 280,
+          "file_type": 2,
+          "size": 14848,
+          "date_raw": 42908,
+          "directory_entry_offset": 156
+        }
+      ],
+      "blocks": [
+        79,
+        81
+      ]
+    },
+    {
+      "label": "directory_80",
+      "input_offset": 512,
+      "sha256": "0302761ed0de98816484a7eb71b5727901dac698427adfb310686568dd29282a",
+      "fields": {
+        "active_entries": 6,
+        "inactive_entries": [],
+        "zero_spare_offset": 182,
+        "zero_spare_size": 330
+      },
+      "files": [
+        {
+          "name": "SYSTEM.DATA",
+          "start_block": 3,
+          "end_block": 85,
+          "file_type": 5,
+          "size": 41984,
+          "date_raw": 43066,
+          "directory_entry_offset": 26
+        },
+        {
+          "name": "SYSTEM.STARTUP",
+          "start_block": 85,
+          "end_block": 103,
+          "file_type": 2,
+          "size": 9216,
+          "date_raw": 43242,
+          "directory_entry_offset": 52
+        },
+        {
+          "name": "SYSTEM.LIBRARY",
+          "start_block": 103,
+          "end_block": 140,
+          "file_type": 5,
+          "size": 18944,
+          "date_raw": 43210,
+          "directory_entry_offset": 78
+        },
+        {
+          "name": "SUNDOG.LIBRARY",
+          "start_block": 140,
+          "end_block": 219,
+          "file_type": 5,
+          "size": 40448,
+          "date_raw": 43242,
+          "directory_entry_offset": 104
+        },
+        {
+          "name": "SYSTEM.APPLE",
+          "start_block": 219,
+          "end_block": 251,
+          "file_type": 5,
+          "size": 16384,
+          "date_raw": 42908,
+          "directory_entry_offset": 130
+        },
+        {
+          "name": "SYSTEM.PASCAL",
+          "start_block": 251,
+          "end_block": 280,
+          "file_type": 2,
+          "size": 14848,
+          "date_raw": 42908,
+          "directory_entry_offset": 156
+        }
+      ],
+      "blocks": [
+        80
+      ]
+    },
+    {
+      "label": "directory_82",
+      "input_offset": 1024,
+      "sha256": "879156c30b85dfe3b4eebd69f1cf9b0d9411aaaebc8c1582b6a98c6437d2c184",
+      "fields": {
+        "active_entries": 7,
+        "inactive_entries": [
+          8,
+          9,
+          10
+        ],
+        "zero_spare_offset": 286,
+        "zero_spare_size": 226
+      },
+      "files": [
+        {
+          "name": "SUNDOG.LIBRARY",
+          "start_block": 3,
+          "end_block": 103,
+          "file_type": 5,
+          "size": 51200,
+          "date_raw": 43210,
+          "directory_entry_offset": 26
+        },
+        {
+          "name": "SYSTEM.LIBRARY",
+          "start_block": 103,
+          "end_block": 140,
+          "file_type": 5,
+          "size": 18944,
+          "date_raw": 43210,
+          "directory_entry_offset": 52
+        },
+        {
+          "name": "DEMO.LIBRARY",
+          "start_block": 140,
+          "end_block": 157,
+          "file_type": 5,
+          "size": 8704,
+          "date_raw": 43210,
+          "directory_entry_offset": 78
+        },
+        {
+          "name": "SYSTEM.STARTUP",
+          "start_block": 157,
+          "end_block": 174,
+          "file_type": 2,
+          "size": 8704,
+          "date_raw": 43274,
+          "directory_entry_offset": 104
+        },
+        {
+          "name": "DEMO.DATA",
+          "start_block": 174,
+          "end_block": 219,
+          "file_type": 5,
+          "size": 23040,
+          "date_raw": 43210,
+          "directory_entry_offset": 130
+        },
+        {
+          "name": "SYSTEM.APPLE",
+          "start_block": 219,
+          "end_block": 251,
+          "file_type": 5,
+          "size": 16384,
+          "date_raw": 42908,
+          "directory_entry_offset": 156
+        },
+        {
+          "name": "SYSTEM.PASCAL",
+          "start_block": 251,
+          "end_block": 280,
+          "file_type": 2,
+          "size": 14848,
+          "date_raw": 42908,
+          "directory_entry_offset": 182
+        }
+      ],
+      "blocks": [
+        82
+      ]
+    }
+  ]
+}

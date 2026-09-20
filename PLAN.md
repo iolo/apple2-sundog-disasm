@@ -50,7 +50,8 @@ Split large steps into independently validated, logged, and committed increments
   step 07h. This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain
-  outside the completed classification.
+  outside the completed classification. Step 08b reconstructs the four disk-1
+  directory blocks, including typed inactive records and directory spare space.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

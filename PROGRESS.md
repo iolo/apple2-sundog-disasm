@@ -1540,3 +1540,31 @@ and acceptance criteria.
 - **Pause:** User requested a pause after the current task. This extraction is
   complete and committed; no next task is started. On explicit resumption,
   continue remaining native fragments, persistent data, and record/container tails.
+
+## 2026-09-20 — Step 08b: resume and reconstruct Pascal directory data
+
+- **Resume:** User explicitly resumed the project after step 07h's requested
+  pause. The same PRD classification, independent-build, logging, and per-step
+  commit requirements continue to apply.
+- **Work/evidence:** Reconstructed disk-1 blocks 79–82 as typed Pascal directory
+  records. The existing full-buffer boot capture, native 26-byte record scanner,
+  library 26's alternate-directory reads, and utility-entry write receipt support
+  the classification. Replaying the recorded writes makes directory 79 exactly
+  match directory 80. Block 82's three inactive records retain SYSTEM.PASCAL's
+  fields with cleared name lengths; its demo selection is not newly live-traced.
+- **Artifacts:** Added tools/prepare_directory_tables.py, explicit ca65 data
+  source/config/adoption recipe, docs/pascal-directories.md, and a structured
+  field report. Three unique 512-byte tables supply four directory blocks.
+  Fixed-width name residue, raw dates, reserved bytes, inactive records, and
+  zero-filled unused directory capacity are preserved. No code is inferred
+  from filesystem file-type values.
+- **Validation:** Generator assembles exactly before writing artifacts. Three
+  deliberate mutations to spare storage/inactive records were rejected. All
+  three disk-layout tests and four adoption tests pass. Ran adoption, full
+  build, and tools/verify_disks.py: both images remain byte-identical to their
+  originals. Existing behavior baselines are reused under PLAN.md; no new
+  emulator capture or final behavior-validation completion is claimed.
+- **Coverage:** 154,727 source-built disk bytes, 46,534 classified asset bytes,
+  85,459 temporary bytes (48,117 disk 1; 37,342 disk 2).
+- **Next action:** Continue tracing persistent game-data records and remaining
+  native fragments; retain evidence requirements for every unresolved tail.

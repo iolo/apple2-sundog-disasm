@@ -101,12 +101,13 @@ byte-identical module replacements reuse the established reference behavior.
 | Four 32-row tile banks | `assets/tiles/bank{0,1,2,3}/tiles.bin` | Disk 2 blocks 9–24; copies at disk 1 blocks 176–183 | 12,288 |
 | World-map tiles and variants | `assets/world-tiles/tiles.bin` | First 2,016 bytes at disk 2 block 25 and disk 1 block 184 | 4,032 |
 | Packed world-map payloads | `assets/world-maps/maps.bin` | 240-byte payloads in disk 2 blocks 55–63; copies in disk 1 block 194 | 4,800 |
-| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 50,165 |
+| Pascal directory views | `src/data/pascal_directories.s` | Disk 1 blocks 79–82 | 2,048 |
+| Unresolved disk-1 remainder | `reconstruction/temporary/disk1-unresolved.bin` | All other disk-1 bytes, mapped explicitly | 48,117 |
 | Unresolved disk-2 remainder | `reconstruction/temporary/disk2-unresolved.bin` | Other disk-2 bytes | 37,342 |
 
-The 152,679 source-built bytes include instructions and their owned tables,
+The 154,727 source-built bytes include instructions and their owned tables,
 attributes, text, padding, header metadata, and bootstrap tail bytes. This is **not** a count of
-152,679 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
+154,727 instruction bytes. All inventoried Pascal segments and the split core fragment are now source-built;
 other unclassified disk regions remain in the temporary inputs. The [Pascal inventory](pascal-segments.md) and
 [runtime architecture](runtime-architecture.md) identify the next modules.
 
@@ -284,3 +285,9 @@ Step 07h extracts the [packed world maps](world-maps.md), preserving the exact
 two-bit symbols as well as their state-decoded tile grids. Current ownership is
 152,679 source-built bytes, 46,534 asset bytes, and 87,507 temporary bytes. All
 16-byte record prefixes remain separately unresolved.
+
+Step 08b reconstructs all four disk-1 directory blocks from typed declarations,
+including inactive records and unused directory capacity; see
+[Pascal directories](pascal-directories.md). Current ownership is 154,727
+source-built bytes, 46,534 asset bytes, and 85,459 temporary bytes. Both rebuilt
+images remain exact; the final code/data audit and emulator checks remain open.
