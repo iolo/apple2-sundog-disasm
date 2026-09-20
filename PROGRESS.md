@@ -2718,3 +2718,41 @@ and acceptance criteria.
   block 173, to be reviewed with their complete procedure contexts next.
 - **Workspace/next:** User PRD edits and ref/ remain excluded. Continue those
   retained fragments, then allocation evidence and final emulator validation.
+
+## 2026-09-20 — Step 06at: reconstruct three short p-code tails
+
+- **Evidence/work:** Verified three exact matches below the earlier 32-byte
+  discovery cutoff: disk-1 block 173 offsets 368–395 equals alternate_10
+  offsets 922–949; disk-2 block 173 offsets 486–511 equals game_13 offsets
+  9702–9727; disk-2 block 189 offsets 496–511 equals game_14 offsets 2032–2047.
+  Contrary to the preliminary near-match note in 06as, the complete 28-byte
+  alternate fragment is exact, including the entry displacement and attributes.
+- **Classification:** The alternate fragment has six complete instructions and
+  its alignment/jump pointer/procedure footer/dictionary/segment trailer:
+  11 code and 17 data bytes. Both game fragments are entirely code, starting
+  with two surviving operands of complete donor instructions (IXP 16,1 and
+  CXP 22,2 respectively). Their donor modules independently establish complete
+  procedure contexts and branch targets. No missing opcode, table or entry
+  is invented at the retained disk locations; execution there is not claimed.
+- **Artifacts:** Added tools/retained_pcode_tails.py with three frozen extents
+  and exact hashes, a per-item/clipping/ownership audit, and
+  docs/retained-short-tails.md. Updated PLAN.md and the earlier short-copy
+  documentation. Normal builds reuse the three existing source components.
+  General copy-length validation remains unchanged.
+- **Validation:** Freshly assembled all three modules and reran their full
+  p-code decoding against the shipped interpreter. The initial verifier expected
+  item lists in the historical audit files; those files contain summaries, so
+  it now compares their coverage, instruction/procedure/mnemonic counts and
+  control-flow edge counts, while deriving slice items from the fresh full
+  analysis. Preparation, strict source-copy adoption and --verify pass. Four
+  existing source-copy tests pass, covering changed bytes, ownership errors,
+  overlaps and clipped code/data boundaries. Full rebuild,
+  tools/verify_disks.py and git diff --check pass. Both full disk images and
+  the manual remain exact; no new emulator run is claimed.
+- **Coverage:** 179,220 source-built disk bytes, 100,836 identified data/asset
+  bytes and 6,664 temporary bytes (938 disk 1; 5,726 disk 2). This checkpoint
+  removes 70 temporary bytes: 53 code and 17 data.
+- **Workspace/next:** User PRD edits and ref/ remain untouched and excluded.
+  Continue residual image/template/allocation evidence and the provisional
+  data audit of early native components; final dual-emulator validation remains
+  pending.

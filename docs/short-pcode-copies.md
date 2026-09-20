@@ -74,3 +74,7 @@ python3 tools/test_adopt_component.py
 The full five-block utility residue is now classified as code/data with source
 ownership. This does not recover its missing original segment dictionary or
 prove it executes. Other disk regions and provisional runtime bytes remain open.
+
+A later [three-tail audit](retained-short-tails.md) resolves another 70 bytes
+below this checkpoint's 32-byte cutoff, using fixed matches and complete donor
+procedure contexts. It leaves the general discovery thresholds unchanged.

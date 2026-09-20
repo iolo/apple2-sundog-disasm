@@ -96,6 +96,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 06as reconstructs 127 encoded native bytes at disk-1 block 196. Constant
   addition reveals a disk reader and its internally called NOP delay subroutine;
   all 66 instructions are reached from one entry. The final byte remains open.
+  Step 06at reconstructs three shorter exact p-code tails totaling 70 bytes:
+  the alternate segment-10 return/footer and clipped game-13/game-14 instruction
+  runs, with complete donor procedure contexts and explicit clipping boundaries.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its
