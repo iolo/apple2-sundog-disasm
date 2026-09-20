@@ -1,0 +1,31 @@
+{
+  "name": "retained_linker",
+  "source": "src/pcode/retained_linker.s",
+  "config": "src/pcode/retained_linker.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 62418,
+      "size": 46,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 61952,
+      "size": 256,
+      "input_offset": 46
+    },
+    {
+      "disk": "disk2",
+      "offset": 62418,
+      "size": 46,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 61952,
+      "size": 256,
+      "input_offset": 46
+    }
+  ]
+}

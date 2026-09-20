@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Decode supported Apple Pascal p-code into ca65 source with explicit tables.
 
-Only formats checked against the shipped interpreter are accepted.
+Default formats are checked against the shipped interpreter. Historical
+fragments can explicitly opt into the separately documented INN encoding.
 Unknown instructions and unexplained gaps
 fail instead of becoming executable byte blobs. Segment origins must be even.
 """
@@ -106,7 +107,7 @@ def verify_interpreter(binary):
                 raise ValueError('Short load dispatch differs from verified encoding')
 
 
-def analyze_fragment(data, segment, attributes, *, extra_code_roots=()):
+def analyze_fragment(data, segment, attributes, *, extra_code_roots=(), dialect='sundog'):
     """Decode complete reviewed procedures without inventing a missing dictionary.
 
     Attribute locations must come from external provenance review. This is not
@@ -128,10 +129,19 @@ def analyze_fragment(data, segment, attributes, *, extra_code_roots=()):
         raise ValueError('Fragment procedure numbers repeat')
     layout = dict(valid=True,procedure_count=len(procedures),procedures=procedures,
                   fragment=True)
-    return analyze(data,segment,extra_code_roots=extra_code_roots,layout=layout)
+    return analyze(data,segment,extra_code_roots=extra_code_roots,layout=layout,dialect=dialect)
 
 
-def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=None):
+def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=None, dialect='sundog'):
+    if dialect not in ('sundog', 'apple-pascal-inn'):
+        raise ValueError('Unknown p-code dialect')
+    specs = dict(SPECS)
+    if dialect == 'apple-pascal-inn':
+        # Historical full interpreter: opcode $8B, no inline operands.
+        # Kusche listing pages 15 and 81-82, INN -> UPDBY1. SunDog's own
+        # dispatch sends $8B to its unsupported-opcode path at $D1EF.
+        # Keep this opt-in out of verify_interpreter's shipped opcode set.
+        specs[0x8B] = ('inn', '', None)
     metadata = layout if layout is not None else procedure_dictionary(data, segment)
     if not metadata['valid']:
         raise ValueError('Segment has unresolved procedure metadata')
@@ -192,8 +202,8 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=N
                 name, form, args = 'sldo', '', [op - 0xE7]
             elif 0xF8 <= op <= 0xFF:
                 name, form, args = 'sind', '', [op - 0xF8]
-            elif op in SPECS:
-                name, form, _ = SPECS[op]
+            elif op in specs:
+                name, form, _ = specs[op]
             else:
                 raise ValueError(f'Unsupported opcode ${op:02X} at ${pc:04X}')
 
@@ -342,6 +352,8 @@ def analyze(data, segment, *, extra_code_roots=(), native_decoder=None, layout=N
         report.update(scope='procedure-fragment',absent_call_procedures=sorted({
             c['operands'][0] for c in calls if c['instruction'] in ('clp','cgp','cip')
             and c['operands'][0] not in present}))
+    if dialect != 'sundog':
+        report['dialect'] = dialect
     return report
 
 

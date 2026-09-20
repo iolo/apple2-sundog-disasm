@@ -87,6 +87,10 @@ Split large steps into independently validated, logged, and committed increments
   its original compiler consumer: four address words, four code patches including
   one opcode fragment, a displacement byte and two native helpers. All 42 bytes
   are now classified, without claiming SunDog activates this runtime facility.
+  Step 06aq reconstructs 604 retained linker bytes in both block-126 tails.
+  Exact historical SYSTEM.LINKER copies provide complete procedure contexts;
+  496 disk bytes are code and 108 are embedded data and metadata. Historical
+  INN decoding is explicit because SunDog's trimmed interpreter omits it.
   Step 07r classifies all 832 bounded world/city map prefix bytes, completing
   code/data ownership of those fixed map-record banks.
   Step 07s extracts the alternate program's 1,024-byte glyph bank, using its

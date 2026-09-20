@@ -74,6 +74,12 @@
     .byte $8D
 .endmacro
 
+; Historical Apple Pascal $8B: set membership, no inline operand.
+; The shipped SunDog interpreter dispatches this opcode to its unsupported path.
+.macro p_inn
+    .byte $8B
+.endmacro
+
 ; $95: native handler $D747.
 .macro p_sbi
     .byte $95

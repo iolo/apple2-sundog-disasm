@@ -2468,3 +2468,45 @@ and acceptance criteria.
   untouched and excluded.
 - **Next action:** Continue remaining orphan code and data allocations, then
   complete final dual-emulator behavior/reproducibility validation.
+
+## 2026-09-20 — Step 06aq: reconstruct retained Apple Pascal linker code
+
+- **Evidence/work:** Both block-126 tails (offsets 210–511) match the archived
+  Apple Pascal 1.2 SYSTEM.LINKER exactly. The original header and complete
+  49-procedure dictionary identify adjacent procedures 22 and 26 around the
+  copied bytes. Their entry/exit displacements and CFGs independently establish
+  all instruction, inline-string, jump-table and footer boundaries. Frozen
+  evidence records the archive URL, disk/allocation/segment hashes, header,
+  dictionary and bounded complete-procedure context.
+- **Classification:** The two 302-byte copies contain 496 disk code bytes and
+  108 data bytes. The leading two bytes are the big operand of LDL 295, proven
+  from the complete donor instruction; they are emitted with p_big. The last
+  instruction is a complete LDCI 20000. Both complete donor procedures decode
+  into 443 instructions / 683 code bytes and 127 data/metadata bytes. Calls
+  outside the donor context remain explicit absent-procedure references.
+- **Decoder:** Added explicit historical INN support and an assembly macro.
+  The original full interpreter establishes its one-byte set-membership format.
+  SunDog's trimmed dispatch maps $8B to unsupported opcode $D1EF; default decoding
+  still rejects it. The opt-in dialect does not claim these retained procedures
+  are executable in the live game.
+- **Artifacts:** Added tools/retained_linker.py, three tests, disk source and
+  complete context source, config/adoption artifacts, provenance and full audit,
+  plus docs/retained-linker-code.md. Updated PLAN.md. The disk source emits only
+  the reviewed 302-byte slice; normal builds do not read historical evidence.
+- **Validation:** Three new tests and fourteen existing p-code decoder tests
+  pass. The initial mutation fixture accidentally replaced an already-zero
+  byte with zero; XOR now guarantees a changed byte. The adoption guard rejected
+  the initial full-context component because not every byte belonged on a disk;
+  separating complete context from the 302-byte disk source satisfies that
+  invariant without changing the adoption tool. Both source forms assemble
+  exactly. --verify --external-linker checks the complete original dictionary,
+  frozen excerpts, both copies, regenerated artifacts and manifest ownership.
+  Full rebuild, tools/verify_disks.py and git diff --check pass; both disk hashes
+  and the manual hash remain exact. No fresh emulator execution is claimed.
+- **Coverage:** 178,527 source-built disk bytes, 100,324 identified data/asset
+  bytes and 7,869 temporary bytes (1,575 disk 1; 6,294 disk 2). This checkpoint
+  removes 604 temporary bytes. All remaining unrelated fragments stay open.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Check remaining fragments against the now-available historical
+  Pascal files, then continue allocation evidence and final dual-emulator checks.
