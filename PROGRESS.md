@@ -3266,3 +3266,33 @@ and acceptance criteria.
   and 1,741 temporary bytes (373 disk 1; 1,368 disk 2). Continue sparse RLE,
   boot/save/dictionary tails, changed image bytes and the mixed checksum tail.
   User PRD.md edits and ref/ remain untouched and excluded. Goal remains active.
+
+## 2026-09-20 — Step 08t: classify retained packed-image records and storage
+
+- **Evidence:** The ship-section and FLIP DISK streams end on complete packet
+  boundaries, with declared counts totaling exactly 8,192 output bytes. Their
+  allocation tails start with $01 $00 and $78 $00, valid repeat-zero records
+  immediately after final repeat-zero image packets; only zeros follow to the
+  established image allocation boundaries. The independent image consumers,
+  existing payload ownership, packet alignment and storage pattern together
+  support a bounded format inference that these 680 bytes are data.
+- **Limits:** Neither decoder consumes the retained pairs. Their format counts
+  (2 and 121) are not additional decoded pixels or required terminators. The
+  historical compressor and reason for retaining them remain unestablished.
+  This does not generalize to arbitrary valid packets or nearby native tails.
+- **Artifacts:** Added named retained-record and zero-storage ca65 declarations,
+  configuration/adoption recipe, tools/packed_image_storage.py, two focused
+  tests and a generated ownership/format audit. Updated affected asset/boot
+  documents, reconstruction coverage and PLAN.md. Native codecs are unchanged.
+- **Validation:** Both new tests and four existing packed-image tests pass.
+  They verify that tail changes cannot alter decoded pixels or consumed extent,
+  appended records remain rejected by the image encoder, and every changed
+  tail byte or allocation boundary requires review. Strict adoption, fresh
+  assembly, storage audit, full build and tools/verify_disks.py pass. Both disk
+  outputs exactly match their originals; original images/manual remain unchanged.
+  Existing emulator baselines apply. git diff --check passes.
+- **Coverage/next:** 184,696 source-built bytes, 101,152 identified asset/data
+  bytes and 872 temporary bytes remain (373 disk 1; 499 disk 2). Continue boot,
+  save and dictionary tails, retained template/text fragments, changed title
+  pixels and the mixed checksum tail. User PRD.md edits and ref/ are preserved
+  and excluded from the commit. The full goal remains active and incomplete.

@@ -35,8 +35,9 @@ four and retains packet controls and payloads for exact inversion.
 The complete stream is **576 bytes**, including its stride byte, at disk-2
 logical offsets 256–831 (block 0 offset 256 through block 1 offset 319).
 Its decoded 8,192-byte HGR page shows a floppy icon and **FLIP DISK**. The
-following 192 bytes in block 1 are outside the consumed stream and remain
-unresolved. The first 505 loaded bytes in block 2 belong to the separately
+following 192 bytes in block 1 are outside the consumed stream and are separately
+classified as [retained compression data and zero storage](packed-image-storage.md).
+The first 505 loaded bytes in block 2 belong to the separately
 classified [record templates](working-state.md); its last seven remain unresolved.
 
 At $0897 the program selects HGR, page one and full graphics, switches off

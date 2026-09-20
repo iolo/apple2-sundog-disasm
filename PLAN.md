@@ -192,8 +192,14 @@ Split large steps into independently validated, logged, and committed increments
 - Step 08s identifies 189 bytes after the base dialogue dictionary as mutable
   supplement workspace. The shipped copy routine and all twelve supplemental
   banks establish exact writes through offset 996; the final 27 bytes remain
-  unresolved. Current ownership is 184,016 source-built bytes, 101,152 identified
+  unresolved. Checkpoint ownership is 184,016 source-built bytes, 101,152 identified
   data/asset bytes and 1,552 temporary bytes (373 disk 1; 1,179 disk 2).
+- Step 08t classifies the 680 bytes after the ship-section and FLIP DISK RLE
+  images as retained repeat-zero records and bounded zero storage. This is an
+  explicit format/allocation inference; neither decoder consumes these records,
+  and no historical compressor or terminator convention is asserted. Current
+  ownership is 184,696 source-built bytes, 101,152 identified data/asset bytes
+  and 872 temporary bytes (373 disk 1; 499 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

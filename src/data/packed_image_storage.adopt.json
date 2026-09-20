@@ -1,0 +1,25 @@
+{
+  "name": "packed_image_storage",
+  "source": "src/data/packed_image_storage.s",
+  "config": "src/data/packed_image_storage.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 18200,
+      "size": 232,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 17920,
+      "size": 256,
+      "input_offset": 232
+    },
+    {
+      "disk": "disk2",
+      "offset": 3136,
+      "size": 192,
+      "input_offset": 488
+    }
+  ]
+}

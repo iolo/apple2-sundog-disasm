@@ -1,0 +1,64 @@
+{
+  "classification_evidence": "docs/packed-image-storage.md",
+  "classified_data_bytes": 680,
+  "records": [
+    {
+      "name": "ship_section",
+      "block": 33,
+      "start": 0,
+      "payload_component": "packed_ship_section",
+      "payload_sha256": "b95a09ecfd23e9e026292fde264fa88c24f02c525a6dc0895e9365d99b75e88e",
+      "classification": "data",
+      "classification_basis": "bounded-format-inference",
+      "payload_bytes": 1560,
+      "allocation_bytes": 2048,
+      "stride": 1,
+      "consumed_bytes": 1560,
+      "decoded_sha256": "4fb5557d4f2f35668be594538afd20fbbc4bcb62962b7c2fe7e6f22e78ffc3eb",
+      "retained_record": {
+        "offset": 1560,
+        "size": 2,
+        "control": 1,
+        "value": 0,
+        "format_run_length": 2,
+        "consumed_by_decoder": false
+      },
+      "zero_storage": {
+        "offset": 1562,
+        "size": 486
+      },
+      "classified_bytes": 488,
+      "storage_sha256": "0817386f0ef504075de60d0cb1e634024d943d7674fd87f7341d47ba98da51cf",
+      "historical_producer_proved": false
+    },
+    {
+      "name": "flip_disk",
+      "block": 0,
+      "start": 256,
+      "payload_component": "play_boot_notice",
+      "payload_sha256": "3351c7c1b032af1ade101fbd371901f9fc9ddfd32c85ac85ca2a6d3348518309",
+      "classification": "data",
+      "classification_basis": "bounded-format-inference",
+      "payload_bytes": 576,
+      "allocation_bytes": 768,
+      "stride": 4,
+      "consumed_bytes": 576,
+      "decoded_sha256": "22fd11bbf71e1e914cdfa73f463a5c3b795fd653981ffb01682a2ba63a146da1",
+      "retained_record": {
+        "offset": 576,
+        "size": 2,
+        "control": 120,
+        "value": 0,
+        "format_run_length": 121,
+        "consumed_by_decoder": false
+      },
+      "zero_storage": {
+        "offset": 578,
+        "size": 190
+      },
+      "classified_bytes": 192,
+      "storage_sha256": "de84fce9aad2a5a3f382a4688a026b5375b4ef526485669e28f1b058f8106039",
+      "historical_producer_proved": false
+    }
+  ]
+}

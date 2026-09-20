@@ -25,8 +25,9 @@ after the complete image, not additional pixels or compression packets.
 The complete 2,048-byte disk-1 allocation, including the image and zero tail,
 equals its consumer-backed disk-2 counterpart. No new disk-1 read path is claimed.
 The section image at disk-2 blocks 33–36 has a different 488-byte tail beginning
-with `$01`. It remains unresolved; this classification does not assign a meaning
-to that byte or admit nonzero remnants as padding.
+with `$01`. Its separate [retained-record audit](packed-image-storage.md) preserves
+the leading repeat-zero pair and documents the format inference; the pure-zero
+classifier here still rejects it.
 
 ## Save descriptor block
 
