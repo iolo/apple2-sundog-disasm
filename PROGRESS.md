@@ -2510,3 +2510,50 @@ and acceptance criteria.
   untouched and excluded.
 - **Next action:** Check remaining fragments against the now-available historical
   Pascal files, then continue allocation evidence and final dual-emulator checks.
+
+## 2026-09-20 — Step 08h: retained compiler identifier/parameter heap
+
+- **Evidence/work:** Disk-1 block 258's 460-byte tail contains eleven complete
+  named compiler identifiers, nine complete parameter records, a six-byte pointer
+  type, and two clipped records. MARK/RELEASE share one parameter whose type
+  pointer resolves to the intervening pointer-type record; four unit/real
+  intrinsics share another parameter. The STRTONUM pair and a five-parameter
+  chain independently establish the same memory origin, $2540 plus block offset.
+  ROUND's head locates the clipped preceding record, accounting for its last
+  four bytes without reconstructing the overwritten eighteen-byte prefix.
+- **Constructor evidence:** Original UCSD compiler definitions name the fields.
+  Bounded excerpts from the archived Apple 1.2 SYSTEM.COMPILER independently show
+  eleven-word identifier allocations, a three-word pointer type, and writes to
+  type/next/class fields at word offsets 6/7/8. The constructor's original
+  dictionary/attributes establish segment 7 procedure 8. Frozen evidence records
+  source URLs, hashes, metadata and the selected allocation/write instructions;
+  it does not claim complete classification of the external compiler.
+- **Classification:** Every tail byte is data. Native-looking sequences occupy
+  the parameter records' unwritten NAME, tree-link, VLEV and VADDR fields. Their
+  classification follows linked allocation boundaries and constructor writes,
+  not lack of execution. The source identifies these fields explicitly. Standard
+  symbol names/classes/intrinsic numbers and pointer-type values are typed;
+  historical ignored values are preserved without repair. Missing NUMTOSTR
+  fields beyond the block are excluded, including its unavailable parameter head.
+- **Artifacts:** Added tools/retained_compiler_heap.py, three structural/mutation
+  tests, typed source/config/adoption files, constructor evidence, field audit
+  and docs/retained-compiler-heap.md. Updated PLAN.md and adopted 460 source bytes.
+  Normal builds do not read the archived compiler or downloaded source repository.
+- **Validation:** All three tests pass, checking pointer relationships, clipped
+  fields and rejection of changed names/types/links/classes or unreviewed storage.
+  Preparation assembles every byte exactly. --verify --external-compiler checks
+  the complete allocation/segment/procedure hashes, metadata, consumer excerpts,
+  regenerated artifacts and manifest ownership. Full rebuild, original disk/manual
+  verification, exact disk comparisons and git diff --check pass. No new emulator
+  execution is claimed.
+- **Coverage:** 178,987 source-built disk bytes, 100,324 identified data/asset
+  bytes and 7,409 temporary bytes (1,115 disk 1; 6,294 disk 2). This checkpoint
+  removes 460 temporary bytes, all classified as data.
+- **Next evidence:** Both block-134 tails also exactly match a fourteen-byte
+  interval in the already decoded historical linker context (offsets 46–59).
+  They begin with two LOD operands, contain the counted Reading string, and end
+  at a complete short constant. They remain unadopted for the next checkpoint.
+- **Workspace:** The user's PRD link edit and untracked ref/ directory remain
+  untouched and excluded.
+- **Next action:** Reconstruct that short linker copy, then continue remaining
+  allocations/fragments and final dual-emulator behavior/reproducibility checks.

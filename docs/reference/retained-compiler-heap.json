@@ -1,0 +1,509 @@
+{
+  "classification_evidence": "docs/retained-compiler-heap.md",
+  "constructor_evidence": "src/data/evidence/retained_compiler_heap.json",
+  "source_bytes": 460,
+  "disk_bytes": 460,
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 133940,
+      "size": 204,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 133632,
+      "size": 256,
+      "input_offset": 204
+    }
+  ],
+  "classification": "data",
+  "memory_origin": 9536,
+  "window_start": 9588,
+  "window_end_exclusive": 10048,
+  "sha256": "ab3caa2d14b9706d58b0ef2cc56e5abbaa771bf98cdbea2274f55c534e2f478f",
+  "items": [
+    {
+      "offset": 52,
+      "size": 4,
+      "kind": "clipped-parameter-variable-fields",
+      "record_address": 9570,
+      "fields": [
+        "VLEV",
+        "VADDR"
+      ],
+      "missing_prefix_bytes": 18
+    },
+    {
+      "offset": 56,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "ROUND   ",
+      "address": 9592,
+      "left_link": 0,
+      "right_link": 0,
+      "idtype": 7946,
+      "next_parameter": 9570,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 24,
+      "words": [
+        0,
+        0,
+        7946,
+        9570,
+        6,
+        0,
+        24
+      ]
+    },
+    {
+      "offset": 78,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9614,
+      "idtype": 9636,
+      "next_parameter": 0,
+      "klass": 2,
+      "words": [
+        9636,
+        0,
+        2
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 100,
+      "size": 6,
+      "kind": "pointer-type",
+      "address": 9636,
+      "words": [
+        1,
+        2,
+        0
+      ],
+      "fields": [
+        "SIZE",
+        "FORM",
+        "ELTYPE"
+      ]
+    },
+    {
+      "offset": 106,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "MARK    ",
+      "address": 9642,
+      "left_link": 12122,
+      "right_link": 14886,
+      "idtype": 7946,
+      "next_parameter": 9614,
+      "klass": 5,
+      "declaration_kind": 0,
+      "csp_number": 32,
+      "words": [
+        12122,
+        14886,
+        7946,
+        9614,
+        5,
+        0,
+        32
+      ]
+    },
+    {
+      "offset": 128,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "RELEASE ",
+      "address": 9664,
+      "left_link": 0,
+      "right_link": 0,
+      "idtype": 7946,
+      "next_parameter": 9614,
+      "klass": 5,
+      "declaration_kind": 0,
+      "csp_number": 33,
+      "words": [
+        0,
+        0,
+        7946,
+        9614,
+        5,
+        0,
+        33
+      ]
+    },
+    {
+      "offset": 150,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "IORESULT",
+      "address": 9686,
+      "left_link": 12468,
+      "right_link": 19534,
+      "idtype": 7946,
+      "next_parameter": 0,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 34,
+      "words": [
+        12468,
+        19534,
+        7946,
+        0,
+        6,
+        0,
+        34
+      ]
+    },
+    {
+      "offset": 172,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9708,
+      "idtype": 7946,
+      "next_parameter": 0,
+      "klass": 3,
+      "words": [
+        7946,
+        0,
+        3
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 194,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "UNITBUSY",
+      "address": 9730,
+      "left_link": 9796,
+      "right_link": 15106,
+      "idtype": 7968,
+      "next_parameter": 9708,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 35,
+      "words": [
+        9796,
+        15106,
+        7968,
+        9708,
+        6,
+        0,
+        35
+      ]
+    },
+    {
+      "offset": 216,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "PWROFTEN",
+      "address": 9752,
+      "left_link": 0,
+      "right_link": 23502,
+      "idtype": 7952,
+      "next_parameter": 9708,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 36,
+      "words": [
+        0,
+        23502,
+        7952,
+        9708,
+        6,
+        0,
+        36
+      ]
+    },
+    {
+      "offset": 238,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "UNITWAIT",
+      "address": 9774,
+      "left_link": 0,
+      "right_link": 0,
+      "idtype": 0,
+      "next_parameter": 9708,
+      "klass": 5,
+      "declaration_kind": 0,
+      "csp_number": 37,
+      "words": [
+        0,
+        0,
+        0,
+        9708,
+        5,
+        0,
+        37
+      ]
+    },
+    {
+      "offset": 260,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "UNITCLEA",
+      "address": 9796,
+      "left_link": 12968,
+      "right_link": 0,
+      "idtype": 0,
+      "next_parameter": 9708,
+      "klass": 5,
+      "declaration_kind": 0,
+      "csp_number": 38,
+      "words": [
+        12968,
+        0,
+        0,
+        9708,
+        5,
+        0,
+        38
+      ]
+    },
+    {
+      "offset": 282,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "HALT    ",
+      "address": 9818,
+      "left_link": 12408,
+      "right_link": 13278,
+      "idtype": 0,
+      "next_parameter": 0,
+      "klass": 5,
+      "declaration_kind": 0,
+      "csp_number": 39,
+      "words": [
+        12408,
+        13278,
+        0,
+        0,
+        5,
+        0,
+        39
+      ]
+    },
+    {
+      "offset": 304,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "MEMAVAIL",
+      "address": 9840,
+      "left_link": 12082,
+      "right_link": 12102,
+      "idtype": 7946,
+      "next_parameter": 0,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 40,
+      "words": [
+        12082,
+        12102,
+        7946,
+        0,
+        6,
+        0,
+        40
+      ]
+    },
+    {
+      "offset": 326,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9862,
+      "idtype": 7994,
+      "next_parameter": 9884,
+      "klass": 2,
+      "words": [
+        7994,
+        9884,
+        2
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 348,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9884,
+      "idtype": 7946,
+      "next_parameter": 0,
+      "klass": 3,
+      "words": [
+        7946,
+        0,
+        3
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 370,
+      "size": 22,
+      "kind": "standard-identifier",
+      "name": "STRTONUM",
+      "address": 9906,
+      "left_link": 0,
+      "right_link": 0,
+      "idtype": 7952,
+      "next_parameter": 9862,
+      "klass": 6,
+      "declaration_kind": 0,
+      "csp_number": 41,
+      "words": [
+        0,
+        0,
+        7952,
+        9862,
+        6,
+        0,
+        41
+      ]
+    },
+    {
+      "offset": 392,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9928,
+      "idtype": 7952,
+      "next_parameter": 9950,
+      "klass": 3,
+      "words": [
+        7952,
+        9950,
+        3
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 414,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9950,
+      "idtype": 7968,
+      "next_parameter": 9972,
+      "klass": 3,
+      "words": [
+        7968,
+        9972,
+        3
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 436,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9972,
+      "idtype": 7946,
+      "next_parameter": 9994,
+      "klass": 3,
+      "words": [
+        7946,
+        9994,
+        3
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 458,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 9994,
+      "idtype": 7994,
+      "next_parameter": 10016,
+      "klass": 2,
+      "words": [
+        7994,
+        10016,
+        2
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 480,
+      "size": 22,
+      "kind": "standard-parameter",
+      "address": 10016,
+      "idtype": 7946,
+      "next_parameter": 0,
+      "klass": 2,
+      "words": [
+        7946,
+        0,
+        2
+      ],
+      "retained_fields": [
+        "NAME",
+        "LLINK",
+        "RLINK",
+        "VLEV",
+        "VADDR"
+      ]
+    },
+    {
+      "offset": 502,
+      "size": 10,
+      "kind": "clipped-identifier",
+      "name": "NUMTOSTR",
+      "address": 10038,
+      "missing_suffix_bytes": 12
+    }
+  ],
+  "complete_symbols": 11,
+  "complete_parameters": 9,
+  "pointer_types": 1,
+  "preserved_native_patterns": "Retained contents of unused parameter-record fields",
+  "live_compiler_heap_claimed": false
+}

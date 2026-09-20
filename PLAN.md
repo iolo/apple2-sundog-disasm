@@ -113,6 +113,9 @@ Split large steps into independently validated, logged, and committed increments
   Step 08g reconstructs another 508 bytes of retained command-prompt stack data
   in blocks 103 and 139 on both disks, completing the library-header residue.
   A linked frame chain and its copied-string node bound all intervening storage.
+  Step 08h reconstructs the 460-byte disk-1 block-258 compiler heap tail.
+  Identifier/parameter links and constructor allocation/write evidence classify
+  the native-looking remnants as unused fields inside bounded data records.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

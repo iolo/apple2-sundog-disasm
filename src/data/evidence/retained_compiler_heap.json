@@ -1,0 +1,44 @@
+{
+  "source_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/pascal/ucsd/UCSD%20Pascal%201.2_2.DSK",
+  "allocation_size": 38912,
+  "allocation_sha256": "29483091a2fd98ba6aa8a461407e163cdd2f6d2892827efa8a54fe3380a349ea",
+  "file": "SYSTEM.COMPILER",
+  "segment_offset": 5632,
+  "segment_size": 3400,
+  "segment_sha256": "a1733d8a3538608fdccd6506781c461f2078205ef5b4efa38f034040defb6f98",
+  "procedure": {
+    "number": 8,
+    "dictionary_offset": 3382,
+    "backward_offset": 1182,
+    "attribute_offset": 2200,
+    "entry_offset": 1754,
+    "representation": "p-code",
+    "lexical_level": 2,
+    "exit_offset": 2180,
+    "parameter_bytes": 0,
+    "local_bytes": 22,
+    "attribute_start": 2192,
+    "storage": "segment",
+    "status": "structurally-valid"
+  },
+  "procedure_sha256": "24e34943dccb1004d0a6fbafeaae9b8200969547acace79d2db15de82e317d64",
+  "windows": [
+    {
+      "name": "parameter_and_pointer_constructor",
+      "procedure_offset": 205,
+      "size": 39,
+      "hex": "c6010b9e01c604039e01dbcc0be2019ae2a201029ae2a2029f9ad8cc0be2a206db9ae2a208029a"
+    },
+    {
+      "name": "standard_identifier_constructor",
+      "procedure_offset": 336,
+      "size": 88,
+      "hex": "dda107c6020b9e01b905c6020b9e01d9cc0be2c607a804e2a209009adc05c9a109e2a20adc14829ab907e2a20adc1b829adda107e2a208059ab905e2a208069ad89fcba105d8a2079f9ae2a206da9ae2a207d89ad9cd0105"
+    }
+  ],
+  "related_source_commit": "f0a8e66f6aff82e95207300e11e310155d2d1599",
+  "related_source_files": [
+    "https://github.com/jdykstra/ucsd-psystem-os/blob/f0a8e66f6aff82e95207300e11e310155d2d1599/compiler/compglbls.text",
+    "https://github.com/jdykstra/ucsd-psystem-os/blob/f0a8e66f6aff82e95207300e11e310155d2d1599/compiler/compinit.text"
+  ]
+}

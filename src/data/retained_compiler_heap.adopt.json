@@ -1,0 +1,19 @@
+{
+  "name": "retained_compiler_heap",
+  "source": "src/data/retained_compiler_heap.s",
+  "config": "src/data/retained_compiler_heap.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 133940,
+      "size": 204,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 133632,
+      "size": 256,
+      "input_offset": 204
+    }
+  ]
+}

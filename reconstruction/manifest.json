@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 1575,
-      "sha256": "c321284e6ccc5e34da8e9bc51cc81c8750c3b2266d47e13da5ec22395887c139",
+      "size": 1115,
+      "sha256": "7af82e1f5874dc4551896359fc92b59a594e8c7766439227af57cd7ba306e3af",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -1130,6 +1130,13 @@
       "config": "src/pcode/retained_linker.cfg",
       "size": 302,
       "sha256": "4f22953edfa739462959cac1ecba3d1116d8d125d2c25fab4f9dcac20dbcee11"
+    },
+    "retained_compiler_heap": {
+      "kind": "ca65-source",
+      "source": "src/data/retained_compiler_heap.s",
+      "config": "src/data/retained_compiler_heap.cfg",
+      "size": 460,
+      "sha256": "ab3caa2d14b9706d58b0ef2cc56e5abbaa771bf98cdbea2274f55c534e2f478f"
     }
   },
   "disks": [
@@ -4928,8 +4935,8 @@
         {
           "offset": 133632,
           "size": 256,
-          "input": "disk1_unresolved",
-          "input_offset": 1115
+          "input": "retained_compiler_heap",
+          "input_offset": 204
         },
         {
           "offset": 133888,
@@ -4940,8 +4947,8 @@
         {
           "offset": 133940,
           "size": 204,
-          "input": "disk1_unresolved",
-          "input_offset": 1371
+          "input": "retained_compiler_heap",
+          "input_offset": 0
         },
         {
           "offset": 134144,
