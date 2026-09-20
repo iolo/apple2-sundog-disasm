@@ -68,6 +68,8 @@ Split large steps into independently validated, logged, and committed increments
   Step 06ai identifies 26 extended copies of already disassembled p-code ranges
   and maps their 8,030 bytes to existing assembled source, with per-item code/data
   ownership and clipped instruction boundaries recorded.
+  Step 06aj adds 15 exact ranges / 2,538 bytes covered by the earlier startup
+  and utility module audits, retaining nearby modified utility bytes as unresolved.
   This overlap does not waive any
   classification or final validation requirement. Step 08a now reconstructs the
   first 288 bytes of all eight segment headers as metadata; their tails remain

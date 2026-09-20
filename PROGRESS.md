@@ -2005,3 +2005,28 @@ and acceptance criteria.
 - **Next action:** Analyze remaining source variants/orphan fragments, structured
   asset headers and bank padding; continue the complete classification audit and
   final gameplay/save/load/swap/utility checks in both emulators.
+
+## 2026-09-20 — Step 06aj: copies from the early startup/utility audits
+
+- **Work/evidence:** Extended the reviewed source-copy corpus to the complete
+  step-06g startup and step-06h utility audits, which predate the later module
+  audit directory. Identified fifteen exact ranges totaling 2,538 bytes: two
+  448-byte startup copies at block 142 offset 64, and thirteen utility ranges
+  in disk-1 blocks 151–155. Surrounding modified utility bytes remain unresolved;
+  no complete historical utility module or runtime invocation is inferred.
+- **Artifacts:** Added src/pcode/evidence/early_module_copies.json,
+  docs/reference/early-module-copies.json and docs/early-module-copies.md;
+  updated PLAN.md. tools/pcode_copies.py now accepts explicit repository-local
+  recipe/audit paths while preserving the existing default checkpoint.
+- **Validation:** Seven copy/adoption tests pass. Both modules freshly assemble
+  to their reviewed hashes and their complete reanalysis matches the original
+  classification counts. Batch adoption, full exact build, both the old and new
+  copy-audit/ownership verifiers, and original disk/manual comparison pass.
+  git diff --check passes. No new live emulator validation is claimed.
+- **Coverage:** 170,711 source-built disk bytes, 98,468 identified data/asset bytes,
+  17,541 temporary bytes (8,654 disk 1; 8,887 disk 2). The new copies contain
+  1,759 instruction bytes and 779 source-owned data bytes.
+- **Workspace:** The concurrent PRD reference-link edit remains untouched and
+  excluded from this implementation commit.
+- **Next action:** Continue the remaining variant/orphan code and bounded asset
+  headers/storage, followed by the whole-disk audit and both-emulator checks.

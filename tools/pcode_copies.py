@@ -57,8 +57,11 @@ def verify_ownership(manifest, mappings):
             raise ValueError('Copied source ownership is incomplete')
 
 
-def run(adopt=False, verify=False):
-    recipe = json.loads(RECIPE.read_text())
+def run(adopt=False, verify=False, recipe_path=RECIPE, audit_path=AUDIT):
+    recipe_path, audit_path = recipe_path.resolve(), audit_path.resolve()
+    if not recipe_path.is_relative_to(ROOT) or not audit_path.is_relative_to(ROOT):
+        raise ValueError('Copy recipe and audit must remain inside the repository')
+    recipe = json.loads(recipe_path.read_text())
     contained_file(ROOT,recipe['classification_evidence'])
     manifest_path = ROOT/'reconstruction/manifest.json'
     manifest = json.loads(manifest_path.read_text())
@@ -125,12 +128,12 @@ def run(adopt=False, verify=False):
             if key in seen:
                 raise ValueError('Copy destinations overlap')
             seen.add(key)
-    audit = dict(recipe_sha256=sha(RECIPE.read_bytes()),classification_evidence=recipe['classification_evidence'],
+    audit = dict(recipe_sha256=sha(recipe_path.read_bytes()),classification_evidence=recipe['classification_evidence'],
                  source_components=len(binaries),copy_count=len(copies),coverage_bytes=dict(counts),
                  copies=copies,mappings=mappings)
     content = json.dumps(audit,indent=2)+'\n'
     if verify:
-        if AUDIT.read_text() != content:
+        if audit_path.read_text() != content:
             raise ValueError('Copy audit differs')
         verify_ownership(manifest,mappings)
     else:
@@ -146,7 +149,7 @@ def run(adopt=False, verify=False):
             for path,data in destinations.items():
                 path.write_bytes(data)
             manifest_path.write_text(json.dumps(planned,indent=2)+'\n')
-        AUDIT.write_text(content)
+        audit_path.write_text(content)
     print(json.dumps(dict(copies=len(copies),source_components=len(binaries),coverage=dict(counts),
                           adopted=adopt,verified=verify)))
 
@@ -156,5 +159,7 @@ if __name__ == '__main__':
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--adopt',action='store_true')
     mode.add_argument('--verify',action='store_true')
+    parser.add_argument('--recipe',type=lambda p:ROOT/p,default=RECIPE)
+    parser.add_argument('--audit',type=lambda p:ROOT/p,default=AUDIT)
     args = parser.parse_args()
-    run(args.adopt,args.verify)
+    run(args.adopt,args.verify,args.recipe,args.audit)
