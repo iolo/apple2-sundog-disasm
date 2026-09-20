@@ -1,0 +1,20 @@
+{
+  "name": "encoded_tail_play_0627",
+  "source": "src/native/encoded_tail_play_0627.s",
+  "config": "src/native/encoded_tail_play_0627.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 189,
+    "step": 243,
+    "offset": 1575,
+    "evidence": "docs/encoded-native-overlay-tail.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 22311,
+      "size": 17,
+      "input_offset": 0
+    }
+  ]
+}

@@ -59,6 +59,11 @@ The evidence recipes explicitly enumerate 418 data bytes per variant:
 
 ## Unresolved bytes remain separate
 
+The later [footer and copied-tail audit](encoded-native-overlay-tail.md) resolves
+464 of the 488 bytes left by this body checkpoint. Its separate components leave
+the original body audit unchanged and bring the current bank remainder to 24
+bytes per variant. The historical scope of this report is described below.
+
 The jump-shaped stubs at $0357 and $035D, associated words at $0572 and $05DB,
 the word at $05E3, and isolated bytes at $05F0/$05F6/$05F7 remain unresolved.
 Following the disconnected stubs leads into pointer-shaped bytes and an

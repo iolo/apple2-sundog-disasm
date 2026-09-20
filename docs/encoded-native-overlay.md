@@ -5,7 +5,9 @@ Disk-1 block 197 contains a related encoded native bank. Their first 63 bytes
 are disassembled in `src/native/encoded_loader_play.s` and
 `encoded_loader_alternate.s`. The subsequent [body audit](encoded-native-overlay-body.md)
 reconstructs another 1,497 bytes per bank as instructions and evidenced data;
-488 bytes per bank remain unresolved and are not adopted as an opaque asset.
+the [footer and copied-tail audit](encoded-native-overlay-tail.md) reconstructs
+another 464 bytes per bank. The remaining 24 bytes per bank are unresolved and
+are not adopted as an opaque asset.
 
 ## Encoding evidence
 

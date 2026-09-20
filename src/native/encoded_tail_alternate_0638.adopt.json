@@ -1,0 +1,26 @@
+{
+  "name": "encoded_tail_alternate_0638",
+  "source": "src/native/encoded_tail_alternate_0638.s",
+  "config": "src/native/encoded_tail_alternate_0638.cfg",
+  "storage_encoding": {
+    "kind": "additive-byte-sequence",
+    "seed": 251,
+    "step": 185,
+    "offset": 1592,
+    "evidence": "docs/encoded-native-overlay-tail.md"
+  },
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 102456,
+      "size": 200,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 105984,
+      "size": 114,
+      "input_offset": 200
+    }
+  ]
+}

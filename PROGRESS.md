@@ -1934,3 +1934,38 @@ and acceptance criteria.
 - **Next action:** Resolve the encoded-bank disconnected stubs and duplicated
   suffix code/data, then continue remaining disk classification and final checks
   in both emulators. The resumed goal remains active.
+
+## 2026-09-20 — Step 06ah: native footer and copied encoded-bank tails
+
+- **Work/evidence:** Parsed each decoded bank through offset $0638 as a native
+  Pascal segment with one procedure: entry zero, native attributes at $0632,
+  four zero relocation counts starting at $0628, dictionary pointer at $0634,
+  and segment/procedure trailer at $0636. Classified the preceding alignment
+  byte and all footer fields (17 bytes per bank).
+- **Copied code/data:** Proved that offsets $0638–$07FF copy $0438–$05FF with only
+  the independently identified wipe-start pointer changed to a zero initializer.
+  Transferred proven instruction/data ownership only: 140 complete instructions,
+  two precisely identified clipped instructions, and 120 data bytes per copy.
+  Source reconstructs the leading BCC displacement and trailing absolute-LDA
+  opcode with their complete original instruction context; no missing operand
+  bytes are invented. Nine copied bytes inherit their originals' unresolved
+  status. Each bank now has 24 unresolved bytes, including 15 in the earlier body.
+- **Artifacts:** Added tools/encoded_overlay_tail.py, three tests, full tail audits,
+  fourteen source/config/adoption sets, docs/encoded-native-overlay-tail.md,
+  and updated the plan and related overlay documents. The ordinary build retains
+  independent source inputs and exact per-slice storage encoding phases.
+- **Validation:** Nineteen tail/raw/encoding/adoption tests pass. New tests reject
+  malformed metadata, changed copies, unexpected pointer initialization, and
+  unsupported partial-instruction context; they verify gap preservation and
+  assembly of complete and clipped instruction slices. Both tail --verify runs
+  reproduce every artifact. Each adoption was followed by a full exact build;
+  tools/verify_disks.py confirms both disk images and originals/manual unchanged.
+  git diff --check passes. No live-body or final emulator validation is claimed.
+- **Coverage:** 160,143 source-built disk bytes, 98,468 identified data/asset bytes,
+  28,109 temporary bytes (15,764 disk 1; 12,345 disk 2). This checkpoint removes
+  928 temporary bytes: 654 code bytes and 274 source-owned data bytes.
+- **Workspace:** A concurrent PRD.md edit adds two UCSD p-system reference links.
+  It is preserved and excluded from this implementation commit.
+- **Next action:** Continue the unresolved native stubs/state fields and the
+  remaining disk regions, retaining the complete classification requirement;
+  complete gameplay/save/load/swap/utility checks in both emulators afterward.
