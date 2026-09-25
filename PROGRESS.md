@@ -1,5 +1,11 @@
 # Progress log
 
+**Current status:** required work completed at step 10b under the explicit
+488-byte user data exception. Work is stopped at the user's request. See
+[HANDOFF.md](HANDOFF.md) and the [delivery review](docs/delivery-checklist.md).
+Historical entries below include obsolete next actions and are not all in
+chronological order; they do not reopen completed requirements.
+
 Every implementation step must update this file and commit its changes together
 with the log update before the next step begins. See `PLAN.md` for the full rule
 and acceptance criteria.
@@ -3705,3 +3711,15 @@ and acceptance criteria.
   optionally for the original disk archive/version provenance, which could
   narrow donor research; work does not depend on an immediate reply. User PRD.md
   edits and ref/ remain untouched and excluded from the commit.
+
+## 2026-09-25 — Handoff and stop
+
+- At the user's request, stopped further work and left HANDOFF.md for a
+  successor. It records the completed scope, 488-byte assumption, step 09
+  locations, validation receipts, optional directions and resource-management
+  lessons. Optional follow-ups are not commissioned work.
+- Added a current-status notice above the historical progress entries so stale
+  next actions and out-of-order entries do not reopen the completed goal.
+- Documentation only: local handoff links and git diff --check pass. No build
+  inputs or outputs changed; existing validation remains applicable. The user's
+  unstaged PRD reference links and untracked ref/ remain untouched.
