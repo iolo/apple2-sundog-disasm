@@ -28,6 +28,8 @@ GOAL: Reverse [Sundog](https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy) for 
 - https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy
 - https://sundogresurrectionproject.com/ - Unofficial Sundog Resurrection Project
 - https://github.com/laanwj/sundog - SDL port of Sundog for Atari ST
+- https://markbessey.blog/ucsd-p-system-info/
+- http://pascal.hansotten.com/ucsd-p-system/
 - https://github.com/iolo/apple2-stella7-disasm - my another disassembly project
 - https://github.com/iolo/apple2-rescue-raiders-disasm - my another disassembly project
 
