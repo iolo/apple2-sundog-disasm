@@ -1,0 +1,62 @@
+{
+  "checkpoint": "10a",
+  "scope": "incremental reproduction only; 488 unidentified bytes remain",
+  "copied_directories": [
+    "tools",
+    "src",
+    "assets",
+    "reconstruction",
+    "docs"
+  ],
+  "python": "3.14.4",
+  "ca65": "ca65 V2.19 - Git a028ac414",
+  "ld65": "ld65 V2.19 - Git a028ac414",
+  "originals_present": false,
+  "strict_exit": 1,
+  "strict_message": "Strict build refused: 2 temporary input components remain, mapping 488 disk bytes: disk1_unresolved (7 input bytes, 7 mapped bytes), disk2_unresolved (481 input bytes, 481 mapped bytes)",
+  "strict_created_output": false,
+  "reports_identical": true,
+  "build_report": {
+    "status": "incremental reconstruction; unclassified bytes remain",
+    "manifest_sha256": "45ba3c20dc5d8f0b3a4d9ecb716d44f19d317a6ee6934b0a2066e4e7e65672d1",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 184828,
+      "identified-data": 101404,
+      "temporary-unresolved": 488
+    },
+    "temporary_inputs": [
+      {
+        "component": "disk1_unresolved",
+        "input_bytes": 7,
+        "mapped_disk_bytes": 7,
+        "disk_bytes": {
+          "disk1": 7
+        }
+      },
+      {
+        "component": "disk2_unresolved",
+        "input_bytes": 481,
+        "mapped_disk_bytes": 481,
+        "disk_bytes": {
+          "disk2": 481
+        }
+      }
+    ],
+    "has_temporary_inputs": true,
+    "no_temporary_required": false
+  },
+  "independent_builds": 2,
+  "disk_bytes_identical_to_each_other_and_originals": true
+}

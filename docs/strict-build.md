@@ -37,7 +37,7 @@ status or infer that all source-built bytes are instructions.
 
 ## Isolated rebuild, 2026-09-25
 
-An empty temporary directory received only `tools/`, `src/`, `assets/`,
+At step 08w, an empty temporary directory received only `tools/`, `src/`, `assets/`,
 `reconstruction/` and `docs/`. The two original disk files, manual and previous
 `build/` directory were absent. The strict command failed before creating its
 requested output directory. Two ordinary builds into distinct empty output
@@ -56,6 +56,15 @@ check result, copied directories and tool versions. The temporary tree was
 removed after comparison. No original input, user reference file, or emulator
 state was changed. A final isolated strict build remains required after the
 unclassified remainders are resolved.
+
+Step 10a repeats that experiment at the current **488-byte** checkpoint. Two
+new builds without original images, the manual or prior build products again
+match each other and both originals exactly; their build reports also match.
+The strict command exits 1 before creating its requested output directory.
+[step10a-build-validation.json](reference/step10a-build-validation.json) records
+the current manifest hash, versions, build report and strict refusal. This
+supersedes the older receipt for current ownership counts, while retaining its
+historical result. It is still an incremental check, not the final strict build.
 
 ## Regression checks
 

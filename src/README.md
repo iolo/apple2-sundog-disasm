@@ -1,88 +1,42 @@
-# Source
+# Reconstructed source
 
-Reconstructed executable source and typed data declarations belong here. `pcode/system_entry.s` is the
-first 36-byte procedure of SYSTEM.PASCAL, rebuilt using the verified encoding
-subset in `pcode/encoding.inc`. Run `python3 tools/build_pcode_probe.py` to
-assemble it and compare its bytes with the original disk. This is a toolchain
-proof now integrated into the incremental disk build.
+The source tree contains native 6502 instructions, Pascal p-code instruction
+macros, custom dialogue instructions, and explicitly classified data. The
+[manifest](../reconstruction/manifest.json) maps assembled components into both
+disks; the [classification ledger](../docs/classification-ledger.md) records
+code/data intervals independently of source-file placement.
 
-`pcode/startup_disk1.s` reconstructs the complete six-procedure disk-1 startup
-segment, including case tables, procedure attributes, and dictionary. See
-`docs/startup-pcode.md` for decoder scope and verified interpreter formats.
+| Directory / family | Representation and evidence |
+| --- | --- |
+| `native/bootstrap.s`, `native/title_draw.s`, `native/play_boot.s` | Boot/title routines and embedded data; [bootstrap](../docs/bootstrap.md), [title](../docs/title-draw.md), [play boot](../docs/play-disk-boot.md) |
+| `native/pcode_primitives.s`, `native/native_{io,shared,init,high}.s` | Complete SYSTEM.APPLE runtime; [runtime classification](../docs/runtime-classification.md) includes overlapping instructions and clipped operands |
+| `pcode/*.s`, `pcode/encoding.inc` | Pascal instructions, attributes, dictionaries and embedded constants; [toolchain](../docs/pcode-toolchain.md) and [inventory](../docs/pascal-segments.md); mixed native procedures use 6502 instructions |
+| Other `native/*.s` | Raw screen, I/O, animation, checksum and retained native modules; individual reports live in `docs/reference/raw-modules/` |
+| `native/encoded_*.s` | Decoded native source with reversible storage encoding applied by the builder; [both banks are classified](../docs/encoded-bank-completion.md) |
+| Retained p-code/native families | Reassembled donor contexts and documented partial copies, including [linker code](../docs/retained-linker-code.md), [short tails](../docs/retained-short-tails.md) and [native tails](../docs/native-block-tails.md) |
+| `dialogue/scripts.s`, `dialogue/encoding.inc` | 96 custom dialogue records interpreted by game 16; [script format](../docs/dialogue-scripts.md), separate from their extracted text |
+| `data/*.s` | Typed data/storage declarations supported by individual evidence reports; membership in this directory does not establish classification |
 
-`native/bootstrap.s` reconstructs all 768 bytes of the native boot component,
-including its identified tables and text, padding, and preserved tail bytes.
-`native/title_draw.s` reconstructs the next native routine and its scanline tables
-at `$4000`–`$43FF`; its bitmap is extracted under `assets/title/`.
-`native/pcode_primitives.s` reconstructs the interpreter's alternate bank and
-shared comparison tail; see `docs/pcode-native.md` for its boundaries and tables.
-`native/native_io.s` reconstructs bank-2 disk, device, and console services;
-see `docs/native-io.md` for overlapping instructions and runtime operand patches.
-`native/native_shared.s` reconstructs common procedure/segment handling, numeric
-and device routines, and the initializer-copy stub; see `docs/native-shared.md`.
-`native/native_init.s` reconstructs the five-page initializer at its copied
-execution address; `docs/native-init.md` records original-address aliases and
-the unresolved 42-byte initialization payload.
-`native/native_high.s` reconstructs the final bank-switch/service stubs and
-preserved tail; see `docs/native-high.md`. These five runtime components cover
-the entire SYSTEM.APPLE image, with provisional code/data boundaries and
-unresolved data meanings documented.
-`python3 tools/build_disks.py` assembles these components and combines them with
-explicitly temporary remaining inputs. See `docs/reconstruction.md` for coverage;
-this is not yet the final source-and-assets-only build.
+Linker `.cfg` files preserve component placement. `.adopt.json` recipes record
+how a reviewed component replaced temporary input. Evidence under `evidence/`
+and `docs/reference/` records decoding roots, relocation/metadata boundaries,
+consumer windows and exact source contexts. A copied instruction fragment is
+explicitly tied to its complete donor; it is not silently relabeled data.
 
-The remaining `pcode/` sources now reconstruct the utility module, shared library
-segments 25/27/28, startup segment 7, alternate-startup modules, system segments
-1–6, and the compatible game segments. `library_23.s` combines one p-code and
-three native procedures with explicit native relocation lists. Module audits in
-`docs/reference/pcode-modules/` record code/data classification and provenance.
+```sh
+python3 tools/build_disks.py
+python3 tools/classification_ledger.py
+```
 
-Generated exploratory disassembly belongs under `build/` until its addresses
-and code/data boundaries are verified. `docs/executable-coverage.json` tracks the
-complete inventoried-segment ownership and explicitly excludes unresolved
-non-segment regions from its completed count. See `docs/pascal-segments.md` for the inventory.
+Generated component binaries, listings and maps appear under
+`build/disks/components/`; encoded components also retain `.decoded.bin` files.
+The manifest decides which bytes of a full source context actually reach a disk.
+Exploratory disassembly belongs under ignored `build/` until reviewed.
 
-`data/pascal_header_tables.s` reconstructs the first 288 bytes of all eight
-inventoried segment headers as data tables. Header tails are excluded; see
-`docs/pascal-header-tables.md` for evidence and scope.
-
-`native/raw_screen_init.s` reconstructs the callable screen-table initializer
-and its HGR high-address table from disk-1 block 2. This raw code has no Pascal
-procedure dictionary. See `docs/raw-screen-init.md`; other raw overlays remain.
-
-`native/raw_buffer_transform.s` reconstructs the evidenced 93-byte entry path
-of the raw block-156 transformation routine. Its trailing indirect-jump candidate
-and metadata remain separately tracked; see `docs/raw-buffer-transform.md`.
-
-`native/certificate_reveal.s` reconstructs disk-1 block 21: the raw screen-row
-reveal routine, native Pascal metadata, and block padding. See
-`docs/certificate-reveal.md` for the separate image and extra-read boundaries.
-
-`native/warp_animation.s` reconstructs disk-2 blocks 83–85, including both
-verified BIT/SBC overlapping instruction paths and classified embedded data.
-See `docs/warp-animation.md` for load, entry, and runtime-patch evidence.
-
-`native/viewscreen_transition.s` reconstructs the 944-byte native container
-loaded from disk-2 blocks 86–87, with its drawing tables and row-copy buffer.
-The extra 80 fetched bytes remain unresolved; see `docs/viewscreen-transition.md`.
-
-`native/viewscreen_io.s` reconstructs all of disk-2 blocks 81–82: drawing
-routines, joystick input, lookup tables, and initial runtime workspace. See
-`docs/viewscreen-io.md` for the independently called entries and table writer.
-
-`native/disk_checksum.s` reconstructs the 64-byte checksum table and 71-byte
-integrity-check routine in disk-2 block 54. The table matches all 31 checked
-eight-block groups; see `docs/disk-checksum.md`. The rest of the block is unresolved.
-
-`dialogue/scripts.s` reconstructs 96 custom dialogue control records and their
-remaining entry-table bytes with the explicit format macros in `dialogue/encoding.inc`.
-This format is interpreted by game 16, separate from UCSD p-code. Its 160
-referenced messages are data under `assets/dialogue-messages/`. Step 07q identifies
-the remaining unused messages and bounded spare storage under
-`assets/dialogue-bank-storage/`, completing these thirteen banks. See
-`docs/dialogue-scripts.md`, `docs/dialogue-bank-layout.md` and the per-bank audits.
-
-`native/encoded_loader_{play,alternate}.s` reconstruct the 63-byte entry routines
-of two encoded native banks. The builder applies their documented storage
-encoding after assembly; decoded build artifacts remain available for review.
-Their obfuscated bodies remain unresolved. See `docs/encoded-native-overlay.md`.
+Current reconstruction still uses **488 unidentified temporary bytes** outside
+the accepted code/data components. Their four tail types and evidence limits
+are listed in [unresolved-tails.md](../docs/unresolved-tails.md). The initializer
+protection payload, runtime provisional fields, encoded bodies and viewscreen
+output storage described as unfinished in earlier versions of this index are
+now covered by their respective audits. See the
+[delivery checklist](../docs/delivery-checklist.md) for the remaining requirements.

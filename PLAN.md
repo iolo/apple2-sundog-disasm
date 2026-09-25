@@ -249,6 +249,12 @@ Split large steps into independently validated, logged, and committed increments
   saved-disk reload, and utility slot/menu navigation. The exported saved bank
   checksum passes. Browser Gamepad API input overcomes the MCP joystick gap;
   details and limitations are in docs/apple2ts-behavior-validation.md.
+- Step 10a updates source/asset navigation and adds docs/delivery-checklist.md,
+  mapping each required deliverable to evidence and remaining work. Two fresh
+  isolated incremental builds reproduce the current disks and reports, 178
+  regression tests pass, and the ledger verifies. The strict build still rejects
+  488 unidentified bytes; final classification/evidence review and strict
+  delivery validation remain open.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
   of executable reconstruction or asset extraction.

@@ -8,6 +8,10 @@ acceptable in the final deliverable (see [PRD.md](PRD.md)).
 
 See [PLAN.md](PLAN.md) for the implementation sequence and
 [PROGRESS.md](PROGRESS.md) for evidence and per-step checkpoints.
+The [delivery checklist](docs/delivery-checklist.md) maps each required output
+to its evidence, reproduction commands and remaining work. The
+[source index](src/README.md) and [asset index](assets/README.md) describe the
+current delivered representations.
 
 Original inputs remain at the repository root and are described in
 [docs/inputs.md](docs/inputs.md). Verify them with:

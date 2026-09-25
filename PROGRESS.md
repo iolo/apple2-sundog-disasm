@@ -3581,3 +3581,38 @@ and acceptance criteria.
   transform families or substitute absence of evidence for data classification.
   Final isolated strict reproduction remains pending. User PRD.md changes and
   ref/ are untouched and excluded from this checkpoint.
+
+## 2026-09-25 — Step 10a: review delivery requirements and current reproduction
+
+- **Documentation:** Added docs/delivery-checklist.md with a requirement/evidence/
+  remaining-work matrix, tested prerequisites, build/audit commands, output
+  hashes, standalone-tree instructions and emulator usage. Replaced stale source
+  and asset indexes that still called the runtime payload, encoded bodies,
+  viewscreen storage and many extracted assets unfinished. The indexes now link
+  to current evidence; no old audit is deleted or retrospectively changed.
+- **Scope review:** Confirmed all 32 identified-data components and 31 asset
+  manifests appear in the asset index. Sound-producing native instructions are
+  located explicitly; no separate sampled audio or audio equivalence is claimed.
+  Documented Python 3.10 for the full audits because the retained-linker audit
+  uses strict zip, while the builder's Python 3.9 requirement remains separate.
+  The checklist keeps final classification and source/evidence review open.
+- **Independent reproduction:** Copied only tools/, src/, assets/,
+  reconstruction/ and docs/ to an empty temporary tree without original disks,
+  the manual or prior build output. Two incremental builds into separate fresh
+  directories produced identical reports and disks; both disks match the
+  originals exactly. The strict build exited 1 for 488 temporary mapped bytes
+  before creating its output directory. The temporary tree was removed after
+  comparison. docs/reference/step10a-build-validation.json records manifest,
+  tool versions, report and refusal; docs/strict-build.md links this current
+  receipt while retaining the earlier historical result.
+- **Validation:** All 178 unit tests pass (2.013 s). The disk-wide ledger rebuilds
+  and verifies its existing receipt: 136,686 code / 149,546 data / 488 temporary,
+  with no missing adapters. Original disks/manual retain their hashes. Index and
+  checklist local links exist; git diff --check passes. No source instructions,
+  data assets, disk mappings or emulator state changed in this checkpoint.
+- **Next:** The required goal is still incomplete. Pursue positive provenance,
+  producer, donor or format evidence for the four remaining tail types, then
+  complete source/evidence review and isolated strict validation. Asked the user
+  optionally for the original disk archive/version provenance, which could
+  narrow donor research; work does not depend on an immediate reply. User PRD.md
+  edits and ref/ remain untouched and excluded from the commit.
