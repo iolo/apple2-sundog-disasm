@@ -1,0 +1,73 @@
+{
+  "checkpoint": "08w",
+  "original_images_present": false,
+  "original_manual_present": false,
+  "preexisting_build_present": false,
+  "independent_builds": 2,
+  "identical_reports": true,
+  "identical_disk_bytes": true,
+  "strict_gate_exit": 1,
+  "strict_gate_created_output": false,
+  "copied_directories": [
+    "tools",
+    "src",
+    "assets",
+    "reconstruction",
+    "docs"
+  ],
+  "build_report": {
+    "status": "incremental reconstruction; unclassified bytes remain",
+    "manifest_sha256": "8f9a3f41edf1d17d452d86abc412ebf9970a5a87531f6a9fd740200c9c215111",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 184732,
+      "identified-data": 101404,
+      "temporary-unresolved": 584
+    },
+    "temporary_inputs": [
+      {
+        "component": "disk1_unresolved",
+        "input_bytes": 103,
+        "mapped_disk_bytes": 103,
+        "disk_bytes": {
+          "disk1": 103
+        }
+      },
+      {
+        "component": "disk2_unresolved",
+        "input_bytes": 481,
+        "mapped_disk_bytes": 481,
+        "disk_bytes": {
+          "disk2": 481
+        }
+      }
+    ],
+    "has_temporary_inputs": true,
+    "no_temporary_required": false
+  },
+  "scope": "Current incremental build still includes explicit temporary inputs; not final completion",
+  "date": "2026-09-25",
+  "strict_gate_summary": "584 temporary disk bytes rejected before output creation",
+  "tool_versions": {
+    "python": "3.14.4",
+    "ca65": "ca65 V2.19 - Git a028ac414",
+    "ld65": "ld65 V2.19 - Git a028ac414"
+  },
+  "build_tool_sha256": {
+    "build_disks.py": "8557b84a6b95270d95f99332637b11122ba7a6d0a6d737b6e6c0f3dbd7376b03",
+    "storage_encoding.py": "4035a146e62c6ecde64c136843d32a21df23a068f63baf73c2db421b4bb8629c",
+    "disk_layout.py": "3d9722a0130d5f3c855b5df0d9bcef1ffefac752ec1d9b1d53ae0899d7e04826",
+    "verify_inputs.py": "96cbd12b4fa5ee789aa9a6e7cd58b0a5440c8f61470ba870a8b13ea1e6ce7cb2"
+  }
+}

@@ -3392,3 +3392,39 @@ and acceptance criteria.
   asset/data bytes and 584 temporary bytes (103 disk 1; 481 disk 2). Continue the
   remaining tails and disk-wide evidence audit. User PRD.md edits and ref/ are
   preserved and excluded. The goal remains active.
+
+## 2026-09-25 — Step 08w: enforce temporary-input rejection and recheck isolation
+
+- **Change:** Added build_disks.py --no-temporary. It rejects every declared
+  temporary component before creating or modifying outputs, including unmapped
+  and zero-length declarations. Build reports distinguish declared input sizes
+  from mapped disk bytes and state whether temporary inputs were admitted.
+  Identified-data evidence paths must now resolve to existing project files.
+  Manifest status now says unclassified bytes remain, avoiding an unsupported
+  claim that the remaining bytes are necessarily executable.
+- **Validation:** All five reconstruction tests and five adoption tests pass.
+  New coverage includes duplicate mappings, a misleading complete status,
+  missing evidence, preserving existing output on refusal, successful classified
+  fixtures and continued incremental fixture builds. The real strict command
+  exits 1 with two temporary components / 584 disk bytes before output creation.
+  The normal rebuild and tools/verify_disks.py pass with both exact disk hashes.
+- **Independent build:** Copied only tools/src/assets/reconstruction/docs into
+  a fresh temporary tree without original images, manual or earlier build
+  products. Two separate incremental builds produce identical full disks and
+  identical reports, matching the verified workspace outputs. Original media,
+  user references and emulator state remain unchanged; temporary tree removed.
+- **Artifacts/limits:** Added docs/strict-build.md and a dated validation receipt
+  with tool versions and build-tool hashes. Updated README, PLAN and build
+  documentation. This check is necessary but insufficient for final completion:
+  it does not validate arbitrary classification claims or permit relabeling
+  blobs. The final isolated strict build remains pending classification work.
+  git diff --check and updated-document local-link checks pass.
+- **Research:** The boot-sector suffix does not match the installed standard
+  DOS 3.3 boot template or the two user-linked neighboring game images. Neither
+  those game images nor their Pascal-order views supplied a template-suffix or
+  16-byte checksum-tail donor. No new byte classification follows from these
+  negative searches; previous /tmp historical research downloads have expired.
+- **Coverage/next:** Unchanged: 184,732 source-built bytes, 101,404 identified
+  data/asset bytes and 584 temporary bytes (103 disk 1; 481 disk 2). Continue
+  the remaining tails and final evidence audit. User PRD.md edits and ref/ are
+  preserved and excluded. Goal remains active and incomplete.

@@ -218,6 +218,12 @@ Split large steps into independently validated, logged, and committed increments
   12,345 code bytes (including two instruction-fragment bytes) and 4,039 data
   bytes. Earlier provisional runtime checks are resolved. This separate scope
   does not close full-disk classification; disk ownership counts are unchanged.
+- Step 08w adds `build_disks.py --no-temporary`, rejecting all temporary component
+  declarations before creating outputs, and checks that identified-data evidence
+  files exist within the project. Build reports now explicitly enumerate temporary
+  inputs. Two fresh isolated incremental builds reproduce identical disks and
+  reports without originals or prior build products. The strict check currently
+  rejects 584 bytes; it is necessary but insufficient for final completion.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

@@ -11,6 +11,12 @@ Its 16,384 component bytes have instruction/data accounting and no remaining
 provisional runtime fields. This does not change the disk ownership counts above
 or close the final disk-wide evidence audit.
 
+Step 08w adds a [strict input check and isolated-build validation](strict-build.md).
+`build_disks.py --no-temporary` currently refuses the two temporary components
+before producing outputs. Two fresh incremental builds without original inputs
+or earlier build products reproduce the same disks and reports. This verifies
+the current build dependency boundary, not completion of the remaining classification.
+
 The incremental build reconstructs both disk images using assembled source components and
 classified asset data and explicitly temporary binary inputs for remaining bytes. It is a working
 source-to-disk pipeline, not the completed source-and-assets reconstruction.

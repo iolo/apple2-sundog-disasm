@@ -26,6 +26,11 @@ python3 tools/build_disks.py
 python3 tools/verify_disks.py
 ```
 
+The build also supports `python3 tools/build_disks.py --no-temporary`. It
+currently exits with an error because 584 bytes remain unclassified. This
+[strict input check](docs/strict-build.md) prevents temporary inputs from entering
+a final build; passing it alone would not prove the required classification audit.
+
 See [build instructions and coverage](docs/reconstruction.md). The bootstrap,
 early title routine, complete SYSTEM.APPLE runtime, all 34 distinct inventoried
 Pascal segments, the split-system fragment, raw overlays and encoded native

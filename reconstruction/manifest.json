@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "incremental proof; temporary executable bytes remain",
+  "status": "incremental reconstruction; unclassified bytes remain",
   "components": {
     "bootstrap": {
       "kind": "ca65-source",
