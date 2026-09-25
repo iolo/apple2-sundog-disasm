@@ -5,10 +5,20 @@
 Produce disassembled source, extracted assets, and a reproducible build that
 recreates runnable versions of both supplied disk images. Every region must be
 classified as code or data with evidence, and all code must be disassembled,
-including unused executable routines.
+including unused executable routines, subject to the bounded exception below.
 Byte-for-byte identity is preferred, not required; any differences must be mapped,
 explained, and behaviorally validated. Detailed code documentation and game
 mechanics analysis remain optional follow-up work, as specified in `PRD.md`.
+
+### Current acceptance exception — 2026-09-25
+
+The user's latest instruction accepts the remaining **488 bytes as unidentified
+data** and ends required classification research on those bytes. Preserve them
+unchanged as explicitly user-assumed data; do not claim their role was proven.
+[docs/user-assumed-data.md](docs/user-assumed-data.md) and its receipt freeze the
+exact scope. This exception applies to every code/data completion criterion
+below and supersedes earlier blanket prohibitions only for those 488 bytes.
+All other regions retain the evidence and disassembled-source requirements.
 
 ## Base rule: log and commit every step
 
@@ -255,9 +265,15 @@ Split large steps into independently validated, logged, and committed increments
   regression tests pass, and the ledger verifies. The strict build still rejects
   488 unidentified bytes; final classification/evidence review and strict
   delivery validation remain open.
+- Step 08ac applies the user's later acceptance of the exact 488-byte remainder
+  as unidentified data. The build/ledger separately record `user-assumed-data`,
+  enforce its frozen hashes and mappings, and contain no temporary inputs.
+  Strict build and complete-ledger checks pass; both disks remain exact and all
+  180 tests pass. Final isolated strict delivery verification follows.
 - The incremental build matches both original disks, but still includes
   temporary binary inputs. Exact output alone does not establish completion
-  of executable reconstruction or asset extraction.
+  of executable reconstruction or asset extraction. These earlier temporary
+  counts are historical; step 08ac applies the user's bounded data exception.
 
 ## Steps
 
@@ -432,3 +448,7 @@ behavioral validation. A disk copy, executable blob, or unidentified byte chunk
 is insufficient. Unknown data semantics are allowed only after data classification
 is established. Existing temporary remainders are work in progress, not an
 accepted final input category.
+
+The explicit 488-byte exception above is accepted final user-assumed data,
+separately recorded from evidence-backed data. It is not an unidentified
+temporary remainder and does not expand to other bytes.

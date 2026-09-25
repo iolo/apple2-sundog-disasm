@@ -3518,6 +3518,35 @@ and acceptance criteria.
   and complete strict-build/delivery verification under that exception. This
   instruction changes acceptance criteria; it is not new classification evidence.
 
+## 2026-09-25 — Step 08ac: apply the explicit 488-byte user data exception
+
+- **Authorization:** Applied the user's instruction to ignore the remaining
+  488 bytes and assume them as unidentified data. Updated PRD.md and PLAN.md
+  with this bounded acceptance exception. Their role remains unproved; no
+  earlier hypothesis is promoted to code/data evidence.
+- **Representation:** Moved the unchanged 7-byte and 481-byte inputs from
+  reconstruction/temporary/ to reconstruction/assumed-data/. Renamed their
+  manifest components and kind to user-assumed-data. docs/user-assumed-data.md
+  and its JSON receipt freeze the user instruction, exact byte hashes and all
+  seven physical image mappings. No temporary input declarations remain.
+- **Enforcement/reporting:** The builder verifies acceptance scope before
+  outputs, then exact input hashes. Extra mappings, shifted ranges or changed
+  bytes do not inherit the exception. The ledger keeps user-assumed-data as a
+  separate category and reports its exact ranges, rather than adding it to
+  evidence-backed data. Updated current README, source/asset indexes and build/
+  coverage documents; historical research stays available with a scope notice.
+- **Validation:** Strict build succeeds, complete-ledger generation succeeds,
+  and verify_disks.py confirms both exact images and unchanged originals/manual.
+  All 180 tests pass (2.031 s), including acceptance-scope/hash/range mutation
+  rejection, duplicated-copy rejection and separate assumed-data projection.
+  Accounting is 136,686 code / 149,546 evidenced data / 488 user-assumed data;
+  source/asset/assumed ownership is 184,828 / 101,404 / 488. No pending adapter
+  or temporary byte remains. Updated links and git diff --check pass.
+- **Next:** Finish isolated strict reproduction and the final delivery/evidence
+  review under the revised scope. Existing emulator baselines remain applicable
+  because output bytes did not change. The user's pre-existing PRD reference
+  links and ref/ remain intact and excluded from this checkpoint's staging.
+
 ## 2026-09-25 — Step 08z: project component evidence across both complete disks
 
 - **Resumed:** Continued at the user's explicit request. Rechecked the dictionary

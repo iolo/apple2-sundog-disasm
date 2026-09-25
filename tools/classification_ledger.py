@@ -10,7 +10,7 @@ from collections import Counter
 import json
 import re
 
-from build_disks import build, compose_image, contained_file
+from build_disks import build, compose_image, contained_file, validate_data_assumptions
 from disk_layout import ROOT, sha, block_bytes
 from native_pascal_source import mixed_decoder, instruction
 from native_raw_source import analyze as analyze_raw
@@ -21,9 +21,9 @@ from system_core_source import analyze_system, CORE_SIZE
 
 MANIFEST = ROOT/'reconstruction/manifest.json'
 REPORT = ROOT/'docs/reference/classification-ledger.json'
-CODE, DATA, TEMPORARY, PENDING = range(1, 5)
+CODE, DATA, TEMPORARY, PENDING, ASSUMED = range(1, 6)
 LABELS = {CODE:'code', DATA:'data', TEMPORARY:'temporary-unresolved',
-          PENDING:'audit-not-integrated'}
+          PENDING:'audit-not-integrated', ASSUMED:'user-assumed-data'}
 DATA_KINDS = set('''alignment attributes case-pointer dictionary-pointer
 entry-pointer exit-pointer jump-pointer local-size parameter-size segment-trailer
 string-data packed-array-data relocation-count relocation-pointer
@@ -117,20 +117,21 @@ def project(disk, binaries, classifications):
     owners = compose_image(disk,classifications)
     if any(value not in LABELS for value in owners):
         raise ValueError('Unknown projected classification')
-    components, unfinished = {}, []
+    components, unfinished, assumed = {}, [], []
     for region in sorted(disk['regions'],key=lambda r:r['offset']):
         name, start, size = region['input'],region['input_offset'],region['size']
         selected = classifications[name][start:start+size]
         components.setdefault(name,Counter()).update(selected)
         for offset, length, label in runs(selected):
             if label not in ('code','data'):
-                unfinished.append(dict(offset=region['offset']+offset,size=length,
+                target = assumed if label == 'user-assumed-data' else unfinished
+                target.append(dict(offset=region['offset']+offset,size=length,
                     component=name,input_offset=start+offset,classification=label))
     return dict(id=disk['id'],filename=disk['filename'],size=len(image),sha256=sha(image),
                 coverage_bytes=counts(owners),
                 component_coverage={n:{LABELS[k]:v for k,v in sorted(c.items())}
                                     for n,c in sorted(components.items())},
-                unfinished_regions=unfinished)
+                unfinished_regions=unfinished, assumed_data_regions=assumed)
 
 
 def complete(coverage):
@@ -193,6 +194,7 @@ def early_native_classes(data, name):
 
 def report():
     manifest = json.loads(MANIFEST.read_text())
+    assumptions = validate_data_assumptions(manifest)
     specs = manifest['components']
     binaries, classification, evidence = {}, {}, {}
     proof_files = set()
@@ -232,6 +234,11 @@ def report():
         elif spec['kind'] == 'temporary-unresolved':
             data = contained_file(MANIFEST.parent,spec['path']).read_bytes()
             register(name,bytes([TEMPORARY])*len(data),[], 'Unidentified temporary input')
+        elif spec['kind'] == 'user-assumed-data':
+            data = contained_file(ROOT,spec['path']).read_bytes()
+            register(name,bytes([ASSUMED])*len(data),
+                     [spec['acceptance_record'],spec['assumption_document']],
+                     'Explicit user data assumption; exact accepted scope checked; no code/data proof claimed')
         else:
             raise ValueError(f'Unknown component kind: {name}')
         if len(data) != spec['size'] or sha(data) != spec['sha256']:
@@ -446,12 +453,15 @@ def report():
                          evidence=evidence[name],coverage_bytes=counts(classification[name]),
                          classification_runs=runs(classification[name])))
     return dict(schema_version=1,manifest_sha256=sha(MANIFEST.read_bytes()),
-                scope='Projection of integrated classification audits; pending adapters are explicit',
+                scope='Reviewed classification plus separately counted explicit user data assumptions',
                 complete=complete(total) and complete(component_total),coverage_bytes=total,
+                assumed_data_inputs=assumptions,
                 declared_component_coverage_bytes=component_total,components=rows,disks=disks,
                 proof_files={p:sha(contained_file(ROOT,p).read_bytes()) for p in sorted(proof_files)},
                 limitations=['Asset and registered data-source classifications are inherited from '
                              'their reviewed evidence; this ledger does not rerun every data consumer audit.',
+                             'User-assumed data has no established code/data role; its acceptance is '
+                             'an explicit user exception, not new classification evidence.',
                              'Classification coverage does not prove every routine executes or '
                              'replace the final PRD completion and behavior audit.'])
 

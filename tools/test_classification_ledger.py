@@ -3,7 +3,7 @@
 import copy
 import unittest
 
-from classification_ledger import (CODE, DATA, TEMPORARY, PENDING, complete,
+from classification_ledger import (CODE, DATA, TEMPORARY, PENDING, ASSUMED, complete,
                                    counts, from_items, pcode_classes, project, runs,
                                    early_native_classes)
 from disk_layout import ROOT, sha
@@ -54,7 +54,7 @@ class LedgerTests(unittest.TestCase):
         disk,binaries,owners = self.fixture()
         result = project(disk,binaries,owners)
         self.assertEqual(result['coverage_bytes'],dict(code=2,data=2,
-            **{'temporary-unresolved':1,'audit-not-integrated':2}))
+            **{'temporary-unresolved':1,'audit-not-integrated':2,'user-assumed-data':0}))
         self.assertEqual(result['component_coverage']['mixed'],dict(code=2,data=2))
         self.assertEqual([(r['offset'],r['size']) for r in result['unfinished_regions']],
                          [(4,1),(5,2)])
@@ -76,6 +76,18 @@ class LedgerTests(unittest.TestCase):
         for unfinished in (TEMPORARY,PENDING):
             self.assertFalse(complete(counts(bytes([CODE,DATA,unfinished]))))
         self.assertTrue(complete(counts(bytes([CODE,DATA]))))
+
+    def test_user_assumption_stays_separate_from_proven_data(self):
+        disk,binaries,owners = self.fixture()
+        owners['temporary'] = bytes([ASSUMED])
+        owners['pending'] = bytes([ASSUMED,ASSUMED])
+        result = project(disk,binaries,owners)
+        self.assertTrue(complete(result['coverage_bytes']))
+        self.assertEqual(result['coverage_bytes']['data'],2)
+        self.assertEqual(result['coverage_bytes']['user-assumed-data'],3)
+        self.assertEqual(result['unfinished_regions'],[])
+        self.assertEqual([(r['offset'],r['size']) for r in result['assumed_data_regions']],
+                         [(4,1),(5,2)])
 
     def test_early_native_boundaries_and_retained_nops(self):
         raw = (ROOT/'build/disks/components/bootstrap.bin').read_bytes()

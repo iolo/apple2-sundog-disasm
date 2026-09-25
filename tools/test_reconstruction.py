@@ -110,6 +110,56 @@ class ReconstructionTests(unittest.TestCase):
                 self.assertFalse(report['no_temporary_required'])
                 self.assertEqual((root/'incremental/out.dsk').read_bytes(),data)
 
+    def test_user_assumed_data_requires_exact_acceptance_scope(self):
+        data = b'abcde'
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root/'tail.bin').write_bytes(data)
+            (root/'assumption.md').write_text('Explicit fixture user exception.\n')
+            spec = dict(kind='user-assumed-data',path='tail.bin',size=5,sha256=sha(data),
+                        acceptance_record='acceptance.json',assumption_document='assumption.md')
+            manifest = dict(schema_version=1,status='accepted with data assumption',
+                components={'tail':spec},disks=[dict(id='disk1',filename='out.dsk',size=5,
+                    sha256=sha(data),regions=[dict(offset=0,size=5,input='tail',input_offset=0)])])
+            record = dict(basis='explicit-user-instruction',instruction='Treat this tail as data.',
+                components={'tail':dict(path='tail.bin',size=5,sha256=sha(data),
+                                       regions=[['disk1',0,5,0]])})
+            path = root/'manifest.json'
+            path.write_text(json.dumps(manifest))
+            acceptance = root/'acceptance.json'
+            acceptance.write_text(json.dumps(record))
+            with patch('build_disks.ROOT',root):
+                result = build(path,root/'accepted',no_temporary=True)
+                self.assertFalse(result['has_temporary_inputs'])
+                self.assertTrue(result['has_assumed_data'])
+                self.assertEqual(result['coverage_bytes'],{'user-assumed-data':5})
+                self.assertEqual(result['assumed_data_inputs'][0]['mapped_disk_bytes'],5)
+                self.assertEqual((root/'accepted/out.dsk').read_bytes(),data)
+                for index,change in enumerate(('hash','range','missing-component','basis','instruction')):
+                    bad = copy.deepcopy(record)
+                    if change == 'hash': bad['components']['tail']['sha256'] = '0'*64
+                    elif change == 'range': bad['components']['tail']['regions'][0][2] = 4
+                    elif change == 'missing-component': bad['components'] = {}
+                    elif change == 'basis': bad['basis'] = 'automatic-guess'
+                    else: bad['instruction'] = ''
+                    acceptance.write_text(json.dumps(bad))
+                    output = root/f'rejected-{index}'
+                    with self.subTest(change=change), self.assertRaises(ValueError):
+                        build(path,output,no_temporary=True)
+                    self.assertFalse(output.exists())
+                acceptance.write_text(json.dumps(record))
+                # A changed byte also fails despite an unchanged acceptance record.
+                (root/'tail.bin').write_bytes(b'abcdX')
+                with self.assertRaisesRegex(ValueError,'exact-byte baseline'):
+                    build(path,root/'changed-byte',no_temporary=True)
+                (root/'tail.bin').write_bytes(data)
+                manifest['disks'][0]['regions'].append(
+                    dict(offset=5,size=5,input='tail',input_offset=0))
+                path.write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError,'accepted scope'):
+                    build(path,root/'extra-copy',no_temporary=True)
+                self.assertFalse((root/'extra-copy').exists())
+
 
 if __name__ == "__main__":
     unittest.main()

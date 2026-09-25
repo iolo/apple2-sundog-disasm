@@ -1,21 +1,20 @@
 # Disk-wide code/data classification ledger
 
-The current ledger accounts for all **286,720 disk bytes**: **136,686 code**,
-**149,546 data**, and **488 temporary unidentified bytes**. All 166 declared
-components have an adapter in the ledger; no existing source component is
-silently treated as code or data because of its filename or assembler syntax.
-The unresolved tails still prevent completion.
+The ledger accounts for all **286,720 disk bytes**: **136,686 code**,
+**149,546 evidenced data**, and **488 user-assumed data bytes**. All 166 declared
+components are integrated. There are no temporary inputs or missing audit
+adapters. Completion uses the user's [explicit 488-byte exception](user-assumed-data.md),
+not a claim that those bytes have acquired classification evidence.
 
-| Disk | Code | Data | Unidentified | Total |
+| Disk | Code | Evidenced data | User-assumed data | Total |
 | --- | ---: | ---: | ---: | ---: |
 | Disk 1, title/utilities | 59,077 | 84,276 | 7 | 143,360 |
 | Disk 2, play | 77,609 | 65,270 | 481 | 143,360 |
 
-These are disk occurrence counts. Each mapped copy contributes its own bytes.
-The older build totals of 184,828 ca65-source bytes and 101,404 asset bytes
-describe input representation; ca65 sources also contain data. The two ways
-of counting agree: 136,686 + 149,546 = 184,828 + 101,404 = 286,232 classified
-disk bytes. Neither count includes the remaining 488 bytes as accepted data.
+These are disk occurrence counts, including every mapped copy. Build ownership
+is 184,828 ca65-source bytes, 101,404 identified-data bytes and 488 user-assumed
+bytes; source-built components contain both code and data. Accepted data totals
+150,034 bytes, of which 488 remain explicitly assumed rather than evidenced.
 
 ## Reproduce and inspect
 
@@ -27,16 +26,15 @@ python3 tools/classification_ledger.py --require-complete
 
 Each ledger invocation builds the disks afresh from current source and inputs,
 then checks the generated result against
-[classification-ledger.json](reference/classification-ledger.json). The ordinary
-command succeeds for this documented incomplete checkpoint. `--require-complete`
-exits 1 while either temporary bytes or an unintegrated audit remains. Its
-`complete` flag concerns classification accounting only; it cannot establish
-the PRD's behavior, source representation, or delivery requirements by itself.
+[classification-ledger.json](reference/classification-ledger.json). Both ordinary and `--require-complete` checks succeed under the revised scope.
+The strict check still exits 1 for temporary bytes or an unintegrated audit.
+Its `complete` flag concerns accounting under the recorded acceptance rules;
+it cannot establish behavior or source representation by itself.
 
 Use `--write` to regenerate the receipt after a reviewed change. The receipt
 contains the manifest hash, component byte hashes and source paths, evidence
 paths and hashes, compact component classification intervals, per-disk counts
-for every component, and the exact unfinished image offsets. An interval
+for every component, and the exact assumed-data and any unfinished image offsets. An interval
 `[offset, size, classification]` is relative to its component. To resolve any
 disk byte, use the manifest's owning region and calculate
 `input_offset + disk_offset - region.offset`, then find that component interval.
@@ -79,7 +77,7 @@ has not been connected to this ledger; it is distinct from accepting an
 unidentified region as data. Both disk mappings and declared component extents
 must be accounted for before the ledger's completion flag can become true.
 
-## Remaining unidentified regions
+## Accepted user-assumed data regions
 
 | Logical location | Bytes | Current evidence limit |
 | --- | ---: | --- |
@@ -91,6 +89,8 @@ must be accounted for before the ledger's completion flag can become true.
 
 The checksum suffix occupies two physical image intervals because of sector
 ordering. The generated ledger retains both intervals and their source offsets.
-No unresolved bytes were reclassified by this consolidation. Both reconstructed
-disk hashes are unchanged, so the recorded MAME and Apple2TS behavior baselines
-remain applicable; no new emulator session is claimed.
+The initial consolidation did not classify these bytes. Step 08ac accepts them
+solely by user instruction and retains their evidence limits above. Their exact
+bytes and physical mappings are checked against the acceptance receipt and
+reported separately in `assumed_data_regions`. Both disk hashes remain unchanged,
+so existing MAME and Apple2TS baselines apply; no new session is claimed.

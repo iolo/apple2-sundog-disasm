@@ -1,19 +1,43 @@
 {
   "schema_version": 1,
-  "manifest_sha256": "45ba3c20dc5d8f0b3a4d9ecb716d44f19d317a6ee6934b0a2066e4e7e65672d1",
-  "scope": "Projection of integrated classification audits; pending adapters are explicit",
-  "complete": false,
+  "manifest_sha256": "f2cce64088df082e6ce52993c9546859738c8d7275d24437a5fdf980e0c06da9",
+  "scope": "Reviewed classification plus separately counted explicit user data assumptions",
+  "complete": true,
   "coverage_bytes": {
     "code": 136686,
     "data": 149546,
-    "temporary-unresolved": 488,
-    "audit-not-integrated": 0
+    "temporary-unresolved": 0,
+    "audit-not-integrated": 0,
+    "user-assumed-data": 488
   },
+  "assumed_data_inputs": [
+    {
+      "component": "disk1_assumed_data",
+      "input_bytes": 7,
+      "mapped_disk_bytes": 7,
+      "disk_bytes": {
+        "disk1": 7
+      },
+      "acceptance_record": "docs/reference/user-assumed-data.json",
+      "assumption_document": "docs/user-assumed-data.md"
+    },
+    {
+      "component": "disk2_assumed_data",
+      "input_bytes": 481,
+      "mapped_disk_bytes": 481,
+      "disk_bytes": {
+        "disk2": 481
+      },
+      "acceptance_record": "docs/reference/user-assumed-data.json",
+      "assumption_document": "docs/user-assumed-data.md"
+    }
+  ],
   "declared_component_coverage_bytes": {
     "code": 115148,
     "data": 131166,
-    "temporary-unresolved": 488,
-    "audit-not-integrated": 0
+    "temporary-unresolved": 0,
+    "audit-not-integrated": 0,
+    "user-assumed-data": 488
   },
   "components": [
     {
@@ -36,7 +60,8 @@
         "code": 722,
         "data": 158,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -139,7 +164,8 @@
         "code": 191,
         "data": 759,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -402,7 +428,8 @@
         "code": 716,
         "data": 48,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -465,7 +492,8 @@
         "code": 2347,
         "data": 1001,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -978,7 +1006,8 @@
         "code": 753,
         "data": 459,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1160,7 +1189,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1187,7 +1217,8 @@
         "code": 0,
         "data": 617,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1217,7 +1248,8 @@
         "code": 627,
         "data": 141,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1284,7 +1316,8 @@
         "code": 0,
         "data": 256,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1313,7 +1346,8 @@
         "code": 307,
         "data": 205,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1345,7 +1379,8 @@
         "code": 0,
         "data": 7680,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1372,7 +1407,8 @@
         "code": 0,
         "data": 925,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1399,7 +1435,8 @@
         "code": 0,
         "data": 1930,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1426,7 +1463,8 @@
         "code": 0,
         "data": 3434,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1455,7 +1493,8 @@
         "code": 979,
         "data": 196,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1607,7 +1646,8 @@
         "code": 0,
         "data": 189,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1618,52 +1658,60 @@
       ]
     },
     {
-      "component": "disk1_unresolved",
-      "kind": "temporary-unresolved",
+      "component": "disk1_assumed_data",
+      "kind": "user-assumed-data",
       "size": 7,
       "sha256": "5215c0b39b2c977bcd582995d765d7a69620fff55f7c1bd7568a6b67ff0cd3bc",
-      "source": "temporary/disk1-unresolved.bin",
+      "source": "reconstruction/assumed-data/disk1-data.bin",
       "storage_encoding": null,
       "evidence": {
-        "method": "Unidentified temporary input",
-        "files": []
+        "method": "Explicit user data assumption; exact accepted scope checked; no code/data proof claimed",
+        "files": [
+          "docs/reference/user-assumed-data.json",
+          "docs/user-assumed-data.md"
+        ]
       },
       "coverage_bytes": {
         "code": 0,
         "data": 0,
-        "temporary-unresolved": 7,
-        "audit-not-integrated": 0
+        "temporary-unresolved": 0,
+        "audit-not-integrated": 0,
+        "user-assumed-data": 7
       },
       "classification_runs": [
         [
           0,
           7,
-          "temporary-unresolved"
+          "user-assumed-data"
         ]
       ]
     },
     {
-      "component": "disk2_unresolved",
-      "kind": "temporary-unresolved",
+      "component": "disk2_assumed_data",
+      "kind": "user-assumed-data",
       "size": 481,
       "sha256": "993c1ef6126cfd572b4d6c884bca95d334e0c976500d2629fe55c484519ab337",
-      "source": "temporary/disk2-unresolved.bin",
+      "source": "reconstruction/assumed-data/disk2-data.bin",
       "storage_encoding": null,
       "evidence": {
-        "method": "Unidentified temporary input",
-        "files": []
+        "method": "Explicit user data assumption; exact accepted scope checked; no code/data proof claimed",
+        "files": [
+          "docs/reference/user-assumed-data.json",
+          "docs/user-assumed-data.md"
+        ]
       },
       "coverage_bytes": {
         "code": 0,
         "data": 0,
-        "temporary-unresolved": 481,
-        "audit-not-integrated": 0
+        "temporary-unresolved": 0,
+        "audit-not-integrated": 0,
+        "user-assumed-data": 481
       },
       "classification_runs": [
         [
           0,
           481,
-          "temporary-unresolved"
+          "user-assumed-data"
         ]
       ]
     },
@@ -1686,7 +1734,8 @@
         "code": 71,
         "data": 64,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1718,7 +1767,8 @@
         "code": 0,
         "data": 8,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -1753,7 +1803,8 @@
         "code": 561,
         "data": 231,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -2608,7 +2659,8 @@
         "code": 0,
         "data": 3,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -2643,7 +2695,8 @@
         "code": 397,
         "data": 133,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3133,7 +3186,8 @@
         "code": 78,
         "data": 25,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3253,7 +3307,8 @@
         "code": 0,
         "data": 6,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3288,7 +3343,8 @@
         "code": 0,
         "data": 11,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3323,7 +3379,8 @@
         "code": 0,
         "data": 5,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3358,7 +3415,8 @@
         "code": 43,
         "data": 4,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -3398,7 +3456,8 @@
         "code": 561,
         "data": 231,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4253,7 +4312,8 @@
         "code": 0,
         "data": 3,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4288,7 +4348,8 @@
         "code": 397,
         "data": 133,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4778,7 +4839,8 @@
         "code": 78,
         "data": 25,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4898,7 +4960,8 @@
         "code": 0,
         "data": 6,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4933,7 +4996,8 @@
         "code": 0,
         "data": 11,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -4968,7 +5032,8 @@
         "code": 0,
         "data": 5,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5003,7 +5068,8 @@
         "code": 43,
         "data": 4,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5043,7 +5109,8 @@
         "code": 127,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5078,7 +5145,8 @@
         "code": 63,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5113,7 +5181,8 @@
         "code": 63,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5146,7 +5215,8 @@
         "code": 0,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5181,7 +5251,8 @@
         "code": 3,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5216,7 +5287,8 @@
         "code": 3,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5251,7 +5323,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5286,7 +5359,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5321,7 +5395,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5356,7 +5431,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5391,7 +5467,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5426,7 +5503,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5461,7 +5539,8 @@
         "code": 3,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5496,7 +5575,8 @@
         "code": 3,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5531,7 +5611,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5566,7 +5647,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5601,7 +5683,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5636,7 +5719,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5671,7 +5755,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5706,7 +5791,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5741,7 +5827,8 @@
         "code": 0,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5776,7 +5863,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5811,7 +5899,8 @@
         "code": 0,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5846,7 +5935,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5881,7 +5971,8 @@
         "code": 0,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5916,7 +6007,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5951,7 +6043,8 @@
         "code": 0,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -5986,7 +6079,8 @@
         "code": 0,
         "data": 2,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6021,7 +6115,8 @@
         "code": 0,
         "data": 17,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6056,7 +6151,8 @@
         "code": 245,
         "data": 69,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6331,7 +6427,8 @@
         "code": 78,
         "data": 25,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6451,7 +6548,8 @@
         "code": 0,
         "data": 6,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6486,7 +6584,8 @@
         "code": 0,
         "data": 11,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6521,7 +6620,8 @@
         "code": 0,
         "data": 5,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6556,7 +6656,8 @@
         "code": 4,
         "data": 4,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6596,7 +6697,8 @@
         "code": 0,
         "data": 17,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6631,7 +6733,8 @@
         "code": 245,
         "data": 69,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -6906,7 +7009,8 @@
         "code": 78,
         "data": 25,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7026,7 +7130,8 @@
         "code": 0,
         "data": 6,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7061,7 +7166,8 @@
         "code": 0,
         "data": 11,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7096,7 +7202,8 @@
         "code": 0,
         "data": 5,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7131,7 +7238,8 @@
         "code": 4,
         "data": 4,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7164,7 +7272,8 @@
         "code": 4795,
         "data": 751,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -7807,7 +7916,8 @@
         "code": 8363,
         "data": 1851,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -9350,7 +9460,8 @@
         "code": 2187,
         "data": 357,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -9643,7 +9754,8 @@
         "code": 2354,
         "data": 300,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -9906,7 +10018,8 @@
         "code": 6524,
         "data": 922,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -10559,7 +10672,8 @@
         "code": 3253,
         "data": 279,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -10782,7 +10896,8 @@
         "code": 5827,
         "data": 453,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -11105,7 +11220,8 @@
         "code": 4270,
         "data": 930,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -12098,7 +12214,8 @@
         "code": 5553,
         "data": 1283,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -13121,7 +13238,8 @@
         "code": 7361,
         "data": 771,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -13664,7 +13782,8 @@
         "code": 2666,
         "data": 464,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14086,7 +14205,8 @@
         "code": 0,
         "data": 512,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14113,7 +14233,8 @@
         "code": 0,
         "data": 1922,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14140,7 +14261,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14167,7 +14289,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14197,7 +14320,8 @@
         "code": 4678,
         "data": 1448,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14889,7 +15013,8 @@
         "code": 484,
         "data": 122,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -14954,7 +15079,8 @@
         "code": 3950,
         "data": 356,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -15147,7 +15273,8 @@
         "code": 833,
         "data": 125,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -15262,7 +15389,8 @@
         "code": 2109,
         "data": 949,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -15727,7 +15855,8 @@
         "code": 2109,
         "data": 949,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16190,7 +16319,8 @@
         "code": 1417,
         "data": 199,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16373,7 +16503,8 @@
         "code": 251,
         "data": 77,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16455,7 +16586,8 @@
         "code": 0,
         "data": 18,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16482,7 +16614,8 @@
         "code": 0,
         "data": 6144,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16509,7 +16642,8 @@
         "code": 0,
         "data": 832,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16537,7 +16671,8 @@
         "code": 3,
         "data": 631,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16576,7 +16711,8 @@
         "code": 391,
         "data": 1769,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16655,7 +16791,8 @@
         "code": 1065,
         "data": 215,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16729,7 +16866,8 @@
         "code": 2778,
         "data": 1318,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16802,7 +16940,8 @@
         "code": 4212,
         "data": 311,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16879,7 +17018,8 @@
         "code": 0,
         "data": 1687,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16906,7 +17046,8 @@
         "code": 0,
         "data": 680,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16933,7 +17074,8 @@
         "code": 0,
         "data": 1560,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16960,7 +17102,8 @@
         "code": 0,
         "data": 1536,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -16987,7 +17130,8 @@
         "code": 0,
         "data": 1050,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17014,7 +17158,8 @@
         "code": 0,
         "data": 1728,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17043,7 +17188,8 @@
         "code": 3899,
         "data": 426,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17117,7 +17263,8 @@
         "code": 192,
         "data": 1,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17149,7 +17296,8 @@
         "code": 0,
         "data": 576,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17176,7 +17324,8 @@
         "code": 0,
         "data": 4096,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17203,7 +17352,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17230,7 +17380,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17259,7 +17410,8 @@
         "code": 93,
         "data": 0,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17288,7 +17440,8 @@
         "code": 105,
         "data": 192,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17320,7 +17473,8 @@
         "code": 0,
         "data": 8192,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17347,7 +17501,8 @@
         "code": 0,
         "data": 184,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17374,7 +17529,8 @@
         "code": 0,
         "data": 460,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17401,7 +17557,8 @@
         "code": 0,
         "data": 512,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17429,7 +17586,8 @@
         "code": 248,
         "data": 54,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17487,7 +17645,8 @@
         "code": 6,
         "data": 8,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17524,7 +17683,8 @@
         "code": 0,
         "data": 760,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17551,7 +17711,8 @@
         "code": 0,
         "data": 492,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17578,7 +17739,8 @@
         "code": 0,
         "data": 32,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17605,7 +17767,8 @@
         "code": 0,
         "data": 252,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17632,7 +17795,8 @@
         "code": 0,
         "data": 252,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17659,7 +17823,8 @@
         "code": 0,
         "data": 256,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17686,7 +17851,8 @@
         "code": 0,
         "data": 20096,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17713,7 +17879,8 @@
         "code": 0,
         "data": 96,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17740,7 +17907,8 @@
         "code": 0,
         "data": 1024,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -17768,7 +17936,8 @@
         "code": 1503,
         "data": 365,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18010,7 +18179,8 @@
         "code": 447,
         "data": 129,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18112,7 +18282,8 @@
         "code": 447,
         "data": 129,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18215,7 +18386,8 @@
         "code": 6,
         "data": 14,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18249,7 +18421,8 @@
         "code": 736,
         "data": 72,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18322,7 +18495,8 @@
         "code": 6,
         "data": 14,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18355,7 +18529,8 @@
         "code": 1579,
         "data": 419,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18638,7 +18813,8 @@
         "code": 1441,
         "data": 229,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -18852,7 +19028,8 @@
         "code": 3371,
         "data": 281,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19114,7 +19291,8 @@
         "code": 2644,
         "data": 614,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19556,7 +19734,8 @@
         "code": 23,
         "data": 13,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19588,7 +19767,8 @@
         "code": 0,
         "data": 2048,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19615,7 +19795,8 @@
         "code": 0,
         "data": 2048,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19642,7 +19823,8 @@
         "code": 0,
         "data": 2048,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19669,7 +19851,8 @@
         "code": 0,
         "data": 2048,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19696,7 +19879,8 @@
         "code": 0,
         "data": 8192,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19726,7 +19910,8 @@
         "code": 528,
         "data": 496,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -19758,7 +19943,8 @@
         "code": 6628,
         "data": 2016,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21191,7 +21377,8 @@
         "code": 6,
         "data": 10,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21224,7 +21411,8 @@
         "code": 1413,
         "data": 725,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21688,7 +21876,8 @@
         "code": 545,
         "data": 479,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21740,7 +21929,8 @@
         "code": 0,
         "data": 80,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21769,7 +21959,8 @@
         "code": 843,
         "data": 101,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21803,7 +21994,8 @@
         "code": 1216,
         "data": 320,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21865,7 +22057,8 @@
         "code": 0,
         "data": 126,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21892,7 +22085,8 @@
         "code": 0,
         "data": 5017,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21919,7 +22113,8 @@
         "code": 0,
         "data": 4320,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21946,7 +22141,8 @@
         "code": 0,
         "data": 2016,
         "temporary-unresolved": 0,
-        "audit-not-integrated": 0
+        "audit-not-integrated": 0,
+        "user-assumed-data": 0
       },
       "classification_runs": [
         [
@@ -21966,8 +22162,9 @@
       "coverage_bytes": {
         "code": 59077,
         "data": 84276,
-        "temporary-unresolved": 7,
-        "audit-not-integrated": 0
+        "temporary-unresolved": 0,
+        "audit-not-integrated": 0,
+        "user-assumed-data": 7
       },
       "component_coverage": {
         "alternate_1": {
@@ -22010,8 +22207,8 @@
         "city_maps": {
           "data": 480
         },
-        "disk1_unresolved": {
-          "temporary-unresolved": 7
+        "disk1_assumed_data": {
+          "user-assumed-data": 7
         },
         "disk_control": {
           "data": 8
@@ -22326,13 +22523,14 @@
           "data": 2016
         }
       },
-      "unfinished_regions": [
+      "unfinished_regions": [],
+      "assumed_data_regions": [
         {
           "offset": 8953,
           "size": 7,
-          "component": "disk1_unresolved",
+          "component": "disk1_assumed_data",
           "input_offset": 0,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         }
       ]
     },
@@ -22344,8 +22542,9 @@
       "coverage_bytes": {
         "code": 77609,
         "data": 65270,
-        "temporary-unresolved": 481,
-        "audit-not-integrated": 0
+        "temporary-unresolved": 0,
+        "audit-not-integrated": 0,
+        "user-assumed-data": 481
       },
       "component_coverage": {
         "asset_block_storage": {
@@ -22370,8 +22569,8 @@
         "dialogue_workspace": {
           "data": 189
         },
-        "disk2_unresolved": {
-          "temporary-unresolved": 481
+        "disk2_assumed_data": {
+          "user-assumed-data": 481
         },
         "disk_checksum": {
           "code": 71,
@@ -22661,48 +22860,49 @@
           "data": 2016
         }
       },
-      "unfinished_regions": [
+      "unfinished_regions": [],
+      "assumed_data_regions": [
         {
           "offset": 193,
           "size": 63,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 0,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         },
         {
           "offset": 2809,
           "size": 7,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 63,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         },
         {
           "offset": 21753,
           "size": 7,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 70,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         },
         {
           "offset": 25088,
           "size": 256,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 77,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         },
         {
           "offset": 25479,
           "size": 121,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 333,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         },
         {
           "offset": 48357,
           "size": 27,
-          "component": "disk2_unresolved",
+          "component": "disk2_assumed_data",
           "input_offset": 454,
-          "classification": "temporary-unresolved"
+          "classification": "user-assumed-data"
         }
       ]
     }
@@ -22804,6 +23004,7 @@
     "docs/reference/runtime-classification.json": "f00a227216f74e0f82602e57e922b46053f0f3ca1fecb123bf48b9dfc081fc10",
     "docs/reference/step06g-pcode-audit.json": "2f8587b9256c8b9d7fb07355886ecbec00b4b27146f71318840bf1de10ea5d72",
     "docs/reference/step06h-pcode-audit.json": "0e51bebe02178028b0523e645ac30cd144181e7dfbbb8333d26f20850f1172f0",
+    "docs/reference/user-assumed-data.json": "fd579336ad6d48bc5d8306d6cee60b650ecc1e66433101b8ccb7e5fbbd832764",
     "docs/reference/utility-variant-edges.json": "a1c2126428c927d7edd54cda0bc1b964b01f871ef8a190a82b105361da69a8a6",
     "docs/reference/utility-variant-procedures.json": "f1d29012093fcd3cce79ab469b02b46d5fcb38e62e56f1eec972ea32c0ae3619",
     "docs/retained-command-stack.md": "a79d4780c838b8d359f2d859dbebc9c4ed27d16ee53435f0016f7201caf1978e",
@@ -22822,6 +23023,7 @@
     "docs/tile-banks.md": "33a4ec99cb39482bca0979427b2e78995fd2f983c6ee9827253331dd05f5d5b5",
     "docs/title-bitmap.md": "6ac1ebf1e391a342c5ad5c23060f9fc1df992e6e377ac9a27f5c11f66724be82",
     "docs/title-draw.md": "55b54f8416022d85ac76e2c0918043b5e0ae2f85f189f5cb8c439fdff0aa72e0",
+    "docs/user-assumed-data.md": "5a36f33cf59be2c8b6905c7305ae6e961b3febe78fe1f04d0a8dfb00ef909446",
     "docs/utility-pcode.md": "9b4df7959cd1fc7ac28a7f9ad216a50b6cc6a59c3a382e0105ed26b833ef79b5",
     "docs/utility-variant-procedures.md": "ef9232d68a8e83c889242cca9304d8013e11cae06c9361b3a888117fa1165d91",
     "docs/viewscreen-io.md": "bb3247ab805d672645f826dcd6e092a3abb1845247cf2a8fc2565c24a35454f3",
@@ -23109,10 +23311,11 @@
     "src/pcode/utility_variant_edges.s": "2459476179ec5f2794b277a038d2c4fcbf39a63bd799bee5a8793cc507be467b",
     "src/pcode/utility_variant_procedures.cfg": "18146e7f61d2346fa60f98324cdb51cde295d09ab44f58994f4585dc46731455",
     "src/pcode/utility_variant_procedures.s": "841effb2b8d2626e023e971c5a52256a6d5328e20cd71cb209fa8a32f56948f9",
-    "tools/classification_ledger.py": "90eb872f4da81d713ec7e2c1ba738937a0065a1c570a90ed94b60c2615110305"
+    "tools/classification_ledger.py": "9ed9f3c54bb54b215b21ed1d0529a2abdde7f8d33841dea4d3fe540ed65792dd"
   },
   "limitations": [
     "Asset and registered data-source classifications are inherited from their reviewed evidence; this ledger does not rerun every data consumer audit.",
+    "User-assumed data has no established code/data role; its acceptance is an explicit user exception, not new classification evidence.",
     "Classification coverage does not prove every routine executes or replace the final PRD completion and behavior audit."
   ]
 }

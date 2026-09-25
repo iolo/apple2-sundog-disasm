@@ -1,5 +1,10 @@
 # Remaining tails: evidence and bounded searches
 
+**Historical research, superseded for acceptance:** the user subsequently
+instructed that these 488 bytes be accepted as unidentified data. They are now
+preserved as [user-assumed data](user-assumed-data.md); the hypotheses and
+evidence limits below remain true, but further research is no longer required.
+
 At step 08aa, **488 disk bytes remain unidentified**. This document records
 where current evidence ends and which searches should not be repeated without
 a new lead. Neither absence of execution nor failed decoding establishes data.

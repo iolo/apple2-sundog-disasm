@@ -33,11 +33,12 @@ GOAL: Reverse [Sundog](https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy) for 
 
 ## required completion criteria
 
-- Classify every disk region as code or data with recorded evidence and source
-  locations. No unidentified byte chunks may remain in the final deliverable.
+- Classify disk regions as code or data with recorded evidence and source
+  locations, except for the explicit 488-byte user data assumption below.
+  No other unidentified byte chunks may remain in the final deliverable.
 - Represent all executable content as disassembled instructions, including
-  native code and Pascal p-code, including unused executable routines. Do not
-  hide code in binary data files.
+  native code and Pascal p-code, including unused executable routines, outside
+  the bounded user exception. Do not hide other code in binary data files.
 - Separate data from code. A data region's precise meaning may remain unknown
   if its classification is supported by evidence; a filename or lack of observed
   execution alone is not sufficient. Identify and extract assets where supported.
@@ -50,6 +51,15 @@ GOAL: Reverse [Sundog](https://en.wikipedia.org/wiki/SunDog:_Frozen_Legacy) for 
   and MAME, along with any remaining limitations.
 - Keep a log in PROGRESS.md and commit changes after every step or substep.
 
-This revision relaxes byte identity only. It does not permit a partial disassembly
-with unclassified binary remainders to be declared complete. Detailed semantic
+## Accepted exception, 2026-09-25
+
+The user instructed: "ignore the remaining 488 bytes. assume those bytes as
+unidentified data." Preserve precisely those bytes unchanged as user-assumed
+data, separately counted from evidence-backed classifications. Their locations,
+hashes and acceptance scope are recorded in [docs/user-assumed-data.md](docs/user-assumed-data.md)
+and its machine-readable receipt. Further identification of these bytes is not
+required for completion; this is a user assumption, not new code/data evidence.
+It does not waive classification of any other region.
+
+Byte identity remains preferred rather than mandatory. Detailed semantic
 explanations and game-mechanics analysis remain optional.

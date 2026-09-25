@@ -1,5 +1,11 @@
 # Delivery review
 
+**Scope update, step 08ac:** the user has accepted the 488 bytes as unidentified
+data. Their [bounded exception](user-assumed-data.md) now passes the strict build
+and complete-ledger gates, with no temporary inputs and 180 passing tests.
+The step 10a review below is historical; final isolated strict verification and
+the updated delivery review follow under the revised scope.
+
 Step 10a reviews the current deliverables against PRD.md. **The project is not
 complete:** 488 bytes remain unidentified, the final evidence review remains
 open, and a standalone strict build cannot yet pass. Documentation and exact

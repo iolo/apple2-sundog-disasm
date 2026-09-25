@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build both disks from source, identified data, and temporary inputs.
+"""Build both disks from source, identified data, and explicit data assumptions.
 
 Does not read the original images or invoke extraction. This incremental build
 is not the final source/assets-only deliverable while temporary inputs remain.
@@ -40,8 +40,8 @@ def compose_image(disk, components):
     return bytes(image)
 
 
-def temporary_inputs(manifest):
-    """Count declared temporary inputs and their mapped disk occurrences.
+def input_inventory(manifest, kind):
+    """Count declared inputs of one kind and their mapped disk occurrences.
 
     An unused or zero-length temporary declaration still prevents the strict
     build: otherwise removing mappings could conceal unfinished input cleanup.
@@ -49,7 +49,7 @@ def temporary_inputs(manifest):
     """
     result = []
     for name, spec in manifest['components'].items():
-        if spec['kind'] != 'temporary-unresolved':
+        if spec['kind'] != kind:
             continue
         disks = Counter()
         for disk in manifest['disks']:
@@ -61,10 +61,43 @@ def temporary_inputs(manifest):
     return result
 
 
+def temporary_inputs(manifest):
+    return input_inventory(manifest, 'temporary-unresolved')
+
+
+def validate_data_assumptions(manifest):
+    """Bind each user exception to exact bytes and disk occurrences.
+
+    This validates the recorded acceptance scope, not code/data evidence.
+    An exception cannot silently grow through a new mapping or changed input.
+    """
+    inventory = input_inventory(manifest, 'user-assumed-data')
+    for item in inventory:
+        name = item['component']
+        spec = manifest['components'][name]
+        if not spec.get('acceptance_record') or not spec.get('assumption_document'):
+            raise ValueError('User-assumed data lacks its acceptance record/document')
+        contained_file(ROOT, spec['assumption_document'])
+        record = json.loads(contained_file(ROOT, spec['acceptance_record']).read_text())
+        if record.get('basis') != 'explicit-user-instruction' or not record.get('instruction'):
+            raise ValueError('Data assumption lacks an explicit user instruction')
+        accepted = record.get('components', {}).get(name)
+        actual = {key:spec[key] for key in ('path', 'size', 'sha256')}
+        actual['regions'] = sorted(
+            [disk['id'], r['offset'], r['size'], r['input_offset']]
+            for disk in manifest['disks'] for r in disk['regions'] if r['input'] == name)
+        if accepted != actual:
+            raise ValueError(f'User-assumed data exceeds or differs from accepted scope: {name}')
+        item['acceptance_record'] = spec['acceptance_record']
+        item['assumption_document'] = spec['assumption_document']
+    return inventory
+
+
 def build(manifest_path, output, *, no_temporary=False):
     manifest = json.loads(manifest_path.read_text())
     if manifest["schema_version"] != 1:
         raise ValueError("Unsupported reconstruction manifest version")
+    assumed = validate_data_assumptions(manifest)
     temporary = temporary_inputs(manifest)
     if no_temporary and temporary:
         count = sum(item['mapped_disk_bytes'] for item in temporary)
@@ -101,6 +134,8 @@ def build(manifest_path, output, *, no_temporary=False):
             data = contained_file(ROOT, spec['path']).read_bytes()
         elif spec["kind"] == "temporary-unresolved":
             data = contained_file(manifest_path.parent, spec["path"]).read_bytes()
+        elif spec['kind'] == 'user-assumed-data':
+            data = contained_file(ROOT, spec['path']).read_bytes()
         else:
             raise ValueError(f"Unsupported component kind: {spec['kind']}")
         if len(data) != spec["size"] or sha(data) != spec["sha256"]:
@@ -123,6 +158,7 @@ def build(manifest_path, output, *, no_temporary=False):
     report = {"status": manifest["status"], "manifest_sha256": sha(manifest_path.read_bytes()),
               "disks": receipts, "coverage_bytes": dict(coverage),
               "temporary_inputs": temporary, "has_temporary_inputs": bool(temporary),
+              "assumed_data_inputs": assumed, "has_assumed_data": bool(assumed),
               "no_temporary_required": no_temporary}
     (output / "build-report.json").write_text(json.dumps(report, indent=2) + "\n")
     print("Coverage:", json.dumps(dict(coverage), sort_keys=True))

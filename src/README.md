@@ -33,10 +33,9 @@ Generated component binaries, listings and maps appear under
 The manifest decides which bytes of a full source context actually reach a disk.
 Exploratory disassembly belongs under ignored `build/` until reviewed.
 
-Current reconstruction still uses **488 unidentified temporary bytes** outside
-the accepted code/data components. Their four tail types and evidence limits
-are listed in [unresolved-tails.md](../docs/unresolved-tails.md). The initializer
-protection payload, runtime provisional fields, encoded bodies and viewscreen
-output storage described as unfinished in earlier versions of this index are
-now covered by their respective audits. See the
-[delivery checklist](../docs/delivery-checklist.md) for the remaining requirements.
+The remaining **488 unidentified bytes are accepted as user-assumed data**
+under the explicit [scope exception](../docs/user-assumed-data.md). They are
+preserved unchanged outside the source tree and counted separately. No temporary
+inputs remain. Historical hypotheses are retained in
+[unresolved-tails.md](../docs/unresolved-tails.md); further identification is not
+required. See the [delivery checklist](../docs/delivery-checklist.md).

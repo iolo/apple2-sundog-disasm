@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-25",
+  "basis": "explicit-user-instruction",
+  "instruction": "ignore the remaining 488 bytes. assume those bytes as unidentified data.",
+  "scope": "Only the frozen components and disk mappings below; no code/data proof claimed.",
+  "components": {
+    "disk1_assumed_data": {
+      "path": "reconstruction/assumed-data/disk1-data.bin",
+      "size": 7,
+      "sha256": "5215c0b39b2c977bcd582995d765d7a69620fff55f7c1bd7568a6b67ff0cd3bc",
+      "regions": [
+        [
+          "disk1",
+          8953,
+          7,
+          0
+        ]
+      ]
+    },
+    "disk2_assumed_data": {
+      "path": "reconstruction/assumed-data/disk2-data.bin",
+      "size": 481,
+      "sha256": "993c1ef6126cfd572b4d6c884bca95d334e0c976500d2629fe55c484519ab337",
+      "regions": [
+        [
+          "disk2",
+          193,
+          63,
+          0
+        ],
+        [
+          "disk2",
+          2809,
+          7,
+          63
+        ],
+        [
+          "disk2",
+          21753,
+          7,
+          70
+        ],
+        [
+          "disk2",
+          25088,
+          256,
+          77
+        ],
+        [
+          "disk2",
+          25479,
+          121,
+          333
+        ],
+        [
+          "disk2",
+          48357,
+          27,
+          454
+        ]
+      ]
+    }
+  }
+}

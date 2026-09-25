@@ -2,9 +2,9 @@
 
 Reverse engineering the supplied Apple II SunDog disks, with the goal of a
 runnable rebuild from disassembled source and extracted data/assets. Every region
-must be classified as code or data with evidence. Byte identity is preferred;
-any differences must be explained and validated. Unidentified chunks are not
-acceptable in the final deliverable (see [PRD.md](PRD.md)).
+must be classified as code or data with evidence, except for the explicitly
+accepted [488-byte user data assumption](docs/user-assumed-data.md). Byte identity
+is preferred; any differences must be explained and validated (see [PRD.md](PRD.md)).
 
 See [PLAN.md](PLAN.md) for the implementation sequence and
 [PROGRESS.md](PROGRESS.md) for evidence and per-step checkpoints.
@@ -22,18 +22,16 @@ python3 tools/verify_inputs.py
 
 `src/` holds reconstructed code, `assets/` holds extracted assets, `tools/` holds
 automation, and `docs/` holds investigation notes. Generated files and disposable
-emulator media go under ignored `build/`. An incremental exact-disk build is now
-available, with unresolved bytes explicitly tracked as temporary inputs:
+emulator media go under ignored `build/`. The exact-disk build preserves the accepted data assumption separately:
 
 ```sh
-python3 tools/build_disks.py
+python3 tools/build_disks.py --no-temporary
 python3 tools/verify_disks.py
 ```
 
-The build also supports `python3 tools/build_disks.py --no-temporary`. It
-currently exits with an error because 488 bytes remain unclassified. This
-[strict input check](docs/strict-build.md) prevents temporary inputs from entering
-a final build; passing it alone would not prove the required classification audit.
+The [strict input check](docs/strict-build.md) rejects temporary inputs. It accepts
+the exact 488-byte user exception with its recorded scope and hashes; this does
+not turn that assumption into code/data evidence.
 
 See [build instructions and coverage](docs/reconstruction.md). The bootstrap,
 early title routine, complete SYSTEM.APPLE runtime, all 34 distinct inventoried
@@ -43,16 +41,13 @@ resolves its earlier provisional fields; the [Pascal inventory report](docs/exec
 has a separate, narrower scope.
 
 Current disk ownership is **184,828 source-built bytes**, **101,404 identified
-asset/data bytes**, and **488 temporary unclassified bytes** (7 on disk 1;
-481 on disk 2). Source-built totals include explicit data declarations and are
-not instruction counts. The [disk-wide classification ledger](docs/classification-ledger.md)
-separately records 136,686 code bytes and 149,546 data bytes, with every current
-component audit connected and the 488 unresolved bytes still explicit. The
-remaining tails, final evidence review, clean reproducibility checks and
-delivery documentation are still open.
-Exact output alone does not establish completion.
-The [remaining-tail evidence notes](docs/unresolved-tails.md) distinguish current
-hypotheses from classification evidence and record bounded donor searches.
+asset/data bytes**, and **488 user-assumed data bytes** (7 on disk 1; 481 on disk
+2). There are no temporary inputs. Source-built totals include data declarations.
+The [disk-wide ledger](docs/classification-ledger.md) separately records 136,686
+code bytes, 149,546 evidenced data bytes and the 488-byte assumption, with every
+component audit connected. [Historical tail research](docs/unresolved-tails.md)
+retains the evidence limits; the user has ended required identification of those
+bytes. See the [delivery checklist](docs/delivery-checklist.md) for validation.
 
 Extracted assets include [title artwork](docs/title-bitmap.md),
 [fonts](docs/shared-font.md), [compressed images](docs/packed-ship-images.md),

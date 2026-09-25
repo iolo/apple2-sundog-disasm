@@ -45,7 +45,8 @@ in native I/O, viewscreen and warp routines. These are not sampled audio files.
 No separate sound asset has been established by the current classification;
 audio equivalence has not been tested. This does not classify any unknown tail.
 
-Unidentified bytes are kept separately under `reconstruction/temporary/`.
-They are not assets and remain prohibited in the final deliverable. See the
-[classification ledger](../docs/classification-ledger.md) and
-[delivery checklist](../docs/delivery-checklist.md).
+The user has accepted the last 488 unidentified bytes as data. They are kept
+separately under `reconstruction/assumed-data/`, outside these evidence-backed
+assets. Their exact [acceptance scope](../docs/user-assumed-data.md) is recorded;
+no temporary inputs remain. See the [classification ledger](../docs/classification-ledger.md)
+and [delivery checklist](../docs/delivery-checklist.md).

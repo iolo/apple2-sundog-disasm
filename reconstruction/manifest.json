@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "incremental reconstruction; unclassified bytes remain",
+  "status": "source/data reconstruction with explicit user acceptance of 488 unidentified bytes as data",
   "components": {
     "bootstrap": {
       "kind": "ca65-source",
@@ -15,20 +15,6 @@
       "config": "src/pcode/probe.cfg",
       "size": 36,
       "sha256": "ef70020a699c0a1201d839a50e0cf38a7c8fe4c69971c0a68b621ce38c3cdfc3"
-    },
-    "disk1_unresolved": {
-      "kind": "temporary-unresolved",
-      "path": "temporary/disk1-unresolved.bin",
-      "size": 7,
-      "sha256": "5215c0b39b2c977bcd582995d765d7a69620fff55f7c1bd7568a6b67ff0cd3bc",
-      "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
-    },
-    "disk2_unresolved": {
-      "kind": "temporary-unresolved",
-      "path": "temporary/disk2-unresolved.bin",
-      "size": 481,
-      "sha256": "993c1ef6126cfd572b4d6c884bca95d334e0c976500d2629fe55c484519ab337",
-      "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "title_draw": {
       "kind": "ca65-source",
@@ -1603,6 +1589,24 @@
       "config": "src/data/saved_map_cache.cfg",
       "size": 96,
       "sha256": "5891d9839ddecd69ae8934e7e6ee9f3e363fbd521fe204a4121e71dc009cccd9"
+    },
+    "disk1_assumed_data": {
+      "kind": "user-assumed-data",
+      "path": "reconstruction/assumed-data/disk1-data.bin",
+      "size": 7,
+      "sha256": "5215c0b39b2c977bcd582995d765d7a69620fff55f7c1bd7568a6b67ff0cd3bc",
+      "acceptance_record": "docs/reference/user-assumed-data.json",
+      "assumption_document": "docs/user-assumed-data.md",
+      "description": "Unidentified bytes accepted as data by explicit user instruction, 2026-09-25; not evidence-backed classification"
+    },
+    "disk2_assumed_data": {
+      "kind": "user-assumed-data",
+      "path": "reconstruction/assumed-data/disk2-data.bin",
+      "size": 481,
+      "sha256": "993c1ef6126cfd572b4d6c884bca95d334e0c976500d2629fe55c484519ab337",
+      "acceptance_record": "docs/reference/user-assumed-data.json",
+      "assumption_document": "docs/user-assumed-data.md",
+      "description": "Unidentified bytes accepted as data by explicit user instruction, 2026-09-25; not evidence-backed classification"
     }
   },
   "disks": [
@@ -1831,7 +1835,7 @@
         {
           "offset": 8953,
           "size": 7,
-          "input": "disk1_unresolved",
+          "input": "disk1_assumed_data",
           "input_offset": 0
         },
         {
@@ -5709,7 +5713,7 @@
         {
           "offset": 193,
           "size": 63,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 0
         },
         {
@@ -5775,7 +5779,7 @@
         {
           "offset": 2809,
           "size": 7,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 63
         },
         {
@@ -6249,7 +6253,7 @@
         {
           "offset": 21753,
           "size": 7,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 70
         },
         {
@@ -6519,7 +6523,7 @@
         {
           "offset": 25088,
           "size": 256,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 77
         },
         {
@@ -6531,7 +6535,7 @@
         {
           "offset": 25479,
           "size": 121,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 333
         },
         {
@@ -8799,7 +8803,7 @@
         {
           "offset": 48357,
           "size": 27,
-          "input": "disk2_unresolved",
+          "input": "disk2_assumed_data",
           "input_offset": 454
         },
         {

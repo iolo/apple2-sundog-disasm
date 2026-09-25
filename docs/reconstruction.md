@@ -1,31 +1,17 @@
-# Incremental exact-disk build
+# Standalone exact-disk build
 
-Current checkpoint: step 08x has 184,828 source-built disk bytes (including
-explicit data declarations), 101,404 identified asset/data bytes, and 488
-temporary bytes: 7 on disk 1 and 481 on disk 2. The latest reconstruction
-adds the [Blackblade saved map-cache tail](saved-map-cache.md). Historical counts
-below describe their individual checkpoints; the manifest is authoritative.
+The current build uses 184,828 source-built bytes (including data declarations),
+101,404 identified asset/data bytes and the explicitly accepted
+[488-byte user data assumption](user-assumed-data.md). No temporary inputs remain.
+The [ledger](classification-ledger.md) separately counts 136,686 code, 149,546
+evidenced data and 488 assumed data bytes. Every current component has an audit
+adapter; the assumption is recorded as an exception, not classification evidence.
 
-Step 08z adds the [disk-wide classification ledger](classification-ledger.md):
-136,686 code bytes, 149,546 data bytes and 488 unresolved bytes. All current
-component audit families are integrated, including partial source copies and
-encoded banks. This separates byte meaning from the source/asset input counts;
-it does not resolve the remaining tails or establish final PRD completion.
-
-Step 08v separately consolidates the [resident-runtime classification audit](runtime-classification.md).
-Its 16,384 component bytes have instruction/data accounting and no remaining
-provisional runtime fields. This does not change the disk ownership counts above
-or close the final disk-wide evidence audit.
-
-Step 08w adds a [strict input check and isolated-build validation](strict-build.md).
-`build_disks.py --no-temporary` currently refuses the two temporary components
-before producing outputs. Two fresh incremental builds without original inputs
-or earlier build products reproduce the same disks and reports. This verifies
-the current build dependency boundary, not completion of the remaining classification.
-
-The incremental build reconstructs both disk images using assembled source components and
-classified asset data and explicitly temporary binary inputs for remaining bytes. It is a working
-source-to-disk pipeline, not the completed source-and-assets reconstruction.
+The [strict build](strict-build.md) accepts only the frozen assumption scope and
+rejects temporary inputs. The original disks are validation references rather
+than build dependencies. The [delivery checklist](delivery-checklist.md) records
+current checks; tables and checkpoint notes later in this document retain
+historical ownership counts and evidence as of their named steps.
 
 ## Build and verify
 
@@ -33,7 +19,7 @@ Prerequisites are Python 3.9 or newer and `ca65`/`ld65` on PATH. Tested versions
 are recorded in [toolchain.md](toolchain.md). From the repository root:
 
 ```sh
-python3 tools/build_disks.py
+python3 tools/build_disks.py --no-temporary
 python3 tools/verify_disks.py
 python3 tools/test_reconstruction.py
 ```
@@ -44,7 +30,7 @@ Output goes to `build/disks/`, including the two original filenames,
 and pass that directory to `verify_disks.py`.
 
 The build reads only source, linker configurations, and the reconstruction
-manifest and its component files, plus identified data under `assets/`. It checks component sizes/hashes, complete
+manifest and its component files, plus identified data under `assets/` and accepted data under `reconstruction/assumed-data/`. It checks component sizes/hashes, complete
 image coverage, and final image hashes. The comparison command separately
 checks the originals, then exact byte equality; any mismatch exits nonzero and
 reports the first image offset, expected/actual byte, track, image/physical
@@ -52,10 +38,10 @@ sector, logical block/half, and mapped reconstruction component.
 
 ## Acceptance criteria
 
-Every region must be classified as code or data with evidence. All executable
-content must be represented as instructions; identified data may retain unknown
-semantics. Temporary unresolved inputs are never accepted as final data simply
-because the build succeeds. Byte identity is preferred rather than mandatory;
+Outside the bounded 488-byte user exception, every region must be classified
+as code or data with evidence and executable content represented as instructions.
+Identified data may retain unknown semantics. The exception is not a general
+permission to accept temporary inputs because the build succeeds. Byte identity is preferred rather than mandatory;
 any deviations need a mapped, explained difference report and behavioral checks.
 The current pipeline remains strict because its outputs still match exactly.
 Full emulator runs are reserved for integration milestones or changed output;

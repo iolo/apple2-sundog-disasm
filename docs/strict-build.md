@@ -1,4 +1,10 @@
-# Strict build inputs and current reproducibility check
+# Strict build inputs and reproducibility
+
+**Current scope (step 08ac):** no temporary inputs remain. The strict command
+accepts the user's [488-byte data exception](user-assumed-data.md), separately
+reported as `user-assumed-data`. Hashes and every mapped occurrence must match
+the acceptance receipt. This is not an evidence-backed classification. The
+older refusal results below are historical checkpoints.
 
 The incremental build deliberately accepts `temporary-unresolved` inputs while
 reconstruction is underway. Exact output does not classify those bytes. A strict
