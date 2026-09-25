@@ -3465,3 +3465,32 @@ and acceptance criteria.
   repeated template suffix, play boot/dictionary tails and mixed checksum tail,
   then the final disk-wide audit. User PRD.md edits and ref/ remain untouched
   and excluded. The goal remains active.
+
+## 2026-09-25 — Step 08y: finish checksum-tail transform search and pause
+
+- **Scope:** Investigated the 377 unresolved bytes at play-disk logical block
+  54, offsets 135-511. Their SHA-256 is
+  `e0475c332163ebe181b1ab80585d4e50242e4b28b00116597e1daac469600945`.
+- **Method:** Exhaustively tested 1,048,576 byte transforms: rotate each byte
+  left by 0-7 bits, then add or XOR `(seed + step*i) & 255`, with both seed
+  and step ranging over 0-255 and i starting at zero in the tail. Addition
+  wraps to eight bits. Scored every possible start by consecutive complete
+  legal NMOS 6502 instructions, excluding BRK, using the project's opcode
+  widths. This score deliberately ignores control flow and is only a search
+  heuristic, not classification evidence.
+- **Result:** Maximum score was 31 instructions, at tail offset 136 with
+  rotation 4, XOR, seed 15 and step 48. Independent Python decoding confirmed
+  the candidate ends at offset 203 before unsupported opcode $3A. It includes
+  JMP $BB44 at offset 157 and RTI at 166 and 202; linear scoring continues
+  beyond the first jump and return. No decoder, entry point, donor or coherent
+  execution path was established. The search neither establishes code nor
+  proves these bytes are data; no bytes were adopted or relabeled.
+- **Validation/coverage:** Research and this log only; source, assets, manifest
+  and reconstructed disks are unchanged. Coverage remains 184,828 source-built
+  bytes, 101,404 identified asset/data bytes and 488 temporary bytes (7 disk 1;
+  481 disk 2). Existing exact-build and behavior results remain applicable.
+- **Pause/resume:** Pausing after this checkpoint at the user's request. Resume
+  with the repeated template suffix, play boot/dictionary tails and mixed
+  checksum tail, then the final evidence audit and isolated strict build.
+  Avoid repeating this transform family without new evidence. User PRD.md
+  edits and ref/ remain untouched and excluded from the commit.
