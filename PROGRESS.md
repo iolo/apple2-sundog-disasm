@@ -3495,6 +3495,29 @@ and acceptance criteria.
   Avoid repeating this transform family without new evidence. User PRD.md
   edits and ref/ remain untouched and excluded from the commit.
 
+## 2026-09-25 — Step 08ab: compare archived SunDog versions
+
+- **Evidence:** Downloaded the four version-1 archive entries and both version-2
+  disk ZIPs. The version-1 entries contain only two distinct disk images. Their
+  play block 38 and utility block 8 exactly match the entire 512-byte template
+  block on the supplied disks, including its seven-byte unresolved suffix.
+  They provide no complete historical footer/body context. Neither supplies an
+  exact boot-prefix or 16-byte checksum-tail donor in the tested views.
+- **Provenance:** Both version-2 ZIP members exactly match the supplied original
+  disks. Added docs/reference/sundog-version-comparison.json with URLs, archive
+  and member hashes, full-block comparisons and search results; corrected the
+  stale docs/inputs.md provenance statement. Downloads remain external research
+  references, never build inputs. No reconstructed output changed.
+- **Validation:** Exact byte comparisons and the existing bounded donor-search
+  tool pass; the report distinguishes repeated archive members from distinct
+  disks. Documentation links and git diff --check pass.
+- **User-directed scope change:** The user now explicitly instructs: "ignore
+  the remaining 488 bytes. assume those bytes as unidentified data." End further
+  tail research. The next implementation checkpoint will preserve those exact
+  bytes as explicitly user-assumed data, revise the requirements and reports,
+  and complete strict-build/delivery verification under that exception. This
+  instruction changes acceptance criteria; it is not new classification evidence.
+
 ## 2026-09-25 — Step 08z: project component evidence across both complete disks
 
 - **Resumed:** Continued at the user's explicit request. Rechecked the dictionary

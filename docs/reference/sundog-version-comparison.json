@@ -1,0 +1,137 @@
+{
+  "checkpoint": "08ab",
+  "date": "2026-09-25",
+  "classification_effect": "none",
+  "downloads": [
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog.zip",
+      "size": 126667,
+      "sha256": "915c7498e261b3c867f76212e7c3b1200bff3b1720f015f31631800152016862",
+      "members": [
+        {
+          "name": "SUNDOG_U.DSK",
+          "size": 143360,
+          "sha256": "bb89e217b1f20d1461d3a1ef76e229e2c1217ab7a200fb3e701ad4b78213c2f6"
+        },
+        {
+          "name": "SUNDOG_P.DSK",
+          "size": 143360,
+          "sha256": "ab9abc977349cbb7196011e2be5d72d75ce83ee767edc3086b680333526e04c6"
+        }
+      ]
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog1.zip",
+      "size": 128192,
+      "sha256": "551b31c6db0c5e4d86abc3ac5a1ffe9d79c1508dfb395b5179d7b7ef94a5afeb",
+      "members": [
+        {
+          "name": "sundog_play.dsk",
+          "size": 143360,
+          "sha256": "ab9abc977349cbb7196011e2be5d72d75ce83ee767edc3086b680333526e04c6"
+        },
+        {
+          "name": "sundog_util.dsk",
+          "size": 143360,
+          "sha256": "bb89e217b1f20d1461d3a1ef76e229e2c1217ab7a200fb3e701ad4b78213c2f6"
+        }
+      ]
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog_play.dsk",
+      "size": 143360,
+      "sha256": "ab9abc977349cbb7196011e2be5d72d75ce83ee767edc3086b680333526e04c6"
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog_util.dsk",
+      "size": 143360,
+      "sha256": "bb89e217b1f20d1461d3a1ef76e229e2c1217ab7a200fb3e701ad4b78213c2f6"
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/sundog_ver2_disk1.zip",
+      "size": 62881,
+      "sha256": "4eb7c942a0953d12b0d2d695ade86eb582108f6bd54240d6bd83e7f4f2352cba",
+      "members": [
+        {
+          "name": "SUNDOG1.DSK",
+          "size": 143360,
+          "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+        }
+      ]
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/sundog_ver2_disk2.zip",
+      "size": 74415,
+      "sha256": "6903be2cb1980b27fc0055bcd69a3fa3be9f18b121467584a192edaf7fb915d3",
+      "members": [
+        {
+          "name": "SUNDOG2.DSK",
+          "size": 143360,
+          "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+        }
+      ]
+    }
+  ],
+  "version2_matches": [
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/sundog_ver2_disk1.zip",
+      "member": "SUNDOG1.DSK",
+      "original": "sundog-disk1-game.dsk",
+      "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+      "exact_bytes": true
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_2/sundog_ver2_disk2.zip",
+      "member": "SUNDOG2.DSK",
+      "original": "sundog-disk2-util.dsk",
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+      "exact_bytes": true
+    }
+  ],
+  "version1_template_copies": [
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog_play.dsk",
+      "disk_sha256": "ab9abc977349cbb7196011e2be5d72d75ce83ee767edc3086b680333526e04c6",
+      "logical_block": 38,
+      "size": 512,
+      "sha256": "8aafc600865715a73e13d5f09cac490985d0db2810e691fb561dde258789b4be",
+      "exact_bytes": true,
+      "suffix_hex": "000a0022030100"
+    },
+    {
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/rpg/sundog_version_1/sundog_util.dsk",
+      "disk_sha256": "bb89e217b1f20d1461d3a1ef76e229e2c1217ab7a200fb3e701ad4b78213c2f6",
+      "logical_block": 8,
+      "size": 512,
+      "sha256": "8aafc600865715a73e13d5f09cac490985d0db2810e691fb561dde258789b4be",
+      "exact_bytes": true,
+      "suffix_hex": "000a0022030100"
+    }
+  ],
+  "version1_donor_probe": {
+    "inputs": [
+      {
+        "path": "sundog-v1-play.dsk",
+        "size": 143360,
+        "sha256": "ab9abc977349cbb7196011e2be5d72d75ce83ee767edc3086b680333526e04c6"
+      },
+      {
+        "path": "sundog-v1-util.dsk",
+        "size": 143360,
+        "sha256": "bb89e217b1f20d1461d3a1ef76e229e2c1217ab7a200fb3e701ad4b78213c2f6"
+      }
+    ],
+    "matches": [
+      {
+        "path": "sundog-v1-play.dsk",
+        "kind": "template",
+        "offset": 17145
+      },
+      {
+        "path": "sundog-v1-util.dsk",
+        "kind": "template",
+        "offset": 7929
+      }
+    ]
+  }
+}
