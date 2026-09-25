@@ -47,6 +47,8 @@ component audit connected and the 488 unresolved bytes still explicit. The
 remaining tails, final evidence review, clean reproducibility checks and
 delivery documentation are still open.
 Exact output alone does not establish completion.
+The [remaining-tail evidence notes](docs/unresolved-tails.md) distinguish current
+hypotheses from classification evidence and record bounded donor searches.
 
 Extracted assets include [title artwork](docs/title-bitmap.md),
 [fonts](docs/shared-font.md), [compressed images](docs/packed-ship-images.md),

@@ -3540,3 +3540,44 @@ and acceptance criteria.
   Remaining tail classification, final evidence review, isolated strict build
   and delivery review remain open. User PRD.md edits and ref/ are untouched and
   excluded from this checkpoint; existing exact-output emulator baselines apply.
+
+## 2026-09-25 — Step 08aa: preserve bounded unresolved-tail research
+
+- **Resumed:** Continued at the user's explicit instruction to pursue the goal.
+  The 488-byte classification requirement remains unchanged. Examined the sparse
+  boot suffix, repeated template suffix, checksum-allocation tail and dictionary
+  boundary without adopting unsupported data labels.
+- **Evidence:** The seven-byte template suffix fits part of a Pascal main
+  procedure footer, but lacks the original body, preceding complete attributes,
+  pointing dictionary and a donor. A proposed source representation was removed
+  before adoption because this shape alone does not prove data classification.
+  A structural scan of 27 extracted Apple Pascal 1.3 files found 96 valid segment
+  dictionary occurrences and no matching candidate footer pattern.
+- **Searches:** Added tools/probe_unresolved_tails.py and a receipt identifying
+  every corpus input by path, size and SHA-256. The expanded local disk search
+  examines 149 external 140-KiB images, excluding this project's own original,
+  rebuilt and saved media. It finds no template suffix, boot-prefix or 16-byte
+  checksum-tail donor. Twenty-eight cross-byte bitstream transforms produce no
+  exact/adjacent-XOR/adjacent-subtraction donor matches in 237 assembled, asset
+  and Apple ROM inputs. Separate linear opcode scoring reaches 47 instructions
+  without a control transfer and supplies no execution evidence. Earlier affine
+  and other negative searches remain documented, not grounds for classification.
+- **Historical reference:** Read COMPUTIST 33's original SunDog article, printed
+  pages 14–15, and visually checked page 15 against OCR. Its original 21-byte
+  sequence matches disk 1 at $13700; its published bypass does not. It identifies
+  no remaining tail. Author/archive pages inspected supplied no relevant source
+  download. docs/unresolved-tails.md records sources, scan hash, exact evidence
+  limits, replay commands and useful next leads; no external scan or corpus is
+  introduced as a build dependency.
+- **Validation:** All 175 pre-existing regression tests passed before this
+  research checkpoint. Three new search-method tests pass, covering cross-byte
+  shifts, bit reversal, constant-transform signatures and complete-window edges.
+  Donor and structural probes complete with zero matches; source, assets,
+  manifest and reconstructed output bytes remain unchanged. Documentation links
+  and git diff --check pass. Source/asset ownership remains 184,828 / 101,404
+  bytes, with 488 temporary bytes (7 disk 1; 481 disk 2).
+- **Next:** Review the remaining delivery/source-evidence requirements, then
+  pursue new producer or donor evidence for the tails. Do not repeat exhausted
+  transform families or substitute absence of evidence for data classification.
+  Final isolated strict reproduction remains pending. User PRD.md changes and
+  ref/ are untouched and excluded from this checkpoint.

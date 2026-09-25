@@ -1,0 +1,2269 @@
+{
+  "schema": 1,
+  "target": {
+    "path": "disk2:block54:135..511",
+    "size": 377,
+    "sha256": "e0475c332163ebe181b1ab80585d4e50242e4b28b00116597e1daac469600945"
+  },
+  "classification_effect": "none; negative searches are not code/data evidence",
+  "disk_donors": {
+    "inputs": [
+      {
+        "path": "2048/2048.dsk",
+        "size": 143360,
+        "sha256": "26affb1bb3f27a25ce4112775deea494590830f104766cdaffc9f9b55cb5de7d"
+      },
+      {
+        "path": "AppleII-VGA/a2vhan/a2vhan.dsk",
+        "size": 143360,
+        "sha256": "3ae4b820ea4d939cbd24d6b50db67e36fa002c670e0132b7e5acbdf5ee1aac57"
+      },
+      {
+        "path": "AppleII-VGA/a2vhan/a2vhan.po",
+        "size": 143360,
+        "sha256": "6ae606912698a74267eee9965506cc57655b327e9fa50c89b0e2928bc4074cbc"
+      },
+      {
+        "path": "AppleII-VGA/a2vhan/kaka6.dsk",
+        "size": 143360,
+        "sha256": "2bf4a238f90260770a77f9ceee0d5b2ac52076175369ebbd09ca9abe786fd8b6"
+      },
+      {
+        "path": "AppleII-VGA/a2vhan/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "AppleII-VGA/config-disk/DOS_3.3_boot.dsk",
+        "size": 143360,
+        "sha256": "ec14d0771d61892f38043bf3f50bf0f8152c0f8fa8780f83b4e2e0cff3d740f5"
+      },
+      {
+        "path": "AppleII-VGA/pico/appleiivga-config.po",
+        "size": 143360,
+        "sha256": "9c93a170076c29111f696781ffd5dae92c72fd5849e43fd1bf678a6382636ab3"
+      },
+      {
+        "path": "AppleWin/bin/BLANK.DSK",
+        "size": 143360,
+        "sha256": "86bb5a025a4726e7afe3c45c3efc0b4317b94e37d2216cb6b75e29012cce2c05"
+      },
+      {
+        "path": "AppleWin/bin/DOS 3.3 System Master - 680-0210-A.dsk",
+        "size": 143360,
+        "sha256": "caca91990b148e20062c887f0301a957b477353fbacf4e4a011f8fb3beab46a9"
+      },
+      {
+        "path": "AppleWin/bin/ProDOS_2_4_3.po",
+        "size": 143360,
+        "sha256": "398d333cb2ab92df9f8bb2cf64b946f2567116910eb8359cf4bdee5d4194f0fa"
+      },
+      {
+        "path": "AppleWin/docs/DiskII Formatter/Formatter.dsk",
+        "size": 143360,
+        "sha256": "5c758964ec1964693c1bd5f3226b97a78dd349c44148e7b6c72c90fb9467f863"
+      },
+      {
+        "path": "a2dgrx/dgrx.dsk",
+        "size": 143360,
+        "sha256": "05341c702767b23b1649db5073bebbd564b9a44c5b07cd1163510602d0fd7f90"
+      },
+      {
+        "path": "a2dgrx/grx.po",
+        "size": 143360,
+        "sha256": "01d869e97d330dc906f7472521670849ce91b59e743eba9e6ca6cd7d96f447b6"
+      },
+      {
+        "path": "a2dhgrx/demo.po",
+        "size": 143360,
+        "sha256": "551a6b53371e14b195cbf29f842d29e267b26049346fc0ead33537ff7f7d5375"
+      },
+      {
+        "path": "a2dvi-han/configutil/A2DVICONFIG_DOS33.dsk",
+        "size": 143360,
+        "sha256": "8ad34024b25e059a4622e930e64f9e2f171a83ee61a61bb7805f3aeb4f0b86ed"
+      },
+      {
+        "path": "a2dvi-han/configutil/A2DVICONFIG_PRODOS.po",
+        "size": 143360,
+        "sha256": "e38683291bb90712197fdb198d0651fa8e2196cab3b6d9a4a312757684d9f1ee"
+      },
+      {
+        "path": "a2dvi-han/configutil/templates/DOS3.3_MASTER.dsk",
+        "size": 143360,
+        "sha256": "eac550ddb65ef9b8ae34f6fe3523ec6572a5672e7ae07becc950acfdd185dbb1"
+      },
+      {
+        "path": "a2dvi-han/configutil/templates/ProDOS.po",
+        "size": 143360,
+        "sha256": "8f16d1eb9c9c6047b264edb16d23d3700e282191763e9f1a80da9a250f652825"
+      },
+      {
+        "path": "a2ext/ref/A2DVI/v4.4/PCPI AppliCard D1.po",
+        "size": 143360,
+        "sha256": "8d576ec668c844d5d1cd762f0fae85e5bff5235be4e583c1db487415b714c3ba"
+      },
+      {
+        "path": "a2ext/ref/A2DVI-Firmware/configutil/A2DVICONFIG_DOS33.dsk",
+        "size": 143360,
+        "sha256": "8ad34024b25e059a4622e930e64f9e2f171a83ee61a61bb7805f3aeb4f0b86ed"
+      },
+      {
+        "path": "a2ext/ref/A2DVI-Firmware/configutil/A2DVICONFIG_PRODOS.po",
+        "size": 143360,
+        "sha256": "e38683291bb90712197fdb198d0651fa8e2196cab3b6d9a4a312757684d9f1ee"
+      },
+      {
+        "path": "a2ext/ref/A2DVI-Firmware/configutil/templates/DOS3.3_MASTER.dsk",
+        "size": 143360,
+        "sha256": "eac550ddb65ef9b8ae34f6fe3523ec6572a5672e7ae07becc950acfdd185dbb1"
+      },
+      {
+        "path": "a2ext/ref/A2DVI-Firmware/configutil/templates/ProDOS.po",
+        "size": 143360,
+        "sha256": "8f16d1eb9c9c6047b264edb16d23d3700e282191763e9f1a80da9a250f652825"
+      },
+      {
+        "path": "a2ext/ref/AppleII-VGA/config-disk/DOS_3.3_boot.dsk",
+        "size": 143360,
+        "sha256": "ec14d0771d61892f38043bf3f50bf0f8152c0f8fa8780f83b4e2e0cff3d740f5"
+      },
+      {
+        "path": "a2ext/ref/AppleII-VGA-rallepalaveev/config-disk/A2VGA_config.dsk",
+        "size": 143360,
+        "sha256": "cf014e80b381e6cc65250adba1764449bc5ad49edf6069c3cc46c2ee4ccee6fe"
+      },
+      {
+        "path": "a2ext/ref/AppleII-VGA-rallepalaveev/config-disk/DOS_3.3_boot.dsk",
+        "size": 143360,
+        "sha256": "ec14d0771d61892f38043bf3f50bf0f8152c0f8fa8780f83b4e2e0cff3d740f5"
+      },
+      {
+        "path": "a2han/demo.dsk",
+        "size": 143360,
+        "sha256": "7bdc5ee75fe9fc7827a5103847894b88f9cb16d27ce4817cc5c6ff13941c170d"
+      },
+      {
+        "path": "a2han/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2hgrx/demo.dsk",
+        "size": 143360,
+        "sha256": "7191f952f5fb7c056ce19034dd2f6cddc9caa8bfa264aff33242be52fc639030"
+      },
+      {
+        "path": "a2hgrx/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2sam/a2dhgrx/demo.po",
+        "size": 143360,
+        "sha256": "cecf045c5ad225307001f6208b6c14fd6e96d33ad6ee60f91b5af1b273683765"
+      },
+      {
+        "path": "a2sam/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2skills/assets/dos-3.3.dsk",
+        "size": 143360,
+        "sha256": "3784914e38ca48c7c77f1ac81b0ee9b448c2cfac568a463247bc248f997415b0"
+      },
+      {
+        "path": "a2skills/assets/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2x/2048/1024.dsk",
+        "size": 143360,
+        "sha256": "7389d07da2b8b523b33ee79d8041e62df41e71578b5a384cedfb316192e107cf"
+      },
+      {
+        "path": "a2x/DOLORES/DLAMPCORE10c.dsk",
+        "size": 143360,
+        "sha256": "64dbce05198ca512d91e9ca7e3f9302812121cf728b3c7f1b20f07c641746a65"
+      },
+      {
+        "path": "a2x/DOLORES/DLAMPCORE11.dsk",
+        "size": 143360,
+        "sha256": "e8b49b977ba6d94d799c09c9ab2e9250352def443f9a6429bf4db1165e178626"
+      },
+      {
+        "path": "a2x/DOLORES/DOLORES12_2.dsk",
+        "size": 143360,
+        "sha256": "19fcfdcb5d310ba491f5fb815b329f4d2e3af4b88309d1e818c5da82740b39d6"
+      },
+      {
+        "path": "a2x/a2han/dos-3.3.dsk",
+        "size": 143360,
+        "sha256": "3784914e38ca48c7c77f1ac81b0ee9b448c2cfac568a463247bc248f997415b0"
+      },
+      {
+        "path": "a2x/a2han/kor-luck.dsk",
+        "size": 143360,
+        "sha256": "506da0ee3a7d64f67ea1ed3182c7c9307844379a27dc1231b468238c0ffc1da5"
+      },
+      {
+        "path": "a2x/a2han/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2x/a2x.po",
+        "size": 143360,
+        "sha256": "b0f0757af9f30afb0914285b962592254961f6dfe5fe2d52f58bc40fe744bebe"
+      },
+      {
+        "path": "a2x/demo.dsk",
+        "size": 143360,
+        "sha256": "b6452b9bd618ee45a704bd98313f9626c4fbe392b943e9dbea07b578aa29b3c4"
+      },
+      {
+        "path": "a2x/disk2.dsk",
+        "size": 143360,
+        "sha256": "044acca24dda9e7d8bc66d35d6234f8e771cff438ff09b1cf8f347c566c8794e"
+      },
+      {
+        "path": "a2x/disks/Apple Pascal Basics Integer & Applesoft II - 680-0002-01.dsk",
+        "size": 143360,
+        "sha256": "16dc57cf39f3b69f6e89b5512c115b3e1908d62c5df262f127c763774c5d1541"
+      },
+      {
+        "path": "a2x/disks/DOS 3.3 Basics - 680-0052-00.dsk",
+        "size": 143360,
+        "sha256": "a36e6522a22b33903dc538efa0065119ce6cfd7d440f1008123f8314bcb7ed3b"
+      },
+      {
+        "path": "a2x/disks/DOS_3.3_boot.dsk",
+        "size": 143360,
+        "sha256": "ec14d0771d61892f38043bf3f50bf0f8152c0f8fa8780f83b4e2e0cff3d740f5"
+      },
+      {
+        "path": "a2x/disks/GHAN.dsk",
+        "size": 143360,
+        "sha256": "ec3f09f5f2106ad754235b2903d7b44cfba13338fd210eed10531ff66320c3cd"
+      },
+      {
+        "path": "a2x/disks/HANIT_HTAB.dsk",
+        "size": 143360,
+        "sha256": "7369864a34389bf538e9c4bf9cfffec988930c7035e4a54dbea1ae09f5ae905d"
+      },
+      {
+        "path": "a2x/disks/Mock.DSK",
+        "size": 143360,
+        "sha256": "5cb45120834dca901006a4d39d71d3074b69423fd4e4ccb6a188698380b792dd"
+      },
+      {
+        "path": "a2x/disks/Prodos-drivers-20231004.po",
+        "size": 143360,
+        "sha256": "1c8ba4c6a2ce17d2769c9e2ce884a6a5801bbafa79921b63e0ca7d2a5e992203"
+      },
+      {
+        "path": "a2x/disks/ProntoDOS.dsk",
+        "size": 143360,
+        "sha256": "e8d0054d561748bcdc5bfcf3faf5a8ad17e1e663ac73ae3cfb05f6a1b0269f12"
+      },
+      {
+        "path": "a2x/disks/SFX Breakout.dsk",
+        "size": 143360,
+        "sha256": "99de5f1edec85d43dff721ef1c4dd93863bb930baf13aeed2a3405ad970df2a0"
+      },
+      {
+        "path": "a2x/disks/SMT_1.4.dsk",
+        "size": 143360,
+        "sha256": "2b067beffcadcc37fbf59d0f256f36c57a686c53be82cb2294c10e0bf5a1ff78"
+      },
+      {
+        "path": "a2x/disks/dos-3.3.dsk",
+        "size": 143360,
+        "sha256": "3784914e38ca48c7c77f1ac81b0ee9b448c2cfac568a463247bc248f997415b0"
+      },
+      {
+        "path": "a2x/disks/mockingboard1.dsk",
+        "size": 143360,
+        "sha256": "0d646bd42e21521eec107001072a3a31815bd8abcd681ebf2138adbc2cea615a"
+      },
+      {
+        "path": "a2x/disks/mockingboard2.dsk",
+        "size": 143360,
+        "sha256": "4a9a21a115f336aca816a23695a595f6607302d6c74bb456fc06aebbdab1c2d1"
+      },
+      {
+        "path": "a2x/disks/pascal/Apple II Pascal 1.3 APPLE0_ 680-0282-A.dsk",
+        "size": 143360,
+        "sha256": "3d050fae382991a7dabdc155b68398bf1844a5cb611bc5b0b2a40edd5d749aa3"
+      },
+      {
+        "path": "a2x/disks/pascal/Apple II Pascal 1.3 APPLE1_ 680-0283-A.dsk",
+        "size": 143360,
+        "sha256": "3f2e252c96950d2df0f65b0b1a2970e0fd98c78e229cfdbbdb10e4aef9b1dbd4"
+      },
+      {
+        "path": "a2x/disks/pascal/Apple II Pascal 1.3 APPLE2_ 680-0284-A.dsk",
+        "size": 143360,
+        "sha256": "873b9e41c40cef539c06b4f5e2dafe475b0fec5c52c71e241c2cf8ad0f6f05a9"
+      },
+      {
+        "path": "a2x/disks/pascal/Apple II Pascal 1.3 APPLE3_ 680-0290-A.dsk",
+        "size": 143360,
+        "sha256": "fea7dd59fb0f8e5e6324445868e788b4f65853ff3da336d99f266f03e09efac0"
+      },
+      {
+        "path": "a2x/disks/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "a2x/master.dsk",
+        "size": 143360,
+        "sha256": "88192b9e4fbb4d27e36c6da7f67b5ab162af166df06b6cdbf026ee2060cbaefb"
+      },
+      {
+        "path": "a2x/net/demo.po",
+        "size": 143360,
+        "sha256": "9a4272063670ef23c3dc6e8210ad3d408b7349b092ad6c05ef76436c661b4df9"
+      },
+      {
+        "path": "a2x/ramworks/a2x.po",
+        "size": 143360,
+        "sha256": "83e5d3b071728a3790201a8cfff0419c318ee85c25629e702ca03a05a52a989d"
+      },
+      {
+        "path": "a2x/vhan/demo.dsk",
+        "size": 143360,
+        "sha256": "6ede5e5ea873b83136e2bf4b6226d494adafcc905b6f1fe354dd2258557959e8"
+      },
+      {
+        "path": "a2x/vhan/vhan.po",
+        "size": 143360,
+        "sha256": "0a8a4d390105c3f29927588fa4f0fd83479d893d24dc6ccbd067aee8eaedbecb"
+      },
+      {
+        "path": "a2x/videorom/disk2.dsk",
+        "size": 143360,
+        "sha256": "044acca24dda9e7d8bc66d35d6234f8e771cff438ff09b1cf8f347c566c8794e"
+      },
+      {
+        "path": "apple2-carmen-sandiego-world-disasm/carmen-world-disk1.dsk",
+        "size": 143360,
+        "sha256": "d322484a14f53ab9ed0bc8e3ac2b046250d775dd52eb956dbac578e13912afd2"
+      },
+      {
+        "path": "apple2-carmen-sandiego-world-disasm/carmen-world-disk2.dsk",
+        "size": 143360,
+        "sha256": "caf57f337eeb72860aa51e993b9ea99d9bd2b76a2bb8f49c4cf36d462a71800e"
+      },
+      {
+        "path": "apple2-image-editor/demo/demo.dsk",
+        "size": 143360,
+        "sha256": "bc475069cb484333aa0c74b1e430e8fb6a1b6424d5dd1a4a29ae684620033b70"
+      },
+      {
+        "path": "apple2-korean-archive/HANGEUL2-ROMAX2000HQ/HANGEUL2.DSK",
+        "size": 143360,
+        "sha256": "291eb46a218169230f7c7304c5a5eb946109a0bc1cae42ac79eed253a4edb97e"
+      },
+      {
+        "path": "apple2-korean-archive/MR128\ud55c\uae00/mr128_korean.dsk",
+        "size": 143360,
+        "sha256": "14677581d043c89470fc9051f33845e6affaef8021c7fdfb21c2f2a7a96f83b6"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Application/IQ-Test.dsk",
+        "size": 143360,
+        "sha256": "175138c586dde2ae594dfd44be7b378d1d4d67a17e157fc3a6bb7c7b9fb76b7b"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Application/phonelist.dsk",
+        "size": 143360,
+        "sha256": "6f2c819791a771fab6eeaa3824691047d6527e37d27e7b79aef407276e0210db"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Application/\uac00\uacc4\ubd80(pw-AV).dsk",
+        "size": 143360,
+        "sha256": "6aa4feb9c18046fdb3db57decf4fc001219286f0584f049be258db6a9b0177c7"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Application/\ud1a0\uc815\ube44\uacb0 a.dsk",
+        "size": 143360,
+        "sha256": "3dbdb4dec647e40dcc651940107dfc670efa5c0484014b84c98a221df16f34b3"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Application/\ud1a0\uc815\ube44\uacb0 b.dsk",
+        "size": 143360,
+        "sha256": "0a932cd643f9b3012313922937303a53ab7f3846673863b3f91397318579cb8c"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Misc/HANJA.dsk",
+        "size": 143360,
+        "sha256": "46a58ff3f2b806f0710e56d5b53f15804e1cf44552b9c5a82286b2faf5143ce1"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Programming/apple cafe programming relay (a-f).dsk",
+        "size": 143360,
+        "sha256": "75607a4c0943aa8c4fcadb1b6a24996ce484a9e14ccbdcbdb51e1957527b3456"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Utility/Hangul2,CHR70,etc.dsk",
+        "size": 143360,
+        "sha256": "0ef222c19f66daec4c2ac313ab3556259e7fdd5a7177804f341310c163d97cb9"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Utility/RomaxUtil-HanCalc,etc.DSK",
+        "size": 143360,
+        "sha256": "c4077dbef16da334c131ab86f1ab03fa137e1e69f46b40ff086f030a461ccf4b"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Utility/fantastic movie v1.0.dsk",
+        "size": 143360,
+        "sha256": "22c8486a5f3777e471a48198a30bfbe05309a01817978ce457bed17cda0f0c75"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Utility/\ud55c\uae00\ubc14\uc774\uc624\ub9ac\ub4ec,etc.dsk",
+        "size": 143360,
+        "sha256": "f87d2aae6478d0b5dfe3e83b9c92718f8fe6d766a92d756f1fbbed3958c20a81"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Word Processor/Woori.dsk",
+        "size": 143360,
+        "sha256": "49f15cb4f57fbb2215ba8575bda244468fbfdce5cd513d49e87adbe7b1087fdf"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Word Processor/korean-word-writer-1.dsk",
+        "size": 143360,
+        "sha256": "99edfa4e00c6adb21450ecc4074dab294802132978be1c099d06b55e12861263"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Word Processor/\uc6b0\ub9ac\uae00(binary not same as Woori).DSK",
+        "size": 143360,
+        "sha256": "966c4a73e771d957f316969612f66f84f203d0bcec49be0f6d8773fbf941ab36"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Word Processor/\uc791\uc740\ubcc4.dsk",
+        "size": 143360,
+        "sha256": "785772533535e11ea23a8a2d50b246196f4a9b8a1b7da1fbe27788acf6084d08"
+      },
+      {
+        "path": "apple2-korean-archive/_incoming/Word Processor/\uc911\uc559\ud55c\uae00.dsk",
+        "size": 143360,
+        "sha256": "38b8c0a765facdeee3ae8012aa74955c6b4a72b7332ed94e5d4f5b6d0a9a99ee"
+      },
+      {
+        "path": "apple2-korean-archive/moon_patrol-korean-v1.1.dsk",
+        "size": 143360,
+        "sha256": "57727e9f76e4b03e0f31d3d37aa5104d611215b26ac089dd1e3a76de8dd55e0f"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/APPLE-EDU.DSK",
+        "size": 143360,
+        "sha256": "a9cf97eea57ec5b457ac9e45fce277a56a54d3175827f0a656804f1a6fcb7ea0"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/BASIC-EDU.DSK",
+        "size": 143360,
+        "sha256": "57c5fd25ccbf12a156c0aaa47c61c9b03105287ac80ab2ab15e543f8b180af6c"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/BINGO(\uc601\uc5b4\ub2e8\uc5b4\ud559\uc2b5).DSK",
+        "size": 143360,
+        "sha256": "310af6cd2e94addd51e44e535258c3b5d9e03abcbf5dfa5d3868786d73a9d776"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/MID-ENGLISH-2-2-10.DSK",
+        "size": 143360,
+        "sha256": "9e4322886d96c64bb7946b6a375596ad5f68cf77d07db27e5a6d63eac89d1f73"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/MID-ENGLISH-2-2-9.DSK",
+        "size": 143360,
+        "sha256": "01920842aec9785c14d0d9f212cadf811833a31d018d7827a100ac1b4f5726c0"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/STEP-BY-STEP(\ubca0\uc774\uc2dd\uad50\uc721\uc6a9\ud504\ub85c\uadf8\ub7a8).DSK",
+        "size": 143360,
+        "sha256": "499debdfa7fae0e6aef29db66e52641312602aea9dc570c322dd327bbc658c55"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/\uc0dd\ud65c\uad6d\uc5b4.dsk",
+        "size": 143360,
+        "sha256": "c34ccb471150c671da04f4544b9bc8e22d7c3685561eb6ba1cc878db4b983c74"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/\uc219\uc5b4\ud559\uc2b5.DSK",
+        "size": 143360,
+        "sha256": "b0a4743037a9174fea3a675bddb56528e2c88ad0a25a2204bb95e5394621faa1"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/\uc804\uad6d\uc77c\uc8fc.DSK",
+        "size": 143360,
+        "sha256": "51e74a2f8c79fde803a73de0c4402d8db2d12fbe710d3a7a6a532e6e449c1144"
+      },
+      {
+        "path": "apple2-korean-archive/\uad50\uc721\uc6a9/\uc9111\uc601\uc5b4.dsk",
+        "size": 143360,
+        "sha256": "e843485874f9c2d35ce2b5957a22b6662275b209fc5aedc7ab767a7ac07a0b0f"
+      },
+      {
+        "path": "apple2-korean-archive/\ub2f9\uc0ac\uc8fc/\ub2f9\uc0ac\uc8fc.dsk",
+        "size": 143360,
+        "sha256": "e430d3067616614d4968a7cb53f8260b691e2eac531c1d7119b51d08b8d59308"
+      },
+      {
+        "path": "apple2-korean-archive/\uba4b\ud55c\uae00/moet-hangul.dsk",
+        "size": 143360,
+        "sha256": "f805076007ff14cc3af7fa9bf39da868841d1dd8b9f451ea4c800c91083fe49b"
+      },
+      {
+        "path": "apple2-korean-archive/\ubba4\uc9c1\ud55c\uae00/music_hangul.dsk",
+        "size": 143360,
+        "sha256": "a4fc371d2ed47c2fc5bb45b3233ce6f21b8b5020fa4fc5da52b2336bb84ac043"
+      },
+      {
+        "path": "apple2-korean-archive/\ubc14\uc774\ub371\uc2a4\ud55c\uae00/videx-util.dsk",
+        "size": 143360,
+        "sha256": "f5f6a6f2426aab443f0ca848e93758827af3deaab2327cdc9faf76cd800b87e9"
+      },
+      {
+        "path": "apple2-korean-archive/\ubc14\uc774\ub371\uc2a4\ud55c\uae00/\ubc14\uc774\ub371\uc2a4\ud55c\uae00.dsk",
+        "size": 143360,
+        "sha256": "b2f0fadff266b055f5918817a4158e768176bc32513a574e70406669a2e568b4"
+      },
+      {
+        "path": "apple2-korean-archive/\uc0ac\ub791\uc758\ubcc4\uc810/lovelyhoroscope-1.dsk",
+        "size": 143360,
+        "sha256": "e8061768a8b2ee86b8bcea74462fe6b9519204f4fe9c010fc77debfc55714187"
+      },
+      {
+        "path": "apple2-korean-archive/\uc0ac\ub791\uc758\ubcc4\uc810/lovelyhoroscope-2.dsk",
+        "size": 143360,
+        "sha256": "4b1d6ed4c86f62de38f1f6d50db33634338de36c19b2bbec063871c7670b0f99"
+      },
+      {
+        "path": "apple2-korean-archive/\uc2e0\uac80\uc758\uc804\uc124/legend_of_divine_sword1.dsk",
+        "size": 143360,
+        "sha256": "80f73210258382a77e855f17b21604a63dfd0715b68016e1f0a0c78559957230"
+      },
+      {
+        "path": "apple2-korean-archive/\uc2e0\uac80\uc758\uc804\uc124/legend_of_divine_sword1_fixed.dsk",
+        "size": 143360,
+        "sha256": "2ebad1853921a47f149396cfa7842fd58e66f5032ca340c42cbeca0a3d33a67b"
+      },
+      {
+        "path": "apple2-korean-archive/\uc2e0\uac80\uc758\uc804\uc124/legend_of_divine_sword2.dsk",
+        "size": 143360,
+        "sha256": "33d140defcd0d965e1e1bb90c3dba0c8568cda54319646421fca7f3a79a88550"
+      },
+      {
+        "path": "apple2-korean-archive/\uc560\ud50c\ud55c\uae00/apple-hangul.dsk",
+        "size": 143360,
+        "sha256": "b581d599a2ce2ba0a9dd105f248f7cf015493a61a3fd87d0870a14472bdd6b28"
+      },
+      {
+        "path": "apple2-korean-archive/\uc6cc\ub4dc\ucf64/Wordcomm-ACC.dsk",
+        "size": 143360,
+        "sha256": "251af5472d8c1f25ccfbcb00f51251c933b27e842bd9ea0138a1f644357a5176"
+      },
+      {
+        "path": "apple2-korean-archive/\ud64d\uc775\ud55c\uae00/hongick-hangul.dsk",
+        "size": 143360,
+        "sha256": "682b465139347b21d23263461056d63dac5f1f962a9e770012dbea13554b2e9a"
+      },
+      {
+        "path": "apple2-picture-books/solar-system/solar.po",
+        "size": 143360,
+        "sha256": "fb9858b9ebc50c74cc8e2c27644768ecf450b54389ddd27f1c37dac3f8299800"
+      },
+      {
+        "path": "apple2-rescue-raiders-disasm/rescue_raiders.dsk",
+        "size": 143360,
+        "sha256": "e87a3807667347f4434a78260e7e2791a7e6e45c4193e90f63dcb6d7a94059e8"
+      },
+      {
+        "path": "apple2-stellar7-disasm/stella7.dsk",
+        "size": 143360,
+        "sha256": "8df47425d9c4266aa1f9d03f87f22d4dd0ec11c8c452d1ba9734414a0eeae141"
+      },
+      {
+        "path": "apple2ts/dist/disks/Apple IIe Diagnostic 2.1.po",
+        "size": 143360,
+        "sha256": "5fecc97f1958c46ad36f9f550492849100d4c095c15f61a456545f5c2438c236"
+      },
+      {
+        "path": "apple2ts/dist/disks/CT_SPEEDTEST.DSK",
+        "size": 143360,
+        "sha256": "b7ea1c994c09d0419fbf2fe43ceb1aefd5f6ededaba2deb7fe1ee476b6fb7913"
+      },
+      {
+        "path": "apple2ts/dist/disks/Gameboy Tetris.po",
+        "size": 143360,
+        "sha256": "804123c58951d392de397674ee018262b2d1ee6ef0b908e8afa64fc3df21f37c"
+      },
+      {
+        "path": "apple2ts/dist/disks/GarageGiveaway-Demo.po",
+        "size": 143360,
+        "sha256": "17270a4a454a44f6f9506da9c34defac5bcc8139ad234c74217c035c92135ac2"
+      },
+      {
+        "path": "apple2ts/dist/disks/One on One.po",
+        "size": 143360,
+        "sha256": "d9df07998b93fa34217d4c53065f9a242738face9efeb9b4573e3e7f12fbe579"
+      },
+      {
+        "path": "apple2ts/dist/disks/ProDOS 2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "apple2ts/dist/disks/Robotron4Joy.po",
+        "size": 143360,
+        "sha256": "beb4ec907da5f12220dc269d58a3a42f7c210504550bf248a59caabb9760b45d"
+      },
+      {
+        "path": "apple2ts/dist/disks/blank.po",
+        "size": 143360,
+        "sha256": "c6f3dcdb96e3362ebcfd23005db5aa6c14ff8dffaf780dac132f21b321e3d6b6"
+      },
+      {
+        "path": "apple2ts/public/disks/Apple IIe Diagnostic 2.1.po",
+        "size": 143360,
+        "sha256": "5fecc97f1958c46ad36f9f550492849100d4c095c15f61a456545f5c2438c236"
+      },
+      {
+        "path": "apple2ts/public/disks/CT_SPEEDTEST.DSK",
+        "size": 143360,
+        "sha256": "b7ea1c994c09d0419fbf2fe43ceb1aefd5f6ededaba2deb7fe1ee476b6fb7913"
+      },
+      {
+        "path": "apple2ts/public/disks/Gameboy Tetris.po",
+        "size": 143360,
+        "sha256": "804123c58951d392de397674ee018262b2d1ee6ef0b908e8afa64fc3df21f37c"
+      },
+      {
+        "path": "apple2ts/public/disks/GarageGiveaway-Demo.po",
+        "size": 143360,
+        "sha256": "17270a4a454a44f6f9506da9c34defac5bcc8139ad234c74217c035c92135ac2"
+      },
+      {
+        "path": "apple2ts/public/disks/One on One.po",
+        "size": 143360,
+        "sha256": "d9df07998b93fa34217d4c53065f9a242738face9efeb9b4573e3e7f12fbe579"
+      },
+      {
+        "path": "apple2ts/public/disks/ProDOS 2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "apple2ts/public/disks/Robotron4Joy.po",
+        "size": 143360,
+        "sha256": "beb4ec907da5f12220dc269d58a3a42f7c210504550bf248a59caabb9760b45d"
+      },
+      {
+        "path": "apple2ts/public/disks/blank.po",
+        "size": 143360,
+        "sha256": "c6f3dcdb96e3362ebcfd23005db5aa6c14ff8dffaf780dac132f21b321e3d6b6"
+      },
+      {
+        "path": "call3327/call3327.dsk",
+        "size": 143360,
+        "sha256": "1648ebdb0cf662ea3c79a011733550b53e7c5877146248e1e9c9523724573b06"
+      },
+      {
+        "path": "call3327/master.dsk",
+        "size": 143360,
+        "sha256": "5c98cc17163148f710873358abe7a52ca52154c3f6d52844eccbd62d6a7ed6bb"
+      },
+      {
+        "path": "cc65-test/ProDOS_2_4_3.po",
+        "size": 143360,
+        "sha256": "398d333cb2ab92df9f8bb2cf64b946f2567116910eb8359cf4bdee5d4194f0fa"
+      },
+      {
+        "path": "cc65-test/hello.dsk",
+        "size": 143360,
+        "sha256": "d07705c1bc78eb01175ef65fb2a227a62851456157b6434f0bd0ee7d46b9fa3a"
+      },
+      {
+        "path": "cc65-test/mygame/apple2/template.dsk",
+        "size": 143360,
+        "sha256": "5c11acd659c1a6a17be5eeec0a01493095282bae693919d932f041df040dfc1a"
+      },
+      {
+        "path": "cc65-test/spkr.dsk",
+        "size": 143360,
+        "sha256": "dc9381b6baa82cc53e7ac04d9d7cb269a168a3db1d1f4c8ff8916c078a93bc23"
+      },
+      {
+        "path": "cc65-test/template.dsk",
+        "size": 143360,
+        "sha256": "5c11acd659c1a6a17be5eeec0a01493095282bae693919d932f041df040dfc1a"
+      },
+      {
+        "path": "hakalabeth/haka.po",
+        "size": 143360,
+        "sha256": "27fb3c6bb4aa4e34c4c916b29d95b9eb61544b74e8cf933a91b9179993f0c367"
+      },
+      {
+        "path": "kakalabeth/akalabeth.dsk",
+        "size": 143360,
+        "sha256": "d3d4f4d86077f9bdb7308597b8d86f5700fabe736a1dbbeab7c69c27eacd8df7"
+      },
+      {
+        "path": "kakalabeth/kaka.dsk",
+        "size": 143360,
+        "sha256": "a10e173a7b69c1acdeb3420ff62776e9bb9343e20b05d1e1f9e7654fc8630af1"
+      },
+      {
+        "path": "kakalabeth/kaka6.dsk",
+        "size": 143360,
+        "sha256": "2bf4a238f90260770a77f9ceee0d5b2ac52076175369ebbd09ca9abe786fd8b6"
+      },
+      {
+        "path": "mii_emu/disks/prodos242.dsk",
+        "size": 143360,
+        "sha256": "963b1db2bd51c6bf8616a092cb98f07e3b1d1ec2186c1656b26665829e4f697d"
+      },
+      {
+        "path": "recall3327/demo.dsk",
+        "size": 143360,
+        "sha256": "baddcf4ddbd893845ca7025ec31b28d642f0ed0385d47b2aba246fc883b7ef5f"
+      },
+      {
+        "path": "recall3327/prodos-2.4.3.po",
+        "size": 143360,
+        "sha256": "cdecb85ef623382f177a2b6a5b61b27ccdb38e9873ffbd9ff0380630eebb097d"
+      },
+      {
+        "path": "recall3327/test.dsk",
+        "size": 143360,
+        "sha256": "a9cf97eea57ec5b457ac9e45fce277a56a54d3175827f0a656804f1a6fcb7ea0"
+      },
+      {
+        "path": "tl1-apple2/tl1.dsk",
+        "size": 143360,
+        "sha256": "0772060602e53f9c51967f7d39a7d0478fe70a44b32fca624c3c45be36f61b94"
+      },
+      {
+        "path": "videx-hangul/videxhangul.dsk",
+        "size": 143360,
+        "sha256": "b2f0fadff266b055f5918817a4158e768176bc32513a574e70406669a2e568b4"
+      }
+    ],
+    "matches": []
+  },
+  "bitstream_donors": {
+    "inputs": [
+      {
+        "path": "build/disks/components/alternate_1.bin",
+        "size": 880,
+        "sha256": "f59d3948e8139391ec5e385282b93b9080b83d2a2df37a2f97a9a2be0a9cc790"
+      },
+      {
+        "path": "build/disks/components/alternate_10.bin",
+        "size": 950,
+        "sha256": "00fc5609291afd26b58c13fcf51f414bc4280ab27c58f4e281daa85a934c06e9"
+      },
+      {
+        "path": "build/disks/components/alternate_7.bin",
+        "size": 764,
+        "sha256": "0a7751ec039e806dba479877bac1818f18ef7b623d2ef1047d8cd3249cd1f45c"
+      },
+      {
+        "path": "build/disks/components/alternate_8.bin",
+        "size": 3348,
+        "sha256": "faffb0b22d01352485ee8293b78cdcb2619b58d30ea9bb712777f75ce46de93b"
+      },
+      {
+        "path": "build/disks/components/alternate_9.bin",
+        "size": 1212,
+        "sha256": "4774966eb94e9f469d2206b88b3d228a9f22b4eeb022437557e98a96d85cf857"
+      },
+      {
+        "path": "build/disks/components/asset_block_storage.bin",
+        "size": 617,
+        "sha256": "76acfa80b0650e510874a93071fe0419be1305fb95083c2390b391be5d101162"
+      },
+      {
+        "path": "build/disks/components/bootstrap.bin",
+        "size": 768,
+        "sha256": "068b86236cbe9512a8cf53ab49a0db20887e1b3d150f9f5e609e811bb10a473f"
+      },
+      {
+        "path": "build/disks/components/bootstrap_output_storage.bin",
+        "size": 256,
+        "sha256": "f28df1a76e0150b22b6a770bc3e555ddbf3145ec80adb4244a1c094a109c1c08"
+      },
+      {
+        "path": "build/disks/components/certificate_reveal.bin",
+        "size": 512,
+        "sha256": "ebe5c20eed93369a78146fd6df316e260ba26db0172e22b23b65f227a6a22306"
+      },
+      {
+        "path": "build/disks/components/dialogue_scripts.bin",
+        "size": 1175,
+        "sha256": "8e563e05a9ed98901d7bf7ac5f2bebc1cde0622222ba4c2c9fc0ea2942e166cc"
+      },
+      {
+        "path": "build/disks/components/dialogue_workspace.bin",
+        "size": 189,
+        "sha256": "06ea118edadd836a02b202c05bc7e47356b57e28c01edf1dad6cc4cf90c662e2"
+      },
+      {
+        "path": "build/disks/components/disk_checksum.bin",
+        "size": 135,
+        "sha256": "fa689ce3974c124a8315e56d977b00e2dc24e882157e06f01c5c6bb049319755"
+      },
+      {
+        "path": "build/disks/components/disk_control.bin",
+        "size": 8,
+        "sha256": "caceb39c7b5f9c9f1707f60a9b659a1e53533250a015ac99ae6a48b5ed04b98d"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_003f.bin",
+        "size": 792,
+        "sha256": "6738e78609b04856d72e9ac0260438629e3ba2b0a9afb7c910b37b18eea4e675"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_003f.decoded.bin",
+        "size": 792,
+        "sha256": "d00ff667652afad3c83de93549cf241cb2baddc7c0d859d00ce178b48d9ecdcc"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_035a.bin",
+        "size": 3,
+        "sha256": "4477e9ceb76bb1cf2f5a63917f05067c2e827c4ce14f6cd78c11e80c9f35db38"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_035a.decoded.bin",
+        "size": 3,
+        "sha256": "9aa74101959930f36e521724235c57b025aee17c8f35636c5658993f5112f4c5"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_0360.bin",
+        "size": 530,
+        "sha256": "5ccc3f7ed94801efae0dfe2588a68973758905b0ea2dccba783ad098d804e172"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_0360.decoded.bin",
+        "size": 530,
+        "sha256": "f78e2dcf20d4183b9574e14595fb4874738fedbbadf4248cc462612964537211"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_0574.bin",
+        "size": 103,
+        "sha256": "d534d66d83aab0a8ff393b11b1da76c312ebeeab809488699622b686a93f1330"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_0574.decoded.bin",
+        "size": 103,
+        "sha256": "7192877088da0a3e516cddc4aa65546237af90952a74a52a7707639d8d069e6a"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05dd.bin",
+        "size": 6,
+        "sha256": "02c7d805ffa8686e856ee1cfa1088f2a891443f537c481ac43cacc946455634a"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05dd.decoded.bin",
+        "size": 6,
+        "sha256": "24f02a06f55054c9144a3d8b1db4f44591361372087a6dbe987ba297f57a16f6"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05e5.bin",
+        "size": 11,
+        "sha256": "0e9d55dc9fcf73f973f2357c2c0be621db39051ea4110dbd0cf4643aa24051af"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05e5.decoded.bin",
+        "size": 11,
+        "sha256": "5ef71c28bfaa63690e91411411265bfe6d2c237677106abdea58357cddbc8d65"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05f1.bin",
+        "size": 5,
+        "sha256": "4d75c7c601e8162cda500e23e09ebf0a92ce353269c32fedd1d6c235f092a89e"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05f1.decoded.bin",
+        "size": 5,
+        "sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05f8.bin",
+        "size": 47,
+        "sha256": "05ad947c7f1cf170bd5a9db48ac32cb0ad3b5591c929aff769083bbcf7885dc2"
+      },
+      {
+        "path": "build/disks/components/encoded_body_alternate_05f8.decoded.bin",
+        "size": 47,
+        "sha256": "eac502595141ce0d10ed166b1df249cc82a35271124f8ddf952a7bfc42a0b0cd"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_003f.bin",
+        "size": 792,
+        "sha256": "d46ae51a8b6847c4a38c67350ff46ba19dc68fe0b592e93e924875566d666efe"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_003f.decoded.bin",
+        "size": 792,
+        "sha256": "d25c44ee44a57896efd887611677ae628688ad2a44ee9d7fb95b8018442fc955"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_035a.bin",
+        "size": 3,
+        "sha256": "8b915a10cb155e9b3908f0771769561451802be74a5b9b7491f6561ff58fe25c"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_035a.decoded.bin",
+        "size": 3,
+        "sha256": "02712329cb1ac91eda7dae340e840581efb0dc2721f3c9d821e888356f6b4531"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_0360.bin",
+        "size": 530,
+        "sha256": "272d8921ac9bacc198b7d90e59ef36fed79ad6b2238cb57d7ff664a06cbd8665"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_0360.decoded.bin",
+        "size": 530,
+        "sha256": "4650ded1d489eb16460f1106fc43edea403d9cd2596b89dabe0b1f581e7d8e1f"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_0574.bin",
+        "size": 103,
+        "sha256": "4e6ff458987703f1341a3c6d11befe7679662bc54a4b4413a5d55555513d95d5"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_0574.decoded.bin",
+        "size": 103,
+        "sha256": "ab0592051603131c75eda240f939a8e7c603ecdfc0513f8689da32bf9ad0d922"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05dd.bin",
+        "size": 6,
+        "sha256": "aed34969f6d1d30cee712dee2b423fdc205a613f09edc0e8a9575ad9d0c36182"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05dd.decoded.bin",
+        "size": 6,
+        "sha256": "72e5ee503adb4a95b6476cbd0a34ddfb0bbddfe1bcd433913d924c3464dfc22a"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05e5.bin",
+        "size": 11,
+        "sha256": "b59982a315e90460907c0cf191bb2f2371fdbfbb62ef88b15e07a9a5e63de2c7"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05e5.decoded.bin",
+        "size": 11,
+        "sha256": "178c4352b4d3ee0d27e08594b0ed6f4f5bd322f5be7f05cf0e41271c7f233838"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05f1.bin",
+        "size": 5,
+        "sha256": "8832d00346d23969ad563aa78f9b88232fe9b4d3e83c708e6a2159ac52e653ea"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05f1.decoded.bin",
+        "size": 5,
+        "sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05f8.bin",
+        "size": 47,
+        "sha256": "f0cdfd83006598bff8f43ccfb04ecaac5875912be486d5f65bcc519734961e8f"
+      },
+      {
+        "path": "build/disks/components/encoded_body_play_05f8.decoded.bin",
+        "size": 47,
+        "sha256": "97ed0adf109307347f7d037cce3a206bfc03a0224ef93938e847bc854bbdaab3"
+      },
+      {
+        "path": "build/disks/components/encoded_disk_reader.bin",
+        "size": 127,
+        "sha256": "13c4a642cb28d57f9a9d59026e589f1100af7e1c6761d76a8cfbf89b65a01957"
+      },
+      {
+        "path": "build/disks/components/encoded_disk_reader.decoded.bin",
+        "size": 127,
+        "sha256": "ba80707d73a36488cb30ef1d0b06dc09e3141a2129463738bc1a9a2df5935326"
+      },
+      {
+        "path": "build/disks/components/encoded_loader_alternate.bin",
+        "size": 63,
+        "sha256": "21f97d89c6eec6ed0ee8f13f0bc7f3f8a8afd2b7e596b17f95b9dbae22618400"
+      },
+      {
+        "path": "build/disks/components/encoded_loader_alternate.decoded.bin",
+        "size": 63,
+        "sha256": "4389d3bfdec3f2b3a873e652ccc071c9e3f670ea7a17f39447e4c53f5ba01737"
+      },
+      {
+        "path": "build/disks/components/encoded_loader_play.bin",
+        "size": 63,
+        "sha256": "16581656806deaeaa03a68732d1f8780f4071f051de84f117062b0e87e49cbd7"
+      },
+      {
+        "path": "build/disks/components/encoded_loader_play.decoded.bin",
+        "size": 63,
+        "sha256": "2a84da9ccc6e36ba00163ec7b3276cb2f1c0f97c8fad1d475c0b26386d921b11"
+      },
+      {
+        "path": "build/disks/components/encoded_reader_alignment.bin",
+        "size": 1,
+        "sha256": "6922e93e3827642ce4b883c756b31abf80036649d3614bf5fcb3adda43b8ea32"
+      },
+      {
+        "path": "build/disks/components/encoded_reader_alignment.decoded.bin",
+        "size": 1,
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0357.bin",
+        "size": 3,
+        "sha256": "2573accac9de46faed62409be896d0136fe74d2ac2760201c36d9363f6d41f77"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0357.decoded.bin",
+        "size": 3,
+        "sha256": "19e84dadd882d95222015c0a17861192b8add8cf2578bd6eebe00b20086ba4df"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_035d.bin",
+        "size": 3,
+        "sha256": "33b5a1f1437e1db6928f80f2bbb6d51779825f84369df135804f34fb7f64f13c"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_035d.decoded.bin",
+        "size": 3,
+        "sha256": "cfd3909b1ef8fafc20208b189ffa53a33a556644de28e78d0d1cc7ddb0575ef1"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0572.bin",
+        "size": 2,
+        "sha256": "de491b86b68fa1c865616d081ca4209851640c8cf8f9ca95932f39ec2d8128f3"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0572.decoded.bin",
+        "size": 2,
+        "sha256": "67736afe120150819d9b6de47d8171d02c4d7d2ef2f510a3ef90eea2ba93739d"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_05db.bin",
+        "size": 2,
+        "sha256": "62ea40ec5e23bd5208b32e02f2e9e4d651d0c5d80a4e15b344d453686c580e32"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_05db.decoded.bin",
+        "size": 2,
+        "sha256": "46225a6f126954ea5233a84392f623950468df3ed2ad1a25b0eae250284c09fc"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_05e3.bin",
+        "size": 2,
+        "sha256": "61835352dfbbfbfae4345655fc7451e580272b28a4aa3377fe008701ac7ebf34"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_05e3.decoded.bin",
+        "size": 2,
+        "sha256": "9db57ce8b94d3756e46886c8d5bb0182af91527316a1082f1c4cddff3761bd85"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0772.bin",
+        "size": 2,
+        "sha256": "de491b86b68fa1c865616d081ca4209851640c8cf8f9ca95932f39ec2d8128f3"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_0772.decoded.bin",
+        "size": 2,
+        "sha256": "67736afe120150819d9b6de47d8171d02c4d7d2ef2f510a3ef90eea2ba93739d"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_07db.bin",
+        "size": 2,
+        "sha256": "62ea40ec5e23bd5208b32e02f2e9e4d651d0c5d80a4e15b344d453686c580e32"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_07db.decoded.bin",
+        "size": 2,
+        "sha256": "46225a6f126954ea5233a84392f623950468df3ed2ad1a25b0eae250284c09fc"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_07e3.bin",
+        "size": 2,
+        "sha256": "61835352dfbbfbfae4345655fc7451e580272b28a4aa3377fe008701ac7ebf34"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_alternate_07e3.decoded.bin",
+        "size": 2,
+        "sha256": "9db57ce8b94d3756e46886c8d5bb0182af91527316a1082f1c4cddff3761bd85"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0357.bin",
+        "size": 3,
+        "sha256": "f8f7fe0b23e27af34106b0df6fb9b8cb55db51f3d72f2238bf5744ba7322ab41"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0357.decoded.bin",
+        "size": 3,
+        "sha256": "0abbdbf3e2c7392cba279d29e1e92a8d95688e3c2bf44f2ccd94ec122fb8ba6f"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_035d.bin",
+        "size": 3,
+        "sha256": "3db3db9cd31a277b2a972b6c0979629512be3e288f81b2de57fbf8c8d2e87940"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_035d.decoded.bin",
+        "size": 3,
+        "sha256": "e144cfc01d84e1be4ea2804f0d49f9e3121d6b097834921972186a21ed7abfb0"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0572.bin",
+        "size": 2,
+        "sha256": "99e9842bdbcadf340de5b0ca9c09dccb021f96609f9a10c240a0d99cc1defea4"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0572.decoded.bin",
+        "size": 2,
+        "sha256": "2ceda1033ce390cc3ec48de91687936d3d6a6ff288a837236a06ea6342fa5c86"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_05db.bin",
+        "size": 2,
+        "sha256": "a61bd4f32f37c5ec218bd8fb21f81939343ae6294e19d5e4457d6ba21bece4dd"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_05db.decoded.bin",
+        "size": 2,
+        "sha256": "5abbbf973e1f7861c8f7f136608076596d8ede3930be2af1f021603af4dc1528"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_05e3.bin",
+        "size": 2,
+        "sha256": "573d19f31911ee1af32463c9cba5e3711d9cd542b8813a19df8cb2c4225a3206"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_05e3.decoded.bin",
+        "size": 2,
+        "sha256": "cdd5b931bcfab333b543026ebc721b13751a3027ac58ad4bbf1eadbd1918aab4"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0772.bin",
+        "size": 2,
+        "sha256": "99e9842bdbcadf340de5b0ca9c09dccb021f96609f9a10c240a0d99cc1defea4"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_0772.decoded.bin",
+        "size": 2,
+        "sha256": "2ceda1033ce390cc3ec48de91687936d3d6a6ff288a837236a06ea6342fa5c86"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_07db.bin",
+        "size": 2,
+        "sha256": "a61bd4f32f37c5ec218bd8fb21f81939343ae6294e19d5e4457d6ba21bece4dd"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_07db.decoded.bin",
+        "size": 2,
+        "sha256": "5abbbf973e1f7861c8f7f136608076596d8ede3930be2af1f021603af4dc1528"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_07e3.bin",
+        "size": 2,
+        "sha256": "573d19f31911ee1af32463c9cba5e3711d9cd542b8813a19df8cb2c4225a3206"
+      },
+      {
+        "path": "build/disks/components/encoded_retained_play_07e3.decoded.bin",
+        "size": 2,
+        "sha256": "cdd5b931bcfab333b543026ebc721b13751a3027ac58ad4bbf1eadbd1918aab4"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_05f0.bin",
+        "size": 1,
+        "sha256": "67c872d4912c71f15d2d6134ddf1d33d46f4bab2b56fe787522e7e4c9b58657d"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_05f0.decoded.bin",
+        "size": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_05f6.bin",
+        "size": 2,
+        "sha256": "d98074887051e685a9477db1ae669f16374b692f91508da5d2ab6167957e1ec3"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_05f6.decoded.bin",
+        "size": 2,
+        "sha256": "8444e310766824a491b62541ee8a0b29f89e03463b4e5d28c2cb4f5109065931"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_07f0.bin",
+        "size": 1,
+        "sha256": "67c872d4912c71f15d2d6134ddf1d33d46f4bab2b56fe787522e7e4c9b58657d"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_07f0.decoded.bin",
+        "size": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_07f6.bin",
+        "size": 2,
+        "sha256": "d98074887051e685a9477db1ae669f16374b692f91508da5d2ab6167957e1ec3"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_alternate_07f6.decoded.bin",
+        "size": 2,
+        "sha256": "8444e310766824a491b62541ee8a0b29f89e03463b4e5d28c2cb4f5109065931"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_05f0.bin",
+        "size": 1,
+        "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_05f0.decoded.bin",
+        "size": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_05f6.bin",
+        "size": 2,
+        "sha256": "d384da96b8f881098e6f5d3ce4c1a799b5c0aa3b08e580309a8e10a81b2fd43c"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_05f6.decoded.bin",
+        "size": 2,
+        "sha256": "8444e310766824a491b62541ee8a0b29f89e03463b4e5d28c2cb4f5109065931"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_07f0.bin",
+        "size": 1,
+        "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_07f0.decoded.bin",
+        "size": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_07f6.bin",
+        "size": 2,
+        "sha256": "d384da96b8f881098e6f5d3ce4c1a799b5c0aa3b08e580309a8e10a81b2fd43c"
+      },
+      {
+        "path": "build/disks/components/encoded_symbols_play_07f6.decoded.bin",
+        "size": 2,
+        "sha256": "8444e310766824a491b62541ee8a0b29f89e03463b4e5d28c2cb4f5109065931"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0627.bin",
+        "size": 17,
+        "sha256": "59dff8cb7b268de7ef7319df9f4651308d9e8a49494192892ab350587a418c83"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0627.decoded.bin",
+        "size": 17,
+        "sha256": "0bd15e8bf67d94168d33d7cffd6bdf1ca16f55a928a69918afb444232aa999e8"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0638.bin",
+        "size": 314,
+        "sha256": "07a1a414a817f449ac32cdb891a2f05050ebc2ef5a96ef15ecce49d563cbce6f"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0638.decoded.bin",
+        "size": 314,
+        "sha256": "4fc9f54494142cfbb1702c3f402f86e7165eae329982c7afe023973ae2212032"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0774.bin",
+        "size": 103,
+        "sha256": "d534d66d83aab0a8ff393b11b1da76c312ebeeab809488699622b686a93f1330"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_0774.decoded.bin",
+        "size": 103,
+        "sha256": "7192877088da0a3e516cddc4aa65546237af90952a74a52a7707639d8d069e6a"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07dd.bin",
+        "size": 6,
+        "sha256": "02c7d805ffa8686e856ee1cfa1088f2a891443f537c481ac43cacc946455634a"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07dd.decoded.bin",
+        "size": 6,
+        "sha256": "24f02a06f55054c9144a3d8b1db4f44591361372087a6dbe987ba297f57a16f6"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07e5.bin",
+        "size": 11,
+        "sha256": "0e9d55dc9fcf73f973f2357c2c0be621db39051ea4110dbd0cf4643aa24051af"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07e5.decoded.bin",
+        "size": 11,
+        "sha256": "5ef71c28bfaa63690e91411411265bfe6d2c237677106abdea58357cddbc8d65"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07f1.bin",
+        "size": 5,
+        "sha256": "4d75c7c601e8162cda500e23e09ebf0a92ce353269c32fedd1d6c235f092a89e"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07f1.decoded.bin",
+        "size": 5,
+        "sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07f8.bin",
+        "size": 8,
+        "sha256": "674127eef1dc69ff16d41cd6a45b32af1d21e6d5205691ca36f1b90b541a51f2"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_alternate_07f8.decoded.bin",
+        "size": 8,
+        "sha256": "865a0577ed71ca5e4cf7935f4a61876278b402f41059244220fbeca57d6c00eb"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0627.bin",
+        "size": 17,
+        "sha256": "e11fb9683bc905b059c9977ed04718e672f920301adbe0ea2f400ac81fa14aed"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0627.decoded.bin",
+        "size": 17,
+        "sha256": "0bd15e8bf67d94168d33d7cffd6bdf1ca16f55a928a69918afb444232aa999e8"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0638.bin",
+        "size": 314,
+        "sha256": "9e656d3416077f871cd5532a1c86fa00651ca17052b48f6c20d1c15639015811"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0638.decoded.bin",
+        "size": 314,
+        "sha256": "8751a156fa1d783b2557757859430468f294b2fbf3bf9433e4ef949530bff16a"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0774.bin",
+        "size": 103,
+        "sha256": "4e6ff458987703f1341a3c6d11befe7679662bc54a4b4413a5d55555513d95d5"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_0774.decoded.bin",
+        "size": 103,
+        "sha256": "ab0592051603131c75eda240f939a8e7c603ecdfc0513f8689da32bf9ad0d922"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07dd.bin",
+        "size": 6,
+        "sha256": "aed34969f6d1d30cee712dee2b423fdc205a613f09edc0e8a9575ad9d0c36182"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07dd.decoded.bin",
+        "size": 6,
+        "sha256": "72e5ee503adb4a95b6476cbd0a34ddfb0bbddfe1bcd433913d924c3464dfc22a"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07e5.bin",
+        "size": 11,
+        "sha256": "b59982a315e90460907c0cf191bb2f2371fdbfbb62ef88b15e07a9a5e63de2c7"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07e5.decoded.bin",
+        "size": 11,
+        "sha256": "178c4352b4d3ee0d27e08594b0ed6f4f5bd322f5be7f05cf0e41271c7f233838"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07f1.bin",
+        "size": 5,
+        "sha256": "8832d00346d23969ad563aa78f9b88232fe9b4d3e83c708e6a2159ac52e653ea"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07f1.decoded.bin",
+        "size": 5,
+        "sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07f8.bin",
+        "size": 8,
+        "sha256": "a681c3cf82aef79d8388bdb31ec653cf4db86574a1d22ccac8018d0946f94210"
+      },
+      {
+        "path": "build/disks/components/encoded_tail_play_07f8.decoded.bin",
+        "size": 8,
+        "sha256": "865a0577ed71ca5e4cf7935f4a61876278b402f41059244220fbeca57d6c00eb"
+      },
+      {
+        "path": "build/disks/components/game_12.bin",
+        "size": 5546,
+        "sha256": "d25276540ce23c69bdbebed12a7e5122e0818181e92d404b3c350ddf8bc6e3dd"
+      },
+      {
+        "path": "build/disks/components/game_13.bin",
+        "size": 10214,
+        "sha256": "2c876905d523d89fc2c5216cbc199b01a18bf5dcc223addc188dc1510388211d"
+      },
+      {
+        "path": "build/disks/components/game_14.bin",
+        "size": 2544,
+        "sha256": "709a79599c6310b3930316bb849b9fc6ac9f4267f474ba0ab7165d893c9718d8"
+      },
+      {
+        "path": "build/disks/components/game_15.bin",
+        "size": 2654,
+        "sha256": "874bbe8ddf38a0b63f2304b63392a9ad9cbf9058ca107a8febb2c2ed5e28d8bb"
+      },
+      {
+        "path": "build/disks/components/game_16.bin",
+        "size": 7446,
+        "sha256": "742200779e4e74ba6a93f984190b40284c5bf6d255584cb4572132dff65944a7"
+      },
+      {
+        "path": "build/disks/components/game_17.bin",
+        "size": 3532,
+        "sha256": "40a1e9a4fa6e0ea4276826a25cf91b480bada8c2b6392d3967c9aa33cee09515"
+      },
+      {
+        "path": "build/disks/components/game_18.bin",
+        "size": 6280,
+        "sha256": "452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4"
+      },
+      {
+        "path": "build/disks/components/game_19.bin",
+        "size": 5200,
+        "sha256": "9005760c7e42480562e06ce711baa4cd6edd2376bb46d8866af74b8461eb7b2f"
+      },
+      {
+        "path": "build/disks/components/game_20.bin",
+        "size": 6836,
+        "sha256": "f93e6492e63ad109ab1f4484b1fe9e61bc6de7c63b67dc7c69abf976f07aecdf"
+      },
+      {
+        "path": "build/disks/components/game_21.bin",
+        "size": 8132,
+        "sha256": "8f58c7e696db4e1b7c2e6eae4f51cd40eee8d4dc1019dc926bdb2f70248260cb"
+      },
+      {
+        "path": "build/disks/components/game_8.bin",
+        "size": 3130,
+        "sha256": "49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d"
+      },
+      {
+        "path": "build/disks/components/library_22.bin",
+        "size": 6126,
+        "sha256": "7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49"
+      },
+      {
+        "path": "build/disks/components/library_23.bin",
+        "size": 606,
+        "sha256": "af7267c0fb90b5e2e8c477d12d13f90afd98010a140f1e6f09b12bdb69e5529f"
+      },
+      {
+        "path": "build/disks/components/library_24.bin",
+        "size": 4306,
+        "sha256": "acaadfd85907933575a035fe67f716630e3c3695430008f90a4b48ea6b1fd68c"
+      },
+      {
+        "path": "build/disks/components/library_25.bin",
+        "size": 958,
+        "sha256": "16048527422b435b2f6e811d3abddade3318f4570746a2e8e5b1419d16c9a4b3"
+      },
+      {
+        "path": "build/disks/components/library_26_disk1.bin",
+        "size": 3058,
+        "sha256": "b0ae9ea678899ce9e39cbb54ce416786c775b8bfd1a270d8cd1769bf4c8deecd"
+      },
+      {
+        "path": "build/disks/components/library_26_disk2.bin",
+        "size": 3058,
+        "sha256": "188476754bcdeb89a5843ec91e2e626e2680c324ee6d2b3641ad292dc1d99b5d"
+      },
+      {
+        "path": "build/disks/components/library_27.bin",
+        "size": 1616,
+        "sha256": "90687f83d0ea2ae33be2e211b686b174fbf7cee15b886cebb52884f4ce687c80"
+      },
+      {
+        "path": "build/disks/components/library_28.bin",
+        "size": 328,
+        "sha256": "c8054603d64cdcafa4cfdee95ab756aeb94ac26545b2a42888edd98e59d0d960"
+      },
+      {
+        "path": "build/disks/components/library_text_tail.bin",
+        "size": 18,
+        "sha256": "a2a18326f013e6a1223a2d6ab24545c93b712f9a32dbbee8a3f2e31581463119"
+      },
+      {
+        "path": "build/disks/components/native_block_tails.bin",
+        "size": 634,
+        "sha256": "076c8ff60217a41922b2697b6a9b785b7dc438e0fabf56c0d86a91ffa0a64d0f"
+      },
+      {
+        "path": "build/disks/components/native_high.bin",
+        "size": 2160,
+        "sha256": "e1124caf0a14e2cba497ceaa5e296991d8d462c73867715edf806d1d43a9fa19"
+      },
+      {
+        "path": "build/disks/components/native_init.bin",
+        "size": 1280,
+        "sha256": "c7c1a2160f3a266852f528c27cd396b0a97b3e6ae8761b0687ee6511a74c82c0"
+      },
+      {
+        "path": "build/disks/components/native_io.bin",
+        "size": 4096,
+        "sha256": "b3d767f4beb9a26bf79736ec7826a79ba52cef71887b3320bb3cf45cd6b31139"
+      },
+      {
+        "path": "build/disks/components/native_shared.bin",
+        "size": 4523,
+        "sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6"
+      },
+      {
+        "path": "build/disks/components/packed_image_storage.bin",
+        "size": 680,
+        "sha256": "cce995d8db69eac99715dd540c8115f3679cd886882f27369f01167c6e94b1a9"
+      },
+      {
+        "path": "build/disks/components/pascal_directories.bin",
+        "size": 1536,
+        "sha256": "6877d2c78cd7f614c4965a5ac20b87cc8ad8d2379540f63f7c5b22bfcd360b30"
+      },
+      {
+        "path": "build/disks/components/pascal_header_extensions.bin",
+        "size": 1050,
+        "sha256": "b073bb46db6353f1230b9a322af5676027d0de2abff59b3e1745ef4785a43a2f"
+      },
+      {
+        "path": "build/disks/components/pascal_header_tables.bin",
+        "size": 1728,
+        "sha256": "5656f53d3fdf1576655e0d24ebe0c703f4d59d6c5003e2c95752de7349f601f3"
+      },
+      {
+        "path": "build/disks/components/pcode_primitives.bin",
+        "size": 4325,
+        "sha256": "902a7339ff7e54071c3f9748bf2bd213a46c96405c88183ebc10159c8b1a6d9c"
+      },
+      {
+        "path": "build/disks/components/play_boot.bin",
+        "size": 193,
+        "sha256": "e15615c9551721fc77e7e3f4abbf9580392625061228a59cfe7e8b16e1c6650a"
+      },
+      {
+        "path": "build/disks/components/play_disk_final_track.bin",
+        "size": 4096,
+        "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+      },
+      {
+        "path": "build/disks/components/raw_buffer_transform.bin",
+        "size": 93,
+        "sha256": "9daf776fada9f557febbfc5cb55454b3a9613e250ecbf6e4dee29937df385359"
+      },
+      {
+        "path": "build/disks/components/raw_screen_init.bin",
+        "size": 297,
+        "sha256": "a31fbdf8f43e086d89407931e9ad267447ac6120283447f78f196d856f2ddbd1"
+      },
+      {
+        "path": "build/disks/components/retained_command_stack.bin",
+        "size": 184,
+        "sha256": "544f86ba1b65bb684cbee59560a913362cd5e6a21ccd81157e181a89c3b3f4db"
+      },
+      {
+        "path": "build/disks/components/retained_compiler_heap.bin",
+        "size": 460,
+        "sha256": "ab3caa2d14b9706d58b0ef2cc56e5abbaa771bf98cdbea2274f55c534e2f478f"
+      },
+      {
+        "path": "build/disks/components/retained_linker.bin",
+        "size": 302,
+        "sha256": "4f22953edfa739462959cac1ecba3d1116d8d125d2c25fab4f9dcac20dbcee11"
+      },
+      {
+        "path": "build/disks/components/retained_linker_prompt.bin",
+        "size": 14,
+        "sha256": "9992150e53e29a7f26cbb3d6f61fae07aef9089a5a730913504b50553b723e5c"
+      },
+      {
+        "path": "build/disks/components/retained_pascal_metadata.bin",
+        "size": 760,
+        "sha256": "8d8b0d38f86108edca7aebf3a7bfb5289f963f4d4daea9d97a920fb3ebd87ec4"
+      },
+      {
+        "path": "build/disks/components/retained_pascal_stack.bin",
+        "size": 492,
+        "sha256": "6bf0f1396813b8016f98f664af037e4c03d716dc6d2215f85244be7581c82c12"
+      },
+      {
+        "path": "build/disks/components/saved_map_cache.bin",
+        "size": 96,
+        "sha256": "5891d9839ddecd69ae8934e7e6ee9f3e363fbd521fe204a4121e71dc009cccd9"
+      },
+      {
+        "path": "build/disks/components/startup_7.bin",
+        "size": 1868,
+        "sha256": "2c4cdfee9d22a90d65b09a47a3f6bd895301952e21bc6bbfd3116e410cffa370"
+      },
+      {
+        "path": "build/disks/components/startup_disk1.bin",
+        "size": 576,
+        "sha256": "c01644b696e7b2bdef1e9773c6b98cc12ad139230edcf4a7994047c2396fcdc6"
+      },
+      {
+        "path": "build/disks/components/startup_disk2.bin",
+        "size": 576,
+        "sha256": "c01644b696e7b2bdef1e9773c6b98cc12ad139230edcf4a7994047c2396fcdc6"
+      },
+      {
+        "path": "build/disks/components/system_1.bin",
+        "size": 20,
+        "sha256": "2be48a418438ab23c5fdb82258eebe9e3252aa86d014a9021f5218b9a5bb366e"
+      },
+      {
+        "path": "build/disks/components/system_2.bin",
+        "size": 808,
+        "sha256": "8a9dd883672a6bdfd37ef06130b65b46e60f7f7fc71d0d8c4cf0899bfe2e936d"
+      },
+      {
+        "path": "build/disks/components/system_3.bin",
+        "size": 20,
+        "sha256": "156552bd66e54134b733a7befff51eab606572b1ae1d502d4be379762deaac65"
+      },
+      {
+        "path": "build/disks/components/system_4.bin",
+        "size": 1998,
+        "sha256": "eb44e9cfed57e6d922bb071270c1e7bcc668ca9d01dc0ce60939a0fc374c9588"
+      },
+      {
+        "path": "build/disks/components/system_5.bin",
+        "size": 1670,
+        "sha256": "b0d893a6c4e2ef89913699de1f87c76f11a5003b834cc5b088af9c117a790752"
+      },
+      {
+        "path": "build/disks/components/system_6.bin",
+        "size": 3652,
+        "sha256": "6d7d68690c762bba59560ebae4d65148dbd832b268a7e0cb4bd03f7991260a79"
+      },
+      {
+        "path": "build/disks/components/system_core.bin",
+        "size": 3258,
+        "sha256": "20c22ff0263b6b3e9e703a0be0a9166fd6f36374243b3af0a30953e61a39a8eb"
+      },
+      {
+        "path": "build/disks/components/system_entry.bin",
+        "size": 36,
+        "sha256": "ef70020a699c0a1201d839a50e0cf38a7c8fe4c69971c0a68b621ce38c3cdfc3"
+      },
+      {
+        "path": "build/disks/components/title_draw.bin",
+        "size": 1024,
+        "sha256": "ace7eaf933f807a726b5647bf775d6d93dd4adb4931ce80a29cb366aaebad970"
+      },
+      {
+        "path": "build/disks/components/utility_disk1.bin",
+        "size": 8644,
+        "sha256": "3d0ad5c10da8631faabef1aabb87a42f8892fc13b51dd8a0d7bf814dfb724553"
+      },
+      {
+        "path": "build/disks/components/utility_variant_edges.bin",
+        "size": 16,
+        "sha256": "a67034948edd7048b3bbf232500304454db738f0516a957bf5644da4f16c252f"
+      },
+      {
+        "path": "build/disks/components/utility_variant_procedures.bin",
+        "size": 2138,
+        "sha256": "047ce9a35873e9d934d07c1e6cfa557207bb60f744f78d2058f44041b46f737d"
+      },
+      {
+        "path": "build/disks/components/viewscreen_io.bin",
+        "size": 1024,
+        "sha256": "3220ae4b311c128879eb11f8d60b2040fac03a8c4d652be943c7674b14d3dd11"
+      },
+      {
+        "path": "build/disks/components/viewscreen_output_storage.bin",
+        "size": 80,
+        "sha256": "a7a1dfde58eb792ac7773781ae8bafa3ff0aa0632ac6905fca3bef87757891c6"
+      },
+      {
+        "path": "build/disks/components/viewscreen_transition.bin",
+        "size": 944,
+        "sha256": "36e6af8edb91ab9e07891fdb585b95ead88df957c20ba37de924990c753b73fe"
+      },
+      {
+        "path": "build/disks/components/warp_animation.bin",
+        "size": 1536,
+        "sha256": "ea26feead3a6333158463dde08b62bfa5a961b595e40e7406686e1447aaec74e"
+      },
+      {
+        "path": "build/disks/components/window_allocation_tail.bin",
+        "size": 126,
+        "sha256": "8571c992f1c023436507a2e5f44f9bc449ff875027389d9272f1dff1446f755f"
+      },
+      {
+        "path": "assets/alternate-glyphs/glyphs.bin",
+        "size": 1024,
+        "sha256": "c5631199d734fdcf503e18619442d99ce0a65424b3f176f6feccc16eb45d0024"
+      },
+      {
+        "path": "assets/city-maps/maps.bin",
+        "size": 7680,
+        "sha256": "e9c6acd949666209de7378a5e5267dcb9466cd9b35ba877872680a9ac77aa370"
+      },
+      {
+        "path": "assets/dialogue-bank-storage/data.bin",
+        "size": 925,
+        "sha256": "36b66340c5f1d37964a6c9c5634b383b5c53b404a03814a47840b1aac180a1f7"
+      },
+      {
+        "path": "assets/dialogue-dictionary/dictionary.bin",
+        "size": 1930,
+        "sha256": "31489d907b725901f8936487dbf85aae4b9142a47eb439fafcbb2ccc3ff7221f"
+      },
+      {
+        "path": "assets/dialogue-messages/messages.bin",
+        "size": 3434,
+        "sha256": "88c1f94a85a16fcae3f20ed8b5cc7200f00d5f0d1a729c85553a78046c7fedf7"
+      },
+      {
+        "path": "assets/font/font.bin",
+        "size": 1024,
+        "sha256": "eeadc8615ae25ac5611744c0f32589698d4d3cc4c57808a98df85268d08ca775"
+      },
+      {
+        "path": "assets/interaction-records/records.bin",
+        "size": 512,
+        "sha256": "7a960bda7f95de8f55f2053d636aac481999b76f67159aa5ce815dbea0efb283"
+      },
+      {
+        "path": "assets/interaction-window/window.bin",
+        "size": 1922,
+        "sha256": "722424db50f38fdd7aa84efeed868ec4513a4570850c92a6301184641be99dc6"
+      },
+      {
+        "path": "assets/item-names/demo/records.bin",
+        "size": 1024,
+        "sha256": "72991f2cad8af953a7f366421742c4991615aa6c97bbebcf6e121cf09ab5d89a"
+      },
+      {
+        "path": "assets/item-names/play/records.bin",
+        "size": 1024,
+        "sha256": "595790e626bec3bcc68293b736861333a5247f9ee380f9c01f927fb3bf1c7faa"
+      },
+      {
+        "path": "assets/logo-frames/frames.bin",
+        "size": 6144,
+        "sha256": "c49ef7d757ac42f03b2d33ef8fd95c9c83faf02a0d29ac27ad9af1a756d9c2a2"
+      },
+      {
+        "path": "assets/map-record-prefixes/prefixes.bin",
+        "size": 832,
+        "sha256": "33d0fd6f735d4c4f828ade3745f529a62c54329923f3fef208bb0b72af5d668d"
+      },
+      {
+        "path": "assets/play-glyphs/bank1/glyphs.bin",
+        "size": 1024,
+        "sha256": "c5631199d734fdcf503e18619442d99ce0a65424b3f176f6feccc16eb45d0024"
+      },
+      {
+        "path": "assets/play-glyphs/bank2/glyphs.bin",
+        "size": 1024,
+        "sha256": "f4f8bebc8c2e2ab5fce16b89b02cf679ff05125f21d615e3222b818b3f091a1f"
+      },
+      {
+        "path": "assets/retained-font-half/glyphs.bin",
+        "size": 512,
+        "sha256": "e26c063faef229917fc2e2374f3ef29661786b501cb75edb283bfe14254c0426"
+      },
+      {
+        "path": "assets/retained-tile-rows/rows.bin",
+        "size": 32,
+        "sha256": "8c11793b90a788cecdb01e0ed01cd5d361bda07b2e8efa02172950aedd660fc7"
+      },
+      {
+        "path": "assets/retained-title/fragments.bin",
+        "size": 252,
+        "sha256": "e11d3928139623d4c98c6b36ffb6b41cb18eae5d4e95305610ff9c76fb5e8bcc"
+      },
+      {
+        "path": "assets/retained-title-changes/fragments.bin",
+        "size": 252,
+        "sha256": "3dbbb69d3380dde04b03a9426ef88139d1feaa724307f104a9e6a78841ab962f"
+      },
+      {
+        "path": "assets/save-states/payloads.bin",
+        "size": 20096,
+        "sha256": "e0091114ce36ca41198c82638a82489784961ddd0cf8f1b0897754e2ac425b85"
+      },
+      {
+        "path": "assets/save-states/slots.bin",
+        "size": 256,
+        "sha256": "793ac5444a98999fc062e43911375c777b2496b5392c5122e15e29e3e6362051"
+      },
+      {
+        "path": "assets/tiles/bank0/tiles.bin",
+        "size": 2048,
+        "sha256": "1b5f15f57e72febb3a53e3bd9616e9cb854423f0c0c0e7c98847647ba894650f"
+      },
+      {
+        "path": "assets/tiles/bank1/tiles.bin",
+        "size": 2048,
+        "sha256": "8b01f5ccc9805e43be29419ea9c6fc24c400f69174922f09e8afc320ef63680c"
+      },
+      {
+        "path": "assets/tiles/bank2/tiles.bin",
+        "size": 2048,
+        "sha256": "85a8cc1a5999a30adf95e034e3fed45ba336871d3e878ce36c0c8270542184d8"
+      },
+      {
+        "path": "assets/tiles/bank3/tiles.bin",
+        "size": 2048,
+        "sha256": "6e5d341c0f8e1ad5234b067e848c1755fd59ea0ac8e05df9a226de0c51f8d3ef"
+      },
+      {
+        "path": "assets/working-state/data.bin",
+        "size": 5017,
+        "sha256": "3b6fb86a647752b9a44e12f21609412730ebd3cbb261065e8f0cf28ec415bc16"
+      },
+      {
+        "path": "assets/world-maps/maps.bin",
+        "size": 4320,
+        "sha256": "2778cfabd56b6e6d210c6603c6c98c032766c843183d8578228ae5208f702ff3"
+      },
+      {
+        "path": "assets/world-tiles/tiles.bin",
+        "size": 2016,
+        "sha256": "314f9b57168a19795a27f21b0d8c162bc4fac7af1d2a8ad37f9b71f6f4f18065"
+      },
+      {
+        "path": "apple2.zip:341-0001-00.e0",
+        "size": 2048,
+        "sha256": "3a5137fa95b0a2e4a60a975a97d04abd89425295ee352aa17a3da348764d4f27"
+      },
+      {
+        "path": "apple2.zip:341-0002-00.e8",
+        "size": 2048,
+        "sha256": "0ec63e5737b33f133166a3d55ed28a367a671f03960d9d57fb8598a9de6a437b"
+      },
+      {
+        "path": "apple2.zip:341-0003-00.f0",
+        "size": 2048,
+        "sha256": "2ba5e31366045e5f03255f147550112a5974e3a36ed21ce585917f7c5be12869"
+      },
+      {
+        "path": "apple2.zip:341-0004-00.f8",
+        "size": 2048,
+        "sha256": "882db0fbe15c7cfe395fe41451c759c4a21c09ff8fa161473c549fbce7733964"
+      },
+      {
+        "path": "apple2.zip:341-0016-00.d0",
+        "size": 2048,
+        "sha256": "e35d2e96d7b395dd3c035726e76c417b05813ae9675ca7108d5988dc980110a3"
+      },
+      {
+        "path": "apple2.zip:341-0020-00.f8",
+        "size": 2048,
+        "sha256": "29465303e7844fa56a8c846d0565e45f5ee082f98f2ccf1b261de4a7e902201b"
+      },
+      {
+        "path": "apple2.zip:a2.chr",
+        "size": 2048,
+        "sha256": "08f5d22230481019844492dde0a29a018cb193712a9e4a43770a3870608f28de"
+      },
+      {
+        "path": "apple2e.zip:342-0132-c.e12",
+        "size": 2048,
+        "sha256": "fbb9620e01f4f728e5a8ba86544900978d7803f6a7d577d384e288dfed9a4907"
+      },
+      {
+        "path": "apple2e.zip:342-0133-a.chr",
+        "size": 4096,
+        "sha256": "0d54ff735c060c55d54b8a22d0112af78a6465ce9c9aae4a865d207e5c8ff1e7"
+      },
+      {
+        "path": "apple2e.zip:342-0134-a.64",
+        "size": 8192,
+        "sha256": "ca06c6e6921d5709538fb1a60d3ecbb4623f13c69fca828985963753c95b6285"
+      },
+      {
+        "path": "apple2e.zip:342-0135-b.64",
+        "size": 8192,
+        "sha256": "f119063639c04770ea4a8e6515304560c348ca9bd10da4055623efbbdc198c65"
+      },
+      {
+        "path": "apple2ep.zip:32-0349-b.128",
+        "size": 16384,
+        "sha256": "aab38a03ca8deabbb2f868733148c2efd6f655a59cd9c5d058ef3e0b7aa86a1a"
+      },
+      {
+        "path": "apple2ep.zip:341-0132-d.e12",
+        "size": 2048,
+        "sha256": "a1989da84ea4381d309e7e08783771f884e913236b9bcc71c3d649aacf76537a"
+      },
+      {
+        "path": "apple2ep.zip:342-0265-a.chr",
+        "size": 4096,
+        "sha256": "52c3b87900ac939f6525402cab1ccfd8f8259290fc6df54da48fb4c98ae3ed0f"
+      },
+      {
+        "path": "apple2p.zip:341-0011.d0",
+        "size": 2048,
+        "sha256": "b45168834f01e11ae2cc35fc6bef153e5a13c180503c6533dff111558099df4d"
+      },
+      {
+        "path": "apple2p.zip:341-0012.d8",
+        "size": 2048,
+        "sha256": "468d36201974ecbe22efd9164f0ead1abab00b33f1a480da525502964641f444"
+      },
+      {
+        "path": "apple2p.zip:341-0013.e0",
+        "size": 2048,
+        "sha256": "2814de134e79213eddb6d7d7a18cba105e120a08e77c9767c46d6fc3cfcc593d"
+      },
+      {
+        "path": "apple2p.zip:341-0014.e8",
+        "size": 2048,
+        "sha256": "6848707531d7a8934a58e743483e4ebc74bf2ded0229b42533fa20cb89ed1a23"
+      },
+      {
+        "path": "apple2p.zip:341-0015.f0",
+        "size": 2048,
+        "sha256": "220fb70bac6839c98901cd542c3c1fbd7145d0bb9423ea8fcc8af0f16ec47d75"
+      },
+      {
+        "path": "apple2p.zip:341-0020-00.f8",
+        "size": 2048,
+        "sha256": "29465303e7844fa56a8c846d0565e45f5ee082f98f2ccf1b261de4a7e902201b"
+      }
+    ],
+    "transforms": 28,
+    "minimum_original_bytes": 16,
+    "matches": []
+  },
+  "pascal_footers": {
+    "inputs": [
+      {
+        "path": "APPLE0-SYSTEM.CHARSET",
+        "size": 1024,
+        "sha256": "dda9a82dd2d17f72fcd0fd10b341f1c94bed7880420c2316c6d5febd2009fc73"
+      },
+      {
+        "path": "APPLE0-SYSTEM.COMPILER",
+        "size": 39936,
+        "sha256": "d2686b8c02f03beaac55e8c404457b4ea0e64df28ebe2824905c264c945aacf9"
+      },
+      {
+        "path": "APPLE0-SYSTEM.EDITOR",
+        "size": 25600,
+        "sha256": "99603ddcf792837a62128025646ceecf5c98d8da63e1b8885a62f60e5943afb3"
+      },
+      {
+        "path": "APPLE0-SYSTEM.FILER",
+        "size": 15360,
+        "sha256": "7aecd293ff193e979aab6c7a5e8bac878ff2eeab8492369f52482288d60d5caa"
+      },
+      {
+        "path": "APPLE0-SYSTEM.LIBRARY",
+        "size": 19456,
+        "sha256": "1f4ab0662f085269e76c315b2cd1ddea6fba56b84da34249f0eed97af3ffc7f6"
+      },
+      {
+        "path": "APPLE0-SYSTEM.MISCINFO",
+        "size": 512,
+        "sha256": "b303574dc8efcf93d6f6c13845347d7861bfefca385902ae712d85b0f3282372"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "size": 22528,
+        "sha256": "a8535382d7df95766093a6c734fe4feeade6fb4ce60fc065dc65c785308f8859"
+      },
+      {
+        "path": "APPLE0-SYSTEM.SYNTAX",
+        "size": 6144,
+        "sha256": "8f72dc1443fce2fd82f750c530c747d7fa2154819ee739eb43c6d25d5681deb4"
+      },
+      {
+        "path": "APPLE1-SYSTEM.APPLE",
+        "size": 16384,
+        "sha256": "daa490d5e0bb98e1955081c0d268bed4a862a2b633bdc078b13d0d050a71c630"
+      },
+      {
+        "path": "APPLE1-SYSTEM.CHARSET",
+        "size": 1024,
+        "sha256": "dda9a82dd2d17f72fcd0fd10b341f1c94bed7880420c2316c6d5febd2009fc73"
+      },
+      {
+        "path": "APPLE1-SYSTEM.EDITOR",
+        "size": 25600,
+        "sha256": "99603ddcf792837a62128025646ceecf5c98d8da63e1b8885a62f60e5943afb3"
+      },
+      {
+        "path": "APPLE1-SYSTEM.FILER",
+        "size": 15360,
+        "sha256": "7aecd293ff193e979aab6c7a5e8bac878ff2eeab8492369f52482288d60d5caa"
+      },
+      {
+        "path": "APPLE1-SYSTEM.LIBRARY",
+        "size": 19456,
+        "sha256": "1f4ab0662f085269e76c315b2cd1ddea6fba56b84da34249f0eed97af3ffc7f6"
+      },
+      {
+        "path": "APPLE1-SYSTEM.MISCINFO",
+        "size": 512,
+        "sha256": "b303574dc8efcf93d6f6c13845347d7861bfefca385902ae712d85b0f3282372"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "size": 22528,
+        "sha256": "a8535382d7df95766093a6c734fe4feeade6fb4ce60fc065dc65c785308f8859"
+      },
+      {
+        "path": "APPLE1-SYSTEM.SYNTAX",
+        "size": 6144,
+        "sha256": "8f72dc1443fce2fd82f750c530c747d7fa2154819ee739eb43c6d25d5681deb4"
+      },
+      {
+        "path": "APPLE2-LIBMAP.CODE",
+        "size": 5632,
+        "sha256": "a85955114e517f78273dd4b1867099223eed656f8879f0f69bce9e922da1b180"
+      },
+      {
+        "path": "APPLE2-LIBRARY.CODE",
+        "size": 4096,
+        "sha256": "b5c7f35aac10d81aefa657752d7f131035be62a0812b75f7a524d4f23e6b3825"
+      },
+      {
+        "path": "APPLE2-SYSTEM.ASSMBLER",
+        "size": 25600,
+        "sha256": "7850999f2d144b7f5bdfcf188c3afe3bf04708712c895004426b2d8826f5fd4d"
+      },
+      {
+        "path": "APPLE2-SYSTEM.COMPILER",
+        "size": 39936,
+        "sha256": "d18595c2ea04f9b5cdd84c7eebf3dc871fe8d850173cf86de8339bef2e7f0e51"
+      },
+      {
+        "path": "APPLE2-SYSTEM.LINKER",
+        "size": 12800,
+        "sha256": "e4085de772da4bb1251d11d2830f3efb765c5361bc4c14ad5acb3a8a0a6c1d47"
+      },
+      {
+        "path": "APPLE3-BINDER.CODE",
+        "size": 2560,
+        "sha256": "7505c84dad442aefae5fe7b2ad41ec4bfe1cf79ff8b8e22abdf3057189f48a73"
+      },
+      {
+        "path": "APPLE3-FORMATTER.CODE",
+        "size": 3584,
+        "sha256": "77848a2858ed9942b836ed1b91e207e219303b8374b087237d902c20a683ec0c"
+      },
+      {
+        "path": "APPLE3-LINEFEED.CODE",
+        "size": 1024,
+        "sha256": "bf53cfeb938138090798b23aa721a73c0bfdf4c942ebd9ac559bcc9afc9cad69"
+      },
+      {
+        "path": "APPLE3-SET40COLS.CODE",
+        "size": 2560,
+        "sha256": "7726212bfee87ec5ed78a75d1252d7b54166dc3d4dceb349158dcb4ebe3f067a"
+      },
+      {
+        "path": "APPLE3-SETUP.CODE",
+        "size": 16896,
+        "sha256": "f3ce7aea8dbef264d3d89f2919ab6e4c1d214055aae28b68d5cb6aad30547019"
+      },
+      {
+        "path": "APPLE3-SYSTEM.APPLE",
+        "size": 16384,
+        "sha256": "daa490d5e0bb98e1955081c0d268bed4a862a2b633bdc078b13d0d050a71c630"
+      }
+    ],
+    "valid_segment_occurrences": 96,
+    "matches": [],
+    "main_suffixes": [
+      {
+        "path": "APPLE0-SYSTEM.COMPILER",
+        "slot": 1,
+        "attribute_offset": 4592,
+        "segment_offset": 512,
+        "suffix": "0023006a000100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.EDITOR",
+        "slot": 1,
+        "attribute_offset": 3246,
+        "segment_offset": 512,
+        "suffix": "001100ea000100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.FILER",
+        "slot": 1,
+        "attribute_offset": 14530,
+        "segment_offset": 512,
+        "suffix": "00110028010100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "slot": 1,
+        "attribute_offset": 50,
+        "segment_offset": 7680,
+        "suffix": "00070030000100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "slot": 3,
+        "attribute_offset": 1150,
+        "segment_offset": 9216,
+        "suffix": "000f007c040100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "slot": 4,
+        "attribute_offset": 3120,
+        "segment_offset": 10752,
+        "suffix": "00230078040100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "slot": 5,
+        "attribute_offset": 5320,
+        "segment_offset": 14336,
+        "suffix": "000f006a030100"
+      },
+      {
+        "path": "APPLE0-SYSTEM.PASCAL",
+        "slot": 6,
+        "attribute_offset": 2238,
+        "segment_offset": 19968,
+        "suffix": "0006005a000100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.EDITOR",
+        "slot": 1,
+        "attribute_offset": 3246,
+        "segment_offset": 512,
+        "suffix": "001100ea000100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.FILER",
+        "slot": 1,
+        "attribute_offset": 14530,
+        "segment_offset": 512,
+        "suffix": "00110028010100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "slot": 1,
+        "attribute_offset": 50,
+        "segment_offset": 7680,
+        "suffix": "00070030000100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "slot": 3,
+        "attribute_offset": 1150,
+        "segment_offset": 9216,
+        "suffix": "000f007c040100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "slot": 4,
+        "attribute_offset": 3120,
+        "segment_offset": 10752,
+        "suffix": "00230078040100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "slot": 5,
+        "attribute_offset": 5320,
+        "segment_offset": 14336,
+        "suffix": "000f006a030100"
+      },
+      {
+        "path": "APPLE1-SYSTEM.PASCAL",
+        "slot": 6,
+        "attribute_offset": 2238,
+        "segment_offset": 19968,
+        "suffix": "0006005a000100"
+      },
+      {
+        "path": "APPLE2-LIBMAP.CODE",
+        "slot": 0,
+        "attribute_offset": 3960,
+        "segment_offset": 512,
+        "suffix": "001800d8010100"
+      },
+      {
+        "path": "APPLE2-LIBRARY.CODE",
+        "slot": 1,
+        "attribute_offset": 3482,
+        "segment_offset": 512,
+        "suffix": "001b00fa010100"
+      },
+      {
+        "path": "APPLE2-SYSTEM.ASSMBLER",
+        "slot": 1,
+        "attribute_offset": 10096,
+        "segment_offset": 512,
+        "suffix": "001c0058000100"
+      },
+      {
+        "path": "APPLE2-SYSTEM.COMPILER",
+        "slot": 1,
+        "attribute_offset": 4592,
+        "segment_offset": 512,
+        "suffix": "0023006a000100"
+      },
+      {
+        "path": "APPLE2-SYSTEM.LINKER",
+        "slot": 1,
+        "attribute_offset": 11698,
+        "segment_offset": 512,
+        "suffix": "000d0026000100"
+      },
+      {
+        "path": "APPLE3-BINDER.CODE",
+        "slot": 0,
+        "attribute_offset": 1590,
+        "segment_offset": 512,
+        "suffix": "001a00f0020100"
+      },
+      {
+        "path": "APPLE3-FORMATTER.CODE",
+        "slot": 0,
+        "attribute_offset": 2304,
+        "segment_offset": 512,
+        "suffix": "0027003c050100"
+      },
+      {
+        "path": "APPLE3-LINEFEED.CODE",
+        "slot": 0,
+        "attribute_offset": 32,
+        "segment_offset": 512,
+        "suffix": "0006001e000100"
+      },
+      {
+        "path": "APPLE3-SET40COLS.CODE",
+        "slot": 0,
+        "attribute_offset": 1662,
+        "segment_offset": 512,
+        "suffix": "000d0002040100"
+      },
+      {
+        "path": "APPLE3-SETUP.CODE",
+        "slot": 1,
+        "attribute_offset": 5982,
+        "segment_offset": 10240,
+        "suffix": "000d0000020100"
+      }
+    ]
+  }
+}

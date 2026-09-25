@@ -235,6 +235,11 @@ Split large steps into independently validated, logged, and committed increments
   unresolved bytes. Copied operands, encoded banks and overlapping/fragment
   instructions retain explicit ownership. The strict ledger gate remains red;
   remaining classification and final evidence/delivery review are still open.
+- Step 08aa consolidates the remaining tail hypotheses and negative donor
+  searches in docs/unresolved-tails.md, with replayable probes and hashed input
+  receipts. The template-footer hypothesis still lacks a complete donor or
+  pointing dictionary. No remaining bytes are reclassified; completion criteria
+  and the strict gates remain unchanged.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk
