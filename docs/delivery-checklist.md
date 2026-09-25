@@ -1,32 +1,34 @@
 # Delivery review
 
-**Scope update, step 08ac:** the user has accepted the 488 bytes as unidentified
-data. Their [bounded exception](user-assumed-data.md) now passes the strict build
-and complete-ledger gates, with no temporary inputs and 180 passing tests.
-The step 10a review below is historical; final isolated strict verification and
-the updated delivery review follow under the revised scope.
+The required deliverables are complete under the user's explicit acceptance of
+**488 unidentified bytes as data**. Those bytes remain unchanged and separately
+counted; their code/data role is not claimed to be proved. The exact exception
+is documented in [user-assumed-data.md](user-assumed-data.md).
 
-Step 10a reviews the current deliverables against PRD.md. **The project is not
-complete:** 488 bytes remain unidentified, the final evidence review remains
-open, and a standalone strict build cannot yet pass. Documentation and exact
-output do not override those requirements.
+| Required output or criterion | Final evidence / status |
+| --- | --- |
+| Disassembled source | [Source index](../src/README.md), procedure-aware native/Pascal/script audits, exact assembly and documented clipped instruction contexts; the bounded user exception is preserved separately |
+| Every disk byte accounted for | [Ledger](classification-ledger.md): 136,686 code, 149,546 evidenced data, 488 user-assumed data; all 166 components integrated, zero temporary bytes or missing adapters |
+| Extracted assets | [Asset index](../assets/README.md): 32 identified-data components, 31 manifests, format/consumer evidence and lossless representations |
+| Independent disk generation | [Final build receipt](reference/final-build-validation.json): two isolated strict builds without originals, manual or earlier build products; disks and reports identical |
+| Exact or explained output | Both 143,360-byte images exactly match the originals; no output deviation requires explanation |
+| Boot, gameplay, swaps, utilities, save/reload | [Reference sequences](reference/README.md), [MAME](save-reload-validation.md), [Apple2TS](apple2ts-behavior-validation.md); final identical bytes reuse these exercised baselines |
+| Evidence and representation review | [Final review receipt](reference/final-evidence-review.json): integrated ledger with 404 proof files, 15 data audits, 17 asset/script verifiers and eight re-extracted asset groups |
+| Reproduction and usage | Commands below, source/asset indexes, emulator configuration and reports |
+| Per-step logs and commits | [PROGRESS.md](../PROGRESS.md), including final step 10b and earlier checkpoints |
 
-| Required output or criterion | Current evidence | Remaining work |
-| --- | --- | --- |
-| Disassembled source | [Source index](../src/README.md), Pascal/native/script decoders, source-built components | Resolve any executable content among the remaining tails; finish the evidence/source review |
-| Code/data classification of every byte | [Disk-wide ledger](classification-ledger.md): 136,686 code, 149,546 data, 488 unidentified | Classify all [remaining tails](unresolved-tails.md) with positive evidence; rerun the strict ledger |
-| Extracted assets | [Asset index](../assets/README.md), 32 identified-data components with format/consumer evidence and lossless representations | Include any assets established by the remaining investigation; finish evidence review |
-| Independent disk generation | [Build pipeline](reconstruction.md), [isolated incremental builds](strict-build.md) | Remove all temporary inputs only after classification; repeat isolated builds with the strict option |
-| Exact or explained output | Both current 143,360-byte images match the originals; `verify_disks.py` maps any mismatch | Preserve exactness, or review and behaviorally validate each intentional difference |
-| Boot, gameplay, swaps, utilities, save/reload | [Reference sequences](reference/README.md), [MAME](save-reload-validation.md), [Apple2TS](apple2ts-behavior-validation.md) | Reuse these baselines while bytes remain identical; rerun integration checks if output changes |
-| Reproduction and usage | Commands below, source/asset indexes, emulator configuration and reports | Repeat final fresh-checkout instructions after strict completion |
-| Per-step logs and commits | [PROGRESS.md](../PROGRESS.md), Git checkpoints | Continue for every remaining step |
+All 180 regression tests pass. Fifty-three regenerated asset files, including
+previews and reversible representations, match the delivered files exactly.
+The complete-ledger check also passes inside the isolated tree without original
+inputs. Source inspection found no `.incbin` directives; documented clipped
+instruction bytes retain their complete donor contexts. Data classifications
+based on bounded inference retain the limitations stated in their reports.
 
-The evidence ledger replays code decoders and selected audits, but inherits
-some data classifications from their reports. Its coverage totals alone do not
-close review of those reports' reasoning. Detailed code explanations and game
-mechanics analysis are optional; evidence supporting code/data distinctions is
-required. Clipped instruction fragments retain their documented donor context.
+No required work remains under the revised scope. Further interpretation of the
+488 bytes, extended gameplay/audio testing, detailed code explanations and game
+mechanics analysis are optional. Earlier documents and progress entries retain
+historical incomplete counts; this review and the current manifest/ledger state
+the final acceptance status.
 
 ## Reproduce the current checkpoint
 
@@ -43,7 +45,7 @@ From the repository root:
 
 ```sh
 python3 tools/verify_inputs.py
-python3 tools/build_disks.py
+python3 tools/build_disks.py --no-temporary
 python3 tools/verify_disks.py
 python3 tools/classification_ledger.py
 python3 -m unittest discover -s tools
@@ -60,7 +62,7 @@ The current expected hashes are:
 | Disk 1 | `79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082` |
 | Disk 2 | `52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d` |
 
-These two checks intentionally fail until the unidentified inputs are resolved:
+Both strict gates now pass with the user exception recorded separately:
 
 ```sh
 python3 tools/build_disks.py --no-temporary
@@ -72,15 +74,10 @@ The final build tree needs `tools/`, `src/`, `assets/`, `reconstruction/` and
 manual are validation references. Copy those five directories into an empty
 directory without originals or previous build products, run the strict build
 there twice into separate output directories, and compare disks and reports.
-At this checkpoint only the incremental form succeeds because it explicitly
-includes temporary inputs. Remove neither their declarations nor bytes to make
-a gate pass without first completing classification and source reconstruction.
-
-The [step 10a receipt](reference/step10a-build-validation.json) records two
-isolated incremental builds with identical disks/reports and the expected
-488-byte strict refusal before output creation. All 178 regression tests pass;
-the current ledger verifies with no missing audit adapters. These results leave
-the classification and final-review requirements in the table open.
+The final receipt records two such strict builds and a complete-ledger check.
+The accepted data files are required inputs; do not omit them or expand their
+scope. Their exact sizes, hashes and disk mappings are enforced independently
+of the normal image comparison.
 
 ## Run the rebuilt game
 
@@ -107,4 +104,5 @@ The baselines cover initial gameplay, utility navigation and save/reload, not
 all travel, combat or utility mutations. MAME sound was disabled; no audio or
 cycle-timing equivalence is claimed. MAME used `apple2e`, while Apple2TS used
 `APPLE2EE`; the reports retain that model difference. Unknown meanings of
-already classified data are allowed, but unidentified code/data chunks are not.
+already classified data are allowed. The only accepted unidentified bytes are
+the explicitly recorded 488-byte user exception.

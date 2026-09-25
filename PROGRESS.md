@@ -3547,6 +3547,43 @@ and acceptance criteria.
   because output bytes did not change. The user's pre-existing PRD reference
   links and ref/ remain intact and excluded from this checkpoint's staging.
 
+## 2026-09-25 — Step 10b: complete strict reproduction and final delivery review
+
+- **Acceptance:** Completed required steps 01–10 under the user's explicit
+  488-byte data assumption. The remaining bytes retain their unidentified
+  status and exact values within the accepted exception; no additional region
+  is waived. Optional architecture/mechanics work and further tail research are
+  not required completion items.
+- **Final evidence review:** Replayed 15 data-source audits and 17 asset/script
+  verifiers. Re-extracted eight asset groups into a disposable build directory;
+  all 53 generated non-recipe files, including previews, raw/packed data and
+  reversible listings, match the delivered assets exactly. Reviewed the header,
+  directory and eight-byte disk-control consumer evidence. The integrated
+  ledger covers all 166 components and 404 proof files. Source inspection found
+  no .incbin directives; explicit native opcode/operand fragments retain their
+  existing donor/context proofs. Full results and limits are recorded in
+  docs/reference/final-evidence-review.json. The 180-test regression result from
+  the unchanged implementation in step 08ac remains applicable.
+- **Final standalone build:** Copied only tools/, src/, assets/,
+  reconstruction/ and docs/ to an empty temporary tree, with no original disks,
+  manual or previous build products. Two build_disks.py --no-temporary runs
+  succeed into separate outputs. Both disks and reports are identical; disk
+  bytes also equal both originals exactly. classification_ledger.py
+  --require-complete succeeds in the same original-free tree. Removed the owned
+  temporary tree after verification. docs/reference/final-build-validation.json
+  records versions, source commit, manifest, acceptance hash and strict report.
+- **Behavior:** Final images match the previously exercised MAME and Apple2TS
+  baselines byte for byte. Their documented boot/gameplay/swaps/utilities and
+  save/fresh-reload results therefore apply; no redundant new emulator session
+  or broader audio/travel/combat validation is claimed.
+- **Delivery:** Updated README, PLAN, strict-build documentation and the final
+  delivery checklist with current status, commands, coverage and limitations.
+  No temporary inputs or missing audit adapters remain. Counts are 136,686 code,
+  149,546 evidenced data and 488 user-assumed data, totaling 286,720 disk bytes.
+  Final original-input verification, local-link checks and git diff --check
+  pass. The user's pre-existing PRD reference links and ref/ remain untouched
+  and unstaged. No required work remains under the revised goal.
+
 ## 2026-09-25 — Step 08z: project component evidence across both complete disks
 
 - **Resumed:** Continued at the user's explicit request. Rechecked the dictionary

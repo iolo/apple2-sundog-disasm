@@ -20,6 +20,16 @@ exact scope. This exception applies to every code/data completion criterion
 below and supersedes earlier blanket prohibitions only for those 488 bytes.
 All other regions retain the evidence and disassembled-source requirements.
 
+## Final required status — step 10b
+
+Steps 01–10 are complete under the explicit 488-byte user exception. Both disks
+rebuild exactly from delivered source/data, with no temporary inputs. Two
+isolated strict builds and the complete ledger pass without originals; all 180
+tests and the final data/asset review pass. Existing dual-emulator baselines
+apply to the unchanged output bytes. See [the delivery review](docs/delivery-checklist.md)
+and its receipts. Step 11 and further investigation of the assumed bytes are
+optional and are not unfinished requirements.
+
 ## Base rule: log and commit every step
 
 For **every step below**, including prerequisite fixes and any smaller steps

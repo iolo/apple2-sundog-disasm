@@ -1,0 +1,498 @@
+{
+  "checkpoint": "10b",
+  "date": "2026-09-25",
+  "acceptance_scope": "PRD.md with the explicit 488-byte user-assumed-data exception",
+  "manifest_sha256": "f2cce64088df082e6ce52993c9546859738c8d7275d24437a5fdf980e0c06da9",
+  "coverage": {
+    "code": 136686,
+    "data": 149546,
+    "temporary-unresolved": 0,
+    "audit-not-integrated": 0,
+    "user-assumed-data": 488
+  },
+  "integrated_components": 166,
+  "proof_files_checked": 404,
+  "data_audits": [
+    {
+      "command": [
+        "python3",
+        "tools/header_extension_source.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "dba80beee9ee8ed36e55f1f66fe05a3266237596ee8d3b905af0aab915a02a73"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/asset_block_storage.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "72bf045283b8859aff8f84b9253e840373d8d1fa8b779af68b10a410ca38ec09"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_pascal_metadata.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "423dea8c07c645a24f1910583209dff510eec268a578118582d2f842531eef37"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_pascal_stack.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "f1d1d19a300a2aee8cc28e4fc2cc54c04d8839d00e172f40e1bd59a02e90e332"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_command_stack.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "0d03ede0badc732adab6f841d7ebe97ecbb3fe1e4e406cf7e9cab4e11964a384"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_compiler_heap.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "e99fda21310daba4fbb26927a471c8671348fec38d4117c06c0265fd8a0c82fe"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/play_disk_final_track.py"
+      ],
+      "exit": 0,
+      "output_sha256": "3a7dcb5e13d9eec03ad8b5a63c39bd7cfe381b735560ab6fd908b64cb482401d"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/native_output_storage.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "69536783ac7e92b3b61d4b1375dd4c32da87d650f0a97c238560850c91b4c822"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/early_native_footers.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "f4b6c36bcba7f0955624689d11c23fbd885a9b2e46688ab0e5c3d6525d9fbadb"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/window_allocation_tail.py"
+      ],
+      "exit": 0,
+      "output_sha256": "412fc535ed296d555647b5f816504996c2e9845734743741848f1537eba20d96"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/dialogue_workspace.py"
+      ],
+      "exit": 0,
+      "output_sha256": "b6cf54b9dbf8f1a509bf05eba956ffa79d72f4b7b90de607b8c5e063ab919315"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/packed_image_storage.py"
+      ],
+      "exit": 0,
+      "output_sha256": "cb766f3ac204e52235fa2308033525cf1831ec1455b557ebff3a88098362077d"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/library_text_tail.py"
+      ],
+      "exit": 0,
+      "output_sha256": "e569ee99179e2108106b0ff57d915be8af8e640e2607cd6773929118ca89376b"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/saved_map_cache.py"
+      ],
+      "exit": 0,
+      "output_sha256": "407a8f9321d05a976dab7f865684b8ad436b6b7f1b7329c2a004b56802e06c4b"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/encoded_reader_alignment.py"
+      ],
+      "exit": 0,
+      "output_sha256": "b9b9ddecc01995d557c84a8e6253a108b9b819c489b0db76c9e19300069fcefa"
+    }
+  ],
+  "asset_verifiers": [
+    {
+      "command": [
+        "python3",
+        "tools/item_name_asset.py",
+        "--verify",
+        "assets/item-names"
+      ],
+      "exit": 0,
+      "output_sha256": "76a83083c1bb40b271f8978fe48eaa8e19f852532f9a573825252a225d49a28d"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/city_map_asset.py",
+        "--verify",
+        "assets/city-maps"
+      ],
+      "exit": 0,
+      "output_sha256": "b5520996b9037faeae8379b96d1e78e86279d075a2be0855595c03361d1363b0"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/save_state_asset.py",
+        "--verify",
+        "assets/save-states"
+      ],
+      "exit": 0,
+      "output_sha256": "d7e2acbac95ea4ed795a2c575c28792b7423031c82a9c12482e6a3978170d59e"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/working_state_asset.py",
+        "--verify",
+        "assets/working-state"
+      ],
+      "exit": 0,
+      "output_sha256": "42939cf064b72520bd0ca0e853838be36cda65e9b0944ef1a5b6ad14b6c059de"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/logo_frame_asset.py",
+        "--verify",
+        "assets/logo-frames"
+      ],
+      "exit": 0,
+      "output_sha256": "d6d4a7234be007ab9d736ff7024bf4d6a9be61ffa584fb70f62ea03517100609"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/window_asset.py",
+        "--verify",
+        "assets/interaction-window"
+      ],
+      "exit": 0,
+      "output_sha256": "097e8e2ef9bde7d907d02dd386d07baf98b31ad21309cc3936a883909511d216"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/play_boot_asset.py",
+        "--verify",
+        "assets/play-boot"
+      ],
+      "exit": 0,
+      "output_sha256": "90fc49ed5df5097372a8e3d81944567fc09c99b92467142b822f051dff2232fc"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/interaction_record_asset.py",
+        "--verify",
+        "assets/interaction-records"
+      ],
+      "exit": 0,
+      "output_sha256": "186cd11f198bc309639413e4aed5bb9a70e2b1fda644be96eb482ae3c1ee2626"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/dialogue_dictionary_asset.py",
+        "--verify",
+        "assets/dialogue-dictionary"
+      ],
+      "exit": 0,
+      "output_sha256": "ad03e380e0a58c7aa5a5e7a1b2d8bbeae8b44e703919053f55a542b188c96754"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/prepare_dialogue_scripts.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "output_sha256": "87caee0535f3d1ac933521e24134904c4fcf21a40010f59b2b0de31c5df8d1d9"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/dialogue_bank_remainder.py",
+        "--verify",
+        "assets/dialogue-bank-storage"
+      ],
+      "exit": 0,
+      "output_sha256": "f7ab3e4311311498111c8faa645e6ac91b70703137429c0f9741d0a1319e6926"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/map_prefix_asset.py",
+        "--verify",
+        "assets/map-record-prefixes"
+      ],
+      "exit": 0,
+      "output_sha256": "acb54a48057e70bda21fe356486a7962d65344d5d76e4808c16ae58b9a7d757f"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/alternate_glyph_asset.py",
+        "--verify",
+        "assets/alternate-glyphs"
+      ],
+      "exit": 0,
+      "output_sha256": "8e873b0077f4ff875b30c61d16f2b6334c835aad0b46ae856fd3d39ae9f49e24"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_font_asset.py",
+        "--verify",
+        "assets/retained-font-half"
+      ],
+      "exit": 0,
+      "output_sha256": "d6147e53c9c18a91e7eb8a97fbb08f93b93d82da6d2c3d0a39d26c146bc0e66f"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_tile_asset.py",
+        "--verify",
+        "assets/retained-tile-rows"
+      ],
+      "exit": 0,
+      "output_sha256": "91c9448ead972bb64cc398dda20cf0cdb995ec65323c1a22b044f0c276159f9e"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_title_asset.py",
+        "--verify",
+        "assets/retained-title"
+      ],
+      "exit": 0,
+      "output_sha256": "77aa88654a8eb742557676723bfb884b4c7786d7c3ed6dd00e6bf7a3796884bf"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/retained_title_changes.py",
+        "--verify",
+        "assets/retained-title-changes"
+      ],
+      "exit": 0,
+      "output_sha256": "c2dfa0c9f173d328373b2a2046e057433232e9957caf4882067138f8c92d9b80"
+    }
+  ],
+  "asset_roundtrips": [
+    {
+      "command": [
+        "python3",
+        "tools/hgr_asset.py",
+        "--extract-title",
+        "OUTPUT/title"
+      ],
+      "exit": 0,
+      "output_sha256": "c21f8a3a39c836db9af6959ba528a3ba6c8e69027ef4ce3c183141ad4e0799c1",
+      "identical_files": [
+        "assets/title/manifest.json",
+        "assets/title/title-monochrome.png",
+        "assets/title/title.hgr"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/hgr_asset.py",
+        "--extract-certificate",
+        "OUTPUT/certificate"
+      ],
+      "exit": 0,
+      "output_sha256": "a4b7d3c4d858f8e904b9a7eda84a9009c4eee27835485e013866b3a764f02929",
+      "identical_files": [
+        "assets/certificate/certificate-monochrome.png",
+        "assets/certificate/certificate.hgr",
+        "assets/certificate/manifest.json"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/glyph_asset.py",
+        "--extract",
+        "OUTPUT/font"
+      ],
+      "exit": 0,
+      "output_sha256": "db7d147455f2d9c896e98e59eef6589b577acbe9c2c1985811a636bdd2647ddd",
+      "identical_files": [
+        "assets/font/font.bin",
+        "assets/font/font.png",
+        "assets/font/manifest.json",
+        "assets/font/rows.json"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/play_glyph_assets.py",
+        "--extract",
+        "OUTPUT/play-glyphs"
+      ],
+      "exit": 0,
+      "output_sha256": "86127e2ab1a2a835c097e84493cf90ca2298a696f5f109f66aee49e34baf70fc",
+      "identical_files": [
+        "assets/play-glyphs/bank1/glyphs.bin",
+        "assets/play-glyphs/bank1/glyphs.png",
+        "assets/play-glyphs/bank1/manifest.json",
+        "assets/play-glyphs/bank1/rows.json",
+        "assets/play-glyphs/bank2/glyphs.bin",
+        "assets/play-glyphs/bank2/glyphs.png",
+        "assets/play-glyphs/bank2/manifest.json",
+        "assets/play-glyphs/bank2/rows.json"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/packed_hgr_asset.py",
+        "--extract",
+        "OUTPUT/ship-images"
+      ],
+      "exit": 0,
+      "output_sha256": "87397489111f83081a4c045b47cdc2fee42d31e0758da135b5521e9f7f543be6",
+      "identical_files": [
+        "assets/ship-images/full_ship/decoded.hgr",
+        "assets/ship-images/full_ship/image.rle",
+        "assets/ship-images/full_ship/manifest.json",
+        "assets/ship-images/full_ship/monochrome.png",
+        "assets/ship-images/full_ship/packets.json",
+        "assets/ship-images/ship_section/decoded.hgr",
+        "assets/ship-images/ship_section/image.rle",
+        "assets/ship-images/ship_section/manifest.json",
+        "assets/ship-images/ship_section/monochrome.png",
+        "assets/ship-images/ship_section/packets.json"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/tile_asset.py",
+        "--extract",
+        "OUTPUT/tiles"
+      ],
+      "exit": 0,
+      "output_sha256": "c027e10865134d565cb879c4405b0e48bc8864afb06a051d67fe31373965cdf7",
+      "identical_files": [
+        "assets/tiles/bank0/atlas.png",
+        "assets/tiles/bank0/manifest.json",
+        "assets/tiles/bank0/rows.json",
+        "assets/tiles/bank0/tiles.bin",
+        "assets/tiles/bank1/atlas.png",
+        "assets/tiles/bank1/manifest.json",
+        "assets/tiles/bank1/rows.json",
+        "assets/tiles/bank1/tiles.bin",
+        "assets/tiles/bank2/atlas.png",
+        "assets/tiles/bank2/manifest.json",
+        "assets/tiles/bank2/rows.json",
+        "assets/tiles/bank2/tiles.bin",
+        "assets/tiles/bank3/atlas.png",
+        "assets/tiles/bank3/manifest.json",
+        "assets/tiles/bank3/rows.json",
+        "assets/tiles/bank3/tiles.bin"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/tile_asset.py",
+        "--extract-world",
+        "OUTPUT/world-tiles"
+      ],
+      "exit": 0,
+      "output_sha256": "528e1b36c600310d6754d99376d3fe3e66a0dbbdcf14368108322df0b0817f54",
+      "identical_files": [
+        "assets/world-tiles/atlas.png",
+        "assets/world-tiles/manifest.json",
+        "assets/world-tiles/rows.json",
+        "assets/world-tiles/tiles.bin"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "tools/world_map_asset.py",
+        "--extract",
+        "OUTPUT/world-maps"
+      ],
+      "exit": 0,
+      "output_sha256": "5b33ad95701e14b33939ea363603d7ed31391355304b5d5bd106368722c19550",
+      "identical_files": [
+        "assets/world-maps/manifest.json",
+        "assets/world-maps/maps.bin",
+        "assets/world-maps/overview.png",
+        "assets/world-maps/symbols.json",
+        "assets/world-maps/tiles.json"
+      ]
+    }
+  ],
+  "source_review": {
+    "incbin_directives": 0,
+    "explicit_raw_instruction_fragments": [
+      "src/native/native_init.s:STA opcode fragment",
+      "src/native/native_high.s:LDY immediate operand fragment",
+      "src/native/encoded_tail_alternate_07f8.s:LDA opcode fragment",
+      "src/native/encoded_tail_play_07f8.s:LDA opcode fragment"
+    ],
+    "method": "Existing procedure-aware/source-context audits and exact assembly, plus source inspection; documented clipped fragments retain donor classification."
+  },
+  "structural_data_review": [
+    "docs/pascal-header-tables.md: typed header fields and initializer consumer",
+    "docs/pascal-directories.md: directory fields, inactive record copies and directory consumers",
+    "docs/disk-control.md: eight directly consumed control bytes"
+  ],
+  "regression_tests": {
+    "count": 180,
+    "result": "pass",
+    "seconds": 2.031
+  },
+  "behavior_baselines": {
+    "mame": "docs/save-reload-validation.md",
+    "apple2ts": "docs/apple2ts-behavior-validation.md",
+    "basis": "The final disk bytes exactly match the exercised baseline; no new emulator run claimed."
+  },
+  "limitations": [
+    "488 bytes are user-assumed data without code/data proof.",
+    "No complete gameplay, audio or cycle-timing equivalence claim.",
+    "Historical producer explanations remain bounded in their individual evidence documents."
+  ],
+  "asset_files_reproduced": 53
+}

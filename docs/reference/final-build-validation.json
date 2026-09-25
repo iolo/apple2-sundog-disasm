@@ -1,0 +1,78 @@
+{
+  "checkpoint": "10b",
+  "date": "2026-09-25",
+  "scope": "Final strict reproduction under the explicit 488-byte user data assumption",
+  "copied_directories": [
+    "tools",
+    "src",
+    "assets",
+    "reconstruction",
+    "docs"
+  ],
+  "python": "3.14.4",
+  "source_commit": "edf3188681335138de74f1bfe593ec70275b3e7b",
+  "ca65": "ca65 V2.19 - Git a028ac414",
+  "ld65": "ld65 V2.19 - Git a028ac414",
+  "originals_present": false,
+  "preexisting_build_present": false,
+  "reports_identical": true,
+  "build_report": {
+    "status": "source/data reconstruction with explicit user acceptance of 488 unidentified bytes as data",
+    "manifest_sha256": "f2cce64088df082e6ce52993c9546859738c8d7275d24437a5fdf980e0c06da9",
+    "disks": [
+      {
+        "filename": "sundog-disk1-game.dsk",
+        "size": 143360,
+        "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+      },
+      {
+        "filename": "sundog-disk2-util.dsk",
+        "size": 143360,
+        "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+      }
+    ],
+    "coverage_bytes": {
+      "ca65-source": 184828,
+      "identified-data": 101404,
+      "user-assumed-data": 488
+    },
+    "temporary_inputs": [],
+    "has_temporary_inputs": false,
+    "assumed_data_inputs": [
+      {
+        "component": "disk1_assumed_data",
+        "input_bytes": 7,
+        "mapped_disk_bytes": 7,
+        "disk_bytes": {
+          "disk1": 7
+        },
+        "acceptance_record": "docs/reference/user-assumed-data.json",
+        "assumption_document": "docs/user-assumed-data.md"
+      },
+      {
+        "component": "disk2_assumed_data",
+        "input_bytes": 481,
+        "mapped_disk_bytes": 481,
+        "disk_bytes": {
+          "disk2": 481
+        },
+        "acceptance_record": "docs/reference/user-assumed-data.json",
+        "assumption_document": "docs/user-assumed-data.md"
+      }
+    ],
+    "has_assumed_data": true,
+    "no_temporary_required": true
+  },
+  "independent_strict_builds": 2,
+  "disk_bytes_identical_to_each_other_and_originals": true,
+  "isolated_complete_ledger_exit": 0,
+  "ledger_coverage": {
+    "code": 136686,
+    "data": 149546,
+    "temporary-unresolved": 0,
+    "audit-not-integrated": 0,
+    "user-assumed-data": 488
+  },
+  "ledger_receipt_sha256": "675ac8e29da48877696d26e38f6518da8f0d1ed6e26ef65dad8a365674ff3495",
+  "acceptance_record_sha256": "fd579336ad6d48bc5d8306d6cee60b650ecc1e66433101b8ccb7e5fbbd832764"
+}

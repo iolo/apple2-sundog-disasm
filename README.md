@@ -6,6 +6,9 @@ must be classified as code or data with evidence, except for the explicitly
 accepted [488-byte user data assumption](docs/user-assumed-data.md). Byte identity
 is preferred; any differences must be explained and validated (see [PRD.md](PRD.md)).
 
+Required work is complete under that bounded exception. Two isolated strict
+builds reproduce both original disks exactly; all 180 tests pass.
+
 See [PLAN.md](PLAN.md) for the implementation sequence and
 [PROGRESS.md](PROGRESS.md) for evidence and per-step checkpoints.
 The [delivery checklist](docs/delivery-checklist.md) maps each required output

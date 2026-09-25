@@ -1,10 +1,17 @@
 # Strict build inputs and reproducibility
 
-**Current scope (step 08ac):** no temporary inputs remain. The strict command
-accepts the user's [488-byte data exception](user-assumed-data.md), separately
-reported as `user-assumed-data`. Hashes and every mapped occurrence must match
-the acceptance receipt. This is not an evidence-backed classification. The
-older refusal results below are historical checkpoints.
+**Final status (step 10b):** two isolated strict builds succeed with no original
+disks, manual or previous build output present. Both images match each other
+and the originals exactly; reports are identical. The complete-ledger check
+also passes in that isolated tree. [final-build-validation.json](reference/final-build-validation.json)
+records the results, tool versions, manifest and acceptance-receipt hashes.
+
+There are no temporary inputs. The user's [488-byte data exception](user-assumed-data.md)
+is separately reported as `user-assumed-data`; its hashes and every mapped
+occurrence must match the acceptance receipt. This is an explicit assumption,
+not new classification evidence. The older refusal results below are historical.
+
+## Historical development checks
 
 The incremental build deliberately accepts `temporary-unresolved` inputs while
 reconstruction is underway. Exact output does not classify those bytes. A strict
