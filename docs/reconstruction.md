@@ -6,6 +6,12 @@ temporary bytes: 7 on disk 1 and 481 on disk 2. The latest reconstruction
 adds the [Blackblade saved map-cache tail](saved-map-cache.md). Historical counts
 below describe their individual checkpoints; the manifest is authoritative.
 
+Step 08z adds the [disk-wide classification ledger](classification-ledger.md):
+136,686 code bytes, 149,546 data bytes and 488 unresolved bytes. All current
+component audit families are integrated, including partial source copies and
+encoded banks. This separates byte meaning from the source/asset input counts;
+it does not resolve the remaining tails or establish final PRD completion.
+
 Step 08v separately consolidates the [resident-runtime classification audit](runtime-classification.md).
 Its 16,384 component bytes have instruction/data accounting and no remaining
 provisional runtime fields. This does not change the disk ownership counts above

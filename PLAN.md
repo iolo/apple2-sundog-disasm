@@ -229,6 +229,12 @@ Split large steps into independently validated, logged, and committed increments
   copy boundary reproduce its 32 tile bytes, one world identifier and 63 cleared
   bytes exactly. Current ownership is 184,828 source-built bytes, 101,404
   identified asset/data bytes and 488 temporary bytes (7 disk 1; 481 disk 2).
+- Step 08y records the completed checksum-tail affine-transform search without
+  adopting bytes. Step 08z consolidates all current component audit families in
+  a disk-wide ledger: 136,686 code bytes, 149,546 data bytes and the same 488
+  unresolved bytes. Copied operands, encoded banks and overlapping/fragment
+  instructions retain explicit ownership. The strict ledger gate remains red;
+  remaining classification and final evidence/delivery review are still open.
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

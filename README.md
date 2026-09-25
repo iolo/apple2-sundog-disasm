@@ -41,8 +41,11 @@ has a separate, narrower scope.
 Current disk ownership is **184,828 source-built bytes**, **101,404 identified
 asset/data bytes**, and **488 temporary unclassified bytes** (7 on disk 1;
 481 on disk 2). Source-built totals include explicit data declarations and are
-not instruction counts. The remaining tails, a final disk-wide classification
-audit, clean reproducibility checks and delivery documentation are still open.
+not instruction counts. The [disk-wide classification ledger](docs/classification-ledger.md)
+separately records 136,686 code bytes and 149,546 data bytes, with every current
+component audit connected and the 488 unresolved bytes still explicit. The
+remaining tails, final evidence review, clean reproducibility checks and
+delivery documentation are still open.
 Exact output alone does not establish completion.
 
 Extracted assets include [title artwork](docs/title-bitmap.md),

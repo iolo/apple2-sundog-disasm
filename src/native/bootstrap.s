@@ -137,7 +137,8 @@ halt:
     beq     halt ; $08CD
 
     .res $2E, $00                 ; Unreferenced zero padding through $08FC.
-    .byte $EA, $EA                ; Preserved NOP padding at $08FD/$08FE.
+    nop                          ; Retained NOP prefix at $08FD, falling through to reader.
+    nop                          ; Retained NOP prefix at $08FE; live entry remains $08FF.
 
 ; Reader inputs: A / $0F = block high/low, $02 = page count, $3F = destination page.
 

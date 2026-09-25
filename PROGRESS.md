@@ -3494,3 +3494,49 @@ and acceptance criteria.
   checksum tail, then the final evidence audit and isolated strict build.
   Avoid repeating this transform family without new evidence. User PRD.md
   edits and ref/ remain untouched and excluded from the commit.
+
+## 2026-09-25 — Step 08z: project component evidence across both complete disks
+
+- **Resumed:** Continued at the user's explicit request. Rechecked the dictionary
+  loader and supplement consumers; their evidence still stops before the final
+  27 bytes, so that suffix remains unidentified. A checksum-tail donor probe
+  found no 16-byte matches across 239 assembled/asset/Apple-ROM inputs totaling
+  302,523 bytes, including decoded native components. Exact, adjacent XOR,
+  adjacent modulo-256 subtraction and adjacent Hamming-distance signatures were
+  checked. The last signature also tests a necessary condition for a fixed bit
+  permutation plus XOR. These negative results establish no new classification.
+- **Change:** Added tools/classification_ledger.py and a generated disk-wide
+  receipt connecting all 166 current components. Procedure-aware Pascal/native
+  decoders, resident-runtime audits, encoded banks, retained procedure contexts
+  and custom dialogue scripts are replayed. Identified assets and an explicit
+  registry of reviewed data-only sources inherit their existing evidence.
+  Component intervals project through actual disk mappings, retaining code
+  classification for clipped operands and counting every mapped occurrence.
+- **Accounting:** The 286,720 disk bytes comprise 136,686 code, 149,546 data and
+  488 temporary unidentified bytes. Disk 1: 59,077 code / 84,276 data / 7
+  unidentified. Disk 2: 77,609 code / 65,270 data / 481 unidentified. No current
+  audit adapter is missing. New unsupported components would remain explicitly
+  audit-not-integrated; that status also prevents ledger completion, including
+  in declared source context that is not mapped to a disk.
+- **Source review:** Replaced bootstrap's two raw $EA declarations at $08FD/$08FE
+  with NOP instructions. Their fall-through reaches the established $08FF
+  reader; execution through that prefix is not claimed. The new adapter checks
+  the bootstrap's 627 code / 141 data bytes, bounded 46-byte zero gap, native
+  instruction/direct-target boundaries, consumed tables and footers. The title
+  adapter separately verifies 528 code / 496 data bytes and its scanline tables.
+  Updated the stale title-storage note and added docs/classification-ledger.md,
+  with links from README, PLAN, bootstrap and reconstruction documentation.
+- **Validation:** All seven ledger tests pass: complete/overlapping/missing
+  classifications, unknown p-code kinds, repeated partial instruction copies,
+  invalid disk mappings/hashes, incomplete statuses and early-native mutations.
+  Fresh assembly and integrated audits pass. A second complete ledger run is
+  deterministic; --require-complete exits 1 specifically for the unresolved
+  bytes. tools/verify_disks.py and tools/verify_inputs.py pass, both disk hashes
+  remain exact, updated-document local links exist, and git diff --check passes.
+- **Limits/next:** This consolidates evidence rather than adopting unidentified
+  bytes. The ledger does not rerun every data-consumer audit or independently
+  prove every source-representation, behavior and delivery criterion. Source/
+  asset ownership remains 184,828 / 101,404 bytes, with 488 temporary bytes.
+  Remaining tail classification, final evidence review, isolated strict build
+  and delivery review remain open. User PRD.md edits and ref/ are untouched and
+  excluded from this checkpoint; existing exact-output emulator baselines apply.

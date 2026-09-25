@@ -46,6 +46,15 @@ fourth logical disk sector as 255 cleared buffer bytes and one retained `$04`
 at the assembler buffer's final offset. This does not extend the observed
 three-page live load or assign those disk bytes to the captured context RAM.
 
+The [disk-wide ledger](classification-ledger.md) separately accounts for 627
+instruction bytes and 141 data bytes in the 768-byte bootstrap. The 46 zeros
+at `$08CF–$08FC` form bounded storage between the terminal `$08CD` self-loop
+and the retained NOP prefix at `$08FD/$08FE`. Those two NOPs fall through to
+the established reader at `$08FF` and are emitted as instructions; execution
+through the prefix is not claimed. The ledger checks the count/message fields,
+sector permutation, seek-delay tables, all native instruction boundaries and
+direct targets, and the later native-footer classification.
+
 ## Repeat the breakpoint sequence
 
 1. Pause the private emulator, mount the original disk-1 bytes via an upload

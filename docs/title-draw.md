@@ -38,7 +38,8 @@ later code and must not be inferred from the title image alone.
 The routine and helper are contiguous instruction ranges with direct branches
 and calls; the following two tables are addressed explicitly by the helper.
 The later [footer audit](early-native-footers.md) identifies sixteen metadata
-bytes after the tables; the following 96 bytes still require classification.
+bytes after the tables; the following 96 bytes are classified as
+[native output-buffer storage](native-output-storage.md).
 The bitmap region, including its non-displayed HGR holes, is extracted and
 classified as image-buffer data; see [title-bitmap.md](title-bitmap.md).
 
