@@ -1,0 +1,125 @@
+{
+  "classification_evidence": "docs/saved-map-cache.md",
+  "components": [
+    {
+      "name": "startup_7",
+      "sha256": "2c4cdfee9d22a90d65b09a47a3f6bd895301952e21bc6bbfd3116e410cffa370",
+      "windows": [
+        {
+          "offset": 226,
+          "size": 5,
+          "purpose": "Initialize global word 293 to zero",
+          "hex": "00d11d8125",
+          "sha256": "48be1bad5c33f537e8c84999f384750d528ff0d034684b24b5eb0f89844a129f"
+        },
+        {
+          "offset": 1459,
+          "size": 70,
+          "purpose": "Save copies end at $53A0; ten-block write includes $53A0-$53FF",
+          "hex": "a71d240000cd1618c70040c70002cd1a04c70040c7000282069d1d1e038201cd1635c7ff1691c70040c7000e82c7a005cd1a0401ae03da02c3a1ecc700400a9d1d1f00cd1635",
+          "sha256": "b6cebb805355a9b2594cdd3deb6d5282d409ded1099bfeff1e15f3d5b5864112"
+        }
+      ]
+    },
+    {
+      "name": "game_21",
+      "sha256": "8f58c7e696db4e1b7c2e6eae4f51cd40eee8d4dc1019dc926bdb2f70248260cb",
+      "windows": [
+        {
+          "offset": 4338,
+          "size": 68,
+          "purpose": "Read cached world at $5000+1000 and decode selected map",
+          "hex": "a71d250504ba0195cc05c70050cc0ae1c7e803becc02d9dc0182cba1f2c70018cc0ae1019d1d1ddc02868201cd1635dc028ecc04e1dba48080cc0fe6a208b60137cd1702",
+          "sha256": "9f4cd5411989235a054ef6467cc067071b4f0fa29d0a27c8b25ee60a8aa0d2e9"
+        },
+        {
+          "offset": 4455,
+          "size": 65,
+          "purpose": "Only tile 13 receives a random terrain variant",
+          "hex": "00cc0827cc0fdfe6c8a13600cc0117cc10d8e7c8a124b60137d8a414dfbe0dc3a111b60137d8a414df0e0000cd1603078e82bfd80182cc01b9f6df0182cc08b9f4",
+          "sha256": "915b15dc211e4c0a1b6c535dfd22bf1a7aee545eeb64c0b4b9ec404abff2ec5e"
+        },
+        {
+          "offset": 4527,
+          "size": 207,
+          "purpose": "Select city records, optional city-60 relocation, city marker writes, cached world write",
+          "hex": "9d1d18a71d250504ba0195a408cc0fe6a2070609bacc03e6a2070300bada820195cc02dacc08d9cc0fdfe6c8a1249d1d19df0195a406cc10b60137e7a2050506baa414e7a2050600ba0dbfdf0182cc08b9f0a71d250504ba01c3a1639d1d193c0195a406cc0fa71d5270c01001baa13ca71d5270c0100100bb0000cd1603c7c0038ecc08e6a2050600df288ebbe6a2050506df2886bbb60137e6a2050506baa414e6a2050600babe0ec4a1eeb60137e6a2050506baa414e6a2050600ba0dbfc70050cc0ae1c7e803a71d250504babf",
+          "sha256": "205e68dd6c6b98cdeec90348fe5ecc868b8872ce85083e4ea29914fbf9657579"
+        },
+        {
+          "offset": 4824,
+          "size": 9,
+          "purpose": "Set parent local 55 to map pointer $5000",
+          "hex": "c70050b20137cd1617",
+          "sha256": "7729c1cb1ac0710de875df8e728d1bfd27a8dceb2a0ca043d9db4faf721eccbd"
+        },
+        {
+          "offset": 5144,
+          "size": 19,
+          "purpose": "Clear 2048 cache bytes at $5000 with global word 293",
+          "hex": "c70050c601cd1617d800c700089d1d81259e0a",
+          "sha256": "671a14b152874d87e1d2243d37fa74e4b695fd52a924ecf29e2aca68ab4ef5d6"
+        }
+      ]
+    },
+    {
+      "name": "library_22",
+      "sha256": "7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49",
+      "windows": [
+        {
+          "offset": 3838,
+          "size": 28,
+          "purpose": "Procedure 23 assigns a two-byte address to its pointer destination",
+          "hex": "688500688501688502688503a000689102c8689102a50148a5004860",
+          "sha256": "c4d914bf011488ec085932842d872b116e6bec015245bcb9dd445b173247eabb"
+        }
+      ]
+    },
+    {
+      "name": "library_23",
+      "sha256": "af7267c0fb90b5e2e8c477d12d13f90afd98010a140f1e6f09b12bdb69e5529f",
+      "windows": [
+        {
+          "offset": 12,
+          "size": 95,
+          "purpose": "Procedure 2 consumes packed symbols and writes 24 rows of 40 tile bytes",
+          "hex": "a200a006689500e888d0f9a000a903850aa901850ca9188506a90c850ea9288508b104486a6a9104682903c60a100aa203860ae604d002e6058510a50e0a0a186510aabd6300850e9102e602d002e603c608d0cdc606d0c1a50148a5004860",
+          "sha256": "96a206fd5820e1c80c45c7e4a923c4fd613157516032734f1891d155d4fc5c6d"
+        },
+        {
+          "offset": 111,
+          "size": 56,
+          "purpose": "Fourteen-state world-map transition table",
+          "hex": "0102090d00070a0a03040b0b0102090d0506080c03040b0b00070a0a0506080c0102090d0506080c00070a0a03040b0b0506080c0102090d",
+          "sha256": "1c0d2e2f0d3ba638e8336560782da67c974c39e1ab4a3751de087705bda71445"
+        }
+      ]
+    },
+    {
+      "name": "pcode_primitives",
+      "sha256": "902a7339ff7e54071c3f9748bf2bd213a46c96405c88183ebc10159c8b1a6d9c",
+      "windows": [
+        {
+          "offset": 276,
+          "size": 2,
+          "purpose": "Standard procedure 10 vector targets $E68A",
+          "hex": "8ae6",
+          "sha256": "1459455b3c9150f881485f6353db6f77d6422ab10670770d5bf6e445abb3baef"
+        }
+      ]
+    },
+    {
+      "name": "native_shared",
+      "sha256": "86cb1dbeffb20b79d503fab85dc49f119ab092fdfd649b402233904f086d20d6",
+      "windows": [
+        {
+          "offset": 1445,
+          "size": 69,
+          "purpose": "FILLCHAR consumes count/value/base/offset and fills exactly that count",
+          "hex": "68aa686885686885691007686868684c7bd268857468857518686574857468657585758aa669a000e000f00bca9174c8d0fbe6754cb2e6a6684ccae69174c8cad0fa4c7bd2",
+          "sha256": "b792b91b3bed121c39745ed62f5be58b7416a4610d574c6fe300e96583566c88"
+        }
+      ]
+    }
+  ]
+}

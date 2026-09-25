@@ -1,0 +1,13 @@
+{
+  "name": "saved_map_cache",
+  "source": "src/data/saved_map_cache.s",
+  "config": "src/data/saved_map_cache.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 35488,
+      "size": 96,
+      "input_offset": 0
+    }
+  ]
+}

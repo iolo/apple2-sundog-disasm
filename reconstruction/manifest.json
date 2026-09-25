@@ -19,8 +19,8 @@
     "disk1_unresolved": {
       "kind": "temporary-unresolved",
       "path": "temporary/disk1-unresolved.bin",
-      "size": 103,
-      "sha256": "624f550b5c728fd939f1ee7ec7a5ed3e384660521e5cd8449969c417c5c85bc4",
+      "size": 7,
+      "sha256": "5215c0b39b2c977bcd582995d765d7a69620fff55f7c1bd7568a6b67ff0cd3bc",
       "description": "Unreconstructed code, assets, metadata, and unused bytes; not accepted final inputs"
     },
     "disk2_unresolved": {
@@ -1596,6 +1596,13 @@
       "config": "src/data/library_text_tail.cfg",
       "size": 18,
       "sha256": "a2a18326f013e6a1223a2d6ab24545c93b712f9a32dbbee8a3f2e31581463119"
+    },
+    "saved_map_cache": {
+      "kind": "ca65-source",
+      "source": "src/data/saved_map_cache.s",
+      "config": "src/data/saved_map_cache.cfg",
+      "size": 96,
+      "sha256": "5891d9839ddecd69ae8934e7e6ee9f3e363fbd521fe204a4121e71dc009cccd9"
     }
   },
   "disks": [
@@ -2478,8 +2485,8 @@
         {
           "offset": 35488,
           "size": 96,
-          "input": "disk1_unresolved",
-          "input_offset": 7
+          "input": "saved_map_cache",
+          "input_offset": 0
         },
         {
           "offset": 35584,

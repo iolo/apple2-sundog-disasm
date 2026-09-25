@@ -224,6 +224,11 @@ Split large steps into independently validated, logged, and committed increments
   inputs. Two fresh isolated incremental builds reproduce identical disks and
   reports without originals or prior build products. The strict check currently
   rejects 584 bytes; it is necessary but insufficient for final completion.
+- Step 08x identifies the Blackblade save's 96-byte tail as a retained world-map
+  cache. The shipped zero fill, map decoder, city fields, cache-ID write and save
+  copy boundary reproduce its 32 tile bytes, one world identifier and 63 cleared
+  bytes exactly. Current ownership is 184,828 source-built bytes, 101,404
+  identified asset/data bytes and 488 temporary bytes (7 disk 1; 481 disk 2).
 - Step 09a validates the rebuilt disks in MAME through play-side swapping,
   personal status, an actual game save, and a fresh-process reload. Four initial
   screens match the reference pixels; the saved bank checksum and final disk

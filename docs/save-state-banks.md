@@ -6,7 +6,7 @@ bank have evidenced data consumers and serialization paths. They are extracted
 in `assets/save-states/payloads.bin`, with reversible structured word records
 in `records.json`. The final 96 bytes of the first three banks are now mapped to
 [preserved p-code source copies](preserved-pcode-copies.md); the fourth bank's
-96-byte tail remains unresolved.
+96-byte tail is separately reconstructed as a [retained world-map cache](saved-map-cache.md).
 
 Four corresponding 64-byte descriptors occupy the first 256 bytes of block 26,
 extracted as `slots.bin`. The remaining zero half of that block is separately
@@ -26,7 +26,7 @@ Offsets below are relative to each ten-block bank. Endpoint offsets are exclusiv
 | 3584–3824 | 240 | World-table data addressed by segment-29 word 23 |
 | 3824–4112 | 288 | World-table data addressed by segment-29 word 24 |
 | 4112–5024 | 912 | Remaining world-table data addressed by segment-29 word 25 |
-| 5024–5120 | 96 | Excluded from the state asset; preserved p-code in slots 0–2, unresolved in slot 3 |
+| 5024–5120 | 96 | Excluded from the state asset; preserved p-code in slots 0–2, retained map-cache data in slot 3 |
 
 The word arrays retain every bit, including packed fields, text storage, and
 unused storage inside the typed records. Many individual field meanings remain
@@ -86,7 +86,7 @@ at `slot*64+30` at `$0618`–`$0632`. All four original banks match:
 | 3 | Blackblade | 57 | `$B77A` |
 
 These checksums independently support the bank/descriptor pairing. They cover
-all 5,120 bytes, including the unresolved tail, and are not themselves evidence
+all 5,120 bytes, including the separately classified tails, and are not themselves evidence
 that an arbitrary byte is data. The extraction manifest records both whole-bank
 and excluded-tail hashes, without adopting the tail.
 

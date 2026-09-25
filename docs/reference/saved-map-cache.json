@@ -1,0 +1,93 @@
+{
+  "world_identifier": 1,
+  "map_source_index": 0,
+  "map_payload_sha256": "006b03ffe3a48056470bcb78866543f964134c32af5483fa97919107e31b6e33",
+  "cache_base": 20480,
+  "cleared_bytes": 2048,
+  "decoded_map_bytes": 960,
+  "cache_identifier_offset": 1000,
+  "save_base": 16384,
+  "save_bytes": 5120,
+  "world_copy_destination": 19968,
+  "world_copy_bytes": 1440,
+  "retained_memory_range": [
+    21408,
+    21504
+  ],
+  "retained_cache_range": [
+    928,
+    1024
+  ],
+  "retained_save_range": [
+    5024,
+    5120
+  ],
+  "retained_map_row": 23,
+  "retained_map_columns": [
+    8,
+    40
+  ],
+  "city_overlays": [
+    {
+      "city": 1,
+      "x": 12,
+      "y": 7,
+      "cache_offset": 292,
+      "affects_saved_tail": false
+    },
+    {
+      "city": 2,
+      "x": 8,
+      "y": 9,
+      "cache_offset": 368,
+      "affects_saved_tail": false
+    },
+    {
+      "city": 3,
+      "x": 38,
+      "y": 9,
+      "cache_offset": 398,
+      "affects_saved_tail": false
+    },
+    {
+      "city": 4,
+      "x": 25,
+      "y": 5,
+      "cache_offset": 225,
+      "affects_saved_tail": false
+    },
+    {
+      "city": 5,
+      "x": 11,
+      "y": 19,
+      "cache_offset": 771,
+      "affects_saved_tail": false
+    },
+    {
+      "city": 60,
+      "x": 32,
+      "y": 7,
+      "cache_offset": 312,
+      "affects_saved_tail": false
+    }
+  ],
+  "random_generator_replayed": false,
+  "full_runtime_map_reconstructed": false,
+  "classification": "data",
+  "classified_bytes": 96,
+  "tile_bytes": 32,
+  "cache_identifier_bytes": 1,
+  "cleared_storage_bytes": 63,
+  "tail_sha256": "5891d9839ddecd69ae8934e7e6ee9f3e363fbd521fe204a4121e71dc009cccd9",
+  "live_historical_save_trace": false,
+  "classification_evidence": "docs/saved-map-cache.md",
+  "disk": "disk1",
+  "block": 66,
+  "block_offset": 416,
+  "save_slot": 3,
+  "save_name": "Blackblade",
+  "bank_sha256": "1904f79219fe2c8e5a000d112ff48f42fe81644e420633869f54b5b86fbb06b4",
+  "payload_sha256": "ed4065497b269ab348b4c29e6269e4cb6c7c00ca6d98b9210a6362de37b64d62",
+  "stored_checksum": 46970,
+  "producer_evidence": "src/data/evidence/saved_map_cache.json"
+}

@@ -56,3 +56,8 @@ manifest links each payload to its exact disk/block/byte offset, and adoption
 maps each 240-byte span without absorbing the prefixes. Normal builds consume
 the packed source asset without reading originals. No new native execution or
 live map capture is claimed for this checkpoint.
+
+The final 32 decoded cells of world 1 also survive in the Blackblade saved-game
+tail, together with cleared cache storage and the cache's world identifier.
+The separate [saved-map-cache audit](saved-map-cache.md) traces those producers
+and the save-copy boundary; it does not alter the packed map asset.

@@ -3428,3 +3428,40 @@ and acceptance criteria.
   data/asset bytes and 584 temporary bytes (103 disk 1; 481 disk 2). Continue
   the remaining tails and final evidence audit. User PRD.md edits and ref/ are
   preserved and excluded. Goal remains active and incomplete.
+
+## 2026-09-25 — Step 08x: reconstruct the Blackblade saved map-cache tail
+
+- **Evidence:** The unresolved 96 bytes map to saved RAM $53A0-$53FF, exactly
+  offsets 928-1023 of game 21's $5000 world-map cache. Startup sets global word
+  293 to zero; game 21 clears 2,048 cache bytes with CSP 10. The native map
+  decoder writes 960 cells, and procedure 28 stores the world ID at offset 1000.
+  Blackblade's world-1 map gives 32 final $0C cells; its world ID is 1. City
+  markers at offsets 292, 368, 398, 225, 771 and 312 do not alter those cells,
+  and its special-city relocation flag is clear. These producers reproduce the
+  entire tail: 32 tile bytes, 40 cleared bytes, ID 1 and 23 cleared bytes.
+- **Retention:** The save's last explicit table copy ends at $4E00+1440=$53A0;
+  its ten-block write extends through $53FF. This explains preservation of the
+  cache fragment. The earlier three slots' independently disassembled p-code
+  tails remain code. No blanket saved-tail or zero-data rule is introduced.
+- **Artifacts:** Added named cache-data ca65 source/config/adoption recipe,
+  producer windows from six source-built components, tools/saved_map_cache.py,
+  three focused tests, generated audit and docs/saved-map-cache.md. Updated
+  saved-state/world-map documentation, current README coverage, PLAN.md and the
+  reconstruction ledger. Existing saved-state/map assets are unchanged.
+- **Validation:** Three tests pass, including every altered tail byte, bad save
+  extents, a city moved into the target row, evidence mutations and rejection of
+  unmodeled random relocation. Producer hashes/windows, native transition table,
+  asset hashes, payload ownership, original bank checksum $B77A, fresh source
+  assembly, strict adoption and post-adoption audit pass. Full build and
+  tools/verify_disks.py preserve both exact disk hashes and original inputs.
+  The --no-temporary build correctly rejects the remaining 488 bytes before
+  output creation. Updated-document links and git diff --check pass.
+- **Limits:** This is a static producer/retention reconstruction, not a trace of
+  the original historical save. No random-generator state or complete final
+  runtime map is claimed; the reviewed tail needs neither. Existing emulator
+  behavior baselines remain applicable because output bytes are unchanged.
+- **Coverage/next:** 184,828 source-built bytes, 101,404 identified asset/data
+  bytes and 488 temporary bytes remain (7 disk 1; 481 disk 2). Continue the
+  repeated template suffix, play boot/dictionary tails and mixed checksum tail,
+  then the final disk-wide audit. User PRD.md edits and ref/ remain untouched
+  and excluded. The goal remains active.

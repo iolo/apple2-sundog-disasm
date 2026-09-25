@@ -1,9 +1,9 @@
 # Incremental exact-disk build
 
-Current checkpoint: step 08u has 184,732 source-built disk bytes (including
-explicit data declarations), 101,404 identified asset/data bytes, and 584
-temporary bytes: 103 on disk 1 and 481 on disk 2. The latest reconstruction
-adds [retained text after library 22](library-text-tail.md). Historical counts
+Current checkpoint: step 08x has 184,828 source-built disk bytes (including
+explicit data declarations), 101,404 identified asset/data bytes, and 488
+temporary bytes: 7 on disk 1 and 481 on disk 2. The latest reconstruction
+adds the [Blackblade saved map-cache tail](saved-map-cache.md). Historical counts
 below describe their individual checkpoints; the manifest is authoritative.
 
 Step 08v separately consolidates the [resident-runtime classification audit](runtime-classification.md).

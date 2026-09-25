@@ -27,7 +27,7 @@ python3 tools/verify_disks.py
 ```
 
 The build also supports `python3 tools/build_disks.py --no-temporary`. It
-currently exits with an error because 584 bytes remain unclassified. This
+currently exits with an error because 488 bytes remain unclassified. This
 [strict input check](docs/strict-build.md) prevents temporary inputs from entering
 a final build; passing it alone would not prove the required classification audit.
 
@@ -38,8 +38,8 @@ banks are source-built. The [resident runtime audit](docs/runtime-classification
 resolves its earlier provisional fields; the [Pascal inventory report](docs/executable-coverage.json)
 has a separate, narrower scope.
 
-Current disk ownership is **184,732 source-built bytes**, **101,404 identified
-asset/data bytes**, and **584 temporary unclassified bytes** (103 on disk 1;
+Current disk ownership is **184,828 source-built bytes**, **101,404 identified
+asset/data bytes**, and **488 temporary unclassified bytes** (7 on disk 1;
 481 on disk 2). Source-built totals include explicit data declarations and are
 not instruction counts. The remaining tails, a final disk-wide classification
 audit, clean reproducibility checks and delivery documentation are still open.
