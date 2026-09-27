@@ -1,0 +1,31 @@
+# Browser asset batch — R02a
+
+Run `python3 tools/remake/export_assets.py` to regenerate, or append `--check`
+to verify committed output. The exporter reads only delivered source assets.
+`remake/data/provenance.json` records source and output SHA-256 hashes.
+
+Exports: three HGR-derived SVGs (title/full ship/ship section), 64 city tile
+SVGs across four banks, 21 world tile SVGs, 60 live city layouts, 18 raw world
+layouts, 64 inventory/cargo name records, and the browser catalog. The four
+demo city records are excluded. Stable IDs retain the original record index.
+
+Each SVG is composed of horizontal vector paths from the seven displayed bits
+per byte. HGR row addressing uses the existing decoder. Memory holes and the
+color-phase bit never become monochrome pixels. Original source bytes remain
+unchanged. This first vector pass preserves source silhouettes; it does not
+claim a smooth hand-refined redraw or original artifact-color simulation.
+
+The browser preview can display a city using any of the four tile banks. That
+choice is illustrative: runtime bank selection, variants, clipping, NPCs and
+collision are not yet implemented. World index 13 is shown as stored; the
+original later replaces it with generated variants and restores city positions.
+Source artwork and map data must not be used as an inferred collision mask.
+
+Mulmaru v1.0's `Mulmaru.woff2` and `LICENSE.txt` were extracted from the pinned
+release ZIP. Its source URL and archive/file hashes are in
+`remake/assets/fonts/provenance.json`. No runtime network font is used.
+
+R02 remains partial: interaction geometry, semantic place associations, complete
+localized item/dialogue content, colored/hand-refined artwork and status icons
+belong to the relevant gameplay steps. The current batch supports R03's
+explicit asset inspection scene, not a fabricated campaign.
