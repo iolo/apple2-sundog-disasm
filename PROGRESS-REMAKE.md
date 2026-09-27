@@ -1,5 +1,26 @@
 # SunDog web remake progress
 
+## R01a — Behavior evidence and state boundaries — 2026-09-27
+
+Implementation authorized. Added `docs/remake/behavior-matrix.md` and
+`state-contract.md`, plus a repeatable index of 584 explicitly classified
+p-code string records (`python3 tools/remake/source_index.py --check`).
+
+Traced utility new-game entry 48 → name 31 → initialization 9 → attributes 22;
+initialization 21 clears the globals area while preserving the name. Located
+five attribute fields and the game-20 phase-nine completion branch. Recorded
+source offsets, evidence levels, intended browser checks and version discrepancies.
+
+R01 is partial: clean-state field semantics, an observed new-game fixture and
+ship movement/collision still need work. These prevent claiming a playable
+new game, but do not block R02/R03's independent asset and browser foundation.
+No original-game behavior was invented to fill those gaps. Defined separate
+preview UI state so a content inspection scene cannot be mistaken for a save.
+
+Validation: source index regeneration/check passed; source passages reviewed
+against the recorded offsets. No emulator run or old reconstruction test rerun.
+Next: R02a, deterministic SVG/content export and local Mulmaru font.
+
 ## R00 — Resource review and implementation plan — 2026-09-27
 
 Status: planning complete; application implementation has not started.

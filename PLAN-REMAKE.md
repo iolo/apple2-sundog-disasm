@@ -12,8 +12,8 @@ its graphics as separate SVG assets and make all player-facing text available
 in English and Korean. Keep the requested HTML/CSS/ESM/Canvas 2D stack. No
 framework, runtime library, bundler, backend, or emulator is needed in the app.
 
-The immediate work authorized by the planning request is this plan and its
-initial history entry. The implementation steps below remain pending.
+Implementation was authorized on 2026-09-27 after the planning checkpoint.
+See PROGRESS-REMAKE.md for completed substeps and outstanding evidence gates.
 
 The first playable milestone is a ship scene with movement, interaction,
 personal status, inventory, and persistent saves. That milestone is a foundation,
