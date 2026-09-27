@@ -26,7 +26,8 @@ h1,h2,p{margin:0}
 .hero h1{font-size:66px;font-weight:normal;letter-spacing:-2px;line-height:1}
 .hero .subtitle{color:var(--amber);font-size:18px;margin-top:8px;letter-spacing:3px}
 .hero p{margin-top:24px;width:202px;font-size:16px;line-height:1.6;color:#b8bdab;word-break:keep-all}
-.hero-actions{position:absolute;left:32px;top:322px;display:flex;align-items:flex-start;flex-direction:column;gap:8px}
+.hero-actions{position:absolute;left:32px;top:318px;display:flex;align-items:flex-start;flex-direction:column;gap:4px}
+.bottomline button{font:inherit;padding:0;min-height:0;color:inherit}
 .bottomline{position:absolute;left:32px;right:32px;bottom:22px;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
 .scene-heading{position:absolute;left:32px;top:81px;right:32px;display:flex;align-items:start;justify-content:space-between}
 .scene-heading>div:first-child{min-width:0;flex:1;padding-right:12px}
@@ -64,11 +65,53 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   .scene-controls button{font-size:20px;min-height:48px}
   .selection{max-width:330px}
   select{max-width:150px;font-size:20px}
-  .hero p{font-size:20px;width:225px;line-height:1.3;margin-top:20px}
-  .hero-actions{top:319px;gap:6px}
+  .hero p{font-size:20px;width:250px;line-height:1.3;margin-top:20px}
+  .hero-actions{top:314px;gap:0}
+  #create-character{font-size:20px;min-height:40px}
   button.primary{font-size:23px}
   button.quiet{font-size:20px}
   .help{width:576px;max-height:440px;overflow:auto;padding:24px}
   .help p{font-size:20px;line-height:1.5}
   .help button{font-size:20px;min-height:48px}
+}
+#character-screen{position:absolute;inset:0;background:var(--ink)}
+#character-screen[hidden]{display:none}
+#character-screen h1{font-size:24px;font-weight:normal;letter-spacing:0}
+.draft-note{position:absolute;left:32px;right:32px;top:75px;color:var(--muted);font-size:13px}
+.character-form{position:absolute;left:40px;right:40px;top:109px}
+.character-form>label{font-size:15px;margin-right:16px}
+#character-name{width:255px;background:#080b09;border:1px solid var(--line);padding:7px 10px;font:inherit;font-size:18px;color:var(--paper)}
+#character-name:focus-visible{outline:2px solid var(--amber)}
+#name-hint{font-size:12px;margin-left:14px;color:var(--muted)}
+.attributes{margin-top:10px}
+.attribute-row{height:36px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 120px 46px 54px 46px;align-items:center;font-size:19px}
+.attribute-cost{color:var(--muted);font-size:13px}
+.attribute-row button{padding:0;border:1px solid var(--line);height:34px;min-height:34px;font-size:24px}
+.attribute-row output{text-align:center;font-variant-numeric:tabular-nums}
+#points-left{color:var(--amber);margin-top:12px;font-size:20px}
+.draft-actions{position:absolute;bottom:16px;left:32px;right:32px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px}
+.draft-actions button{font-size:17px}
+#character-message{position:absolute;left:40px;right:40px;top:375px;color:var(--amber);font-size:12px;line-height:1.3}
+.draft-list{position:absolute;left:32px;right:32px;top:119px}
+.draft-row{display:flex;align-items:center;gap:12px;height:60px;border-bottom:1px solid var(--line)}
+.slot-number{color:var(--muted);font-size:14px}
+.slot-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:20px}
+.draft-row button{border:1px solid var(--line);font-size:15px}
+@media(max-width:639px){
+  #character-screen .topline{left:20px;right:20px;font-size:18px;letter-spacing:0}
+  #character-screen h1{font-size:23px}
+  .draft-note{font-size:18px;top:68px;line-height:1.2}
+  .character-form{top:115px}
+  .character-form>label{font-size:20px}
+  #name-hint{font-size:16px;margin-left:8px}
+  #character-name{width:235px;font-size:22px}
+  .attributes{margin-top:8px}
+  .attribute-row{height:35px;font-size:23px;grid-template-columns:1fr 105px 50px 50px 50px}
+  .attribute-row button{height:34px}
+  .attribute-cost{font-size:18px}
+  #points-left{font-size:23px;margin-top:7px}
+  #character-message{font-size:15px;top:378px;line-height:1.2}
+  .draft-actions{bottom:12px;left:24px;right:24px;padding-top:7px}
+  .draft-actions button{font-size:21px;padding:8px}
+  .draft-row button{font-size:20px}
 }

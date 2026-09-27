@@ -1,4 +1,4 @@
-# State boundaries — R01a
+# State boundaries — R01a / R04a
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -23,6 +23,11 @@ Preview state consists solely of selected view (`ship`, `cities`, `worlds`),
 record index, palette/bank and optional selected point. Locale is a preference.
 This deliberately has no money, player statistics, fabricated quest progress,
 or gameplay persistence.
+
+R04a adds an independent character editor. Its four IndexedDB slots use the
+`sundog-character-draft` format, never the campaign envelope above. Drafts hold
+only a validated Unicode name and five attributes; remaining points are derived.
+See `character-creation.md`. They are editable preparation, not game sessions.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.

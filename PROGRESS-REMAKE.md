@@ -1,5 +1,32 @@
 # SunDog web remake progress
 
+## R04a — Character allocation and persistent drafts — 2026-09-28
+
+Implemented the five source-derived attributes, 440-point allocation budget,
+escalating costs and exact refunds. Added English/Korean character editing,
+normalized Unicode names, four separate IndexedDB draft slots, explicit save/load,
+JSON import/export, overwrite/reset confirmations and validation before mutation.
+Campaign saves use a different future contract; the interface clearly labels
+these as character drafts. No world defaults or collision rules were invented.
+
+Validation in the required Chrome 154.0.8037.57: 13 browser unit/rule/storage
+tests, 25 character smoke checks, and all 61 existing preview smoke checks pass.
+Checks include cost-tier boundaries and full-budget exhaustion, Unicode names,
+duplicate-name transaction rollback, reload persistence, JSON roundtrip,
+invalid/future imports, cancelled overwrites, escaped display text, storage
+failure/export fallback, locale preservation, and three character viewport sizes.
+Visually reviewed English/Korean desktop/portrait character and draft layouts.
+Fixed points/footer and title introduction/action overlaps; four final title-layout
+checks and About focus restoration also pass. Corrected asynchronous waits and an accidentally
+duplicated block in smoke automation. Source-string verification and diff checks
+pass. See `docs/remake/character-validation.md` and the JSON receipt.
+
+R04 is partial: fresh campaign initialization, campaign save/resume, and the
+playable ship are still pending. Next is named initialization/equipment state and
+a successful clean new-game reference capture, followed by collision/interaction
+geometry for R05. Original assets and the accepted reconstruction exception stay
+unchanged; the supplied untracked PRD remains outside these commits.
+
 ## R01b — Character allocation and movement source trace — 2026-09-27
 
 Traced the five initial attributes, 440-point budget, escalating per-point costs,

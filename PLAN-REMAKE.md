@@ -257,6 +257,11 @@ but the first playable milestone should not wait for exhaustive semantic naming
 of all reconstructed procedures. Schedule estimates should follow R01/R05,
 when the largest semantic risks have been measured.
 
+Checkpoint R04a implements source-derived character allocation and four editable
+draft slots with JSON transfer. Drafts are deliberately separate from campaign
+saves. R04 remains incomplete until named world/default initialization and an
+observed fresh-game fixture pass; R05 collision and playable ship remain next.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
