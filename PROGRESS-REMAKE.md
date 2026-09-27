@@ -1,5 +1,26 @@
 # SunDog web remake progress
 
+## R05a — Source-backed ship walkthrough — 2026-09-28
+
+Implemented full-ship walking with the recovered collision glyph, native
+diagonal/X/Y attempt order and one-pixel fallback. Added separate collision data
+and player SVG exports, pointer/touch hold-and-release, focused arrow keys,
+pause/reset/help, lost-focus pause and bounded frame catch-up. English/Korean
+controls fit the viewport. Stations report arrival; their systems remain pending.
+Walk position lasts within the page and is separate from saved character drafts.
+
+Required Chrome 154.0.8037.57 passes 23 walkthrough checks, 19 browser tests,
+61 preview regression checks and 25 character regression checks. Four Python
+export tests and all 94 artifacts verify. Coverage includes the native endpoint,
+all 1784 connected ship positions, touch cancellation, DPR2 rendering, keyboard,
+focus, locales, offline movement and copied-folder delivery. Visually reviewed
+desktop/portrait walkthrough and preview screens. See `docs/remake/walk-validation.md`
+and its JSON receipt. Original source assets and disk images are unchanged.
+
+R04/R05 remain partial: next map named equipment/inventory and world initialization,
+then add consequential ship interactions, status and campaign save/resume.
+The user-supplied untracked PRD is excluded from implementation commits.
+
 ## R04b — Observed clean character and ship movement — 2026-09-28
 
 Added a repeatable MAME new-character input sequence and captured the resulting

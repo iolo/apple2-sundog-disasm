@@ -97,6 +97,16 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .slot-number{color:var(--muted);font-size:14px}
 .slot-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:20px}
 .draft-row button{border:1px solid var(--line);font-size:15px}
+#walk-screen{position:absolute;inset:0;background:var(--ink)}
+#walk-screen[hidden]{display:none}
+#walk-screen canvas{position:absolute;inset:0;width:640px;height:480px}
+#walk-screen h1{font-size:24px;font-weight:normal;letter-spacing:0}
+.walk-note{position:absolute;left:32px;right:32px;top:82px;color:var(--muted);font-size:14px;line-height:1.4}
+#walk-surface{position:absolute;left:32px;top:126px;width:576px;height:244px;touch-action:none;cursor:crosshair}
+#walk-surface:focus-visible{outline:1px dashed var(--line)}
+#walk-status{position:absolute;left:32px;right:32px;top:376px;color:var(--amber);font-size:14px;line-height:1.4}
+.walk-actions{position:absolute;left:32px;right:32px;bottom:20px;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;font-size:17px}
+#begin-walk{color:var(--amber)}
 @media(max-width:639px){
   #character-screen .topline{left:20px;right:20px;font-size:18px;letter-spacing:0}
   #character-screen h1{font-size:23px}
@@ -114,4 +124,9 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   .draft-actions{bottom:12px;left:24px;right:24px;padding-top:7px}
   .draft-actions button{font-size:21px;padding:8px}
   .draft-row button{font-size:20px}
+  #walk-screen .topline{font-size:20px;letter-spacing:0}
+  #walk-screen h1{font-size:25px}
+  .walk-note{font-size:18px;top:78px}
+  #walk-status{font-size:18px;top:372px}
+  .walk-actions{font-size:22px;bottom:13px}
 }

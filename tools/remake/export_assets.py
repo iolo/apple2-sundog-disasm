@@ -48,7 +48,7 @@ def build():
         sources[name] = hashlib.sha256(raw).hexdigest()
         return raw
 
-    images = {}
+    images, ship_collision = {}, {}
     for name, source in [('ship', 'assets/ship-images/full_ship/decoded.hgr'),
                          ('ship-section', 'assets/ship-images/ship_section/decoded.hgr'),
                          ('title', 'assets/title/title.hgr')]:
@@ -56,6 +56,19 @@ def build():
         path = f'assets/svg/{name}.svg'
         outputs[path] = svg(pixel_rows(rows))
         images[name] = path
+        if name in ('ship', 'ship-section'):
+            # Library22 native procedure9 tests the same low seven HGR bits.
+            # Keep collision data independent of presentation SVGs.
+            ship_collision[name] = [[value & 127 for value in row] for row in rows]
+
+    font = read('assets/font/font.bin')
+    glyph = lambda index: [value & 127 for value in reversed(font[index * 8:index * 8 + 8])]
+    outputs['assets/svg/player.svg'] = svg(pixel_rows([[value] for value in glyph(12)]))
+    images['player'] = 'assets/svg/player.svg'
+    outputs['data/ship-walk.json'] = encode(dict(
+        version=1, width=280, height=192, spawn=dict(x=54, y=110),
+        spriteRows=glyph(12), collisionRows=glyph(13), backgrounds=ship_collision,
+        source='game_15 procedures 11/13; library_22 procedures 9/22; shared font glyphs 12/13'))
 
     tile_banks = {}
     for bank, source, height, count in [
@@ -93,7 +106,7 @@ def build():
         dict(id=f'{"item" if i < 32 else "cargo"}-{i%32:02}', sourceIndex=i,
              name=r['name'], valueByte=r['value_byte']) for i, r in enumerate(names)])
     catalog = dict(version=1, images=images, tileBanks=tile_banks, maps='data/maps.json',
-                   items='data/items.json',
+                   items='data/items.json', shipWalk='data/ship-walk.json',
                    presentation='monochrome low-seven-bit vectors; raw maps without runtime overlays')
     outputs['data/catalog.json'] = encode(catalog)
     outputs['data/provenance.json'] = encode(dict(

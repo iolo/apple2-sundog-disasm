@@ -3,6 +3,7 @@ import { loadAssets } from './render/assets.js';
 import { drawScene, MAP_BOUNDS, SHIP_BOUNDS } from './render/scene.js';
 import { readLocale, saveLocale, translator } from './ui/i18n.js';
 import { characterScreen } from './ui/character.js';
+import { shipWalkScreen } from './ui/ship-walk.js';
 
 const viewport = document.querySelector('#viewport');
 const stage = document.querySelector('#stage');
@@ -11,7 +12,7 @@ const ui = document.querySelector('#interface');
 const announcement = document.querySelector('#announcement');
 let state = createPreview(), locale = readLocale(), assets, scale = 1, help = false;
 let returnFocus = null;
-let counts;
+let counts, walker;
 const t = (key, parameters) => translator(assets.locales, locale)(key, parameters);
 const creator = characterScreen({ stage, background: ui, t,
   language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
@@ -52,7 +53,7 @@ function render() {
       <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">›</button></div></section>
       <div id="inspect" class="inspect-surface" role="button" tabindex="0" aria-label="${t('surface')}"></div>
       <div class="scene-controls"><p class="selection">${describeSelection()}</p>
-      ${state.view === 'cities' ? `<label>${t('bank')} <select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select></label>` : `<button id="help" data-action="help">${t('help')} ?</button>`}</div>
+      ${state.view === 'cities' ? `<label>${t('bank')} <select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select></label>` : `<div>${state.view === 'ship' ? `<button id="begin-walk" data-action="walk">${t('beginWalk')} →</button>` : ''}<button id="help" data-action="help">${t('help')} ?</button></div>`}</div>
       <footer class="bottomline"><span>${t('controls')}</span><span>${t('preview')}</span></footer>`;
   }
   if (help) {
@@ -65,6 +66,7 @@ function render() {
   }
   drawScene(canvas, state, assets, scale);
   creator.render();
+  walker?.render();
 }
 
 function dispatch(action) {
@@ -88,6 +90,7 @@ ui.addEventListener('click', event => {
   if (!button || !assets) return;
   const action = button.dataset.action;
   if (action === 'character') { creator.show(); return; }
+  if (action === 'walk') { walker.show(); return; }
   if (action === 'language') {
     locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render();
   } else if (action === 'help') {
@@ -115,6 +118,7 @@ ui.addEventListener('pointerdown', event => {
 
 document.addEventListener('keydown', event => {
   if (!assets) return;
+  if (walker?.active || event.target.closest?.('#walk-screen')) return;
   if (creator.active) {
     if (event.key === 'Escape' && !event.isComposing) {
       event.preventDefault(); creator.hide(); document.querySelector('#create-character').focus();
@@ -152,6 +156,10 @@ window.addEventListener('resize', resize);
 resize();
 try {
   assets = await loadAssets();
+  walker = shipWalkScreen({ stage, background: ui, assets, t,
+    language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
+    close: () => document.querySelector('#begin-walk')?.focus(),
+  });
   counts = { ship: 2, cities: assets.maps.cities.length, worlds: assets.maps.worlds.length };
   render();
   document.querySelector('#explore').focus({ preventScroll: true });

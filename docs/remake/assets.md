@@ -1,4 +1,4 @@
-# Browser asset batch — R02a
+# Browser asset batch — R02a / R05a
 
 Run `python3 tools/remake/export_assets.py` to regenerate, or append `--check`
 to verify committed output. The exporter reads only delivered source assets.
@@ -20,6 +20,11 @@ choice is illustrative: runtime bank selection, variants, clipping, NPCs and
 collision are not yet implemented. World index 13 is shown as stored; the
 original later replaces it with generated variants and restores city positions.
 Source artwork and map data must not be used as an inferred collision mask.
+R05a separately traces the native ship collision consumer; see `ship-movement.md`.
+It adds the shared-font player glyph as an external SVG and `ship-walk.json`
+with explicit glyph masks, source spawn and packed low-bit ship collision rows.
+The exporter now verifies 94 artifacts, including 89 SVGs. Ship collision is
+independent of decorative SVG paths; city/world collision remains unresolved.
 
 Mulmaru v1.0's `Mulmaru.woff2` and `LICENSE.txt` were extracted from the pinned
 release ZIP. Its source URL and archive/file hashes are in

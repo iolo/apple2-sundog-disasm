@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a
+# State boundaries — R01a / R04a / R05a
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -28,6 +28,12 @@ R04a adds an independent character editor. Its four IndexedDB slots use the
 `sundog-character-draft` format, never the campaign envelope above. Drafts hold
 only a validated Unicode name and five attributes; remaining points are derived.
 See `character-creation.md`. They are editable preparation, not game sessions.
+
+R05a adds separate ephemeral walkthrough state: player position, held input,
+pointer target, pause flag and a bounded movement accumulator. Its source-backed
+spawn is (54,110). It retains position while reopening the screen but resets on
+reload, advances no campaign clock, and has no inventory or survival state.
+Input capture and animation handles remain in the UI, outside persisted data.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
