@@ -2,6 +2,7 @@ import { createPreview, reducePreview, logicalPoint, cellAt } from './core/previ
 import { loadAssets } from './render/assets.js';
 import { drawScene, MAP_BOUNDS, SHIP_BOUNDS } from './render/scene.js';
 import { readLocale, saveLocale, translator } from './ui/i18n.js';
+import { characterScreen } from './ui/character.js';
 
 const viewport = document.querySelector('#viewport');
 const stage = document.querySelector('#stage');
@@ -12,6 +13,10 @@ let state = createPreview(), locale = readLocale(), assets, scale = 1, help = fa
 let returnFocus = null;
 let counts;
 const t = (key, parameters) => translator(assets.locales, locale)(key, parameters);
+const creator = characterScreen({ stage, background: ui, t,
+  language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
+  close: () => document.querySelector('#create-character')?.focus(),
+});
 
 function resize() {
   scale = Math.min(window.innerWidth / 640, window.innerHeight / 480);
@@ -32,12 +37,12 @@ function render() {
   const focused = document.activeElement?.id;
   document.documentElement.lang = locale;
   const language = `<button id="language" data-action="language" lang="${locale === 'en' ? 'ko' : 'en'}">${t('language')}</button>`;
-  const footer = `<footer class="bottomline"><span>${t('preview')}</span><span>${t('previewNote')}</span></footer>`;
+  const footer = `<footer class="bottomline"><button id="about" data-action="help">${t('about')}</button><span>${t('previewNote')}</span></footer>`;
   if (state.view === 'title') {
     ui.innerHTML = `<header class="topline"><span class="edition">${t('edition')}</span>${language}</header>
       <section class="hero enter"><h1>SunDog</h1><div class="subtitle">${t('subtitle')}</div><p>${t('intro')}</p></section>
       <div class="hero-actions"><button id="explore" class="primary" data-action="view" data-view="ship">${t('explore')} ↗</button>
-      <button id="about" class="quiet" data-action="help">${t('about')}</button></div>${footer}`;
+      <button id="create-character" data-action="character">${t('createCharacter')} →</button></div>${footer}`;
   } else {
     ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
       <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
@@ -59,6 +64,7 @@ function render() {
     document.getElementById(focused)?.focus({ preventScroll: true });
   }
   drawScene(canvas, state, assets, scale);
+  creator.render();
 }
 
 function dispatch(action) {
@@ -81,6 +87,7 @@ ui.addEventListener('click', event => {
   const button = event.target.closest('[data-action]');
   if (!button || !assets) return;
   const action = button.dataset.action;
+  if (action === 'character') { creator.show(); return; }
   if (action === 'language') {
     locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render();
   } else if (action === 'help') {
@@ -108,6 +115,12 @@ ui.addEventListener('pointerdown', event => {
 
 document.addEventListener('keydown', event => {
   if (!assets) return;
+  if (creator.active) {
+    if (event.key === 'Escape' && !event.isComposing) {
+      event.preventDefault(); creator.hide(); document.querySelector('#create-character').focus();
+    }
+    return;
+  }
   if (help) {
     if (event.key === 'Escape') { event.preventDefault(); closeHelp(); }
     if (event.key === 'Tab') { event.preventDefault(); document.querySelector('#close-help').focus(); }

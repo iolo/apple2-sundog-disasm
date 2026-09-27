@@ -81,7 +81,7 @@ async (page) => {
   await page.context().setOffline(false);
   await page.goto(`${root}tests/`);
   await page.waitForFunction(() => document.documentElement.dataset.result);
-  assert(await page.locator('html').getAttribute('data-result') === 'pass', 'Six browser rule/localization tests');
+  assert(await page.locator('html').getAttribute('data-result') === 'pass', 'Browser rule/localization/storage tests');
   await page.goto('http://127.0.0.1:8001/archive/');
   await page.waitForFunction(() => document.documentElement.dataset.ready === 'true');
   await page.locator('#explore').click();
