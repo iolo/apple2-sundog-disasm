@@ -1,5 +1,19 @@
 # SunDog web remake progress
 
+## R01b — Character allocation and movement source trace — 2026-09-27
+
+Traced the five initial attributes, 440-point budget, escalating per-point costs,
+minimum values, refunds, and unspent-point warning. Recorded source offsets and
+independent cost checkpoints in `docs/remake/character-creation.md`. Traced ship
+motion into the native collision consumer; collision semantics remain pending.
+
+Booted a disposable disk1 copy in MAME 0.285, reached the four-slot utility
+screen and the first slot menu, then stopped the owned session. Follow-up input
+did not reach character allocation. No clean-state emulator fixture is claimed.
+World generation/equipment semantics and observed initialization still gate
+campaign creation. R04a will expose the verified allocation rules as explicitly
+labelled character drafts, stored separately from campaign saves.
+
 ## R03a — Runnable bilingual browser preview — 2026-09-27
 
 Implemented the first static ESM app in `remake/`: title, ship/city/world
