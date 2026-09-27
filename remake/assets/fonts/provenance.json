@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/mushsooni/mulmaru/releases/tag/v1.0",
+  "download": "https://github.com/mushsooni/mulmaru/releases/download/v1.0/Mulmaru.zip",
+  "archiveSha256": "fff80e46f59f9ed72d9b2160ba2cc1a624a149fcf99cc39760769e3eb9685ad5",
+  "files": {
+    "Mulmaru.woff2": "6cf652f25b20a64926333cd41b49cab4a25ffe00761b86762e21db9df52ffb44",
+    "LICENSE.txt": "53440f608d67fd4dcf570047e6009c7bd43eba58814dff3f89f0b5568e450008"
+  },
+  "upstreamLicenseSha256": "a94cab6def3684ae4c8a8fc2d337cd9ee197885847f2fa7d8944cb3f90927d18",
+  "licenseNormalization": "CRLF to LF; trailing whitespace removed; wording unchanged"
+}

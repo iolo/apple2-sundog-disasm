@@ -1,5 +1,21 @@
 # SunDog web remake progress
 
+## R02a — Deterministic vector/content export — 2026-09-27
+
+Added the standalone asset exporter, three focused tests, 92 generated browser
+artifacts, and local Mulmaru v1.0 WOFF2/license/provenance. Exports include 88
+SVGs, 60 live cities, 18 worlds, 64 item/cargo names and source/output hashes.
+All artwork is external vector path data; original source assets are unchanged.
+
+Validation: `python3 tools/remake/test_exports.py` (3 tests pass), exporter
+`--check` passes for all 92 artifacts. Checks cover HGR holes/phase bits, vector
+run boundaries, live-map filtering, and ignoring residual item-name storage.
+Visual inspection of these exports follows in R03's browser preview.
+
+R02 is partial: semantic interaction geometry and remaining gameplay assets/text
+will accompany their features. See `docs/remake/assets.md` for representation
+limits. Next: R03a, runnable localized browser preview and viewport/input checks.
+
 ## R01a — Behavior evidence and state boundaries — 2026-09-27
 
 Implementation authorized. Added `docs/remake/behavior-matrix.md` and

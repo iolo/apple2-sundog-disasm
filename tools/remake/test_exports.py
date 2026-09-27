@@ -1,0 +1,43 @@
+import json
+from pathlib import Path
+import sys
+import unittest
+import xml.etree.ElementTree as ET
+
+sys.path.insert(0, str(Path(__file__).parent))
+from export_assets import build, pixel_rows, svg
+from hgr_asset import split_page, row_offset
+
+
+class ExportTests(unittest.TestCase):
+    def test_hgr_rows_and_phase_bits(self):
+        page = bytearray(8192)
+        page[row_offset(65)] = 0x81
+        page[120] = 0xFF  # Memory hole must never become a displayed pixel.
+        rows, _ = split_page(page)
+        pixels = pixel_rows(rows)
+        self.assertEqual(sum(map(sum, pixels)), 1)
+        self.assertEqual(pixels[65][:7], [1, 0, 0, 0, 0, 0, 0])
+
+    def test_svg_runs_keep_gaps(self):
+        root = ET.fromstring(svg([[1, 1, 0, 1], [0, 0, 0, 0]]))
+        self.assertEqual(root.attrib['viewBox'], '0 0 4 2')
+        self.assertEqual(root[0].attrib['d'], 'M0 0h2v1h-2zM3 0h1v1h-1z')
+
+    def test_live_content_and_vector_only(self):
+        files = build()
+        maps = json.loads(files['data/maps.json'])
+        self.assertEqual(len(maps['cities']), 60)
+        self.assertEqual(len(maps['worlds']), 18)
+        self.assertEqual(maps['cities'][-1]['id'], 'city-60')
+        for name, data in files.items():
+            if name.endswith('.svg'):
+                root = ET.fromstring(data)
+                self.assertTrue(all(e.tag.rsplit('}', 1)[-1] in ('svg', 'path') for e in root.iter()))
+        items = json.loads(files['data/items.json'])
+        self.assertEqual(items[63]['name'], 'cryogens')
+        self.assertEqual(items[0]['name'], '')  # Never expose discarded residual string bytes.
+
+
+if __name__ == '__main__':
+    unittest.main()

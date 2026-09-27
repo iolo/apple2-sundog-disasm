@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Export source-backed browser data and standalone monochrome vector artwork."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'tools'))
+from hgr_asset import split_page
+from tile_asset import pack_tiles
+
+
+def pixel_rows(rows):
+    return [[int(bool(byte & (1 << bit))) for byte in row for bit in range(7)] for row in rows]
+
+
+def svg(rows):
+    """Merge horizontal runs; each path remains a real vector, with no raster payload."""
+    width, height = len(rows[0]), len(rows)
+    if any(len(row) != width for row in rows):
+        raise ValueError('Ragged pixel rows')
+    paths = []
+    for y, row in enumerate(rows):
+        x = 0
+        while x < width:
+            if not row[x]:
+                x += 1
+                continue
+            start = x
+            while x < width and row[x]:
+                x += 1
+            paths.append(f'M{start} {y}h{x-start}v1h{start-x}z')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">'
+            f'<path fill="#e6e1ce" d="{"".join(paths)}"/></svg>\n').encode()
+
+
+def encode(value):
+    return (json.dumps(value, ensure_ascii=False, separators=(',', ':')) + '\n').encode()
+
+
+def build():
+    outputs, sources = {}, {}
+
+    def read(name):
+        raw = (ROOT / name).read_bytes()
+        sources[name] = hashlib.sha256(raw).hexdigest()
+        return raw
+
+    images = {}
+    for name, source in [('ship', 'assets/ship-images/full_ship/decoded.hgr'),
+                         ('ship-section', 'assets/ship-images/ship_section/decoded.hgr'),
+                         ('title', 'assets/title/title.hgr')]:
+        rows, _ = split_page(read(source))
+        path = f'assets/svg/{name}.svg'
+        outputs[path] = svg(pixel_rows(rows))
+        images[name] = path
+
+    tile_banks = {}
+    for bank, source, height, count in [
+        *((f'city-{n}', f'assets/tiles/bank{n}/rows.json', 32, 16) for n in range(4)),
+        ('world', 'assets/world-tiles/rows.json', 24, 21),
+    ]:
+        tiles = json.loads(read(source))
+        pack_tiles(tiles, height=height, count=count)  # Reuse the evidenced shape validator.
+        paths = []
+        for i, rows in enumerate(tiles):
+            path = f'assets/svg/tiles/{bank}-{i:02}.svg'
+            outputs[path] = svg(pixel_rows(rows))
+            paths.append(path)
+        tile_banks[bank] = paths
+
+    cities = json.loads(read('assets/city-maps/tiles.json'))
+    cities = [dict(id=f'city-{r["index"]+1:02}', sourceIndex=r['index'], tiles=r['tiles'])
+              for r in cities if r['variant'] == 'play']
+    worlds = [dict(id=f'world-{i+1:02}', sourceIndex=i, tiles=rows)
+              for i, rows in enumerate(json.loads(read('assets/world-maps/tiles.json')))]
+    for records, count, width, height, limit in [(cities, 60, 20, 12, 15), (worlds, 18, 40, 24, 13)]:
+        if len(records) != count or len({r['id'] for r in records}) != count:
+            raise ValueError('Unexpected live map inventory')
+        for record in records:
+            rows = record['tiles']
+            if len(rows) != height or any(len(row) != width for row in rows):
+                raise ValueError('Invalid map dimensions')
+            if any(type(v) is not int or not 0 <= v <= limit for row in rows for v in row):
+                raise ValueError('Invalid map index')
+    outputs['data/maps.json'] = encode(dict(cities=cities, worlds=worlds))
+    names = json.loads(read('assets/item-names/play/records.json'))
+    if len(names) != 64:
+        raise ValueError('Expected two 32-record name banks')
+    outputs['data/items.json'] = encode([
+        dict(id=f'{"item" if i < 32 else "cargo"}-{i%32:02}', sourceIndex=i,
+             name=r['name'], valueByte=r['value_byte']) for i, r in enumerate(names)])
+    catalog = dict(version=1, images=images, tileBanks=tile_banks, maps='data/maps.json',
+                   items='data/items.json',
+                   presentation='monochrome low-seven-bit vectors; raw maps without runtime overlays')
+    outputs['data/catalog.json'] = encode(catalog)
+    outputs['data/provenance.json'] = encode(dict(
+        generator='tools/remake/export_assets.py', sources=sources,
+        outputs={path: hashlib.sha256(data).hexdigest() for path, data in sorted(outputs.items())}))
+    return outputs
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true')
+    args = parser.parse_args()
+    outputs = build()
+    for name, data in outputs.items():
+        target = ROOT / 'remake' / name
+        if args.check:
+            if not target.exists() or target.read_bytes() != data:
+                raise SystemExit(f'Stale export: {name}')
+        else:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+    print(f'{len(outputs)} deterministic artifacts {"verified" if args.check else "written"}')
