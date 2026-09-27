@@ -70,6 +70,26 @@ def build():
         spriteRows=glyph(12), collisionRows=glyph(13), backgrounds=ship_collision,
         source='game_15 procedures 11/13; library_22 procedures 9/22; shared font glyphs 12/13'))
 
+    # Library27 procedures3/4 compose four bank1 glyphs for each item.
+    item_font = read('assets/play-glyphs/bank1/glyphs.bin')
+    item_glyph = lambda index: pixel_rows([[v & 127] for v in reversed(item_font[index * 8:index * 8 + 8])])
+    item_images = {}
+    for index in [7, *range(8, 14), *range(15, 32)]:
+        base = index * 2 + (32 if index >= 16 else 0)
+        quadrants = [item_glyph(base + offset) for offset in [0, 1, 32, 33]]
+        rows = [a + b for a, b in zip(quadrants[0], quadrants[1])]
+        rows += [a + b for a, b in zip(quadrants[2], quadrants[3])]
+        path = f'assets/svg/items/item-{index:02}.svg'
+        outputs[path] = svg(rows)
+        item_images[str(index)] = path
+    # Only deterministic, named inventory fields; no generated campaign data.
+    for source in ['src/pcode/utility_disk1.s', 'src/pcode/game_14.s', 'src/pcode/library_27.s']:
+        read(source)  # Pin the traced rules along with the graphics bytes.
+    outputs['data/ship-inventory.json'] = encode(dict(
+        version=1, carried=[0] * 4, locker=[0] * 15 + [23] * 5,
+        stores=[10] * 5 + [8] * 5 + [235, 12] + [0] * 8,
+        source='utility_disk1 procedure21 clear and procedure20; game14 procedures3/4/8; library27 procedures7/13/15'))
+
     tile_banks = {}
     for bank, source, height, count in [
         *((f'city-{n}', f'assets/tiles/bank{n}/rows.json', 32, 16) for n in range(4)),
@@ -107,6 +127,7 @@ def build():
              name=r['name'], valueByte=r['value_byte']) for i, r in enumerate(names)])
     catalog = dict(version=1, images=images, tileBanks=tile_banks, maps='data/maps.json',
                    items='data/items.json', shipWalk='data/ship-walk.json',
+                   itemImages=item_images, shipInventory='data/ship-inventory.json',
                    presentation='monochrome low-seven-bit vectors; raw maps without runtime overlays')
     outputs['data/catalog.json'] = encode(catalog)
     outputs['data/provenance.json'] = encode(dict(

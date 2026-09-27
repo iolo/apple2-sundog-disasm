@@ -1,5 +1,35 @@
 # SunDog web remake progress
 
+## R05b — Carried items, locker and stores — 2026-09-28
+
+Implemented four carried slots and twenty slots each in the ship's locker and
+stores, gated by the recovered interaction regions. Select an item and destination
+to transfer; occupied slots swap atomically while preserving the whole byte,
+including shield charge. Cancel, Escape and closing cannot strand an item.
+English/Korean labels, original composed item SVGs, keyboard focus handling,
+touch taps and offline operation are included. Inventory pauses walking and
+lasts within the page; reload resets the walkthrough fixture.
+
+Traced slot layout, initialization, item encoding, writes and icon composition
+through utility20/21, game14 and library27. All 44 initial inventory bytes match
+the independent clean-character capture. A separate owned MAME session reached
+Ship's Stores at (54,86) and moved food byte 8 from store slot 5 into carried slot 0,
+without changing other captured slots. Checked in memory and screenshot evidence;
+stopped the emulator and verified original disk/manual hashes. See
+`docs/remake/inventory.md` and `docs/reference/remake-inventory-transfer.json`.
+
+Required Chrome 154.0.8037.57 passes 25 inventory smoke checks, 25 browser tests,
+23 movement checks, 61 preview checks and 25 character checks. Six exporter tests,
+119 artifacts and 584 classified strings verify. Reviewed desktop/portrait
+screens and removed an overlay flash. Source-pixel targeting in the smoke and
+the locker reachability target were corrected. Full details are in
+`docs/remake/inventory-validation.md` and its JSON receipt.
+
+R04/R05 remain partial. Next: personal condition and item-use effects, engineering
+equipment semantics, then complete world initialization and campaign persistence.
+Character drafts and original reconstruction deliverables remain separate;
+the user-supplied untracked PRD stays outside implementation commits.
+
 ## R05a — Source-backed ship walkthrough — 2026-09-28
 
 Implemented full-ship walking with the recovered collision glyph, native

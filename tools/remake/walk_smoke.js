@@ -94,7 +94,7 @@ async (browserPage) => {
       await touch.screenshot({ path: 'output/playwright/remake/walk-touch-dpr2.png' });
     } finally { await touchContext.close(); }
     assert(errors.length === 0, `No browser/resource errors: ${errors.join(', ')}`);
-    return { browser: browser.version(), passed: checks.length, checks: checks.map(value => value.startsWith('PASS ') ? '19 browser rule/storage/movement tests' : value), unitResults };
+    return { browser: browser.version(), passed: checks.length, checks: checks.map(value => value.startsWith('PASS ') ? `${unitResults.length} browser rule/storage/movement tests` : value), unitResults };
   } catch (error) { await page.screenshot({ path: 'output/playwright/remake/walk-failure.png' }); throw new Error(`${error.message}; last check: ${checks.at(-1)}`); }
   finally { await context.close(); }
 }

@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a / R05a
+# State boundaries — R01a / R04a / R05a / R05b
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -32,8 +32,16 @@ See `character-creation.md`. They are editable preparation, not game sessions.
 R05a adds separate ephemeral walkthrough state: player position, held input,
 pointer target, pause flag and a bounded movement accumulator. Its source-backed
 spawn is (54,110). It retains position while reopening the screen but resets on
-reload, advances no campaign clock, and has no inventory or survival state.
+reload and advances no campaign clock or survival state.
 Input capture and animation handles remain in the UI, outside persisted data.
+
+R05b adds four carried bytes and twenty bytes each for locker and stores. Low
+five bits identify an item; upper bits are preserved across every transfer.
+Initialization uses only named deterministic fields verified against the clean
+capture. Container access is derived from the player's interaction region.
+Selection is transient UI state; selecting/cancelling does not remove an item.
+Transfers commit both slots atomically. This inventory remains local to the
+walkthrough and resets on reload, independently of character drafts.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.

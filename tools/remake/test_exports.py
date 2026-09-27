@@ -47,6 +47,25 @@ class ExportTests(unittest.TestCase):
             self.assertEqual(len(rows), 192)
             self.assertTrue(all(len(row) == 40 and all(0 <= byte < 128 for byte in row) for row in rows))
 
+    def test_inventory_matches_independent_clean_character_capture(self):
+        root = Path(__file__).resolve().parents[2]
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        raw = bytes.fromhex(captured['globalsHex'])
+        data = json.loads(build()['data/ship-inventory.json'])
+        for name, offset, size in [('carried', 52, 4), ('locker', 276, 20), ('stores', 304, 20)]:
+            self.assertEqual(data[name], list(raw[offset:offset + size]))
+
+    def test_item_quadrants_and_phase_mask(self):
+        files = build()
+        root = Path(__file__).resolve().parents[2]
+        raw = (root / 'assets/play-glyphs/bank1/glyphs.bin').read_bytes()
+        # Shunt23 uses glyphs78/79 above110/111, at the native renderer's anchors.
+        expected = []
+        for left, right in [(78, 79), (110, 111)]:
+            for row in range(7, -1, -1):
+                expected.append([int(bool(raw[glyph * 8 + row] & (1 << bit))) for glyph in [left, right] for bit in range(7)])
+        self.assertEqual(files['assets/svg/items/item-23.svg'], svg(expected))
+
 
 if __name__ == '__main__':
     unittest.main()
