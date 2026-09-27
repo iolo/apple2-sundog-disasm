@@ -1,0 +1,154 @@
+import { createPreview, reducePreview, logicalPoint, cellAt } from './core/preview.js';
+import { loadAssets } from './render/assets.js';
+import { drawScene, MAP_BOUNDS, SHIP_BOUNDS } from './render/scene.js';
+import { readLocale, saveLocale, translator } from './ui/i18n.js';
+
+const viewport = document.querySelector('#viewport');
+const stage = document.querySelector('#stage');
+const canvas = document.querySelector('#scene');
+const ui = document.querySelector('#interface');
+const announcement = document.querySelector('#announcement');
+let state = createPreview(), locale = readLocale(), assets, scale = 1, help = false;
+let returnFocus = null;
+let counts;
+const t = (key, parameters) => translator(assets.locales, locale)(key, parameters);
+
+function resize() {
+  scale = Math.min(window.innerWidth / 640, window.innerHeight / 480);
+  viewport.style.width = `${640 * scale}px`;
+  viewport.style.height = `${480 * scale}px`;
+  stage.style.transform = `scale(${scale})`;
+  if (assets) drawScene(canvas, state, assets, scale);
+}
+
+function describeSelection() {
+  if (!state.selection) return t('selectHint');
+  const { x, y } = state.selection;
+  return state.view === 'ship' ? t('point', { x, y })
+    : t('tile', { x: x + 1, y: y + 1, tile: assets.maps[state.view][state.indices[state.view]].tiles[y][x] });
+}
+
+function render() {
+  const focused = document.activeElement?.id;
+  document.documentElement.lang = locale;
+  const language = `<button id="language" data-action="language" lang="${locale === 'en' ? 'ko' : 'en'}">${t('language')}</button>`;
+  const footer = `<footer class="bottomline"><span>${t('preview')}</span><span>${t('previewNote')}</span></footer>`;
+  if (state.view === 'title') {
+    ui.innerHTML = `<header class="topline"><span class="edition">${t('edition')}</span>${language}</header>
+      <section class="hero enter"><h1>SunDog</h1><div class="subtitle">${t('subtitle')}</div><p>${t('intro')}</p></section>
+      <div class="hero-actions"><button id="explore" class="primary" data-action="view" data-view="ship">${t('explore')} ↗</button>
+      <button id="about" class="quiet" data-action="help">${t('about')}</button></div>${footer}`;
+  } else {
+    ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
+      <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
+      <section class="scene-heading"><div><h1>${t(`${state.view}Title`)}</h1><p>${t(`${state.view}Description`)}</p></div>
+      <div class="pager"><button id="previous" data-action="step" data-delta="-1" aria-label="${t('previous')}">‹</button>
+      <span>${String(state.indices[state.view] + 1).padStart(2, '0')} / ${counts[state.view]}</span>
+      <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">›</button></div></section>
+      <div id="inspect" class="inspect-surface" role="button" tabindex="0" aria-label="${t('surface')}"></div>
+      <div class="scene-controls"><p class="selection">${describeSelection()}</p>
+      ${state.view === 'cities' ? `<label>${t('bank')} <select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select></label>` : `<button id="help" data-action="help">${t('help')} ?</button>`}</div>
+      <footer class="bottomline"><span>${t('controls')}</span><span>${t('preview')}</span></footer>`;
+  }
+  if (help) {
+    // Only the dialog is interactive while it is visible.
+    for (const child of ui.children) child.inert = true;
+    ui.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help enter" role="dialog" aria-modal="true" aria-labelledby="help-title"><h2 id="help-title">${t('helpTitle')}</h2><p>${t('helpBody')}</p><p>${t('helpScope')}</p><button id="close-help" data-action="close-help">${t('close')} · Esc</button></section></div>`);
+    document.querySelector('#close-help').focus();
+  } else if (focused) {
+    document.getElementById(focused)?.focus({ preventScroll: true });
+  }
+  drawScene(canvas, state, assets, scale);
+}
+
+function dispatch(action) {
+  const before = state.view;
+  state = reducePreview(state, action, counts);
+  render();
+  if (before !== state.view) {
+    document.getElementById(state.view === 'title' ? 'explore' : `nav-${state.view}`)?.focus();
+  }
+  announcement.textContent = state.selection ? describeSelection()
+    : state.view === 'title' ? t('preview') : `${t(`${state.view}Title`)} ${state.indices[state.view] + 1} / ${counts[state.view]}`;
+}
+
+function closeHelp() {
+  help = false; render();
+  document.getElementById(returnFocus)?.focus();
+}
+
+ui.addEventListener('click', event => {
+  const button = event.target.closest('[data-action]');
+  if (!button || !assets) return;
+  const action = button.dataset.action;
+  if (action === 'language') {
+    locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render();
+  } else if (action === 'help') {
+    returnFocus = button.id; help = true; render();
+  } else if (action === 'close-help') closeHelp();
+  else if (action === 'view') dispatch({ type: 'view', view: button.dataset.view });
+  else if (action === 'step') dispatch({ type: 'step', delta: Number(button.dataset.delta) });
+});
+
+ui.addEventListener('change', event => {
+  if (event.target.id === 'bank') dispatch({ type: 'bank', bank: Number(event.target.value) });
+});
+
+ui.addEventListener('pointerdown', event => {
+  if (event.target.id !== 'inspect' || help) return;
+  const point = logicalPoint(stage.getBoundingClientRect(), event.clientX, event.clientY);
+  const map = state.view === 'ship' ? null : assets.maps[state.view][state.indices[state.view]].tiles;
+  const cell = cellAt(point, map ? MAP_BOUNDS : SHIP_BOUNDS, map ? map[0].length : 280, map ? map.length : 192);
+  if (cell) {
+    event.preventDefault();
+    dispatch({ type: 'select', point: cell });
+    document.querySelector('#inspect').focus();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (!assets) return;
+  if (help) {
+    if (event.key === 'Escape') { event.preventDefault(); closeHelp(); }
+    if (event.key === 'Tab') { event.preventDefault(); document.querySelector('#close-help').focus(); }
+    return;
+  }
+  if (event.target.tagName === 'SELECT') return;
+  if (event.key === 'Escape') {
+    event.preventDefault(); dispatch({ type: 'view', view: 'title' }); return;
+  }
+  if (state.view === 'title') return;
+  if (event.target.id === 'inspect' && (['Enter', ' '].includes(event.key) || event.key.startsWith('Arrow'))) {
+    event.preventDefault();
+    const map = state.view === 'ship' ? null : assets.maps[state.view][state.indices[state.view]].tiles;
+    const width = map ? map[0].length : 280, height = map ? map.length : 192;
+    const point = state.selection ? { ...state.selection } : { x: Math.floor(width / 2), y: Math.floor(height / 2) };
+    if (event.key === 'ArrowLeft') point.x--;
+    if (event.key === 'ArrowRight') point.x++;
+    if (event.key === 'ArrowUp') point.y--;
+    if (event.key === 'ArrowDown') point.y++;
+    point.x = Math.min(width - 1, Math.max(0, point.x));
+    point.y = Math.min(height - 1, Math.max(0, point.y));
+    dispatch({ type: 'select', point });
+  } else if (['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+    event.preventDefault(); dispatch({ type: 'step', delta: event.key === 'ArrowLeft' ? -1 : 1 });
+  }
+});
+
+window.addEventListener('resize', resize);
+resize();
+try {
+  assets = await loadAssets();
+  counts = { ship: 2, cities: assets.maps.cities.length, worlds: assets.maps.worlds.length };
+  render();
+  document.querySelector('#explore').focus({ preventScroll: true });
+  document.documentElement.dataset.ready = 'true';
+} catch (error) {
+  console.error(error);
+  ui.replaceChildren();
+  const panel = document.createElement('div'); panel.className = 'loading';
+  const message = document.createElement('p');
+  message.textContent = 'Unable to load SunDog. Serve the complete remake folder over HTTP. / 선독을 불러오지 못했습니다. remake 폴더를 HTTP 서버로 열어 주세요.';
+  const retry = document.createElement('button'); retry.textContent = 'Retry / 다시 시도';
+  retry.onclick = () => location.reload(); panel.append(message, retry); ui.append(panel);
+}

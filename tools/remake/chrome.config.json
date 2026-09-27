@@ -1,0 +1,9 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": {
+      "executablePath": "/opt/google/chrome/google-chrome",
+      "headless": true
+    }
+  }
+}
