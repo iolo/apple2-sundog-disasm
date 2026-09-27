@@ -1,5 +1,24 @@
 # SunDog web remake progress
 
+## R04b — Observed clean character and ship movement — 2026-09-28
+
+Added a repeatable MAME new-character input sequence and captured the resulting
+classified save state. Fresh name A, base attributes, 440 unspent points and
+(54,110) coordinates are observed/source-cross-checked; descriptor and bank
+checksum agree. The sequence completed on disposable media and the original
+disks/manual still match their baseline hashes.
+
+Traced native collision to shared glyph13 against low HGR bits, including the
+first-success diagonal/X/Y attempts and one-pixel retry. A separate resumed-game
+movement capture reaches (47,93) from (50,99) toward (3,81), matching the browser
+rule. Its HGR differs from the source background only at player/pointer pixels.
+Recorded the distinction between fresh creation and the existing play session.
+See `docs/remake/ship-movement.md` and the two reference receipts.
+
+This closes the missing clean-character observation and collision-rule trace;
+full equipment/world initialization semantics remain open. Next: expose and
+validate the bounded ship walkthrough, then implement the remaining systems.
+
 ## R04a — Character allocation and persistent drafts — 2026-09-28
 
 Implemented the five source-derived attributes, 440-point allocation budget,

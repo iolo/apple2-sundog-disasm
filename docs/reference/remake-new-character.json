@@ -1,0 +1,219 @@
+{
+  "name": "remake-new-character",
+  "boot_disk": "disk1",
+  "end_frame": 24500,
+  "events": [
+    {
+      "frame": 4200,
+      "snapshot": "01-title.png"
+    },
+    {
+      "frame": 4210,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 4240,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 4800,
+      "snapshot": "02-menu.png",
+      "x": 185,
+      "y": 190
+    },
+    {
+      "frame": 5200,
+      "snapshot": "03-selection.png",
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 5230,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 11000,
+      "snapshot": "04-result.png"
+    },
+    {
+      "frame": 11100,
+      "x": 65,
+      "y": 90
+    },
+    {
+      "frame": 11240,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 11270,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 11620,
+      "x": 65,
+      "y": 200
+    },
+    {
+      "frame": 11760,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 11790,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 12120,
+      "x": 65,
+      "y": 240
+    },
+    {
+      "frame": 12260,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 12290,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 12620,
+      "x": 65,
+      "y": 160
+    },
+    {
+      "frame": 12760,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 12790,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 13120,
+      "x": 65,
+      "y": 240
+    },
+    {
+      "frame": 13260,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 13290,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 13720,
+      "x": 12,
+      "y": 35
+    },
+    {
+      "frame": 13860,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 13890,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 14120,
+      "x": 255,
+      "y": 240
+    },
+    {
+      "frame": 14260,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 14290,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 14620,
+      "x": 128,
+      "y": 200
+    },
+    {
+      "frame": 14760,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 14790,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 21000,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 21030,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 21400,
+      "snapshot": "05-initial-attributes.png"
+    },
+    {
+      "frame": 21500,
+      "button": 1,
+      "pressed": true
+    },
+    {
+      "frame": 21530,
+      "button": 1,
+      "pressed": false
+    },
+    {
+      "frame": 21600,
+      "x": 128,
+      "y": 200
+    },
+    {
+      "frame": 21800,
+      "button": 0,
+      "pressed": true
+    },
+    {
+      "frame": 21830,
+      "button": 0,
+      "pressed": false
+    },
+    {
+      "frame": 24000,
+      "snapshot": "06-new-character.png"
+    },
+    {
+      "frame": 24100,
+      "button": 1,
+      "pressed": true
+    },
+    {
+      "frame": 24130,
+      "button": 1,
+      "pressed": false
+    },
+    {
+      "frame": 24400,
+      "snapshot": "07-reboot-prompt.png"
+    }
+  ]
+}

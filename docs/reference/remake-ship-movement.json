@@ -1,0 +1,236 @@
+{
+  "emulator": "MAME 0.285 / apple2e / joystick",
+  "date": "2026-09-28",
+  "scope": "Existing being-played slot resumed; separate from the fresh-character capture",
+  "start": {
+    "x": 50,
+    "y": 99
+  },
+  "pointer": {
+    "x": 3,
+    "y": 81
+  },
+  "end": {
+    "x": 47,
+    "y": 93
+  },
+  "input": {
+    "joystickX": 0,
+    "joystickY": 128,
+    "heldPrimaryFrames": 30
+  },
+  "collisionGlyph": 13,
+  "visibleGlyph": 12,
+  "activeFontPointer": "0x1000",
+  "backgroundPattern": 8,
+  "sourceSHA256": "e3f6e1f949b7600953fbacd152c05d8da531a0fd657c9ea19eb7b1fe2c3fdf56",
+  "captures": {
+    "initial": {
+      "sha256": "a1e1a4f1f25f15d4031feb5261ff4e0b0c0f2fb3d8da0323643fde2bc7a6cb15",
+      "lowPixelDifferencesFromBackground": [
+        [
+          53,
+          94
+        ],
+        [
+          52,
+          95
+        ],
+        [
+          53,
+          95
+        ],
+        [
+          54,
+          95
+        ],
+        [
+          52,
+          96
+        ],
+        [
+          53,
+          96
+        ],
+        [
+          54,
+          96
+        ],
+        [
+          53,
+          97
+        ],
+        [
+          159,
+          114
+        ],
+        [
+          159,
+          115
+        ],
+        [
+          156,
+          117
+        ],
+        [
+          157,
+          117
+        ],
+        [
+          161,
+          117
+        ],
+        [
+          162,
+          117
+        ],
+        [
+          159,
+          119
+        ],
+        [
+          159,
+          120
+        ]
+      ]
+    },
+    "before": {
+      "sha256": "afbc830a3d4acab02cff4df08a3ebdfc7a0ed8de8eda5ac28af491c2410336f1",
+      "lowPixelDifferencesFromBackground": [
+        [
+          3,
+          78
+        ],
+        [
+          3,
+          79
+        ],
+        [
+          0,
+          81
+        ],
+        [
+          1,
+          81
+        ],
+        [
+          5,
+          81
+        ],
+        [
+          6,
+          81
+        ],
+        [
+          3,
+          83
+        ],
+        [
+          3,
+          84
+        ],
+        [
+          53,
+          94
+        ],
+        [
+          52,
+          95
+        ],
+        [
+          53,
+          95
+        ],
+        [
+          54,
+          95
+        ],
+        [
+          52,
+          96
+        ],
+        [
+          53,
+          96
+        ],
+        [
+          54,
+          96
+        ],
+        [
+          53,
+          97
+        ]
+      ]
+    },
+    "after": {
+      "sha256": "a49ab730b020ba3c71fc6e2b64ae94c1f135327f8537150ec84f03889cca788e",
+      "lowPixelDifferencesFromBackground": [
+        [
+          3,
+          78
+        ],
+        [
+          3,
+          79
+        ],
+        [
+          0,
+          81
+        ],
+        [
+          1,
+          81
+        ],
+        [
+          5,
+          81
+        ],
+        [
+          6,
+          81
+        ],
+        [
+          3,
+          83
+        ],
+        [
+          3,
+          84
+        ],
+        [
+          50,
+          88
+        ],
+        [
+          49,
+          89
+        ],
+        [
+          50,
+          89
+        ],
+        [
+          51,
+          89
+        ],
+        [
+          49,
+          90
+        ],
+        [
+          50,
+          90
+        ],
+        [
+          51,
+          90
+        ],
+        [
+          50,
+          91
+        ]
+      ]
+    }
+  }
+}
