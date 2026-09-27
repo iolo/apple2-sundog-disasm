@@ -15,8 +15,8 @@ characters and includes historical variants; it is not a localization catalog.
 | Attributes | Utility procedure 30 `$1036–$10B9` reads five bytes beginning at segment-29 word 48 as strength, intelligence, dexterity, charisma, luck | Source-derived | Schema records those five IDs; defaults, costs and refund rules are traced in `character-creation.md`; R04a implements editable drafts. |
 | Initial coordinates | Utility procedure 21 `$09C7–$09D1` writes word40=54 and low byte word41=110; procedure 18 temporarily changes coordinates while copying six-word location blocks | Source-derived values; meaning partly unresolved | New-character save and ship entry case 11 verify (54,110); see `ship-movement.md`. |
 | Generated world records | `docs/working-state.md`; utility 14 rotates 18 record templates using selector `(old+5)%18`; 17 persists world tables | Source-derived | Fresh worlds are generated. Extracted working-state records are not clean defaults. |
-| Primary movement / secondary status | Manual PDF 10–12; `docs/reference/game-play.json` frames 18100–18600 and status capture | Manual-only movement; status previously observed | First gameplay fixture will hold/release primary input and open/close status. Movement/collision source and a native endpoint comparison are recorded in `ship-movement.md`. |
-| Ship artwork | `game_15.s` `$0315–$033C`, library 24 procedure 5; `docs/packed-ship-images.md` | Source-derived | External SVG derives from decoded HGR pixels; section/full variants remain separate. Artwork is not collision data. |
+| Primary movement / secondary status | Manual PDF 10–12; game15 procedure13; library22 procedures9/22; `docs/reference/remake-ship-movement.json` | Movement source-derived with observed endpoint; status previously observed | R05a implements hold/release walking with the recovered glyph mask and fallback order. See `ship-movement.md` and `walk-validation.md`. Status UI remains pending. |
+| Ship artwork | `game_15.s` `$0315–$033C`, library 24 procedure 5; `docs/packed-ship-images.md` | Source-derived | External SVG derives from decoded HGR pixels; section/full variants remain separate. Native collision consumes low HGR bits with glyph13; explicit collision data is exported separately. |
 | World/city payloads | `docs/world-maps.md`, `docs/city-maps.md`, `game_21.s` procedures 26/28 | Source-derived | Preview all 18 stored worlds and 60 play cities. Raw indices are not claims of terrain meaning or live composition. |
 | Colony requirement check | `game_20.s` procedure 4 `$00A0–$00B2` scans a 14-byte area using CSP 11 before proceeding; exact CSP predicate still to trace | Source-derived entry; predicate unresolved | Do not treat displaying a completion string as proof of delivery semantics. |
 | Colony phase | Same procedure `$00B4–$00FE`: reads byte 2 at segment-29 word271, reports completed phase, tests equality with 9 | Source-derived | Store explicit phase and outstanding requirements; final phase must not be assumed to be a single delivery. |
@@ -27,11 +27,11 @@ characters and includes historical variants; it is not a localization catalog.
 
 ## New-game and campaign blockers
 
-Before R04, trace utility procedures 10–21 and 25–30 into named state fields,
-including starting money, inventory/equipment, attribute budget, time, location
-and generator randomness. Then observe a clean new game on disposable disks.
-Use the existing utility sequence as the scenario starting point; no live
-emulator session was run in R01a. Before R05, trace movement/hit/collision rules.
+R04b observes clean character creation on disposable disks; R05a implements the
+traced movement/collision rules. Attribute allocation is implemented in R04a.
+To finish R04, map the remaining utility procedures 10–21 and 25–30 into named
+state fields, including money, inventory/equipment, time, world generation and
+randomness. R05 still needs status, inventory and consequential interactions.
 Before R11, decode phase requirement generation, delivery accounting and the
 remaining-goods predicate. These block gameplay fidelity, not the independent
 graphics loader, content viewer, localization or viewport work.
@@ -39,7 +39,7 @@ graphics loader, content viewer, localization or viewport work.
 The first ship fixture is specified as: a verified new state near the airlock,
 primary press/hold/release movement, secondary status open/close, one supported
 inventory transfer, save, fresh-session reload, continuation. It remains pending
-until initialization and movement gates pass. Development previews have their
+until initialization, status, inventory and campaign persistence pass. Development previews have their
 own UI state and must never be serialized as campaign saves.
 
 ## Discrepancies and decisions

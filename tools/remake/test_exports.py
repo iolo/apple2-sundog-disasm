@@ -38,6 +38,15 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(items[63]['name'], 'cryogens')
         self.assertEqual(items[0]['name'], '')  # Never expose discarded residual string bytes.
 
+    def test_source_backed_collision_and_player(self):
+        data = json.loads(build()['data/ship-walk.json'])
+        self.assertEqual(data['spawn'], {'x': 54, 'y': 110})
+        self.assertEqual(data['spriteRows'], [0, 0, 8, 28, 28, 8, 0, 0])
+        self.assertEqual(data['collisionRows'], [0, 0, 62, 62, 62, 62, 0, 0])
+        for rows in data['backgrounds'].values():
+            self.assertEqual(len(rows), 192)
+            self.assertTrue(all(len(row) == 40 and all(0 <= byte < 128 for byte in row) for row in rows))
+
 
 if __name__ == '__main__':
     unittest.main()

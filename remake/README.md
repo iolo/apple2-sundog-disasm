@@ -1,8 +1,8 @@
 # SunDog web remake
 
-Current milestone: bilingual character allocation with four saved draft slots,
-plus a visual preview of the original ship, 60 cities and 18 worlds. Campaign
-initialization, movement and campaign saves are not implemented yet. Evidence is in
+Current milestone: a source-backed ship walkthrough, bilingual character allocation
+with four saved draft slots, and a preview of 60 cities and 18 worlds. Campaign
+initialization, inventory, ship systems and campaign saves remain pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
 From the repository root:
@@ -23,6 +23,13 @@ ship point to inspect coordinates. Focus the display and press Enter, then
 arrow keys to move the selection. Elsewhere, left/right changes layouts.
 Escape returns to the title. Language choice persists when browser storage is
 available. Maps are stored layouts, without runtime overlays or inferred rules.
+
+Choose **Walk aboard** in the ship preview. Hold the pointer or touch to walk;
+release to stop. Arrow keys work while the ship display has focus. Pause, reset
+and help are available in both languages; leaving the window pauses movement.
+The walkthrough uses the original collision mask and movement attempts, with a
+browser-specific 50 ms cadence. Position lasts until reload; stations identify
+arrival but do not yet open controls. See `../docs/remake/ship-movement.md`.
 
 Choose **Create a character** to enter a name and spend the original 440-point
 attribute budget. Each + button shows its next cost; − refunds the previous

@@ -68,5 +68,16 @@
   "draftSaved": "Draft saved in this browser.",
   "draftLoaded": "Draft loaded.",
   "draftImported": "Draft imported for editing. Save it to a slot to keep it.",
-  "draftExported": "Draft exported as JSON."
+  "draftExported": "Draft exported as JSON.",
+  "beginWalk": "Walk aboard",
+  "walkTitle": "Aboard the SunDog",
+  "walkNote": "Movement walkthrough · Campaign and ship systems are in development.",
+  "walkHint": "Hold to walk · Arrow keys also move",
+  "walkStation": "Station reached · Its controls are still in development.",
+  "walkPaused": "Paused · Resume when you are ready.",
+  "walkPause": "Pause",
+  "walkResume": "Resume",
+  "walkReset": "Return to start",
+  "walkControls": "Hold a pointer or touch inside the ship to walk toward it. Release to stop. Focus the ship and use arrow keys to move. Escape returns to the preview.",
+  "walkScope": "This walkthrough uses the original starting position, sprite mask and wall collision. Stations are identified but their controls are not active yet. Leaving the window pauses movement. No campaign time passes and no draft or campaign save is changed."
 }

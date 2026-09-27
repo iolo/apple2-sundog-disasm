@@ -13,7 +13,7 @@ async (browserPage) => {
     await page.waitForFunction(() => document.documentElement.dataset.result);
     const results = await page.locator('#results').innerText();
     if (await page.locator('html').getAttribute('data-result') !== 'pass') throw new Error(results);
-    checks.push('13 browser rule/localization/storage tests');
+    checks.push(`${results.split('\n').length} browser rule/localization/storage tests`);
     await page.goto(root); await ready();
     await page.locator('#create-character').click();
     assert(await page.locator('#points-left').innerText() === '440 points left', 'Initial budget 440');
