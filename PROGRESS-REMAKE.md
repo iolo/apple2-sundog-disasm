@@ -1,5 +1,33 @@
 # SunDog web remake progress
 
+## R03a — Runnable bilingual browser preview — 2026-09-27
+
+Implemented the first static ESM app in `remake/`: title, ship/city/world
+inspection views, external SVG loader and Canvas renderer, 4:3 viewport,
+English/Korean catalogs, local Mulmaru, pointer/keyboard selection, tile-bank
+selection, help dialog and persistent language preference. No runtime libraries
+or build step. Original assets are accessed only through the copied browser
+exports. The app explicitly identifies itself as a preview.
+
+Added six browser tests and repeatable Chrome smoke automation/configuration.
+Final validation: all six browser tests and 61 smoke checks pass in the required
+Chrome 154.0.8037.57; all 92 generated artifacts still verify and the three
+exporter tests pass. Visually reviewed the generated SVG scenes in Chrome.
+English/Korean layouts and pointer transforms were checked at four viewport
+sizes. All 78 maps browse after network disconnection. A copied `remake/`
+folder loads at a nested static URL with no repository dependency or external
+runtime requests. See `docs/remake/browser-validation.md` and its JSON receipt.
+
+Fixed small-viewport text/control sizing, constrained header layout and a test
+favicon. Corrected smoke-helper resize timing and an unsupported CLI global.
+No strict cross-browser, high-DPI or gameplay-fidelity test is claimed.
+
+Checkpoint scope: R01/R02/R03 have their first substeps implemented. New game,
+ship movement, campaign saves and the remaining systems are still pending.
+Next implementation work is R01b: decode and observe clean new-game state and
+movement, then R04/R05: persistent playable ship. Do not replace these evidence
+gates with the preview's UI state or the prior players' saved-game payloads.
+
 ## R02a — Deterministic vector/content export — 2026-09-27
 
 Added the standalone asset exporter, three focused tests, 92 generated browser
