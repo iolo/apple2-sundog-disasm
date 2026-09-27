@@ -1,0 +1,4674 @@
+[
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 50,
+    "procedure": 1,
+    "offset": "0029",
+    "text": "S U N D O G>                     FROZEN LEGACY\\",
+    "hex": "532055204e2044204f20473e20202020202020202020202020202020202020202046524f5a454e204c45474143595c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 60,
+    "procedure": 1,
+    "offset": "005F",
+    "text": "||||||||||||||||||A ZoomAction> Adventure Game\\",
+    "hex": "7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c41205a6f6f6d416374696f6e3e20416476656e747572652047616d655c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 66,
+    "procedure": 1,
+    "offset": "0093",
+    "text": "|\\",
+    "hex": "7c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 74,
+    "procedure": 1,
+    "offset": "009B",
+    "text": "||||||Copyright (c) 1984 FTL Games, Inc.\\",
+    "hex": "7c7c7c7c7c7c436f707972696768742028632920313938342046544c2047616d65732c20496e632e5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 84,
+    "procedure": 1,
+    "offset": "00CB",
+    "text": "|\\",
+    "hex": "7c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 92,
+    "procedure": 1,
+    "offset": "00D3",
+    "text": "Program Design .. Bruce Webster, Wayne Holder\\",
+    "hex": "50726f6772616d2044657369676e202e2e20427275636520576562737465722c205761796e6520486f6c6465725c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 100,
+    "procedure": 1,
+    "offset": "0107",
+    "text": "|||||With ....... Donald Geddis, Joe Holt,\\",
+    "hex": "7c7c7c7c7c57697468202e2e2e2e2e2e2e20446f6e616c64204765646469732c204a6f6520486f6c742c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 106,
+    "procedure": 1,
+    "offset": "0137",
+    "text": "||||||||||||||||||and Mike Newton\\",
+    "hex": "7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c616e64204d696b65204e6577746f6e5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 114,
+    "procedure": 1,
+    "offset": "015F",
+    "text": "Concept ......... Bruce Webster, Wayne Holder\\",
+    "hex": "436f6e63657074202e2e2e2e2e2e2e2e2e20427275636520576562737465722c205761796e6520486f6c6465725c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 122,
+    "procedure": 1,
+    "offset": "0193",
+    "text": "Prologue ........ Nancy L. Holder\\",
+    "hex": "50726f6c6f677565202e2e2e2e2e2e2e2e204e616e6379204c2e20486f6c6465725c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 130,
+    "procedure": 1,
+    "offset": "01BB",
+    "text": "Box Cover Art ... David Darrow\\",
+    "hex": "426f7820436f76657220417274202e2e2e20446176696420446172726f775c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 140,
+    "procedure": 1,
+    "offset": "01E1",
+    "text": "Manual Art ...... Nancy Ranscht, Sally Ranscht\\",
+    "hex": "4d616e75616c20417274202e2e2e2e2e2e204e616e63792052616e736368742c2053616c6c792052616e736368745c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 146,
+    "procedure": 1,
+    "offset": "0215",
+    "text": "|\\",
+    "hex": "7c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 154,
+    "procedure": 1,
+    "offset": "021D",
+    "text": "Playtesters .....            Robert Trammel\\",
+    "hex": "506c617974657374657273202e2e2e2e2e202020202020202020202020526f62657274205472616d6d656c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 162,
+    "procedure": 1,
+    "offset": "024F",
+    "text": "|||||J. Michael Browning     Davia Browning\\",
+    "hex": "7c7c7c7c7c4a2e204d69636861656c2042726f776e696e67202020202044617669612042726f776e696e675c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 170,
+    "procedure": 1,
+    "offset": "0281",
+    "text": "|||||Richard Owen Lynn       and many others\\",
+    "hex": "7c7c7c7c7c52696368617264204f77656e204c796e6e20202020202020616e64206d616e79206f74686572735c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 180,
+    "procedure": 1,
+    "offset": "02B5",
+    "text": "|\\",
+    "hex": "7c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 188,
+    "procedure": 1,
+    "offset": "02BD",
+    "text": "FTL Games, Inc.\\",
+    "hex": "46544c2047616d65732c20496e632e5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 196,
+    "procedure": 1,
+    "offset": "02D3",
+    "text": "7907 Ostrow Street, Suite F\\",
+    "hex": "37393037204f7374726f77205374726565742c20537569746520465c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 204,
+    "procedure": 1,
+    "offset": "02F5",
+    "text": "San Diego, CA 92111             (619) 279-5711\\",
+    "hex": "53616e20446965676f2c204341203932313131202020202020202020202020202836313929203237392d353731315c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 210,
+    "procedure": 1,
+    "offset": "0329",
+    "text": "|\\",
+    "hex": "7c5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 218,
+    "procedure": 1,
+    "offset": "0331",
+    "text": "Coming soon:  SunDog II: Old Scores To Settle>\\",
+    "hex": "436f6d696e6720736f6f6e3a202053756e446f672049493a204f6c642053636f72657320546f20536574746c653e5c"
+  },
+  {
+    "source": "src/pcode/alternate_10.s",
+    "line": 228,
+    "procedure": 1,
+    "offset": "0367",
+    "text": "and versions for the Apple Macintosh computer",
+    "hex": "616e642076657273696f6e7320666f7220746865204170706c65204d6163696e746f736820636f6d7075746572"
+  },
+  {
+    "source": "src/pcode/alternate_7.s",
+    "line": 698,
+    "procedure": 3,
+    "offset": "02BB",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 456,
+    "procedure": 3,
+    "offset": "0197",
+    "text": "Warp Drives",
+    "hex": "5761727020447269766573"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 470,
+    "procedure": 3,
+    "offset": "01AD",
+    "text": "Sub-c Engines",
+    "hex": "5375622d6320456e67696e6573"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 484,
+    "procedure": 3,
+    "offset": "01C5",
+    "text": "Ship's Guns",
+    "hex": "5368697027732047756e73"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 498,
+    "procedure": 3,
+    "offset": "01DB",
+    "text": "Tactical Disply",
+    "hex": "546163746963616c20446973706c79"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 512,
+    "procedure": 3,
+    "offset": "01F5",
+    "text": "Force Shields",
+    "hex": "466f72636520536869656c6473"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 526,
+    "procedure": 3,
+    "offset": "020D",
+    "text": "Pilotage",
+    "hex": "50696c6f74616765"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 548,
+    "procedure": 3,
+    "offset": "0229",
+    "text": "Ship's Locker",
+    "hex": "536869702773204c6f636b6572"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 562,
+    "procedure": 3,
+    "offset": "0241",
+    "text": "Ship's Stores",
+    "hex": "5368697027732053746f726573"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1074,
+    "procedure": 6,
+    "offset": "0409",
+    "text": "|CARGO IN POD",
+    "hex": "7c434152474f20494e20504f44"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1190,
+    "procedure": 6,
+    "offset": "0467",
+    "text": "from ",
+    "hex": "66726f6d20"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1712,
+    "procedure": 8,
+    "offset": "062F",
+    "text": "Your ship, the SunDog, is a warp-equipped merchant ship fitted ",
+    "hex": "596f757220736869702c207468652053756e446f672c206973206120776172702d6571756970706564206d65726368616e7420736869702066697474656420"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1722,
+    "procedure": 8,
+    "offset": "0675",
+    "text": "with a few special modifications, such as force shields ",
+    "hex": "77697468206120666577207370656369616c206d6f64696669636174696f6e732c207375636820617320666f72636520736869656c647320"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1730,
+    "procedure": 8,
+    "offset": "06B3",
+    "text": "and gun turrets.  And, for the right price, you can acquire ",
+    "hex": "616e642067756e20747572726574732e2020416e642c20666f72207468652072696768742070726963652c20796f752063616e206163717569726520"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1738,
+    "procedure": 8,
+    "offset": "06F5",
+    "text": "a few more.  Right now, she's . . . ",
+    "hex": "6120666577206d6f72652e20205269676874206e6f772c207368652773202e202e202e20"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1776,
+    "procedure": 8,
+    "offset": "0739",
+    "text": "stocked with supplies",
+    "hex": "73746f636b6564207769746820737570706c696573"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1784,
+    "procedure": 8,
+    "offset": "0753",
+    "text": "ready to carry cargo",
+    "hex": "726561647920746f20636172727920636172676f"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 1802,
+    "procedure": 8,
+    "offset": "0773",
+    "text": "but needs some repair",
+    "hex": "627574206e6565647320736f6d6520726570616972"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2430,
+    "procedure": 9,
+    "offset": "09A3",
+    "text": "FUEL",
+    "hex": "4655454c"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2438,
+    "procedure": 9,
+    "offset": "09AF",
+    "text": "GUNS",
+    "hex": "47554e53"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2450,
+    "procedure": 9,
+    "offset": "09BD",
+    "text": "SHLD",
+    "hex": "53484c44"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2458,
+    "procedure": 9,
+    "offset": "09C9",
+    "text": "WARP",
+    "hex": "57415250"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2666,
+    "procedure": 9,
+    "offset": "0ABB",
+    "text": "STATUS",
+    "hex": "535441545553"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2676,
+    "procedure": 9,
+    "offset": "0AC7",
+    "text": "NAVIGATE",
+    "hex": "4e41564947415445"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2686,
+    "procedure": 9,
+    "offset": "0AD5",
+    "text": "TACTICAL",
+    "hex": "544143544943414c"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2696,
+    "procedure": 9,
+    "offset": "0AE3",
+    "text": "DISTRESS",
+    "hex": "4449535452455353"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2708,
+    "procedure": 9,
+    "offset": "0AF7",
+    "text": "SunDog>--Frozen Legacy is an action and ",
+    "hex": "53756e446f673e2d2d46726f7a656e204c656761637920697320616e20616374696f6e20616e6420"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2716,
+    "procedure": 9,
+    "offset": "0B25",
+    "text": "adventure game set in a future age of ",
+    "hex": "616476656e747572652067616d652073657420696e20612066757475726520616765206f6620"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2724,
+    "procedure": 9,
+    "offset": "0B51",
+    "text": "interstellar merchant trade.  You play the ",
+    "hex": "696e7465727374656c6c6172206d65726368616e742074726164652e2020596f7520706c61792074686520"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2734,
+    "procedure": 9,
+    "offset": "0B83",
+    "text": "role of a young glass miner who inherits a ",
+    "hex": "726f6c65206f66206120796f756e6720676c617373206d696e65722077686f20696e686572697473206120"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2740,
+    "procedure": 9,
+    "offset": "0BB3",
+    "text": "small starship . . . and the debts of its ",
+    "hex": "736d616c6c207374617273686970202e202e202e20616e6420746865206465627473206f662069747320"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2748,
+    "procedure": 9,
+    "offset": "0BE3",
+    "text": "former owner.  These debts obligate you to ",
+    "hex": "666f726d6572206f776e65722e20205468657365206465627473206f626c696761746520796f7520746f20"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2758,
+    "procedure": 9,
+    "offset": "0C15",
+    "text": "deliver supplies and cryogenically frozen ",
+    "hex": "64656c6976657220737570706c69657320616e64206372796f67656e6963616c6c792066726f7a656e20"
+  },
+  {
+    "source": "src/pcode/alternate_8.s",
+    "line": 2766,
+    "procedure": 9,
+    "offset": "0C45",
+    "text": "colonists to a new colony on Jondd.",
+    "hex": "636f6c6f6e6973747320746f2061206e657720636f6c6f6e79206f6e204a6f6e64642e"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 302,
+    "procedure": 3,
+    "offset": "00E9",
+    "text": "Travel to cities like ",
+    "hex": "54726176656c20746f20636974696573206c696b6520"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 324,
+    "procedure": 3,
+    "offset": "0111",
+    "text": " or ",
+    "hex": "206f7220"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 342,
+    "procedure": 3,
+    "offset": "0125",
+    "text": ".  ",
+    "hex": "2e2020"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 362,
+    "procedure": 3,
+    "offset": "013B",
+    "text": "Once there, you can buy and sell cargo or supplies, ",
+    "hex": "4f6e63652074686572652c20796f752063616e2062757920616e642073656c6c20636172676f206f7220737570706c6965732c20"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 370,
+    "procedure": 3,
+    "offset": "0175",
+    "text": "or mingle with traders in a local pub, but watch ",
+    "hex": "6f72206d696e676c652077697468207472616465727320696e2061206c6f63616c207075622c2062757420776174636820"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 380,
+    "procedure": 3,
+    "offset": "01AD",
+    "text": "for hoodlums out to steal your hard-earned credits!",
+    "hex": "666f7220686f6f646c756d73206f757420746f20737465616c20796f757220686172642d6561726e6564206372656469747321"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 800,
+    "procedure": 5,
+    "offset": "032D",
+    "text": ", ",
+    "hex": "2c20"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 862,
+    "procedure": 5,
+    "offset": "035B",
+    "text": "The SunDog can roam through a region of twelve star systems.",
+    "hex": "5468652053756e446f672063616e20726f616d207468726f756768206120726567696f6e206f66207477656c766520737461722073797374656d732e"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 870,
+    "procedure": 5,
+    "offset": "039D",
+    "text": "  Land and explore planets like ",
+    "hex": "20204c616e6420616e64206578706c6f726520706c616e657473206c696b6520"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 880,
+    "procedure": 5,
+    "offset": "03C7",
+    "text": "using the SunDog's anti-grav propelled cargo pod.  ",
+    "hex": "7573696e67207468652053756e446f67277320616e74692d677261762070726f70656c6c656420636172676f20706f642e2020"
+  },
+  {
+    "source": "src/pcode/alternate_9.s",
+    "line": 890,
+    "procedure": 5,
+    "offset": "0401",
+    "text": "But watch out for pirates in deep space!",
+    "hex": "427574207761746368206f757420666f72207069726174657320696e206465657020737061636521"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 140,
+    "procedure": 4,
+    "offset": "0079",
+    "text": "ID:",
+    "hex": "49443a"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 154,
+    "procedure": 4,
+    "offset": "0087",
+    "text": "Target hull:",
+    "hex": "5461726765742068756c6c3a"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 372,
+    "procedure": 5,
+    "offset": "0147",
+    "text": "||||||Sensors\\",
+    "hex": "7c7c7c7c7c7c53656e736f72735c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 418,
+    "procedure": 6,
+    "offset": "0181",
+    "text": "|TARGET DESTROYED\\",
+    "hex": "7c5441524745542044455354524f5945445c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 496,
+    "procedure": 6,
+    "offset": "01D3",
+    "text": "|Bounty:",
+    "hex": "7c426f756e74793a"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 544,
+    "procedure": 6,
+    "offset": "01FF",
+    "text": "000 Cr\\",
+    "hex": "3030302043725c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 580,
+    "procedure": 6,
+    "offset": "0221",
+    "text": "|Cargo detected\\|in wreckage",
+    "hex": "7c436172676f2064657465637465645c7c696e20777265636b616765"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3456,
+    "procedure": 15,
+    "offset": "0D15",
+    "text": "JETTISON",
+    "hex": "4a45545449534f4e"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3482,
+    "procedure": 15,
+    "offset": "0D2F",
+    "text": "GUNS",
+    "hex": "47554e53"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3510,
+    "procedure": 15,
+    "offset": "0D47",
+    "text": "SHIELDS",
+    "hex": "534849454c4453"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3548,
+    "procedure": 15,
+    "offset": "0D6D",
+    "text": "CLOAK",
+    "hex": "434c4f414b"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3564,
+    "procedure": 15,
+    "offset": "0D7D",
+    "text": "CLOAK",
+    "hex": "434c4f414b"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3576,
+    "procedure": 15,
+    "offset": "0D89",
+    "text": "COMM",
+    "hex": "434f4d4d"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3602,
+    "procedure": 15,
+    "offset": "0DA5",
+    "text": "FULL SHLDS",
+    "hex": "46554c4c2053484c4453"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3612,
+    "procedure": 15,
+    "offset": "0DB5",
+    "text": "SHIELDS `",
+    "hex": "534849454c44532060"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3632,
+    "procedure": 15,
+    "offset": "0DCD",
+    "text": "SHIELDS &",
+    "hex": "534849454c44532026"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3650,
+    "procedure": 15,
+    "offset": "0DE5",
+    "text": "SHLDS OFF",
+    "hex": "53484c4453204f4646"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3674,
+    "procedure": 15,
+    "offset": "0E01",
+    "text": "DUMP  ",
+    "hex": "44554d502020"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3790,
+    "procedure": 15,
+    "offset": "0E55",
+    "text": "DUMP BOTH",
+    "hex": "44554d5020424f5448"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3810,
+    "procedure": 15,
+    "offset": "0E6D",
+    "text": "LASER",
+    "hex": "4c41534552"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3818,
+    "procedure": 15,
+    "offset": "0E77",
+    "text": "CANNON",
+    "hex": "43414e4e4f4e"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3834,
+    "procedure": 15,
+    "offset": "0E89",
+    "text": "TRACTOR",
+    "hex": "54524143544f52"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3868,
+    "procedure": 15,
+    "offset": "0EAD",
+    "text": "SHLDS OFF",
+    "hex": "53484c4453204f4646"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 3892,
+    "procedure": 15,
+    "offset": "0ECB",
+    "text": "FULL SHLDS",
+    "hex": "46554c4c2053484c4453"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4194,
+    "procedure": 18,
+    "offset": "0FF5",
+    "text": "Out of range",
+    "hex": "4f7574206f662072616e6765"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4214,
+    "procedure": 18,
+    "offset": "100F",
+    "text": "No room",
+    "hex": "4e6f20726f6f6d"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4222,
+    "procedure": 18,
+    "offset": "101D",
+    "text": "Activating tractor\\",
+    "hex": "41637469766174696e672074726163746f725c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4260,
+    "procedure": 18,
+    "offset": "1055",
+    "text": "Cargo loaded",
+    "hex": "436172676f206c6f61646564"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4290,
+    "procedure": 18,
+    "offset": "107D",
+    "text": "Unknown",
+    "hex": "556e6b6e6f776e"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4720,
+    "procedure": 21,
+    "offset": "11CD",
+    "text": "JETTISON",
+    "hex": "4a45545449534f4e"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4732,
+    "procedure": 21,
+    "offset": "11DF",
+    "text": "|*** BOLTS ARMED ***\\|Pod contents:\\|",
+    "hex": "7c2a2a2a20424f4c54532041524d4544202a2a2a5c7c506f6420636f6e74656e74733a5c7c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4774,
+    "procedure": 21,
+    "offset": "1225",
+    "text": ":  ",
+    "hex": "3a2020"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4798,
+    "procedure": 21,
+    "offset": "1237",
+    "text": "nothing",
+    "hex": "6e6f7468696e67"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 4818,
+    "procedure": 21,
+    "offset": "1251",
+    "text": "\\|",
+    "hex": "5c7c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 5052,
+    "procedure": 22,
+    "offset": "1335",
+    "text": "No ship to hail",
+    "hex": "4e6f207368697020746f206861696c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 5110,
+    "procedure": 1,
+    "offset": "1377",
+    "text": "TACTICAL",
+    "hex": "544143544943414c"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 5316,
+    "procedure": 1,
+    "offset": "142D",
+    "text": "SHIELDS",
+    "hex": "534849454c4453"
+  },
+  {
+    "source": "src/pcode/game_12.s",
+    "line": 5326,
+    "procedure": 1,
+    "offset": "143B",
+    "text": "GUNS",
+    "hex": "47554e53"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 646,
+    "procedure": 8,
+    "offset": "021F",
+    "text": " MARK ",
+    "hex": "204d41524b20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 770,
+    "procedure": 9,
+    "offset": "0283",
+    "text": "SYSTEMS  ",
+    "hex": "53595354454d532020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 808,
+    "procedure": 9,
+    "offset": "02AD",
+    "text": "WEG TSP H",
+    "hex": "574547205453502048"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 876,
+    "procedure": 9,
+    "offset": "02E9",
+    "text": "WARP DRIVES: ",
+    "hex": "57415250204452495645533a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 920,
+    "procedure": 9,
+    "offset": "031F",
+    "text": "no charge",
+    "hex": "6e6f20636861726765"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 936,
+    "procedure": 9,
+    "offset": "0335",
+    "text": "charg",
+    "hex": "6368617267"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 952,
+    "procedure": 9,
+    "offset": "034B",
+    "text": "ed",
+    "hex": "6564"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 966,
+    "procedure": 9,
+    "offset": "0359",
+    "text": "ing",
+    "hex": "696e67"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1004,
+    "procedure": 9,
+    "offset": "0381",
+    "text": "SUB-C ENGNS: ",
+    "hex": "5355422d4320454e474e533a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1048,
+    "procedure": 9,
+    "offset": "03B7",
+    "text": "power off",
+    "hex": "706f776572206f6666"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1060,
+    "procedure": 9,
+    "offset": "03CB",
+    "text": "power on",
+    "hex": "706f776572206f6e"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1092,
+    "procedure": 9,
+    "offset": "03F1",
+    "text": "SYSTEM:   ",
+    "hex": "53595354454d3a202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1122,
+    "procedure": 9,
+    "offset": "0415",
+    "text": "LOCATION: ",
+    "hex": "4c4f434154494f4e3a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1144,
+    "procedure": 9,
+    "offset": "0431",
+    "text": "WARP TO:  ",
+    "hex": "5741525020544f3a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1160,
+    "procedure": 9,
+    "offset": "0449",
+    "text": "(none)",
+    "hex": "286e6f6e6529"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1190,
+    "procedure": 9,
+    "offset": "046B",
+    "text": "SYS DEST: ",
+    "hex": "53595320444553543a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1208,
+    "procedure": 9,
+    "offset": "0485",
+    "text": "(none)",
+    "hex": "286e6f6e6529"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1242,
+    "procedure": 9,
+    "offset": "04A9",
+    "text": "RESCUE ETA: ",
+    "hex": "524553435545204554413a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1368,
+    "procedure": 10,
+    "offset": "052F",
+    "text": "no charge",
+    "hex": "6e6f20636861726765"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1384,
+    "procedure": 10,
+    "offset": "0543",
+    "text": "(none)",
+    "hex": "286e6f6e6529"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1424,
+    "procedure": 10,
+    "offset": "0571",
+    "text": "charged",
+    "hex": "63686172676564"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1482,
+    "procedure": 10,
+    "offset": "05B3",
+    "text": "power off",
+    "hex": "706f776572206f6666"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 1498,
+    "procedure": 10,
+    "offset": "05C7",
+    "text": "(none)",
+    "hex": "286e6f6e6529"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3516,
+    "procedure": 20,
+    "offset": "0CAB",
+    "text": "System:    ",
+    "hex": "53797374656d3a20202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3544,
+    "procedure": 20,
+    "offset": "0CCD",
+    "text": "(current location)",
+    "hex": "2863757272656e74206c6f636174696f6e29"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3554,
+    "procedure": 20,
+    "offset": "0CE7",
+    "text": "Distance:  ",
+    "hex": "44697374616e63653a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3586,
+    "procedure": 20,
+    "offset": "0D0B",
+    "text": " j-secs",
+    "hex": "206a2d73656373"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3612,
+    "procedure": 20,
+    "offset": "0D29",
+    "text": "  (current destination)",
+    "hex": "20202863757272656e742064657374696e6174696f6e29"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3640,
+    "procedure": 22,
+    "offset": "0D57",
+    "text": "Loc:   ",
+    "hex": "4c6f633a202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3654,
+    "procedure": 22,
+    "offset": "0D69",
+    "text": " MARK ",
+    "hex": "204d41524b20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3702,
+    "procedure": 21,
+    "offset": "0D93",
+    "text": "Warp point\\",
+    "hex": "5761727020706f696e745c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3770,
+    "procedure": 21,
+    "offset": "0DD1",
+    "text": "Planet:  ",
+    "hex": "506c616e65743a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3860,
+    "procedure": 23,
+    "offset": "0E1D",
+    "text": "Orbit around ",
+    "hex": "4f726269742061726f756e6420"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3892,
+    "procedure": 23,
+    "offset": "0E41",
+    "text": "City:  ",
+    "hex": "436974793a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 3928,
+    "procedure": 23,
+    "offset": "0E63",
+    "text": " (starport)",
+    "hex": "202873746172706f727429"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5600,
+    "procedure": 12,
+    "offset": "135D",
+    "text": "No destination selected\\",
+    "hex": "4e6f2064657374696e6174696f6e2073656c65637465645c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5824,
+    "procedure": 12,
+    "offset": "1419",
+    "text": "Current location selected\\",
+    "hex": "43757272656e74206c6f636174696f6e2073656c65637465645c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5878,
+    "procedure": 28,
+    "offset": "1463",
+    "text": " FLIGHT PLAN\\From:  ",
+    "hex": "20464c4947485420504c414e5c46726f6d3a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5892,
+    "procedure": 28,
+    "offset": "1483",
+    "text": "\\To:    ",
+    "hex": "5c546f3a20202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5924,
+    "procedure": 30,
+    "offset": "14A9",
+    "text": "*** ",
+    "hex": "2a2a2a20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5938,
+    "procedure": 30,
+    "offset": "14B9",
+    "text": " ***\\",
+    "hex": "202a2a2a5c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5964,
+    "procedure": 29,
+    "offset": "14D3",
+    "text": "Out of fuel",
+    "hex": "4f7574206f66206675656c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5974,
+    "procedure": 29,
+    "offset": "14E5",
+    "text": "Beyond maximum jump",
+    "hex": "4265796f6e64206d6178696d756d206a756d70"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5984,
+    "procedure": 29,
+    "offset": "14FF",
+    "text": "WARNING:  Fuel low",
+    "hex": "5741524e494e473a20204675656c206c6f77"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 5996,
+    "procedure": 29,
+    "offset": "1519",
+    "text": "Lift clearance denied",
+    "hex": "4c69667420636c656172616e63652064656e696564"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6010,
+    "procedure": 29,
+    "offset": "1537",
+    "text": "due to pirate activity",
+    "hex": "64756520746f20706972617465206163746976697479"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6022,
+    "procedure": 29,
+    "offset": "1555",
+    "text": "due to unpaid debts",
+    "hex": "64756520746f20756e70616964206465627473"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6038,
+    "procedure": 29,
+    "offset": "1573",
+    "text": "Warp engines blown",
+    "hex": "5761727020656e67696e657320626c6f776e"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6050,
+    "procedure": 29,
+    "offset": "158D",
+    "text": "Sub-c engines blown",
+    "hex": "5375622d6320656e67696e657320626c6f776e"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6058,
+    "procedure": 29,
+    "offset": "15A5",
+    "text": "Please repair",
+    "hex": "506c6561736520726570616972"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6248,
+    "procedure": 32,
+    "offset": "165B",
+    "text": "J-SPACE",
+    "hex": "4a2d5350414345"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6274,
+    "procedure": 32,
+    "offset": "1677",
+    "text": "Dist:  ",
+    "hex": "446973743a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6288,
+    "procedure": 32,
+    "offset": "1689",
+    "text": " j-secs\\",
+    "hex": "206a2d736563735c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6404,
+    "procedure": 32,
+    "offset": "16F1",
+    "text": "Warp engines charging",
+    "hex": "5761727020656e67696e6573206368617267696e67"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6466,
+    "procedure": 34,
+    "offset": "1743",
+    "text": "Warp cancelled",
+    "hex": "576172702063616e63656c6c6564"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6502,
+    "procedure": 35,
+    "offset": "176D",
+    "text": "Engaging warp engines",
+    "hex": "456e676167696e67207761727020656e67696e6573"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6828,
+    "procedure": 35,
+    "offset": "187F",
+    "text": "\\Switching to viewscreen\\",
+    "hex": "5c537769746368696e6720746f207669657773637265656e5c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6906,
+    "procedure": 35,
+    "offset": "18EB",
+    "text": "Warp successfully completed\\",
+    "hex": "57617270207375636365737366756c6c7920636f6d706c657465645c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 6944,
+    "procedure": 35,
+    "offset": "1923",
+    "text": "\\Switching to viewscreen\\",
+    "hex": "5c537769746368696e6720746f207669657773637265656e5c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7006,
+    "procedure": 35,
+    "offset": "197F",
+    "text": "Instability due to gravity field",
+    "hex": "496e73746162696c6974792064756520746f2067726176697479206669656c64"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7146,
+    "procedure": 37,
+    "offset": "1A1F",
+    "text": "warp point",
+    "hex": "7761727020706f696e74"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7158,
+    "procedure": 37,
+    "offset": "1A31",
+    "text": "deep space",
+    "hex": "64656570207370616365"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7248,
+    "procedure": 36,
+    "offset": "1A7B",
+    "text": "IN-SYSTEM",
+    "hex": "494e2d53595354454d"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7692,
+    "procedure": 36,
+    "offset": "1C1B",
+    "text": "ETA:   ",
+    "hex": "4554413a202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7756,
+    "procedure": 38,
+    "offset": "1C6D",
+    "text": "Sub-light engines turned off\\",
+    "hex": "5375622d6c6967687420656e67696e6573207475726e6564206f66665c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7762,
+    "procedure": 38,
+    "offset": "1C8F",
+    "text": "Current location:  ",
+    "hex": "43757272656e74206c6f636174696f6e3a2020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7798,
+    "procedure": 38,
+    "offset": "1CBD",
+    "text": " MARK ",
+    "hex": "204d41524b20"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 7882,
+    "procedure": 40,
+    "offset": "1D05",
+    "text": "orbit",
+    "hex": "6f72626974"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8080,
+    "procedure": 39,
+    "offset": "1D9F",
+    "text": "PLANETARY",
+    "hex": "504c414e4554415259"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8322,
+    "procedure": 39,
+    "offset": "1E75",
+    "text": "ETA:   ",
+    "hex": "4554413a202020"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8364,
+    "procedure": 39,
+    "offset": "1EA5",
+    "text": "Turning off ",
+    "hex": "5475726e696e67206f666620"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8382,
+    "procedure": 39,
+    "offset": "1EC1",
+    "text": "cloaker ",
+    "hex": "636c6f616b657220"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8416,
+    "procedure": 39,
+    "offset": "1EE9",
+    "text": "and ",
+    "hex": "616e6420"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8424,
+    "procedure": 39,
+    "offset": "1EF3",
+    "text": "shields",
+    "hex": "736869656c6473"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 8468,
+    "procedure": 39,
+    "offset": "1F25",
+    "text": "\\Switching to viewscreen",
+    "hex": "5c537769746368696e6720746f207669657773637265656e"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9074,
+    "procedure": 46,
+    "offset": "217D",
+    "text": "MAPS",
+    "hex": "4d415053"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9284,
+    "procedure": 48,
+    "offset": "222F",
+    "text": "MAPS",
+    "hex": "4d415053"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9322,
+    "procedure": 48,
+    "offset": "224D",
+    "text": "LAND",
+    "hex": "4c414e44"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9334,
+    "procedure": 48,
+    "offset": "2259",
+    "text": "LIFTOFF",
+    "hex": "4c4946544f4646"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9384,
+    "procedure": 48,
+    "offset": "2285",
+    "text": "CITY-CITY",
+    "hex": "434954592d43495459"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9416,
+    "procedure": 48,
+    "offset": "22A7",
+    "text": "HALT",
+    "hex": "48414c54"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9426,
+    "procedure": 48,
+    "offset": "22B1",
+    "text": "SUB-LIGHT",
+    "hex": "5355422d4c49474854"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9470,
+    "procedure": 48,
+    "offset": "22DF",
+    "text": "DO WARP",
+    "hex": "444f2057415250"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9478,
+    "procedure": 48,
+    "offset": "22EB",
+    "text": "STOP WARP",
+    "hex": "53544f502057415250"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9492,
+    "procedure": 48,
+    "offset": "22FD",
+    "text": "SET WARP",
+    "hex": "5345542057415250"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9546,
+    "procedure": 47,
+    "offset": "2331",
+    "text": "NAVIGATE",
+    "hex": "4e41564947415445"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9918,
+    "procedure": 51,
+    "offset": "2485",
+    "text": "STATUS",
+    "hex": "535441545553"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 9954,
+    "procedure": 51,
+    "offset": "24A5",
+    "text": "NAVIGATE",
+    "hex": "4e41564947415445"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 10002,
+    "procedure": 51,
+    "offset": "24CF",
+    "text": "TACTICAL",
+    "hex": "544143544943414c"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 10048,
+    "procedure": 51,
+    "offset": "24FB",
+    "text": "DISTRESS",
+    "hex": "4449535452455353"
+  },
+  {
+    "source": "src/pcode/game_13.s",
+    "line": 10148,
+    "procedure": 52,
+    "offset": "2563",
+    "text": "Refuel ETA:  ",
+    "hex": "52656675656c204554413a2020"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 500,
+    "procedure": 3,
+    "offset": "01B5",
+    "text": "Warp Drives",
+    "hex": "5761727020447269766573"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 514,
+    "procedure": 3,
+    "offset": "01CB",
+    "text": "Sub-c Engines",
+    "hex": "5375622d6320456e67696e6573"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 528,
+    "procedure": 3,
+    "offset": "01E3",
+    "text": "Ship's Guns",
+    "hex": "5368697027732047756e73"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 542,
+    "procedure": 3,
+    "offset": "01F9",
+    "text": "Tactical Disply",
+    "hex": "546163746963616c20446973706c79"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 556,
+    "procedure": 3,
+    "offset": "0213",
+    "text": "Force Shields",
+    "hex": "466f72636520536869656c6473"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 570,
+    "procedure": 3,
+    "offset": "022B",
+    "text": "Pilotage",
+    "hex": "50696c6f74616765"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 594,
+    "procedure": 3,
+    "offset": "0247",
+    "text": "Ship's Locker",
+    "hex": "536869702773204c6f636b6572"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 608,
+    "procedure": 3,
+    "offset": "025F",
+    "text": "Ship's Stores",
+    "hex": "5368697027732053746f726573"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 1120,
+    "procedure": 6,
+    "offset": "0423",
+    "text": "|||||CARGO",
+    "hex": "7c7c7c7c7c434152474f"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 1202,
+    "procedure": 6,
+    "offset": "046D",
+    "text": "Unknown",
+    "hex": "556e6b6e6f776e"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 1286,
+    "procedure": 6,
+    "offset": "04AF",
+    "text": "from ",
+    "hex": "66726f6d20"
+  },
+  {
+    "source": "src/pcode/game_14.s",
+    "line": 2416,
+    "procedure": 12,
+    "offset": "084F",
+    "text": "Doesn't fit",
+    "hex": "446f65736e277420666974"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 224,
+    "procedure": 4,
+    "offset": "00C5",
+    "text": "FUEL",
+    "hex": "4655454c"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 232,
+    "procedure": 4,
+    "offset": "00D1",
+    "text": "GUNS",
+    "hex": "47554e53"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 244,
+    "procedure": 4,
+    "offset": "00DF",
+    "text": "SHLD",
+    "hex": "53484c44"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 252,
+    "procedure": 4,
+    "offset": "00EB",
+    "text": "WARP",
+    "hex": "57415250"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 760,
+    "procedure": 8,
+    "offset": "02ED",
+    "text": "    ",
+    "hex": "20202020"
+  },
+  {
+    "source": "src/pcode/game_15.s",
+    "line": 2694,
+    "procedure": 1,
+    "offset": "0979",
+    "text": "SHIP",
+    "hex": "53484950"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 250,
+    "procedure": 3,
+    "offset": "00CB",
+    "text": " Cr",
+    "hex": "204372"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 2794,
+    "procedure": 18,
+    "offset": "08A1",
+    "text": "O.K.",
+    "hex": "4f2e4b2e"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 3826,
+    "procedure": 28,
+    "offset": "0BF5",
+    "text": "` ` ` ` `",
+    "hex": "602060206020602060"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 3866,
+    "procedure": 28,
+    "offset": "0C23",
+    "text": "& & & & &",
+    "hex": "262026202620262026"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 7610,
+    "procedure": 41,
+    "offset": "18FF",
+    "text": "Not enough",
+    "hex": "4e6f7420656e6f756768"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 7618,
+    "procedure": 41,
+    "offset": "190F",
+    "text": " money",
+    "hex": "206d6f6e6579"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 7998,
+    "procedure": 46,
+    "offset": "1A6F",
+    "text": " no money",
+    "hex": "206e6f206d6f6e6579"
+  },
+  {
+    "source": "src/pcode/game_16.s",
+    "line": 8042,
+    "procedure": 46,
+    "offset": "1AA1",
+    "text": " Cr on hand",
+    "hex": "204372206f6e2068616e64"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 602,
+    "procedure": 7,
+    "offset": "0205",
+    "text": "ALL",
+    "hex": "414c4c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 608,
+    "procedure": 7,
+    "offset": "020B",
+    "text": "100",
+    "hex": "313030"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 614,
+    "procedure": 7,
+    "offset": "0211",
+    "text": "1000",
+    "hex": "31303030"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 632,
+    "procedure": 7,
+    "offset": "0221",
+    "text": "10000",
+    "hex": "3130303030"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 638,
+    "procedure": 7,
+    "offset": "0229",
+    "text": "50000",
+    "hex": "3530303030"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 644,
+    "procedure": 7,
+    "offset": "0231",
+    "text": "CLEAR",
+    "hex": "434c454152"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 714,
+    "procedure": 7,
+    "offset": "027F",
+    "text": "AMOUNT:    ",
+    "hex": "414d4f554e543a20202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 726,
+    "procedure": 7,
+    "offset": "0293",
+    "text": "AVAILABLE: ",
+    "hex": "415641494c41424c453a20"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 1318,
+    "procedure": 9,
+    "offset": "048B",
+    "text": "OTHERS",
+    "hex": "4f5448455253"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2374,
+    "procedure": 12,
+    "offset": "07AF",
+    "text": "|||||Destination",
+    "hex": "7c7c7c7c7c44657374696e6174696f6e"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2394,
+    "procedure": 12,
+    "offset": "07D1",
+    "text": "City:      ",
+    "hex": "436974793a202020202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2408,
+    "procedure": 12,
+    "offset": "07E5",
+    "text": "Planet:    ",
+    "hex": "506c616e65743a20202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2426,
+    "procedure": 12,
+    "offset": "07FB",
+    "text": "System:    ",
+    "hex": "53797374656d3a20202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2526,
+    "procedure": 12,
+    "offset": "0855",
+    "text": "Cost:      ",
+    "hex": "436f73743a202020202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2542,
+    "procedure": 12,
+    "offset": "086D",
+    "text": "Cr",
+    "hex": "4372"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2570,
+    "procedure": 12,
+    "offset": "0887",
+    "text": "||Insufficient funds",
+    "hex": "7c7c496e73756666696369656e742066756e6473"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2626,
+    "procedure": 12,
+    "offset": "08C7",
+    "text": "E.T.A.:      ",
+    "hex": "452e542e412e3a202020202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2642,
+    "procedure": 12,
+    "offset": "08E3",
+    "text": "TRANSPORT",
+    "hex": "5452414e53504f5254"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2732,
+    "procedure": 12,
+    "offset": "094D",
+    "text": "Time:        ",
+    "hex": "54696d653a2020202020202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2854,
+    "procedure": 15,
+    "offset": "09CF",
+    "text": "TransStation",
+    "hex": "5472616e7353746174696f6e"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 2936,
+    "procedure": 15,
+    "offset": "0A25",
+    "text": "TO CITY",
+    "hex": "544f2043495459"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3032,
+    "procedure": 15,
+    "offset": "0A73",
+    "text": "TO PLANET",
+    "hex": "544f20504c414e4554"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3064,
+    "procedure": 15,
+    "offset": "0A93",
+    "text": "TO SYSTEM",
+    "hex": "544f2053595354454d"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3370,
+    "procedure": 16,
+    "offset": "0BAD",
+    "text": "Transfer to ",
+    "hex": "5472616e7366657220746f20"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3506,
+    "procedure": 17,
+    "offset": "0C35",
+    "text": " Bank",
+    "hex": "2042616e6b"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3528,
+    "procedure": 17,
+    "offset": "0C4B",
+    "text": "|     UNITELLER",
+    "hex": "7c2020202020554e4954454c4c4552"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3550,
+    "procedure": 17,
+    "offset": "0C6F",
+    "text": "On hand:   ",
+    "hex": "4f6e2068616e643a202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3578,
+    "procedure": 17,
+    "offset": "0C95",
+    "text": "Deficit:   ",
+    "hex": "446566696369743a202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3590,
+    "procedure": 17,
+    "offset": "0CAB",
+    "text": "In bank:   ",
+    "hex": "496e2062616e6b3a202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3642,
+    "procedure": 17,
+    "offset": "0CED",
+    "text": "DEPOSIT CASH",
+    "hex": "4445504f5349542043415348"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3684,
+    "procedure": 17,
+    "offset": "0D23",
+    "text": "WITHDRAW CASH",
+    "hex": "57495448445241572043415348"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3714,
+    "procedure": 17,
+    "offset": "0D4D",
+    "text": "TRANSFER",
+    "hex": "5452414e53464552"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3856,
+    "procedure": 19,
+    "offset": "0DF7",
+    "text": " \\",
+    "hex": "205c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3866,
+    "procedure": 19,
+    "offset": "0E01",
+    "text": "s\\",
+    "hex": "735c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3874,
+    "procedure": 19,
+    "offset": "0E09",
+    "text": "Cash on hand ",
+    "hex": "43617368206f6e2068616e6420"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3964,
+    "procedure": 18,
+    "offset": "0E63",
+    "text": "Your ",
+    "hex": "596f757220"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 3976,
+    "procedure": 18,
+    "offset": "0E73",
+    "text": " isn't here for us to ",
+    "hex": "2069736e2774206865726520666f7220757320746f20"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4002,
+    "procedure": 18,
+    "offset": "0E9D",
+    "text": "Your ",
+    "hex": "596f757220"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4014,
+    "procedure": 18,
+    "offset": "0EAD",
+    "text": " doesn't need ",
+    "hex": "20646f65736e2774206e65656420"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4024,
+    "procedure": 18,
+    "offset": "0EC5",
+    "text": "ing",
+    "hex": "696e67"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4108,
+    "procedure": 18,
+    "offset": "0F09",
+    "text": "Cost ",
+    "hex": "436f737420"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4126,
+    "procedure": 18,
+    "offset": "0F1B",
+    "text": " cr/",
+    "hex": "2063722f"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4142,
+    "procedure": 18,
+    "offset": "0F2F",
+    "text": "load",
+    "hex": "6c6f6164"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4150,
+    "procedure": 18,
+    "offset": "0F39",
+    "text": "You can use ",
+    "hex": "596f752063616e2075736520"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4160,
+    "procedure": 18,
+    "offset": "0F4D",
+    "text": "You need    ",
+    "hex": "596f75206e65656420202020"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4200,
+    "procedure": 18,
+    "offset": "0F7D",
+    "text": "STOP",
+    "hex": "53544f50"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4230,
+    "procedure": 18,
+    "offset": "0F97",
+    "text": "STOP",
+    "hex": "53544f50"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4432,
+    "procedure": 20,
+    "offset": "103F",
+    "text": "FILL",
+    "hex": "46494c4c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4436,
+    "procedure": 20,
+    "offset": "1045",
+    "text": "ship",
+    "hex": "73686970"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4444,
+    "procedure": 20,
+    "offset": "104D",
+    "text": "fuel",
+    "hex": "6675656c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4448,
+    "procedure": 20,
+    "offset": "1053",
+    "text": "unit",
+    "hex": "756e6974"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4712,
+    "procedure": 21,
+    "offset": "111D",
+    "text": "ALL",
+    "hex": "414c4c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4718,
+    "procedure": 21,
+    "offset": "1123",
+    "text": "ship",
+    "hex": "73686970"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4726,
+    "procedure": 21,
+    "offset": "112B",
+    "text": "repair",
+    "hex": "726570616972"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4730,
+    "procedure": 21,
+    "offset": "1133",
+    "text": "hour",
+    "hex": "686f7572"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4854,
+    "procedure": 24,
+    "offset": "1195",
+    "text": "BOTH",
+    "hex": "424f5448"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4858,
+    "procedure": 24,
+    "offset": "119B",
+    "text": "pod",
+    "hex": "706f64"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4864,
+    "procedure": 24,
+    "offset": "11A1",
+    "text": "load",
+    "hex": "6c6f6164"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4872,
+    "procedure": 24,
+    "offset": "11A9",
+    "text": "load",
+    "hex": "6c6f6164"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 4938,
+    "procedure": 24,
+    "offset": "11DD",
+    "text": "Ship's fuel",
+    "hex": "536869702773206675656c"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 5052,
+    "procedure": 25,
+    "offset": "1239",
+    "text": " Depot",
+    "hex": "204465706f74"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 5106,
+    "procedure": 25,
+    "offset": "1275",
+    "text": "REFUEL SHIP",
+    "hex": "52454655454c2053484950"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 5138,
+    "procedure": 25,
+    "offset": "1297",
+    "text": "REPAIR SHIP",
+    "hex": "5245504149522053484950"
+  },
+  {
+    "source": "src/pcode/game_19.s",
+    "line": 5166,
+    "procedure": 25,
+    "offset": "12B7",
+    "text": "BUY AUX FUEL",
+    "hex": "42555920415558204655454c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 242,
+    "procedure": 4,
+    "offset": "00C7",
+    "text": "|\\|\\|\\|Phase ",
+    "hex": "7c5c7c5c7c5c7c506861736520"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 256,
+    "procedure": 4,
+    "offset": "00DF",
+    "text": " now complete\\|",
+    "hex": "206e6f7720636f6d706c6574655c7c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 284,
+    "procedure": 4,
+    "offset": "0103",
+    "text": "||You have fulfilled your contract.",
+    "hex": "7c7c596f7520686176652066756c66696c6c656420796f757220636f6e74726163742e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 356,
+    "procedure": 4,
+    "offset": "0165",
+    "text": "Bonus paid: ",
+    "hex": "426f6e757320706169643a20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 370,
+    "procedure": 4,
+    "offset": "017F",
+    "text": "||Starting Phase ",
+    "hex": "7c7c5374617274696e6720506861736520"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 708,
+    "procedure": 5,
+    "offset": "029F",
+    "text": "cryogens",
+    "hex": "6372796f67656e73"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2012,
+    "procedure": 12,
+    "offset": "0705",
+    "text": "Pod contents:\\",
+    "hex": "506f6420636f6e74656e74733a5c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2402,
+    "procedure": 15,
+    "offset": "085B",
+    "text": "Contents:\\|\\",
+    "hex": "436f6e74656e74733a5c7c5c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2436,
+    "procedure": 15,
+    "offset": "0881",
+    "text": "|||",
+    "hex": "7c7c7c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2474,
+    "procedure": 15,
+    "offset": "089F",
+    "text": " / ",
+    "hex": "202f20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2534,
+    "procedure": 13,
+    "offset": "08D1",
+    "text": "WAREHOUSE",
+    "hex": "57415245484f555345"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2588,
+    "procedure": 13,
+    "offset": "090F",
+    "text": "Store",
+    "hex": "53746f7265"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2594,
+    "procedure": 13,
+    "offset": "0917",
+    "text": "Fetch",
+    "hex": "4665746368"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2600,
+    "procedure": 13,
+    "offset": "091F",
+    "text": "Swap",
+    "hex": "53776170"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2768,
+    "procedure": 13,
+    "offset": "09A9",
+    "text": "No room to store in warehouse.",
+    "hex": "4e6f20726f6f6d20746f2073746f726520696e2077617265686f7573652e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 2854,
+    "procedure": 13,
+    "offset": "0A0B",
+    "text": "No room to fetch to pod.",
+    "hex": "4e6f20726f6f6d20746f20666574636820746f20706f642e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 4708,
+    "procedure": 23,
+    "offset": "0F8F",
+    "text": "No goods available or affordable",
+    "hex": "4e6f20676f6f647320617661696c61626c65206f72206166666f726461626c65"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 4990,
+    "procedure": 23,
+    "offset": "1073",
+    "text": "|  TO BE DELIVERED\\|\\|    ",
+    "hex": "7c2020544f2042452044454c4956455245445c7c5c7c20202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5006,
+    "procedure": 23,
+    "offset": "109D",
+    "text": "Demand:    ",
+    "hex": "44656d616e643a20202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5048,
+    "procedure": 23,
+    "offset": "10C7",
+    "text": "none",
+    "hex": "6e6f6e65"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5066,
+    "procedure": 23,
+    "offset": "10D9",
+    "text": " unit",
+    "hex": "20756e6974"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5088,
+    "procedure": 23,
+    "offset": "10EF",
+    "text": "|  PRICE ON GOODS\\|    ",
+    "hex": "7c20205052494345204f4e20474f4f44535c7c20202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5102,
+    "procedure": 23,
+    "offset": "1113",
+    "text": "Quality:           ",
+    "hex": "5175616c6974793a2020202020202020202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5134,
+    "procedure": 23,
+    "offset": "113D",
+    "text": "Item not negotiable ",
+    "hex": "4974656d206e6f74206e65676f746961626c6520"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5172,
+    "procedure": 23,
+    "offset": "116B",
+    "text": "Price paid: ",
+    "hex": "507269636520706169643a20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5182,
+    "procedure": 23,
+    "offset": "117F",
+    "text": "Offered:    ",
+    "hex": "4f6666657265643a20202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5196,
+    "procedure": 23,
+    "offset": "1195",
+    "text": "Asking:     ",
+    "hex": "41736b696e673a2020202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5228,
+    "procedure": 23,
+    "offset": "11B9",
+    "text": "Exit",
+    "hex": "45786974"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5262,
+    "procedure": 23,
+    "offset": "11D7",
+    "text": "Deliver",
+    "hex": "44656c69766572"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5268,
+    "procedure": 23,
+    "offset": "11E1",
+    "text": "Withhold",
+    "hex": "57697468686f6c64"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5290,
+    "procedure": 23,
+    "offset": "11F9",
+    "text": "Accept",
+    "hex": "416363657074"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5298,
+    "procedure": 23,
+    "offset": "1203",
+    "text": "Withdraw",
+    "hex": "5769746864726177"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5336,
+    "procedure": 23,
+    "offset": "122F",
+    "text": "Your limit: ",
+    "hex": "596f7572206c696d69743a20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5398,
+    "procedure": 24,
+    "offset": "1271",
+    "text": "Warehouse",
+    "hex": "57617265686f757365"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5404,
+    "procedure": 24,
+    "offset": "127D",
+    "text": "Pod",
+    "hex": "506f64"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5434,
+    "procedure": 24,
+    "offset": "1299",
+    "text": "|Deliver",
+    "hex": "7c44656c69766572"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5444,
+    "procedure": 24,
+    "offset": "12A9",
+    "text": "|  Sell",
+    "hex": "7c202053656c6c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5450,
+    "procedure": 24,
+    "offset": "12B5",
+    "text": " from where?",
+    "hex": "2066726f6d2077686572653f"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5460,
+    "procedure": 24,
+    "offset": "12C9",
+    "text": "||||Store where?",
+    "hex": "7c7c7c7c53746f72652077686572653f"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5492,
+    "procedure": 24,
+    "offset": "12F7",
+    "text": "|     WAREHOUSE",
+    "hex": "7c202020202057415245484f555345"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5542,
+    "procedure": 24,
+    "offset": "132D",
+    "text": "|  Deliver",
+    "hex": "7c202044656c69766572"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5552,
+    "procedure": 24,
+    "offset": "133F",
+    "text": "|    Sell",
+    "hex": "7c2020202053656c6c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5562,
+    "procedure": 24,
+    "offset": "134F",
+    "text": " which?      ",
+    "hex": "2077686963683f202020202020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5634,
+    "procedure": 24,
+    "offset": "1393",
+    "text": "No space in ",
+    "hex": "4e6f20737061636520696e20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5644,
+    "procedure": 24,
+    "offset": "13A7",
+    "text": "pod.  ",
+    "hex": "706f642e2020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5654,
+    "procedure": 24,
+    "offset": "13B5",
+    "text": "warehouse.  ",
+    "hex": "77617265686f7573652e2020"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5674,
+    "procedure": 24,
+    "offset": "13CF",
+    "text": "  Storing cargo in ",
+    "hex": "202053746f72696e6720636172676f20696e20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5686,
+    "procedure": 24,
+    "offset": "13EB",
+    "text": "pod.",
+    "hex": "706f642e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 5696,
+    "procedure": 24,
+    "offset": "13F7",
+    "text": "warehouse.",
+    "hex": "77617265686f7573652e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6098,
+    "procedure": 26,
+    "offset": "1543",
+    "text": "No space left in warehouse",
+    "hex": "4e6f207370616365206c65667420696e2077617265686f757365"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6108,
+    "procedure": 26,
+    "offset": "1567",
+    "text": " or pod",
+    "hex": "206f7220706f64"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6176,
+    "procedure": 27,
+    "offset": "15A5",
+    "text": "Buy",
+    "hex": "427579"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6182,
+    "procedure": 27,
+    "offset": "15AB",
+    "text": "Pass",
+    "hex": "50617373"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6586,
+    "procedure": 30,
+    "offset": "171B",
+    "text": "Delivery",
+    "hex": "44656c6976657279"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6594,
+    "procedure": 30,
+    "offset": "1727",
+    "text": "Warehouse",
+    "hex": "57617265686f757365"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6614,
+    "procedure": 30,
+    "offset": "173D",
+    "text": "Exit center",
+    "hex": "457869742063656e746572"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6646,
+    "procedure": 30,
+    "offset": "175D",
+    "text": "Exchange",
+    "hex": "45786368616e6765"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6650,
+    "procedure": 30,
+    "offset": "1767",
+    "text": "Warehouse",
+    "hex": "57617265686f757365"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6670,
+    "procedure": 30,
+    "offset": "177D",
+    "text": "Buy",
+    "hex": "427579"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6676,
+    "procedure": 30,
+    "offset": "1783",
+    "text": "Sell",
+    "hex": "53656c6c"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6848,
+    "procedure": 31,
+    "offset": "1817",
+    "text": " Center",
+    "hex": "2043656e746572"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6862,
+    "procedure": 31,
+    "offset": "1829",
+    "text": " Exch.",
+    "hex": "20457863682e"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6942,
+    "procedure": 31,
+    "offset": "1879",
+    "text": "|Phases remaining: ",
+    "hex": "7c5068617365732072656d61696e696e673a20"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6968,
+    "procedure": 31,
+    "offset": "189F",
+    "text": "|||Items needed to\\||complete Phase ",
+    "hex": "7c7c7c4974656d73206e656564656420746f5c7c7c636f6d706c65746520506861736520"
+  },
+  {
+    "source": "src/pcode/game_20.s",
+    "line": 6994,
+    "procedure": 31,
+    "offset": "18D9",
+    "text": "|\\||Lots now selling:",
+    "hex": "7c5c7c7c4c6f7473206e6f772073656c6c696e673a"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 3236,
+    "procedure": 19,
+    "offset": "0A0B",
+    "text": "ABAA",
+    "hex": "41424141"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 3244,
+    "procedure": 19,
+    "offset": "0A15",
+    "text": "OPOU",
+    "hex": "4f504f55"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8088,
+    "procedure": 37,
+    "offset": "1949",
+    "text": "||Insufficient funds",
+    "hex": "7c7c496e73756666696369656e742066756e6473"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8410,
+    "procedure": 38,
+    "offset": "1A77",
+    "text": "Public TelePort",
+    "hex": "5075626c69632054656c65506f7274"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8422,
+    "procedure": 38,
+    "offset": "1A91",
+    "text": "|||||Cost:  ",
+    "hex": "7c7c7c7c7c436f73743a2020"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8438,
+    "procedure": 38,
+    "offset": "1AA9",
+    "text": " Cr\\|\\",
+    "hex": "2043725c7c5c"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8446,
+    "procedure": 38,
+    "offset": "1AB5",
+    "text": "|||Deposit money and\\||select destination.\\|\\",
+    "hex": "7c7c7c4465706f736974206d6f6e657920616e645c7c7c73656c6563742064657374696e6174696f6e2e5c7c5c"
+  },
+  {
+    "source": "src/pcode/game_21.s",
+    "line": 8456,
+    "procedure": 38,
+    "offset": "1AE9",
+    "text": "Deposit money",
+    "hex": "4465706f736974206d6f6e6579"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 514,
+    "procedure": 7,
+    "offset": "0199",
+    "text": "|Condition",
+    "hex": "7c436f6e646974696f6e"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 544,
+    "procedure": 7,
+    "offset": "01BB",
+    "text": "Vigor Rest  HealthNoursh",
+    "hex": "5669676f72205265737420204865616c74684e6f75727368"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 674,
+    "procedure": 7,
+    "offset": "0237",
+    "text": "Sleep",
+    "hex": "536c656570"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1516,
+    "procedure": 13,
+    "offset": "0571",
+    "text": " no money",
+    "hex": "206e6f206d6f6e6579"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1560,
+    "procedure": 13,
+    "offset": "05A3",
+    "text": " Cr",
+    "hex": "204372"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1566,
+    "procedure": 13,
+    "offset": "05AB",
+    "text": " on hand",
+    "hex": "206f6e2068616e64"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1622,
+    "procedure": 14,
+    "offset": "05ED",
+    "text": "STIQDXCHLK",
+    "hex": "53544951445843484c4b"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1632,
+    "procedure": 14,
+    "offset": "05FD",
+    "text": "|Attributes\\",
+    "hex": "7c417474726962757465735c"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1710,
+    "procedure": 14,
+    "offset": "0647",
+    "text": " /",
+    "hex": "202f"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1720,
+    "procedure": 14,
+    "offset": "0651",
+    "text": "|?? /",
+    "hex": "7c3f3f202f"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1824,
+    "procedure": 15,
+    "offset": "06B5",
+    "text": "||LOCATION\\",
+    "hex": "7c7c4c4f434154494f4e5c"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1842,
+    "procedure": 15,
+    "offset": "06CF",
+    "text": "City:\\|",
+    "hex": "436974793a5c7c"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1862,
+    "procedure": 15,
+    "offset": "06E5",
+    "text": "deep space",
+    "hex": "64656570207370616365"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1916,
+    "procedure": 15,
+    "offset": "0715",
+    "text": "orbit",
+    "hex": "6f72626974"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1924,
+    "procedure": 15,
+    "offset": "0721",
+    "text": "surface",
+    "hex": "73757266616365"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1962,
+    "procedure": 15,
+    "offset": "074B",
+    "text": "Planet:\\|",
+    "hex": "506c616e65743a5c7c"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 1986,
+    "procedure": 15,
+    "offset": "0765",
+    "text": "space",
+    "hex": "7370616365"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 2024,
+    "procedure": 15,
+    "offset": "078D",
+    "text": "System:\\|",
+    "hex": "53797374656d3a5c7c"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 2098,
+    "procedure": 16,
+    "offset": "07DF",
+    "text": "The game is frozen.",
+    "hex": "5468652067616d652069732066726f7a656e2e"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 2140,
+    "procedure": 16,
+    "offset": "0811",
+    "text": "Save game",
+    "hex": "536176652067616d65"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 2186,
+    "procedure": 16,
+    "offset": "0845",
+    "text": "Sound is off",
+    "hex": "536f756e64206973206f6666"
+  },
+  {
+    "source": "src/pcode/game_8.s",
+    "line": 2198,
+    "procedure": 16,
+    "offset": "085B",
+    "text": "Sound is on",
+    "hex": "536f756e64206973206f6e"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1169,
+    "procedure": 6,
+    "offset": "0393",
+    "text": "there",
+    "hex": "7468657265"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1201,
+    "procedure": 6,
+    "offset": "03B1",
+    "text": "|||||||SunDog>\\",
+    "hex": "7c7c7c7c7c7c7c53756e446f673e5c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1211,
+    "procedure": 6,
+    "offset": "03C7",
+    "text": "||||Frozen Legacy\\",
+    "hex": "7c7c7c7c46726f7a656e204c65676163795c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1219,
+    "procedure": 6,
+    "offset": "03DF",
+    "text": "|||||Version 2.0\\|\\",
+    "hex": "7c7c7c7c7c56657273696f6e20322e305c7c5c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1226,
+    "procedure": 6,
+    "offset": "03F7",
+    "text": "|NUTCRACKER    1984\\",
+    "hex": "7c4e5554435241434b455220202020313938345c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1228,
+    "procedure": 6,
+    "offset": "03F7",
+    "text": "|Copyright (c) 1984\\",
+    "hex": "7c436f707972696768742028632920313938345c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1239,
+    "procedure": 6,
+    "offset": "0411",
+    "text": "|by FTL Games, Inc.\\",
+    "hex": "7c62792046544c2047616d65732c20496e632e5c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1247,
+    "procedure": 6,
+    "offset": "042B",
+    "text": "|All rights reserved\\|\\",
+    "hex": "7c416c6c207269676874732072657365727665645c7c5c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1257,
+    "procedure": 6,
+    "offset": "0449",
+    "text": "|Press either joystick\\",
+    "hex": "7c507265737320656974686572206a6f79737469636b5c"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1263,
+    "procedure": 6,
+    "offset": "0465",
+    "text": "||||button to begin",
+    "hex": "7c7c7c7c627574746f6e20746f20626567696e"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1411,
+    "procedure": 6,
+    "offset": "04E5",
+    "text": "Too bad, ",
+    "hex": "546f6f206261642c20"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1427,
+    "procedure": 6,
+    "offset": "04FB",
+    "text": "Well done, ",
+    "hex": "57656c6c20646f6e652c20"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1435,
+    "procedure": 6,
+    "offset": "050D",
+    "text": "Hello, ",
+    "hex": "48656c6c6f2c20"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1479,
+    "procedure": 6,
+    "offset": "053B",
+    "text": ".  You died",
+    "hex": "2e2020596f752064696564"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1491,
+    "procedure": 6,
+    "offset": "054F",
+    "text": "!  You won",
+    "hex": "212020596f7520776f6e"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1499,
+    "procedure": 6,
+    "offset": "055F",
+    "text": ", so your game is over",
+    "hex": "2c20736f20796f75722067616d65206973206f766572"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1513,
+    "procedure": 6,
+    "offset": "0581",
+    "text": ".  Your game is damaged",
+    "hex": "2e2020596f75722067616d652069732064616d61676564"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1519,
+    "procedure": 6,
+    "offset": "059D",
+    "text": ".  You can ",
+    "hex": "2e2020596f752063616e20"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1539,
+    "procedure": 6,
+    "offset": "05B7",
+    "text": "start",
+    "hex": "7374617274"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1547,
+    "procedure": 6,
+    "offset": "05C3",
+    "text": "continue",
+    "hex": "636f6e74696e7565"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1555,
+    "procedure": 6,
+    "offset": "05D1",
+    "text": " your game, ",
+    "hex": "20796f75722067616d652c20"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1563,
+    "procedure": 6,
+    "offset": "05E3",
+    "text": "use the utilities or run the demo.",
+    "hex": "75736520746865207574696c6974696573206f722072756e207468652064656d6f2e"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1605,
+    "procedure": 6,
+    "offset": "0629",
+    "text": "Play SunDog>",
+    "hex": "506c61792053756e446f673e"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1635,
+    "procedure": 6,
+    "offset": "0647",
+    "text": "Use utilities",
+    "hex": "557365207574696c6974696573"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1667,
+    "procedure": 6,
+    "offset": "0667",
+    "text": "Run demo",
+    "hex": "52756e2064656d6f"
+  },
+  {
+    "source": "src/pcode/library_26_body.inc",
+    "line": 1769,
+    "procedure": 6,
+    "offset": "06BB",
+    "text": "MUST",
+    "hex": "4d555354"
+  },
+  {
+    "source": "src/pcode/library_27.s",
+    "line": 916,
+    "procedure": 10,
+    "offset": "02AB",
+    "text": " (",
+    "hex": "2028"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 69,
+    "procedure": 22,
+    "offset": "0033",
+    "text": "Reading ",
+    "hex": "52656164696e6720"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 209,
+    "procedure": 22,
+    "offset": "00B1",
+    "text": "bad litype",
+    "hex": "626164206c6974797065"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 449,
+    "procedure": 22,
+    "offset": "0171",
+    "text": "bad host LC",
+    "hex": "62616420686f7374204c43"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 497,
+    "procedure": 22,
+    "offset": "019F",
+    "text": "bad data seg #",
+    "hex": "6261642064617461207365672023"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 765,
+    "procedure": 26,
+    "offset": "027B",
+    "text": "bad proc #",
+    "hex": "6261642070726f632023"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 841,
+    "procedure": 26,
+    "offset": "02BB",
+    "text": "disagreeing p #",
+    "hex": "6469736167726565696e6720702023"
+  },
+  {
+    "source": "src/pcode/retained_linker_context.s",
+    "line": 919,
+    "procedure": 26,
+    "offset": "02FB",
+    "text": "proc place err",
+    "hex": "70726f6320706c61636520657272"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 92,
+    "procedure": 3,
+    "offset": "0043",
+    "text": "Please flip to the \\|\\",
+    "hex": "506c6561736520666c697020746f20746865205c7c5c"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 108,
+    "procedure": 3,
+    "offset": "0065",
+    "text": "||||UTILITY",
+    "hex": "7c7c7c7c5554494c495459"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 120,
+    "procedure": 3,
+    "offset": "0079",
+    "text": "||||||PLAY",
+    "hex": "7c7c7c7c7c7c504c4159"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 128,
+    "procedure": 3,
+    "offset": "0089",
+    "text": " SIDE\\|\\of the disk and press either button\\|\\|",
+    "hex": "20534944455c7c5c6f6620746865206469736b20616e642070726573732065697468657220627574746f6e5c7c5c7c"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1164,
+    "procedure": 8,
+    "offset": "04B5",
+    "text": "Sorry, ",
+    "hex": "536f7272792c20"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1176,
+    "procedure": 8,
+    "offset": "04C9",
+    "text": ", you didn't make it.\\",
+    "hex": "2c20796f75206469646e2774206d616b652069742e5c"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1184,
+    "procedure": 8,
+    "offset": "04E5",
+    "text": "Restart at last saved point?",
+    "hex": "52657374617274206174206c61737420736176656420706f696e743f"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1236,
+    "procedure": 8,
+    "offset": "0533",
+    "text": "Yes",
+    "hex": "596573"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1262,
+    "procedure": 8,
+    "offset": "054D",
+    "text": "No",
+    "hex": "4e6f"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1548,
+    "procedure": 8,
+    "offset": "0647",
+    "text": "Congratulations, ",
+    "hex": "436f6e67726174756c6174696f6e732c20"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1560,
+    "procedure": 8,
+    "offset": "0665",
+    "text": "!  You completed the contract in just ",
+    "hex": "212020596f7520636f6d706c657465642074686520636f6e747261637420696e206a75737420"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1580,
+    "procedure": 8,
+    "offset": "069B",
+    "text": " days. ",
+    "hex": "20646179732e20"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1590,
+    "procedure": 8,
+    "offset": "06A9",
+    "text": "You now own the SunDog.",
+    "hex": "596f75206e6f77206f776e207468652053756e446f672e"
+  },
+  {
+    "source": "src/pcode/startup_7.s",
+    "line": 1632,
+    "procedure": 8,
+    "offset": "06E7",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 42,
+    "procedure": 2,
+    "offset": "001D",
+    "text": "SYSTEM.CHARSET",
+    "hex": "53595354454d2e43484152534554"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 326,
+    "procedure": 3,
+    "offset": "0115",
+    "text": "*SYSTEM.MISCINFO",
+    "hex": "2a53595354454d2e4d495343494e464f"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 832,
+    "procedure": 3,
+    "offset": "02F5",
+    "text": "   ",
+    "hex": "202020"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1178,
+    "procedure": 7,
+    "offset": "041F",
+    "text": "*SYSTEM.STARTUP",
+    "hex": "2a53595354454d2e53544152545550"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1322,
+    "procedure": 7,
+    "offset": "04AB",
+    "text": "CONSOLE",
+    "hex": "434f4e534f4c45"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1330,
+    "procedure": 7,
+    "offset": "04B7",
+    "text": "SYSTERM",
+    "hex": "5359535445524d"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1342,
+    "procedure": 7,
+    "offset": "04C5",
+    "text": "GRAPHIC",
+    "hex": "47524150484943"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1350,
+    "procedure": 7,
+    "offset": "04D1",
+    "text": "PRINTER",
+    "hex": "5052494e544552"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1362,
+    "procedure": 7,
+    "offset": "04DF",
+    "text": "REMIN",
+    "hex": "52454d494e"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1370,
+    "procedure": 7,
+    "offset": "04E9",
+    "text": "REMOUT",
+    "hex": "52454d4f5554"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1556,
+    "procedure": 10,
+    "offset": "05A1",
+    "text": "CONSOLE:",
+    "hex": "434f4e534f4c453a"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1592,
+    "procedure": 10,
+    "offset": "05CB",
+    "text": "SYSTERM:",
+    "hex": "5359535445524d3a"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1756,
+    "procedure": 1,
+    "offset": "067D",
+    "text": "Version 1.2 of SYSTEM.PASCAL cannot run",
+    "hex": "56657273696f6e20312e32206f662053595354454d2e50415343414c2063616e6e6f742072756e"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1778,
+    "procedure": 1,
+    "offset": "06B9",
+    "text": "with a non-1.2 version of the interpreter",
+    "hex": "776974682061206e6f6e2d312e322076657273696f6e206f662074686520696e746572707265746572"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1832,
+    "procedure": 1,
+    "offset": "071F",
+    "text": "The 64K version of SYSTEM.PASCAL cannot ",
+    "hex": "5468652036344b2076657273696f6e206f662053595354454d2e50415343414c2063616e6e6f7420"
+  },
+  {
+    "source": "src/pcode/system_4.s",
+    "line": 1852,
+    "procedure": 1,
+    "offset": "075B",
+    "text": "run with the 128K version of SYSTEM.APPLE",
+    "hex": "72756e207769746820746865203132384b2076657273696f6e206f662053595354454d2e4150504c45"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 14,
+    "procedure": 2,
+    "offset": "0003",
+    "text": " ",
+    "hex": "20"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 44,
+    "procedure": 2,
+    "offset": "0019",
+    "text": " ",
+    "hex": "20"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 104,
+    "procedure": 2,
+    "offset": "0045",
+    "text": "[",
+    "hex": "5b"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 202,
+    "procedure": 2,
+    "offset": "0089",
+    "text": ".TEXT",
+    "hex": "2e54455854"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 214,
+    "procedure": 2,
+    "offset": "0097",
+    "text": ".CODE",
+    "hex": "2e434f4445"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 1478,
+    "procedure": 10,
+    "offset": "047F",
+    "text": " is not version 1.2",
+    "hex": "206973206e6f742076657273696f6e20312e32"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 1622,
+    "procedure": 10,
+    "offset": "0519",
+    "text": "*SYSTEM.LIBRARY",
+    "hex": "2a53595354454d2e4c494252415259"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 1820,
+    "procedure": 1,
+    "offset": "05E5",
+    "text": "*SYSTEM.ATTACH",
+    "hex": "2a53595354454d2e415454414348"
+  },
+  {
+    "source": "src/pcode/system_5.s",
+    "line": 1872,
+    "procedure": 1,
+    "offset": "0615",
+    "text": "*SYSTEM.STARTUP",
+    "hex": "2a53595354454d2e53544152545550"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 202,
+    "procedure": 11,
+    "offset": "0093",
+    "text": ":",
+    "hex": "3a"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 312,
+    "procedure": 11,
+    "offset": "00E9",
+    "text": "[",
+    "hex": "5b"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 416,
+    "procedure": 11,
+    "offset": "013D",
+    "text": "]",
+    "hex": "5d"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 624,
+    "procedure": 11,
+    "offset": "01D3",
+    "text": ".TEXT",
+    "hex": "2e54455854"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 646,
+    "procedure": 11,
+    "offset": "01E7",
+    "text": ".CODE",
+    "hex": "2e434f4445"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 664,
+    "procedure": 11,
+    "offset": "01F9",
+    "text": ".BACK",
+    "hex": "2e4241434b"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 686,
+    "procedure": 11,
+    "offset": "020D",
+    "text": ".INFO",
+    "hex": "2e494e464f"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 704,
+    "procedure": 11,
+    "offset": "021F",
+    "text": ".GRAF",
+    "hex": "2e47524146"
+  },
+  {
+    "source": "src/pcode/system_6.s",
+    "line": 726,
+    "procedure": 11,
+    "offset": "0233",
+    "text": ".FOTO",
+    "hex": "2e464f544f"
+  },
+  {
+    "source": "src/pcode/system_core.s",
+    "line": 27,
+    "procedure": 2,
+    "offset": "002F",
+    "text": "SYSTEM FAILURE NUMBER ",
+    "hex": "53595354454d204641494c555245204e554d42455220"
+  },
+  {
+    "source": "src/pcode/system_core.s",
+    "line": 51,
+    "procedure": 2,
+    "offset": "005B",
+    "text": ". PLEASE REFER",
+    "hex": "2e20504c45415345205245464552"
+  },
+  {
+    "source": "src/pcode/system_core.s",
+    "line": 69,
+    "procedure": 2,
+    "offset": "0079",
+    "text": "TO PRODUCT MANUAL FOR EXPLANATION.",
+    "hex": "544f2050524f44554354204d414e55414c20464f52204558504c414e4154494f4e2e"
+  },
+  {
+    "source": "src/pcode/system_core.s",
+    "line": 1179,
+    "procedure": 13,
+    "offset": "03B3",
+    "text": "-32768",
+    "hex": "2d3332373638"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1552,
+    "procedure": 14,
+    "offset": "04D3",
+    "text": "@@@@HIKM",
+    "hex": "4040404048494b4d"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1558,
+    "procedure": 14,
+    "offset": "04DF",
+    "text": "@@JLNU__",
+    "hex": "40404a4c4e555f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1568,
+    "procedure": 14,
+    "offset": "04ED",
+    "text": "@@TV____",
+    "hex": "404054565f5f5f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1574,
+    "procedure": 14,
+    "offset": "04F9",
+    "text": "@HPQRSW_",
+    "hex": "404850515253575f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1584,
+    "procedure": 14,
+    "offset": "0507",
+    "text": "@ILXYZ__",
+    "hex": "40494c58595a5f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1590,
+    "procedure": 14,
+    "offset": "0513",
+    "text": "@QRU[___",
+    "hex": "405152555b5f5f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1600,
+    "procedure": 14,
+    "offset": "0521",
+    "text": "CFIOQ^__",
+    "hex": "4346494f515e5f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1606,
+    "procedure": 14,
+    "offset": "052D",
+    "text": "BDENTY__",
+    "hex": "4244454e54595f5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 1616,
+    "procedure": 14,
+    "offset": "053B",
+    "text": "BGPXZ\\]_",
+    "hex": "424750585a5c5d5f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3314,
+    "procedure": 21,
+    "offset": "0A51",
+    "text": "nothing",
+    "hex": "6e6f7468696e67"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3600,
+    "procedure": 25,
+    "offset": "0B4F",
+    "text": "||Attribute setting\\|\\",
+    "hex": "7c7c4174747269627574652073657474696e675c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3608,
+    "procedure": 25,
+    "offset": "0B6B",
+    "text": "-- Select attribute with cursor\\|\\",
+    "hex": "2d2d2053656c65637420617474726962757465207769746820637572736f725c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3616,
+    "procedure": 25,
+    "offset": "0B93",
+    "text": "-- Use arrows to raise or lower\\|\\",
+    "hex": "2d2d20557365206172726f777320746f207261697365206f72206c6f7765725c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3624,
+    "procedure": 25,
+    "offset": "0BBB",
+    "text": "-- Press button 1 when done",
+    "hex": "2d2d20507265737320627574746f6e2031207768656e20646f6e65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3640,
+    "procedure": 25,
+    "offset": "0BE5",
+    "text": "Strength     (S",
+    "hex": "537472656e67746820202020202853"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3654,
+    "procedure": 25,
+    "offset": "0C05",
+    "text": "T):\\|",
+    "hex": "54293a5c7c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3672,
+    "procedure": 25,
+    "offset": "0C1D",
+    "text": "Intelligence (IQ):\\|\\",
+    "hex": "496e74656c6c6967656e636520284951293a5c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3682,
+    "procedure": 25,
+    "offset": "0C39",
+    "text": "Dexterity    (DX):\\|\\",
+    "hex": "44657874657269747920202020284458293a5c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3688,
+    "procedure": 25,
+    "offset": "0C53",
+    "text": "Charisma     (CH):\\|\\",
+    "hex": "4368617269736d612020202020284348293a5c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3698,
+    "procedure": 25,
+    "offset": "0C6F",
+    "text": "Luck         (LK):",
+    "hex": "4c75636b202020202020202020284c4b293a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 3710,
+    "procedure": 25,
+    "offset": "0C8D",
+    "text": "Points: ",
+    "hex": "506f696e74733a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4810,
+    "procedure": 29,
+    "offset": "0FE5",
+    "text": "    ",
+    "hex": "20202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4890,
+    "procedure": 30,
+    "offset": "1025",
+    "text": "Strength:    ",
+    "hex": "537472656e6774683a20202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4912,
+    "procedure": 30,
+    "offset": "1045",
+    "text": "Intelligence:",
+    "hex": "496e74656c6c6967656e63653a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4934,
+    "procedure": 30,
+    "offset": "1065",
+    "text": "Dexterity:   ",
+    "hex": "4465787465726974793a202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4956,
+    "procedure": 30,
+    "offset": "1085",
+    "text": "Charisma:    ",
+    "hex": "4368617269736d613a20202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 4978,
+    "procedure": 30,
+    "offset": "10A5",
+    "text": "Luck:        ",
+    "hex": "4c75636b3a2020202020202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5000,
+    "procedure": 30,
+    "offset": "10C5",
+    "text": "Points left: ",
+    "hex": "506f696e7473206c6566743a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5028,
+    "procedure": 30,
+    "offset": "10EB",
+    "text": "||Don't waste! `",
+    "hex": "7c7c446f6e2774207761737465212060"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5076,
+    "procedure": 30,
+    "offset": "1123",
+    "text": "All done",
+    "hex": "416c6c20646f6e65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5106,
+    "procedure": 30,
+    "offset": "113D",
+    "text": "Adjust",
+    "hex": "41646a757374"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5476,
+    "procedure": 33,
+    "offset": "1267",
+    "text": "Spell character name\\|using cursor\\Button 1 deletes\\",
+    "hex": "5370656c6c20636861726163746572206e616d655c7c7573696e6720637572736f725c427574746f6e20312064656c657465735c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5484,
+    "procedure": 33,
+    "offset": "12A1",
+    "text": "Press + when done",
+    "hex": "5072657373202b207768656e20646f6e65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5514,
+    "procedure": 33,
+    "offset": "12C9",
+    "text": "abcdefghij",
+    "hex": "6162636465666768696a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5532,
+    "procedure": 33,
+    "offset": "12DD",
+    "text": "klmnopqrst",
+    "hex": "6b6c6d6e6f7071727374"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5550,
+    "procedure": 33,
+    "offset": "12F1",
+    "text": "uvwxyz ` +",
+    "hex": "75767778797a2060202b"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 5968,
+    "procedure": 37,
+    "offset": "1489",
+    "text": "Your character name is:  ",
+    "hex": "596f757220636861726163746572206e616d652069733a2020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6052,
+    "procedure": 37,
+    "offset": "14E9",
+    "text": "You must choose a name.  Please do so.",
+    "hex": "596f75206d7573742063686f6f73652061206e616d652e2020506c6561736520646f20736f2e"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6072,
+    "procedure": 37,
+    "offset": "1523",
+    "text": "This name is already in use.  Please choose another.",
+    "hex": "54686973206e616d6520697320616c726561647920696e207573652e2020506c656173652063686f6f736520616e6f746865722e"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6090,
+    "procedure": 37,
+    "offset": "1569",
+    "text": "Is this correct?",
+    "hex": "4973207468697320636f72726563743f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6136,
+    "procedure": 37,
+    "offset": "159F",
+    "text": "Yes",
+    "hex": "596573"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6164,
+    "procedure": 37,
+    "offset": "15B3",
+    "text": "No",
+    "hex": "4e6f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6236,
+    "procedure": 37,
+    "offset": "15FB",
+    "text": "Name: ",
+    "hex": "4e616d653a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6280,
+    "procedure": 38,
+    "offset": "1629",
+    "text": "Name: ",
+    "hex": "4e616d653a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6596,
+    "procedure": 40,
+    "offset": "173D",
+    "text": "This game is over -- please select another game.",
+    "hex": "546869732067616d65206973206f766572202d2d20706c656173652073656c65637420616e6f746865722067616d652e"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 6828,
+    "procedure": 40,
+    "offset": "181D",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7028,
+    "procedure": 7,
+    "offset": "18C3",
+    "text": "Please flip to the \\|\\",
+    "hex": "506c6561736520666c697020746f20746865205c7c5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7044,
+    "procedure": 7,
+    "offset": "18E5",
+    "text": "||||UTILITY",
+    "hex": "7c7c7c7c5554494c495459"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7052,
+    "procedure": 7,
+    "offset": "18F7",
+    "text": "||||||PLAY",
+    "hex": "7c7c7c7c7c7c504c4159"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7060,
+    "procedure": 7,
+    "offset": "1907",
+    "text": " SIDE\\|\\of the disk and press either button\\|\\|",
+    "hex": "20534944455c7c5c6f6620746865206469736b20616e642070726573732065697468657220627574746f6e5c7c5c7c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7230,
+    "procedure": 6,
+    "offset": "19D1",
+    "text": "||||||||||SunDog> Utility Program\\",
+    "hex": "7c7c7c7c7c7c7c7c7c7c53756e446f673e205574696c6974792050726f6772616d5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7238,
+    "procedure": 6,
+    "offset": "19F9",
+    "text": "Select box with cursor to play or delete a\\",
+    "hex": "53656c65637420626f78207769746820637572736f7220746f20706c6179206f722064656c65746520615c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7244,
+    "procedure": 6,
+    "offset": "1A29",
+    "text": "||suspended game, or to start a new one.",
+    "hex": "7c7c73757370656e6465642067616d652c206f7220746f2073746172742061206e6577206f6e652e"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7304,
+    "procedure": 42,
+    "offset": "1A85",
+    "text": "|Press either button\\",
+    "hex": "7c50726573732065697468657220627574746f6e5c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7314,
+    "procedure": 42,
+    "offset": "1AA1",
+    "text": "||||||to reboot",
+    "hex": "7c7c7c7c7c7c746f207265626f6f74"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7342,
+    "procedure": 42,
+    "offset": "1AC7",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7520,
+    "procedure": 44,
+    "offset": "1B51",
+    "text": "empty",
+    "hex": "656d707479"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7532,
+    "procedure": 44,
+    "offset": "1B5F",
+    "text": "new game",
+    "hex": "6e65772067616d65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7542,
+    "procedure": 44,
+    "offset": "1B6F",
+    "text": "being played",
+    "hex": "6265696e6720706c61796564"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7552,
+    "procedure": 44,
+    "offset": "1B83",
+    "text": "suspended",
+    "hex": "73757370656e646564"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7560,
+    "procedure": 44,
+    "offset": "1B93",
+    "text": "** died **",
+    "hex": "2a2a2064696564202a2a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7570,
+    "procedure": 44,
+    "offset": "1BA5",
+    "text": "** won **",
+    "hex": "2a2a20776f6e202a2a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7582,
+    "procedure": 44,
+    "offset": "1BB7",
+    "text": "** damaged **",
+    "hex": "2a2a2064616d61676564202a2a"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7768,
+    "procedure": 3,
+    "offset": "1C55",
+    "text": "Game ",
+    "hex": "47616d6520"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7790,
+    "procedure": 3,
+    "offset": "1C69",
+    "text": ": ",
+    "hex": "3a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7818,
+    "procedure": 3,
+    "offset": "1C81",
+    "text": "Name: ",
+    "hex": "4e616d653a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7836,
+    "procedure": 3,
+    "offset": "1C97",
+    "text": "Status: ",
+    "hex": "5374617475733a20"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7856,
+    "procedure": 3,
+    "offset": "1CAD",
+    "text": "find colony",
+    "hex": "66696e6420636f6c6f6e79"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7864,
+    "procedure": 3,
+    "offset": "1CBF",
+    "text": "Phase ",
+    "hex": "506861736520"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7886,
+    "procedure": 3,
+    "offset": "1CD7",
+    "text": "Date:   ",
+    "hex": "446174653a202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7900,
+    "procedure": 3,
+    "offset": "1CED",
+    "text": "Loc:    ",
+    "hex": "4c6f633a20202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7924,
+    "procedure": 3,
+    "offset": "1D05",
+    "text": "deep space",
+    "hex": "64656570207370616365"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7950,
+    "procedure": 3,
+    "offset": "1D21",
+    "text": "orbit",
+    "hex": "6f72626974"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 7982,
+    "procedure": 3,
+    "offset": "1D41",
+    "text": "||||||||",
+    "hex": "7c7c7c7c7c7c7c7c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8014,
+    "procedure": 3,
+    "offset": "1D63",
+    "text": "||||||||",
+    "hex": "7c7c7c7c7c7c7c7c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8044,
+    "procedure": 3,
+    "offset": "1D83",
+    "text": "Attr:   ",
+    "hex": "417474723a202020"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8066,
+    "procedure": 3,
+    "offset": "1D9B",
+    "text": "STIQDXCHLK",
+    "hex": "53544951445843484c4b"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8120,
+    "procedure": 3,
+    "offset": "1DCD",
+    "text": " ??",
+    "hex": "203f3f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8130,
+    "procedure": 3,
+    "offset": "1DD7",
+    "text": " (",
+    "hex": "2028"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8166,
+    "procedure": 3,
+    "offset": "1DF3",
+    "text": "\\||||||||",
+    "hex": "5c7c7c7c7c7c7c7c7c"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8308,
+    "procedure": 4,
+    "offset": "1E73",
+    "text": "Delete?",
+    "hex": "44656c6574653f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8332,
+    "procedure": 4,
+    "offset": "1E8B",
+    "text": "Yes",
+    "hex": "596573"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8358,
+    "procedure": 4,
+    "offset": "1E9D",
+    "text": "No",
+    "hex": "4e6f"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8652,
+    "procedure": 47,
+    "offset": "1F79",
+    "text": "Start new game",
+    "hex": "5374617274206e65772067616d65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8684,
+    "procedure": 47,
+    "offset": "1F9B",
+    "text": "Play game",
+    "hex": "506c61792067616d65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8704,
+    "procedure": 47,
+    "offset": "1FB1",
+    "text": "Delete game",
+    "hex": "44656c6574652067616d65"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8724,
+    "procedure": 47,
+    "offset": "1FC9",
+    "text": "Certificate",
+    "hex": "4365727469666963617465"
+  },
+  {
+    "source": "src/pcode/utility_disk1.s",
+    "line": 8768,
+    "procedure": 48,
+    "offset": "1FF7",
+    "text": "Initializing new game -- please wait",
+    "hex": "496e697469616c697a696e67206e65772067616d65202d2d20706c656173652077616974"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 23,
+    "procedure": 32,
+    "offset": "000F",
+    "text": "Spell character name\\|using cursor\\Button 1 deletes\\",
+    "hex": "5370656c6c20636861726163746572206e616d655c7c7573696e6720637572736f725c427574746f6e20312064656c657465735c"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 31,
+    "procedure": 32,
+    "offset": "0049",
+    "text": "Press + when done",
+    "hex": "5072657373202b207768656e20646f6e65"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 61,
+    "procedure": 32,
+    "offset": "0071",
+    "text": "abcdefghij",
+    "hex": "6162636465666768696a"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 79,
+    "procedure": 32,
+    "offset": "0085",
+    "text": "klmnopqrst",
+    "hex": "6b6c6d6e6f7071727374"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 97,
+    "procedure": 32,
+    "offset": "0099",
+    "text": "uvwxyz ` +",
+    "hex": "75767778797a2060202b"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 515,
+    "procedure": 36,
+    "offset": "0231",
+    "text": "Your character name is:  ",
+    "hex": "596f757220636861726163746572206e616d652069733a2020"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 599,
+    "procedure": 36,
+    "offset": "0291",
+    "text": "You must choose a name.  Please do so.",
+    "hex": "596f75206d7573742063686f6f73652061206e616d652e2020506c6561736520646f20736f2e"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 619,
+    "procedure": 36,
+    "offset": "02CB",
+    "text": "This name is already in use.  Please choose another.",
+    "hex": "54686973206e616d6520697320616c726561647920696e207573652e2020506c656173652063686f6f736520616e6f746865722e"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 637,
+    "procedure": 36,
+    "offset": "0311",
+    "text": "Is this correct?",
+    "hex": "4973207468697320636f72726563743f"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 683,
+    "procedure": 36,
+    "offset": "0347",
+    "text": "Yes",
+    "hex": "596573"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 711,
+    "procedure": 36,
+    "offset": "035B",
+    "text": "No",
+    "hex": "4e6f"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 783,
+    "procedure": 36,
+    "offset": "03A3",
+    "text": "Name: ",
+    "hex": "4e616d653a20"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 827,
+    "procedure": 37,
+    "offset": "03D1",
+    "text": "Name: ",
+    "hex": "4e616d653a20"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1143,
+    "procedure": 39,
+    "offset": "04E5",
+    "text": "This game is over -- please select another game.",
+    "hex": "546869732067616d65206973206f766572202d2d20706c656173652073656c65637420616e6f746865722067616d652e"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1363,
+    "procedure": 39,
+    "offset": "05BD",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1553,
+    "procedure": 6,
+    "offset": "066F",
+    "text": "||||||||||SunDog> Utility Program\\",
+    "hex": "7c7c7c7c7c7c7c7c7c7c53756e446f673e205574696c6974792050726f6772616d5c"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1561,
+    "procedure": 6,
+    "offset": "0697",
+    "text": "Select box with cursor to play or delete a\\",
+    "hex": "53656c65637420626f78207769746820637572736f7220746f20706c6179206f722064656c65746520615c"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1567,
+    "procedure": 6,
+    "offset": "06C7",
+    "text": "||suspended game, or to start a new one.",
+    "hex": "7c7c73757370656e6465642067616d652c206f7220746f2073746172742061206e6577206f6e652e"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1625,
+    "procedure": 40,
+    "offset": "0721",
+    "text": "|Press either button\\",
+    "hex": "7c50726573732065697468657220627574746f6e5c"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1631,
+    "procedure": 40,
+    "offset": "073B",
+    "text": "||||||to reboot",
+    "hex": "7c7c7c7c7c7c746f207265626f6f74"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1663,
+    "procedure": 40,
+    "offset": "0763",
+    "text": "DUST",
+    "hex": "44555354"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1777,
+    "procedure": 42,
+    "offset": "07BF",
+    "text": "empty",
+    "hex": "656d707479"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1789,
+    "procedure": 42,
+    "offset": "07CD",
+    "text": "new game",
+    "hex": "6e65772067616d65"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1799,
+    "procedure": 42,
+    "offset": "07DD",
+    "text": "being played",
+    "hex": "6265696e6720706c61796564"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1809,
+    "procedure": 42,
+    "offset": "07F1",
+    "text": "suspended",
+    "hex": "73757370656e646564"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1817,
+    "procedure": 42,
+    "offset": "0801",
+    "text": "** died **",
+    "hex": "2a2a2064696564202a2a"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1827,
+    "procedure": 42,
+    "offset": "0813",
+    "text": "** won **",
+    "hex": "2a2a20776f6e202a2a"
+  },
+  {
+    "source": "src/pcode/utility_variant_procedures.s",
+    "line": 1839,
+    "procedure": 42,
+    "offset": "0825",
+    "text": "** damaged **",
+    "hex": "2a2a2064616d61676564202a2a"
+  }
+]
