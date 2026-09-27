@@ -16,12 +16,13 @@ export async function loadAssets() {
     readJSON('data/catalog.json'),
     Promise.all(['en', 'ko'].map(locale => readJSON(`locales/${locale}.json`))),
   ]);
-  const paths = [...Object.values(catalog.images), ...Object.values(catalog.tileBanks).flat()];
-  const [maps, images, shipWalk] = await Promise.all([
+  const paths = [...Object.values(catalog.images), ...Object.values(catalog.itemImages), ...Object.values(catalog.tileBanks).flat()];
+  const [maps, images, shipWalk, shipInventory] = await Promise.all([
     readJSON(catalog.maps),
     Promise.all(paths.map(async path => [path, await loadImage(path)])),
     readJSON(catalog.shipWalk),
+    readJSON(catalog.shipInventory),
   ]);
   await document.fonts.load('16px Mulmaru', 'SunDog 선독');
-  return { catalog, maps, shipWalk, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  return { catalog, maps, shipWalk, shipInventory, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

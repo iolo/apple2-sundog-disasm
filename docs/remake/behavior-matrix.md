@@ -17,6 +17,8 @@ characters and includes historical variants; it is not a localization catalog.
 | Generated world records | `docs/working-state.md`; utility 14 rotates 18 record templates using selector `(old+5)%18`; 17 persists world tables | Source-derived | Fresh worlds are generated. Extracted working-state records are not clean defaults. |
 | Primary movement / secondary status | Manual PDF 10–12; game15 procedure13; library22 procedures9/22; `docs/reference/remake-ship-movement.json` | Movement source-derived with observed endpoint; status previously observed | R05a implements hold/release walking with the recovered glyph mask and fallback order. See `ship-movement.md` and `walk-validation.md`. Status UI remains pending. |
 | Ship artwork | `game_15.s` `$0315–$033C`, library 24 procedure 5; `docs/packed-ship-images.md` | Source-derived | External SVG derives from decoded HGR pixels; section/full variants remain separate. Native collision consumes low HGR bits with glyph13; explicit collision data is exported separately. |
+| Carried items / ship storage | Utility20/21; game14 procedures3/4/8/12; library27 procedures7/13/15 | Source-derived; initial bytes match clean capture | R05b implements four carried slots and twenty each in locker/stores, reached through ship movement. Atomic two-click transfers preserve complete bytes. See `inventory.md`. |
+| Item names / charge / icons | Library27 procedures3/4/10; play-side item-name table | Source-derived | External composed SVGs, English/Korean names, low-five-bit type and upper-three-bit shield/scattergun value. Item use and engineering fit remain pending. |
 | World/city payloads | `docs/world-maps.md`, `docs/city-maps.md`, `game_21.s` procedures 26/28 | Source-derived | Preview all 18 stored worlds and 60 play cities. Raw indices are not claims of terrain meaning or live composition. |
 | Colony requirement check | `game_20.s` procedure 4 `$00A0–$00B2` scans a 14-byte area using CSP 11 before proceeding; exact CSP predicate still to trace | Source-derived entry; predicate unresolved | Do not treat displaying a completion string as proof of delivery semantics. |
 | Colony phase | Same procedure `$00B4–$00FE`: reads byte 2 at segment-29 word271, reports completed phase, tests equality with 9 | Source-derived | Store explicit phase and outstanding requirements; final phase must not be assumed to be a single delivery. |
@@ -31,7 +33,8 @@ R04b observes clean character creation on disposable disks; R05a implements the
 traced movement/collision rules. Attribute allocation is implemented in R04a.
 To finish R04, map the remaining utility procedures 10–21 and 25–30 into named
 state fields, including money, inventory/equipment, time, world generation and
-randomness. R05 still needs status, inventory and consequential interactions.
+randomness. R05b implements storage transfers; R05 still needs personal status,
+item use, engineering and other consequential interactions.
 Before R11, decode phase requirement generation, delivery accounting and the
 remaining-goods predicate. These block gameplay fidelity, not the independent
 graphics loader, content viewer, localization or viewport work.

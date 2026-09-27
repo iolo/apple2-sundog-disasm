@@ -107,6 +107,24 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 #walk-status{position:absolute;left:32px;right:32px;top:376px;color:var(--amber);font-size:14px;line-height:1.4}
 .walk-actions{position:absolute;left:32px;right:32px;bottom:20px;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;font-size:17px}
 #begin-walk{color:var(--amber)}
+#inventory-panel{position:absolute;inset:0;background:var(--ink)}
+#inventory-panel h2{font-size:24px;font-weight:normal;letter-spacing:0}
+.inventory-note{position:absolute;left:32px;right:32px;top:78px;font-size:15px;line-height:1.35;color:var(--muted)}
+.inventory-columns{position:absolute;left:32px;right:32px;top:122px;display:grid;grid-template-columns:160px 1fr;gap:32px}
+.inventory-columns h3{font-size:19px;font-weight:normal;margin:0 0 14px}
+.inventory-columns h3 small{color:var(--muted);font-size:13px;margin-left:8px}
+.item-grid{display:grid;gap:5px}
+.carried-grid{grid-template-columns:repeat(2,1fr)}
+.storage-grid{grid-template-columns:repeat(5,1fr)}
+.item-slot{position:relative;border:1px solid var(--line);height:47px;padding:5px;display:flex;align-items:center;justify-content:center}
+.item-slot[aria-pressed=true]{border:2px solid var(--amber);background:#eab97515}
+.item-slot small{position:absolute;top:3px;left:4px;color:var(--muted);font-size:10px}
+.item-slot img{width:28px;height:32px;pointer-events:none}
+.item-slot>span{color:var(--line);font-size:24px}
+.storage-hint{font-size:18px;line-height:1.5;color:var(--muted);max-width:330px;word-break:keep-all}
+.inventory-bottom{position:absolute;left:32px;right:32px;top:374px;border-top:1px solid var(--line);padding-top:12px}
+#inventory-message{font-size:18px;color:var(--amber);line-height:1.35;min-height:25px}
+#inventory-cancel{float:right;font-size:15px;margin-top:7px}
 @media(max-width:639px){
   #character-screen .topline{left:20px;right:20px;font-size:18px;letter-spacing:0}
   #character-screen h1{font-size:23px}
@@ -129,4 +147,12 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   .walk-note{font-size:18px;top:78px}
   #walk-status{font-size:18px;top:372px}
   .walk-actions{font-size:22px;bottom:13px}
+  .walk-actions button{padding:8px 7px}
+  .inventory-note{font-size:18px;top:78px}
+  .inventory-columns{top:128px}
+  .inventory-columns h3{font-size:23px;margin-bottom:10px}
+  .inventory-columns h3 small{font-size:18px}
+  .storage-hint{font-size:21px;line-height:1.4}
+  #inventory-message{font-size:21px}
+  #inventory-cancel{font-size:21px;min-height:48px;margin-top:0}
 }

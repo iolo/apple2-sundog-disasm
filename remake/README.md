@@ -1,8 +1,9 @@
 # SunDog web remake
 
-Current milestone: a source-backed ship walkthrough, bilingual character allocation
-with four saved draft slots, and a preview of 60 cities and 18 worlds. Campaign
-initialization, inventory, ship systems and campaign saves remain pending. Evidence is in
+Current milestone: a source-backed ship walkthrough with carried-item/locker/store
+transfers, bilingual character allocation with four saved draft slots, and a preview
+of 60 cities and 18 worlds. Campaign initialization, item use, other ship systems
+and campaign saves remain pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
 From the repository root:
@@ -28,8 +29,16 @@ Choose **Walk aboard** in the ship preview. Hold the pointer or touch to walk;
 release to stop. Arrow keys work while the ship display has focus. Pause, reset
 and help are available in both languages; leaving the window pauses movement.
 The walkthrough uses the original collision mask and movement attempts, with a
-browser-specific 50 ms cadence. Position lasts until reload; stations identify
-arrival but do not yet open controls. See `../docs/remake/ship-movement.md`.
+browser-specific 50 ms cadence. Position lasts until reload.
+See `../docs/remake/ship-movement.md`.
+
+Open **Inventory** (or press I/Enter with the ship focused) for four carried slots.
+Walk above the starting position to reach stores, or right to reach the locker;
+the inventory button then opens that container too. Select an item followed by a
+destination slot; occupied slots swap. Escape cancels a selection before closing.
+Resume continues walking. Item use is not active yet. Transfers last until reload;
+**Return to start** moves the player without resetting items. See
+`../docs/remake/inventory.md` for rules, source evidence and scope.
 
 Choose **Create a character** to enter a name and spend the original 440-point
 attribute budget. Each + button shows its next cost; − refunds the previous

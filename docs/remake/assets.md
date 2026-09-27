@@ -26,6 +26,12 @@ with explicit glyph masks, source spawn and packed low-bit ship collision rows.
 The exporter now verifies 94 artifacts, including 89 SVGs. Ship collision is
 independent of decorative SVG paths; city/world collision remains unresolved.
 
+R05b extends the batch to 119 artifacts, including 113 SVGs. The 24 item icons
+compose four bank1 glyphs following library27's renderer, rather than assigning
+names from an unlabeled atlas. `ship-inventory.json` contains only verified
+deterministic carried/locker/store slots; independent capture checks cover all
+44 bytes. See `inventory.md` for source addresses and the campaign boundary.
+
 Mulmaru v1.0's `Mulmaru.woff2` and `LICENSE.txt` were extracted from the pinned
 release ZIP. Its source URL and archive/file hashes are in
 `remake/assets/fonts/provenance.json`. No runtime network font is used.

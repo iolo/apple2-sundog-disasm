@@ -83,11 +83,11 @@ Hidden/unfocused windows pause; resume is explicit; delayed frames have bounded
 catch-up. The walkthrough advances no campaign clock or character condition.
 
 Procedure14 (`$07CC–$08A1`) maps anchor cells to interaction IDs. The browser
-recognizes these regions and reports reaching a station, but does not fabricate
-its controls. IDs3/4 have the original landed-location guard. Walking uses the
+recognizes these regions and reports reaching a station. R05b adds locker/store
+transfers at IDs5/6; see `inventory.md`. IDs3/4 have the original landed-location guard. Walking uses the
 landed full-ship case; partial-ship movement is not exposed. On the full ship,
 1784 one-pixel-connected clear anchor positions are reachable from `(54,110)`.
 
-Ship systems, exits, inventory transfers, sleep, combat, and campaign saves are
-still pending. Walkthrough position is ephemeral and survives opening/closing
+Other ship systems, exits, item use, sleep, combat, and campaign saves are
+still pending. Walkthrough position and inventory are ephemeral and survive opening/closing
 the screen within the page, but not reload. Character drafts remain separate.

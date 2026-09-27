@@ -1,0 +1,181 @@
+{
+  "date": "2026-09-28",
+  "emulator": "MAME 0.285 / apple2e / joystick",
+  "scope": "Interactive existing play-session transfer on disposable disk copies; not a fresh-character playthrough or deterministic boot replay",
+  "memory": {
+    "segment29Base": "0xadba",
+    "carriedAddress": "0xae36",
+    "storesAddress": "0xaf32",
+    "lockerAddress": "0xaf16",
+    "access": "CPU-mapped main program space while paused"
+  },
+  "shipPosition": {
+    "x": 54,
+    "y": 86
+  },
+  "before": {
+    "carried": [
+      0,
+      12,
+      235,
+      0
+    ],
+    "stores": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      8,
+      8,
+      8,
+      8,
+      8,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "locker": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      23,
+      23,
+      23,
+      23,
+      23
+    ]
+  },
+  "afterPick": {
+    "carried": [
+      0,
+      12,
+      235,
+      0
+    ],
+    "stores": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      0,
+      8,
+      8,
+      8,
+      8,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "heldItem": 8
+  },
+  "afterPlace": {
+    "carried": [
+      8,
+      12,
+      235,
+      0
+    ],
+    "stores": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      0,
+      8,
+      8,
+      8,
+      8,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "locker": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      23,
+      23,
+      23,
+      23,
+      23
+    ]
+  },
+  "input": {
+    "context": "Ship stores open at (54,86), reached using joystick movement and release",
+    "pick": {
+      "joystickX": 108,
+      "joystickY": 128,
+      "primaryHoldFrames": 30,
+      "sourceSlotZeroBased": 5
+    },
+    "place": {
+      "joystickX": 61,
+      "joystickY": 168,
+      "primaryHoldFrames": 30,
+      "carriedSlotZeroBased": 0
+    }
+  },
+  "observed": [
+    "Ship stores label opens at the source-derived region",
+    "Food selection clears store slot5 while its value is held by the original cursor",
+    "Placing writes byte8 into carried slot0",
+    "Other captured carried, store and locker bytes remain unchanged"
+  ],
+  "screenshots": {
+    "remake-stores-before.png": "2526151e59c1f7cf664eafc1fd3eca4864c800c294276bd0d962e972f8935f0b",
+    "remake-stores-after.png": "607eb99f1b2de27f6520ef2c878899e1dc78f43ea53387fef961bf7919c46510"
+  },
+  "limitations": [
+    "Only food pickup/place observed in this session; atomic swaps are a documented browser adaptation",
+    "No original save/reload, item use, engineering or campaign completion validation",
+    "Initial mount script used an incorrect device tag; corrected to discovered :sl6:diskiing:0:525 before play"
+  ]
+}

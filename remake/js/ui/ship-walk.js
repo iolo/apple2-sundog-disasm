@@ -1,9 +1,12 @@
 import { createWalk, advanceWalk, interactionAt } from '../core/ship-walk.js';
+import { createInventory, storageAt, transferItem } from '../core/inventory.js';
+import { inventoryPanel } from './inventory.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 export function shipWalkScreen({ stage, background, assets, t, language, close }) {
   const root = document.createElement('section'); root.id = 'walk-screen'; root.hidden = true; stage.append(root);
   let state = createWalk(assets.shipWalk), open = false, frame, previous = 0, help = false, activePointer = null;
+  let inventory = createInventory(assets.shipInventory), inventoryOpen = false, selected = null, inventoryMessage = '';
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
@@ -25,20 +28,28 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     context.drawImage(assets.images[assets.catalog.images.player], x, y, 7 * sx, 8 * sy);
     root.dataset.x = state.position.x; root.dataset.y = state.position.y; root.dataset.paused = state.paused;
     const station = interactionAt(state.position);
-    const message = t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
+    const storage = storageAt(state.position);
+    const message = storage ? t('storageReached', { storage: t(storage) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
     const status = root.querySelector('#walk-status');
     if (status.textContent !== message) status.textContent = message;
+    const button = root.querySelector('#walk-inventory');
+    const label = t(storage || 'inventoryTitle');
+    if (button.textContent !== label) button.textContent = label;
   }
   function render() {
     if (!open) return;
     const focus = document.activeElement?.id;
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
       <p class="walk-note">${t('walkNote')}</p><div id="walk-surface" tabindex="0" role="button" aria-label="${t('walkControls')}"></div>
-      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
+      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
     if (help) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t('walkControls')}</p><p>${t('walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
       root.querySelector('#walk-close-help').focus();
+    } else if (inventoryOpen) {
+      for (const child of root.children) child.inert = true;
+      root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
+      (root.querySelector('#inventory-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector('#inventory-close')).focus({ preventScroll: true });
     } else if (focus) document.getElementById(focus)?.focus({ preventScroll: true });
     draw();
   }
@@ -68,22 +79,52 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) stop(); });
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
+    if (inventoryOpen) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        if (selected) { selected = null; inventoryMessage = 'selectionCancelled'; render(); }
+        else closeInventory();
+      }
+      if (event.key === 'Tab') {
+        const buttons = [...root.querySelectorAll('#inventory-panel button:not(:disabled)')];
+        const index = buttons.indexOf(document.activeElement);
+        event.preventDefault(); buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+      }
+      return;
+    }
     if (help) {
       if (event.key === 'Tab') { event.preventDefault(); root.querySelector('#walk-close-help').focus(); }
       if (event.key === 'Escape') { event.preventDefault(); help = false; render(); root.querySelector('#walk-help').focus(); }
       return;
     }
     if (event.key === 'Escape') { event.preventDefault(); api.hide(); close(); return; }
+    if (event.target.id === 'walk-surface' && (event.key === 'Enter' || event.key.toLowerCase() === 'i')) { event.preventDefault(); openInventory(); return; }
     if (event.target.id === 'walk-surface' && directions[event.key]) { event.preventDefault(); keys.add(event.key); }
   });
   root.addEventListener('keyup', event => { if (directions[event.key]) { keys.delete(event.key); if (!keys.size) stop(); } });
   root.addEventListener('focusout', event => { if (event.target.id === 'walk-surface') stop(); });
+  function openInventory() { stop(); state.paused = true; inventoryOpen = true; selected = null; inventoryMessage = ''; render(); }
+  function closeInventory() { inventoryOpen = false; selected = null; inventoryMessage = ''; render(); root.querySelector('#walk-inventory').focus(); }
   root.addEventListener('click', event => {
+    const slotButton = event.target.closest('[data-slot]');
+    if (inventoryOpen && slotButton) {
+      const slot = { container: slotButton.dataset.container, index: Number(slotButton.dataset.slot) };
+      if (selected) {
+        const next = transferItem(inventory, selected, slot, state.position);
+        inventoryMessage = next === inventory ? 'selectionCancelled' : 'inventoryTransferred';
+        inventory = next; selected = null;
+      } else if (inventory[slot.container][slot.index]) { selected = slot; inventoryMessage = ''; }
+      else inventoryMessage = 'inventoryEmpty';
+      render(); return;
+    }
     const action = event.target.closest('[data-walk]')?.dataset.walk;
     if (!action) return;
     stop();
     if (action === 'back') { api.hide(); close(); return; }
     if (action === 'language') { language(); return; }
+    if (action === 'inventory') { openInventory(); return; }
+    if (action === 'close-inventory') { closeInventory(); return; }
+    if (action === 'cancel-item') { selected = null; inventoryMessage = 'selectionCancelled'; }
     if (action === 'reset') { state = createWalk(assets.shipWalk); previous = 0; }
     if (action === 'pause') { state.paused = !state.paused; previous = 0; }
     if (action === 'help') { help = true; state.paused = true; }
@@ -97,7 +138,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const api = {
     get active() { return open; }, render,
     show() { open = true; root.hidden = false; background.inert = true; previous = 0; render(); root.querySelector('#walk-surface').focus(); frame = requestAnimationFrame(loop); },
-    hide() { stop(); open = false; help = false; root.hidden = true; background.inert = false; cancelAnimationFrame(frame); },
+    hide() { stop(); open = false; help = false; inventoryOpen = false; selected = null; root.hidden = true; background.inert = false; cancelAnimationFrame(frame); },
   };
   return api;
 }
