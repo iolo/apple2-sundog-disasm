@@ -74,6 +74,22 @@ def packed_quantities(raw):
     return [(words[i // 5] >> (3 * (i % 5))) & 7 for i in range(31)]
 
 
+def starting_location(raw):
+    """Utility18's static starting location, excluding the generated orbit angle."""
+    if len(raw) != 1440:
+        raise ValueError('Expected 1440 world-default bytes')
+    world = raw[240:256]  # Utility21 selects system1/world1.
+    city = (int.from_bytes(world[14:16], 'little') >> 3) & 63
+    if not 1 <= city <= 57:
+        raise ValueError('Invalid starting city')
+    city_position = int.from_bytes(raw[528+(city-1)*12+10:540+(city-1)*12], 'little')
+    return dict(version=1, systemId='system-01', worldId='world-01', cityId=f'city-{city:02}',
+                orbitalRadius=world[13], surfacePosition=dict(x=10+world[10]%20,y=6+world[10]//20),
+                cityPosition=dict(x=city_position & 63,y=(city_position >> 6) & 31),
+                playerPosition=dict(x=54,y=110), shipPosition=dict(x=147,y=115),
+                source='utility_disk1 procedures18/21; game15 procedure11; game21 procedures6/9')
+
+
 def economy_defaults(raw, worlds, utility):
     """Only utility templates, city metadata and recipes; never working records."""
     if len(raw) != 505 or len(worlds) != 1440:
@@ -165,6 +181,9 @@ def build():
                    'src/pcode/game_13.s', 'src/native/pcode_primitives.s']:
         read(source)
     outputs['data/initial-navigation.json'] = encode(navigation_defaults(defaults))
+    outputs['data/initial-location.json'] = encode(starting_location(defaults))
+    for source in ['src/pcode/startup_7.s', 'src/pcode/game_8.s', 'src/pcode/game_15.s', 'src/pcode/game_21.s']:
+        read(source)
     read('src/pcode/game_20.s')
     outputs['data/initial-economy.json'] = encode(economy_defaults(
         initial_data[:505], defaults, read('src/pcode/utility_disk1.s').decode()))

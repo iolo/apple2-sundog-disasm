@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 sys.path.insert(0, str(Path(__file__).parent))
 from export_assets import build, pixel_rows, svg, navigation_defaults, packed_quantities, economy_defaults
 from economy_reference import reference as economy_reference
+from campaign_reference import reference as campaign_reference
 from hgr_asset import split_page, row_offset
 
 
@@ -113,6 +114,19 @@ class ExportTests(unittest.TestCase):
             packed_quantities(bytes(12))
         with self.assertRaises(ValueError):
             economy_defaults(bytes(5017),bytes(1440),'')
+
+    def test_starting_location_matches_clean_capture(self):
+        data=json.loads(build()['data/initial-location.json'])
+        observed=campaign_reference()
+        for role in ['player','ship']:
+            location=observed[role+'Location']
+            for key in ['systemId','worldId','cityId','surfacePosition','cityPosition']:
+                self.assertEqual(data[key],location[key])
+            self.assertEqual(data['orbitalRadius'],location['orbit']['radius'])
+            self.assertEqual(data[role+'Position'],location['position'])
+        self.assertNotIn('angle',data)
+        self.assertEqual(observed['credits'],720)
+        self.assertEqual(observed['gameplayRandomState'],0x3ef2d937)
 
 
 if __name__ == '__main__':

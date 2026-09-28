@@ -93,10 +93,10 @@ or RNG synchronization is claimed by combining these independently tested pieces
 ## Remaining assembly gate
 
 R04e now implements [city economy foundations](economy-initialization.md), including
-utility14/16 market/cargo initialization and ordinary market refresh. Still
-required: map the remaining global/location flags and caches, choose the
-browser seed lifecycle, and assemble a fully named state with character attributes,
-worlds, ship and colony progress. Navigation/repair interactions and campaign
+utility14/16 market/cargo initialization and ordinary market refresh. R04f adds
+[starting-state assembly](campaign-start.md), with an explicit seed recipe,
+cash and player/ship locations. Still required: map the remaining global/location
+flags and caches and ship resources. Navigation/repair interactions and campaign
 schema validation follow that state definition. Four existing ship checkpoints
 continue to use version 1; no migration or new campaign UI is introduced here.
 
