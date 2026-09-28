@@ -136,6 +136,16 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .inventory-clock{position:absolute;right:32px;top:112px;font-size:14px;color:var(--muted)}
 #inventory-sleep{margin-right:auto;color:var(--amber);font-size:15px}
 .sleep-panel button+button{margin-left:16px}
+#checkpoint-screen{position:absolute;inset:0;background:var(--ink)}
+#checkpoint-screen[hidden]{display:none}
+#checkpoint-screen h2{font-size:24px;font-weight:normal;letter-spacing:0}
+.checkpoint-note{position:absolute;left:32px;right:32px;top:78px;font-size:15px;line-height:1.4;color:var(--muted)}
+.checkpoint-list{position:absolute;left:32px;right:32px;top:132px}
+.checkpoint-row{display:flex;align-items:center;gap:10px;height:54px;border-bottom:1px solid var(--line)}
+.checkpoint-summary{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:18px}
+.checkpoint-row button{border:1px solid var(--line);font-size:16px}
+#checkpoint-message{position:absolute;left:32px;right:32px;top:363px;font-size:15px;line-height:1.3;color:var(--amber)}
+.checkpoint-actions{position:absolute;left:32px;right:32px;bottom:16px;display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:8px;font-size:17px}
 @media(max-width:639px){
   #character-screen .topline{left:20px;right:20px;font-size:18px;letter-spacing:0}
   #character-screen h1{font-size:23px}
@@ -157,7 +167,7 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   #walk-screen h1{font-size:25px}
   .walk-note{font-size:18px;top:78px}
   #walk-status{font-size:18px;top:372px}
-  .walk-actions{font-size:22px;bottom:13px}
+  .walk-actions{font-size:20px;bottom:13px}
   .walk-actions button{padding:8px 7px}
   .inventory-note{font-size:18px;top:78px}
   .inventory-columns{top:118px}
@@ -170,4 +180,7 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   #inventory-sleep{font-size:21px;min-height:40px}
   #walk-clock,.inventory-clock{font-size:18px}
   .inventory-clock{top:120px}
+  .checkpoint-note,#checkpoint-message{font-size:19px}
+  .checkpoint-row button,.checkpoint-summary,.checkpoint-actions{font-size:21px}
+  .checkpoint-row button{min-height:44px;padding:6px 10px}
 }

@@ -1,5 +1,36 @@
 # SunDog web remake progress
 
+## R04c — Explicit ship walkthrough checkpoints — 2026-09-28
+
+Added four independent ship checkpoint slots with save/load/delete and JSON
+import/export. They preserve position, all inventory bytes including charges,
+condition and whole elapsed game minutes. Opening Saves pauses play; loading
+resumes paused with held input cleared. Ended walkthroughs can load living
+checkpoints, while sleep/death cannot be saved. Import changes only live state;
+slot writes remain explicit. Drafts and future campaign saves stay separate.
+
+Validation rejects incompatible versions/content, malformed inventories,
+terminal conditions and coordinates outside the connected ship interior before
+changing live state. Transactional comparisons prevent stale tabs from replacing
+or deleting newer records. Unreadable records require explicit replacement or
+deletion. Storage failure keeps JSON import/export usable and offers retry.
+The format and safe-boundary timing adaptation are in `docs/remake/checkpoints.md`.
+
+Required Chrome 154.0.8037.57 passes 40 browser tests and 64 smoke checks: 27 checkpoint,
+14 survival edge and 23 movement. Coverage includes fresh-page restoration,
+charged items, depleted condition, all four slots, JSON round-trip, invalid import,
+cancellation, stale-tab conflict, offline use, storage failure, terminal recovery,
+touch, focus and both locales at desktop/portrait sizes. Reviewed screenshots.
+Six exporter tests, 119 artifacts, 584 source strings and original input hashes
+verify. See `docs/remake/checkpoint-validation.md` and its JSON receipt.
+
+R04/R05 remain partial: these are walkthrough checkpoints, not a complete campaign.
+Next: name and implement the remaining clean world/equipment initialization,
+connect character creation to campaign state, then consequential engineering/exit
+interactions. Original sleep-loop and consumable-use observations remain pending.
+No new emulator observation or original disk-save compatibility is claimed.
+The user's PRD remains unchanged and untracked.
+
 ## R05d — Hourly survival and landed-ship sleep — 2026-09-28
 
 Added an elapsed game clock and hourly rest/nourishment drain, health recovery

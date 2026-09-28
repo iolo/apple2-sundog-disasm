@@ -257,14 +257,14 @@ but the first playable milestone should not wait for exhaustive semantic naming
 of all reconstructed procedures. Schedule estimates should follow R01/R05,
 when the largest semantic risks have been measured.
 
-Checkpoint R05d (2026-09-28) adds hourly survival and landed-ship sleep to the
-walking/inventory/consumable walkthrough. Three controlled MAME hour transitions
-match the browser rules; original sleep-loop and item-use observation remains
-incomplete. Browser clock cadence and pause behavior are explicit adaptations.
-R04b's clean-character evidence and R04a's four draft slots remain separate from
-campaign saves. R04/R05 are still partial: named world/equipment initialization,
-other ship systems, exits and campaign save/resume are necessary for the first
-playable milestone. See `docs/remake/survival.md` for this checkpoint's boundary.
+Checkpoint R04c (2026-09-28) adds four explicit ship walkthrough checkpoints,
+validated JSON import/export and safe paused restoration of position, inventory,
+condition and elapsed time. The ship clock, survival and sleep remain as implemented
+in R05d. Drafts, walkthrough checkpoints and future campaign saves have independent
+formats/storage. R04/R05 remain partial: named world/equipment initialization,
+other ship systems, exits and character-to-campaign save/resume are necessary for
+the first playable milestone. Original sleep-loop/item-use observations remain
+incomplete. See `docs/remake/checkpoints.md` for this checkpoint's boundary.
 
 ## Validation and completion
 

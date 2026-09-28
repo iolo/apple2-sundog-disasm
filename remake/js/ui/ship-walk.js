@@ -3,6 +3,8 @@ import { createInventory, storageAt, transferItem } from '../core/inventory.js';
 import { inventoryPanel } from './inventory.js';
 import { createCondition, useCarriedItem } from '../core/condition.js';
 import { createSurvival, advanceSurvival, startSleep, wakeUp } from '../core/survival.js';
+import { checkpointCodec } from '../core/checkpoints.js';
+import { checkpointScreen } from './checkpoints.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 export function shipWalkScreen({ stage, background, assets, t, language, close }) {
@@ -15,6 +17,20 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
+  const codec = checkpointCodec(assets.shipWalk);
+  const checkpoints = checkpointScreen({ stage, background:root, codec, t, language,
+    snapshot: () => {
+      if (survival.sleeping || survival.forced || survival.dead) throw new Error('invalidCheckpoint');
+      return codec.snapshot({ position:state.position, inventory, condition, minutes:survival.minutes });
+    },
+    restore: value => {
+      const next = codec.snapshot(value); // Validate completely before replacing any live state.
+      stop(); state = { ...createWalk(assets.shipWalk), position:next.position, paused:true };
+      inventory = next.inventory; condition = next.condition; survival = { ...createSurvival(condition), minutes:next.minutes };
+      inventoryOpen = false; selected = null; help = false; previous = 0;
+    },
+    close: () => { render(); root.querySelector(survival.dead ? '#sleep-saves' : '#walk-saves').focus(); },
+  });
   function pause() { stop(); state.paused = true; if (open) render(); }
   function draw() {
     if (!open) return;
@@ -47,13 +63,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   }
   function render() {
     if (!open) return;
+    if (checkpoints.active) { checkpoints.render(); return; }
     const focus = document.activeElement?.id;
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
       <p class="walk-note">${t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t('walkControls')}"></div>
-      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
+      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-saves" data-walk="checkpoints">${t('shipSaves')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
     if (survival.sleeping || survival.dead) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? 'deathScope' : 'sleepHint')}</p>${survival.dead ? `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? 'deathScope' : 'sleepHint')}</p>${survival.dead ? `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button><button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
       const panel = root.querySelector('.sleep-panel');
       (panel.querySelector(`#${focus || 'sleep-pause'}:not(:disabled)`) || panel.querySelector('button')).focus({ preventScroll: true });
     } else if (help) {
@@ -70,7 +87,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function loop(now) {
     if (!open) return;
     const before = `${survival.sleeping}/${survival.forced}/${survival.dead}`;
-    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || help || (inventoryOpen && !survival.sleeping));
+    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || checkpoints.active || help || (inventoryOpen && !survival.sleeping));
     condition = survival.condition;
     if (before !== `${survival.sleeping}/${survival.forced}/${survival.dead}`) { stop(); selected = null; render(); }
     if (keys.size && !state.paused) {
@@ -154,6 +171,10 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const action = event.target.closest('[data-walk]')?.dataset.walk;
     if (!action) return;
     stop();
+    if (action === 'checkpoints') {
+      state.paused = true; survival = { ...survival, elapsed:0 }; selected = null;
+      void checkpoints.show(); return;
+    }
     if (action === 'sleep') { selected = null; survival = startSleep(survival); state.paused = false; previous = 0; render(); return; }
     if (action === 'wake') { finishSleep(); return; }
     if (action === 'sleep-pause') { state.paused = !state.paused; previous = 0; render(); return; }

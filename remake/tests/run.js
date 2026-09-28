@@ -3,6 +3,7 @@ import { shipWalkTests } from './ship-walk.js';
 import { inventoryTests } from './inventory.js';
 import { conditionTests } from './condition.js';
 import { survivalTests } from './survival.js';
+import { checkpointTests } from './checkpoints.js';
 import { createPreview, reducePreview, logicalPoint, cellAt } from '../js/core/preview.js';
 import { translator } from '../js/ui/i18n.js';
 
@@ -56,5 +57,6 @@ await shipWalkTests(test, equal);
 await inventoryTests(test, equal);
 await conditionTests(test, equal);
 await survivalTests(test, equal);
+await checkpointTests(test, equal);
 document.querySelector('#results').textContent = results.join('\n');
 document.documentElement.dataset.result = results.some(r => r.startsWith('FAIL')) ? 'fail' : 'pass';

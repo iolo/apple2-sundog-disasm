@@ -1,5 +1,9 @@
 # Personal condition and consumables — R05c
 
+R04c update: explicit [ship checkpoints](checkpoints.md) now preserve this
+walkthrough state across reload. Earlier ephemeral-state descriptions below
+record the original implementation step; campaign persistence remains pending.
+
 R05d adds hourly survival and sleep to this checkpoint; see [survival.md](survival.md).
 The no-depletion boundary below describes the earlier R05c implementation.
 
