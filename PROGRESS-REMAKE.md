@@ -1,5 +1,35 @@
 # SunDog web remake progress
 
+## R04e — City economy initialization and refresh — 2026-09-28
+
+Added named templates and city memberships, nine colony demand recipes, pure
+initialization for 57 ordinary markets plus the colony, and four-slot warehouses
+with 17 distinct cryogen placements. Exported data comes from utility defaults
+and source literals; captured working records remain test evidence only. Correctly
+excluded the overloaded phase-recipe and scratch-copy records from logical cities.
+
+Implemented ordinary first-visit randomization and weekly replenishment. Preserved
+supply-before-demand draws, strict negative-day initialization, day-zero revisits,
+whole-week caps and partial-week loss. Commodity 31 stays outside these ordinary
+loops. Placement preserves the source's exact 1-based cursor arithmetic and
+occupied retries; bounded nonconvergence fails explicitly. State remains isolated.
+
+Required Chrome 154.0.8037.57 passes 52 browser groups, including six new groups and
+1000 economy seed replays. Nine exporter tests, 121 artifacts, 584 source strings
+and original input hashes verify. An independent capture decoder confirms initial
+market quantities, selector, city names, cargo layout and all nine recipes. The
+recipes require 17 cryogen units in total. The original placement seed/order is
+unknown; no complete original RNG replay is claimed. See
+`docs/remake/economy-initialization.md` and `economy-validation.md`.
+
+The restart required reopening Chrome and restarting the static development server.
+No new emulator observation or unrelated interactive smoke run was performed.
+The walkthrough, character drafts and checkpoint schema remain independent of
+these foundations. R04/R05 are partial. Next: remaining global/location fields,
+seed lifecycle and campaign assembly, then engineering and ship exits. Colony
+delivery/rewards and phase advancement still need their complete transaction.
+The user PRD remains unchanged and untracked.
+
 ## R04d — Source-derived initialization primitives — 2026-09-28
 
 Implemented a serializable native RNG port and pure generators for six equipment
