@@ -1,5 +1,33 @@
 # SunDog web remake progress
 
+## R04h — Character-to-ship and campaign saves UI — 2026-09-28
+
+Connected character allocation to a boarding form with optional explicit seed,
+bounded browser entropy, unspent-points confirmation and atomic campaign creation.
+The title now leads with character creation, resume and saved games. The ship
+retains the full recipe2 creation record alongside active walking, inventory,
+condition and elapsed time. New/loaded games enter paused with held input cleared.
+
+Exposed four campaign slots and JSON import/export, including loading directly
+from a fresh title screen. Preview walking and its checkpoint database stay
+independent. Imports validate before replacement; storage failures retain JSON
+recovery. Sleep blocks saves; death offers load/back without reset or save. There
+is no autosave. Both locales cover scope, seed errors and recovery messages.
+
+Required Chrome 154.0.8037.57 passes 63 browser groups, 45 campaign-flow checks,
+14 recovery/storage checks, 25 character and 27 checkpoint regressions, four title
+layout checks plus About focus, and six normal-time boarding visual checks. Fixed
+a title text/action overlap. Boarding/save controls fit both locales at 640×480,
+1280×720 and 390×844. Eleven exporter tests, 122 generated artifacts, 584 classified
+strings and original input hashes verify. See `docs/remake/campaign-ui.md` and
+`campaign-ui-validation.md`. No new emulator observation is claimed.
+
+This completes the first character → ship → save → fresh-page load loop within
+`landed-ship-1`. Machinery, exits, travel, trade and colony progression remain
+pending. Next: source-backed equipment inspection and engineering rules, with
+active-state/save extensions before resource mutation, then ship exits. R04/R05
+remain partial. The user PRD remains unchanged and untracked.
+
 ## R04g — Ship resources and campaign save boundary — 2026-09-28
 
 Completed and verified the pending ship-resource changes: initial hull, fuel,

@@ -3,8 +3,10 @@ import { createInventory, storageAt, transferItem } from '../core/inventory.js';
 import { inventoryPanel } from './inventory.js';
 import { createCondition, useCarriedItem } from '../core/condition.js';
 import { createSurvival, advanceSurvival, startSleep, wakeUp } from '../core/survival.js';
-import { checkpointCodec } from '../core/checkpoints.js';
+import { checkpointCodec, openCheckpointStore, CHECKPOINT_LIMIT } from '../core/checkpoints.js';
+import { campaignSaveCodec, openCampaignStore, CAMPAIGN_LIMIT } from '../core/campaign-saves.js';
 import { checkpointScreen } from './checkpoints.js';
+import { escapeHTML } from './html.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 export function shipWalkScreen({ stage, background, assets, t, language, close }) {
@@ -13,23 +15,51 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let inventory = createInventory(assets.shipInventory), inventoryOpen = false, selected = null, inventoryMessage = '';
   let condition = createCondition(assets.shipInventory.condition);
   let survival = createSurvival(condition);
+  let campaignMode=false, campaignStart=null;
+  const sessions=new Map();
+  const campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk);
+  const campaignKeys = Object.fromEntries(['checkpointTitle','checkpointScope','checkpointHint','checkpointLoadOnly',
+    'checkpointSaved','checkpointDeleted','checkpointLoaded','checkpointImported','checkpointExported',
+    'invalidCheckpoint','replaceCheckpointConfirm','deleteCheckpointConfirm','loadCheckpointConfirm']
+    .map(key=>[key,key.replace('checkpoint','campaign').replace('Checkpoint','Campaign')]));
   const timeLabel = () => t('gameTime', { day: Math.floor(survival.minutes / 1440), hour: String(Math.floor(survival.minutes / 60) % 24).padStart(2, '0'), minute: String(survival.minutes % 60).padStart(2, '0') });
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
   const codec = checkpointCodec(assets.shipWalk);
-  const checkpoints = checkpointScreen({ stage, background:root, codec, t, language,
+  const selectedCodec=()=>campaignMode ? campaignCodec : codec;
+  const liveShip=()=>({position:state.position,inventory,condition,minutes:survival.minutes});
+  function restoreShip(next) {
+    stop();state={...createWalk(assets.shipWalk),position:next.position,paused:true};
+    inventory=next.inventory;condition=next.condition;survival={...createSurvival(condition),minutes:next.minutes};
+    inventoryOpen=false;selected=null;help=false;previous=0;
+  }
+  const checkpoints = checkpointScreen({ stage, background:root,
+    codec:Object.fromEntries(['validate','make','parse'].map(key=>[key,(...args)=>selectedCodec()[key](...args)])),
+    t:(key,params)=>t(campaignMode ? campaignKeys[key] || key : key,params),language,
+    storeKey:()=>campaignMode ? 'campaign' : 'checkpoint',
+    openStore:()=>campaignMode ? openCampaignStore(campaignCodec) : openCheckpointStore(codec),
+    limit:()=>campaignMode ? CAMPAIGN_LIMIT : CHECKPOINT_LIMIT,
+    filename:()=>campaignMode ? 'sundog-campaign.json' : 'sundog-ship-checkpoint.json',
+    describe:value=>campaignMode ? t('campaignSummary',{name:value.state.start.character.name,day:Math.floor(value.state.ship.minutes/1440)}) :
+      t('checkpointSummary',{hours:Math.floor(value.state.minutes/60),minute:String(value.state.minutes%60).padStart(2,'0'),x:value.state.position.x,y:value.state.position.y}),
     snapshot: () => {
       if (survival.sleeping || survival.forced || survival.dead) throw new Error('invalidCheckpoint');
-      return codec.snapshot({ position:state.position, inventory, condition, minutes:survival.minutes });
+      if(campaignMode) {
+        if(!campaignStart)throw new Error('invalidCampaign');
+        return {start:campaignStart,ship:codec.snapshot(liveShip())};
+      }
+      return codec.snapshot(liveShip());
     },
     restore: value => {
-      const next = codec.snapshot(value); // Validate completely before replacing any live state.
-      stop(); state = { ...createWalk(assets.shipWalk), position:next.position, paused:true };
-      inventory = next.inventory; condition = next.condition; survival = { ...createSurvival(condition), minutes:next.minutes };
-      inventoryOpen = false; selected = null; help = false; previous = 0;
+      const next=selectedCodec().snapshot(value); // Validate before replacing live state.
+      if(campaignMode) {campaignStart=next.start;restoreShip(next.ship)}
+      else restoreShip(next);
     },
-    close: () => { render(); root.querySelector(survival.dead ? '#sleep-saves' : '#walk-saves').focus(); },
+    close: () => {
+      if(campaignMode && !campaignStart) {api.hide();close();return}
+      render(); root.querySelector(survival.dead ? '#sleep-saves' : '#walk-saves').focus();
+    },
   });
   function pause() { stop(); state.paused = true; if (open) render(); }
   function draw() {
@@ -57,6 +87,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const label = t(storage || 'inventoryTitle');
     if (button.textContent !== label) button.textContent = label;
     root.dataset.minutes = survival.minutes; root.dataset.sleeping = survival.sleeping; root.dataset.dead = survival.dead;
+    root.dataset.mode=campaignMode ? 'campaign' : 'walk';
+    root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
     const clock = root.querySelector('#walk-clock'); if (clock) clock.textContent = timeLabel();
     const sleepClock = root.querySelector('#sleep-clock'); if (sleepClock) sleepClock.textContent = timeLabel();
     const rest = root.querySelector('#sleep-rest'); if (rest) rest.textContent = t('sleepRest', { value: condition.rest });
@@ -66,16 +98,16 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (checkpoints.active) { checkpoints.render(); return; }
     const focus = document.activeElement?.id;
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
-      <p class="walk-note">${t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t('walkControls')}"></div>
-      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-saves" data-walk="checkpoints">${t('shipSaves')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
+      <p class="walk-note">${campaignMode && campaignStart ? escapeHTML(t('campaignIdentity',{name:campaignStart.character.name,seed:campaignStart.creation.seed})) : t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t(campaignMode ? 'campaignControls' : 'walkControls')}"></div>
+      <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-saves" data-walk="checkpoints">${t('shipSaves')}</button>${campaignMode ? '' : `<button id="walk-reset" data-walk="reset">${t('walkReset')}</button>`}<button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
     if (survival.sleeping || survival.dead) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? 'deathScope' : 'sleepHint')}</p>${survival.dead ? `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button><button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
       const panel = root.querySelector('.sleep-panel');
       (panel.querySelector(`#${focus || 'sleep-pause'}:not(:disabled)`) || panel.querySelector('button')).focus({ preventScroll: true });
     } else if (help) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t('walkControls')}</p><p>${t('walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t(campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
       root.querySelector('#walk-close-help').focus();
     } else if (inventoryOpen) {
       for (const child of root.children) child.inert = true;
@@ -178,7 +210,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (action === 'sleep') { selected = null; survival = startSleep(survival); state.paused = false; previous = 0; render(); return; }
     if (action === 'wake') { finishSleep(); return; }
     if (action === 'sleep-pause') { state.paused = !state.paused; previous = 0; render(); return; }
-    if (action === 'restart') {
+    if (action === 'restart' && !campaignMode) {
       inventory = createInventory(assets.shipInventory); condition = createCondition(assets.shipInventory.condition);
       survival = createSurvival(condition); state = createWalk(assets.shipWalk); inventoryOpen = false; selected = null; previous = 0;
       render(); root.querySelector('#walk-surface').focus(); return;
@@ -197,7 +229,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
         const index = selected.index; selected = null; render(); root.querySelector(`#slot-carried-${index}`).focus(); return;
       }
     }
-    if (action === 'reset') { state = createWalk(assets.shipWalk); previous = 0; }
+    if (action === 'reset' && !campaignMode) { state = createWalk(assets.shipWalk); previous = 0; }
     if (action === 'pause') { state.paused = !state.paused; previous = 0; }
     if (action === 'help') { help = true; state.paused = true; }
     if (action === 'close-help') help = false;
@@ -207,10 +239,36 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   });
   window.addEventListener('blur', () => { if (open) pause(); });
   document.addEventListener('visibilitychange', () => { if (open && document.hidden) pause(); });
+  function switchMode(next) {
+    if(next===campaignMode)return;
+    stop();
+    sessions.set(campaignMode,{state,inventory,condition,survival});
+    campaignMode=next;
+    const saved=sessions.get(next);
+    if(saved) ({state,inventory,condition,survival}=saved);
+    else {
+      state=createWalk(assets.shipWalk);inventory=createInventory(assets.shipInventory);
+      condition=createCondition(assets.shipInventory.condition);survival=createSurvival(condition);
+    }
+    state={...state,paused:true};previous=0;
+  }
+  function show() {
+    if(open)return;
+    open=true;root.hidden=false;background.inert=true;previous=0;render();
+    root.querySelector('#walk-surface').focus();frame=requestAnimationFrame(loop);
+  }
   const api = {
     get active() { return open; }, render,
-    show() { open = true; root.hidden = false; background.inert = true; previous = 0; render(); root.querySelector('#walk-surface').focus(); frame = requestAnimationFrame(loop); },
-    hide() { stop(); open = false; help = false; inventoryOpen = false; selected = null; root.hidden = true; background.inert = false; cancelAnimationFrame(frame); },
+    get hasCampaign() {return !!campaignStart},
+    show() {switchMode(false);show()},
+    showCampaign(value) {
+      const next=value ? campaignCodec.snapshot(value) : null;
+      switchMode(true);
+      if(next) {campaignStart=next.start;restoreShip(next.ship)}
+      if(campaignStart)show();
+    },
+    showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},
+    hide() { stop();state.paused=true; open = false; help = false; inventoryOpen = false; selected = null; root.hidden = true; background.inert = false; cancelAnimationFrame(frame); },
   };
   return api;
 }

@@ -2,7 +2,8 @@
 
 `campaignSaveCodec(content, geometry)` implements `sundog-campaign` version1,
 scope `landed-ship-1`. `openCampaignStore` gives four indexed slots in the separate
-`sundog-campaigns` database. This module is tested but not yet exposed in the UI.
+`sundog-campaigns` database. R04h exposes this through title and ship Saved games;
+see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
 
 The state has two explicit parts:
@@ -29,8 +30,8 @@ returns newly owned objects; it never silently repairs unsupported progress.
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
 snapshots are supported; sleep/input/modal phases are transient and are not part
-of this format. The later UI integration must prohibit saving during sleep and
-restore paused with held input cleared, as the walkthrough checkpoint UI does.
+of this format. The UI prohibits saving during sleep and restores paused with
+held input cleared, as the walkthrough checkpoint UI does.
 
 Import is bounded to 131072 text characters, rejects malformed JSON, future
 versions, unsupported scopes, invalid slots/timestamps, and foreign draft or
@@ -44,7 +45,7 @@ Failed validation writes nothing. The database is separate; its internal object
 store name remains `checkpoints` because it reuses the tested storage mechanism.
 Stored/imported JSON has no dependency on that internal name.
 
-No automatic save, migration, campaign menu, entropy selection or character-to-ship
-handoff is added here. Next integration work can use `codec.create`, `make`, `parse`
-and the four-slot store without dropping the generated campaign's identity/state.
-Other scenes and machinery remain outside this version's supported scope.
+R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
+menu and character-to-ship handoff, retaining the complete creation record.
+There is no automatic save or migration. Other scenes and machinery remain
+outside this version's supported scope.

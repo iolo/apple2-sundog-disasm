@@ -94,14 +94,21 @@ creation order with the utility20 hull draw (recipe2). The new campaign save
 format uses scope `landed-ship-1`: immutable `start` creation data plus active `ship`
 walking/inventory/condition/time state. Four slots are transactional and isolated
 from other formats. Unsupported world/resource progress is rejected, not dropped.
-The modules are not yet exposed by the UI. See `campaign-saves.md`.
+See `campaign-saves.md`.
+
+R04h connects creation and campaign slots to the live ship. The runtime owns the
+creation record separately from active position/inventory/condition/time. Campaign
+and preview sessions remain independent; switching/closing pauses and clears held
+input. Saves validate before replacement and restore paused. Seed selection is
+explicit or drawn from browser entropy once per creation attempt. There is no
+autosave; sleep/death cannot be persisted. See `campaign-ui.md`.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
 
-Content plan: a SunDog title with a single preview entry; the ship as the main
-workspace; compact view navigation; contextual selection details and help.
-Later gameplay replaces the preview workspace as the primary entry.
+Content plan: a SunDog title led by character creation, then resume/saved games
+and a secondary preview entry; the ship as the main workspace; compact view
+navigation; contextual selection details and help.
 
 Interaction thesis: a short display entrance, a restrained scene transition,
 and a clear selection reticle. Respect reduced motion; no scroll effects in a

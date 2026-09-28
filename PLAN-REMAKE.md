@@ -291,6 +291,15 @@ economy/travel/machinery progress requires a schema update. Next: character-to-s
 integration, explicit seed selection and campaign save UI. See
 `docs/remake/ship-resources.md` and `campaign-saves.md` for evidence and limits.
 
+Checkpoint R04h (2026-09-28) connects character creation, optional explicit seeds,
+the landed ship runtime and four campaign slots. New games and loaded games enter
+paused; drafts and preview checkpoints remain separate. English/Korean UI and
+storage/recovery flows are verified. R04/R05 remain partial: next trace and expose
+source-backed equipment inspection and engineering interactions, extending active
+state/save scope before allowing resource mutation, then implement ship exits.
+Travel, trade and colony progression remain later milestones. See
+`docs/remake/campaign-ui.md` and `campaign-ui-validation.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
