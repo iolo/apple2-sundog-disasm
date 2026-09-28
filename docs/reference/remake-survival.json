@@ -1,0 +1,114 @@
+{
+  "date": "2026-09-28",
+  "emulator": "MAME 0.285 / apple2e / joystick",
+  "scope": "Controlled RAM hour-boundary fixtures in existing landed ship play, disposable disk copies. Sleep case sets only the sleep flag; it does not execute the game8 sleep loop.",
+  "boot": "docs/reference/game-play.json through frame18000, before opening status",
+  "helper": "tools/remake/survival_reference.lua",
+  "memory": {
+    "segment29": "0xadba",
+    "clock": "0xae0e",
+    "condition": "0xae32",
+    "sleepFlagByte": "0xae65",
+    "sleepFlagMask": 8,
+    "mapping": "CPU-visible program space while paused for setup/readback"
+  },
+  "setup": "Write four condition bytes and clock [59,0,0,0] with verified readback; set/clear flag59 in word82 set; resume; pause 15 frames after hour byte becomes1; timeout after2000 frames.",
+  "cases": [
+    {
+      "name": "awake",
+      "before": [
+        128,
+        90,
+        120,
+        100
+      ],
+      "sleepFlag": false,
+      "observed": {
+        "clock": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "mode": [
+          187,
+          50
+        ],
+        "timeout": false,
+        "condition": [
+          126,
+          88,
+          120,
+          99
+        ],
+        "name": "awake"
+      }
+    },
+    {
+      "name": "sleep",
+      "before": [
+        128,
+        90,
+        120,
+        100
+      ],
+      "sleepFlag": true,
+      "observed": {
+        "clock": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "mode": [
+          187,
+          50
+        ],
+        "timeout": false,
+        "condition": [
+          126,
+          90,
+          120,
+          99
+        ],
+        "name": "sleep"
+      }
+    },
+    {
+      "name": "threshold",
+      "before": [
+        192,
+        64,
+        129,
+        192
+      ],
+      "sleepFlag": false,
+      "observed": {
+        "clock": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "mode": [
+          187,
+          50
+        ],
+        "timeout": false,
+        "condition": [
+          191,
+          62,
+          137,
+          189
+        ],
+        "name": "threshold"
+      }
+    }
+  ],
+  "limitations": [
+    "Fixtures are explicit memory setups, not natural new-game observations.",
+    "Only three hourly transitions observed; forced sleep, death and sleep-loop restoration remain source-derived.",
+    "No wall-clock speed calibration, item-use validation, ship equipment simulation or campaign save is claimed.",
+    "First launcher had closed stdin and was stopped by an exact owned-process path match; the separate interactive emulator exited normally."
+  ]
+}

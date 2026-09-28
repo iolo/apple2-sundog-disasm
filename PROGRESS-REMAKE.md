@@ -1,5 +1,39 @@
 # SunDog web remake progress
 
+## R05d — Hourly survival and landed-ship sleep — 2026-09-28
+
+Added an elapsed game clock and hourly rest/nourishment drain, health recovery
+and vigor changes. Sleep restores rest while advancing time; exhaustion forces
+sleep until rest exceeds 128. Zero vigor freezes the walkthrough and offers an
+explicit fixture restart. Food now restores naturally depleted nourishment.
+Normal play advances one game minute per real second; sleep uses 50 ms iterations.
+These rates and menu pauses are browser adaptations, not original wall-clock
+calibration. Hidden/unfocused pages pause with no catch-up. State still resets
+on reload and stays separate from character drafts.
+
+Traced library22 procedures26/29/60, library24 procedure9 and game8 procedures3/17.
+Three controlled original-game hour transitions match the JavaScript results,
+including sleep suppression of rest drain and a health-recovery threshold.
+The RAM setup and helper are checked in as `docs/reference/remake-survival.json`
+and `tools/remake/survival_reference.lua`. These are explicit fixtures; original
+sleep UI, forced sleep/death and item use are not claimed as observed. Both owned
+MAME launches were stopped, and original disk/manual hashes remain unchanged.
+
+Required Chrome 154.0.8037.57 passes 35 browser tests and 104 smoke checks: 23 ordinary
+survival, 11 depleted-condition edge fixtures, 25 inventory, 22 consumable and 23
+movement checks. Coverage includes natural depletion, food restoration, sleep,
+forced waking guard, terminal restart, touch wake, keyboard focus, both locales,
+portrait layouts, pause/blur, offline use and reload. No production test hooks.
+Six exporter tests, 119 artifacts and 584 classified source strings verify. Reviewed
+sleep screenshots; fixed automatic-dialog focus to stay inside the active panel.
+See `docs/remake/survival.md` and `survival-validation.md` for evidence and limits.
+
+R04/R05 remain partial. Next: complete named world/equipment initialization and
+campaign persistence, then consequential engineering/exit interactions. Original
+sleep-loop and consumable-use observations remain follow-ups. Temporary attribute
+recovery, ship machinery, outdoor sleep hazards and campaign events are not part
+of this isolated landed-ship simulation. The user PRD remains untracked.
+
 ## R05c — Personal condition and food/rapidheal use — 2026-09-28
 
 Added four condition meters and atomic food/rapidheal use from carried slots.

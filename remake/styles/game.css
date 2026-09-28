@@ -132,6 +132,10 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .condition-row{display:grid;grid-template-columns:1fr 52px;gap:4px;align-items:center;height:20px;font-size:14px;line-height:1.1}
 .condition-meter{height:8px;background:var(--line)}
 .condition-meter>span{height:100%;display:block;background:var(--paper)}
+#walk-clock{position:absolute;right:32px;top:105px;color:var(--muted);font-size:14px}
+.inventory-clock{position:absolute;right:32px;top:112px;font-size:14px;color:var(--muted)}
+#inventory-sleep{margin-right:auto;color:var(--amber);font-size:15px}
+.sleep-panel button+button{margin-left:16px}
 @media(max-width:639px){
   #character-screen .topline{left:20px;right:20px;font-size:18px;letter-spacing:0}
   #character-screen h1{font-size:23px}
@@ -163,4 +167,7 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   #inventory-message{font-size:20px;line-height:1.2}
   #inventory-cancel,#inventory-use{font-size:21px;min-height:40px}
   .condition-row{font-size:18px}
+  #inventory-sleep{font-size:21px;min-height:40px}
+  #walk-clock,.inventory-clock{font-size:18px}
+  .inventory-clock{top:120px}
 }

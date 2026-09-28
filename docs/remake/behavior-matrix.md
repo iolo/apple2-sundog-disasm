@@ -19,8 +19,9 @@ characters and includes historical variants; it is not a localization catalog.
 | Ship artwork | `game_15.s` `$0315–$033C`, library 24 procedure 5; `docs/packed-ship-images.md` | Source-derived | External SVG derives from decoded HGR pixels; section/full variants remain separate. Native collision consumes low HGR bits with glyph13; explicit collision data is exported separately. |
 | Carried items / ship storage | Utility20/21; game14 procedures3/4/8/12; library27 procedures7/13/15 | Source-derived; initial bytes match clean capture | R05b implements four carried slots and twenty each in locker/stores, reached through ship movement. Atomic two-click transfers preserve complete bytes. See `inventory.md`. |
 | Item names / charge / icons | Library27 procedures3/4/10; play-side item-name table | Source-derived | External composed SVGs, English/Korean names, low-five-bit type and upper-three-bit shield/scattergun value. R05c supports food/rapidheal use; other item effects and engineering fit remain pending. |
-| Personal condition | Game8 procedures2/7; utility21 `$0922–$092B`; manual PDF12; `remake-condition-fixture.json` | Source-derived, fresh values independently observed; controlled display observation | R05c shows vigor/rest/health/nourishment with `(value+7) div8` meter extent; initial bytes are 255. No decay clock. See `condition.md`. |
+| Personal condition | Game8 procedures2/7; utility21 `$0922–$092B`; manual PDF12; `remake-condition-fixture.json` | Source-derived, fresh values independently observed; controlled display observation | R05c shows vigor/rest/health/nourishment with `(value+7) div8` meter extent; initial bytes are 255. R05d adds hourly changes; see `condition.md` and `survival.md`. |
 | Food / rapidheal | Library27 procedures11/14; library22 procedures34/35/37 | Source-derived; successful original use not observed | R05c adds 80 to nourishment/health, clamps to 255 and consumes one carried item even at full. Browser pure tests cover all 256 starting values for both effects. |
+| Hourly survival / landed sleep | Library22 procedures26/29/60; library24 procedure9; game8 procedures3/17; `remake-survival.json` | Three hourly transitions observed with explicit RAM fixtures; sleep-loop effects source-derived | R05d adds clock, depletion/recovery, sleep, exhaustion and terminal restart. Browser cadence and menu pauses are explicit adaptations. See `survival.md` and `survival-validation.md`. |
 | World/city payloads | `docs/world-maps.md`, `docs/city-maps.md`, `game_21.s` procedures 26/28 | Source-derived | Preview all 18 stored worlds and 60 play cities. Raw indices are not claims of terrain meaning or live composition. |
 | Colony requirement check | `game_20.s` procedure 4 `$00A0–$00B2` scans a 14-byte area using CSP 11 before proceeding; exact CSP predicate still to trace | Source-derived entry; predicate unresolved | Do not treat displaying a completion string as proof of delivery semantics. |
 | Colony phase | Same procedure `$00B4–$00FE`: reads byte 2 at segment-29 word271, reports completed phase, tests equality with 9 | Source-derived | Store explicit phase and outstanding requirements; final phase must not be assumed to be a single delivery. |
@@ -36,8 +37,9 @@ traced movement/collision rules. Attribute allocation is implemented in R04a.
 To finish R04, map the remaining utility procedures 10–21 and 25–30 into named
 state fields, including money, inventory/equipment, time, world generation and
 randomness. R05b implements storage transfers; R05c adds personal condition and
-food/rapidheal use. R05 still needs survival timing, sleep, engineering and other
-consequential interactions.
+food/rapidheal use; R05d adds a clock and landed-ship survival/sleep. R05 still
+needs engineering, exits and other consequential interactions. Original sleep
+UI and item-use observations remain incomplete.
 Before R11, decode phase requirement generation, delivery accounting and the
 remaining-goods predicate. These block gameplay fidelity, not the independent
 graphics loader, content viewer, localization or viewport work.
