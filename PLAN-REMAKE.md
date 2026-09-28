@@ -267,6 +267,14 @@ R04/R05 still need commodity/city record semantics, remaining global/location
 fields, an explicit seed lifecycle, campaign assembly, ship systems and exits.
 See `docs/remake/initialization.md` for source offsets and remaining boundaries.
 
+Checkpoint R04e (2026-09-28) adds 57 ordinary markets, the colony's initial market,
+four-slot warehouses and 17 distinct cryogen placements, plus ordinary market
+first-visit/weekly refresh. Named templates, city memberships and nine colony
+recipes match the independent clean-character capture. These are tested campaign
+foundations; colony transactions and gameplay integration remain pending. Next:
+remaining global/location fields, seed lifecycle and campaign assembly, then
+engineering and ship exits. See `docs/remake/economy-initialization.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

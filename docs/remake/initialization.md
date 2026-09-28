@@ -92,8 +92,9 @@ or RNG synchronization is claimed by combining these independently tested pieces
 
 ## Remaining assembly gate
 
-Still required: interpret commodity-template fields and generated city records
-(utility 14/16), map the remaining global/location flags and caches, choose the
+R04e now implements [city economy foundations](economy-initialization.md), including
+utility14/16 market/cargo initialization and ordinary market refresh. Still
+required: map the remaining global/location flags and caches, choose the
 browser seed lifecycle, and assemble a fully named state with character attributes,
 worlds, ship and colony progress. Navigation/repair interactions and campaign
 schema validation follow that state definition. Four existing ship checkpoints

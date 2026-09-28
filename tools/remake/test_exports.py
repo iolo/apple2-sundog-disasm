@@ -5,7 +5,8 @@ import unittest
 import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).parent))
-from export_assets import build, pixel_rows, svg, navigation_defaults
+from export_assets import build, pixel_rows, svg, navigation_defaults, packed_quantities, economy_defaults
+from economy_reference import reference as economy_reference
 from hgr_asset import split_page, row_offset
 
 
@@ -83,6 +84,35 @@ class ExportTests(unittest.TestCase):
             for row in range(7, -1, -1):
                 expected.append([int(bool(raw[glyph * 8 + row] & (1 << bit))) for glyph in [left, right] for bit in range(7)])
         self.assertEqual(files['assets/svg/items/item-23.svg'], svg(expected))
+
+    def test_economy_matches_independent_clean_capture(self):
+        data = json.loads(build()['data/initial-economy.json'])
+        observed = economy_reference()
+        self.assertEqual((data['selector']+5)%18, observed['selector'])
+        for city, market in zip(data['cities'], observed['markets']):
+            template = data['templates'][(observed['selector']+int(city['worldId'][6:])-1)%18]
+            self.assertEqual(market, dict(cityId=city['id'], **template, lastUpdateDay=-16))
+        self.assertEqual(data['colonyRequirements'], observed['colonyRequirements'])
+        self.assertEqual(sum(phase[30] for phase in data['colonyRequirements']),17)
+        self.assertEqual(observed['markets'][-1],dict(cityId='city-60',demand=[0]*31,supply=[0]*31,lastUpdateDay=-16))
+        self.assertEqual(len(data['cities']),57)
+        root = Path(__file__).resolve().parents[2]
+        capture = json.loads((root/'docs/reference/remake-clean-character.json').read_text())
+        world_bytes = bytes.fromhex(capture['worldTablesHex'])
+        for i, city in enumerate(data['cities']):
+            record = world_bytes[528+i*12:540+i*12]
+            self.assertEqual(city['name'],record[1:1+record[0]].decode('ascii'))
+
+    def test_economy_packing_skips_word_padding_and_saved_records(self):
+        raw = b'\x00\x80' + b'\x01\x80'*6
+        expected = [0]*31
+        for i in range(5,31,5):
+            expected[i]=1
+        self.assertEqual(packed_quantities(raw),expected)
+        with self.assertRaises(ValueError):
+            packed_quantities(bytes(12))
+        with self.assertRaises(ValueError):
+            economy_defaults(bytes(5017),bytes(1440),'')
 
 
 if __name__ == '__main__':

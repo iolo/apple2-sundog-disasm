@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -65,6 +66,46 @@ def navigation_defaults(raw):
                 source='utility_disk1 procedures11/12/13; game13 procedures14/15; library24 procedures4/6')
 
 
+def packed_quantities(raw):
+    """31 commodity quantities: five 3-bit fields per word, skipping bit15."""
+    if len(raw) != 14:
+        raise ValueError('Expected 14 packed quantity bytes')
+    words = [int.from_bytes(raw[i:i+2], 'little') for i in range(0, 14, 2)]
+    return [(words[i // 5] >> (3 * (i % 5))) & 7 for i in range(31)]
+
+
+def economy_defaults(raw, worlds, utility):
+    """Only utility templates, city metadata and recipes; never working records."""
+    if len(raw) != 505 or len(worlds) != 1440:
+        raise ValueError('Invalid economy defaults size')
+    templates = [dict(demand=packed_quantities(raw[i:i+14]),
+                      supply=packed_quantities(raw[i+14:i+28])) for i in range(0, 504, 28)]
+    cities = []
+    for i in range(18):
+        membership = int.from_bytes(worlds[254+i*16:256+i*16], 'little')
+        first, count = (membership >> 9) & 63, membership & 7
+        for city in range(first, first+count):
+            record = worlds[528+(city-1)*12:540+(city-1)*12]
+            if not 0 < record[0] <= 9:
+                raise ValueError('Invalid city name')
+            cities.append(dict(id=f'city-{city:02}', worldId=f'world-{i+1:02}',
+                               name=record[1:1+record[0]].decode('ascii')))
+    if [c['id'] for c in cities] != [f'city-{i:02}' for i in range(1,58)]:
+        raise ValueError('Invalid city membership')
+    phases = []
+    for address in ['04D3','04DF','04ED','04F9','0507','0513','0521','052D','053B']:
+        match = re.search(rf'L_{address}:\s+\.byte ([^;]+); string-data', utility)
+        if match is None:
+            raise ValueError('Missing colony recipe')
+        values = [int(v.strip().removeprefix('$'),16)-64 for v in match[1].split(',')]
+        if len(values) != 8 or any(v < 0 or v > 31 for v in values):
+            raise ValueError('Invalid colony recipe')
+        phases.append([values.count(i) for i in range(1,32)])
+    return dict(version=1, selector=raw[504], templates=templates, cities=cities,
+                colonyCityId='city-60', colonyRequirements=phases,
+                source='utility_disk1 procedures14/15/16; game20 procedures4/5/6/19/23')
+
+
 def build():
     outputs, sources = {}, {}
 
@@ -118,11 +159,15 @@ def build():
 
     # Do not export saved balances, discovery flags, orbital angles, or working
     # gameplay records as new-game defaults. These positions seed utility12 jitter.
-    defaults = read('assets/working-state/data.bin')[505:1945]
+    initial_data = read('assets/working-state/data.bin')
+    defaults = initial_data[505:1945]
     for source in ['src/pcode/library_22.s', 'src/pcode/library_24.s', 'src/pcode/library_28.s',
                    'src/pcode/game_13.s', 'src/native/pcode_primitives.s']:
         read(source)
     outputs['data/initial-navigation.json'] = encode(navigation_defaults(defaults))
+    read('src/pcode/game_20.s')
+    outputs['data/initial-economy.json'] = encode(economy_defaults(
+        initial_data[:505], defaults, read('src/pcode/utility_disk1.s').decode()))
 
     tile_banks = {}
     for bank, source, height, count in [
