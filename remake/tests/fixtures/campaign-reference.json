@@ -42,6 +42,68 @@
       "y": 115
     }
   },
+  "destinationLocation": {
+    "systemId": "system-01",
+    "worldId": "world-01",
+    "cityId": "city-01",
+    "orbit": {
+      "angle": 73,
+      "radius": 20
+    },
+    "surfacePosition": {
+      "x": 10,
+      "y": 6
+    },
+    "cityPosition": {
+      "x": 12,
+      "y": 7
+    },
+    "position": {
+      "x": 147,
+      "y": 115
+    }
+  },
+  "podLocation": {
+    "systemId": "system-01",
+    "worldId": "world-01",
+    "cityId": "city-01",
+    "orbit": {
+      "angle": 73,
+      "radius": 20
+    },
+    "surfacePosition": {
+      "x": 10,
+      "y": 6
+    },
+    "cityPosition": {
+      "x": 12,
+      "y": 7
+    },
+    "position": {
+      "x": 147,
+      "y": 115
+    }
+  },
+  "podAttached": true,
+  "shipResources": {
+    "hull": 16,
+    "fuel": 0,
+    "warp": {
+      "charge": 0,
+      "targetCharge": 0,
+      "targetSystemId": null,
+      "charging": false
+    },
+    "shields": {
+      "charge": 0,
+      "targetCharge": 0
+    },
+    "guns": {
+      "charge": 0,
+      "powered": false
+    },
+    "enginesPowered": false
+  },
   "gameplayRandomState": 1056102711,
   "credits": 720
 }

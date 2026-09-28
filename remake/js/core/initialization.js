@@ -43,6 +43,20 @@ export function createInitialEquipment(random) {
   });
 }
 
+// Utility20 $087B–$088A consumes one draw AFTER the six equipment records.
+// Utility21 clears the remaining resource words before this call. These are
+// saved utility defaults, not the state after game startup/machinery ticks.
+export function createInitialShipResources(random) {
+  return {
+    hull:13 + draw(random) % 4,
+    fuel:0,
+    warp:{charge:0,targetCharge:0,targetSystemId:null,charging:false},
+    shields:{charge:0,targetCharge:0},
+    guns:{charge:0,powered:false},
+    enginesPowered:false,
+  };
+}
+
 // Utility12: one-step jitter from the supplied world defaults. Coordinates are
 // three-dimensional (library24 procedure6); spacing checks use only x and y.
 export function createInitialSystems(defaults, random, startingSystem = 'system-01') {

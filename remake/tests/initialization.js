@@ -1,5 +1,5 @@
 import { sourceRandom } from '../js/core/random.js';
-import { createInitialEquipment, createInitialSystems, createInitialOrbits } from '../js/core/initialization.js';
+import { createInitialEquipment, createInitialShipResources, createInitialSystems, createInitialOrbits } from '../js/core/initialization.js';
 
 export async function initializationTests(test, equal) {
   const [native, captured, defaults] = await Promise.all([
@@ -46,6 +46,16 @@ export async function initializationTests(test, equal) {
     const collision=structuredClone(defaults.systems);collision[0].position={x:6,y:5,z:6};
     const random=tape([2,2,2,2,2,2,2,2]);
     equal(createInitialSystems(collision,random)[0].position,{x:8,y:7,z:8});
+  });
+  await test('Hull generation consumes exactly one draw, preserves all four outcomes and rejects invalid draws', () => {
+    for(const value of [0,1,2,3,4,32767]) {
+      const random=tape([value]);
+      equal(createInitialShipResources(random).hull,13+value%4);equal(random.count,1);
+    }
+    for(const value of [-1,32768,1.5,NaN,'1'])rejects(()=>createInitialShipResources({next:()=>value}));
+    const a=createInitialShipResources(tape([0])),b=createInitialShipResources(tape([0]));
+    a.warp.charge=255;a.guns.powered=true;
+    equal(b.warp.charge,0);equal(b.guns.powered,false);equal(a.shields.charge,0);
   });
   await test('Orbit rejection uses explicit previous angle and linear distance, with bounded failure', () => {
     const random=tape([0,15,16,31,32,...Array.from({length:16},(_,i)=>i%2 ? 255 : 0)]);

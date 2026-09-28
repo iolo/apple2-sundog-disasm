@@ -89,6 +89,13 @@ codec and remains separate from all live UI and stored schemas. Remaining ship
 resources, modes and other location-copy semantics still gate campaign persistence.
 See `campaign-start.md` for generation order and browser adaptation choices.
 
+R04g adds resources and separate destination/pod locations, and corrects the
+creation order with the utility20 hull draw (recipe2). The new campaign save
+format uses scope `landed-ship-1`: immutable `start` creation data plus active `ship`
+walking/inventory/condition/time state. Four slots are transactional and isolated
+from other formats. Unsupported world/resource progress is rejected, not dropped.
+The modules are not yet exposed by the UI. See `campaign-saves.md`.
+
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
 

@@ -1,5 +1,35 @@
 # SunDog web remake progress
 
+## R04g — Ship resources and campaign save boundary — 2026-09-28
+
+Completed and verified the pending ship-resource changes: initial hull, fuel,
+warp/shield/gun charges and controls, destination/pod locations and pod attachment.
+Updated the independent capture decoder so all reference fields regenerate from
+original bytes. Nonzero synthetic values verify resource-word offsets and separate
+the actual attachment flag from an unrelated scene bit that also starts true.
+
+Corrected R04f's missing utility20 hull draw. Hull 13–16 is generated after the six
+equipment groups and before systems. This changes later generation results, so
+the recipe is now `shipped-defaults-2`; recipe1 is explicitly rejected by saves.
+The original four gameplay RNG bytes and cash generation remain unchanged.
+
+Added a versioned campaign codec and four independent transactional slots for
+scope `landed-ship-1`. Immutable creation state stays separate from active ship
+position, inventory, condition and time. Imports validate the entire creation
+record against the recipe, preserve object independence, and reject unsupported
+progress/fields. Stale-tab writes/deletes and invalid writes leave stored data
+intact. The new database is separate from character drafts and ship checkpoints.
+
+Required Chrome 154.0.8037.57 passes 61 browser groups. Eleven exporter tests,
+122 artifacts, 584 classified strings and original input hashes verify. See
+`docs/remake/ship-resources.md`, `campaign-saves.md` and `campaign-save-validation.md`.
+No new emulator observation, machinery behavior or original-seed replay is claimed.
+
+The new save modules are not yet exposed in the UI. Next: connect character
+creation, explicit seed selection, campaign save controls and the landed ship
+runtime, preserving the supported scope. Travel/machinery/colony transitions need
+further state rules and save-version changes. The PRD remains untracked.
+
 ## R04f — Deterministic starting-state assembly — 2026-09-28
 
 Added `createCampaignStart`, combining validated character attributes with cash,

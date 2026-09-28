@@ -1,13 +1,14 @@
 import { validateCharacter } from './character.js';
 import { sourceRandom } from './random.js';
-import { createInitialEquipment, createInitialSystems, createInitialOrbits } from './initialization.js';
+import { createInitialEquipment, createInitialShipResources, createInitialSystems, createInitialOrbits } from './initialization.js';
 import { createInitialEconomy } from './economy.js';
 import { createInventory, CAPACITY } from './inventory.js';
 import { createCondition, CONDITION_FIELDS } from './condition.js';
 
 // Versioned creation recipe, not a campaign save codec. UI/draft/checkpoint
-// schemas do not accept this object. Remaining ship resources/flags come later.
-export const CREATION_RECIPE = 'shipped-defaults-1';
+// schemas do not accept this object. Remaining scene/encounter flags come later.
+// Recipe2 corrects recipe1's omitted utility20 hull draw before world generation.
+export const CREATION_RECIPE = 'shipped-defaults-2';
 const integer = (n,min,max) => Number.isInteger(n) && n>=min && n<=max;
 const point = (p,xmax,ymax) => integer(p?.x,0,xmax) && integer(p?.y,0,ymax);
 
@@ -34,6 +35,7 @@ export function createCampaignStart(character, content, seed) {
   for(let byte=0;byte<4;byte++) gameplayRandomState += (random.next()%256)*2**(8*byte);
   const credits = random.next()%900;
   const equipment = createInitialEquipment(random);
+  const shipResources = createInitialShipResources(random);
   const systems = createInitialSystems(navigation.systems,random);
   // Browser recipe explicitly fixes the original uninitialized first comparison
   // to0 and always uses immutable shipped defaults, independent of prior games.
@@ -49,8 +51,13 @@ export function createCampaignStart(character, content, seed) {
     creation:{recipe:CREATION_RECIPE,seed,finalRandomState:random.state,firstOrbitComparison:0},
     gameplayRandomState,character:player,credits,minutes:0,
     inventory:createInventory(inventory),condition:createCondition(inventory.condition),
-    equipment,systems,worlds,economy:cities,
+    equipment,shipResources,systems,worlds,economy:cities,
     playerLocation:{...structuredClone(common),position:{...location.playerPosition}},
     shipLocation:{...structuredClone(common),position:{...location.shipPosition}},
+    // Utility18 copies all three independently. Destination is inactive while
+    // engines are off; it is not an additional ship or the player's position.
+    destinationLocation:{...structuredClone(common),position:{...location.shipPosition}},
+    podLocation:{...structuredClone(common),position:{...location.shipPosition}},
+    podAttached:true,
   };
 }

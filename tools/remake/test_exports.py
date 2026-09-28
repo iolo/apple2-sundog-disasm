@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 sys.path.insert(0, str(Path(__file__).parent))
 from export_assets import build, pixel_rows, svg, navigation_defaults, packed_quantities, economy_defaults
 from economy_reference import reference as economy_reference
-from campaign_reference import reference as campaign_reference
+from campaign_reference import reference as campaign_reference, decode_globals
 from hgr_asset import split_page, row_offset
 
 
@@ -127,6 +127,21 @@ class ExportTests(unittest.TestCase):
         self.assertNotIn('angle',data)
         self.assertEqual(observed['credits'],720)
         self.assertEqual(observed['gameplayRandomState'],0x3ef2d937)
+
+    def test_ship_resource_decoder_uses_distinct_words_and_power_bits(self):
+        raw=bytearray(512)
+        for index,value in [(221,12),(222,200),(223,99),(224,255),(225,31),(226,78),(227,1234),(82,135)]:
+            raw[(index-36)*2:(index-35)*2]=value.to_bytes(2,'little')
+        raw[300]=15
+        data=decode_globals(raw)
+        self.assertEqual(data['shipResources'],dict(hull=15,fuel=1234,
+            warp=dict(charge=99,targetCharge=200,targetSystemId='system-12',charging=True),
+            shields=dict(charge=31,targetCharge=255),guns=dict(charge=78,powered=True),enginesPowered=True))
+        self.assertTrue(data['podAttached'])
+        raw[92]=0
+        raw[19]=32  # Scene word45 bit13 is NOT the pod-attached flag.
+        self.assertFalse(decode_globals(raw)['podAttached'])
+        self.assertEqual(campaign_reference()['shipResources']['hull'],16)
 
 
 if __name__ == '__main__':
