@@ -1,5 +1,37 @@
 # SunDog web remake progress
 
+## R05c — Personal condition and food/rapidheal use — 2026-09-28
+
+Added four condition meters and atomic food/rapidheal use from carried slots.
+Food restores 80 nourishment and rapidheal 80 health, capped at 255. Both consume
+one item even when full; English/Korean warnings make that explicit. Keyboard
+focus returns to the empty slot, selection clears, and other supplies remain
+unchanged. Condition uses source-verified full defaults and persists with the
+walkthrough until reload. Hunger/fatigue do not yet accumulate.
+
+Traced field order, 32-unit meter rounding, use targets, +80 effects, clamp and
+consumption through game8, library27 and library22. Initial bytes independently
+match the clean-character capture. A controlled MAME RAM fixture showed the
+condition display, but attempted joystick item clicks did not establish successful
+consumption. Item effects remain source-derived, not independently observed.
+This limitation and the fixture are recorded in `docs/remake/condition.md` and
+`docs/reference/remake-condition-fixture.json`. The owned emulator was stopped;
+original disk/manual hashes remain unchanged.
+
+Required Chrome 154.0.8037.57 passes 30 browser rule/storage tests and 156 smoke
+checks: 22 condition, 25 inventory, 23 movement, 25 character and 61 preview.
+New rule checks cover every starting byte for both consumables, including caps
+and single consumption. Ordinary UI flows cover keyboard, touch, cancellation,
+locales, offline use and reload. Reviewed English/Korean desktop/portrait layouts
+and corrected grid/footer spacing. Six Python exporter tests, 119 artifacts and
+584 classified strings verify. See `docs/remake/condition-validation.md` and
+its JSON receipt for exact coverage and evidence limits.
+
+R04/R05 remain partial. Next: trace and implement the survival clock and sleep,
+confirm original consumable-use interactions, then finish named world/equipment
+initialization and campaign persistence. The untracked user PRD and original
+reconstruction deliverables remain outside this implementation commit.
+
 ## R05b — Carried items, locker and stores — 2026-09-28
 
 Implemented four carried slots and twenty slots each in the ship's locker and

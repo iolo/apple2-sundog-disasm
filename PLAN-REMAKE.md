@@ -257,13 +257,16 @@ but the first playable milestone should not wait for exhaustive semantic naming
 of all reconstructed procedures. Schedule estimates should follow R01/R05,
 when the largest semantic risks have been measured.
 
-Checkpoint R05b (2026-09-28) adds carried/locker/store transfers to R05a's ship
-walkthrough with native collision rules and pointer, touch and keyboard input.
+Checkpoint R05c (2026-09-28) adds personal condition meters and food/rapidheal
+use to R05b's carried/locker/store transfers and R05a's ship walking. Rules are
+source-derived with exhaustive byte-range tests; emulator evidence covers the
+condition display but has not verified successful item consumption.
 R04b records a repeatable
 clean-character fixture and a separate resumed-game movement observation. R04a's
 four character draft slots remain separate from campaign saves. R04/R05 are still
-partial: named world/equipment initialization, other ship systems, status, item
-use and campaign save/resume remain necessary for the first playable milestone.
+partial: named world/equipment initialization, other ship systems, survival
+timing/sleep and campaign save/resume remain necessary for the first playable
+milestone.
 
 ## Validation and completion
 

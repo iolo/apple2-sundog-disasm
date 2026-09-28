@@ -1,6 +1,7 @@
 import { characterTests } from './character.js';
 import { shipWalkTests } from './ship-walk.js';
 import { inventoryTests } from './inventory.js';
+import { conditionTests } from './condition.js';
 import { createPreview, reducePreview, logicalPoint, cellAt } from '../js/core/preview.js';
 import { translator } from '../js/ui/i18n.js';
 
@@ -52,5 +53,6 @@ await test('Missing locale value falls back; unknown keys fail', () => {
 await characterTests(test, equal);
 await shipWalkTests(test, equal);
 await inventoryTests(test, equal);
+await conditionTests(test, equal);
 document.querySelector('#results').textContent = results.join('\n');
 document.documentElement.dataset.result = results.some(r => r.startsWith('FAIL')) ? 'fail' : 'pass';
