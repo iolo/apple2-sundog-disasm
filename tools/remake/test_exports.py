@@ -54,6 +54,7 @@ class ExportTests(unittest.TestCase):
         data = json.loads(build()['data/ship-inventory.json'])
         for name, offset, size in [('carried', 52, 4), ('locker', 276, 20), ('stores', 304, 20)]:
             self.assertEqual(data[name], list(raw[offset:offset + size]))
+        self.assertEqual([data['condition'][key] for key in ['vigor', 'rest', 'health', 'nourishment']], list(raw[48:52]))
 
     def test_item_quadrants_and_phase_mask(self):
         files = build()

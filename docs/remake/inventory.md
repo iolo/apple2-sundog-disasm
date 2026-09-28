@@ -63,8 +63,9 @@ panel and switching language cannot strand or duplicate an item. Escape cancels
 a selection before closing the panel. Inventory pauses walking; Resume continues.
 
 The twenty visible storage slots are kept distinct from the remaining eight
-bytes in each source record. Engineering sockets and consumable actions are not
-exposed until their effects are implemented. No discard action is added here.
+bytes in each source record. R05c adds food/rapidheal use from carried slots;
+see `condition.md`. Engineering sockets, other consumables and discard remain
+unimplemented.
 Inventory persists while leaving/reopening the walkthrough and changing locale,
 but reload restores the initial fixture. Return to start moves the player only.
 Character drafts and future campaign saves remain separate.

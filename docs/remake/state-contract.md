@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a / R05a / R05b
+# State boundaries — R01a / R04a / R05a / R05b / R05c
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -7,7 +7,7 @@ new game and uses separate ephemeral state.
 | Group | Fields / rules |
 | --- | --- |
 | Save envelope | `format: sundog-remake`, integer `version`, timestamp, slot 0–3, content revision, complete game state |
-| Player | Unicode name; strength/intelligence/dexterity/charisma/luck; health, vigor, rest, nourishment; carried item IDs and quantities |
+| Player | Unicode name; strength/intelligence/dexterity/charisma/luck; health, vigor, rest, nourishment; four encoded carried item bytes |
 | Location | Stable system/planet/city IDs, scene, local coordinates, active transport; original record mappings in content manifest |
 | Ship and pod | Independent position, equipment slots/condition, hull, shields, fuel, charge, cargo and lockers |
 | Economy | Cash, per-system bank balances, per-city stock/prices/warehouses; integer quantities and money; atomic transactions |
@@ -42,6 +42,15 @@ capture. Container access is derived from the player's interaction region.
 Selection is transient UI state; selecting/cancelling does not remove an item.
 Transfers commit both slots atomically. This inventory remains local to the
 walkthrough and resets on reload, independently of character drafts.
+
+R05c adds four condition bytes: vigor, rest, health and nourishment, each 0–255.
+The clean fixture initializes all four to 255. Food and rapidheal atomically
+consume one carried slot and add 80 to nourishment or health, capped at 255.
+Use at full condition still consumes the item. Selection and render state cannot
+repeat consumption after the slot becomes empty. Condition remains local to the
+walkthrough alongside inventory; neither is serialized into character drafts.
+No hunger, fatigue, sleep, elapsed-time effects or campaign persistence are added.
+See `condition.md` for source boundaries and the limited emulator observation.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.

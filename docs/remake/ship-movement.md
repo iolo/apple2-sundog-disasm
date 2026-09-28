@@ -80,7 +80,7 @@ release stops, and arrow keys use the same collision rule. The gold ring makes
 the small original sprite visible; it has no collision effect. A 50 ms fixed
 movement cadence is a presentation choice, not a claim about original timing.
 Hidden/unfocused windows pause; resume is explicit; delayed frames have bounded
-catch-up. The walkthrough advances no campaign clock or character condition.
+catch-up. Walking advances no campaign clock or character condition.
 
 Procedure14 (`$07CC–$08A1`) maps anchor cells to interaction IDs. The browser
 recognizes these regions and reports reaching a station. R05b adds locker/store
@@ -88,6 +88,7 @@ transfers at IDs5/6; see `inventory.md`. IDs3/4 have the original landed-locatio
 landed full-ship case; partial-ship movement is not exposed. On the full ship,
 1784 one-pixel-connected clear anchor positions are reachable from `(54,110)`.
 
-Other ship systems, exits, item use, sleep, combat, and campaign saves are
-still pending. Walkthrough position and inventory are ephemeral and survive opening/closing
+R05c adds personal condition and food/rapidheal use; see `condition.md`.
+Other ship systems, exits, other consumables, sleep, combat, and campaign saves are
+still pending. Walkthrough position, inventory and condition are ephemeral and survive opening/closing
 the screen within the page, but not reload. Character drafts remain separate.

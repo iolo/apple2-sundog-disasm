@@ -88,7 +88,8 @@ def build():
     outputs['data/ship-inventory.json'] = encode(dict(
         version=1, carried=[0] * 4, locker=[0] * 15 + [23] * 5,
         stores=[10] * 5 + [8] * 5 + [235, 12] + [0] * 8,
-        source='utility_disk1 procedure21 clear and procedure20; game14 procedures3/4/8; library27 procedures7/13/15'))
+        condition=dict(vigor=255, rest=255, health=255, nourishment=255),
+        source='utility_disk1 procedures20/21; game14 procedures3/4/8; library27 procedures7/11/13/14/15; game8 procedures2/7'))
 
     tile_banks = {}
     for bank, source, height, count in [

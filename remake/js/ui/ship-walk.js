@@ -1,12 +1,14 @@
 import { createWalk, advanceWalk, interactionAt } from '../core/ship-walk.js';
 import { createInventory, storageAt, transferItem } from '../core/inventory.js';
 import { inventoryPanel } from './inventory.js';
+import { createCondition, useCarriedItem } from '../core/condition.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 export function shipWalkScreen({ stage, background, assets, t, language, close }) {
   const root = document.createElement('section'); root.id = 'walk-screen'; root.hidden = true; stage.append(root);
   let state = createWalk(assets.shipWalk), open = false, frame, previous = 0, help = false, activePointer = null;
   let inventory = createInventory(assets.shipInventory), inventoryOpen = false, selected = null, inventoryMessage = '';
+  let condition = createCondition(assets.shipInventory.condition);
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
@@ -48,7 +50,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       root.querySelector('#walk-close-help').focus();
     } else if (inventoryOpen) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
+      root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, condition, storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
       (root.querySelector('#inventory-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector('#inventory-close')).focus({ preventScroll: true });
     } else if (focus) document.getElementById(focus)?.focus({ preventScroll: true });
     draw();
@@ -125,6 +127,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (action === 'inventory') { openInventory(); return; }
     if (action === 'close-inventory') { closeInventory(); return; }
     if (action === 'cancel-item') { selected = null; inventoryMessage = 'selectionCancelled'; }
+    if (action === 'use-item' && inventoryOpen && selected?.container === 'carried') {
+      const result = useCarriedItem(inventory, condition, selected.index);
+      if (result) {
+        inventory = result.inventory; condition = result.condition;
+        inventoryMessage = result.restored ? (result.field === 'health' ? 'rapidhealApplied' : 'foodEaten') : 'itemUsedAtFull';
+        const index = selected.index; selected = null; render(); root.querySelector(`#slot-carried-${index}`).focus(); return;
+      }
+    }
     if (action === 'reset') { state = createWalk(assets.shipWalk); previous = 0; }
     if (action === 'pause') { state.paused = !state.paused; previous = 0; }
     if (action === 'help') { help = true; state.paused = true; }
