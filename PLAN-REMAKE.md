@@ -308,6 +308,15 @@ transfer/recalculation and timing rules, add active equipment and save validatio
 then enable replacement. Ship exits and the later city/trade milestones remain
 pending. See `docs/remake/engineering.md`.
 
+Checkpoint R05f (2026-09-29) implements compatible carried/installed component
+exchanges and source-derived performance recalculation. Corrected the former
+"spares" label: bytes20–23 are fixed socket requirements. Campaign version2 adds
+active equipment and validates/upgrades version1 without automatic slot writes.
+Next: ship exits/city scene transitions on the main R06 path; retain the remaining
+encoded repair, fuel/services and power controls for their R08/R09 rules. Full
+navigation/trade/colony gameplay is still pending. See
+`docs/remake/component-exchange.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

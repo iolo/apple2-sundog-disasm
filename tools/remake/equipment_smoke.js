@@ -54,15 +54,15 @@ async browserPage => {
     assert(await page.locator('#walk-equipment').isDisabled(),'Engineering is unavailable away from a bay');
     const initial=await exportGame();
     const checkGroup=async index=>{
-      const group=initial.start.equipment[index];
+      const group=initial.equipment[index];
       assert(await page.locator('#equipment-panel').getAttribute('data-group')===group.id,`${group.id} opens at its source interaction point`);
       const rows=await page.locator('.equipment-table tbody tr').allTextContents();
       assert(group.units.every((unit,i)=>rows[i].includes(`${unit.performance} / 4`)),`${group.id} shows all four generated output values`);
       assert((await page.locator('.equipment-rating').innerText()).includes(`${group.performance} / 16`),`${group.id} shows total performance`);
-      const bytes=[...group.units.map(u=>u.components),group.spares];
+      const bytes=[...group.units.map(u=>u.components),initial.ship.inventory.carried];
       const labels=await page.evaluate(()=>fetch('/locales/en.json').then(r=>r.json()));
       const actual=await page.locator('.equipment-slot').evaluateAll(els=>els.map(e=>e.getAttribute('aria-label')));
-      assert(bytes.flat().every((byte,i)=>actual[i].endsWith(labels[`item${byte}`])),`${group.id} identifies every installed and spare component`);
+      assert(bytes.flat().every((byte,i)=>actual[i].endsWith(labels[`item${byte}`])),`${group.id} identifies every installed component and carried item`);
     };
     for(let bay=0;bay<6;bay++) {
       await walkTo(bay);assert(await page.locator('#walk-equipment').isEnabled(),`Bay ${bay+1} is reached using ship movement`);
@@ -80,7 +80,7 @@ async browserPage => {
       assert(await page.locator('#equipment-panel').getAttribute('data-group')===initial.start.equipment[bay].id,'Next frame restores the entry system');
       if(bay===0) {
         await page.locator('#equipment-close').focus();await page.keyboard.press('Shift+Tab');
-        assert(await page.evaluate(()=>document.activeElement.id)==='equipment-slot-4-3','Reverse Tab wraps inside engineering');
+        assert(await page.evaluate(()=>document.activeElement.id)==='equipment-carried-3','Reverse Tab wraps inside engineering');
         await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.activeElement.id)==='equipment-close','Tab wraps to engineering Back');
       }
       if(bay===5) {

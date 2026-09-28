@@ -10,7 +10,7 @@ for name,condition in [
     ('death',dict(vigor=1,rest=1,health=1,nourishment=1)),
 ]:
     value=json.loads(raw)
-    assert value['format']=='sundog-campaign' and value['scope']=='landed-ship-1'
+    assert value['format']=='sundog-campaign' and value['scope']=='landed-engineering-1'
     value['state']['ship']['condition']=condition
     value['state']['ship']['minutes']=59
     (folder/f'campaign-{name}.json').write_text(json.dumps(value)+'\n')

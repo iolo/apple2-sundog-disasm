@@ -37,11 +37,11 @@ play. English and Korean cover the new flow and its validation messages.
 
 ## Supported scope
 
-The save remains `sundog-campaign` version1, scope `landed-ship-1`:
-immutable creation record plus active ship position, inventory, condition and
-whole elapsed minutes. Generated equipment, resources, markets and navigation
-are retained. R05e adds [engineering inspection](engineering.md) of the six equipment
-groups at their ship locations. Machinery changes, exits, travel,
+The save is now `sundog-campaign` version2, scope `landed-engineering-1`:
+immutable creation record plus active ship position, inventory, condition,
+whole elapsed minutes and equipment. R05f adds [component exchange](component-exchange.md)
+at the six engineering bays and upgrades valid version1 saves on load. Generated
+resources, markets and navigation remain retained. Power controls, exits, travel,
 trade, encounters and colony progression require further rules and an explicit
 state/schema extension. No new original-emulator behavior observation is claimed.
 

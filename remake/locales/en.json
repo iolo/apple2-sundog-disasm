@@ -192,7 +192,7 @@
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
   "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the ship and use arrow keys to move. Escape returns to the title.",
-  "campaignPlayScope": "Manage supplies at stores and the locker. Inspect components at engineering bays. Food and rapidheal restore condition. Saves keeps your progress. Travel, trade and component replacement are not available yet.",
+  "campaignPlayScope": "Manage supplies at stores and the locker. Exchange compatible components at engineering bays. Food and rapidheal restore condition. Save to keep your progress. Travel, trade and power controls are not available yet.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",
@@ -203,7 +203,6 @@
   "equipmentPrevious": "Previous system in this bay",
   "equipmentNext": "Next system in this bay",
   "equipmentUnit": "Unit {number}",
-  "equipmentSpares": "Spares",
   "equipmentAssembly": "Assembly",
   "equipmentSocket": "Socket {number}",
   "equipmentOutput": "Output",
@@ -212,5 +211,11 @@
   "equipmentSelect": "Select a component to identify it.",
   "equipmentSlot": "{row}, socket {socket}: {item}",
   "equipmentDetail": "{row} · Socket {socket} · {item}",
-  "equipmentReadOnly": "Inspection only. Component replacement is not available yet."
+  "equipmentStandard": "Standard component: {item}",
+  "equipmentMoveHint": "Choose a part, then Move. Exchanges keep both items.",
+  "equipmentDestination": "Choose a carried slot or a compatible socket.",
+  "equipmentMove": "Move / exchange",
+  "equipmentExchanged": "Components exchanged. Performance updated.",
+  "equipmentDoesNotFit": "Does not fit. Neither item was moved.",
+  "equipmentUnavailable": "This equipment is not accessible here."
 }

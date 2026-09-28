@@ -1,5 +1,37 @@
 # SunDog web remake progress
 
+## R05f — Component exchanges and active equipment saves — 2026-09-29
+
+Added atomic exchanges between carried items and compatible installed components,
+including removal, replacement, occupied-slot exchange and cancellation. Both
+destinations validate before writes; source-derived recalculation updates unit/total
+performance and special-component availability. Selection never removes an item.
+English/Korean panels preserve pending moves across locale/viewport changes.
+
+Corrected a prior semantic error: record bytes20–23 are fixed socket requirements,
+not spare inventory. Game14's fit/draw consumers establish this. The panel now
+shows real carried items and names the selected socket's standard requirement.
+The legacy `spares` field remains immutable for recipe2/save compatibility; it
+cannot be used as an inventory source. Prior receipts retain their historical scope.
+
+Campaign version2, scope `landed-engineering-1`, adds active equipment independently
+of creation state. Validation rejects false ratings, incompatible sockets and
+changed requirements. Valid version1 saves upgrade in memory after full validation;
+slot writes remain explicit and retain raw-record conflict protection. Exchanges
+persist through save/export, reload and import without altering creation data.
+
+Required Chrome 154.0.8037.57 passes 72 browser groups, 37 exchange checks,
+89 engineering, 45 campaign and 14 recovery/storage regressions. Both locales fit
+640×480, 1280×720, 1920×1080 and390×844. Eleven exporter tests, 122 artifacts,
+584 classified strings, six captured equipment records and original input hashes
+verify. See `docs/remake/component-exchange.md` and its validation receipt.
+
+Exchanges follow the paused browser inventory convention. Encoded damage repair,
+power/charging, services and fuel remain pending; no original-emulator observation
+or exact live repair timing is claimed. Next: ship exits/city transitions on R06,
+then the planned economy and remaining R08/R09 machinery work. The user PRD remains
+unchanged and untracked.
+
 ## R05e — Engineering bay inspection — 2026-09-29
 
 Added campaign equipment inspection at all six source-mapped engineering bays.

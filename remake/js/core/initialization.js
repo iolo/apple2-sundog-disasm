@@ -22,7 +22,7 @@ export function createInitialEquipment(random) {
     const rows = [];
     for (let row = 0; row < 5; row++) {
       const components = [31, a, b, c];
-      const damageRoll = draw(random); // Pascal LAND evaluates both operands, even for spare row4.
+      const damageRoll = draw(random); // Pascal LAND evaluates both operands, even for requirements row4.
       let performance = 4;
       if (row < 4 && damageRoll % 3 === 0) {
         const socket = draw(random) % 4;
@@ -37,6 +37,7 @@ export function createInitialEquipment(random) {
       }
       rows.push({ components, performance });
     }
+    // Legacy recipe2 name: `spares` is the fixed socket requirements row.
     return { id, units:rows.slice(0,4), spares:rows[4].components,
       performance:rows.slice(0,4).reduce((sum,row)=>sum+row.performance,0),
       requiredComponent, requiredSocket };

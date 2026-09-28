@@ -1,9 +1,10 @@
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
 import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
+import { fitsComponent, recalculateEquipment } from './equipment.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 1, SCOPE = 'landed-ship-1';
+const VERSION = 2, SCOPE = 'landed-engineering-1';
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
   Object.keys(value).length===keys.length && keys.every(key=>Object.hasOwn(value,key));
@@ -18,35 +19,51 @@ function sameTree(value, expected) {
   return keysMatch(value,keys) && keys.every(key=>sameTree(value[key],expected[key]));
 }
 
-// This first save scope supports ship walking/inventory/survival only. `start`
-// is the immutable creation record; `ship` is the active state for those rules.
-// Economy, navigation and machinery changes require a later scope/version.
+// `start` remains immutable; equipment is active, independently owned state.
+// Machinery stays off; navigation, power, fuel and economy changes remain gated.
 export function campaignSaveCodec(content, geometry) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.
   const baseline=structuredClone(content), walk=checkpointCodec(geometry);
-  function snapshot(value) {
+  function snapshot(value, legacy = false) {
     try {
-      if (!keysMatch(value,['start','ship']) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,legacy ? ['start','ship'] : ['start','ship','equipment']) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=walk.snapshot(value.ship);
       if (!sameTree(value.ship,ship)) fail();
-      return {start,ship};
+      let equipment;
+      if (legacy) equipment=start.equipment.map(recalculateEquipment);
+      else {
+        if (!Array.isArray(value.equipment) || value.equipment.length!==6 || Object.keys(value.equipment).length!==6) fail();
+        equipment=value.equipment.map((group,i)=>{
+          const initial=start.equipment[i];
+          if (!Array.isArray(group?.units) || group.units.length!==4) fail();
+          for (const unit of group.units) {
+            if (!Array.isArray(unit?.components) || unit.components.length!==4 ||
+                Array.from(unit.components).some((byte,socket)=>!Number.isInteger(byte) || (byte!==0 && byte!==7 && !fitsComponent(initial,byte,socket)))) fail();
+          }
+          const expected=recalculateEquipment({...initial,units:group.units});
+          if (!sameTree(group,expected)) fail();
+          return expected;
+        });
+      }
+      return {start,ship,equipment};
     } catch { fail(); }
   }
   function validate(value) {
+    const legacy=value?.version===1 && value.scope==='landed-ship-1';
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
-        value.format!==CAMPAIGN_FORMAT || value.version!==VERSION || value.scope!==SCOPE ||
+        value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
         typeof value.savedAt!=='string' || value.savedAt.length>30 || !Number.isFinite(Date.parse(value.savedAt))) fail();
-    return {format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot:value.slot,savedAt:value.savedAt,state:snapshot(value.state)};
+    return {format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot:value.slot,savedAt:value.savedAt,state:snapshot(value.state,legacy)};
   }
   return {
-    snapshot,validate,
+    snapshot:value=>snapshot(value),validate,
     create(character,seed) {
       const start=createCampaignStart(character,baseline,seed);
-      return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
+      return {start,equipment:start.equipment.map(recalculateEquipment),ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes})};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),

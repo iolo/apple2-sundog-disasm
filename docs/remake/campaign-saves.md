@@ -1,18 +1,22 @@
-# Campaign save boundary — R04g
+# Campaign save boundary — R04g / R05f
 
-`campaignSaveCodec(content, geometry)` implements `sundog-campaign` version1,
-scope `landed-ship-1`. `openCampaignStore` gives four indexed slots in the separate
+`campaignSaveCodec(content, geometry)` writes `sundog-campaign` version2,
+scope `landed-engineering-1`, and validates/upgrades version1 `landed-ship-1`.
+`openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
 
-The state has two explicit parts:
+The state has three explicit parts:
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
   markets/cargo, colony counters and all four starting locations.
 - `ship`: active player position, inventory, condition and whole elapsed minutes
   for the currently supported ship walking, inventory and survival rules.
+- `equipment`: active installed components, validated performance and special-part
+  availability. Group/socket requirements are immutable metadata. The legacy
+  field name `spares` means socket requirements, not removable inventory.
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`. It must never read stale initial values as live progress.
@@ -26,6 +30,12 @@ record using recipe2 and the saved character/seed, then compares every field,
 independent of JSON object key order. Changed balances, cargo, resource levels,
 RNG states, locations, old recipes and extra fields fail validation. Validation
 returns newly owned objects; it never silently repairs unsupported progress.
+
+Active equipment accepts empty/destroyed sockets or compatible plain components.
+Validation recomputes unit output, total output and special availability, rejecting
+false cached values or changed requirements. Version1 first passes its original
+two-part state checks; only then is active equipment derived from creation data.
+See [component exchange](component-exchange.md) for fit rules and scope limits.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
@@ -47,5 +57,7 @@ Stored/imported JSON has no dependency on that internal name.
 
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
-There is no automatic save or migration. Other scenes and machinery remain
-outside this version's supported scope.
+There is no automatic save. A legacy slot is upgraded in memory on load and written
+as version2 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Other scenes, encoded component repair and
+power/charging controls remain outside this version's supported scope.
