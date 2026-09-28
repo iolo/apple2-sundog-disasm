@@ -80,7 +80,8 @@ release stops, and arrow keys use the same collision rule. The gold ring makes
 the small original sprite visible; it has no collision effect. A 50 ms fixed
 movement cadence is a presentation choice, not a claim about original timing.
 Hidden/unfocused windows pause; resume is explicit; delayed frames have bounded
-catch-up. Walking advances no campaign clock or character condition.
+catch-up. R05d adds a separate survival clock while the scene is active, including idle
+time; see `survival.md`. Movement cadence does not set the survival rate.
 
 Procedure14 (`$07CC–$08A1`) maps anchor cells to interaction IDs. The browser
 recognizes these regions and reports reaching a station. R05b adds locker/store
@@ -89,6 +90,7 @@ landed full-ship case; partial-ship movement is not exposed. On the full ship,
 1784 one-pixel-connected clear anchor positions are reachable from `(54,110)`.
 
 R05c adds personal condition and food/rapidheal use; see `condition.md`.
-Other ship systems, exits, other consumables, sleep, combat, and campaign saves are
+R05d adds landed-ship survival and sleep.
+Other ship systems, exits, other consumables, combat, and campaign saves are
 still pending. Walkthrough position, inventory and condition are ephemeral and survive opening/closing
 the screen within the page, but not reload. Character drafts remain separate.

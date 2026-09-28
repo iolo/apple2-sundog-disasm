@@ -1,5 +1,7 @@
 # Carried items and ship storage — R05b
 
+Later checkpoints add [consumption](condition.md) and [survival/sleep](survival.md).
+
 This checkpoint implements inventory transfers inside the ship walkthrough.
 It does not initialize a campaign or advance survival/time. Only the named,
 deterministic inventory fields below are initialized; generated world and

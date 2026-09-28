@@ -2,6 +2,7 @@ import { createWalk, advanceWalk, interactionAt } from '../core/ship-walk.js';
 import { createInventory, storageAt, transferItem } from '../core/inventory.js';
 import { inventoryPanel } from './inventory.js';
 import { createCondition, useCarriedItem } from '../core/condition.js';
+import { createSurvival, advanceSurvival, startSleep, wakeUp } from '../core/survival.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 export function shipWalkScreen({ stage, background, assets, t, language, close }) {
@@ -9,6 +10,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let state = createWalk(assets.shipWalk), open = false, frame, previous = 0, help = false, activePointer = null;
   let inventory = createInventory(assets.shipInventory), inventoryOpen = false, selected = null, inventoryMessage = '';
   let condition = createCondition(assets.shipInventory.condition);
+  let survival = createSurvival(condition);
+  const timeLabel = () => t('gameTime', { day: Math.floor(survival.minutes / 1440), hour: String(Math.floor(survival.minutes / 60) % 24).padStart(2, '0'), minute: String(survival.minutes % 60).padStart(2, '0') });
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
@@ -37,33 +40,47 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const button = root.querySelector('#walk-inventory');
     const label = t(storage || 'inventoryTitle');
     if (button.textContent !== label) button.textContent = label;
+    root.dataset.minutes = survival.minutes; root.dataset.sleeping = survival.sleeping; root.dataset.dead = survival.dead;
+    const clock = root.querySelector('#walk-clock'); if (clock) clock.textContent = timeLabel();
+    const sleepClock = root.querySelector('#sleep-clock'); if (sleepClock) sleepClock.textContent = timeLabel();
+    const rest = root.querySelector('#sleep-rest'); if (rest) rest.textContent = t('sleepRest', { value: condition.rest });
   }
   function render() {
     if (!open) return;
     const focus = document.activeElement?.id;
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
-      <p class="walk-note">${t('walkNote')}</p><div id="walk-surface" tabindex="0" role="button" aria-label="${t('walkControls')}"></div>
+      <p class="walk-note">${t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t('walkControls')}"></div>
       <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button><button id="walk-reset" data-walk="reset">${t('walkReset')}</button><button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
-    if (help) {
+    if (survival.sleeping || survival.dead) {
+      for (const child of root.children) child.inert = true;
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? 'deathScope' : 'sleepHint')}</p>${survival.dead ? `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
+      const panel = root.querySelector('.sleep-panel');
+      (panel.querySelector(`#${focus || 'sleep-pause'}:not(:disabled)`) || panel.querySelector('button')).focus({ preventScroll: true });
+    } else if (help) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t('walkControls')}</p><p>${t('walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
       root.querySelector('#walk-close-help').focus();
     } else if (inventoryOpen) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, condition, storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
+      root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, condition, time: timeLabel(), storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
       (root.querySelector('#inventory-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector('#inventory-close')).focus({ preventScroll: true });
     } else if (focus) document.getElementById(focus)?.focus({ preventScroll: true });
     draw();
   }
   function loop(now) {
     if (!open) return;
+    const before = `${survival.sleeping}/${survival.forced}/${survival.dead}`;
+    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || help || (inventoryOpen && !survival.sleeping));
+    condition = survival.condition;
+    if (before !== `${survival.sleeping}/${survival.forced}/${survival.dead}`) { stop(); selected = null; render(); }
     if (keys.size && !state.paused) {
       let dx = 0, dy = 0;
       for (const key of keys) { dx += directions[key][0]; dy += directions[key][1]; }
       state.held = !!(dx || dy);
       state.pointer = { x: state.position.x + 3 + Math.sign(dx) * 2, y: state.position.y - 3 + Math.sign(dy) * 2 };
     }
-    state = advanceWalk(state, previous ? now - previous : 0, assets.shipWalk); previous = now;
+    if (!survival.sleeping && !survival.dead) state = advanceWalk(state, previous ? now - previous : 0, assets.shipWalk);
+    previous = now;
     draw(); frame = requestAnimationFrame(loop);
   }
   function point(event) {
@@ -81,6 +98,15 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) stop(); });
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
+    if (survival.sleeping || survival.dead) {
+      if (event.key === 'Tab') {
+        const buttons = [...root.querySelectorAll('.sleep-panel button:not(:disabled)')];
+        const index = buttons.indexOf(document.activeElement); event.preventDefault();
+        buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+      }
+      if (event.key === 'Escape' && survival.sleeping) { event.preventDefault(); finishSleep(); }
+      return;
+    }
     if (inventoryOpen) {
       if (event.key === 'Escape') {
         event.preventDefault();
@@ -107,6 +133,12 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   root.addEventListener('focusout', event => { if (event.target.id === 'walk-surface') stop(); });
   function openInventory() { stop(); state.paused = true; inventoryOpen = true; selected = null; inventoryMessage = ''; render(); }
   function closeInventory() { inventoryOpen = false; selected = null; inventoryMessage = ''; render(); root.querySelector('#walk-inventory').focus(); }
+  function finishSleep() {
+    survival = wakeUp(survival);
+    if (survival.sleeping || survival.dead) return;
+    state.paused = true; inventoryOpen = true; inventoryMessage = 'wokeUp'; previous = 0;
+    render(); root.querySelector('#inventory-sleep').focus();
+  }
   root.addEventListener('click', event => {
     const slotButton = event.target.closest('[data-slot]');
     if (inventoryOpen && slotButton) {
@@ -122,6 +154,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const action = event.target.closest('[data-walk]')?.dataset.walk;
     if (!action) return;
     stop();
+    if (action === 'sleep') { selected = null; survival = startSleep(survival); state.paused = false; previous = 0; render(); return; }
+    if (action === 'wake') { finishSleep(); return; }
+    if (action === 'sleep-pause') { state.paused = !state.paused; previous = 0; render(); return; }
+    if (action === 'restart') {
+      inventory = createInventory(assets.shipInventory); condition = createCondition(assets.shipInventory.condition);
+      survival = createSurvival(condition); state = createWalk(assets.shipWalk); inventoryOpen = false; selected = null; previous = 0;
+      render(); root.querySelector('#walk-surface').focus(); return;
+    }
     if (action === 'back') { api.hide(); close(); return; }
     if (action === 'language') { language(); return; }
     if (action === 'inventory') { openInventory(); return; }
@@ -131,6 +171,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       const result = useCarriedItem(inventory, condition, selected.index);
       if (result) {
         inventory = result.inventory; condition = result.condition;
+        survival = { ...survival, condition };
         inventoryMessage = result.restored ? (result.field === 'health' ? 'rapidhealApplied' : 'foodEaten') : 'itemUsedAtFull';
         const index = selected.index; selected = null; render(); root.querySelector(`#slot-carried-${index}`).focus(); return;
       }

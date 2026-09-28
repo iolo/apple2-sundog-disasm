@@ -1,5 +1,8 @@
 # Personal condition and consumables — R05c
 
+R05d adds hourly survival and sleep to this checkpoint; see [survival.md](survival.md).
+The no-depletion boundary below describes the earlier R05c implementation.
+
 The walkthrough shows vigor, rest, health and nourishment. Carry food or
 rapidheal, select it, then choose Eat food or Apply rapidheal. Each use consumes
 one item and restores up to 80 of its condition byte. Initial condition is full;

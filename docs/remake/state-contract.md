@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a / R05a / R05b / R05c
+# State boundaries — R01a / R04a / R05a / R05b / R05c / R05d
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -51,6 +51,17 @@ repeat consumption after the slot becomes empty. Condition remains local to the
 walkthrough alongside inventory; neither is serialized into character drafts.
 No hunger, fatigue, sleep, elapsed-time effects or campaign persistence are added.
 See `condition.md` for source boundaries and the limited emulator observation.
+
+R05d adds a separate survival clock and sleep state: elapsed game minutes,
+bounded fractional time, sleep/forced/dead flags and sleep/ship iteration phases.
+Normal visible play advances time even while idle. Inventory/help/explicit pause
+and lost visibility/focus stop time; sleep explicitly advances its own cadence.
+Hourly changes use the source drain/recovery/vigor rules. Exhaustion forces sleep;
+zero vigor freezes the walkthrough. Explicit restart restores its fixture.
+The clock begins at day0 00:00, matching the independent clean capture. All of
+this state remains ephemeral; character draft schemas are unchanged. Temporary
+attribute recovery, ship machinery and outdoor events are not yet instantiated.
+See `survival.md` for rates, source offsets and remaining campaign boundaries.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.

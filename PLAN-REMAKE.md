@@ -257,16 +257,14 @@ but the first playable milestone should not wait for exhaustive semantic naming
 of all reconstructed procedures. Schedule estimates should follow R01/R05,
 when the largest semantic risks have been measured.
 
-Checkpoint R05c (2026-09-28) adds personal condition meters and food/rapidheal
-use to R05b's carried/locker/store transfers and R05a's ship walking. Rules are
-source-derived with exhaustive byte-range tests; emulator evidence covers the
-condition display but has not verified successful item consumption.
-R04b records a repeatable
-clean-character fixture and a separate resumed-game movement observation. R04a's
-four character draft slots remain separate from campaign saves. R04/R05 are still
-partial: named world/equipment initialization, other ship systems, survival
-timing/sleep and campaign save/resume remain necessary for the first playable
-milestone.
+Checkpoint R05d (2026-09-28) adds hourly survival and landed-ship sleep to the
+walking/inventory/consumable walkthrough. Three controlled MAME hour transitions
+match the browser rules; original sleep-loop and item-use observation remains
+incomplete. Browser clock cadence and pause behavior are explicit adaptations.
+R04b's clean-character evidence and R04a's four draft slots remain separate from
+campaign saves. R04/R05 are still partial: named world/equipment initialization,
+other ship systems, exits and campaign save/resume are necessary for the first
+playable milestone. See `docs/remake/survival.md` for this checkpoint's boundary.
 
 ## Validation and completion
 
