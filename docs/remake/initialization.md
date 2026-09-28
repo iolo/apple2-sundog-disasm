@@ -1,5 +1,9 @@
 # Generated new-game fields — R04d
 
+R04g adds [ship resources](ship-resources.md), including the utility20 hull draw
+after equipment and before world generation. Campaign creation now uses recipe2;
+the historical R04d tests below validate individual primitives only.
+
 This step implements three initialization primitives and the source random-number
 routine. They are tested JavaScript modules for future campaign assembly; the
 current character editor, walkthrough and checkpoint format do not yet use them.

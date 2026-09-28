@@ -283,6 +283,14 @@ campaign save or live New Game action. Next: remaining ship resources/modes and
 location-copy semantics, campaign save validation and character-to-ship integration.
 See `docs/remake/campaign-start.md` for source offsets and adaptation choices.
 
+Checkpoint R04g (2026-09-28) adds ship resources, destination/pod locations and
+attachment, corrects the omitted hull RNG draw (creation recipe2), and implements
+four transactional campaign save slots for `landed-ship-1`. This scope preserves
+the creation record plus active ship walking/inventory/condition/time; later
+economy/travel/machinery progress requires a schema update. Next: character-to-ship
+integration, explicit seed selection and campaign save UI. See
+`docs/remake/ship-resources.md` and `campaign-saves.md` for evidence and limits.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

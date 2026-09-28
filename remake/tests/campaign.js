@@ -21,6 +21,9 @@ export async function campaignTests(test,equal) {
       equal(start.gameplayRandomState,saved);equal(start.credits,vector.draws[4].value%900);
       const random=sourceRandom(vector.draws[4].state);
       equal(start.equipment,createInitialEquipment(random));
+      // Independent source expression: do not call the resource constructor
+      // here, so omitting/reordering its draw cannot pass by self-comparison.
+      equal(start.shipResources.hull,13 + random.next()%4);
       equal(start.systems,createInitialSystems(navigation.systems,random));
       equal(start.worlds,createInitialOrbits(random,0));
       equal(start.economy,createInitialEconomy(economy,random));
@@ -35,7 +38,7 @@ export async function campaignTests(test,equal) {
     equal(start.character,{...createCharacter(),name:'선독'});equal(start.minutes,0);
     equal(start.inventory,{carried:inventory.carried,locker:inventory.locker,stores:inventory.stores});
     equal(start.condition,inventory.condition);
-    for(const field of ['playerLocation','shipLocation']) {
+    for(const field of ['playerLocation','shipLocation','destinationLocation','podLocation']) {
       const expected=structuredClone(captured[field]);expected.orbit.angle=start.worlds[0].orbitalAngle;
       equal(start[field],expected);
     }
@@ -43,6 +46,10 @@ export async function campaignTests(test,equal) {
     equal(start.systems[0].id,start.playerLocation.systemId);
     equal(start.systems[0].bankBalance>=29000 && start.systems[0].bankBalance<=31999,true);
     equal(start.credits>=0 && start.credits<900,true);
+    equal(start.podAttached,captured.podAttached);
+    const {hull,...resources}=start.shipResources;
+    const {hull:capturedHull,...capturedResources}=captured.shipResources;
+    equal(resources,capturedResources);equal(hull>=13 && hull<=16,true);
     // The existing formats cannot accidentally accept this larger creation object.
     rejects(()=>validateDraft(start));rejects(()=>checkpointCodec(geometry).validate(start));
   });
@@ -57,8 +64,12 @@ export async function campaignTests(test,equal) {
     start.character.attributes.strength=50;start.inventory.carried[0]=8;start.condition.health=1;
     start.playerLocation.orbit.angle=999;start.playerLocation.cityPosition.x=999;
     equal(start.shipLocation.orbit.angle,start.worlds[0].orbitalAngle);equal(start.shipLocation.cityPosition,location.cityPosition);
+    start.destinationLocation.position.x=999;start.podLocation.surfacePosition.x=999;
+    equal(start.shipLocation.position,location.shipPosition);equal(start.shipLocation.surfacePosition,location.surfacePosition);
+    start.shipResources.warp.charge=255;start.shipResources.shields.charge=123;
     equal(JSON.stringify({character,content}),before);
     const next=createCampaignStart(character,content,12345);equal(next.character.attributes.strength,30);equal(next.inventory.carried[0],0);
+    equal(next.shipResources.warp.charge,0);equal(next.shipResources.shields.charge,0);
   });
   await test('100 campaign starts replay independently of prior creations and remain JSON serializable',()=>{
     for(let seed=1;seed<=100;seed++) {

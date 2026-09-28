@@ -1,5 +1,11 @@
 # Starting-state assembly — R04f
 
+R04g correction: recipe2 adds the previously omitted utility20 hull draw after
+equipment and before system generation. It also names ship resources, destination
+and pod locations. See [ship resources](ship-resources.md) and the new
+[landed-ship campaign save boundary](campaign-saves.md). The original R04f test
+receipt below is historical and does not validate recipe2.
+
 `createCampaignStart(character, content, seed)` in `remake/js/core/campaign.js`
 combines the verified creation primitives into one independent, JSON-serializable
 starting object. It includes character attributes, cash, time, inventory,
@@ -8,9 +14,9 @@ counters, and player/ship locations. It does not mutate its inputs or read saves
 
 This is a creation boundary, not a complete campaign save format or a New Game
 UI. It explicitly identifies itself as `sundog-campaign-start`, version1. Character
-drafts and ship checkpoint codecs reject it. Remaining ship resource fields,
-mode/encounter flags, other location copies and complete campaign validation still
-need work before the character editor can safely hand off to persistent play.
+drafts and ship checkpoint codecs reject it. R04g supplies a separate campaign
+codec for the supported landed-ship scope. Other modes, encounters and machinery
+still need state rules before that scope can expand.
 
 ## Generation order and two random states
 
@@ -23,6 +29,7 @@ then performs the following random operations:
    thousands and word 47 is the remainder. Game8 procedure13 `$0561–$05A6`
    displays these words as credits on hand.
 3. `$0A03–$0A31`: initialize the six equipment groups in their traced order.
+   `$0A33` calls utility20, whose `$087B–$088A` consumes the hull-strength draw.
 4. Procedure17 `$0650–$0656` calls12,13,14,16: system balances/positions, orbital
    angles, market templates/recipes, then cryogen placements. Procedure18 derives
    starting locations without further random draws.
@@ -38,7 +45,7 @@ four initial low bytes; the latter is the generation tail for reproducibility.
 The boundary is before game startup: no claim is made that the first interactive
 screen has consumed no additional random draws.
 
-The browser recipe `shipped-defaults-1` accepts an explicit unsigned 32-bit seed,
+The browser recipe `shipped-defaults-2` accepts an explicit unsigned 32-bit seed,
 uses the exported shipped baselines without modifying them, and fixes the first
 orbital comparison to 0. That comparison originally reads an uninitialized outer
 local. Original creations also rewrite world defaults on disk; browser creations
@@ -67,9 +74,8 @@ its first city. The exported `initial-location.json` contains static fields only
 Game21 procedure6 `$00DC–$0101` updates the surface fields modulo 40/24, and its
 city-entry path `$032C–$0342` loads the city's coordinates. Utility18 temporarily
 changes the anchor to (147,115), copies six words to 72,66,228 and the descriptor,
-then restores the player's anchor. Only the player and confirmed ship location
-are named in this assembly. The semantics of the other copies are still being
-traced; they are not guessed to be independent pod/navigation state.
+then restores the player's anchor. R04g confirms word66 as the destination and
+word228 as the pod location; all four locations are now independently named.
 
 The generated first orbital angle is linked into both locations. All nested
 points are copied independently, so later player movement cannot move the ship.
