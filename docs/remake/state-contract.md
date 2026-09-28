@@ -106,6 +106,12 @@ autosave; sleep/death cannot be persisted. See `campaign-ui.md`.
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
 
+R05e exposes owned inspection copies of the immutable campaign equipment at
+source-mapped bays. Component selection and frame cycling are transient UI state;
+no equipment/resource mutation or new save field is introduced. Inspection pauses
+and clears movement; closing restores focus and stays paused. Future repairs must
+introduce active equipment and validate it independently of the creation record.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.

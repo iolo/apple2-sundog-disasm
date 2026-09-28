@@ -1,5 +1,32 @@
 # SunDog web remake progress
 
+## R05e — Engineering bay inspection — 2026-09-29
+
+Added campaign equipment inspection at all six source-mapped engineering bays.
+Walk to a bay and use Engineering or Enter to identify installed components,
+missing/destroyed parts, shunts and spares, with individual and total performance.
+Previous/next stays within the source's three-system bay bank. The existing
+component SVGs and localized item names supply the display.
+
+Inspection owns a copy of validated creation equipment. It pauses movement/time,
+clears held input, traps focus and returns paused; locale/resize preserves selection.
+Preview walking remains independent. No component/resource mutation or save-scope
+change is introduced. Source tracing and manual PDF pages11–12 establish the bay
+mapping/window behavior; no new original-emulator observation is claimed.
+
+Required Chrome 154.0.8037.57 passes 65 browser groups, 89 engineering checks,
+45 campaign-flow and 14 recovery/storage regressions. Tests walk to every bay
+through ordinary pointer input, verify all installed/spare labels and performance,
+preserve the complete creation record and reopen engineering after fresh-page load.
+English/Korean panels fit 640×480, 1280×720, 1920×1080 and 390×844. Eleven exporter
+tests, 122 generated artifacts, 584 classified strings and original input hashes
+verify. See `docs/remake/engineering.md` and `engineering-validation.md`.
+
+Next: complete component transfer, recalculation and timing rules, then add active
+equipment plus save validation before enabling replacement. Repairs, services,
+power controls and ship exits remain pending; R04/R05/R08 are still partial.
+The user PRD remains unchanged and untracked.
+
 ## R04h — Character-to-ship and campaign saves UI — 2026-09-28
 
 Connected character allocation to a boarding form with optional explicit seed,

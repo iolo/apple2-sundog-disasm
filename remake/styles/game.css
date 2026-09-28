@@ -116,6 +116,24 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .walk-actions{position:absolute;left:32px;right:32px;bottom:20px;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;font-size:17px}
 #begin-walk{color:var(--amber)}
 #inventory-panel{position:absolute;inset:0;background:var(--ink)}
+#equipment-panel{position:absolute;inset:0;background:var(--ink)}
+#equipment-panel h2{font-size:24px;font-weight:normal;letter-spacing:0}
+.equipment-heading{position:absolute;left:32px;right:32px;top:78px;display:flex;align-items:center;justify-content:space-between}
+.equipment-heading h3{font-size:27px;font-weight:normal;margin:0}
+.equipment-rating{position:absolute;left:32px;right:32px;top:124px;font-size:15px;color:var(--muted)}
+.equipment-table{position:absolute;left:32px;top:155px;width:576px;border-collapse:collapse;table-layout:fixed;font-size:15px;text-align:center}
+.equipment-table th{font-weight:normal;color:var(--muted)}
+.equipment-table thead th{height:25px;font-size:13px}
+.equipment-table tbody tr{height:39px;border-bottom:1px solid var(--line)}
+.equipment-table th:first-child{width:90px;text-align:left}
+.equipment-table th:last-child{width:80px}
+.equipment-table td{padding:0}
+.equipment-slot{width:100%;height:38px;padding:2px;display:flex;align-items:center;justify-content:center}
+.equipment-slot img{width:28px;height:32px;pointer-events:none}
+.equipment-slot[aria-pressed=true]{background:#eab97515}
+.equipment-bottom{position:absolute;left:32px;right:32px;top:389px;font-size:15px;line-height:1.4}
+#equipment-detail{color:var(--amber);min-height:24px;margin-bottom:8px}
+.equipment-bottom>p:last-child{color:var(--muted);font-size:13px}
 #inventory-panel h2{font-size:24px;font-weight:normal;letter-spacing:0}
 .inventory-note{position:absolute;left:32px;right:32px;top:78px;font-size:15px;line-height:1.35;color:var(--muted)}
 .inventory-columns{position:absolute;left:32px;right:32px;top:112px;display:grid;grid-template-columns:180px 1fr;gap:12px}
@@ -177,6 +195,10 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   #walk-status{font-size:18px;top:372px}
   .walk-actions{font-size:20px;bottom:13px}
   .walk-actions button{padding:8px 7px}
+  .equipment-heading h3{font-size:30px}
+  .equipment-rating,.equipment-table,#equipment-detail{font-size:18px}
+  .equipment-table thead th{font-size:17px}
+  .equipment-bottom>p:last-child{font-size:16px}
   .inventory-note{font-size:18px;top:78px}
   .inventory-columns{top:118px}
   .inventory-columns h3{font-size:23px;margin-bottom:10px}
