@@ -5,7 +5,7 @@ import unittest
 import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).parent))
-from export_assets import build, pixel_rows, svg
+from export_assets import build, pixel_rows, svg, navigation_defaults
 from hgr_asset import split_page, row_offset
 
 
@@ -56,6 +56,22 @@ class ExportTests(unittest.TestCase):
             self.assertEqual(data[name], list(raw[offset:offset + size]))
         self.assertEqual([data['condition'][key] for key in ['vigor', 'rest', 'health', 'nourishment']], list(raw[48:52]))
         self.assertEqual(raw[12:16], bytes(4))  # Fresh clock at segment29 word42.
+
+    def test_navigation_static_fields_match_clean_capture(self):
+        root = Path(__file__).resolve().parents[2]
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        observed = navigation_defaults(bytes.fromhex(captured['worldTablesHex']))
+        exported = json.loads(build()['data/initial-navigation.json'])
+        self.assertEqual(exported['worlds'], observed['worlds'])
+        for default, clean in zip(exported['systems'], observed['systems']):
+            self.assertEqual(default['id'], clean['id'])
+            self.assertEqual(default['name'], clean['name'])
+            self.assertEqual(default['worldIds'], clean['worldIds'])
+            self.assertEqual(set(default), {'id', 'name', 'position', 'worldIds'})
+        with self.assertRaises(ValueError):
+            navigation_defaults(bytes(1536))  # Exclude the unrelated tail.
+        with self.assertRaises(ValueError):
+            navigation_defaults(bytes(1440))
 
     def test_item_quadrants_and_phase_mask(self):
         files = build()

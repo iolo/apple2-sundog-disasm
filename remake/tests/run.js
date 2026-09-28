@@ -1,3 +1,4 @@
+import { initializationTests } from './initialization.js';
 import { characterTests } from './character.js';
 import { shipWalkTests } from './ship-walk.js';
 import { inventoryTests } from './inventory.js';
@@ -58,5 +59,6 @@ await inventoryTests(test, equal);
 await conditionTests(test, equal);
 await survivalTests(test, equal);
 await checkpointTests(test, equal);
+await initializationTests(test, equal);
 document.querySelector('#results').textContent = results.join('\n');
 document.documentElement.dataset.result = results.some(r => r.startsWith('FAIL')) ? 'fail' : 'pass';

@@ -77,6 +77,18 @@ python3 tools/remake/test_exports.py
 python3 tools/remake/export_assets.py --check
 ```
 
+Development initialization primitives now cover generated equipment, system
+coordinates/balances and orbital angles. They are tested independently and are
+not yet connected to character creation or ship checkpoints. See
+`../docs/remake/initialization.md` for source evidence, seed boundaries and the
+remaining campaign fields. With cc65/sim65 installed, verify native RNG and the
+clean equipment reference using:
+
+```sh
+python3 tools/remake/random_reference.py
+python3 tools/remake/initialization_reference.py
+```
+
 SVGs are generated from delivered Apple II assets; see `data/provenance.json`.
 Mulmaru is distributed under OFL 1.1; see `assets/fonts/LICENSE.txt` and its
 provenance record. This browser preview introduces no claim of new rights in
