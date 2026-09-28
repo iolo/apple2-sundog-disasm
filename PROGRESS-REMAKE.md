@@ -1,5 +1,40 @@
 # SunDog web remake progress
 
+## R04d — Source-derived initialization primitives — 2026-09-28
+
+Implemented a serializable native RNG port and pure generators for six equipment
+groups, 12 system coordinate triples/balances and 18 planetary orbital angles.
+Equipment preserves original damage branches, missing/broken parts, shunts,
+spares and performance totals. System generation preserves fixed Woremed,
+clamped coordinate jitter, rejection spacing and starting balances. Independent
+objects and explicit random streams prevent accidental reuse of prior state.
+
+Exported only named navigation defaults: system/planet names, membership,
+baseline coordinates and orbital radii. Saved balances, prior orbital angles,
+flags and working gameplay records are excluded. The original modifies disk
+world defaults between creations; the browser baseline/seed lifecycle remains an
+explicit campaign integration decision. The first orbital comparison reads an
+uninitialized outer local on the traced path, so the helper requires that boundary
+as an input. Rejection loops fail explicitly instead of silently changing rules.
+
+Used a2-cc65 guidance to extract the native library22 RNG loop and execute it with
+cc65/sim65. All 112 transitions match JavaScript, including the unusual return-byte
+order. Traced Pascal low-bit branches and eager random draw consumption. A
+constructed compatible tape reproduces all six equipment records in the existing
+clean-character capture; it is not an observed random stream or recovered seed.
+
+Required Chrome 154.0.8037.57 passes 46 browser tests, including six new groups and
+1,000 deterministic seed replays. Seven exporter tests, 120 artifacts, 584 source
+strings and original disk/manual hashes verify. See `docs/remake/initialization.md`
+and `initialization-validation.md` for offsets, checks and evidence limits.
+No new Apple II play session or unrelated interactive smoke run is claimed.
+
+This step adds tested initialization code, without changing the live walkthrough,
+drafts or checkpoint schema. R04/R05 remain partial. Next: trace commodity/city
+records (utility14/16) and remaining global/location fields, assemble campaign
+state and connect character creation. Engineering/exit interactions follow that
+state boundary. The user PRD remains unchanged and untracked.
+
 ## R04c — Explicit ship walkthrough checkpoints — 2026-09-28
 
 Added four independent ship checkpoint slots with save/load/delete and JSON

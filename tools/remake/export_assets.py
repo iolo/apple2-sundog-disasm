@@ -40,6 +40,31 @@ def encode(value):
     return (json.dumps(value, ensure_ascii=False, separators=(',', ':')) + '\n').encode()
 
 
+def navigation_defaults(raw):
+    """Named static navigation fields only, from the utility default tables."""
+    if len(raw) != 1440:
+        raise ValueError('Expected 1440 world-default bytes')
+    def name(record):
+        if not 0 < record[0] <= 9:
+            raise ValueError('Invalid navigation name')
+        return record[1:1 + record[0]].decode('ascii')
+    systems, worlds = [], []
+    for i in range(12):
+        record = raw[i * 20:(i + 1) * 20]
+        membership = int.from_bytes(record[10:12], 'little')
+        first, count = (membership >> 2) & 31, membership & 3
+        systems.append(dict(id=f'system-{i+1:02}', name=name(record),
+                            position=dict(x=record[16] & 15, y=record[16] >> 4, z=record[17] & 15),
+                            worldIds=[f'world-{n:02}' for n in range(first, first + count)]))
+    for i in range(18):
+        record = raw[240 + i * 16:256 + i * 16]
+        worlds.append(dict(id=f'world-{i+1:02}', name=name(record), orbitalRadius=record[13]))
+    if [world for system in systems for world in system['worldIds']] != [world['id'] for world in worlds]:
+        raise ValueError('Invalid system/world membership')
+    return dict(version=1, systems=systems, worlds=worlds,
+                source='utility_disk1 procedures11/12/13; game13 procedures14/15; library24 procedures4/6')
+
+
 def build():
     outputs, sources = {}, {}
 
@@ -90,6 +115,14 @@ def build():
         stores=[10] * 5 + [8] * 5 + [235, 12] + [0] * 8,
         condition=dict(vigor=255, rest=255, health=255, nourishment=255),
         source='utility_disk1 procedures20/21; game14 procedures3/4/8; library27 procedures7/11/13/14/15; game8 procedures2/7'))
+
+    # Do not export saved balances, discovery flags, orbital angles, or working
+    # gameplay records as new-game defaults. These positions seed utility12 jitter.
+    defaults = read('assets/working-state/data.bin')[505:1945]
+    for source in ['src/pcode/library_22.s', 'src/pcode/library_24.s', 'src/pcode/library_28.s',
+                   'src/pcode/game_13.s', 'src/native/pcode_primitives.s']:
+        read(source)
+    outputs['data/initial-navigation.json'] = encode(navigation_defaults(defaults))
 
     tile_banks = {}
     for bank, source, height, count in [

@@ -1,0 +1,361 @@
+{
+  "source": "docs/reference/remake-clean-character.json",
+  "scope": "Observed equipment with constructed compatible draws; not an observed RNG sequence",
+  "equipment": [
+    {
+      "id": "warp-drives",
+      "units": [
+        {
+          "components": [
+            31,
+            28,
+            26,
+            30
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            28,
+            0,
+            30
+          ],
+          "performance": 0
+        },
+        {
+          "components": [
+            31,
+            28,
+            26,
+            30
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            28,
+            26,
+            0
+          ],
+          "performance": 0
+        }
+      ],
+      "spares": [
+        31,
+        28,
+        26,
+        30
+      ],
+      "performance": 8,
+      "requiredComponent": 0,
+      "requiredSocket": 0
+    },
+    {
+      "id": "sub-c-engines",
+      "units": [
+        {
+          "components": [
+            7,
+            28,
+            30,
+            24
+          ],
+          "performance": 0
+        },
+        {
+          "components": [
+            31,
+            28,
+            30,
+            24
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            28,
+            30,
+            24
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            0,
+            30,
+            24
+          ],
+          "performance": 0
+        }
+      ],
+      "spares": [
+        31,
+        28,
+        30,
+        24
+      ],
+      "performance": 8,
+      "requiredComponent": 0,
+      "requiredSocket": 0
+    },
+    {
+      "id": "ships-guns",
+      "units": [
+        {
+          "components": [
+            31,
+            24,
+            26,
+            29
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            24,
+            26,
+            29
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            0,
+            24,
+            26,
+            29
+          ],
+          "performance": 0
+        },
+        {
+          "components": [
+            31,
+            7,
+            26,
+            29
+          ],
+          "performance": 0
+        }
+      ],
+      "spares": [
+        31,
+        24,
+        26,
+        29
+      ],
+      "performance": 8,
+      "requiredComponent": 19,
+      "requiredSocket": 2
+    },
+    {
+      "id": "tactical-display",
+      "units": [
+        {
+          "components": [
+            31,
+            27,
+            25,
+            26
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            27,
+            25,
+            26
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            27,
+            25,
+            26
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            27,
+            25,
+            26
+          ],
+          "performance": 4
+        }
+      ],
+      "spares": [
+        31,
+        27,
+        25,
+        26
+      ],
+      "performance": 16,
+      "requiredComponent": 20,
+      "requiredSocket": 2
+    },
+    {
+      "id": "force-shields",
+      "units": [
+        {
+          "components": [
+            0,
+            24,
+            28,
+            28
+          ],
+          "performance": 0
+        },
+        {
+          "components": [
+            31,
+            24,
+            28,
+            23
+          ],
+          "performance": 3
+        },
+        {
+          "components": [
+            31,
+            24,
+            28,
+            28
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            24,
+            28,
+            28
+          ],
+          "performance": 4
+        }
+      ],
+      "spares": [
+        31,
+        24,
+        28,
+        28
+      ],
+      "performance": 11,
+      "requiredComponent": 21,
+      "requiredSocket": 1
+    },
+    {
+      "id": "pilotage",
+      "units": [
+        {
+          "components": [
+            31,
+            25,
+            27,
+            25
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            25,
+            27,
+            25
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            25,
+            27,
+            25
+          ],
+          "performance": 4
+        },
+        {
+          "components": [
+            31,
+            25,
+            27,
+            25
+          ],
+          "performance": 4
+        }
+      ],
+      "spares": [
+        31,
+        25,
+        27,
+        25
+      ],
+      "performance": 16,
+      "requiredComponent": 22,
+      "requiredSocket": 2
+    }
+  ],
+  "draws": [
+    1,
+    0,
+    2,
+    1,
+    1,
+    1,
+    0,
+    3,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    3,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+  ]
+}

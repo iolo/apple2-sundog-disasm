@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c
+# State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -71,6 +71,16 @@ and resumes paused. No automatic restore occurs on reload. The four indexed slot
 use transactional stale-record checks before replacement/deletion. Invalid imports
 leave live and stored states unchanged. See `checkpoints.md` for validation and
 scope; this does not instantiate the campaign schema above.
+
+R04d adds pure initialization primitives outside all current saved schemas.
+Equipment has six named groups, four component rows per group, spares, unit/total
+performance and special requirements. Navigation initialization produces 12
+system coordinate triples and integer bank balances plus 18 orbital angles.
+Static names, system membership and orbital radii are separate content. A private
+source-derived RNG exposes its unsigned 32-bit state for exact continuation.
+No function constructs a complete campaign yet; caller-supplied seed/baseline
+lifecycle and first orbital comparison boundary remain explicit. See
+`initialization.md`. Existing drafts/checkpoints receive no new fields.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.

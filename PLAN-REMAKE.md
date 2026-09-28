@@ -257,14 +257,15 @@ but the first playable milestone should not wait for exhaustive semantic naming
 of all reconstructed procedures. Schedule estimates should follow R01/R05,
 when the largest semantic risks have been measured.
 
-Checkpoint R04c (2026-09-28) adds four explicit ship walkthrough checkpoints,
-validated JSON import/export and safe paused restoration of position, inventory,
-condition and elapsed time. The ship clock, survival and sleep remain as implemented
-in R05d. Drafts, walkthrough checkpoints and future campaign saves have independent
-formats/storage. R04/R05 remain partial: named world/equipment initialization,
-other ship systems, exits and character-to-campaign save/resume are necessary for
-the first playable milestone. Original sleep-loop/item-use observations remain
-incomplete. See `docs/remake/checkpoints.md` for this checkpoint's boundary.
+Checkpoint R04d (2026-09-28) adds tested initialization primitives for six ship
+equipment groups, 12 system positions/balances and 18 orbital angles, driven by a
+source-derived serializable RNG. Native sim65 comparisons and the independent
+clean-character capture validate bounded parts of this state. These helpers are
+not yet a complete campaign constructor and are not wired into the walkthrough.
+R04c's four ship checkpoints and R04a's character drafts remain independent.
+R04/R05 still need commodity/city record semantics, remaining global/location
+fields, an explicit seed lifecycle, campaign assembly, ship systems and exits.
+See `docs/remake/initialization.md` for source offsets and remaining boundaries.
 
 ## Validation and completion
 
