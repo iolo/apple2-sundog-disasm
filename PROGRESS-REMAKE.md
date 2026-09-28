@@ -1,5 +1,31 @@
 # SunDog web remake progress
 
+## R04f — Deterministic starting-state assembly — 2026-09-28
+
+Added `createCampaignStart`, combining validated character attributes with cash,
+inventory/condition, equipment, systems, orbits, markets/warehouses and independently
+owned player/ship locations. The creation recipe takes an explicit seed, follows
+utility21 →17 generation order, fixes the first orbital comparison to 0 and uses
+immutable shipped defaults. Failures return no partial state or replacement seed.
+
+Traced the first four utility draws to saved RNG bytes at word 64. Startup7 restores
+these to the live RNG at word 21; they are not the utility's final generation state.
+Both states are preserved separately. The fifth draw supplies 0–899 credits on hand.
+Exported static starting-location fields and independently decoded the clean
+capture: Jondd/Drahew, surface (10,6), city (12,7), player (54,110), ship (147,115).
+Generated orbital angles remain dynamic and are shared by value, not object alias.
+
+Required Chrome 154.0.8037.57 passes 56 browser groups, including four new assembly
+groups and 100 deterministic campaign seed replays. Ten exporter tests, 122 artifacts,
+584 source strings and original disk/manual hashes verify. Evidence and remaining
+boundaries are in `docs/remake/campaign-start.md` and its validation receipt.
+
+This is a starting-state assembly checkpoint, not a complete playable campaign.
+It remains separate from character drafts, ship checkpoints and the live UI.
+No new emulator observation or original-seed replay is claimed. Next: remaining
+ship resources/modes and location-copy semantics, campaign save validation, then
+character-to-ship integration. The user PRD remains unchanged and untracked.
+
 ## R04e — City economy initialization and refresh — 2026-09-28
 
 Added named templates and city memberships, nine colony demand recipes, pure

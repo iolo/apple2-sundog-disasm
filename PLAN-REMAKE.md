@@ -275,6 +275,14 @@ foundations; colony transactions and gameplay integration remain pending. Next:
 remaining global/location fields, seed lifecycle and campaign assembly, then
 engineering and ship exits. See `docs/remake/economy-initialization.md`.
 
+Checkpoint R04f (2026-09-28) combines the verified primitives into a deterministic
+starting-state constructor with an explicit browser recipe. It distinguishes
+saved gameplay RNG from utility generation state, adds starting cash and named
+player/ship locations, and validates independent replay. This is not yet a complete
+campaign save or live New Game action. Next: remaining ship resources/modes and
+location-copy semantics, campaign save validation and character-to-ship integration.
+See `docs/remake/campaign-start.md` for source offsets and adaptation choices.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

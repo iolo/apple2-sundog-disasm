@@ -82,6 +82,13 @@ No function constructs a complete campaign yet; caller-supplied seed/baseline
 lifecycle and first orbital comparison boundary remain explicit. See
 `initialization.md`. Existing drafts/checkpoints receive no new fields.
 
+R04f now combines the R04d/e primitives in a `sundog-campaign-start` creation
+object, with an explicit seed/recipe, saved gameplay RNG, generation tail, cash,
+character, inventory/condition and named player/ship locations. It is not a save
+codec and remains separate from all live UI and stored schemas. Remaining ship
+resources, modes and other location-copy semantics still gate campaign persistence.
+See `campaign-start.md` for generation order and browser adaptation choices.
+
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
 
