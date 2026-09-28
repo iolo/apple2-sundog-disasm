@@ -1,7 +1,8 @@
 # SunDog web remake
 
 Current milestone: a source-backed ship walkthrough with carried-item/locker/store
-transfers, condition/survival, food/rapidheal use, sleep, bilingual character allocation with four saved draft slots, and a preview
+transfers, condition/survival, food/rapidheal use, sleep, four ship checkpoints,
+bilingual character allocation with four saved draft slots, and a preview
 of 60 cities and 18 worlds. Campaign initialization, other ship systems
 and campaign saves remain pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
@@ -31,7 +32,7 @@ and help are available in both languages; leaving the window pauses movement.
 The walkthrough uses the original collision mask and movement attempts, with a
 browser-specific 50 ms cadence. Visible play advances one game minute per real
 second, including idle time; hunger and fatigue update hourly. Position and time
-last until reload.
+last until reload unless explicitly saved.
 See `../docs/remake/ship-movement.md`.
 
 Open **Inventory** (or press I/Enter with the ship focused) for four carried slots.
@@ -44,10 +45,20 @@ Both consume one item even when already full. Choose **Sleep** to recover rest
 while game time passes faster; food still depletes. Pause/Resume stops sleep,
 and Wake up or Escape returns to inventory. Exhaustion forces sleep until rest
 exceeds128. At zero vigor the walkthrough ends, with an explicit restart action.
-Inventory, help and lost focus pause normal time. State lasts until reload;
+Inventory, help and lost focus pause normal time. Save explicitly before reload;
 **Return to start** moves the player without resetting items. See
 `../docs/remake/inventory.md`, `../docs/remake/condition.md` and
 `../docs/remake/survival.md` for rules, source evidence and timing adaptations.
+
+Choose **Saves** while awake to save, load or delete one of four ship checkpoints.
+Checkpoints preserve position, carried items, locker/stores, condition and game
+time. Load resumes paused; close Saves and choose Resume. The end-of-walkthrough
+dialog also offers Saves to recover a living checkpoint. Sleep cannot be saved.
+JSON export backs up the current state; import restores it without automatically
+writing a slot. Browser slots are tied to the current origin/profile. Invalid
+files and stale-tab changes are rejected. These are ship walkthrough saves;
+character drafts and future campaign saves remain separate. See
+`../docs/remake/checkpoints.md`.
 
 Choose **Create a character** to enter a name and spend the original 440-point
 attribute budget. Each + button shows its next cost; − refunds the previous

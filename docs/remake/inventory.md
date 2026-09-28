@@ -1,5 +1,9 @@
 # Carried items and ship storage — R05b
 
+R04c update: explicit [ship checkpoints](checkpoints.md) now preserve this
+walkthrough state across reload. Earlier ephemeral-state descriptions below
+record the original implementation step; campaign persistence remains pending.
+
 Later checkpoints add [consumption](condition.md) and [survival/sleep](survival.md).
 
 This checkpoint implements inventory transfers inside the ship walkthrough.

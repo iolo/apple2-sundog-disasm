@@ -1,5 +1,9 @@
 # Landed ship survival and sleep — R05d
 
+R04c update: explicit [ship checkpoints](checkpoints.md) now preserve this
+walkthrough state across reload. Earlier ephemeral-state descriptions below
+record the original implementation step; campaign persistence remains pending.
+
 The walkthrough now advances a game clock, updates personal condition hourly,
 and offers Sleep from inventory. Food restores naturally depleted nourishment.
 This remains an isolated landed ship scene: no machinery, campaign events,

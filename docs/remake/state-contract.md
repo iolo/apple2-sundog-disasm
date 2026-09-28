@@ -1,4 +1,4 @@
-# State boundaries — R01a / R04a / R05a / R05b / R05c / R05d
+# State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
@@ -62,6 +62,15 @@ The clock begins at day0 00:00, matching the independent clean capture. All of
 this state remains ephemeral; character draft schemas are unchanged. Temporary
 attribute recovery, ship machinery and outdoor events are not yet instantiated.
 See `survival.md` for rates, source offsets and remaining campaign boundaries.
+
+R04c supersedes the earlier reload-only lifetime with explicit ship checkpoints.
+The independent `sundog-ship-checkpoint` version1 format persists position, all
+44 inventory bytes, four condition bytes and whole elapsed minutes. Only awake,
+living snapshots are accepted. Load is atomic, clears transient input/time phases,
+and resumes paused. No automatic restore occurs on reload. The four indexed slots
+use transactional stale-record checks before replacement/deletion. Invalid imports
+leave live and stored states unchanged. See `checkpoints.md` for validation and
+scope; this does not instantiate the campaign schema above.
 
 Visual thesis: a dark shipboard display, ivory vector silhouettes and one amber
 selection accent, preserving SunDog's spare Apple II composition.
