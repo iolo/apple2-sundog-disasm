@@ -1,14 +1,15 @@
-import { ATTRIBUTES, createCharacter, adjustAttribute, increaseCost, minimum, pointsLeft } from '../core/character.js';
+import { ATTRIBUTES, createCharacter, adjustAttribute, increaseCost, minimum, pointsLeft, validateCharacter } from '../core/character.js';
 import { openDraftStore, makeDraft, validateDraft, parseDraft } from '../core/drafts.js';
 
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-export function characterScreen({ stage, background, t, language, close }) {
+export function characterScreen({ stage, background, t, language, close, start }) {
   const root = document.createElement('section');
   root.id = 'character-screen'; root.hidden = true;
   stage.append(root);
   let character = createCharacter(), tab = 'character', slots = [], store, busy = false, message = '', open = false;
-  const showError = error => { message = ['invalidName', 'invalidDraft', 'duplicateName'].includes(error.message) ? error.message : 'storageUnavailable'; };
+  let seed='';
+  const showError = error => { message = ['invalidName', 'invalidDraft', 'duplicateName','invalidSeed','campaignCreateFailed'].includes(error.message) ? error.message : 'storageUnavailable'; };
   function render() {
     if (!open) return;
     const focus = document.activeElement?.id;
@@ -20,7 +21,8 @@ export function characterScreen({ stage, background, t, language, close }) {
         const value = character.attributes[key];
         return `<div class="attribute-row"><span>${t(key)}</span><span class="attribute-cost">${t('pointCost', { cost: increaseCost(value + 1) })}</span><button id="minus-${key}" data-do="adjust" data-key="${key}" data-delta="-1" aria-label="${t('decrease', { attribute: t(key) })}" ${value === minimum(key) ? 'disabled' : ''}>−</button><output id="value-${key}">${value}</output><button id="plus-${key}" data-do="adjust" data-key="${key}" data-delta="1" aria-label="${t('increase', { attribute: t(key) })}" ${increaseCost(value + 1) > left ? 'disabled' : ''}>+</button></div>`;
       }).join('')}</div><p id="points-left">${t('pointsLeft', { points: left })}</p></div>
-      <div class="draft-actions"><button id="reset-character" data-do="reset">${t('resetCharacter')}</button><button id="show-drafts" class="primary" data-do="drafts">${t('draftSlots')} →</button></div>`
+      <div class="draft-actions"><button id="reset-character" data-do="reset">${t('resetCharacter')}</button><button id="show-drafts" data-do="drafts">${t('draftSlots')}</button><button id="prepare-campaign" class="primary" data-do="prepare">${t('boardShip')} →</button></div>`
+        : tab === 'launch' ? `<div class="launch-form enter"><h2>${escape(character.name)}</h2><p>${t('campaignLaunchScope')}</p><label for="campaign-seed">${t('campaignSeed')}</label><input id="campaign-seed" inputmode="numeric" type="text" maxlength="10" value="${escape(seed)}" aria-describedby="seed-hint"><p id="seed-hint">${t('campaignSeedHint')}</p><p>${t('campaignSaveReminder')}</p></div><div class="draft-actions"><button id="edit-character" data-do="edit">← ${t('editCharacter')}</button><button id="start-campaign" class="primary" data-do="start">${t('boardShip')} →</button></div>`
         : `<div class="draft-list">${[0, 1, 2, 3].map(slot => {
           const raw = slots.find(value => value.slot === slot);
           let draft;
@@ -32,6 +34,7 @@ export function characterScreen({ stage, background, t, language, close }) {
   }
   root.addEventListener('input', event => {
     if (event.target.id === 'character-name') character = { ...character, name: event.target.value };
+    if (event.target.id === 'campaign-seed') seed=event.target.value;
   });
   root.addEventListener('click', async event => {
     const button = event.target.closest('[data-do]');
@@ -41,6 +44,12 @@ export function characterScreen({ stage, background, t, language, close }) {
     try {
       if (action === 'close') { api.hide(); close(); return; }
       if (action === 'language') { language(); return; }
+      if (action === 'prepare') {character=validateCharacter(character);tab='launch'}
+      if (action === 'start') {
+        character=validateCharacter(character);
+        if(pointsLeft(character)>0 && !confirm(t('unspentConfirm',{points:pointsLeft(character)})))return;
+        start(character,seed);
+      }
       if (action === 'adjust') character = adjustAttribute(character, button.dataset.key, Number(button.dataset.delta));
       if (action === 'reset' && confirm(t('resetConfirm'))) character = createCharacter();
       if (action === 'drafts') { tab = 'drafts'; if (store) slots = await store.list(); }
@@ -67,6 +76,7 @@ export function characterScreen({ stage, background, t, language, close }) {
     render();
     if (action === 'drafts') document.querySelector('#edit-character')?.focus();
     if (action === 'edit' || action === 'load') document.querySelector('#character-name')?.focus();
+    if (action === 'prepare') document.querySelector('#campaign-seed')?.focus();
   });
   root.addEventListener('change', async event => {
     if (event.target.id !== 'draft-file') return;
@@ -84,7 +94,7 @@ export function characterScreen({ stage, background, t, language, close }) {
     get active() { return open; },
     async show() {
       open = true; root.hidden = false; background.inert = true; render();
-      document.querySelector('#character-name')?.focus();
+      root.querySelector(tab==='character' ? '#character-name' : tab==='launch' ? '#campaign-seed' : '#edit-character')?.focus();
       if (!store) {
         try { store = await openDraftStore(); slots = await store.list(); }
         catch (error) { store?.close(); store = undefined; showError(error); }

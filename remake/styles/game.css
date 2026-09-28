@@ -26,7 +26,8 @@ h1,h2,p{margin:0}
 .hero h1{font-size:66px;font-weight:normal;letter-spacing:-2px;line-height:1}
 .hero .subtitle{color:var(--amber);font-size:18px;margin-top:8px;letter-spacing:3px}
 .hero p{margin-top:24px;width:202px;font-size:16px;line-height:1.6;color:#b8bdab;word-break:keep-all}
-.hero-actions{position:absolute;left:32px;top:318px;display:flex;align-items:flex-start;flex-direction:column;gap:4px}
+.hero-actions{position:absolute;left:32px;top:298px;display:flex;align-items:flex-start;flex-direction:column;gap:0}
+.hero-actions #explore{font-size:14px;min-height:30px;padding:6px 12px}
 .bottomline button{font:inherit;padding:0;min-height:0;color:inherit}
 .bottomline{position:absolute;left:32px;right:32px;bottom:22px;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
 .scene-heading{position:absolute;left:32px;top:81px;right:32px;display:flex;align-items:start;justify-content:space-between}
@@ -66,7 +67,7 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   .selection{max-width:330px}
   select{max-width:150px;font-size:20px}
   .hero p{font-size:20px;width:250px;line-height:1.3;margin-top:20px}
-  .hero-actions{top:314px;gap:0}
+  .hero-actions{top:298px;gap:0}
   #create-character{font-size:20px;min-height:40px}
   button.primary{font-size:23px}
   button.quiet{font-size:20px}
@@ -92,6 +93,13 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .draft-actions{position:absolute;bottom:16px;left:32px;right:32px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px}
 .draft-actions button{font-size:17px}
 #character-message{position:absolute;left:40px;right:40px;top:375px;color:var(--amber);font-size:12px;line-height:1.3}
+.launch-form{position:absolute;left:40px;right:40px;top:112px;font-size:16px;line-height:1.45}
+.launch-form h2{font-size:26px;font-weight:normal;margin-bottom:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.launch-form p{margin-bottom:14px;color:var(--muted)}
+.launch-form label{display:block;margin-bottom:6px}
+#campaign-seed{width:230px;background:#080b09;border:1px solid var(--line);padding:7px 10px;font:inherit;color:var(--paper)}
+#campaign-seed:focus-visible{outline:2px solid var(--amber)}
+#seed-hint{font-size:13px;margin-top:8px}
 .draft-list{position:absolute;left:32px;right:32px;top:119px}
 .draft-row{display:flex;align-items:center;gap:12px;height:60px;border-bottom:1px solid var(--line)}
 .slot-number{color:var(--muted);font-size:14px}

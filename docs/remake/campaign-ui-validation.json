@@ -1,0 +1,282 @@
+{
+  "date": "2026-09-28",
+  "browserExecutable": "/opt/google/chrome/google-chrome",
+  "browser": "154.0.8037.57",
+  "result": "pass",
+  "tests": [
+    "PASS Reverse navigation wraps and clears a previous selection",
+    "PASS Scene changes retain independent record indices",
+    "PASS Scaled, letterboxed pointer coordinates and boundary rejection",
+    "PASS Actions cannot mutate another preview instance",
+    "PASS Both locales have identical keys and interpolation parameters",
+    "PASS Missing locale value falls back; unknown keys fail",
+    "PASS Original defaults and independent marginal-cost boundaries",
+    "PASS Exactly 440 points buys strength 100; another point is rejected",
+    "PASS Luck reaches 98 for 438 points; reducing across all tiers refunds exactly",
+    "PASS Actions preserve the prior character and reject unknown attributes",
+    "PASS Name normalization, Korean graphemes, limits and unsafe text",
+    "PASS Draft imports reject malformed/future/campaign/overspent data",
+    "PASS Four IndexedDB slots persist after reopening; duplicate write aborts atomically",
+    "PASS Fresh-game spawn and exact player-mask extents",
+    "PASS MAME endpoint: (50,99) toward pointer (3,81) stops at (47,93)",
+    "PASS Pointer centering settles exactly without oscillation or mutating input",
+    "PASS Native interaction-cell boundaries and landed exit guard",
+    "PASS Fixed movement cadence, release, pause and bounded catch-up",
+    "PASS All 1784 connected ship positions stay clear across input directions",
+    "PASS Four carried slots and twenty per container match clean initialization",
+    "PASS Store pickup, occupied-slot swap and locker deposit conserve complete bytes",
+    "PASS Remote containers, empty sources and invalid slot references cannot mutate items",
+    "PASS All occupied inventory transfers conserve slots and charges, including full pockets",
+    "PASS Both storage interaction regions are reachable through the original collision rule",
+    "PASS Item labels decode charged shields without treating upper bits as separate types",
+    "PASS Fresh condition matches source defaults and original 32-segment meter rounding",
+    "PASS Food restores only nourishment and consumes exactly one carried item",
+    "PASS Rapidheal restores only health, preserving other carried and stored items",
+    "PASS Every byte-range starting value clamps recovery and consumes even when full",
+    "PASS Unsupported items, bad slots and invalid condition never consume anything",
+    "PASS Hour boundary drains rest/nourishment and adjusts vigor from updated values",
+    "PASS Source drain bands, health recovery threshold and low-condition penalties",
+    "PASS Sleep restores every two iterations while its ship clock advances every four",
+    "PASS Exhaustion forces sleep until rest exceeds 128; zero vigor ends simulation",
+    "PASS Clock is frame-rate independent, pauses without catch-up and crosses midnight",
+    "PASS Ship checkpoint roundtrip copies all state and preserves encoded items",
+    "PASS Ship checkpoint imports reject malformed, foreign and future envelopes",
+    "PASS Unsafe positions, terminal conditions and invalid inventory never load",
+    "PASS Four checkpoint slots survive reopening and failed writes preserve records",
+    "PASS Stale-tab saves and deletes abort atomically instead of overwriting newer slots",
+    "PASS Native RNG matches 112 sim65 transitions including result byte order and zero states",
+    "PASS Equipment initialization reproduces all six observed records with explicit compatible draws",
+    "PASS Damage preserves Pascal low-bit booleans, eager draws, spare protection and totals",
+    "PASS System initialization resets bank balances, pins Woremed and keeps independent defaults",
+    "PASS Hull generation consumes exactly one draw, preserves all four outcomes and rejects invalid draws",
+    "PASS Orbit rejection uses explicit previous angle and linear distance, with bounded failure",
+    "PASS 1000 seeded initializations converge with source bounds, spacing and isolated replay",
+    "PASS Initial markets reproduce 58 captured records without phase/scratch records",
+    "PASS Cryogen placement preserves source cursor arithmetic, wrapping and occupied retries",
+    "PASS First market visit draws supply then demand for 30 goods; day zero is initialized",
+    "PASS Weekly refill caps both tables, leaves cryogens alone and discards partial weeks",
+    "PASS Invalid economy inputs and failed draws leave caller state intact",
+    "PASS 1000 seeded economies replay with 17 distinct cargo origins and independent state",
+    "PASS Campaign creation keeps saved gameplay RNG separate from generation and follows utility order",
+    "PASS Campaign start links generated orbit to both captured starting locations and preserves character",
+    "PASS Campaign creation is atomic, validates input and isolates content, characters and location copies",
+    "PASS 100 campaign starts replay independently of prior creations and remain JSON serializable",
+    "PASS Campaign saves preserve the full creation record and active ship progress independently",
+    "PASS Campaign imports reject stale recipes, altered generation and unsupported progress",
+    "PASS Campaign codec owns its baseline and failed validation cannot replace the active session",
+    "PASS Four campaign slots reopen and reject stale writes without affecting other slots",
+    "PASS Explicit campaign seeds accept unsigned decimal values without drawing entropy",
+    "PASS Blank seeds use private entropy, skip degenerate states and fail boundedly"
+  ],
+  "campaign": {
+    "browser": "154.0.8037.57",
+    "passed": 45,
+    "checks": [
+      "Title opens load-only campaign slots without creating a character",
+      "Closing empty saved games returns to title",
+      "Boarding validates the character before leaving the editor",
+      "Invalid seed leaves character and session unchanged",
+      "Unspent-points cancellation preserves the boarding form",
+      "en boarding controls fit 640x480",
+      "Seed survives resize and locale change",
+      "en boarding controls fit 1280x720",
+      "Seed survives resize and locale change",
+      "en boarding controls fit 390x844",
+      "Seed survives resize and locale change",
+      "ko boarding controls fit 640x480",
+      "Seed survives resize and locale change",
+      "ko boarding controls fit 1280x720",
+      "Seed survives resize and locale change",
+      "ko boarding controls fit 390x844",
+      "Seed survives resize and locale change",
+      "Boarding creates the requested campaign and starts paused",
+      "Campaign cannot use walkthrough position reset",
+      "Character name is displayed as text, not markup",
+      "Ship opens campaign saves",
+      "Four campaign slots save through the UI",
+      "Campaign exports with its own filename",
+      "Campaign save panel pauses the clock",
+      "en campaign slots fit 640x480",
+      "en campaign slots fit 1280x720",
+      "en campaign slots fit 390x844",
+      "ko campaign slots fit 640x480",
+      "ko campaign slots fit 1280x720",
+      "ko campaign slots fit 390x844",
+      "Title offers the in-memory campaign",
+      "Preview walkthrough owns a separate position",
+      "Walkthrough checkpoint database remains separate",
+      "Returning from preview preserves campaign progress",
+      "Fresh page does not silently restore a session",
+      "Fresh page restores campaign identity, position and time paused",
+      "Charged carried item survives campaign reload",
+      "Condition survives campaign reload",
+      "Foreign import is rejected without replacing live progress",
+      "Exported campaign imports through the UI",
+      "Campaign deletion affects only the selected slot",
+      "Campaign saves work offline",
+      "Cancelling replacement keeps the active campaign",
+      "Cancelled creation did not change the active seed",
+      "No browser errors: "
+    ]
+  },
+  "recovery": {
+    "browser": "154.0.8037.57",
+    "passed": 14,
+    "checks": [
+      "Blank seed produces an explicit usable saved world seed",
+      "Reopening the boarding form restores keyboard focus",
+      "Campaign exhaustion forces sleep",
+      "Campaign save controls cannot be used while sleeping",
+      "Escape cannot bypass forced campaign sleep",
+      "Waking pauses the campaign",
+      "Ended campaign offers return and saved games, not a walkthrough reset",
+      "Terminal campaign cannot overwrite a living save",
+      "Living campaign reload clears terminal state and resumes paused",
+      "Campaign storage failure is reported",
+      "Imported campaign remains exportable when browser storage is blocked",
+      "Storage retry preserves the imported campaign",
+      "Storage failure does not prevent resuming an imported campaign",
+      "No campaign edge errors: "
+    ]
+  },
+  "boardingVisual": {
+    "passed": 6,
+    "checks": [
+      "en boarding entrance reaches full opacity at 640x480 with normal browser time",
+      "en boarding entrance reaches full opacity at 1280x720 with normal browser time",
+      "en boarding entrance reaches full opacity at 390x844 with normal browser time",
+      "ko boarding entrance reaches full opacity at 640x480 with normal browser time",
+      "ko boarding entrance reaches full opacity at 1280x720 with normal browser time",
+      "ko boarding entrance reaches full opacity at 390x844 with normal browser time"
+    ]
+  },
+  "regressions": {
+    "title": {
+      "checks": [
+        "en/1280 title content and actions separated",
+        "en/390 title content and actions separated",
+        "ko/1280 title content and actions separated",
+        "ko/390 title content and actions separated"
+      ],
+      "aboutFocus": true
+    },
+    "character": {
+      "browser": "154.0.8037.57",
+      "checks": [
+        "63 browser rule/localization/storage tests",
+        "Initial budget 440",
+        "Minimum controls disabled",
+        "Full budget reaches strength 100",
+        "Refund at upper tier",
+        "Locale change preserves character",
+        "en character layout 640x480",
+        "en character layout 1280x720",
+        "en character layout 390x844",
+        "ko character layout 640x480",
+        "ko character layout 1280x720",
+        "ko character layout 390x844",
+        "Exactly four draft slots",
+        "JSON export download",
+        "Draft survives reload and restores exact allocation",
+        "Cancelled overwrite preserves saved draft",
+        "Duplicate save leaves empty slot intact",
+        "Reset restores attributes",
+        "Export/import roundtrip",
+        "Invalid import preserves editor",
+        "Imported/user names render as text",
+        "IME composition Escape does not close editor",
+        "Escape closes editor and restores focus",
+        "Storage failure retains export and disables saving",
+        "No page errors: "
+      ],
+      "passed": 25
+    },
+    "checkpoint": {
+      "browser": "154.0.8037.57",
+      "passed": 27,
+      "checks": [
+        "Four separate ship checkpoint slots",
+        "All four slots save independently",
+        "Validated checkpoint exports as JSON",
+        "Checkpoint dialog pauses elapsed time",
+        "Checkpoint dialog traps keyboard focus",
+        "en checkpoint layout fits 640x480",
+        "en checkpoint layout fits 1280x720",
+        "en checkpoint layout fits 390x844",
+        "ko checkpoint layout fits 640x480",
+        "ko checkpoint layout fits 1280x720",
+        "ko checkpoint layout fits 390x844",
+        "Cancelled delete preserves slot",
+        "Delete affects only selected slot",
+        "Closing restores Saves focus",
+        "Cancelled overwrite preserves original position",
+        "Fresh page restores position/time and stays paused",
+        "Charged carried item survives saved checkpoint",
+        "Depleted condition survives saved checkpoint",
+        "Import restores live state without writing a slot",
+        "Foreign import reports validation failure and preserves state",
+        "Stale tab cannot overwrite newer checkpoint",
+        "Conflict refresh exposes the newer saved state",
+        "Checkpoint storage works offline",
+        "Blocked storage keeps import/export available",
+        "Storage retry reports failure without losing live state",
+        "Import restores state with browser storage unavailable",
+        "No browser errors: "
+      ]
+    }
+  },
+  "exportTests": 11,
+  "generatedArtifacts": 122,
+  "classifiedSourceStrings": 584,
+  "originalInputHashes": "verified",
+  "screenshots": [
+    {
+      "path": "output/playwright/remake/boarding-en-1280.png",
+      "sha256": "dc75273aeda8c9a2d220b1bfd7b63518ee3df8e60d10241c405e00cfc5845e91"
+    },
+    {
+      "path": "output/playwright/remake/boarding-en-390.png",
+      "sha256": "c7c8fa6d0de016a24a3dd3f4b0f9da9e9ae3fc132ddb25e758ff837bf4818980"
+    },
+    {
+      "path": "output/playwright/remake/boarding-en-640.png",
+      "sha256": "06dc129dec4f7c468e6f6bb0df1da5a8610fca5f20a45ef551bee203163cbb85"
+    },
+    {
+      "path": "output/playwright/remake/boarding-ko-1280.png",
+      "sha256": "876e238700f23e6ab232cda12992d8a99835dec2a05ca854a06af68eb159098a"
+    },
+    {
+      "path": "output/playwright/remake/boarding-ko-390.png",
+      "sha256": "b0970d1a2a9f10d187170d703266e8c9fd1f091f8017f7bba995f64eeaceb085"
+    },
+    {
+      "path": "output/playwright/remake/boarding-ko-640.png",
+      "sha256": "aa81a36f791847eb9c0fa97f1176af5f6de90c17738a588450652f3734c3f1ad"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-en-1280.png",
+      "sha256": "49dc02e0aa0b01ade9a223fb15415ce174fd0b10b70b30e334e727b9d38369f3"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-en-390.png",
+      "sha256": "d1041e35c398358d4c3d072d480b3414f69102c32e74b613999e494d99c4f933"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-en-640.png",
+      "sha256": "44020a2c5c37501b6f332d158d73a303fd5ab4089319618faa111cdc4fbec379"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-ko-1280.png",
+      "sha256": "253697a429bd9caf923a994f9f4a4ce63a89f9cadec5b83eca642095177cb945"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-ko-390.png",
+      "sha256": "70ab64a1291ccfd3e44767015b7d9a5f46f451894aec5b1172711d5e606efce3"
+    },
+    {
+      "path": "output/playwright/remake/campaign-saves-ko-640.png",
+      "sha256": "55975d40f77fae88700c91930f41e0f715fd5986c3bfa6acd9b8cc3ab292b464"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ import { drawScene, MAP_BOUNDS, SHIP_BOUNDS } from './render/scene.js';
 import { readLocale, saveLocale, translator } from './ui/i18n.js';
 import { characterScreen } from './ui/character.js';
 import { shipWalkScreen } from './ui/ship-walk.js';
+import { campaignSaveCodec } from './core/campaign-saves.js';
+import { campaignSeed } from './core/campaign-seed.js';
 
 const viewport = document.querySelector('#viewport');
 const stage = document.querySelector('#stage');
@@ -12,11 +14,18 @@ const ui = document.querySelector('#interface');
 const announcement = document.querySelector('#announcement');
 let state = createPreview(), locale = readLocale(), assets, scale = 1, help = false;
 let returnFocus = null;
-let counts, walker;
+let counts, walker, campaignCodec;
 const t = (key, parameters) => translator(assets.locales, locale)(key, parameters);
 const creator = characterScreen({ stage, background: ui, t,
   language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
   close: () => document.querySelector('#create-character')?.focus(),
+  start: (character,seedText) => {
+    let next;
+    try {next=campaignCodec.create(character,campaignSeed(seedText))}
+    catch(error) {throw new Error(error.message==='invalidSeed' ? 'invalidSeed' : 'campaignCreateFailed')}
+    if(walker.hasCampaign && !confirm(t('replaceActiveCampaign')))return;
+    creator.hide();walker.showCampaign(next);render();
+  },
 });
 
 function resize() {
@@ -42,8 +51,9 @@ function render() {
   if (state.view === 'title') {
     ui.innerHTML = `<header class="topline"><span class="edition">${t('edition')}</span>${language}</header>
       <section class="hero enter"><h1>SunDog</h1><div class="subtitle">${t('subtitle')}</div><p>${t('intro')}</p></section>
-      <div class="hero-actions"><button id="explore" class="primary" data-action="view" data-view="ship">${t('explore')} ↗</button>
-      <button id="create-character" data-action="character">${t('createCharacter')} →</button></div>${footer}`;
+      <div class="hero-actions"><button id="create-character" class="primary" data-action="character">${t('createCharacter')} →</button>
+      <div>${walker?.hasCampaign ? `<button id="resume-campaign" data-action="resume-campaign">${t('resumeCampaign')}</button>` : ''}<button id="campaign-saves" data-action="campaign-saves">${t('campaignTitle')}</button></div>
+      <button id="explore" data-action="view" data-view="ship">${t('explore')} ↗</button></div>${footer}`;
   } else {
     ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
       <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
@@ -91,6 +101,8 @@ ui.addEventListener('click', event => {
   const action = button.dataset.action;
   if (action === 'character') { creator.show(); return; }
   if (action === 'walk') { walker.show(); return; }
+  if (action === 'resume-campaign') {walker.showCampaign();return}
+  if (action === 'campaign-saves') {walker.showCampaignSaves();return}
   if (action === 'language') {
     locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render();
   } else if (action === 'help') {
@@ -156,13 +168,14 @@ window.addEventListener('resize', resize);
 resize();
 try {
   assets = await loadAssets();
+  campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk);
   walker = shipWalkScreen({ stage, background: ui, assets, t,
     language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
-    close: () => document.querySelector('#begin-walk')?.focus(),
+    close: () => {render();document.querySelector(state.view==='title' ? (walker.hasCampaign ? '#resume-campaign' : '#campaign-saves') : '#begin-walk')?.focus()},
   });
   counts = { ship: 2, cities: assets.maps.cities.length, worlds: assets.maps.worlds.length };
   render();
-  document.querySelector('#explore').focus({ preventScroll: true });
+  document.querySelector('#create-character').focus({ preventScroll: true });
   document.documentElement.dataset.ready = 'true';
 } catch (error) {
   console.error(error);

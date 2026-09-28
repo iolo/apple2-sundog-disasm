@@ -1,10 +1,15 @@
 import { CHECKPOINT_LIMIT, openCheckpointStore } from '../core/checkpoints.js';
+import { escapeHTML } from './html.js';
 
-export function checkpointScreen({ stage, background, codec, t, language, snapshot, restore, close }) {
+export function checkpointScreen({ stage, background, codec, t, language, snapshot, restore, close,
+  openStore=()=>openCheckpointStore(codec), storeKey=()=> 'checkpoints',
+  limit=()=>CHECKPOINT_LIMIT, filename=()=> 'sundog-ship-checkpoint.json', describe }) {
   const root = document.createElement('section'); root.id = 'checkpoint-screen'; root.hidden = true; root.tabIndex = -1; stage.append(root);
   let open = false, busy = false, store, slots = [], message = '';
+  let key=storeKey();
   const current = () => { try { return snapshot(); } catch { return null; } };
-  const errorMessage = error => ['invalidCheckpoint', 'checkpointChanged'].includes(error.message) ? error.message : 'checkpointStorageUnavailable';
+  const errorMessage = error => ({invalidCampaign:'invalidCheckpoint',campaignChanged:'checkpointChanged'})[error.message] ||
+    (['invalidCheckpoint', 'checkpointChanged'].includes(error.message) ? error.message : 'checkpointStorageUnavailable');
   function render() {
     if (!open) return;
     const focus = document.activeElement?.id, canSave = !!current();
@@ -12,14 +17,14 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
       <p class="checkpoint-note">${t('checkpointScope')}</p><div class="checkpoint-list">${[0,1,2,3].map(slot => {
         const raw = slots.find(item => item.slot === slot); let value;
         try { if (raw) value = codec.validate(raw); } catch { /* Preserve unreadable records until explicit replacement/deletion. */ }
-        const summary = value ? t('checkpointSummary', { hours:Math.floor(value.state.minutes / 60), minute:String(value.state.minutes % 60).padStart(2,'0'), x:value.state.position.x, y:value.state.position.y }) : t(raw ? 'unreadableCheckpoint' : 'emptySlot');
+        const summary = escapeHTML(value ? (describe ? describe(value) : t('checkpointSummary', { hours:Math.floor(value.state.minutes / 60), minute:String(value.state.minutes % 60).padStart(2,'0'), x:value.state.position.x, y:value.state.position.y })) : t(raw ? 'unreadableCheckpoint' : 'emptySlot'));
         return `<div class="checkpoint-row"><span class="slot-number">0${slot+1}</span><span class="checkpoint-summary">${summary}</span><button id="load-checkpoint-${slot}" data-checkpoint="load" data-slot="${slot}" ${!value || busy ? 'disabled' : ''}>${t('loadDraft')}</button><button id="save-checkpoint-${slot}" data-checkpoint="save" data-slot="${slot}" ${!store || !canSave || busy ? 'disabled' : ''}>${t('saveDraft')}</button><button id="delete-checkpoint-${slot}" data-checkpoint="delete" data-slot="${slot}" aria-label="${t('deleteCheckpoint', { slot:slot+1 })}" ${!store || !raw || busy ? 'disabled' : ''}>×</button></div>`;
       }).join('')}</div><p id="checkpoint-message" role="status">${t(message || (canSave ? 'checkpointHint' : 'checkpointLoadOnly'))}</p>
       <footer class="checkpoint-actions"><button id="import-checkpoint" data-checkpoint="import" ${busy ? 'disabled' : ''}>${t('importDraft')}</button><button id="export-checkpoint" data-checkpoint="export" ${!canSave || busy ? 'disabled' : ''}>${t('exportDraft')}</button>${!store ? `<button id="retry-checkpoints" data-checkpoint="retry" ${busy ? 'disabled' : ''}>${t('checkpointRetry')}</button>` : ''}<input id="checkpoint-file" type="file" accept="application/json,.json" hidden></footer>`;
     (root.querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector('button:not(:disabled)') || root).focus({ preventScroll:true });
   }
   async function refresh() {
-    if (!store) store = await openCheckpointStore(codec);
+    if (!store) store = await openStore();
     slots = await store.list();
   }
   function hide() { if (busy) return; open = false; root.hidden = true; background.inert = false; close(); }
@@ -72,7 +77,7 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
       }
       if (action === 'export') {
         const value = codec.make(snapshot(), 0), url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)+'\n'], { type:'application/json' }));
-        const link = document.createElement('a'); link.href = url; link.download = 'sundog-ship-checkpoint.json'; link.click();
+        const link = document.createElement('a'); link.href = url; link.download = filename(); link.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000); message = 'checkpointExported';
       }
     });
@@ -81,7 +86,7 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
     if (event.target.id !== 'checkpoint-file') return;
     const file = event.target.files?.[0]; if (!file) return;
     void perform(async () => {
-      if (file.size > CHECKPOINT_LIMIT) throw new Error('invalidCheckpoint');
+      if (file.size > limit()) throw new Error('invalidCheckpoint');
       const value = codec.parse(await file.text());
       if (confirm(t('loadCheckpointConfirm'))) { restore(value.state); message = 'checkpointImported'; }
     });
@@ -89,6 +94,7 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
   return {
     get active() { return open; }, render,
     async show() {
+      if (key!==storeKey()) {store?.close();store=undefined;slots=[];key=storeKey()}
       open = true; root.hidden = false; root.setAttribute('role','dialog'); root.setAttribute('aria-modal','true'); root.setAttribute('aria-labelledby','checkpoint-title');
       background.inert = true; message = ''; render();
       await perform(refresh);
