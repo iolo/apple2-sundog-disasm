@@ -300,6 +300,14 @@ state/save scope before allowing resource mutation, then implement ship exits.
 Travel, trade and colony progression remain later milestones. See
 `docs/remake/campaign-ui.md` and `campaign-ui-validation.md`.
 
+Checkpoint R05e (2026-09-29) exposes equipment inspection at all six engineering
+bays, with source-mapped three-system frame cycling, installed/spare component
+identification and performance readings. Campaign creation data remains immutable;
+inspection leaves the existing save scope unchanged. Next: trace complete component
+transfer/recalculation and timing rules, add active equipment and save validation,
+then enable replacement. Ship exits and the later city/trade milestones remain
+pending. See `docs/remake/engineering.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

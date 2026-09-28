@@ -40,7 +40,8 @@ play. English and Korean cover the new flow and its validation messages.
 The save remains `sundog-campaign` version1, scope `landed-ship-1`:
 immutable creation record plus active ship position, inventory, condition and
 whole elapsed minutes. Generated equipment, resources, markets and navigation
-are retained but have no new gameplay actions here. Ship machinery, exits, travel,
+are retained. R05e adds [engineering inspection](engineering.md) of the six equipment
+groups at their ship locations. Machinery changes, exits, travel,
 trade, encounters and colony progression require further rules and an explicit
 state/schema extension. No new original-emulator behavior observation is claimed.
 
