@@ -7,7 +7,7 @@ import { checkpointCodec, openCheckpointStore, CHECKPOINT_LIMIT } from '../core/
 import { campaignSaveCodec, openCampaignStore, CAMPAIGN_LIMIT } from '../core/campaign-saves.js';
 import { checkpointScreen } from './checkpoints.js';
 import { escapeHTML } from './html.js';
-import { equipmentBayAt, inspectEquipment } from '../core/equipment.js';
+import { equipmentBayAt, inspectEquipment, exchangeEquipment } from '../core/equipment.js';
 import { equipmentPanel } from './equipment.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
@@ -18,7 +18,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let condition = createCondition(assets.shipInventory.condition);
   let survival = createSurvival(condition);
   let campaignMode=false, campaignStart=null;
+  let campaignEquipment=null;
   let equipmentOpen=false, equipmentOffset=0, equipmentSelected=null;
+  let equipmentMoving=false, equipmentMessage='';
   const sessions=new Map();
   const campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk);
   const campaignKeys = Object.fromEntries(['checkpointTitle','checkpointScope','checkpointHint','checkpointLoadOnly',
@@ -50,13 +52,13 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       if (survival.sleeping || survival.forced || survival.dead) throw new Error('invalidCheckpoint');
       if(campaignMode) {
         if(!campaignStart)throw new Error('invalidCampaign');
-        return {start:campaignStart,ship:codec.snapshot(liveShip())};
+        return {start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment};
       }
       return codec.snapshot(liveShip());
     },
     restore: value => {
       const next=selectedCodec().snapshot(value); // Validate before replacing live state.
-      if(campaignMode) {campaignStart=next.start;restoreShip(next.ship)}
+      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;restoreShip(next.ship)}
       else restoreShip(next);
     },
     close: () => {
@@ -117,8 +119,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       root.querySelector('#walk-close-help').focus();
     } else if (equipmentOpen) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', equipmentPanel({ view:inspectEquipment(campaignStart.equipment,state.position,equipmentOffset), selected:equipmentSelected, assets, t }));
-      (root.querySelector('#equipment-panel').querySelector(`[id="${focus || ''}"]`) || root.querySelector('#equipment-close')).focus({ preventScroll:true });
+      root.insertAdjacentHTML('beforeend', equipmentPanel({ view:inspectEquipment(campaignEquipment,state.position,equipmentOffset), inventory, selected:equipmentSelected, moving:equipmentMoving, message:equipmentMessage, assets, t }));
+      (root.querySelector('#equipment-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(equipmentMoving ? '#equipment-cancel' : '#equipment-close')).focus({ preventScroll:true });
     } else if (inventoryOpen) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', inventoryPanel({ inventory, condition, time: timeLabel(), storage: storageAt(state.position), selected, message: inventoryMessage, assets, t }));
@@ -180,7 +182,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       return;
     }
     if (equipmentOpen) {
-      if (event.key === 'Escape') { event.preventDefault(); closeEquipment(); }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        if (equipmentMoving) {equipmentMoving=false;equipmentMessage='selectionCancelled';render();root.querySelector('#equipment-move').focus()}
+        else closeEquipment();
+      }
       if (event.key === 'Tab') {
         const buttons = [...root.querySelectorAll('#equipment-panel button:not(:disabled)')];
         const index = buttons.indexOf(document.activeElement);
@@ -204,7 +210,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function closeInventory() { inventoryOpen = false; selected = null; inventoryMessage = ''; render(); root.querySelector('#walk-inventory').focus(); }
   function openEquipment() {
     if (!campaignMode || !campaignStart || equipmentBayAt(state.position) === null || survival.sleeping || survival.dead) return;
-    stop(); state.paused=true; equipmentOpen=true; equipmentOffset=0; equipmentSelected=null; render();
+    stop(); state.paused=true; equipmentOpen=true; equipmentOffset=0; equipmentSelected=null; equipmentMoving=false;equipmentMessage='';render();
   }
   function closeEquipment() { equipmentOpen=false; equipmentSelected=null; render(); root.querySelector('#walk-equipment').focus(); }
   function finishSleep() {
@@ -214,9 +220,16 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     render(); root.querySelector('#inventory-sleep').focus();
   }
   root.addEventListener('click', event => {
-    const component = event.target.closest('[data-equipment-row]');
+    const component = event.target.closest('[data-equipment-container]');
     if (equipmentOpen && component) {
-      equipmentSelected={row:Number(component.dataset.equipmentRow),socket:Number(component.dataset.equipmentSocket)};
+      const slot=component.dataset.equipmentContainer==='carried' ? {container:'carried',index:Number(component.dataset.equipmentIndex)} :
+        {container:'installed',unit:Number(component.dataset.equipmentRow),socket:Number(component.dataset.equipmentSocket)};
+      if (equipmentMoving) {
+        const view=inspectEquipment(campaignEquipment,state.position,equipmentOffset);
+        const result=exchangeEquipment(campaignEquipment,inventory,state.position,view.index,equipmentSelected,slot);
+        campaignEquipment=result.equipment;inventory=result.inventory;equipmentMessage=result.message;
+        equipmentMoving=false;equipmentSelected=slot;
+      } else {equipmentSelected=slot;equipmentMessage=''}
       render(); return;
     }
     const slotButton = event.target.closest('[data-slot]');
@@ -249,9 +262,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (action === 'language') { language(); return; }
     if (action === 'equipment') { openEquipment(); return; }
     if (action === 'close-equipment') { closeEquipment(); return; }
+    if (action==='equipment-move' && equipmentOpen && equipmentSelected) {equipmentMoving=true;equipmentMessage='';render();return}
+    if (action==='equipment-cancel' && equipmentOpen) {equipmentMoving=false;equipmentMessage='selectionCancelled';render();root.querySelector('#equipment-move').focus();return}
     if (equipmentOpen && ['equipment-next','equipment-previous'].includes(action)) {
       equipmentOffset=(equipmentOffset + (action==='equipment-next' ? 1 : 2)) % 3;
-      equipmentSelected=null; render(); return;
+      equipmentSelected=null; equipmentMoving=false;equipmentMessage='';render(); return;
     }
     if (action === 'inventory') { openInventory(); return; }
     if (action === 'close-inventory') { closeInventory(); return; }
@@ -300,7 +315,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     showCampaign(value) {
       const next=value ? campaignCodec.snapshot(value) : null;
       switchMode(true);
-      if(next) {campaignStart=next.start;restoreShip(next.ship)}
+      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;restoreShip(next.ship)}
       if(campaignStart)show();
     },
     showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},

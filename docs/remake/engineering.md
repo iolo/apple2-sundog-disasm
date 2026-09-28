@@ -1,9 +1,14 @@
 # Engineering inspection — R05e
 
+R05f adds [component exchange](component-exchange.md) and corrects the earlier
+"spares" interpretation: those four bytes are fixed socket requirements. The
+current panel shows carried inventory in that row. The R05e history below describes
+the original inspection checkpoint; its read-only/save boundary is superseded.
+
 Campaign play now exposes the six engineering bays. Walk to a bay and choose
 Engineering, or press Enter with the ship focused. The panel identifies installed
 components, missing/destroyed parts and shunts, the four unit performance values,
-total performance and four spares. Selecting a component displays its name;
+total performance and (initially mislabeled) requirements. Selecting a component displays its name;
 previous/next cycles the three systems in the current bay bank. Personal inventory
 remains available through Inventory or I.
 
@@ -34,7 +39,7 @@ Game14 procedure3 `$01AD–$0234` supplies system names. Procedure4
 `$02B0–$0345` reads components with five-byte unit strides; procedure5
 `$0356–$03F9` reads unit and aggregate performance (0–4 and 0–16).
 Utility19 and the independent reference decoder already establish four units
-plus four spares in each 28-byte record; see [initialization](initialization.md).
+plus four requirements in each 28-byte record; see [initialization](initialization.md).
 Existing item labels and separate component SVGs are reused. The browser table
 puts units in rows and sockets in columns; this is a presentation adaptation.
 Performance is a component rating, not a claim that the system is powered.
@@ -62,11 +67,11 @@ transitions provide feedback without restarting an entrance on each selection.
 ## Next engineering work
 
 Component replacement must use active equipment state separate from immutable
-creation data, conserve full item bytes across carried/spare/installed slots and
+creation data, conserve full item bytes across carried/installed slots and
 extend save validation explicitly. Library24 procedure8 `$014C–$0261` recalculates
 unit performance, special-component availability and related power/charge flags.
 Its rules include control-node restrictions, shunt penalties, comparison against
-the spare row, and special socket exceptions. Game14 procedures8/11 and their
+the requirements row, and special socket exceptions. Game14 procedures8/11 and their
 callers also require complete transfer/timing analysis. Do not add a swap action
 that changes only the displayed component and leaves these dependent values stale.
 

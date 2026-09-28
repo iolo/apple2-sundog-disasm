@@ -73,7 +73,7 @@ leave live and stored states unchanged. See `checkpoints.md` for validation and
 scope; this does not instantiate the campaign schema above.
 
 R04d adds pure initialization primitives outside all current saved schemas.
-Equipment has six named groups, four component rows per group, spares, unit/total
+Equipment has six named groups, four component rows per group, requirements, unit/total
 performance and special requirements. Navigation initialization produces 12
 system coordinate triples and integer bank balances plus 18 orbital angles.
 Static names, system membership and orbital radii are separate content. A private
@@ -111,6 +111,13 @@ source-mapped bays. Component selection and frame cycling are transient UI state
 no equipment/resource mutation or new save field is introduced. Inspection pauses
 and clears movement; closing restores focus and stays paused. Future repairs must
 introduce active equipment and validate it independently of the creation record.
+
+R05f adds active equipment to campaign version2 (`landed-engineering-1`). Atomic
+exchanges conserve carried/installed bytes and recompute performance/availability.
+The legacy field `spares` is corrected to mean immutable socket requirements.
+Version1 validates before migration; its raw slot remains the transaction's
+comparison record. Selection/move mode stays transient. Power, charges and other
+resources remain at creation defaults; encoded damage repair is not supported.
 
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view

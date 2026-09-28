@@ -29,13 +29,13 @@ remains degenerate; the port preserves that fact instead of silently changing it
 Pascal FJP (`src/native/pcode_primitives.s`, `$D2A0–$D2A6`) tests bit 0, not whether
 the whole integer is nonzero. LAND/LOR are eager bit operations in the equipment
 initializer. JavaScript explicitly consumes the corresponding draws and tests
-parity, including otherwise redundant draws for socket 0 and the spare row.
+parity, including otherwise redundant draws for socket 0 and the requirements row.
 
 ## Equipment
 
 Utility 19 `$078A–$084B`, called six times from utility 21 `$0A03–$0A31`, creates
 six 28-byte records at segment 29 word 90. Game 14 procedure 3 `$01AD–$0234` supplies
-the group names. Each record holds four units, a spare-component row, total
+the group names. Each record holds four units, a standard-component requirements row, total
 performance and a special-component requirement. The named projection is:
 
 | Group | Standard four-component row | Special component / socket |
@@ -51,7 +51,7 @@ Each of the first four rows has a `random % 3 === 0` damage branch. It chooses o
 of four sockets. Socket 0 always takes the missing/broken branch; other sockets
 use a random low-bit decision. Missing/broken values are 0 or 7, making the unit's
 performance 0. The alternative installs shunt 23 and sets performance 3. An intact
-unit has performance 4. The fifth row stays intact as spares, while still consuming
+unit has performance 4. The fifth row stays intact as requirements, while still consuming
 its damage draw. Record byte 24 is the sum of the four unit performances, 0–16.
 Byte 25 is cleared by initialization but is not yet given a gameplay meaning here.
 Library 24 procedure 8 consumes the component requirements and recalculates unit
@@ -59,10 +59,14 @@ performance; implementing later repair behavior requires that whole consumer.
 
 `initialization_reference.py` independently projects the six records at globals
 save offset 108 from the existing clean-character capture. It constructs a compatible
-random draw tape and verifies all components, unit/total performances, spares and
+random draw tape and verifies all components, unit/total performances, requirements and
 requirements. That tape demonstrates the captured outcome is reachable; it is
 **not** a recovered original seed or recorded random stream. Runtime initialization
 does not import this fixture or any captured save.
+
+R05f corrected the earlier interpretation of bytes20–23 as spares by tracing the
+fit-check consumer. The serialized recipe2 key `spares` is retained for compatibility,
+but these are fixed requirements, never inventory. See `component-exchange.md`.
 
 ## Systems and planets
 

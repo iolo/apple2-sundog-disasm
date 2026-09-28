@@ -30,7 +30,7 @@ def reference():
                 draws.extend([0,socket,0 if value==23 else 1])
                 if value!=23: draws.append(1 if value==0 else 0)
                 assert row['performance']==(3 if value==23 else 0)
-        draws.append(0)  # Spare row still consumes the damage draw but is protected.
+        draws.append(0)  # Fixed requirements row consumes a draw but is protected.
         assert record[24]==sum(row['performance'] for row in rows)
     return dict(source='docs/reference/remake-clean-character.json',
                 scope='Observed equipment with constructed compatible draws; not an observed RNG sequence',
