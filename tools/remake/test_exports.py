@@ -18,11 +18,16 @@ class ExportTests(unittest.TestCase):
         raw = (Path(__file__).resolve().parents[2] / 'assets/interaction-records/records.bin').read_bytes()
         self.assertEqual(data['collisionRows'], [127]*8)
         self.assertEqual(data['spriteRows'], [0, 0, 12, 30, 30, 12, 0, 0])
+        self.assertEqual(data['npcRows'], [0, 0, 12, 18, 18, 12, 0, 0])
+        self.assertEqual(files['assets/svg/room-npc.svg'], svg(pixel_rows([[v] for v in data['npcRows']])))
         self.assertEqual([r['index'] for r in data['layouts']], list(range(8, 16)))
         for r in data['layouts']:
             source = raw[r['index']*32:(r['index']+1)*32]
             self.assertEqual(r['spawn'], dict(x=source[2], y=source[0]))
             self.assertEqual(r['exitX'], 12)
+            self.assertEqual(r['population'], dict(bounds=r['bounds'][1],
+                offset=dict(x=source[22]-128, y=source[23]-128),
+                maximum=max(3, source[24]), activityDivisor=source[25] or 128))
             rows = pixel_rows(r['rows'])
             # The left corridor is cleared AFTER the outer wall; all seven
             # player columns/eight rows must fit the entrance, not just its center.

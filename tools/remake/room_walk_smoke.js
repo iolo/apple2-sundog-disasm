@@ -14,6 +14,13 @@ async browserPage => {
     let text='';for await(const part of await (await pending).createReadStream())text+=part;
     await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text);
   };
+  const importGame=async value=>{
+    await saves();const pending=page.waitForEvent('download');
+    await page.evaluate(value=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(value)],{type:'application/json'}));a.download='room-fixture.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},value);
+    await (await pending).saveAs('output/playwright/remake/room-fixture.json');
+    await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/room-fixture.json');await settled();
+    const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
+  };
   const walkToBuilding=async type=>{
     const from=await state();
     const route=await page.evaluate(async ({from,type})=>{
@@ -72,13 +79,22 @@ async browserPage => {
       assert(s.scene==='room'&&s.x==='12'&&s.y==='56'&&s.paused==='true',`Type${type} enters at the original room anchor, paused`);
       assert(await page.locator('#walk-equipment').count()===0,`Type${type} has no remote engineering access`);
       const entered=await exportGame();
-      assert(entered.version===5&&entered.scope==='landed-rooms-1'&&entered.state.travel.scene==='room',`Type${type} exports the version5 room scene`);
+      assert(entered.version===6&&entered.scope==='landed-occupants-1'&&entered.state.travel.scene==='room',`Type${type} exports the version6 room scene`);
       assert(JSON.stringify(entered.state.travel.cityPosition)===JSON.stringify(street.state.travel.cityPosition)&&JSON.stringify(entered.state.ship)===JSON.stringify(street.state.ship),`Type${type} retains the street return anchor and all ship progress`);
+      const actors=await page.evaluate(async ({index,seed})=>{
+        const [{createRoomGeometries},{populateRoom},data]=await Promise.all([import('/js/core/room-walk.js'),import('/js/core/room-actors.js'),fetch('/data/room-walk.json').then(r=>r.json())]);
+        return populateRoom(createRoomGeometries(data)[index],seed).actors;
+      },{index:Number(s.room),seed:entered.state.encounters.roomSeed});
+      assert(Number(s.occupants)===actors.length&&actors.length>=2,`Type${type} displays the generated visitors and counter occupant`);
+      assert(entered.state.encounters.roomSeed===street.state.encounters.randomState&&entered.state.encounters.randomState!==entered.state.encounters.roomSeed,`Type${type} consumes the active gameplay RNG only on entry`);
       await page.locator('#walk-pause').click();await page.locator('#walk-surface').focus();
       await page.keyboard.down('ArrowRight');await page.clock.runFor(200);await page.keyboard.up('ArrowRight');
       assert(Number((await state()).x)>12&&await page.locator('#walk-airlock').isDisabled(),`Type${type} keyboard walking moves indoors and disables remote exit`);
       await roomPointer(40,50);s=await state();
       assert(s.x==='40'&&s.y==='50',`Type${type} pointer coordinates use the interior scale`);
+      const first=actors[0].words;await roomPointer(first[5],first[4],5000);s=await state();
+      assert(Number(s.x)!==first[5]||Number(s.y)!==first[4],`Type${type} visible visitor pixels block player movement`);
+      await roomPointer(40,50);
       const time=Number(s.minutes);await page.clock.runFor(1500);
       assert(Number((await state()).minutes)>time,`Type${type} exploration advances survival time`);
       await roomPointer(type===10 ? 40 : 120,type===10 ? 85 : 50,3000);
@@ -94,6 +110,7 @@ async browserPage => {
       await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();
       assert((await state()).scene==='room'&&(await state()).x==='40'&&(await state()).y==='50'&&(await state()).paused==='true',`Type${type} fresh-page load restores the interior position, paused`);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(saved.state),`Type${type} save roundtrips all room state`);
+      assert(Number((await state()).occupants)===actors.length,`Type${type} fresh-page loading restores occupants without another RNG draw`);
       for(const lang of ['en','ko']) {
         if(await page.locator('html').getAttribute('lang')!==lang)await page.locator('#walk-language').click();
         for(const [width,height] of [[640,480],[1280,720],[390,844],[844,390]]) {
@@ -114,6 +131,10 @@ async browserPage => {
       assert((await state()).scene==='ship'&&(await state()).mode==='walk',`Type${type} preview uses its independent ship state`);
       await page.locator('#walk-back').click();await page.locator('#home').click();await page.locator('#resume-campaign').click();
       assert((await state()).scene==='room'&&(await state()).x==='40',`Type${type} resumes the room after preview`);
+      assert(Number((await state()).occupants)===actors.length,`Type${type} occupants survive the independent preview session`);
+      const occupied=JSON.parse(JSON.stringify(saved));occupied.state.travel.roomPosition={x:first[5],y:first[4]};
+      assert((await importGame(occupied)).includes('Invalid'),`Type${type} rejects an import overlapping a generated occupant`);
+      assert(JSON.stringify((await exportGame()).state)===JSON.stringify(saved.state),`Type${type} invalid occupant import preserves the active RNG and room`);
       await saves();
       const bad=JSON.parse(JSON.stringify(saved));bad.state.travel.roomPosition={x:40,y:10};
       const pending=page.waitForEvent('download');
@@ -131,7 +152,24 @@ async browserPage => {
       assert(s.scene==='city'&&Number(s.x)===street.state.travel.cityPosition.x&&Number(s.y)===street.state.travel.cityPosition.y&&s.paused==='true',`Type${type} exit returns to the exact street anchor, paused`);
       const returned=await exportGame();
       assert(!Object.hasOwn(returned.state.travel,'roomPosition'),`Type${type} exit clears interior-only state`);
+      assert(returned.state.encounters.roomSeed===null&&returned.state.encounters.randomState===saved.state.encounters.randomState,`Type${type} exit retains the advanced RNG while discarding the old population`);
+      await page.locator('#walk-airlock').click();const reentered=await exportGame();
+      assert(reentered.state.encounters.roomSeed===returned.state.encounters.randomState&&reentered.state.encounters.randomState!==returned.state.encounters.randomState,`Type${type} re-entry draws a new population from the continuing stream`);
+      await page.locator('#walk-airlock').click();
+      const legacy=JSON.parse(JSON.stringify(saved));legacy.version=5;legacy.scope='landed-rooms-1';delete legacy.state.encounters;
+      assert((await importGame(legacy)).includes('imported')&&(await state()).occupants==='0',`Type${type} version5 room import preserves the legacy empty population`);
+      assert((await state()).x==='40'&&(await state()).y==='50',`Type${type} legacy import preserves interior progress`);
+      await roomPointer(12,56);await page.locator('#walk-airlock').click();await page.locator('#walk-airlock').click();
+      assert(Number((await state()).occupants)>=2,`Type${type} migrated room gains occupants on its next entry`);
+      await page.locator('#walk-airlock').click();
     }
+    const zero=await exportGame();zero.state.encounters.randomState=0;
+    assert((await importGame(zero)).includes('imported'),'Degenerate gameplay RNG fixture imports through ordinary UI');
+    await page.locator('#walk-airlock').click();
+    assert((await state()).scene==='city'&&(await state()).paused==='true'&&(await page.locator('#walk-status').innerText()).includes('remain outside'),'Unresolved no-visitor fallback reports failure and remains outside, paused');
+    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(zero.state),'Failed entry preserves all progress and RNG state');
+    await page.locator('#walk-language').click();await page.locator('#walk-airlock').click();
+    assert((await page.locator('#walk-status').innerText()).includes('건물 밖'),'Entry failure is localized in Korean');
     await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result);
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',unitResults.filter(s=>s.startsWith('FAIL')).join('\n')||'All browser rule groups pass');

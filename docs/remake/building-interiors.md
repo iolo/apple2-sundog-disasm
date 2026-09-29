@@ -1,5 +1,8 @@
 # Walking interiors — R06d
 
+R06e extends this checkpoint with [initial room occupants](room-occupants.md)
+and version6 saves. The sections below record the original R06d boundary.
+
 Campaigns can enter the ordinary scene5 buildings represented by city base
 tiles9/10. Their eight layouts come from interaction records8–15. Walk to the
 source door, then press Enter or Enter building. Explore using the existing

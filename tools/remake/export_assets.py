@@ -226,9 +226,11 @@ def build():
         images[f'room-{room["index"]:02}'] = path
     outputs['assets/svg/room-player.svg'] = svg(pixel_rows([[v] for v in glyph(22)]))
     images['room-player'] = 'assets/svg/room-player.svg'
-    outputs['data/room-walk.json'] = encode(dict(version=1, layouts=rooms,
-        spriteRows=glyph(22), collisionRows=glyph(24),
-        source='game18 procedures14/16/17/26; library22 procedures7/9/18/19/51; interaction records8–15; no NPC overlays'))
+    outputs['assets/svg/room-npc.svg'] = svg(pixel_rows([[v] for v in glyph(23)]))
+    images['room-npc'] = 'assets/svg/room-npc.svg'
+    outputs['data/room-walk.json'] = encode(dict(version=2, layouts=rooms,
+        spriteRows=glyph(22), npcRows=glyph(23), collisionRows=glyph(24),
+        source='game18 procedures9/13/14/16/17/26; library22 procedures7/9/18/19/51; interaction records8–15'))
     cities = json.loads(read('assets/city-maps/tiles.json'))
     cities = [dict(id=f'city-{r["index"]+1:02}', sourceIndex=r['index'], tiles=r['tiles'])
               for r in cities if r['variant'] == 'play']

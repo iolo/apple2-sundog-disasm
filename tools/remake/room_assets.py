@@ -1,7 +1,7 @@
 """Game18 procedures16/17 room backgrounds, normalized to a 140×96 window.
 
 Only types9/10 (records8–15) are complete static layouts. Types8/11 add
-fixtures and are deliberately excluded. NPC overlays belong to later work.
+fixtures and are deliberately excluded. Population parameters retain source order.
 """
 def room_layouts(raw, patterns):
     if len(raw) != 512 or any(len(p) != 12 for p in patterns):
@@ -28,5 +28,8 @@ def room_layouts(raw, patterns):
         fill(bounds[2], record[20] & 15)
         layouts.append(dict(index=index, width=140, height=96, rows=rows,
                             spawn=dict(x=bounds[0]['right'], y=bounds[0]['bottom']),
-                            exitX=12, bounds=bounds))
+                            exitX=12, bounds=bounds,
+                            population=dict(bounds=bounds[1],
+                                offset=dict(x=record[22]-128, y=record[23]-128),
+                                maximum=max(3, record[24]), activityDivisor=record[25] or 128)))
     return layouts

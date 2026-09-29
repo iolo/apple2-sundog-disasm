@@ -1,14 +1,14 @@
-# Campaign save boundary — R04g / R05f / R06b / R06c / R06d
+# Campaign save boundary — R04g / R05f / R06b / R06c / R06d / R06e
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version5, scope `landed-rooms-1`, and validates/upgrades version1 `landed-ship-1`,
-version2 `landed-engineering-1`, version3 `landed-city-1` and version4 `landed-bank-1`.
+version6, scope `landed-occupants-1`, and validates/upgrades version1 `landed-ship-1`,
+version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1` and version5 `landed-rooms-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
 
-The state has four explicit parts:
+The state has five explicit parts:
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
@@ -26,8 +26,13 @@ The state has four explicit parts:
   `roomPosition`, must be reachable from the derived layout's interior spawn.
   It is forbidden in other scenes. Only city tile types9/10 are currently enabled.
 
+- `encounters`: unsigned gameplay `randomState` and nullable `roomSeed`. Room entry
+  derives stationary occupants and advances the stream; exit clears only the seed.
+  Reload validates the population RNG tail and player reachability against its
+  collision overlay. Outside rooms the seed must be null.
+
 The initial inventory/location in `start` records where this campaign began.
-Current play uses `ship`, `equipment` and `travel`. It must never read stale initial values as live progress.
+Current play uses `ship`, `equipment`, `travel` and `encounters`. It must never read stale initial values as live progress.
 Economy, ship resources and navigation are not yet mutable in this scope; allowing
 those actions later requires an explicit schema and transition update.
 
@@ -36,7 +41,7 @@ those actions later requires an explicit schema and transition update.
 The codec owns a copy of the supplied shipped content. It regenerates the creation
 record using recipe2 and the saved character/seed, then compares every field,
 independent of JSON object key order. Changed balances, cargo, resource levels,
-RNG states, locations, old recipes and extra fields fail validation. Validation
+creation RNG states, locations, old recipes and extra fields fail validation. Validation
 returns newly owned objects; it never silently repairs unsupported progress.
 
 Active equipment accepts empty/destroyed sockets or compatible plain components.
@@ -50,6 +55,10 @@ Version3 migration preserves ship/city state and rejects bank scenes. Version4
 additionally permits validated bank visits, restoring the service screen.
 Version5 additionally validates room door/layout/reachability; version4 migration
 cannot introduce room fields. Room saves preserve a visit at its interior anchor.
+Version6 adds initial occupants and active RNG. Versions1–5 receive the creation
+gameplay RNG and a null seed after validation. Legacy interiors remain empty until
+re-entry; null room seeds are retained for that migration. See
+[room occupants](room-occupants.md) for the seed contract and unresolved fallback.
 See [component exchange](component-exchange.md) for fit rules and scope limits.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
@@ -74,8 +83,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version5 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. NPCs, bank transactions, other buildings/cities, encoded component repair and
+as version6 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. NPC movement/dialogue, bank transactions, other buildings/cities, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
