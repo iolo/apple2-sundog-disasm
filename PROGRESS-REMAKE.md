@@ -1,5 +1,32 @@
 # SunDog web remake progress
 
+## R06a — Ordinary city composition and inspection — 2026-09-29
+
+Added the source-derived background layer for all57 named ordinary cities:
+40×24 buffers, x-major private RNG draws for240 stored cells, and separate
+system/world-selected tile banks. Composition never consumes campaign randomness.
+Independent packed-byte references verify every map cell and both bank selectors.
+
+The preview now offers City view with a10×6 camera, horizontal wrapping, bounded
+vertical panning and full-map tile inspection. English/Korean UI supports keyboard,
+pointer and touch; locale/viewport changes preserve selection and camera. Stored
+layouts retain manual bank selection. Records58–60 remain available as stored-only
+layouts, since their runtime context is outside this ordinary-city path.
+
+Required Chrome154.0.8037.57 passes97 city UI checks,78 browser rule/localization/
+storage groups,45 campaign checks and37 component-exchange regressions. Both view
+modes fit four viewport sizes in both languages; all city records browse offline.
+Testing caught and fixed city-heading and mobile-footer fit issues. Eleven exporter
+tests,122 artifacts,584 strings,6 captured equipment records and original input
+hashes also verify. See `docs/remake/city-map-validation.md` and its JSON receipt.
+
+This is a background/inspection checkpoint on the path to ship exits, not live
+city walking. Campaign version2 and its reachable-interior position contract remain
+unchanged. No new original-game emulator observation is claimed. Next: trace
+collision against composed tiles and ship/pod overlays, establish exterior airlock
+placement/reentry, then add active scene/location state and save migration.
+Doors, NPCs and dialogue remain subsequent R06 work. See `docs/remake/city-maps.md`.
+
 ## R05f — Component exchanges and active equipment saves — 2026-09-29
 
 Added atomic exchanges between carried items and compatible installed components,

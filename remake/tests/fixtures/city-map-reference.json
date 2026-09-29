@@ -1,0 +1,461 @@
+{
+  "source": "Independent packed-byte / byte-carry translation of game21 procedure26; no live capture",
+  "records": [
+    {
+      "cityId": "city-01",
+      "banks": [
+        0,
+        0
+      ],
+      "sha256": "511aa7700cfd875551731844c99743d026d24ebe0654f23efa2a6609cc5e1517"
+    },
+    {
+      "cityId": "city-02",
+      "banks": [
+        0,
+        0
+      ],
+      "sha256": "396e8ccc156e9973ce271a8df38996bdeb17f9b64c8e7233500b984394e4e56b"
+    },
+    {
+      "cityId": "city-03",
+      "banks": [
+        0,
+        0
+      ],
+      "sha256": "7896731d5d94ba795a08520534b25f2719b387db7e095f26f8ebb4a414979a01"
+    },
+    {
+      "cityId": "city-04",
+      "banks": [
+        0,
+        0
+      ],
+      "sha256": "c37791401b8ccf9db1a79a569b6ff0407046aad77f14e5524ff657768aa2fa42"
+    },
+    {
+      "cityId": "city-05",
+      "banks": [
+        0,
+        0
+      ],
+      "sha256": "b39dded5b9dde60a04b5dc0d30a58ccd54423e0ef53741298c29f44c5f5f4ea3"
+    },
+    {
+      "cityId": "city-06",
+      "banks": [
+        0,
+        1
+      ],
+      "sha256": "b4e3dfcb09a71e74fb2eee46ce7b230d3ae0be0df0ce99dde5bb286cf9996a37"
+    },
+    {
+      "cityId": "city-07",
+      "banks": [
+        0,
+        1
+      ],
+      "sha256": "cc1f7df3efb7d4dc0b12e088aeac61dc5c587b63fe9372a425813e7106175ec5"
+    },
+    {
+      "cityId": "city-08",
+      "banks": [
+        0,
+        1
+      ],
+      "sha256": "4932edeeec3c132e254e2197db9f562ac2b1a7703efdeb51dc5f28791f95bb92"
+    },
+    {
+      "cityId": "city-09",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "48c2a03d1882d973aa5d08ccaf47e69d470e53cd2db19359c3cde0feb766dab0"
+    },
+    {
+      "cityId": "city-10",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "647b19e0fd8bf6ebea1181b62fda50cac46fac341255467fcff3ca328f1ac42a"
+    },
+    {
+      "cityId": "city-11",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "4020069d9bc990fa8dfd3ef06b678c053cdf0d4b7dc1717d97d96b2c569ce278"
+    },
+    {
+      "cityId": "city-12",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "d86abd5ff0c8790f1787a1b8f33b39939a5a97d60e9249a93f55a05f70196b4b"
+    },
+    {
+      "cityId": "city-13",
+      "banks": [
+        1,
+        3
+      ],
+      "sha256": "e46af700aee00cec00b29ba3896477c710897ce0f24f649ef59222676968af4b"
+    },
+    {
+      "cityId": "city-14",
+      "banks": [
+        1,
+        3
+      ],
+      "sha256": "acde9a5d043ead8ea4506fe5aaecd5f557aa33af6330d3f66fcf8df6ae692a2d"
+    },
+    {
+      "cityId": "city-15",
+      "banks": [
+        1,
+        0
+      ],
+      "sha256": "882f06336a8cdd2b45fe72a276980029ab216dc9559c5cb4757806be7ee35a78"
+    },
+    {
+      "cityId": "city-16",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "3655c568899a5d540b5b79508669d8e5030e070115541485e50977fb8ccfa5df"
+    },
+    {
+      "cityId": "city-17",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "b4f99442bd3628a15b06e2d9787b902c34d4a2c7ca4ae10202e7a2b6b0a6a5cf"
+    },
+    {
+      "cityId": "city-18",
+      "banks": [
+        3,
+        2
+      ],
+      "sha256": "ee5c30bc69deae44209203927762e01ad3d83bce3bfedb6d7e5bdbc5d8599dba"
+    },
+    {
+      "cityId": "city-19",
+      "banks": [
+        3,
+        2
+      ],
+      "sha256": "f0b7a6e585ca9504852d729e25476fda52ea3990d2dba0e05011e09c48fe71a8"
+    },
+    {
+      "cityId": "city-20",
+      "banks": [
+        3,
+        2
+      ],
+      "sha256": "4e05b9d80dd8d5a3ff5cfac710376bf9da26279e3a148ddbf291ddf77af2cbad"
+    },
+    {
+      "cityId": "city-21",
+      "banks": [
+        0,
+        3
+      ],
+      "sha256": "5f34e84f5c8b3128f5d686c01be8a763d6dc745dc803e3fb1c9add8134a78c7c"
+    },
+    {
+      "cityId": "city-22",
+      "banks": [
+        0,
+        3
+      ],
+      "sha256": "ad4b90131aa01a657d54384f0373c0449840fbcd670bd190abf8f01f080ae54b"
+    },
+    {
+      "cityId": "city-23",
+      "banks": [
+        0,
+        3
+      ],
+      "sha256": "b24b5b52204b38ad3c04a205f68416515b4406e45fab84cd672cb2d0ee0fb5f6"
+    },
+    {
+      "cityId": "city-24",
+      "banks": [
+        0,
+        3
+      ],
+      "sha256": "25ac497f2a4b9080ba9dea60758ce0fb658a849837566ef7ec290f2f766abb38"
+    },
+    {
+      "cityId": "city-25",
+      "banks": [
+        1,
+        0
+      ],
+      "sha256": "3d8b95f08b25a69ff2c96b70d403a3228e6758b56188509f8eefc109a8e8c245"
+    },
+    {
+      "cityId": "city-26",
+      "banks": [
+        1,
+        0
+      ],
+      "sha256": "dec7bc349f49b0b03c86d9c400f439f3173cc76176377bb7228c488156a6e609"
+    },
+    {
+      "cityId": "city-27",
+      "banks": [
+        1,
+        0
+      ],
+      "sha256": "e05c413d5488d73cc5e69f0e0ccc436e1999186391972e363250c9971f0743e6"
+    },
+    {
+      "cityId": "city-28",
+      "banks": [
+        1,
+        0
+      ],
+      "sha256": "19bfa91f8743241f93eeae0881806d1fcf6b2b3e20a1313e40590a7a1f1a88fc"
+    },
+    {
+      "cityId": "city-29",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "be9f813b41fc24865052db1ea9bb9a75168539cc88e4e7db28b708411590740d"
+    },
+    {
+      "cityId": "city-30",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "e05f0b8793cb65f7f6663e75e82b12076158bcb170df093f5628b31f5496fea5"
+    },
+    {
+      "cityId": "city-31",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "3e254dbd0fe6ab148415da3548c108af948f5d110a0f726994cea40de86bc3ae"
+    },
+    {
+      "cityId": "city-32",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "906224239f085eb6abed333e23519c83aba948236df6690d62757bcac2f67111"
+    },
+    {
+      "cityId": "city-33",
+      "banks": [
+        2,
+        1
+      ],
+      "sha256": "6123a0c7244eb13f9730e0daa0bb80da41796d1a85fa257847938c8fd9246960"
+    },
+    {
+      "cityId": "city-34",
+      "banks": [
+        2,
+        2
+      ],
+      "sha256": "d500590d7468241bcc1d602b22683db0a8d1e855b0a176f5535ccb45ea857e1e"
+    },
+    {
+      "cityId": "city-35",
+      "banks": [
+        2,
+        2
+      ],
+      "sha256": "9bce3b5ae0bb3ab160a3123db4d16caf2261c104931d61b10f83732421bb04d1"
+    },
+    {
+      "cityId": "city-36",
+      "banks": [
+        2,
+        2
+      ],
+      "sha256": "a0327c7a376524465bc4ce651d81edb544d2f45ada274f09d061ca336e7af0fe"
+    },
+    {
+      "cityId": "city-37",
+      "banks": [
+        2,
+        3
+      ],
+      "sha256": "8369ba85758eb4cfc43abc3178d2900c8c4c28023fc9c9b8e6af46d09b3d13c2"
+    },
+    {
+      "cityId": "city-38",
+      "banks": [
+        3,
+        0
+      ],
+      "sha256": "159e5c598dc293c07315099e6fa8dd65bbc343750cc45b91ed2490b85f826550"
+    },
+    {
+      "cityId": "city-39",
+      "banks": [
+        3,
+        0
+      ],
+      "sha256": "ef5749dea5f8979c10f990e461723fd4235aeb9dccc84495b1f0ca487fbf95d8"
+    },
+    {
+      "cityId": "city-40",
+      "banks": [
+        3,
+        0
+      ],
+      "sha256": "80cc6182579cccb94db842cc574650eac7bf0ed526ad3cfe0969dfc363618871"
+    },
+    {
+      "cityId": "city-41",
+      "banks": [
+        0,
+        1
+      ],
+      "sha256": "a13dcf956d2d092a16414f3a771e092694201b5145a5d32fc682d222d854f00d"
+    },
+    {
+      "cityId": "city-42",
+      "banks": [
+        0,
+        1
+      ],
+      "sha256": "8917bcb11cd64d04397db11199638a5ddb0f387bdb53371661e9582314068cfe"
+    },
+    {
+      "cityId": "city-43",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "84e4a0482f9bccc8e9859d3ed8d9915da140d8783b10ff8f02d415153252e49d"
+    },
+    {
+      "cityId": "city-44",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "ac0c51d3e238f561cc01f43b61597464b632ba967481584ca9247d6ebbabb7e5"
+    },
+    {
+      "cityId": "city-45",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "24a36e8a5ba2bcc9cf4deff78d377f367c6e1f5e1a3f4abba117ee468cee0232"
+    },
+    {
+      "cityId": "city-46",
+      "banks": [
+        1,
+        2
+      ],
+      "sha256": "3dbea593a68b9774859f00ad4dcf532ac0540ef608cbdd3de8d7946d3ded4c5e"
+    },
+    {
+      "cityId": "city-47",
+      "banks": [
+        2,
+        3
+      ],
+      "sha256": "708095783c0f44939877c192ebf36e8c8e8035563e012e7178060c81379bad63"
+    },
+    {
+      "cityId": "city-48",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "8cc2e81557f4fdd46617caa811c940244923c69d22eab68d83f790dac1480da4"
+    },
+    {
+      "cityId": "city-49",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "611b95b65eb949464356d63c572767c3b0ecb2d424b025952c34f2eeec277dc6"
+    },
+    {
+      "cityId": "city-50",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "4bfa1141b36aa81ecc664dc8996a9b2d062852a781c5adff0bb3342ad02dfa5b"
+    },
+    {
+      "cityId": "city-51",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "f4d852519c53e1a4fee7d4e942912ba586ec329d0c6f4dfe4d415a5cd40d5f1e"
+    },
+    {
+      "cityId": "city-52",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "cf0660bbe3f8614225e04e09f078faa2ed2e2fda51ae9709c65af31b4a92d170"
+    },
+    {
+      "cityId": "city-53",
+      "banks": [
+        2,
+        0
+      ],
+      "sha256": "24fa52d0880ad95bbe4936b30e57eec71c934ea044d36f5299e0dab692a55251"
+    },
+    {
+      "cityId": "city-54",
+      "banks": [
+        3,
+        1
+      ],
+      "sha256": "9093f4f53bd7a918e677b430232a1dd458cf40c22ff0e9b383b6a2c364a87d95"
+    },
+    {
+      "cityId": "city-55",
+      "banks": [
+        3,
+        1
+      ],
+      "sha256": "b3b969b1c67bc56cb2012f83769d8c6e64d448f0ec4776c48137e745543f2c9e"
+    },
+    {
+      "cityId": "city-56",
+      "banks": [
+        3,
+        1
+      ],
+      "sha256": "13145b6dfc54f08c3234c53dddec3083447aaf89ccff0e6ff1e5832eee93b1a6"
+    },
+    {
+      "cityId": "city-57",
+      "banks": [
+        3,
+        1
+      ],
+      "sha256": "097865b88e1dd599deb1ff0f2fab50fb2baad9a742102da2322b91c9af234141"
+    }
+  ]
+}

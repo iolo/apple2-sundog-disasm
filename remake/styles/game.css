@@ -41,6 +41,15 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .selection{color:var(--amber);max-width:330px;line-height:1.4}
 .inspect-surface{position:absolute;left:32px;top:140px;width:576px;height:230px;touch-action:none}
 .inspect-surface:focus-visible{outline:1px dashed var(--amber)}
+.inspect-surface.city-surface{left:145px;top:136px;width:350px;height:240px}
+.scene-heading.city-heading p{font-size:14px;line-height:1;margin-top:5px}
+.city-view-controls{display:flex;align-items:center;gap:8px}
+.city-view-controls button{font-size:14px;border:1px solid var(--line);padding:6px 8px}
+.scene-controls.city-controls .selection{font-size:16px;max-width:400px}
+.scene-controls.city-controls button{font-size:16px;min-height:40px}
+.scene-controls.city-controls select{font-size:16px;max-width:132px}
+.city-pan{position:absolute;left:526px;top:203px;width:78px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.city-pan button{padding:0;width:36px;height:40px;border:1px solid var(--line);font-size:24px}
 .help-shade{position:absolute;inset:0;background:#080b09d9;display:grid;place-items:center}
 .help{width:480px;background:var(--ink);border:1px solid var(--line);padding:28px;box-shadow:0 12px 60px #000}
 .help h2{font-size:24px;font-weight:normal;margin-bottom:18px}
