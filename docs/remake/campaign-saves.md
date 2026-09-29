@@ -1,8 +1,8 @@
-# Campaign save boundary — R04g / R05f / R06b / R06c
+# Campaign save boundary — R04g / R05f / R06b / R06c / R06d
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version4, scope `landed-bank-1`, and validates/upgrades version1 `landed-ship-1`,
-version2 `landed-engineering-1` and version3 `landed-city-1`.
+version5, scope `landed-rooms-1`, and validates/upgrades version1 `landed-ship-1`,
+version2 `landed-engineering-1`, version3 `landed-city-1` and version4 `landed-bank-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -18,10 +18,13 @@ The state has four explicit parts:
 - `equipment`: active installed components, validated performance and special-part
   availability. Group/socket requirements are immutable metadata. The legacy
   field name `spares` means socket requirements, not removable inventory.
-- `travel`: active scene (`ship`, `city` or `bank`) and full-map city player pixels.
+- `travel`: active scene (`ship`, `city`, `bank` or `room`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
   At a bank the city position must also match a source foot-bank door footprint.
+  In a room, the city position retains the entry door; a third field,
+  `roomPosition`, must be reachable from the derived layout's interior spawn.
+  It is forbidden in other scenes. Only city tile types9/10 are currently enabled.
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`, `equipment` and `travel`. It must never read stale initial values as live progress.
@@ -45,6 +48,8 @@ Version2 preserves its validated active equipment. Both acquire an interior
 inside walls, disconnected from the airlock or beyond the supported city area.
 Version3 migration preserves ship/city state and rejects bank scenes. Version4
 additionally permits validated bank visits, restoring the service screen.
+Version5 additionally validates room door/layout/reachability; version4 migration
+cannot introduce room fields. Room saves preserve a visit at its interior anchor.
 See [component exchange](component-exchange.md) for fit rules and scope limits.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
@@ -69,8 +74,9 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version4 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Bank transactions, other buildings/cities, encoded component repair and
+as version5 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. NPCs, bank transactions, other buildings/cities, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
+See [building interiors](building-interiors.md) for supported room layouts and adaptations.

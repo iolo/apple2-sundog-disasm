@@ -343,6 +343,14 @@ records. The door table and existing interior-layout assets are documented in
 fixtures, collision/exit gates and NPC/dialogue state. Financial transactions
 remain R07 work and require active economy state.
 
+Checkpoint R06d (2026-09-29) enables walking interiors for city types9/10 using
+eight source layouts, separate room SVGs/player glyph, full indoor collision and
+doorway exit. Version5 saves retain both street and room positions, upgrading
+versions1–4. Source adaptations and remaining NPC/fixture work are documented in
+`docs/remake/building-interiors.md`. R06 remains partial: next add NPC generation,
+interaction/dialogue and the special fixtures for types8/11. Bank transactions
+remain R07 work.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

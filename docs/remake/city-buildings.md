@@ -1,5 +1,9 @@
 # City doors and bank visits — R06c
 
+Later checkpoint: [R06d](building-interiors.md) enables walking for types9/10
+and adds version5 room saves. The R06c trace and bank-only scope below describe
+the earlier checkpoint; current save behavior is in `campaign-saves.md`.
+
 The first supported building visit is the bank. Walk to a bank door in Drahew,
 then press Enter or use Enter bank. The Uniteller displays carried cash and the
 current system account. Leave bank or Escape returns to the exact street anchor,

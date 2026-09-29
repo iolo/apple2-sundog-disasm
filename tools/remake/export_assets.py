@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import re
+from room_assets import room_layouts
 from pathlib import Path
 import sys
 
@@ -213,6 +214,21 @@ def build():
         spriteRows=glyph(10), collisionRows=glyph(11), shipRows=exterior,
         collisionByteMasks=[0x55,0x2a],
         source='game21 procedures7/15/23/25; library22 procedures9/11, pattern9'))
+    native = read('src/pcode/library_22.s').decode()
+    patterns = [[int(v.strip().removeprefix('$'), 16) & 127 for v in
+                 re.search(label+r':\s+\.byte ([^;]+)', native)[1].split(',')]
+                for label in ['L_164A', 'L_163E']]
+    read('src/pcode/game_18.s')
+    rooms = room_layouts(read('assets/interaction-records/records.bin'), patterns)
+    for room in rooms:
+        path = f'assets/svg/room-{room["index"]:02}.svg'
+        outputs[path] = svg(pixel_rows(room['rows']))
+        images[f'room-{room["index"]:02}'] = path
+    outputs['assets/svg/room-player.svg'] = svg(pixel_rows([[v] for v in glyph(22)]))
+    images['room-player'] = 'assets/svg/room-player.svg'
+    outputs['data/room-walk.json'] = encode(dict(version=1, layouts=rooms,
+        spriteRows=glyph(22), collisionRows=glyph(24),
+        source='game18 procedures14/16/17/26; library22 procedures7/9/18/19/51; interaction records8–15; no NPC overlays'))
     cities = json.loads(read('assets/city-maps/tiles.json'))
     cities = [dict(id=f'city-{r["index"]+1:02}', sourceIndex=r['index'], tiles=r['tiles'])
               for r in cities if r['variant'] == 'play']

@@ -3,10 +3,11 @@ import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
 import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
 import { atCityBank } from './city-doors.js';
+import { roomAt } from './room-walk.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 4, SCOPE = 'landed-bank-1';
+const VERSION = 5, SCOPE = 'landed-rooms-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -53,13 +54,21 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       }
       let travel={scene:'ship',cityPosition:null};
       if(version>=3) {
-        if(!keysMatch(value.travel,['scene','cityPosition']))fail();
-        if(value.travel.scene==='city' || (version===4 && value.travel.scene==='bank')) {
+        const inRoom=version===5 && value.travel?.scene==='room';
+        if(!keysMatch(value.travel,inRoom ? ['scene','cityPosition','roomPosition'] : ['scene','cityPosition']))fail();
+        if(value.travel.scene==='city' || (version>=4 && value.travel.scene==='bank') || inRoom) {
           if(!cityGeometry||!keysMatch(value.travel.cityPosition,['x','y'])||!sameTree(ship.position,SHIP_REENTRY))fail();
           if(!cityValidators.has(cityGeometry))cityValidators.set(cityGeometry,cityReachability(cityGeometry));
           if(!cityValidators.get(cityGeometry)(value.travel.cityPosition))fail();
           if(value.travel.scene==='bank' && !atCityBank(cityGeometry.map,value.travel.cityPosition))fail();
           travel={scene:value.travel.scene,cityPosition:{...value.travel.cityPosition}};
+          if(inRoom) {
+            const room=roomAt(cityGeometry.rooms,cityGeometry.map,value.travel.cityPosition);
+            if(!room || !keysMatch(value.travel.roomPosition,['x','y']))fail();
+            if(!cityValidators.has(room))cityValidators.set(room,cityReachability(room));
+            if(!cityValidators.get(room)(value.travel.roomPosition))fail();
+            travel.roomPosition={...value.travel.roomPosition};
+          }
         } else if(!sameTree(value.travel,travel))fail();
       }
       return {start,ship,equipment,travel};
@@ -68,7 +77,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   function validate(value) {
     const legacy=(value?.version===1 && value.scope==='landed-ship-1') ||
       (value?.version===2 && value.scope==='landed-engineering-1') ||
-      (value?.version===3 && value.scope==='landed-city-1');
+      (value?.version===3 && value.scope==='landed-city-1') ||
+      (value?.version===4 && value.scope==='landed-bank-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

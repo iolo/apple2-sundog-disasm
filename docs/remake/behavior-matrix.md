@@ -33,6 +33,7 @@ characters and includes historical variants; it is not a localization catalog.
 | Trading/banking | Manual PDF 19–20; `game_20.s` candidate consumer module, item table at `$0296–$02B5` | Manual-only financial rules | Bank-first purchase, sales to local bank, balances per system. Price formulas not yet ported. |
 | Browser presentation | PLAN-REMAKE.md | Proposed adaptation | 4:3, separate SVGs, local font, English/Korean, pointer/keyboard/touch. No game-rule claim. |
 | City doors / bank inquiry | Game21 procedures19/20/21; startup_disk1 scene dispatch; game19 procedures1/17 | Source-derived, browser validated | R06c ports door footprints and foot-bank visits; current-system account/cash inquiry, exact street return and version4 saves. No transactions or other building entry yet. See `city-buildings.md`. |
+| Walking building interiors | Game18 procedures14/16/17/26; library22 fill/collision; interaction records8–15 | Source-derived, browser validated; no emulator capture | R06d enables types9/10, eight static layouts, glyph24 collision, doorway exit and version5 saves. Fixed window/explicit exits are adaptations; NPCs and other types pending. See `building-interiors.md`. |
 
 ## New-game and campaign blockers
 
