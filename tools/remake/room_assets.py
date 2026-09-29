@@ -30,6 +30,7 @@ def room_layouts(raw, patterns):
                             spawn=dict(x=bounds[0]['right'], y=bounds[0]['bottom']),
                             exitX=12, bounds=bounds,
                             population=dict(bounds=bounds[1],
+                                doorway=dict(x=bounds[0]['left'], y=bounds[0]['top']),
                                 offset=dict(x=record[22]-128, y=record[23]-128),
                                 maximum=max(3, record[24]), activityDivisor=record[25] or 128)))
     return layouts

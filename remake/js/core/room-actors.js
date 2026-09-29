@@ -2,7 +2,7 @@ import { sourceRandom } from './random.js';
 import { canStand } from './ship-walk.js';
 
 // Library22 mode1: visible glyph pixels XOR the same buffer used by collision.
-function drawGlyph(rows, {x,y}, glyph) {
+export function drawRoomGlyph(rows, {x,y}, glyph) {
   glyph.forEach((mask,row)=>{
     for(let bit=0;bit<7;bit++)if(mask&(1<<bit)) {
       const px=x+bit,py=y-7+row;
@@ -10,6 +10,13 @@ function drawGlyph(rows, {x,y}, glyph) {
       rows[py][Math.floor(px/7)]^=1<<(px%7);
     }
   });
+}
+const drawGlyph=drawRoomGlyph;
+
+export function roomActorGeometry(room, actors) {
+  const rows=room.backgrounds.ship.map(row=>[...row]);
+  for(const {words:w} of actors)drawGlyph(rows,{x:w[5],y:w[4]},room.npcRows);
+  return {...room,backgrounds:{ship:rows}};
 }
 
 // Initial foot population only: Game18 procedures16,14,13,9. Native words

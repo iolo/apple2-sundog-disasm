@@ -1,5 +1,44 @@
 # SunDog web remake progress
 
+## R06f — Visitor traffic and counter following — 2026-09-29
+
+Visitors now enter, move through and leave the eight supported room layouts.
+The source traffic loop includes two-stage targets, diagonal/X/Y collision,
+blocked-route detours, actor removal/slot compaction, waiting visitors and counter
+following. Source glyph3 supplies the counter movement mask. Assigned actor
+values remain numeric; no timer countdown, player dialogue or transaction is
+invented. English/Korean help reflects the implemented behavior.
+
+Player movement and NPC updates share an explicit50ms browser step, with at most
+100ms frame catch-up. Menus, pause, sleep and death freeze traffic. Native pointer
+redraw retries have no browser collision effect. A documented browser repair
+preserves counter target identity when actor slots compact and clears canceled
+references. Dialogue, the secondary mover and tavern seating remain gated.
+The original no-visitor entry fallback remains unresolved. See
+`docs/remake/room-traffic.md` for the source trace and adaptations.
+
+Version7 (`landed-traffic-1`) persists actor words, active visitor, waiting count
+and continuing RNG. Validation checks supported flags/actions/glyphs, reachable
+visitor positions, counter targets, queue references and visible overlaps.
+It allows empty movement-mask margins to overlap as in source collision.
+Version6 verifies its old initial seed/RNG tail before deriving mutable actors;
+versions1–5 retain their earlier migration. Reload restores exact live actor
+state, paused; collision rows and partial ticks remain transient.
+
+Chrome154.0.8037.57 passes102 room UI checks and103 browser rule groups. Tests
+cover timed traffic equivalence, moving-state reload, version6 import, menu
+pauses, invalid traffic rejection and1200-step runs in every layout. Controlled
+branches cover target transitions, eager RNG draws, counter service and the
+compaction repair. Regressions pass28 bank,44 city,45 campaign,37 equipment and14
+recovery checks (270 UI checks total). Both counter orientations and locales
+were visually reviewed. Thirteen exporter tests,136 generated artifacts,
+64 initial population references,57 city references,584 source strings and
+original input hashes pass. Receipts: `docs/remake/room-traffic-validation.md`
+and its JSON companion. No original-emulator traffic capture is claimed.
+
+Next: player counter interaction and dialogue dispatch, then remaining building
+fixtures and city behavior. R06 remains partial; transactions remain R07.
+
 ## R06e — Initial room occupants and saved gameplay RNG — 2026-09-29
 
 The eight supported interiors now contain source-generated visitors and a

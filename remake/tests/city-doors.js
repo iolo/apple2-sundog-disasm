@@ -37,7 +37,7 @@ export async function cityDoorTests(test,equal) {
     state.travel={scene:'bank',cityPosition:{x:369,y:299}};
     equal(atCityBank(map,state.travel.cityPosition),true);
     const save=codec.make(state,1),loaded=codec.parse(JSON.stringify(save));
-    equal(loaded,save);equal(loaded.version,6);equal(loaded.scope,'landed-occupants-1');
+    equal(loaded,save);equal(loaded.version,7);equal(loaded.scope,'landed-traffic-1');
     equal(loaded.state.start,fresh().start);equal(loaded.state.ship.minutes,123);
     loaded.state.travel.cityPosition.x++;equal(save.state.travel.cityPosition.x,369);
     for(const mutate of [s=>s.travel.cityPosition={...geometry.spawn},s=>s.travel.cityPosition={x:368,y:299},
@@ -52,7 +52,7 @@ export async function cityDoorTests(test,equal) {
       if(scene==='city'){state.ship.position={...SHIP_REENTRY};state.travel={scene,cityPosition:{...geometry.spawn}}}
       const old=codec.make(state,0);old.version=3;old.scope='landed-city-1';delete old.state.encounters;
       const before=JSON.stringify(old),next=codec.parse(before);
-      equal(next.state,{...old.state,encounters:state.encounters});equal(next.version,6);equal(JSON.stringify(old),before);
+      equal(next.state,{...old.state,encounters:state.encounters});equal(next.version,7);equal(JSON.stringify(old),before);
       old.state.travel={scene:'bank',cityPosition:{x:369,y:299}};rejects(()=>codec.validate(old));
       old.state.travel={scene:'city',cityPosition:{...geometry.spawn},bank:false};rejects(()=>codec.validate(old));
     }

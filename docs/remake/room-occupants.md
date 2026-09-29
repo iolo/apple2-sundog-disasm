@@ -1,5 +1,8 @@
 # Initial room occupants — R06e
 
+R06f extends this checkpoint with [live room traffic](room-traffic.md) and
+version7 saves. The sections below preserve the original R06e boundary.
+
 Types9/10 now display the initial visitors and the person behind the counter.
 They use exported glyph23; the player retains glyph22 and collision glyph24.
 Occupants remain stationary in this checkpoint. Wandering, arrivals/departures,

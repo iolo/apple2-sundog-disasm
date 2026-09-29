@@ -6,6 +6,7 @@ export function createRoomGeometries(content) {
     index:room.index,width:room.width,height:room.height,spawn:{...room.spawn},exitX:room.exitX,
     backgrounds:{ship:room.rows.map(row=>[...row])},collisionRows:[...content.collisionRows],
     population:structuredClone(room.population),spriteRows:[...content.spriteRows],npcRows:[...content.npcRows],
+    counterCollisionRows:[...content.counterCollisionRows],
   }]));
 }
 

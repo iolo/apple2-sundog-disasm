@@ -1,8 +1,8 @@
-# Campaign save boundary — R04g / R05f / R06b / R06c / R06d / R06e
+# Campaign save boundary — R04g / R05f / R06b / R06c / R06d / R06e / R06f
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version6, scope `landed-occupants-1`, and validates/upgrades version1 `landed-ship-1`,
-version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1` and version5 `landed-rooms-1`.
+version7, scope `landed-traffic-1`, and validates/upgrades version1 `landed-ship-1`,
+version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1` and version5 `landed-rooms-1` and version6 `landed-occupants-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -26,10 +26,11 @@ The state has five explicit parts:
   `roomPosition`, must be reachable from the derived layout's interior spawn.
   It is forbidden in other scenes. Only city tile types9/10 are currently enabled.
 
-- `encounters`: unsigned gameplay `randomState` and nullable `roomSeed`. Room entry
-  derives stationary occupants and advances the stream; exit clears only the seed.
-  Reload validates the population RNG tail and player reachability against its
-  collision overlay. Outside rooms the seed must be null.
+- `encounters`: unsigned gameplay `randomState`, nullable `roomSeed` and nullable
+  `roomState` (actors, active visitor and waiting count). Entry derives occupants;
+  traffic advances their state and RNG. Exit clears room seed/state. Outside rooms
+  both must be null. Reload validates native actor words, supported actions,
+  reachable positions, counter targets, queue references and visible overlap.
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`, `equipment`, `travel` and `encounters`. It must never read stale initial values as live progress.
@@ -55,7 +56,10 @@ Version3 migration preserves ship/city state and rejects bank scenes. Version4
 additionally permits validated bank visits, restoring the service screen.
 Version5 additionally validates room door/layout/reachability; version4 migration
 cannot introduce room fields. Room saves preserve a visit at its interior anchor.
-Version6 adds initial occupants and active RNG. Versions1–5 receive the creation
+Version6 adds initial occupants and active RNG. Version7 saves live traffic state
+and no longer compares the active RNG with the initial population tail. Version6
+migration performs that comparison before reconstructing initial actors. See
+[room traffic](room-traffic.md) for actor validation, cadence and repairs. Versions1–5 receive the creation
 gameplay RNG and a null seed after validation. Legacy interiors remain empty until
 re-entry; null room seeds are retained for that migration. See
 [room occupants](room-occupants.md) for the seed contract and unresolved fallback.
@@ -83,8 +87,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version6 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. NPC movement/dialogue, bank transactions, other buildings/cities, encoded component repair and
+as version7 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. NPC dialogue, bank transactions, other buildings/cities, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.

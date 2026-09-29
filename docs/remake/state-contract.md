@@ -160,6 +160,15 @@ gameplay state and null seed; legacy interiors remain empty until re-entry.
 Only initial population is supported; NPC motion/dialogue need later transitions.
 Failed population leaves live state untouched. See `room-occupants.md`.
 
+R06f adds nullable `encounters.roomState:{actors,active,waiting}` in version7
+(`landed-traffic-1`). Actor words retain current/target positions, action/flags
+and native values while traffic advances the active RNG. Version6 validates its
+original seed/tail before receiving initial actor state. Save validation rejects
+unsupported actions, bad queue/follow references, unreachable visitors, invalid
+counter targets and visible overlaps. Timing/collision rows remain derived;
+reload pauses and discards partial ticks. See `room-traffic.md` for source scope,
+compaction repair and the explicit50ms browser cadence.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.
