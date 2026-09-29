@@ -317,6 +317,15 @@ encoded repair, fuel/services and power controls for their R08/R09 rules. Full
 navigation/trade/colony gameplay is still pending. See
 `docs/remake/component-exchange.md`.
 
+Checkpoint R06a (2026-09-29) implements ordinary-city background composition and
+an English/Korean city inspector alongside the stored-layout preview. All57 named
+cities use the source's private RNG sequence, 40×24 buffer and automatic two-bank
+selection. The 10×6 camera wraps horizontally and stays within valid rows;
+records58–60 remain stored-only. Campaign state/save scope is unchanged. Next:
+trace collision and exterior ship/pod overlays, then implement airlock exit/reentry
+with active scene/location persistence. Doors, NPCs and dialogue remain later R06
+work. See `docs/remake/city-maps.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

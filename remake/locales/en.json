@@ -27,7 +27,7 @@
   "help": "Help",
   "helpTitle": "Welcome aboard",
   "helpBody": "Explore the original ship outlines, city layouts and world maps. Use the arrows to change layouts, or select a point on the display. Keyboard: Enter selects; arrow keys move the selection; Escape returns.",
-  "helpScope": "This is an early visual preview. Maps show stored layouts without the game's later overlays. Movement, trading and the colony campaign are still being built.",
+  "helpScope": "City view shows ordinary cities with their generated tile variants. Stored layouts remain available for every map. City walking, doors and ship exits are still being built.",
   "close": "Close",
   "surface": "Inspect the layout. Press Enter to select, then use arrow keys to move the selection.",
   "loadError": "SunDog could not load. Check that all files are present and open it through a local HTTP server.",
@@ -217,5 +217,15 @@
   "equipmentMove": "Move / exchange",
   "equipmentExchanged": "Components exchanged. Performance updated.",
   "equipmentDoesNotFit": "Does not fit. Neither item was moved.",
-  "equipmentUnavailable": "This equipment is not accessible here."
+  "equipmentUnavailable": "This equipment is not accessible here.",
+  "cityViewDescription": "City view · use the arrows to look around",
+  "cityStoredOnly": "Stored layout only · city view not available yet",
+  "cityTile": "Column {x} · Row {y} · Tile {tile} · Bank {bank}",
+  "cityPan": "Look around the city",
+  "cityPan-left": "Look west",
+  "cityPan-up": "Look north",
+  "cityPan-down": "Look south",
+  "cityPan-right": "Look east",
+  "cityComposedView": "City view",
+  "cityStoredView": "Stored layout"
 }

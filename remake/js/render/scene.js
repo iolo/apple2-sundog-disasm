@@ -1,5 +1,13 @@
+import { cityWindow } from '../core/city-map.js';
+
 export const MAP_BOUNDS = { x: 68, y: 145, width: 504, height: 216 };
+export const CITY_BOUNDS = {x:145,y:136,width:350,height:240};
 export const SHIP_BOUNDS = { x: 0, y: 46, width: 640, height: 384 };
+
+export function previewCity(state,assets) {
+  return state.view==='cities' && state.cityMode==='composed'
+    ? assets.cityMaps[assets.maps.cities[state.indices.cities].id] : null;
+}
 
 export function drawScene(canvas, state, assets, displayScale = 1) {
   const ratio = Math.min(window.devicePixelRatio || 1, 3) * displayScale;
@@ -21,6 +29,18 @@ export function drawScene(canvas, state, assets, displayScale = 1) {
     ctx.globalAlpha = .72;
     ctx.drawImage(assets.images[assets.catalog.images.title], 208, 118, 432, 296);
     ctx.globalAlpha = 1;
+    return;
+  }
+  const city=previewCity(state,assets);
+  if(city) {
+    cityWindow(city,state.cityOrigin).forEach((row,y)=>row.forEach((cell,x)=>{
+      const path=assets.catalog.tileBanks[`city-${cell.bank}`][cell.index];
+      ctx.drawImage(assets.images[path],CITY_BOUNDS.x+x*35,CITY_BOUNDS.y+y*40,35,40);
+    }));
+    if(state.selection) {
+      ctx.strokeStyle='#eab975';ctx.lineWidth=1;
+      ctx.strokeRect(CITY_BOUNDS.x+state.selection.x*35,CITY_BOUNDS.y+state.selection.y*40,35,40);
+    }
     return;
   }
   ctx.strokeStyle = '#252e25'; ctx.lineWidth = .5;

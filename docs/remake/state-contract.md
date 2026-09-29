@@ -119,6 +119,13 @@ Version1 validates before migration; its raw slot remains the transaction's
 comparison record. Selection/move mode stays transient. Power, charges and other
 resources remain at creation defaults; encoded damage repair is not supported.
 
+R06a adds owned, derived ordinary-city backgrounds outside campaign state. The
+preview alone owns its stored/composed mode, camera and selected tile. Composition
+uses a private source-derived seed and leaves campaign RNG untouched. The map
+cache contains57 named ordinary cities; records58–60 retain stored-only inspection.
+No city player location, airlock transition or new save field is introduced.
+See `city-maps.md`.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.

@@ -1,6 +1,9 @@
-// Preview state is intentionally distinct from future campaign/save state.
+import { cityOrigin } from './city-map.js';
+
+// Preview state is intentionally distinct from campaign/save state.
 export function createPreview() {
-  return { view: 'title', indices: { ship: 0, cities: 0, worlds: 0 }, bank: 0, selection: null };
+  return { view: 'title', indices: { ship: 0, cities: 0, worlds: 0 }, bank: 0, selection: null,
+    cityMode:'stored',cityOrigin:cityOrigin() };
 }
 
 export function reducePreview(state, action, counts) {
@@ -12,8 +15,15 @@ export function reducePreview(state, action, counts) {
       const count = counts[state.view];
       if (!count || !Number.isInteger(action.delta)) return state;
       const index = ((state.indices[state.view] + action.delta) % count + count) % count;
-      return { ...state, indices: { ...state.indices, [state.view]: index }, selection: null };
+      return { ...state, indices: { ...state.indices, [state.view]: index }, selection: null,
+        cityOrigin:state.view==='cities' ? cityOrigin() : state.cityOrigin };
     }
+    case 'city-mode':
+      return ['stored','composed'].includes(action.mode) ? {...state,cityMode:action.mode,selection:null} : state;
+    case 'city-pan':
+      if(state.view!=='cities'||state.cityMode!=='composed'||
+        !Number.isInteger(action.dx)||!Number.isInteger(action.dy)||Math.abs(action.dx)+Math.abs(action.dy)!==1) return state;
+      return {...state,selection:null,cityOrigin:{x:(state.cityOrigin.x+action.dx+40)%40,y:Math.min(18,Math.max(0,state.cityOrigin.y+action.dy))}};
     case 'bank':
       return Number.isInteger(action.bank) && action.bank >= 0 && action.bank < 4
         ? { ...state, bank: action.bank } : state;

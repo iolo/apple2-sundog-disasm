@@ -1,3 +1,5 @@
+import { createCityMaps } from '../core/city-map.js';
+
 export async function readJSON(path) {
   const response = await fetch(path);
   if (!response.ok) throw new Error(`Could not load ${path}: ${response.status}`);
@@ -27,5 +29,5 @@ export async function loadAssets() {
     readJSON('data/initial-location.json'),
   ]);
   await document.fonts.load('16px Mulmaru', 'SunDog 선독');
-  return { catalog, maps, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  return { catalog, maps, cityMaps:createCityMaps(maps,navigation,economy), shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

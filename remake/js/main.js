@@ -1,6 +1,7 @@
 import { createPreview, reducePreview, logicalPoint, cellAt } from './core/preview.js';
 import { loadAssets } from './render/assets.js';
-import { drawScene, MAP_BOUNDS, SHIP_BOUNDS } from './render/scene.js';
+import { drawScene, MAP_BOUNDS, SHIP_BOUNDS, CITY_BOUNDS, previewCity } from './render/scene.js';
+import { cityWindow } from './core/city-map.js';
 import { readLocale, saveLocale, translator } from './ui/i18n.js';
 import { characterScreen } from './ui/character.js';
 import { shipWalkScreen } from './ui/ship-walk.js';
@@ -39,12 +40,25 @@ function resize() {
 function describeSelection() {
   if (!state.selection) return t('selectHint');
   const { x, y } = state.selection;
+  const city=previewCity(state,assets);
+  if(city) {
+    const cell=cityWindow(city,state.cityOrigin)[y][x];
+    return t('cityTile',{x:cell.x+1,y:cell.y+1,tile:cell.index,bank:cell.bank+1});
+  }
   return state.view === 'ship' ? t('point', { x, y })
     : t('tile', { x: x + 1, y: y + 1, tile: assets.maps[state.view][state.indices[state.view]].tiles[y][x] });
 }
 
+function inspectGeometry() {
+  if(previewCity(state,assets)) return {bounds:CITY_BOUNDS,width:10,height:6};
+  const map=state.view==='ship' ? null : assets.maps[state.view][state.indices[state.view]].tiles;
+  return {bounds:map ? MAP_BOUNDS : SHIP_BOUNDS,width:map ? map[0].length : 280,height:map ? map.length : 192};
+}
+
 function render() {
   const focused = document.activeElement?.id;
+  const city=previewCity(state,assets);
+  const availableCity=state.view==='cities' && assets.cityMaps[assets.maps.cities[state.indices.cities].id];
   document.documentElement.lang = locale;
   const language = `<button id="language" data-action="language" lang="${locale === 'en' ? 'ko' : 'en'}">${t('language')}</button>`;
   const footer = `<footer class="bottomline"><button id="about" data-action="help">${t('about')}</button><span>${t('previewNote')}</span></footer>`;
@@ -57,13 +71,14 @@ function render() {
   } else {
     ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
       <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
-      <section class="scene-heading"><div><h1>${t(`${state.view}Title`)}</h1><p>${t(`${state.view}Description`)}</p></div>
+      <section class="scene-heading${city ? ' city-heading' : ''}"><div><h1>${city ? city.name : t(`${state.view}Title`)}</h1><p>${city ? t('cityViewDescription') : state.view==='cities'&&!availableCity ? t('cityStoredOnly') : t(`${state.view}Description`)}</p></div>
       <div class="pager"><button id="previous" data-action="step" data-delta="-1" aria-label="${t('previous')}">‹</button>
       <span>${String(state.indices[state.view] + 1).padStart(2, '0')} / ${counts[state.view]}</span>
       <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">›</button></div></section>
-      <div id="inspect" class="inspect-surface" role="button" tabindex="0" aria-label="${t('surface')}"></div>
-      <div class="scene-controls"><p class="selection">${describeSelection()}</p>
-      ${state.view === 'cities' ? `<label>${t('bank')} <select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select></label>` : `<div>${state.view === 'ship' ? `<button id="begin-walk" data-action="walk">${t('beginWalk')} →</button>` : ''}<button id="help" data-action="help">${t('help')} ?</button></div>`}</div>
+      <div id="inspect" class="inspect-surface${city ? ' city-surface' : ''}" role="button" tabindex="0" aria-label="${t('surface')}"></div>
+      ${city ? `<div class="city-pan" aria-label="${t('cityPan')}">${[['left',-1,0,'←'],['up',0,-1,'↑'],['down',0,1,'↓'],['right',1,0,'→']].map(([direction,dx,dy,glyph])=>`<button id="city-${direction}" data-action="city-pan" data-dx="${dx}" data-dy="${dy}" aria-label="${t(`cityPan-${direction}`)}">${glyph}</button>`).join('')}</div>` : ''}
+      <div class="scene-controls${state.view==='cities' ? ' city-controls' : ''}"><p class="selection">${describeSelection()}</p>
+      ${state.view === 'cities' ? `<div class="city-view-controls">${city ? '' : `<label class="sr-only" for="bank">${t('bank')}</label><select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select>`}<button id="city-mode" data-action="city-mode" ${!availableCity ? 'disabled' : ''}>${t(city ? 'cityStoredView' : 'cityComposedView')}</button></div>` : `<div>${state.view === 'ship' ? `<button id="begin-walk" data-action="walk">${t('beginWalk')} →</button>` : ''}<button id="help" data-action="help">${t('help')} ?</button></div>`}</div>
       <footer class="bottomline"><span>${t('controls')}</span><span>${t('preview')}</span></footer>`;
   }
   if (help) {
@@ -110,6 +125,8 @@ ui.addEventListener('click', event => {
   } else if (action === 'close-help') closeHelp();
   else if (action === 'view') dispatch({ type: 'view', view: button.dataset.view });
   else if (action === 'step') dispatch({ type: 'step', delta: Number(button.dataset.delta) });
+  else if (action === 'city-mode') dispatch({type:'city-mode',mode:previewCity(state,assets) ? 'stored' : 'composed'});
+  else if (action === 'city-pan') dispatch({type:'city-pan',dx:Number(button.dataset.dx),dy:Number(button.dataset.dy)});
 });
 
 ui.addEventListener('change', event => {
@@ -119,8 +136,8 @@ ui.addEventListener('change', event => {
 ui.addEventListener('pointerdown', event => {
   if (event.target.id !== 'inspect' || help) return;
   const point = logicalPoint(stage.getBoundingClientRect(), event.clientX, event.clientY);
-  const map = state.view === 'ship' ? null : assets.maps[state.view][state.indices[state.view]].tiles;
-  const cell = cellAt(point, map ? MAP_BOUNDS : SHIP_BOUNDS, map ? map[0].length : 280, map ? map.length : 192);
+  const {bounds,width,height}=inspectGeometry();
+  const cell = cellAt(point,bounds,width,height);
   if (cell) {
     event.preventDefault();
     dispatch({ type: 'select', point: cell });
@@ -149,8 +166,7 @@ document.addEventListener('keydown', event => {
   if (state.view === 'title') return;
   if (event.target.id === 'inspect' && (['Enter', ' '].includes(event.key) || event.key.startsWith('Arrow'))) {
     event.preventDefault();
-    const map = state.view === 'ship' ? null : assets.maps[state.view][state.indices[state.view]].tiles;
-    const width = map ? map[0].length : 280, height = map ? map.length : 192;
+    const {width,height}=inspectGeometry();
     const point = state.selection ? { ...state.selection } : { x: Math.floor(width / 2), y: Math.floor(height / 2) };
     if (event.key === 'ArrowLeft') point.x--;
     if (event.key === 'ArrowRight') point.x++;
