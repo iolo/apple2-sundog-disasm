@@ -5,10 +5,11 @@ import { cityReachability, SHIP_REENTRY } from './city-walk.js';
 import { atCityBank } from './city-doors.js';
 import { roomAt } from './room-walk.js';
 import { populateRoom } from './room-actors.js';
+import { initialRoomTraffic, validateRoomTraffic } from './room-traffic.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 6, SCOPE = 'landed-occupants-1';
+const VERSION = 7, SCOPE = 'landed-traffic-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -73,21 +74,25 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
-      let encounters={randomState:start.gameplayRandomState,roomSeed:null};
+      let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
-        if(!keysMatch(value.encounters,['randomState','roomSeed'])||!validSeed(value.encounters.randomState))fail();
-        const {randomState,roomSeed}=value.encounters;
+        if(!keysMatch(value.encounters,version===6 ? ['randomState','roomSeed'] : ['randomState','roomSeed','roomState'])||!validSeed(value.encounters.randomState))fail();
+        const {randomState,roomSeed}=value.encounters;let roomState=null;
         if(roomSeed!==null) {
           if(travel.scene!=='room'||!validSeed(roomSeed))fail();
           const room=roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition);
           if(populationCache?.room!==room||populationCache.seed!==roomSeed) {
             const population=populateRoom(room,roomSeed);
-            populationCache={room,seed:roomSeed,randomState:population.randomState,reached:cityReachability(population.geometry)};
+            populationCache={room,seed:roomSeed,population,randomState:population.randomState,reached:cityReachability(population.geometry)};
           }
-          if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
+          if(version===6) {
+            if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
+            roomState=initialRoomTraffic(populationCache.population);
+          } else roomState=validateRoomTraffic(room,value.encounters.roomState,travel.roomPosition).state;
         }
-        encounters={randomState,roomSeed};
+        if(version>=7&&roomSeed===null&&value.encounters.roomState!==null)fail();
+        encounters={randomState,roomSeed,roomState};
       }
       // Legacy interior saves remain empty until their next entry, preserving
       // the saved position without spawning an occupant on top of the player.
@@ -99,7 +104,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===2 && value.scope==='landed-engineering-1') ||
       (value?.version===3 && value.scope==='landed-city-1') ||
       (value?.version===4 && value.scope==='landed-bank-1') ||
-      (value?.version===5 && value.scope==='landed-rooms-1');
+      (value?.version===5 && value.scope==='landed-rooms-1') ||
+      (value?.version===6 && value.scope==='landed-occupants-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -110,7 +116,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
     snapshot:value=>snapshot(value),validate,
     create(character,seed) {
       const start=createCampaignStart(character,baseline,seed);
-      return {start,encounters:{randomState:start.gameplayRandomState,roomSeed:null},travel:{scene:'ship',cityPosition:null},equipment:start.equipment.map(recalculateEquipment),ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
+      return {start,encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null},travel:{scene:'ship',cityPosition:null},equipment:start.equipment.map(recalculateEquipment),ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes})};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),

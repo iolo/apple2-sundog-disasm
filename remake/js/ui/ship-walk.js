@@ -14,7 +14,8 @@ import { cityWindow } from '../core/city-map.js';
 import { atCityBank } from '../core/city-doors.js';
 import { bankPanel } from './bank.js';
 import { roomAt, canLeaveRoom } from '../core/room-walk.js';
-import { populateRoom } from '../core/room-actors.js';
+import { populateRoom, roomActorGeometry } from '../core/room-actors.js';
+import { initialRoomTraffic, tickRoomTraffic, ROOM_TICK_MS } from '../core/room-traffic.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 const CITY_BOUNDS={x:145,y:126,width:350,height:240};
@@ -27,7 +28,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let campaignMode=false, campaignStart=null;
   let campaignEquipment=null;
   let travel={scene:'ship',cityPosition:null};
-  let encounters=null,roomPopulation=null,roomMessage='';
+  let encounters=null,roomPopulation=null,roomMessage='',roomElapsed=0;
   const inCity=()=>campaignMode&&['city','bank'].includes(travel.scene);
   const inBank=()=>campaignMode&&travel.scene==='bank';
   const inRoom=()=>campaignMode&&travel.scene==='room';
@@ -55,8 +56,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
   function restoreShip(next) {
-    if(campaignMode)roomPopulation=inRoom()&&encounters.roomSeed!==null ? populateRoom(currentRoom(),encounters.roomSeed) : null;
-    roomMessage='';
+    if(campaignMode)roomPopulation=inRoom()&&encounters.roomState ? {actors:encounters.roomState.actors,geometry:roomActorGeometry(currentRoom(),encounters.roomState.actors)} : null;
+    roomMessage='';roomElapsed=0;
     stop();state={...createWalk(geometry()),position:inRoom() ? travel.roomPosition : inCity() ? travel.cityPosition : next.position,paused:true};
     inventory=next.inventory;condition=next.condition;survival={...createSurvival(condition),minutes:next.minutes};
     inventoryOpen=false;selected=null;equipmentOpen=false;help=false;previous=0;
@@ -192,7 +193,20 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       state.held = !!(dx || dy);
       state.pointer = { x: state.position.x + 3 + Math.sign(dx) * 2, y: state.position.y - 3 + Math.sign(dy) * 2 };
     }
-    if (!survival.sleeping && !survival.dead && !inBank()) state = advanceWalk(state, previous ? now - previous : 0, geometry());
+    if (!survival.sleeping && !survival.dead && !inBank() && !(inRoom()&&roomPopulation)) state = advanceWalk(state, previous ? now - previous : 0, geometry());
+    if(inRoom()&&roomPopulation&&!state.paused&&!survival.sleeping&&!survival.dead&&!checkpoints.active&&!help&&!inventoryOpen) {
+      roomElapsed+=Math.max(0,Math.min(100,previous ? now-previous : 0));
+      while(roomElapsed>=ROOM_TICK_MS) {
+        if(keys.size) {
+          let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
+          state.pointer={x:state.position.x+3+Math.sign(dx)*2,y:state.position.y-3+Math.sign(dy)*2};
+        }
+        state=advanceWalk({...state,elapsed:0},ROOM_TICK_MS,geometry());
+        const next=tickRoomTraffic(currentRoom(),encounters.roomState,encounters.randomState,state.position);
+        encounters={...encounters,randomState:next.randomState,roomState:next.state};
+        roomPopulation={actors:next.state.actors,geometry:next.geometry};roomElapsed-=ROOM_TICK_MS;
+      }
+    } else roomElapsed=0;
     previous = now;
     draw(); frame = requestAnimationFrame(loop);
   }
@@ -273,9 +287,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
     stop();
-    roomMessage='';
+    roomMessage='';roomElapsed=0;
     if(inRoom()) {
-      encounters={...encounters,roomSeed:null};roomPopulation=null;
+      encounters={...encounters,roomSeed:null,roomState:null};roomPopulation=null;
       const position={...travel.cityPosition};travel={scene:'city',cityPosition:position};
       state={...createWalk(geometry()),position,paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;
@@ -286,7 +300,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       try {population=populateRoom(room,encounters.randomState)}
       catch {roomMessage='roomPopulationUnavailable';state.paused=true;render();return}
       roomPopulation=population;
-      encounters={randomState:population.randomState,roomSeed:population.seed};
+      encounters={randomState:population.randomState,roomSeed:population.seed,roomState:initialRoomTraffic(population)};
       travel={scene:'room',cityPosition:{...state.position},roomPosition:{...room.spawn}};
       state={...createWalk(room),paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;

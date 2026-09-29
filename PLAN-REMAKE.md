@@ -360,6 +360,15 @@ See `docs/remake/room-occupants.md` for source references and the explicit limit
 Next port NPC movement/activity/counter following, then dialogue and remaining
 fixture-dependent interiors. R06 remains partial; transactions remain R07.
 
+Checkpoint R06f (2026-09-29) adds visitor arrivals/departures, collision-aware
+movement, blocked-route recovery and counter following in the eight supported
+rooms. Version7 saves retain live actor targets, queue/mover references and RNG;
+versions1–6 migrate under their original rules. Player and NPC movement share an
+explicit50ms browser step. Counter target references survive actor compaction.
+See `docs/remake/room-traffic.md` for source scope and adaptations. Next implement
+player counter interactions/dialogue and the remaining fixture-dependent room
+types. R06 remains partial; financial transactions remain R07.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

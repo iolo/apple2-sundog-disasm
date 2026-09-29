@@ -192,7 +192,7 @@
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
   "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses a nearby airlock or building door. Escape leaves the bank or returns to the title.",
-  "campaignPlayScope": "Explore the ship, Drahew and open buildings; visit the bank and save your progress. Room occupants are stationary for now. Dialogue, taverns, hotels, transactions and travel beyond the city are still being restored.",
+  "campaignPlayScope": "Explore the ship, Drahew and open buildings; visit the bank and save your progress. Visitors enter and leave, and counter staff move to waiting visitors. Dialogue, taverns, hotels, transactions and travel beyond the city are still being restored.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",

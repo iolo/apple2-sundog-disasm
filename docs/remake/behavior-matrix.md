@@ -37,6 +37,8 @@ characters and includes historical variants; it is not a localization catalog.
 
 | Initial room occupants | Game18 procedures9/13/14/16; library22 procedures3/40; interaction bytes4–7/22–25, glyph23 | Source-derived, 64 independent Python vectors and browser validated; no emulator capture | R06e adds stationary visitors/counter occupant, pixel collision and version6 seed/RNG saves. The no-visitor reversed-range fallback fails atomically; movement/dialogue pending. See `room-occupants.md`. |
 
+| Room visitor traffic / counter following | Game18 procedures5–13/27/28; fresh-visit flag reset in procedure21; library22 movement | Source-derived, browser rules and UI validated; no emulator capture | R06f adds arrivals, departures, blocked-route recovery, counter motion and version7 live actor saves.50ms browser cadence and followed-slot compaction repair are explicit adaptations. Dialogue/secondary mover remain gated. See `room-traffic.md`. |
+
 ## New-game and campaign blockers
 
 R04b observes clean character creation on disposable disks; R05a implements the
