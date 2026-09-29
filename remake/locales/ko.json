@@ -191,8 +191,8 @@
   "deleteCampaignConfirm": "{slot}번 슬롯의 게임을 삭제할까요?",
   "loadCampaignConfirm": "이 게임을 불러올까요? 현재 저장하지 않은 함선 진행 상황은 바뀝니다.",
   "campaignDeath": "이번 플레이가 끝났습니다. 저장한 게임을 불러오거나 돌아가서 새 캐릭터를 만드세요.",
-  "campaignControls": "포인터나 터치를 누르고 있으면 이동하고 놓으면 멈춥니다. 화면에 초점을 맞추면 방향키로도 이동합니다. 출입구 근처에서 Enter로 출입하고 Esc로 처음 화면으로 돌아갑니다.",
-  "campaignPlayScope": "우주선 안을 걷거나 출입구로 나가 드라휴를 둘러보세요. 소지품, 상태, 시간과 장비는 유지됩니다. 건물, 만남과 도시 밖 이동은 개발 중입니다.",
+  "campaignControls": "포인터나 터치를 누르고 있으면 걷고, 놓으면 멈춥니다. 화면에 초점을 맞춘 뒤 방향키로 이동합니다. Enter로 가까운 에어록이나 은행에 들어갑니다. Escape로 은행을 나가거나 제목 화면으로 돌아갑니다.",
+  "campaignPlayScope": "선내와 드라휴를 걸어서 탐험하고, 은행을 방문하고, 진행 상황을 저장할 수 있습니다. 은행 거래, 다른 건물 내부, 조우, 도시 밖 이동은 아직 복원 중입니다.",
   "equipmentTitle": "기관실",
   "equipment0": "워프 드라이브",
   "equipment1": "아광속 엔진",
@@ -231,5 +231,13 @@
   "leaveShip": "내리기",
   "shipExitHint": "출입구 · Enter로 내리기",
   "cityBoardHint": "선독 · Enter로 탑승",
-  "cityWalkHint": "드라휴 둘러보기 · 선독으로 돌아와 탑승하세요"
+  "cityWalkHint": "드라휴 탐험 · 은행 방문 또는 선독으로 돌아가기",
+  "bankTitle": "{name} 은행",
+  "bankTeller": "유니텔러",
+  "bankCash": "소지금",
+  "bankBalance": "예금 잔액",
+  "bankVisitScope": "잔액 조회만 가능합니다. 입금, 출금, 송금은 아직 지원하지 않습니다.",
+  "leaveBank": "은행 나가기",
+  "enterBank": "은행 들어가기",
+  "bankDoorHint": "은행 입구 · Enter로 들어가기"
 }

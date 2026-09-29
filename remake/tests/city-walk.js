@@ -49,7 +49,7 @@ export async function cityWalkTests(test,equal) {
     equal(canStand(geometry,{x:400,y:198}),false);equal(canStand(geometry,{x:400,y:576}),false);
     equal(cityCamera(geometry.spawn),{x:5,y:3});equal(cityCamera({x:833,y:575}),{x:24,y:14});
   });
-  await test('Version3 city saves own their active position and preserve ship state, equipment and creation',()=>{
+  await test('Version4 city saves own their active position and preserve ship state, equipment and creation',()=>{
     const state=fresh();
     const moved=exchangeEquipment(state.equipment,state.ship.inventory,{x:109,y:60},0,
       {container:'installed',unit:0,socket:0},{container:'carried',index:0});
@@ -57,7 +57,7 @@ export async function cityWalkTests(test,equal) {
     state.ship.position={...SHIP_REENTRY};state.travel={scene:'city',cityPosition:{...geometry.spawn}};
     state.ship.minutes=321;
     const saved=codec.make(state,0),loaded=codec.parse(JSON.stringify(saved));
-    equal(loaded,saved);equal(loaded.version,3);equal(loaded.scope,'landed-city-1');
+    equal(loaded,saved);equal(loaded.version,4);equal(loaded.scope,'landed-bank-1');
     loaded.state.travel.cityPosition.x++;equal(saved.state.travel.cityPosition,geometry.spawn);
     equal(saved.state.start,fresh().start);equal(saved.state.ship.inventory.carried[0],31);
     equal(saved.state.equipment[0].units[0].performance,0);

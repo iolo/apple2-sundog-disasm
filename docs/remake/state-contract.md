@@ -135,6 +135,14 @@ serialized. Preview/campaign sessions stay separate. Source-derived city collisi
 uses glyph11 and pattern9, with the landed attached-pod ship overlay. See
 `city-walking.md` for boundaries and legacy location-field naming.
 
+R06c extends `travel.scene` with `bank` in version4 (`landed-bank-1`). Its city
+position is the retained street anchor and must match a reachable foot-bank door.
+The bank dialog is derived from that explicit scene, so save/reload preserves a
+visit. Version3 validates only ship/city before migration; older versions retain
+their existing upgrades. Inquiry has no financial or RNG mutation, and pauses
+time. All balances remain immutable creation data until R07 adds active accounts.
+See `city-buildings.md`.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.

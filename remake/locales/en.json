@@ -191,8 +191,8 @@
   "deleteCampaignConfirm": "Delete the saved game in slot {slot}?",
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
-  "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses the airlock when nearby. Escape returns to the title.",
-  "campaignPlayScope": "Walk aboard the ship or leave through its airlock to explore Drahew. Inventory, condition, time and equipment persist. Buildings, encounters and travel beyond the city are still in development.",
+  "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses a nearby airlock or bank door. Escape leaves the bank or returns to the title.",
+  "campaignPlayScope": "Explore the ship and Drahew on foot, visit the bank, and save your progress. Bank transactions, other building interiors, encounters and travel beyond the city are still being restored.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",
@@ -231,5 +231,13 @@
   "leaveShip": "Leave ship",
   "shipExitHint": "Airlock · Enter to leave the ship",
   "cityBoardHint": "SunDog · Enter to board",
-  "cityWalkHint": "Explore Drahew · return to the SunDog to board"
+  "cityWalkHint": "Explore Drahew · visit the bank or return to the SunDog",
+  "bankTitle": "{name} Bank",
+  "bankTeller": "UNITELLER",
+  "bankCash": "On hand",
+  "bankBalance": "In bank",
+  "bankVisitScope": "Balance inquiry only. Deposits, withdrawals and transfers are not available yet.",
+  "leaveBank": "Leave bank",
+  "enterBank": "Enter bank",
+  "bankDoorHint": "Bank entrance · Enter to visit"
 }
