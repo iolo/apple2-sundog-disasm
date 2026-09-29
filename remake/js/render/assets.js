@@ -1,4 +1,5 @@
 import { createCityMaps } from '../core/city-map.js';
+import { createCityGeometry } from '../core/city-walk.js';
 
 export async function readJSON(path) {
   const response = await fetch(path);
@@ -19,7 +20,7 @@ export async function loadAssets() {
     Promise.all(['en', 'ko'].map(locale => readJSON(`locales/${locale}.json`))),
   ]);
   const paths = [...Object.values(catalog.images), ...Object.values(catalog.itemImages), ...Object.values(catalog.tileBanks).flat()];
-  const [maps, images, shipWalk, shipInventory, navigation, economy, location] = await Promise.all([
+  const [maps, images, shipWalk, shipInventory, navigation, economy, location, cityWalk] = await Promise.all([
     readJSON(catalog.maps),
     Promise.all(paths.map(async path => [path, await loadImage(path)])),
     readJSON(catalog.shipWalk),
@@ -27,7 +28,10 @@ export async function loadAssets() {
     readJSON('data/initial-navigation.json'),
     readJSON('data/initial-economy.json'),
     readJSON('data/initial-location.json'),
+    readJSON('data/city-walk.json'),
   ]);
   await document.fonts.load('16px Mulmaru', 'SunDog 선독');
-  return { catalog, maps, cityMaps:createCityMaps(maps,navigation,economy), shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  const cityMaps=createCityMaps(maps,navigation,economy);
+  const cityGeometry=createCityGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
+  return { catalog, maps, cityMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

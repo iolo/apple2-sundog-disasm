@@ -1,5 +1,38 @@
 # SunDog web remake progress
 
+## R06b — Foot airlock, Drahew walking and exterior saves — 2026-09-29
+
+Campaigns can leave through the landed foot airlock, walk through connected
+Drahew streets and board again. The source-derived exit is full-map pixel
+`(287,217)`; reentry returns to interior `(54,118)`. Enter and contextual buttons
+require the correct proximity. Each transition pauses and clears held input.
+Active equipment, carried items, condition and time persist across the round trip.
+
+Added city glyph10/11, the ship36/37 plus attached-pod16 silhouette and pattern9
+pixel collision. Collision ignores the background's alternating pixel columns;
+the ship's replaced background is included. The camera follows city tiles.
+Walking stays within the stored city rectangle until surface travel is implemented.
+Exterior inventory exposes carried items; locker/stores and engineering remain
+available only inside. City encounters and building entry are not yet implemented.
+
+Campaign version3 (`landed-city-1`) adds active scene and full-map exterior player
+position. Imports require a position reachable from the airlock and a consistent
+interior reentry anchor. Version1/2 validate before migration; version2 equipment
+is preserved. Raw-slot comparison and explicit saving remain unchanged. Corrected
+the location documentation: legacy `surfacePosition` is the active map tile in
+both city and world scenes; recipe2 names and values are retained for compatibility.
+
+Chrome154.0.8037.57 passes44 new UI checks,83 rule groups,45 campaign checks,
+37 equipment checks,97 city-preview checks and14 recovery checks. Both languages
+fit four exterior viewport sizes and the expanded ship footer. Twelve exporter
+tests,125 artifacts,57 city references,584 strings and original input hashes verify.
+See `docs/remake/city-walking.md` and `city-walk-validation.md` with its JSON receipt.
+No new original-emulator observation is claimed.
+
+Next: source-backed building entrances/interiors, then the NPC/dialogue rules
+needed for R06. Pod driving, encounters and city-to-surface travel remain bounded
+out; trading and banking remain R07 work.
+
 ## R06a — Ordinary city composition and inspection — 2026-09-29
 
 Added the source-derived background layer for all57 named ordinary cities:

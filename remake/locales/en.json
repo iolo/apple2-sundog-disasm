@@ -176,7 +176,7 @@
   "replaceActiveCampaign": "Replace your current ship session? Unsaved progress will be lost. Stored saves will remain.",
   "resumeCampaign": "Resume",
   "campaignTitle": "Saved games",
-  "campaignScope": "Your character and ship progress. Loading resumes paused.",
+  "campaignScope": "Ship and Drahew exploration · four local slots",
   "campaignHint": "Save while awake. Keep a JSON copy to use in another browser.",
   "campaignLoadOnly": "Load a saved game or import a JSON file.",
   "campaignSummary": "{name} · Day {day}",
@@ -191,8 +191,8 @@
   "deleteCampaignConfirm": "Delete the saved game in slot {slot}?",
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
-  "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the ship and use arrow keys to move. Escape returns to the title.",
-  "campaignPlayScope": "Manage supplies at stores and the locker. Exchange compatible components at engineering bays. Food and rapidheal restore condition. Save to keep your progress. Travel, trade and power controls are not available yet.",
+  "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses the airlock when nearby. Escape returns to the title.",
+  "campaignPlayScope": "Walk aboard the ship or leave through its airlock to explore Drahew. Inventory, condition, time and equipment persist. Buildings, encounters and travel beyond the city are still in development.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",
@@ -227,5 +227,9 @@
   "cityPan-down": "Look south",
   "cityPan-right": "Look east",
   "cityComposedView": "City view",
-  "cityStoredView": "Stored layout"
+  "cityStoredView": "Stored layout",
+  "leaveShip": "Leave ship",
+  "shipExitHint": "Airlock · Enter to leave the ship",
+  "cityBoardHint": "SunDog · Enter to board",
+  "cityWalkHint": "Explore Drahew · return to the SunDog to board"
 }

@@ -184,7 +184,7 @@ window.addEventListener('resize', resize);
 resize();
 try {
   assets = await loadAssets();
-  campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk);
+  campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,assets.cityGeometry);
   walker = shipWalkScreen({ stage, background: ui, assets, t,
     language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
     close: () => {render();document.querySelector(state.view==='title' ? (walker.hasCampaign ? '#resume-campaign' : '#campaign-saves') : '#begin-walk')?.focus()},

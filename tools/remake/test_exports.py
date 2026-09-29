@@ -59,6 +59,22 @@ class ExportTests(unittest.TestCase):
         self.assertEqual([data['condition'][key] for key in ['vigor', 'rest', 'health', 'nourishment']], list(raw[48:52]))
         self.assertEqual(raw[12:16], bytes(4))  # Fresh clock at segment29 word42.
 
+    def test_city_collision_and_exterior_glyphs(self):
+        data = json.loads(build()['data/city-walk.json'])
+        root = Path(__file__).resolve().parents[2]
+        font = (root / 'assets/font/font.bin').read_bytes()
+        glyph = lambda i: [n & 127 for n in reversed(font[i*8:i*8+8])]
+        self.assertEqual(data['spriteRows'], glyph(10))
+        self.assertEqual(data['collisionRows'], glyph(11))
+        self.assertEqual(data['shipRows'], [[a, b ^ c] for a, b, c in zip(glyph(36), glyph(37), glyph(16))])
+        source = (root / 'src/pcode/library_22.s').read_text()
+        import re
+        patterns = [re.search(label+r':\s+\.byte ([^;]+)', source)[1] for label in ['L_164A','L_163E']]
+        self.assertEqual(data['collisionByteMasks'], [(int(p.split(',')[9].strip().removeprefix('$'),16)^255)&127 for p in patterns])
+        for i, bank in enumerate(data['banks']):
+            original = json.loads((root / f'assets/tiles/bank{i}/rows.json').read_text())
+            self.assertEqual(bank, [[[b & 127 for b in row] for row in tile] for tile in original])
+
     def test_navigation_static_fields_match_clean_capture(self):
         root = Path(__file__).resolve().parents[2]
         captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())

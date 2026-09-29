@@ -147,6 +147,11 @@ def build():
     glyph = lambda index: [value & 127 for value in reversed(font[index * 8:index * 8 + 8])]
     outputs['assets/svg/player.svg'] = svg(pixel_rows([[value] for value in glyph(12)]))
     images['player'] = 'assets/svg/player.svg'
+    outputs['assets/svg/city-player.svg'] = svg(pixel_rows([[value] for value in glyph(10)]))
+    images['city-player'] = 'assets/svg/city-player.svg'
+    exterior = [[left, right ^ pod] for left, right, pod in zip(glyph(36), glyph(37), glyph(16))]
+    outputs['assets/svg/landed-ship.svg'] = svg(pixel_rows(exterior))
+    images['landed-ship'] = 'assets/svg/landed-ship.svg'
     outputs['data/ship-walk.json'] = encode(dict(
         version=1, width=280, height=192, spawn=dict(x=54, y=110),
         spriteRows=glyph(12), collisionRows=glyph(13), backgrounds=ship_collision,
@@ -202,6 +207,12 @@ def build():
             paths.append(path)
         tile_banks[bank] = paths
 
+    outputs['data/city-walk.json'] = encode(dict(version=1,
+        banks=[[[[byte & 127 for byte in row] for row in tile] for tile in
+                json.loads(read(f'assets/tiles/bank{i}/rows.json'))] for i in range(4)],
+        spriteRows=glyph(10), collisionRows=glyph(11), shipRows=exterior,
+        collisionByteMasks=[0x55,0x2a],
+        source='game21 procedures7/15/23/25; library22 procedures9/11, pattern9'))
     cities = json.loads(read('assets/city-maps/tiles.json'))
     cities = [dict(id=f'city-{r["index"]+1:02}', sourceIndex=r['index'], tiles=r['tiles'])
               for r in cities if r['variant'] == 'play']

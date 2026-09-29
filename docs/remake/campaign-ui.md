@@ -37,11 +37,13 @@ play. English and Korean cover the new flow and its validation messages.
 
 ## Supported scope
 
-The save is now `sundog-campaign` version2, scope `landed-engineering-1`:
+The save is now `sundog-campaign` version3, scope `landed-city-1`:
 immutable creation record plus active ship position, inventory, condition,
-whole elapsed minutes and equipment. R05f adds [component exchange](component-exchange.md)
-at the six engineering bays and upgrades valid version1 saves on load. Generated
-resources, markets and navigation remain retained. Power controls, exits, travel,
+whole elapsed minutes, equipment and active ship/city scene. R05f adds
+[component exchange](component-exchange.md) at the six engineering bays; R06b adds
+[foot-airlock exit/reentry and Drahew walking](city-walking.md). Version1/2 saves
+upgrade after validation. Generated resources, markets and navigation remain
+retained. Power controls, buildings, travel beyond Drahew,
 trade, encounters and colony progression require further rules and an explicit
 state/schema extension. No new original-emulator behavior observation is claimed.
 
