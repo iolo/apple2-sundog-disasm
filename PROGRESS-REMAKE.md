@@ -1,5 +1,31 @@
 # SunDog web remake progress
 
+## R06g — Dialogue data and selection rules — 2026-09-29
+
+Added a structured browser catalogue for all96 classified dialogue records in
+thirteen banks and ESM helpers for bank lookup, random/conditional/mood selection
+and transition overrides. Counter types9/10 trace through dialogue kinds13/14,
+states80/81 and greeting states82/83. The export retains controls, replies and
+action operands for the remaining interpreter work.
+
+Source tracing establishes that selector21's extra byte is a fallback message,
+not a predicate. Its three additional messages were already classified in bank
+storage. The port also preserves one-shot random reuse, singleton draws,
+out-of-range reused-index behavior, first-match predicate evaluation and
+false-predicate transition overrides. Missing predicate support fails explicitly.
+
+Chrome154.0.8037.57 passes114 browser rule groups (11 new dialogue groups).
+Fifteen exporter tests pass; normalized records round-trip all1,175 original
+script/table bytes exactly. All137 generated artifacts, the original dialogue
+audit/160 message records and disk/PDF hashes verify. See
+`docs/remake/dialogue-selection.md` for source locations and scope.
+
+This is an interpreter foundation checkpoint. Live dialogue, player counter
+queues, text expansion, predicate/control/action effects and conversation saves
+remain pending. Campaign saves remain version7; transactions remain R07. Next:
+implement source text expansion and dialogue setup before connecting counter
+requests to supported conversation branches.
+
 ## R06f — Visitor traffic and counter following — 2026-09-29
 
 Visitors now enter, move through and leave the eight supported room layouts.

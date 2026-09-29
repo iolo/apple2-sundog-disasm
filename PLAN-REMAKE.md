@@ -369,6 +369,16 @@ See `docs/remake/room-traffic.md` for source scope and adaptations. Next impleme
 player counter interactions/dialogue and the remaining fixture-dependent room
 types. R06 remains partial; financial transactions remain R07.
 
+Checkpoint R06g (2026-09-29) exports all96 classified dialogue records and adds
+pure bank lookup, random/conditional/mood selection and transition overrides.
+Source tracing identifies selector21's fallback messages and preserves random
+reuse and false-predicate overrides. The normalized catalogue round-trips all
+1,175 original script/table bytes;114 browser rule groups pass. See
+`docs/remake/dialogue-selection.md`. This foundation does not yet enable live
+counter dialogue. Next implement text expansion, dialogue setup and predicates,
+then controls/actions, player queue/return behavior and persisted conversation
+state. Version7 campaign saves and R07 transaction scope remain unchanged.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

@@ -69,7 +69,14 @@ unsaved edits only until reload. Drafts prepare a character; they do not start o
 resume a campaign. See `../docs/remake/character-creation.md` for rules and scope.
 
 Open `/tests/` (relative to the served folder) for the dependency-free browser
-checks. Development export checks:
+checks.
+
+The dialogue foundation exports all96 classified records and tests the original
+selection/transition rules. Live counter conversations still require text
+expansion, setup, predicates and action handling. See
+`../docs/remake/dialogue-selection.md` for scope and source evidence.
+
+Development export checks:
 
 ```sh
 python3 tools/remake/source_index.py --check

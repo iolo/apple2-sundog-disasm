@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 from room_assets import room_layouts
+from dialogue_assets import dialogue_records
 from pathlib import Path
 import sys
 
@@ -130,6 +131,8 @@ def build():
         raw = (ROOT / name).read_bytes()
         sources[name] = hashlib.sha256(raw).hexdigest()
         return raw
+
+    outputs['data/dialogue.json'] = encode(dialogue_records(json.loads(read('docs/reference/dialogue-scripts.json'))))
 
     images, ship_collision = {}, {}
     for name, source in [('ship', 'assets/ship-images/full_ship/decoded.hgr'),

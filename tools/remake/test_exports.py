@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 import sys
 import unittest
@@ -12,6 +13,79 @@ from hgr_asset import split_page, row_offset
 
 
 class ExportTests(unittest.TestCase):
+    def test_dialogue_round_trips_all_source_script_bytes(self):
+        data = json.loads(build()['data/dialogue.json'])
+        root = Path(__file__).resolve().parents[2]
+        audit = json.loads((root / 'docs/reference/dialogue-scripts.json').read_text())
+        packed = bytearray()
+        count = 0
+        for bank in data['banks']:
+            packed.extend(bank['entries'][1 if bank['entries'][0] == 18 else 0:])
+            for record in bank['records']:
+                count += 1
+                raw = [record['mode'] * 16 + len(record['replies']) * 4 + record['delayUnits'] // 2,
+                       record['controls']]
+                selection = record['selection']
+                if selection['kind'] == 'literal':
+                    raw.append(selection['value'])
+                elif selection['kind'] == 'random':
+                    raw.extend([len(selection['values']), *selection['values']])
+                elif selection['kind'] == 'conditional':
+                    raw.append(11 + len(selection['choices']))
+                    for choice in selection['choices']:
+                        raw.extend([choice['value'], choice['predicate']])
+                    raw.append(selection['fallback'])
+                elif selection['kind'] == 'mood':
+                    raw.append(selection['code'])
+                    if selection['code'] == 21:
+                        raw.append(selection['fallback'])
+                    raw.extend(selection['values'])
+                else:
+                    self.fail('Unknown selector')
+                def transition(value, conditional):
+                    raw.append(value['state'])
+                    if conditional:
+                        override = value['unless']
+                        raw.extend([override['predicate'], override['state']] if override else [0])
+                for value in record['transitions']:
+                    transition(value, record['mode'] & 1)
+                for reply in record['replies']:
+                    raw.append(reply['caption'])
+                    transition(reply['transition'], record['mode'] & 2)
+                if record['action']:
+                    raw.extend([record['action']['opcode'], *record['action']['operands']])
+                self.assertEqual(len(raw), record['end'] - record['offset'])
+                packed.extend(raw)
+        self.assertEqual(count, 96)
+        self.assertEqual(len(packed), 1175)
+        self.assertEqual(hashlib.sha256(packed).hexdigest(), audit['source_sha256'])
+
+    def test_dialogue_message_candidates_include_mood21_fallbacks(self):
+        root = Path(__file__).resolve().parents[2]
+        fields = json.loads((root / 'assets/dialogue-messages/fields.json').read_text())
+        fields += [f for f in json.loads((root / 'assets/dialogue-bank-storage/fields.json').read_text())
+                   if f['kind'] == 'message']
+        messages = {(f['block'], f['bank_offset'] // 2) for f in fields}
+        fallbacks = set()
+        for bank in json.loads(build()['data/dialogue.json'])['banks']:
+            for record in bank['records']:
+                if record['redirect']:
+                    continue
+                selection = record['selection']
+                kind = selection['kind']
+                if kind == 'literal':
+                    values = [selection['value']]
+                elif kind == 'conditional':
+                    values = [c['value'] for c in selection['choices']] + [selection['fallback']]
+                else:
+                    values = selection['values'][:]
+                    if kind == 'mood' and selection['code'] == 21:
+                        values.append(selection['fallback'])
+                        fallbacks.add((bank['block'], selection['fallback']))
+                for value in values:
+                    self.assertIn((bank['block'], value), messages)
+        self.assertEqual(fallbacks, {(90, 89), (94, 147), (95, 180)})
+
     def test_room_records_bounds_and_drawing_order(self):
         files = build()
         data = json.loads(files['data/room-walk.json'])

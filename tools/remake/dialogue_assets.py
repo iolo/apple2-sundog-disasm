@@ -1,0 +1,76 @@
+"""Normalize the audited Game16 records into browser dialogue data.
+
+This consumes classified source operations, not opaque disk/code bytes. Execution
+of predicates, rendering and transaction actions belongs to later runtime work.
+"""
+
+
+def dialogue_records(audit):
+    def normalize(record):
+        units = iter(record['units'])
+
+        def take(expected=None):
+            unit = next(units)
+            op, args = unit['operation'], unit['operands']
+            if expected is not None and op != expected:
+                raise ValueError(f'Expected {expected}, found {op}')
+            return op, args
+
+        _, (mode, replies, delay, controls) = take('begin')
+        redirect = bool(mode & 2 and replies == 0)
+        prefix = 'state_' if redirect else 'text_'
+        op, args = take()
+        if op == 'say' and not redirect:
+            selection = dict(kind='literal', value=args[0])
+        elif op == prefix + 'random':
+            selection = dict(kind='random', values=[take('value')[1][0] for _ in range(args[0])])
+        elif op == prefix + 'conditional':
+            choices = []
+            for _ in range(args[0] - 1):
+                _, (value, predicate) = take('test')
+                choices.append(dict(value=value, predicate=predicate))
+            selection = dict(kind='conditional', choices=choices, fallback=take('default')[1][0])
+        elif op in [prefix + f'mood{i}' for i in (20, 21, 22, 23)]:
+            code = int(op[-2:])
+            # Proc24 $09D4 reads this into the RESULT, never into predicate8.
+            # If outer local20 is false it survives as the selected value.
+            fallback = take('condition')[1][0] if code == 21 else None
+            selection = dict(kind='mood', code=code, fallback=fallback,
+                             values=[take('value')[1][0] for _ in range(4 if code == 23 else 3)])
+        else:
+            raise ValueError(f'Unsupported dialogue selector: {op}')
+
+        def transition(state, conditional):
+            unless = None
+            if conditional:
+                op, args = take()
+                if op == 'override':
+                    unless = dict(predicate=args[0], state=args[1])
+                elif op != 'no_override':
+                    raise ValueError('Invalid transition override')
+            return dict(state=state, unless=unless)
+
+        transitions, options = [], []
+        if not redirect:
+            for _ in range(2):
+                transitions.append(transition(take('next')[1][0], bool(mode & 1)))
+            for _ in range(replies):
+                _, (caption, state) = take('reply')
+                options.append(dict(caption=caption, transition=transition(state, bool(mode & 2))))
+        action = None
+        if mode >= 8:
+            op, args = take()
+            if op not in [f'action{i}' for i in range(8)]:
+                raise ValueError('Invalid dialogue action')
+            action = dict(opcode=int(op[-1]), operands=args)
+        if next(units, None) is not None or redirect != record['early_exit']:
+            raise ValueError('Unconsumed or inconsistent dialogue record')
+        return dict(offset=record['start'], end=record['end'], mode=mode,
+                    delayUnits=delay * 2, controls=controls, redirect=redirect,
+                    selection=selection, transitions=transitions, replies=options, action=action)
+
+    banks = [dict(block=b['block'], entries=b['entries'],
+                  records=[normalize(r) for r in b['records']]) for b in audit['banks']]
+    if [b['block'] for b in banks] != list(range(90, 103)):
+        raise ValueError('Expected the thirteen classified dialogue banks')
+    return dict(version=1, source='game_16 procedures23–29/34; docs/reference/dialogue-scripts.json', banks=banks)
