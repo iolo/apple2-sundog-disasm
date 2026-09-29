@@ -224,3 +224,6 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
   .checkpoint-row button,.checkpoint-summary,.checkpoint-actions{font-size:21px}
   .checkpoint-row button{min-height:44px;padding:6px 10px}
 }
+.city-walk #walk-surface{left:145px;top:126px;width:350px;height:240px}
+#walk-screen[data-mode="campaign"] .walk-actions{font-size:15px}
+#walk-screen[data-mode="campaign"] .walk-actions button{padding-left:6px;padding-right:6px}

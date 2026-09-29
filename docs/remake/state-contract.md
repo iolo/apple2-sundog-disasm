@@ -126,6 +126,15 @@ cache contains57 named ordinary cities; records58–60 retain stored-only inspec
 No city player location, airlock transition or new save field is introduced.
 See `city-maps.md`.
 
+R06b introduces active `travel:{scene,cityPosition}` in campaign version3,
+`landed-city-1`. City positions use full-map pixels and must be reachable from the
+initial foot exit. The legacy `ship` block retains active inventory/condition/time;
+its interior position is the fixed reentry anchor while outside. Version1/2 gain
+an interior travel state after validation. Geometry and camera are derived, not
+serialized. Preview/campaign sessions stay separate. Source-derived city collision
+uses glyph11 and pattern9, with the landed attached-pod ship overlay. See
+`city-walking.md` for boundaries and legacy location-field naming.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.

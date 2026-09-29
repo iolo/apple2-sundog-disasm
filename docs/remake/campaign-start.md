@@ -71,8 +71,10 @@ its first city. The exported `initial-location.json` contains static fields only
 | Player anchor | Global words 40/41 | (54,110) |
 | Ship anchor | Utility18 `$073D–$0754`, copied to word 72 | (147,115) |
 
-Game21 procedure6 `$00DC–$0101` updates the surface fields modulo 40/24, and its
-city-entry path `$032C–$0342` loads the city's coordinates. Utility18 temporarily
+Game21 procedure6 `$00DC–$0101` updates the active map tile fields modulo40/24.
+R06b clarifies that legacy `surfacePosition` is also used for city tiles, while
+`cityPosition` holds the city's planet coordinates. Procedure11's city-exit path
+`$032C–$0342` restores those planet coordinates. Utility18 temporarily
 changes the anchor to (147,115), copies six words to 72,66,228 and the descriptor,
 then restores the player's anchor. R04g confirms word66 as the destination and
 word228 as the pod location; all four locations are now independently named.

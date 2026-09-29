@@ -2,6 +2,8 @@
 // x is the sprite's left edge; y is its bottom row (inclusive).
 export function canStand(geometry, point, variant = 'ship') {
   const { x, y } = point, rows = geometry.backgrounds[variant];
+  const bounds=geometry.walkBounds;
+  if(bounds&&(x<bounds.left||x>bounds.right||y<bounds.top||y>bounds.bottom)) return false;
   if (!rows || !Number.isInteger(x) || !Number.isInteger(y) || x < 0 || x + 7 > geometry.width || y < 7 || y >= geometry.height) return false;
   return geometry.collisionRows.every((mask, row) => {
     for (let bit = 0; bit < 7; bit++) {

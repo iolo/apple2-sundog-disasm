@@ -326,6 +326,15 @@ trace collision and exterior ship/pod overlays, then implement airlock exit/reen
 with active scene/location persistence. Doors, NPCs and dialogue remain later R06
 work. See `docs/remake/city-maps.md`.
 
+Checkpoint R06b (2026-09-29) enables landed foot-airlock exit/reentry and bounded
+Drahew walking with source-derived city glyphs, pattern9 collision and the attached
+ship silhouette. Version3 saves retain the active scene and reachable exterior
+position, upgrading valid version1/2 saves without automatic writes. Equipment,
+inventory, condition and time survive transitions. R06 remains partial: next trace
+building entrances/interiors and the NPC/dialogue interpreter actions they need.
+Surface travel, pod driving and encounters remain out of scope for this checkpoint.
+See `docs/remake/city-walking.md`.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
