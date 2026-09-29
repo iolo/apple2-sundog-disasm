@@ -1,5 +1,38 @@
 # SunDog web remake progress
 
+## R06d — First walking building interiors — 2026-09-29
+
+City types9/10 now admit foot entry into eight source-derived room layouts.
+Walk with pointer/touch/keyboard, collide with walls/counters, access carried
+inventory and return through the left doorway to the exact street position.
+Entry, return and loading pause play. Indoor exploration uses the shared survival
+clock. The browser displays generic building names while service/dialogue semantics
+remain incomplete; no NPCs, purchases or conversations are invented.
+
+The deterministic exporter reads original interaction records8–15 and native
+fill-pattern tables to produce eight external room SVGs, player glyph22 and
+separate collision rows. Glyph24 occupies the full7×8 cell, unlike the city mask.
+Spawn is `(12,56)` and the native exit threshold normalizes to `x<=12`.
+Fixed window placement, local stripe phase, boundary framing and explicit Enter
+exit activation are documented browser adaptations. Types8/11 need additional
+fixtures and remain gated. See `docs/remake/building-interiors.md`.
+
+Version5 (`landed-rooms-1`) adds a room scene with a retained city door and a
+reachable interior position. Extra layout IDs, non-door street anchors, walls,
+disconnected counter areas and cross-scene fields fail validation. Versions1–4
+retain their old scene rules before migration. No automatic slot rewrite or
+gameplay RNG draw is introduced.
+
+Chrome154.0.8037.57 passes56 new UI checks and90 browser rule groups. Both room
+types are reached through ordinary city walking; English/Korean fit four
+viewports. Regressions pass28 bank,44 city,45 campaign,37 equipment and14 recovery
+checks. Thirteen exporter tests,135 artifacts,57 city references,584 source
+strings and original input hashes pass. Receipts are in
+`docs/remake/room-walk-validation.md` and its JSON companion.
+
+Next: source NPC creation/state and dialogue actions, followed by special
+fixtures/interactions for the remaining room types. R06 is still partial.
+
 ## R06c — Source city doors and bank visits — 2026-09-29
 
 Walk to a Drahew bank door and use Enter or the contextual button to visit the

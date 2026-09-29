@@ -12,6 +12,27 @@ from hgr_asset import split_page, row_offset
 
 
 class ExportTests(unittest.TestCase):
+    def test_room_records_bounds_and_drawing_order(self):
+        files = build()
+        data = json.loads(files['data/room-walk.json'])
+        raw = (Path(__file__).resolve().parents[2] / 'assets/interaction-records/records.bin').read_bytes()
+        self.assertEqual(data['collisionRows'], [127]*8)
+        self.assertEqual(data['spriteRows'], [0, 0, 12, 30, 30, 12, 0, 0])
+        self.assertEqual([r['index'] for r in data['layouts']], list(range(8, 16)))
+        for r in data['layouts']:
+            source = raw[r['index']*32:(r['index']+1)*32]
+            self.assertEqual(r['spawn'], dict(x=source[2], y=source[0]))
+            self.assertEqual(r['exitX'], 12)
+            rows = pixel_rows(r['rows'])
+            # The left corridor is cleared AFTER the outer wall; all seven
+            # player columns/eight rows must fit the entrance, not just its center.
+            self.assertTrue(all(rows[y][x] == 0 for y in range(49, 57) for x in range(12, 19)))
+            self.assertTrue(all(rows[y][x] == 0 for y in range(42, 66) for x in range(15)))
+            self.assertTrue(any(rows[4][x] for x in range(2, 138)))
+            counter = r['bounds'][2]
+            self.assertTrue(any(rows[counter['top']][counter['left']:counter['right']+1]))
+            self.assertEqual(files[f'assets/svg/room-{r["index"]:02}.svg'], svg(rows))
+
     def test_hgr_rows_and_phase_bits(self):
         page = bytearray(8192)
         page[row_offset(65)] = 0x81

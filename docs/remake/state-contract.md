@@ -143,6 +143,14 @@ their existing upgrades. Inquiry has no financial or RNG mutation, and pauses
 time. All balances remain immutable creation data until R07 adds active accounts.
 See `city-buildings.md`.
 
+R06d adds `room` in version5 (`landed-rooms-1`). Room travel retains the exterior
+door in `cityPosition` and owns a separate `roomPosition`; the latter is forbidden
+in all other scenes. The door derives a supported type9/10 layout. Both city and
+room positions must be reachable in their respective geometries. Version4
+ship/city/bank states upgrade unchanged. Static room art/geometry are derived
+assets, not saved. NPC state and RNG consumption are deliberately absent until
+their rules are ported. See `building-interiors.md`.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.
