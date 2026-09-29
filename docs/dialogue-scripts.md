@@ -75,6 +75,15 @@ and condition state ($09B2–$0A1A). Their original selector is preserved; they
 are not collapsed into one supposedly equivalent encoding. Zero or unsupported
 state selector values are rejected by the tool rather than guessed.
 
+Runtime follow-up: selector21's extra byte, named `condition` in the source
+macro above, is read into the result and survives as a fallback when outer
+local20 is false; it is not passed to predicate procedure8. The corresponding
+messages at block90/word89, block94/word147 and block95/word180 were classified
+later in `dialogue-bank-storage`, rather than in this audit's160 `text_words`
+references. The remake export includes these fallback values explicitly. See
+[dialogue selection](remake/dialogue-selection.md) for the runtime trace and
+validation; no source-format bytes or historical audit fields were changed.
+
 Procedure 28 reads an action selector and dispatches through its case table at
 $0D16. Actions 0 and 4 consume no further bytes; 1, 5, 6 and 7 consume one;
 2 consumes two; 3 consumes four. The two extra operands for action 3 follow
