@@ -5,6 +5,7 @@ export function createRoomGeometries(content) {
   return Object.fromEntries(content.layouts.map(room=>[room.index,{
     index:room.index,width:room.width,height:room.height,spawn:{...room.spawn},exitX:room.exitX,
     backgrounds:{ship:room.rows.map(row=>[...row])},collisionRows:[...content.collisionRows],
+    population:structuredClone(room.population),spriteRows:[...content.spriteRows],npcRows:[...content.npcRows],
   }]));
 }
 

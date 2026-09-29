@@ -14,6 +14,7 @@ import { cityWindow } from '../core/city-map.js';
 import { atCityBank } from '../core/city-doors.js';
 import { bankPanel } from './bank.js';
 import { roomAt, canLeaveRoom } from '../core/room-walk.js';
+import { populateRoom } from '../core/room-actors.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 const CITY_BOUNDS={x:145,y:126,width:350,height:240};
@@ -26,6 +27,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let campaignMode=false, campaignStart=null;
   let campaignEquipment=null;
   let travel={scene:'ship',cityPosition:null};
+  let encounters=null,roomPopulation=null,roomMessage='';
   const inCity=()=>campaignMode&&['city','bank'].includes(travel.scene);
   const inBank=()=>campaignMode&&travel.scene==='bank';
   const inRoom=()=>campaignMode&&travel.scene==='room';
@@ -33,7 +35,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const currentRoom=()=>roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,travel.cityPosition);
   const availableRoom=()=>inCity()&&!inBank() ? roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,state.position) : null;
   const bankAvailable=()=>inCity()&&!inBank()&&atCityBank(assets.cityGeometry.map,state.position);
-  const geometry=()=>inRoom() ? currentRoom() : inCity() ? assets.cityGeometry : assets.shipWalk;
+  const geometry=()=>inRoom() ? roomPopulation?.geometry || currentRoom() : inCity() ? assets.cityGeometry : assets.shipWalk;
   const bayAt=()=>outsideShip() ? null : equipmentBayAt(state.position);
   const storage=()=>outsideShip() ? null : storageAt(state.position);
   const travelAvailable=()=>campaignMode&&campaignStart&&!inBank()&&(inRoom() ? canLeaveRoom(currentRoom(),state.position) : inCity() ? bankAvailable()||availableRoom()||canBoardShip(assets.cityGeometry,state.position) : interactionAt(state.position)===4);
@@ -53,6 +55,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
   function restoreShip(next) {
+    if(campaignMode)roomPopulation=inRoom()&&encounters.roomSeed!==null ? populateRoom(currentRoom(),encounters.roomSeed) : null;
+    roomMessage='';
     stop();state={...createWalk(geometry()),position:inRoom() ? travel.roomPosition : inCity() ? travel.cityPosition : next.position,paused:true};
     inventory=next.inventory;condition=next.condition;survival={...createSurvival(condition),minutes:next.minutes};
     inventoryOpen=false;selected=null;equipmentOpen=false;help=false;previous=0;
@@ -70,14 +74,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       if (survival.sleeping || survival.forced || survival.dead) throw new Error('invalidCheckpoint');
       if(campaignMode) {
         if(!campaignStart)throw new Error('invalidCampaign');
-        return {start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,
+        return {start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,encounters,
           travel:inRoom() ? {scene:'room',cityPosition:travel.cityPosition,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity() ? state.position : null}};
       }
       return codec.snapshot(liveShip());
     },
     restore: value => {
       const next=selectedCodec().snapshot(value); // Validate before replacing live state.
-      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;restoreShip(next.ship)}
+      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
       else restoreShip(next);
     },
     close: () => {
@@ -109,6 +113,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       context.restore();
     } else context.drawImage(assets.images[assets.catalog.images[inRoom() ? `room-${currentRoom().index.toString().padStart(2,'0')}` : 'ship']], b.x, b.y, b.width, b.height);
     const sx = b.width / (inRoom() ? 140 : 280), sy = b.height / (inRoom() ? 96 : 192);
+    if(inRoom())for(const actor of roomPopulation?.actors || []) {
+      context.drawImage(assets.images[assets.catalog.images['room-npc']],b.x+actor.words[5]*sx,b.y+(actor.words[4]-7)*sy,7*sx,8*sy);
+    }
     const x = b.x + (state.position.x-camera.x*28) * sx, y = b.y + (state.position.y-7-camera.y*32) * sy;
     context.strokeStyle = '#eab975'; context.lineWidth = 1;
     context.beginPath(); context.arc(x + 3 * sx, y + 4 * sy, 11, 0, Math.PI * 2); context.stroke();
@@ -119,7 +126,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const bay = campaignMode && campaignStart ? bayAt() : null;
     const message = travelAvailable() ? t(inRoom() ? 'roomExitHint' : availableRoom() ? 'roomDoorHint' : bankAvailable() ? 'bankDoorHint' : inCity() ? 'cityBoardHint' : 'shipExitHint') : outsideShip() ? t(state.paused ? 'walkPaused' : inRoom() ? 'roomWalkHint' : 'cityWalkHint') : bay !== null ? t('equipmentReached', { name:t(`equipment${bay}`) }) : accessible ? t('storageReached', { storage: t(accessible) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
     const status = root.querySelector('#walk-status');
-    if (status.textContent !== message) status.textContent = message;
+    const statusMessage=inCity()&&roomMessage ? t(roomMessage) : message;
+    if (status.textContent !== statusMessage) status.textContent = statusMessage;
     const button = root.querySelector('#walk-inventory');
     const label = t(accessible || 'inventoryTitle');
     if (button.textContent !== label) button.textContent = label;
@@ -132,6 +140,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     }
     root.dataset.scene=campaignMode ? travel.scene : 'ship';
     root.dataset.room=inRoom() ? currentRoom().index : '';
+    root.dataset.occupants=inRoom() ? roomPopulation?.actors.length || 0 : 0;
     root.dataset.minutes = survival.minutes; root.dataset.sleeping = survival.sleeping; root.dataset.dead = survival.dead;
     root.dataset.mode=campaignMode ? 'campaign' : 'walk';
     root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
@@ -264,13 +273,20 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
     stop();
+    roomMessage='';
     if(inRoom()) {
+      encounters={...encounters,roomSeed:null};roomPopulation=null;
       const position={...travel.cityPosition};travel={scene:'city',cityPosition:position};
       state={...createWalk(geometry()),position,paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;
     }
     const room=availableRoom();
     if(room) {
+      let population;
+      try {population=populateRoom(room,encounters.randomState)}
+      catch {roomMessage='roomPopulationUnavailable';state.paused=true;render();return}
+      roomPopulation=population;
+      encounters={randomState:population.randomState,roomSeed:population.seed};
       travel={scene:'room',cityPosition:{...state.position},roomPosition:{...room.spawn}};
       state={...createWalk(room),paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;
@@ -397,7 +413,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     showCampaign(value) {
       const next=value ? campaignCodec.snapshot(value) : null;
       switchMode(true);
-      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;restoreShip(next.ship)}
+      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
       if(campaignStart)show();
     },
     showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},

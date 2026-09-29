@@ -4,6 +4,8 @@ import { createCityMaps } from '../js/core/city-map.js';
 import { createCityGeometry, cityReachability, SHIP_REENTRY } from '../js/core/city-walk.js';
 import { campaignSaveCodec } from '../js/core/campaign-saves.js';
 import { createCharacter } from '../js/core/character.js';
+import { populateRoom } from '../js/core/room-actors.js';
+import { sourceRandom } from '../js/core/random.js';
 
 export async function roomWalkTests(test,equal) {
   const [data,maps,navigation,economy,location,cityData,inventory,ship]=await Promise.all([
@@ -42,7 +44,7 @@ export async function roomWalkTests(test,equal) {
     const state=fresh();state.ship.position={...SHIP_REENTRY};state.ship.minutes=135;
     state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:40,y:50}};
     const save=codec.make(state,0),loaded=codec.parse(JSON.stringify(save));equal(loaded,save);
-    equal(loaded.version,5);equal(loaded.scope,'landed-rooms-1');equal(loaded.state.start,fresh().start);
+    equal(loaded.version,6);equal(loaded.scope,'landed-occupants-1');equal(loaded.state.start,fresh().start);
     loaded.state.travel.roomPosition.x++;equal(save.state.travel.roomPosition.x,40);
     for(const mutate of [s=>s.travel.cityPosition={x:369,y:299},s=>s.travel.cityPosition={x:287,y:217},
       s=>s.travel.roomPosition={x:40,y:10},s=>s.travel.roomPosition={x:40.5,y:50},s=>s.travel.roomPosition.x=140,
@@ -55,10 +57,59 @@ export async function roomWalkTests(test,equal) {
     for(const scene of ['ship','city','bank']) {
       const state=fresh();
       if(scene!=='ship'){state.ship.position={...SHIP_REENTRY};state.travel={scene,cityPosition:scene==='bank' ? {x:369,y:299} : {...city.spawn}}}
-      const old=codec.make(state,0);old.version=4;old.scope='landed-bank-1';
-      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,old.state);equal(loaded.version,5);equal(JSON.stringify(old),before);
+      const old=codec.make(state,0);old.version=4;old.scope='landed-bank-1';delete old.state.encounters;
+      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,{...old.state,encounters:state.encounters});equal(loaded.version,6);equal(JSON.stringify(old),before);
       old.state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:12,y:56}};
       rejects(()=>codec.validate(old));
     }
+  });
+  await test('Initial occupants match 64 independent pixel-grid references including retries and tenth-candidate rejection',async()=>{
+    const vectors=await fetch('./fixtures/room-population.json').then(r=>r.json());
+    equal(vectors.some(v=>v.attempts.some(a=>a.attempts===10&&a.clear)),true);
+    for(const v of vectors) {
+      if(v.error) {
+        let error;try{populateRoom(rooms[v.index],v.seed)}catch(e){error=e.message}equal(error,v.error);continue;
+      }
+      const p=populateRoom(rooms[v.index],v.seed),rng=sourceRandom(v.seed);
+      for(let i=0;i<v.draws;i++)rng.next();
+      equal(p.randomState,v.randomState);equal(p.randomState,rng.state);equal(p.actors,v.actors);
+      equal(canStand(p.geometry,rooms[v.index].spawn),true);
+    }
+  });
+  await test('Occupant pixels block walking, own their collision overlay, and keep the doorway reachable in all eight rooms',()=>{
+    for(const room of Object.values(rooms)) {
+      const before=JSON.stringify(room),p=populateRoom(room,12345),reached=cityReachability(p.geometry);
+      const visitor=p.actors[0].words,point={x:visitor[5],y:visitor[4]};
+      equal(canStand(room,point),true);equal(canStand(p.geometry,point),false);
+      equal(reached({x:40,y:50}),true);equal(reached(room.spawn),true);
+      equal(JSON.stringify(room),before);p.geometry.backgrounds.ship[0][0]=0;equal(JSON.stringify(room),before);
+      equal(populateRoom(room,12345).actors,p.actors);
+    }
+  });
+  await test('Version6 resumes the exact room population and validates its RNG tail and occupied positions',()=>{
+    const state=fresh(),room=rooms[15],seed=state.encounters.randomState,p=populateRoom(room,seed);
+    equal(seed,state.start.gameplayRandomState);
+    state.ship.position={...SHIP_REENTRY};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:40,y:50}};
+    state.encounters={randomState:p.randomState,roomSeed:seed};
+    const saved=codec.make(state,0),loaded=codec.parse(JSON.stringify(saved));equal(loaded,saved);
+    equal(populateRoom(room,loaded.state.encounters.roomSeed).actors,p.actors);
+    const npc=p.actors[0].words;
+    for(const mutate of [s=>s.encounters.randomState++,s=>s.encounters.roomSeed=-1,s=>s.encounters.roomSeed=0,
+      s=>s.encounters.roomSeed=1.5,s=>s.encounters.randomState=2**32,s=>s.encounters.actors=p.actors,
+      s=>delete s.encounters,s=>s.travel.roomPosition={x:npc[5],y:npc[4]},
+      s=>s.travel={scene:'city',cityPosition:{x:311,y:267}}]) {
+      const bad=structuredClone(saved);mutate(bad.state);rejects(()=>codec.validate(bad));
+    }
+    const next=populateRoom(room,p.randomState);
+    equal(next.randomState===p.randomState,false);equal(JSON.stringify(next.actors)===JSON.stringify(p.actors),false);
+    loaded.state.encounters.roomSeed=null;equal(saved.state.encounters.roomSeed,seed);
+  });
+  await test('Version5 occupied-position saves migrate as empty interiors; legacy records cannot smuggle encounter state',()=>{
+    const state=fresh();state.ship.position={...SHIP_REENTRY};
+    state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:46,y:71}};
+    const old=codec.make(state,0);old.version=5;old.scope='landed-rooms-1';delete old.state.encounters;
+    const before=JSON.stringify(old),next=codec.parse(before);
+    equal(next.state.travel,old.state.travel);equal(next.state.encounters,{randomState:state.start.gameplayRandomState,roomSeed:null});
+    equal(JSON.stringify(old),before);old.state.encounters=next.state.encounters;rejects(()=>codec.validate(old));
   });
 }

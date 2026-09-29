@@ -151,6 +151,15 @@ ship/city/bank states upgrade unchanged. Static room art/geometry are derived
 assets, not saved. NPC state and RNG consumption are deliberately absent until
 their rules are ported. See `building-interiors.md`.
 
+R06e adds `encounters:{randomState,roomSeed}` in version6
+(`landed-occupants-1`). Initial room populations derive from the entry seed and
+advance the active gameplay RNG. Exit clears the seed, retaining the RNG tail.
+Save validation regenerates stationary actors, checks that tail and rejects
+player positions blocked by occupant pixels. Versions1–5 receive the creation
+gameplay state and null seed; legacy interiors remain empty until re-entry.
+Only initial population is supported; NPC motion/dialogue need later transitions.
+Failed population leaves live state untouched. See `room-occupants.md`.
+
 Content plan: a SunDog title led by character creation, then resume/saved games
 and a secondary preview entry; the ship as the main workspace; compact view
 navigation; contextual selection details and help.

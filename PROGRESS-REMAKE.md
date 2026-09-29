@@ -1,5 +1,41 @@
 # SunDog web remake progress
 
+## R06e — Initial room occupants and saved gameplay RNG — 2026-09-29
+
+The eight supported interiors now contain source-generated visitors and a
+counter occupant. Glyph23 supplies a separate external SVG and pixel collision
+overlay. The initial count, trait/timer draws, two-sided placement probes,
+shrinking population on failure and rejected tenth candidate follow Game18
+procedures9/13/14/16. Derived native actor words retain unresolved field meanings.
+Occupants are stationary; movement, following, dialogue and transactions remain
+pending. English/Korean help states that boundary.
+
+Version6 (`landed-occupants-1`) adds active gameplay RNG and a room entry seed.
+Entry advances the stream; save/reload regenerates the same occupants; exit
+clears the population while retaining the RNG for the next entry. Occupied player
+positions and mismatched RNG tails fail validation. Versions1–5 validate before
+migration. Existing interior saves stay empty until re-entry, preserving their
+saved positions. Failed population leaves the live street state/RNG untouched.
+The original no-visitor fallback reverses its X range and remains unresolved;
+the browser pauses outside with a localized error instead of inventing a position.
+See `docs/remake/room-occupants.md`.
+
+The independent Python pixel-grid transcription supplies64 source-derived
+reference vectors across all layouts, including retry exhaustion and unsigned
+states. No original-emulator capture is claimed. Chrome154.0.8037.57 passes84
+room UI checks and94 browser rule groups. The UI checks cover both room types,
+collision, exact reload, re-entry, version5 import, rejected occupied imports,
+preview isolation, both locales/four viewports and atomic failure recovery.
+Visual review confirms both counter orientations and localized controls.
+Regressions pass28 bank,44 city,45 campaign,37 equipment and14 recovery checks.
+The city smoke now freezes its virtual clock between explicit steps, eliminating
+an airlock timing failure. Thirteen exporter tests,136 deterministic artifacts,
+64 population references,57 city references,584 source strings and original
+input hashes pass. Receipts: `docs/remake/room-occupants-validation.md` and JSON.
+
+Next: Game18 NPC movement, target selection, activity and counter following,
+then interaction/dialogue and remaining building fixtures. R06 remains partial.
+
 ## R06d — First walking building interiors — 2026-09-29
 
 City types9/10 now admit foot entry into eight source-derived room layouts.

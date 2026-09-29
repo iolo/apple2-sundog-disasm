@@ -351,6 +351,15 @@ versions1–4. Source adaptations and remaining NPC/fixture work are documented 
 interaction/dialogue and the special fixtures for types8/11. Bank transactions
 remain R07 work.
 
+Checkpoint R06e (2026-09-29) adds the source initial population for those eight
+rooms: visitors, counter occupant, glyph23 collision overlays and continuing
+saved gameplay RNG. Version6 saves regenerate stationary occupants from the
+entry seed and upgrade versions1–5; legacy interiors remain empty until re-entry.
+The unresolved no-visitor reversed-range fallback rejects entry atomically.
+See `docs/remake/room-occupants.md` for source references and the explicit limits.
+Next port NPC movement/activity/counter following, then dialogue and remaining
+fixture-dependent interiors. R06 remains partial; transactions remain R07.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
