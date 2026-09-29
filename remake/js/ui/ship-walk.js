@@ -11,6 +11,8 @@ import { equipmentBayAt, inspectEquipment, exchangeEquipment } from '../core/equ
 import { equipmentPanel } from './equipment.js';
 import { canBoardShip, cityCamera, SHIP_REENTRY } from '../core/city-walk.js';
 import { cityWindow } from '../core/city-map.js';
+import { atCityBank } from '../core/city-doors.js';
+import { bankPanel } from './bank.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 const CITY_BOUNDS={x:145,y:126,width:350,height:240};
@@ -23,11 +25,13 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   let campaignMode=false, campaignStart=null;
   let campaignEquipment=null;
   let travel={scene:'ship',cityPosition:null};
-  const inCity=()=>campaignMode&&travel.scene==='city';
+  const inCity=()=>campaignMode&&['city','bank'].includes(travel.scene);
+  const inBank=()=>campaignMode&&travel.scene==='bank';
+  const bankAvailable=()=>inCity()&&!inBank()&&atCityBank(assets.cityGeometry.map,state.position);
   const geometry=()=>inCity() ? assets.cityGeometry : assets.shipWalk;
   const bayAt=()=>inCity() ? null : equipmentBayAt(state.position);
   const storage=()=>inCity() ? null : storageAt(state.position);
-  const travelAvailable=()=>campaignMode&&campaignStart&&(inCity() ? canBoardShip(assets.cityGeometry,state.position) : interactionAt(state.position)===4);
+  const travelAvailable=()=>campaignMode&&campaignStart&&!inBank()&&(inCity() ? bankAvailable()||canBoardShip(assets.cityGeometry,state.position) : interactionAt(state.position)===4);
   let equipmentOpen=false, equipmentOffset=0, equipmentSelected=null;
   let equipmentMoving=false, equipmentMessage='';
   const sessions=new Map();
@@ -73,7 +77,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     },
     close: () => {
       if(campaignMode && !campaignStart) {api.hide();close();return}
-      render(); root.querySelector(survival.dead ? '#sleep-saves' : '#walk-saves').focus();
+      render(); root.querySelector(survival.dead ? '#sleep-saves' : inBank() ? '#bank-saves' : '#walk-saves').focus();
     },
   });
   function pause() { stop(); state.paused = true; if (open) render(); }
@@ -108,7 +112,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const station = inCity() ? 0 : interactionAt(state.position);
     const accessible = storage();
     const bay = campaignMode && campaignStart ? bayAt() : null;
-    const message = travelAvailable() ? t(inCity() ? 'cityBoardHint' : 'shipExitHint') : inCity() ? t(state.paused ? 'walkPaused' : 'cityWalkHint') : bay !== null ? t('equipmentReached', { name:t(`equipment${bay}`) }) : accessible ? t('storageReached', { storage: t(accessible) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
+    const message = travelAvailable() ? t(bankAvailable() ? 'bankDoorHint' : inCity() ? 'cityBoardHint' : 'shipExitHint') : inCity() ? t(state.paused ? 'walkPaused' : 'cityWalkHint') : bay !== null ? t('equipmentReached', { name:t(`equipment${bay}`) }) : accessible ? t('storageReached', { storage: t(accessible) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
     const status = root.querySelector('#walk-status');
     if (status.textContent !== message) status.textContent = message;
     const button = root.querySelector('#walk-inventory');
@@ -116,8 +120,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (button.textContent !== label) button.textContent = label;
     const engineering = root.querySelector('#walk-equipment');
     if (engineering) engineering.disabled = bay === null;
-    const airlock=root.querySelector('#walk-airlock');if(airlock)airlock.disabled=!travelAvailable();
-    root.dataset.scene=inCity() ? 'city' : 'ship';
+    const airlock=root.querySelector('#walk-airlock');if(airlock) {
+      airlock.disabled=!travelAvailable();
+      airlock.textContent=t(bankAvailable() ? 'enterBank' : inCity() ? 'boardShip' : 'leaveShip');
+    }
+    root.dataset.scene=campaignMode ? travel.scene : 'ship';
     root.dataset.minutes = survival.minutes; root.dataset.sleeping = survival.sleeping; root.dataset.dead = survival.dead;
     root.dataset.mode=campaignMode ? 'campaign' : 'walk';
     root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
@@ -138,6 +145,10 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
       const panel = root.querySelector('.sleep-panel');
       (panel.querySelector(`#${focus || 'sleep-pause'}:not(:disabled)`) || panel.querySelector('button')).focus({ preventScroll: true });
+    } else if (inBank()) {
+      for(const child of root.children)child.inert=true;
+      root.insertAdjacentHTML('beforeend',bankPanel({start:campaignStart,navigation:assets.campaignContent.navigation,t}));
+      (root.querySelector('#bank-panel').querySelector(`[id="${focus || ''}"]`) || root.querySelector('#bank-leave')).focus({preventScroll:true});
     } else if (help) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t(campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
@@ -156,7 +167,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function loop(now) {
     if (!open) return;
     const before = `${survival.sleeping}/${survival.forced}/${survival.dead}`;
-    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || checkpoints.active || help || equipmentOpen || (inventoryOpen && !survival.sleeping));
+    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || inBank() || checkpoints.active || help || equipmentOpen || (inventoryOpen && !survival.sleeping));
     condition = survival.condition;
     if (before !== `${survival.sleeping}/${survival.forced}/${survival.dead}`) { stop(); selected = null; render(); }
     if (keys.size && !state.paused) {
@@ -165,7 +176,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       state.held = !!(dx || dy);
       state.pointer = { x: state.position.x + 3 + Math.sign(dx) * 2, y: state.position.y - 3 + Math.sign(dy) * 2 };
     }
-    if (!survival.sleeping && !survival.dead) state = advanceWalk(state, previous ? now - previous : 0, geometry());
+    if (!survival.sleeping && !survival.dead && !inBank()) state = advanceWalk(state, previous ? now - previous : 0, geometry());
     previous = now;
     draw(); frame = requestAnimationFrame(loop);
   }
@@ -185,6 +196,15 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) stop(); });
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
+    if(inBank()) {
+      if(event.key==='Escape'){event.preventDefault();leaveBank()}
+      if(event.key==='Tab') {
+        const buttons=[...root.querySelectorAll('#bank-panel button')];
+        const index=buttons.indexOf(document.activeElement);event.preventDefault();
+        buttons[(index+(event.shiftKey ? -1 : 1)+buttons.length)%buttons.length].focus();
+      }
+      return;
+    }
     if (survival.sleeping || survival.dead) {
       if (event.key === 'Tab') {
         const buttons = [...root.querySelectorAll('.sleep-panel button:not(:disabled)')];
@@ -237,9 +257,17 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
     stop();
+    if(bankAvailable()) {
+      travel={scene:'bank',cityPosition:{...state.position}};
+      state.paused=true;previous=0;survival={...survival,elapsed:0};render();return;
+    }
     const exiting=!inCity();travel={scene:exiting ? 'city' : 'ship',cityPosition:null};
     state={...createWalk(geometry()),position:{...(exiting ? assets.cityGeometry.spawn : SHIP_REENTRY)},paused:true};
     previous=0;survival={...survival,elapsed:0};render();root.querySelector('#walk-surface').focus();
+  }
+  function leaveBank() {
+    stop();travel={scene:'city',cityPosition:{...state.position}};state.paused=true;
+    previous=0;render();root.querySelector('#walk-surface').focus();
   }
   function closeInventory() { inventoryOpen = false; selected = null; inventoryMessage = ''; render(); root.querySelector('#walk-inventory').focus(); }
   function openEquipment() {
@@ -294,6 +322,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     }
     if (action === 'back') { api.hide(); close(); return; }
     if (action === 'language') { language(); return; }
+    if (action === 'leave-bank' && inBank()) {leaveBank();return}
     if (action === 'equipment') { openEquipment(); return; }
     if (action === 'airlock') {changeScene();return}
     if (action === 'close-equipment') { closeEquipment(); return; }

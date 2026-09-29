@@ -1,5 +1,37 @@
 # SunDog web remake progress
 
+## R06c — Source city doors and bank visits — 2026-09-29
+
+Walk to a Drahew bank door and use Enter or the contextual button to visit the
+Uniteller. It shows generated cash and the current system's bank balance, under
+the source-derived Jondd Bank name. Escape or Leave bank returns to the exact
+street anchor, paused. The service screen supports English/Korean, keyboard,
+pointer and touch; inquiry pauses movement and survival. Deposits, withdrawals,
+transfers and other building interiors remain pending.
+
+The pure door resolver ports all eleven foot/pod branches from game21
+procedures19/20, including inclusive proximity boundaries and separate tile vs
+door coordinate anchors. Only the foot-bank destination is enabled. Source
+research identifies scene5's walking interiors, scene6's service dispatch, and
+the already-extracted sixteen layout records for the next implementation.
+See `docs/remake/city-buildings.md`.
+
+Campaign version4 (`landed-bank-1`) preserves bank visits, requires an airlock-
+reachable bank-door position and retains all existing state. Versions1/2/3
+validate under their former scene rules before migration. Loading does not write
+slots automatically. Invalid bank positions and balance edits are rejected.
+
+Chrome154.0.8037.57 passes28 new UI checks,86 browser rule groups,44 city walking,
+45 campaign,37 component exchange and14 recovery checks. The new smoke reaches
+the bank through51 normal movement steps, tests save/reload and invalid import,
+and checks both locales in four viewports. Twelve exporter tests,125 deterministic
+artifacts,57 city references,584 source strings and original input hashes pass.
+Receipts: `docs/remake/bank-visit-validation.md` and its JSON companion.
+
+Next: port scene5 layout/fixture drawing, player collision and exit gates, then
+NPC/dialogue state. R06 remains partial; bank transactions belong to R07 and need
+mutable financial state rather than changes to the immutable creation record.
+
 ## R06b — Foot airlock, Drahew walking and exterior saves — 2026-09-29
 
 Campaigns can leave through the landed foot airlock, walk through connected

@@ -1,8 +1,8 @@
-# Campaign save boundary — R04g / R05f / R06b
+# Campaign save boundary — R04g / R05f / R06b / R06c
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version3, scope `landed-city-1`, and validates/upgrades version1 `landed-ship-1`
-and version2 `landed-engineering-1`.
+version4, scope `landed-bank-1`, and validates/upgrades version1 `landed-ship-1`,
+version2 `landed-engineering-1` and version3 `landed-city-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -18,9 +18,10 @@ The state has four explicit parts:
 - `equipment`: active installed components, validated performance and special-part
   availability. Group/socket requirements are immutable metadata. The legacy
   field name `spares` means socket requirements, not removable inventory.
-- `travel`: active scene (`ship` or `city`) and full-map city player pixels.
+- `travel`: active scene (`ship`, `city` or `bank`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
+  At a bank the city position must also match a source foot-bank door footprint.
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`, `equipment` and `travel`. It must never read stale initial values as live progress.
@@ -42,13 +43,16 @@ two-part state checks; only then is active equipment derived from creation data.
 Version2 preserves its validated active equipment. Both acquire an interior
 `travel` state. Version3 validates scene/position consistency and rejects positions
 inside walls, disconnected from the airlock or beyond the supported city area.
+Version3 migration preserves ship/city state and rejects bank scenes. Version4
+additionally permits validated bank visits, restoring the service screen.
 See [component exchange](component-exchange.md) for fit rules and scope limits.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
-snapshots are supported; sleep/input/modal phases are transient and are not part
+snapshots are supported; sleep/input/inspection phases are transient and are not part
 of this format. The UI prohibits saving during sleep and restores paused with
 held input cleared, as the walkthrough checkpoint UI does.
+The bank service is an explicit scene and is preserved by saves.
 
 Import is bounded to 131072 text characters, rejects malformed JSON, future
 versions, unsupported scopes, invalid slots/timestamps, and foreign draft or
@@ -65,7 +69,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version3 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Buildings, other cities, encoded component repair and
+as version4 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Bank transactions, other buildings/cities, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
+See [city buildings](city-buildings.md) for door dispatch and bank service scope.

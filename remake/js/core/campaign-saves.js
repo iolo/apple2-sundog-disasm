@@ -2,10 +2,11 @@ import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
 import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
 import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
+import { atCityBank } from './city-doors.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 3, SCOPE = 'landed-city-1';
+const VERSION = 4, SCOPE = 'landed-bank-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -51,13 +52,14 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         });
       }
       let travel={scene:'ship',cityPosition:null};
-      if(version===VERSION) {
+      if(version>=3) {
         if(!keysMatch(value.travel,['scene','cityPosition']))fail();
-        if(value.travel.scene==='city') {
+        if(value.travel.scene==='city' || (version===4 && value.travel.scene==='bank')) {
           if(!cityGeometry||!keysMatch(value.travel.cityPosition,['x','y'])||!sameTree(ship.position,SHIP_REENTRY))fail();
           if(!cityValidators.has(cityGeometry))cityValidators.set(cityGeometry,cityReachability(cityGeometry));
           if(!cityValidators.get(cityGeometry)(value.travel.cityPosition))fail();
-          travel={scene:'city',cityPosition:{...value.travel.cityPosition}};
+          if(value.travel.scene==='bank' && !atCityBank(cityGeometry.map,value.travel.cityPosition))fail();
+          travel={scene:value.travel.scene,cityPosition:{...value.travel.cityPosition}};
         } else if(!sameTree(value.travel,travel))fail();
       }
       return {start,ship,equipment,travel};
@@ -65,7 +67,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   }
   function validate(value) {
     const legacy=(value?.version===1 && value.scope==='landed-ship-1') ||
-      (value?.version===2 && value.scope==='landed-engineering-1');
+      (value?.version===2 && value.scope==='landed-engineering-1') ||
+      (value?.version===3 && value.scope==='landed-city-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

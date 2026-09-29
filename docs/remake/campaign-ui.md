@@ -37,13 +37,14 @@ play. English and Korean cover the new flow and its validation messages.
 
 ## Supported scope
 
-The save is now `sundog-campaign` version3, scope `landed-city-1`:
+The save is now `sundog-campaign` version4, scope `landed-bank-1`:
 immutable creation record plus active ship position, inventory, condition,
-whole elapsed minutes, equipment and active ship/city scene. R05f adds
+whole elapsed minutes, equipment and active ship/city/bank scene. R05f adds
 [component exchange](component-exchange.md) at the six engineering bays; R06b adds
-[foot-airlock exit/reentry and Drahew walking](city-walking.md). Version1/2 saves
+[foot-airlock exit/reentry and Drahew walking](city-walking.md); R06c adds
+[bank visits and balance inquiry](city-buildings.md). Version1/2/3 saves
 upgrade after validation. Generated resources, markets and navigation remain
-retained. Power controls, buildings, travel beyond Drahew,
+retained. Power controls, other buildings, bank transactions, travel beyond Drahew,
 trade, encounters and colony progression require further rules and an explicit
 state/schema extension. No new original-emulator behavior observation is claimed.
 

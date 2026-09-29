@@ -335,6 +335,14 @@ building entrances/interiors and the NPC/dialogue interpreter actions they need.
 Surface travel, pod driving and encounters remain out of scope for this checkpoint.
 See `docs/remake/city-walking.md`.
 
+Checkpoint R06c (2026-09-29) ports the source city-door footprints and enables
+bank entry/inquiry/return with localized, accessible service UI. Version4 saves
+preserve visits only at reachable bank doors and upgrade valid version1/2/3
+records. The door table and existing interior-layout assets are documented in
+`docs/remake/city-buildings.md`. R06 remains partial: next port scene5 layouts,
+fixtures, collision/exit gates and NPC/dialogue state. Financial transactions
+remain R07 work and require active economy state.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

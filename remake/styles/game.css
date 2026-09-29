@@ -227,3 +227,10 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .city-walk #walk-surface{left:145px;top:126px;width:350px;height:240px}
 #walk-screen[data-mode="campaign"] .walk-actions{font-size:15px}
 #walk-screen[data-mode="campaign"] .walk-actions button{padding-left:6px;padding-right:6px}
+.bank-panel header,.bank-panel footer,.bank-panel dl div{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bank-panel header h2{margin:0}
+.bank-panel header button{border:0}
+.bank-panel .bank-teller{margin:12px 0 20px;color:var(--muted)}
+.bank-panel dl{margin:0 0 20px;font-size:22px}
+.bank-panel dl div{padding:10px 0;border-bottom:1px solid var(--line)}
+.bank-panel dd{margin:0;color:var(--amber)}

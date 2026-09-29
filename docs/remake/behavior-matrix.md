@@ -32,6 +32,7 @@ characters and includes historical variants; it is not a localization catalog.
 | Next phase | `game_20.s` procedure 4 `$019D–$01AC` writes previous phase to byte1 and phase+1 to byte2 at word271 | Source-derived | Prevent repeated delivery effects. Quantities, cargo IDs and initial phase generation still pending. |
 | Trading/banking | Manual PDF 19–20; `game_20.s` candidate consumer module, item table at `$0296–$02B5` | Manual-only financial rules | Bank-first purchase, sales to local bank, balances per system. Price formulas not yet ported. |
 | Browser presentation | PLAN-REMAKE.md | Proposed adaptation | 4:3, separate SVGs, local font, English/Korean, pointer/keyboard/touch. No game-rule claim. |
+| City doors / bank inquiry | Game21 procedures19/20/21; startup_disk1 scene dispatch; game19 procedures1/17 | Source-derived, browser validated | R06c ports door footprints and foot-bank visits; current-system account/cash inquiry, exact street return and version4 saves. No transactions or other building entry yet. See `city-buildings.md`. |
 
 ## New-game and campaign blockers
 
