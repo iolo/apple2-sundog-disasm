@@ -1,5 +1,29 @@
 # SunDog web remake progress
 
+## R06j — Dialogue controls and conversation runner — 2026-09-30
+
+Added packed controls, actions0–7, built-in transitions and a pure conversation
+runner using the existing script/text exports and predicate state. Both counter
+roots now execute the original greeting, item-quote, information, continuation
+and exit branches in browser tests. Item lists, charged-item displays, offer
+controls and return flags are represented as owned interpreter state.
+
+Execution preserves control/selector/text/predicate/action order and continuing
+RNG. A regression test caught and fixed lost transition writes when a predicate
+replaced the working target array. Tests also cover all256 control bytes, eager
+valuation predicates, source money-copy direction, decimal offer limits,
+dictionary retention, continuation slots and atomic failure paths.
+
+Chrome154.0.8037.57 passes152 rule groups, including13 new groups, without page
+errors. Seventeen exporter tests, all139 generated artifacts and original
+disk/PDF hashes pass. See `docs/remake/dialogue-runner.md` for source references,
+API and browser adaptations. No new emulator conversation capture is claimed.
+
+Next: player counter queue/return integration, conversation saves and localized
+UI. Accepted-item displays do not yet transfer inventory or debit campaign cash;
+those operations remain R07. Live conversations remain disabled, and campaign
+saves remain version7.
+
 ## R06i — Counter setup and dialogue predicates — 2026-09-30
 
 Added fresh setup for counter kinds13/14 and the complete byte-predicate

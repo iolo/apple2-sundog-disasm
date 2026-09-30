@@ -32,7 +32,7 @@ export function setupCounterDialogue(input) {
     else if((item&31)===13)count7+=2;
     else if((item&31)===11)count6+=2;
   }
-  return {randomState,state:{kind,entry:kind===13 ? 80 : 81,attributes:[...attributes],flags:nextFlags,
+  return {randomState,state:{kind,entry:kind===13 ? 80 : 81,attributes:[...attributes],carried:[...carried],flags:nextFlags,
     workspace:nextWorkspace,locals:{
       4:26+(surface.x+surface.y)%9,5:30,6:count6,7:count7,14:0,15:false,16:system.local16,
       17:null,18:false,20:workspace.gate!==0,29:system.local29,30:system.local30,
@@ -42,7 +42,7 @@ export function setupCounterDialogue(input) {
 
 // Game16 procedures2/3, mode0. Refresh the working valuation and strings;
 // local100 (the offered amount) is deliberately left unchanged.
-function refreshPrice(v,flags,items) {
+export function refreshDialoguePrice(v,flags,items) {
   const index=v[41]&31,item=items?.[index];
   if(!item||item.sourceIndex!==index||!byte(item.valueByte)||typeof item.name!=='string')
     throw new Error('missingDialogueItems');
@@ -107,7 +107,7 @@ export function evaluateDialoguePredicate(code, previous, randomState, items) {
             if(![-1,1].includes(v[36]))throw new Error('missingDialogueValuation');
             v[5]-=v[36]*(1+next()%Math.min(distance,4));
             if(!integer(v[5],-32768,32767))throw new Error('unsupportedDialogueValuation');
-            refreshPrice(v,state.flags,items);result=true;
+            refreshDialoguePrice(v,state.flags,items);result=true;
           }
         }
         break;

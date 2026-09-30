@@ -396,6 +396,15 @@ transactions. Twelve system defaults match the clean-character capture;
 packed controls, actions and built-in transitions, then the conversation runner,
 player queue/return persistence and localized UI. Saves remain version7.
 
+Checkpoint R06j (2026-09-30) adds packed controls, all eight actions, built-in
+transitions and a pure conversation runner. Both counter roots execute source
+greetings, quotes, information branches and exits with continuing RNG. Record
+ordering and predicate-dependent target writes have regression coverage;
+152 Chrome rule groups pass. See `docs/remake/dialogue-runner.md`. Next integrate
+player queue/return state, conversation persistence and English/Korean UI.
+Inventory transfers and financial transactions remain R07; live conversations
+are not yet enabled and saves remain version7.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
