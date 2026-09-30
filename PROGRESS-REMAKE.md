@@ -1,5 +1,31 @@
 # SunDog web remake progress
 
+## R06l — Live localized counter dialogue and replay saves — 2026-09-30
+
+Enabled Talk/Enter at type9/10 counters, staff approach, original dialogue branches
+and room return. English retains expanded source wording; Korean covers all
+messages in banks94/98/99 and25 reply captions. The modal provides keyboard focus,
+language switching, item information/quotes, explicit Continue/back and saves.
+Movement cancels waiting. Purchases remain gated for R07.
+
+Version8 adds active dialogue attributes/flags/workspace and room service state.
+Open conversations persist starting RNG plus validated inputs; import replays the
+source interpreter and verifies the resulting stream before accepting state.
+Versions1–7 retain strict original validation before migration. Return commits the
+speaker state and persistent fields atomically. See `docs/remake/dialogue-ui.md`.
+
+169 rule groups and19 live dialogue checks pass in Chrome154.0.8037.57. The UI
+receipt records the equipment information branch in both languages, unchanged
+state during locale switching, JSON export, IndexedDB save/page reload and return.
+Korean fits four viewport sizes and its portrait screenshot was reviewed.
+Seventeen exporter tests and all139 artifacts pass. The existing room UI suite
+also passes102 regression checks across both building types.
+
+The user has requested completion of all R06. It remains active; the explicit
+audit in `docs/remake/r06-completion.md` identifies type8/type11 interiors, their
+interaction coverage, special city composition review and final scene validation
+as remaining work. No full-R06 completion or new native emulator capture claimed.
+
 ## R06k — Player counter queue and dialogue return — 2026-09-30
 
 Added an owned room controller connecting service requests, player slot1 queue

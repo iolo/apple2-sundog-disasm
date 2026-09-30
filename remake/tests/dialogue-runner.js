@@ -3,6 +3,8 @@ import { reduceDialogueEffect } from '../js/core/dialogue-effects.js';
 import { startCounterConversation, enterDialogueState, advanceDialogue } from '../js/core/dialogue-runner.js';
 import { renderDialogueMessage } from '../js/core/dialogue-text.js';
 import { sourceRandom } from '../js/core/random.js';
+import { dialogueMessage } from '../js/ui/dialogue.js';
+import { translator } from '../js/ui/i18n.js';
 
 export async function dialogueRunnerTests(test,equal) {
   const [scripts,text,items,systems]=await Promise.all(['dialogue','dialogue-text','items','dialogue-systems']
@@ -19,6 +21,17 @@ export async function dialogueRunnerTests(test,equal) {
   const advance=(frame,input)=>advanceDialogue(content,frame,input);
   const fail=(fn,message)=>{let actual;try{fn()}catch(e){actual=e.message}equal(actual,message)};
   const after=(seed,n)=>{const r=sourceRandom(seed);for(let i=0;i<n;i++)r.next();return r.state};
+
+  await test('Every counter and information message has a Korean presentation without changing source text or RNG',async()=>{
+    const [en,ko]=await Promise.all(['en','ko'].map(locale=>fetch(`../locales/${locale}.json`).then(r=>r.json())));
+    const t=translator({en,ko},'ko'),frame=start();frame.state.locals[41]=23;frame.state.locals[106]=420;
+    for(const block of [94,98,99])for(const word of Object.keys(text.messages[block])) {
+      frame.block=block;frame.view.word=Number(word);const before=JSON.stringify(frame);
+      const message=dialogueMessage(frame,t,'ko');
+      equal(/[가-힣]/.test(message),true);equal(/\{\w+\}/.test(message),false);
+      equal(dialogueMessage(frame,t,'en'),frame.view.text);equal(JSON.stringify(frame),before);
+    }
+  });
 
   await test('Both real counter roots execute redirects, greeting text and item-list actions',()=>{
     for(const kind of [13,14]) {

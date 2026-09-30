@@ -1,18 +1,23 @@
-# Campaign save boundary — R04g / R05f / R06b / R06c / R06d / R06e / R06f
+# Campaign save boundary — through R06l
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version7, scope `landed-traffic-1`, and validates/upgrades version1 `landed-ship-1`,
-version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1` and version5 `landed-rooms-1` and version6 `landed-occupants-1`.
+version8, scope `landed-dialogue-1`, and validates/upgrades version1 `landed-ship-1`,
+version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
+version5 `landed-rooms-1`, version6 `landed-occupants-1` and version7 `landed-traffic-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
 
-The state has five explicit parts:
+The state has six explicit parts:
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
   markets/cargo, colony counters and all four starting locations.
+- `dialogue`: active attributes,128 boolean flags and counter workspace. Open
+  conversations are saved in `encounters.counter` as a service phase plus an
+  initial RNG/input record, replayed on import. See [live dialogue](dialogue-ui.md)
+  for version8 validation, atomic outcomes, limits and migration.
 - `ship`: active player position, inventory, condition and whole elapsed minutes
   for the currently supported ship walking, inventory and survival rules.
 - `equipment`: active installed components, validated performance and special-part
@@ -87,8 +92,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version7 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. NPC dialogue, bank transactions, other buildings/cities, encoded component repair and
+as version8 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Bank transactions, other buildings/cities, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.

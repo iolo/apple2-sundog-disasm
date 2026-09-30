@@ -16,17 +16,20 @@ import { bankPanel } from './bank.js';
 import { roomAt, canLeaveRoom } from '../core/room-walk.js';
 import { populateRoom, roomActorGeometry } from '../core/room-actors.js';
 import { initialRoomTraffic, tickRoomTraffic, ROOM_TICK_MS } from '../core/room-traffic.js';
+import { reduceCampaignCounter, restoreCampaignConversation } from '../core/campaign-dialogue.js';
+import { dialoguePanel } from './dialogue.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 const CITY_BOUNDS={x:145,y:126,width:350,height:240};
-export function shipWalkScreen({ stage, background, assets, t, language, close }) {
+export function shipWalkScreen({ stage, background, assets, t, language, locale=()=> 'en', close }) {
   const root = document.createElement('section'); root.id = 'walk-screen'; root.hidden = true; stage.append(root);
   let state = createWalk(assets.shipWalk), open = false, frame, previous = 0, help = false, activePointer = null;
   let inventory = createInventory(assets.shipInventory), inventoryOpen = false, selected = null, inventoryMessage = '';
   let condition = createCondition(assets.shipInventory.condition);
   let survival = createSurvival(condition);
   let campaignMode=false, campaignStart=null;
-  let campaignEquipment=null;
+  let campaignEquipment=null,campaignDialogue=null;
+  let dialogueFrame=null,dialogueError='';
   let travel={scene:'ship',cityPosition:null};
   let encounters=null,roomPopulation=null,roomMessage='',roomElapsed=0;
   const inCity=()=>campaignMode&&['city','bank'].includes(travel.scene);
@@ -34,6 +37,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const inRoom=()=>campaignMode&&travel.scene==='room';
   const outsideShip=()=>inCity()||inRoom();
   const currentRoom=()=>roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,travel.cityPosition);
+  const counterAvailable=()=>{
+    if(!inRoom()||!encounters.counter||dialogueFrame)return false;
+    const b=currentRoom().population.bounds,p=state.position;
+    return p.x>=b.left&&p.x<=b.right&&p.y>=b.top&&p.y<=b.bottom;
+  };
   const availableRoom=()=>inCity()&&!inBank() ? roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,state.position) : null;
   const bankAvailable=()=>inCity()&&!inBank()&&atCityBank(assets.cityGeometry.map,state.position);
   const geometry=()=>inRoom() ? roomPopulation?.geometry || currentRoom() : inCity() ? assets.cityGeometry : assets.shipWalk;
@@ -55,11 +63,27 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   const codec = checkpointCodec(assets.shipWalk);
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
+  const liveCampaign=()=>({start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,
+    travel:inRoom() ? {scene:'room',cityPosition:travel.cityPosition,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity() ? state.position : null}});
+  function counterAction(action) {
+    try {
+      const result=reduceCampaignCounter(liveCampaign(),assets.campaignContent,currentRoom(),action);
+      encounters=result.state.encounters;campaignDialogue=result.state.dialogue;dialogueFrame=result.conversation;dialogueError='';
+      roomPopulation={actors:encounters.roomState.actors,geometry:roomActorGeometry(currentRoom(),encounters.roomState.actors)};
+      if(dialogueFrame||action.type==='dialogue'){stop();state.paused=true;roomElapsed=0;survival={...survival,elapsed:0}}
+      return true;
+    } catch(error) {
+      dialogueError=error.message==='dialogueHistoryFull' ? 'dialogueHistoryFull' : 'dialogueUnavailable';
+      roomMessage=dialogueError;stop();state.paused=true;return false;
+    }
+  }
   function restoreShip(next) {
     if(campaignMode)roomPopulation=inRoom()&&encounters.roomState ? {actors:encounters.roomState.actors,geometry:roomActorGeometry(currentRoom(),encounters.roomState.actors)} : null;
     roomMessage='';roomElapsed=0;
     stop();state={...createWalk(geometry()),position:inRoom() ? travel.roomPosition : inCity() ? travel.cityPosition : next.position,paused:true};
     inventory=next.inventory;condition=next.condition;survival={...createSurvival(condition),minutes:next.minutes};
+    dialogueFrame=inRoom()&&encounters.counter?.conversation ? restoreCampaignConversation(liveCampaign(),assets.campaignContent,currentRoom()).conversation : null;
+    dialogueError='';
     inventoryOpen=false;selected=null;equipmentOpen=false;help=false;previous=0;
   }
   const checkpoints = checkpointScreen({ stage, background:root,
@@ -75,19 +99,18 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       if (survival.sleeping || survival.forced || survival.dead) throw new Error('invalidCheckpoint');
       if(campaignMode) {
         if(!campaignStart)throw new Error('invalidCampaign');
-        return {start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,encounters,
-          travel:inRoom() ? {scene:'room',cityPosition:travel.cityPosition,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity() ? state.position : null}};
+        return liveCampaign();
       }
       return codec.snapshot(liveShip());
     },
     restore: value => {
       const next=selectedCodec().snapshot(value); // Validate before replacing live state.
-      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
+      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
       else restoreShip(next);
     },
     close: () => {
       if(campaignMode && !campaignStart) {api.hide();close();return}
-      render(); root.querySelector(survival.dead ? '#sleep-saves' : inBank() ? '#bank-saves' : '#walk-saves').focus();
+      render(); root.querySelector(survival.dead ? '#sleep-saves' : dialogueFrame ? '#dialogue-saves' : inBank() ? '#bank-saves' : '#walk-saves').focus();
     },
   });
   function pause() { stop(); state.paused = true; if (open) render(); }
@@ -127,13 +150,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     const bay = campaignMode && campaignStart ? bayAt() : null;
     const message = travelAvailable() ? t(inRoom() ? 'roomExitHint' : availableRoom() ? 'roomDoorHint' : bankAvailable() ? 'bankDoorHint' : inCity() ? 'cityBoardHint' : 'shipExitHint') : outsideShip() ? t(state.paused ? 'walkPaused' : inRoom() ? 'roomWalkHint' : 'cityWalkHint') : bay !== null ? t('equipmentReached', { name:t(`equipment${bay}`) }) : accessible ? t('storageReached', { storage: t(accessible) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
     const status = root.querySelector('#walk-status');
-    const statusMessage=inCity()&&roomMessage ? t(roomMessage) : message;
+    const statusMessage=outsideShip()&&roomMessage ? t(roomMessage) : inRoom()&&encounters.counter?.service==='waiting' ? t('dialogueWaiting') : message;
     if (status.textContent !== statusMessage) status.textContent = statusMessage;
     const button = root.querySelector('#walk-inventory');
     const label = t(accessible || 'inventoryTitle');
     if (button.textContent !== label) button.textContent = label;
     const engineering = root.querySelector('#walk-equipment');
     if (engineering) engineering.disabled = bay === null;
+    const talk=root.querySelector('#walk-talk');if(talk)talk.disabled=!counterAvailable()||encounters.counter.service==='waiting';
     const airlock=root.querySelector('#walk-airlock');if(airlock) {
       airlock.disabled=!travelAvailable();
       const label=t(inRoom() ? 'leaveRoom' : availableRoom() ? 'enterRoom' : bankAvailable() ? 'enterBank' : inCity() ? 'boardShip' : 'leaveShip');
@@ -142,6 +166,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     root.dataset.scene=campaignMode ? travel.scene : 'ship';
     root.dataset.room=inRoom() ? currentRoom().index : '';
     root.dataset.occupants=inRoom() ? roomPopulation?.actors.length || 0 : 0;
+    root.dataset.service=inRoom() ? encounters.counter?.service || '' : '';
+    root.dataset.dialogue=dialogueFrame?.view.state ?? '';
     root.dataset.minutes = survival.minutes; root.dataset.sleeping = survival.sleeping; root.dataset.dead = survival.dead;
     root.dataset.mode=campaignMode ? 'campaign' : 'walk';
     root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
@@ -157,7 +183,12 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${inRoom() ? t('roomTitle') : inCity() ? escapeHTML(assets.cityMaps[campaignStart.shipLocation.cityId].name) : t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
       <p class="walk-note">${campaignMode && campaignStart ? escapeHTML(t('campaignIdentity',{name:campaignStart.character.name,seed:campaignStart.creation.seed})) : t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t(campaignMode ? 'campaignControls' : 'walkControls')}"></div>
       <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button>${campaignMode ? `${outsideShip() ? '' : `<button id="walk-equipment" data-walk="equipment" disabled>${t('equipmentTitle')}</button>`}<button id="walk-airlock" data-walk="airlock" disabled>${t(inCity() ? 'boardShip' : 'leaveShip')}</button>` : ''}<button id="walk-saves" data-walk="checkpoints">${t('shipSaves')}</button>${campaignMode ? '' : `<button id="walk-reset" data-walk="reset">${t('walkReset')}</button>`}<button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
-    if (survival.sleeping || survival.dead) {
+    if(inRoom()&&encounters.counter)root.querySelector('.walk-actions').insertAdjacentHTML('afterbegin',`<button id="walk-talk" data-walk="talk">${t('dialogueTalk')}</button>`);
+    if(dialogueFrame) {
+      for(const child of root.children)child.inert=true;
+      root.insertAdjacentHTML('beforeend',dialoguePanel({frame:dialogueFrame,assets,t,locale:locale(),message:dialogueError}));
+      (root.querySelector('#dialogue-panel').querySelector(`[id="${focus||''}"]:not(:disabled)`)||root.querySelector('#dialogue-cancel')).focus({preventScroll:true});
+    } else if (survival.sleeping || survival.dead) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
       const panel = root.querySelector('.sleep-panel');
@@ -184,7 +215,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   function loop(now) {
     if (!open) return;
     const before = `${survival.sleeping}/${survival.forced}/${survival.dead}`;
-    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || inBank() || checkpoints.active || help || equipmentOpen || (inventoryOpen && !survival.sleeping));
+    survival = advanceSurvival(survival, previous ? now - previous : 0, state.paused || !!dialogueFrame || inBank() || checkpoints.active || help || equipmentOpen || (inventoryOpen && !survival.sleeping));
     condition = survival.condition;
     if (before !== `${survival.sleeping}/${survival.forced}/${survival.dead}`) { stop(); selected = null; render(); }
     if (keys.size && !state.paused) {
@@ -194,17 +225,23 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       state.pointer = { x: state.position.x + 3 + Math.sign(dx) * 2, y: state.position.y - 3 + Math.sign(dy) * 2 };
     }
     if (!survival.sleeping && !survival.dead && !inBank() && !(inRoom()&&roomPopulation)) state = advanceWalk(state, previous ? now - previous : 0, geometry());
-    if(inRoom()&&roomPopulation&&!state.paused&&!survival.sleeping&&!survival.dead&&!checkpoints.active&&!help&&!inventoryOpen) {
+    if(inRoom()&&roomPopulation&&!dialogueFrame&&!state.paused&&!survival.sleeping&&!survival.dead&&!checkpoints.active&&!help&&!inventoryOpen) {
       roomElapsed+=Math.max(0,Math.min(100,previous ? now-previous : 0));
       while(roomElapsed>=ROOM_TICK_MS) {
         if(keys.size) {
           let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
           state.pointer={x:state.position.x+3+Math.sign(dx)*2,y:state.position.y-3+Math.sign(dy)*2};
         }
+        if(state.held&&encounters.counter&&encounters.counter.service!=='idle')counterAction({type:'cancel'});
         state=advanceWalk({...state,elapsed:0},ROOM_TICK_MS,geometry());
-        const next=tickRoomTraffic(currentRoom(),encounters.roomState,encounters.randomState,state.position);
-        encounters={...encounters,randomState:next.randomState,roomState:next.state};
-        roomPopulation={actors:next.state.actors,geometry:next.geometry};roomElapsed-=ROOM_TICK_MS;
+        if(encounters.counter) {
+          if(!counterAction({type:'tick'})||dialogueFrame){render();break}
+        } else {
+          const next=tickRoomTraffic(currentRoom(),encounters.roomState,encounters.randomState,state.position);
+          encounters={...encounters,randomState:next.randomState,roomState:next.state};
+          roomPopulation={actors:next.state.actors,geometry:next.geometry};
+        }
+        roomElapsed-=ROOM_TICK_MS;
       }
     } else roomElapsed=0;
     previous = now;
@@ -226,6 +263,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) stop(); });
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
+    if(dialogueFrame) {
+      if(event.key==='Escape'){event.preventDefault();counterAction({type:'dialogue',input:{type:'cancel'}});render()}
+      if(event.key==='Tab') {
+        const buttons=[...root.querySelectorAll('#dialogue-panel button:not(:disabled)')],i=buttons.indexOf(document.activeElement);
+        event.preventDefault();buttons[(i+(event.shiftKey ? -1 : 1)+buttons.length)%buttons.length].focus();
+      }
+      return;
+    }
     if(inBank()) {
       if(event.key==='Escape'){event.preventDefault();leaveBank()}
       if(event.key==='Tab') {
@@ -277,6 +322,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     }
     if (event.key === 'Escape') { event.preventDefault(); api.hide(); close(); return; }
     if (event.target.id === 'walk-surface' && event.key === 'Enter' && travelAvailable()) {event.preventDefault();changeScene();return}
+    if(event.target.id==='walk-surface'&&event.key==='Enter'&&counterAvailable()){event.preventDefault();requestCounter();return}
     if (event.target.id === 'walk-surface' && event.key === 'Enter' && campaignMode && bayAt() !== null) { event.preventDefault(); openEquipment(); return; }
     if (event.target.id === 'walk-surface' && (event.key === 'Enter' || event.key.toLowerCase() === 'i')) { event.preventDefault(); openInventory(); return; }
     if (event.target.id === 'walk-surface' && directions[event.key]) { event.preventDefault(); keys.add(event.key); }
@@ -284,12 +330,18 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
   root.addEventListener('keyup', event => { if (directions[event.key]) { keys.delete(event.key); if (!keys.size) stop(); } });
   root.addEventListener('focusout', event => { if (event.target.id === 'walk-surface') stop(); });
   function openInventory() { stop(); state.paused = true; inventoryOpen = true; selected = null; inventoryMessage = ''; render(); }
+  function requestCounter() {
+    if(!counterAvailable())return;
+    stop();roomMessage='';
+    if(counterAction({type:'request'})){state.paused=false;previous=0;roomElapsed=0}
+    render();root.querySelector('#walk-surface').focus();
+  }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
     stop();
     roomMessage='';roomElapsed=0;
     if(inRoom()) {
-      encounters={...encounters,roomSeed:null,roomState:null};roomPopulation=null;
+      encounters={...encounters,roomSeed:null,roomState:null,counter:null};roomPopulation=null;
       const position={...travel.cityPosition};travel={scene:'city',cityPosition:position};
       state={...createWalk(geometry()),position,paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;
@@ -300,7 +352,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
       try {population=populateRoom(room,encounters.randomState)}
       catch {roomMessage='roomPopulationUnavailable';state.paused=true;render();return}
       roomPopulation=population;
-      encounters={randomState:population.randomState,roomSeed:population.seed,roomState:initialRoomTraffic(population)};
+      campaignDialogue={...campaignDialogue,flags:[...campaignDialogue.flags]};
+      campaignDialogue.flags.fill(false,64,72); // Game18 fresh room entry.
+      encounters={randomState:population.randomState,roomSeed:population.seed,roomState:initialRoomTraffic(population),counter:{service:'idle',conversation:null}};
       travel={scene:'room',cityPosition:{...state.position},roomPosition:{...room.spawn}};
       state={...createWalk(room),paused:true};previous=0;survival={...survival,elapsed:0};
       render();root.querySelector('#walk-surface').focus();return;
@@ -330,6 +384,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     render(); root.querySelector('#inventory-sleep').focus();
   }
   root.addEventListener('click', event => {
+    if(dialogueFrame) {
+      const reply=event.target.closest('[data-dialogue-reply]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]');
+      const input=reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} : null;
+      if(input){counterAction({type:'dialogue',input});render();return}
+    }
     const component = event.target.closest('[data-equipment-container]');
     if (equipmentOpen && component) {
       const slot=component.dataset.equipmentContainer==='carried' ? {container:'carried',index:Number(component.dataset.equipmentIndex)} :
@@ -373,6 +432,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     if (action === 'leave-bank' && inBank()) {leaveBank();return}
     if (action === 'equipment') { openEquipment(); return; }
     if (action === 'airlock') {changeScene();return}
+    if (action === 'talk') {requestCounter();return}
     if (action === 'close-equipment') { closeEquipment(); return; }
     if (action==='equipment-move' && equipmentOpen && equipmentSelected) {equipmentMoving=true;equipmentMessage='';render();return}
     if (action==='equipment-cancel' && equipmentOpen) {equipmentMoving=false;equipmentMessage='selectionCancelled';render();root.querySelector('#equipment-move').focus();return}
@@ -427,7 +487,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, close }
     showCampaign(value) {
       const next=value ? campaignCodec.snapshot(value) : null;
       switchMode(true);
-      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
+      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;travel=next.travel;encounters=next.encounters;restoreShip(next.ship)}
       if(campaignStart)show();
     },
     showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},

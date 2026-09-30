@@ -79,7 +79,7 @@ async browserPage => {
       assert(s.scene==='room'&&s.x==='12'&&s.y==='56'&&s.paused==='true',`Type${type} enters at the original room anchor, paused`);
       assert(await page.locator('#walk-equipment').count()===0,`Type${type} has no remote engineering access`);
       const entered=await exportGame();
-      assert(entered.version===7&&entered.scope==='landed-traffic-1'&&entered.state.travel.scene==='room',`Type${type} exports the version7 room scene`);
+      assert(entered.version===8&&entered.scope==='landed-dialogue-1'&&entered.state.travel.scene==='room',`Type${type} exports the version8 room scene`);
       assert(JSON.stringify(entered.state.travel.cityPosition)===JSON.stringify(street.state.travel.cityPosition)&&JSON.stringify(entered.state.ship)===JSON.stringify(street.state.ship),`Type${type} retains the street return anchor and all ship progress`);
       const actors=await page.evaluate(async ({index,seed})=>{
         const [{createRoomGeometries},{populateRoom},data]=await Promise.all([import('/js/core/room-walk.js'),import('/js/core/room-actors.js'),fetch('/data/room-walk.json').then(r=>r.json())]);
@@ -87,7 +87,7 @@ async browserPage => {
       },{index:Number(s.room),seed:entered.state.encounters.roomSeed});
       assert(Number(s.occupants)===actors.length&&actors.length>=2,`Type${type} displays the generated visitors and counter occupant`);
       assert(entered.state.encounters.roomSeed===street.state.encounters.randomState&&entered.state.encounters.randomState!==entered.state.encounters.roomSeed,`Type${type} consumes the active gameplay RNG only on entry`);
-      const version6=JSON.parse(JSON.stringify(entered));version6.version=6;version6.scope='landed-occupants-1';delete version6.state.encounters.roomState;
+      const version6=JSON.parse(JSON.stringify(entered));version6.version=6;version6.scope='landed-occupants-1';delete version6.state.encounters.roomState;delete version6.state.encounters.counter;delete version6.state.dialogue;
       assert((await importGame(version6)).includes('imported'),`Type${type} version6 occupants import through ordinary UI`);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(entered.state),`Type${type} version6 migration reconstructs exact initial actors without advancing RNG`);
       await page.locator('#walk-pause').click();await page.locator('#walk-surface').focus();
@@ -157,7 +157,7 @@ async browserPage => {
       await page.locator('#walk-airlock').click();const reentered=await exportGame();
       assert(reentered.state.encounters.roomSeed===returned.state.encounters.randomState&&reentered.state.encounters.randomState!==returned.state.encounters.randomState,`Type${type} re-entry draws a new population from the continuing stream`);
       await page.locator('#walk-airlock').click();
-      const legacy=JSON.parse(JSON.stringify(saved));legacy.version=5;legacy.scope='landed-rooms-1';delete legacy.state.encounters;
+      const legacy=JSON.parse(JSON.stringify(saved));legacy.version=5;legacy.scope='landed-rooms-1';delete legacy.state.encounters;delete legacy.state.dialogue;
       assert((await importGame(legacy)).includes('imported')&&(await state()).occupants==='0',`Type${type} version5 room import preserves the legacy empty population`);
       assert((await state()).x==='40'&&(await state()).y==='50',`Type${type} legacy import preserves interior progress`);
       await roomPointer(12,56);await page.locator('#walk-airlock').click();await page.locator('#walk-airlock').click();

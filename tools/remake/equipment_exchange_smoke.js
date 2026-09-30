@@ -116,7 +116,7 @@ async browserPage => {
     assert((await page.locator('#equipment-slot-0-1').getAttribute('aria-label')).includes('Flux modulator')&&(await page.locator('#equipment-slot-1-1').getAttribute('aria-label')).includes('Shunt'),'Fresh-page load restores repaired and cannibalized units');
     await page.locator('#equipment-close').click();await page.locator('#walk-saves').click();await settled();
     const envelope={format:'sundog-campaign',version:2,scope:'landed-engineering-1',slot:0,savedAt:new Date().toISOString(),state:changed};
-    delete envelope.state.travel;delete envelope.state.encounters; // Exercise a genuine version2 import.
+    delete envelope.state.travel;delete envelope.state.encounters;delete envelope.state.dialogue; // Exercise a genuine version2 import.
     const corrupt=JSON.parse(JSON.stringify(envelope));corrupt.state.equipment[0].performance=16;await importValue(corrupt);
     assert((await page.locator('#checkpoint-message').innerText()).includes('Invalid'),'False imported performance is rejected');
     await page.locator('#checkpoint-back').click();const intact=await exportGame();
