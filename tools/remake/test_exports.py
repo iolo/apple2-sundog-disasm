@@ -14,6 +14,19 @@ from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_dialogue_system_defaults_match_clean_character_capture(self):
+        root = Path(__file__).resolve().parents[2]
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        raw = bytes.fromhex(captured['worldTablesHex'])
+        systems = json.loads(build()['data/dialogue-systems.json'])['systems']
+        self.assertEqual(len(systems), 12)
+        for i, system in enumerate(systems):
+            row = raw[i * 20:(i + 1) * 20]
+            self.assertEqual(system, dict(id=f'system-{i+1:02}', local16=bool(row[10] & 128),
+                local29=row[19] >> 4, local30=row[18] & 15, local31=row[18] >> 4, local32=row[17] >> 4))
+            self.assertFalse(system['local16'])
+            self.assertEqual(system['local29'], 0)
+
     def test_dialogue_text_round_trips_dictionary_and_every_message(self):
         root = Path(__file__).resolve().parents[2]
         content = json.loads(build()['data/dialogue-text.json'])

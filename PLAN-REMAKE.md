@@ -388,6 +388,14 @@ the classified assets, and 125 Chrome rule groups pass. See
 controls/actions, player queue/return persistence and localized conversation
 presentation. Live dialogue and R07 transactions remain pending.
 
+Checkpoint R06i (2026-09-30) adds fresh counter setup, all byte-predicate families
+and negotiation valuation refresh. It preserves same-city flags, source RNG
+draws, luck reduction and internal state changes without committing campaign
+transactions. Twelve system defaults match the clean-character capture;
+139 Chrome rule groups pass. See `docs/remake/dialogue-state.md`. Next implement
+packed controls, actions and built-in transitions, then the conversation runner,
+player queue/return persistence and localized UI. Saves remain version7.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

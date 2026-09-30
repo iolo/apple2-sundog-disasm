@@ -5,7 +5,7 @@ import hashlib
 import json
 import re
 from room_assets import room_layouts
-from dialogue_assets import dialogue_records, dialogue_text
+from dialogue_assets import dialogue_records, dialogue_text, dialogue_systems
 from pathlib import Path
 import sys
 
@@ -132,6 +132,7 @@ def build():
         sources[name] = hashlib.sha256(raw).hexdigest()
         return raw
 
+    read('src/pcode/game_16.s')
     outputs['data/dialogue.json'] = encode(dialogue_records(json.loads(read('docs/reference/dialogue-scripts.json'))))
     outputs['data/dialogue-text.json'] = encode(dialogue_text(
         json.loads(read('assets/dialogue-dictionary/fields.json')),
@@ -190,6 +191,7 @@ def build():
     # gameplay records as new-game defaults. These positions seed utility12 jitter.
     initial_data = read('assets/working-state/data.bin')
     defaults = initial_data[505:1945]
+    outputs['data/dialogue-systems.json'] = encode(dialogue_systems(defaults))
     for source in ['src/pcode/library_22.s', 'src/pcode/library_24.s', 'src/pcode/library_28.s',
                    'src/pcode/game_13.s', 'src/native/pcode_primitives.s']:
         read(source)

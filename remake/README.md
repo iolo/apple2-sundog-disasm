@@ -72,10 +72,11 @@ Open `/tests/` (relative to the served folder) for the dependency-free browser
 checks.
 
 The dialogue foundation exports all96 classified records and all165 messages,
-and implements source selection rules and English text expansion. Live counter
-conversations still require setup, predicates, actions and localized presentation.
-See `../docs/remake/dialogue-selection.md` and `../docs/remake/dialogue-text.md`
-for scope and source evidence.
+and implements source selection rules, English text expansion, counter setup and
+stateful predicates. Live conversations still require script actions, controls,
+the conversation runner and localized presentation. See
+`../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md` and
+`../docs/remake/dialogue-state.md` for scope and source evidence.
 
 Development export checks:
 
