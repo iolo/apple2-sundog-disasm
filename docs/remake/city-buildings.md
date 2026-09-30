@@ -1,5 +1,9 @@
 # City doors and bank visits — R06c
 
+Current service classification and entry coverage are in
+[R06r city services](city-services.md). It identifies the depot as ship service
+and exchange as trade/colony service; all foot doors now support visits.
+
 Later checkpoint: [R06d](building-interiors.md) enables walking for types9/10
 and adds version5 room saves. The R06c trace and bank-only scope below describe
 the earlier checkpoint; current save behavior is in `campaign-saves.md`.

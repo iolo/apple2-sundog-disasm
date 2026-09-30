@@ -427,5 +427,17 @@
   "tavernTradeScope": "Item trading is not available yet.",
   "tavernCounterScope": "Ask for information or offer a tip. Food and item trading are not available yet.",
   "colonyViewDescription": "Colony growth preview",
-  "colonyCompletedPhases": "Completed phases"
+  "colonyCompletedPhases": "Completed phases",
+  "serviceDoorHint": "Enter to visit this service.",
+  "enterService": "Enter service",
+  "leaveService": "Leave service",
+  "transstationTitle": "TransStation",
+  "transstationDescription": "Transport between cities, planets and systems.",
+  "transstationUnavailable": "Transport is not available yet.",
+  "depotTitle": "{name} Depot",
+  "depotDescription": "Ship refueling, repairs and auxiliary fuel.",
+  "depotUnavailable": "Fuel purchases and repairs are not available yet.",
+  "exchangeTitle": "{name} Exchange",
+  "exchangeDescription": "Commodity trading and cargo services.",
+  "exchangeUnavailable": "Trading and cargo transfers are not available yet."
 }

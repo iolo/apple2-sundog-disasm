@@ -57,7 +57,7 @@ async browserPage => {
     }
     await page.setViewportSize({width:1280,height:720});await page.locator('#dialogue-reply-1').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='100','Pay reaches the source rental acceptance');
-    const paid=await exported();assert(paid.version===10&&paid.state.dialogue.cash===fixture.cash,'Version10 mid-payment save retains replayable pre-return cash');
+    const paid=await exported();assert(paid.version===11&&paid.state.dialogue.cash===fixture.cash,'Version11 mid-payment save retains replayable pre-return cash');
     await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(paid.state),'Mid-payment IndexedDB reload preserves the exact replay and cash');
     await page.locator('#dialogue-continue').click();
     const rented=await exported(),number=rented.state.travel.lodging.rented,x=28+28*(number-1);

@@ -31,7 +31,7 @@ export async function campaignDialogueTests(test,equal) {
     equal(state.encounters.counter.service,'talking');return state;
   }
   await test('Version10 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
-    const state=inRoom(),save=codec.make(state,0);equal(save.version,10);equal(save.scope,'landed-taverns-1');
+    const state=inRoom(),save=codec.make(state,0);equal(save.version,11);equal(save.scope,'landed-services-1');
     const old=structuredClone(save);old.version=7;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
     const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded,save);equal(JSON.stringify(old),before);
     old.state.encounters.counter=initialCounter();reject(()=>codec.validate(old));

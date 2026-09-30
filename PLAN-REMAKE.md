@@ -462,6 +462,13 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R06r (2026-09-30) resolves service-door classification and enables
+read-only TransStation, depot and exchange visits. All classified foot doors now
+enter the proper scene class; version11 saves validate their exact reachable door.
+200 Chrome rule groups and77 service checks pass. See `docs/remake/city-services.md`
+for source dispatch and later transaction ownership. The final cross-scene route
+and regression audit remain before R06 can be marked complete.
+
 Checkpoint R06q (2026-09-30) adds source-derived colony clipping and Banville's
 ten-phase inspector. Independent references cover57 ordinary and11 colony maps,
 including clamped progress;198 Chrome rule groups and120 inspector checks pass.

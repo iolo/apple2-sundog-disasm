@@ -1,10 +1,10 @@
-# Campaign save boundary — through R06p
+# Campaign save boundary — through R06r
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version10, scope `landed-taverns-1`, and validates/upgrades version1 `landed-ship-1`,
+version11, scope `landed-services-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
-version8 `landed-dialogue-1` and version9 `landed-lodging-1`.
+version8 `landed-dialogue-1`, version9 `landed-lodging-1` and version10 `landed-taverns-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -24,13 +24,16 @@ The state has six explicit parts:
 - `equipment`: active installed components, validated performance and special-part
   availability. Group/socket requirements are immutable metadata. The legacy
   field name `spares` means socket requirements, not removable inventory.
-- `travel`: active scene (`ship`, `city`, `bank` or `room`) and full-map city player pixels.
+- `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
+  or `exchange`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
   At a bank the city position must also match a source foot-bank door footprint.
+  Other service scenes likewise require their matching reachable foot door;
+  no redundant service identity or transactional state is stored.
   In a room, the city position retains the entry door; a third field,
   `roomPosition`, must be reachable from the derived layout's interior spawn.
-  It is forbidden in other scenes. City tile types9/10/11 are currently enabled.
+  It is forbidden in other scenes. City tile types8/9/10/11 are currently enabled.
   Type11 additionally requires `lodging: {rented, openMask}`; a saved bedroom can
   reach the doorway through its rented door even while that door is closed.
 
@@ -86,12 +89,17 @@ Tavern traffic independently validates its live actor references and reservation
 Open conversations replay from the untouched campaign attributes/cash and input
 history; tips, speaker mood/gate and return movement commit together at completion.
 
+Version11 adds read-only TransStation, depot and exchange visits. Versions1–10
+reject these scenes before migration; existing version10 state carries forward
+unchanged. Their inspection pauses survival/movement and returns to the exact
+street anchor. Transactions and navigation remain unavailable. See `city-services.md`.
+
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
 snapshots are supported; sleep/input/inspection phases are transient and are not part
 of this format. The UI prohibits saving during sleep and restores paused with
 held input cleared, as the walkthrough checkpoint UI does.
-The bank service is an explicit scene and is preserved by saves.
+All four service visits are explicit scenes and are preserved by saves.
 
 Import is bounded to 131072 text characters, rejects malformed JSON, future
 versions, unsupported scopes, invalid slots/timestamps, and foreign draft or

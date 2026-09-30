@@ -3,7 +3,8 @@
 Current milestone: a playable landed campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank visits,
 shop information dialogue, paid lodging with working bedroom doors, and tavern
-seating, conversations and bartender tips.
+seating, conversations and bartender tips. TransStation, depot and exchange
+doors open read-only service visits with saved return positions.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
 inspector remain available. Trading, flight, combat and colony progression
@@ -93,7 +94,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version10 saves restore open conversations by replaying the saved RNG and inputs,
+Version11 saves restore open conversations by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop purchases and trade transfers remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,

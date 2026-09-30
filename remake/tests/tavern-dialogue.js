@@ -78,13 +78,15 @@ export async function tavernDialogueTests(test,equal) {
     equal(returned.frame.traffic.actors[0].words[7]&2,2*returned.outcome.workspace.gate);
     equal(validateRoomTraffic(room,returned.frame.traffic,returned.frame.position,{service:'idle'}).state,returned.frame.traffic);
   });
-  await test('A player can chat, hear a matched joke and return with an NPC mover through version10 replay saves',()=>{
+  await test('A player can chat, hear a matched joke and migrate version10 replay saves without changing the speaker',()=>{
     let result=act(state(),{type:'request'});equal(result.conversation.view.state,128);
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,10);equal(save.scope,'landed-taverns-1');
+    const save=codec.make(result.state,0);equal(save.version,11);equal(save.scope,'landed-services-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
+    const legacy=structuredClone(save);legacy.version=10;legacy.scope='landed-taverns-1';
+    equal(codec.parse(JSON.stringify(legacy)),save);
     equal(restoreCampaignConversation(loaded,content,room).conversation,result.conversation);
     equal(/[가-힣]/.test(dialogueMessage(result.conversation,t,'ko')),true);
     result=act(loaded,{type:'dialogue',input:{type:'timeout'}});equal(result.conversation.view.state,193);
