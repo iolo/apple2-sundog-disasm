@@ -93,3 +93,17 @@ def dialogue_text(dictionary, messages, storage):
         raise ValueError('Unexpected supplemental dictionary boundary')
     return dict(version=1, source='game_16 procedures13–22/32; classified dialogue text assets',
                 base=[field(e) for e in base], supplementStart=52, supplements=supplements, messages=banks)
+
+
+def dialogue_systems(defaults):
+    if len(defaults) != 1440:
+        raise ValueError('Expected shipped world defaults')
+    # Utility12 clears system word5 bit7 and word9 high nibble. Never export
+    # the saved working values of those mutable fields as new-game defaults.
+    systems = []
+    for i in range(12):
+        record = defaults[i * 20:(i + 1) * 20]
+        systems.append(dict(id=f'system-{i+1:02}', local16=False, local29=0,
+                            local30=record[18] & 15, local31=record[18] >> 4,
+                            local32=record[17] >> 4))
+    return dict(version=1, source='utility_disk1 procedure12; game_16 procedure37', systems=systems)

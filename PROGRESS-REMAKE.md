@@ -1,5 +1,28 @@
 # SunDog web remake progress
 
+## R06i — Counter setup and dialogue predicates — 2026-09-30
+
+Added fresh setup for counter kinds13/14 and the complete byte-predicate
+dispatch, operating on owned interpreter state. Setup preserves same-city flags,
+resets the source per-conversation fields and consumes no random draws. Twelve
+system defaults match the independent clean-character capture, including the
+mutable fields cleared by the original initializer.
+
+Predicates preserve strict/eager random draws, charisma/mood-to-luck retries,
+luck halving, cached success flags, inventory scores and internal offer changes.
+Negotiation price refresh includes source item masks, value multipliers, scale
+caps and formatted text. Missing valuation/item context and unsupported overflow
+paths fail without changing caller state. See `docs/remake/dialogue-state.md`.
+
+Chrome154.0.8037.57 passes 139 rule groups, including 14 new groups and all 256
+predicate bytes across three seeds. Seventeen exporter tests, all 139 generated
+artifacts and original disk/PDF hashes pass. Counter entry tests verify that
+predicate100 draws once despite identical redirect destinations.
+
+Next: packed controls, script actions and built-in transitions, then the runner,
+player queue/return saves and English/Korean conversation UI. Live campaign
+attributes/cash and version7 saves remain unchanged; transactions remain R07.
+
 ## R06h — Source dialogue text expansion — 2026-09-30
 
 Added the original English text renderer and exported all 165 classified
