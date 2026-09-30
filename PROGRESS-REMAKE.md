@@ -1,5 +1,27 @@
 # SunDog web remake progress
 
+## R06o — Tavern seats, visitor contacts and return traffic — 2026-09-30
+
+Added the core traffic/controller for all four tavern layouts: six seat
+reservations, counter/seat retargeting, player sit/stand, kind21/22 contact
+dispatch and conversation return through the secondary visitor mover. Traffic
+and RNG freeze while a contact awaits dialogue. Both movers survive actor-array
+compaction and overlapping returns. Reservations derive from committed actors,
+preventing failed entry or blocked seat probes from leaving stale ownership.
+Counter retargeting also repairs the waiting count and staff follow reference.
+
+Chrome154.0.8037.57 passes189 rule groups and102 existing room UI regression
+checks. Ten seating groups include exact RNG/target checks, failed entry,
+both return paths, malformed-state rejection and48,000 simulation ticks across
+all four layouts, with and without a seated player. JSON round trips preserve
+future traffic. All159 generated artifacts and original input hashes pass.
+See `docs/remake/tavern-traffic.md` for source offsets, repairs and receipts.
+
+This is the tavern controller foundation; type8 city entry is still gated.
+Next: connect its contacts to dialogue setup, Korean presentation, live controls
+and campaign replay saves. Special city composition and the final cross-scene
+audit also remain. R06 stays active; no new native emulator capture is claimed.
+
 ## R06n — Live lodging, paid room access and version9 saves — 2026-09-30
 
 Enabled type11 lodging with visitors, clerk approach, source kind23 dialogue,
