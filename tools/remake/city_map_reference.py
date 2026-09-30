@@ -44,8 +44,23 @@ def reference():
                                 banks=[(systems[world]-1)%4,(world-1)%4],
                                 sha256=hashlib.sha256(cells).hexdigest()))
     assert [r['cityId'] for r in records] == [f'city-{i:02}' for i in range(1,58)]
+    colony = []
+    for completed_phase in [*range(10), 255]:
+        phase = min(9, completed_phase)
+        left, right = 18-phase, 21+phase
+        top, bottom = 10-(phase+1)//2, 13+(phase+1)//2
+        cells = bytearray(960)
+        for index, value in enumerate(draws(60)):
+            byte = payload[59*120+index//2]
+            tile = (byte >> ((index % 2)*4)) & 15
+            column, row = divmod(index, 12)
+            x, y = column+10, row+6
+            if left < x < right and top < y < bottom:
+                cells[y*40+x] = tile+16*(value % 2)
+        colony.append(dict(completedPhase=completed_phase, banks=[0, 0],
+                           sha256=hashlib.sha256(cells).hexdigest()))
     return dict(source='Independent packed-byte / byte-carry translation of game21 procedure26; no live capture',
-                records=records)
+                records=records, colony=colony)
 
 
 if __name__ == '__main__':
@@ -57,4 +72,4 @@ if __name__ == '__main__':
         TARGET.write_text(json.dumps(result, indent=2)+'\n')
     elif json.loads(TARGET.read_text()) != result:
         raise SystemExit('Stale city map reference')
-    print(f'57 ordinary city composition references {"written" if args.write else "verified"}')
+    print(f'57 ordinary and 11 colony composition references {"written" if args.write else "verified"}')

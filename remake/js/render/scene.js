@@ -5,8 +5,9 @@ export const CITY_BOUNDS = {x:145,y:136,width:350,height:240};
 export const SHIP_BOUNDS = { x: 0, y: 46, width: 640, height: 384 };
 
 export function previewCity(state,assets) {
-  return state.view==='cities' && state.cityMode==='composed'
-    ? assets.cityMaps[assets.maps.cities[state.indices.cities].id] : null;
+  if(state.view!=='cities'||state.cityMode!=='composed')return null;
+  const id=assets.maps.cities[state.indices.cities].id;
+  return id==='city-60' ? assets.colonyMaps[state.colonyPhase] : assets.cityMaps[id];
 }
 
 export function drawScene(canvas, state, assets, displayScale = 1) {

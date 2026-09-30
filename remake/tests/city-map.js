@@ -1,4 +1,4 @@
-import { composeCityMap, createCityMaps, cityWindow, cityOrigin } from '../js/core/city-map.js';
+import { composeCityMap, createCityMaps, cityWindow, cityOrigin, colonyCityBounds } from '../js/core/city-map.js';
 import { createPreview, reducePreview } from '../js/core/preview.js';
 import { sourceRandom } from '../js/core/random.js';
 
@@ -10,7 +10,7 @@ export async function cityMapTests(test,equal) {
   const before=JSON.stringify({maps,navigation,economy});
   const cities=createCityMaps(maps,navigation,economy);
   await test('All 57 ordinary cities match independent packed-byte composition and bank references',async()=>{
-    equal(Object.keys(cities).length,57);
+    equal(Object.keys(cities).length,58);
     for(const record of reference.records) {
       const city=cities[record.cityId];
       const digest=await crypto.subtle.digest('SHA-256',new Uint8Array(city.tiles.flat()));
@@ -40,7 +40,7 @@ export async function cityMapTests(test,equal) {
     equal(cities['city-01'].tiles[0][0],0);equal(cities['city-01'].banks,[0,0]);
     equal(other['city-01'].tiles[1][0],0);
   });
-  await test('City composition refuses unnamed/reserved/colony records, invalid nibbles and missing membership',()=>{
+  await test('City composition rejects dummy records, missing colony phases, invalid nibbles and missing membership',()=>{
     const location={systemId:'system-01',worldId:'world-01'};
     const rejects=run=>{let rejected=false;try{run()}catch{rejected=true}equal(rejected,true)};
     for(const record of [null,...maps.cities.slice(57),{...maps.cities[0],tiles:[]},
@@ -51,6 +51,36 @@ export async function cityMapTests(test,equal) {
     rejects(()=>createCityMaps({...maps,cities:[]},navigation,economy));
     rejects(()=>createCityMaps(maps,{systems:[]},economy));
     for(const origin of [{x:40,y:0},{x:0,y:19},{x:0.5,y:0}]) rejects(()=>cityWindow(cities['city-01'],origin));
+  });
+  await test('Colony phases match independent packed-byte clipping and preserve every retained variant',async()=>{
+    equal(economy.colonyCity,{id:'city-60',worldId:'world-01',name:'Banville'});
+    const record=maps.cities.find(c=>c.id==='city-60'),location={systemId:'system-01',worldId:'world-01'};
+    const full=composeCityMap(record,location,{completedPhase:9});
+    for(const expected of reference.colony) {
+      const phase=expected.completedPhase,map=composeCityMap(record,location,{completedPhase:phase}),b=colonyCityBounds(phase);
+      const digest=await crypto.subtle.digest('SHA-256',new Uint8Array(map.tiles.flat()));
+      equal(Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,'0')).join(''),expected.sha256);equal(map.banks,expected.banks);
+      for(let y=0;y<24;y++)for(let x=0;x<40;x++)equal(map.tiles[y][x],
+        x>=b.left&&x<=b.right&&y>=b.top&&y<=b.bottom ? full.tiles[y][x] : 0);
+      const composed=createCityMaps(maps,navigation,economy,{completedPhase:phase});
+      equal(composed['city-60'],{...map,name:'Banville'});equal(composed['city-01'],cities['city-01']);
+    }
+    equal(colonyCityBounds(0),{left:19,right:20,top:11,bottom:12});
+    equal(colonyCityBounds(9),{left:10,right:29,top:6,bottom:17});
+    for(const phase of [-1,256,1.5,null,undefined]) {
+      let error;try{composeCityMap(record,location,{completedPhase:phase})}catch(e){error=e.message}
+      equal(error,'Invalid colony phase');
+    }
+  });
+  await test('Colony preview phase controls own presentation state and never alter ordinary maps or campaign content',()=>{
+    const counts={cities:60,worlds:18,ship:2};let state={...createPreview(),view:'cities'};
+    equal(reducePreview(state,{type:'colony-phase',phase:4},counts),state);
+    state=reducePreview(state,{type:'step',delta:59},counts);state.selection={x:2,y:2};
+    const next=reducePreview(state,{type:'colony-phase',phase:4},counts);
+    equal(next.colonyPhase,4);equal(next.selection,null);equal(state.colonyPhase,0);
+    for(const phase of [-1,10,1.5])equal(reducePreview(next,{type:'colony-phase',phase},counts),next);
+    equal(reducePreview(next,{type:'step',delta:1},counts).colonyPhase,4);
+    equal(JSON.stringify({maps,navigation,economy}),before);
   });
   await test('Ten by six city window resolves both banks, wraps columns and preserves row order',()=>{
     const map={banks:[2,3],tiles:Array.from({length:24},(_,y)=>Array.from({length:40},(_,x)=>(x+y)%32))};

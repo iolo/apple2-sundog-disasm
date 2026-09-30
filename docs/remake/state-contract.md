@@ -126,6 +126,12 @@ cache contains57 named ordinary cities; records58–60 retain stored-only inspec
 No city player location, airlock transition or new save field is introduced.
 See `city-maps.md`.
 
+R06q adds derived colony maps for completed phases0..9. `colonyPhase` belongs
+only to preview state; it cannot mutate campaign progress or RNG. The exported
+`colonyCity` metadata identifies city60 as Banville on world1. Records58/59
+remain reserved raw layouts. Campaign version10 and its creation recipe remain
+unchanged. See `colony-maps.md`.
+
 R06b introduces active `travel:{scene,cityPosition}` in campaign version3,
 `landed-city-1`. City positions use full-map pixels and must be reachable from the
 initial foot exit. The legacy `ship` block retains active inventory/condition/time;

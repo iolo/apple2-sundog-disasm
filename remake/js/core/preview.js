@@ -3,7 +3,7 @@ import { cityOrigin } from './city-map.js';
 // Preview state is intentionally distinct from campaign/save state.
 export function createPreview() {
   return { view: 'title', indices: { ship: 0, cities: 0, worlds: 0 }, bank: 0, selection: null,
-    cityMode:'stored',cityOrigin:cityOrigin() };
+    cityMode:'stored',cityOrigin:cityOrigin(),colonyPhase:0 };
 }
 
 export function reducePreview(state, action, counts) {
@@ -20,6 +20,9 @@ export function reducePreview(state, action, counts) {
     }
     case 'city-mode':
       return ['stored','composed'].includes(action.mode) ? {...state,cityMode:action.mode,selection:null} : state;
+    case 'colony-phase':
+      return state.view==='cities'&&state.indices.cities===59&&Number.isInteger(action.phase)&&action.phase>=0&&action.phase<=9
+        ? {...state,colonyPhase:action.phase,selection:null} : state;
     case 'city-pan':
       if(state.view!=='cities'||state.cityMode!=='composed'||
         !Number.isInteger(action.dx)||!Number.isInteger(action.dy)||Math.abs(action.dx)+Math.abs(action.dy)!==1) return state;

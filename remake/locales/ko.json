@@ -219,7 +219,7 @@
   "equipmentDoesNotFit": "맞지 않는 부품입니다. 물품은 이동하지 않았습니다.",
   "equipmentUnavailable": "여기에서는 이 장치에 접근할 수 없습니다.",
   "cityViewDescription": "도시 보기 · 화살표로 주변을 둘러보세요",
-  "cityStoredOnly": "저장된 배치 · 도시 보기는 아직 지원하지 않습니다",
+  "cityStoredOnly": "보관된 배치 · 실제 도시 없음",
   "cityTile": "열 {x} · 행 {y} · 타일 {tile} · 뱅크 {bank}",
   "cityPan": "도시 둘러보기",
   "cityPan-left": "서쪽 보기",
@@ -425,5 +425,7 @@
   "tavernConversationTitle": "대화",
   "tavernCounterTitle": "바텐더",
   "tavernTradeScope": "물품 거래는 아직 지원하지 않습니다.",
-  "tavernCounterScope": "정보를 묻거나 팁을 제시할 수 있습니다. 음식 구매와 물품 거래는 아직 지원하지 않습니다."
+  "tavernCounterScope": "정보를 묻거나 팁을 제시할 수 있습니다. 음식 구매와 물품 거래는 아직 지원하지 않습니다.",
+  "colonyViewDescription": "정착지 확장 미리 보기",
+  "colonyCompletedPhases": "완료 단계"
 }

@@ -71,11 +71,12 @@ function render() {
   } else {
     ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
       <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
-      <section class="scene-heading${city ? ' city-heading' : ''}"><div><h1>${city ? city.name : t(`${state.view}Title`)}</h1><p>${city ? t('cityViewDescription') : state.view==='cities'&&!availableCity ? t('cityStoredOnly') : t(`${state.view}Description`)}</p></div>
+      <section class="scene-heading${city ? ' city-heading' : ''}"><div><h1>${city ? city.name : t(`${state.view}Title`)}</h1><p>${city ? t(city.cityId==='city-60' ? 'colonyViewDescription' : 'cityViewDescription') : state.view==='cities'&&!availableCity ? t('cityStoredOnly') : t(`${state.view}Description`)}</p></div>
       <div class="pager"><button id="previous" data-action="step" data-delta="-1" aria-label="${t('previous')}">‹</button>
       <span>${String(state.indices[state.view] + 1).padStart(2, '0')} / ${counts[state.view]}</span>
       <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">›</button></div></section>
       <div id="inspect" class="inspect-surface${city ? ' city-surface' : ''}" role="button" tabindex="0" aria-label="${t('surface')}"></div>
+      ${city?.cityId==='city-60' ? `<label class="colony-phase" for="colony-phase">${t('colonyCompletedPhases')}<select id="colony-phase">${Array.from({length:10},(_,phase)=>`<option value="${phase}" ${phase===state.colonyPhase ? 'selected' : ''}>${phase}</option>`).join('')}</select></label>` : ''}
       ${city ? `<div class="city-pan" aria-label="${t('cityPan')}">${[['left',-1,0,'←'],['up',0,-1,'↑'],['down',0,1,'↓'],['right',1,0,'→']].map(([direction,dx,dy,glyph])=>`<button id="city-${direction}" data-action="city-pan" data-dx="${dx}" data-dy="${dy}" aria-label="${t(`cityPan-${direction}`)}">${glyph}</button>`).join('')}</div>` : ''}
       <div class="scene-controls${state.view==='cities' ? ' city-controls' : ''}"><p class="selection">${describeSelection()}</p>
       ${state.view === 'cities' ? `<div class="city-view-controls">${city ? '' : `<label class="sr-only" for="bank">${t('bank')}</label><select id="bank">${[0, 1, 2, 3].map(bank => `<option value="${bank}" ${state.bank === bank ? 'selected' : ''}>${t('bankOption', { number: bank + 1 })}</option>`).join('')}</select>`}<button id="city-mode" data-action="city-mode" ${!availableCity ? 'disabled' : ''}>${t(city ? 'cityStoredView' : 'cityComposedView')}</button></div>` : `<div>${state.view === 'ship' ? `<button id="begin-walk" data-action="walk">${t('beginWalk')} →</button>` : ''}<button id="help" data-action="help">${t('help')} ?</button></div>`}</div>
@@ -131,6 +132,7 @@ ui.addEventListener('click', event => {
 
 ui.addEventListener('change', event => {
   if (event.target.id === 'bank') dispatch({ type: 'bank', bank: Number(event.target.value) });
+  if (event.target.id === 'colony-phase') dispatch({type:'colony-phase',phase:Number(event.target.value)});
 });
 
 ui.addEventListener('pointerdown', event => {

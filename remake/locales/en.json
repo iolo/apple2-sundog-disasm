@@ -219,7 +219,7 @@
   "equipmentDoesNotFit": "Does not fit. Neither item was moved.",
   "equipmentUnavailable": "This equipment is not accessible here.",
   "cityViewDescription": "City view · use the arrows to look around",
-  "cityStoredOnly": "Stored layout only · city view not available yet",
+  "cityStoredOnly": "Reserved layout · no active city",
   "cityTile": "Column {x} · Row {y} · Tile {tile} · Bank {bank}",
   "cityPan": "Look around the city",
   "cityPan-left": "Look west",
@@ -425,5 +425,7 @@
   "tavernConversationTitle": "Conversation",
   "tavernCounterTitle": "Bartender",
   "tavernTradeScope": "Item trading is not available yet.",
-  "tavernCounterScope": "Ask for information or offer a tip. Food and item trading are not available yet."
+  "tavernCounterScope": "Ask for information or offer a tip. Food and item trading are not available yet.",
+  "colonyViewDescription": "Colony growth preview",
+  "colonyCompletedPhases": "Completed phases"
 }

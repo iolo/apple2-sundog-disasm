@@ -28,7 +28,9 @@ ship point to inspect coordinates. Focus the display and press Enter, then
 arrow keys to move the selection. Elsewhere, left/right changes layouts.
 Escape returns to the title. Language choice persists when browser storage is
 available. The city inspector can switch between stored layouts and composed
-ordinary-city maps; special city composition remains in progress.
+ordinary-city maps and Banville. Banville's completed-phase selector previews
+all ten growth stages without changing a campaign. Records58/59 remain stored
+layouts only. See `../docs/remake/colony-maps.md`.
 
 Choose **Walk aboard** in the ship preview. Hold the pointer or touch to walk;
 release to stop. Arrow keys work while the ship display has focus. Pause, reset
