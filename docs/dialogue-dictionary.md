@@ -50,8 +50,9 @@ Procedure 13 and its nested procedure 14 read the dictionary as text:
 - Uppercase A–Z ends an alternative and is converted to lowercase at
   `$0682`–`$0691` or `$06B4`–`$06C3`.
 - Stored `|` and `\` become `I`; `~` becomes an apostrophe. The backtick
-  path at `$06C7`–`$06D7` reuses/removes the preceding output character and
-  terminates the text group. Original bytes and flags are preserved, including
+  path at `$06C7`–`$06E1` rewrites the preceding output character at the same
+  position and terminates the text group without appending a character.
+  Original bytes and flags are preserved, including
   entries containing other control/glyph values whose presentation is not
   given a speculative transcription.
 

@@ -10,9 +10,35 @@ from export_assets import build, pixel_rows, svg, navigation_defaults, packed_qu
 from economy_reference import reference as economy_reference
 from campaign_reference import reference as campaign_reference, decode_globals
 from hgr_asset import split_page, row_offset
+from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_dialogue_text_round_trips_dictionary_and_every_message(self):
+        root = Path(__file__).resolve().parents[2]
+        content = json.loads(build()['data/dialogue-text.json'])
+        field = lambda value: dict(stored_characters=value['text'], high_bit_positions=value['spaces'])
+        dictionary = json.loads((root / 'assets/dialogue-dictionary/fields.json').read_text())
+        packed = bytearray(encode_base(dict(entries=[field(e) for e in content['base']])))
+        for supplement in dictionary[1:]:
+            fields = dict(supplement['fields'], entries=[field(e) for e in content['supplements'][str(supplement['block'])]])
+            packed.extend(encode_extra(fields))
+        self.assertEqual(len(packed), 1930)
+        self.assertEqual(packed, (root / 'assets/dialogue-dictionary/dictionary.bin').read_bytes())
+        count = 0
+        for folder, filename in [('dialogue-messages', 'messages.bin'), ('dialogue-bank-storage', 'data.bin')]:
+            original = (root / 'assets' / folder / filename).read_bytes()
+            for record in json.loads((root / 'assets' / folder / 'fields.json').read_text()):
+                if record.get('kind', 'message') != 'message':
+                    continue
+                value = content['messages'][str(record['block'])][str(record['bank_offset'] // 2)]
+                raw = text_bytes(field(value))
+                offset = record['input_offset']
+                self.assertEqual(original[offset], len(raw))
+                self.assertEqual(original[offset + 1:offset + 1 + len(raw)], raw)
+                count += 1
+        self.assertEqual(count, 165)
+
     def test_dialogue_round_trips_all_source_script_bytes(self):
         data = json.loads(build()['data/dialogue.json'])
         root = Path(__file__).resolve().parents[2]

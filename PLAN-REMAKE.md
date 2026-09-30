@@ -379,6 +379,15 @@ counter dialogue. Next implement text expansion, dialogue setup and predicates,
 then controls/actions, player queue/return behavior and persisted conversation
 state. Version7 campaign saves and R07 transaction scope remain unchanged.
 
+Checkpoint R06h (2026-09-30) implements source English dialogue text expansion:
+all 165 messages, nested dictionary alternatives, fixed captions, setup strings,
+mood/speaker forms and random place names. Bank98 retains the prior supplement;
+RNG cycles and invalid expansions fail explicitly. Source text round-trips to
+the classified assets, and 125 Chrome rule groups pass. See
+`docs/remake/dialogue-text.md`. Next implement dialogue setup and predicates,
+controls/actions, player queue/return persistence and localized conversation
+presentation. Live dialogue and R07 transactions remain pending.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

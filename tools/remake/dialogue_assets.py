@@ -74,3 +74,22 @@ def dialogue_records(audit):
     if [b['block'] for b in banks] != list(range(90, 103)):
         raise ValueError('Expected the thirteen classified dialogue banks')
     return dict(version=1, source='game_16 procedures23–29/34; docs/reference/dialogue-scripts.json', banks=banks)
+
+
+def dialogue_text(dictionary, messages, storage):
+    def field(value):
+        return dict(text=value['stored_characters'], spaces=value['high_bit_positions'])
+    base = next(d for d in dictionary if d['kind'] == 'base')['fields']['entries']
+    supplements = {str(d['block']): [field(e) for e in d['fields']['entries']]
+                   for d in dictionary if d['kind'] == 'supplement'}
+    records = messages + [f for f in storage if f['kind'] == 'message']
+    banks = {str(block): {} for block in range(90, 103)}
+    for record in records:
+        bank, word = str(record['block']), str(record['bank_offset'] // 2)
+        if record['bank_offset'] % 2 or word in banks[bank]:
+            raise ValueError('Duplicate or unaligned dialogue message')
+        banks[bank][word] = field(record)
+    if len(base) != 64 or any(e['stored_characters'] for e in base[52:]):
+        raise ValueError('Unexpected supplemental dictionary boundary')
+    return dict(version=1, source='game_16 procedures13–22/32; classified dialogue text assets',
+                base=[field(e) for e in base], supplementStart=52, supplements=supplements, messages=banks)

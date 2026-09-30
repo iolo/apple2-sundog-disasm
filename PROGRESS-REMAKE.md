@@ -1,5 +1,29 @@
 # SunDog web remake progress
 
+## R06h — Source dialogue text expansion — 2026-09-30
+
+Added the original English text renderer and exported all 165 classified
+messages, 64 base dictionary entries and 57 supplemental entries. Phrase
+expansion preserves alternative markers, high-bit spaces, nested substitutions,
+sentence capitalization and source RNG order. All 25 fixed reply captions are
+available. Supplement loading preserves the prior dictionary for block98.
+
+The renderer requires source setup values for its dynamic strings and forms;
+it does not infer offers from campaign defaults. Random place names exclude the
+current place. A repeating RNG state, including the seed0/current-world1 case,
+fails explicitly instead of hanging. Rendering returns text and continuing RNG
+only on success. Invalid alternatives and recursive expansion are bounded.
+
+Chrome154.0.8037.57 passes 125 browser rule groups, including 11 new text groups
+and 2,475 deterministic message/mood/seed cases. Sixteen exporter tests pass;
+exported fields reproduce all 1,930 dictionary bytes and every message payload.
+All 138 generated artifacts, original dialogue audits and disk/PDF hashes
+verify. Source details and validation: `docs/remake/dialogue-text.md`.
+
+Live conversations remain pending: next implement dialogue setup and predicates,
+then controls/actions, player queue/return state and English/Korean presentation.
+Campaign saves remain version7; transactions remain R07.
+
 ## R06g — Dialogue data and selection rules — 2026-09-29
 
 Added a structured browser catalogue for all96 classified dialogue records in
