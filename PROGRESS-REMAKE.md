@@ -1,5 +1,26 @@
 # SunDog web remake progress
 
+## R06r — Service doors and version11 visits — 2026-09-30
+
+Traced the remaining scene6 dispatch: TransStation, system Bank, city Depot
+(refuel/repair/auxiliary fuel), and Exchange. Colony exchanges become the contract
+Center; pod depot/exchange entrances use separate source footprints. These are
+service interfaces, not omitted walking-room layouts. Added read-only localized
+visits for the three remaining foot services, with exact return anchors, focus
+containment, paused time, saves and explicit unavailable-action text.
+
+Version11 `landed-services-1` requires a matching reachable service door and
+rejects room-only or redundant fields. Versions1–10 validate under their original
+scene restrictions before migration. Existing bank and room behavior is retained.
+Transactions remain R07, depot work/pod use R08, transport R09, colony Center R11.
+See `docs/remake/city-services.md` and `campaign-saves.md`.
+
+Chrome154.0.8037.57 passes200 rule groups and77 service UI checks. All three visits
+are reached through ordinary walking, save/reload in fresh pages, reject invalid
+imports atomically, and return through keyboard/touch controls. Both languages
+fit five viewport sizes; the Korean depot screenshot was reviewed. R06 remains
+active pending the final cross-scene route and dialogue/room/save regressions.
+
 ## R06q — Colony map composition and phase inspector — 2026-09-30
 
 Added Banville's completed-phase clipping from Game21, preserving all240 private

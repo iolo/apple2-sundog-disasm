@@ -427,5 +427,17 @@
   "tavernTradeScope": "물품 거래는 아직 지원하지 않습니다.",
   "tavernCounterScope": "정보를 묻거나 팁을 제시할 수 있습니다. 음식 구매와 물품 거래는 아직 지원하지 않습니다.",
   "colonyViewDescription": "정착지 확장 미리 보기",
-  "colonyCompletedPhases": "완료 단계"
+  "colonyCompletedPhases": "완료 단계",
+  "serviceDoorHint": "입장하여 시설을 방문합니다.",
+  "enterService": "시설 입장",
+  "leaveService": "시설 나가기",
+  "transstationTitle": "운송 터미널",
+  "transstationDescription": "도시, 행성, 항성계를 오가는 교통 시설입니다.",
+  "transstationUnavailable": "이동 서비스는 아직 이용할 수 없습니다.",
+  "depotTitle": "{name} 정비소",
+  "depotDescription": "우주선 급유, 수리, 보조 연료 판매 시설입니다.",
+  "depotUnavailable": "연료 구입과 수리는 아직 이용할 수 없습니다.",
+  "exchangeTitle": "{name} 거래소",
+  "exchangeDescription": "상품 거래와 화물 서비스를 제공합니다.",
+  "exchangeUnavailable": "거래와 화물 이동은 아직 이용할 수 없습니다."
 }

@@ -39,7 +39,7 @@ async browserPage => {
     await page.locator('#dialogue-item-0').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='161','First item reaches its source description');
     const english=await page.locator('#dialogue-text').innerText(),saved=await exportGame();
-    assert(saved.version===10&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version10 replay inputs');
+    assert(saved.version===11&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version11 replay inputs');
     await page.locator('#dialogue-language').click();
     assert(await page.locator('html').getAttribute('lang')==='ko','Conversation language switches to Korean');
     const korean=await page.locator('#dialogue-text').innerText();

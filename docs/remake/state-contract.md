@@ -132,6 +132,13 @@ only to preview state; it cannot mutate campaign progress or RNG. The exported
 remain reserved raw layouts. Campaign version10 and its creation recipe remain
 unchanged. See `colony-maps.md`.
 
+R06r extends version11 travel with `transstation`, `depot`, `exchange` service
+scenes, each owning only its exact street return anchor. They require a matching
+reachable foot door and no room encounter state. Read-only visits freeze time
+and cannot mutate economy/resources. Version10 scenes migrate unchanged after
+historical validation; old envelopes cannot introduce new services. See
+`city-services.md` and the current `campaign-saves.md` contract.
+
 R06b introduces active `travel:{scene,cityPosition}` in campaign version3,
 `landed-city-1`. City positions use full-map pixels and must be reachable from the
 initial foot exit. The legacy `ship` block retains active inventory/condition/time;
