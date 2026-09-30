@@ -415,6 +415,16 @@ fields and versioned conversation validation, then English/Korean controls and
 presentation. The live visitor-only path and version7 saves retain their existing
 contract. Inventory transfers and transactions remain R07.
 
+Checkpoint R06l (2026-09-30) enables live counter dialogue in the eight type9/10
+rooms, with English source text, Korean templates, information/item quotes,
+player queue/return and version8 campaign saves. Open conversations save their
+starting RNG and bounded input history, then replay during validation/load.
+169 Chrome rule groups and19 conversation UI checks pass, including a recorded
+English/Korean branch and mid-conversation reload. See `docs/remake/dialogue-ui.md`.
+R06 remains active: `docs/remake/r06-completion.md` tracks remaining type8/type11
+interiors, their interaction coverage, special city composition review and final
+cross-scene validation. Purchases and transfers retain R07 scope.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

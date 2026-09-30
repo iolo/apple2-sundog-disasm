@@ -234,3 +234,13 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .bank-panel dl{margin:0 0 20px;font-size:22px}
 .bank-panel dl div{padding:10px 0;border-bottom:1px solid var(--line)}
 .bank-panel dd{margin:0;color:var(--amber)}
+.dialogue-panel{width:550px;max-height:420px;display:flex;flex-direction:column;gap:12px;padding:20px}
+.dialogue-panel header,.dialogue-panel footer,.dialogue-choices{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dialogue-panel h2{margin:0}
+#dialogue-text{font-size:21px;line-height:1.35;margin:0;max-height:120px;overflow:auto}
+.dialogue-items{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;overflow:auto;max-height:140px}
+.dialogue-item{display:flex;align-items:center;gap:6px;font-size:15px;text-align:left;min-height:42px;padding:5px}
+.dialogue-item img{width:28px;height:28px;image-rendering:pixelated}
+.dialogue-note{font-size:14px;line-height:1.25;color:var(--muted);margin:0}
+.dialogue-panel footer{flex-wrap:wrap;justify-content:flex-start}
+.dialogue-panel button{font-size:17px}

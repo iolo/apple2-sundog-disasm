@@ -6,10 +6,11 @@ import { atCityBank } from './city-doors.js';
 import { roomAt } from './room-walk.js';
 import { populateRoom } from './room-actors.js';
 import { initialRoomTraffic, validateRoomTraffic } from './room-traffic.js';
+import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, validateCounterRecord, restoreCampaignConversation } from './campaign-dialogue.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 7, SCOPE = 'landed-traffic-1';
+const VERSION = 8, SCOPE = 'landed-dialogue-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -34,7 +35,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
-      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : ['start','ship','equipment','travel','encounters']) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue']) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=walk.snapshot(value.ship);
@@ -74,11 +75,12 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
-      let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null};
+      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue) : initialCampaignDialogue(start);
+      let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
-        if(!keysMatch(value.encounters,version===6 ? ['randomState','roomSeed'] : ['randomState','roomSeed','roomState'])||!validSeed(value.encounters.randomState))fail();
-        const {randomState,roomSeed}=value.encounters;let roomState=null;
+        if(!keysMatch(value.encounters,version===6 ? ['randomState','roomSeed'] : version===7 ? ['randomState','roomSeed','roomState'] : ['randomState','roomSeed','roomState','counter'])||!validSeed(value.encounters.randomState))fail();
+        const {randomState,roomSeed}=value.encounters;let roomState=null,counter=null;
         if(roomSeed!==null) {
           if(travel.scene!=='room'||!validSeed(roomSeed))fail();
           const room=roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition);
@@ -89,14 +91,18 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           if(version===6) {
             if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
             roomState=initialRoomTraffic(populationCache.population);
-          } else roomState=validateRoomTraffic(room,value.encounters.roomState,travel.roomPosition).state;
+          } else roomState=validateRoomTraffic(room,value.encounters.roomState,travel.roomPosition,
+            version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {}).state;
+          counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
+          if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room);
         }
         if(version>=7&&roomSeed===null&&value.encounters.roomState!==null)fail();
-        encounters={randomState,roomSeed,roomState};
+        if(version>=8&&roomSeed===null&&value.encounters.counter!==null)fail();
+        encounters={randomState,roomSeed,roomState,counter};
       }
       // Legacy interior saves remain empty until their next entry, preserving
       // the saved position without spawning an occupant on top of the player.
-      return {start,ship,equipment,travel,encounters};
+      return {start,ship,equipment,travel,encounters,dialogue};
     } catch { fail(); }
   }
   function validate(value) {
@@ -105,7 +111,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===3 && value.scope==='landed-city-1') ||
       (value?.version===4 && value.scope==='landed-bank-1') ||
       (value?.version===5 && value.scope==='landed-rooms-1') ||
-      (value?.version===6 && value.scope==='landed-occupants-1');
+      (value?.version===6 && value.scope==='landed-occupants-1') ||
+      (value?.version===7 && value.scope==='landed-traffic-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -116,8 +123,9 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
     snapshot:value=>snapshot(value),validate,
     create(character,seed) {
       const start=createCampaignStart(character,baseline,seed);
-      return {start,encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null},travel:{scene:'ship',cityPosition:null},equipment:start.equipment.map(recalculateEquipment),ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
-        condition:start.condition,minutes:start.minutes})};
+      return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
+        condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start)};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {
