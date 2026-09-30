@@ -67,7 +67,8 @@ migration performs that comparison before reconstructing initial actors. See
 [room traffic](room-traffic.md) for actor validation, cadence and repairs. Versions1–5 receive the creation
 gameplay RNG and a null seed after validation. Legacy interiors remain empty until
 re-entry; null room seeds are retained for that migration. See
-[room occupants](room-occupants.md) for the seed contract and unresolved fallback.
+[room occupants](room-occupants.md) for the seed contract and
+[room fixtures](room-fixtures.md) for the R06m fallback repair.
 See [component exchange](component-exchange.md) for fit rules and scope limits.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,

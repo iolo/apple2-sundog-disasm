@@ -61,15 +61,15 @@ Null seeds therefore remain permitted in version6 rooms. Seeds outside rooms
 must be null; active RNG states must be unsigned32 integers. No full action-history
 replay or anti-cheat guarantee is claimed. Loading never rewrites a slot.
 
-## Explicit unresolved fallback
+## Empty-population fallback (resolved in R06m)
 
 If all visitors fail placement, procedure14 `$0A43–$0A68` reverses the X range
 arguments. For records8–11 this gives a zero modulo divisor; for records12–15
-it gives a negative divisor. Its intended behavior remains unresolved. The
-browser rejects that entry atomically, pauses on the street and displays an
-English/Korean message. It does not invent a counter position or consume the
-live RNG. Repeating the same entry/state repeats the failure. This is a known
-scope limitation, including degenerate RNG fixtures, pending native investigation.
+it gives a negative divisor. R06e initially rejected this entry. R06m traced the
+native modulo implementation and confirmed the zero-divisor trap and absolute
+negative divisor. The browser now normalizes the X endpoints, retains two draws
+and creates a staff-only room. See [fixture and fallback evidence](room-fixtures.md)
+for this explicit repair and the live save/service/reentry checks.
 
 `tools/remake/room_population_reference.py` independently transcribes source
 placement into a Python pixel grid. Its64 vectors cover all eight layouts,

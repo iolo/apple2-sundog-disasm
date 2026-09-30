@@ -62,8 +62,23 @@ def reference(index, seed):
         slot += 1
     result = dict(index=index, seed=seed, draws=draws, attempts=attempts_log)
     if not actors:
-        return dict(**result, error='roomPopulationUnavailable')
-    x, y = actors[0]['words'][5]+raw[22]-128, actors[0]['words'][4]+raw[23]-128
+        # Explicit browser correction, not a transcription of reversed native X.
+        x = left + random() % (right-left+1) + raw[22]-128
+        y = top + random() % (bottom-top+1) + raw[23]-128
+        def staff_clear(px, py):
+            mask = [0, 30, 30, 30, 30, 30, 30, 0]
+            return 0 <= px <= 133 and 7 <= py < 96 and not any(
+                pixels[py-7+row][px+bit] for row, bits in enumerate(mask)
+                for bit in range(7) if (bits >> bit) & 1)
+        if not staff_clear(x, y):
+            candidates = [(xx+raw[22]-128, yy+raw[23]-128)
+                          for xx in range(left, right+1) for yy in range(top, bottom+1)
+                          if staff_clear(xx+raw[22]-128, yy+raw[23]-128)]
+            x, y = min(candidates, key=lambda p: abs(p[0]-x)+abs(p[1]-y))
+        result['legacyError'] = 'roomPopulationUnavailable'
+        result['draws'] = draws
+    else:
+        x, y = actors[0]['words'][5]+raw[22]-128, actors[0]['words'][4]+raw[23]-128
     actors.append(dict(slot=0, words=[y, x, y, x, y, x, 5891, 0, 3, 0]))
     return dict(**result, randomState=state, actors=actors)
 

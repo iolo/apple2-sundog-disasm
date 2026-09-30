@@ -56,7 +56,7 @@ rejecting legitimate intermediate states.
 
 Tavern seating, dialogue-triggered pursuit/secondary movement, player service,
 transactions and fixture-dependent types8/11 remain gated. The R06e no-visitor
-entry fallback remains unresolved and still fails atomically at the street.
+entry fallback was subsequently repaired in R06m; see [fixture evidence](room-fixtures.md).
 
 ## Version7 state
 

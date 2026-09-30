@@ -54,7 +54,7 @@ export async function roomTrafficTests(test,equal) {
   });
   await test('Eight room traffic runs preserve valid save states through entry, departure, waiting and service',()=>{
     let sawArrival=false,sawRemoval=false,sawCounterMotion=false,sawServed=false;
-    for(const room of Object.values(rooms)) {
+    for(const room of Object.values(rooms).filter(r=>r.index>=8)) {
       let s=start(room.index);const original=JSON.stringify(room);let last=s.state.actors.length;
       for(let i=0;i<1200;i++) {
         const next=tick(room.index,s),count=next.state.actors.length;

@@ -89,6 +89,9 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
             populationCache={room,seed:roomSeed,population,randomState:population.randomState,reached:cityReachability(population.geometry)};
           }
           if(version===6) {
+            // Version6 derived the whole population and rejected the native
+            // empty-placement fallback. Keep its historical acceptance rules.
+            if(populationCache.population.actors.length===1)fail();
             if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
             roomState=initialRoomTraffic(populationCache.population);
           } else roomState=validateRoomTraffic(room,value.encounters.roomState,travel.roomPosition,
