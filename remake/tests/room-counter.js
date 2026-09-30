@@ -141,7 +141,7 @@ export async function roomCounterTests(test,equal) {
     }
     fail(()=>tickRoomCounter(room,{...frame,service:'unknown'}),'invalidRoomService');
     fail(()=>tickRoomCounter(rooms[9],frame),'invalidRoomService');
-    fail(()=>createRoomCounter({...room,index:7},frame.traffic,12345,frame.position),'unsupportedRoomCounter');
+    fail(()=>createRoomCounter({...room,index:3},frame.traffic,12345,frame.position),'unsupportedRoomCounter');
   });
   await test('Failed dialogue setup and unsupported return effects preserve the whole room session',()=>{
     const room=rooms[8],frame=ready().frame,before=JSON.stringify(frame);

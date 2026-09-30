@@ -62,6 +62,7 @@ export function renderDialogueMessage(content, dictionary, block, word, seed, co
     typeof context.mode18!=='boolean'||!Number.isInteger(context.workspace11))throw new Error('invalidDialogueTextContext');
   const random=sourceRandom(seed);
   let text='',capital=true,budget=8192;
+  const chosenPlaces=[];
   function emit(char) {
     if(capital&&char.charCodeAt(0)>=97)char=String.fromCharCode(char.charCodeAt(0)-32);
     if(char.charCodeAt(0)>=65||char===',')capital=false;
@@ -102,7 +103,7 @@ export function renderDialogueMessage(content, dictionary, block, word, seed, co
       case 32:case 39:case 44:emit(String.fromCharCode(code));break;
       case 33:case 46:emit(String.fromCharCode(code));capital=true;break;
       case 34:raw('O.K.');break;
-      case 35:raw(place());break;
+      case 35:{const name=place();chosenPlaces.push(name);raw(name);break}
       case 36:raw(context.strings?.[108]);capital=false;break;
       case 37:raw(context.strings?.[124]);break;
       case 38:case 40:phrase(code,Number(context.workspace11===1),false,depth);break;
@@ -117,5 +118,5 @@ export function renderDialogueMessage(content, dictionary, block, word, seed, co
     if(spaces.has(i))token(32);
   }
   if(text.length>8192)throw new Error('dialogueTextLimit');
-  return {text,randomState:random.state};
+  return {text,randomState:random.state,...(chosenPlaces.length ? {chosenPlaces} : {})};
 }

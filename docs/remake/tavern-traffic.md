@@ -1,9 +1,9 @@
 # Tavern seating and visitor traffic
 
 R06o implements the traffic/controller foundation for foot-interior records4–7.
-It does **not** enable type8 city entry yet. Tavern dialogue setup, localized
-presentation, campaign replay saves and live input still need integration.
-Version9 campaign saves continue to accept only the existing room classes.
+R06p connects it to type8 city entry, dialogue, localized presentation, live
+input and version10 campaign saves; see [tavern dialogue](tavern-dialogue.md).
+Version9 imports retain their historical rejection of taverns.
 
 ## Source mapping
 
@@ -39,8 +39,8 @@ overlap. Shop/lodging state rejects the tavern extension.
 Traffic freezes, including RNG, while a contact awaits its host. Sit, stand and
 return operations own their output and leave previous state/static geometry
 unchanged. JSON round trips preserve future traffic; this is a core-state check,
-not a claim that the campaign codec accepts tavern saves yet. NPC mood/greeting
-writeback belongs to the pending dialogue controller integration.
+separate from R06p's campaign replay tests. The room dialogue controller writes
+back the actual speaker's mood/greeting after selecting its return movement.
 
 ## Explicit browser repairs
 
@@ -58,8 +58,8 @@ writeback belongs to the pending dialogue controller integration.
   visitor still moves, returning the new speaker promotes the old secondary to
   the now-free primary slot. Native procedure21 overwrites the secondary index.
   A new player-initiated contact is deferred with `roomTrafficBusy` if both slots
-  are already occupied; no actor or random draw is lost. Live controls still need
-  to present this short wait during integration.
+  are already occupied; no actor or random draw is lost. Live controls present
+  this short wait in both languages.
 
 ## Verification
 

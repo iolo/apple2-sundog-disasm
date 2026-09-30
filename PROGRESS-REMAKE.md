@@ -1,5 +1,34 @@
 # SunDog web remake progress
 
+## R06p — Live taverns, social dialogue and version10 saves — 2026-09-30
+
+Enabled type8 entry into all four tavern layouts. Pointer/keyboard release at
+a table claims a seat; walking releases it. The bartender approaches requests,
+visitors speak from the opposite seat or initiate contact on arrival, and dialogue
+returns to the actual speaker. Source kinds12/21/22 now include small talk,
+matched jokes, quotes and adjustable bartender tips. Tips commit with conversation
+return; food/item transactions remain gated for R07 before acceptance text.
+
+Added92 Korean message templates and appropriate bartender/conversation headings.
+Localized place substitutions reuse the original English expansion's selected
+destination without extra random draws. Version10 stores tavern seat/contact and
+secondary movement state, permits visitor workspace identities, and validates
+versions1–9 before migration. Mid-joke, moving-visitor and mid-offer saves replay
+the same inputs and RNG. See `docs/remake/tavern-dialogue.md` and `campaign-saves.md`.
+
+Chrome154.0.8037.57 passes196 rule groups,36 tavern UI checks and102 room,27 lodging,
+19 existing dialogue,28 bank and44 city regression checks. The live suite covers
+actual door entry/walking, automatic seating/standing, both visitor openings,
+English/Korean joke continuity, three viewport shapes, fresh-page IndexedDB
+reload, return movement, ten-credit tip commitment, street exit and fresh reentry.
+The Korean punchline screenshot was reviewed. Viewport assertions now wait for
+the resize handler rather than relying only on a fake-clock delay.
+All159 generated artifacts and original input hashes pass.
+
+R06 remains active. Next: special city composition and remaining service-dispatch
+review, then the final cross-scene completion audit. No new native emulator
+capture or complete-R06 claim is made.
+
 ## R06o — Tavern seats, visitor contacts and return traffic — 2026-09-30
 
 Added the core traffic/controller for all four tavern layouts: six seat

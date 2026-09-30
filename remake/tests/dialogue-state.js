@@ -151,7 +151,7 @@ export async function dialogueStateTests(test,equal) {
     }
   });
   await test('Malformed setup and working states fail before publishing any changes',()=>{
-    for(const change of [{kind:12},{hour:24},{cash:-1},{flags:[]},{carried:[1]},{system:{}}])
+    for(const change of [{kind:11},{hour:24},{cash:-1},{flags:[]},{carried:[1]},{system:{}}])
       fail(()=>setup(change),'invalidDialogueSetup');
     fail(()=>run(256),'invalidDialoguePredicateState');
     const s=base();s.locals[106]=-1;fail(()=>run(8,s),'invalidDialoguePredicateState');

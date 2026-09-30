@@ -2,9 +2,10 @@
 
 Current milestone: a playable landed campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank visits,
-shop information dialogue, and paid lodging with working bedroom doors.
+shop information dialogue, paid lodging with working bedroom doors, and tavern
+seating, conversations and bartender tips.
 English/Korean controls and four campaign save slots cover the current scenes,
-including open dialogue and rented rooms. The independent walkthrough and map
+including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
 inspector remain available. Trading, flight, combat and colony progression
 are still pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
@@ -74,11 +75,14 @@ the character, enter a seed, then start aboard the ship. See
 
 In a campaign, leave through the ship's airlock and walk to a building entrance.
 The Enter building button (or Enter with the walking surface focused) opens a
-supported shop or lodging interior. Approach its counter and choose **Talk**.
+supported shop, lodging or tavern interior. Approach its counter and choose **Talk**.
 Lodging staff quote a fee; Pay deducts active cash when the dialogue returns and
 assigns a numbered room. Its door opens when approached and closes behind you.
 Saves retain payment, dialogue and room access; leaving the building ends that
-visit's rental. Bank cash displays reflect lodging payments.
+visit's rental. Bank cash displays reflect lodging payments and bartender tips.
+In a tavern, release movement at a table to sit, or choose Talk while beside a
+seat. Visitors may approach or chat from the opposite seat. Continue advances
+small talk and jokes; Back ends the conversation. Walking releases your seat.
 
 Open `/tests/` (relative to the served folder) for the dependency-free browser
 checks.
@@ -87,13 +91,14 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version9 saves restore open conversations by replaying the saved RNG and inputs,
-and retain active cash and lodging door state. Earlier campaign versions migrate
+Version10 saves restore open conversations by replaying the saved RNG and inputs,
+and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop purchases and trade transfers remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
 `../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
-source evidence; lodging is described in `../docs/remake/lodging.md`.
+source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
+in `../docs/remake/tavern-dialogue.md`.
 Remaining R06 work is tracked in `../docs/remake/r06-completion.md`.
 
 Development export checks:

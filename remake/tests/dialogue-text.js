@@ -88,11 +88,11 @@ export async function dialogueTextTests(test,equal) {
       const current=1+rng.next()%names.length;
       let next=current;while(next===current)next=1+rng.next()%names.length;
       const places={...base.places,[system ? 'system' : 'world']:current};
-      equal(literal('#',[],{...base,places},seed),{text:names[next-1],randomState:rng.state});
+      equal(literal('#',[],{...base,places},seed),{text:names[next-1],randomState:rng.state,chosenPlaces:[names[next-1]]});
     }
     equal(kinds.size,2);
     fail(()=>literal('#',[],base,0),'dialoguePlaceUnavailable');
-    equal(literal('#',[],{...base,places:{...base.places,world:2}},0),{text:'World1',randomState:0});
+    equal(literal('#',[],{...base,places:{...base.places,world:2}},0),{text:'World1',randomState:0,chosenPlaces:['World1']});
   });
   await test('Missing setup substitutions and unsupported message addresses fail explicitly',()=>{
     fail(()=>literal('$',[],{...base,strings:{}}),'missingDialogueSubstitution');

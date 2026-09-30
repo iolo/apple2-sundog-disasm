@@ -39,7 +39,7 @@ async browserPage => {
     await page.locator('#dialogue-item-0').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='161','First item reaches its source description');
     const english=await page.locator('#dialogue-text').innerText(),saved=await exportGame();
-    assert(saved.version===9&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version9 replay inputs');
+    assert(saved.version===10&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version10 replay inputs');
     await page.locator('#dialogue-language').click();
     assert(await page.locator('html').getAttribute('lang')==='ko','Conversation language switches to Korean');
     const korean=await page.locator('#dialogue-text').innerText();
@@ -47,6 +47,7 @@ async browserPage => {
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(saved.state),'Locale switching and opening saves do not change conversation state');
     for(const [width,height] of [[640,480],[1280,720],[1920,1080],[390,844]]) {
       await page.setViewportSize({width,height});await page.clock.runFor(50);
+      await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
       const fit=await page.locator('#dialogue-panel').evaluate(el=>{
         const r=el.getBoundingClientRect(),root=document.documentElement;
         return r.left>=0&&r.top>=0&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1&&root.scrollWidth<=innerWidth&&root.scrollHeight<=innerHeight;

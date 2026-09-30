@@ -1,10 +1,10 @@
-# Campaign save boundary — through R06n
+# Campaign save boundary — through R06p
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version9, scope `landed-lodging-1`, and validates/upgrades version1 `landed-ship-1`,
+version10, scope `landed-taverns-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
-and version8 `landed-dialogue-1`.
+version8 `landed-dialogue-1` and version9 `landed-lodging-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -39,10 +39,14 @@ The state has six explicit parts:
   traffic advances their state and RNG. Exit clears room seed/state. Outside rooms
   both must be null. Reload validates native actor words, supported actions,
   reachable positions, counter targets, queue references and visible overlap.
+  Type8 requires a population and adds `tavern: {playerSeat, secondary, contact}`
+  inside `roomState`. An active contact must have a matching talking/replay record;
+  its speaker is derived from that contact when replay begins. See
+  [tavern dialogue](tavern-dialogue.md).
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`, `equipment`, `travel` and `encounters`. It must never read stale initial values as live progress.
-Carried cash decreases for lodging and persists independently of creation cash.
+Carried cash decreases for lodging and bartender tips and persists independently of creation cash.
 Other economy, ship resources and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
 
@@ -74,6 +78,13 @@ re-entry; null room seeds are retained for that migration. See
 [room occupants](room-occupants.md) for the seed contract and
 [room fixtures](room-fixtures.md) for the R06m fallback repair.
 See [component exchange](component-exchange.md) for fit rules and scope limits.
+
+Version10 accepts all thirteen foot layouts. Versions1–9 reject tavern visits
+before migration; version9 still requires workspace actor0. Version10 permits
+actor0 or visitor2–8 as the last dialogue speaker, including after departure.
+Tavern traffic independently validates its live actor references and reservations.
+Open conversations replay from the untouched campaign attributes/cash and input
+history; tips, speaker mood/gate and return movement commit together at completion.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake

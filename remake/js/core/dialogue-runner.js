@@ -48,7 +48,8 @@ export function enterDialogueState(content,previous,target,{offerStep}={}) {
       v[95][slot]=target;
       return {slot,caption:reply.caption,text:dialogueCaption(frame.dictionary,reply.caption),target};
     });
-    frame.view={state:target,word:selected.value,text:rendered.text,replies};
+    frame.view={state:target,word:selected.value,text:rendered.text,replies,
+      ...(rendered.chosenPlaces ? {chosenPlaces:rendered.chosenPlaces} : {})};
     handlers.action(record.action);
     for(const reply of frame.view.replies)reply.target=v[95][reply.slot];
     v[44]=target;return frame;
