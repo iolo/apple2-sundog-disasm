@@ -1,5 +1,8 @@
 # Room traffic — R06f
 
+R06k adds an opt-in [player counter controller](room-counter.md) around this
+simulation. The sections below describe the version7 live visitor-only path.
+
 The eight type9/10 interiors now run visitor arrivals/departures, movement,
 blocked-route recovery and counter following. Player walking and NPC updates
 share a50ms browser step, with player movement first. A delayed frame contributes

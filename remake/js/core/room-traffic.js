@@ -14,7 +14,7 @@ const action=w=>w[7]>>>8;
 const setAction=(w,value)=>{w[7]=(w[7]&255)|(value<<8)};
 const reachableRooms=new WeakMap();
 
-export function validateRoomTraffic(room,value,player) {
+export function validateRoomTraffic(room,value,player,{service=null}={}) {
   const fail=()=>{throw new Error('invalidCampaign')};
   const keys=(v,list)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===list.length&&list.every(k=>Object.hasOwn(v,k));
   if(!keys(value,['actors','active','waiting'])||!Array.isArray(value.actors)||
@@ -24,17 +24,21 @@ export function validateRoomTraffic(room,value,player) {
   const reachable=reachableRooms.get(room);
   if(!reachable(player))fail();
   if(!Number.isInteger(value.active)||(value.active!==0&&(value.active<2||value.active>count)))fail();
-  let waiting=0;
+  if(service!==null&&!['idle','waiting','talking','served'].includes(service))fail();
+  const playerWaiting=service==='waiting',b=room.population.bounds;
+  if(service!==null&&service!=='idle'&&!(player.x>=b.left&&player.x<=b.right&&player.y>=b.top&&player.y<=b.bottom))fail();
+  let waiting=Number(playerWaiting);
   const state=structuredClone(value);
   for(const [i,a] of state.actors.entries()) {
     const slot=i===count-1 ? 0 : i+2,w=a.words;
     if(!keys(a,['slot','words'])||a.slot!==slot||!Array.isArray(w)||w.length!==10||Object.keys(w).length!==10||!w.every(Number.isInteger))fail();
     if(w[6]!==23*256+(slot===0 ? 3 : 24)||w[8]<0||w[8]>4||w[9]<0||w[9]>255||
-      w[7]<0||w[7]>0xffff||(w[7]&~(0x300|57))||![0,2,3].includes(action(w)))fail();
+      w[7]<0||w[7]>0xffff||(w[7]&~(0x300|57|(slot===0&&service!==null ? 2 : 0)))||![0,2,3].includes(action(w)))fail();
     for(const offset of [0,2])if(w[offset]<0||w[offset]>102||w[offset+1]<-7||w[offset+1]>140)fail();
     if(!canStand({...room,collisionRows:slot===0 ? room.counterCollisionRows : room.collisionRows},position(w)))fail();
     if(slot===0) {
-      if(w[8]!==3||action(w)!==0||(w[7]&~32)||w[9]===1||w[9]>count||flag(w,5)!==(w[9]>0))fail();
+      if((service===null&&w[8]!==3)||action(w)!==0||(w[7]&~(service===null ? 32 : 34))||
+        (w[9]===1&&!playerWaiting)||w[9]>count||flag(w,5)!==(w[9]>0))fail();
       // Counter motion stays on its side of the solid counter. This also
       // excludes unsupported blocked-counter/action branches from imports.
       const vertical=room.population.offset.x!==0;
@@ -55,7 +59,10 @@ export function validateRoomTraffic(room,value,player) {
     }
   }
   const counter=state.actors.at(-1).words;
-  if(counter[9] && !state.actors.some(a=>a.slot===counter[9]&&flag(a.words,3)&&!flag(a.words,4)))fail();
+  if(counter[9] && !(counter[9]===1&&playerWaiting) &&
+    !state.actors.some(a=>a.slot===counter[9]&&flag(a.words,3)&&!flag(a.words,4)))fail();
+  if(counter[9]===1&&(counter[1]!==player.x+room.population.offset.x||counter[0]!==player.y+room.population.offset.y||
+    counter[3]!==counter[1]||counter[2]!==counter[0]))fail();
   if(value.waiting!==waiting)fail();
   const geometry=roomActorGeometry(room,state.actors);
   if(!canStand({...geometry,collisionRows:room.spriteRows},player))fail();
@@ -67,9 +74,11 @@ export function validateRoomTraffic(room,value,player) {
 }
 
 // Game18 procedures5/6/9–13/27/28, fresh foot visits to types9/10 only.
-// Seat and dialogue flags are unavailable in these scenes; secondary mover123
-// stays zero. Player service requests are deferred with dialogue.
-export function tickRoomTraffic(room, previous, randomState, player) {
+// Seats and dialogue-triggered pursuit remain unsupported; secondary mover123
+// stays zero. Optional service state enables player priority for the separate
+// counter controller; the version7 campaign path still uses visitor-only state.
+export function tickRoomTraffic(room, previous, randomState, player,{service=null}={}) {
+  if(service!==null&&!['idle','waiting','served'].includes(service))throw new Error('invalidRoomService');
   const state=structuredClone(previous),rng=sourceRandom(randomState);
   const range=(lo,hi)=>lo+rng.next()%(hi-lo+1),b=room.population.bounds,door=room.population.doorway;
   const actor=slot=>state.actors.find(a=>a.slot===slot)?.words;
@@ -141,14 +150,19 @@ export function tickRoomTraffic(room, previous, randomState, player) {
     if(flag(w,5)) {
       move(0);
       if(!flag(w,5)) {
-        const target=actor(w[9]);
-        if(target){setFlag(target,4,true);target[9]=64+rng.next()%192;state.waiting--}
+        if(w[9]===1&&service==='waiting') {
+          service='talking';state.waiting--; // Browser repair: consume the player's queue entry exactly once.
+        } else {
+          const target=actor(w[9]);
+          if(target){setFlag(target,4,true);target[9]=64+rng.next()%192;state.waiting--}
+        }
         w[9]=0;
       }
     } else {
       const choose=rng.next()%8===0; // Eager even when nobody waits.
       if(state.waiting>0&&choose) {
-        const target=state.actors.find(a=>a.slot>=2&&flag(a.words,3)&&!flag(a.words,4));
+        const target=service==='waiting' ? {slot:1,words:[0,0,0,0,player.y,player.x]} :
+          state.actors.find(a=>a.slot>=2&&flag(a.words,3)&&!flag(a.words,4));
         if(target) {
           setFlag(w,5,true);w[9]=target.slot;
           w[1]=w[3]=target.words[5]+room.population.offset.x;
@@ -179,5 +193,5 @@ export function tickRoomTraffic(room, previous, randomState, player) {
     else {state.active=range(2,count);rng.next();depart(state.active)} // Eager draw; non-tavern OR is true.
   }
   drawRoomGlyph(rows,player,room.spriteRows);
-  return {state,randomState:rng.state,geometry};
+  return {state,randomState:rng.state,geometry,...(service===null ? {} : {service})};
 }
