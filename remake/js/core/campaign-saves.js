@@ -4,13 +4,14 @@ import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
 import { atCityBank } from './city-doors.js';
 import { roomAt } from './room-walk.js';
+import { validateLodging, lodgingGeometry } from './room-lodging.js';
 import { populateRoom } from './room-actors.js';
 import { initialRoomTraffic, validateRoomTraffic } from './room-traffic.js';
 import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, validateCounterRecord, restoreCampaignConversation } from './campaign-dialogue.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 8, SCOPE = 'landed-dialogue-1';
+const VERSION = 9, SCOPE = 'landed-lodging-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -59,7 +60,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       let travel={scene:'ship',cityPosition:null};
       if(version>=3) {
         const inRoom=version>=5 && value.travel?.scene==='room';
-        if(!keysMatch(value.travel,inRoom ? ['scene','cityPosition','roomPosition'] : ['scene','cityPosition']))fail();
+        const lodgingRoom=inRoom&&version>=9&&roomAt(cityGeometry?.rooms,cityGeometry?.map,value.travel.cityPosition)?.index===1;
+        if(!keysMatch(value.travel,inRoom ? ['scene','cityPosition','roomPosition',...(lodgingRoom ? ['lodging'] : [])] : ['scene','cityPosition']))fail();
         if(value.travel.scene==='city' || (version>=4 && value.travel.scene==='bank') || inRoom) {
           if(!cityGeometry||!keysMatch(value.travel.cityPosition,['x','y'])||!sameTree(ship.position,SHIP_REENTRY))fail();
           if(!cityValidators.has(cityGeometry))cityValidators.set(cityGeometry,cityReachability(cityGeometry));
@@ -68,19 +70,24 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           travel={scene:value.travel.scene,cityPosition:{...value.travel.cityPosition}};
           if(inRoom) {
             const room=roomAt(cityGeometry.rooms,cityGeometry.map,value.travel.cityPosition);
-            if(!room || !keysMatch(value.travel.roomPosition,['x','y']))fail();
-            if(!cityValidators.has(room))cityValidators.set(room,cityReachability(room));
-            if(!cityValidators.get(room)(value.travel.roomPosition))fail();
+            if(!room || (version<9&&room.index===1) || !keysMatch(value.travel.roomPosition,['x','y']))fail();
+            const lodging=lodgingRoom ? validateLodging(value.travel.lodging) : undefined;
+            const access=lodgingGeometry(room,lodging,{access:true});
+            if(!cityValidators.has(access))cityValidators.set(access,cityReachability(access));
+            if(!cityValidators.get(access)(value.travel.roomPosition))fail();
             travel.roomPosition={...value.travel.roomPosition};
+            if(lodgingRoom)travel.lodging=lodging;
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
-      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue) : initialCampaignDialogue(start);
+      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,version===8 ? {legacyCash:start.credits} : {}) : initialCampaignDialogue(start);
+      if(dialogue.cash>start.credits)fail(); // The only live cash mutation is a lodging debit.
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
         if(!keysMatch(value.encounters,version===6 ? ['randomState','roomSeed'] : version===7 ? ['randomState','roomSeed','roomState'] : ['randomState','roomSeed','roomState','counter'])||!validSeed(value.encounters.randomState))fail();
         const {randomState,roomSeed}=value.encounters;let roomState=null,counter=null;
+        if(travel.lodging&&roomSeed===null)fail();
         if(roomSeed!==null) {
           if(travel.scene!=='room'||!validSeed(roomSeed))fail();
           const room=roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition);
@@ -94,8 +101,9 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
             if(populationCache.population.actors.length===1)fail();
             if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
             roomState=initialRoomTraffic(populationCache.population);
-          } else roomState=validateRoomTraffic(room,value.encounters.roomState,travel.roomPosition,
-            version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {}).state;
+          } else roomState=validateRoomTraffic(lodgingGeometry(room,travel.lodging),value.encounters.roomState,travel.roomPosition,
+            {playerRoom:lodgingGeometry(room,travel.lodging,{access:true}),
+              ...(version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {})}).state;
           counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
           if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room);
         }
@@ -115,7 +123,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===4 && value.scope==='landed-bank-1') ||
       (value?.version===5 && value.scope==='landed-rooms-1') ||
       (value?.version===6 && value.scope==='landed-occupants-1') ||
-      (value?.version===7 && value.scope==='landed-traffic-1');
+      (value?.version===7 && value.scope==='landed-traffic-1') ||
+      (value?.version===8 && value.scope==='landed-dialogue-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

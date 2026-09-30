@@ -65,7 +65,7 @@ async browserPage => {
     const before=await state();await page.keyboard.press('ArrowRight');await page.clock.runFor(5000);
     assert(JSON.stringify(await state())===JSON.stringify(before),'Bank inquiry freezes movement and survival time');
     const bank=await exportGame();
-    assert(bank.version===8&&bank.scope==='landed-dialogue-1'&&bank.state.travel.scene==='bank','Version8 export records the bank visit');
+    assert(bank.version===9&&bank.scope==='landed-lodging-1'&&bank.state.travel.scene==='bank','Version9 export records the bank visit');
     assert(JSON.stringify(bank.state.ship)===JSON.stringify(outside.state.ship)&&JSON.stringify(bank.state.start)===JSON.stringify(initial.state.start)&&JSON.stringify(bank.state.equipment)===JSON.stringify(initial.state.equipment),'Visit preserves street position, inventory, condition, time, balances, equipment and creation');
     await saves();await page.locator('#save-checkpoint-0').click();await settled();
     await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();

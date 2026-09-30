@@ -57,3 +57,15 @@ def room_layouts(raw, patterns):
                                 offset=dict(x=record[22]-128, y=record[23]-128),
                                 maximum=max(3, record[24]), activityDivisor=record[25] or 128)))
     return layouts
+
+
+def lodging_door_rows(room, mask):
+    rows = [row[:] for row in room['rows']]
+    for i, door in enumerate(room['fixtures']['doors']):
+        if not mask & (1 << i):
+            continue
+        for y in range(door['top'], door['bottom']+1):
+            for x in range(door['left'], door['right']+1):
+                byte, bit = x//7, 1 << (x % 7)
+                rows[y][byte] = (rows[y][byte] & ~bit) | (room['floorPattern'][byte % 2] & bit)
+    return rows

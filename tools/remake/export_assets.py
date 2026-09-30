@@ -4,7 +4,7 @@ import argparse
 import hashlib
 import json
 import re
-from room_assets import room_layouts
+from room_assets import room_layouts, lodging_door_rows
 from dialogue_assets import dialogue_records, dialogue_text, dialogue_systems
 from pathlib import Path
 import sys
@@ -233,6 +233,12 @@ def build():
         path = f'assets/svg/room-{room["index"]:02}.svg'
         outputs[path] = svg(pixel_rows(room['rows']))
         images[f'room-{room["index"]:02}'] = path
+        if room['index'] == 1:
+            for mask in range(1, 16):
+                key = f'room-01-doors-{mask}'
+                path = f'assets/svg/{key}.svg'
+                outputs[path] = svg(pixel_rows(lodging_door_rows(room, mask)))
+                images[key] = path
     outputs['assets/svg/room-player.svg'] = svg(pixel_rows([[v] for v in glyph(22)]))
     images['room-player'] = 'assets/svg/room-player.svg'
     outputs['assets/svg/room-npc.svg'] = svg(pixel_rows([[v] for v in glyph(23)]))

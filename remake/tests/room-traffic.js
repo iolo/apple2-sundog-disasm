@@ -52,9 +52,9 @@ export async function roomTrafficTests(test,equal) {
     equal(next.state.actors.at(-1).words[9],2);equal(next.state.waiting,1);
     equal(validateRoomTraffic(rooms[8],next.state,player).state,next.state);
   });
-  await test('Eight room traffic runs preserve valid save states through entry, departure, waiting and service',()=>{
+  await test('Nine room traffic runs preserve valid save states through entry, departure, waiting and service',()=>{
     let sawArrival=false,sawRemoval=false,sawCounterMotion=false,sawServed=false;
-    for(const room of Object.values(rooms).filter(r=>r.index>=8)) {
+    for(const room of Object.values(rooms).filter(r=>r.index===1||r.index>=8)) {
       let s=start(room.index);const original=JSON.stringify(room);let last=s.state.actors.length;
       for(let i=0;i<1200;i++) {
         const next=tick(room.index,s),count=next.state.actors.length;

@@ -4,7 +4,7 @@ import { itemLabel } from './inventory.js';
 export function dialogueMessage(frame,t,locale) {
   if(locale==='en')return frame.view.text;
   return t(`dialogueMessage${frame.block}_${frame.view.word}`,{
-    item:t(`item${frame.state.locals[41]&31}`),price:frame.state.locals[106]});
+    item:t(`item${frame.state.locals[41]&31}`),price:frame.state.locals[108].replace(/ Cr$/,'')||frame.state.locals[106]});
 }
 
 export function dialoguePanel({frame,assets,t,locale,message=''}) {
@@ -18,7 +18,7 @@ export function dialoguePanel({frame,assets,t,locale,message=''}) {
     <header><h2 id="dialogue-title">${t('dialogueTitle')}</h2><button id="dialogue-language" data-walk="language">${t('language')}</button></header>
     <p id="dialogue-text" role="status">${escapeHTML(dialogueMessage(frame,t,locale))}</p>
     ${items ? `<div class="dialogue-items">${items}</div>` : ''}<div class="dialogue-choices">${choices}</div>
-    <p class="dialogue-note">${t(message||'dialogueScope')}</p>
+    <p class="dialogue-note">${t(message||(frame.state.kind===23 ? 'lodgingScope' : 'dialogueScope'))}</p>
     <footer><button id="dialogue-cancel" data-dialogue="cancel">${t('dialogueBack')}</button><button id="dialogue-continue" data-dialogue="timeout">${t('dialogueContinue')}</button><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
   </section></div>`;
 }
