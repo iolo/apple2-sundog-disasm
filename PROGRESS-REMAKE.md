@@ -1,5 +1,30 @@
 # SunDog web remake progress
 
+## R06k — Player counter queue and dialogue return — 2026-09-30
+
+Added an owned room controller connecting service requests, player slot1 queue
+priority, counter staff approach, dialogue kinds13/14 and return. Existing traffic
+now accepts opt-in player service state; the default live/version7 path retains
+its previous rules. The controller freezes traffic during dialogue and restores
+the staff member's mood and greeting gate for subsequent conversations.
+
+Movement cancellation preserves unrelated visitor service and removes the player
+request exactly once. Dispatch does the same without drawing a visitor service
+value. This explicitly repairs the source's stale player waiting count. Returns
+clear flags48–51 in the owned outcome; unported flag65 transaction/pursuit returns
+fail atomically. See `docs/remake/room-counter.md` for source evidence and scope.
+
+Chrome154.0.8037.57 passes163 rule groups, including11 new groups. All eight layouts
+across three seeds reach dialogue with valid geometry/queues after every tick and
+identical continuation from serialized clones. Tests also cover both information
+branches, repeat greetings, cancellation, RNG ordering and failed transitions.
+Seventeen exporter tests, all139 generated artifacts and original input hashes
+pass. No new native emulator capture or live conversation UI check is claimed.
+
+Next: durable campaign dialogue fields, versioned conversation validation and
+English/Korean controls/presentation. Live conversations are not yet enabled;
+campaign saves remain version7 and transactions remain R07.
+
 ## R06j — Dialogue controls and conversation runner — 2026-09-30
 
 Added packed controls, actions0–7, built-in transitions and a pure conversation

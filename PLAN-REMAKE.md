@@ -405,6 +405,16 @@ player queue/return state, conversation persistence and English/Korean UI.
 Inventory transfers and financial transactions remain R07; live conversations
 are not yet enabled and saves remain version7.
 
+Checkpoint R06k (2026-09-30) connects player service requests to staff approach,
+counter dialogue and return in a pure room controller. The player takes source
+slot1 priority; mood/greeting state survives return and later requests. Queue
+cancellation/dispatch removes the player's count exactly once as a documented
+browser repair. All eight layouts across three seeds pass, with163 Chrome rule
+groups total. See `docs/remake/room-counter.md`. Next add durable campaign dialogue
+fields and versioned conversation validation, then English/Korean controls and
+presentation. The live visitor-only path and version7 saves retain their existing
+contract. Inventory transfers and transactions remain R07.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

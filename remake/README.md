@@ -74,11 +74,12 @@ checks.
 The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a pure conversation runner. Live
-conversations still require player queue/return integration, persistence and
-localized presentation; item transfers and purchases remain pending. See
+conversations still require campaign persistence and localized presentation. A
+pure room controller now connects player queue/return to the dialogue runner;
+item transfers and purchases remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
-`../docs/remake/dialogue-state.md` and `../docs/remake/dialogue-runner.md` for scope
-and source evidence.
+`../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
+`../docs/remake/room-counter.md` for scope and source evidence.
 
 Development export checks:
 
