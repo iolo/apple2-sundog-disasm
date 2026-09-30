@@ -1,5 +1,9 @@
 # Remake behavior evidence — R01a
 
+For the current city/building milestone, see [R06 completion audit](r06-completion.md).
+The entries below retain their checkpoint-specific evidence; current save behavior
+is in [campaign saves](campaign-saves.md).
+
 This is a working specification, not a claim of complete semantic recovery.
 Offsets are segment-relative hexadecimal; procedure numbers need their source
 filename. `source-strings.json` indexes explicitly classified inline strings

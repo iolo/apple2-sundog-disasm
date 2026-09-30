@@ -102,7 +102,8 @@ after validation. Shop purchases and trade transfers remain pending. See
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
 source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
-Remaining R06 work is tracked in `../docs/remake/r06-completion.md`.
+R06 city/building exploration is complete; its evidence and scope are recorded in
+`../docs/remake/r06-completion.md`. R07 trading and banking is next.
 
 Development export checks:
 

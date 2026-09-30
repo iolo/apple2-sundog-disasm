@@ -1,5 +1,31 @@
 # SunDog web remake progress
 
+## R06s — Final exploration audit complete — 2026-09-30
+
+**R06 is complete.** Added a continuous normal-control route from a fresh campaign
+through tavern, bank, equipment shop, depot, item shop, exchange, lodging and
+TransStation, then back aboard.558 street steps and90 checks verify exact return
+anchors, indoor walking, fresh-page IndexedDB reload, locale isolation, immediate
+reentry and persistent resources/equipment/creation/RNG. The test reads geometry
+for routing but never imports fixtures or writes live state. Reviewed the final
+aboard-ship screenshot.
+
+Final Chrome154.0.8037.57 results:200 rule groups;77 service,36 tavern,27 lodging,
+19 dialogue,102 room,28 bank and44 city regression checks, plus90 journey checks
+(423 UI assertions total). All passed without reported browser exceptions.
+English/Korean branch receipts cover information, lodging quotes and tavern jokes;
+mid-payment, mid-offer, moving-visitor and closed-bedroom saves still pass under
+version11. Colony inspector120 checks passed in R06q. All18 exporter tests,
+159 deterministic artifacts,57 ordinary/11 colony reference vectors and original
+input hashes pass. See `docs/remake/r06-completion.md` and `r06-final-*.json`.
+
+The audit explicitly accounts for special city composition, all thirteen foot
+layouts, all service-door dispatch, required dialogue and the final scene loop.
+Read-only transport/depot/exchange visits do not claim later transactions.
+No new native emulator capture or full-game completion is claimed.
+Next: R07 active economy, bank transfers, commodity/item trading, warehouse/cargo
+ownership and atomic transaction validation. The supplied PRD remains untracked.
+
 ## R06r — Service doors and version11 visits — 2026-09-30
 
 Traced the remaining scene6 dispatch: TransStation, system Bank, city Depot
