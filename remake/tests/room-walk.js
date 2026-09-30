@@ -1,10 +1,10 @@
-import { createRoomGeometries, roomAt, canLeaveRoom } from '../js/core/room-walk.js';
+import { createRoomGeometries, roomAt, canLeaveRoom, roomDoorGeometry } from '../js/core/room-walk.js';
 import { canStand, tryStep, walkToward } from '../js/core/ship-walk.js';
 import { createCityMaps } from '../js/core/city-map.js';
 import { createCityGeometry, cityReachability, SHIP_REENTRY } from '../js/core/city-walk.js';
 import { campaignSaveCodec } from '../js/core/campaign-saves.js';
 import { createCharacter } from '../js/core/character.js';
-import { populateRoom } from '../js/core/room-actors.js';
+import { populateRoom, roomStaffFallback } from '../js/core/room-actors.js';
 import { initialRoomTraffic } from '../js/core/room-traffic.js';
 import { sourceRandom } from '../js/core/random.js';
 
@@ -19,7 +19,7 @@ export async function roomWalkTests(test,equal) {
   const rejects=run=>{let error;try{run()}catch(e){error=e.message}equal(error,'invalidCampaign')};
   await test('Every supported room has a clear entry, connected doorway and solid counter/wall collision',()=>{
     const counts=[6310,6327,6381,6256,6196,6213,6196,6213];
-    for(const room of Object.values(rooms)) {
+    for(const room of Object.values(rooms).filter(r=>r.index>=8)) {
       equal(room.spawn,{x:12,y:56});equal(room.collisionRows,Array(8).fill(127));
       equal(canLeaveRoom(room,room.spawn),true);equal(canLeaveRoom(room,{x:13,y:56}),false);
       const reached=cityReachability(room);let count=0;
@@ -38,8 +38,8 @@ export async function roomWalkTests(test,equal) {
   await test('Room selection follows source tile coordinates, excludes incomplete types and owns geometry',()=>{
     for(const [p,index] of [[{x:311,y:267},15],[{x:395,y:300},11],[{x:675,y:268},8]])equal(roomAt(rooms,map,p).index,index);
     equal(roomAt(rooms,map,{x:369,y:299}),null);equal(roomAt(rooms,map,{x:287,y:217}),null);
-    const original=data.layouts[0].rows[0][0];rooms[8].backgrounds.ship[0][0]=0;
-    equal(data.layouts[0].rows[0][0],original);rooms[8].backgrounds.ship[0][0]=original;
+    const source=data.layouts.find(r=>r.index===8),original=source.rows[0][0];rooms[8].backgrounds.ship[0][0]=0;
+    equal(source.rows[0][0],original);rooms[8].backgrounds.ship[0][0]=original;
   });
   await test('Room saves validate both the street door and reachable interior, without accepting invented room metadata',()=>{
     const state=fresh();state.ship.position={...SHIP_REENTRY};state.ship.minutes=135;
@@ -68,17 +68,26 @@ export async function roomWalkTests(test,equal) {
     const vectors=await fetch('./fixtures/room-population.json').then(r=>r.json());
     equal(vectors.some(v=>v.attempts.some(a=>a.attempts===10&&a.clear)),true);
     for(const v of vectors) {
-      if(v.error) {
-        let error;try{populateRoom(rooms[v.index],v.seed)}catch(e){error=e.message}equal(error,v.error);continue;
-      }
       const p=populateRoom(rooms[v.index],v.seed),rng=sourceRandom(v.seed);
+      if(v.legacyError)equal(p.actors.length,1);
       for(let i=0;i<v.draws;i++)rng.next();
       equal(p.randomState,v.randomState);equal(p.randomState,rng.state);equal(p.actors,v.actors);
       equal(canStand(p.geometry,rooms[v.index].spawn),true);
     }
   });
-  await test('Occupant pixels block walking, own their collision overlay, and keep the doorway reachable in all eight rooms',()=>{
+  await test('Every fallback anchor keeps staff on the clear side of the counter in all thirteen layouts',()=>{
     for(const room of Object.values(rooms)) {
+      const {bounds:b,offset}=room.population,staff={...room,collisionRows:room.counterCollisionRows};
+      for(let x=b.left;x<=b.right;x++)for(let y=b.top;y<=b.bottom;y++) {
+        const p=roomStaffFallback(room,{x,y});equal(canStand(staff,p),true);
+        equal(p.x-offset.x>=b.left&&p.x-offset.x<=b.right&&p.y-offset.y>=b.top&&p.y-offset.y<=b.bottom,true);
+        if(canStand(staff,{x:x+offset.x,y:y+offset.y}))equal(p,{x:x+offset.x,y:y+offset.y});
+      }
+      const p=populateRoom(room,0);equal(p.actors.length,1);equal(canStand(p.geometry,room.spawn),true);
+    }
+  });
+  await test('Occupant pixels block walking, own their collision overlay, and keep the doorway reachable in all eight rooms',()=>{
+    for(const room of Object.values(rooms).filter(r=>r.index>=8)) {
       const before=JSON.stringify(room),p=populateRoom(room,12345),reached=cityReachability(p.geometry);
       const visitor=p.actors[0].words,point={x:visitor[5],y:visitor[4]};
       equal(canStand(room,point),true);equal(canStand(p.geometry,point),false);
@@ -86,6 +95,25 @@ export async function roomWalkTests(test,equal) {
       equal(JSON.stringify(room),before);p.geometry.backgrounds.ship[0][0]=0;equal(JSON.stringify(room),before);
       equal(populateRoom(room,12345).actors,p.actors);
     }
+  });
+  await test('Tavern fixtures keep six seats reachable and lodging doors independently open four bedrooms',()=>{
+    for(const index of [4,5,6,7]) {
+      const room=rooms[index],reached=cityReachability(room);
+      equal(room.fixtures.seats.length,6);
+      for(const seat of room.fixtures.seats)equal(reached(seat),true);
+      for(const x of [23,60,97])equal(canStand(room,{x,y:86}),false);
+    }
+    const room=rooms[1],before=JSON.stringify(room),closed=cityReachability(room);
+    equal(canLeaveRoom(room,room.spawn),true);
+    for(let i=0;i<4;i++) {
+      const open=roomDoorGeometry(room,Array.from({length:4},(_,j)=>j===i)),reached=cityReachability(open);
+      for(let j=0;j<4;j++) {
+        const bedroom={x:28+28*j,y:22};
+        equal(closed(bedroom),false);equal(reached(bedroom),i===j);
+      }
+      open.backgrounds.ship[0][0]=0;equal(JSON.stringify(room),before);
+    }
+    equal(roomDoorGeometry(room,[false,false,false,false]).backgrounds,room.backgrounds);
   });
   await test('Version7 resumes the exact room population and validates its live actors and occupied positions',()=>{
     const state=fresh(),room=rooms[15],seed=state.encounters.randomState,p=populateRoom(room,seed);
@@ -95,7 +123,7 @@ export async function roomWalkTests(test,equal) {
     const saved=codec.make(state,0),loaded=codec.parse(JSON.stringify(saved));equal(loaded,saved);
     equal(populateRoom(room,loaded.state.encounters.roomSeed).actors,p.actors);
     const npc=p.actors[0].words;
-    for(const mutate of [s=>s.encounters.roomState.active=99,s=>s.encounters.roomSeed=-1,s=>s.encounters.roomSeed=0,
+    for(const mutate of [s=>s.encounters.roomState.active=99,s=>s.encounters.roomSeed=-1,
       s=>s.encounters.roomSeed=1.5,s=>s.encounters.randomState=2**32,s=>s.encounters.actors=p.actors,
       s=>delete s.encounters,s=>s.travel.roomPosition={x:npc[5],y:npc[4]},
       s=>s.travel={scene:'city',cityPosition:{x:311,y:267}}]) {
@@ -104,6 +132,17 @@ export async function roomWalkTests(test,equal) {
     const next=populateRoom(room,p.randomState);
     equal(next.randomState===p.randomState,false);equal(JSON.stringify(next.actors)===JSON.stringify(p.actors),false);
     loaded.state.encounters.roomSeed=null;equal(saved.state.encounters.roomSeed,seed);
+  });
+  await test('An all-failed placement retains staff, roundtrips live saves and remains invalid as a version6 population',()=>{
+    const state=fresh(),room=rooms[15],p=populateRoom(room,0);
+    equal(p.actors.length,1);equal(p.actors[0].slot,0);equal(p.randomState,0);
+    state.ship.position={...SHIP_REENTRY};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{...room.spawn}};
+    state.encounters={randomState:p.randomState,roomSeed:p.seed,roomState:initialRoomTraffic(p),counter:{service:'idle',conversation:null}};
+    const saved=codec.make(state,0);equal(codec.parse(JSON.stringify(saved)),saved);
+    const old=structuredClone(saved);old.version=6;old.scope='landed-occupants-1';
+    delete old.state.encounters.roomState;delete old.state.encounters.counter;delete old.state.dialogue;
+    rejects(()=>codec.validate(old));
+    equal(codec.validate(saved),saved); // A cached population cannot bypass the legacy check.
   });
   await test('Version5 occupied-position saves migrate as empty interiors; legacy records cannot smuggle encounter state',()=>{
     const state=fresh();state.ship.position={...SHIP_REENTRY};

@@ -1,0 +1,25 @@
+{
+  "browser": "154.0.8037.57",
+  "checks": [
+    "Type10 accepts entry after all visitor placements fail",
+    "Type10 retains the staff member without inventing a visitor",
+    "Type10 preserves the zero RNG fixed point",
+    "Walk reaches 14,71 in room15",
+    "Type10 fallback staff serve the player",
+    "Type10 staff-only conversation survives IndexedDB save and page reload",
+    "Walk reaches 12,56 in room15",
+    "Type10 returns to the same street doorway",
+    "Type10 can be entered again with the same fixed-point RNG",
+    "Type9 accepts entry after all visitor placements fail",
+    "Type9 retains the staff member without inventing a visitor",
+    "Type9 preserves the zero RNG fixed point",
+    "Walk reaches 97,56 in room11",
+    "Type9 fallback staff serve the player",
+    "Type9 staff-only conversation survives IndexedDB save and page reload",
+    "Walk reaches 12,56 in room11",
+    "Type9 returns to the same street doorway",
+    "Type9 can be entered again with the same fixed-point RNG",
+    "No uncaught browser errors"
+  ],
+  "errors": []
+}

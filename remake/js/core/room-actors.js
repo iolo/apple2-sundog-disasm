@@ -13,6 +13,22 @@ export function drawRoomGlyph(rows, {x,y}, glyph) {
 }
 const drawGlyph=drawRoomGlyph;
 
+// The repaired fallback must also fit the whole staff mask, not just the
+// sampled anchor. Project an edge overlap to the nearest clear counter point
+// without consuming more RNG. Ties use X then Y order for stable save replay.
+export function roomStaffFallback(room,anchor) {
+  const {bounds:b,offset}=room.population,geometry={...room,collisionRows:room.counterCollisionRows};
+  const point=(x,y)=>({x:x+offset.x,y:y+offset.y});
+  if(canStand(geometry,point(anchor.x,anchor.y)))return point(anchor.x,anchor.y);
+  let nearest=null,distance=Infinity;
+  for(let x=b.left;x<=b.right;x++)for(let y=b.top;y<=b.bottom;y++) {
+    const candidate=point(x,y),d=Math.abs(x-anchor.x)+Math.abs(y-anchor.y);
+    if(d<distance&&canStand(geometry,candidate)){nearest=candidate;distance=d}
+  }
+  if(!nearest)throw new Error('roomPopulationUnavailable');
+  return nearest;
+}
+
 export function roomActorGeometry(room, actors) {
   const rows=room.backgrounds.ship.map(row=>[...row]);
   for(const {words:w} of actors)drawGlyph(rows,{x:w[5],y:w[4]},room.npcRows);
@@ -47,11 +63,12 @@ export function populateRoom(room, seed) {
     if(attempts===0){count--;continue}
     add(slot++,x,y,24,3*256+24+flag,value,2+rng.next()%250);
   }
-  // The no-visitor branch ($0A43) reverses its X range, including a zero
-  // divisor in records8–11. Until resolved, fail atomically at the street.
-  if(!actors.length)throw new Error('roomPopulationUnavailable');
-  const first=actors[0].words;
-  add(0,first[5]+offset.x,first[4]+offset.y,3,0,3,0);
+  // Browser repair: $0A43 reverses the X endpoints. Native MOD traps for
+  // records8–11 (divisor0), and can place staff outside the bounds for12–15.
+  // Normalize only this fallback; preserve its two draws, even for a fixed Y.
+  const staff=actors.length ? {x:actors[0].words[5]+offset.x,y:actors[0].words[4]+offset.y} :
+    roomStaffFallback(geometry,{x:range(b.left,b.right),y:range(b.top,b.bottom)});
+  add(0,staff.x,staff.y,3,0,3,0);
   drawGlyph(rows,room.spawn,room.spriteRows); // Player is drawn separately.
   return {seed,randomState:rng.state,actors,geometry};
 }

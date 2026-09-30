@@ -193,10 +193,11 @@ async browserPage => {
     const zero=await exportGame();zero.state.encounters.randomState=0;
     assert((await importGame(zero)).includes('imported'),'Degenerate gameplay RNG fixture imports through ordinary UI');
     await page.locator('#walk-airlock').click();
-    assert((await state()).scene==='city'&&(await state()).paused==='true'&&(await page.locator('#walk-status').innerText()).includes('remain outside'),'Unresolved no-visitor fallback reports failure and remains outside, paused');
-    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(zero.state),'Failed entry preserves all progress and RNG state');
-    await page.locator('#walk-language').click();await page.locator('#walk-airlock').click();
-    assert((await page.locator('#walk-status').innerText()).includes('건물 밖'),'Entry failure is localized in Korean');
+    assert((await state()).scene==='room'&&(await state()).paused==='true'&&(await state()).occupants==='1','Repaired no-visitor fallback enters with staff only, paused');
+    const fallback=await exportGame();
+    assert(fallback.state.encounters.randomState===0&&JSON.stringify(fallback.state.ship)===JSON.stringify(zero.state.ship)&&JSON.stringify(fallback.state.travel.cityPosition)===JSON.stringify(zero.state.travel.cityPosition),'Fallback entry preserves ship progress, return anchor and zero RNG state');
+    await page.locator('#walk-language').click();
+    assert(await page.locator('html').getAttribute('lang')==='ko'&&JSON.stringify((await exportGame()).state)===JSON.stringify(fallback.state),'Fallback room switches to Korean without changing campaign state');
     await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result);
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',unitResults.filter(s=>s.startsWith('FAIL')).join('\n')||'All browser rule groups pass');

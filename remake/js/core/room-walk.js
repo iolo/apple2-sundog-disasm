@@ -7,7 +7,24 @@ export function createRoomGeometries(content) {
     backgrounds:{ship:room.rows.map(row=>[...row])},collisionRows:[...content.collisionRows],
     population:structuredClone(room.population),spriteRows:[...content.spriteRows],npcRows:[...content.npcRows],
     counterCollisionRows:[...content.counterCollisionRows],
+    fixtures:structuredClone(room.fixtures),floorPattern:[...room.floorPattern],
   }]));
+}
+
+// Game18 procedure15. Always derive doors from an owned static background,
+// never XOR an opening into an actor overlay or mutate the cached layout.
+export function roomDoorGeometry(room,openDoors) {
+  if(room.index!==1||!Array.isArray(openDoors)||openDoors.length!==4||
+    !Array.from(openDoors).every(v=>typeof v==='boolean'))throw new Error('invalidRoomDoors');
+  const rows=room.backgrounds.ship.map(row=>[...row]);
+  room.fixtures.doors.forEach((door,index)=>{
+    if(!openDoors[index])return;
+    for(let y=door.top;y<=door.bottom;y++)for(let x=door.left;x<=door.right;x++) {
+      const byte=Math.floor(x/7),bit=1<<(x%7);
+      rows[y][byte]=(rows[y][byte]&~bit)|(room.floorPattern[byte%2]&bit);
+    }
+  });
+  return {...room,backgrounds:{ship:rows}};
 }
 
 // Game18 $0BA8–$0BC5; only the two types without extra fixture drawing.

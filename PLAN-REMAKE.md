@@ -425,6 +425,14 @@ R06 remains active: `docs/remake/r06-completion.md` tracks remaining type8/type1
 interiors, their interaction coverage, special city composition review and final
 cross-scene validation. Purchases and transfers retain R07 scope.
 
+Checkpoint R06m (2026-09-30) exports the five remaining foot-interior fixture
+layouts and adds independently tested lodging door geometry. Native modulo
+tracing resolves the empty-population entry failure: an explicit browser repair
+normalizes fallback X endpoints while preserving two RNG draws. Staff-only
+entry, dialogue, IndexedDB reload, exit and reentry pass in both live counter
+classes. See `docs/remake/room-fixtures.md`. Tavern seating and lodging interaction
+still need live integration; R06 remains active.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

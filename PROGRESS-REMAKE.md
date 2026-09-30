@@ -1,5 +1,34 @@
 # SunDog web remake progress
 
+## R06m — Interior fixtures and empty-population entry repair — 2026-09-30
+
+Exported source-backed tavern records4–7 and lodging record1, bringing the
+foot-interior asset inventory to13 layouts. Tavern tables/dividers retain source
+patterns and parity alignment; all six seat targets are reachable. Four lodging
+doors have independent owned collision geometry and open access only to their
+corresponding bedrooms. These new rooms still require live interaction integration.
+
+Traced native MOD to establish that Game18's reversed fallback X range is a
+source defect: records8–11 trap at divisor0; horizontal records can place staff
+outside their bounds. The browser now normalizes that range and moves a wall-
+overlapping sample to the nearest clear staff anchor, without additional draws.
+Rooms with no successfully placed visitors now support staff service and reentry.
+Existing successful populations are unchanged; version6 migration retains its
+historical rejection of failed populations. See `docs/remake/room-fixtures.md`.
+
+Chrome154.0.8037.57 passes172 rule groups and19 live fallback checks, including
+both counter classes, actual UI entry/walking/dialogue, IndexedDB save/page reload,
+street return and reentry with seed0. Eighteen exporter tests,64 independent
+population vectors, all144 generated artifacts and original input hashes pass.
+The exhaustive staff-anchor check caught and now covers the wall-edge case.
+The existing room UI suite also passes102 regression checks, with its former
+entry-failure expectation updated to the repaired behavior.
+
+R06 remains active. Next: integrate tavern seating/traffic and lodging rental/
+door return state, extend dialogue/localization/saves, review special city
+composition, then run the final cross-scene audit. No new native emulator capture
+or complete-R06 claim is made.
+
 ## R06l — Live localized counter dialogue and replay saves — 2026-09-30
 
 Enabled Talk/Enter at type9/10 counters, staff approach, original dialogue branches

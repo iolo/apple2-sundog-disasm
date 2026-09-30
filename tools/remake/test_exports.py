@@ -134,7 +134,7 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(data['npcRows'], [0, 0, 12, 18, 18, 12, 0, 0])
         self.assertEqual(data['counterCollisionRows'], [0, 30, 30, 30, 30, 30, 30, 0])
         self.assertEqual(files['assets/svg/room-npc.svg'], svg(pixel_rows([[v] for v in data['npcRows']])))
-        self.assertEqual([r['index'] for r in data['layouts']], list(range(8, 16)))
+        self.assertEqual([r['index'] for r in data['layouts']], [1, *range(4, 16)])
         for r in data['layouts']:
             source = raw[r['index']*32:(r['index']+1)*32]
             self.assertEqual(r['spawn'], dict(x=source[2], y=source[0]))
@@ -146,12 +146,33 @@ class ExportTests(unittest.TestCase):
             rows = pixel_rows(r['rows'])
             # The left corridor is cleared AFTER the outer wall; all seven
             # player columns/eight rows must fit the entrance, not just its center.
-            self.assertTrue(all(rows[y][x] == 0 for y in range(49, 57) for x in range(12, 19)))
-            self.assertTrue(all(rows[y][x] == 0 for y in range(42, 66) for x in range(15)))
+            spawn = r['spawn']
+            self.assertTrue(all(rows[y][x] == 0 for y in range(spawn['y']-7, spawn['y']+1)
+                                for x in range(spawn['x'], spawn['x']+7)))
             self.assertTrue(any(rows[4][x] for x in range(2, 138)))
             counter = r['bounds'][2]
             self.assertTrue(any(rows[counter['top']][counter['left']:counter['right']+1]))
             self.assertEqual(files[f'assets/svg/room-{r["index"]:02}.svg'], svg(rows))
+
+    def test_tavern_tables_and_lodging_doors(self):
+        data = json.loads(build()['data/room-walk.json'])
+        layouts = {r['index']: r for r in data['layouts']}
+        for index in range(4, 8):
+            room = layouts[index]
+            self.assertEqual(room['fixtures']['seats'], [dict(action=4+i, x=x, y=86)
+                for i, x in enumerate([16, 43, 53, 80, 90, 118])])
+            pixels = pixel_rows(room['rows'])
+            for left, right in [(23, 40), (60, 77), (97, 115)]:
+                self.assertTrue(any(pixels[83][left:right+1]))
+            for left in [49, 87]:
+                self.assertTrue(any(pixels[y][x] for y in range(77, 87) for x in [left, left+1]))
+        room = layouts[1]
+        self.assertEqual(room['fixtures']['doors'], [dict(left=x, right=x+5, top=30, bottom=31)
+            for x in [29, 57, 85, 113]])
+        pixels = pixel_rows(room['rows'])
+        for i in range(4):
+            self.assertTrue(all(pixels[y][x] == 0 for y in range(8, 28) for x in range(21+28*i, 42+28*i)))
+            self.assertTrue(any(pixels[y][x] for y in [30, 31] for x in range(29+28*i, 35+28*i)))
 
     def test_hgr_rows_and_phase_bits(self):
         page = bytearray(8192)
