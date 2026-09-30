@@ -71,10 +71,11 @@ resume a campaign. See `../docs/remake/character-creation.md` for rules and scop
 Open `/tests/` (relative to the served folder) for the dependency-free browser
 checks.
 
-The dialogue foundation exports all96 classified records and tests the original
-selection/transition rules. Live counter conversations still require text
-expansion, setup, predicates and action handling. See
-`../docs/remake/dialogue-selection.md` for scope and source evidence.
+The dialogue foundation exports all96 classified records and all165 messages,
+and implements source selection rules and English text expansion. Live counter
+conversations still require setup, predicates, actions and localized presentation.
+See `../docs/remake/dialogue-selection.md` and `../docs/remake/dialogue-text.md`
+for scope and source evidence.
 
 Development export checks:
 
