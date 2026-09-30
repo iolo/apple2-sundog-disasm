@@ -50,6 +50,8 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .scene-controls.city-controls select{font-size:16px;max-width:132px}
 .city-pan{position:absolute;left:526px;top:203px;width:78px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .city-pan button{padding:0;width:36px;height:40px;border:1px solid var(--line);font-size:24px}
+.colony-phase{position:absolute;left:32px;top:203px;width:90px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.2}
+.colony-phase select{width:100%}
 .help-shade{position:absolute;inset:0;background:#080b09d9;display:grid;place-items:center}
 .help{width:480px;background:var(--ink);border:1px solid var(--line);padding:28px;box-shadow:0 12px 60px #000}
 .help h2{font-size:24px;font-weight:normal;margin-bottom:18px}

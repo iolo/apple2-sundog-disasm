@@ -1,5 +1,9 @@
 # Ordinary city composition (R06a)
 
+Later checkpoint [R06q](colony-maps.md) adds Banville's phase-dependent map and
+identifies records58/59 as reserved dummies. The ordinary-only scope below is
+historical; current campaign saves are documented in `campaign-saves.md`.
+
 The preview now offers **City view** for the 57 named ordinary cities. This is
 the source-derived background layer needed for later ship exits and city walking.
 It is an inspector: moving its camera does not move the player or alter a campaign.

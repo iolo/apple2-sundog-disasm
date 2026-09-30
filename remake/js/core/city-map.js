@@ -7,21 +7,31 @@ const wrap = (n,size) => ((n%size)+size)%size;
 
 // Game21 procedure26 ($0F0B–$0FCA) saves/restores the gameplay RNG around
 // this private seed. Pascal words are little-endian; x is the outer loop.
-// Only ordinary cities are accepted: colony clipping needs live colony state.
-export function composeCityMap(record, location) {
+// Colony clipping uses completed (not active/requested) phases. The source
+// reads an unsigned byte and clamps it before forming strict rectangle bounds.
+export function colonyCityBounds(completedPhase) {
+  if(!integer(completedPhase,0,255))throw new Error('Invalid colony phase');
+  const phase=Math.min(9,completedPhase),half=Math.trunc((phase+1)/2);
+  return {left:19-phase,right:20+phase,top:11-half,bottom:12+half};
+}
+
+export function composeCityMap(record, location, {completedPhase}={}) {
   const city = Number(record?.id?.slice(5));
   const system = Number(location?.systemId?.slice(7));
   const world = Number(location?.worldId?.slice(6));
-  if (!/^city-(0[1-9]|[1-4][0-9]|5[0-7])$/.test(record?.id) ||
+  if (!/^city-(0[1-9]|[1-4][0-9]|5[0-7]|60)$/.test(record?.id) ||
       !/^system-(0[1-9]|1[0-2])$/.test(location?.systemId) ||
       !/^world-(0[1-9]|1[0-8])$/.test(location?.worldId) ||
       !Array.isArray(record.tiles) || record.tiles.length!==12 ||
       record.tiles.some(row=>!Array.isArray(row) || row.length!==20 ||
-        row.some(tile=>!integer(tile,0,15)))) throw new Error('Invalid ordinary city map');
+        row.some(tile=>!integer(tile,0,15)))) throw new Error('Invalid city map');
+  const bounds=city===60 ? colonyCityBounds(completedPhase) : {left:10,right:29,top:6,bottom:17};
   const random = sourceRandom(((11*city+51)*65536 + 3*city+39)>>>0);
   const tiles = Array.from({length:24},()=>Array(40).fill(0));
   for(let x=0;x<20;x++) for(let y=0;y<12;y++) {
-    tiles[y+6][x+10] = record.tiles[y][x] + 16*(random.next()%2);
+    const tile=record.tiles[y][x] + 16*(random.next()%2);
+    // Draw even when clipped out. Growing the colony reveals stable variants.
+    if(x+10>=bounds.left&&x+10<=bounds.right&&y+6>=bounds.top&&y+6<=bounds.bottom)tiles[y+6][x+10]=tile;
   }
   // Game21 $0FD1–$0FEC / procedure3: two separate 16-tile banks.
   return {cityId:record.id,tiles,banks:[(system-1)%4,(world-1)%4]};
@@ -44,13 +54,15 @@ export function cityWindow(map, origin) {
   }));
 }
 
-export function createCityMaps(maps, navigation, economy) {
+export function createCityMaps(maps, navigation, economy, {completedPhase=0}={}) {
   const result={};
-  for(const city of economy.cities) {
+  if(economy.colonyCity?.id!=='city-60'||economy.colonyCity.worldId!=='world-01'||typeof economy.colonyCity.name!=='string')
+    throw new Error('Missing colony membership');
+  for(const city of [...economy.cities,economy.colonyCity]) {
     const system=navigation.systems.find(system=>system.worldIds.includes(city.worldId));
     const record=maps.cities.find(record=>record.id===city.id);
     if(!system||!record) throw new Error('Missing city membership');
-    result[city.id]={...composeCityMap(record,{systemId:system.id,worldId:city.worldId}),name:city.name};
+    result[city.id]={...composeCityMap(record,{systemId:system.id,worldId:city.worldId},{completedPhase}),name:city.name};
   }
   return result;
 }

@@ -1,4 +1,4 @@
-import { createCityMaps } from '../core/city-map.js';
+import { createCityMaps, composeCityMap } from '../core/city-map.js';
 import { createCityGeometry } from '../core/city-walk.js';
 import { createRoomGeometries } from '../core/room-walk.js';
 
@@ -35,8 +35,10 @@ export async function loadAssets() {
   ]);
   await document.fonts.load('16px Mulmaru', 'SunDog 선독');
   const cityMaps=createCityMaps(maps,navigation,economy);
+  const colonyMaps=Array.from({length:10},(_,completedPhase)=>({...composeCityMap(maps.cities.find(c=>c.id==='city-60'),
+    {systemId:navigation.systems.find(s=>s.worldIds.includes(economy.colonyCity.worldId)).id,worldId:economy.colonyCity.worldId},{completedPhase}),name:economy.colonyCity.name}));
   const cityGeometry=createCityGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
   cityGeometry.rooms=createRoomGeometries(roomWalk);
   const [scripts,text,items,systems]=dialogueData,dialogue={scripts,text,items,systems};
-  return { catalog, maps, cityMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

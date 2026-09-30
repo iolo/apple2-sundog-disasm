@@ -462,6 +462,14 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R06q (2026-09-30) adds source-derived colony clipping and Banville's
+ten-phase inspector. Independent references cover57 ordinary and11 colony maps,
+including clamped progress;198 Chrome rule groups and120 inspector checks pass.
+Records58/59 are reserved dummy layouts. Preview phase changes cannot affect
+campaign progress or RNG, and saves remain version10. See
+`docs/remake/colony-maps.md`. R06 still needs service-dispatch review and the final
+cross-scene audit; travel and colony progression remain R09/R11.
+
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
 profile. A suggested local serving command is:
 

@@ -119,7 +119,12 @@ def economy_defaults(raw, worlds, utility):
         if len(values) != 8 or any(v < 0 or v > 31 for v in values):
             raise ValueError('Invalid colony recipe')
         phases.append([values.count(i) for i in range(1,32)])
-    return dict(version=1, selector=raw[504], templates=templates, cities=cities,
+    colony = worlds[528+59*12:540+59*12]
+    if not 0 < colony[0] <= 9:
+        raise ValueError('Invalid colony name')
+    # Game21 $1201–$1213 appends city60 only on world1; records58/59 are dummies.
+    colony_city = dict(id='city-60', worldId='world-01', name=colony[1:1+colony[0]].decode('ascii'))
+    return dict(version=1, selector=raw[504], templates=templates, cities=cities, colonyCity=colony_city,
                 colonyCityId='city-60', colonyRequirements=phases,
                 source='utility_disk1 procedures14/15/16; game20 procedures4/5/6/19/23')
 

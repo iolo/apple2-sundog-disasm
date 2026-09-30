@@ -44,13 +44,41 @@ async browserPage => {
       assert(await page.locator('.scene-heading h1').innerText()===names[i]&&await page.locator('.city-surface').count()===1,`Ordinary city ${i+1} renders in city view`);
       await page.locator('#next').click();
     }
-    for(let i=58;i<=60;i++) {
+    for(let i=58;i<=59;i++) {
       assert(await page.locator('#city-mode').isDisabled()&&await page.locator('#bank').count()===1&&await page.locator('.city-surface').count()===0,`Record ${i} stays available as a stored layout`);
       await page.locator('#next').click();
     }
+    assert(await page.locator('.scene-heading h1').innerText()==='Banville'&&await page.locator('#colony-phase').inputValue()==='0','Record60 opens the named colony at completed phase0');
+    const small=await page.locator('#scene').evaluate(canvas=>canvas.toDataURL());
+    for(let phase=0;phase<=9;phase++) {
+      await page.locator('#colony-phase').selectOption(String(phase));
+      assert(await page.locator('#colony-phase').inputValue()===String(phase),`Colony completed phase${phase} renders while offline`);
+    }
+    assert(await page.locator('#scene').evaluate(canvas=>canvas.toDataURL())!==small,'Colony growth redraws the actual map');
+    await page.locator('#city-mode').click();assert(await page.locator('#bank').inputValue()==='3','Colony stored view retains the independent manual bank');
+    await page.locator('#city-mode').click();assert(await page.locator('#colony-phase').inputValue()==='9','Colony phase survives stored/composed switching');
+    await page.locator('#next').click();
     assert(await page.locator('.scene-heading h1').innerText()==='Drahew'&&await page.locator('.city-surface').count()===1,'Wraparound restores the city-view preference');
     assert(true,'All city views and stored-only fallbacks work after disconnecting the network');
     await context.setOffline(false);
+    await page.locator('#previous').click();
+    for(const lang of ['en','ko']) {
+      if(await page.locator('html').getAttribute('lang')!==lang)await page.locator('#language').click();
+      for(const [width,height] of [[640,480],[1280,720],[390,844],[844,390]]) {
+        await resize(width,height);
+        const fits=await page.locator('.colony-phase').evaluate(el=>{
+          const b=el.getBoundingClientRect(),map=document.querySelector('#inspect').getBoundingClientRect();
+          return b.left>=0&&b.top>=0&&b.right<=map.left&&b.bottom<=map.bottom&&el.scrollWidth<=el.clientWidth+1;
+        });
+        assert(fits,`${lang} colony phase controls fit ${width}x${height} beside the map`);
+      }
+      assert(await page.locator('#colony-phase').inputValue()==='9',`${lang} locale and viewport changes preserve colony phase`);
+    }
+    await resize(1280,720);await page.locator('#colony-phase').selectOption('0');
+    await page.screenshot({path:'output/playwright/remake/colony-phase0-ko.png',animations:'disabled'});
+    await page.locator('#colony-phase').selectOption('9');await page.locator('#city-left').click();
+    await page.screenshot({path:'output/playwright/remake/colony-phase9-ko.png',animations:'disabled'});
+    await page.locator('#next').click();
     // Choose a world with a different second bank to visually review variants.
     for(let i=0;i<6;i++)await page.locator('#next').click();
     for(const lang of ['en','ko']) {

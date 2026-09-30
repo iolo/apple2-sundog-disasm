@@ -1,5 +1,23 @@
 # SunDog web remake progress
 
+## R06q — Colony map composition and phase inspector — 2026-09-30
+
+Added Banville's completed-phase clipping from Game21, preserving all240 private
+variant draws even for cells outside the current bounds. Exported city60's name
+and world1 membership; records58/59 are reserved dummies and remain raw previews.
+The inspector offers all ten completed phases without changing campaign state,
+RNG, creation recipe or version10 saves. See `docs/remake/colony-maps.md`.
+
+Chrome154.0.8037.57 passes198 rule groups and120 city inspector checks, covering
+every phase offline, both languages, four viewport sizes and raw/composed state
+isolation. Independent packed-byte references verify57 ordinary and11 colony
+maps, including byte255's clamp to phase9. Korean phase0/9 screenshots were
+reviewed. All18 exporter tests,159 artifacts and original input hashes pass.
+
+R06 remains active. Next: finish service-door dispatch review and the final
+cross-scene/fresh-session audit. Travel and colony progression remain R09/R11.
+No new native emulator capture or complete-R06 claim is made.
+
 ## R06p — Live taverns, social dialogue and version10 saves — 2026-09-30
 
 Enabled type8 entry into all four tavern layouts. Pointer/keyboard release at
