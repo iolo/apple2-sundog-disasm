@@ -15,6 +15,7 @@ import { atCityBank } from '../core/city-doors.js';
 import { bankPanel } from './bank.js';
 import { roomAt, canLeaveRoom } from '../core/room-walk.js';
 import { initialLodging, lodgingGeometry } from '../core/room-lodging.js';
+import { isTavern, playerSeatAt } from '../core/room-seating.js';
 import { populateRoom, roomActorGeometry } from '../core/room-actors.js';
 import { initialRoomTraffic, tickRoomTraffic, ROOM_TICK_MS } from '../core/room-traffic.js';
 import { reduceCampaignCounter, restoreCampaignConversation } from '../core/campaign-dialogue.js';
@@ -42,6 +43,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const counterAvailable=()=>{
     if(!inRoom()||!encounters.counter||dialogueFrame)return false;
     const b=currentRoom().population.bounds,p=state.position;
+    if(isTavern(currentRoom())&&playerSeatAt(currentRoom(),p)!==null)return true;
     return p.x>=b.left&&p.x<=b.right&&p.y>=b.top&&p.y<=b.bottom;
   };
   const availableRoom=()=>inCity()&&!inBank() ? roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,state.position) : null;
@@ -76,7 +78,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       if(dialogueFrame||action.type==='dialogue'){stop();state.paused=true;roomElapsed=0;survival={...survival,elapsed:0}}
       return true;
     } catch(error) {
-      dialogueError=error.message==='dialogueHistoryFull' ? 'dialogueHistoryFull' : 'dialogueUnavailable';
+      dialogueError=error.message==='dialogueHistoryFull' ? 'dialogueHistoryFull' :
+        error.message==='roomTrafficBusy' ? 'tavernBusy' : error.message==='tavernSeatReserved' ? 'tavernReserved' : 'dialogueUnavailable';
       roomMessage=dialogueError;stop();state.paused=true;return false;
     }
   }
@@ -157,7 +160,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     const message = travelAvailable() ? t(inRoom() ? 'roomExitHint' : availableRoom() ? 'roomDoorHint' : bankAvailable() ? 'bankDoorHint' : inCity() ? 'cityBoardHint' : 'shipExitHint') : outsideShip() ? t(state.paused ? 'walkPaused' : inRoom() ? 'roomWalkHint' : 'cityWalkHint') : bay !== null ? t('equipmentReached', { name:t(`equipment${bay}`) }) : accessible ? t('storageReached', { storage: t(accessible) }) : t(state.paused ? 'walkPaused' : station ? 'walkStation' : 'walkHint');
     const status = root.querySelector('#walk-status');
     const statusMessage=outsideShip()&&roomMessage ? t(roomMessage) : inRoom()&&encounters.counter?.service==='waiting' ? t('dialogueWaiting') :
-      inRoom()&&travel.lodging?.rented ? t('lodgingRoomHint',{number:travel.lodging.rented}) : message;
+      inRoom()&&travel.lodging?.rented ? t('lodgingRoomHint',{number:travel.lodging.rented}) :
+      inRoom()&&isTavern(currentRoom()) ? t(encounters.roomState?.tavern.playerSeat!==null ? 'tavernSeated' : 'tavernHint') : message;
     if (status.textContent !== statusMessage) status.textContent = statusMessage;
     const button = root.querySelector('#walk-inventory');
     const label = t(accessible || 'inventoryTitle');
@@ -239,7 +243,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
           let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
           state.pointer={x:state.position.x+3+Math.sign(dx)*2,y:state.position.y-3+Math.sign(dy)*2};
         }
-        if(state.held&&encounters.counter&&encounters.counter.service!=='idle')counterAction({type:'cancel'});
+        if(state.held&&encounters.counter&&(encounters.counter.service!=='idle'||(encounters.roomState.tavern?.playerSeat??null)!==null))counterAction({type:'cancel'});
         state=advanceWalk({...state,elapsed:0},ROOM_TICK_MS,geometry());
         if(encounters.counter) {
           if(!counterAction({type:'tick'})||dialogueFrame){render();break}
@@ -267,7 +271,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     state = { ...state, pointer: point(event), held: true };
   });
   root.addEventListener('pointermove', event => { if (event.pointerId === activePointer) state.pointer = point(event); });
-  for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) stop(); });
+  for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) name==='pointerup' ? releaseWalk() : stop(); });
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
     if(dialogueFrame) {
@@ -334,14 +338,18 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if (event.target.id === 'walk-surface' && (event.key === 'Enter' || event.key.toLowerCase() === 'i')) { event.preventDefault(); openInventory(); return; }
     if (event.target.id === 'walk-surface' && directions[event.key]) { event.preventDefault(); keys.add(event.key); }
   });
-  root.addEventListener('keyup', event => { if (directions[event.key]) { keys.delete(event.key); if (!keys.size) stop(); } });
+  root.addEventListener('keyup', event => { if (directions[event.key]) { keys.delete(event.key); if (!keys.size) releaseWalk(); } });
   root.addEventListener('focusout', event => { if (event.target.id === 'walk-surface') stop(); });
   function openInventory() { stop(); state.paused = true; inventoryOpen = true; selected = null; inventoryMessage = ''; render(); }
   function requestCounter() {
     if(!counterAvailable())return;
     stop();roomMessage='';
-    if(counterAction({type:'request'})){state.paused=false;previous=0;roomElapsed=0}
-    render();root.querySelector('#walk-surface').focus();
+    if(counterAction({type:'request'})){state.paused=!!dialogueFrame;previous=0;roomElapsed=0}
+    render();if(!dialogueFrame)root.querySelector('#walk-surface').focus();
+  }
+  function releaseWalk() {
+    stop();
+    if(!state.paused&&inRoom()&&isTavern(currentRoom())&&playerSeatAt(currentRoom(),state.position)!==null)requestCounter();
   }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
@@ -362,7 +370,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       roomPopulation=population;
       campaignDialogue={...campaignDialogue,flags:[...campaignDialogue.flags]};
       campaignDialogue.flags.fill(false,64,72); // Game18 fresh room entry.
-      encounters={randomState:population.randomState,roomSeed:population.seed,roomState:initialRoomTraffic(population),counter:{service:'idle',conversation:null}};
+      encounters={randomState:population.randomState,roomSeed:population.seed,roomState:initialRoomTraffic(population,room),counter:{service:'idle',conversation:null}};
       travel={scene:'room',cityPosition:{...state.position},roomPosition:{...room.spawn}};
       if(room.index===1)travel.lodging=initialLodging();
       state={...createWalk(room),paused:true};previous=0;survival={...survival,elapsed:0};
@@ -394,8 +402,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   }
   root.addEventListener('click', event => {
     if(dialogueFrame) {
-      const reply=event.target.closest('[data-dialogue-reply]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]');
-      const input=reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} : null;
+      const reply=event.target.closest('[data-dialogue-reply]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]'),offer=event.target.closest('[data-dialogue-offer]');
+      const input=reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} :
+        offer ? {type:'offer',direction:offer.dataset.dialogueOffer,step:Number(offer.dataset.step)} : null;
       if(input){counterAction({type:'dialogue',input});render();return}
     }
     const component = event.target.closest('[data-equipment-container]');

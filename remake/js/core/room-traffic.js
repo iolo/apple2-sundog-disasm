@@ -46,7 +46,7 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
     const slot=i===count-1 ? 0 : i+2,w=a.words;
     if(!keys(a,['slot','words'])||a.slot!==slot||!Array.isArray(w)||w.length!==10||Object.keys(w).length!==10||!w.every(Number.isInteger))fail();
     if(w[6]!==23*256+(slot===0 ? 3 : 24)||w[8]<0||w[8]>4||w[9]<0||w[9]>255||
-      w[7]<0||w[7]>0xffff||(w[7]&~((tavern&&slot>1 ? 0xf00|61 : 0x300|57)|(slot===0&&service!==null ? 2 : 0)))||
+      w[7]<0||w[7]>0xffff||(w[7]&~((tavern&&slot>1 ? 0xf00|61 : 0x300|57)|((slot===0||tavern)&&service!==null ? 2 : 0)))||
       !(tavern&&slot>1 ? [0,2,3,4,5,6,7,8,9] : [0,2,3]).includes(action(w)))fail();
     for(const offset of [0,2])if(w[offset]<0||w[offset]>102||w[offset+1]<-7||w[offset+1]>140)fail();
     if(!canStand({...room,collisionRows:slot===0 ? room.counterCollisionRows : room.collisionRows},position(w)))fail();
@@ -280,9 +280,9 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
 
 // Procedure24: releasing movement in the bottom seating band claims a seat
 // and speaks to an already seated opposite visitor. Walking releases ownership.
-export function sitRoomTraffic(room,previous,player) {
+export function sitRoomTraffic(room,previous,player,{service=null}={}) {
   if(!isTavern(room))throw new Error('notAtTavernSeat');
-  const state=validateRoomTraffic(room,previous,player).state,seat=playerSeatAt(room,player);
+  const state=validateRoomTraffic(room,previous,player,{service}).state,seat=playerSeatAt(room,player);
   if(seat===null)throw new Error('notAtTavernSeat');
   if(state.tavern.contact)return state;
   const occupants=seatOccupants(room,state);
@@ -298,8 +298,8 @@ export function sitRoomTraffic(room,previous,player) {
   return state;
 }
 
-export function standRoomTraffic(room,previous,player) {
-  const state=validateRoomTraffic(room,previous,player).state;
+export function standRoomTraffic(room,previous,player,{service=null}={}) {
+  const state=validateRoomTraffic(room,previous,player,{service}).state;
   if(!state.tavern)throw new Error('notAtTavernSeat');
   if(state.tavern.contact)throw new Error('roomConversationActive');
   state.tavern.playerSeat=null;return state;
@@ -307,8 +307,8 @@ export function standRoomTraffic(room,previous,player) {
 
 // Procedure21: flag49 dispatches the speaker through secondary mover123.
 // The host supplies the interpreted return flag; no conversation is invented.
-export function finishTavernContact(room,previous,randomState,player,{dismiss=false}={}) {
-  validateRoomTraffic(room,previous,player);
+export function finishTavernContact(room,previous,randomState,player,{dismiss=false,service=null}={}) {
+  validateRoomTraffic(room,previous,player,{service});
   if(!previous.tavern?.contact)throw new Error('roomConversationInactive');
   return stepRoomTraffic(room,previous,randomState,player,{returnContact:true,dismiss});
 }

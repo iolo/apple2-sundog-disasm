@@ -51,12 +51,13 @@ async browserPage => {
     assert(/[가-힣]/.test(korean)&&korean.includes(String(fixture.fee)),'The same rental quote is localized in Korean');
     for(const [width,height] of [[640,480],[390,844],[844,390]]) {
       await page.setViewportSize({width,height});await page.clock.runFor(50);
+      await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
       const fits=await page.locator('#dialogue-panel').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.top>=0&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1});
       assert(fits,`Lodging dialogue fits ${width}x${height}`);
     }
     await page.setViewportSize({width:1280,height:720});await page.locator('#dialogue-reply-1').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='100','Pay reaches the source rental acceptance');
-    const paid=await exported();assert(paid.version===9&&paid.state.dialogue.cash===fixture.cash,'Version9 mid-payment save retains replayable pre-return cash');
+    const paid=await exported();assert(paid.version===10&&paid.state.dialogue.cash===fixture.cash,'Version10 mid-payment save retains replayable pre-return cash');
     await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(paid.state),'Mid-payment IndexedDB reload preserves the exact replay and cash');
     await page.locator('#dialogue-continue').click();
     const rented=await exported(),number=rented.state.travel.lodging.rented,x=28+28*(number-1);

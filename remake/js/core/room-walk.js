@@ -27,10 +27,10 @@ export function roomDoorGeometry(room,openDoors) {
   return {...room,backgrounds:{ship:rows}};
 }
 
-// Game18 $0BA8–$0BC5; tavern seating is integrated separately.
+// Game18 $0BA8–$0BC5: foot-interior selection.
 export function roomAt(rooms,map,streetPosition) {
   const door=cityDoorAt(map,streetPosition);
-  if(door?.scene!==5 || ![9,10,11].includes(door.type))return null;
+  if(door?.scene!==5 || ![8,9,10,11].includes(door.type))return null;
   return rooms?.[door.type===11 ? 1 : 4*(door.type-7)+(door.tileX+door.tileY)%4] || null;
 }
 

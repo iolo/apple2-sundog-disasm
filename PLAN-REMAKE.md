@@ -450,6 +450,16 @@ seats. 189 Chrome rule groups pass, including48,000 tavern simulation ticks and
 JSON replay. See `docs/remake/tavern-traffic.md`. Type8 live entry, dialogue,
 localization and campaign saves remain next; this does not complete R06.
 
+Checkpoint R06p (2026-09-30) enables all four tavern layouts through type8 doors.
+Bartender12 and visitor21/22 dialogue include social branches, matched jokes,
+quotes, adjustable tips and actual-speaker return.92 Korean templates preserve
+chosen place names without extra RNG. Version10 saves replay seated, moving,
+mid-joke and mid-offer visits and validate versions1–9 before migration.
+196 Chrome rule groups and36 tavern UI checks pass, along with102 room,27 lodging,
+19 dialogue,28 bank and44 city regressions. See `docs/remake/tavern-dialogue.md`.
+R06 still needs special city composition and service-dispatch review, followed
+by its final completion audit; food/item trading retains R07 ownership.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

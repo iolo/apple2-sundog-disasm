@@ -5,13 +5,14 @@ import { cityReachability, SHIP_REENTRY } from './city-walk.js';
 import { atCityBank } from './city-doors.js';
 import { roomAt } from './room-walk.js';
 import { validateLodging, lodgingGeometry } from './room-lodging.js';
+import { isTavern } from './room-seating.js';
 import { populateRoom } from './room-actors.js';
 import { initialRoomTraffic, validateRoomTraffic } from './room-traffic.js';
 import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, validateCounterRecord, restoreCampaignConversation } from './campaign-dialogue.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 9, SCOPE = 'landed-lodging-1';
+const VERSION = 10, SCOPE = 'landed-taverns-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -70,7 +71,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           travel={scene:value.travel.scene,cityPosition:{...value.travel.cityPosition}};
           if(inRoom) {
             const room=roomAt(cityGeometry.rooms,cityGeometry.map,value.travel.cityPosition);
-            if(!room || (version<9&&room.index===1) || !keysMatch(value.travel.roomPosition,['x','y']))fail();
+            if(!room || (version<9&&room.index===1) || (version<10&&isTavern(room)) || !keysMatch(value.travel.roomPosition,['x','y']))fail();
             const lodging=lodgingRoom ? validateLodging(value.travel.lodging) : undefined;
             const access=lodgingGeometry(room,lodging,{access:true});
             if(!cityValidators.has(access))cityValidators.set(access,cityReachability(access));
@@ -80,14 +81,15 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
-      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,version===8 ? {legacyCash:start.credits} : {}) : initialCampaignDialogue(start);
-      if(dialogue.cash>start.credits)fail(); // The only live cash mutation is a lodging debit.
+      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
+      if(dialogue.cash>start.credits)fail(); // Live cash changes are lodging fees and bartender tips.
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
         if(!keysMatch(value.encounters,version===6 ? ['randomState','roomSeed'] : version===7 ? ['randomState','roomSeed','roomState'] : ['randomState','roomSeed','roomState','counter'])||!validSeed(value.encounters.randomState))fail();
         const {randomState,roomSeed}=value.encounters;let roomState=null,counter=null;
         if(travel.lodging&&roomSeed===null)fail();
+        if(travel.scene==='room'&&isTavern(roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition))&&roomSeed===null)fail();
         if(roomSeed!==null) {
           if(travel.scene!=='room'||!validSeed(roomSeed))fail();
           const room=roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition);
@@ -105,6 +107,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
             {playerRoom:lodgingGeometry(room,travel.lodging,{access:true}),
               ...(version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {})}).state;
           counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
+          if(isTavern(room)&&roomState.tavern.contact&&counter.service!=='talking')fail();
           if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room);
         }
         if(version>=7&&roomSeed===null&&value.encounters.roomState!==null)fail();
@@ -124,7 +127,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===5 && value.scope==='landed-rooms-1') ||
       (value?.version===6 && value.scope==='landed-occupants-1') ||
       (value?.version===7 && value.scope==='landed-traffic-1') ||
-      (value?.version===8 && value.scope==='landed-dialogue-1');
+      (value?.version===8 && value.scope==='landed-dialogue-1') ||
+      (value?.version===9 && value.scope==='landed-lodging-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

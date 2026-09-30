@@ -1,5 +1,6 @@
 import { ATTRIBUTES } from './character.js';
 import { updateLodgingAccess } from './room-lodging.js';
+import { isTavern } from './room-seating.js';
 import { requestRoomCounter, cancelRoomCounter, moveRoomCounter, tickRoomCounter,
   openRoomCounter, advanceRoomCounter } from './room-counter.js';
 
@@ -13,7 +14,7 @@ export function initialCampaignDialogue(start) {
   return {cash:start.credits,attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
     workspace:{lastCity:0,mood:3,quantity:1,gate:0,item:0,actor:0}};
 }
-export function validateCampaignDialogue(value,{legacyCash}={}) {
+export function validateCampaignDialogue(value,{legacyCash,visitors=false}={}) {
   const legacy=legacyCash!==undefined;
   if(!keys(value,legacy ? ['attributes','flags','workspace'] : ['cash','attributes','flags','workspace'])||
     (!legacy&&!integer(value.cash,0,32767999))||!array(value.attributes,5,n=>integer(n,0,255))||
@@ -21,7 +22,7 @@ export function validateCampaignDialogue(value,{legacyCash}={}) {
     !keys(value.workspace,['lastCity','mood','quantity','gate','item','actor']))fail();
   const w=value.workspace;
   if(!integer(w.lastCity,0,63)||!integer(w.mood,0,4)||w.quantity!==1||!integer(w.gate,0,1)||
-    !integer(w.item,0,255)||w.actor!==0)fail();
+    !integer(w.item,0,255)||!integer(w.actor,0,visitors ? 8 : 0)||w.actor===1)fail();
   return {cash:legacy ? legacyCash : value.cash,attributes:[...value.attributes],flags:[...value.flags],workspace:
     Object.fromEntries(['lastCity','mood','quantity','gate','item','actor'].map(k=>[k,w[k]]))};
 }
@@ -85,15 +86,7 @@ export function reduceCampaignCounter(previous,content,room,action) {
     case 'request':frame=requestRoomCounter(room,frame);break;
     case 'cancel':frame=cancelRoomCounter(room,frame);break;
     case 'move':frame=moveRoomCounter(room,frame,action.position);break;
-    case 'tick':{
-      frame=tickRoomCounter(room,frame);
-      if(frame.service==='talking'&&!frame.conversation) {
-        const {context,places}=setup(state,content);
-        counter.conversation={seed:frame.randomState,inputs:[]};
-        frame=openRoomCounter(content.dialogue,room,frame,context,{places});
-      }
-      break;
-    }
+    case 'tick':frame=tickRoomCounter(room,frame);break;
     case 'dialogue':{
       validateDialogueInput(action.input);
       ({frame,outcome}=advanceRoomCounter(content.dialogue,room,frame,action.input));
@@ -105,13 +98,18 @@ export function reduceCampaignCounter(previous,content,room,action) {
     }
     default:throw new Error('invalidRoomService');
   }
+  if(frame.service==='talking'&&!frame.conversation) {
+    const {context,places}=setup(state,content);
+    counter.conversation={seed:frame.randomState,inputs:[]};
+    frame=openRoomCounter(content.dialogue,room,frame,context,{places});
+  }
   if(outcome) {
-    // Lodging debits unlock R06 room access. Other cash/inventory transactions
-    // remain R07; reject an unimplemented commit instead of losing it on return.
-    if((room.index!==1&&outcome.locals[104]!==state.dialogue.cash)||outcome.locals[104]>state.dialogue.cash||
+    // Lodging fees and bartender tips support R06 access/conversation. Other
+    // cash/inventory transactions remain R07; never discard an unhandled commit.
+    if((room.index!==1&&!isTavern(room)&&outcome.locals[104]!==state.dialogue.cash)||outcome.locals[104]>state.dialogue.cash||
       JSON.stringify(outcome.carried)!==JSON.stringify(state.ship.inventory.carried))
       throw new Error('unsupportedRoomDialogueReturn');
-    state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace});
+    state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace},{visitors:true});
     counter.conversation=null;
   }
   counter.service=frame.service;
