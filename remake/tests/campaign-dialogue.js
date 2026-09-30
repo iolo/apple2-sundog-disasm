@@ -30,8 +30,8 @@ export async function campaignDialogueTests(test,equal) {
     while(state.encounters.counter.service!=='talking'&&ticks++<500)state=act(state,{type:'tick'});
     equal(state.encounters.counter.service,'talking');return state;
   }
-  await test('Version8 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
-    const state=inRoom(),save=codec.make(state,0);equal(save.version,8);equal(save.scope,'landed-dialogue-1');
+  await test('Version9 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
+    const state=inRoom(),save=codec.make(state,0);equal(save.version,9);equal(save.scope,'landed-lodging-1');
     const old=structuredClone(save);old.version=7;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
     const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded,save);equal(JSON.stringify(old),before);
     old.state.encounters.counter=initialCounter();reject(()=>codec.validate(old));
@@ -48,6 +48,13 @@ export async function campaignDialogueTests(test,equal) {
     const frame=restoreCampaignConversation(loaded,content,room);equal(frame.conversation.view.state,161);
     equal(restoreCampaignConversation(state,content,room),frame);equal(JSON.stringify(state),before);
     equal(act(loaded,{type:'dialogue',input:{type:'cancel'}}),act(state,{type:'dialogue',input:{type:'cancel'}}));
+  });
+  await test('Version8 mid-conversation saves migrate to active cash without changing replay or RNG',()=>{
+    const save=codec.make(talking(),0),old=structuredClone(save);
+    old.version=8;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
+    equal(codec.validate(old),save);
+    equal(restoreCampaignConversation(codec.validate(old).state,content,room),restoreCampaignConversation(save.state,content,room));
+    old.state.dialogue.cash=old.state.start.credits;reject(()=>codec.validate(old));
   });
   await test('Conversation completion atomically persists source flags, staff mood and gate, then removes replay history',()=>{
     const state=talking(),before=JSON.stringify(state);

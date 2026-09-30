@@ -86,19 +86,19 @@ export async function roomCounterTests(test,equal) {
     fail(()=>cancelRoomCounter(room,next),'roomConversationActive');
     fail(()=>moveRoomCounter(room,next,{x:40,y:50}),'roomConversationActive');
   });
-  await test('All eight layouts reach counter dialogue with valid actor geometry and deterministic resume',()=>{
+  await test('All nine live layouts reach counter dialogue with valid actor geometry and deterministic resume',()=>{
     const expectedTicks=[26,27,27,26,21,21,21,21];
-    for(const room of Object.values(rooms).filter(r=>r.index>=8))for(const seed of [0,1,12345,0xffffffff]) {
+    for(const room of Object.values(rooms).filter(r=>r.index===1||r.index>=8))for(const seed of [0,1,12345,0xffffffff]) {
       let frame=requestRoomCounter(room,start(room.index,seed)),ticks=0;
       while(frame.service!=='talking'&&ticks<500) {
         const before=JSON.stringify(frame),next=tickRoomCounter(room,frame);
         equal(tickRoomCounter(room,JSON.parse(before)),next);equal(JSON.stringify(frame),before);
         check(room,next);frame=next;ticks++;
       }
-      equal(frame.service,'talking');if(seed===12345)equal(ticks,expectedTicks[room.index-8]);
+      equal(frame.service,'talking');if(seed===12345&&room.index>=8)equal(ticks,expectedTicks[room.index-8]);
       const opened=openRoomCounter(content,room,frame,context);
-      equal(opened.conversation.state.kind,room.index<12 ? 13 : 14);
-      equal(opened.conversation.view.state,room.index<12 ? 82 : 83);
+      equal(opened.conversation.state.kind,room.index===1 ? 23 : room.index<12 ? 13 : 14);
+      equal(opened.conversation.view.state,room.index===1 ? 96 : room.index<12 ? 82 : 83);
       equal(opened.conversation.state.workspace,{lastCity:1,mood:3,quantity:1,gate:0,item:0,actor:0});
       equal(opened.randomState,opened.conversation.randomState);equal(tickRoomCounter(room,opened),opened);
     }

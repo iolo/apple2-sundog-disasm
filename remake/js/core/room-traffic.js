@@ -14,7 +14,7 @@ const action=w=>w[7]>>>8;
 const setAction=(w,value)=>{w[7]=(w[7]&255)|(value<<8)};
 const reachableRooms=new WeakMap();
 
-export function validateRoomTraffic(room,value,player,{service=null}={}) {
+export function validateRoomTraffic(room,value,player,{service=null,playerRoom=room}={}) {
   const fail=()=>{throw new Error('invalidCampaign')};
   const keys=(v,list)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===list.length&&list.every(k=>Object.hasOwn(v,k));
   if(!keys(value,['actors','active','waiting'])||!Array.isArray(value.actors)||
@@ -22,7 +22,8 @@ export function validateRoomTraffic(room,value,player,{service=null}={}) {
   const count=value.actors.length;
   if(!reachableRooms.has(room))reachableRooms.set(room,cityReachability(room));
   const reachable=reachableRooms.get(room);
-  if(!reachable(player))fail();
+  if(!reachableRooms.has(playerRoom))reachableRooms.set(playerRoom,cityReachability(playerRoom));
+  if(!reachableRooms.get(playerRoom)(player))fail();
   if(!Number.isInteger(value.active)||(value.active!==0&&(value.active<2||value.active>count)))fail();
   if(service!==null&&!['idle','waiting','talking','served'].includes(service))fail();
   const playerWaiting=service==='waiting',b=room.population.bounds;
@@ -73,7 +74,7 @@ export function validateRoomTraffic(room,value,player,{service=null}={}) {
   return {state,geometry};
 }
 
-// Game18 procedures5/6/9–13/27/28, fresh foot visits to types9/10 only.
+// Game18 procedures5/6/9–13/27/28, fresh foot visits to types9/10/11.
 // Seats and dialogue-triggered pursuit remain unsupported; secondary mover123
 // stays zero. Optional service state enables player priority for the separate
 // counter controller; the version7 campaign path still uses visitor-only state.
@@ -174,7 +175,7 @@ export function tickRoomTraffic(room, previous, randomState, player,{service=nul
   function arrive() {
     if(state.actors.length>=room.population.maximum)return;
     const w=Array(10).fill(0);setFlag(w,0,rng.next()%8===0);w[8]=rng.next()%5;
-    rng.next(); // random mod3 seating preference, procedure8 fails for types9/10.
+    rng.next(); // random mod3 seating preference, procedure8 fails outside taverns.
     const target=counterPlace(w);
     if(!target||!canStand(geometry,{x:door.x,y:door.y+5}))return;
     w[5]=door.x;w[4]=door.y+5;w[3]=target.x;w[2]=target.y;

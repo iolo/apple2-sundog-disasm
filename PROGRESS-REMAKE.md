@@ -1,5 +1,33 @@
 # SunDog web remake progress
 
+## R06n — Live lodging, paid room access and version9 saves — 2026-09-30
+
+Enabled type11 lodging with visitors, clerk approach, source kind23 dialogue,
+seven Korean message templates and paid bedroom access. The fee follows the
+current system; insufficient funds and source availability checks retain their
+branches. Payment and random room assignment commit together on dialogue return.
+Walking toward the assigned door opens it, passing through closes it, and the
+same approach rule works from inside. The room number is shown in both languages.
+
+Version9 adds active cash and a lodging visit's assigned room/door mask. It can
+save before payment return or inside a closed bedroom, replaying the conversation
+and validating door access without charging twice. Version1–8 validation remains
+strict before migration. Bank cash displays use the active balance; leaving the
+building clears rental access but retains the debit. Other trading/banking stays
+R07. See `docs/remake/lodging.md` and `campaign-saves.md`.
+
+Chrome154.0.8037.57 passes179 rule groups,27 lodging UI checks,19 existing dialogue
+checks,102 room and28 bank regression checks. Coverage includes all system fees, all four
+room assignments, every door-mask SVG against actual collision pixels, traffic
+and staff service in all nine live layouts, insufficient funds, version8 dialogue
+migration, mid-payment and closed-bedroom IndexedDB reload, departure and reentry.
+The Korean bedroom screenshot was reviewed; the localized quote fits three
+viewport shapes. Eighteen exporter tests, all159 artifacts and original hashes pass.
+
+R06 remains active. Next: tavern seating and interaction, special city composition
+review, then the final cross-scene/fresh-session audit. No native emulator capture
+or complete-R06 claim is made.
+
 ## R06m — Interior fixtures and empty-population entry repair — 2026-09-30
 
 Exported source-backed tavern records4–7 and lodging record1, bringing the

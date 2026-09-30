@@ -1,4 +1,5 @@
 import { ATTRIBUTES } from './character.js';
+import { updateLodgingAccess } from './room-lodging.js';
 import { requestRoomCounter, cancelRoomCounter, moveRoomCounter, tickRoomCounter,
   openRoomCounter, advanceRoomCounter } from './room-counter.js';
 
@@ -9,17 +10,19 @@ const fail=()=>{throw new Error('invalidCampaign')};
 export const MAX_DIALOGUE_INPUTS=1024;
 export const initialCounter=()=>({service:'idle',conversation:null});
 export function initialCampaignDialogue(start) {
-  return {attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
+  return {cash:start.credits,attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
     workspace:{lastCity:0,mood:3,quantity:1,gate:0,item:0,actor:0}};
 }
-export function validateCampaignDialogue(value) {
-  if(!keys(value,['attributes','flags','workspace'])||!array(value.attributes,5,n=>integer(n,0,255))||
+export function validateCampaignDialogue(value,{legacyCash}={}) {
+  const legacy=legacyCash!==undefined;
+  if(!keys(value,legacy ? ['attributes','flags','workspace'] : ['cash','attributes','flags','workspace'])||
+    (!legacy&&!integer(value.cash,0,32767999))||!array(value.attributes,5,n=>integer(n,0,255))||
     !array(value.flags,128,b=>typeof b==='boolean')||value.flags[65]||
     !keys(value.workspace,['lastCity','mood','quantity','gate','item','actor']))fail();
   const w=value.workspace;
   if(!integer(w.lastCity,0,63)||!integer(w.mood,0,4)||w.quantity!==1||!integer(w.gate,0,1)||
     !integer(w.item,0,255)||w.actor!==0)fail();
-  return {attributes:[...value.attributes],flags:[...value.flags],workspace:
+  return {cash:legacy ? legacyCash : value.cash,attributes:[...value.attributes],flags:[...value.flags],workspace:
     Object.fromEntries(['lastCity','mood','quantity','gate','item','actor'].map(k=>[k,w[k]]))};
 }
 export function validateCounterRecord(value) {
@@ -49,12 +52,13 @@ function setup(state,content) {
   if(!system||index<0||world<0)fail();
   return {context:{...state.dialogue,system,city:Number(location.cityId.slice(-2)),
     hour:Math.floor(state.ship.minutes/60)%24,surface:location.surfacePosition,
-    cash:state.start.credits,carried:state.ship.inventory.carried},
+    cash:state.dialogue.cash,carried:state.ship.inventory.carried},
     places:{systems:content.navigation.systems.map(s=>s.name),worlds:content.navigation.worlds.map(w=>w.name),system:index+1,world:world+1}};
 }
 function frameFor(state,room) {
   return {room:room.index,traffic:structuredClone(state.encounters.roomState),position:{...state.travel.roomPosition},
-    randomState:state.encounters.randomState,service:state.encounters.counter.service,conversation:null};
+    randomState:state.encounters.randomState,service:state.encounters.counter.service,conversation:null,
+    ...(room.index===1 ? {lodging:structuredClone(state.travel.lodging)} : {})};
 }
 export function restoreCampaignConversation(state,content,room) {
   const record=validateCounterRecord(state.encounters.counter),frame=frameFor(state,room);
@@ -102,15 +106,20 @@ export function reduceCampaignCounter(previous,content,room,action) {
     default:throw new Error('invalidRoomService');
   }
   if(outcome) {
-    // R06 supports conversation, not R07 transactions. Reject any unimplemented
-    // inventory/cash commit instead of silently losing it on return.
-    if(outcome.locals[104]!==state.start.credits||JSON.stringify(outcome.carried)!==JSON.stringify(state.ship.inventory.carried))
+    // Lodging debits unlock R06 room access. Other cash/inventory transactions
+    // remain R07; reject an unimplemented commit instead of losing it on return.
+    if((room.index!==1&&outcome.locals[104]!==state.dialogue.cash)||outcome.locals[104]>state.dialogue.cash||
+      JSON.stringify(outcome.carried)!==JSON.stringify(state.ship.inventory.carried))
       throw new Error('unsupportedRoomDialogueReturn');
-    state.dialogue=validateCampaignDialogue({attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace});
+    state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace});
     counter.conversation=null;
   }
   counter.service=frame.service;
   state.encounters.roomState=frame.traffic;state.encounters.randomState=frame.randomState;
   state.travel.roomPosition=frame.position;
+  if(room.index===1) {
+    state.travel.lodging=frame.lodging;
+    state.dialogue.flags[57]=updateLodgingAccess(room,frame.lodging,frame.position).sheltered;
+  }
   return {state,conversation:frame.conversation};
 }

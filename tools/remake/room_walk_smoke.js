@@ -79,7 +79,7 @@ async browserPage => {
       assert(s.scene==='room'&&s.x==='12'&&s.y==='56'&&s.paused==='true',`Type${type} enters at the original room anchor, paused`);
       assert(await page.locator('#walk-equipment').count()===0,`Type${type} has no remote engineering access`);
       const entered=await exportGame();
-      assert(entered.version===8&&entered.scope==='landed-dialogue-1'&&entered.state.travel.scene==='room',`Type${type} exports the version8 room scene`);
+      assert(entered.version===9&&entered.scope==='landed-lodging-1'&&entered.state.travel.scene==='room',`Type${type} exports the version9 room scene`);
       assert(JSON.stringify(entered.state.travel.cityPosition)===JSON.stringify(street.state.travel.cityPosition)&&JSON.stringify(entered.state.ship)===JSON.stringify(street.state.ship),`Type${type} retains the street return anchor and all ship progress`);
       const actors=await page.evaluate(async ({index,seed})=>{
         const [{createRoomGeometries},{populateRoom},data]=await Promise.all([import('/js/core/room-walk.js'),import('/js/core/room-actors.js'),fetch('/data/room-walk.json').then(r=>r.json())]);

@@ -433,6 +433,15 @@ entry, dialogue, IndexedDB reload, exit and reentry pass in both live counter
 classes. See `docs/remake/room-fixtures.md`. Tavern seating and lodging interaction
 still need live integration; R06 remains active.
 
+Checkpoint R06n (2026-09-30) enables type11 lodging: clerk approach, kind23
+dialogue, localized quotes, payment, random room assignment and doors that reopen
+from inside. Version9 stores active cash and rental/door state, migrates version8
+conversations and supports saves behind a closed bedroom door. Lodging debits are
+included here because they unlock R06 rooms; other trading/banking remains R07.
+179 Chrome rule groups,27 lodging UI checks,19 existing dialogue checks,102 room
+and28 bank regression checks pass. See `docs/remake/lodging.md`. R06 still needs tavern
+interaction, special city composition review and final cross-scene validation.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated

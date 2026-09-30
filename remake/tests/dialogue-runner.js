@@ -25,7 +25,7 @@ export async function dialogueRunnerTests(test,equal) {
   await test('Every counter and information message has a Korean presentation without changing source text or RNG',async()=>{
     const [en,ko]=await Promise.all(['en','ko'].map(locale=>fetch(`../locales/${locale}.json`).then(r=>r.json())));
     const t=translator({en,ko},'ko'),frame=start();frame.state.locals[41]=23;frame.state.locals[106]=420;
-    for(const block of [94,98,99])for(const word of Object.keys(text.messages[block])) {
+    for(const block of [94,95,98,99])for(const word of Object.keys(text.messages[block])) {
       frame.block=block;frame.view.word=Number(word);const before=JSON.stringify(frame);
       const message=dialogueMessage(frame,t,'ko');
       equal(/[가-힣]/.test(message),true);equal(/\{\w+\}/.test(message),false);

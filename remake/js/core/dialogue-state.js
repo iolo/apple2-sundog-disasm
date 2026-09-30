@@ -5,11 +5,11 @@ const list=(a,length,test)=>Array.isArray(a)&&a.length===length&&Array.from(a).e
 const byte=n=>integer(n,0,255);
 const money=n=>integer(n,0,32767999); // Canonical positive library28 thousands/remainder pair.
 
-// Game16 procedures37/38/39, restricted to fresh counter kinds13/14. Numeric
+// Game16 procedures37/38/39, counter kinds13/14 and lodging kind23. Numeric
 // local identities keep unproven field names out of gameplay semantics.
 export function setupCounterDialogue(input) {
   const {kind,system,attributes,carried,flags,workspace,city,hour,surface,cash,randomState}=input??{};
-  if(![13,14].includes(kind)||typeof system?.local16!=='boolean'||
+  if(![13,14,23].includes(kind)||typeof system?.local16!=='boolean'||
     ![29,30,31,32].every(n=>integer(system[`local${n}`],0,15))||
     !list(attributes,5,byte)||!list(carried,4,byte)||!list(flags,128,b=>typeof b==='boolean')||
     !integer(workspace?.lastCity,0,63)||!integer(workspace?.mood,0,4)||
@@ -32,12 +32,13 @@ export function setupCounterDialogue(input) {
     else if((item&31)===13)count7+=2;
     else if((item&31)===11)count6+=2;
   }
-  return {randomState,state:{kind,entry:kind===13 ? 80 : 81,attributes:[...attributes],carried:[...carried],flags:nextFlags,
+  const fee=kind===23 ? 8*system.local30+3 : 0;
+  return {randomState,state:{kind,entry:kind===23 ? 96 : kind===13 ? 80 : 81,attributes:[...attributes],carried:[...carried],flags:nextFlags,
     workspace:nextWorkspace,locals:{
       4:26+(surface.x+surface.y)%9,5:30,6:count6,7:count7,14:0,15:false,16:system.local16,
       17:null,18:false,20:workspace.gate!==0,29:system.local29,30:system.local30,
       31:system.local31,32:system.local32,33:workspace.mood,36:null,40:system.local30,41:0,
-      53:[0,0,0],87:thresholds,100:0,102:0,104:cash,106:0,108:'',124:''}}};
+      53:[0,0,0],87:thresholds,100:Math.min(cash,fee),102:0,104:cash,106:fee,108:kind===23 ? `${fee} Cr` : '',124:''}}};
 }
 
 // Game16 procedures2/3, mode0. Refresh the working valuation and strings;

@@ -1,5 +1,9 @@
 # Live counter conversations and version8 saves — R06l
 
+R06n extends this checkpoint with [lodging](lodging.md), active cash and version9
+saves. The version8 details below describe the original replay format, retained
+under strict migration validation.
+
 The player can now approach a counter in the eight type9/10 interiors and use
 Talk or Enter. Staff approach using the source queue rules, then the dialogue
 panel opens. Moving away while waiting cancels service. Information, item

@@ -1,10 +1,12 @@
 # SunDog web remake
 
-Current milestone: a source-backed ship walkthrough with carried-item/locker/store
-transfers, condition/survival, food/rapidheal use, sleep, four ship checkpoints,
-bilingual character allocation with four saved draft slots, and a preview
-of 60 cities and 18 worlds. Campaign initialization, other ship systems
-and campaign saves remain pending. Evidence is in
+Current milestone: a playable landed campaign with character creation, ship and
+city walking, inventory/condition/survival, component exchange, bank visits,
+shop information dialogue, and paid lodging with working bedroom doors.
+English/Korean controls and four campaign save slots cover the current scenes,
+including open dialogue and rented rooms. The independent walkthrough and map
+inspector remain available. Trading, flight, combat and colony progression
+are still pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
 From the repository root:
@@ -24,7 +26,8 @@ Use the preview tabs and previous/next buttons to browse. Select a map tile or
 ship point to inspect coordinates. Focus the display and press Enter, then
 arrow keys to move the selection. Elsewhere, left/right changes layouts.
 Escape returns to the title. Language choice persists when browser storage is
-available. Maps are stored layouts, without runtime overlays or inferred rules.
+available. The city inspector can switch between stored layouts and composed
+ordinary-city maps; special city composition remains in progress.
 
 Choose **Walk aboard** in the ship preview. Hold the pointer or touch to walk;
 release to stop. Arrow keys work while the ship display has focus. Pause, reset
@@ -57,7 +60,7 @@ dialog also offers Saves to recover a living checkpoint. Sleep cannot be saved.
 JSON export backs up the current state; import restores it without automatically
 writing a slot. Browser slots are tied to the current origin/profile. Invalid
 files and stale-tab changes are rejected. These are ship walkthrough saves;
-character drafts and future campaign saves remain separate. See
+character drafts and campaign saves remain separate. See
 `../docs/remake/checkpoints.md`.
 
 Choose **Create a character** to enter a name and spend the original 440-point
@@ -65,8 +68,17 @@ attribute budget. Each + button shows its next cost; − refunds the previous
 point. **Drafts** opens four browser-local slots and JSON import/export. Names
 accept 1–15 Unicode grapheme clusters, including Korean. Draft saving is explicit;
 export a JSON copy for use on another browser/origin. Closing the editor retains
-unsaved edits only until reload. Drafts prepare a character; they do not start or
-resume a campaign. See `../docs/remake/character-creation.md` for rules and scope.
+unsaved edits only until reload. Choose **Board ship** after allocating
+the character, enter a seed, then start aboard the ship. See
+`../docs/remake/character-creation.md` for allocation rules.
+
+In a campaign, leave through the ship's airlock and walk to a building entrance.
+The Enter building button (or Enter with the walking surface focused) opens a
+supported shop or lodging interior. Approach its counter and choose **Talk**.
+Lodging staff quote a fee; Pay deducts active cash when the dialogue returns and
+assigns a numbered room. Its door opens when approached and closes behind you.
+Saves retain payment, dialogue and room access; leaving the building ends that
+visit's rental. Bank cash displays reflect lodging payments.
 
 Open `/tests/` (relative to the served folder) for the dependency-free browser
 checks.
@@ -75,12 +87,14 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version8 saves restore open conversations by replaying the saved RNG and inputs.
-Item transfers and purchases remain pending. See
+Version9 saves restore open conversations by replaying the saved RNG and inputs,
+and retain active cash and lodging door state. Earlier campaign versions migrate
+after validation. Shop purchases and trade transfers remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
 `../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
-source evidence. Remaining R06 work is tracked in `../docs/remake/r06-completion.md`.
+source evidence; lodging is described in `../docs/remake/lodging.md`.
+Remaining R06 work is tracked in `../docs/remake/r06-completion.md`.
 
 Development export checks:
 

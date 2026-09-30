@@ -192,7 +192,7 @@
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
   "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses a nearby airlock or building door. Escape leaves the bank or returns to the title.",
-  "campaignPlayScope": "Explore the ship, Drahew and open buildings. At a counter, choose Talk to ask about goods and prices. Save during exploration or conversation. Taverns, lodging, purchases and travel beyond this city are still being restored.",
+  "campaignPlayScope": "Explore the ship, Drahew and open buildings. Choose Talk at a counter for goods and prices, or rent a room at lodging. Save during exploration or conversation. Taverns, shop purchases and travel beyond this city are still being restored.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",
@@ -314,5 +314,14 @@
   "dialogueReply21": "Nothing",
   "dialogueReply22": "Recommend",
   "dialogueReply23": "Uh huh",
-  "dialogueReply24": "Dunno"
+  "dialogueReply24": "Dunno",
+  "lodgingRoomHint": "Your room is number {number}. Approach its door to enter.",
+  "lodgingScope": "Pay the clerk to rent a room. Your cash and room access are saved.",
+  "dialogueMessage95_180": "Welcome, friend. Need a room?",
+  "dialogueMessage95_189": "A room, friend?",
+  "dialogueMessage95_193": "Then, if you will pardon me, I have other customers.",
+  "dialogueMessage95_209": "We are quite full at the moment. Perhaps another time.",
+  "dialogueMessage95_227": "That will be {price} Cr, in advance.",
+  "dialogueMessage95_240": "Thank you. Your room awaits.",
+  "dialogueMessage95_247": "Your account shows insufficient funds!"
 }

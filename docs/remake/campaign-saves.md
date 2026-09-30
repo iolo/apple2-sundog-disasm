@@ -1,9 +1,10 @@
-# Campaign save boundary — through R06l
+# Campaign save boundary — through R06n
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version8, scope `landed-dialogue-1`, and validates/upgrades version1 `landed-ship-1`,
+version9, scope `landed-lodging-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
-version5 `landed-rooms-1`, version6 `landed-occupants-1` and version7 `landed-traffic-1`.
+version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
+and version8 `landed-dialogue-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -14,10 +15,10 @@ The state has six explicit parts:
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
   markets/cargo, colony counters and all four starting locations.
-- `dialogue`: active attributes,128 boolean flags and counter workspace. Open
+- `dialogue`: active cash, attributes,128 boolean flags and counter workspace. Open
   conversations are saved in `encounters.counter` as a service phase plus an
   initial RNG/input record, replayed on import. See [live dialogue](dialogue-ui.md)
-  for version8 validation, atomic outcomes, limits and migration.
+  for replay validation and [lodging](lodging.md) for version9 cash/access rules.
 - `ship`: active player position, inventory, condition and whole elapsed minutes
   for the currently supported ship walking, inventory and survival rules.
 - `equipment`: active installed components, validated performance and special-part
@@ -29,7 +30,9 @@ The state has six explicit parts:
   At a bank the city position must also match a source foot-bank door footprint.
   In a room, the city position retains the entry door; a third field,
   `roomPosition`, must be reachable from the derived layout's interior spawn.
-  It is forbidden in other scenes. Only city tile types9/10 are currently enabled.
+  It is forbidden in other scenes. City tile types9/10/11 are currently enabled.
+  Type11 additionally requires `lodging: {rented, openMask}`; a saved bedroom can
+  reach the doorway through its rented door even while that door is closed.
 
 - `encounters`: unsigned gameplay `randomState`, nullable `roomSeed` and nullable
   `roomState` (actors, active visitor and waiting count). Entry derives occupants;
@@ -39,7 +42,8 @@ The state has six explicit parts:
 
 The initial inventory/location in `start` records where this campaign began.
 Current play uses `ship`, `equipment`, `travel` and `encounters`. It must never read stale initial values as live progress.
-Economy, ship resources and navigation are not yet mutable in this scope; allowing
+Carried cash decreases for lodging and persists independently of creation cash.
+Other economy, ship resources and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
 
 ## Validation and transactions
