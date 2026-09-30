@@ -442,6 +442,14 @@ included here because they unlock R06 rooms; other trading/banking remains R07.
 and28 bank regression checks pass. See `docs/remake/lodging.md`. R06 still needs tavern
 interaction, special city composition review and final cross-scene validation.
 
+Checkpoint R06o (2026-09-30) adds the tavern traffic/controller foundation:
+six-seat reservations, counter/seat retargeting, player sitting, source21/22
+contact dispatch and both NPC return paths through the secondary mover. Derived
+reservations and repaired queue/mover references prevent orphaned actors and
+seats. 189 Chrome rule groups pass, including48,000 tavern simulation ticks and
+JSON replay. See `docs/remake/tavern-traffic.md`. Type8 live entry, dialogue,
+localization and campaign saves remain next; this does not complete R06.
+
 ## Validation and completion
 
 Use `/opt/google/chrome/google-chrome` in development mode with an isolated
