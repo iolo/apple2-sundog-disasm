@@ -241,7 +241,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R03 — Browser foundation | Build the ESM entry point, asset loader, Canvas/DOM composition, viewport transforms, locale switching, input actions, scene/window handling and dependency-free test runner. Add localized title/settings and an asset inspection scene. | Required Chrome loads with no errors; 4:3 fit and matching hit positions at representative sizes; English/Korean render from local font. Depends on R02. |
 | R04 — New game and persistence | Implement verified character creation/defaults, slot selection, new/resume/delete flows, storage validation, schema versioning, export/import and a fixed-seed development fixture. | Two new games do not inherit prior-player state; four slots remain independent; save/reload across a fresh session preserves state; corrupt/unsupported imports leave saves intact. Depends on R01/R03. |
 | R05 — Playable ship | Implement movement/collision, airlock and reachable interaction points, status, inventory transfers, lockers, eating/rest and their time/condition changes. Add localized contextual help. | First playable milestone: create → explore ship → manipulate inventory/status → save → fresh reload and continue. Verify interaction reachability and state changes against targeted evidence. Depends on R04. |
-| R06 — City and building exploration | Integrate live city tiles, runtime map composition/variants, ship-to-city transitions, doors/interiors, basic NPC interaction and the dialogue interpreter/actions needed here. | Leave and reenter ship/buildings without losing state; known tile/door locations behave correctly; a recorded dialogue branch works in both languages. Depends on R05. |
+| R06 — City and building exploration **(complete, R06s)** | Integrate live city tiles, runtime map composition/variants, ship-to-city transitions, doors/interiors, basic NPC interaction and the dialogue interpreter/actions needed here. | Leave and reenter ship/buildings without losing state; known tile/door locations behave correctly; a recorded dialogue branch works in both languages. Depends on R05. |
 | R07 — Trading and banking | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
@@ -461,6 +461,16 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R06s (2026-09-30) completes R06. A fresh campaign follows a continuous
+558-step route through all eight building classes and back aboard, including
+fresh-page save/load, both languages and reentry at every visit.200 rule groups
+and423 final route/UI checks pass, alongside the earlier120 colony inspector
+checks,18 exporter tests and159 artifact checks. The requirement-by-requirement
+audit is `docs/remake/r06-completion.md`; receipts are `r06-journey-validation.json`
+and `r06-final-*.json`. Saves are version11. Next: R07 trading/banking, beginning
+with active economy state, source transaction rules and atomic conservation tests.
+The checkpoint notes below retain their historical partial statuses.
 
 Checkpoint R06r (2026-09-30) resolves service-door classification and enables
 read-only TransStation, depot and exchange visits. All classified foot doors now
