@@ -424,7 +424,7 @@
   "dialogueOfferAmount": "Offer: {amount} Cr",
   "tavernConversationTitle": "Conversation",
   "tavernCounterTitle": "Bartender",
-  "tavernTradeScope": "Item trading is not available yet.",
+  "tavernTradeScope": "Accept a quote, then choose a carried slot to complete the trade.",
   "tavernCounterScope": "Choose food or ale to carry, ask for information, or offer a tip.",
   "colonyViewDescription": "Colony growth preview",
   "colonyCompletedPhases": "Completed phases",
@@ -517,5 +517,8 @@
   "dialogueEmptySlot": "empty",
   "dialoguePurchaseConfirm": "Choose an empty slot to pay and take this item.",
   "dialogueInsufficientCash": "Not enough cash. Withdraw money at the bank before buying.",
-  "dialogueSlotOccupied": "No empty carried slot. Make room before buying."
+  "dialogueSlotOccupied": "No empty carried slot. Make room before buying.",
+  "dialogueSalePrice": "Sell {item} · Receive {price} Cr · Cash: {cash} Cr",
+  "dialogueSaleConfirm": "Choose the item to hand over and receive payment. Charge shown on each slot is preserved until sold.",
+  "dialogueCashOverflow": "You cannot carry this much cash. Deposit money at the bank first."
 }

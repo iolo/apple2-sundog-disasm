@@ -2,6 +2,7 @@ import { dialogueRecord, selectDialogueValue, dialogueTransition } from './dialo
 import { dialogueDictionary, dialogueCaption, renderDialogueMessage } from './dialogue-text.js';
 import { dialogueEffects } from './dialogue-effects.js';
 import { sourceRandom } from './random.js';
+import { saleItem } from './personal-trade.js';
 
 // Source procedure34's redirect loop, with procedure23's exact ordering:
 // controls -> selection -> rendering -> transition predicates -> replies -> action.
@@ -61,6 +62,7 @@ export function startCounterConversation(content,setup,{places}={}) {
   const frame={state:structuredClone(setup.state),randomState:setup.randomState,
     dictionary:structuredClone(content.text.base),block:null,panel:null,view:null,ended:false,places};
   Object.assign(frame.state.locals,{19:false,43:0,95:[0,0,0,0,0]});
+  frame.state.sales=[];
   return enterDialogueState(content,frame,frame.state.entry);
 }
 
@@ -68,12 +70,19 @@ export function startCounterConversation(content,setup,{places}={}) {
 // from a stale panel left over by a quote, information or impatience record.
 export function dialoguePurchase(content,frame) {
   const s=frame.state,v=s.locals;
-  if(frame.ended||![12,13,14].includes(s.kind)||v[18]||v[19]||
+  if(frame.ended||![12,13,14,21,22].includes(s.kind)||v[18]||v[19]||
     !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
   const item=frame.panel?.items?.[0];
   if(frame.panel?.items?.length!==1||!Number.isInteger(item)||item<=7||item>255||
     (s.kind===12&&![8,9].includes(item)))return null;
   return {item,price:v[106],cash:v[104]};
+}
+
+export function dialogueSale(content,frame) {
+  const s=frame.state,v=s.locals;
+  if(frame.ended||![21,22].includes(s.kind)||!v[18]||v[19]||!saleItem(v[41])||
+    !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
+  return {item:v[41],price:v[106],cash:v[104]};
 }
 
 // Explicit browser inputs replace pointer hit-testing and CPU-loop timing.
@@ -83,6 +92,15 @@ export function advanceDialogue(content,previous,input) {
   const frame=structuredClone(previous),s=frame.state,v=s.locals;
   let target,offerStep;
   switch(input.type) {
+    case 'sale':{
+      const offer=dialogueSale(content,frame),item=s.carried[input.slot];
+      if(!offer||!Number.isInteger(input.slot)||input.slot<0||input.slot>=4||!saleItem(item)||(item&31)!==(offer.item&31))
+        throw new Error('invalidDialogueSale');
+      if(!Number.isInteger(offer.price)||offer.price<0||offer.price>32767)throw new Error('unsupportedDialogueMoney');
+      if(offer.cash+offer.price>32767999)throw new Error('dialogueCashOverflow');
+      s.carried[input.slot]=0;v[104]+=offer.price;v[43]+=2;v[41]=item;
+      s.sales.push({item,price:offer.price});target=v[95][0];break;
+    }
     case 'purchase':{
       const offer=dialoguePurchase(content,frame);
       if(!offer||!Number.isInteger(input.slot)||input.slot<0||input.slot>=4)throw new Error('invalidDialoguePurchase');

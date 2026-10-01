@@ -1,4 +1,5 @@
 import { ATTRIBUTES } from './character.js';
+import { recordPersonalSales } from './personal-trade.js';
 import { updateLodgingAccess } from './room-lodging.js';
 import { requestRoomCounter, cancelRoomCounter, moveRoomCounter, tickRoomCounter,
   openRoomCounter, advanceRoomCounter } from './room-counter.js';
@@ -38,10 +39,10 @@ export function validateCounterRecord(value) {
   return {service:value.service,conversation:c===null ? null : {seed:c.seed,inputs:c.inputs.map(validateDialogueInput)}};
 }
 function validateDialogueInput(input) {
-  const fields={purchase:['type','slot'],reply:['type','slot'],item:['type','item'],offer:['type','direction','step'],cancel:['type'],timeout:['type']};
+  const fields={sale:['type','slot'],purchase:['type','slot'],reply:['type','slot'],item:['type','item'],offer:['type','direction','step'],cancel:['type'],timeout:['type']};
   if(!Object.hasOwn(fields,input?.type)||!keys(input,fields[input.type]))fail();
   if(input.type==='reply'&&!integer(input.slot,0,2))fail();
-  if(input.type==='purchase'&&!integer(input.slot,0,3))fail();
+  if(['purchase','sale'].includes(input.type)&&!integer(input.slot,0,3))fail();
   if(input.type==='item'&&!integer(input.item,8,255))fail();
   if(input.type==='offer'&&(!['increase','decrease'].includes(input.direction)||![1,10,100,1000,10000].includes(input.step)))fail();
   return Object.fromEntries(fields[input.type].map(k=>[k,input[k]]));
@@ -103,13 +104,18 @@ export function reduceCampaignCounter(previous,content,room,action) {
     counter.conversation={seed:frame.randomState,inputs:[]};
     frame=openRoomCounter(content.dialogue,room,frame,context,{places});
   }
+  const sales=(outcome||frame.conversation?.state)?.sales||[];
+  // Validate pending totals too, so a paid transfer cannot strand the player
+  // in a conversation whose eventual ledger commit would overflow.
+  const personalTrade=recordPersonalSales(state.economy.personalTrade,sales,content.dialogue.items);
   if(outcome) {
     // Only verified replay inputs can change carried items. Purchases and fees
-    // debit cash; personal-item sales are outside this save scope.
-    if(outcome.locals[104]>state.dialogue.cash)
+    // debit cash; derived sale receipts bound any increase and commit once here.
+    if(outcome.locals[104]>state.dialogue.cash+sales.reduce((sum,sale)=>sum+sale.price,0))
       throw new Error('unsupportedRoomDialogueReturn');
     state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace},{visitors:true});
     state.ship.inventory.carried=[...outcome.carried];
+    state.economy.personalTrade=personalTrade;
     counter.conversation=null;
   }
   counter.service=frame.service;

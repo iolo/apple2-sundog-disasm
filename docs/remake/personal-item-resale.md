@@ -1,5 +1,9 @@
 # Personal-item resale source audit — R07e
 
+Historical R07e audit: R07f now implements the direct visitor route and version15
+sale accounting. See [personal trading](personal-trading.md) for current behavior;
+the gating and next-step descriptions below record the pre-implementation state.
+
 Ordinary item/equipment shops do not offer a Sell branch in the traced scripts.
 Personal-item resale is a trader conversation transaction. It remains R07 work;
 adding a generic shop Sell button would invent a new transaction route.

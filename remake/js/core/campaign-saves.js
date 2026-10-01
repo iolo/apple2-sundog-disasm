@@ -1,6 +1,7 @@
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
 import { initialBanking, validateBanking } from './banking.js';
 import { initialExchange, validateExchange } from './campaign-exchange.js';
+import { initialPersonalTrade, validatePersonalTrade, recordPersonalSales } from './personal-trade.js';
 import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
 import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
@@ -14,7 +15,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 14, SCOPE = 'landed-purchases-1';
+const VERSION = 15, SCOPE = 'landed-personal-trade-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -86,14 +87,15 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         } else if(!sameTree(value.travel,travel))fail();
       }
       const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
-      if(version>=13&&!keysMatch(value.economy,['accounts','exchange']))fail();
+      if(version>=13&&!keysMatch(value.economy,['accounts','exchange',...(version>=15 ? ['personalTrade'] : [])]))fail();
       const banking=version>=12 ? validateBanking(version>=13 ? {accounts:value.economy.accounts} : value.economy) : initialBanking(start);
-      const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline) : initialExchange(start)};
+      const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline) : initialExchange(start),
+        personalTrade:version>=15 ? validatePersonalTrade(value.economy.personalTrade,baseline.dialogue?.items||baseline.items) : initialPersonalTrade()};
       if(version<12 && dialogue.cash>start.credits)fail();
       // Local cargo can only resell at/below price paid. Cash, accounts and
-      // stored purchase costs cannot exceed creation wealth in this scope.
+      // stored purchase costs cannot exceed creation wealth plus personal sales.
       if(dialogue.cash+economy.accounts.reduce((sum,a)=>sum+a.balance,0)+economy.exchange.warehouse.slots.reduce((sum,c)=>sum+(c?.pricePaid||0),0)>
-        start.credits+start.systems.reduce((sum,s)=>sum+s.bankBalance,0))fail();
+        start.credits+start.systems.reduce((sum,s)=>sum+s.bankBalance,0)+economy.personalTrade.proceeds.reduce((sum,p)=>sum+p,0))fail();
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
@@ -119,7 +121,10 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
               ...(version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {})}).state;
           counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
           if(isTavern(room)&&roomState.tavern.contact&&counter.service!=='talking')fail();
-          if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room,{purchases:version>=14});
+          if(counter.conversation) {
+            const restored=restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room,{purchases:version>=14,visitorTrades:version>=15});
+            recordPersonalSales(economy.personalTrade,restored.conversation.state.sales,baseline.dialogue.items);
+          }
         }
         if(version>=7&&roomSeed===null&&value.encounters.roomState!==null)fail();
         if(version>=8&&roomSeed===null&&value.encounters.counter!==null)fail();
@@ -143,7 +148,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===10 && value.scope==='landed-taverns-1') ||
       (value?.version===11 && value.scope==='landed-services-1') ||
       (value?.version===12 && value.scope==='landed-banking-1') ||
-      (value?.version===13 && value.scope==='landed-exchange-1');
+      (value?.version===13 && value.scope==='landed-exchange-1') ||
+      (value?.version===14 && value.scope==='landed-purchases-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -156,7 +162,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start)}};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()}};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {

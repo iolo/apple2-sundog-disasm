@@ -1,5 +1,39 @@
 # SunDog web remake progress
 
+## R07f — Visitor personal-item trading and version15 saves — 2026-10-01
+
+Enabled source visitor Buy/Sell/Accept branches for kinds21/22. Accepted quotes
+require an explicit carried slot: purchases need an empty destination; sales
+remove the exact selected charged byte matching the low-five-bit quoted type.
+Cash, source continuation, actual speaker and inventory remain one transaction.
+Cancellation before handover costs nothing; leaving after handover retains it.
+Cash overflow and invalid slots fail atomically. Ordinary shops still offer purchases only;
+bartender matching remains gated pending its actor lifecycle.
+
+Version15 `landed-personal-trade-1` adds gross personal-sale counts/proceeds by
+item type. The wealth ceiling includes that income, allowing legitimate cash
+increases and later deposits without weakening warehouse conservation. Pending
+receipts derive only from replayed inputs; cash, inventory and ledger commit once
+on dialogue return. Pending totals are checked before handover/import to prevent
+ledger overflow from stranding a conversation. Versions1–14 pass historical
+field/input checks before receiving zero sale totals. The ledger validates price
+bounds and arithmetic; it does not authenticate edited completed trade history.
+
+Validation:242 rule groups and34 personal-trade UI checks pass in Chrome154.
+They cover before/after-transfer reload, charged-slot choice, no double payment,
+source continuation/speaker return, visitor purchases, cancellation, sale-income
+bank deposits, malformed saves and old-version replay gates. Existing tavern43,
+shop29, banking44, exchange64, lodging27 and dialogue19 UI checks also pass
+(260 UI checks in total). English/Korean sale controls
+fit1280×720,640×480,390×844 and844×390 without changing the offer/RNG. UI trading
+uses controlled visitor fixtures followed by normal controls, not a fresh-game
+journey; no native emulator capture is claimed.
+
+See `docs/remake/personal-trading.md` and `personal-trade-*.json` receipts.
+R07 remains incomplete. Next connect the isolated cargo core to minimal pod
+movement/entry, active pod saves and live warehouse loading controls. Broader
+transport and depot services remain R08.
+
 ## R07e — Cargo loading core and resale route audit — 2026-10-01
 
 Traced native Store/Fetch/Swap in Game20 procedures11–13: four warehouse slots,
