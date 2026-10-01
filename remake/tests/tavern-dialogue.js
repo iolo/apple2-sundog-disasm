@@ -83,9 +83,9 @@ export async function tavernDialogueTests(test,equal) {
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,11);equal(save.scope,'landed-services-1');
+    const save=codec.make(result.state,0);equal(save.version,12);equal(save.scope,'landed-banking-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
-    const legacy=structuredClone(save);legacy.version=10;legacy.scope='landed-taverns-1';
+    const legacy=structuredClone(save);legacy.version=10;delete legacy.state.economy;legacy.scope='landed-taverns-1';
     equal(codec.parse(JSON.stringify(legacy)),save);
     equal(restoreCampaignConversation(loaded,content,room).conversation,result.conversation);
     equal(/[가-힣]/.test(dialogueMessage(result.conversation,t,'ko')),true);
@@ -105,11 +105,11 @@ export async function tavernDialogueTests(test,equal) {
     for(const mutate of [v=>v.state.encounters.roomState.tavern.contact.actor=0,
       v=>v.state.encounters.counter=initialCounter(),v=>v.state.dialogue.workspace.actor=1,
       v=>v.state.dialogue.workspace.actor=9,v=>v.state.encounters.roomSeed=null,
-      v=>{v.version=9;v.scope='landed-lodging-1'}]) {
+      v=>{v.version=9;delete v.state.economy;v.scope='landed-lodging-1'}]) {
       const bad=structuredClone(save);mutate(bad);reject(()=>codec.validate(bad));
     }
     const old=codec.make(codec.create({...createCharacter(),name:'Legacy tavern'},12345),0);
-    const expected=structuredClone(old);old.version=9;old.scope='landed-lodging-1';equal(codec.validate(old),expected);
+    const expected=structuredClone(old);old.version=9;delete old.state.economy;old.scope='landed-lodging-1';equal(codec.validate(old),expected);
     old.state.dialogue.workspace.actor=2;reject(()=>codec.validate(old));
   });
   await test('Bartender tips replay an adjustable offer and commit its debit once on return',()=>{

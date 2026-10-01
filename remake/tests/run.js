@@ -1,5 +1,6 @@
 import { initializationTests } from './initialization.js';
 import { economyTests } from './economy.js';
+import { bankingTests } from './banking.js';
 import { campaignTests } from './campaign.js';
 import { campaignSaveTests } from './campaign-saves.js';
 import { campaignDialogueTests } from './campaign-dialogue.js';
@@ -80,6 +81,7 @@ await survivalTests(test, equal);
 await checkpointTests(test, equal);
 await initializationTests(test, equal);
 await economyTests(test, equal);
+await bankingTests(test, equal);
 await campaignTests(test, equal);
 await campaignSaveTests(test, equal);
 await campaignSeedTests(test, equal);

@@ -31,11 +31,11 @@ export async function campaignDialogueTests(test,equal) {
     equal(state.encounters.counter.service,'talking');return state;
   }
   await test('Version10 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
-    const state=inRoom(),save=codec.make(state,0);equal(save.version,11);equal(save.scope,'landed-services-1');
-    const old=structuredClone(save);old.version=7;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
+    const state=inRoom(),save=codec.make(state,0);equal(save.version,12);equal(save.scope,'landed-banking-1');
+    const old=structuredClone(save);old.version=7;delete old.state.economy;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
     const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded,save);equal(JSON.stringify(old),before);
     old.state.encounters.counter=initialCounter();reject(()=>codec.validate(old));
-    const bad=structuredClone(save);bad.version=7;bad.scope='landed-traffic-1';reject(()=>codec.validate(bad));
+    const bad=structuredClone(save);bad.version=7;delete bad.state.economy;bad.scope='landed-traffic-1';reject(()=>codec.validate(bad));
   });
   await test('Waiting and speaking saves restore source state and RNG through the replay record',()=>{
     let state=act(inRoom(),{type:'request'});
@@ -51,7 +51,7 @@ export async function campaignDialogueTests(test,equal) {
   });
   await test('Version8 mid-conversation saves migrate to active cash without changing replay or RNG',()=>{
     const save=codec.make(talking(),0),old=structuredClone(save);
-    old.version=8;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
+    old.version=8;delete old.state.economy;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
     equal(codec.validate(old),save);
     equal(restoreCampaignConversation(codec.validate(old).state,content,room),restoreCampaignConversation(save.state,content,room));
     old.state.dialogue.cash=old.state.start.credits;reject(()=>codec.validate(old));

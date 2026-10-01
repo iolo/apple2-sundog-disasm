@@ -75,7 +75,7 @@ async browserPage => {
       await page.keyboard.press('Shift+Tab');
       assert(await page.evaluate(()=>document.activeElement.id)==='service-saves',`${scene} traps reverse focus`);
       const entered=await exportGame();
-      assert(entered.version===11&&entered.scope==='landed-services-1',`${scene} exports a version11 service visit`);
+      assert(entered.version===12&&entered.scope==='landed-banking-1',`${scene} exports a version12 service visit`);
       const expected=structuredClone(street.state);expected.travel.scene=scene;
       assert(JSON.stringify(entered.state)===JSON.stringify(expected),`${scene} entry changes only the active scene`);
       const before=await state();await page.keyboard.press('ArrowRight');await page.clock.runFor(6000);
@@ -101,7 +101,7 @@ async browserPage => {
       await page.setViewportSize({width:1280,height:720});await page.clock.runFor(100);
       await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(entered.state),`${scene} presentation changes preserve state`);
-      const legacy=structuredClone(entered);legacy.version=10;legacy.scope='landed-taverns-1';
+      const legacy=structuredClone(entered);legacy.version=10;delete legacy.state.economy;legacy.scope='landed-taverns-1';
       assert((await importGame(legacy)).includes('Invalid'),`${scene} rejects service visits disguised as version10`);
       const wrong=structuredClone(entered);wrong.state.travel.scene=scene==='exchange'?'depot':'exchange';
       assert((await importGame(wrong)).includes('Invalid'),`${scene} rejects a different service at the same street anchor`);

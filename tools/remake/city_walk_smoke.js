@@ -34,7 +34,7 @@ async browserPage => {
     assert(s.scene==='city'&&s.x==='287'&&s.y==='217'&&s.paused==='true','Enter leaves the ship at the source-derived exterior anchor, paused');
     assert(await page.locator('#walk-equipment').count()===0&&await page.locator('#walk-airlock').isDisabled(),'Exterior equipment access is absent and boarding needs close proximity');
     const departed=await exportGame();
-    assert(departed.version===11&&departed.scope==='landed-services-1'&&departed.state.travel.scene==='city','City export carries version11 scene state');
+    assert(departed.version===12&&departed.scope==='landed-banking-1'&&departed.state.travel.scene==='city','City export carries version12 scene state');
     assert(JSON.stringify(departed.state.start)===JSON.stringify(initial.state.start)&&JSON.stringify(departed.state.equipment)===JSON.stringify(initial.state.equipment)&&JSON.stringify(departed.state.ship.inventory)===JSON.stringify(initial.state.ship.inventory),'Exit preserves creation, active equipment and inventory');
     assert(JSON.stringify(departed.state.ship.position)===JSON.stringify({x:54,y:118}),'Exterior save retains the canonical interior reentry anchor');
     await page.locator('#walk-inventory').click();

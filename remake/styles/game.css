@@ -236,6 +236,17 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .bank-panel dl{margin:0 0 20px;font-size:22px}
 .bank-panel dl div{padding:10px 0;border-bottom:1px solid var(--line)}
 .bank-panel dd{margin:0;color:var(--amber)}
+#bank-panel{width:550px;max-height:430px;padding:20px;display:flex;flex-direction:column;gap:8px}
+#bank-panel dl{margin:0;font-size:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#bank-panel dl div{padding:4px 0}
+#bank-panel p{margin:0;font-size:18px;line-height:1.25}
+#bank-panel button,#bank-panel select{font-size:18px;padding:7px 10px}
+.bank-operations{display:flex;gap:10px}
+.bank-operations button{flex:1}
+.bank-draft{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center}
+.bank-draft p,.bank-amount-buttons{grid-column:1/-1}
+.bank-amount-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+#bank-message{min-height:23px;color:var(--amber)}
 .dialogue-panel{width:550px;max-height:420px;display:flex;flex-direction:column;gap:12px;padding:20px}
 .dialogue-panel header,.dialogue-panel footer,.dialogue-choices{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .dialogue-panel h2{margin:0}

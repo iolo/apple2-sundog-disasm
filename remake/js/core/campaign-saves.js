@@ -1,4 +1,5 @@
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
+import { initialBanking, validateBanking } from './banking.js';
 import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
 import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
@@ -12,7 +13,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 11, SCOPE = 'landed-services-1';
+const VERSION = 12, SCOPE = 'landed-banking-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -29,7 +30,7 @@ function sameTree(value, expected) {
 }
 
 // `start` remains immutable; equipment is active, independently owned state.
-// Machinery stays off; navigation, power, fuel and economy changes remain gated.
+// Machinery stays off; only accounts and carried cash are active economy fields.
 export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.
@@ -37,7 +38,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
-      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue']) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=walk.snapshot(value.ship);
@@ -84,7 +85,12 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         } else if(!sameTree(value.travel,travel))fail();
       }
       const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
-      if(dialogue.cash>start.credits)fail(); // Live cash changes are lodging fees and bartender tips.
+      const economy=version>=12 ? validateBanking(value.economy) : initialBanking(start);
+      if(version<12 && dialogue.cash>start.credits)fail();
+      // Bank transfers conserve total money; lodging and tips can only lower it.
+      // Later sales/income need an explicit expansion of this save boundary.
+      if(dialogue.cash+economy.accounts.reduce((sum,a)=>sum+a.balance,0)>
+        start.credits+start.systems.reduce((sum,s)=>sum+s.bankBalance,0))fail();
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;
@@ -118,7 +124,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       }
       // Legacy interior saves remain empty until their next entry, preserving
       // the saved position without spawning an occupant on top of the player.
-      return {start,ship,equipment,travel,encounters,dialogue};
+      return {start,ship,equipment,travel,encounters,dialogue,economy};
     } catch { fail(); }
   }
   function validate(value) {
@@ -131,7 +137,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===7 && value.scope==='landed-traffic-1') ||
       (value?.version===8 && value.scope==='landed-dialogue-1') ||
       (value?.version===9 && value.scope==='landed-lodging-1') ||
-      (value?.version===10 && value.scope==='landed-taverns-1');
+      (value?.version===10 && value.scope==='landed-taverns-1') ||
+      (value?.version===11 && value.scope==='landed-services-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -144,7 +151,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start)};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:initialBanking(start)};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {

@@ -1,16 +1,17 @@
-# Campaign save boundary — through R06r
+# Campaign save boundary — through R07a
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version11, scope `landed-services-1`, and validates/upgrades version1 `landed-ship-1`,
+version12, scope `landed-banking-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
-version8 `landed-dialogue-1`, version9 `landed-lodging-1` and version10 `landed-taverns-1`.
+version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
+and version11 `landed-services-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
 
-The state has six explicit parts:
+The state has seven explicit parts:
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
@@ -24,6 +25,9 @@ The state has six explicit parts:
 - `equipment`: active installed components, validated performance and special-part
   availability. Group/socket requirements are immutable metadata. The legacy
   field name `spares` means socket requirements, not removable inventory.
+- `economy`: twelve ordered `accounts`, each with `systemId` and nonnegative
+  integer `balance`. Banking changes these accounts and `dialogue.cash` atomically.
+  Market/warehouse/cargo progress is still immutable creation data.
 - `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
   or `exchange`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
@@ -48,8 +52,10 @@ The state has six explicit parts:
   [tavern dialogue](tavern-dialogue.md).
 
 The initial inventory/location in `start` records where this campaign began.
-Current play uses `ship`, `equipment`, `travel` and `encounters`. It must never read stale initial values as live progress.
-Carried cash decreases for lodging and bartender tips and persists independently of creation cash.
+Current play uses the active state blocks, including `economy.accounts` and
+`dialogue.cash`. It must never read stale initial values as live progress.
+Carried cash can increase through withdrawals and decrease through deposits,
+lodging and bartender tips; system transfers conserve account totals.
 Other economy, ship resources and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
 
@@ -57,7 +63,7 @@ those actions later requires an explicit schema and transition update.
 
 The codec owns a copy of the supplied shipped content. It regenerates the creation
 record using recipe2 and the saved character/seed, then compares every field,
-independent of JSON object key order. Changed balances, cargo, resource levels,
+independent of JSON object key order. Changed creation balances, cargo, resource levels,
 creation RNG states, locations, old recipes and extra fields fail validation. Validation
 returns newly owned objects; it never silently repairs unsupported progress.
 
@@ -93,6 +99,16 @@ Version11 adds read-only TransStation, depot and exchange visits. Versions1–10
 reject these scenes before migration; existing version10 state carries forward
 unchanged. Their inspection pauses survival/movement and returns to the exact
 street anchor. Transactions and navigation remain unavailable. See `city-services.md`.
+
+Version12 adds active system accounts and deposit/withdraw/transfer operations.
+Versions1–11 reject the new block and retain their original carried-cash limits
+before migration; derived accounts then come from the validated creation record.
+New saves require cash and every account to be in0..32,767,999, with their combined
+total no greater than original total money. Thus withdrawals may raise cash above
+its creation value while unsupported new wealth is rejected. Lodging/tips may
+reduce total money. Future sales/income require an explicit rule expansion.
+Pending bank amounts/destinations are UI drafts, not committed or serialized state.
+See `banking.md` for source arithmetic, deliberate adaptations and tests.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
