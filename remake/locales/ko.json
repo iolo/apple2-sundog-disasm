@@ -520,5 +520,21 @@
   "dialogueSlotOccupied": "빈 소지품 칸이 없습니다. 공간을 확보한 뒤 구매하세요.",
   "dialogueSalePrice": "{item} 판매 · 수령액: {price} Cr · 현금: {cash} Cr",
   "dialogueSaleConfirm": "넘겨줄 물품을 선택하면 대금을 받습니다. 각 칸에 표시된 충전량은 판매 전까지 유지됩니다.",
-  "dialogueCashOverflow": "현금 소지 한도를 초과합니다. 먼저 은행에 예금하세요."
+  "dialogueCashOverflow": "현금 소지 한도를 초과합니다. 먼저 은행에 예금하세요.",
+  "podDepart": "포드 출발",
+  "podDock": "포드 접안",
+  "podDepartHint": "포드 출구에 도착했습니다. 화물을 운반하려면 출발하세요.",
+  "podDockHint": "여기서 포드를 접안하면 함선으로 돌아갑니다.",
+  "podExchangeHint": "포드를 타고 거래소에 들어가 화물을 옮기세요.",
+  "cargoLoading": "화물 이동",
+  "cargoPod": "포드 화물 · 2칸",
+  "cargoStore": "보관",
+  "cargoFetch": "싣기",
+  "cargoSwap": "맞바꾸기",
+  "cargoLoadingHint": "포드 화물은 보관, 창고 화물은 싣기를 선택합니다. 맞바꾸기도 가능합니다.",
+  "cargoSwapHint": "화물이 있는 포드 칸과 창고 칸을 하나씩 선택한 뒤 확인하세요.",
+  "cargoPodFull": "포드 두 칸이 모두 찼습니다. 먼저 보관하거나 맞바꾸세요.",
+  "cargoWarehouseFull": "창고가 가득 찼습니다. 먼저 싣거나 맞바꾸세요.",
+  "cargoUnavailable": "화물을 옮기려면 포드를 거래소로 가져오세요.",
+  "cargoInvalidSelection": "화물이 있는 칸을 선택하세요."
 }

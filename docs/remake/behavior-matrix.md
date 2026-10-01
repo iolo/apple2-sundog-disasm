@@ -9,7 +9,8 @@ version14 replay saves. [R07e cargo rules](cargo-loading.md) implement isolated
 Store/Fetch/Swap and audit the [personal resale route](personal-item-resale.md).
 [R07f personal trading](personal-trading.md) enables visitor purchases/sales and
 version15 sale-income saves, with242 rule groups and34 new UI checks.
-The [R07 audit](r07-completion.md) tracks remaining cargo integration.
+[R07g pod cargo](pod-cargo.md) adds local driving, loading, docking and version16
+cargo saves. The [R07 audit](r07-completion.md) tracks trader matching and closure.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 

@@ -1,5 +1,35 @@
 # SunDog web remake progress
 
+## R07g — Local pod cargo journey and version16 saves — 2026-10-01
+
+Connected the source pod exit, directional driving, cargo entrance and docking
+to the live campaign. Exported four pod SVG orientations, detached ship artwork
+and original collision masks. Pod motion uses direction-specific diagonal/X/Y
+attempts and source pointer rounding. Browser timing remains50ms; docking uses
+an explicitly documented one-pixel clear interior placement adjustment.
+
+The exchange now exposes confirmed Store/Fetch/Swap only during actual pod
+visits. Four warehouse and two pod slots preserve full lot metadata without
+money, stock or RNG changes. Ship inventory displays that same pod manifest.
+Version16 `landed-local-cargo-1` owns attachment, location, heading and cargo;
+wealth includes both containers and initial local cryogens are conserved across
+them. Versions1–15 pass historical validation before receiving an empty attached
+pod. Unsupported remote loading and detached foot interiors remain rejected.
+
+A fresh-game browser journey passes33 checks using normal controls: walk to pod,
+drive270 steps to the exchange, buy cargo, cancel/fetch/fill/swap, reload, return
+and dock loaded, inspect the ship manifest, depart again, unload and sell into
+the local bank. English/Korean loading controls fit four viewports. All247 rule groups pass. New tests
+cover actual outbound/return routes, malformed imports, migration, paid-cargo
+wealth and cryogen conservation.19 exporter tests and165 deterministic artifacts
+pass. Existing foot exchange64, visitor trading34 and city walking regressions
+also pass. No native emulator capture is claimed.
+
+See `docs/remake/pod-cargo.md` and `pod-cargo-*.json` receipts. R07 remains active:
+next complete bartender matching and its trader lifecycle, then the final R07
+requirement audit. Broader transport, unattended pod parking and depot work stay
+R08; regional travel stays R09.
+
 ## R07f — Visitor personal-item trading and version15 saves — 2026-10-01
 
 Enabled source visitor Buy/Sell/Accept branches for kinds21/22. Accepted quotes

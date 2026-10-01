@@ -8,7 +8,7 @@ seating, conversations, visitor item buying/selling, food/ale purchases and bart
 doors open read-only service visits with saved return positions.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Cargo transport, flight, combat and colony progression
+inspector remain available. Regional transport, flight, combat and colony progression
 are still pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
@@ -102,13 +102,13 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version15 saves retain local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version16 saves retain local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
 carried slot to pay. Saves replay purchases until the conversation returns;
 leaving retains completed transfers. Visitor sales use the same replay boundary;
-cargo transport remains pending. See
+local pod transport now persists cargo across driving and docking. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
 `../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
@@ -116,13 +116,22 @@ source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration is complete; its evidence and scope are recorded in
 `../docs/remake/r06-completion.md`. R07 is in progress: banking, shop/food purchases, visitor buying/selling and local warehouse trading
-are live; cargo transport and loading remain next.
+and local pod cargo transport are live; bartender trader matching and the final
+R07 audit remain.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
 unchanged. Transfers select another system and charge no fee. Saves retain only
 committed balances; a fresh load discards a pending amount. See
 `../docs/remake/banking.md`.
+
+Reach the pod exit aboard ship and choose **Drive pod**. Drive to the exchange
+cargo entrance and open **Load cargo**. Select pod cargo to Store, warehouse cargo
+to Fetch, or choose Swap and select one occupied slot in each container. Confirm
+commits the transfer. Dock horizontally beside the ship to return with cargo;
+ship inventory shows that same manifest. Save/reload preserves location and lots.
+The current route stays inside Drahew; unattended pod parking and regional travel
+remain pending. See `../docs/remake/pod-cargo.md`.
 
 At the exchange, choose a lot under **Offers** and Confirm to buy it into the
 local warehouse. Payment uses the bank first, then cash. Under **Warehouse**,
@@ -156,7 +165,6 @@ Mulmaru is distributed under OFL 1.1; see `assets/fonts/LICENSE.txt` and its
 provenance record. This browser preview introduces no claim of new rights in
 the original SunDog artwork or game content.
 
-R07e adds the tested cargo-loading core (four warehouse slots, two pod slots,
-Store/Fetch/Swap). It is not yet connected to live pod travel or campaign saves.
-See `../docs/remake/cargo-loading.md` and `../docs/remake/personal-item-resale.md`
-for the remaining integration and the source-backed visitor sale route.
+R07g connects the cargo-loading core (four warehouse slots, two pod slots,
+Store/Fetch/Swap) to local pod travel and version16 saves. See
+`../docs/remake/pod-cargo.md` for source evidence, validation and transport scope.

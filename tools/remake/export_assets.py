@@ -186,6 +186,13 @@ def build():
     exterior = [[left, right ^ pod] for left, right, pod in zip(glyph(36), glyph(37), glyph(16))]
     outputs['assets/svg/landed-ship.svg'] = svg(pixel_rows(exterior))
     images['landed-ship'] = 'assets/svg/landed-ship.svg'
+    detached = [[left, right] for left, right in zip(glyph(36), glyph(37))]
+    outputs['assets/svg/landed-ship-detached.svg'] = svg(pixel_rows(detached))
+    images['landed-ship-detached'] = 'assets/svg/landed-ship-detached.svg'
+    for index in [14, 16, 18, 20]:
+        path = f'assets/svg/pod-{index}.svg'
+        outputs[path] = svg(pixel_rows([[value] for value in glyph(index)]))
+        images[f'pod-{index}'] = path
     outputs['data/ship-walk.json'] = encode(dict(
         version=1, width=280, height=192, spawn=dict(x=54, y=110),
         spriteRows=glyph(12), collisionRows=glyph(13), backgrounds=ship_collision,
@@ -247,6 +254,8 @@ def build():
         banks=[[[[byte & 127 for byte in row] for row in tile] for tile in
                 json.loads(read(f'assets/tiles/bank{i}/rows.json'))] for i in range(4)],
         spriteRows=glyph(10), collisionRows=glyph(11), shipRows=exterior,
+        detachedShipRows=detached,
+        podGlyphs={str(i): glyph(i) for i in range(14,22)},
         collisionByteMasks=[0x55,0x2a],
         source='game21 procedures7/15/23/25; library22 procedures9/11, pattern9'))
     native = read('src/pcode/library_22.s').decode()

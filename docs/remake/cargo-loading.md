@@ -1,5 +1,9 @@
 # Cargo loading foundation — R07e
 
+Historical R07e foundation. [R07g pod cargo](pod-cargo.md) now connects these rules
+to live transport, loading controls and version16 campaign saves. The scope below
+records the earlier isolated-core checkpoint.
+
 The core now implements warehouse **Store**, **Fetch**, and **Swap** using the
 source's four warehouse slots and two pod slots. It preserves each lot's complete
 commodity, quality, origin and paid price, including cryogens. This is a core

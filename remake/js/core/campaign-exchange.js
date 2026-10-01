@@ -13,8 +13,8 @@ const items=content=>content.dialogue?.items||content.items;
 const day=ship=>Math.floor(ship.minutes/1440)%16384;
 const stamp=(offer,market)=>offer&&({...offer,demand:market.demand[number(offer.commodityId)-1],supply:market.supply[number(offer.commodityId)-1]});
 
-// R07c is local foot trading. Other cities, the pod and colony remain creation
-// data until their movement/delivery reducers can own them.
+// Only the starting city is mutable. R07g moves local lots through active pod
+// cargo; other cities and colony delivery retain their later movement scope.
 export function initialExchange(start) {
   const id=start.playerLocation.cityId;
   return {market:structuredClone(start.economy.markets.find(m=>m.cityId===id)),
@@ -27,7 +27,7 @@ export function exchangeSaleQuote(state,content,slot) {
   return quoteExchangeCargo(cargo,{market,location,originLocation:location,items:items(content)},'sell');
 }
 
-export function validateExchange(value,start,ship,travel,content) {
+export function validateExchange(value,start,ship,travel,content,{movableCargo=false}={}) {
   const initial=initialExchange(start),m=value?.market,w=value?.warehouse;
   if(!keys(value,['market','warehouse','visit'])||!keys(m,['cityId','templateIndex','demand','supply','lastUpdateDay'])||
     m.cityId!==initial.market.cityId||m.templateIndex!==initial.market.templateIndex||
@@ -38,12 +38,13 @@ export function validateExchange(value,start,ship,travel,content) {
   if(m.lastUpdateDay===-16&&['demand','supply'].some(f=>m[f].some((n,i)=>n!==initial.market[f][i])))fail();
   if(ship.minutes<16384*1440&&m.lastUpdateDay>day(ship))fail();
   const slots=w.slots.map((cargo,i)=>{
-    if(initial.warehouse.slots[i]) {
+    if(!movableCargo&&initial.warehouse.slots[i]) {
       if(!keys(cargo,['commodityId','quality','originCity','pricePaid'])||!Object.keys(cargo).every(k=>cargo[k]===initial.warehouse.slots[i][k]))fail();
       return {...initial.warehouse.slots[i]}; // Cryogens cannot be sold/moved here.
     }
     if(cargo===null)return null;
     let lot;try {lot=validateCargoLot(cargo)} catch {fail()}
+    if(movableCargo&&lot.commodityId==='cargo-31')return lot;
     if(!integer(number(lot.commodityId),2,30)||lot.originCity!==m.cityId||lot.pricePaid<100||m.lastUpdateDay===-16)fail();
     return lot;
   });
@@ -69,7 +70,8 @@ export function validateExchange(value,start,ship,travel,content) {
 
 export function reduceCampaignExchange(previous,content,map,action) {
   const {travel}=previous;
-  if(!['city','exchange'].includes(travel.scene)||cityServiceAt(map,travel.cityPosition)!=='exchange')throw new Error('exchangeUnavailable');
+  if(previous.pod?.attached===false&&(previous.pod.position?.x!==travel.cityPosition?.x||previous.pod.position?.y!==travel.cityPosition?.y))throw new Error('exchangeUnavailable');
+  if(!['city','exchange'].includes(travel.scene)||cityServiceAt(map,travel.cityPosition,previous.pod?.attached===false?'pod':'foot')!=='exchange')throw new Error('exchangeUnavailable');
   const next=structuredClone(previous),e=next.economy.exchange;
   if(action.type==='enter') {
     if(e.visit!==null)throw new Error('exchangeUnavailable');
