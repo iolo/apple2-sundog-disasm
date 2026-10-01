@@ -64,7 +64,7 @@ async browserPage => {
     await page.keyboard.down('ArrowDown');await page.clock.runFor(200);await page.keyboard.up('ArrowDown');await page.locator('#walk-airlock').click();
     await walkToBuilding(5);const street=await exportGame();await page.locator('#walk-airlock').click();
     const entered=await exportGame(),ex=s=>s.state.economy.exchange;
-    assert(entered.version===16&&entered.scope==='landed-local-cargo-1','Exchange exports version16');
+    assert(entered.version===17&&entered.scope==='landed-trader-matching-1','Exchange exports version17');
     assert(ex(entered).visit.offers.length===8&&ex(entered).market.lastUpdateDay===0,'Ordinary entry creates and persists eight offer rows');
     assert(entered.state.encounters.randomState!==street.state.encounters.randomState,'Entry advances continuing gameplay RNG');
     const cheapest=s=>ex(s).visit.offers.map((o,i)=>({o,i})).filter(r=>r.o).sort((a,b)=>a.o.price-b.o.price)[0].i;

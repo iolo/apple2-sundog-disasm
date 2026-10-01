@@ -4,7 +4,9 @@ Current milestone: a playable landed campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank deposits,
 withdrawals and inter-system transfers, local exchange purchases/warehouse sales,
 shop purchases and information, paid lodging with working bedroom doors, and tavern
-seating, conversations, visitor item buying/selling, food/ale purchases and bartender tips. TransStation and depot
+seating, conversations, visitor item buying/selling, food/ale purchases and bartender
+trader referrals. Local pod driving and warehouse Store/Fetch/Swap retain cargo
+through loaded docking. TransStation and depot
 doors open read-only service visits with saved return positions.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
@@ -92,8 +94,10 @@ seat. Visitors may approach or chat from the opposite seat. Continue advances
 small talk and jokes; Back ends the conversation. Walking releases your seat.
 If a visitor offers trade, accept a quote, then choose an empty slot to buy or a
 matching carried slot to sell. Payment occurs at handover; leaving retains the
-transfer. Charge variants are separate choices. Bartender trader matching remains
-unavailable. See `../docs/remake/personal-trading.md`.
+transfer. Charge variants are separate choices. Ask the bartender to Buy or Sell,
+select an item, then sit at a free table to meet a referred trader. Refusal clears
+the request; fresh room entry starts a new visit. See
+`../docs/remake/personal-trading.md` and `../docs/remake/trader-matching.md`.
 
 Open `/tests/` (relative to the served folder) for the dependency-free browser
 checks.
@@ -102,7 +106,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version16 saves retain local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version17 saves retain local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
@@ -114,10 +118,10 @@ local pod transport now persists cargo across driving and docking. See
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
 source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
-R06 city/building exploration is complete; its evidence and scope are recorded in
-`../docs/remake/r06-completion.md`. R07 is in progress: banking, shop/food purchases, visitor buying/selling and local warehouse trading
-and local pod cargo transport are live; bartender trader matching and the final
-R07 audit remain.
+R06 city/building exploration and R07 trading/banking are complete. Their evidence
+and boundaries are recorded in `../docs/remake/r06-completion.md` and
+`../docs/remake/r07-completion.md`. Broader ground transport, unattended pod
+parking and depot repair/fueling remain R08; intercity travel remains R09.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances

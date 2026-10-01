@@ -89,5 +89,5 @@ docks loaded, departs again, stores and sells. English/Korean viewport checks
 inspect the loading controls. Receipts are `pod-cargo-*-validation.json`.
 This is source-derived browser verification; no native emulator capture is claimed.
 
-R07 closure still needs the bartender trader-matching lifecycle and a final
-requirement-by-requirement audit. Direct visitor purchases/sales are already live.
+R07h adds [bartender trader matching](trader-matching.md). The final milestone
+audit is maintained in [R07 completion](r07-completion.md).

@@ -1,8 +1,8 @@
 # Live taverns and dialogue
 
-Current extension: [R07d shop purchases](shop-purchases.md) enables cash-paid
-item/equipment and bartender food/ale transfers with version14 replay saves.
-The checkpoint details below retain their historical scope.
+Historical R06 checkpoint. R07 adds [food purchases](shop-purchases.md),
+[visitor trading](personal-trading.md) and [bartender matching](trader-matching.md).
+The earlier gates below describe the original social-only scope.
 
 R06p enables type8 foot entry into records4–7. The player can approach the
 bartender, sit at a table, talk to the opposite visitor, receive an approaching

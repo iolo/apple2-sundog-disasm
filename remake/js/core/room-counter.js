@@ -40,7 +40,7 @@ export function requestRoomCounter(room,previous) {
   const frame=own(room,previous);
   if(frame.service==='talking')throw new Error('roomConversationActive');
   if(isTavern(room)&&playerSeatAt(room,frame.position)!==null) {
-    frame.traffic=sitRoomTraffic(room,frame.traffic,frame.position,{service:frame.service});
+    frame.traffic=sitRoomTraffic(room,frame.traffic,frame.position,{service:frame.service,solicitation:frame.solicitation});
     if(frame.traffic.tavern.contact)frame.service='talking';
     return frame;
   }
@@ -73,7 +73,7 @@ export function tickRoomCounter(room,previous) {
   const frame=own(room,previous);
   if(frame.service==='talking')return frame; // Game18 has yielded to Game16.
   if(room.index===1)frame.lodging=updateLodgingAccess(room,frame.lodging,frame.position).lodging;
-  const next=tickRoomTraffic(lodgingGeometry(room,frame.lodging),frame.traffic,frame.randomState,frame.position,{service:frame.service});
+  const next=tickRoomTraffic(lodgingGeometry(room,frame.lodging),frame.traffic,frame.randomState,frame.position,{service:frame.service,solicitation:frame.solicitation});
   frame.traffic=next.state;frame.randomState=next.randomState;frame.service=next.service;
   if(frame.traffic.tavern?.contact)frame.service='talking';
   return frame;
@@ -92,14 +92,15 @@ export function openRoomCounter(content,room,previous,context,{places}={}) {
   frame.randomState=frame.conversation.randomState;return frame;
 }
 
-// Food and direct visitor trades are supported; bartender matching stays gated.
-export function roomDialogueInputAllowed(conversation,input,{purchases=true,visitorTrades=true}={}) {
+// Historical save scopes retain their original purchase/trader input gates.
+export function roomDialogueInputAllowed(conversation,input,{purchases=true,visitorTrades=true,traderMatching=true}={}) {
   const kind=conversation.state.kind;
+  if(kind===17&&!traderMatching)return false;
   if(!purchases&&input.type==='purchase')return false;
-  if(!visitorTrades&&(input.type==='sale'||([21,22].includes(kind)&&input.type==='purchase')))return false;
-  if(![12,21,22].includes(kind))return true;
-  if(kind===12&&input.type==='item')return purchases&&[8,9].includes(input.item);
-  if(kind!==12&&visitorTrades)return true;
+  if(!visitorTrades&&(input.type==='sale'||([17,21,22].includes(kind)&&input.type==='purchase')))return false;
+  if(![12,17,21,22].includes(kind))return true;
+  if(kind===12&&input.type==='item')return purchases&&(traderMatching||[8,9].includes(input.item));
+  if((kind!==12&&visitorTrades)||(kind===12&&traderMatching))return true;
   if(input.type!=='reply')return true;
   const reply=conversation.view.replies.find(r=>r.slot===input.slot);
   return !reply||(![8,9].includes(reply.caption)&&!(kind!==12&&reply.caption===2));
@@ -112,18 +113,19 @@ export function advanceRoomCounter(content,room,previous,input,options) {
   frame.conversation=advanceDialogue(content,frame.conversation,input);
   frame.randomState=frame.conversation.randomState;
   if(!frame.conversation.ended)return {frame,outcome:null};
-  // Lodging consumes flag65 locally; other kinds still need R07/R10 return handling.
-  if(frame.conversation.state.flags[65]&&room.index!==1)throw new Error('unsupportedRoomDialogueReturn');
+  // Lodging consumes flag65; taverns keep it pending for visitor matching.
+  if(frame.conversation.state.flags[65]&&room.index!==1&&!isTavern(room))throw new Error('unsupportedRoomDialogueReturn');
   const outcome=structuredClone(frame.conversation.state),contact=frame.traffic.tavern?.contact;
-  if(outcome.flags[65]) {
+  if(outcome.flags[65]&&room.index===1) {
     const rented=rentLodging(frame.lodging,frame.randomState);
     frame.lodging=rented.lodging;frame.randomState=rented.randomState;outcome.flags[65]=false;
   }
+  frame.solicitation=outcome.flags[65] ? {item:outcome.workspace.item} : null;
   // Game18 procedure21 restores NPC motion before writing back the actual
   // speaker's mood/gate and clearing the transient return flags48..51.
   if(contact) {
     const next=finishTavernContact(room,frame.traffic,frame.randomState,frame.position,
-      {dismiss:outcome.flags[49],service:frame.service});
+      {dismiss:outcome.flags[49],service:frame.service,solicitation:frame.solicitation});
     frame.traffic=next.state;frame.randomState=next.randomState;
   }
   const speaker=frame.traffic.actors.find(a=>a.slot===(contact?.actor??0)).words;

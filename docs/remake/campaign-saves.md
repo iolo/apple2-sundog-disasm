@@ -1,11 +1,11 @@
-# Campaign save boundary — through R07g
+# Campaign save boundary — through R07h
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version16, scope `landed-local-cargo-1`, and validates/upgrades version1 `landed-ship-1`,
+version17, scope `landed-trader-matching-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, and version15 `landed-personal-trade-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, and version16 `landed-local-cargo-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -32,6 +32,12 @@ cargo slots. Both containers contribute paid costs to the wealth ceiling and
 conserve the initial local cryogens. Detached travel requires reachable pod
 geometry and pod exchange entry. Versions1–15 migrate with an attached empty pod
 after historical validation. See [pod cargo](pod-cargo.md).
+
+Version17 adds [bartender matching](trader-matching.md) using existing dialogue
+flags/workspace and visitor words. Pending flag65, kind17 contacts and visitor
+high item bytes are accepted only in this scope. Historical bartender Buy/Sell
+replay inputs stay blocked for versions1–16. Version16 pod/cargo progress is
+preserved exactly. Fresh room entry clears the request; leaving discards actors.
 
 The state has eight explicit parts:
 
@@ -127,7 +133,8 @@ history; tips, speaker mood/gate and return movement commit together at completi
 Version11 adds read-only TransStation, depot and exchange visits. Versions1–10
 reject these scenes before migration; existing version10 state carries forward
 unchanged. Their inspection pauses survival/movement and returns to the exact
-street anchor. Transactions and navigation remain unavailable. See `city-services.md`.
+street anchor. Transactions and navigation were unavailable in that version. R07 adds bank and
+exchange transactions; TransStation/depot actions remain future work. See `city-services.md`.
 
 Version12 adds active system accounts and deposit/withdraw/transfer operations.
 Versions1–11 reject the new block and retain their original carried-cash limits
@@ -171,7 +178,7 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version16 only on explicit save. The raw original slot remains the comparison
+as version17 only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Other cities, unattended pod parking, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.

@@ -16,7 +16,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 16, SCOPE = 'landed-local-cargo-1';
+const VERSION = 17, SCOPE = 'landed-trader-matching-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -88,7 +88,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
-      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
+      const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,traderMatching:version>=17,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
+      if(dialogue.flags[65]&&travel.scene==='room'&&!isTavern(roomAt(cityGeometry.rooms,cityGeometry.map,travel.cityPosition)))fail();
       if(version>=13&&!keysMatch(value.economy,['accounts','exchange',...(version>=15 ? ['personalTrade'] : [])]))fail();
       const banking=version>=12 ? validateBanking(version>=13 ? {accounts:value.economy.accounts} : value.economy) : initialBanking(start);
       const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline,{movableCargo:version>=16}) : initialExchange(start),
@@ -121,12 +122,12 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
             if(randomState!==populationCache.randomState||!populationCache.reached(travel.roomPosition))fail();
             roomState=initialRoomTraffic(populationCache.population);
           } else roomState=validateRoomTraffic(lodgingGeometry(room,travel.lodging),value.encounters.roomState,travel.roomPosition,
-            {playerRoom:lodgingGeometry(room,travel.lodging,{access:true}),
+            {traderMatching:version>=17,playerRoom:lodgingGeometry(room,travel.lodging,{access:true}),
               ...(version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {})}).state;
           counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
           if(isTavern(room)&&roomState.tavern.contact&&counter.service!=='talking')fail();
           if(counter.conversation) {
-            const restored=restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room,{purchases:version>=14,visitorTrades:version>=15});
+            const restored=restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room,{purchases:version>=14,visitorTrades:version>=15,traderMatching:version>=17});
             recordPersonalSales(economy.personalTrade,restored.conversation.state.sales,baseline.dialogue.items);
           }
         }
@@ -154,7 +155,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===12 && value.scope==='landed-banking-1') ||
       (value?.version===13 && value.scope==='landed-exchange-1') ||
       (value?.version===14 && value.scope==='landed-purchases-1') ||
-      (value?.version===15 && value.scope==='landed-personal-trade-1');
+      (value?.version===15 && value.scope==='landed-personal-trade-1') ||
+      (value?.version===16 && value.scope==='landed-local-cargo-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

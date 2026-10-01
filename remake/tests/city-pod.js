@@ -86,6 +86,15 @@ export async function cityPodTests(test,equal) {
     const stored=run(loaded,{type:'store',slot:0});reject(()=>trade(stored,{type:'sell',slot:0}),'exchangeNotNegotiable');
     equal(codec.snapshot(stored),stored);
   });
+  await test('Version16 migration preserves detached pod, loaded cargo, accounts and market progress',()=>{
+    let s=trade(arrive(fresh()),{type:'enter'});
+    const index=s.economy.exchange.visit.offers.findIndex(o=>o&&o.price<s.dialogue.cash+s.economy.accounts[0].balance);
+    equal(index>=0,true);s=trade(s,{type:'buy',slot:index});
+    const slot=s.economy.exchange.warehouse.slots.findIndex(c=>c&&c.commodityId!=='cargo-31');
+    s=run(s,{type:'fetch',slot});
+    const current=codec.make(s,0),old=structuredClone(current);old.version=16;old.scope='landed-local-cargo-1';
+    equal(codec.validate(old),current);
+  });
   await test('Version15 migrates with an attached empty pod and rejects injected transport fields',()=>{
     const current=codec.make(fresh(),0),old=structuredClone(current);old.version=15;old.scope='landed-personal-trade-1';delete old.state.pod;
     equal(codec.validate(old),current);old.state.pod=current.state.pod;reject(()=>codec.validate(old),'invalidCampaign');

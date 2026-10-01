@@ -1,8 +1,7 @@
 # Visitor personal-item trading — R07f
 
 Tavern visitors now buy and sell through the source conversation branches.
-Ordinary shops retain their existing purchase routes. Bartender trader matching
-is still gated pending its actor lifecycle. See the [source audit](personal-item-resale.md)
+Ordinary shops retain their existing purchase routes. R07h adds [bartender trader matching](trader-matching.md) and kind17 handovers. See the [source audit](personal-item-resale.md)
 for Game16 procedures37/39/41–43 and the distinction between these routes.
 
 The direct seated route reaches social state130, Sell selects a carried item in

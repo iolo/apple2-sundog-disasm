@@ -1,5 +1,40 @@
 # SunDog web remake progress
 
+## R07h — Bartender trader matching, version17 saves and R07 completion — 2026-10-01
+
+Enabled the bartender Buy/Sell referral branches. A request retains its source
+item/mode flags; ordinary room traffic reserves the seat opposite the player,
+walks the visitor there and opens kind17 dialogue. No request-specific instant
+spawn or teleport is used. Source seat and leave-coin draws are skipped only
+under their matching conditions. Refusal clears the request, trade return
+resumes the actual actor, and fresh room entry clears an abandoned referral.
+
+Referred traders use explicit carried-slot handover and the existing atomic
+cash/inventory/income boundary. Charged-item appraisal can exceed one byte in
+native local41; predicates and sale matching now handle that integer while
+removing exactly the selected inventory byte. Version17 `landed-trader-matching-1`
+preserves pending referrals, encoded visitor items and replayed handovers.
+Versions1–16 retain their historical field/input restrictions. Version16 loaded
+pod, warehouse, market and account state migrates unchanged.
+
+Validation:252 rule groups and368 UI checks pass in Chrome154. Of those,75 UI
+checks cover referral buying/selling, real walking/arrival, refusal, departure,
+fresh entry and reload before/after handover; English/Korean controls fit four
+viewports. The Korean landscape screenshot was visually inspected. Matching UI
+uses a declared pre-request fixture; the final bank, foot exchange and loaded
+pod journeys start fresh characters and use normal controls. Existing shop,
+visitor, tavern, lodging and information-dialogue regressions pass.19 exporter
+tests and165 deterministic artifacts also pass. No native emulator capture is
+claimed. See `docs/remake/trader-matching.md`, `trader-matching-validation.json`
+and `r07-final-*-validation.json`.
+
+The requirement-by-requirement audit in `docs/remake/r07-completion.md` closes
+R07 with its complete local banking/trade/cargo loop and documented source/UI
+adaptations. Updated plan, save contract and player instructions. Next: R08
+engineering and broader ground transport, including repair/fueling and unattended
+parking; intercity markets/travel remain R09 and colony delivery remains R11.
+
+
 ## R07g — Local pod cargo journey and version16 saves — 2026-10-01
 
 Connected the source pod exit, directional driving, cargo entrance and docking

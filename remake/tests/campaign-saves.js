@@ -59,7 +59,7 @@ export async function campaignSaveTests(test,equal) {
   };
   await test('Legacy campaign migration validates first, owns active equipment and preserves recipe2 identity',()=>{
     const old=legacy(),before=JSON.stringify(old),next=codec.parse(before);
-    equal(next.version,16);equal(next.scope,'landed-local-cargo-1');equal(next.state.start,old.state.start);
+    equal(next.version,17);equal(next.scope,'landed-trader-matching-1');equal(next.state.start,old.state.start);
     equal(next.state.ship,old.state.ship);equal(next.state.equipment,old.state.start.equipment.map(recalculateEquipment));
     next.state.equipment[0].units[0].components[0]=0;
     equal(JSON.stringify(old),before);equal(next.state.start,old.state.start);
@@ -87,7 +87,7 @@ export async function campaignSaveTests(test,equal) {
       db=await new Promise((resolve,reject)=>{const r=indexedDB.open(name,1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});
       await new Promise((resolve,reject)=>{const tx=db.transaction('checkpoints','readwrite');tx.objectStore('checkpoints').put(old);tx.oncomplete=resolve;tx.onabort=()=>reject(tx.error)});
       equal(await store.list(),[old]);
-      const updated=await store.save(codec.validate(old),old);equal(updated.version,16);
+      const updated=await store.save(codec.validate(old),old);equal(updated.version,17);
       let error;try{await store.save(updated,old)}catch(e){error=e.message}equal(error,'campaignChanged');
       equal(await store.list(),[updated]);
     } finally {db?.close();store.close();indexedDB.deleteDatabase(name)}

@@ -34,7 +34,7 @@ export async function campaignExchangeTests(test,equal) {
       const bad=structuredClone(bought);inject(bad);rejects(()=>codec.snapshot(bad),'invalidCampaign');
     }
     rejects(()=>run(bought,{type:'fetch',slot:0}),'exchangeInvalidSelection');equal(bought,before);
-    equal(codec.make(bought,0).version,16);
+    equal(codec.make(bought,0).version,17);
   });
   await test('Exchange entry validates the door and commits market, eight offers and RNG together',()=>{
     const s=fresh(),before=structuredClone(s),e=enter(s);equal(s,before);
@@ -78,7 +78,7 @@ export async function campaignExchangeTests(test,equal) {
   });
   await test('Version13 resumes bought cargo and stale offer prices exactly, rejecting inconsistent progress',()=>{
     const e=enter(fresh()),b=run(e,{type:'buy',slot:affordable(e)}),save=codec.make(b,0);
-    equal(save.version,16);equal(save.scope,'landed-local-cargo-1');equal(codec.parse(JSON.stringify(save)).state,b);
+    equal(save.version,17);equal(save.scope,'landed-trader-matching-1');equal(codec.parse(JSON.stringify(save)).state,b);
     const offer=b.economy.exchange.visit.offers.findIndex(Boolean);
     for(const mutate of [s=>s.economy.exchange.visit.offers[offer].price++,s=>s.economy.exchange.visit.offers[offer].supply=8,
       s=>s.economy.exchange.market.supply[0]=8,s=>s.economy.exchange.market.lastUpdateDay=1,

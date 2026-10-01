@@ -1,6 +1,6 @@
 # State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
-Current R07g writes version16 `landed-local-cargo-1` saves. Active `economy` contains
+Current R07h writes version17 `landed-trader-matching-1` saves. Active `economy` contains
 all system accounts, local `exchange:{market,warehouse,visit}` and completed
 personal-sale totals in `personalTrade:{sold,proceeds}`;
 carried cash remains in `dialogue.cash`. Confirmed trades atomically update money,
@@ -18,6 +18,11 @@ R07g connects the [cargo core](cargo-loading.md) to active `pod` ownership:
 attachment, nullable city position, heading and two cargo slots. Version16
 validates local travel, pod entrance access, total paid cargo and cryogen
 conservation. Foot visits cannot load a remote pod. See [pod cargo](pod-cargo.md).
+
+R07h enables [bartender matching](trader-matching.md). The existing flags65/66
+and workspace item own the request. Visitor words carry the requested byte;
+kind17 contacts refer to real opposite seated actors. Dialogue replay owns
+pending transfers, and historical versions cannot inject matching progress.
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a

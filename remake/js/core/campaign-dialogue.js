@@ -14,11 +14,11 @@ export function initialCampaignDialogue(start) {
   return {cash:start.credits,attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
     workspace:{lastCity:0,mood:3,quantity:1,gate:0,item:0,actor:0}};
 }
-export function validateCampaignDialogue(value,{legacyCash,visitors=false}={}) {
+export function validateCampaignDialogue(value,{legacyCash,visitors=false,traderMatching=false}={}) {
   const legacy=legacyCash!==undefined;
   if(!keys(value,legacy ? ['attributes','flags','workspace'] : ['cash','attributes','flags','workspace'])||
     (!legacy&&!integer(value.cash,0,32767999))||!array(value.attributes,5,n=>integer(n,0,255))||
-    !array(value.flags,128,b=>typeof b==='boolean')||value.flags[65]||
+    !array(value.flags,128,b=>typeof b==='boolean')||(!traderMatching&&value.flags[65])||
     !keys(value.workspace,['lastCity','mood','quantity','gate','item','actor']))fail();
   const w=value.workspace;
   if(!integer(w.lastCity,0,63)||!integer(w.mood,0,4)||w.quantity!==1||!integer(w.gate,0,1)||
@@ -59,6 +59,7 @@ function setup(state,content) {
 }
 function frameFor(state,room) {
   return {room:room.index,traffic:structuredClone(state.encounters.roomState),position:{...state.travel.roomPosition},
+    solicitation:state.dialogue.flags[65] ? {item:state.dialogue.workspace.item} : null,
     randomState:state.encounters.randomState,service:state.encounters.counter.service,conversation:null,
     ...(room.index===1 ? {lodging:structuredClone(state.travel.lodging)} : {})};
 }
@@ -113,7 +114,7 @@ export function reduceCampaignCounter(previous,content,room,action) {
     // debit cash; derived sale receipts bound any increase and commit once here.
     if(outcome.locals[104]>state.dialogue.cash+sales.reduce((sum,sale)=>sum+sale.price,0))
       throw new Error('unsupportedRoomDialogueReturn');
-    state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace},{visitors:true});
+    state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace},{visitors:true,traderMatching:true});
     state.ship.inventory.carried=[...outcome.carried];
     state.economy.personalTrade=personalTrade;
     counter.conversation=null;

@@ -12,7 +12,7 @@ export function dialogueMessage(frame,t,locale) {
 
 export function dialoguePanel({frame,assets,t,locale,message=''}) {
   const v=frame.state.locals;
-  const visitor=[21,22].includes(frame.state.kind),bartender=frame.state.kind===12;
+  const visitor=[17,21,22].includes(frame.state.kind),bartender=frame.state.kind===12;
   const scope=visitor ? (frame.view.replies.some(r=>[2,8,9].includes(r.caption)) ? 'tavernTradeScope' : '') :
     bartender ? 'tavernCounterScope' : frame.state.kind===23 ? 'lodgingScope' : 'dialogueScope';
   const choices=frame.view.replies.map(reply=>`<button id="dialogue-reply-${reply.slot}" data-dialogue-reply="${reply.slot}" ${!roomDialogueInputAllowed(frame,{type:'reply',slot:reply.slot}) ? 'disabled' : ''}>${escapeHTML(t(`dialogueReply${reply.caption}`))}</button>`).join('');

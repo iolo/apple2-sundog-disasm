@@ -16,7 +16,7 @@ const action=w=>w[7]>>>8;
 const setAction=(w,value)=>{w[7]=(w[7]&255)|(value<<8)};
 const reachableRooms=new WeakMap();
 
-export function validateRoomTraffic(room,value,player,{service=null,playerRoom=room}={}) {
+export function validateRoomTraffic(room,value,player,{service=null,playerRoom=room,traderMatching=true}={}) {
   const fail=()=>{throw new Error('invalidCampaign')};
   const keys=(v,list)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===list.length&&list.every(k=>Object.hasOwn(v,k));
   const tavern=isTavern(room);
@@ -34,7 +34,7 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
       (t.playerSeat!==null&&(!Number.isInteger(t.playerSeat)||t.playerSeat<4||t.playerSeat>9||t.playerSeat!==playerSeatAt(room,player)))||
       !Number.isInteger(t.secondary)||(t.secondary!==0&&(t.secondary<2||t.secondary>count||t.secondary===value.active)))fail();
     if(t.contact!==null&&(!keys(t.contact,['actor','kind'])||!Number.isInteger(t.contact.actor)||
-      t.contact.actor<2||t.contact.actor>count||![21,22].includes(t.contact.kind)||t.playerSeat===null))fail();
+      t.contact.actor<2||t.contact.actor>count||!(traderMatching ? [17,21,22] : [21,22]).includes(t.contact.kind)||t.playerSeat===null))fail();
   }
   if(service!==null&&!['idle','waiting','talking','served'].includes(service))fail();
   const playerWaiting=service==='waiting',b=room.population.bounds;
@@ -45,7 +45,7 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
   for(const [i,a] of state.actors.entries()) {
     const slot=i===count-1 ? 0 : i+2,w=a.words;
     if(!keys(a,['slot','words'])||a.slot!==slot||!Array.isArray(w)||w.length!==10||Object.keys(w).length!==10||!w.every(Number.isInteger))fail();
-    if(w[6]!==23*256+(slot===0 ? 3 : 24)||w[8]<0||w[8]>4||w[9]<0||w[9]>255||
+    if(w[6]!==23*256+(slot===0 ? 3 : 24)||w[8]<0||w[8]>(traderMatching&&tavern&&slot>1 ? 0xff04 : 4)||(w[8]&255)>4||w[9]<0||w[9]>255||
       w[7]<0||w[7]>0xffff||(w[7]&~((tavern&&slot>1 ? 0xf00|61 : 0x300|57)|((slot===0||tavern)&&service!==null ? 2 : 0)))||
       !(tavern&&slot>1 ? [0,2,3,4,5,6,7,8,9] : [0,2,3]).includes(action(w)))fail();
     for(const offset of [0,2])if(w[offset]<0||w[offset]>102||w[offset+1]<-7||w[offset+1]>140)fail();
@@ -61,7 +61,7 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
         [w[4],w[0],w[2]].some(y=>y<b.top+offset.y||y>b.bottom+offset.y))fail();
       for(const i of [0,2])if(!canStand({...room,collisionRows:room.counterCollisionRows},{x:w[i+1],y:w[i]}))fail();
     } else {
-      if(!reachable(position(w)))fail();
+      if(!reachable(position(w))||(w[8]>255&&!flag(w,0)))fail();
       if(flag(w,5)!==(slot===state.active||slot===state.tavern?.secondary))fail();
       if(flag(w,5)) {
         if(flag(w,3)||flag(w,2)||!(tavern ? [2,3,4,5,6,7,8,9] : [2,3]).includes(action(w)))fail();
@@ -83,7 +83,7 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
     if(contact) {
       const speaker=state.actors.find(a=>a.slot===contact.actor).words;
       if(!flag(speaker,2)||flag(speaker,5)||seats[oppositeSeat(state.tavern.playerSeat)-4]!==contact.actor||
-        (contact.kind===22&&!flag(speaker,0))||(state.active&&state.tavern.secondary))fail();
+        ([17,22].includes(contact.kind)&&!flag(speaker,0))||(contact.kind===17&&!flag(speaker,1))||(state.active&&state.tavern.secondary))fail();
     }
   }
   const counter=state.actors.at(-1).words;
@@ -102,12 +102,12 @@ export function validateRoomTraffic(room,value,player,{service=null,playerRoom=r
 }
 
 // Game18 procedures5/6/8–13/27/28. Tavern contacts yield to the host dialogue
-// controller; fresh visits do not enable item solicitation or hostile pursuit.
-export function tickRoomTraffic(room, previous, randomState, player,{service=null}={}) {
-  return stepRoomTraffic(room,previous,randomState,player,{service});
+// controller. A bartender request carries the source workspace item byte.
+export function tickRoomTraffic(room, previous, randomState, player,{service=null,solicitation=null}={}) {
+  return stepRoomTraffic(room,previous,randomState,player,{service,solicitation});
 }
 
-function stepRoomTraffic(room, previous, randomState, player,{service=null,returnContact=false,dismiss=false}={}) {
+function stepRoomTraffic(room, previous, randomState, player,{service=null,returnContact=false,dismiss=false,solicitation=null}={}) {
   if(service!==null&&!['idle','waiting','served'].includes(service))throw new Error('invalidRoomService');
   const state=structuredClone(previous),rng=sourceRandom(randomState);
   const range=(lo,hi)=>lo+rng.next()%(hi-lo+1),b=room.population.bounds,door=room.population.doorway;
@@ -119,7 +119,10 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
   const atCounter=w=>w[5]>=b.left&&w[5]<=b.right&&w[4]>=b.top&&w[4]<=b.bottom;
   function seatPlace(w) {
     if(!isTavern(room))return null;
-    let group=rng.next()%3,side=rng.next()%2,remaining=6;
+    // Procedure8 skips both random seat draws when a request is pending.
+    const matching=solicitation!==null&&state.tavern.playerSeat!==null;
+    let group=matching ? Math.trunc((state.tavern.playerSeat-4)/2) : rng.next()%3,
+      side=matching ? 0 : rng.next()%2,remaining=6;
     const seats=seatOccupants(room,state);
     while(seats[2*group+side]&&remaining>=0) {
       remaining--;side++;if(side>1){group=(group+1)%3;side=0}
@@ -131,7 +134,7 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
       // Keep ownership atomic rather than overwrite the native packed table.
       if(seats[number-4]||!canStand({...geometry,collisionRows:room.npcRows},target))continue;
       setAction(w,number);
-      if(seats[oppositeSeat(number)-4]===1){setFlag(w,0,true);setFlag(w,1,false);w[8]=4}
+      if(seats[oppositeSeat(number)-4]===1){setFlag(w,0,true);setFlag(w,1,solicitation!==null);w[8]=4|((solicitation?.item??0)<<8)}
       return target;
     }
     return null;
@@ -204,7 +207,7 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
     if(action(w)===3){setFlag(w,3,true);setFlag(w,4,false);w[9]=0;state.waiting++;setAction(w,0)}
     if(action(w)>=4) {
       const seat=action(w);setFlag(w,2,true);setAction(w,0);
-      if(state.tavern.playerSeat===oppositeSeat(seat))state.tavern.contact={actor:slot,kind:flag(w,0) ? 22 : 21};
+      if(state.tavern.playerSeat===oppositeSeat(seat))state.tavern.contact={actor:slot,kind:flag(w,0) ? (flag(w,1) ? 17 : 22) : 21};
     }
   }
   function counterTick() {
@@ -268,7 +271,7 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
       if((add&&count<threshold)||count===1)arrive();
       else {
         state.active=range(2,count);
-        const leave=rng.next()&1; // Eager draw even outside taverns.
+        const leave=solicitation===null ? rng.next()&1 : 0; // Procedure28 skips this draw during matching.
         if(leave||!isTavern(room))depart(state.active);
         else {retarget(state.active);if(!flag(actor(state.active),5))state.active=0}
       }
@@ -280,7 +283,7 @@ function stepRoomTraffic(room, previous, randomState, player,{service=null,retur
 
 // Procedure24: releasing movement in the bottom seating band claims a seat
 // and speaks to an already seated opposite visitor. Walking releases ownership.
-export function sitRoomTraffic(room,previous,player,{service=null}={}) {
+export function sitRoomTraffic(room,previous,player,{service=null,solicitation=null}={}) {
   if(!isTavern(room))throw new Error('notAtTavernSeat');
   const state=validateRoomTraffic(room,previous,player,{service}).state,seat=playerSeatAt(room,player);
   if(seat===null)throw new Error('notAtTavernSeat');
@@ -293,7 +296,7 @@ export function sitRoomTraffic(room,previous,player,{service=null}={}) {
     // A third moving visitor cannot fit the two source mover slots on return.
     // Defer a new player request until one slot is free, without losing actors.
     if(state.active&&state.tavern.secondary)throw new Error('roomTrafficBusy');
-    state.tavern.contact={actor:slot,kind:21};
+    state.tavern.contact={actor:slot,kind:flag(w,0)&&flag(w,1)&&solicitation!==null ? 17 : 21};
   }
   return state;
 }
@@ -307,8 +310,8 @@ export function standRoomTraffic(room,previous,player,{service=null}={}) {
 
 // Procedure21: flag49 dispatches the speaker through secondary mover123.
 // The host supplies the interpreted return flag; no conversation is invented.
-export function finishTavernContact(room,previous,randomState,player,{dismiss=false,service=null}={}) {
+export function finishTavernContact(room,previous,randomState,player,{dismiss=false,service=null,solicitation=null}={}) {
   validateRoomTraffic(room,previous,player,{service});
   if(!previous.tavern?.contact)throw new Error('roomConversationInactive');
-  return stepRoomTraffic(room,previous,randomState,player,{returnContact:true,dismiss});
+  return stepRoomTraffic(room,previous,randomState,player,{returnContact:true,dismiss,solicitation});
 }

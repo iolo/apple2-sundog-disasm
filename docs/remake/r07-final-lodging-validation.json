@@ -1,0 +1,45 @@
+{
+  "browser": "154.0.8037.57",
+  "checks": [
+    "Type11 door opens the original lodging layout and entry anchor",
+    "Lodging walk reaches 21,71",
+    "Clerk starts lodging dialogue96",
+    "Clerk quotes the source system fee",
+    "The same rental quote is localized in Korean",
+    "Lodging dialogue fits 640x480",
+    "Lodging dialogue fits 390x844",
+    "Lodging dialogue fits 844x390",
+    "Pay reaches the source rental acceptance",
+    "Version17 mid-payment save retains replayable pre-return cash",
+    "Mid-payment IndexedDB reload preserves the exact replay and cash",
+    "Returning from payment debits active cash once and preserves creation data",
+    "Rental opens the assigned room",
+    "Lodging walk reaches 28,40",
+    "Lodging walk reaches 28,22",
+    "The door closes behind the player and records the source bedroom flag",
+    "A closed-bedroom save survives fresh-page loading",
+    "Lodging walk reaches 28,40",
+    "Approaching from inside reopens the rented door",
+    "Lodging walk reaches 28,55",
+    "Lodging walk reaches 20,61",
+    "Lodging walk reaches 12,61",
+    "Leaving lodging returns to the same city doorway",
+    "Exit preserves cash and clears the bedroom flag",
+    "A new visit resets room rental access without refunding cash",
+    "Bank visit import displays the active cash remaining after lodging payment",
+    "No uncaught browser errors"
+  ],
+  "errors": [],
+  "branch": {
+    "english": "Fine, that will be 67 Cr, in advance.",
+    "korean": "감사합니다. 요금은 67 크레딧이며 선불입니다."
+  },
+  "fixture": {
+    "street": {
+      "x": 619,
+      "y": 305
+    },
+    "cash": 153,
+    "fee": 67
+  }
+}
