@@ -50,6 +50,21 @@ export async function roomSeatingTests(test,equal) {
     const opposite=tick(s,{x:43,y:86});
     equal(opposite.state.actors[0].words.slice(7,9),[1057,4]);check(opposite,{x:43,y:86});
   });
+  await test('Bartender matching skips source seat draws, retains the full item byte and supports every opposite seat',()=>{
+    for(const index of [4,5,6,7])for(const seat of [4,5,6,7,8,9]) {
+      const room=rooms[index],s=start(index),p=room.fixtures.seats[seat-4];
+      s.state.actors=[s.state.actors.at(-1)];s.state.tavern.playerSeat=seat;
+      const moved=tickRoomTraffic(room,s.state,1,p,{service:'idle',solicitation:{item:235}}),w=moved.state.actors[0].words;
+      equal(moved.randomState,270551169); // Six draws, versus eight without solicitation.
+      equal(w[8],235*256+4);equal(w[7]&3,3);equal(w[7]>>>8,4+((seat-4)^1));
+      equal(validateRoomTraffic(room,moved.state,p,{service:'idle'}).state,moved.state);
+      fail(()=>validateRoomTraffic(room,moved.state,p,{service:'idle',traderMatching:false}));
+    }
+    const room=rooms[4],s=seated(),p={x:16,y:86},w=s.state.actors[0].words;
+    w[7]|=3;w[8]=139*256+4;
+    equal(sitRoomTraffic(room,s.state,p,{service:'idle',solicitation:{item:139}}).tavern.contact,{actor:2,kind:17});
+    equal(sitRoomTraffic(room,s.state,p,{service:'idle'}).tavern.contact,{actor:2,kind:21});
+  });
   await test('Counter-to-seat retarget cancels both the waiting count and the staff follow reference',()=>{
     const s=start(4,1),w=s.state.actors[0].words;w[7]=8;w[9]=0;s.state.waiting=1;s.randomState=0;
     check(s);

@@ -42,7 +42,7 @@ export async function campaignDialogueTests(test,equal) {
       const quote=codec.make(state,0);equal(codec.parse(JSON.stringify(quote)).state,state);
       state=input(state,{type:'purchase',slot});
       equal(state.dialogue.cash,initial.dialogue.cash);equal(state.ship.inventory.carried,[0,0,0,0]);
-      const save=codec.make(state,0);equal(save.version,16);equal(codec.parse(JSON.stringify(save)).state,state);
+      const save=codec.make(state,0);equal(save.version,17);equal(codec.parse(JSON.stringify(save)).state,state);
       const old=structuredClone(save);old.version=13;delete old.state.pod;delete old.state.economy.personalTrade;old.scope='landed-exchange-1';reject(()=>codec.validate(old));
       const bad=structuredClone(save);bad.state.encounters.counter.conversation.inputs.at(-1).slot=4;reject(()=>codec.validate(bad));
       equal(restoreCampaignConversation(codec.parse(JSON.stringify(save)).state,content,room),restoreCampaignConversation(state,content,room));
@@ -51,10 +51,10 @@ export async function campaignDialogueTests(test,equal) {
     equal(ended.ship.inventory.carried,[23,23,0,0]);equal(ended.dialogue.cash,initial.dialogue.cash-spent);
     equal(ended.economy,initial.economy);equal(ended.start,initial.start);equal(ended.ship.inventory.stores,initial.ship.inventory.stores);
     equal(codec.parse(JSON.stringify(codec.make(ended,0))).state,ended);equal(JSON.stringify(state),before);
-    const old=codec.make(talking(),0);old.version=13;delete old.state.pod;delete old.state.economy.personalTrade;old.scope='landed-exchange-1';equal(codec.validate(old).version,16);
+    const old=codec.make(talking(),0);old.version=13;delete old.state.pod;delete old.state.economy.personalTrade;old.scope='landed-exchange-1';equal(codec.validate(old).version,17);
   });
   await test('Version10 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
-    const state=inRoom(),save=codec.make(state,0);equal(save.version,16);equal(save.scope,'landed-local-cargo-1');
+    const state=inRoom(),save=codec.make(state,0);equal(save.version,17);equal(save.scope,'landed-trader-matching-1');
     const old=structuredClone(save);old.version=7;delete old.state.pod;delete old.state.economy;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
     const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded,save);equal(JSON.stringify(old),before);
     old.state.encounters.counter=initialCounter();reject(()=>codec.validate(old));

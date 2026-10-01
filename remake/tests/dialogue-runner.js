@@ -22,6 +22,21 @@ export async function dialogueRunnerTests(test,equal) {
   const fail=(fn,message)=>{let actual;try{fn()}catch(e){actual=e.message}equal(actual,message)};
   const after=(seed,n)=>{const r=sourceRandom(seed);for(let i=0;i<n;i++)r.next();return r.state};
 
+  await test('Referred sellers preserve charged item handover when native appraisal exceeds a byte',()=>{
+    let overflow=false;
+    for(let randomState=0;randomState<64;randomState++) {
+      const flags=[...input.flags];flags[65]=flags[66]=true;
+      let frame=start({kind:17,randomState,flags,attributes:[0,0,0,0,0],workspace:{...input.workspace,item:235,actor:2},carried:[235,139,0,0]});
+      overflow ||= frame.state.locals[41]>255;
+      frame=advanceDialogue(content,frame,{type:'reply',slot:1});equal(frame.view.state,35);
+      frame=advanceDialogue(content,frame,{type:'reply',slot:0});equal(frame.view.state,37);
+      const price=frame.state.locals[106];
+      frame=advanceDialogue(content,frame,{type:'sale',slot:0});
+      equal(frame.state.carried,[0,139,0,0]);equal(frame.state.sales,[{item:235,price}]);
+      frame=advanceDialogue(content,frame,{type:'cancel'});equal(frame.ended,true);equal(frame.state.flags[65],false);
+    }
+    equal(overflow,true);
+  });
   await test('Every counter and information message has a Korean presentation without changing source text or RNG',async()=>{
     const [en,ko]=await Promise.all(['en','ko'].map(locale=>fetch(`../locales/${locale}.json`).then(r=>r.json())));
     const t=translator({en,ko},'ko'),frame=start();frame.state.locals[41]=23;frame.state.locals[106]=420;

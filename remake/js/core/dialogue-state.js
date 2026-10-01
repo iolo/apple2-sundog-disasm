@@ -5,17 +5,17 @@ const list=(a,length,test)=>Array.isArray(a)&&a.length===length&&Array.from(a).e
 const byte=n=>integer(n,0,255);
 const money=n=>integer(n,0,32767999); // Canonical positive library28 thousands/remainder pair.
 
-// Game16 procedures37/38/39, counter kinds12–14, visitors21/22 and lodging23. Numeric
+// Game16 procedures37/38/39, counter kinds12–14, visitors17/21/22 and lodging23. Numeric
 // local identities keep unproven field names out of gameplay semantics.
 export function setupCounterDialogue(input) {
   const {kind,system,attributes,carried,flags,workspace,city,hour,surface,cash,randomState}=input??{};
-  if(![12,13,14,21,22,23].includes(kind)||typeof system?.local16!=='boolean'||
+  if(![12,13,14,17,21,22,23].includes(kind)||typeof system?.local16!=='boolean'||
     ![29,30,31,32].every(n=>integer(system[`local${n}`],0,15))||
     !list(attributes,5,byte)||!list(carried,4,byte)||!list(flags,128,b=>typeof b==='boolean')||
     !integer(workspace?.lastCity,0,63)||!integer(workspace?.mood,0,4)||
     !byte(workspace?.quantity)||!byte(workspace?.gate)||!integer(city,1,63)||!integer(hour,0,23)||
     !integer(surface?.x,0,63)||!integer(surface?.y,0,31)||!money(cash)||
-    (kind===22&&!byte(workspace?.item)))throw new Error('invalidDialogueSetup');
+    ([17,22].includes(kind)&&!byte(workspace?.item)))throw new Error('invalidDialogueSetup');
   sourceRandom(randomState); // Validate, but do not draw: setup38 is a flag-fill loop.
   const thresholds=[11+Math.trunc((16-system.local32)/6),15+Math.trunc((16-system.local32)/2),
     23+2*Math.trunc((system.local31-1)/3)];
@@ -34,12 +34,12 @@ export function setupCounterDialogue(input) {
     else if((item&31)===11)count6+=2;
   }
   const fee=kind===23 ? 8*system.local30+3 : 0;
-  if(kind===22)nextFlags[66]=false;
-  return {randomState,state:{kind,entry:({12:16,13:80,14:81,21:48,22:33,23:96})[kind],attributes:[...attributes],carried:[...carried],flags:nextFlags,
+  if([17,22].includes(kind))nextFlags[66]=false;
+  return {randomState,state:{kind,entry:({12:16,13:80,14:81,17:32,21:48,22:33,23:96})[kind],attributes:[...attributes],carried:[...carried],flags:nextFlags,
     workspace:nextWorkspace,locals:{
       4:26+(surface.x+surface.y)%9,5:30,6:count6,7:count7,14:0,15:false,16:system.local16,
-      17:null,18:kind===22&&flags[66],20:workspace.gate!==0,29:system.local29,30:system.local30,
-      31:system.local31,32:system.local32,33:kind===22 ? 4 : workspace.mood,36:null,40:system.local30,41:kind===22 ? workspace.item : 0,
+      17:null,18:[17,22].includes(kind)&&flags[66],20:workspace.gate!==0,29:system.local29,30:system.local30,
+      31:system.local31,32:system.local32,33:[17,22].includes(kind) ? 4 : workspace.mood,36:null,40:system.local30,41:[17,22].includes(kind) ? workspace.item : 0,
       53:[0,0,0],87:thresholds,100:Math.min(cash,fee),102:0,104:cash,106:fee,108:kind===23 ? `${fee} Cr` : '',124:''}}};
 }
 
@@ -70,7 +70,7 @@ export function evaluateDialoguePredicate(code, previous, randomState, items) {
   if(!integer(code,-32768,255)||!integer(previous?.kind,0,255)||
     !list(previous?.attributes,5,byte)||!list(previous?.flags,128,b=>typeof b==='boolean')||
     !byte(previous?.workspace?.quantity)||!l||![4,5].every(n=>integer(l[n],-32768,32767))||
-    ![6,7].every(n=>integer(l[n],0,8))||!integer(l[29],0,15)||!integer(l[33],0,4)||!byte(l[41])||
+    ![6,7].every(n=>integer(l[n],0,8))||!integer(l[29],0,15)||!integer(l[33],0,4)||!integer(l[41],0,383)||
     ![18,20].every(n=>typeof l[n]==='boolean')||![100,102,104,106].every(n=>money(l[n])))
     throw new Error('invalidDialoguePredicateState');
   const state=structuredClone(previous),v=state.locals,random=sourceRandom(randomState);

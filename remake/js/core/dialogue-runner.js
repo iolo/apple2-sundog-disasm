@@ -70,7 +70,7 @@ export function startCounterConversation(content,setup,{places}={}) {
 // from a stale panel left over by a quote, information or impatience record.
 export function dialoguePurchase(content,frame) {
   const s=frame.state,v=s.locals;
-  if(frame.ended||![12,13,14,21,22].includes(s.kind)||v[18]||v[19]||
+  if(frame.ended||![12,13,14,17,21,22].includes(s.kind)||v[18]||v[19]||
     !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
   const item=frame.panel?.items?.[0];
   if(frame.panel?.items?.length!==1||!Number.isInteger(item)||item<=7||item>255||
@@ -80,9 +80,11 @@ export function dialoguePurchase(content,frame) {
 
 export function dialogueSale(content,frame) {
   const s=frame.state,v=s.locals;
-  if(frame.ended||![21,22].includes(s.kind)||!v[18]||v[19]||!saleItem(v[41])||
+  if(frame.ended||![17,21,22].includes(s.kind)||!v[18]||v[19]||!saleItem(v[41]&255)||
     !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
-  return {item:v[41],price:v[106],cash:v[104]};
+  // Source local41 is a word: appraisal can add128 to an already charged byte.
+  // Only the type selects a sale; the chosen inventory byte is handed over.
+  return {item:v[41]&255,price:v[106],cash:v[104]};
 }
 
 // Explicit browser inputs replace pointer hit-testing and CPU-loop timing.

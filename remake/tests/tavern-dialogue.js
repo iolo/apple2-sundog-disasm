@@ -61,7 +61,7 @@ export async function tavernDialogueTests(test,equal) {
     equal(sold.state.dialogue.cash,offer.state.dialogue.cash);equal(sold.state.ship.inventory,offer.state.ship.inventory);
     equal(sold.state.economy.personalTrade,initialPersonalTrade());equal(JSON.stringify(offer.state),before);
     const saved=codec.make(sold.state,0),loaded=codec.parse(JSON.stringify(saved)).state;
-    equal(saved.version,16);equal(saved.scope,'landed-local-cargo-1');equal(restoreCampaignConversation(loaded,content,room).conversation,sold.conversation);
+    equal(saved.version,17);equal(saved.scope,'landed-trader-matching-1');equal(restoreCampaignConversation(loaded,content,room).conversation,sold.conversation);
     const done=act(loaded,{type:'dialogue',input:{type:'cancel'}}).state;
     equal(done.ship.inventory.carried,[139,0,23,0]);equal(done.dialogue.cash,offer.state.dialogue.cash+price);
     equal(done.economy.personalTrade.sold[11],1);equal(done.economy.personalTrade.proceeds[11],price);
@@ -95,12 +95,94 @@ export async function tavernDialogueTests(test,equal) {
     }
     equal(JSON.stringify(save),before);
   });
-  await test('Tavern setup selects three source entries and consumes the incoming mode flag only for kind22',()=>{
-    for(const kind of [12,21,22]) {
+  function bartenderRequest(selling) {
+    let s=state();const p=populateRoom(room,0),travel=s.travel,encounters=s.encounters;
+    s.travel={scene:'bank',cityPosition:{x:369,y:299}};s.encounters={...encounters,roomSeed:null,roomState:null,counter:null};
+    s=reduceCampaignBank(s,city.map,{type:'withdraw',amount:5000});s.travel=travel;s.encounters=encounters;
+    s.travel.roomPosition={x:30,y:31};s.ship.inventory.carried=[0,0,139,140];
+    const traffic=initialRoomTraffic(p,room);traffic.actors=[traffic.actors.at(-1)];traffic.waiting=0;
+    let frame=createRoomCounter(room,traffic,13,s.travel.roomPosition);frame.service='talking';
+    frame=openRoomCounter(dialogue,room,frame,{...context,cash:s.dialogue.cash,carried:s.ship.inventory.carried,
+      surface:s.start.playerLocation.surfacePosition},{places});
+    s.encounters={randomState:frame.randomState,roomSeed:0,roomState:frame.traffic,counter:{service:'talking',conversation:{seed:13,inputs:[]}}};
+    let result=reply(s,2);result=reply(result.state,2);
+    result=act(result.state,{type:'dialogue',input:{type:'offer',direction:'increase',step:10}});
+    result=reply(result.state,2);equal(result.conversation.view.state,26);
+    result=reply(result.state,selling ? 2 : 1);equal(result.conversation.view.state,selling ? 27 : 28);
+    const selection=codec.make(result.state,0),old=structuredClone(selection);old.version=16;old.scope='landed-local-cargo-1';
+    reject(()=>codec.validate(old));
+    result=act(result.state,{type:'dialogue',input:{type:'item',item:selling ? 139 : 15}});
+    equal(result.conversation.view.state,29);
+    result=act(result.state,{type:'dialogue',input:{type:'timeout'}});
+    equal(result.conversation,null);equal(result.state.dialogue.flags.slice(65,67),[true,selling]);
+    equal(result.state.dialogue.workspace.item,selling ? 139 : 15);
+    equal(result.state.ship.inventory.carried,s.ship.inventory.carried);
+    equal(result.state.dialogue.cash,s.dialogue.cash-10);
+    return result.state;
+  }
+  function matchedTrader(pending) {
+    let result=act(pending,{type:'move',position:{x:16,y:86}});
+    result=act(result.state,{type:'request'});
+    equal(result.state.encounters.roomState.tavern.playerSeat,4);
+    let ticks=0,walking=false;
+    while(!result.conversation&&ticks++<5000) {
+      result=act(result.state,{type:'tick'});
+      if(result.state.encounters.roomState.actors.some(a=>a.slot>1&&(a.words[7]&2)))walking=true;
+      if(ticks%25===0)equal(codec.snapshot(result.state),result.state);
+    }
+    equal(walking,true);equal(result.conversation?.state.kind,17);
+    equal(result.conversation.view.state,32);equal(result.state.encounters.roomState.tavern.contact.kind,17);
+    return result;
+  }
+  await test('Bartender Buy and Sell requests recruit a real seated trader, replay transfers and clear matching on return',()=>{
+    for(const selling of [false,true]) {
+      const pending=bartenderRequest(selling),before=JSON.stringify(pending),saved=codec.make(pending,0);
+      equal(saved.version,17);equal(saved.scope,'landed-trader-matching-1');
+      const loaded=codec.parse(JSON.stringify(saved)).state;
+      const matched=matchedTrader(loaded);equal(matchedTrader(pending),matched);equal(JSON.stringify(pending),before);
+      equal(matched.conversation.state.locals[18],selling);equal(matched.conversation.state.flags[66],false);
+      equal(matched.conversation.state.locals[41]&31,selling ? 11 : 15);
+      const contactSave=codec.make(matched.state,0);
+      equal(restoreCampaignConversation(codec.validate(contactSave).state,content,room).conversation,matched.conversation);
+      let result=reply(matched.state,1);equal(result.conversation.view.state,selling ? 35 : 34);
+      result=reply(result.state,0);equal(result.conversation.view.state,37);
+      const price=result.conversation.state.locals[106],item=result.conversation.state.locals[41];
+      const offered=result.state,offerSnapshot=JSON.stringify(offered);
+      reject(()=>act(offered,{type:'dialogue',input:{type:selling ? 'sale' : 'purchase',slot:selling ? 0 : 2}}),selling ? 'invalidDialogueSale' : 'dialogueSlotOccupied');
+      equal(JSON.stringify(offered),offerSnapshot);
+      result=act(offered,{type:'dialogue',input:{type:selling ? 'sale' : 'purchase',slot:selling ? 2 : 0}});
+      equal(result.state.ship.inventory,pending.ship.inventory);equal(result.state.dialogue.cash,pending.dialogue.cash);
+      const paid=codec.parse(JSON.stringify(codec.make(result.state,0))).state;
+      result=act(paid,{type:'dialogue',input:{type:'cancel'}});
+      equal(result.conversation,null);equal(result.state.dialogue.flags.slice(65,67),[false,false]);
+      equal(result.state.dialogue.workspace.item,0);equal(result.state.dialogue.cash,pending.dialogue.cash+(selling ? price : -price));
+      equal(result.state.ship.inventory.carried,selling ? [0,0,0,140] : [item,0,139,140]);
+      equal(result.state.economy.personalTrade.sold[11],selling ? 1 : 0);
+      equal(result.state.economy.personalTrade.proceeds[11],selling ? price : 0);
+      equal(result.state.economy.accounts,pending.economy.accounts);equal(codec.snapshot(result.state),result.state);
+      equal(act(paid,{type:'dialogue',input:{type:'cancel'}}),result);
+      equal(result.state.encounters.roomState.tavern.contact,null);
+      equal(result.state.encounters.roomState.tavern.secondary>1,true);
+    }
+  });
+  await test('Matched trader refusal clears the request without a transfer, and version16 cannot import matching progress',()=>{
+    const pending=bartenderRequest(true),matched=matchedTrader(pending);
+    for(const state of [pending,matched.state]) {
+      const old=codec.make(state,0);old.version=16;old.scope='landed-local-cargo-1';reject(()=>codec.validate(old));
+    }
+    const clean=codec.make(state(),0),old=structuredClone(clean);old.version=16;old.scope='landed-local-cargo-1';equal(codec.validate(old),clean);
+    const ended=act(matched.state,{type:'dialogue',input:{type:'cancel'}}).state;
+    equal(ended.dialogue.flags.slice(65,67),[false,false]);equal(ended.ship.inventory,pending.ship.inventory);
+    equal(ended.dialogue.cash,pending.dialogue.cash);equal(ended.economy,pending.economy);equal(codec.snapshot(ended),ended);
+    const malformed=codec.make(matched.state,0);malformed.state.encounters.roomState.actors.find(a=>a.slot===malformed.state.encounters.roomState.tavern.contact.actor).words[7]&=~2;
+    reject(()=>codec.validate(malformed));
+  });
+  await test('Tavern setup selects four source entries and consumes the incoming mode flag for kinds17/22',()=>{
+    for(const kind of [12,17,21,22]) {
       const input={...context,kind,randomState:12345,flags:[...context.flags],workspace:{...context.workspace,item:12,mood:1}};
       input.flags[66]=true;const before=JSON.stringify(input),s=setupCounterDialogue(input);
-      equal(s.randomState,12345);equal(s.state.entry,({12:16,21:48,22:33})[kind]);
-      equal([s.state.locals[18],s.state.locals[33],s.state.locals[41],s.state.flags[66]],kind===22 ? [true,4,12,false] : [false,1,0,true]);
+      equal(s.randomState,12345);equal(s.state.entry,({12:16,17:32,21:48,22:33})[kind]);
+      equal([s.state.locals[18],s.state.locals[33],s.state.locals[41],s.state.flags[66]],[17,22].includes(kind) ? [true,4,12,false] : [false,1,0,true]);
       equal(JSON.stringify(input),before);
     }
   });
@@ -138,7 +220,7 @@ export async function tavernDialogueTests(test,equal) {
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,16);equal(save.scope,'landed-local-cargo-1');
+    const save=codec.make(result.state,0);equal(save.version,17);equal(save.scope,'landed-trader-matching-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
     const legacy=structuredClone(save);legacy.version=10;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-taverns-1';
     equal(codec.parse(JSON.stringify(legacy)),save);
