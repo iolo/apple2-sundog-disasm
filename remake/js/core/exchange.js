@@ -74,8 +74,17 @@ export function quoteExchangeCargo(cargo,{market,location,originLocation,items},
 // commodity+quality pairs are skipped without consuming the 32 empty probes.
 export function createExchangeOffers(market,location,items,random) {
   validateContext(market,location);
-  const offers=[];
-  for(let slot=0;slot<8;slot++) {
+  let offers=Array(8).fill(null);
+  for(let slot=0;slot<8;slot++)offers=replaceExchangeOffer(offers,slot,market,location,items,random);
+  return offers;
+}
+
+export function replaceExchangeOffer(board,slot,market,location,items,random) {
+  validateContext(market,location);
+  if(!Array.isArray(board)||board.length!==8||!integer(slot,0,7))fail();
+  const offers=structuredClone(board);
+  offers[slot]=null;
+  {
     const quality=draw(random)%4+draw(random)%4+1;
     let candidate=1+draw(random)%31,remaining=32,accepted=false,probes=0;
     do {
@@ -91,10 +100,10 @@ export function createExchangeOffers(market,location,items,random) {
       // The source still draws when remaining reaches zero.
       accepted=market.supply[candidate-1]>draw(random)%7||remaining<=0;
     }while(!accepted);
-    if(remaining<=0)offers.push(null);
+    if(remaining<=0)offers[slot]=null;
     else {
       const commodityId=`cargo-${String(candidate).padStart(2,'0')}`;
-      offers.push({commodityId,quality,price:quoteExchangeCargo({commodityId,quality},{market,location,items})});
+      offers[slot]={commodityId,quality,price:quoteExchangeCargo({commodityId,quality},{market,location,items})};
     }
   }
   return offers;

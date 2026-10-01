@@ -21,7 +21,7 @@ export async function loadAssets() {
     Promise.all(['en', 'ko'].map(locale => readJSON(`locales/${locale}.json`))),
   ]);
   const paths = [...Object.values(catalog.images), ...Object.values(catalog.itemImages), ...Object.values(catalog.tileBanks).flat()];
-  const [maps, images, shipWalk, shipInventory, navigation, economy, location, cityWalk, roomWalk, dialogueData] = await Promise.all([
+  const [maps, images, shipWalk, shipInventory, navigation, economy, location, cityWalk, roomWalk, dialogueData, exchange] = await Promise.all([
     readJSON(catalog.maps),
     Promise.all(paths.map(async path => [path, await loadImage(path)])),
     readJSON(catalog.shipWalk),
@@ -32,6 +32,7 @@ export async function loadAssets() {
     readJSON('data/city-walk.json'),
     readJSON('data/room-walk.json'),
     Promise.all(['dialogue','dialogue-text','items','dialogue-systems'].map(name=>readJSON(`data/${name}.json`))),
+    readJSON('data/exchange-defaults.json'),
   ]);
   await document.fonts.load('16px Mulmaru', 'SunDog 선독');
   const cityMaps=createCityMaps(maps,navigation,economy);
@@ -40,5 +41,5 @@ export async function loadAssets() {
   const cityGeometry=createCityGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
   cityGeometry.rooms=createRoomGeometries(roomWalk);
   const [scripts,text,items,systems]=dialogueData,dialogue={scripts,text,items,systems};
-  return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue,exchange}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

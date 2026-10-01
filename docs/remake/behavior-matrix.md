@@ -2,7 +2,9 @@
 
 For the current city/building milestone, see [R06 completion audit](r06-completion.md).
 Active deposits, withdrawals and inter-system transfers are traced and implemented
-in [R07a banking](banking.md); the [R07 audit](r07-completion.md) tracks trade work.
+in [R07a banking](banking.md). [R07c exchange trading](exchange-trading.md) adds
+local purchases, sales, warehouse ownership and version13 saves. The
+[R07 audit](r07-completion.md) tracks remaining shop/cargo work.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 

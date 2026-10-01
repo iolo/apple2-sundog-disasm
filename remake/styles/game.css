@@ -257,3 +257,23 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .dialogue-note{font-size:14px;line-height:1.25;color:var(--muted);margin:0}
 .dialogue-panel footer{flex-wrap:wrap;justify-content:flex-start}
 .dialogue-panel button{font-size:17px}
+
+/* Foot exchange: one scrollable price list, with fixed context and actions. */
+#service-panel.exchange-panel { width:570px; max-height:440px; padding:18px; display:flex; flex-direction:column; gap:10px; }
+.exchange-panel header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.exchange-panel h2,.exchange-panel h3,.exchange-panel p { margin:0; }
+.exchange-panel #exchange-funds { font-size:15px; }
+.exchange-tabs { display:flex; gap:12px; }
+.exchange-tabs button[aria-pressed="true"] { color:var(--amber); border-color:currentColor; }
+.exchange-list { overflow-y:auto; min-height:0; max-height:230px; }
+.exchange-list button { display:grid; grid-template-columns:1fr 44px 105px; gap:8px; width:100%; text-align:left; min-height:34px; padding:5px 8px; border-width:0 0 1px; border-radius:0; }
+.exchange-list button strong { text-align:right; font-weight:400; }
+.exchange-list button small { text-align:center; }
+.exchange-review { display:grid; gap:14px; padding:12px 0; }
+.exchange-panel #exchange-message { font-size:15px; }
+.exchange-panel footer { display:flex; gap:10px; flex-shrink:0; }
+@media (max-width:600px),(max-height:500px) { .exchange-list button { min-height:44px; } }
+
+.exchange-columns { display:grid; grid-template-columns:1fr 44px 105px; gap:8px; padding:0 8px; font-size:13px; color:var(--muted); }
+.exchange-columns span:nth-child(2) { text-align:center; }
+.exchange-columns span:last-child { text-align:right; }

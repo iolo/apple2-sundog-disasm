@@ -83,7 +83,7 @@ export async function tavernDialogueTests(test,equal) {
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,12);equal(save.scope,'landed-banking-1');
+    const save=codec.make(result.state,0);equal(save.version,13);equal(save.scope,'landed-exchange-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
     const legacy=structuredClone(save);legacy.version=10;delete legacy.state.economy;legacy.scope='landed-taverns-1';
     equal(codec.parse(JSON.stringify(legacy)),save);

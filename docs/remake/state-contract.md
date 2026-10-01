@@ -1,11 +1,12 @@
 # State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
-Current R07a banking adds `economy:{accounts:[{systemId,balance},...]}` alongside
-the existing active `dialogue.cash`. Version12 supports atomic deposits,
-withdrawals and inter-system transfers. Creation accounts remain immutable;
-legacy saves derive active accounts only after historical validation. Markets,
-warehouses and cargo remain creation data until subsequent R07 checkpoints.
-See [current campaign saves](campaign-saves.md) and [banking rules](banking.md).
+Current R07c uses version13 `landed-exchange-1` saves. Active `economy` contains
+all system accounts plus the local `exchange:{market,warehouse,visit}` block;
+carried cash remains in `dialogue.cash`. Confirmed trades atomically update money,
+warehouse slots, stock, offers and RNG. Creation data stays immutable. Earlier
+saves receive local exchange state after historical validation; other cities and
+pod cargo remain outside the active boundary. See [campaign saves](campaign-saves.md),
+[banking](banking.md) and [exchange trading](exchange-trading.md).
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a

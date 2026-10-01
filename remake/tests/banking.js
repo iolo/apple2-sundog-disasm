@@ -68,7 +68,7 @@ export async function bankingTests(test,equal) {
   });
   await test('Version12 saves preserve active accounts and migrate version11 without inventing wealth',()=>{
     const state=atBank(),next=reduceCampaignBank(state,map,{type:'withdraw',amount:1000}),saved=codec.make(next,0);
-    equal(saved.version,12);equal(codec.parse(JSON.stringify(saved)).state,next);
+    equal(saved.version,13);equal(codec.parse(JSON.stringify(saved)).state,next);
     const legacy=codec.make(state,0);legacy.version=11;legacy.scope='landed-services-1';delete legacy.state.economy;
     equal(codec.validate(legacy).state,state);
     const forged=structuredClone(legacy);forged.state.economy=state.economy;rejects(()=>codec.validate(forged),'invalidCampaign');
@@ -78,6 +78,6 @@ export async function bankingTests(test,equal) {
       s=>s.economy.accounts.pop(),s=>s.economy.stock=[],s=>delete s.economy,s=>s.dialogue.cash=MAX_CREDITS+1]) {
       const bad=structuredClone(saved);mutate(bad.state);rejects(()=>codec.validate(bad),'invalidCampaign');
     }
-    const owned=validateBanking(next.economy);owned.accounts[0].balance=0;equal(next.economy.accounts[0].balance>0,true);
+    const owned=validateBanking({accounts:next.economy.accounts});owned.accounts[0].balance=0;equal(next.economy.accounts[0].balance>0,true);
   });
 }

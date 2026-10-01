@@ -2,13 +2,13 @@
 
 Current milestone: a playable landed campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank deposits,
-withdrawals and inter-system transfers,
+withdrawals and inter-system transfers, local exchange purchases/warehouse sales,
 shop information dialogue, paid lodging with working bedroom doors, and tavern
-seating, conversations and bartender tips. TransStation, depot and exchange
+seating, conversations and bartender tips. TransStation and depot
 doors open read-only service visits with saved return positions.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Trading, flight, combat and colony progression
+inspector remain available. Shop trading, cargo transport, flight, combat and colony progression
 are still pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
@@ -95,18 +95,18 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version12 saves retain all twelve system accounts and restore open conversations
+Version13 saves retain local stock, offers, warehouse cargo and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
-after validation. Shop purchases and trade transfers remain pending. See
+after validation. Shop purchases and cargo transport remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
 `../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
 source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration is complete; its evidence and scope are recorded in
-`../docs/remake/r06-completion.md`. R07 is in progress: banking is live; shop and
-exchange transactions, warehouses and cargo handling remain next.
+`../docs/remake/r06-completion.md`. R07 is in progress: banking and local warehouse trading are live; shops and
+cargo transport remain next.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
@@ -114,10 +114,12 @@ unchanged. Transfers select another system and charge no fee. Saves retain only
 committed balances; a fresh load discards a pending amount. See
 `../docs/remake/banking.md`.
 
-R07b adds a tested ordinary exchange quote/offer engine and staged market visits.
-It preserves source rounding, quality, origin resale ceilings and RNG order.
-Campaign integration and commodity purchases remain pending; see
-`../docs/remake/exchange-quotes.md`.
+At the exchange, choose a lot under **Offers** and Confirm to buy it into the
+local warehouse. Payment uses the bank first, then cash. Under **Warehouse**,
+review and confirm a sale to deposit its proceeds in the local account. There
+are four slots; initial cryogens cannot be sold. Cancel/Escape discards a review.
+The asking price must be less than combined available funds. Saves preserve
+committed trades and current offers. See `../docs/remake/exchange-trading.md`.
 
 Development export checks:
 

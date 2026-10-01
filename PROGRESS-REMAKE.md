@@ -1,5 +1,48 @@
 # SunDog web remake progress
 
+## R07c — Local exchange trading and version13 saves — 2026-10-01
+
+Enabled foot purchases into Drahew's four-slot warehouse and sales from owned
+slots. Confirmed trades atomically update bank-first payment/local-account
+proceeds, cargo, source random0–2 stock reductions, purchased-offer replacement
+and continuing RNG. Exact available funds are insufficient under the native
+strict comparison. Capacity, funds, selection, overflow and failed quote
+generation reject without partial mutation. Initial cryogens stay protected.
+Entry refreshes first-visit/weekly quantities, then generates eight offers;
+same-day reentry preserves market/cargo and generates a new board.
+
+Added English/Korean Offers and Warehouse views with scrollable rows, quality/
+credit labels, review/Confirm/Cancel, keyboard focus and source-door return.
+Review, language changes and saving do not trade or draw RNG. Version13
+`landed-exchange-1` saves local market/warehouse state and quote bases so existing
+asking prices survive market changes and exact reloads. Earlier saves first pass
+historical validation, then receive local exchange state. Legacy exchange previews
+prepare their first board before replacing live state; pending reviews are never
+serialized. Reordered city/room coordinate keys now normalize consistently.
+The wealth bound includes stored purchase costs; no local resale creates wealth.
+Bank transfers preserve the exchange block. Creation data remains immutable.
+
+Documented deliberate adaptations in `docs/remake/exchange-trading.md`: each
+confirmation settles immediately, sales credit the local bank, offers remain
+stable while reviewing, and native idle/Pass random replacements are omitted.
+The native combined spending pool can otherwise refill a cash reserve during
+a multi-trade visit. No native transaction capture or cycle-equivalent UI claim
+is made. Other cities, pod/ship cargo transport and shops remain outside this step.
+
+Validation: Chrome154.0.8037.57 passes222 rule groups, including seven new campaign
+exchange groups plus the eight R07b quote groups. The final normal-control exchange
+walkthrough passes62 checks, banking44, service78 and full exploration90 (274 UI
+checks total). Tests cover first entry/reentry, weekly refill, bank/cash spending,
+capacity, sale ceilings, overflow, failure rollback, cryogens, fresh-page IndexedDB
+reload, quote tampering, legacy imports, and both languages in five viewport sizes.
+Offer/review screenshots were inspected. Receipts are `exchange-trading-*.json`,
+`exchange-banking-regression.json`, `exchange-services-regression.json` and
+`exchange-journey-regression.json`. `python3 tools/remake/export_assets.py --check`
+verifies all160 artifacts; `git diff --check` passes.
+
+R07 remains in progress. Next: source and implement shop item/food purchases and
+sales, then cargo ownership/loading. The supplied PRD remains untouched/untracked.
+
 ## R07b — Ordinary exchange quote and offer engine — 2026-10-01
 
 Implemented Game20 procedures16–18 price factors with truncation at each step,
