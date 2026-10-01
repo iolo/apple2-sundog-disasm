@@ -14,6 +14,25 @@ from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_exchange_defaults_match_clean_character_geography_and_price_nibbles(self):
+        root = Path(__file__).resolve().parents[2]
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        raw = bytes.fromhex(captured['worldTablesHex'])
+        data = json.loads(build()['data/exchange-defaults.json'])
+        self.assertEqual(len(data['systems']), 12)
+        self.assertEqual(len(data['worlds']), 18)
+        for i, system in enumerate(data['systems']):
+            self.assertEqual(system, dict(id=f'system-{i+1:02}',
+                priceLevel=raw[i*20+18] & 15, technologyLevel=raw[i*20+18] >> 4))
+        for i, world in enumerate(data['worlds']):
+            word = int.from_bytes(raw[254+i*16:256+i*16], 'little')
+            first, count = (word >> 9) & 63, word & 7
+            self.assertEqual(world['capitalCityId'], f'city-{(word >> 3) & 63:02}')
+            self.assertEqual(world['cityIds'], [f'city-{n:02}' for n in range(first, first+count)])
+            system = int(world['systemId'][7:])-1
+            membership = int.from_bytes(raw[system*20+10:system*20+12], 'little')
+            self.assertTrue((membership >> 2) & 31 <= i+1 < ((membership >> 2) & 31)+(membership & 3))
+
     def test_dialogue_system_defaults_match_clean_character_capture(self):
         root = Path(__file__).resolve().parents[2]
         captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())

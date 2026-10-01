@@ -1,5 +1,34 @@
 # SunDog web remake progress
 
+## R07b — Ordinary exchange quote and offer engine — 2026-10-01
+
+Implemented Game20 procedures16–18 price factors with truncation at each step,
+the intermediate-multiplication guard including its equality case, capital-city
+adjustments, and city/world/system origin resale ceilings. Ordinary fuel and
+cryogen sales are non-negotiable. Procedures21/22 supply eight entry offers,
+quality and candidate draw order, duplicate-pair exclusion, availability weighting
+and empty rows. A bounded work limit handles nonconverging inputs. The staged
+visit helper owns its RNG and returns refreshed market, offers and next RNG only
+after success; it does not mutate campaign state. Commodity value bytes are now
+verified base prices in hundreds of credits; personal-item interpretation remains
+separate. Added a deterministic static pricing/geography export and comparison
+with the existing clean-character capture. No new native price capture is claimed.
+
+Validation: `python3 -m unittest discover -s tools/remake -p test_exports.py`
+passes19 tests. `python3 tools/remake/export_assets.py --check` matches160 artifacts.
+`python3 tools/remake/browser_check.py --output docs/remake/exchange-rules-validation.json`
+passes215 Chrome154.0.8037.57 rule groups, including eight new exchange groups and
+1000 staged visit/revisit replays. Tests cover fixed price/draw examples, source
+overflow threshold, origin ceilings, no-sales goods, sparse/empty markets, invalid
+inputs, bounded failure and independent result ownership. No UI files changed.
+
+R07 remains in progress. Active campaign economy is still cash/accounts only;
+saves stay version12 and the exchange panel stays a preview. Next: active market,
+persisted offers and warehouse state, then payment/stock/cargo commits. Trace notes
+identify four warehouse/two pod slots and random0–2 demand/supply reductions.
+See `docs/remake/exchange-quotes.md` and the updated R07 completion audit.
+The supplied PRD remains untouched and untracked.
+
 ## R07a — Active bank transfers and version12 saves — 2026-10-01
 
 Implemented deposits, withdrawals and transfers to the other eleven system

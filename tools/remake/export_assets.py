@@ -76,6 +76,26 @@ def packed_quantities(raw):
     return [(words[i // 5] >> (3 * (i % 5))) & 7 for i in range(31)]
 
 
+def exchange_defaults(raw):
+    """Game20 proc5 system nibbles4/5 and proc16/19 world geography."""
+    navigation = navigation_defaults(raw)
+    systems = [dict(id=s['id'], priceLevel=raw[i*20+18] & 15,
+                    technologyLevel=raw[i*20+18] >> 4)
+               for i, s in enumerate(navigation['systems'])]
+    worlds = []
+    for i in range(18):
+        word = int.from_bytes(raw[254+i*16:256+i*16], 'little')
+        first, count, capital = (word >> 9) & 63, word & 7, (word >> 3) & 63
+        world_id = f'world-{i+1:02}'
+        if not first <= capital < first+count:
+            raise ValueError('Invalid exchange capital')
+        system_id = next(s['id'] for s in navigation['systems'] if world_id in s['worldIds'])
+        worlds.append(dict(id=world_id, systemId=system_id, capitalCityId=f'city-{capital:02}',
+                           cityIds=[f'city-{n:02}' for n in range(first, first+count)]))
+    return dict(version=1, systems=systems, worlds=worlds,
+                source='game20 procedures5/16/19; shipped world defaults')
+
+
 def starting_location(raw):
     """Utility18's static starting location, excluding the generated orbit angle."""
     if len(raw) != 1440:
@@ -201,6 +221,7 @@ def build():
                    'src/pcode/game_13.s', 'src/native/pcode_primitives.s']:
         read(source)
     outputs['data/initial-navigation.json'] = encode(navigation_defaults(defaults))
+    outputs['data/exchange-defaults.json'] = encode(exchange_defaults(defaults))
     outputs['data/initial-location.json'] = encode(starting_location(defaults))
     for source in ['src/pcode/startup_7.s', 'src/pcode/game_8.s', 'src/pcode/game_15.s', 'src/pcode/game_21.s']:
         read(source)
