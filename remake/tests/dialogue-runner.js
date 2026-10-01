@@ -56,9 +56,39 @@ export async function dialogueRunnerTests(test,equal) {
     equal(accepted.panel,{kind:'items',items:[10]});equal(accepted.view.replies,[]);
     equal(accepted.state.locals[95].slice(0,3),[9,-1,-1]);
     equal(accepted.state.locals[104],500);equal(accepted.state.carried,input.carried);
-    fail(()=>advance(accepted,{type:'item',item:10}),'invalidDialogueItem'); // Transfer is a separate, unported operation.
+    fail(()=>advance(accepted,{type:'item',item:10}),'invalidDialogueItem'); // Transfer needs an explicit destination.
     const back=advance(quote,{type:'reply',slot:2});equal(back.view.state,82);equal(back.state.locals[41],0);
     equal(JSON.stringify(original),before);
+  });
+  await test('Shop purchases pay exact cash, preserve charged bytes and continue the source conversation',()=>{
+    for(const [item,byte] of [[10,10],[11,235]]) {
+      const original=start({cash:32767999,carried:[0,141,0,140]}),quote=advance(original,{type:'item',item});
+      const accepted=advance(quote,{type:'reply',slot:1}),price=accepted.state.locals[106];
+      accepted.state.locals[104]=price;
+      const before=JSON.stringify(accepted),next=advance(accepted,{type:'purchase',slot:2});
+      equal(next.state.carried,[0,141,byte,140]);equal(next.state.locals[104],0);equal(next.view.state,82);
+      equal(JSON.stringify(accepted),before);
+      fail(()=>advance(next,{type:'purchase',slot:0}),'invalidDialoguePurchase');
+    }
+  });
+  await test('Purchase failures reject quotes, occupied destinations and insufficient cash atomically',()=>{
+    const root=start({carried:[0,141,139,140]}),quote=advance(root,{type:'item',item:10}),accepted=advance(quote,{type:'reply',slot:1});
+    for(const frame of [root,quote,advance(root,{type:'reply',slot:2})])fail(()=>advance(frame,{type:'purchase',slot:0}),'invalidDialoguePurchase');
+    const before=JSON.stringify(accepted);
+    for(const slot of [-1,4,0.5])fail(()=>advance(accepted,{type:'purchase',slot}),'invalidDialoguePurchase');
+    fail(()=>advance(accepted,{type:'purchase',slot:1}),'dialogueSlotOccupied');equal(JSON.stringify(accepted),before);
+    accepted.state.locals[104]=accepted.state.locals[106]-1;
+    const poor=JSON.stringify(accepted);fail(()=>advance(accepted,{type:'purchase',slot:0}),'dialogueInsufficientCash');equal(JSON.stringify(accepted),poor);
+    const ended=advance(accepted,{type:'cancel'});equal(ended.state.carried,accepted.state.carried);equal(ended.state.locals[104],accepted.state.locals[104]);
+  });
+  await test('Bartender food and ale pay on transfer and allow another purchase',()=>{
+    let frame=start({kind:12,cash:500,carried:[0,0,139,140]}),spent=0;
+    for(const [slot,item] of [[0,8],[1,9]]) {
+      frame=advance(frame,{type:'item',item});equal(frame.view.state,18);
+      spent+=frame.state.locals[106];frame=advance(frame,{type:'purchase',slot});equal(frame.view.state,16);
+    }
+    equal(frame.state.carried,[8,9,139,140]);equal(frame.state.locals[104],500-spent);
+    equal(advance(frame,{type:'cancel'}).state.carried,frame.state.carried);
   });
   await test('Information bank98 retains dictionary, continuation9 returns to the counter',()=>{
     const original=start(),info=advance(original,{type:'reply',slot:2});

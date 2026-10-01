@@ -252,7 +252,7 @@
   "dialogueWaiting": "점원을 기다리는 중입니다. 이동하면 취소됩니다.",
   "dialogueContinue": "계속",
   "dialogueBack": "돌아가기 / 대화 종료",
-  "dialogueScope": "상품 정보를 묻거나 가격을 확인할 수 있습니다. 구매는 아직 지원하지 않습니다.",
+  "dialogueScope": "상품 가격을 확인한 뒤 빈 소지품 칸을 선택해 구매하세요.",
   "dialogueUnavailable": "대화를 계속할 수 없습니다. 진행 상태는 유지됩니다.",
   "dialogueHistoryFull": "저장할 수 있는 대화 길이를 넘었습니다. 대화를 종료한 뒤 계속하세요.",
   "dialogueMessage94_147": "무엇을 드릴까요?",
@@ -425,7 +425,7 @@
   "tavernConversationTitle": "대화",
   "tavernCounterTitle": "바텐더",
   "tavernTradeScope": "물품 거래는 아직 지원하지 않습니다.",
-  "tavernCounterScope": "정보를 묻거나 팁을 제시할 수 있습니다. 음식 구매와 물품 거래는 아직 지원하지 않습니다.",
+  "tavernCounterScope": "음식이나 에일을 구매하거나, 정보를 묻거나, 팁을 제시할 수 있습니다.",
   "colonyViewDescription": "정착지 확장 미리 보기",
   "colonyCompletedPhases": "완료 단계",
   "serviceDoorHint": "입장하여 시설을 방문합니다.",
@@ -511,5 +511,11 @@
   "exchangeCommodity": "화물",
   "exchangeGrade": "품질",
   "exchangeCredits": "크레딧",
-  "exchangeConfirmHint": "거래하려면 확인을, 취소하려면 취소를 누르세요."
+  "exchangeConfirmHint": "거래하려면 확인을, 취소하려면 취소를 누르세요.",
+  "dialoguePurchasePrice": "{item} · {price} Cr · 현금: {cash} Cr",
+  "dialoguePurchaseSlot": "칸 {slot}: {item}",
+  "dialogueEmptySlot": "비어 있음",
+  "dialoguePurchaseConfirm": "빈 칸을 선택하면 대금을 지불하고 물품을 받습니다.",
+  "dialogueInsufficientCash": "현금이 부족합니다. 은행에서 인출한 뒤 구매하세요.",
+  "dialogueSlotOccupied": "빈 소지품 칸이 없습니다. 공간을 확보한 뒤 구매하세요."
 }

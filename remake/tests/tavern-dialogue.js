@@ -58,7 +58,9 @@ export async function tavernDialogueTests(test,equal) {
       for(let i=0;frame.service!=='talking'&&i<200;i++)frame=tickRoomCounter(r,frame);
       equal(frame.service,'talking');frame=openRoomCounter(dialogue,r,frame,context,{places});
       equal([frame.conversation.state.kind,frame.conversation.view.state],[12,16]);
-      reject(()=>advanceRoomCounter(dialogue,r,frame,{type:'item',item:8}),'unsupportedRoomTrade');
+      const food=advanceRoomCounter(dialogue,r,frame,{type:'item',item:8});
+      equal(food.frame.conversation.view.state,18);
+      reject(()=>advanceRoomCounter(dialogue,r,frame,{type:'item',item:8},{purchases:false}),'unsupportedRoomTrade');
       const returned=advanceRoomCounter(dialogue,r,frame,{type:'cancel'});
       equal(returned.frame.service,'served');equal(returned.outcome.workspace.actor,0);
       equal(validateRoomTraffic(r,returned.frame.traffic,returned.frame.position,{service:'served'}).state,returned.frame.traffic);
@@ -83,7 +85,7 @@ export async function tavernDialogueTests(test,equal) {
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,13);equal(save.scope,'landed-exchange-1');
+    const save=codec.make(result.state,0);equal(save.version,14);equal(save.scope,'landed-purchases-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
     const legacy=structuredClone(save);legacy.version=10;delete legacy.state.economy;legacy.scope='landed-taverns-1';
     equal(codec.parse(JSON.stringify(legacy)),save);
@@ -130,6 +132,26 @@ export async function tavernDialogueTests(test,equal) {
     result=act(result.state,{type:'dialogue',input:{type:'cancel'}});
     equal(result.state.dialogue.cash,s.dialogue.cash-10);equal(result.state.encounters.counter.service,'served');
     equal(codec.parse(JSON.stringify(codec.make(result.state,0))).state,result.state);
+  });
+  await test('Bartender food purchases survive replay, reject legacy injection and commit both items on return',()=>{
+    const s=state(),p=populateRoom(room,0);s.travel.roomPosition={x:30,y:31};s.ship.inventory.carried=[0,0,139,140];
+    let frame=createRoomCounter(room,initialRoomTraffic(p,room),13,s.travel.roomPosition);frame.service='talking';
+    frame=openRoomCounter(dialogue,room,frame,{...context,cash:s.dialogue.cash,carried:s.ship.inventory.carried,
+      surface:s.start.playerLocation.surfacePosition},{places});
+    s.encounters={randomState:frame.randomState,roomSeed:0,roomState:frame.traffic,counter:{service:'talking',conversation:{seed:13,inputs:[]}}};
+    let current=s,spent=0;
+    for(const [slot,item] of [[0,8],[1,9]]) {
+      let result=act(current,{type:'dialogue',input:{type:'item',item}});spent+=result.conversation.state.locals[106];
+      const accepted=codec.make(result.state,0),legacy=structuredClone(accepted);legacy.version=13;legacy.scope='landed-exchange-1';
+      reject(()=>codec.validate(legacy)); // Food selection itself was blocked in the old scope.
+      result=act(codec.parse(JSON.stringify(accepted)).state,{type:'dialogue',input:{type:'purchase',slot}});
+      current=codec.parse(JSON.stringify(codec.make(result.state,0))).state;
+      equal(restoreCampaignConversation(current,content,room).conversation,result.conversation);
+    }
+    const ended=act(current,{type:'dialogue',input:{type:'cancel'}}).state;
+    equal(ended.ship.inventory.carried,[8,9,139,140]);equal(ended.dialogue.cash,s.dialogue.cash-spent);
+    equal(ended.economy,s.economy);equal(ended.ship.condition,s.ship.condition);
+    equal(codec.parse(JSON.stringify(codec.make(ended,0))).state,ended);
   });
   await test('Every tavern message has Korean text and chosen place names survive language changes without RNG draws',()=>{
     const frame=act(state(),{type:'request'}).conversation;

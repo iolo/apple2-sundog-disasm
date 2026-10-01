@@ -57,7 +57,7 @@ export async function cityWalkTests(test,equal) {
     state.ship.position={...SHIP_REENTRY};state.travel={scene:'city',cityPosition:{...geometry.spawn}};
     state.ship.minutes=321;
     const saved=codec.make(state,0),loaded=codec.parse(JSON.stringify(saved));
-    equal(loaded,saved);equal(loaded.version,13);equal(loaded.scope,'landed-exchange-1');
+    equal(loaded,saved);equal(loaded.version,14);equal(loaded.scope,'landed-purchases-1');
     loaded.state.travel.cityPosition.x++;equal(saved.state.travel.cityPosition,geometry.spawn);
     equal(saved.state.start,fresh().start);equal(saved.state.ship.inventory.carried[0],31);
     equal(saved.state.equipment[0].units[0].performance,0);

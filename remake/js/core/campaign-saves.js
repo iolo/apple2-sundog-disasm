@@ -14,7 +14,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 13, SCOPE = 'landed-exchange-1';
+const VERSION = 14, SCOPE = 'landed-purchases-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -119,7 +119,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
               ...(version>=8 ? {service:validateCounterRecord(value.encounters.counter).service} : {})}).state;
           counter=version>=8 ? validateCounterRecord(value.encounters.counter) : initialCounter();
           if(isTavern(room)&&roomState.tavern.contact&&counter.service!=='talking')fail();
-          if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room);
+          if(counter.conversation)restoreCampaignConversation({start,ship,travel,dialogue,encounters:{randomState,roomSeed,roomState,counter}},baseline,room,{purchases:version>=14});
         }
         if(version>=7&&roomSeed===null&&value.encounters.roomState!==null)fail();
         if(version>=8&&roomSeed===null&&value.encounters.counter!==null)fail();
@@ -142,7 +142,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===9 && value.scope==='landed-lodging-1') ||
       (value?.version===10 && value.scope==='landed-taverns-1') ||
       (value?.version===11 && value.scope==='landed-services-1') ||
-      (value?.version===12 && value.scope==='landed-banking-1');
+      (value?.version===12 && value.scope==='landed-banking-1') ||
+      (value?.version===13 && value.scope==='landed-exchange-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

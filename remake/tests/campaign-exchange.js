@@ -61,7 +61,7 @@ export async function campaignExchangeTests(test,equal) {
   });
   await test('Version13 resumes bought cargo and stale offer prices exactly, rejecting inconsistent progress',()=>{
     const e=enter(fresh()),b=run(e,{type:'buy',slot:affordable(e)}),save=codec.make(b,0);
-    equal(save.version,13);equal(save.scope,'landed-exchange-1');equal(codec.parse(JSON.stringify(save)).state,b);
+    equal(save.version,14);equal(save.scope,'landed-purchases-1');equal(codec.parse(JSON.stringify(save)).state,b);
     const offer=b.economy.exchange.visit.offers.findIndex(Boolean);
     for(const mutate of [s=>s.economy.exchange.visit.offers[offer].price++,s=>s.economy.exchange.visit.offers[offer].supply=8,
       s=>s.economy.exchange.market.supply[0]=8,s=>s.economy.exchange.market.lastUpdateDay=1,

@@ -25,13 +25,36 @@ export async function campaignDialogueTests(test,equal) {
     return state;
   }
   const room=city.rooms[15],act=(state,action)=>reduceCampaignCounter(state,content,room,action).state;
-  function talking() {
-    let state=act(inRoom(),{type:'request'}),ticks=0;
+  function talking(initial=inRoom()) {
+    let state=act(initial,{type:'request'}),ticks=0;
     while(state.encounters.counter.service!=='talking'&&ticks++<500)state=act(state,{type:'tick'});
     equal(state.encounters.counter.service,'talking');return state;
   }
+  await test('Purchases replay multiple transfers, then commit cash and inventory once without changing accounts or cargo',()=>{
+    const initial=inRoom();initial.ship.inventory.carried=[0,0,0,0];
+    // Withdraw within the existing wealth bound so equipment quotes are affordable.
+    const funds=initial.economy.accounts[0].balance;initial.economy.accounts[0].balance=0;initial.dialogue.cash+=funds;
+    let state=talking(initial),spent=0;
+    const input=(s,input)=>act(s,{type:'dialogue',input});
+    for(const slot of [0,1]) {
+      state=input(state,{type:'item',item:23});state=input(state,{type:'reply',slot:1});
+      const frame=restoreCampaignConversation(state,content,room).conversation;spent+=frame.state.locals[106];
+      const quote=codec.make(state,0);equal(codec.parse(JSON.stringify(quote)).state,state);
+      state=input(state,{type:'purchase',slot});
+      equal(state.dialogue.cash,initial.dialogue.cash);equal(state.ship.inventory.carried,[0,0,0,0]);
+      const save=codec.make(state,0);equal(save.version,14);equal(codec.parse(JSON.stringify(save)).state,state);
+      const old=structuredClone(save);old.version=13;old.scope='landed-exchange-1';reject(()=>codec.validate(old));
+      const bad=structuredClone(save);bad.state.encounters.counter.conversation.inputs.at(-1).slot=4;reject(()=>codec.validate(bad));
+      equal(restoreCampaignConversation(codec.parse(JSON.stringify(save)).state,content,room),restoreCampaignConversation(state,content,room));
+    }
+    const before=JSON.stringify(state),ended=input(state,{type:'cancel'});
+    equal(ended.ship.inventory.carried,[23,23,0,0]);equal(ended.dialogue.cash,initial.dialogue.cash-spent);
+    equal(ended.economy,initial.economy);equal(ended.start,initial.start);equal(ended.ship.inventory.stores,initial.ship.inventory.stores);
+    equal(codec.parse(JSON.stringify(codec.make(ended,0))).state,ended);equal(JSON.stringify(state),before);
+    const old=codec.make(talking(),0);old.version=13;old.scope='landed-exchange-1';equal(codec.validate(old).version,14);
+  });
   await test('Version10 owns active dialogue fields and migrates version7 without changing actor/RNG progress',()=>{
-    const state=inRoom(),save=codec.make(state,0);equal(save.version,13);equal(save.scope,'landed-exchange-1');
+    const state=inRoom(),save=codec.make(state,0);equal(save.version,14);equal(save.scope,'landed-purchases-1');
     const old=structuredClone(save);old.version=7;delete old.state.economy;old.scope='landed-traffic-1';delete old.state.dialogue;delete old.state.encounters.counter;
     const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded,save);equal(JSON.stringify(old),before);
     old.state.encounters.counter=initialCounter();reject(()=>codec.validate(old));

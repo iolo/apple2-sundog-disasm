@@ -1,5 +1,9 @@
 # Live counter conversations and version8 saves — R06l
 
+Current extension: [R07d shop purchases](shop-purchases.md) enables cash-paid
+item/equipment and bartender food/ale transfers with version14 replay saves.
+The checkpoint details below retain their historical scope.
+
 R06n extends this checkpoint with [lodging](lodging.md), active cash and version9
 saves. The version8 details below describe the original replay format, retained
 under strict migration validation.

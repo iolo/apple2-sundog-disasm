@@ -92,21 +92,21 @@ export function openRoomCounter(content,room,previous,context,{places}={}) {
   frame.randomState=frame.conversation.randomState;return frame;
 }
 
-// R06 enables social conversations and tips. Food/item transfers and matching
-// a trader to an item request belong to R07, so stop before their acceptance text.
-export function roomDialogueInputAllowed(conversation,input) {
+// Counter food purchases are supported; visitor/trader matching remains gated.
+export function roomDialogueInputAllowed(conversation,input,{purchases=true}={}) {
   const kind=conversation.state.kind;
+  if(!purchases&&input.type==='purchase')return false;
   if(![12,21,22].includes(kind))return true;
-  if(kind===12&&input.type==='item')return false;
+  if(kind===12&&input.type==='item')return purchases&&[8,9].includes(input.item);
   if(input.type!=='reply')return true;
   const reply=conversation.view.replies.find(r=>r.slot===input.slot);
   return !reply||(![8,9].includes(reply.caption)&&!(kind!==12&&reply.caption===2));
 }
 
-export function advanceRoomCounter(content,room,previous,input) {
+export function advanceRoomCounter(content,room,previous,input,options) {
   const frame=own(room,previous);
   if(!frame.conversation||frame.conversation.randomState!==frame.randomState)throw new Error('roomCounterNotReady');
-  if(!roomDialogueInputAllowed(frame.conversation,input))throw new Error('unsupportedRoomTrade');
+  if(!roomDialogueInputAllowed(frame.conversation,input,options))throw new Error('unsupportedRoomTrade');
   frame.conversation=advanceDialogue(content,frame.conversation,input);
   frame.randomState=frame.conversation.randomState;
   if(!frame.conversation.ended)return {frame,outcome:null};
