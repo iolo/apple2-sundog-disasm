@@ -1,5 +1,9 @@
 # Player counter queue and dialogue return — R06k
 
+Current extension: [R07d shop purchases](shop-purchases.md) enables cash-paid
+item/equipment and bartender food/ale transfers with version14 replay saves.
+The checkpoint details below retain their historical scope.
+
 `remake/js/core/room-counter.js` connects room traffic to the dialogue runner in
 an owned core session. It supports requesting service, cancelling on movement,
 staff approach, dialogue dispatch and returning to the same populated room.

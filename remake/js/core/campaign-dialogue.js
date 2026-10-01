@@ -1,6 +1,5 @@
 import { ATTRIBUTES } from './character.js';
 import { updateLodgingAccess } from './room-lodging.js';
-import { isTavern } from './room-seating.js';
 import { requestRoomCounter, cancelRoomCounter, moveRoomCounter, tickRoomCounter,
   openRoomCounter, advanceRoomCounter } from './room-counter.js';
 
@@ -39,9 +38,10 @@ export function validateCounterRecord(value) {
   return {service:value.service,conversation:c===null ? null : {seed:c.seed,inputs:c.inputs.map(validateDialogueInput)}};
 }
 function validateDialogueInput(input) {
-  const fields={reply:['type','slot'],item:['type','item'],offer:['type','direction','step'],cancel:['type'],timeout:['type']};
+  const fields={purchase:['type','slot'],reply:['type','slot'],item:['type','item'],offer:['type','direction','step'],cancel:['type'],timeout:['type']};
   if(!Object.hasOwn(fields,input?.type)||!keys(input,fields[input.type]))fail();
   if(input.type==='reply'&&!integer(input.slot,0,2))fail();
+  if(input.type==='purchase'&&!integer(input.slot,0,3))fail();
   if(input.type==='item'&&!integer(input.item,8,255))fail();
   if(input.type==='offer'&&(!['increase','decrease'].includes(input.direction)||![1,10,100,1000,10000].includes(input.step)))fail();
   return Object.fromEntries(fields[input.type].map(k=>[k,input[k]]));
@@ -61,14 +61,14 @@ function frameFor(state,room) {
     randomState:state.encounters.randomState,service:state.encounters.counter.service,conversation:null,
     ...(room.index===1 ? {lodging:structuredClone(state.travel.lodging)} : {})};
 }
-export function restoreCampaignConversation(state,content,room) {
+export function restoreCampaignConversation(state,content,room,options) {
   const record=validateCounterRecord(state.encounters.counter),frame=frameFor(state,room);
   if(!record.conversation)return frame;
   const {context,places}=setup(state,content);
   frame.randomState=record.conversation.seed;
   let next=openRoomCounter(content.dialogue,room,frame,context,{places});
   for(const input of record.conversation.inputs) {
-    const result=advanceRoomCounter(content.dialogue,room,next,input);
+    const result=advanceRoomCounter(content.dialogue,room,next,input,options);
     if(result.outcome)fail(); // A completed conversation must already have committed its outcome.
     next=result.frame;
   }
@@ -104,12 +104,12 @@ export function reduceCampaignCounter(previous,content,room,action) {
     frame=openRoomCounter(content.dialogue,room,frame,context,{places});
   }
   if(outcome) {
-    // Lodging fees and bartender tips support R06 access/conversation. Other
-    // cash/inventory transactions remain R07; never discard an unhandled commit.
-    if((room.index!==1&&!isTavern(room)&&outcome.locals[104]!==state.dialogue.cash)||outcome.locals[104]>state.dialogue.cash||
-      JSON.stringify(outcome.carried)!==JSON.stringify(state.ship.inventory.carried))
+    // Only verified replay inputs can change carried items. Purchases and fees
+    // debit cash; personal-item sales are outside this save scope.
+    if(outcome.locals[104]>state.dialogue.cash)
       throw new Error('unsupportedRoomDialogueReturn');
     state.dialogue=validateCampaignDialogue({cash:outcome.locals[104],attributes:outcome.attributes,flags:outcome.flags,workspace:outcome.workspace},{visitors:true});
+    state.ship.inventory.carried=[...outcome.carried];
     counter.conversation=null;
   }
   counter.service=frame.service;

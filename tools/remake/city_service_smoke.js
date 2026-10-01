@@ -75,7 +75,7 @@ async browserPage => {
       await page.keyboard.press('Shift+Tab');
       assert(await page.evaluate(()=>document.activeElement.id)==='service-saves',`${scene} traps reverse focus`);
       const entered=await exportGame();
-      assert(entered.version===13&&entered.scope==='landed-exchange-1',`${scene} exports a version12 service visit`);
+      assert(entered.version===14&&entered.scope==='landed-purchases-1',`${scene} exports a version14 service visit`);
       const expected=structuredClone(street.state);expected.travel.scene=scene;
       if(scene==='exchange'){expected.economy=entered.state.economy;expected.encounters=entered.state.encounters;assert(entered.state.encounters.randomState!==street.state.encounters.randomState&&entered.state.economy.exchange.visit.offers.length===8,'Exchange entry generates live offers and advances RNG')}
       const exited=structuredClone(expected);exited.travel.scene='city';if(scene==='exchange')exited.economy.exchange.visit=null;

@@ -3,12 +3,12 @@
 Current milestone: a playable landed campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank deposits,
 withdrawals and inter-system transfers, local exchange purchases/warehouse sales,
-shop information dialogue, paid lodging with working bedroom doors, and tavern
-seating, conversations and bartender tips. TransStation and depot
+shop purchases and information, paid lodging with working bedroom doors, and tavern
+seating, conversations, food/ale purchases and bartender tips. TransStation and depot
 doors open read-only service visits with saved return positions.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Shop trading, cargo transport, flight, combat and colony progression
+inspector remain available. Personal-item resale, cargo transport, flight, combat and colony progression
 are still pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
@@ -80,6 +80,9 @@ the character, enter a seed, then start aboard the ship. See
 In a campaign, leave through the ship's airlock and walk to a building entrance.
 The Enter building button (or Enter with the walking surface focused) opens a
 supported shop, lodging or tavern interior. Approach its counter and choose **Talk**.
+At shops, select goods, accept the quote, then choose an empty carried slot to
+pay cash. Bartender food/ale selection opens the slot choice directly. Save or
+leave after a transfer to retain it; cancelling an untransferred offer costs nothing.
 Lodging staff quote a fee; Pay deducts active cash when the dialogue returns and
 assigns a numbered room. Its door opens when approached and closes behind you.
 Saves retain payment, dialogue and room access; leaving the building ends that
@@ -95,17 +98,19 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version13 saves retain local stock, offers, warehouse cargo and all twelve system accounts and restore open conversations
+Version14 saves retain local stock, offers, warehouse cargo and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
-after validation. Shop purchases and cargo transport remain pending. See
+after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
+carried slot to pay. Saves replay purchases until the conversation returns;
+leaving retains completed transfers. Item resale and cargo transport remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
 `../docs/remake/dialogue-state.md`, `../docs/remake/dialogue-runner.md` and
 `../docs/remake/room-counter.md` and `../docs/remake/dialogue-ui.md` for scope and
 source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration is complete; its evidence and scope are recorded in
-`../docs/remake/r06-completion.md`. R07 is in progress: banking and local warehouse trading are live; shops and
+`../docs/remake/r06-completion.md`. R07 is in progress: banking, shop/food purchases and local warehouse trading are live; item resale and
 cargo transport remain next.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with

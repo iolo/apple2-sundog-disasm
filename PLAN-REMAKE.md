@@ -242,7 +242,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R04 — New game and persistence | Implement verified character creation/defaults, slot selection, new/resume/delete flows, storage validation, schema versioning, export/import and a fixed-seed development fixture. | Two new games do not inherit prior-player state; four slots remain independent; save/reload across a fresh session preserves state; corrupt/unsupported imports leave saves intact. Depends on R01/R03. |
 | R05 — Playable ship | Implement movement/collision, airlock and reachable interaction points, status, inventory transfers, lockers, eating/rest and their time/condition changes. Add localized contextual help. | First playable milestone: create → explore ship → manipulate inventory/status → save → fresh reload and continue. Verify interaction reachability and state changes against targeted evidence. Depends on R04. |
 | R06 — City and building exploration **(complete, R06s)** | Integrate live city tiles, runtime map composition/variants, ship-to-city transitions, doors/interiors, basic NPC interaction and the dialogue interpreter/actions needed here. | Leave and reenter ship/buildings without losing state; known tile/door locations behave correctly; a recorded dialogue branch works in both languages. Depends on R05. |
-| R07 — Trading and banking **(in progress, R07c)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
+| R07 — Trading and banking **(in progress, R07d)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
 | R10 — Encounters and combat | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
@@ -461,6 +461,14 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R07d (2026-10-01) enables cash-paid shop/equipment and bartender
+food/ale purchases into empty carried slots. Explicit slot confirmation preserves
+source prices, exact-cash acceptance and charged item bytes. Version14 purchase
+replay survives saves before/after transfers and commits cash/items together on
+conversation return. Prior versions reject injected purchase/food inputs.
+See `docs/remake/shop-purchases.md`. Personal-item resale and cargo loading remain
+R07 work; visitor trade matching remains gated.
 
 Checkpoint R07c (2026-10-01) enables local foot exchange purchases and warehouse
 sales, bank-first payments, source stock reductions and atomic offer/RNG updates.

@@ -1,5 +1,9 @@
 # Live taverns and dialogue
 
+Current extension: [R07d shop purchases](shop-purchases.md) enables cash-paid
+item/equipment and bartender food/ale transfers with version14 replay saves.
+The checkpoint details below retain their historical scope.
+
 R06p enables type8 foot entry into records4–7. The player can approach the
 bartender, sit at a table, talk to the opposite visitor, receive an approaching
 visitor, hear small talk/jokes, offer a bartender tip, and leave/reenter.

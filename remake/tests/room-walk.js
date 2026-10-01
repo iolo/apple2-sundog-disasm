@@ -45,7 +45,7 @@ export async function roomWalkTests(test,equal) {
     const state=fresh();state.ship.position={...SHIP_REENTRY};state.ship.minutes=135;
     state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:40,y:50}};
     const save=codec.make(state,0),loaded=codec.parse(JSON.stringify(save));equal(loaded,save);
-    equal(loaded.version,13);equal(loaded.scope,'landed-exchange-1');equal(loaded.state.start,fresh().start);
+    equal(loaded.version,14);equal(loaded.scope,'landed-purchases-1');equal(loaded.state.start,fresh().start);
     loaded.state.travel.roomPosition.x++;equal(save.state.travel.roomPosition.x,40);
     for(const mutate of [s=>s.travel.cityPosition={x:369,y:299},s=>s.travel.cityPosition={x:287,y:217},
       s=>s.travel.roomPosition={x:40,y:10},s=>s.travel.roomPosition={x:40.5,y:50},s=>s.travel.roomPosition.x=140,
@@ -59,7 +59,7 @@ export async function roomWalkTests(test,equal) {
       const state=fresh();
       if(scene!=='ship'){state.ship.position={...SHIP_REENTRY};state.travel={scene,cityPosition:scene==='bank' ? {x:369,y:299} : {...city.spawn}}}
       const old=codec.make(state,0);old.version=4;delete old.state.economy;old.scope='landed-bank-1';delete old.state.encounters;delete old.state.dialogue;
-      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,{...old.state,encounters:state.encounters,dialogue:state.dialogue,economy:state.economy});equal(loaded.version,13);equal(JSON.stringify(old),before);
+      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,{...old.state,encounters:state.encounters,dialogue:state.dialogue,economy:state.economy});equal(loaded.version,14);equal(JSON.stringify(old),before);
       old.state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:12,y:56}};
       rejects(()=>codec.validate(old));
     }

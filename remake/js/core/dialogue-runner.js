@@ -64,6 +64,18 @@ export function startCounterConversation(content,setup,{places}={}) {
   return enterDialogueState(content,frame,frame.state.entry);
 }
 
+// An action1 display is the native draggable offer. Never infer acceptance
+// from a stale panel left over by a quote, information or impatience record.
+export function dialoguePurchase(content,frame) {
+  const s=frame.state,v=s.locals;
+  if(frame.ended||![12,13,14].includes(s.kind)||v[18]||v[19]||
+    !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
+  const item=frame.panel?.items?.[0];
+  if(frame.panel?.items?.length!==1||!Number.isInteger(item)||item<=7||item>255||
+    (s.kind===12&&![8,9].includes(item)))return null;
+  return {item,price:v[106],cash:v[104]};
+}
+
 // Explicit browser inputs replace pointer hit-testing and CPU-loop timing.
 // Timeout is a caller event in source delay units, not a wall-clock assertion.
 export function advanceDialogue(content,previous,input) {
@@ -71,6 +83,17 @@ export function advanceDialogue(content,previous,input) {
   const frame=structuredClone(previous),s=frame.state,v=s.locals;
   let target,offerStep;
   switch(input.type) {
+    case 'purchase':{
+      const offer=dialoguePurchase(content,frame);
+      if(!offer||!Number.isInteger(input.slot)||input.slot<0||input.slot>=4)throw new Error('invalidDialoguePurchase');
+      if(s.carried[input.slot]!==0)throw new Error('dialogueSlotOccupied');
+      if(!Number.isInteger(offer.price)||offer.price<0||offer.price>32767999)throw new Error('unsupportedDialogueMoney');
+      if(offer.price>offer.cash)throw new Error('dialogueInsufficientCash');
+      // Game16 procedures40–43: transfer the complete byte, pay price106,
+      // extend delay, then execute the action's continuation (usually9 or16).
+      s.carried[input.slot]=offer.item;v[104]-=offer.price;v[43]+=2;
+      v[41]=offer.item;target=v[95][0];break;
+    }
     case 'reply':{
       const reply=frame.view.replies.find(r=>r.slot===input.slot);
       if(!reply)throw new Error('invalidDialogueReply');

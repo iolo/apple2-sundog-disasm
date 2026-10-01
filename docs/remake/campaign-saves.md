@@ -1,15 +1,22 @@
-# Campaign save boundary — through R07c
+# Campaign save boundary — through R07d
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version13, scope `landed-exchange-1`, and validates/upgrades version1 `landed-ship-1`,
+version14, scope `landed-purchases-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1` and version12 `landed-banking-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, and version13 `landed-exchange-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
+
+Version14 adds explicit `purchase` replay inputs for cash-paid shop and bartender
+items. Accepted quotes do not pay until an empty carried destination is chosen.
+Working cash/items reconstruct from the input log and commit together on return;
+versions1–13 cannot inject these inputs or bartender food selection. No new
+economy fields are needed because purchases only reduce cash. See
+[shop purchases](shop-purchases.md).
 
 The state has seven explicit parts:
 
@@ -143,7 +150,7 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version13 only on explicit save. The raw original slot remains the comparison
+as version14 only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Other cities, pod cargo transport, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.

@@ -91,12 +91,13 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     try {
       const result=reduceCampaignCounter(liveCampaign(),assets.campaignContent,currentRoom(),action);
       encounters=result.state.encounters;campaignDialogue=result.state.dialogue;dialogueFrame=result.conversation;dialogueError='';
+      inventory=result.state.ship.inventory;campaignEconomy=result.state.economy;
       travel=result.state.travel;
       roomPopulation={actors:encounters.roomState.actors,geometry:roomActorGeometry(roomGeometry(),encounters.roomState.actors)};
       if(dialogueFrame||action.type==='dialogue'){stop();state.paused=true;roomElapsed=0;survival={...survival,elapsed:0}}
       return true;
     } catch(error) {
-      dialogueError=error.message==='dialogueHistoryFull' ? 'dialogueHistoryFull' :
+      dialogueError=['dialogueHistoryFull','dialogueSlotOccupied','dialogueInsufficientCash'].includes(error.message) ? error.message :
         error.message==='roomTrafficBusy' ? 'tavernBusy' : error.message==='tavernSeatReserved' ? 'tavernReserved' : 'dialogueUnavailable';
       roomMessage=dialogueError;stop();state.paused=true;return false;
     }
@@ -467,8 +468,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       render();return;
     }
     if(dialogueFrame) {
-      const reply=event.target.closest('[data-dialogue-reply]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]'),offer=event.target.closest('[data-dialogue-offer]');
-      const input=reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} :
+      const reply=event.target.closest('[data-dialogue-reply]'),purchase=event.target.closest('[data-dialogue-purchase]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]'),offer=event.target.closest('[data-dialogue-offer]');
+      const input=purchase ? {type:'purchase',slot:Number(purchase.dataset.dialoguePurchase)} : reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} :
         offer ? {type:'offer',direction:offer.dataset.dialogueOffer,step:Number(offer.dataset.step)} : null;
       if(input){counterAction({type:'dialogue',input});render();return}
     }

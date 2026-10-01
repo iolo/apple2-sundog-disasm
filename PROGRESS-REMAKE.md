@@ -1,5 +1,37 @@
 # SunDog web remake progress
 
+## R07d — Shop/food purchases and version14 replay saves — 2026-10-01
+
+Enabled cash-paid purchases at item/equipment counters and bartender food/ale
+purchases into empty carried slots. Shop quote acceptance alone spends nothing;
+choosing a destination transfers the full encoded byte, debits source price106
+and executes the source continuation. Exact cash is accepted. Repeated purchases
+work in one conversation; occupied slots, insufficient cash, invalid destinations
+and inputs outside an offer reject without partial mutation. Existing charged
+items, condition, locker/stores, accounts, warehouse and creation data survive.
+
+Added English/Korean purchase summaries, four carried destinations and explicit
+cash/capacity feedback. Keyboard activation works. Version14 `landed-purchases-1`
+saves explicit purchase inputs; working items/cash reconstruct on replay and
+commit together on conversation return. Saving or leaving after a transfer keeps
+it. Versions1–13 migrate under their historical input rules, rejecting injected
+purchase inputs and previously unsupported bartender food selection. No new
+income ledger is needed for cash-decreasing purchases.
+
+Source evidence and browser adaptations are recorded in
+`docs/remake/shop-purchases.md`. Empty-slot confirmation replaces native dragging;
+direct counter consumption, swaps, personal-item resale and trader matching are
+not claimed. No native emulator capture was made. R07 remains incomplete:
+next trace personal-item resale/save accounting, then warehouse/pod/ship loading.
+
+Validation: Chrome154 passes **227 rule groups** and **226 UI checks** across
+shop purchases29, tavern/food43, exchange64, banking44, information dialogue19,
+and lodging27. Version13 traded-save migration preserves cargo, balances, quotes
+and RNG; earlier exchange previews still initialize once. English/Korean layouts
+and fresh-page saves pass. `export_assets.py --check` verifies160 deterministic
+artifacts; `git diff --check` passes. Receipts are `docs/remake/shop-*.json`.
+The supplied untracked `PRD-REMAKE.md` remains unchanged and outside the commit.
+
 ## R07c — Local exchange trading and version13 saves — 2026-10-01
 
 Enabled foot purchases into Drahew's four-slot warehouse and sales from owned

@@ -252,7 +252,7 @@
   "dialogueWaiting": "Waiting for the clerk. Move away to cancel.",
   "dialogueContinue": "Continue",
   "dialogueBack": "Back / leave",
-  "dialogueScope": "Ask about goods or request a quote. Purchases are not available yet.",
+  "dialogueScope": "Choose goods for a quote, then buy into an empty carried slot.",
   "dialogueUnavailable": "This conversation could not continue. Your progress is unchanged.",
   "dialogueHistoryFull": "This conversation is too long to save. Leave the conversation to continue.",
   "dialogueMessage94_147": "What can I get you?",
@@ -425,7 +425,7 @@
   "tavernConversationTitle": "Conversation",
   "tavernCounterTitle": "Bartender",
   "tavernTradeScope": "Item trading is not available yet.",
-  "tavernCounterScope": "Ask for information or offer a tip. Food and item trading are not available yet.",
+  "tavernCounterScope": "Choose food or ale to carry, ask for information, or offer a tip.",
   "colonyViewDescription": "Colony growth preview",
   "colonyCompletedPhases": "Completed phases",
   "serviceDoorHint": "Enter to visit this service.",
@@ -511,5 +511,11 @@
   "exchangeCommodity": "Commodity",
   "exchangeGrade": "Grade",
   "exchangeCredits": "Credits",
-  "exchangeConfirmHint": "Confirm to trade, or cancel."
+  "exchangeConfirmHint": "Confirm to trade, or cancel.",
+  "dialoguePurchasePrice": "{item} · {price} Cr · Cash: {cash} Cr",
+  "dialoguePurchaseSlot": "Slot {slot}: {item}",
+  "dialogueEmptySlot": "empty",
+  "dialoguePurchaseConfirm": "Choose an empty slot to pay and take this item.",
+  "dialogueInsufficientCash": "Not enough cash. Withdraw money at the bank before buying.",
+  "dialogueSlotOccupied": "No empty carried slot. Make room before buying."
 }

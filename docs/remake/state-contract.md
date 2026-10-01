@@ -1,12 +1,14 @@
 # State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
-Current R07c uses version13 `landed-exchange-1` saves. Active `economy` contains
+Current R07d uses version14 `landed-purchases-1` saves. Active `economy` contains
 all system accounts plus the local `exchange:{market,warehouse,visit}` block;
 carried cash remains in `dialogue.cash`. Confirmed trades atomically update money,
 warehouse slots, stock, offers and RNG. Creation data stays immutable. Earlier
 saves receive local exchange state after historical validation; other cities and
 pod cargo remain outside the active boundary. See [campaign saves](campaign-saves.md),
-[banking](banking.md) and [exchange trading](exchange-trading.md).
+[banking](banking.md), [exchange trading](exchange-trading.md) and
+[shop purchases](shop-purchases.md). Cash-paid personal purchases live in the
+replayed conversation until cash and carried inventory commit together on return.
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
