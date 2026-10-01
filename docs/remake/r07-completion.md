@@ -6,12 +6,11 @@ Status: **in progress**. R06 is complete; R07 remains a separate milestone.
 | --- | --- | --- |
 | Active cash/system accounts and transfers | R07a adds deposits, withdrawals, inter-system transfers, atomic conservation and version12 account saves.207 rule groups,44 banking UI checks and existing scene/dialogue regressions pass. | Complete for this checkpoint; keep account updates atomic when trade is added. |
 | Shop purchases/sales | Dialogue quotes and information are live; cash is already active. | Trace and commit supported item/food transactions, including inventory capacity and failure paths. |
-| Exchange quotes and market updates | R07b implements source prices, origin resale ceilings, eight entry offers and staged refresh/continuing RNG;215 rule groups pass. Exchange UI is still a service preview. | Active stock and persisted offer state, campaign entry/exit integration and offer replacement during purchases. |
-| Commodity buying/selling | Creation data includes commodities and initial warehouses. | Bank-first payment, local-account proceeds, prices, stock updates and atomic failure behavior. |
-| Warehouses and cargo | Initial four-slot warehouses and cryogen distribution are verified. | Ownership, loading/unloading, cargo capacity and conservation across saves. |
-| Local trade loop | Banking round trips are the first checkpoint. | Full bank/shop/exchange/warehouse/cargo loop, source evidence and fresh-session persistence. |
+| Exchange quotes and market updates | R07c activates local quantities, eight persisted offers, first-visit/weekly refresh, purchase replacement and continuing RNG.222 rule groups pass. | Extend active ownership when other cities become reachable; retain documented stable-review adaptation. |
+| Commodity buying/selling | R07c adds bank-first purchases, local-account sales, source prices, random stock reductions and atomic failures. | Intercity profit/save rules when travel becomes available. |
+| Warehouses and cargo | Four local warehouse slots support owned purchases/sales and version13 persistence; initial cryogens are protected. | Pod/ship loading, unloading, capacity and conservation. |
+| Local trade loop | Bank and local exchange/warehouse round trips work through normal controls and fresh-page saves. | Complete the shop and cargo portions of the loop. |
 
-Next after [R07b](exchange-quotes.md): introduce active market/warehouse and
-offer fields, then couple ordinary exchange transactions to payment. Keep purchases gated
-until stock, funds, ownership and capacity can commit together. Pod movement and
+Next after [R07c](exchange-trading.md): source and implement shop item/food
+transactions, then cargo ownership/loading. Pod movement and
 depot repair/fueling remain R08; travel R09; colony deliveries R11.

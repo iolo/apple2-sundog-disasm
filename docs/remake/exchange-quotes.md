@@ -1,5 +1,8 @@
 # Ordinary exchange quotes and offer generation — R07b
 
+R07c now integrates these foundations into [local warehouse trading](exchange-trading.md).
+The remainder of this page records the R07b checkpoint and its original scope.
+
 `remake/js/core/exchange.js` implements the source price calculation, eight-row
 ordinary offer board and a staged market visit. These are rule foundations, not
 live campaign transactions. The exchange panel remains a service preview and

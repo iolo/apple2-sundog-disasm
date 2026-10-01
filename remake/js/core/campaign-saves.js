@@ -1,5 +1,6 @@
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
 import { initialBanking, validateBanking } from './banking.js';
+import { initialExchange, validateExchange } from './campaign-exchange.js';
 import { checkpointCodec, openCheckpointStore } from './checkpoints.js';
 import { fitsComponent, recalculateEquipment } from './equipment.js';
 import { cityReachability, SHIP_REENTRY } from './city-walk.js';
@@ -13,7 +14,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 12, SCOPE = 'landed-banking-1';
+const VERSION = 13, SCOPE = 'landed-exchange-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -30,7 +31,7 @@ function sameTree(value, expected) {
 }
 
 // `start` remains immutable; equipment is active, independently owned state.
-// Machinery stays off; only accounts and carried cash are active economy fields.
+// Machinery stays off; local foot exchange markets/warehouses are active.
 export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.
@@ -71,7 +72,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           if(!cityValidators.get(cityGeometry)(value.travel.cityPosition))fail();
           if(value.travel.scene==='bank' && !atCityBank(cityGeometry.map,value.travel.cityPosition))fail();
           if(inService && cityServiceAt(cityGeometry.map,value.travel.cityPosition)!==value.travel.scene)fail();
-          travel={scene:value.travel.scene,cityPosition:{...value.travel.cityPosition}};
+          travel={scene:value.travel.scene,cityPosition:{x:value.travel.cityPosition.x,y:value.travel.cityPosition.y}};
           if(inRoom) {
             const room=roomAt(cityGeometry.rooms,cityGeometry.map,value.travel.cityPosition);
             if(!room || (version<9&&room.index===1) || (version<10&&isTavern(room)) || !keysMatch(value.travel.roomPosition,['x','y']))fail();
@@ -79,17 +80,19 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
             const access=lodgingGeometry(room,lodging,{access:true});
             if(!cityValidators.has(access))cityValidators.set(access,cityReachability(access));
             if(!cityValidators.get(access)(value.travel.roomPosition))fail();
-            travel.roomPosition={...value.travel.roomPosition};
+            travel.roomPosition={x:value.travel.roomPosition.x,y:value.travel.roomPosition.y};
             if(lodgingRoom)travel.lodging=lodging;
           }
         } else if(!sameTree(value.travel,travel))fail();
       }
       const dialogue=version>=8 ? validateCampaignDialogue(value.dialogue,{visitors:version>=10,...(version===8 ? {legacyCash:start.credits} : {})}) : initialCampaignDialogue(start);
-      const economy=version>=12 ? validateBanking(value.economy) : initialBanking(start);
+      if(version>=13&&!keysMatch(value.economy,['accounts','exchange']))fail();
+      const banking=version>=12 ? validateBanking(version>=13 ? {accounts:value.economy.accounts} : value.economy) : initialBanking(start);
+      const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline) : initialExchange(start)};
       if(version<12 && dialogue.cash>start.credits)fail();
-      // Bank transfers conserve total money; lodging and tips can only lower it.
-      // Later sales/income need an explicit expansion of this save boundary.
-      if(dialogue.cash+economy.accounts.reduce((sum,a)=>sum+a.balance,0)>
+      // Local cargo can only resell at/below price paid. Cash, accounts and
+      // stored purchase costs cannot exceed creation wealth in this scope.
+      if(dialogue.cash+economy.accounts.reduce((sum,a)=>sum+a.balance,0)+economy.exchange.warehouse.slots.reduce((sum,c)=>sum+(c?.pricePaid||0),0)>
         start.credits+start.systems.reduce((sum,s)=>sum+s.bankBalance,0))fail();
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
@@ -138,7 +141,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===8 && value.scope==='landed-dialogue-1') ||
       (value?.version===9 && value.scope==='landed-lodging-1') ||
       (value?.version===10 && value.scope==='landed-taverns-1') ||
-      (value?.version===11 && value.scope==='landed-services-1');
+      (value?.version===11 && value.scope==='landed-services-1') ||
+      (value?.version===12 && value.scope==='landed-banking-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -151,7 +155,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:initialBanking(start)};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start)}};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {

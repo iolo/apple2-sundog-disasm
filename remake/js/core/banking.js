@@ -16,7 +16,7 @@ export function validateBanking(value) {
 
 export function bankAvailable(cash,economy,systemId,type) {
   if(!integer(cash))throw new Error('invalidBankTransaction');
-  const owned=validateBanking(economy),account=owned.accounts.find(a=>a.systemId===systemId);
+  const owned=validateBanking({accounts:economy?.accounts}),account=owned.accounts.find(a=>a.systemId===systemId);
   if(!account||!['deposit','withdraw','transfer'].includes(type))throw new Error('invalidBankTransaction');
   return type==='deposit' ? cash : account.balance;
 }
@@ -38,7 +38,7 @@ export function transferBankFunds(cash,economy,systemId,{type,amount,targetSyste
   const available=bankAvailable(cash,economy,systemId,type);
   if(!integer(amount)||amount===0)throw new Error('bankInvalidAmount');
   if(amount>available)throw new Error('bankInsufficient');
-  const next=validateBanking(economy),source=next.accounts.find(a=>a.systemId===systemId);
+  const next={...structuredClone(economy),...validateBanking({accounts:economy?.accounts})},source=next.accounts.find(a=>a.systemId===systemId);
   if(type==='transfer') {
     const target=next.accounts.find(a=>a.systemId===targetSystemId);
     if(!target||target===source)throw new Error('bankInvalidDestination');

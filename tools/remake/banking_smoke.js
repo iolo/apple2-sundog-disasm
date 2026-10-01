@@ -73,7 +73,7 @@ async browserPage => {
       await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/banking-import.json');await settled();
       const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
     };
-    assert(original.version===12&&original.scope==='landed-banking-1','Banking exports version12 with active accounts');
+    assert(original.version===13&&original.scope==='landed-exchange-1','Banking exports version12 with active accounts');
     assert(original.state.economy.accounts.length===12,'All twelve original system accounts initialize');
     await page.locator('#bank-deposit').click();
     assert(await page.locator('#bank-confirm').isDisabled(),'Zero-amount confirmation is disabled');

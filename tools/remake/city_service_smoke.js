@@ -75,8 +75,10 @@ async browserPage => {
       await page.keyboard.press('Shift+Tab');
       assert(await page.evaluate(()=>document.activeElement.id)==='service-saves',`${scene} traps reverse focus`);
       const entered=await exportGame();
-      assert(entered.version===12&&entered.scope==='landed-banking-1',`${scene} exports a version12 service visit`);
+      assert(entered.version===13&&entered.scope==='landed-exchange-1',`${scene} exports a version12 service visit`);
       const expected=structuredClone(street.state);expected.travel.scene=scene;
+      if(scene==='exchange'){expected.economy=entered.state.economy;expected.encounters=entered.state.encounters;assert(entered.state.encounters.randomState!==street.state.encounters.randomState&&entered.state.economy.exchange.visit.offers.length===8,'Exchange entry generates live offers and advances RNG')}
+      const exited=structuredClone(expected);exited.travel.scene='city';if(scene==='exchange')exited.economy.exchange.visit=null;
       assert(JSON.stringify(entered.state)===JSON.stringify(expected),`${scene} entry changes only the active scene`);
       const before=await state();await page.keyboard.press('ArrowRight');await page.clock.runFor(6000);
       assert(JSON.stringify(await state())===JSON.stringify(before),`${scene} pauses movement and time`);
@@ -107,12 +109,13 @@ async browserPage => {
       assert((await importGame(wrong)).includes('Invalid'),`${scene} rejects a different service at the same street anchor`);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(entered.state),`${scene} rejected imports preserve the visit`);
       await page.keyboard.press('Escape');
-      assert(JSON.stringify((await exportGame()).state)===JSON.stringify(street.state),`${scene} Escape restores the exact street state`);
+      assert(JSON.stringify((await exportGame()).state)===JSON.stringify(exited),`${scene} Escape returns to the street with committed progress`);
       await page.locator('#walk-airlock').tap();await page.locator('#service-leave').tap();
-      assert(JSON.stringify((await exportGame()).state)===JSON.stringify(street.state),`${scene} touch reentry and return preserve state`);
+      const reentered=(await exportGame()).state;if(scene==='exchange')exited.encounters=reentered.encounters;
+      assert(JSON.stringify(reentered)===JSON.stringify(exited),`${scene} touch reentry preserves committed progress`);
     }
     const end=await exportGame();
-    assert(JSON.stringify(end.state.start)===JSON.stringify(initial.state.start)&&JSON.stringify(end.state.equipment)===JSON.stringify(initial.state.equipment)&&JSON.stringify(end.state.encounters)===JSON.stringify(initial.state.encounters)&&JSON.stringify(end.state.dialogue)===JSON.stringify(initial.state.dialogue),'The complete three-service route preserves creation, equipment, gameplay RNG and cash/dialogue');
+    assert(JSON.stringify(end.state.start)===JSON.stringify(initial.state.start)&&JSON.stringify(end.state.equipment)===JSON.stringify(initial.state.equipment)&&JSON.stringify(end.state.dialogue)===JSON.stringify(initial.state.dialogue),'The complete three-service route preserves creation, equipment and cash/dialogue');
     assert(errors.length===0,'No browser exceptions or failed requests');
     return {browser:browser.version(),checks,errors};
   } finally {await context.close()}

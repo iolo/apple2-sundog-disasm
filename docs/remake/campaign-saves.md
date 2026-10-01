@@ -1,11 +1,11 @@
-# Campaign save boundary — through R07a
+# Campaign save boundary — through R07c
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version12, scope `landed-banking-1`, and validates/upgrades version1 `landed-ship-1`,
+version13, scope `landed-exchange-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-and version11 `landed-services-1`.
+version11 `landed-services-1` and version12 `landed-banking-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -27,14 +27,15 @@ The state has seven explicit parts:
   field name `spares` means socket requirements, not removable inventory.
 - `economy`: twelve ordered `accounts`, each with `systemId` and nonnegative
   integer `balance`. Banking changes these accounts and `dialogue.cash` atomically.
-  Market/warehouse/cargo progress is still immutable creation data.
+  `exchange` owns the local market, four warehouse slots and nullable offer board.
+  Other cities and pod cargo remain immutable creation data. See [exchange trading](exchange-trading.md).
 - `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
   or `exchange`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
   At a bank the city position must also match a source foot-bank door footprint.
   Other service scenes likewise require their matching reachable foot door;
-  no redundant service identity or transactional state is stored.
+  no redundant service identity is stored. Exchange progress lives in `economy.exchange`.
   In a room, the city position retains the entry door; a third field,
   `roomPosition`, must be reachable from the derived layout's interior spawn.
   It is forbidden in other scenes. City tile types8/9/10/11 are currently enabled.
@@ -56,7 +57,8 @@ Current play uses the active state blocks, including `economy.accounts` and
 `dialogue.cash`. It must never read stale initial values as live progress.
 Carried cash can increase through withdrawals and decrease through deposits,
 lodging and bartender tips; system transfers conserve account totals.
-Other economy, ship resources and navigation are not yet mutable; allowing
+Local warehouse trades update cash/accounts, stock and stored cargo together.
+Other cities, ship resources and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
 
 ## Validation and transactions
@@ -103,12 +105,21 @@ street anchor. Transactions and navigation remain unavailable. See `city-service
 Version12 adds active system accounts and deposit/withdraw/transfer operations.
 Versions1–11 reject the new block and retain their original carried-cash limits
 before migration; derived accounts then come from the validated creation record.
-New saves require cash and every account to be in0..32,767,999, with their combined
+Version12 requires cash and every account to be in0..32,767,999, with their combined
 total no greater than original total money. Thus withdrawals may raise cash above
 its creation value while unsupported new wealth is rejected. Lodging/tips may
-reduce total money. Future sales/income require an explicit rule expansion.
+reduce total money. Version13 expands this bound to include stored purchase costs.
 Pending bank amounts/destinations are UI drafts, not committed or serialized state.
 See `banking.md` for source arithmetic, deliberate adaptations and tests.
+
+Version13 adds `economy.exchange` with active local market/warehouse state and
+nullable offers. Saved offers retain their quote quantities so stale asking prices
+can be recomputed exactly. Initial cryogens cannot disappear; local purchased lots
+have the current city as origin. Cash plus all accounts plus stored purchase costs
+cannot exceed creation wealth. Historical versions reject exchange fields before
+migration. A legacy preview prepares its first board on UI resume; an existing
+version13 board reloads without draws. See [exchange trading](exchange-trading.md)
+for the schema, validation limits, settlement adaptation and tests.
 
 Active ship validation reuses the tested reachable-position, inventory-capacity,
 item-byte and condition checks from the checkpoint codec. Only living, awake
@@ -132,8 +143,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version8 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Bank transactions, other buildings/cities, encoded component repair and
+as version13 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Other cities, pod cargo transport, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
