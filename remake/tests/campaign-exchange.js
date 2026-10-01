@@ -5,6 +5,7 @@ import { createCityMaps } from '../js/core/city-map.js';
 import { createCityGeometry, cityReachability, SHIP_REENTRY } from '../js/core/city-walk.js';
 import { cityServiceAt } from '../js/core/city-doors.js';
 import { reduceCampaignBank, MAX_CREDITS } from '../js/core/banking.js';
+import { initialPodCargo, reduceWarehouseCargo } from '../js/core/cargo.js';
 
 export async function campaignExchangeTests(test,equal) {
   const [navigation,economy,location,inventory,ship,maps,cityData,exchange,items]=await Promise.all(
@@ -19,6 +20,22 @@ export async function campaignExchangeTests(test,equal) {
   const wealth=s=>s.dialogue.cash+s.economy.accounts.reduce((n,a)=>n+a.balance,0)+s.economy.exchange.warehouse.slots.reduce((n,c)=>n+(c?.pricePaid||0),0);
   const affordable=s=>s.economy.exchange.visit.offers.findIndex(o=>o&&o.price<funds(s));
   const rejects=(fn,message)=>{let error;try{fn()}catch(e){error=e.message}equal(error,message)};
+  await test('A purchased lot survives a core loading round trip without repricing; campaign saves still reject pod extensions',()=>{
+    const entered=enter(fresh()),bought=run(entered,{type:'buy',slot:affordable(entered)}),before=structuredClone(bought);
+    const session={warehouse:bought.economy.exchange.warehouse,pod:initialPodCargo()},visit={cityId:'city-01',transport:'pod'};
+    const fetched=reduceWarehouseCargo(session,visit,{type:'fetch',slot:0});
+    equal(fetched.pod[0],bought.economy.exchange.warehouse.slots[0]);equal(fetched.warehouse.slots[0],null);
+    const stored=reduceWarehouseCargo(fetched,visit,{type:'store',slot:0});equal(stored,session);equal(bought,before);
+    const restored={...bought,economy:{...bought.economy,exchange:{...bought.economy.exchange,warehouse:stored.warehouse}}};
+    equal(exchangeSaleQuote(restored,content,0),exchangeSaleQuote(bought,content,0));equal(codec.snapshot(restored),bought);
+    equal(run(restored,{type:'sell',slot:0}),run(bought,{type:'sell',slot:0}));
+    for(const inject of [s=>s.economy.pod=fetched.pod,s=>s.economy.exchange.pod=fetched.pod,s=>s.ship.cargo=fetched.pod,
+      s=>s.travel.transport='pod',s=>s.economy.exchange.warehouse.slots[0].pricePaid=0]) {
+      const bad=structuredClone(bought);inject(bad);rejects(()=>codec.snapshot(bad),'invalidCampaign');
+    }
+    rejects(()=>run(bought,{type:'fetch',slot:0}),'exchangeInvalidSelection');equal(bought,before);
+    equal(codec.make(bought,0).version,14);
+  });
   await test('Exchange entry validates the door and commits market, eight offers and RNG together',()=>{
     const s=fresh(),before=structuredClone(s),e=enter(s);equal(s,before);
     equal(e.travel.scene,'exchange');equal(e.economy.exchange.market.lastUpdateDay,0);equal(e.economy.exchange.visit.offers.length,8);

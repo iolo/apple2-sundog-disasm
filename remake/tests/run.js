@@ -1,5 +1,6 @@
 import { initializationTests } from './initialization.js';
 import { economyTests } from './economy.js';
+import { cargoTests } from './cargo.js';
 import { exchangeTests } from './exchange.js';
 import { campaignExchangeTests } from './campaign-exchange.js';
 import { bankingTests } from './banking.js';
@@ -83,6 +84,7 @@ await survivalTests(test, equal);
 await checkpointTests(test, equal);
 await initializationTests(test, equal);
 await economyTests(test, equal);
+await cargoTests(test, equal);
 await exchangeTests(test, equal);
 await campaignExchangeTests(test, equal);
 await bankingTests(test, equal);

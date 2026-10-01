@@ -1,4 +1,4 @@
-# Campaign save boundary — through R07d
+# Campaign save boundary — through R07e
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
 version14, scope `landed-purchases-1`, and validates/upgrades version1 `landed-ship-1`,
@@ -17,6 +17,10 @@ Working cash/items reconstruct from the input log and commit together on return;
 versions1–13 cannot inject these inputs or bartender food selection. No new
 economy fields are needed because purchases only reduce cash. See
 [shop purchases](shop-purchases.md).
+
+R07e shares lot validation with the new [cargo loading core](cargo-loading.md).
+Its loading-session snapshots are not campaign saves. Active pod cargo, movement
+and fetched cryogens remain rejected until their coupled save boundary exists.
 
 The state has seven explicit parts:
 

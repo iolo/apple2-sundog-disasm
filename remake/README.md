@@ -150,3 +150,8 @@ SVGs are generated from delivered Apple II assets; see `data/provenance.json`.
 Mulmaru is distributed under OFL 1.1; see `assets/fonts/LICENSE.txt` and its
 provenance record. This browser preview introduces no claim of new rights in
 the original SunDog artwork or game content.
+
+R07e adds the tested cargo-loading core (four warehouse slots, two pod slots,
+Store/Fetch/Swap). It is not yet connected to live pod travel or campaign saves.
+See `../docs/remake/cargo-loading.md` and `../docs/remake/personal-item-resale.md`
+for the remaining integration and the source-backed visitor sale route.
