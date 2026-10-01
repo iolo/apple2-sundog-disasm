@@ -1,7 +1,8 @@
 # SunDog web remake
 
 Current milestone: a playable landed campaign with character creation, ship and
-city walking, inventory/condition/survival, component exchange, bank visits,
+city walking, inventory/condition/survival, component exchange, bank deposits,
+withdrawals and inter-system transfers,
 shop information dialogue, paid lodging with working bedroom doors, and tavern
 seating, conversations and bartender tips. TransStation, depot and exchange
 doors open read-only service visits with saved return positions.
@@ -94,7 +95,8 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version11 saves restore open conversations by replaying the saved RNG and inputs,
+Version12 saves retain all twelve system accounts and restore open conversations
+by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop purchases and trade transfers remain pending. See
 `../docs/remake/dialogue-selection.md`, `../docs/remake/dialogue-text.md`,
@@ -103,7 +105,14 @@ after validation. Shop purchases and trade transfers remain pending. See
 source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration is complete; its evidence and scope are recorded in
-`../docs/remake/r06-completion.md`. R07 trading and banking is next.
+`../docs/remake/r06-completion.md`. R07 is in progress: banking is live; shop and
+exchange transactions, warehouses and cargo handling remain next.
+
+At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
+the original increments, All or Clear; Confirm commits it. Cancel leaves balances
+unchanged. Transfers select another system and charge no fee. Saves retain only
+committed balances; a fresh load discards a pending amount. See
+`../docs/remake/banking.md`.
 
 Development export checks:
 

@@ -1,5 +1,12 @@
 # State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
+Current R07a banking adds `economy:{accounts:[{systemId,balance},...]}` alongside
+the existing active `dialogue.cash`. Version12 supports atomic deposits,
+withdrawals and inter-system transfers. Creation accounts remain immutable;
+legacy saves derive active accounts only after historical validation. Markets,
+warehouses and cargo remain creation data until subsequent R07 checkpoints.
+See [current campaign saves](campaign-saves.md) and [banking rules](banking.md).
+
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a
 new game and uses separate ephemeral state.

@@ -1,5 +1,37 @@
 # SunDog web remake progress
 
+## R07a — Active bank transfers and version12 saves — 2026-10-01
+
+Implemented deposits, withdrawals and transfers to the other eleven system
+accounts. Game19 procedures7/16/17 supply amount increments, ALL/CLEAR,
+source-funds checks and fee-free transfers. Added explicit browser Confirm/Cancel
+with transient drafts; cancelling or loading an uncommitted selection moves no
+credits. Overflow and invalid destinations fail atomically. Cash stays in
+`dialogue.cash`; active accounts live in the new `economy.accounts` block.
+Creation data remains immutable. See `docs/remake/banking.md` for source offsets,
+paused-service behavior, overflow handling and other deliberate adaptations.
+
+Version12 `landed-banking-1` saves all accounts and permits funded withdrawals
+above creation cash. Total cash/accounts cannot exceed original wealth in this
+banking-only scope; lodging and tips can reduce it. Versions1–11 validate their
+historical shape/scene/cash limits before accounts are derived from creation.
+Legacy fixtures were updated to exclude the newly introduced block.
+
+Chrome154.0.8037.57 passes207 rule groups and44 banking UI checks. Tests cover all132
+directed system transfers, exact remainder deposits, capacity/overdraft rejection,
+draft cancellation, local/remote balance persistence, fresh-page IndexedDB loads,
+legacy imports and fabricated-wealth rejection. A funded lodging payment replays
+and saves without losing accounts. Both languages fit five viewport sizes after
+the form was compacted to keep its footer visible; both locale screenshots were
+visually reviewed. Existing bank28, lodging27,
+tavern36, dialogue19 and continuous journey90 UI checks pass. All159 generated
+artifacts match the exporter. No new native emulator capture is claimed.
+
+R07 remains in progress. Next: source exchange quotes, bank-first purchases and
+local-account sales, then stock/warehouse/cargo mutation and shop transactions.
+Track remaining requirements in `docs/remake/r07-completion.md`. The supplied
+PRD remains untouched and untracked.
+
 ## R06s — Final exploration audit complete — 2026-09-30
 
 **R06 is complete.** Added a continuous normal-control route from a fresh campaign

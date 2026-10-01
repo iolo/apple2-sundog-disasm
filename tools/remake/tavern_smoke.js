@@ -66,7 +66,7 @@ async browserPage => {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install();await page.goto('http://127.0.0.1:8000/');await ready();
     const fixture=await importFixture('street');await page.locator('#walk-airlock').click();
     assert((await state()).room===String(fixture.room),'Type8 street door opens its source-selected tavern layout');
-    const entered=await exported();assert(entered.version===11&&entered.state.encounters.roomState.tavern.playerSeat===null,'Fresh entry exports version11 tavern state');
+    const entered=await exported();assert(entered.version===12&&entered.state.encounters.roomState.tavern.playerSeat===null,'Fresh entry exports version12 tavern state');
     await walk(30,40);await walk(30,31);await page.locator('#walk-talk').click();await page.clock.runFor(2000);
     assert((await state()).dialogue==='16','Bartender approaches and opens source dialogue16');
     assert(await page.locator('#dialogue-item-0').isDisabled(),'Food purchase is gated before unsupported acceptance');

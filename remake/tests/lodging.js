@@ -13,6 +13,7 @@ import { canStand } from '../js/core/ship-walk.js';
 import { sourceRandom } from '../js/core/random.js';
 import { translator } from '../js/ui/i18n.js';
 import { dialogueMessage } from '../js/ui/dialogue.js';
+import { transferBankFunds } from '../js/core/banking.js';
 
 export async function lodgingTests(test,equal) {
   const [layouts,maps,navigation,economy,location,cityData,inventory,ship,scripts,text,items,systems]=await Promise.all([
@@ -45,6 +46,17 @@ export async function lodgingTests(test,equal) {
     equal(frame(state).view.state,96);return state;
   }
   function rented() {return next(reply(reply(talking(),0),2))}
+
+  await test('Withdrawn cash funds lodging through replay saves without losing active bank balances',()=>{
+    const initial=talking(undefined,state=>{
+      const funds=transferBankFunds(state.dialogue.cash,state.economy,'system-01',{type:'withdraw',amount:1000});
+      state.dialogue.cash=funds.cash;state.economy=funds.economy;
+    });
+    equal(initial.dialogue.cash,initial.start.credits+1000);
+    const paid=reply(reply(initial,0),2),saved=codec.make(paid,0),restored=codec.parse(JSON.stringify(saved)).state;
+    const result=next(restored);equal(result.dialogue.cash,initial.dialogue.cash-fee);equal(result.economy,initial.economy);
+    equal(codec.snapshot(result),result);equal(result.start,initial.start);
+  });
 
   await test('Every lodging door SVG matches runtime collision, including combinations from repeated rentals',async()=>{
     const canvas=document.createElement('canvas');canvas.width=140;canvas.height=96;const context=canvas.getContext('2d');
@@ -120,7 +132,7 @@ export async function lodgingTests(test,equal) {
     }
   });
   await test('Version8 migrates cash from creation and rejects injected cash; lodging saves reject invented access',()=>{
-    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=8;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
+    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=8;delete old.state.economy;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
     const before=JSON.stringify(old);equal(codec.validate(old),current);equal(JSON.stringify(old),before);
     old.state.dialogue.cash=1;reject(()=>codec.validate(old));
     const saved=codec.make(rented(),0);
@@ -130,7 +142,7 @@ export async function lodgingTests(test,equal) {
       s=>s.travel.roomPosition={x:112,y:22}]) {
       const bad=structuredClone(saved);mutate(bad.state);reject(()=>codec.validate(bad));
     }
-    const legacy=structuredClone(saved);legacy.version=8;legacy.scope='landed-dialogue-1';delete legacy.state.dialogue.cash;delete legacy.state.travel.lodging;
+    const legacy=structuredClone(saved);legacy.version=8;delete legacy.state.economy;legacy.scope='landed-dialogue-1';delete legacy.state.dialogue.cash;delete legacy.state.travel.lodging;
     reject(()=>codec.validate(legacy));
   });
 }
