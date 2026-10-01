@@ -92,12 +92,14 @@ export function openRoomCounter(content,room,previous,context,{places}={}) {
   frame.randomState=frame.conversation.randomState;return frame;
 }
 
-// Counter food purchases are supported; visitor/trader matching remains gated.
-export function roomDialogueInputAllowed(conversation,input,{purchases=true}={}) {
+// Food and direct visitor trades are supported; bartender matching stays gated.
+export function roomDialogueInputAllowed(conversation,input,{purchases=true,visitorTrades=true}={}) {
   const kind=conversation.state.kind;
   if(!purchases&&input.type==='purchase')return false;
+  if(!visitorTrades&&(input.type==='sale'||([21,22].includes(kind)&&input.type==='purchase')))return false;
   if(![12,21,22].includes(kind))return true;
   if(kind===12&&input.type==='item')return purchases&&[8,9].includes(input.item);
+  if(kind!==12&&visitorTrades)return true;
   if(input.type!=='reply')return true;
   const reply=conversation.view.replies.find(r=>r.slot===input.slot);
   return !reply||(![8,9].includes(reply.caption)&&!(kind!==12&&reply.caption===2));

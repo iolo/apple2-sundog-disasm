@@ -11,6 +11,8 @@ import { cityDoorAt } from '../js/core/city-doors.js';
 import { initialCounter, reduceCampaignCounter, restoreCampaignConversation } from '../js/core/campaign-dialogue.js';
 import { dialogueMessage } from '../js/ui/dialogue.js';
 import { translator } from '../js/ui/i18n.js';
+import { reduceCampaignBank } from '../js/core/banking.js';
+import { initialPersonalTrade } from '../js/core/personal-trade.js';
 
 export async function tavernDialogueTests(test,equal) {
   const [layouts,maps,navigation,economy,location,cityData,inventory,ship,scripts,text,items,systems,en,ko]=await Promise.all([
@@ -42,6 +44,57 @@ export async function tavernDialogueTests(test,equal) {
     s.encounters={randomState:2,roomSeed:12345,roomState:traffic(room),counter:initialCounter()};return s;
   };
   const act=(s,a)=>reduceCampaignCounter(s,content,room,a),reply=(s,slot)=>act(s,{type:'dialogue',input:{type:'reply',slot}});
+  function tradeOffer() {
+    const s=state();s.ship.inventory.carried=[139,235,23,0];
+    let result=act(s,{type:'request'});
+    for(const input of [{type:'timeout'},{type:'reply',slot:1},{type:'reply',slot:1}])result=act(result.state,{type:'dialogue',input});
+    equal(result.conversation.view.state,130);return result;
+  }
+  function saleOffer() {
+    let result=reply(tradeOffer().state,2);equal(result.conversation.view.state,131);
+    result=act(result.state,{type:'dialogue',input:{type:'item',item:139}});equal(result.conversation.view.state,35);
+    result=reply(result.state,0);equal(result.conversation.view.state,37);return result;
+  }
+  await test('Visitor sale replay commits carried item, cash and gross proceeds once, preserving speaker and bank ownership',()=>{
+    const offer=saleOffer(),before=JSON.stringify(offer.state),price=offer.conversation.state.locals[106];
+    let sold=act(offer.state,{type:'dialogue',input:{type:'sale',slot:1}});equal(sold.conversation.view.state,46);
+    equal(sold.state.dialogue.cash,offer.state.dialogue.cash);equal(sold.state.ship.inventory,offer.state.ship.inventory);
+    equal(sold.state.economy.personalTrade,initialPersonalTrade());equal(JSON.stringify(offer.state),before);
+    const saved=codec.make(sold.state,0),loaded=codec.parse(JSON.stringify(saved)).state;
+    equal(saved.version,15);equal(saved.scope,'landed-personal-trade-1');equal(restoreCampaignConversation(loaded,content,room).conversation,sold.conversation);
+    const done=act(loaded,{type:'dialogue',input:{type:'cancel'}}).state;
+    equal(done.ship.inventory.carried,[139,0,23,0]);equal(done.dialogue.cash,offer.state.dialogue.cash+price);
+    equal(done.economy.personalTrade.sold[11],1);equal(done.economy.personalTrade.proceeds[11],price);
+    equal(done.economy.accounts,offer.state.economy.accounts);equal(done.economy.exchange,offer.state.economy.exchange);
+    equal(done.encounters.counter.conversation,null);equal(done.dialogue.workspace.actor,2);
+    equal(done.encounters.roomState.actors.at(-1),offer.state.encounters.roomState.actors.at(-1));
+    equal(codec.parse(JSON.stringify(codec.make(done,0))).state,done);
+    equal(act(sold.state,{type:'dialogue',input:{type:'cancel'}}).state,done);
+    const bank=structuredClone(done);bank.travel={scene:'bank',cityPosition:{x:369,y:299}};
+    bank.encounters={...bank.encounters,roomSeed:null,roomState:null,counter:null};
+    const deposited=reduceCampaignBank(bank,city.map,{type:'deposit',amount:price});
+    equal(deposited.economy.personalTrade,done.economy.personalTrade);equal(codec.snapshot(deposited),deposited);
+    const missing=structuredClone(done);missing.economy.personalTrade=initialPersonalTrade();reject(()=>codec.snapshot(missing));
+  });
+  await test('Version14 social progress upgrades with an empty ledger but cannot inject visitor acceptance or sale inputs',()=>{
+    const social=codec.make(tradeOffer().state,0),old=structuredClone(social);old.version=14;old.scope='landed-purchases-1';delete old.state.economy.personalTrade;
+    equal(codec.validate(old),social);
+    const accepted=saleOffer(),taken=act(accepted.state,{type:'dialogue',input:{type:'sale',slot:0}});
+    for(const s of [accepted.state,taken.state]) {
+      const legacy=codec.make(s,0);legacy.version=14;legacy.scope='landed-purchases-1';delete legacy.state.economy.personalTrade;
+      reject(()=>codec.validate(legacy));
+    }
+    old.state.economy.personalTrade=initialPersonalTrade();reject(()=>codec.validate(old));
+  });
+  await test('Sale saves reject inconsistent income, invalid input fields and pending ledger overflow without changing the source',()=>{
+    const accepted=saleOffer(),taken=act(accepted.state,{type:'dialogue',input:{type:'sale',slot:0}}),save=codec.make(taken.state,0),before=JSON.stringify(save);
+    for(const mutate of [s=>s.economy.personalTrade.proceeds[11]=100,s=>s.economy.personalTrade.sold[0]=1,
+      s=>s.encounters.counter.conversation.inputs.at(-1).slot=2,s=>s.encounters.counter.conversation.inputs.at(-1).price=600,
+      s=>{s.economy.personalTrade.sold[11]=1000000000;s.economy.personalTrade.proceeds[11]=100000000000}]) {
+      const bad=structuredClone(save);mutate(bad.state);reject(()=>codec.validate(bad));
+    }
+    equal(JSON.stringify(save),before);
+  });
   await test('Tavern setup selects three source entries and consumes the incoming mode flag only for kind22',()=>{
     for(const kind of [12,21,22]) {
       const input={...context,kind,randomState:12345,flags:[...context.flags],workspace:{...context.workspace,item:12,mood:1}};
@@ -73,7 +126,7 @@ export async function tavernDialogueTests(test,equal) {
     equal([frame.conversation.state.kind,frame.conversation.state.workspace.actor,frame.conversation.view.state],[22,2,33]);
     const quote=advanceRoomCounter(dialogue,room,frame,{type:'reply',slot:1}).frame;
     const pay=quote.conversation.view.replies.find(r=>r.caption===2);equal(!!pay,true);
-    reject(()=>advanceRoomCounter(dialogue,room,quote,{type:'reply',slot:pay.slot}),'unsupportedRoomTrade');
+    reject(()=>advanceRoomCounter(dialogue,room,quote,{type:'reply',slot:pay.slot},{visitorTrades:false}),'unsupportedRoomTrade');
     const returned=advanceRoomCounter(dialogue,room,frame,{type:'reply',slot:2});
     equal(returned.frame.service,'idle');equal(returned.outcome.workspace.actor,2);
     equal(returned.frame.traffic.actors.at(-1),staff);equal(returned.frame.traffic.tavern.secondary,2);
@@ -85,7 +138,7 @@ export async function tavernDialogueTests(test,equal) {
     result=reply(result.state,1);equal(result.conversation.view.state,176);
     result=reply(result.state,2);equal(result.conversation.view.state,192);
     const question=result.conversation.view.word,randomIndex=result.conversation.state.locals[14];
-    const save=codec.make(result.state,0);equal(save.version,14);equal(save.scope,'landed-purchases-1');
+    const save=codec.make(result.state,0);equal(save.version,15);equal(save.scope,'landed-personal-trade-1');
     const loaded=codec.parse(JSON.stringify(save)).state;equal(loaded,result.state);
     const legacy=structuredClone(save);legacy.version=10;delete legacy.state.economy;legacy.scope='landed-taverns-1';
     equal(codec.parse(JSON.stringify(legacy)),save);
@@ -142,7 +195,7 @@ export async function tavernDialogueTests(test,equal) {
     let current=s,spent=0;
     for(const [slot,item] of [[0,8],[1,9]]) {
       let result=act(current,{type:'dialogue',input:{type:'item',item}});spent+=result.conversation.state.locals[106];
-      const accepted=codec.make(result.state,0),legacy=structuredClone(accepted);legacy.version=13;legacy.scope='landed-exchange-1';
+      const accepted=codec.make(result.state,0),legacy=structuredClone(accepted);legacy.version=13;delete legacy.state.economy.personalTrade;legacy.scope='landed-exchange-1';
       reject(()=>codec.validate(legacy)); // Food selection itself was blocked in the old scope.
       result=act(codec.parse(JSON.stringify(accepted)).state,{type:'dialogue',input:{type:'purchase',slot}});
       current=codec.parse(JSON.stringify(codec.make(result.state,0))).state;

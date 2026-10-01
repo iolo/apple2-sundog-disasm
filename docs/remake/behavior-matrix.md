@@ -7,8 +7,9 @@ local purchases, sales, warehouse ownership and version13 saves.
 [R07d shop purchases](shop-purchases.md) adds cash-paid personal items/food and
 version14 replay saves. [R07e cargo rules](cargo-loading.md) implement isolated
 Store/Fetch/Swap and audit the [personal resale route](personal-item-resale.md).
-The [R07 audit](r07-completion.md) tracks remaining
-personal-item resale and cargo work.
+[R07f personal trading](personal-trading.md) enables visitor purchases/sales and
+version15 sale-income saves, with242 rule groups and34 new UI checks.
+The [R07 audit](r07-completion.md) tracks remaining cargo integration.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 

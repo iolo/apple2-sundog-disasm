@@ -97,7 +97,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       if(dialogueFrame||action.type==='dialogue'){stop();state.paused=true;roomElapsed=0;survival={...survival,elapsed:0}}
       return true;
     } catch(error) {
-      dialogueError=['dialogueHistoryFull','dialogueSlotOccupied','dialogueInsufficientCash'].includes(error.message) ? error.message :
+      dialogueError=['dialogueHistoryFull','dialogueSlotOccupied','dialogueInsufficientCash','dialogueCashOverflow'].includes(error.message) ? error.message :
         error.message==='roomTrafficBusy' ? 'tavernBusy' : error.message==='tavernSeatReserved' ? 'tavernReserved' : 'dialogueUnavailable';
       roomMessage=dialogueError;stop();state.paused=true;return false;
     }
@@ -468,8 +468,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       render();return;
     }
     if(dialogueFrame) {
-      const reply=event.target.closest('[data-dialogue-reply]'),purchase=event.target.closest('[data-dialogue-purchase]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]'),offer=event.target.closest('[data-dialogue-offer]');
-      const input=purchase ? {type:'purchase',slot:Number(purchase.dataset.dialoguePurchase)} : reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} :
+      const reply=event.target.closest('[data-dialogue-reply]'),sale=event.target.closest('[data-dialogue-sale]'),purchase=event.target.closest('[data-dialogue-purchase]'),item=event.target.closest('[data-dialogue-item]'),command=event.target.closest('button[data-dialogue]'),offer=event.target.closest('[data-dialogue-offer]');
+      const input=sale ? {type:'sale',slot:Number(sale.dataset.dialogueSale)} : purchase ? {type:'purchase',slot:Number(purchase.dataset.dialoguePurchase)} : reply ? {type:'reply',slot:Number(reply.dataset.dialogueReply)} : item ? {type:'item',item:Number(item.dataset.dialogueItem)} : command ? {type:command.dataset.dialogue} :
         offer ? {type:'offer',direction:offer.dataset.dialogueOffer,step:Number(offer.dataset.step)} : null;
       if(input){counterAction({type:'dialogue',input});render();return}
     }

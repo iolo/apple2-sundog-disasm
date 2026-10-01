@@ -1,15 +1,23 @@
-# Campaign save boundary — through R07e
+# Campaign save boundary — through R07f
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version14, scope `landed-purchases-1`, and validates/upgrades version1 `landed-ship-1`,
+version15, scope `landed-personal-trade-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, and version13 `landed-exchange-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, and version14 `landed-purchases-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
 Character drafts and standalone ship checkpoints retain their existing formats.
+
+Version15 adds visitor purchases/sales and `economy.personalTrade:{sold,proceeds}`,
+with32-entry gross sale counts/income indexed by low-five-bit item type. Source
+price bounds validate the ledger; the wealth ceiling adds its total proceeds.
+Open conversations derive receipts from replay and commit them with cash/items
+once on return. Versions1–14 receive zero totals after their original field/input
+checks; older saves cannot introduce visitor trade acceptance or handover.
+See [personal trading](personal-trading.md) for bounds and validation limitations.
 
 Version14 adds explicit `purchase` replay inputs for cash-paid shop and bartender
 items. Accepted quotes do not pay until an empty carried destination is chosen.
@@ -39,6 +47,7 @@ The state has seven explicit parts:
 - `economy`: twelve ordered `accounts`, each with `systemId` and nonnegative
   integer `balance`. Banking changes these accounts and `dialogue.cash` atomically.
   `exchange` owns the local market, four warehouse slots and nullable offer board.
+  `personalTrade` owns completed personal-sale counts and gross proceeds.
   Other cities and pod cargo remain immutable creation data. See [exchange trading](exchange-trading.md).
 - `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
   or `exchange`) and full-map city player pixels.
@@ -66,8 +75,8 @@ The state has seven explicit parts:
 The initial inventory/location in `start` records where this campaign began.
 Current play uses the active state blocks, including `economy.accounts` and
 `dialogue.cash`. It must never read stale initial values as live progress.
-Carried cash can increase through withdrawals and decrease through deposits,
-lodging and bartender tips; system transfers conserve account totals.
+Carried cash can increase through withdrawals or personal-item sales and decrease
+through purchases, deposits, lodging and bartender tips; system transfers conserve account totals.
 Local warehouse trades update cash/accounts, stock and stored cargo together.
 Other cities, ship resources and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
@@ -127,7 +136,8 @@ Version13 adds `economy.exchange` with active local market/warehouse state and
 nullable offers. Saved offers retain their quote quantities so stale asking prices
 can be recomputed exactly. Initial cryogens cannot disappear; local purchased lots
 have the current city as origin. Cash plus all accounts plus stored purchase costs
-cannot exceed creation wealth. Historical versions reject exchange fields before
+cannot exceed creation wealth in version13/14; version15 additionally allows
+validated gross personal-sale proceeds. Historical versions reject exchange fields before
 migration. A legacy preview prepares its first board on UI resume; an existing
 version13 board reloads without draws. See [exchange trading](exchange-trading.md)
 for the schema, validation limits, settlement adaptation and tests.
@@ -154,7 +164,7 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version14 only on explicit save. The raw original slot remains the comparison
+as version15 only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Other cities, pod cargo transport, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
