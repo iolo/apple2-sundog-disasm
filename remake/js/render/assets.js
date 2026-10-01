@@ -1,4 +1,5 @@
 import { createCityMaps, composeCityMap } from '../core/city-map.js';
+import { createPodGeometry } from '../core/city-pod.js';
 import { createCityGeometry } from '../core/city-walk.js';
 import { createRoomGeometries } from '../core/room-walk.js';
 
@@ -40,6 +41,7 @@ export async function loadAssets() {
     {systemId:navigation.systems.find(s=>s.worldIds.includes(economy.colonyCity.worldId)).id,worldId:economy.colonyCity.worldId},{completedPhase}),name:economy.colonyCity.name}));
   const cityGeometry=createCityGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
   cityGeometry.rooms=createRoomGeometries(roomWalk);
+  cityGeometry.pod=createPodGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
   const [scripts,text,items,systems]=dialogueData,dialogue={scripts,text,items,systems};
   return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue,exchange}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

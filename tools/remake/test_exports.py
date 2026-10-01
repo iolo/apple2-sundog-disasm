@@ -248,6 +248,8 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(data['spriteRows'], glyph(10))
         self.assertEqual(data['collisionRows'], glyph(11))
         self.assertEqual(data['shipRows'], [[a, b ^ c] for a, b, c in zip(glyph(36), glyph(37), glyph(16))])
+        self.assertEqual(data['detachedShipRows'], [[a, b] for a, b in zip(glyph(36), glyph(37))])
+        self.assertEqual(data['podGlyphs'], {str(i): glyph(i) for i in range(14,22)})
         source = (root / 'src/pcode/library_22.s').read_text()
         import re
         patterns = [re.search(label+r':\s+\.byte ([^;]+)', source)[1] for label in ['L_164A','L_163E']]

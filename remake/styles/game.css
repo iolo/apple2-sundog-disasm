@@ -272,6 +272,12 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .exchange-review { display:grid; gap:14px; padding:12px 0; }
 .exchange-panel #exchange-message { font-size:15px; }
 .exchange-panel footer { display:flex; gap:10px; flex-shrink:0; }
+.cargo-columns { display:grid; grid-template-columns:1fr 1fr; gap:12px; min-height:0; }
+.cargo-columns section { min-width:0; min-height:0; }
+.cargo-columns .exchange-list { max-height:230px; }
+.cargo-columns .exchange-list button { grid-template-columns:1fr; gap:2px; font-size:15px; }
+.cargo-columns .exchange-list button small { text-align:left; font-size:12px; }
+.cargo-columns [aria-pressed="true"] { color:var(--amber); background:#293026; }
 @media (max-width:600px),(max-height:500px) { .exchange-list button { min-height:44px; } }
 
 .exchange-columns { display:grid; grid-template-columns:1fr 44px 105px; gap:8px; padding:0 8px; font-size:13px; color:var(--muted); }

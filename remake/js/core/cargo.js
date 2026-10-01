@@ -30,8 +30,8 @@ export function warehouseCargoSnapshot(value) {
     pod:validateCargoSlots(value.pod,'pod')};
 }
 
-// A pure loading session, not a campaign action or a save extension. The future
-// transport controller must derive this visit from actual pod entry at a door.
+// A pure loading session. The campaign-pod controller derives this visit from
+// actual pod entry at a door and commits both containers together.
 // A foot visit cannot operate on the pod merely because it owns warehouse lots.
 export function reduceWarehouseCargo(previous,visit,action) {
   const next=warehouseCargoSnapshot(previous);

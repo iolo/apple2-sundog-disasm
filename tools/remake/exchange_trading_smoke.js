@@ -64,7 +64,7 @@ async browserPage => {
     await page.keyboard.down('ArrowDown');await page.clock.runFor(200);await page.keyboard.up('ArrowDown');await page.locator('#walk-airlock').click();
     await walkToBuilding(5);const street=await exportGame();await page.locator('#walk-airlock').click();
     const entered=await exportGame(),ex=s=>s.state.economy.exchange;
-    assert(entered.version===15&&entered.scope==='landed-personal-trade-1','Exchange exports version15');
+    assert(entered.version===16&&entered.scope==='landed-local-cargo-1','Exchange exports version16');
     assert(ex(entered).visit.offers.length===8&&ex(entered).market.lastUpdateDay===0,'Ordinary entry creates and persists eight offer rows');
     assert(entered.state.encounters.randomState!==street.state.encounters.randomState,'Entry advances continuing gameplay RNG');
     const cheapest=s=>ex(s).visit.offers.map((o,i)=>({o,i})).filter(r=>r.o).sort((a,b)=>a.o.price-b.o.price)[0].i;
@@ -118,10 +118,10 @@ async browserPage => {
     const forged=structuredClone(again),forgedRow=ex(forged).visit.offers.find(Boolean);forgedRow.price++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects a forged asking price');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Rejected import preserves all live progress');
-    const previous=structuredClone(again);previous.version=13;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
+    const previous=structuredClone(again);previous.version=13;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
     assert((await importGame(previous)).includes('imported'),'Version13 traded exchange progress imports');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Version13 migration preserves cargo, money, market, offers and RNG');
-    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
+    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     assert((await importGame(legacy)).includes('imported'),'Version12 exchange preview imports through normal UI');
     const migrated=await exportGame();
     assert(ex(migrated).visit.offers.length===8&&migrated.state.encounters.randomState!==legacy.state.encounters.randomState,'Legacy exchange gets its first board exactly at resume');

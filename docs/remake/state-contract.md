@@ -1,12 +1,12 @@
 # State boundaries — R01a / R04a / R05a / R05b / R05c / R05d / R04c / R04d
 
-Current R07f writes version15 `landed-personal-trade-1` saves. Active `economy` contains
+Current R07g writes version16 `landed-local-cargo-1` saves. Active `economy` contains
 all system accounts, local `exchange:{market,warehouse,visit}` and completed
 personal-sale totals in `personalTrade:{sold,proceeds}`;
 carried cash remains in `dialogue.cash`. Confirmed trades atomically update money,
 warehouse slots, stock, offers and RNG. Creation data stays immutable. Earlier
 saves receive local exchange state after historical validation; other cities and
-pod cargo remain outside the active boundary. See [campaign saves](campaign-saves.md),
+regional transport remain outside the active boundary. See [campaign saves](campaign-saves.md),
 [banking](banking.md), [exchange trading](exchange-trading.md) and
 [shop purchases](shop-purchases.md). Cash-paid personal purchases live in the
 replayed conversation until cash and carried inventory commit together on return.
@@ -14,9 +14,10 @@ Visitor sales follow the same boundary and commit gross income once; the wealth
 ceiling includes these proceeds. See [personal trading](personal-trading.md) for
 ledger validation, historical replay gates and version15 migration.
 
-R07e adds an isolated [cargo loading core](cargo-loading.md); its two pod slots
-are not yet active campaign fields. Imports still reject cargo/transport extensions
-and foot exchange visits cannot transfer lots to a pod.
+R07g connects the [cargo core](cargo-loading.md) to active `pod` ownership:
+attachment, nullable city position, heading and two cargo slots. Version16
+validates local travel, pod entrance access, total paid cargo and cryogen
+conservation. Foot visits cannot load a remote pod. See [pod cargo](pod-cargo.md).
 
 The campaign schema below is a design contract. Defaults are intentionally not
 instantiated until the new-game evidence gate passes. A content viewer is not a

@@ -1,11 +1,11 @@
-# Campaign save boundary — through R07f
+# Campaign save boundary — through R07g
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version15, scope `landed-personal-trade-1`, and validates/upgrades version1 `landed-ship-1`,
+version16, scope `landed-local-cargo-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, and version14 `landed-purchases-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, and version15 `landed-personal-trade-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -26,11 +26,14 @@ versions1–13 cannot inject these inputs or bartender food selection. No new
 economy fields are needed because purchases only reduce cash. See
 [shop purchases](shop-purchases.md).
 
-R07e shares lot validation with the new [cargo loading core](cargo-loading.md).
-Its loading-session snapshots are not campaign saves. Active pod cargo, movement
-and fetched cryogens remain rejected until their coupled save boundary exists.
+Version16 connects the [cargo core](cargo-loading.md) to local pod transport and
+loading. The active `pod` block owns attachment, city position, heading and two
+cargo slots. Both containers contribute paid costs to the wealth ceiling and
+conserve the initial local cryogens. Detached travel requires reachable pod
+geometry and pod exchange entry. Versions1–15 migrate with an attached empty pod
+after historical validation. See [pod cargo](pod-cargo.md).
 
-The state has seven explicit parts:
+The state has eight explicit parts:
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
@@ -48,13 +51,17 @@ The state has seven explicit parts:
   integer `balance`. Banking changes these accounts and `dialogue.cash` atomically.
   `exchange` owns the local market, four warehouse slots and nullable offer board.
   `personalTrade` owns completed personal-sale counts and gross proceeds.
-  Other cities and pod cargo remain immutable creation data. See [exchange trading](exchange-trading.md).
+  Other cities remain immutable creation data. See [exchange trading](exchange-trading.md).
+- `pod`: active attachment, nullable exterior position, directional glyph heading
+  and two cargo slots. Detached position equals the active city position and is
+  allowed only in city/exchange scenes. Attached pods use null position/heading16.
 - `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
   or `exchange`) and full-map city player pixels.
   `cityPosition` is null inside; outside it must be reachable from the airlock.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
   At a bank the city position must also match a source foot-bank door footprint.
-  Other service scenes likewise require their matching reachable foot door;
+  Other service scenes require their matching reachable foot door; detached
+  pods instead require the exchange cargo entrance and pod reachability;
   no redundant service identity is stored. Exchange progress lives in `economy.exchange`.
   In a room, the city position retains the entry door; a third field,
   `roomPosition`, must be reachable from the derived layout's interior spawn.
@@ -164,8 +171,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version15 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Other cities, pod cargo transport, encoded component repair and
+as version16 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Other cities, unattended pod parking, encoded component repair and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.

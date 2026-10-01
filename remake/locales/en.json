@@ -520,5 +520,21 @@
   "dialogueSlotOccupied": "No empty carried slot. Make room before buying.",
   "dialogueSalePrice": "Sell {item} · Receive {price} Cr · Cash: {cash} Cr",
   "dialogueSaleConfirm": "Choose the item to hand over and receive payment. Charge shown on each slot is preserved until sold.",
-  "dialogueCashOverflow": "You cannot carry this much cash. Deposit money at the bank first."
+  "dialogueCashOverflow": "You cannot carry this much cash. Deposit money at the bank first.",
+  "podDepart": "Drive pod",
+  "podDock": "Dock pod",
+  "podDepartHint": "The pod exit is within reach. Drive out to carry cargo.",
+  "podDockHint": "Dock the pod here to return aboard.",
+  "podExchangeHint": "Enter the exchange with your pod to load cargo.",
+  "cargoLoading": "Load cargo",
+  "cargoPod": "Pod cargo · 2 slots",
+  "cargoStore": "Store",
+  "cargoFetch": "Fetch",
+  "cargoSwap": "Swap",
+  "cargoLoadingHint": "Choose pod cargo to store, warehouse cargo to fetch, or Swap.",
+  "cargoSwapHint": "Choose one occupied pod slot and one occupied warehouse slot, then confirm.",
+  "cargoPodFull": "Both pod slots are full. Store or swap cargo first.",
+  "cargoWarehouseFull": "The warehouse is full. Fetch or swap cargo first.",
+  "cargoUnavailable": "Bring your pod to the exchange to load cargo.",
+  "cargoInvalidSelection": "Choose an occupied cargo slot."
 }
