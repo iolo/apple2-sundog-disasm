@@ -5,7 +5,9 @@ Active deposits, withdrawals and inter-system transfers are traced and implement
 in [R07a banking](banking.md). [R07c exchange trading](exchange-trading.md) adds
 local purchases, sales, warehouse ownership and version13 saves.
 [R07d shop purchases](shop-purchases.md) adds cash-paid personal items/food and
-version14 replay saves. The [R07 audit](r07-completion.md) tracks remaining
+version14 replay saves. [R07e cargo rules](cargo-loading.md) implement isolated
+Store/Fetch/Swap and audit the [personal resale route](personal-item-resale.md).
+The [R07 audit](r07-completion.md) tracks remaining
 personal-item resale and cargo work.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).

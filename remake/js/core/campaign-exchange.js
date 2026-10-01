@@ -2,6 +2,7 @@ import { prepareExchangeVisit, exchangeLocation, quoteExchangeCargo, replaceExch
 import { cityServiceAt } from './city-doors.js';
 import { sourceRandom } from './random.js';
 import { MAX_CREDITS } from './banking.js';
+import { validateCargoLot } from './cargo.js';
 
 const fail=()=>{throw new Error('invalidCampaign')};
 const keys=(v,names)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===names.length&&names.every(k=>Object.hasOwn(v,k));
@@ -42,9 +43,9 @@ export function validateExchange(value,start,ship,travel,content) {
       return {...initial.warehouse.slots[i]}; // Cryogens cannot be sold/moved here.
     }
     if(cargo===null)return null;
-    if(!keys(cargo,['commodityId','quality','originCity','pricePaid'])||!integer(number(cargo.commodityId),2,30)||
-      !integer(cargo.quality,1,7)||cargo.originCity!==m.cityId||!integer(cargo.pricePaid,100,3276700)||cargo.pricePaid%100!==0||m.lastUpdateDay===-16)fail();
-    return {commodityId:cargo.commodityId,quality:cargo.quality,originCity:cargo.originCity,pricePaid:cargo.pricePaid};
+    let lot;try {lot=validateCargoLot(cargo)} catch {fail()}
+    if(!integer(number(lot.commodityId),2,30)||lot.originCity!==m.cityId||lot.pricePaid<100||m.lastUpdateDay===-16)fail();
+    return lot;
   });
   let visit=null;
   if(value.visit!==null) {

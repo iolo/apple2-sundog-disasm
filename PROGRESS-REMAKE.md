@@ -1,5 +1,38 @@
 # SunDog web remake progress
 
+## R07e — Cargo loading core and resale route audit — 2026-10-01
+
+Traced native Store/Fetch/Swap in Game20 procedures11–13: four warehouse slots,
+two pod slots, first-empty automatic destinations and two occupied selections
+for Swap. Added an owned loading-session reducer with matching pod-visit access,
+strict lot/container validation, complete origin/quality/price preservation,
+cryogen movement, capacity errors and atomic rejection. The ship Cargo display
+reads the same pod manifest; no invented second hold is added. Live exchange
+lot validation now reuses the core validator with all prior campaign restrictions.
+
+This checkpoint is a core foundation, not live cargo transport. Version14 saves
+remain unchanged and reject pod cargo/transport extensions. Foot visits cannot
+load remotely. Integrating movement, pod ownership, the combined wealth bound and
+cryogen conservation must precede live loading controls. Auxiliary fuel, unknown
+salvage and colony records remain outside the new lot boundary. No native emulator
+capture is claimed. Source addresses and next integration steps are recorded in
+`docs/remake/cargo-loading.md`.
+
+The resale audit corrects the planned generic shop-sale path: ordinary shops
+never enable selling. Seated visitors have a direct Sell →131 →132 →35 →37
+acceptance path, distinct from bartender matching through27 →29 →builtin3.
+`docs/remake/personal-item-resale.md` records transfer/price rules and the required
+sale-income save boundary. Next implement bounded visitor trade; do not defer
+that direct path behind the complete street-encounter milestone. Then pull minimal
+pod travel/entry prerequisites forward from R08 to complete R07 cargo integration.
+
+Validation: Chrome154 passes **235 rule groups** and **64 exchange UI checks**.
+The cargo tests cover64 occupancy patterns,284 successful operations, malformed
+records, immutable failures, paid-lot round-trip sale pricing and rejected
+premature campaign extensions. Receipts: `cargo-rules-validation.json` and
+`cargo-exchange-regression.json`. `git diff --check` passes. The supplied
+untracked `PRD-REMAKE.md` remains unchanged and outside the commit.
+
 ## R07d — Shop/food purchases and version14 replay saves — 2026-10-01
 
 Enabled cash-paid purchases at item/equipment counters and bartender food/ale
