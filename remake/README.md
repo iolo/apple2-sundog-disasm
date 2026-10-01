@@ -114,6 +114,11 @@ unchanged. Transfers select another system and charge no fee. Saves retain only
 committed balances; a fresh load discards a pending amount. See
 `../docs/remake/banking.md`.
 
+R07b adds a tested ordinary exchange quote/offer engine and staged market visits.
+It preserves source rounding, quality, origin resale ceilings and RNG order.
+Campaign integration and commodity purchases remain pending; see
+`../docs/remake/exchange-quotes.md`.
+
 Development export checks:
 
 ```sh
