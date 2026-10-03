@@ -1,6 +1,6 @@
 # R08 implementation and completion audit
 
-Status: **in progress, R08h**. The objective remains the entire R08 row in
+Status: **in progress, R08i**. The objective remains the entire R08 row in
 `PLAN-REMAKE.md`, not just depot pricing or the R07 local cargo journey.
 
 | Requirement | Current evidence | Remaining work |
@@ -10,7 +10,7 @@ Status: **in progress, R08h**. The objective remains the entire R08 row in
 | Repair/fuel services | R08a source prices; R08b active hull/fuel, actual foot/pod access, confirmed localized service controls, auxiliary cargo transport and version18 saves. `depot-services-validation.json` proves a fresh-character servicing and loaded return journey. | Hull/fuel service gate is met. Component repair remains separate engineering work. |
 | Ship readiness | R08f runs landed gun/shield/cloaker controls, actual performance, equipment dependencies, fuel depletion and automatic auxiliary consumption under one aboard clock. Version20 preserves phases/resources.31 machinery UI checks and61 fresh-character depot checks pass. | Final combined readiness audit, including replacement and servicing together. Launch/orbit/warp remain R09. |
 | Pod boarding/departure and return | R08h connects independent occupancy/positions, source parking collision/exit/boarding, detached ship artwork/collision and version21 saves. `parking-ui-validation.json` proves42 checks through fresh-character purchases, loaded parking, foot exchange/ship visits, reloads, return boarding and docking. | Repeat parking/boarding across the coming surface boundary and include it in the final combined acceptance journey. Native cabin exit/drive choices use explicit buttons; see `parked-pod.md`. |
-| Surface traversal and terrain | Source city/world maps and native movement procedures exist. | Trace and implement the required city/surface transitions, foot/pod terrain rules, continuous location and return. |
+| Surface traversal and terrain | R08i exports source surface pixels/glyphs and57 captured city coordinates, composes18 maps with private terrain RNG, handles colony placement/revisit RNG, pixel terrain/seams and strict city entry/exit coordinates. Six core groups pass; see `surface-travel.md`. | Connect live camera/city border, foot/pod movement cadence, source arrival overlaps, surface scene and continuous location/return. Core tests do not prove a playable surface journey. |
 | Ship/pod/cargo ownership | R08h keeps unattended pod cargo independent during foot room/service/ship visits. Remote loading and auxiliary purchase are rejected; foot ship return does not dock/refuel or expose the pod as aboard.302 rule groups include current/legacy saves and absent-pod fuel behavior. The loaded UI journey and depot regression pass. | Extend location/ownership across surface travel. |
 | Acceptance and regressions | R08h's `parking-*-validation.json` receipts cover302 rule groups and205 UI checks: parking42, depot61 and rooms102. Earlier machinery/failure evidence remains recorded separately. Source/UI adaptations are in `ship-power.md` and `parked-pod.md`. | Extend the combined acceptance journey through component repair/readiness, parked pod and surface travel; prove terrain/transition rejection and repeat affected regressions. |
 

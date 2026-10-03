@@ -1,5 +1,45 @@
 # SunDog web remake progress
 
+## R08i — Source surface composition, terrain and transition core — 2026-10-03
+
+Traced Game21 procedures11/12/17/18/23/28/29 and Library22 collision mode2.
+Added deterministic surface assets: all21 tile pixel arrays, foot/pod/alternate
+and collision glyphs, and57 ordinary cities' packed world coordinates. Python
+tests compare coordinates with the independent clean-character capture and
+glyphs with original font bytes.
+
+Surface composition now uses the original per-world private RNG, X-major
+replacement of stored tile13 with terrain14..20, then city overlays. This does
+not consume campaign RNG. Colony placement is a separate helper: its first
+placement draws gameplay RNG until suitable terrain, while revisits reuse the
+saved coordinate. No live colony placement or progression is claimed yet.
+
+The terrain core uses28×24 tiles, the shared foot/pod collision glyph15 and
+pattern9 masks, including glyph pixels across wrapped map seams. Movement tries
+diagonal/X/Y and one-pixel fallback. Entry/exit helpers implement camera bounds,
+source side offsets, proportional city border entry and strict comparison/side
+priority. Source arrival points can overlap city artwork; movement tests only
+the destination, matching the native procedure. Live saves must distinguish
+these source anchors from arbitrary blocked imports. See the source addresses
+and detailed remaining integration work in `docs/remake/surface-travel.md`.
+
+Validation:
+
+- `surface-core-rules-validation.json`:308 rule groups, no failures/page errors.
+- Six new groups include18 independent bit-array RNG reference map digests,
+  all57 city overlays, colony RNG ownership,14,112 terrain/stencil comparisons,
+  seam/fallback/invalid movement, strict boundary and entry-priority vectors,
+  and escape from original arrival overlaps.
+- `python3 tools/remake/test_exports.py`:20 tests pass.
+- `python3 tools/remake/export_assets.py --check`:166 artifacts verified.
+
+This is a source-core checkpoint; playable campaign saves remain version21.
+Next connect the live surface scene/camera and expanded city border, active
+locations, independent parked pod/ship/cargo domains, migration/reload and
+surface return. Then run the combined servicing/readiness/transport acceptance
+journey and affected regressions. R08 remains in progress; the user PRD is
+unchanged and untracked.
+
 ## R08h — Live parking, independent ownership and version21 saves — 2026-10-03
 
 Connected R08g's parked-body collision, source foot-exit search and boarding
