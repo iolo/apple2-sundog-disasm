@@ -95,6 +95,19 @@ async browserPage => {
     assert(docked.state.pod.attached&&JSON.stringify(docked.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo)&&JSON.stringify(docked.state.resources)===JSON.stringify(loaded.state.resources),'Loaded return preserves auxiliary cargo and serviced ship resources');
     await page.locator('#walk-inventory').click();assert(await page.locator('#pod-manifest p').count()===2,'Ship manifest displays both auxiliary loads');await page.locator('#inventory-close').click();
     assert(JSON.stringify(docked.state.start)===JSON.stringify(initial.state.start),'Servicing preserves immutable creation data');
+
+    // A second fresh journey buys auxiliary loads without refueling the ship.
+    // No campaign fixture or direct mutation supplies fuel/cargo for this path.
+    await page.reload();await ready();
+    await page.locator('#create-character').click();await page.locator('#character-name').fill('Auxiliary pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
+    await route('depart');await route('depot');
+    await page.locator('#depot-auxiliary').click();await page.locator('#depot-all').click();await page.locator('#depot-confirm').click();const auxOnly=await reload();
+    assert(auxOnly.state.resources.fuel===0&&auxOnly.state.pod.cargo.every(c=>c?.commodityId==='cargo-01'),'Fresh campaign buys two auxiliary loads while the ship tank remains empty');
+    await page.locator('#service-leave').click();await route('dock');const refueled=await reload();
+    assert(refueled.state.resources.fuel===255&&refueled.state.pod.cargo[0]===null&&JSON.stringify(refueled.state.pod.cargo[1])===JSON.stringify(auxOnly.state.pod.cargo[1]),'Docking consumes the first auxiliary load and fills the empty ship tank');
+    assert(JSON.stringify(refueled.state.economy)===JSON.stringify(auxOnly.state.economy)&&JSON.stringify(refueled.state.dialogue)===JSON.stringify(auxOnly.state.dialogue)&&refueled.state.encounters.randomState===auxOnly.state.encounters.randomState,'Automatic docking refill changes no money or RNG');
+    await route('depart');await route('dock');const redocked=await reload();
+    assert(redocked.state.resources.fuel===255&&JSON.stringify(redocked.state.pod.cargo)===JSON.stringify(refueled.state.pod.cargo),'Reload and docking again do not consume the remaining load from a full tank');
     assert(errors.length===0,'No uncaught depot journey errors');return {browser:browser.version(),checks,errors};
   } finally {await context.close()}
 }

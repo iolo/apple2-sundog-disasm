@@ -58,8 +58,12 @@ in a service session are validated and preserved.
 Library24 proc16 `$0ACE–$0B4C` automatically consumes the first type1 pod cargo
 when working fuel is nonpositive and flag7 says the pod is attached: add255,
 clear that slot, then clamp any remaining nonpositive fuel to zero. This belongs
-to the upcoming machinery update; R08b does not introduce a manual consumption
-action or claim active fuel depletion.
+to the machinery update. R08e implements its isolated source core, while live
+general fuel depletion remains pending. Separately, Game15 proc10 refills fuel
+below5 to255 on return from the pod, consuming the first auxiliary lot. R08e
+connects that docking path to the campaign; a full tank keeps both loads, and
+save/reload does not repeat consumption. There is no manual Use fuel action.
+See [ship power](ship-power.md) for the distinct rules and current receipts.
 
 Browser atomic confirmations replace the native repeating purchase buttons.
 This core does not invent a time charge from the UI's “hour” label or simulate

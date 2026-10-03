@@ -76,6 +76,16 @@ export async function cityPodTests(test,equal) {
     const sold=trade(returned,{type:'sell',slot:returned.economy.exchange.warehouse.slots.findIndex(c=>c?.commodityId===lot.commodityId)});
     equal(sold.pod.cargo,[null,null]);equal(codec.snapshot(sold),sold);
   });
+  await test('Actual pod docking consumes one auxiliary load for an empty ship and persists without repeat consumption',()=>{
+    const s=fresh(),aux={commodityId:'cargo-01',quality:7,originWorld:'world-01',pricePaid:0};
+    s.pod.cargo=[structuredClone(aux),structuredClone(aux)];const outside=depart(s),before=JSON.stringify(outside);
+    const docked=run(outside,{type:'dock'});equal(docked.resources.fuel,255);equal(docked.pod.cargo,[null,aux]);
+    equal(docked.start,outside.start);equal(docked.economy,outside.economy);equal(docked.encounters,outside.encounters);equal(docked.ship.inventory,outside.ship.inventory);
+    equal(JSON.stringify(outside),before);equal(codec.parse(JSON.stringify(codec.make(docked,0))).state,docked);
+    const again=run(depart(structuredClone(docked)),{type:'dock'});equal(again.resources,docked.resources);equal(again.pod.cargo,docked.pod.cargo);
+    reject(()=>run(docked,{type:'dock'}),'podUnavailable');
+    const remote=arrive(structuredClone(s)),unchanged=JSON.stringify(remote);reject(()=>run(remote,{type:'dock'}),'podUnavailable');equal(JSON.stringify(remote),unchanged);
+  });
   await test('Cryogens move between pod and warehouse but cannot vanish, multiply or be sold',()=>{
     let s;for(let seed=1;seed<200;seed++){s=fresh(seed);if(s.economy.exchange.warehouse.slots.some(Boolean))break}
     equal(s.economy.exchange.warehouse.slots[0]?.commodityId,'cargo-31');s=trade(arrive(s),{type:'enter'});

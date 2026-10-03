@@ -136,8 +136,10 @@ At a depot, choose **Refuel ship**, **Repair hull**, or **Load auxiliary fuel**.
 Review the quantity with −, + or Maximum, then Confirm. Services spend the local
 bank first and cash second. Hull/fuel service works on foot; auxiliary loading
 requires driving the pod to the depot and an empty cargo slot. Auxiliary fuel
-can be stored/fetched at the exchange but cannot be sold. Automatic fuel use and
-machinery controls are still pending. See `../docs/remake/depot-services.md`.
+can be stored/fetched at the exchange but cannot be sold. Docking with ship fuel
+below5 consumes the first auxiliary load and fills the tank to255. A full tank
+keeps both loads. General machinery controls and fuel depletion are still pending.
+See `../docs/remake/depot-services.md` and `../docs/remake/ship-power.md`.
 
 At an engineering bay, open **Equipment**, select a component, choose **Move /
 exchange**, then select a compatible socket or carried slot. Both destinations
