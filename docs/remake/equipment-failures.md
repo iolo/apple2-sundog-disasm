@@ -1,0 +1,84 @@
+# Component failure lifecycle — R08c
+
+The Game14 operation previously described as delayed repair is **delayed
+failure**. It writes destroyed-item7, not a repaired component. Repairs replace
+the destroyed part with a working standard part, compatible special part or
+shunt. R08c implements the source failure operations and dependency updates in
+`remake/js/core/equipment-failures.js`; live engineering integration and a new
+save scope are still required. Version18 and its plain installed-part rules are
+unchanged. This checkpoint does not claim a playable failure/repair journey.
+
+## Source trace
+
+| Evidence | Behavior |
+| --- | --- |
+| Game16 proc11 `$0525–$0542`; existing `dialogue-effects.js` | Trader appraisal can add128 to a part when the attribute/chance checks both fail. Purchase transfers the complete byte. This is an existing reachable producer; engineering currently rejects installing it. |
+| Game14 proc11 `$0742–$0784` | Installation fit uses the low-five-bit type, standard socket requirement, shunt23 outside socket0, or designated special part/socket. |
+| Game14 proc8 `$05AE–$05F2` | Convert the display index to a five-byte-row offset. Write `byte % 32`, recalculate through Library24 proc8, then, if the supplied byte exceeds127, set record byte25 to that offset and restore the complete byte. The resulting performance cache temporarily describes the plain part. |
+| Game14 proc7 `$0513–$0544` | Frame entry/cycling writes31 to record byte25, then replaces bytes strictly greater than144 with7. It does not recalculate performance here. |
+| Game14 proc9 `$0691–$06A3` | An engineering update first runs Library24 proc9 in ship contexts or Library22 proc29 in other contexts. |
+| Game14 proc9/10 `$06AE–$070F`, `$0673–$067E` | If byte25 is below20, clear it to31 and destroy that offset. Then scan offsets19 down to0 and destroy every remaining byte above127. Recalculate the group after the entire sweep. This is not a per-part repair duration. |
+| Library24 proc13 `$09B1–$0A07` | After combat selects a component, a shunt hit makes20 eager random draws across the entire four-row record, including performance-byte positions. Each shunt with an odd draw receives128. The selected byte, if between8 and127, is then marked with128, byte25 is set, and output is immediately recalculated. |
+| Library24 proc8 `$0177–$0181`, `$01F8–$0260` | Recompute special availability in flags16–21. At zero group performance, clear the corresponding power flag0–5. Groups0/2/4 also clear words222/226/224 respectively. If no working special component remains, clear the corresponding special control flag8–13. |
+
+Offsets are segment-relative in `src/pcode/game_14.s`, `game_16.s` and
+`library_24.s`. Word222 is the warp target charge,224 the shield target,226 the
+gun charge. This cleanup does **not** directly zero current warp charge223,
+current shield charge225 or fuel227. Do not clear these extra resources merely
+because a component was removed.
+
+The supplied manual's PDF pages11–14 were rendered and visually reviewed. Page11
+locates the six engineering bays, page12 describes repairs through their object
+windows, and page13 distinguishes status, hull, fuel, shield and weapon meters.
+The detailed bit/tick behavior above comes from the recovered source, not the
+manual illustrations. No original-emulator observation was made.
+
+## Core boundary
+
+The isolated state is `{group, pendingFailure}`. `group` uses the established
+four-unit component/performance model; `pendingFailure` uses original offsets
+`unit*5+socket`, with31 meaning none. Installation, frame entry, failure resolution
+and selected-component damage each return owned data. They do not grant access
+to a bay, transfer pocket contents, change a campaign clock or validate a save.
+The eventual campaign controller must own those operations atomically.
+
+The source has observable ordering details that cannot be represented by simply
+masking all encoded bytes during every performance calculation:
+
+- A newly installed faulty part initially contributes output. Older encoded
+  parts in the same group still make their units inoperative on that calculation.
+- A combat-marked part immediately loses output.
+- Entering another engineering frame can leave a stale native output cache after
+  changing its displayed components. The source core preserves that ordering;
+  the live save validator must either represent it explicitly or document a
+  deliberate canonical-cache adaptation.
+- Overwriting the marked socket does not itself clear the source's byte25. The
+  subsequent update targets that offset even if a replacement was just placed
+  there. A live atomic exchange implementation must resolve its update ordering
+  explicitly, rather than silently inventing a repair timer.
+
+`equipmentDependencyResult` uses a separate source flag/word session so it does
+not pretend that live version18 already supports active machinery flags. It
+preserves unrelated flags/words and never enables a control automatically when
+a repair restores output. Future active resource ownership must connect this
+result to the existing named resources and additional system controls.
+
+`hitEquipmentComponent` implements only a **selected** component hit. Encounter
+generation, target selection, shield absorption, hull damage and ship destruction
+remain part of the R10 combat work. They are not random landed failure events.
+
+## Verification and next integration
+
+Seven rule groups cover all96 standard sockets, masked installation, special
+parts, shunt restrictions, transient and final output, ordered multi-part burn
+out, the strict144 frame boundary, selected hits, eager RNG, dependency cleanup,
+caller ownership and the existing trader appraisal-to-fault path. The fixed
+shunt vector starts at12345 and ends at2553372812 after20 draws. Its component
+matrix was computed independently using four little-endian bytes, seven carry
+shifts per draw, feedback from bit6 XOR bit30, and the documented result bytes.
+
+The full Chrome receipt is `equipment-failure-core-validation.json`.
+Next connect faulty-part purchases/removal/replacement to live engineering
+updates, deterministic save/reload, visible failure/readiness feedback and the
+source power/fuel owner. Auxiliary consumption remains Library24 proc16, and
+parked-pod/surface travel remain required by the [R08 audit](r08-completion.md).

@@ -55,8 +55,9 @@ there is no nonzero resource state to clear. Enabling machinery requires the ful
 dependent flag transitions, not simply using `specialAvailable` as a power toggle.
 
 Game14 procedure8 `$05B9–$05F2` masks installed types and has an additional encoded
-damage path, tracked by record byte25 and processed by procedures9/10. That delayed
-repair workflow remains unsupported. Encoded carried bytes are preserved exactly;
+damage path, tracked by record byte25 and processed by procedures9/10. R08c establishes that this is delayed
+failure, not repair; see [component failures](equipment-failures.md). Its live
+update/save integration remains unsupported. Encoded carried bytes are preserved exactly;
 only plain compatible component types may be installed. Destroyed type7 can be
 removed to a pocket but cannot be installed. This checkpoint replaces parts; it
 does not heal an individual damaged component, sell parts or add service costs.
