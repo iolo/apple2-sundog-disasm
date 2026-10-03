@@ -71,8 +71,8 @@ export function validateExchange(value,start,ship,travel,content,{movableCargo=f
 
 export function reduceCampaignExchange(previous,content,map,action) {
   const {travel}=previous;
-  if(previous.pod?.attached===false&&(previous.pod.position?.x!==travel.cityPosition?.x||previous.pod.position?.y!==travel.cityPosition?.y))throw new Error('exchangeUnavailable');
-  if(!['city','exchange'].includes(travel.scene)||cityServiceAt(map,travel.cityPosition,previous.pod?.attached===false?'pod':'foot')!=='exchange')throw new Error('exchangeUnavailable');
+  if(previous.pod?.occupied&&(previous.pod.position?.x!==travel.cityPosition?.x||previous.pod.position?.y!==travel.cityPosition?.y))throw new Error('exchangeUnavailable');
+  if(!['city','exchange'].includes(travel.scene)||cityServiceAt(map,travel.cityPosition,previous.pod?.occupied?'pod':'foot')!=='exchange')throw new Error('exchangeUnavailable');
   const next=structuredClone(previous),e=next.economy.exchange;
   if(action.type==='enter') {
     if(e.visit!==null)throw new Error('exchangeUnavailable');

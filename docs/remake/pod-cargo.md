@@ -13,9 +13,10 @@ sell its cargo into the local bank account. Foot visits cannot load a remote pod
 R08e adds the native auxiliary-fuel docking exception: when ship fuel is below5,
 the first auxiliary lot is consumed and fuel becomes255. Ordinary goods and
 cryogens remain intact; full tanks retain auxiliary loads. See [ship power](ship-power.md).
-The current pod journey is confined to Drahew. Leaving the pod on foot, other
-cities and surface travel remain the broader R08/R09 transport work. R08b adds
-reachable depot entry and purchases.
+The current pod journey is confined to Drahew. R08h adds parking, leaving on foot,
+independent player/pod saves and boarding return; see [parked pods](parked-pod.md).
+Other cities and surface travel remain R08/R09 work. R08b adds reachable depot
+entry and purchases.
 
 ## Source movement and browser presentation
 
@@ -56,7 +57,7 @@ pod: {
 }
 ```
 
-Detached pod position must equal the city's active player position; only city or
+In the historical version16 format, detached pod position must equal the city's active player position; only city or
 exchange scenes support it. Position must be reachable from departure with the
 directional pod masks, and its saved heading must fit. An exchange snapshot must
 also match the pod entrance. Attached pods have null exterior position and the

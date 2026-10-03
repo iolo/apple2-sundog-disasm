@@ -1,5 +1,10 @@
 // Source-backed movement only; no campaign time, inventory or economy is advanced.
 // x is the sprite's left edge; y is its bottom row (inclusive).
+const detachedGeometries=new WeakMap();
+export function detachedShipGeometry(geometry) {
+  if(!detachedGeometries.has(geometry))detachedGeometries.set(geometry,{...geometry,backgrounds:{...geometry.backgrounds,ship:geometry.backgrounds['ship-section']}});
+  return detachedGeometries.get(geometry);
+}
 export function canStand(geometry, point, variant = 'ship') {
   const { x, y } = point, rows = geometry.backgrounds[variant];
   const bounds=geometry.walkBounds;

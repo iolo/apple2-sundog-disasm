@@ -53,7 +53,7 @@ export async function campaignMachineryTests(test,equal) {
       equal(codec.parse(JSON.stringify(codec.make(s,0))).state,s);
       const resumed=codec.snapshot(s);equal(run(resumed,1000),run(s,1000));
     }
-    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=19;old.scope='landed-failures-1';delete old.state.machinery;
+    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=19;delete old.state.pod?.occupied;old.scope='landed-failures-1';delete old.state.machinery;
     equal(codec.validate(old),current);old.state.resources.fuel=1;reject(()=>codec.validate(old),'invalidCampaign');
     old.state.resources.fuel=16;old.state.resources.guns.powered=true;reject(()=>codec.validate(old),'invalidCampaign');
     old.state.resources.guns.powered=false;old.state.machinery={phase:0,cloaked:false};reject(()=>codec.validate(old),'invalidCampaign');

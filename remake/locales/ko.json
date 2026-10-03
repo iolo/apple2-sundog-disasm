@@ -571,5 +571,9 @@
   "machineryUnavailable": "여기서는 함선 장치를 조작할 수 없습니다.",
   "machineryInoperative": "고장 난 부품을 교체하여 장치를 복구하세요.",
   "machineryNoFuel": "보호막을 높이려면 연료를 보급하세요.",
-  "machineryNoCloaker": "정상 은폐 장치가 필요합니다."
+  "machineryNoCloaker": "정상 은폐 장치가 필요합니다.",
+  "podPark": "주차 / 내리기",
+  "podBoard": "포드 탑승",
+  "podExitBlocked": "포드에서 내릴 수 있는 빈 공간이 없습니다.",
+  "podUnavailable": "포드 가까이 가야 탑승할 수 있습니다."
 }

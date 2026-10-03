@@ -3,9 +3,10 @@ import { machineryPanel } from './machinery.js';
 import { reduceCampaignEngineering, ENGINEERING_UPDATE_MS } from '../core/campaign-engineering.js';
 import { campaignDepotOffers, reduceCampaignDepot } from '../core/campaign-depot.js';
 import { depotPanel } from './depot.js';
+import { canBoardParkedPod } from '../core/parked-pod.js';
 import { canDockPod, podServiceAt, drivePodToward } from '../core/city-pod.js';
-import { reduceCampaignPod } from '../core/campaign-pod.js';
-import { createWalk, advanceWalk, interactionAt } from '../core/ship-walk.js';
+import { reduceCampaignPod, campaignFootGeometry } from '../core/campaign-pod.js';
+import { createWalk, advanceWalk, interactionAt, canStand, detachedShipGeometry } from '../core/ship-walk.js';
 import { createInventory, storageAt, transferItem } from '../core/inventory.js';
 import { inventoryPanel } from './inventory.js';
 import { createCondition, useCarriedItem } from '../core/condition.js';
@@ -45,7 +46,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   let campaignPod=null,podDirection=null,campaignResources=null,campaignEngineering=null,campaignMachinery=null;
   let machineryOpen=false,machineryMessage='';
   let depotDraft=null,depotMessage='';
-  const driving=()=>campaignMode&&campaignPod?.attached===false;
+  const driving=()=>campaignMode&&campaignPod?.occupied===true;
+  const footGeometry=()=>campaignFootGeometry(assets.cityGeometry,campaignPod);
   let campaignEconomy=null,bankDraft=null,bankMessage='';
   let exchangeTab='offers',exchangeDraft=null,exchangeMessage='';
   let dialogueFrame=null,dialogueError='';
@@ -67,10 +69,10 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const availableRoom=()=>inCity()&&!inService()&&!driving() ? roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,state.position) : null;
   const bankAvailable=()=>inCity()&&!inService()&&!driving()&&atCityBank(assets.cityGeometry.map,state.position);
   const serviceAvailable=()=>inCity()&&!inService() ? (driving() ? podServiceAt(assets.cityGeometry.pod,state.position,campaignPod.heading) : cityServiceAt(assets.cityGeometry.map,state.position)) : null;
-  const geometry=()=>inRoom() ? roomPopulation?.geometry || roomGeometry() : inCity() ? driving()?assets.cityGeometry.pod:assets.cityGeometry : assets.shipWalk;
+  const geometry=()=>inRoom() ? roomPopulation?.geometry || roomGeometry() : inCity() ? driving()?assets.cityGeometry.pod:footGeometry() : campaignMode&&campaignPod&&!campaignPod.attached?detachedShipGeometry(assets.shipWalk):assets.shipWalk;
   const bayAt=()=>outsideShip() ? null : equipmentBayAt(state.position);
   const storage=()=>outsideShip() ? null : storageAt(state.position);
-  const travelAvailable=()=>campaignMode&&campaignStart&&!inService()&&(inRoom() ? canLeaveRoom(currentRoom(),state.position) : inCity() ? serviceAvailable()||availableRoom()||(driving()?canDockPod(assets.cityGeometry.pod,state.position,campaignPod.heading):canBoardShip(assets.cityGeometry,state.position)) : [3,4].includes(interactionAt(state.position)));
+  const travelAvailable=()=>campaignMode&&campaignStart&&!inService()&&(inRoom() ? canLeaveRoom(currentRoom(),state.position) : inCity() ? serviceAvailable()||availableRoom()||(driving()?canDockPod(assets.cityGeometry.pod,state.position,campaignPod.heading):canBoardShip(footGeometry(),state.position)) : interactionAt(state.position)===3?campaignPod.attached:interactionAt(state.position)===4&&canStand(footGeometry(),assets.cityGeometry.spawn));
   let equipmentOpen=false, equipmentOffset=0, equipmentSelected=null;
   let equipmentMoving=false, equipmentMessage='',equipmentElapsed=0;
   const sessions=new Map();
@@ -83,10 +85,10 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
   const stop = () => { podDirection=null;keys.clear(); activePointer = null; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
-  const codec = checkpointCodec(assets.shipWalk);
+  const codec = checkpointCodec(assets.shipWalk),detachedCodec=checkpointCodec(detachedShipGeometry(assets.shipWalk));
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
-  const liveCampaign=(snapshot=true)=>({start:campaignStart,ship:snapshot?codec.snapshot(liveShip()):liveShip(),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,resources:campaignResources,engineering:campaignEngineering,machinery:campaignMachinery,
+  const liveCampaign=(snapshot=true)=>({start:campaignStart,ship:snapshot?(campaignPod.attached?codec:detachedCodec).snapshot(liveShip()):liveShip(),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,resources:campaignResources,engineering:campaignEngineering,machinery:campaignMachinery,
     travel:inRoom() ? {...travel,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity() ? state.position : null}});
   function exchangeAction(action) {
     const next=['store','fetch','swap'].includes(action.type) ? reduceCampaignPod(liveCampaign(),assets.cityGeometry.pod,action) : reduceCampaignExchange(liveCampaign(),assets.campaignContent,assets.cityGeometry.map,action);
@@ -176,10 +178,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       context.save();context.beginPath();context.rect(b.x,b.y,b.width,b.height);context.clip();
       const x=b.x+(anchor.x-camera.x*28)*b.width/280,y=b.y+(anchor.y-7-camera.y*32)*b.height/192;
       context.fillRect(x,y,14*b.width/280,8*b.height/192);
-      context.drawImage(assets.images[assets.catalog.images[driving()?'landed-ship-detached':'landed-ship']],x,y,14*b.width/280,8*b.height/192);
+      context.drawImage(assets.images[assets.catalog.images[!campaignPod.attached?'landed-ship-detached':'landed-ship']],x,y,14*b.width/280,8*b.height/192);
+      if(!campaignPod.attached&&!driving()) {
+        const p=campaignPod.position;context.globalCompositeOperation='difference';
+        context.drawImage(assets.images[assets.catalog.images[`pod-${campaignPod.heading}`]],b.x+(p.x-camera.x*28)*b.width/280,b.y+(p.y-7-camera.y*32)*b.height/192,7*b.width/280,8*b.height/192);
+      }
       context.restore();
     } else {
-      const key=inRoom() ? `room-${currentRoom().index.toString().padStart(2,'0')}${travel.lodging?.openMask ? `-doors-${travel.lodging.openMask}` : ''}` : 'ship';
+      const key=inRoom() ? `room-${currentRoom().index.toString().padStart(2,'0')}${travel.lodging?.openMask ? `-doors-${travel.lodging.openMask}` : ''}` : campaignMode&&campaignPod&&!campaignPod.attached?'ship-section':'ship';
       context.drawImage(assets.images[assets.catalog.images[key]], b.x, b.y, b.width, b.height);
     }
     const sx = b.width / (inRoom() ? 140 : 280), sy = b.height / (inRoom() ? 96 : 192);
@@ -211,6 +217,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       const label=t(driving() ? serviceAvailable()?'enterService':'podDock' : !outsideShip()&&station===3 ? 'podDepart' : inRoom() ? 'leaveRoom' : availableRoom() ? 'enterRoom' : bankAvailable() ? 'enterBank' : serviceAvailable() ? 'enterService' : inCity() ? 'boardShip' : 'leaveShip');
       if(airlock.textContent!==label)airlock.textContent=label;
     }
+    const podButton=root.querySelector('#walk-pod');
+    if(podButton)podButton.disabled=driving()?false:!canBoardParkedPod(footGeometry(),state.position,campaignPod.position);
+    root.dataset.podX=campaignPod?.position?.x??'';root.dataset.podY=campaignPod?.position?.y??'';root.dataset.podHeading=campaignPod?.heading??'';
     root.dataset.transport=driving()?'pod':'foot';
     root.dataset.heading=driving()?campaignPod.heading:'';
     root.dataset.scene=campaignMode ? travel.scene : 'ship';
@@ -233,6 +242,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     root.innerHTML = `<canvas aria-hidden="true"></canvas><header class="topline"><button id="walk-back" data-walk="back">← ${t('backShort')}</button><h1>${inRoom() ? t('roomTitle') : inCity() ? escapeHTML(assets.cityMaps[campaignStart.shipLocation.cityId].name) : t('walkTitle')}</h1><button id="walk-language" data-walk="language">${t('language')}</button></header>
       <p class="walk-note">${campaignMode && campaignStart ? escapeHTML(t('campaignIdentity',{name:campaignStart.character.name,seed:campaignStart.creation.seed})) : t('walkNote')}</p><p id="walk-clock"></p><div id="walk-surface" tabindex="0" role="button" aria-label="${t(campaignMode ? 'campaignControls' : 'walkControls')}"></div>
       <p id="walk-status" role="status"></p><footer class="walk-actions"><button id="walk-pause" data-walk="pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="walk-inventory" data-walk="inventory">${t('inventoryTitle')}</button>${campaignMode ? `${outsideShip() ? '' : `<button id="walk-equipment" data-walk="equipment" disabled>${t('equipmentTitle')}</button>`}<button id="walk-airlock" data-walk="airlock" disabled>${t(inCity() ? 'boardShip' : 'leaveShip')}</button>` : ''}<button id="walk-saves" data-walk="checkpoints">${t('shipSaves')}</button>${campaignMode ? '' : `<button id="walk-reset" data-walk="reset">${t('walkReset')}</button>`}<button id="walk-help" data-walk="help">${t('help')} ?</button></footer>`;
+    if(campaignMode&&travel.scene==='city'&&!campaignPod.attached)root.querySelector('.walk-actions').insertAdjacentHTML('afterbegin',`<button id="walk-pod" data-walk="pod">${t(driving()?'podPark':'podBoard')}</button>`);
     if(inRoom()&&encounters.counter)root.querySelector('.walk-actions').insertAdjacentHTML('afterbegin',`<button id="walk-talk" data-walk="talk">${t('dialogueTalk')}</button>`);
     if(dialogueFrame) {
       for(const child of root.children)child.inert=true;
@@ -265,7 +275,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       (root.querySelector('#equipment-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(equipmentMoving ? '#equipment-cancel' : '#equipment-close')).focus({ preventScroll:true });
     } else if (inventoryOpen) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', inventoryPanel({ cargo:campaignMode&&(!outsideShip()||driving())?campaignPod?.cargo:null, inventory, condition, time: timeLabel(), storage: storage(), selected, message: inventoryMessage, assets, t }));
+      root.insertAdjacentHTML('beforeend', inventoryPanel({ cargo:campaignMode&&((!outsideShip()&&campaignPod.attached)||driving())?campaignPod?.cargo:null, inventory, condition, time: timeLabel(), storage: storage(), selected, message: inventoryMessage, assets, t }));
       (root.querySelector('#inventory-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector('#inventory-close')).focus({ preventScroll: true });
     } else if (focus) document.getElementById(focus)?.focus({ preventScroll: true });
     draw();
@@ -426,6 +436,14 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   function releaseWalk() {
     stop();
     if(!state.paused&&inRoom()&&isTavern(currentRoom())&&playerSeatAt(currentRoom(),state.position)!==null)requestCounter();
+  }
+  function podAction() {
+    if(!campaignMode||travel.scene!=='city'||survival.sleeping||survival.dead)return;
+    try {
+      const next=reduceCampaignPod(liveCampaign(),assets.cityGeometry.pod,{type:driving()?'park':'board'},assets.cityGeometry);
+      campaignPod=next.pod;travel=next.travel;restoreShip(next.ship);roomMessage='';
+    }catch(error){roomMessage=error.message==='podExitBlocked'?'podExitBlocked':'podUnavailable';stop();state.paused=true}
+    render();root.querySelector('#walk-surface').focus();
   }
   function changeScene() {
     if(!travelAvailable()||survival.sleeping||survival.dead)return;
@@ -602,6 +620,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if(action==='close-power'&&machineryOpen){closeMachinery();return}
     if(action==='power-run'&&machineryOpen){state.paused=!state.paused;previous=0;render();return}
     if (action === 'equipment') { openEquipment(); return; }
+    if(action==='pod'){podAction();return}
     if (action === 'airlock') {changeScene();return}
     if (action === 'talk') {requestCounter();return}
     if (action === 'close-equipment') { closeEquipment(); return; }

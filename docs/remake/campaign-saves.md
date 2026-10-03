@@ -1,11 +1,11 @@
-# Campaign save boundary — through R08f
+# Campaign save boundary — through R08h
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version20, scope `landed-power-1`, and validates/upgrades version1 `landed-ship-1`,
+version21, scope `landed-parking-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, version18 `landed-depot-1`, and version19 `landed-failures-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, version18 `landed-depot-1`, version19 `landed-failures-1`, and version20 `landed-power-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -93,15 +93,19 @@ The state has eleven explicit parts:
   `exchange` owns the local market, four warehouse slots and nullable offer board.
   `personalTrade` owns completed personal-sale counts and gross proceeds.
   Other cities remain immutable creation data. See [exchange trading](exchange-trading.md).
-- `pod`: active attachment, nullable exterior position, directional glyph heading
-  and two cargo slots. Detached position equals the active city position and is
-  allowed only in city/exchange/depot scenes. Attached pods use null position/heading16.
+- `pod`: active attachment, nullable exterior position, directional glyph heading,
+  two cargo slots and boolean `occupied`. Attached pods are unoccupied with null
+  position/heading16. Occupied pods share the active city position and require
+  city/exchange/depot scenes. Unoccupied detached pods keep their own reachable
+  position during foot city/room/service/ship visits. See [parking](parked-pod.md).
 - `travel`: active scene (`ship`, `city`, `bank`, `room`, `transstation`, `depot`
   or `exchange`) and full-map city player pixels.
-  `cityPosition` is null inside; outside it must be reachable from the airlock.
+  `cityPosition` is null inside the ship; outside it must be reachable with the
+  current foot/pod geometry. Parked foot geometry includes the pod obstacle and
+  source-clear disembark/airlock origins.
   While outside, `ship.position` is the fixed interior reentry anchor `(54,118)`.
   At a bank the city position must also match a source foot-bank door footprint.
-  Other service scenes require their matching reachable foot door; detached
+  Other service scenes require their matching reachable foot door; occupied
   pods instead require the matching exchange/depot entrance and pod reachability;
   no redundant service identity is stored. Exchange progress lives in `economy.exchange`.
   In a room, the city position retains the entry door; a third field,
@@ -214,9 +218,12 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version20 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Other cities, unattended pod parking and
-flight/warp controls remain outside this version's supported scope.
+as version21 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Version21 derives old occupancy after historical
+checks; old formats cannot inject parked positions or the new field. Detached
+interior saves use the connected original ship-section collision region.
+Other cities, surface traversal and flight/warp controls remain outside this
+version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
 See [building interiors](building-interiors.md) for supported room layouts and adaptations.

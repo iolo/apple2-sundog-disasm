@@ -1,5 +1,50 @@
 # SunDog web remake progress
 
+## R08h — Live parking, independent ownership and version21 saves — 2026-10-03
+
+Connected R08g's parked-body collision, source foot-exit search and boarding
+bounds to city play. Park / exit preserves the pod's position and cargo while
+the player walks independently; Board pod requires actual proximity and restores
+driving at that position. The two explicit buttons represent the native type16
+pod-room exit/drive choices without adding a separate cabin scene. Both actions
+arrive paused and clear held input. Failed boarding or blocked exit is atomic.
+
+Added `pod.occupied` separately from attachment. Foot city, room, bank, depot,
+exchange and ship visits retain unattended pod ownership. Remote exchange loading
+and auxiliary purchases are rejected. Foot ship boarding cannot dock/refuel or
+show the remote cargo as aboard. Ship machinery cannot consume auxiliary fuel
+from the detached pod. Existing docking remains the explicit attachment/refuel
+transition.
+
+Game15 proc8 selects the original detached ship image when attachment is false.
+The browser now uses that artwork and its connected collision region, plus the
+saved parked glyph outside. Clear pixels left by pod removal are not reachable
+interior positions. Version21 `landed-parking-1` validates these independent
+locations, occupancy and parked-foot collision. Versions1–20 retain historical
+validation before deriving occupancy; active power, pending failures, accounts
+and cargo survive migration. Source details and adaptations are recorded in
+`docs/remake/parked-pod.md` and the save boundary.
+
+Validation:302 rule groups and205 UI checks pass in Chrome154.0.8037.92, with no
+uncaught browser errors. Five new campaign groups cover ownership, invalid and
+remote actions, foot services/rooms, absent-pod fuel, detached interior saves and
+version20 migration. Receipts: `parking-live-rules-validation.json`,
+`parking-ui-validation.json` (42), `parking-depot-regression-validation.json` (61)
+and `parking-room-regression-validation.json` (102).
+
+The parking UI journey starts a fresh character, buys/fetches cargo, parks in the
+street, reloads, walks to the exchange and ship, reloads in each, returns to board
+and docks loaded. It also proves immediate boarding recovery from the source
+departure pocket. Both languages fit four viewports. The Korean parked city and
+English detached-ship screenshots were visually inspected. An empty-campaign
+load-screen null access found during testing was fixed before the successful run.
+No position/cargo fixture or native-emulator capture is claimed for this journey.
+
+R08 remains in progress. Next implement city/surface traversal and return with
+foot/pod terrain rules and continuous independent location ownership. Then run
+the combined servicing/replacement/readiness/ground-transport acceptance audit;
+parking alone does not close the milestone.
+
 ## R08g — Source parked-pod collision and boarding geometry — 2026-10-03
 
 Traced Game21's separate pod location writes, parked visible-glyph XOR drawing,

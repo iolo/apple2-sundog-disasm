@@ -1,7 +1,8 @@
 import { initialMachinery, validateMachinery } from './campaign-machinery.js';
+import { detachedShipGeometry } from './ship-walk.js';
 import { initialEngineering, validateEngineering, canonicalEngineeringGroup } from './campaign-engineering.js';
 import { initialShipResources, validateShipResources } from './ship-resources.js';
-import { initialCampaignPod, validateCampaignPod, validateLocalCargo } from './campaign-pod.js';
+import { initialCampaignPod, validateCampaignPod, validateLocalCargo, campaignFootGeometry } from './campaign-pod.js';
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
 import { initialBanking, validateBanking } from './banking.js';
 import { initialExchange, validateExchange } from './campaign-exchange.js';
@@ -19,7 +20,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 20, SCOPE = 'landed-power-1';
+const VERSION = 21, SCOPE = 'landed-parking-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -40,14 +41,14 @@ function sameTree(value, expected) {
 export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.
-  const baseline=structuredClone(content), walk=checkpointCodec(geometry);
+  const baseline=structuredClone(content), walk=checkpointCodec(geometry),detachedWalk=checkpointCodec(detachedShipGeometry(geometry));
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
       if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : []),...(version>=20 ? ['machinery'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
-      const ship=walk.snapshot(value.ship);
+      const ship=(version>=21&&value.pod?.attached===false?detachedWalk:walk).snapshot(value.ship);
       if (!sameTree(value.ship,ship)) fail();
       const engineering=version>=19?validateEngineering(value.engineering):initialEngineering();
       let equipment;
@@ -70,7 +71,9 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           return expected;
         });
       }
-      const driving=version>=16&&value.pod?.attached===false;
+      const pod=version>=16 ? validateCampaignPod(value.pod,value.travel,cityGeometry?.pod,{depot:version>=18,auxiliaryFuel:version>=18,parking:version>=21}) : initialCampaignPod();
+      const driving=pod.occupied;
+      const foot=cityGeometry&&!driving?campaignFootGeometry(cityGeometry,pod):cityGeometry;
       let travel={scene:'ship',cityPosition:null};
       if(version>=3) {
         const inRoom=version>=5 && value.travel?.scene==='room';
@@ -79,8 +82,10 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         if(!keysMatch(value.travel,inRoom ? ['scene','cityPosition','roomPosition',...(lodgingRoom ? ['lodging'] : [])] : ['scene','cityPosition']))fail();
         if(value.travel.scene==='city' || (version>=4 && value.travel.scene==='bank') || inRoom || inService) {
           if(!cityGeometry||!keysMatch(value.travel.cityPosition,['x','y'])||!sameTree(ship.position,SHIP_REENTRY))fail();
-          if(!cityValidators.has(cityGeometry))cityValidators.set(cityGeometry,cityReachability(cityGeometry));
-          if(!driving&&!cityValidators.get(cityGeometry)(value.travel.cityPosition))fail();
+          if(!driving) {
+            if(!cityValidators.has(foot))cityValidators.set(foot,cityReachability(foot));
+            if(!cityValidators.get(foot)(value.travel.cityPosition))fail();
+          }
           if(value.travel.scene==='bank' && !atCityBank(cityGeometry.map,value.travel.cityPosition))fail();
           if(inService && cityServiceAt(cityGeometry.map,value.travel.cityPosition,driving?'pod':'foot')!==value.travel.scene)fail();
           travel={scene:value.travel.scene,cityPosition:{x:value.travel.cityPosition.x,y:value.travel.cityPosition.y}};
@@ -102,7 +107,6 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const banking=version>=12 ? validateBanking(version>=13 ? {accounts:value.economy.accounts} : value.economy) : initialBanking(start);
       const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline,{movableCargo:version>=16,auxiliaryFuel:version>=18}) : initialExchange(start),
         personalTrade:version>=15 ? validatePersonalTrade(value.economy.personalTrade,baseline.dialogue?.items||baseline.items) : initialPersonalTrade()};
-      const pod=version>=16 ? validateCampaignPod(value.pod,travel,cityGeometry?.pod,{depot:version>=18,auxiliaryFuel:version>=18}) : initialCampaignPod();
       const resources=version>=18 ? validateShipResources(value.resources,start,{machinery:version>=20}) : initialShipResources(start);
       const machinery=version>=20?validateMachinery(value.machinery,equipment,resources):initialMachinery();
       if(version>=16)validateLocalCargo(start,economy.exchange,pod);
@@ -169,7 +173,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===16 && value.scope==='landed-local-cargo-1') ||
       (value?.version===17 && value.scope==='landed-trader-matching-1') ||
       (value?.version===18 && value.scope==='landed-depot-1') ||
-      (value?.version===19 && value.scope==='landed-failures-1');
+      (value?.version===19 && value.scope==='landed-failures-1') ||
+      (value?.version===20 && value.scope==='landed-power-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||

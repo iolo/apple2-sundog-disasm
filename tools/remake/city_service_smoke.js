@@ -75,7 +75,7 @@ async browserPage => {
       await page.keyboard.press('Shift+Tab');
       assert(await page.evaluate(()=>document.activeElement.id)==='service-saves',`${scene} traps reverse focus`);
       const entered=await exportGame();
-      assert(entered.version===20&&entered.scope==='landed-power-1',`${scene} exports a version20 service visit`);
+      assert(entered.version===21&&entered.scope==='landed-parking-1',`${scene} exports a version21 service visit`);
       const expected=structuredClone(street.state);expected.travel.scene=scene;
       if(scene==='exchange'){expected.economy=entered.state.economy;expected.encounters=entered.state.encounters;assert(entered.state.encounters.randomState!==street.state.encounters.randomState&&entered.state.economy.exchange.visit.offers.length===8,'Exchange entry generates live offers and advances RNG')}
       const exited=structuredClone(expected);exited.travel.scene='city';if(scene==='exchange')exited.economy.exchange.visit=null;
@@ -103,7 +103,7 @@ async browserPage => {
       await page.setViewportSize({width:1280,height:720});await page.clock.runFor(100);
       await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(entered.state),`${scene} presentation changes preserve state`);
-      const legacy=structuredClone(entered);legacy.version=10;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-taverns-1';
+      const legacy=structuredClone(entered);legacy.version=10;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-taverns-1';
       assert((await importGame(legacy)).includes('Invalid'),`${scene} rejects service visits disguised as version10`);
       const wrong=structuredClone(entered);wrong.state.travel.scene=scene==='exchange'?'depot':'exchange';
       assert((await importGame(wrong)).includes('Invalid'),`${scene} rejects a different service at the same street anchor`);
