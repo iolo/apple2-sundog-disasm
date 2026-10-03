@@ -9,19 +9,19 @@ export function cityShipAnchor(location) {
     y:location.surfacePosition.y*32+location.position.y%32};
 }
 
-export function createCityGeometry(map, content, location) {
-  const width=1120,height=768,shipAnchor=cityShipAnchor(location);
+export function createCityGeometry(map, content, location, {surfaceTravel=false}={}) {
+  const width=1120,height=768,shipAnchor=location?cityShipAnchor(location):null;
   const rows=Array.from({length:height},()=>Array(width/7).fill(127));
-  // Limit this checkpoint to the stored city rectangle. Crossing into surface
-  // travel needs a separate transition; the guard is an explicit browser limit.
-  for(let y=6;y<18;y++) for(let x=10;x<30;x++) {
+  // Legacy saves/UI retain their stored-rectangle guard. Ground travel draws
+  // the complete composed map, including the source's outer zero-tile border.
+  for(let y=surfaceTravel?0:6;y<(surfaceTravel?24:18);y++) for(let x=surfaceTravel?0:10;x<(surfaceTravel?40:30);x++) {
     const tile=map.tiles[y][x],bank=map.banks[Math.floor(tile/16)];
     const pixels=content.banks[bank][tile%16];
     for(let py=0;py<32;py++) for(let byte=0;byte<4;byte++) rows[y*32+py][x*4+byte]=pixels[py][byte];
   }
   // Game21 proc7 replaces glyphs36/37, then XORs attached-pod glyph16.
   // shipRows already contains that combination. Clear zero bits as well.
-  for(let y=0;y<8;y++) for(let x=0;x<14;x++) {
+  if(shipAnchor)for(let y=0;y<8;y++) for(let x=0;x<14;x++) {
     const px=shipAnchor.x+x,py=shipAnchor.y-7+y,byte=Math.floor(px/7),bit=1<<(px%7);
     rows[py][byte]=(rows[py][byte]&~bit)|((content.shipRows[y][Math.floor(x/7)]&(1<<(x%7))) ? bit : 0);
   }
@@ -29,14 +29,14 @@ export function createCityGeometry(map, content, location) {
   for(const row of rows) for(let byte=0;byte<row.length;byte++) row[byte]&=content.collisionByteMasks[byte%2];
   return {width,height,map,backgrounds:{ship:rows},collisionRows:[...content.collisionRows],collisionByteMasks:[...content.collisionByteMasks],shipAnchor,
     // Game15 proc6 sets exit direction6; game21 $0D06–$0D40 yields +0,+6.
-    spawn:{x:shipAnchor.x,y:shipAnchor.y+6},
-    walkBounds:{left:280,right:833,top:199,bottom:575}};
+    spawn:shipAnchor?{x:shipAnchor.x,y:shipAnchor.y+6}:null,
+    ...(surfaceTravel?{}:{walkBounds:{left:280,right:833,top:199,bottom:575}})};
 }
 
 export function canBoardShip(geometry,position) {
   // Game21 proc21 tile gate, followed by proc15's ±4 pixel foot-entry box.
   const ship=geometry.shipAnchor;
-  return canStand(geometry,position)&&Math.floor((position.y-3)/32)===Math.floor(ship.y/32)&&
+  return !!ship&&canStand(geometry,position)&&Math.floor((position.y-3)/32)===Math.floor(ship.y/32)&&
     Math.abs(Math.floor((position.x+3)/28)-Math.floor(ship.x/28))<=3&&
     Math.abs(position.x-ship.x)<=4&&Math.abs(position.y-ship.y)<=4;
 }
