@@ -48,9 +48,9 @@ export async function campaignEngineeringTests(test,equal) {
   });
   await test('Version18 migration preserves resources and prior equipment but cannot inject pending faults',()=>{
     const s=fresh();s.ship.inventory.carried=[0,28,23,0];s.resources.hull=16;s.resources.fuel=255;
-    const save=codec.make(s,0),old=structuredClone(save);old.version=18;old.scope='landed-depot-1';delete old.state.engineering;
+    const save=codec.make(s,0),old=structuredClone(save);old.version=18;delete old.state.machinery;old.scope='landed-depot-1';delete old.state.engineering;
     equal(codec.validate(old),save);old.state.engineering=save.state.engineering;reject(()=>codec.validate(old));
-    const fault=codec.make(put(fresh()),0);fault.version=18;fault.scope='landed-depot-1';delete fault.state.engineering;reject(()=>codec.validate(fault));
+    const fault=codec.make(put(fresh()),0);fault.version=18;delete fault.state.machinery;fault.scope='landed-depot-1';delete fault.state.engineering;reject(()=>codec.validate(fault));
   });
   await test('Pending-save validation rejects unmatched targets, forged caches, extra faults and bad metadata',()=>{
     const pending=put(fresh());

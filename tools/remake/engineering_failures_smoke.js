@@ -43,7 +43,7 @@ async browserPage => {
       s.ship.position={x:109,y:60};s.ship.inventory.carried=[156,28,23,0];return codec.make(s,0);
     });
     await page.locator('#campaign-saves').click();await settled();await importValue(fixture);await page.locator('#checkpoint-back').click();
-    const initial=await exportGame();assert(initial.version===19&&initial.scope==='landed-failures-1','Version19 owns engineering failure progress');
+    const initial=await exportGame();assert(initial.version===20&&initial.scope==='landed-power-1','Version20 owns engineering failure progress');
     await page.locator('#walk-equipment').click();assert((await rating()).includes('14 / 16'),'Fixture starts with source-generated partial output');
     await move('#equipment-carried-0','#equipment-slot-0-0');assert((await page.locator('#equipment-message').innerText()).includes('Does not fit'),'Fault encoding cannot bypass socket fit');
     await move('#equipment-carried-0','#equipment-slot-0-1');
@@ -73,7 +73,7 @@ async browserPage => {
     await page.locator('#walk-equipment').click();assert(JSON.stringify((await exportGame()).state)===JSON.stringify(failed.state),'Opening the pending frame resolves the fault with canonical output');
     await page.locator('#equipment-saves').click();await settled();const malformed=structuredClone(pending);malformed.state.engineering.pendingFailures[0]=31;await importValue(malformed);
     assert((await page.locator('#checkpoint-message').innerText()).includes('Invalid'),'Unmatched encoded component import is rejected');await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exportGame()).state)===JSON.stringify(failed.state),'Rejected imports leave the live state untouched');
-    await page.locator('#equipment-saves').click();await settled();const old=structuredClone(repaired);old.version=18;old.scope='landed-depot-1';delete old.state.engineering;await importValue(old);
+    await page.locator('#equipment-saves').click();await settled();const old=structuredClone(repaired);old.version=18;delete old.state.machinery;old.scope='landed-depot-1';delete old.state.engineering;await importValue(old);
     assert((await page.locator('#checkpoint-message').innerText()).includes('imported'),'Version18 repaired equipment imports through normal controls');await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exportGame()).state)===JSON.stringify(repaired.state),'Migration preserves resources, repaired equipment and inventory');
     assert(errors.length===0,'No uncaught engineering failure errors');return {browser:browser.version(),checks,errors};
   } catch(error) {await page.screenshot({path:'output/playwright/remake/engineering-failure-error.png'});throw Error(`${error.message}; last check: ${checks.at(-1)}`)}

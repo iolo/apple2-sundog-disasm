@@ -34,7 +34,7 @@ export async function campaignExchangeTests(test,equal) {
       const bad=structuredClone(bought);inject(bad);rejects(()=>codec.snapshot(bad),'invalidCampaign');
     }
     rejects(()=>run(bought,{type:'fetch',slot:0}),'exchangeInvalidSelection');equal(bought,before);
-    equal(codec.make(bought,0).version,19);
+    equal(codec.make(bought,0).version,20);
   });
   await test('Exchange entry validates the door and commits market, eight offers and RNG together',()=>{
     const s=fresh(),before=structuredClone(s),e=enter(s);equal(s,before);
@@ -78,7 +78,7 @@ export async function campaignExchangeTests(test,equal) {
   });
   await test('Version13 resumes bought cargo and stale offer prices exactly, rejecting inconsistent progress',()=>{
     const e=enter(fresh()),b=run(e,{type:'buy',slot:affordable(e)}),save=codec.make(b,0);
-    equal(save.version,19);equal(save.scope,'landed-failures-1');equal(codec.parse(JSON.stringify(save)).state,b);
+    equal(save.version,20);equal(save.scope,'landed-power-1');equal(codec.parse(JSON.stringify(save)).state,b);
     const offer=b.economy.exchange.visit.offers.findIndex(Boolean);
     for(const mutate of [s=>s.economy.exchange.visit.offers[offer].price++,s=>s.economy.exchange.visit.offers[offer].supply=8,
       s=>s.economy.exchange.market.supply[0]=8,s=>s.economy.exchange.market.lastUpdateDay=1,
@@ -93,7 +93,7 @@ export async function campaignExchangeTests(test,equal) {
     equal(run(restored,{type:'sell',slot:0}),run(b,{type:'sell',slot:0}));
   });
   await test('Version12 initializes local economy after historical validation; bank transfers preserve traded state',()=>{
-    const f=fresh(),legacy=codec.make(f,0);legacy.version=12;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
+    const f=fresh(),legacy=codec.make(f,0);legacy.version=12;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     equal(codec.validate(legacy).state,f);
     const injected=structuredClone(legacy);injected.state.economy.exchange=f.economy.exchange;rejects(()=>codec.validate(injected),'invalidCampaign');
     const e=enter(f),b=run(e,{type:'buy',slot:affordable(e)}),left=run(b,{type:'leave'});

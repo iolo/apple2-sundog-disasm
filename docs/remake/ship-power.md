@@ -1,9 +1,10 @@
-# Ship power and automatic auxiliary fuel — R08e
+# Ship power and automatic auxiliary fuel — through R08f
 
 `ship-power.js` implements the recovered power-phase arithmetic and both automatic
-auxiliary-fuel helpers. **Only the pod-docking helper is connected to live play in
-this checkpoint.** Power controls, phase/clock ownership and general machinery
-fuel depletion still require campaign integration. R08 remains incomplete.
+auxiliary-fuel helpers. R08f connects landed gun/shield/cloaker controls, power
+phases, fuel consumption and equipment dependencies to live campaign play and
+version20 saves. R08 remains incomplete: parked-pod boarding, surface traversal
+and the combined acceptance audit are still required.
 
 ## Power phase source trace
 
@@ -61,8 +62,52 @@ consume ship fuel.
 
 Version19 already represents255 fuel and nullable auxiliary cargo, so docking
 requires no new field or migration. Loading preserves exactly what was saved;
-it does not repeat docking or consume another load. Active charging and phase
-state will require a separate versioned extension before being exposed.
+it does not repeat docking or consume another load. R08f's version20 extension
+adds active charging and phase state as described below.
+
+## Live controls, clock and persistence
+
+The engineering panel's **Power** button opens the landed controls. Guns can be
+enabled/disabled; shields use−64/+64, off and maximum; a cloaker requires a working
+special component in the force-shield group. The controller rejects remote
+operations and positive shield changes with no fuel or no functioning unit.
+Removing the last working gun unit immediately clears its charge and power;
+losing all shield output clears the shield target; losing the working cloaker
+clears its control. Repair restores capability without automatically enabling it.
+
+Game12 proc19 `$10A8–$10EA` supplies shield increments/clamping and positive-change
+fuel gating; proc1 `$145C–$149A` supplies±64 and±256 controls. Proc17
+`$0F52–$0FA4` enables/disables gun charging around aiming. Proc23 `$1358–$1367`
+copies working-cloaker availability into flag12; `$144D–$1455` clears it.
+The browser groups these controls into one local engineering Power panel and uses
+an explicit gun on/off switch instead of native aim-mode entry/exit. These are
+presentation/interaction adaptations. No shots, targets, movement, warp requests
+or combat are enabled here; those remain R09/R10.
+
+Opening Power pauses simulation. Resume runs the actual machinery and aboard
+survival clock; Pause, Saved games and lost focus stop them without catch-up.
+Closing Power returns to paused engineering; control settings remain committed.
+Outside the panel, normal unpaused ship play runs the same owner. Foot/pod city
+and interior play retain the existing outside survival clock and do not tick
+the remote ship. Engineering component inspection remains paused apart from
+its documented pending-failure update.
+
+`advanceCampaignMachinery` owns both condition/time and power updates aboard.
+Normal cycles use250ms, sleep cycles50ms. The saved phase is the number of phases
+already completed modulo4; phase1 advances a game minute before power, matching
+Library24 proc9. Thus the first minute arrives at the first250ms cycle and then
+once per second. Sleep retains that phase rather than resetting it, restores rest
+every second sleep iteration and advances the same hourly condition rules. Death
+stops updates and preserves load-recovery access. These are browser cadences,
+not native CPU timing claims. Partial browser milliseconds and sleep UI state
+remain transient; saving sleeping/dead characters is still disallowed.
+
+Version20 `landed-power-1` adds `machinery:{phase,cloaked}` and permits current
+fuel/charges in0–255. Shield targets are the values reachable by the original
+buttons:0,63,64,127,128,191,192,255. Saves cross-check inoperative equipment and
+cloaker availability. Versions1–19 keep their original resource restrictions
+before receiving phase0/cloaker-off; version19 pending engineering faults survive.
+Warp charge/target/destination and engine motion remain inactive until R09.
 
 ## Verification
 
@@ -78,9 +123,13 @@ rejection and conservation. The depot cargo regression now expects consumption
 when that existing empty-tank journey returns. The extended depot browser test
 adds a second fresh-character journey: buy two loads without buying ship fuel,
 drive back, dock, save/reload, then depart/dock again. No campaign fixture grants
-the fuel or auxiliary cargo. Current receipts are `ship-power-rules-validation.json`
+the fuel or auxiliary cargo. R08e receipts are `ship-power-rules-validation.json`
 and `auxiliary-docking-validation.json`. No native-emulator capture is claimed.
 
-Next: live machinery controls and dependencies, deterministic phase/clock and
-save ownership, then parked-pod boarding and surface traversal/return. The full
-[R08 audit](r08-completion.md) retains those requirements.
+R08f adds six campaign rule groups and the `machinery-*-validation.json` receipts.
+The controlled UI journey covers partial-phase reload, automatic consumption,
+shutdown, component dependencies, keyboard focus, both locales at four viewports,
+forced sleep, death and restoration. Its resource/condition fixtures are declared.
+The extended depot test separately proves ordinary fresh-character servicing,
+auxiliary purchase/return, walking to engineering, running systems and reloading.
+The [R08 audit](r08-completion.md) retains parked-pod, surface and full acceptance work.

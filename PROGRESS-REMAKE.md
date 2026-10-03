@@ -1,5 +1,49 @@
 # SunDog web remake progress
 
+## R08f — Live landed machinery and version20 saves — 2026-10-03
+
+Connected the source power core to a reachable engineering Power panel: guns,
+shield target controls and the installed cloaker. Controls use actual component
+performance and source fuel gating. Equipment recalculation now clears the
+corresponding controls/targets when capability is lost; repair restores capability
+without switching controls on. Machinery consumption uses attached auxiliary
+cargo automatically, preserving the source deficit and first-slot semantics.
+
+One aboard owner now advances survival and power together. Phase1 advances the
+minute, guns run on odd phases, shields on phase2 and cloaker on phase3. Normal
+cycles use250ms and sleep50ms; saved phase survives sleep/reload. Pause, saves,
+hidden document and death stop updates without catch-up. Outside play retains
+its existing survival clock. The explicit persistent gun switch and engineering
+panel replace native aim-mode entry/exit as a documented interaction adaptation;
+no launch, warp, firing or combat is enabled. Source offsets and remaining
+boundaries are recorded in `docs/remake/ship-power.md`.
+
+Version20 `landed-power-1` adds `machinery:{phase,cloaked}` and current fuel/charge
+values. Saves cross-check equipment dependencies and reachable shield targets.
+Versions1–19 retain their historical restrictions before receiving initial
+machinery state. The live clock uses internal state while forced sleep has rest0,
+so the save validator's living/awake boundary does not interrupt recovery.
+
+Validation:293 rule groups and139 browser UI checks pass in Chrome154.0.8037.92,
+with no uncaught page errors. The receipts are `machinery-rules-validation.json`,
+`machinery-ui-validation.json` (31), `machinery-depot-validation.json` (61),
+`machinery-failure-regression-validation.json` (28) and
+`machinery-dialogue-regression-validation.json` (19). The controlled machinery
+journey covers partial-phase reload, automatic fuel consumption, cloaker cost,
+shutdown, forced sleep, death/recovery, keyboard focus and both locales at four
+viewports. Resource/condition fixtures are declared. The Korean screenshot was
+visually inspected after correcting footer overlap.
+
+The separate depot journey starts fresh characters and uses ordinary controls
+to buy services/auxiliary fuel, drive back, dock, walk to engineering, enable
+guns/shields and reload their consumed fuel and charges. It does not inject
+resources or working equipment. Existing failure and dialogue flows pass against
+the new save format. No native-emulator capture is claimed.
+
+R08 remains in progress. Next: independent parked-pod ownership and boarding,
+surface traversal/return, then the combined servicing/replacement/readiness and
+ground-transport acceptance audit. The original milestone scope is unchanged.
+
 ## R08e — Source power phases and live auxiliary docking refill — 2026-10-03
 
 Traced Library24 procedures14–17 and its procedure9 caller. Added an owned power

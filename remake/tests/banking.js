@@ -68,8 +68,8 @@ export async function bankingTests(test,equal) {
   });
   await test('Version12 saves preserve active accounts and migrate version11 without inventing wealth',()=>{
     const state=atBank(),next=reduceCampaignBank(state,map,{type:'withdraw',amount:1000}),saved=codec.make(next,0);
-    equal(saved.version,19);equal(codec.parse(JSON.stringify(saved)).state,next);
-    const legacy=codec.make(state,0);legacy.version=11;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
+    equal(saved.version,20);equal(codec.parse(JSON.stringify(saved)).state,next);
+    const legacy=codec.make(state,0);legacy.version=11;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
     equal(codec.validate(legacy).state,state);
     const forged=structuredClone(legacy);forged.state.economy=state.economy;rejects(()=>codec.validate(forged),'invalidCampaign');
     const cash=structuredClone(legacy);cash.state.dialogue.cash++;rejects(()=>codec.validate(cash),'invalidCampaign');

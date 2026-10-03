@@ -1,5 +1,6 @@
 import { equipmentBayAt, fitsComponent, recalculateEquipment, exchangeEquipment } from './equipment.js';
 import { installEquipmentComponent, enterEquipmentFrame, resolveEquipmentFailures } from './equipment-failures.js';
+import { reconcileMachinery } from './campaign-machinery.js';
 
 // Presentation cadence for the source's next engineering update, not a repair
 // duration or a simulation of CPU cycles. Paused panels do not charge game time.
@@ -61,7 +62,7 @@ export function reduceCampaignEngineering(previous,{type,groupIndex,from,to}) {
     message=byte>127?'equipmentPending':exchanged.message;
   } else throw new Error('equipmentUnavailable');
   next.equipment[groupIndex]=result.group;next.engineering.pendingFailures[groupIndex]=result.pendingFailure;
-  return {state:next,message};
+  return {state:reconcileMachinery(next),message};
 }
 
 // A status report, not a launch permission. Flight still needs R09 conditions.

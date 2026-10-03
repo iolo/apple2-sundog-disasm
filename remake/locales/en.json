@@ -558,5 +558,18 @@
   "depotAll": "Maximum",
   "equipmentPending": "Checking installed component…",
   "equipmentFailed": "Component failed. Fit a replacement or compatible shunt.",
-  "equipmentReadiness": "Hull {hull}/16 · Fuel {fuel}/255 · Offline units {offline}/24"
+  "equipmentReadiness": "Hull {hull}/16 · Fuel {fuel}/255 · Offline units {offline}/24",
+  "powerTitle": "Power",
+  "powerResources": "Hull {hull}/16 · Fuel {fuel}/255",
+  "powerCharge": "Charge {value}/255",
+  "powerShieldCharge": "Charge {value} · Target {target}",
+  "powerOff": "Off",
+  "powerOn": "On",
+  "powerCloaker": "Cloaker",
+  "powerCloakerAvailable": "Working component installed",
+  "powerHint": "Resume to run systems and advance time. Saves pause the ship.",
+  "machineryUnavailable": "Ship controls are unavailable here.",
+  "machineryInoperative": "Replace failed components to restore this system.",
+  "machineryNoFuel": "Refuel before raising shields.",
+  "machineryNoCloaker": "A working cloaker is required."
 }

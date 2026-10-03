@@ -1,4 +1,4 @@
-# Component exchange — R05f, updated through R08d
+# Component exchange — R05f, updated through R08f
 
 At an engineering bay, select a component, choose Move / exchange, then choose
 a carried slot or compatible installed socket. An occupied destination exchanges
@@ -49,10 +49,11 @@ Library24 procedure8 `$014C–$0218` recalculates each of four units:
 
 The active record stores recalculated unit/total performance and `specialAvailable`.
 Requirements and group IDs are immutable. The original also clears power/target
-flags when necessary (`$0219–$0261`). This browser scope keeps all such controls at
-their zero/off creation defaults and exposes no charging, power or travel actions;
-there is no nonzero resource state to clear. Enabling machinery requires the full
-dependent flag transitions, not simply using `specialAvailable` as a power toggle.
+flags when necessary (`$0219–$0261`). R08f applies these transitions to active
+landed machinery after recalculation: zero gun output clears charge and power,
+zero shield output clears its target, and loss of the working cloaker disables it.
+Repair restores capability without switching a control on. See [ship power](ship-power.md)
+for the live clock, controls and version20 persistence; flight remains R09.
 
 Game14 procedure8 `$05B9–$05F2` masks installed types and has an additional encoded
 damage path, tracked by record byte25 and processed by procedures9/10. R08c establishes that this is delayed

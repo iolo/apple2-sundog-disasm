@@ -299,3 +299,14 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 #depot-message { color:var(--amber); }
 
 .equipment-readiness{position:absolute;left:32px;right:32px;top:57px;font-size:14px;line-height:18px;margin:0;color:var(--muted)}
+#power-panel{position:absolute;inset:0;background:var(--ink)}
+#power-panel h2{font-size:24px;font-weight:normal}
+.power-content{position:absolute;left:32px;right:32px;top:72px;font-size:15px}
+.power-content>p{margin:0 0 12px;color:var(--muted)}
+.power-content section{border-top:1px solid var(--line);padding:8px 0}
+.power-content h3{margin:0 0 6px;font-size:21px;line-height:24px;font-weight:normal;display:flex;justify-content:space-between}
+.power-content h3 span{font-size:15px;align-self:center;color:var(--amber)}
+.power-content button{font-size:16px;min-width:70px;border:1px solid var(--line)}
+.power-buttons{display:flex;gap:10px}
+.power-actions{position:absolute;left:32px;right:32px;bottom:14px;border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between}
+#power-message{font-size:14px;line-height:1.4;margin-top:8px}
