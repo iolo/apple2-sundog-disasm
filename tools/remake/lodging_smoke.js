@@ -73,7 +73,7 @@ async browserPage => {
     assert(left.state.dialogue.cash===fixture.cash-fixture.fee&&!left.state.dialogue.flags[57],'Exit preserves cash and clears the bedroom flag');
     await page.locator('#walk-airlock').click();const again=await exported();
     assert(again.state.travel.lodging.rented===0&&again.state.travel.lodging.openMask===0&&again.state.dialogue.cash===left.state.dialogue.cash,'A new visit resets room rental access without refunding cash');
-    const bank=structuredClone(again);bank.state.travel={scene:'bank',cityPosition:{x:369,y:299}};bank.state.ground.camera={x:8,y:6};state.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(state.travel.cityPosition);
+    const bank=structuredClone(again);bank.state.travel={scene:'bank',cityPosition:{x:369,y:299}};bank.state.ground.camera={x:8,y:6};
     bank.state.encounters={randomState:bank.state.encounters.randomState,roomSeed:null,roomState:null,counter:null};
     await saves();const bankDownload=page.waitForEvent('download');
     await page.evaluate(value=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(value)],{type:'application/json'}));a.download='lodging-bank.json';a.click()},bank);

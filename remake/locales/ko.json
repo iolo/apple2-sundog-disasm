@@ -176,7 +176,7 @@
   "replaceActiveCampaign": "현재 함선 세션을 바꿀까요? 저장하지 않은 진행 상황은 사라집니다. 기존 저장 파일은 유지됩니다.",
   "resumeCampaign": "계속하기",
   "campaignTitle": "저장한 게임",
-  "campaignScope": "우주선과 드라휴 탐색 · 로컬 슬롯 4개",
+  "campaignScope": "착륙 지점 탐험 · 로컬 슬롯 4개",
   "campaignHint": "깨어 있을 때 저장하세요. JSON 파일로 내보내면 다른 브라우저에서 사용할 수 있습니다.",
   "campaignLoadOnly": "저장한 게임을 불러오거나 JSON 파일을 가져오세요.",
   "campaignSummary": "{name} · {day}일",
@@ -191,8 +191,8 @@
   "deleteCampaignConfirm": "{slot}번 슬롯의 게임을 삭제할까요?",
   "loadCampaignConfirm": "이 게임을 불러올까요? 현재 저장하지 않은 함선 진행 상황은 바뀝니다.",
   "campaignDeath": "이번 플레이가 끝났습니다. 저장한 게임을 불러오거나 돌아가서 새 캐릭터를 만드세요.",
-  "campaignControls": "포인터나 터치를 누르고 있으면 걷고, 놓으면 멈춥니다. 화면에 초점을 맞춘 뒤 방향키로 이동합니다. Enter로 가까운 에어록이나 건물에 들어갑니다. Escape로 은행을 나가거나 제목 화면으로 돌아갑니다.",
-  "campaignPlayScope": "선내, 드라휴와 열린 건물을 탐험할 수 있습니다. 카운터에서 말 걸기를 선택하면 상품과 가격을 물어보거나 숙소의 방을 빌릴 수 있습니다. 탐험과 대화 중에 저장할 수 있습니다. 주점, 상점 구매와 도시 밖 이동은 아직 복원 중입니다.",
+  "campaignControls": "방향키나 누른 포인터·터치로 이동하세요. Enter로 문이나 도시 표식을 이용합니다. Escape로 시설을 나가거나 제목 화면으로 돌아갑니다.",
+  "campaignPlayScope": "드라휴에서 거래와 정비를 하고 포드로 지표를 탐험하세요. 주차 후 걸어서 이동하고 포드로 돌아와 탑승하세요. 탐험 중 저장할 수 있습니다. 다른 도시의 건물과 우주 비행은 아직 이용할 수 없습니다.",
   "equipmentTitle": "기관실",
   "equipment0": "워프 드라이브",
   "equipment1": "아광속 엔진",
@@ -231,7 +231,7 @@
   "leaveShip": "내리기",
   "shipExitHint": "출입구 · Enter로 내리기",
   "cityBoardHint": "선독 · Enter로 탑승",
-  "cityWalkHint": "드라휴 탐험 · 은행 방문 또는 선독으로 돌아가기",
+  "cityWalkHint": "거리를 탐험하세요 · 도시 가장자리에서 지표로 이동합니다",
   "bankTitle": "{name} 은행",
   "bankTeller": "유니텔러",
   "bankCash": "소지금",
@@ -577,5 +577,6 @@
   "podExitBlocked": "포드에서 내릴 수 있는 빈 공간이 없습니다.",
   "podUnavailable": "포드 가까이 가야 탑승할 수 있습니다.",
   "surfaceEnterHint": "도시로 들어갑니다",
-  "enterCity": "도시 진입"
+  "enterCity": "도시 진입",
+  "surfaceWalkHint": "지표를 이동하세요 · 도시 표식이나 주차한 포드로 다가가세요"
 }

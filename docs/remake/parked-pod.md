@@ -1,4 +1,4 @@
-# Parked pod ownership and boarding — through R08l
+# Parked pod ownership and boarding — through R08m
 
 `remake/js/core/parked-pod.js` implements the source city geometry for an
 unattended pod, foot exit placement and boarding proximity. R08h connects those
@@ -104,5 +104,6 @@ The live fresh-character journey is in `parking_smoke.js`: ordinary purchases,
 loaded parking, reload, foot exchange/ship visits, return boarding and loaded
 docking. Its42 UI checks pass, plus61 depot and102 room regressions, in the
 `parking-*-validation.json` receipts. The Korean city and English detached-ship
-screenshots were visually inspected. Surface traversal/return and the combined servicing/transport acceptance
-audit remain required by the full [R08 audit](r08-completion.md).
+screenshots were visually inspected. R08m adds the60-check final surface run
+and74-check combined engineering/service/loaded return journey, with independent
+parking and version22 reloads. See the [R08 audit](r08-completion.md).

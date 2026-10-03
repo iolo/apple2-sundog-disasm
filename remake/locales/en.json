@@ -176,7 +176,7 @@
   "replaceActiveCampaign": "Replace your current ship session? Unsaved progress will be lost. Stored saves will remain.",
   "resumeCampaign": "Resume",
   "campaignTitle": "Saved games",
-  "campaignScope": "Ship and Drahew exploration · four local slots",
+  "campaignScope": "Landed exploration · four local slots",
   "campaignHint": "Save while awake. Keep a JSON copy to use in another browser.",
   "campaignLoadOnly": "Load a saved game or import a JSON file.",
   "campaignSummary": "{name} · Day {day}",
@@ -191,8 +191,8 @@
   "deleteCampaignConfirm": "Delete the saved game in slot {slot}?",
   "loadCampaignConfirm": "Load this game? Current unsaved ship progress will be replaced.",
   "campaignDeath": "This session has ended. Load a saved game, or return to create a character.",
-  "campaignControls": "Hold a pointer or touch to walk; release to stop. Focus the scene and use arrow keys to move. Enter uses a nearby airlock or building door. Escape leaves the bank or returns to the title.",
-  "campaignPlayScope": "Explore the ship, Drahew and open buildings. Choose Talk at a counter for goods and prices, or rent a room at lodging. Save during exploration or conversation. Taverns, shop purchases and travel beyond this city are still being restored.",
+  "campaignControls": "Move with arrow keys or a held pointer/touch. Enter uses doors or city markers. Escape leaves services or returns to the title.",
+  "campaignPlayScope": "Trade and service the ship in Drahew. Drive across Jondd; park to explore on foot and return to your pod. Save while exploring. Other cities’ interiors and regional flight are not available yet.",
   "equipmentTitle": "Engineering",
   "equipment0": "Warp drives",
   "equipment1": "Sub-c engines",
@@ -231,7 +231,7 @@
   "leaveShip": "Leave ship",
   "shipExitHint": "Airlock · Enter to leave the ship",
   "cityBoardHint": "SunDog · Enter to board",
-  "cityWalkHint": "Explore Drahew · visit the bank or return to the SunDog",
+  "cityWalkHint": "Explore the streets · reach the city edge for surface travel",
   "bankTitle": "{name} Bank",
   "bankTeller": "UNITELLER",
   "bankCash": "On hand",
@@ -577,5 +577,6 @@
   "podExitBlocked": "There is no clear place to leave the pod.",
   "podUnavailable": "Reach the pod before boarding.",
   "surfaceEnterHint": "Enter the city",
-  "enterCity": "Enter city"
+  "enterCity": "Enter city",
+  "surfaceWalkHint": "Cross the terrain · approach a city marker or your parked pod"
 }

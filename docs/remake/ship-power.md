@@ -1,10 +1,11 @@
-# Ship power and automatic auxiliary fuel — through R08f
+# Ship power and automatic auxiliary fuel — through R08m
 
 `ship-power.js` implements the recovered power-phase arithmetic and both automatic
 auxiliary-fuel helpers. R08f connects landed gun/shield/cloaker controls, power
 phases, fuel consumption and equipment dependencies to live campaign play and
-version20 saves. R08 remains incomplete: parked-pod boarding, surface traversal
-and the combined acceptance audit are still required.
+version20 saves. R08l activates ground-aware version22; R08m repeats the
+31-check machinery journey and combines servicing, power and loaded surface
+travel in a74-check fresh-character acceptance run.
 
 ## Power phase source trace
 
@@ -132,4 +133,5 @@ shutdown, component dependencies, keyboard focus, both locales at four viewports
 forced sleep, death and restoration. Its resource/condition fixtures are declared.
 The extended depot test separately proves ordinary fresh-character servicing,
 auxiliary purchase/return, walking to engineering, running systems and reloading.
-The [R08 audit](r08-completion.md) retains parked-pod, surface and full acceptance work.
+Current version22 receipts are `r08-final-machinery-validation.json` and
+`r08-journey-validation.json`; see the [R08 audit](r08-completion.md).

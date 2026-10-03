@@ -1,7 +1,8 @@
-# Campaign save boundary — through R08l
+# Campaign save boundary — through R08m
 
 R08l activates version22, scope`landed-ground-1`, in the live UI. The asset loader
 supplies`ground:{maps,cityWalk,surfaceWalk}` to the codec for all campaign saves.
+R08m verifies319 rule groups and the combined servicing/ground reload journey.
 A city-only codec remains version21 for isolated historical consumers and rejects
 version22 rather than loading a scene it cannot render.
 

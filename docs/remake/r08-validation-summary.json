@@ -1,0 +1,163 @@
+{
+  "milestone": "R08",
+  "date": "2026-10-03",
+  "status": "pass",
+  "ruleGroups": 319,
+  "browserUiChecks": 1070,
+  "receipts": [
+    {
+      "receipt": "ground-parking-regression-validation.json",
+      "checks": 42,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "ground-depot-regression-validation.json",
+      "checks": 61,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "ground-room-regression-validation.json",
+      "checks": 102,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "ground-services-validation.json",
+      "checks": 8,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-journey-validation.json",
+      "checks": 74,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-bank-visit-validation.json",
+      "checks": 28,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-banking-validation.json",
+      "checks": 44,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-cargo-validation.json",
+      "checks": 33,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-city-validation.json",
+      "checks": 44,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-dialogue-validation.json",
+      "checks": 19,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-equipment-validation.json",
+      "checks": 37,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-exchange-validation.json",
+      "checks": 64,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-failures-validation.json",
+      "checks": 28,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-fallback-validation.json",
+      "checks": 19,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-lodging-validation.json",
+      "checks": 27,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-machinery-validation.json",
+      "checks": 31,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-matching-validation.json",
+      "checks": 75,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-room-journey-validation.json",
+      "checks": 90,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-rules-validation.json",
+      "checks": 319,
+      "kind": "rules",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-services-validation.json",
+      "checks": 78,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-shops-validation.json",
+      "checks": 29,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-surface-validation.json",
+      "checks": 60,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-taverns-validation.json",
+      "checks": 43,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    },
+    {
+      "receipt": "r08-final-visitors-validation.json",
+      "checks": 34,
+      "kind": "ui",
+      "browser": "154.0.8037.92"
+    }
+  ],
+  "staticChecks": {
+    "sourceStringRecords": 584,
+    "exporterTests": 20,
+    "deterministicArtifacts": 168
+  },
+  "boundaries": [
+    "Fault and power edge-case fixtures are declared in their scripts; the combined74-check journey starts a fresh character.",
+    "Outdoor ground travel is limited to the starting world; regional flight and other-city services remain R09.",
+    "No new native-emulator capture is claimed."
+  ]
+}
