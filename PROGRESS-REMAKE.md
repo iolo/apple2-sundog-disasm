@@ -1,5 +1,41 @@
 # SunDog web remake progress
 
+## R08j — Ground camera, city border and independent location reducers — 2026-10-03
+
+Added the source scrolling camera and a ground-state companion owning the active
+world, player city/surface domain, independent pod domain, colony coordinate and
+camera origin. Existing travel/pod fields retain the only pixel positions and
+cargo. The original camera has strict character-column/row thresholds and
+horizontal priority; city exit tests the attempted origin before wrapping.
+Initial surface Y camera clamping follows Game21 proc28. Browser viewport row
+fetches wrap within the world instead of reading beyond the native map buffer;
+this explicit adaptation is documented in `surface-travel.md`.
+
+The geometry factory now supports complete city maps and absent ships while
+retaining old stored-rectangle bounds by default. Only the ship's own city gets
+its exterior, spawn and docking gate. Foot collision includes a parked city pod
+only in the same city. Surface parking retains the pod coordinate, as in source
+proc25; proc8 draws unattended pods only in a city. Foot city visits preserve
+the surface pod's location and cargo, and remote boarding fails.
+
+Initial city exit performs colony placement once, matching Utility16's pending
+flag112 and Game21 proc28's gameplay RNG draws. Subsequent visits reuse the
+coordinate. Core movement supports continuous city/surface travel and preserves
+ship position, cargo, resources and accounts across those transitions.
+
+Validation: `ground-domain-rules-validation.json` records313 passing Chrome rule
+groups with no failures/page errors. Five new groups cover camera thresholds,
+initial origins, wrapped view windows, expanded/legacy city geometry, remote
+ship docking rejection, actual collision-routed departure, surface parking and
+foot return/retrieval, and city01→surface→city02→surface→city01 transport. Cargo
+is a declared loaded fixture; movement is performed through legal core steps,
+not position assignment. Original state and return RNG ownership are checked.
+
+R08 remains active. This checkpoint does not yet change live controls or version21
+saves. Next connect the ground record to validated versioned persistence, active
+geometry/rendering/input and service location gates; verify live surface reload,
+parking and return, then the full servicing/readiness/transport acceptance journey.
+
 ## R08i — Source surface composition, terrain and transition core — 2026-10-03
 
 Traced Game21 procedures11/12/17/18/23/28/29 and Library22 collision mode2.

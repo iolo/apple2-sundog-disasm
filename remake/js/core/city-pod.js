@@ -9,11 +9,11 @@ export function podHeading(dx,dy) {
   if(!Number.isInteger(dx)||!Number.isInteger(dy)||Math.abs(dx)>2||Math.abs(dy)>2||(!dx&&!dy))return null;
   return 14+offsets[5+3*Math.sign(dx)+Math.sign(dy)];
 }
-export function createPodGeometry(map,content,location) {
-  const geometry=createCityGeometry(map,{...content,shipRows:content.detachedShipRows,collisionRows:content.podGlyphs[17]},location);
+export function createPodGeometry(map,content,location,options) {
+  const geometry=createCityGeometry(map,{...content,shipRows:content.detachedShipRows,collisionRows:content.podGlyphs[17]},location,options);
   // Game15 proc7 departs in direction8; Game21 $0D06–$0D40 adds (9,0).
   return {...geometry,podGlyphs:structuredClone(content.podGlyphs),
-    spawn:{x:geometry.shipAnchor.x+9,y:geometry.shipAnchor.y}};
+    spawn:geometry.shipAnchor?{x:geometry.shipAnchor.x+9,y:geometry.shipAnchor.y}:null};
 }
 export function canDrivePod(geometry,position,heading) {
   return [14,16,18,20].includes(heading)&&canStand({...geometry,collisionRows:geometry.podGlyphs[heading+1]},position);
@@ -44,7 +44,7 @@ export function canDockPod(geometry,position,heading) {
   const ship=geometry.shipAnchor;
   // Proc21's nearby ship tile gate, then proc15's horizontal orientation and
   // ±6 X / ±4 Y box around the ship's right-hand half.
-  return heading===16&&canDrivePod(geometry,position,heading)&&
+  return !!ship&&heading===16&&canDrivePod(geometry,position,heading)&&
     Math.floor((position.y-3)/32)===Math.floor(ship.y/32)&&
     Math.abs(Math.floor((position.x+3)/28)-Math.floor(ship.x/28))<=3&&
     Math.abs(position.x-(ship.x+7))<=6&&Math.abs(position.y-ship.y)<=4;
