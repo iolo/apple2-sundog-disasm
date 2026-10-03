@@ -1,5 +1,31 @@
 # SunDog web remake progress
 
+## R08g — Source parked-pod collision and boarding geometry — 2026-10-03
+
+Traced Game21's separate pod location writes, parked visible-glyph XOR drawing,
+foot/pod collision selection, boarding tile/pixel bounds and expanding exit
+placement. Game18's type16 pod room supplies the foot/drive mode choices.
+Added `parked-pod.js` without changing live campaign ownership or version20.
+The geometry uses the detached ship and saved pod orientation, applies pattern9
+and preserves input backgrounds. Exit failure returns null once the finite
+browser map is exhausted; the native search otherwise repeats indefinitely.
+
+297 rule groups pass in Chrome154.0.8037.92 with no page errors. Four new groups
+cover all visible orientations, pixel masks, geometry ownership, invalid parking,
+source column/scale order, blocked exits, boarding bounds and real city walking
+away and back. Receipt: `docs/remake/parked-pod-core-validation.json`.
+
+Testing exposed that the initial departure location's first source-clear foot
+exit is a small pocket beside the ship. It still permits boarding recovery.
+The open-street return case is tested separately; no global-connectivity filter
+or untraced road teleport was introduced. Source offsets, finite-map adaptation
+and exact positions are in `docs/remake/parked-pod.md`. No native capture or live
+parking UI journey is claimed.
+
+R08 remains in progress. Next connect independent parked pod/player ownership,
+actual controls/drawing/collision, unattended cargo access and versioned saves;
+then complete surface traversal/return and the combined acceptance audit.
+
 ## R08f — Live landed machinery and version20 saves — 2026-10-03
 
 Connected the source power core to a reachable engineering Power panel: guns,

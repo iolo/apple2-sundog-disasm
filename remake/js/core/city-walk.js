@@ -27,7 +27,7 @@ export function createCityGeometry(map, content, location) {
   }
   // Library22 collision pattern9 ignores the background's alternating columns.
   for(const row of rows) for(let byte=0;byte<row.length;byte++) row[byte]&=content.collisionByteMasks[byte%2];
-  return {width,height,map,backgrounds:{ship:rows},collisionRows:[...content.collisionRows],shipAnchor,
+  return {width,height,map,backgrounds:{ship:rows},collisionRows:[...content.collisionRows],collisionByteMasks:[...content.collisionByteMasks],shipAnchor,
     // Game15 proc6 sets exit direction6; game21 $0D06–$0D40 yields +0,+6.
     spawn:{x:shipAnchor.x,y:shipAnchor.y+6},
     walkBounds:{left:280,right:833,top:199,bottom:575}};
