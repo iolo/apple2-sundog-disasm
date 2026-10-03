@@ -1,3 +1,4 @@
+import { depotTests } from './depot.js';
 import { cityPodTests } from './city-pod.js';
 import { initializationTests } from './initialization.js';
 import { economyTests } from './economy.js';
@@ -95,6 +96,7 @@ await campaignTests(test, equal);
 await campaignSaveTests(test, equal);
 await campaignSeedTests(test, equal);
 await equipmentTests(test, equal);
+await depotTests(test, equal);
 await cityMapTests(test, equal);
 await cityWalkTests(test, equal);
 await cityPodTests(test, equal);
