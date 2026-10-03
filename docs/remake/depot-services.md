@@ -1,10 +1,10 @@
-# Depot service rules — R08a
+# Depot services — R08a/R08b
 
 `remake/js/core/depot.js` implements source prices and atomic purchase operations
-for refueling, hull repair and auxiliary fuel. This checkpoint is an isolated
-service core. The live depot panel is still read-only and campaign saves remain
-version17. Active ship resources, depot access, auxiliary cargo persistence and
-the service UI must be connected together in the next checkpoint.
+for refueling, hull repair and auxiliary fuel. R08b connects these operations to
+reachable foot/pod depot visits, active hull/fuel, confirmed English/Korean controls
+and version18 saves. The local ship may be serviced from either entrance; auxiliary
+cargo requires the pod at the depot.
 
 ## Source evidence
 
@@ -50,14 +50,20 @@ Auxiliary fuel is a distinct lot shape:
 
 Canonical zero replaces the unwritten native price word rather than inheriting
 stale bytes from an emptied slot. Fuel cannot be quoted as ordinary sale cargo.
-Existing generic cargo and campaign validators intentionally still reject this
-new lot until active resource/transport integration introduces its producer,
-movement, consumption and migration rules. Ordinary and cryogen cargo already
+Version18 accepts these lots in pod and warehouse containers. Store/Fetch/Swap
+preserve the complete record, and ordinary sale controls reject it. Historical
+versions retain their earlier cargo schema. Ordinary and cryogen cargo already
 in a service session are validated and preserved.
+
+Library24 proc16 `$0ACE–$0B4C` automatically consumes the first type1 pod cargo
+when working fuel is nonpositive and flag7 says the pod is attached: add255,
+clear that slot, then clamp any remaining nonpositive fuel to zero. This belongs
+to the upcoming machinery update; R08b does not introduce a manual consumption
+action or claim active fuel depletion.
 
 Browser atomic confirmations replace the native repeating purchase buttons.
 This core does not invent a time charge from the UI's “hour” label or simulate
-native service timing; timing and active machinery belong in live integration.
+native service timing. Confirmed service currently changes no game time or RNG.
 
 ## Verification
 
@@ -67,7 +73,24 @@ and hull0–16, all256 starting fuel values, exact/insufficient funds, account/c
 spill, fixed multi-point hull prices, first-empty auxiliary loading, world origin,
 full/malformed containers, absent vehicles and input/result ownership.
 
-The Chrome rule receipt is `depot-core-rules-validation.json`. No new visible
-service, fuel-consuming journey, save-version change or native emulator capture
-is claimed by this checkpoint. See [R08 audit](r08-completion.md) for the remaining
-milestone requirements.
+R08a's numeric receipt is `depot-core-rules-validation.json`. R08b adds campaign
+access, live-resource round trips, bank-first/exact-funds settlement, atomic failures,
+auxiliary warehouse transport, loaded docking and version17 migration tests in
+`remake/tests/campaign-depot.js`. Current receipts are
+`depot-live-rules-validation.json` and `depot-services-validation.json`.
+
+The active `resources` block starts as an owned copy of creation resources.
+R08b permits repaired hull from initial hull through16 and purchased fuel in
+multiples of16 or255. Power and charge fields remain zero/off until machinery
+producers are implemented. Version1–17 saves receive their initial resource values
+after historical validation; they cannot inject version18 resources, fuel cargo
+or detached depot visits. The save codec checks structural and current-rule
+consistency, not an authenticated purchase history.
+
+The browser journey starts a fresh seed12345 campaign, drives to the depot,
+cancels and confirms repair, fills the tank, loads two auxiliary lots, stores and
+fetches one at the exchange, then returns loaded to the ship. Purchases and cargo
+survive fresh-page reloads. Both service selection and quantity review are checked
+in English/Korean at four viewport sizes. No native emulator capture or
+fuel-consuming journey is claimed. See [R08 audit](r08-completion.md) for the full
+remaining milestone requirements.

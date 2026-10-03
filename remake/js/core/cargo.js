@@ -7,9 +7,14 @@ const integer=(v,min,max)=>Number.isInteger(v)&&v>=min&&v<=max;
 const city=id=>typeof id==='string'&&/^city-(0[1-9]|[1-4][0-9]|5[0-7])$/.test(id);
 const fail=()=>{throw new Error('invalidCargo')};
 
-// Ordinary exchange lots and the initialized cryogens. Auxiliary fuel, unknown
-// salvage and colony records need their own producers before being accepted.
-export function validateCargoLot(lot) {
+// Ordinary exchange lots and initialized cryogens are valid in historical saves.
+// R08 depot hosts opt into auxiliary fuel with its world-origin record.
+export function validateCargoLot(lot,{auxiliaryFuel=false}={}) {
+  if(auxiliaryFuel&&lot?.commodityId==='cargo-01') {
+    if(!keys(lot,['commodityId','quality','originWorld','pricePaid'])||lot.quality!==7||lot.pricePaid!==0||
+      !/^world-(0[1-9]|1[0-8])$/.test(lot.originWorld))fail();
+    return {commodityId:'cargo-01',quality:7,originWorld:lot.originWorld,pricePaid:0};
+  }
   if(!keys(lot,['commodityId','quality','originCity','pricePaid'])||
     typeof lot.commodityId!=='string'||!/^cargo-(0[2-9]|[12][0-9]|3[01])$/.test(lot.commodityId)||
     !integer(lot.quality,1,7)||!city(lot.originCity)||
@@ -17,24 +22,24 @@ export function validateCargoLot(lot) {
     (lot.commodityId==='cargo-31'&&(lot.quality!==7||lot.pricePaid!==0)))fail();
   return {commodityId:lot.commodityId,quality:lot.quality,originCity:lot.originCity,pricePaid:lot.pricePaid};
 }
-export function validateCargoSlots(slots,container) {
+export function validateCargoSlots(slots,container,options) {
   const size=Object.hasOwn(CARGO_CAPACITY,container)&&CARGO_CAPACITY[container];
   if(!size||!Array.isArray(slots)||slots.length!==size||Object.keys(slots).length!==size||
     !Array.from({length:size},(_,i)=>Object.hasOwn(slots,i)).every(Boolean))fail();
-  return slots.map(lot=>lot===null ? null : validateCargoLot(lot));
+  return slots.map(lot=>lot===null ? null : validateCargoLot(lot,options));
 }
 export const initialPodCargo=()=>Array(CARGO_CAPACITY.pod).fill(null);
-export function warehouseCargoSnapshot(value) {
+export function warehouseCargoSnapshot(value,options) {
   if(!keys(value,['warehouse','pod'])||!keys(value.warehouse,['cityId','slots'])||!city(value.warehouse.cityId))fail();
-  return {warehouse:{cityId:value.warehouse.cityId,slots:validateCargoSlots(value.warehouse.slots,'warehouse')},
-    pod:validateCargoSlots(value.pod,'pod')};
+  return {warehouse:{cityId:value.warehouse.cityId,slots:validateCargoSlots(value.warehouse.slots,'warehouse',options)},
+    pod:validateCargoSlots(value.pod,'pod',options)};
 }
 
 // A pure loading session. The campaign-pod controller derives this visit from
 // actual pod entry at a door and commits both containers together.
 // A foot visit cannot operate on the pod merely because it owns warehouse lots.
-export function reduceWarehouseCargo(previous,visit,action) {
-  const next=warehouseCargoSnapshot(previous);
+export function reduceWarehouseCargo(previous,visit,action,options) {
+  const next=warehouseCargoSnapshot(previous,options);
   if(!keys(visit,['cityId','transport'])||visit.transport!=='pod'||visit.cityId!==next.warehouse.cityId)
     throw new Error('cargoUnavailable');
   const warehouse=next.warehouse.slots,pod=next.pod;

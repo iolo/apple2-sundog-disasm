@@ -1,4 +1,4 @@
-import { canDockPod, canDrivePod, podReachability, podExchangeAt, tryPodStep } from './city-pod.js';
+import { canDockPod, canDrivePod, podReachability, podExchangeAt, podServiceAt, tryPodStep } from './city-pod.js';
 import { interactionAt } from './ship-walk.js';
 import { SHIP_REENTRY } from './city-walk.js';
 import { initialPodCargo, validateCargoSlots, reduceWarehouseCargo } from './cargo.js';
@@ -9,17 +9,17 @@ const reachability=new WeakMap();
 // overlaps one wall pixel there; the adjacent (99,119) is clear and connected.
 export const POD_REENTRY=Object.freeze({x:99,y:119});
 export const initialCampaignPod=()=>({attached:true,position:null,heading:16,cargo:initialPodCargo()});
-export function validateCampaignPod(value,travel,geometry) {
+export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryFuel=true}={}) {
   if(!keys(value,['attached','position','heading','cargo'])||typeof value.attached!=='boolean')throw new Error('invalidPod');
-  const cargo=validateCargoSlots(value.cargo,'pod');
+  const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel});
   if(value.attached) {
     if(value.position!==null||value.heading!==16)throw new Error('invalidPod');
   } else {
-    if(!geometry||!['city','exchange'].includes(travel.scene)||!keys(value.position,['x','y'])||
+    if(!geometry||!(depot?['city','exchange','depot']:['city','exchange']).includes(travel.scene)||!keys(value.position,['x','y'])||
       value.position.x!==travel.cityPosition?.x||value.position.y!==travel.cityPosition?.y)throw new Error('invalidPod');
     if(!reachability.has(geometry))reachability.set(geometry,podReachability(geometry));
     if(!reachability.get(geometry)(value.position,value.heading)||
-      (travel.scene==='exchange'&&!podExchangeAt(geometry,value.position,value.heading)))throw new Error('invalidPod');
+      (['exchange','depot'].includes(travel.scene)&&podServiceAt(geometry,value.position,value.heading)!==travel.scene))throw new Error('invalidPod');
   }
   return {attached:value.attached,position:value.position&&{...value.position},heading:value.heading,cargo};
 }
@@ -41,7 +41,7 @@ export function reduceCampaignPod(previous,geometry,action) {
   } else if(['store','fetch','swap'].includes(action.type)) {
     if(next.travel.scene!=='exchange'||p.attached||!podExchangeAt(geometry,p.position,p.heading))throw new Error('cargoUnavailable');
     const loaded=reduceWarehouseCargo({warehouse:next.economy.exchange.warehouse,pod:p.cargo},
-      {cityId:next.economy.exchange.market.cityId,transport:'pod'},action);
+      {cityId:next.economy.exchange.market.cityId,transport:'pod'},action,{auxiliaryFuel:true});
     next.economy.exchange.warehouse=loaded.warehouse;p.cargo=loaded.pod;
   } else throw new Error('podUnavailable');
   return next;
@@ -55,5 +55,5 @@ export function validateLocalCargo(start,exchange,pod) {
   const cryogens=all.filter(c=>c.commodityId==='cargo-31');
   const signature=c=>[c.commodityId,c.quality,c.originCity,c.pricePaid].join('/');
   if(JSON.stringify(cryogens.map(signature).sort())!==JSON.stringify(initial.map(signature).sort())||
-    all.some(c=>c.commodityId!=='cargo-31'&&(c.originCity!==exchange.market.cityId||c.pricePaid<100||exchange.market.lastUpdateDay===-16)))throw new Error('invalidCargo');
+    all.some(c=>c.commodityId==='cargo-01' ? c.originWorld!==start.playerLocation.worldId : c.commodityId!=='cargo-31'&&(c.originCity!==exchange.market.cityId||c.pricePaid<100||exchange.market.lastUpdateDay===-16)))throw new Error('invalidCargo');
 }

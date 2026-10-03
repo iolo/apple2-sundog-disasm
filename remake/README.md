@@ -6,8 +6,9 @@ withdrawals and inter-system transfers, local exchange purchases/warehouse sales
 shop purchases and information, paid lodging with working bedroom doors, and tavern
 seating, conversations, visitor item buying/selling, food/ale purchases and bartender
 trader referrals. Local pod driving and warehouse Store/Fetch/Swap retain cargo
-through loaded docking. TransStation and depot
-doors open read-only service visits with saved return positions.
+through loaded docking. Depot visits offer confirmed hull repairs, ship refueling
+and auxiliary fuel loading with saved resources and cargo. TransStation visits
+remain read-only.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
 inspector remain available. Regional transport, flight, combat and colony progression
@@ -106,7 +107,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version17 saves retain local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version18 saves retain active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
@@ -121,13 +122,20 @@ in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration and R07 trading/banking are complete. Their evidence
 and boundaries are recorded in `../docs/remake/r06-completion.md` and
 `../docs/remake/r07-completion.md`. Broader ground transport, unattended pod
-parking and depot repair/fueling remain R08; intercity travel remains R09.
+parking, component failures/repair and surface traversal remain R08; intercity travel remains R09.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
 unchanged. Transfers select another system and charge no fee. Saves retain only
 committed balances; a fresh load discards a pending amount. See
 `../docs/remake/banking.md`.
+
+At a depot, choose **Refuel ship**, **Repair hull**, or **Load auxiliary fuel**.
+Review the quantity with −, + or Maximum, then Confirm. Services spend the local
+bank first and cash second. Hull/fuel service works on foot; auxiliary loading
+requires driving the pod to the depot and an empty cargo slot. Auxiliary fuel
+can be stored/fetched at the exchange but cannot be sold. Automatic fuel use and
+component repairs are still pending. See `../docs/remake/depot-services.md`.
 
 Reach the pod exit aboard ship and choose **Drive pod**. Drive to the exchange
 cargo entrance and open **Load cargo**. Select pod cargo to Store, warehouse cargo

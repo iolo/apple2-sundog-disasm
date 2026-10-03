@@ -283,3 +283,17 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .exchange-columns { display:grid; grid-template-columns:1fr 44px 105px; gap:8px; padding:0 8px; font-size:13px; color:var(--muted); }
 .exchange-columns span:nth-child(2) { text-align:center; }
 .exchange-columns span:last-child { text-align:right; }
+
+/* Depot review keeps quantities, resources and confirmation visible together. */
+#service-panel.depot-panel { width:570px; max-height:440px; padding:18px; display:flex; flex-direction:column; gap:10px; }
+.depot-panel h2,.depot-panel h3,.depot-panel p { margin:0; }
+.depot-panel p { font-size:16px; line-height:1.25; }
+.depot-panel button { font-size:18px; line-height:1.2; min-height:38px; }
+.depot-services { display:grid; gap:4px; }
+.depot-services button { display:grid; grid-template-columns:1fr auto; text-align:left; gap:4px 12px; padding:8px; }
+.depot-services strong { font-size:16px; font-weight:400; }
+.depot-services small { grid-column:1/-1; font-size:14px; }
+.depot-review { display:grid; gap:10px; }
+.depot-quantity { display:flex; gap:10px; }
+.depot-panel footer { display:flex; gap:10px; flex-shrink:0; }
+#depot-message { color:var(--amber); }

@@ -58,7 +58,7 @@ async browserPage => {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-01T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-01T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Cargo pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
     const initial=await exported();await route('depart');assert((await state()).transport==='pod','Fresh campaign departs in the pod');
-    const departed=await reload();assert(departed.version===17&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version17 stores source pod departure');
+    const departed=await reload();assert(departed.version===18&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version18 stores source pod departure');
     await route('exchange');assert((await state()).scene==='exchange','Pod cargo entrance opens the exchange');await buy();await buy();await buy();
     await page.locator('#exchange-cargo').click();const before=await exported();
     await page.locator('#cargo-warehouse-0').click();assert(await page.locator('#exchange-confirm').isEnabled(),'Fetch offers confirmation before transferring');
@@ -73,6 +73,7 @@ async browserPage => {
       if(lang==='ko')await page.locator('#service-language').click();
       for(const [width,height] of [[1280,720],[640,480],[390,844],[844,390]]) {
         await page.setViewportSize({width,height});await page.clock.runFor(100);
+        await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
         assert(await page.locator('#service-panel').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.top>=0&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1&&el.scrollWidth<=el.clientWidth&&[...el.querySelectorAll('button')].every(b=>{const q=b.getBoundingClientRect();return q.top>=r.top&&q.bottom<=r.bottom&&q.left>=r.left&&q.right<=r.right})}),`${lang} loading controls fit ${width}x${height}`);
       }
     }
