@@ -571,5 +571,9 @@
   "machineryUnavailable": "Ship controls are unavailable here.",
   "machineryInoperative": "Replace failed components to restore this system.",
   "machineryNoFuel": "Refuel before raising shields.",
-  "machineryNoCloaker": "A working cloaker is required."
+  "machineryNoCloaker": "A working cloaker is required.",
+  "podPark": "Park / exit",
+  "podBoard": "Board pod",
+  "podExitBlocked": "There is no clear place to leave the pod.",
+  "podUnavailable": "Reach the pod before boarding."
 }

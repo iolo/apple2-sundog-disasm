@@ -50,9 +50,10 @@ export function cityCamera(position) {
 // the airlock. Include all one/two-pixel requests supported by actual movement.
 export function cityReachability(geometry) {
   const {width,height}=geometry,seen=new Uint8Array(width*height),queue=new Int32Array(width*height);
-  const start=geometry.spawn.y*width+geometry.spawn.x;
-  if(!canStand(geometry,geometry.spawn)) throw new Error('Blocked city airlock');
-  let head=0,tail=1;queue[0]=start;seen[start]=1;
+  const origins=(geometry.footOrigins||[geometry.spawn]).filter(point=>canStand(geometry,point));
+  if(!origins.length)throw new Error('Blocked city airlock');
+  let head=0,tail=0;
+  for(const point of origins){const start=point.y*width+point.x;if(!seen[start]){queue[tail++]=start;seen[start]=1}}
   while(head<tail) {
     const index=queue[head++],x=index%width,y=Math.floor(index/width);
     for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) {

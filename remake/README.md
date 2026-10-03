@@ -111,7 +111,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version20 saves retain power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version21 saves retain independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
@@ -125,8 +125,7 @@ source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration and R07 trading/banking are complete. Their evidence
 and boundaries are recorded in `../docs/remake/r06-completion.md` and
-`../docs/remake/r07-completion.md`. Broader ground transport, unattended pod
-parking, surface traversal and the combined acceptance audit remain R08; intercity travel remains R09.
+`../docs/remake/r07-completion.md`. Surface traversal and the combined acceptance audit remain R08; intercity travel remains R09.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
@@ -166,8 +165,12 @@ cargo entrance and open **Load cargo**. Select pod cargo to Store, warehouse car
 to Fetch, or choose Swap and select one occupied slot in each container. Confirm
 commits the transfer. Dock horizontally beside the ship to return with cargo;
 ship inventory shows that same manifest. Save/reload preserves location and lots.
-The current route stays inside Drahew; unattended pod parking and regional travel
-remain pending. See `../docs/remake/pod-cargo.md`.
+In the city, **Park / exit** leaves the pod and its cargo where you stopped.
+Walk to services or back to the ship; return close to the parked pod and choose
+**Board pod** to drive again. Foot visits cannot load a remote pod. Saves preserve
+both positions. Move away from the ship before parking if its hull blocks your
+walking exit. The route currently stays inside Drahew; surface and regional travel
+remain pending. See `../docs/remake/parked-pod.md` and `../docs/remake/pod-cargo.md`.
 
 At the exchange, choose a lot under **Offers** and Confirm to buy it into the
 local warehouse. Payment uses the bank first, then cash. Under **Warehouse**,

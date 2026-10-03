@@ -76,10 +76,10 @@ export async function campaignDepotTests(test,equal) {
     equal(e.pod.cargo,[null,lots[1]]);equal(e.resources,{...s.resources,fuel:255});equal(codec.snapshot(e),e);
   });
   await test('Version17 migration preserves prior state and rejects injected R08 resource/cargo fields',()=>{
-    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=17;delete old.state.machinery;delete old.state.engineering;old.scope='landed-trader-matching-1';delete old.state.resources;
+    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=17;delete old.state.pod?.occupied;delete old.state.machinery;delete old.state.engineering;old.scope='landed-trader-matching-1';delete old.state.resources;
     equal(codec.validate(old),current);old.state.resources=current.state.resources;reject(()=>codec.validate(old));
     delete old.state.resources;old.state.pod.cargo[0]={commodityId:'cargo-01',quality:7,originWorld:'world-01',pricePaid:0};reject(()=>codec.validate(old));
-    const depot=codec.make(arrive(),0);depot.version=17;delete depot.state.machinery;delete depot.state.engineering;depot.scope='landed-trader-matching-1';delete depot.state.resources;reject(()=>codec.validate(depot));
+    const depot=codec.make(arrive(),0);depot.version=17;delete depot.state.pod?.occupied;delete depot.state.machinery;delete depot.state.engineering;depot.scope='landed-trader-matching-1';delete depot.state.resources;reject(()=>codec.validate(depot));
   });
   await test('Resource and auxiliary cargo validation reject unsupported machinery and malformed saves',()=>{
     const s=service(arrive(),'auxiliary');

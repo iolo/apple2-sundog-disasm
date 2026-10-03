@@ -5,7 +5,7 @@ import { validateShipResources } from './ship-resources.js';
 import { depotPrices, quoteDepotService, purchaseDepotService } from './depot.js';
 
 function setup(state,content,geometry) {
-  const driving=!state.pod.attached,{travel,start}=state;
+  const driving=state.pod.occupied,{travel,start}=state;
   if(travel.scene!=='depot'||cityServiceAt(geometry.map,travel.cityPosition,driving?'pod':'foot')!=='depot'||
     (driving&&podServiceAt(geometry.pod,travel.cityPosition,state.pod.heading)!=='depot'))throw new Error('depotUnavailable');
   validateCampaignPod(state.pod,travel,geometry.pod);

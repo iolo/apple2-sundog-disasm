@@ -1,9 +1,9 @@
-# Parked pod geometry — R08g
+# Parked pod ownership and boarding — through R08h
 
 `remake/js/core/parked-pod.js` implements the source city geometry for an
-unattended pod, foot exit placement and boarding proximity. This is a rule-core
-checkpoint. Live campaigns still couple the detached pod and player positions;
-parking controls, independent ownership and save migration remain required.
+unattended pod, foot exit placement and boarding proximity. R08h connects those
+rules to actual parking/boarding, independent player and pod positions, foot
+visits with unattended cargo and version21 saves.
 
 ## Source trace
 
@@ -16,6 +16,7 @@ parking controls, independent ownership and save migration remain required.
 | Game21 proc21 `$0B1B–$0B5A` | Boarding requires matching city IDs, foot mode, detached pod and player tile within1 of the saved pod tile in each axis. Player tile uses `(x+3) div28`, `(y−3) div32`. |
 | Game21 proc16 `$0783–$07A1` | Convert the saved pod location to viewport coordinates; require absolute X and Y differences at most4. The remainder sets pod mode and copies the pod location back to the player. |
 | Game18 proc21 `$0FE0–$0FE5`, proc26 `$150D–$1568` | Room type16 is the pod. Its exit/drive areas select foot/driving through word45 bit13. Scene5 is dispatched through Game18 by Startup proc4 `$011E–$0137`. |
+| Game15 proc8 `$0315–$0333` | Attachment flag7 selects the full ship image or the detached section four disk blocks later. The browser already exports both image/collision resources. |
 | Game21 proc25 `$0D85–$0E36` | On driving-to-foot return in a city, start scale1/index0. Test X offset `(index div7−3)*scale` and Y offset `(index mod7−3)*scale`. Increment index; at49 reset it and increment scale. Repeat until the foot collision check succeeds. |
 
 Locations refer to segment29: player word36, pod word228, ship word72. Bit13
@@ -47,6 +48,43 @@ still meets the boarding bounds, so the player can board again and move the pod.
 At street position `(360,215)`, the first exit `(357,212)` permits walking away
 and returning. No global-connectivity preference is added to the native search.
 
+## Live ownership and deliberate UI adaptation
+
+In a city, **Park / exit** leaves the pod at its current position and chooses
+the source-clear foot exit. **Board pod** enables only within the source bounds
+at a clear foot position. These buttons directly represent the native pod-room
+exit/drive choices; the browser does not add a separate type16 cabin scene here.
+Both transitions arrive paused and clear held input. A blocked exit or remote
+boarding attempt changes no position, cargo, money, resources, clock or RNG.
+
+`pod.occupied` distinguishes driving from an unattended pod. Attachment still
+controls ship artwork, cargo availability aboard and automatic auxiliary fuel.
+Walking, rooms, banking and foot depot/exchange visits leave the pod unchanged.
+Only an occupied pod at the matching entrance can load warehouse cargo or buy
+auxiliary fuel. Returning to the ship on foot does not dock or refuel the ship,
+and its inventory no longer presents the remote pod manifest as aboard.
+
+The ship uses the original detached-section artwork and its connected collision
+region while the pod is absent. Clear pixels where the pod used to be are outside
+that region and cannot become saved interior positions. The exterior uses the
+detached ship plus the saved parked glyph. Foot collision uses the same parked
+geometry when walking or returning from a room. Boarding the ship on foot still
+requires its own source proximity; it cannot summon the parked pod.
+
+Version21 `landed-parking-1` requires an exact boolean `pod.occupied`. Attached
+pods must be unoccupied, position-null and heading16. Occupied pods must share
+the player's city position in city/exchange/depot scenes. Unoccupied detached
+pods retain a reachable city position while the player visits supported foot
+scenes, including the ship. Saved exterior foot positions must be clear/reachable
+with the parked body present. Reachability includes the source-clear pod exit
+and the ship airlock, since boarding/exiting the ship can connect those origins.
+
+Versions1–20 retain their original restrictions before deriving occupancy from
+attachment. In particular, a version20 envelope cannot contain occupancy or
+independent player/pod positions. Migration preserves active power, pending
+equipment failures, all cargo and account state. Listing/loading does not rewrite
+old slots; explicit save writes version21.
+
 ## Verification and remaining integration
 
 Four rule groups verify independent visible-glyph vectors, XOR/pattern9 pixels,
@@ -55,11 +93,15 @@ search order/scale, blocked exits, four-pixel boarding boundaries and collision.
 A real city geometry journey walks away from street parking and returns through
 actual movement, while separately checking immediate boarding recovery at the
 initial departure point. `parked-pod-core-validation.json` records the full297
-rule groups. This is browser execution of the rule suite, not a live parking UI
-journey.
+rule groups. That R08g receipt is browser execution of the rule suite, not a live
+parking UI journey.
 
-Next integrate independent pod/player transport state, parked foot collision and
-drawing, boarding/disembark controls, foot room/ship visits with an unattended
-pod, cargo access checks and versioned saves. Native pod-room exit/drive choices
-must be represented or their UI adaptation explicitly documented. Then implement
-surface traversal/return and the full [R08 acceptance audit](r08-completion.md).
+R08h adds five campaign groups for atomic ownership, foot visits, remote cargo
+rejection, detached-interior saves, unattended auxiliary fuel, migration and
+malformed imports. `parking-live-rules-validation.json` covers302 rule groups.
+The live fresh-character journey is in `parking_smoke.js`: ordinary purchases,
+loaded parking, reload, foot exchange/ship visits, return boarding and loaded
+docking. Its42 UI checks pass, plus61 depot and102 room regressions, in the
+`parking-*-validation.json` receipts. The Korean city and English detached-ship
+screenshots were visually inspected. Surface traversal/return and the combined servicing/transport acceptance
+audit remain required by the full [R08 audit](r08-completion.md).

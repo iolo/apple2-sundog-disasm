@@ -132,7 +132,7 @@ export async function lodgingTests(test,equal) {
     }
   });
   await test('Version8 migrates cash from creation and rejects injected cash; lodging saves reject invented access',()=>{
-    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=8;delete old.state.machinery;delete old.state.engineering;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
+    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=8;delete old.state.pod?.occupied;delete old.state.machinery;delete old.state.engineering;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-dialogue-1';delete old.state.dialogue.cash;
     const before=JSON.stringify(old);equal(codec.validate(old),current);equal(JSON.stringify(old),before);
     old.state.dialogue.cash=1;reject(()=>codec.validate(old));
     const saved=codec.make(rented(),0);
@@ -142,7 +142,7 @@ export async function lodgingTests(test,equal) {
       s=>s.travel.roomPosition={x:112,y:22}]) {
       const bad=structuredClone(saved);mutate(bad.state);reject(()=>codec.validate(bad));
     }
-    const legacy=structuredClone(saved);legacy.version=8;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-dialogue-1';delete legacy.state.dialogue.cash;delete legacy.state.travel.lodging;
+    const legacy=structuredClone(saved);legacy.version=8;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-dialogue-1';delete legacy.state.dialogue.cash;delete legacy.state.travel.lodging;
     reject(()=>codec.validate(legacy));
   });
 }
