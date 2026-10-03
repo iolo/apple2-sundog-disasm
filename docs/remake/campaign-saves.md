@@ -1,4 +1,40 @@
-# Campaign save boundary — through R08h
+# Campaign save boundary — through R08k
+
+R08k adds the ground-aware version22 codec, scope`landed-ground-1`, when content
+includes`ground:{maps,cityWalk,surfaceWalk}`. The current live UI still supplies
+city-only content and writes version21; version22 activation is part of the next
+live surface integration. A city-only codec rejects version22 instead of loading
+a scene it cannot render. The version21 contract below remains the live boundary.
+
+Version22 adds`ground:{worldId,cityId,podCityId,colonyPosition,camera}` and the
+`surface` travel scene. It retains the existing travel position, pod cargo and
+resources without duplicating their ownership. The validator uses the actual
+city/surface geometry, connected surface component from source departure
+anchors, city entry borders and ship/parked-pod geometry. It validates independent
+pod domains, surface heading26 vs city headings14/16/18/20, occupied position
+agreement, exact fields and visible camera bounds. Only source city side/corner
+arrival anchors may overlap surface terrain; arbitrary blocked imports fail.
+Colony coordinates must be on eligible composed terrain and cannot overlap an
+ordinary city. Its prior RNG draw history is not replayed; this is validated
+progress rather than an anti-cheat log.
+
+Ground imports retain local financial/cargo conservation, source ship resources,
+equipment/machinery, room replay and detached interior validation. Unsupported
+remote room/service visits are rejected, so another city's coordinates cannot
+access the starting market or account through this checkpoint. Surface/city
+transition reducers do not advance money or consume cargo. Boarding checks
+same-domain proximity, including recovery at the original overlapping arrival
+anchors after parking there.
+
+Versions1–21 are validated against their historical schemas and geometry before
+ground metadata is added. Migration starts in the original city with no colony
+placement or invented surface progress; detached/occupied cargo is preserved.
+Old saves cannot inject the new ground record or expanded city coordinates.
+Current-city pixel checks keep their original field scope when surface content
+is absent. Ground-aware validators own their content and cap per-city/per-colony
+reachability caches. See `ground-save-rules-validation.json`:317 passing groups,
+including all21 legacy schemas, ground travel round trips, key-order independent
+imports, source-arrival recovery, remote-service rejection and malformed saves.
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
 version21, scope `landed-parking-1`, and validates/upgrades version1 `landed-ship-1`,
