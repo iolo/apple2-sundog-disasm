@@ -258,6 +258,22 @@ def build():
         podGlyphs={str(i): glyph(i) for i in range(14,22)},
         collisionByteMasks=[0x55,0x2a],
         source='game21 procedures7/15/23/25; library22 procedures9/11, pattern9'))
+    # Surface records use 28x24 tiles. Stored tile13 is a terrain placeholder;
+    # Game21 proc28 replaces it before overlaying these city coordinates.
+    surface_cities = []
+    for world in range(18):
+        membership = int.from_bytes(defaults[254+world*16:256+world*16], 'little')
+        first, count = (membership >> 9) & 63, membership & 7
+        for city in range(first, first+count):
+            packed = int.from_bytes(defaults[538+(city-1)*12:540+(city-1)*12], 'little')
+            surface_cities.append(dict(cityId=f'city-{city:02}', worldId=f'world-{world+1:02}',
+                                       position=dict(x=packed & 63, y=(packed >> 6) & 31)))
+    outputs['data/surface-walk.json'] = encode(dict(version=1,
+        tiles=[[[byte & 127 for byte in row] for row in tile]
+               for tile in json.loads(read('assets/world-tiles/rows.json'))],
+        cities=surface_cities, footRows=glyph(10), podRows=glyph(26), podAlternateRows=glyph(29),
+        collisionRows=glyph(15), collisionByteMasks=[0x55,0x2a],
+        source='game21 procedures11/17/18/23/28/29; library22 procedures9/11, pattern9'))
     native = read('src/pcode/library_22.s').decode()
     patterns = [[int(v.strip().removeprefix('$'), 16) & 127 for v in
                  re.search(label+r':\s+\.byte ([^;]+)', native)[1].split(',')]

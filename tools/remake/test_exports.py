@@ -14,6 +14,24 @@ from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_surface_assets_and_city_coordinates_match_capture(self):
+        root = Path(__file__).resolve().parents[2]
+        data = json.loads(build()['data/surface-walk.json'])
+        font = (root / 'assets/font/font.bin').read_bytes()
+        for key, index in [('footRows',10),('podRows',26),('podAlternateRows',29),('collisionRows',15)]:
+            self.assertEqual(data[key], [n & 127 for n in reversed(font[index*8:index*8+8])])
+        tiles = json.loads((root / 'assets/world-tiles/rows.json').read_text())
+        self.assertEqual(data['tiles'], [[[b & 127 for b in row] for row in tile] for tile in tiles])
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        raw = bytes.fromhex(captured['worldTablesHex'])
+        self.assertEqual(len(data['cities']),57)
+        for city in data['cities']:
+            index = int(city['cityId'][5:])-1
+            packed = int.from_bytes(raw[538+index*12:540+index*12],'little')
+            self.assertEqual(city['position'],dict(x=packed & 63,y=(packed >> 6) & 31))
+            self.assertLess(city['position']['x'],40)
+            self.assertLess(city['position']['y'],24)
+
     def test_exchange_defaults_match_clean_character_geography_and_price_nibbles(self):
         root = Path(__file__).resolve().parents[2]
         captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
