@@ -555,5 +555,8 @@
   "depotCompleted": "서비스가 완료되었습니다.",
   "depotLess": "수량 줄이기",
   "depotMore": "수량 늘리기",
-  "depotAll": "최대"
+  "depotAll": "최대",
+  "equipmentPending": "설치한 부품을 점검하는 중…",
+  "equipmentFailed": "부품이 고장 났습니다. 교체 부품이나 호환 션트를 설치하세요.",
+  "equipmentReadiness": "선체 {hull}/16 · 연료 {fuel}/255 · 정지 유닛 {offline}/24"
 }

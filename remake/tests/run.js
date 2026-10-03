@@ -1,3 +1,4 @@
+import { campaignEngineeringTests } from './campaign-engineering.js';
 import { equipmentFailureTests } from './equipment-failures.js';
 import { campaignDepotTests } from './campaign-depot.js';
 import { depotTests } from './depot.js';
@@ -99,6 +100,7 @@ await campaignSaveTests(test, equal);
 await campaignSeedTests(test, equal);
 await equipmentTests(test, equal);
 await equipmentFailureTests(test, equal);
+await campaignEngineeringTests(test, equal);
 await depotTests(test, equal);
 await campaignDepotTests(test, equal);
 await cityMapTests(test, equal);

@@ -1,4 +1,4 @@
-# Component exchange — R05f
+# Component exchange — R05f, updated through R08d
 
 At an engineering bay, select a component, choose Move / exchange, then choose
 a carried slot or compatible installed socket. An occupied destination exchanges
@@ -56,19 +56,23 @@ dependent flag transitions, not simply using `specialAvailable` as a power toggl
 
 Game14 procedure8 `$05B9–$05F2` masks installed types and has an additional encoded
 damage path, tracked by record byte25 and processed by procedures9/10. R08c establishes that this is delayed
-failure, not repair; see [component failures](equipment-failures.md). Its live
-update/save integration remains unsupported. Encoded carried bytes are preserved exactly;
-only plain compatible component types may be installed. Destroyed type7 can be
+failure, not repair; see [component failures](equipment-failures.md). R08d connects
+its live update and version19 save state. Encoded carried components are checked
+by their masked type; faulty bytes retain their pending target until burnout.
+Moves wait for that update, and frame entry canonicalizes output after failure.
+Destroyed type7 can be
 removed to a pocket but cannot be installed. This checkpoint replaces parts; it
 does not heal an individual damaged component, sell parts or add service costs.
 
 ## Persistence
 
-`sundog-campaign` version2, scope `landed-engineering-1`, adds active `equipment`
+The original `sundog-campaign` version2, scope `landed-engineering-1`, added active `equipment`
 beside immutable `start` and active `ship`. Exchanging components never rewrites
 the creation recipe, initial inventory or initial equipment. Snapshots rederive
 performance and availability and reject mismatched caches, wrong socket types,
-altered requirements, unsupported encoded parts and extra fields.
+altered requirements, unsupported encoded parts and extra fields. Version19
+additionally accepts the strictly validated pending-installation state described
+in [component failures](equipment-failures.md).
 
 Version1 `landed-ship-1` imports/slots first pass their full original validation.
 Migration then creates owned active equipment from the immutable creation record.
