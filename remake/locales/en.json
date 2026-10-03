@@ -180,7 +180,7 @@
   "campaignHint": "Save while awake. Keep a JSON copy to use in another browser.",
   "campaignLoadOnly": "Load a saved game or import a JSON file.",
   "campaignSummary": "{name} · Day {day}",
-  "campaignIdentity": "{name} · Jondd / Drahew · Seed {seed}",
+  "campaignIdentity": "{name} · Seed {seed}",
   "campaignSaved": "Game saved in this browser.",
   "campaignDeleted": "Saved game deleted.",
   "campaignLoaded": "Game loaded. Close this panel, then Resume when ready.",
@@ -575,5 +575,7 @@
   "podPark": "Park / exit",
   "podBoard": "Board pod",
   "podExitBlocked": "There is no clear place to leave the pod.",
-  "podUnavailable": "Reach the pod before boarding."
+  "podUnavailable": "Reach the pod before boarding.",
+  "surfaceEnterHint": "Enter the city",
+  "enterCity": "Enter city"
 }

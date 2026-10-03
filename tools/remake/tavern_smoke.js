@@ -35,10 +35,10 @@ async browserPage => {
         if(cityDoorAt(city.map,{x,y})?.type===8&&reached({x,y})){street={x,y};break outer}
       const codec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,city),s=codec.create({...createCharacter(),name:'Tavern visit'},12345);
       const room=roomAt(city.rooms,city.map,street);
-      s.ship.position={x:54,y:118};s.ship.minutes=420;s.travel={scene:'city',cityPosition:street};s.encounters.randomState=0;
+      s.ship.position={x:54,y:118};s.ship.minutes=420;s.travel={scene:'city',cityPosition:street};s.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(s.travel.cityPosition);s.encounters.randomState=0;
       s.dialogue.attributes=[30,40,50,30,81];
       if(kind!=='street') {
-        s.travel={scene:'room',cityPosition:street,roomPosition:{x:16,y:86}};
+        s.travel={scene:'room',cityPosition:street,roomPosition:{x:16,y:86}};s.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(s.travel.cityPosition);
         const p=populateRoom(room,12345),traffic=initialRoomTraffic(p,room),w=traffic.actors[0].words;
         traffic.actors=[traffic.actors[0],traffic.actors.at(-1)];w.splice(0,6,86,43,86,43,86,43);w[7]=4;w[9]=0;
         if(kind==='arrival'){w[4]=80;w[7]=5*256+33;w[8]=4;traffic.active=2;traffic.tavern.playerSeat=4}
@@ -66,7 +66,7 @@ async browserPage => {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install();await page.goto('http://127.0.0.1:8000/');await ready();
     const fixture=await importFixture('street');await page.locator('#walk-airlock').click();
     assert((await state()).room===String(fixture.room),'Type8 street door opens its source-selected tavern layout');
-    const entered=await exported();assert(entered.version===21&&entered.state.encounters.roomState.tavern.playerSeat===null,'Fresh entry exports version21 tavern state');
+    const entered=await exported();assert(entered.version===22&&entered.state.encounters.roomState.tavern.playerSeat===null,'Fresh entry exports version22 tavern state');
     await walk(30,40);await walk(30,31);await page.locator('#walk-talk').click();await page.clock.runFor(2000);
     assert((await state()).dialogue==='16','Bartender approaches and opens source dialogue16');
     assert(await page.locator('#dialogue-item-0').isEnabled(),'Bartender food selection is enabled');

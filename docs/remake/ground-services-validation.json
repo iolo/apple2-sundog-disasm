@@ -1,0 +1,14 @@
+{
+  "browser": "154.0.8037.92",
+  "checks": [
+    "Ground save accepts a reachable pod parked outside the historical city guard",
+    "Foot depot renders repair and fuel offers with the outer-street pod",
+    "Foot service cannot load the parked pod",
+    "Confirmed repair and one fuel unit update the local ship",
+    "Foot service charges source repair and fuel prices",
+    "Servicing preserves parked position, heading, occupancy and cargo",
+    "Fresh-page reload retains paid services and the outer-street pod",
+    "No uncaught outer-street service errors"
+  ],
+  "errors": []
+}

@@ -1,5 +1,52 @@
 # SunDog web remake progress
 
+## R08l — Live surface travel, independent domains and version22 — 2026-10-03
+
+Connected the prepared ground reducers and save codec to actual city/surface
+rendering, camera hysteresis, pointer/touch and arrow-key input. City boundaries
+lead to composed world terrain; Enter city reaches other source city streets.
+Surface parking, foot city/ship visits, remote pod retrieval and loaded docking
+retain independent player, pod and ship locations. First surface entry commits
+colony placement/RNG once. Version22 is now the live campaign format; versions1–21
+retain historical validation before migration.
+
+Exported surface pod glyphs26/29; the renderer uses the stable26 pose. Active
+location headings replace the formerly hardcoded creation-city identity line.
+All services remain explicitly local until R09: UI gates and bank/exchange/pod/
+depot reducers reject remote-city transactions. Local foot depot visits can
+service the ship with a pod parked on the surface. Depot and cargo controls now
+receive expanded active geometry, fixing a real case where an outer-street parked
+pod was valid in version22 but rejected by the old service geometry.
+
+Updated browser planners for saved camera origins and source one-pixel foot
+steps. Historical import fixtures remove ground metadata and expect a newly
+initialized camera, while preserving prior actor/RNG and economic state. The
+first surface run had a reload module mismatch because files changed during its
+execution; the settled-file rerun completed all52 checks. Browser suites are run
+sequentially without editing live modules during a run.
+
+Validation in Chrome154.0.8037.92:
+
+- `ground-live-rules-validation.json`:318 rule groups, no failures/page errors.
+- `surface-ui-validation.json`:52 fresh-character checks, including two purchased
+  lots, surface parking, foot ship visits, Obburg arrival, loaded return and
+  repeated complete-state reloads; English/Korean controls fit four viewports.
+- `ground-parking-regression-validation.json`:42 checks.
+- `ground-depot-regression-validation.json`:61 checks, including auxiliary cargo,
+  docking refill and ordinary servicing-to-power progress.
+- `ground-room-regression-validation.json`:102 checks and the embedded rule suite.
+- `ground-services-validation.json`:8 checks with a declared outer-street parked
+  pod fixture, normal service controls, exact prices and fresh-page reload.
+- 20 exporter tests and168 deterministic artifacts pass; JavaScript syntax and
+  diff whitespace checks pass. Surface and destination screenshots were inspected.
+
+R08 remains active. The combined fresh-character engineering/service/loaded
+surface acceptance journey and final requirements/regression audit are next.
+The ground cadence, stable sprite pose and wrapped map-row rendering are explicit
+browser adaptations in `surface-travel.md`. No new native emulator observation
+is claimed; regional markets/flight remain R09, colony progression R11. The
+user-owned PRD remains untouched and untracked.
+
 ## R08k — Ground-aware save contract and strict historical migration — 2026-10-03
 
 Added version22`landed-ground-1` for codec callers supplying the source ground

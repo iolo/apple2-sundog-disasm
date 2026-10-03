@@ -15,7 +15,8 @@ async browserPage => {
     const points=await page.evaluate(async({from,goal,saved})=>{
       const [{loadAssets},{canStand,interactionAt},{tryPodStep,canDockPod,podExchangeAt}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/ship-walk.js'),import('/js/core/city-pod.js')]);
       const [{campaignFootGeometry},{canBoardParkedPod},{canBoardShip},{cityServiceAt},{detachedShipGeometry}]=await Promise.all([import('/js/core/campaign-pod.js'),import('/js/core/parked-pod.js'),import('/js/core/city-walk.js'),import('/js/core/city-doors.js'),import('/js/core/ship-walk.js')]);
-      const a=await loadAssets(),pod=from.transport==='pod',city=from.scene==='city',g=city?(pod?a.cityGeometry.pod:campaignFootGeometry(a.cityGeometry,saved.pod)):(saved.pod.attached?a.shipWalk:detachedShipGeometry(a.shipWalk));
+      const a=await loadAssets(),{createGroundWorld}=await import('/js/core/campaign-ground.js'),world=createGroundWorld({...a.campaignContent,...a.campaignContent.ground},saved.start),pod=from.transport==='pod',city=from.scene==='city',g=city?(pod?world.city(saved.ground.cityId,false).pod:world.foot(saved)):(saved.pod.attached?a.shipWalk:detachedShipGeometry(a.shipWalk));
+      const routeBounds=city?{left:130,right:955,top:123,bottom:650}:null; // Stay inside source camera exit thresholds while routing to a city destination.
       const reached=(p,h)=>goal==='street'?p.x===360&&p.y===215:goal==='pod'?canBoardParkedPod(g,p,saved.pod.position):goal==='footExchange'?cityServiceAt(a.cityGeometry.map,p)==='exchange':goal==='ship'?canBoardShip(g,p):goal==='airlock'?interactionAt(p)===4:goal==='depart'?interactionAt(p)===3:goal==='dock'?canDockPod(g,p,h):podExchangeAt(g,p,h);
       const start=Number(from.y)*g.width+Number(from.x),queue=[start],seen=new Map([[start,null]]);let end=reached({x:Number(from.x),y:Number(from.y)},Number(from.heading))?start:undefined;
       for(let i=0;i<queue.length&&end===undefined;i++) {
@@ -23,6 +24,7 @@ async browserPage => {
         for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(dx||dy) {
           const next=pod?tryPodStep(g,p,dx,dy):{position:{x:p.x+dx,y:p.y+dy}};
           if(!next||(!pod&&!canStand(g,next.position)))continue;
+          if(routeBounds&&(next.position.x<routeBounds.left||next.position.x>routeBounds.right||next.position.y<routeBounds.top||next.position.y>routeBounds.bottom))continue;
           const n=next.position.y*g.width+next.position.x;if(seen.has(n))continue;
           seen.set(n,{from:k,dx,dy});queue.push(n);
           if(reached(next.position,next.heading)){end=n;break}
@@ -44,7 +46,7 @@ async browserPage => {
         for(const key of keys)await page.keyboard.up(key);
       } else {
         if(before.scene==='city') {
-          const cx=Math.max(0,Math.min(30,Math.floor(Number(before.x)/28)-5)),cy=Math.max(0,Math.min(18,Math.floor(Number(before.y)/32)-3));
+          const cx=Number(before.cameraX),cy=Number(before.cameraY);
           await page.mouse.move(box.x+(145+(p.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.75-cy*32)*1.25)*box.height/480);
         }else await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
         await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
@@ -70,7 +72,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Fresh-character purchases fill both pod cargo slots');
     await page.locator('#service-leave').click();await route('street');const street=await exported();await page.locator('#walk-pod').click();const parked=await reload();
-    assert(parked.version===21&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version21 preserves the independent parked pod and player positions');
+    assert(parked.version===22&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version22 preserves the independent parked pod and player positions');
     assert(JSON.stringify(parked.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Parking and reload preserve both purchased cargo lots');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();

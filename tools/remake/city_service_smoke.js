@@ -34,7 +34,7 @@ async browserPage => {
       for(let i=0;i<queue.length;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
         if(cityDoorAt(map,p)?.scene===6&&cityDoorAt(map,p)?.type===type){end=k;break}
-        for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++) {
+        for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
           if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
@@ -47,7 +47,7 @@ async browserPage => {
     if((await state()).paused==='true')await page.locator('#walk-pause').click();
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
-      const before=await state(),cx=Math.max(0,Math.min(30,Math.floor(Number(before.x)/28)-5)),cy=Math.max(0,Math.min(18,Math.floor(Number(before.y)/32)-3));
+      const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
       await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
       await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
       const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
@@ -75,7 +75,7 @@ async browserPage => {
       await page.keyboard.press('Shift+Tab');
       assert(await page.evaluate(()=>document.activeElement.id)==='service-saves',`${scene} traps reverse focus`);
       const entered=await exportGame();
-      assert(entered.version===21&&entered.scope==='landed-parking-1',`${scene} exports a version21 service visit`);
+      assert(entered.version===22&&entered.scope==='landed-ground-1',`${scene} exports a version22 service visit`);
       const expected=structuredClone(street.state);expected.travel.scene=scene;
       if(scene==='exchange'){expected.economy=entered.state.economy;expected.encounters=entered.state.encounters;assert(entered.state.encounters.randomState!==street.state.encounters.randomState&&entered.state.economy.exchange.visit.offers.length===8,'Exchange entry generates live offers and advances RNG')}
       const exited=structuredClone(expected);exited.travel.scene='city';if(scene==='exchange')exited.economy.exchange.visit=null;
@@ -103,7 +103,7 @@ async browserPage => {
       await page.setViewportSize({width:1280,height:720});await page.clock.runFor(100);
       await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
       assert(JSON.stringify((await exportGame()).state)===JSON.stringify(entered.state),`${scene} presentation changes preserve state`);
-      const legacy=structuredClone(entered);legacy.version=10;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-taverns-1';
+      const legacy=structuredClone(entered);legacy.version=10;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-taverns-1';
       assert((await importGame(legacy)).includes('Invalid'),`${scene} rejects service visits disguised as version10`);
       const wrong=structuredClone(entered);wrong.state.travel.scene=scene==='exchange'?'depot':'exchange';
       assert((await importGame(wrong)).includes('Invalid'),`${scene} rejects a different service at the same street anchor`);

@@ -30,7 +30,7 @@ async browserPage => {
           import('/js/render/assets.js'),import('/js/core/campaign-saves.js'),import('/js/core/character.js')]);
         const assets=await loadAssets(),codec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,assets.cityGeometry);
         const state=codec.create({...createCharacter(),name:'Fallback visit'},12345);
-        state.ship.position={x:54,y:118};state.travel={scene:'city',cityPosition:street};state.encounters.randomState=0;
+        state.ship.position={x:54,y:118};state.travel={scene:'city',cityPosition:street};state.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(state.travel.cityPosition);state.encounters.randomState=0;
         const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(codec.make(state,0))],{type:'application/json'}));
         a.download='fallback-street.json';a.click();
       },street);

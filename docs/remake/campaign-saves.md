@@ -1,10 +1,9 @@
-# Campaign save boundary — through R08k
+# Campaign save boundary — through R08l
 
-R08k adds the ground-aware version22 codec, scope`landed-ground-1`, when content
-includes`ground:{maps,cityWalk,surfaceWalk}`. The current live UI still supplies
-city-only content and writes version21; version22 activation is part of the next
-live surface integration. A city-only codec rejects version22 instead of loading
-a scene it cannot render. The version21 contract below remains the live boundary.
+R08l activates version22, scope`landed-ground-1`, in the live UI. The asset loader
+supplies`ground:{maps,cityWalk,surfaceWalk}` to the codec for all campaign saves.
+A city-only codec remains version21 for isolated historical consumers and rejects
+version22 rather than loading a scene it cannot render.
 
 Version22 adds`ground:{worldId,cityId,podCityId,colonyPosition,camera}` and the
 `surface` travel scene. It retains the existing travel position, pod cargo and
@@ -37,11 +36,11 @@ including all21 legacy schemas, ground travel round trips, key-order independent
 imports, source-arrival recovery, remote-service rejection and malformed saves.
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version21, scope `landed-parking-1`, and validates/upgrades version1 `landed-ship-1`,
+version22 with ground content (version21 for city-only content), and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, version18 `landed-depot-1`, version19 `landed-failures-1`, and version20 `landed-power-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, version18 `landed-depot-1`, version19 `landed-failures-1`, version20 `landed-power-1`, and version21 `landed-parking-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -254,12 +253,12 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version21 only on explicit save. The raw original slot remains the comparison
+as version22 only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Version21 derives old occupancy after historical
 checks; old formats cannot inject parked positions or the new field. Detached
 interior saves use the connected original ship-section collision region.
-Other cities, surface traversal and flight/warp controls remain outside this
-version's supported scope.
+Version22 additionally supports other-city outdoor travel and the surface.
+Other-city transactions and flight/warp controls remain outside this scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
 See [building interiors](building-interiors.md) for supported room layouts and adaptations.

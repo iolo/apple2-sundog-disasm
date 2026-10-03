@@ -116,12 +116,12 @@ async browserPage => {
     assert((await page.locator('#equipment-slot-0-1').getAttribute('aria-label')).includes('Flux modulator')&&(await page.locator('#equipment-slot-1-1').getAttribute('aria-label')).includes('Shunt'),'Fresh-page load restores repaired and cannibalized units');
     await page.locator('#equipment-close').click();await page.locator('#walk-saves').click();await settled();
     const envelope={format:'sundog-campaign',version:2,scope:'landed-engineering-1',slot:0,savedAt:new Date().toISOString(),state:changed};
-    delete envelope.state.machinery;delete envelope.state.engineering;delete envelope.state.resources;delete envelope.state.pod;delete envelope.state.travel;delete envelope.state.encounters;delete envelope.state.dialogue;delete envelope.state.economy; // Exercise a genuine version2 import.
+    delete envelope.state.ground;delete envelope.state.machinery;delete envelope.state.engineering;delete envelope.state.resources;delete envelope.state.pod;delete envelope.state.travel;delete envelope.state.encounters;delete envelope.state.dialogue;delete envelope.state.economy; // Exercise a genuine version2 import.
     const corrupt=JSON.parse(JSON.stringify(envelope));corrupt.state.equipment[0].performance=16;await importValue(corrupt);
     assert((await page.locator('#checkpoint-message').innerText()).includes('Invalid'),'False imported performance is rejected');
     await page.locator('#checkpoint-back').click();const intact=await exportGame();
     assert(JSON.stringify(intact.equipment)===JSON.stringify(changed.equipment),'Rejected import leaves the live repaired equipment intact');
-    const legacy=JSON.parse(JSON.stringify(envelope));legacy.version=1;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-ship-1';delete legacy.state.equipment;
+    const legacy=JSON.parse(JSON.stringify(envelope));legacy.version=1;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-ship-1';delete legacy.state.equipment;
     await page.locator('#walk-saves').click();await settled();await importValue(legacy);
     assert((await page.locator('#checkpoint-message').innerText()).includes('imported'),'Version1 campaign imports through the normal save UI');
     await page.locator('#checkpoint-back').click();const upgraded=await exportGame();

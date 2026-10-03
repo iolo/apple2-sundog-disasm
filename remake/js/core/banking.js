@@ -58,6 +58,7 @@ export function transferBankFunds(cash,economy,systemId,{type,amount,targetSyste
 }
 
 export function reduceCampaignBank(previous,map,action) {
+  if(previous.ground&&previous.ground.cityId!==previous.start.playerLocation.cityId)throw new Error('bankUnavailable');
   if(previous.travel.scene!=='bank'||!atCityBank(map,previous.travel.cityPosition))throw new Error('bankUnavailable');
   const next=transferBankFunds(previous.dialogue.cash,previous.economy,previous.start.playerLocation.systemId,action);
   return {...previous,dialogue:{...previous.dialogue,cash:next.cash},economy:next.economy};

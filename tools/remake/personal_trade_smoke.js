@@ -27,7 +27,7 @@ async browserPage => {
       const codec=campaignSaveCodec(a.campaignContent,a.shipWalk,city),s=codec.create({...createCharacter(),name:'Visitor trade'},12345),room=roomAt(city.rooms,city.map,street);
       s.ship.position={x:54,y:118};s.ship.minutes=420;s.ship.inventory.carried=[139,235,23,0];s.dialogue.attributes=[30,40,50,30,81];
       s.dialogue.cash+=s.economy.accounts[0].balance;s.economy.accounts[0].balance=0;
-      s.travel={scene:'room',cityPosition:street,roomPosition:{x:16,y:86}};
+      s.travel={scene:'room',cityPosition:street,roomPosition:{x:16,y:86}};s.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(s.travel.cityPosition);
       const p=populateRoom(room,12345),traffic=initialRoomTraffic(p,room),w=traffic.actors[0].words;
       traffic.actors=[traffic.actors[0],traffic.actors.at(-1)];w.splice(0,6,86,43,86,43,86,43);w[7]=4;w[9]=0;
       s.encounters={randomState:2,roomSeed:12345,roomState:traffic,counter:{service:'idle',conversation:null}};
@@ -65,7 +65,7 @@ async browserPage => {
     assert(JSON.stringify((await exported()).state)===JSON.stringify(accepted.state),'Fresh page restores accepted sale before transfer');
     await page.locator('[data-dialogue-sale="1"]').focus();await page.keyboard.press('Enter');
     assert(await view()==='46','Keyboard hand-over runs the source post-sale continuation');
-    const taken=await exported();assert(taken.version===21&&taken.scope==='landed-parking-1'&&taken.state.encounters.counter.conversation.inputs.at(-1).type==='sale','Version21 stores the explicit sale input');
+    const taken=await exported();assert(taken.version===22&&taken.scope==='landed-ground-1'&&taken.state.encounters.counter.conversation.inputs.at(-1).type==='sale','Version22 stores the explicit sale input');
     assert(taken.state.economy.personalTrade.sold[11]===0,'Open conversation keeps sale proceeds in replay until return');
     await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(taken.state),'Fresh-page reload after hand-over preserves replay exactly');
     assert(await page.locator('#dialogue-sale').count()===0,'A completed transfer cannot be confirmed again');

@@ -189,7 +189,7 @@ def build():
     detached = [[left, right] for left, right in zip(glyph(36), glyph(37))]
     outputs['assets/svg/landed-ship-detached.svg'] = svg(pixel_rows(detached))
     images['landed-ship-detached'] = 'assets/svg/landed-ship-detached.svg'
-    for index in [14, 16, 18, 20]:
+    for index in [14, 16, 18, 20, 26, 29]:
         path = f'assets/svg/pod-{index}.svg'
         outputs[path] = svg(pixel_rows([[value] for value in glyph(index)]))
         images[f'pod-{index}'] = path
