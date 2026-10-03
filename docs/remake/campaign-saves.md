@@ -1,11 +1,11 @@
-# Campaign save boundary — through R08e
+# Campaign save boundary — through R08f
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version19, scope `landed-failures-1`, and validates/upgrades version1 `landed-ship-1`,
+version20, scope `landed-power-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, and version18 `landed-depot-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, version18 `landed-depot-1`, and version19 `landed-failures-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -53,17 +53,28 @@ an empty engineering state. Version18 resources and depot cargo carry forward.
 See [component failures](equipment-failures.md) for update ordering and browser
 timing adaptations.
 
-The state has ten explicit parts:
+Version20 adds live landed machinery. Versions1–19 retain their original resource
+validation before receiving phase0 and cloaker-off. Version19 pending failures
+are preserved. See [ship power](ship-power.md) for clock ownership and adaptations.
+
+The state has eleven explicit parts:
+
+- `machinery`: `phase`0–3 tracks completed phases modulo4; `cloaked` requires a
+  working special component in the shield group. The next phase1 advances time.
+  Inoperative guns cannot retain power/charge; inoperative shields cannot retain
+  a positive target. Browser fractional elapsed time is not saved.
 
 - `engineering`: six `pendingFailures` source offsets (`unit*5+socket`), with31
   meaning none. Only each marked socket may contain a compatible encoded faulty
   component. Its temporary output uses the masked type; all other output remains
   canonical. Multiple combat faults are outside this installation-only scope.
 
-- `resources`: current hull/fuel and inactive warp/shield/gun/engine fields.
+- `resources`: current hull/fuel, gun charge/power and shield charge/target.
   Depot purchases change hull/fuel without rewriting the immutable `start` record.
-  This scope permits hull from its initial value through16, and fuel multiples
-  of16 or255; power/charge remain off/zero until later machinery integration.
+  Hull remains from its initial value through16; fuel/charges permit0–255.
+  Shield targets follow source button steps (0,63,64,127,128,191,192,255).
+  Warp and engine fields remain inactive pending R09. Historical18/19 require
+  fuel multiples of16 or255 and zero/off machinery before migration.
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
   character, initial inventory/condition, equipment, resources, generated systems,
@@ -203,9 +214,9 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version19 only on explicit save. The raw original slot remains the comparison
+as version20 only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Other cities, unattended pod parking and
-power/charging controls remain outside this version's supported scope.
+flight/warp controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
 See [building interiors](building-interiors.md) for supported room layouts and adaptations.

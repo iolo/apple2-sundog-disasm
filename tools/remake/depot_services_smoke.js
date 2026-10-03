@@ -7,7 +7,7 @@ async browserPage => {
   const ready=()=>page.waitForFunction(()=>document.documentElement.dataset.ready==='true');
   const settled=()=>page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
   const state=()=>page.locator('#walk-screen').evaluate(el=>({...el.dataset}));
-  const saves=async()=>{await page.locator(['exchange','depot'].includes((await state()).scene)?'#service-saves':'#walk-saves').click();await settled()};
+  const saves=async()=>{await page.locator(await page.locator('#power-panel').count()?'#power-saves':await page.locator('#equipment-panel').count()?'#equipment-saves':['exchange','depot'].includes((await state()).scene)?'#service-saves':'#walk-saves').click();await settled()};
   const exported=async()=>{await saves();const pending=page.waitForEvent('download');await page.locator('#export-checkpoint').click();let text='';for await(const part of await(await pending).createReadStream())text+=part;await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text)};
   const reload=async()=>{const before=await exported();await saves();await page.locator('#save-checkpoint-0').click();await settled();await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exported()).state)===JSON.stringify(before.state),'Fresh-page reload preserves pod location, cargo, accounts and RNG');return before};
   async function route(goal) {
@@ -23,7 +23,7 @@ async browserPage => {
           if(!next||(!pod&&!canStand(g,next.position)))continue;
           const n=next.position.y*g.width+next.position.x;if(seen.has(n))continue;
           seen.set(n,{from:k,dx,dy});queue.push(n);
-          if(goal==='depart'?interactionAt(next.position)===3:goal==='dock'?canDockPod(g,next.position,next.heading):podServiceAt(g,next.position,next.heading)===goal){end=n;break}
+          if(goal==='engineering'?interactionAt(next.position)===10:goal==='depart'?interactionAt(next.position)===3:goal==='dock'?canDockPod(g,next.position,next.heading):podServiceAt(g,next.position,next.heading)===goal){end=n;break}
         }
       }
       if(end===undefined)throw Error('No route '+goal);const result=[];
@@ -46,8 +46,9 @@ async browserPage => {
       }
       const after=await state();if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}`);
     }
-    assert(await page.locator('#walk-airlock').isEnabled(),`${goal} reached through normal movement (${points.length} steps)`);
-    await page.locator('#walk-airlock').click();
+    const action=goal==='engineering'?'#walk-equipment':'#walk-airlock';
+    assert(await page.locator(action).isEnabled(),`${goal} reached through normal movement (${points.length} steps)`);
+    await page.locator(action).click();
   }
   async function fits(label) {
     for(const lang of ['en','ko']) {
@@ -67,7 +68,7 @@ async browserPage => {
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-03T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-03T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Depot pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const initial=await exported();assert(initial.version===19&&initial.scope==='landed-failures-1','Fresh campaign exports version19 active resources');
+    const initial=await exported();assert(initial.version===20&&initial.scope==='landed-power-1','Fresh campaign exports version20 active resources');
     await route('depart');await route('depot');assert((await state()).scene==='depot','Normal pod driving reaches the depot');
     const arrived=await exported();await fits('services');
     await page.locator('#depot-repair').click();assert((await page.locator('#depot-price').innerText()).includes('145'),'Hull repair quotes the source local price');
@@ -108,6 +109,12 @@ async browserPage => {
     assert(JSON.stringify(refueled.state.economy)===JSON.stringify(auxOnly.state.economy)&&JSON.stringify(refueled.state.dialogue)===JSON.stringify(auxOnly.state.dialogue)&&refueled.state.encounters.randomState===auxOnly.state.encounters.randomState,'Automatic docking refill changes no money or RNG');
     await route('depart');await route('dock');const redocked=await reload();
     assert(redocked.state.resources.fuel===255&&JSON.stringify(redocked.state.pod.cargo)===JSON.stringify(refueled.state.pod.cargo),'Reload and docking again do not consume the remaining load from a full tank');
+    await route('engineering');await page.locator('#equipment-power').click();
+    await page.locator('#power-guns').click();await page.locator('#power-shield-full').click();
+    const configured=await exported();await page.locator('#power-run').click();await page.clock.runFor(1050);const powered=await exported();
+    assert(powered.state.resources.fuel===configured.state.resources.fuel-12&&powered.state.resources.guns.charge===255&&powered.state.resources.shields.charge>0,'Fresh-character servicing and engineering route powers actual systems with source fuel costs');
+    assert(JSON.stringify(powered.state.pod.cargo)===JSON.stringify(configured.state.pod.cargo)&&JSON.stringify(powered.state.economy)===JSON.stringify(configured.state.economy),'Running systems retains cargo and money while sufficient tank fuel remains');
+    await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(powered.state),'The ordinary servicing-to-power journey survives fresh-page reload');
     assert(errors.length===0,'No uncaught depot journey errors');return {browser:browser.version(),checks,errors};
   } finally {await context.close()}
 }

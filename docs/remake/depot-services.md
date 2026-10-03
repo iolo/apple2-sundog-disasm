@@ -1,4 +1,4 @@
-# Depot services — R08a/R08b
+# Depot services — through R08f
 
 `remake/js/core/depot.js` implements source prices and atomic purchase operations
 for refueling, hull repair and auxiliary fuel. R08b connects these operations to
@@ -58,8 +58,8 @@ in a service session are validated and preserved.
 Library24 proc16 `$0ACE–$0B4C` automatically consumes the first type1 pod cargo
 when working fuel is nonpositive and flag7 says the pod is attached: add255,
 clear that slot, then clamp any remaining nonpositive fuel to zero. This belongs
-to the machinery update. R08e implements its isolated source core, while live
-general fuel depletion remains pending. Separately, Game15 proc10 refills fuel
+to the machinery update. R08e implements its source core; R08f connects it to
+live landed power consumption. Separately, Game15 proc10 refills fuel
 below5 to255 on return from the pod, consuming the first auxiliary lot. R08e
 connects that docking path to the campaign; a full tank keeps both loads, and
 save/reload does not repeat consumption. There is no manual Use fuel action.
@@ -80,13 +80,14 @@ full/malformed containers, absent vehicles and input/result ownership.
 R08a's numeric receipt is `depot-core-rules-validation.json`. R08b adds campaign
 access, live-resource round trips, bank-first/exact-funds settlement, atomic failures,
 auxiliary warehouse transport, loaded docking and version17 migration tests in
-`remake/tests/campaign-depot.js`. Current receipts are
+`remake/tests/campaign-depot.js`. R08b receipts are
 `depot-live-rules-validation.json` and `depot-services-validation.json`.
 
 The active `resources` block starts as an owned copy of creation resources.
 R08b permits repaired hull from initial hull through16 and purchased fuel in
-multiples of16 or255. Power and charge fields remain zero/off until machinery
-producers are implemented. Version1–17 saves receive their initial resource values
+multiples of16 or255. R08f permits fuel0–255 and active landed gun/shield/cloaker
+state in version20; older formats retain their original restrictions.
+Version1–17 saves receive their initial resource values
 after historical validation; they cannot inject version18 resources, fuel cargo
 or detached depot visits. The save codec checks structural and current-rule
 consistency, not an authenticated purchase history.
@@ -95,6 +96,8 @@ The browser journey starts a fresh seed12345 campaign, drives to the depot,
 cancels and confirms repair, fills the tank, loads two auxiliary lots, stores and
 fetches one at the exchange, then returns loaded to the ship. Purchases and cargo
 survive fresh-page reloads. Both service selection and quantity review are checked
-in English/Korean at four viewport sizes. No native emulator capture or
-fuel-consuming journey is claimed. See [R08 audit](r08-completion.md) for the full
-remaining milestone requirements.
+in English/Korean at four viewport sizes. R08f's expanded fresh-character journey
+also buys auxiliary loads without ship fuel, docks to consume one, walks to
+engineering, runs guns/shields and reloads the resulting resources. Its61 checks
+are in `machinery-depot-validation.json`. No native emulator capture is claimed.
+See [R08 audit](r08-completion.md) for the remaining milestone requirements.

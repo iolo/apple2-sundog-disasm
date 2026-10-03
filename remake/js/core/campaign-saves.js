@@ -1,3 +1,4 @@
+import { initialMachinery, validateMachinery } from './campaign-machinery.js';
 import { initialEngineering, validateEngineering, canonicalEngineeringGroup } from './campaign-engineering.js';
 import { initialShipResources, validateShipResources } from './ship-resources.js';
 import { initialCampaignPod, validateCampaignPod, validateLocalCargo } from './campaign-pod.js';
@@ -18,7 +19,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 19, SCOPE = 'landed-failures-1';
+const VERSION = 20, SCOPE = 'landed-power-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -35,7 +36,7 @@ function sameTree(value, expected) {
 }
 
 // `start` remains immutable; equipment is active, independently owned state.
-// Machinery stays off; local foot exchange markets/warehouses are active.
+// Version20 owns landed machinery; flight/navigation remain a later boundary.
 export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.
@@ -43,7 +44,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
-      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : []),...(version>=20 ? ['machinery'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=walk.snapshot(value.ship);
@@ -102,7 +103,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline,{movableCargo:version>=16,auxiliaryFuel:version>=18}) : initialExchange(start),
         personalTrade:version>=15 ? validatePersonalTrade(value.economy.personalTrade,baseline.dialogue?.items||baseline.items) : initialPersonalTrade()};
       const pod=version>=16 ? validateCampaignPod(value.pod,travel,cityGeometry?.pod,{depot:version>=18,auxiliaryFuel:version>=18}) : initialCampaignPod();
-      const resources=version>=18 ? validateShipResources(value.resources,start) : initialShipResources(start);
+      const resources=version>=18 ? validateShipResources(value.resources,start,{machinery:version>=20}) : initialShipResources(start);
+      const machinery=version>=20?validateMachinery(value.machinery,equipment,resources):initialMachinery();
       if(version>=16)validateLocalCargo(start,economy.exchange,pod);
       if(version<12 && dialogue.cash>start.credits)fail();
       // Local cargo can only resell at/below price paid. Cash, accounts and
@@ -145,7 +147,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       }
       // Legacy interior saves remain empty until their next entry, preserving
       // the saved position without spawning an occupant on top of the player.
-      return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering};
+      return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery};
     } catch { fail(); }
   }
   function validate(value) {
@@ -166,7 +168,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===15 && value.scope==='landed-personal-trade-1') ||
       (value?.version===16 && value.scope==='landed-local-cargo-1') ||
       (value?.version===17 && value.scope==='landed-trader-matching-1') ||
-      (value?.version===18 && value.scope==='landed-depot-1');
+      (value?.version===18 && value.scope==='landed-depot-1') ||
+      (value?.version===19 && value.scope==='landed-failures-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -179,7 +182,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start),engineering:initialEngineering()};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start),engineering:initialEngineering(),machinery:initialMachinery()};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {

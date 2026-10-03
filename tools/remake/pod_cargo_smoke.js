@@ -58,7 +58,7 @@ async browserPage => {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-01T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-01T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Cargo pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
     const initial=await exported();await route('depart');assert((await state()).transport==='pod','Fresh campaign departs in the pod');
-    const departed=await reload();assert(departed.version===19&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version19 stores source pod departure');
+    const departed=await reload();assert(departed.version===20&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version20 stores source pod departure');
     await route('exchange');assert((await state()).scene==='exchange','Pod cargo entrance opens the exchange');await buy();await buy();await buy();
     await page.locator('#exchange-cargo').click();const before=await exported();
     await page.locator('#cargo-warehouse-0').click();assert(await page.locator('#exchange-confirm').isEnabled(),'Fetch offers confirmation before transferring');

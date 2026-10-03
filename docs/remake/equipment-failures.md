@@ -1,4 +1,4 @@
-# Component failure lifecycle — through R08d
+# Component failure lifecycle — through R08f
 
 The Game14 operation previously described as delayed repair is **delayed
 failure**. It writes destroyed-item7, not a repaired component. Repairs replace
@@ -6,8 +6,8 @@ the destroyed part with a working standard part, compatible special part or
 shunt. R08c implements the source failure operations and dependency updates in
 `remake/js/core/equipment-failures.js`. R08d connects faulty installation, failure
 updates and replacement to live engineering through `campaign-engineering.js`.
-Version19 preserves pending failures. Machinery dependency updates remain an
-isolated source core; power/fuel operation is still required by R08.
+Version19 introduced pending failures. R08f connects dependency updates to live
+gun/shield/cloaker controls, fuel consumption and version20 saves.
 
 ## Source trace
 
@@ -42,7 +42,8 @@ four-unit component/performance model; `pendingFailure` uses original offsets
 and selected-component damage each return owned data. They do not grant access
 to a bay, transfer pocket contents, change a campaign clock or validate a save.
 The R08d campaign controller owns access, pocket transfers and pending state
-atomically, without changing cash, resources, RNG or game time.
+atomically, without changing cash, RNG or game time. R08f also reconciles the
+source resource/control dependencies after equipment recalculation.
 
 The source has observable ordering details that cannot be represented by simply
 masking all encoded bytes during every performance calculation:
@@ -59,11 +60,12 @@ masking all encoded bytes during every performance calculation:
   there. A live atomic exchange implementation must resolve its update ordering
   explicitly, rather than silently inventing a repair timer.
 
-`equipmentDependencyResult` uses a separate source flag/word session so it does
-not pretend that live version19 already supports active machinery flags. It
-preserves unrelated flags/words and never enables a control automatically when
-a repair restores output. Future active resource ownership must connect this
-result to the existing named resources and additional system controls.
+`equipmentDependencyResult` uses a separate source flag/word session. R08f maps
+it to named live resources and machinery controls without borrowing dialogue
+flags. It preserves unrelated flags/words and never enables a control
+automatically when a repair restores output. Zero gun output clears gun charge
+and power; zero shield output clears its target; loss of a working cloaker
+clears its control. Current shield charge is retained until its power update.
 
 `hitEquipmentComponent` implements only a **selected** component hit. Encounter
 generation, target selection, shield absorption, hull damage and ship destruction
@@ -88,7 +90,8 @@ inherit the source's old pending target. Cycling frames cancels selected moves.
 The panel reports hull, fuel and offline units, plus failure/replacement feedback.
 These are status values, not launch permission. Working parts or compatible
 shunts restore output through ordinary exchanges; no component service fee or
-invented healing action is added. Actual machinery controls remain pending.
+invented healing action is added. The Power panel now runs the controls and fuel
+rules described in [ship power](ship-power.md).
 
 Version19 `landed-failures-1` adds `engineering.pendingFailures`, one source
 offset or sentinel31 per group. Only the marked socket may hold an encoded faulty
@@ -109,7 +112,7 @@ shifts per draw, feedback from bit6 XOR bit30, and the documented result bytes.
 
 The R08c Chrome receipt is `equipment-failure-core-validation.json`. R08d adds
 six campaign rule groups for atomic exchanges, transient/final saves, legacy
-migration and rejected malformed pending state. The current278-group receipt is
+migration and rejected malformed pending state. The historical278-group receipt is
 `engineering-live-rules-validation.json`.
 
 `engineering-failures-validation.json` covers28 live UI checks, including pending
@@ -122,6 +125,8 @@ the current system's availability rules limit visitor/referral offers. Further
 regional markets belong to R09 and combat damage to R10; landed random damage
 must not be invented to fill this coverage gap.
 
-Next connect the source power/fuel owner and dependency cleanup. Auxiliary
-consumption remains Library24 proc16, and
-parked-pod/surface travel remain required by the [R08 audit](r08-completion.md).
+R08f's `machinery-rules-validation.json` covers293 rule groups, including live
+dependency consequences and phase/resource saves. Its failure regression repeats
+the28 UI checks against version20. `machinery-ui-validation.json` also verifies
+last-working-gun removal and cloaker operation. Parked-pod/surface travel and
+the combined acceptance journey remain required by the [R08 audit](r08-completion.md).

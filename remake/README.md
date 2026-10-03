@@ -11,6 +11,8 @@ and auxiliary fuel loading with saved resources and cargo. TransStation visits
 remain read-only.
 Engineering accepts compatible faulty parts, resolves their burnout, and restores
 output through working replacements or shunts. Pending failures can be saved.
+Engineering's Power panel runs guns, shields and installed cloakers with real
+fuel costs, auxiliary consumption and saved charge/phase progress.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
 inspector remain available. Regional transport, flight, combat and colony progression
@@ -109,7 +111,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version19 saves retain pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version20 saves retain power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
@@ -124,7 +126,7 @@ in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration and R07 trading/banking are complete. Their evidence
 and boundaries are recorded in `../docs/remake/r06-completion.md` and
 `../docs/remake/r07-completion.md`. Broader ground transport, unattended pod
-parking, machinery/readiness and surface traversal remain R08; intercity travel remains R09.
+parking, surface traversal and the combined acceptance audit remain R08; intercity travel remains R09.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
@@ -138,7 +140,8 @@ bank first and cash second. Hull/fuel service works on foot; auxiliary loading
 requires driving the pod to the depot and an empty cargo slot. Auxiliary fuel
 can be stored/fetched at the exchange but cannot be sold. Docking with ship fuel
 below5 consumes the first auxiliary load and fills the tank to255. A full tank
-keeps both loads. General machinery controls and fuel depletion are still pending.
+keeps both loads. Running machinery also consumes auxiliary fuel automatically
+when the tank runs out and the pod is attached.
 See `../docs/remake/depot-services.md` and `../docs/remake/ship-power.md`.
 
 At an engineering bay, open **Equipment**, select a component, choose **Move /
@@ -149,6 +152,14 @@ while the part is being checked. **Saves** pauses the update and preserves pendi
 faults; opening a saved pending frame resolves its failure. Hull, fuel and offline
 unit counts are status information; flight controls remain pending. See
 `../docs/remake/equipment-failures.md` for source rules and timing adaptations.
+
+Choose **Power** from engineering to switch gun charging on/off, adjust shields,
+or enable an installed cloaker. **Resume** runs the systems and advances aboard
+time; **Pause** and **Saves** stop both. Closing the panel returns to paused
+engineering and keeps control settings. Normal unpaused ship play continues
+running the systems. Failed equipment disables its dependent controls; repairs
+restore capability without switching it on automatically. Save before leaving
+to preserve current fuel, charge and power phase. See `../docs/remake/ship-power.md`.
 
 Reach the pod exit aboard ship and choose **Drive pod**. Drive to the exchange
 cargo entrance and open **Load cargo**. Select pod cargo to Store, warehouse cargo

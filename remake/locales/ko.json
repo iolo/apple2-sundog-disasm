@@ -558,5 +558,18 @@
   "depotAll": "최대",
   "equipmentPending": "설치한 부품을 점검하는 중…",
   "equipmentFailed": "부품이 고장 났습니다. 교체 부품이나 호환 션트를 설치하세요.",
-  "equipmentReadiness": "선체 {hull}/16 · 연료 {fuel}/255 · 정지 유닛 {offline}/24"
+  "equipmentReadiness": "선체 {hull}/16 · 연료 {fuel}/255 · 정지 유닛 {offline}/24",
+  "powerTitle": "전력",
+  "powerResources": "선체 {hull}/16 · 연료 {fuel}/255",
+  "powerCharge": "충전 {value}/255",
+  "powerShieldCharge": "충전 {value} · 목표 {target}",
+  "powerOff": "끄기",
+  "powerOn": "켜기",
+  "powerCloaker": "은폐 장치",
+  "powerCloakerAvailable": "정상 부품 설치됨",
+  "powerHint": "계속을 누르면 장치가 작동하고 시간이 흐릅니다. 저장 화면에서는 일시 정지합니다.",
+  "machineryUnavailable": "여기서는 함선 장치를 조작할 수 없습니다.",
+  "machineryInoperative": "고장 난 부품을 교체하여 장치를 복구하세요.",
+  "machineryNoFuel": "보호막을 높이려면 연료를 보급하세요.",
+  "machineryNoCloaker": "정상 은폐 장치가 필요합니다."
 }
