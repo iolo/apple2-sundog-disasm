@@ -1,5 +1,39 @@
 # SunDog web remake progress
 
+## R08c — Encoded component failure core and corrected repair semantics — 2026-10-03
+
+Traced Game14 procedures7–11 and Library24 procedures8/13 against the current
+source. Corrected the earlier "delayed repair" assumption: the recorded slot is
+burned to destroyed-item7 on an engineering update. Actual repair replaces parts.
+A faulty installed part temporarily calculates plain output before its high bit
+is restored; combat-marked parts immediately lose output. Frame entry's strict144
+cleanup and stale cache ordering are preserved in the isolated source core.
+
+Added owned installation, entry, ordered failure resolution and selected-component
+hit operations. Shunt propagation consumes20 eager RNG draws, including the four
+performance-byte positions. System dependencies clear the matching power flag and
+only the source-specified charge/target word; losing a working special also clears
+its special control. Unrelated resources and flags remain intact. The existing
+trader appraisal can produce the faulty byte used by the tests, so a reachable
+non-combat producer is already available for live integration.
+
+Validation: seven new source-rule groups pass standalone;272 full Chrome rule
+groups pass with no errors (`equipment-failure-core-validation.json`). Tests cover
+all96 standard sockets, low-bit fit, special/shunt installation, transient output,
+ordered multi-part destruction, replacement restoration, strict frame boundaries,
+source RNG vectors, dependency cleanup and trader-generated faults. The fixed
+shunt RNG vector was independently computed with bytewise carry shifts. Manual
+PDF pages11–14 were rendered and reviewed for engineering/status presentation.
+No original-emulator capture or new live UI acceptance is claimed.
+
+R08 remains in progress. This is a source-rule checkpoint: version18 and live
+engineering are unchanged. Next integrate purchase/install/failure/replacement,
+clock/save ownership and readiness with explicit handling of native cache/update
+ordering, then active power/fuel and automatic auxiliary consumption. Independent
+pod parking/boarding and surface traversal/return remain required. Source offsets,
+boundaries and integration risks are in `docs/remake/equipment-failures.md`.
+
+
 ## R08b — Live depot services, auxiliary cargo and version18 saves — 2026-10-03
 
 Connected the depot core to actual foot and pod entrances. The live campaign now

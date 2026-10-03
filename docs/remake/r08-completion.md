@@ -1,14 +1,14 @@
 # R08 implementation and completion audit
 
-Status: **in progress, R08b**. The objective remains the entire R08 row in
+Status: **in progress, R08c**. The objective remains the entire R08 row in
 `PLAN-REMAKE.md`, not just depot pricing or the R07 local cargo journey.
 
 | Requirement | Current evidence | Remaining work |
 | --- | --- | --- |
-| Equipment replacement | R05f active installed/carried exchanges, fit checks and recalculated performance; existing rule/UI coverage. | Integrate encoded damage, delayed repair and dependent machinery flags. |
-| Equipment failures and repair | Original Library24 damage/recalculation and Game14 delayed repair source are available. | Trace and implement reachable failure producers, repair state/timing, consequences and saves. |
+| Equipment replacement | R05f active installed/carried exchanges, fit checks and recalculated performance; existing rule/UI coverage. | Connect the R08c encoded-failure and dependency core to live replacement, engineering ticks and saves. |
+| Equipment failures and repair | R08c traces Game14 delayed failure (not repair), implements its lifecycle and Library24 selected-hit/dependency core, and tests the existing faulty-trader producer. | Connect actual purchase/install/failure/replacement journeys, update timing, consequences and saves; no invented repair-duration action. |
 | Repair/fuel services | R08a source prices; R08b active hull/fuel, actual foot/pod access, confirmed localized service controls, auxiliary cargo transport and version18 saves. `depot-services-validation.json` proves a fresh-character servicing and loaded return journey. | Hull/fuel service gate is met. Component repair remains separate engineering work. |
-| Ship readiness | R08b owns active resources separately from immutable creation data and persists depot progress. | Equipment-dependent power/charge cleanup and readiness feedback; validate source conditions without enabling R09 flight prematurely. |
+| Ship readiness | R08b owns active resources separately from immutable creation data and persists depot progress. | R08c proves source power/charge cleanup in an isolated core; connect live machinery and readiness feedback; validate source conditions without enabling R09 flight prematurely. |
 | Pod boarding/departure and return | R07g supports attached departure, city driving, exchange cargo entrance and loaded docking. | Independent parked pod ownership, disembark/board access and collision, loaded unattended saves and return. R08b already adds depot entry. |
 | Surface traversal and terrain | Source city/world maps and native movement procedures exist. | Trace and implement the required city/surface transitions, foot/pod terrain rules, continuous location and return. |
 | Ship/pod/cargo ownership | R07 conserves local warehouse/pod lots and initial cryogens; R08b adds auxiliary pod/warehouse transport without remote loading. Detached player currently stays with pod. | Extend ownership to parked pod/surface travel and connect source automatic auxiliary consumption. |
