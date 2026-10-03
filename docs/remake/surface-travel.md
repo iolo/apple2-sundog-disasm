@@ -110,9 +110,17 @@ movement uses actual collision steps and reducers. Ship/resources/accounts remai
 unchanged, original inputs remain unchanged, and colony RNG is not consumed
 again on return. These are core journeys, not normal-control browser UI journeys.
 
-Next: add this record to the active save contract with historical validation
-before migration, validate source arrival exceptions and reachable domains,
-connect dynamic geometry/camera/rendering/input and surface boarding, then prove
-reload and ownership in the live journey. Other-city transaction producers and
+R08k adds a version22 ground-aware save codec with historical validation before
+migration, reachable-domain and source-arrival validation.317 rule groups pass,
+including ground journey round trips, every version1–21 schema, key-order
+independent imports and malformed state rejection. A native north-arrival fixture
+also verifies saving while parked over city artwork and immediate reboarding;
+boarding uses the source proximity gate, without incorrectly requiring a clear
+terrain pixel under that legitimate transition anchor. The live UI remains on
+version21 until it can render and operate these states. See `campaign-saves.md`.
+
+Next connect dynamic geometry/camera/rendering/input and surface boarding,
+activate the prepared version22 contract, then prove reload and ownership in the
+live journey. Other-city transaction producers and
 regional flight retain R09 scope; no initial-city services may be applied to a
 remote city by accidentally retaining the starting map or location.

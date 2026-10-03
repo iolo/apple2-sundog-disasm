@@ -61,8 +61,10 @@ export function podExchangeAt(geometry,position,heading) {
 // each actual direction. Final saved orientation must also fit independently.
 export function podReachability(geometry) {
   const {width,height}=geometry,seen=new Uint8Array(width*height),queue=new Int32Array(width*height);
-  if(!canDrivePod(geometry,geometry.spawn,16))throw new Error('blockedPodDeparture');
-  let head=0,tail=1;const start=geometry.spawn.y*width+geometry.spawn.x;queue[0]=start;seen[start]=1;
+  const origins=(geometry.podOrigins||[{position:geometry.spawn,heading:16}]).filter(o=>o.position&&canDrivePod(geometry,o.position,o.heading));
+  if(!origins.length)throw new Error('blockedPodDeparture');
+  let head=0,tail=0;
+  for(const {position} of origins){const start=position.y*width+position.x;if(!seen[start]){queue[tail++]=start;seen[start]=1}}
   while(head<tail) {
     const index=queue[head++],position={x:index%width,y:Math.floor(index/width)};
     for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++)if(x||y)for(const step of [1,2]) {

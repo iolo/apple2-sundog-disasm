@@ -1,5 +1,42 @@
 # SunDog web remake progress
 
+## R08k — Ground-aware save contract and strict historical migration — 2026-10-03
+
+Added version22`landed-ground-1` for codec callers supplying the source ground
+resources. The active ground companion now round-trips independent player/pod
+domains, camera and colony position while existing travel/pod fields retain
+pixel positions and cargo. Terrain validation uses source departure/entry
+origins and actual city/surface collision, with bounded geometry caches. Source
+arrival overlaps are accepted only at the defined city side/corner anchors;
+arbitrary blocked positions, malformed fields/cameras, cross-world/domain
+mismatches, unsupported remote services and cargo duplication fail atomically.
+
+Versions1–21 retain their original schemas and stored-city limits before gaining
+ground metadata. Migration preserves occupied/detached cargo, ship resources,
+equipment and machinery and adds no colony placement or surface progress. The
+all-version migration test includes genuine old field layouts, not just changed
+version labels. Key-order-independent version22 imports normalize position and
+ground fields. Original input state remains unchanged on validation failures.
+
+Ground journey tests now run through full campaign states and save round trips
+on the surface, in another city, and after parked-pod foot return/retrieval.
+The explicit north-arrival fixture exposed a redundant surface terrain-clear
+condition on boarding: native parking retains that overlapping coordinate, and
+the source boarding gate is proximity. Removed that condition and verified
+immediate park/save/board recovery without allowing arbitrary blocked imports.
+
+`ground-save-rules-validation.json`:317 passing Chrome rule groups, no failures
+or page errors. This includes the earlier ground journeys and four new groups
+covering20/21 migration restrictions, all21 old schemas, original arrival
+recovery/key ordering and malformed-import atomicity. `git diff --check` passes.
+
+R08 remains active. The live asset loader/UI still uses version21 deliberately;
+it must render and operate a surface state before accepting version22 imports.
+Next connect source ground geometry/camera/input/rendering and boarding, activate
+the prepared codec, and verify live reload/return and remote service gates. The
+combined engineering, depot, readiness and loaded ground-transport acceptance
+journey remains required. The user PRD remains unchanged and untracked.
+
 ## R08j — Ground camera, city border and independent location reducers — 2026-10-03
 
 Added the source scrolling camera and a ground-state companion owning the active

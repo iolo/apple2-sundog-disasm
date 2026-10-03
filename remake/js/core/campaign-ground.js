@@ -4,7 +4,7 @@ import { createPodGeometry,tryPodStep,podHeading } from './city-pod.js';
 import { tryStep } from './ship-walk.js';
 import { parkedPodGeometry,findPodFootExit,canBoardParkedPod } from './parked-pod.js';
 import { composeSurfaceMap,placeSurfaceColony } from './surface-map.js';
-import { createSurfaceGeometry,canStandSurface,trySurfaceStep,surfaceCityAt,citySurfaceExit,surfaceCityEntry } from './surface-walk.js';
+import { createSurfaceGeometry,trySurfaceStep,surfaceCityAt,citySurfaceExit,surfaceCityEntry } from './surface-walk.js';
 import { groundCameraAt,scrollGroundCamera } from './ground-camera.js';
 
 const integer=(n,min,max)=>Number.isInteger(n)&&n>=min&&n<=max;
@@ -34,6 +34,7 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
     if(!surfaces.has(key)) {
       if(worldId==='world-01'&&!colonyPosition)throw new Error('groundUnavailable');
       const map=worldId==='world-01'?placeSurfaceColony(surfaceBase,1,colonyPosition).map:surfaceBase;
+      if(surfaces.size>=2)surfaces.clear();
       surfaces.set(key,createSurfaceGeometry(map,surfaceWalk));
     }
     return surfaces.get(key);
@@ -112,7 +113,7 @@ export function reduceCampaignGround(previous,world,action) {
       if(!exit)throw new Error('podExitBlocked');
       p.occupied=false;next.travel.cityPosition={...exit};
     } else {
-      if(p.occupied||!(surface?canStandSurface(geometry,position)&&nearbySurfacePod(position,p.position):canBoardParkedPod(geometry,position,p.position)))throw new Error('podUnavailable');
+      if(p.occupied||!(surface?nearbySurfacePod(position,p.position):canBoardParkedPod(geometry,position,p.position)))throw new Error('podUnavailable');
       p.occupied=true;next.travel.cityPosition={...p.position};
     }
   } else throw new Error('groundUnavailable');
