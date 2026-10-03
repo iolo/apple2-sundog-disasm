@@ -1,5 +1,42 @@
 # SunDog web remake progress
 
+## R08b — Live depot services, auxiliary cargo and version18 saves — 2026-10-03
+
+Connected the depot core to actual foot and pod entrances. The live campaign now
+owns active hull/fuel separately from immutable creation data. Refuel, hull repair
+and auxiliary loading use localized quantity review and atomic confirmation,
+spending the local bank before cash and accepting exact funds. Full capacity and
+insufficient funds cannot partially commit. A foot visitor can service the ship
+in the same city but cannot load a remote pod.
+
+Version18 `landed-depot-1` persists active resources and world-origin auxiliary
+fuel lots. The pod can carry fuel through warehouse Store/Fetch/Swap and return
+loaded to the ship; ordinary exchange sale controls reject this cargo. Versions1–17
+retain historical field/scene restrictions before receiving initial resources.
+Pending service reviews are transient and discarded on load. Save validation
+checks current-rule consistency, not an authenticated purchase history.
+
+Validation:265 rule groups pass in Chrome154.0.8037.92, including six new campaign
+depot groups for source prices, actual access, exact-funds/spill payment, atomic
+failures, auxiliary transport, migration and malformed resources/cargo. The new
+fresh-character depot journey passes44 browser checks: walk to the pod, drive to
+the depot, cancel/confirm hull repair, refill, reload an unpaid review, buy two fuel
+loads, store/fetch at the exchange, dock loaded and inspect the shared manifest.
+Both locales fit four viewports in selection/review; the Korean review screenshot
+was inspected. Existing foot-service78, exchange64, pod-cargo33 and dialogue19
+checks also pass (238 UI checks total), with no page errors. The cargo harness
+now waits for stage resize completion before measuring its viewport bounds.
+Receipts are `docs/remake/depot-*-validation.json` and the source/behavior contract
+is `docs/remake/depot-services.md`. No native emulator capture is claimed.
+
+R08 remains active. Hull repair does not repair components. Library24 proc16
+consumes auxiliary fuel automatically when working fuel is depleted and the pod
+is attached; that must be connected with machinery updates, not a manual Use
+button. Next: encoded equipment damage, delayed repair, machinery/readiness and
+automatic auxiliary consumption; then independent pod parking/boarding and
+surface travel/return. The complete requirements remain in `r08-completion.md`.
+
+
 ## R08a — Source depot pricing and atomic service core — 2026-10-03
 
 Started R08 against the completed R07 worktree. Traced Game19 procedures18–26

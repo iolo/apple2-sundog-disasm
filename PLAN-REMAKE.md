@@ -243,7 +243,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R05 — Playable ship | Implement movement/collision, airlock and reachable interaction points, status, inventory transfers, lockers, eating/rest and their time/condition changes. Add localized contextual help. | First playable milestone: create → explore ship → manipulate inventory/status → save → fresh reload and continue. Verify interaction reachability and state changes against targeted evidence. Depends on R04. |
 | R06 — City and building exploration **(complete, R06s)** | Integrate live city tiles, runtime map composition/variants, ship-to-city transitions, doors/interiors, basic NPC interaction and the dialogue interpreter/actions needed here. | Leave and reenter ship/buildings without losing state; known tile/door locations behave correctly; a recorded dialogue branch works in both languages. Depends on R05. |
 | R07 — Trading and banking **(complete, R07h)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
-| R08 — Engineering and ground transport **(in progress, R08a)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
+| R08 — Engineering and ground transport **(in progress, R08b)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
 | R10 — Encounters and combat | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
 | R11 — Colony campaign | Implement the complete verified contract progression: finding Banville, goods requirements/deliveries, cryogen discovery/transport, staged updates and completion. Complete any remaining campaign-critical content. | Fresh-game-to-ending playthrough using ordinary controls and legitimate resource transactions; duplicate deliveries cannot advance twice; save/resume during progression preserves requirements. Depends on R07–R10 and R01's early campaign research. |
@@ -461,6 +461,15 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R08b (2026-10-03) connects active ship hull/fuel, reachable foot/pod
+depot visits and confirmed localized repair/refuel/auxiliary purchases. Version18
+persists resources and world-origin auxiliary cargo, including warehouse loading
+and loaded docking, while preserving historical migration restrictions. The
+fresh-character depot journey and current rule/regression receipts are documented
+in `docs/remake/depot-services.md`. Next: encoded component damage/repair and
+readiness, independent pod parking/boarding, then surface traversal/return.
+The full R08 requirement audit remains in progress.
 
 Checkpoint R08a (2026-10-03) adds source depot pricing and atomic hull repair,
 refueling and auxiliary fuel operations as an isolated service core. Source

@@ -65,7 +65,7 @@ async browserPage => {
     assert(JSON.stringify((await exported()).state)===JSON.stringify(accepted.state),'Fresh page restores accepted sale before transfer');
     await page.locator('[data-dialogue-sale="1"]').focus();await page.keyboard.press('Enter');
     assert(await view()==='46','Keyboard hand-over runs the source post-sale continuation');
-    const taken=await exported();assert(taken.version===17&&taken.scope==='landed-trader-matching-1'&&taken.state.encounters.counter.conversation.inputs.at(-1).type==='sale','Version17 stores the explicit sale input');
+    const taken=await exported();assert(taken.version===18&&taken.scope==='landed-depot-1'&&taken.state.encounters.counter.conversation.inputs.at(-1).type==='sale','Version18 stores the explicit sale input');
     assert(taken.state.economy.personalTrade.sold[11]===0,'Open conversation keeps sale proceeds in replay until return');
     await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(taken.state),'Fresh-page reload after hand-over preserves replay exactly');
     assert(await page.locator('#dialogue-sale').count()===0,'A completed transfer cannot be confirmed again');

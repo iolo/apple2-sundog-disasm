@@ -49,9 +49,12 @@ export function canDockPod(geometry,position,heading) {
     Math.abs(Math.floor((position.x+3)/28)-Math.floor(ship.x/28))<=3&&
     Math.abs(position.x-(ship.x+7))<=6&&Math.abs(position.y-ship.y)<=4;
 }
-export function podExchangeAt(geometry,position,heading) {
+export function podServiceAt(geometry,position,heading) {
   const door=cityDoorAt(geometry.map,position,'pod');
-  return canDrivePod(geometry,position,heading)&&door?.scene===6&&door.type===4;
+  return canDrivePod(geometry,position,heading)&&door?.scene===6 ? ({3:'depot',4:'exchange'})[door.type]??null : null;
+}
+export function podExchangeAt(geometry,position,heading) {
+  return podServiceAt(geometry,position,heading)==='exchange';
 }
 
 // Reachability includes all source one/two-pixel requests, with the mask of

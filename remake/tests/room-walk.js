@@ -45,7 +45,7 @@ export async function roomWalkTests(test,equal) {
     const state=fresh();state.ship.position={...SHIP_REENTRY};state.ship.minutes=135;
     state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:40,y:50}};
     const save=codec.make(state,0),loaded=codec.parse(JSON.stringify(save));equal(loaded,save);
-    equal(loaded.version,17);equal(loaded.scope,'landed-trader-matching-1');equal(loaded.state.start,fresh().start);
+    equal(loaded.version,18);equal(loaded.scope,'landed-depot-1');equal(loaded.state.start,fresh().start);
     loaded.state.travel.roomPosition.x++;equal(save.state.travel.roomPosition.x,40);
     for(const mutate of [s=>s.travel.cityPosition={x:369,y:299},s=>s.travel.cityPosition={x:287,y:217},
       s=>s.travel.roomPosition={x:40,y:10},s=>s.travel.roomPosition={x:40.5,y:50},s=>s.travel.roomPosition.x=140,
@@ -58,8 +58,8 @@ export async function roomWalkTests(test,equal) {
     for(const scene of ['ship','city','bank']) {
       const state=fresh();
       if(scene!=='ship'){state.ship.position={...SHIP_REENTRY};state.travel={scene,cityPosition:scene==='bank' ? {x:369,y:299} : {...city.spawn}}}
-      const old=codec.make(state,0);old.version=4;delete old.state.pod;delete old.state.economy;old.scope='landed-bank-1';delete old.state.encounters;delete old.state.dialogue;
-      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,{...old.state,encounters:state.encounters,dialogue:state.dialogue,economy:state.economy,pod:state.pod});equal(loaded.version,17);equal(JSON.stringify(old),before);
+      const old=codec.make(state,0);old.version=4;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-bank-1';delete old.state.encounters;delete old.state.dialogue;
+      const before=JSON.stringify(old),loaded=codec.parse(before);equal(loaded.state,{...old.state,encounters:state.encounters,dialogue:state.dialogue,economy:state.economy,pod:state.pod,resources:state.resources});equal(loaded.version,18);equal(JSON.stringify(old),before);
       old.state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:12,y:56}};
       rejects(()=>codec.validate(old));
     }
@@ -139,7 +139,7 @@ export async function roomWalkTests(test,equal) {
     state.ship.position={...SHIP_REENTRY};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{...room.spawn}};
     state.encounters={randomState:p.randomState,roomSeed:p.seed,roomState:initialRoomTraffic(p),counter:{service:'idle',conversation:null}};
     const saved=codec.make(state,0);equal(codec.parse(JSON.stringify(saved)),saved);
-    const old=structuredClone(saved);old.version=6;delete old.state.pod;delete old.state.economy;old.scope='landed-occupants-1';
+    const old=structuredClone(saved);old.version=6;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-occupants-1';
     delete old.state.encounters.roomState;delete old.state.encounters.counter;delete old.state.dialogue;
     rejects(()=>codec.validate(old));
     equal(codec.validate(saved),saved); // A cached population cannot bypass the legacy check.
@@ -147,7 +147,7 @@ export async function roomWalkTests(test,equal) {
   await test('Version5 occupied-position saves migrate as empty interiors; legacy records cannot smuggle encounter state',()=>{
     const state=fresh();state.ship.position={...SHIP_REENTRY};
     state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:46,y:71}};
-    const old=codec.make(state,0);old.version=5;delete old.state.pod;delete old.state.economy;old.scope='landed-rooms-1';delete old.state.encounters;delete old.state.dialogue;
+    const old=codec.make(state,0);old.version=5;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-rooms-1';delete old.state.encounters;delete old.state.dialogue;
     const before=JSON.stringify(old),next=codec.parse(before);
     equal(next.state.travel,old.state.travel);equal(next.state.encounters,{randomState:state.start.gameplayRandomState,roomSeed:null,roomState:null,counter:null});
     equal(JSON.stringify(old),before);old.state.encounters=next.state.encounters;rejects(()=>codec.validate(old));
@@ -156,7 +156,7 @@ export async function roomWalkTests(test,equal) {
     const state=fresh(),p=populateRoom(rooms[15],state.encounters.randomState);
     state.ship.position={...SHIP_REENTRY};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:40,y:50}};
     state.encounters={randomState:p.randomState,roomSeed:p.seed,roomState:initialRoomTraffic(p),counter:{service:'idle',conversation:null}};
-    const old=codec.make(state,0);old.version=6;delete old.state.pod;delete old.state.economy;old.scope='landed-occupants-1';delete old.state.encounters.roomState;delete old.state.encounters.counter;delete old.state.dialogue;
+    const old=codec.make(state,0);old.version=6;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-occupants-1';delete old.state.encounters.roomState;delete old.state.encounters.counter;delete old.state.dialogue;
     const before=JSON.stringify(old),next=codec.parse(before);
     equal(next.state.encounters.roomState,initialRoomTraffic(p));equal(next.state.encounters.randomState,p.randomState);
     equal(JSON.stringify(old),before);

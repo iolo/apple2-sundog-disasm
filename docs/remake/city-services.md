@@ -5,7 +5,9 @@ layouts for types8/9/10/11, bank inquiry, TransStation, depot and exchange.
 The last three open localized read-only service visits with return and save
 controls. They pause time and movement, trap keyboard focus, and preserve the
 exact street anchor. This follows the existing bank inspection adaptation.
-It does not enable transport, market purchases, fuel or repair transactions.
+R06q did not enable transactions. R07 activates exchange trading; R08b activates
+depot hull repair, refueling and auxiliary cargo. TransStation transport remains
+pending. See [depot services](depot-services.md).
 
 ## Source dispatch and milestone ownership
 
@@ -17,7 +19,7 @@ draw service interfaces, not Game18 walking interiors.
 | --- | --- | --- |
 | 12 / 1 | Game19 proc1 `$13B0–$13CA` -> proc15 `$09BC`; title `TransStation` at `$09CF`, destination selection | Visit/return/save; transport belongs to R09 navigation. |
 | 13 / 2 | Game19 proc17 `$0C10–$0CB9`; current system Bank, Uniteller, cash/account | Existing inquiry preserved; account transactions belong to R07. |
-| 14 / 3 | Game19 proc25 `$121C–$130D`; city name + ` Depot`, controls `REFUEL SHIP` `$1275`, `REPAIR SHIP` `$1297`, `BUY AUX FUEL` `$12B7` | Visit/return/save; fuel and repair services belong to R08. This is not the warehouse. |
+| 14 / 3 | Game19 proc25 `$121C–$130D`; city name + ` Depot`, controls `REFUEL SHIP` `$1275`, `REPAIR SHIP` `$1297`, `BUY AUX FUEL` `$12B7` | R08b confirmed hull repair, ship refueling and pod auxiliary fuel loading; version18 saves. This is not the warehouse. |
 | 15 / 5 | Game20 proc1 `$1A16–$1A19` calls proc28 with type==4; foot type5 takes false. Proc31 `$180A–$18F2` names the city Exchange and displays lots | Visit/return/save; stock initialization, quotes, purchases, warehouse/cargo transfers belong to R07. |
 
 The pod uses the same depot type3 and exchange type4 at separate door anchors.

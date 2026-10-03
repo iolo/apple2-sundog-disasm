@@ -1,4 +1,6 @@
-import { canDockPod, podExchangeAt, drivePodToward } from '../core/city-pod.js';
+import { campaignDepotOffers, reduceCampaignDepot } from '../core/campaign-depot.js';
+import { depotPanel } from './depot.js';
+import { canDockPod, podServiceAt, drivePodToward } from '../core/city-pod.js';
 import { reduceCampaignPod } from '../core/campaign-pod.js';
 import { createWalk, advanceWalk, interactionAt } from '../core/ship-walk.js';
 import { createInventory, storageAt, transferItem } from '../core/inventory.js';
@@ -37,7 +39,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   let survival = createSurvival(condition);
   let campaignMode=false, campaignStart=null;
   let campaignEquipment=null,campaignDialogue=null;
-  let campaignPod=null,podDirection=null;
+  let campaignPod=null,podDirection=null,campaignResources=null;
+  let depotDraft=null,depotMessage='';
   const driving=()=>campaignMode&&campaignPod?.attached===false;
   let campaignEconomy=null,bankDraft=null,bankMessage='';
   let exchangeTab='offers',exchangeDraft=null,exchangeMessage='';
@@ -59,7 +62,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   };
   const availableRoom=()=>inCity()&&!inService()&&!driving() ? roomAt(assets.cityGeometry.rooms,assets.cityGeometry.map,state.position) : null;
   const bankAvailable=()=>inCity()&&!inService()&&!driving()&&atCityBank(assets.cityGeometry.map,state.position);
-  const serviceAvailable=()=>inCity()&&!inService() ? (driving() ? podExchangeAt(assets.cityGeometry.pod,state.position,campaignPod.heading)?'exchange':null : cityServiceAt(assets.cityGeometry.map,state.position)) : null;
+  const serviceAvailable=()=>inCity()&&!inService() ? (driving() ? podServiceAt(assets.cityGeometry.pod,state.position,campaignPod.heading) : cityServiceAt(assets.cityGeometry.map,state.position)) : null;
   const geometry=()=>inRoom() ? roomPopulation?.geometry || roomGeometry() : inCity() ? driving()?assets.cityGeometry.pod:assets.cityGeometry : assets.shipWalk;
   const bayAt=()=>outsideShip() ? null : equipmentBayAt(state.position);
   const storage=()=>outsideShip() ? null : storageAt(state.position);
@@ -79,7 +82,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const codec = checkpointCodec(assets.shipWalk);
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
-  const liveCampaign=()=>({start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,
+  const liveCampaign=()=>({start:campaignStart,ship:codec.snapshot(liveShip()),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,resources:campaignResources,
     travel:inRoom() ? {...travel,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity() ? state.position : null}});
   function exchangeAction(action) {
     const next=['store','fetch','swap'].includes(action.type) ? reduceCampaignPod(liveCampaign(),assets.cityGeometry.pod,action) : reduceCampaignExchange(liveCampaign(),assets.campaignContent,assets.cityGeometry.map,action);
@@ -91,7 +94,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     return next.travel.scene==='exchange'&&!next.economy.exchange.visit ?
       reduceCampaignExchange(next,assets.campaignContent,assets.cityGeometry.map,{type:'enter'}) : next;
   }
-  function resetExchangeDraft() {exchangeDraft=null;exchangeMessage='';exchangeTab='offers'}
+  function resetExchangeDraft() {exchangeDraft=null;exchangeMessage='';exchangeTab='offers';depotDraft=null;depotMessage=''}
   function counterAction(action) {
     try {
       const result=reduceCampaignCounter(liveCampaign(),assets.campaignContent,currentRoom(),action);
@@ -136,7 +139,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     },
     restore: value => {
       const next=campaignMode ? prepareCampaignRestore(value) : selectedCodec().snapshot(value); // Prepare before replacing live state.
-      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
+      if(campaignMode) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;campaignResources=next.resources;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
       else restoreShip(next);
     },
     close: () => {
@@ -237,8 +240,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       (root.querySelector('#bank-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(bankDraft ? '#bank-cancel' : '#bank-leave')).focus({preventScroll:true});
     } else if (inService()) {
       for(const child of root.children)child.inert=true;
-      root.insertAdjacentHTML('beforeend',travel.scene==='exchange' ? exchangePanel({state:liveCampaign(),content:assets.campaignContent,name:assets.cityMaps[campaignStart.playerLocation.cityId].name,tab:exchangeTab,draft:exchangeDraft,message:exchangeMessage,t}) : cityServicePanel({service:travel.scene,name:assets.cityMaps[campaignStart.playerLocation.cityId].name,t}));
-      (root.querySelector('#service-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(exchangeDraft ? '#exchange-cancel' : '#service-leave')).focus({preventScroll:true});
+      root.insertAdjacentHTML('beforeend',travel.scene==='exchange' ? exchangePanel({state:liveCampaign(),content:assets.campaignContent,name:assets.cityMaps[campaignStart.playerLocation.cityId].name,tab:exchangeTab,draft:exchangeDraft,message:exchangeMessage,t}) : travel.scene==='depot' ? depotPanel({state:liveCampaign(),content:assets.campaignContent,geometry:assets.cityGeometry,name:assets.cityMaps[campaignStart.playerLocation.cityId].name,draft:depotDraft,message:depotMessage,t}) : cityServicePanel({service:travel.scene,name:assets.cityMaps[campaignStart.playerLocation.cityId].name,t}));
+      (root.querySelector('#service-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(exchangeDraft ? '#exchange-cancel' : depotDraft ? '#depot-cancel' : '#service-leave')).focus({preventScroll:true});
     } else if (help) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t('walkTitle')}</h2><p>${t(campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
@@ -323,7 +326,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       return;
     }
     if(inService()) {
-      if(event.key==='Escape'){event.preventDefault();if(inBank()&&bankDraft){bankDraft=null;bankMessage='bankCancelled';render()}else if(exchangeDraft){exchangeDraft=null;exchangeMessage='';render()}else leaveService()}
+      if(event.key==='Escape'){event.preventDefault();if(inBank()&&bankDraft){bankDraft=null;bankMessage='bankCancelled';render()}else if(exchangeDraft){exchangeDraft=null;exchangeMessage='';render()}else if(depotDraft){depotDraft=null;depotMessage='';render()}else leaveService()}
       if(event.key==='Tab') {
         const buttons=[...root.querySelectorAll(inBank() ? '#bank-panel button:not(:disabled),#bank-panel select' : '#service-panel button:not(:disabled)')];
         const index=buttons.indexOf(document.activeElement);event.preventDefault();
@@ -418,7 +421,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
     const service=serviceAvailable();
     if(service) {
-      bankDraft=null;bankMessage='';
+      bankDraft=null;bankMessage='';depotDraft=null;depotMessage='';
       if(service==='exchange') {
         try {exchangeAction({type:'enter'});exchangeDraft=null;exchangeMessage='';exchangeTab='offers'}
         catch {roomMessage='exchangeEntryFailed';state.paused=true;render();return}
@@ -427,7 +430,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
     if(driving()||(!outsideShip()&&interactionAt(state.position)===3)) {
       const next=reduceCampaignPod(liveCampaign(),assets.cityGeometry.pod,{type:driving()?'dock':'depart'});
-      campaignPod=next.pod;travel=next.travel;restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
+      campaignPod=next.pod;campaignResources=next.resources;travel=next.travel;restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
     }
     const exiting=!inCity();travel={scene:exiting ? 'city' : 'ship',cityPosition:null};
     state={...createWalk(geometry()),position:{...(exiting ? assets.cityGeometry.spawn : SHIP_REENTRY)},paused:true};
@@ -435,7 +438,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   }
   function leaveService() {
     if(travel.scene==='exchange')exchangeAction({type:'leave'});
-    exchangeDraft=null;exchangeMessage='';
+    exchangeDraft=null;exchangeMessage='';depotDraft=null;depotMessage='';
     bankDraft=null;bankMessage='';
     stop();travel={scene:'city',cityPosition:{...state.position}};state.paused=true;
     previous=0;render();root.querySelector('#walk-surface').focus();
@@ -458,6 +461,23 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
   });
   root.addEventListener('click', event => {
+    const depot=event.target.closest('[data-depot-service],[data-depot-units],[data-depot-action]');
+    if(travel.scene==='depot'&&depot) {
+      try {
+        depotMessage='';
+        if(depot.dataset.depotService)depotDraft={type:depot.dataset.depotService,units:1};
+        else if(depot.dataset.depotAction==='cancel')depotDraft=null;
+        else if(depot.dataset.depotAction==='confirm'&&depotDraft) {
+          const next=reduceCampaignDepot(liveCampaign(),assets.campaignContent,assets.cityGeometry,depotDraft);
+          campaignResources=next.resources;campaignPod=next.pod;campaignDialogue=next.dialogue;campaignEconomy=next.economy;
+          depotDraft=null;depotMessage='depotCompleted';
+        } else if(depot.dataset.depotUnits&&depotDraft) {
+          const offer=campaignDepotOffers(liveCampaign(),assets.campaignContent,assets.cityGeometry).find(o=>o.type===depotDraft.type);
+          depotDraft={...depotDraft,units:Math.max(1,Math.min(offer.affordable,depot.dataset.depotUnits==='all'?offer.affordable:depotDraft.units+Number(depot.dataset.depotUnits)))};
+        }
+      } catch(error){depotMessage=['depotVehicleAbsent','depotCapacity','depotInsufficient'].includes(error.message)?error.message:'depotUnavailable'}
+      render();return;
+    }
     const ex=event.target.closest('[data-exchange-tab],[data-exchange-slot],[data-exchange-action],[data-cargo-container],[data-cargo-mode]');
     if(travel.scene==='exchange'&&ex) {
       try {
@@ -593,7 +613,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     showCampaign(value) {
       const next=value ? prepareCampaignRestore(value) : null;
       switchMode(true);
-      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
+      if(next) {campaignStart=next.start;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;campaignResources=next.resources;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
       if(campaignStart)show();
     },
     showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},

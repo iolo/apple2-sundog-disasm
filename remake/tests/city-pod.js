@@ -92,11 +92,11 @@ export async function cityPodTests(test,equal) {
     equal(index>=0,true);s=trade(s,{type:'buy',slot:index});
     const slot=s.economy.exchange.warehouse.slots.findIndex(c=>c&&c.commodityId!=='cargo-31');
     s=run(s,{type:'fetch',slot});
-    const current=codec.make(s,0),old=structuredClone(current);old.version=16;old.scope='landed-local-cargo-1';
+    const current=codec.make(s,0),old=structuredClone(current);old.version=16;delete old.state.resources;old.scope='landed-local-cargo-1';
     equal(codec.validate(old),current);
   });
   await test('Version15 migrates with an attached empty pod and rejects injected transport fields',()=>{
-    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=15;old.scope='landed-personal-trade-1';delete old.state.pod;
+    const current=codec.make(fresh(),0),old=structuredClone(current);old.version=15;delete old.state.resources;old.scope='landed-personal-trade-1';delete old.state.pod;
     equal(codec.validate(old),current);old.state.pod=current.state.pod;reject(()=>codec.validate(old),'invalidCampaign');
     const s=arrive(fresh());for(const mutate of [v=>v.pod.position.x++,v=>v.pod.heading=15,v=>v.travel.scene='bank',v=>v.pod.attached=true,v=>v.pod.cargo.push(null)]) {
       const bad=structuredClone(s);mutate(bad);reject(()=>codec.snapshot(bad),'invalidCampaign');
