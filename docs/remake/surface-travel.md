@@ -3,8 +3,8 @@
 R08i/k establish the source core and persistence; R08l connects live city and
 surface play with version22 saves. The normal-control round trip reaches Obburg
 from Drahew, parks in both domains, visits the ship on foot, retrieves the remote
-pod and returns with purchased cargo intact. The combined engineering/service
-acceptance audit remains open. No new original-game emulator capture is claimed.
+pod and returns with purchased cargo intact. R08m also passes the combined engineering/service
+acceptance journey. No new original-game emulator capture is claimed.
 
 ## Source rules
 
@@ -145,5 +145,16 @@ migration and exhaustive terrain rules. `ground-parking-regression-validation.js
 retains42 passing city parking checks. Depot61 and room102 regressions pass;
 `ground-services-validation.json` adds8 checks for a declared pod parked outside
 the historical city guard, exact local service payments and reload. The combined
-R08 audit is tracked in
+R08 audit is recorded in
 `r08-completion.md`.
+
+## R08m closing verification
+
+`r08-final-rules-validation.json` passes319 groups. The additional routed test
+covers entry, parking, reboarding, return and version22 saves for all five ordinary
+cities on Jondd and its initial colony. `r08-final-surface-validation.json` passes
+60 UI checks, including updated English/Korean ground help without overflow at
+all four viewports. `r08-journey-validation.json` joins component replacement,
+paid hull/fuel services, working power and loaded surface return in74 checks from
+a fresh character. R08 is complete; see `r08-completion.md` for all requirements,
+current regressions and later-milestone boundaries.

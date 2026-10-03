@@ -1,0 +1,29 @@
+{
+  "browser": "154.0.8037.92",
+  "checks": [
+    "Imported controlled room fixture offers counter interaction",
+    "Staff arrival opens the original English greeting",
+    "Information reply reaches equipment information state160",
+    "First item reaches its source description",
+    "Mid-conversation export stores version22 replay inputs",
+    "Conversation language switches to Korean",
+    "Same item description renders in Korean",
+    "Locale switching and opening saves do not change conversation state",
+    "Korean dialogue fits 640x480",
+    "Korean dialogue fits 1280x720",
+    "Korean dialogue fits 1920x1080",
+    "Korean dialogue fits 390x844",
+    "Reload restores exact English message from the saved seed and inputs",
+    "Fresh page restores all mid-conversation campaign fields",
+    "Continue advances the information branch",
+    "Leaving the conversation restores the room",
+    "Return commits speaker state and clears replay history",
+    "Information dialogue preserves money and inventory",
+    "No uncaught browser errors"
+  ],
+  "errors": [],
+  "branch": {
+    "english": "That's a general purpose shunt. It'll replace most parts, but it's not as reliable!",
+    "korean": "범용 우회 회로입니다. 대부분의 부품을 대신하지만 신뢰성이 떨어집니다."
+  }
+}

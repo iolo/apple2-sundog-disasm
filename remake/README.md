@@ -112,7 +112,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version21 saves retain independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version22 saves retain city/surface domains, the camera, independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
@@ -193,9 +193,9 @@ python3 tools/remake/test_exports.py
 python3 tools/remake/export_assets.py --check
 ```
 
-Development initialization primitives now cover generated equipment, system
-coordinates/balances and orbital angles. They are tested independently and are
-not yet connected to character creation or ship checkpoints. See
+Campaign creation uses the verified generated equipment, system
+coordinates/balances and orbital angles. Active engineering, banking and ground
+progress are saved separately from the immutable creation record. See
 `../docs/remake/initialization.md` for source evidence, seed boundaries and the
 remaining campaign fields. With cc65/sim65 installed, verify native RNG and the
 clean equipment reference using:

@@ -100,4 +100,7 @@ in English/Korean at four viewport sizes. R08f's expanded fresh-character journe
 also buys auxiliary loads without ship fuel, docks to consume one, walks to
 engineering, runs guns/shields and reloads the resulting resources. Its61 checks
 are in `machinery-depot-validation.json`. No native emulator capture is claimed.
-See [R08 audit](r08-completion.md) for the remaining milestone requirements.
+R08l repeats61 checks in `ground-depot-regression-validation.json`; its focused
+8-check outer-street service test verifies the expanded geometry. R08m joins
+component replacement, paid services and loaded surface return in the74-check
+`r08-journey-validation.json`. See the [R08 audit](r08-completion.md).

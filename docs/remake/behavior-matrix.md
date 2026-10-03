@@ -1,6 +1,6 @@
-# Remake behavior evidence — R01a
+# Remake behavior evidence — through R08
 
-For the current city/building milestone, see [R06 completion audit](r06-completion.md).
+For city/building milestone evidence, see [R06 completion audit](r06-completion.md).
 Active deposits, withdrawals and inter-system transfers are traced and implemented
 in [R07a banking](banking.md). [R07c exchange trading](exchange-trading.md) adds
 local purchases, sales, warehouse ownership and version13 saves.
@@ -10,7 +10,10 @@ Store/Fetch/Swap and audit the [personal resale route](personal-item-resale.md).
 [R07f personal trading](personal-trading.md) enables visitor purchases/sales and
 version15 sale-income saves, with242 rule groups and34 new UI checks.
 [R07g pod cargo](pod-cargo.md) adds local driving, loading, docking and version16
-cargo saves. The [R07 audit](r07-completion.md) tracks trader matching and closure.
+cargo saves. The [R07 audit](r07-completion.md) records its completed scope.
+R08 adds source engineering failures, services, landed machinery, independent
+parking, surface travel and version22 saves. Its [audit](r08-completion.md) maps
+requirements to current rule and live journey evidence.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 
@@ -43,7 +46,7 @@ characters and includes historical variants; it is not a localization catalog.
 | Equipment initialization | Utility19/21; game14 procedure3; library24 procedure8; clean-character globals offset108 | Source-derived; all six captured initial records reproduced with constructed compatible draws | R04d pure generator for components, damage, spares and performance. Repair/ship consequences remain pending. See `initialization.md`. |
 | Initialization randomness | Library22 native procedure3; Pascal FJP native handler | 112 source-loop transitions checked with sim65; startup seed not observed | R04d serializable RNG preserves byte order, seven shifts, eager draws and low-bit boolean behavior. |
 | World/city payloads | `docs/world-maps.md`, `docs/city-maps.md`, `game_21.s` procedures 26/28 | Source-derived | Preview all 18 stored worlds and 60 play cities. R08i additionally composes18 surface maps with private terrain RNG and57 source city overlays; explicit colony placement owns gameplay RNG separately. |
-| Surface terrain and city transitions | Game21 proc11/12/17/18/23/28/29; Library22 proc9 | Source-derived rules and normal-control browser journey verified | R08l activates source camera/terrain, independent domains and version22 saves.52 UI checks cover purchased cargo, surface parking, foot ship visits, another city and loaded return;318 rule groups cover terrain, ownership and historical migration. See `surface-travel.md`. |
+| Surface terrain and city transitions | Game21 proc11/12/17/18/23/28/29; Library22 proc9 | Source-derived rules and normal-control browser journey verified | R08l activates source camera/terrain, independent domains and version22 saves.R08m passes60 UI surface/help checks and74 combined engineering/service/loaded-travel checks;319 rule groups cover terrain, all six starting-world destinations, ownership and historical migration. See `surface-travel.md`. |
 | Colony requirement check | `game_20.s` procedure 4 `$00A0–$00B2` scans a 14-byte area using CSP 11 before proceeding; exact CSP predicate still to trace | Source-derived entry; predicate unresolved | Do not treat displaying a completion string as proof of delivery semantics. |
 | Colony phase | Same procedure `$00B4–$00FE`: reads byte 2 at segment-29 word271, reports completed phase, tests equality with 9 | Source-derived | Store explicit phase and outstanding requirements; final phase must not be assumed to be a single delivery. |
 | Campaign ending | Same procedure `$0101–$013B`: fulfilled-contract text, two packed fields of word45 set to 13; `startup_7.s` procedure 8 `$0647/$0665` congratulates player | Source-derived final branch | Later fixture must reach this through deliveries, not direct flag editing. |

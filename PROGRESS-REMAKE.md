@@ -1,5 +1,62 @@
 # SunDog web remake progress
 
+## R08m — Combined acceptance and R08 completion — 2026-10-03
+
+Completed the fresh-character engineering/service/ground acceptance journey.
+Normal controls reach the warp-engine bay, exchange compatible components and
+reuse the displaced shunt, then service the damaged hull and empty fuel tank for
+145 +16×157 credits. The same ship powers guns/shields with actual component
+output and source fuel costs. Two normally purchased commodity lots then travel
+to the surface, remain in a parked pod during a foot city/ship visit, are retrieved,
+reach Obburg and return loaded to Drahew.74 checks preserve item counts, repaired
+hull, changed equipment, cargo, accounts, immutable creation and colony placement
+through repeated fresh-page reloads. No campaign fixture supplies this journey.
+
+Added a rule journey through all five ordinary starting-world cities plus the
+initial colony. Each supports collision-routed entry, parking, reboarding, return
+and valid ground saves. The rule suite now passes 319 groups. This closes the
+broader destination coverage gap beyond the live Drahew–Obburg route.
+
+Updated stale English/Korean help, saved-game scope and outdoor hints to describe
+surface travel and independent parking. The portrait test caught help overflow;
+shortened the copy without shrinking controls/text. The final 60-check surface
+run proves controls and help fit four viewports in both locales, then completes
+the loaded round trip again. Refreshed README and source-feature documentation.
+
+The closing inventory in `docs/remake/r08-validation-summary.json` contains 319
+rule groups and 1,070 UI checks across 24 passing receipts. Current UI coverage:
+
+- Combined journey 74; surface/help 60; city 44; parking 42; outer-street services 8.
+- Depot 61; machinery 31; faulty installation/burnout/replacement 28; equipment 37.
+- Banking 44; bank visit 28; exchange 64; pod cargo 33; city services 78.
+- Room walking 102; complete eight-building journey 90; shops 29; visitors 34;
+  taverns 43; lodging 27; dialogue 19; bartender matching 75; staff-only fallback 19.
+
+The `r08-final-*-validation.json` receipts use the corresponding established
+smoke scripts: `city_walk`, `bank_visit`, `banking`, `exchange_trading`,
+`pod_cargo`, `city_service`, `engineering_failures`, `equipment_exchange`,
+`machinery`, `shop_purchases`, `personal_trade`, `tavern`, `lodging`, `dialogue`,
+`trader_matching`, `room_fallback`, `r06_journey` and `surface`. The combined
+script is `r08_journey_smoke.js`; R08l's ground parking/depot/room/service receipts
+remain part of the inventory. Embedded rule lists are counted once, not as UI
+checks. All runs use Chrome 154.0.8037.92; passing runs report no page errors.
+20 exporter tests,168 deterministic artifacts and 584 classified source-string
+records verify. Final syntax and whitespace checks pass. Korean surface and
+English destination screenshots were inspected.
+
+The new combined test initially targeted the gun bay rather than the intended
+warp bay; corrected its route before the passing run. The lodging regression also
+caught a test-only dynamic import mistakenly placed outside page evaluation;
+removed that stale statement. Failed attempts are not included as passing evidence.
+
+The requirement audit in `docs/remake/r08-completion.md` closes R08. Fault/power
+edge cases retain declared fixtures; ordinary faulty-part acquisition in Drahew
+is not claimed. Regional market producers/flight belong to R09, combat producers
+to R10, and colony progression to R11. Browser timing, stable surface pose and
+map-row wrapping remain explicit adaptations; no new native-emulator capture is
+claimed. The user PRD remains untouched and untracked. Next: R09 regional travel,
+landing and other-city economic state.
+
 ## R08l — Live surface travel, independent domains and version22 — 2026-10-03
 
 Connected the prepared ground reducers and save codec to actual city/surface

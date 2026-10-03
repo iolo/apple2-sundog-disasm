@@ -1,4 +1,4 @@
-# Component failure lifecycle — through R08f
+# Component failure lifecycle — through R08m
 
 The Game14 operation previously described as delayed repair is **delayed
 failure**. It writes destroyed-item7, not a repaired component. Repairs replace
@@ -128,5 +128,7 @@ must not be invented to fill this coverage gap.
 R08f's `machinery-rules-validation.json` covers293 rule groups, including live
 dependency consequences and phase/resource saves. Its failure regression repeats
 the28 UI checks against version20. `machinery-ui-validation.json` also verifies
-last-working-gun removal and cloaker operation. Parked-pod/surface travel and
-the combined acceptance journey remain required by the [R08 audit](r08-completion.md).
+last-working-gun removal and cloaker operation. R08m repeats28 failure,37
+equipment and31 machinery UI checks against version22. Its74-check combined
+fresh-character journey joins component replacement, paid services, power use
+and loaded surface return; see the [R08 audit](r08-completion.md).

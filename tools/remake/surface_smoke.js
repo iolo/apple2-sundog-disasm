@@ -77,6 +77,9 @@ async browserPage => {
         await page.setViewportSize({width,height});await page.clock.runFor(100);
         await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
         assert(await page.locator('.walk-actions').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1}),`${lang} surface controls fit ${width}x${height}`);
+        await page.locator('#walk-help').click();
+        assert(await page.locator('.help').evaluate(el=>{const r=el.getBoundingClientRect(),stage=document.querySelector('#stage').getBoundingClientRect();return r.left>=stage.left-1&&r.right<=stage.right+1&&r.top>=stage.top-1&&r.bottom<=stage.bottom+1&&el.scrollHeight<=el.clientHeight+1&&[...el.querySelectorAll('p,button')].every(p=>p.scrollWidth<=p.clientWidth+1)}),`${lang} current ground-travel help fits ${width}x${height}`);
+        await page.locator('#walk-close-help').click();
       }
     }
     await page.screenshot({path:'output/playwright/remake/surface-ko.png'});await page.setViewportSize({width:1280,height:720});

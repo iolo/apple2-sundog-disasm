@@ -158,6 +158,20 @@ export async function campaignGroundTests(test,equal) {
     const before=JSON.stringify(s);reject(()=>run(s,{type:'enterCity'}),'groundUnavailable');
     reject(()=>run(s,{type:'move',dx:3,dy:0}),'groundUnavailable');equal(JSON.stringify(s),before);
   });
+  await test('Every starting-world city supports routed entry, parking and return with valid ground saves',()=>{
+    const g=world.surface(surface.ground.colonyPosition);
+    for(const marker of g.map.cities) {
+      let s=structuredClone(surface);
+      for(const a of route(g,s.travel.cityPosition,p=>surfaceCityAt(g.map,p)?.cityId===marker.cityId,trySurfaceStep))s=run(s,a);
+      s=run(s,{type:'enterCity'});equal(s.ground.cityId,marker.cityId);roundtrip(s);
+      const parked=run(s,{type:'park'});roundtrip(parked);s=run(parked,{type:'board'});roundtrip(s);
+      const c=world.city(marker.cityId,false).pod;
+      for(const a of route(c,s.travel.cityPosition,p=>p.x<125,(g,p,x,y)=>tryPodStep(g,p,x,y)?.position)) {
+        s=run(s,a);if(s.travel.scene==='surface')break;
+      }
+      equal(s.travel.scene,'surface');roundtrip(s);equal(s.pod.cargo,surface.pod.cargo);
+    }
+  });
   await test('Ground saves validate21 and20 historically before adding independent location metadata',()=>{
     const s=fresh();delete s.ground;
     const original=oldCodec.make(s,0),before=JSON.stringify(original),migrated=codec.validate(original);

@@ -1,0 +1,60 @@
+{
+  "browser": "154.0.8037.92",
+  "checks": [
+    "Type8 street door opens its source-selected tavern layout",
+    "Fresh entry exports version22 tavern state",
+    "Tavern walk reaches 30,40",
+    "Tavern walk reaches 30,31",
+    "Bartender approaches and opens source dialogue16",
+    "Bartender food selection is enabled",
+    "Bartender greeting is localized",
+    "Food selection opens a payable offer with an empty destination",
+    "Food offer survives fresh-page reload",
+    "Taking food returns to the bartender menu",
+    "Purchased food survives conversation replay",
+    "Food occupies its carried slot before the conversation ends",
+    "Bartender returns to the same live visit",
+    "Bartender commits food and ale into the selected carried slots",
+    "Food purchases debit cash and preserve bank and exchange state",
+    "Tavern walk reaches 43,86",
+    "Releasing pointer movement at a table claims the source seat",
+    "Tavern walk reaches 43,60",
+    "Walking away releases the player seat",
+    "Sitting opposite a visitor opens the source social branch",
+    "Accepting a chat reaches small talk",
+    "Responding reaches a source joke",
+    "Joke question renders in Korean without placeholders",
+    "Tavern dialogue fits 640x480",
+    "Tavern dialogue fits 390x844",
+    "Tavern dialogue fits 844x390",
+    "Fresh-page IndexedDB reload preserves speaker, seat, joke and exact RNG",
+    "Continue gives the matching source punchline",
+    "Conversation return resumes the actual visitor",
+    "Social conversation preserves active cash",
+    "Tavern walk reaches 16,60",
+    "Tavern walk reaches 12,56",
+    "Leaving returns to the original street",
+    "Reentry creates a fresh visit without an orphan contact",
+    "A reserved seat and moving visitor survive a fresh-page reload",
+    "An arriving visitor initiates source kind22 dialogue",
+    "Declining the visitor resumes departure or counter movement",
+    "Bartender tip branch exposes offer controls",
+    "Tip controls update the offered amount",
+    "Mid-offer save restores the amount and RNG",
+    "Tip acceptance reaches the information choices",
+    "Bartender return commits the ten-credit tip once",
+    "Tavern flow has no uncaught page errors"
+  ],
+  "errors": [],
+  "branch": {
+    "english": "How many New Faith Society Members does it take to change a glow globe?",
+    "korean": "발광구 하나 교체하는 데 신앙 공동체 회원이 몇 명이나 필요할까요?"
+  },
+  "fixture": {
+    "street": {
+      "x": 395,
+      "y": 267
+    },
+    "room": 6
+  }
+}
