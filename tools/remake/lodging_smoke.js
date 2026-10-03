@@ -35,7 +35,7 @@ async browserPage => {
       let street;outer:for(let y=7;y<city.height;y++)for(let x=3;x<city.width-7;x++)
         if(cityDoorAt(city.map,{x,y})?.type===11&&reached({x,y})){street={x,y};break outer}
       const codec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,city),state=codec.create({...createCharacter(),name:'Lodging visit'},12345);
-      state.ship.position={x:54,y:118};state.ship.minutes=7*60;state.travel={scene:'city',cityPosition:street};state.encounters.randomState=0;
+      state.ship.position={x:54,y:118};state.ship.minutes=7*60;state.travel={scene:'city',cityPosition:street};state.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(state.travel.cityPosition);state.encounters.randomState=0;
       const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(codec.make(state,0))],{type:'application/json'}));a.download='lodging-street.json';a.click();
       return {street,cash:state.dialogue.cash,fee:8*assets.campaignContent.dialogue.systems.systems[0].local30+3};
     });
@@ -57,7 +57,7 @@ async browserPage => {
     }
     await page.setViewportSize({width:1280,height:720});await page.locator('#dialogue-reply-1').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='100','Pay reaches the source rental acceptance');
-    const paid=await exported();assert(paid.version===21&&paid.state.dialogue.cash===fixture.cash,'Version21 mid-payment save retains replayable pre-return cash');
+    const paid=await exported();assert(paid.version===22&&paid.state.dialogue.cash===fixture.cash,'Version22 mid-payment save retains replayable pre-return cash');
     await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(paid.state),'Mid-payment IndexedDB reload preserves the exact replay and cash');
     await page.locator('#dialogue-continue').click();
     const rented=await exported(),number=rented.state.travel.lodging.rented,x=28+28*(number-1);
@@ -73,7 +73,7 @@ async browserPage => {
     assert(left.state.dialogue.cash===fixture.cash-fixture.fee&&!left.state.dialogue.flags[57],'Exit preserves cash and clears the bedroom flag');
     await page.locator('#walk-airlock').click();const again=await exported();
     assert(again.state.travel.lodging.rented===0&&again.state.travel.lodging.openMask===0&&again.state.dialogue.cash===left.state.dialogue.cash,'A new visit resets room rental access without refunding cash');
-    const bank=structuredClone(again);bank.state.travel={scene:'bank',cityPosition:{x:369,y:299}};
+    const bank=structuredClone(again);bank.state.travel={scene:'bank',cityPosition:{x:369,y:299}};bank.state.ground.camera={x:8,y:6};state.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(state.travel.cityPosition);
     bank.state.encounters={randomState:bank.state.encounters.randomState,roomSeed:null,roomState:null,counter:null};
     await saves();const bankDownload=page.waitForEvent('download');
     await page.evaluate(value=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(value)],{type:'application/json'}));a.download='lodging-bank.json';a.click()},bank);

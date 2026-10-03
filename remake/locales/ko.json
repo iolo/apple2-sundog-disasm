@@ -180,7 +180,7 @@
   "campaignHint": "깨어 있을 때 저장하세요. JSON 파일로 내보내면 다른 브라우저에서 사용할 수 있습니다.",
   "campaignLoadOnly": "저장한 게임을 불러오거나 JSON 파일을 가져오세요.",
   "campaignSummary": "{name} · {day}일",
-  "campaignIdentity": "{name} · 존드 / 드라휴 · 시드 {seed}",
+  "campaignIdentity": "{name} · 시드 {seed}",
   "campaignSaved": "이 브라우저에 게임을 저장했습니다.",
   "campaignDeleted": "저장한 게임을 삭제했습니다.",
   "campaignLoaded": "게임을 불러왔습니다. 이 창을 닫고 준비되면 계속하세요.",
@@ -575,5 +575,7 @@
   "podPark": "주차 / 내리기",
   "podBoard": "포드 탑승",
   "podExitBlocked": "포드에서 내릴 수 있는 빈 공간이 없습니다.",
-  "podUnavailable": "포드 가까이 가야 탑승할 수 있습니다."
+  "podUnavailable": "포드 가까이 가야 탑승할 수 있습니다.",
+  "surfaceEnterHint": "도시로 들어갑니다",
+  "enterCity": "도시 진입"
 }

@@ -1,10 +1,10 @@
 # Surface map and movement source audit
 
-R08i implements the surface core; R08j adds camera, location and independent
-transport ownership reducers. Live controls, persistence and the combined R08
-acceptance journey remain pending. The playable city still has its
-historical stored-rectangle guard; version21 saves do not yet contain a surface
-scene. No new original-game emulator capture is claimed.
+R08i/k establish the source core and persistence; R08l connects live city and
+surface play with version22 saves. The normal-control round trip reaches Obburg
+from Drahew, parks in both domains, visits the ship on foot, retrieves the remote
+pod and returns with purchased cargo intact. The combined engineering/service
+acceptance audit remains open. No new original-game emulator capture is claimed.
 
 ## Source rules
 
@@ -12,7 +12,7 @@ scene. No new original-game emulator capture is claimed.
 | --- | --- |
 | Game21 proc28 `$1136–$11AD` | Compose a40×24 map. Save gameplay RNG, seed the private generator with low word`3*world+39` / high word`11*world+51`, scan X outer/Y inner, replace each stored tile13 with`14+random mod7`, then restore gameplay RNG. |
 | Game21 `$11AF–$1201` | Overlay ordinary cities as tile13 using each world's first/count membership and city record word5's low6 X / next5 Y bits. Stored tile13 is not a city marker until composition. |
-| Game21 `$1215–$126D` | On world1, initial colony placement draws gameplay RNG modulo960 until the composed tile is at least14; then overlays city60. Subsequent visits use its persisted coordinate without further draws. The helper takes placement state explicitly; live ownership of the source pending-placement flag is not connected yet. |
+| Game21 `$1215–$126D` | On world1, initial colony placement draws gameplay RNG modulo960 until the composed tile is at least14; then overlays city60. Subsequent visits use its persisted coordinate without further draws. First live city exit commits the pending placement and gameplay RNG; later exits reuse the saved coordinate. |
 | Game21 proc29 `$12D8–$12F2` | Surface tiles are28×24, with an eight-row viewport, unlike the six-row28×32 city viewport. |
 | Game21 proc23 `$0C80–$0C94` | Foot visible glyph10; pod visible/alternate glyphs26/29. Both use collision glyph15. Terrain is pixel collision, not a tile-name whitelist. |
 | Game21 proc10 `$02EC–$02FE`, proc25 `$0E90`, Library22 proc9 `$13AA–$13CF`, `$1470–$14BC` | Collision uses mode2 and pattern9, ignoring alternating background columns via masks`0x55/0x2a`. |
@@ -37,11 +37,10 @@ not permission to accept arbitrary blocked imported positions. Live validation
 must distinguish source transition anchors, and verify foot/pod cadence and
 reentry behavior before claiming usable travel in both modes.
 
-Next connect source scrolling thresholds to the live camera, expand city
-geometry to the source border, introduce active city/world ground locations,
-and preserve independent ship/pod/cargo domains across transitions and saves.
-Keep parked vehicles out of collision/rendering when in a different domain.
-Connect colony placement once to the campaign RNG and persist its coordinate.
+R08j/l connect these scrolling thresholds, expanded city geometry and active
+ground domains to live rendering and input. Parked vehicles contribute collision
+and artwork only in the same city. Colony placement is saved and commits its
+gameplay RNG once.
 Regional flight/markets remain R09; colony progression remains R11.
 
 ## Verification
@@ -116,11 +115,35 @@ including ground journey round trips, every version1–21 schema, key-order
 independent imports and malformed state rejection. A native north-arrival fixture
 also verifies saving while parked over city artwork and immediate reboarding;
 boarding uses the source proximity gate, without incorrectly requiring a clear
-terrain pixel under that legitimate transition anchor. The live UI remains on
-version21 until it can render and operate these states. See `campaign-saves.md`.
+terrain pixel under that legitimate transition anchor. R08l activates this codec in the live asset loader and UI. See `campaign-saves.md`.
 
-Next connect dynamic geometry/camera/rendering/input and surface boarding,
-activate the prepared version22 contract, then prove reload and ownership in the
-live journey. Other-city transaction producers and
-regional flight retain R09 scope; no initial-city services may be applied to a
-remote city by accidentally retaining the starting map or location.
+## R08l live controls and evidence
+
+The live walker uses the saved tile camera, six city/eight surface tile rows,
+whole-map collision and the ground reducers. Arrow keys and pointer/touch input
+request one pixel on foot; pod direction repeats request two pixels with source
+one-pixel fallback. Pointer offsets choose the short displacement across a
+surface seam. Movement uses the established50ms browser cadence; outdoor
+survival retains one minute/second of active play. These are browser timing
+adaptations, not claims of native cycle timing. Enter city, Park/exit and Board
+pod are explicit localized controls; city entry pauses for orientation.
+
+The source pod26/29 artwork is exported; the current surface renderer uses the
+stable glyph26 pose, as city driving uses its directional pose. The current city
+or world is displayed in the heading; the identity line no longer hardcodes the
+creation city while travelling. Other-city outdoor geometry is playable, but
+regional markets, buildings and flight retain R09 scope. Both live service gates
+and transaction reducers reject applying the starting city's services remotely.
+
+`surface-ui-validation.json` passes52 checks using a fresh character and ordinary
+purchases, loading, movement, parking, foot ship visits, city02 arrival and loaded
+return. Fresh-page reloads preserve the whole campaign at each domain change;
+English/Korean controls fit four viewports. `ground-live-rules-validation.json`
+passes318 groups, including a local foot depot repair with its pod parked on the
+surface, unavailable remote loading, remote-city financial rejection, historical
+migration and exhaustive terrain rules. `ground-parking-regression-validation.json`
+retains42 passing city parking checks. Depot61 and room102 regressions pass;
+`ground-services-validation.json` adds8 checks for a declared pod parked outside
+the historical city guard, exact local service payments and reload. The combined
+R08 audit is tracked in
+`r08-completion.md`.

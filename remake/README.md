@@ -6,7 +6,8 @@ withdrawals and inter-system transfers, local exchange purchases/warehouse sales
 shop purchases and information, paid lodging with working bedroom doors, and tavern
 seating, conversations, visitor item buying/selling, food/ale purchases and bartender
 trader referrals. Local pod driving and warehouse Store/Fetch/Swap retain cargo
-through loaded docking. Depot visits offer confirmed hull repairs, ship refueling
+through loaded docking. Surface travel connects the starting world’s cities with
+independent parking, foot visits and saved return journeys. Depot visits offer confirmed hull repairs, ship refueling
 and auxiliary fuel loading with saved resources and cargo. TransStation visits
 remain read-only.
 Engineering accepts compatible faulty parts, resolves their burnout, and restores
@@ -169,8 +170,13 @@ In the city, **Park / exit** leaves the pod and its cargo where you stopped.
 Walk to services or back to the ship; return close to the parked pod and choose
 **Board pod** to drive again. Foot visits cannot load a remote pod. Saves preserve
 both positions. Move away from the ship before parking if its hull blocks your
-walking exit. The route currently stays inside Drahew; surface and regional travel
-remain pending. See `../docs/remake/parked-pod.md` and `../docs/remake/pod-cargo.md`.
+walking exit. Continue past a city boundary to reach the world surface. Move
+onto a city marker and choose **Enter city** to visit its outdoor streets; return
+to Drahew to dock at your ship. Surface parking retains the pod and cargo while
+you walk into a city. Return to its saved position to board again. Version22
+saves preserve the camera and both locations, including a remote parked pod.
+Other cities' buildings/markets and regional flight remain pending. See
+`../docs/remake/surface-travel.md` and `../docs/remake/parked-pod.md`.
 
 At the exchange, choose a lot under **Offers** and Confirm to buy it into the
 local warehouse. Payment uses the bank first, then cash. Under **Warehouse**,

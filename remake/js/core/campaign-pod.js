@@ -37,6 +37,8 @@ export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryF
   return {attached:value.attached,position:value.position&&{...value.position},heading:value.heading,cargo,occupied};
 }
 export function reduceCampaignPod(previous,geometry,action,city=null) {
+  if(previous.ground&&(previous.ground.cityId!==previous.start.shipLocation.cityId||
+    (previous.pod.occupied&&previous.ground.podCityId!==previous.ground.cityId)))throw new Error('podUnavailable');
   validateCampaignPod(previous.pod,previous.travel,geometry);
   const next=structuredClone(previous),p=next.pod;
   if(action.type==='depart') {

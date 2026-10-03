@@ -1,5 +1,14 @@
 const wrap=(n,size)=>((n%size)+size)%size;
 
+// Pointer coordinates are projected from the viewport into map coordinates.
+// Across a surface seam recover the short on-screen displacement, not the
+// opposite direction obtained by subtracting canonical whole-world positions.
+export function groundPointerDelta(position,pointer,surface=false) {
+  let x=Math.trunc(pointer.x)-3-position.x,y=Math.trunc(pointer.y)+3-position.y;
+  if(surface){x=wrap(x+560,1120)-560;y=wrap(y+288,576)-288}
+  return {x,y};
+}
+
 // Game21 proc26/28, then proc12 $0571–$0666. Cameras are tile origins;
 // positions are whole-map pixels. Horizontal scrolling has priority over Y.
 export function groundCameraAt(position,surface=false) {

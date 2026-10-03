@@ -14,13 +14,14 @@ async browserPage => {
     const from=await state();
     const points=await page.evaluate(async({from,goal})=>{
       const [{loadAssets},{canStand,interactionAt},{tryPodStep,canDockPod,podExchangeAt}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/ship-walk.js'),import('/js/core/city-pod.js')]);
-      const a=await loadAssets(),pod=from.transport==='pod',g=pod?a.cityGeometry.pod:a.shipWalk;
+      const a=await loadAssets();const {createPodGeometry}=await import('/js/core/city-pod.js');a.cityGeometry.pod=createPodGeometry(a.cityGeometry.map,a.campaignContent.ground.cityWalk,{...a.campaignContent.location,position:a.campaignContent.location.shipPosition},{surfaceTravel:true});const routeBounds={left:130,right:955,top:123,bottom:650};const pod=from.transport==='pod',g=pod?a.cityGeometry.pod:a.shipWalk;
       const start=Number(from.y)*g.width+Number(from.x),queue=[start],seen=new Map([[start,null]]);let end;
       for(let i=0;i<queue.length&&end===undefined;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
         for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(dx||dy) {
           const next=pod?tryPodStep(g,p,dx,dy):{position:{x:p.x+dx,y:p.y+dy}};
           if(!next||(!pod&&!canStand(g,next.position)))continue;
+          if(routeBounds&&(next.position.x<routeBounds.left||next.position.x>routeBounds.right||next.position.y<routeBounds.top||next.position.y>routeBounds.bottom)&&pod)continue;
           const n=next.position.y*g.width+next.position.x;if(seen.has(n))continue;
           seen.set(n,{from:k,dx,dy});queue.push(n);
           if(goal==='depart'?interactionAt(next.position)===3:goal==='dock'?canDockPod(g,next.position,next.heading):podExchangeAt(g,next.position,next.heading)){end=n;break}
@@ -58,7 +59,7 @@ async browserPage => {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-01T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-01T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Cargo pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
     const initial=await exported();await route('depart');assert((await state()).transport==='pod','Fresh campaign departs in the pod');
-    const departed=await reload();assert(departed.version===21&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version21 stores source pod departure');
+    const departed=await reload();assert(departed.version===22&&departed.state.pod.position.x===296&&departed.state.pod.position.y===211,'Version22 stores source pod departure');
     await route('exchange');assert((await state()).scene==='exchange','Pod cargo entrance opens the exchange');await buy();await buy();await buy();
     await page.locator('#exchange-cargo').click();const before=await exported();
     await page.locator('#cargo-warehouse-0').click();assert(await page.locator('#exchange-confirm').isEnabled(),'Fetch offers confirmation before transferring');

@@ -35,7 +35,7 @@ async browserPage => {
       for(let i=0;i<queue.length;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
         if(atCityBank(map,p)){end=k;break}
-        for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++) {
+        for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
           if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
@@ -48,7 +48,7 @@ async browserPage => {
     await page.locator('#walk-pause').click();
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
-      const before=await state(),cx=Math.max(0,Math.min(30,Math.floor(Number(before.x)/28)-5)),cy=Math.max(0,Math.min(18,Math.floor(Number(before.y)/32)-3));
+      const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
       await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
       await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
       const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
@@ -73,7 +73,7 @@ async browserPage => {
       await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/banking-import.json');await settled();
       const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
     };
-    assert(original.version===21&&original.scope==='landed-parking-1','Banking exports version21 with active accounts');
+    assert(original.version===22&&original.scope==='landed-ground-1','Banking exports version22 with active accounts');
     assert(original.state.economy.accounts.length===12,'All twelve original system accounts initialize');
     await page.locator('#bank-deposit').click();
     assert(await page.locator('#bank-confirm').isDisabled(),'Zero-amount confirmation is disabled');
@@ -134,10 +134,11 @@ async browserPage => {
     const forged=structuredClone(transferred);forged.state.economy.accounts[11].balance++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects invented wealth');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(transferred.state),'Rejected import leaves the active transaction result intact');
-    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
+    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
     assert((await importGame(legacy)).includes('imported'),'Version11 bank visit migrates through normal import UI');
-    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(original.state),'Legacy migration seeds original accounts without changing prior cash or other state');
-    assert((await importGame(transferred)).includes('imported'),'Valid version21 transfer progress imports');
+    const migratedBank=structuredClone(original.state);migratedBank.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedBank.travel.cityPosition);
+    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedBank),'Legacy migration seeds original accounts without changing prior cash or other state');
+    assert((await importGame(transferred)).includes('imported'),'Valid version22 transfer progress imports');
     await page.locator('#bank-withdraw').click();await page.locator('#bank-step-all').click();await page.locator('#bank-confirm').click();
     assert(await page.locator('#bank-withdraw').isDisabled()&&await page.locator('#bank-transfer').isDisabled(),'Zero account disables withdrawal and transfer');
     const emptied=await exportGame();

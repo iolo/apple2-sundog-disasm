@@ -27,7 +27,7 @@ async browserPage => {
       for(let i=0;i<queue.length;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
         if(scene===3 ? canBoardShip(g,p) : cityDoorAt(map,p)?.scene===scene&&cityDoorAt(map,p)?.type===type){end=k;break}
-        for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++) {
+        for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
           if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
@@ -40,7 +40,7 @@ async browserPage => {
     if((await state()).paused==='true')await page.locator('#walk-pause').click();
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
-      const before=await state(),cx=Math.max(0,Math.min(30,Math.floor(Number(before.x)/28)-5)),cy=Math.max(0,Math.min(18,Math.floor(Number(before.y)/32)-3));
+      const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
       await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
       await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
       const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);

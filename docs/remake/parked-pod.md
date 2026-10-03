@@ -1,9 +1,10 @@
-# Parked pod ownership and boarding — through R08h
+# Parked pod ownership and boarding — through R08l
 
 `remake/js/core/parked-pod.js` implements the source city geometry for an
 unattended pod, foot exit placement and boarding proximity. R08h connects those
 rules to actual parking/boarding, independent player and pod positions, foot
-visits with unattended cargo and version21 saves.
+visits with unattended cargo and version21 saves. R08l extends these rules to
+independent city/surface domains and live version22 saves; see `surface-travel.md`.
 
 ## Source trace
 
@@ -83,7 +84,7 @@ Versions1–20 retain their original restrictions before deriving occupancy from
 attachment. In particular, a version20 envelope cannot contain occupancy or
 independent player/pod positions. Migration preserves active power, pending
 equipment failures, all cargo and account state. Listing/loading does not rewrite
-old slots; explicit save writes version21.
+old slots; the R08h writer used version21, now upgraded to version22 by R08l.
 
 ## Verification and remaining integration
 

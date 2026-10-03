@@ -6,9 +6,10 @@ import { depotPrices, quoteDepotService, purchaseDepotService } from './depot.js
 
 function setup(state,content,geometry) {
   const driving=state.pod.occupied,{travel,start}=state;
+  if(state.ground&&(state.ground.cityId!==start.shipLocation.cityId||(driving&&state.ground.podCityId!==state.ground.cityId)))throw new Error('depotUnavailable');
   if(travel.scene!=='depot'||cityServiceAt(geometry.map,travel.cityPosition,driving?'pod':'foot')!=='depot'||
     (driving&&podServiceAt(geometry.pod,travel.cityPosition,state.pod.heading)!=='depot'))throw new Error('depotUnavailable');
-  validateCampaignPod(state.pod,travel,geometry.pod);
+  if(!state.ground||state.pod.attached||state.ground.podCityId===state.ground.cityId)validateCampaignPod(state.pod,travel,geometry.pod);
   const resources=validateShipResources(state.resources,start),location=start.playerLocation;
   const system=content.dialogue?.systems.systems.find(s=>s.id===location.systemId);
   const account=state.economy.accounts.find(a=>a.systemId===location.systemId);

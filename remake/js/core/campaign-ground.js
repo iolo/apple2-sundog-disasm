@@ -17,7 +17,7 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
   const cityMaps=createCityMaps(maps,navigation,economy,{completedPhase:start.economy.colony.completedPhase});
   const surfaceBase=composeSurfaceMap(maps.worlds.find(m=>m.id===worldId),surfaceWalk.cities);
   const cityIds=new Set(surfaceBase.cities.map(c=>c.cityId));if(worldId==='world-01')cityIds.add('city-60');
-  const cities=new Map(),surfaces=new Map();
+  const cities=new Map(),surfaces=new Map();let footCache=null;
   const size=id=>id==='city-60'?Math.min(9,start.economy.colony.completedPhase):9;
   function city(id,attached) {
     if(!cityIds.has(id))throw new Error('groundUnavailable');
@@ -41,7 +41,10 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
   }
   function foot(state) {
     const {ground,pod}=state,g=city(ground.cityId,pod.attached);
-    return !pod.attached&&ground.podCityId===ground.cityId?parkedPodGeometry(g,g.pod,pod.position,pod.heading):g;
+    if(pod.attached||ground.podCityId!==ground.cityId)return g;
+    const key=`${ground.cityId}/${pod.position.x}/${pod.position.y}/${pod.heading}`;
+    if(footCache?.key!==key)footCache={key,geometry:parkedPodGeometry(g,g.pod,pod.position,pod.heading)};
+    return footCache.geometry;
   }
   return {worldId,cityIds,size,city,surface,foot,surfaceBase};
 }
@@ -53,7 +56,7 @@ export function initialGround(start,position) {
     podCityId:start.shipLocation.cityId,colonyPosition:null,camera:groundCameraAt(position)};
 }
 
-function nearbySurfacePod(player,pod) {
+export function nearbySurfacePod(player,pod) {
   return Math.abs(player.x-pod.x)<=4&&Math.abs(player.y-pod.y)<=4&&
     Math.abs(Math.floor((player.x+3)/28)-Math.floor(pod.x/28))<=1&&
     Math.abs(Math.floor((player.y-3)/24)-Math.floor(pod.y/24))<=1;

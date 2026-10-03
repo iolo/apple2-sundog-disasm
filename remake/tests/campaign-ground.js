@@ -1,5 +1,5 @@
 import { createGroundWorld,initialGround,reduceCampaignGround } from '../js/core/campaign-ground.js';
-import { groundCameraAt,scrollGroundCamera,groundWindow } from '../js/core/ground-camera.js';
+import { groundCameraAt,scrollGroundCamera,groundWindow,groundPointerDelta } from '../js/core/ground-camera.js';
 import { createCampaignStart } from '../js/core/campaign.js';
 import { createCharacter } from '../js/core/character.js';
 import { canStand,tryStep } from '../js/core/ship-walk.js';
@@ -7,12 +7,17 @@ import { canBoardShip,createCityGeometry } from '../js/core/city-walk.js';
 import { tryPodStep,canDockPod } from '../js/core/city-pod.js';
 import { trySurfaceStep,surfaceCityAt,canStandSurface,citySurfaceExit } from '../js/core/surface-walk.js';
 import { campaignSaveCodec } from '../js/core/campaign-saves.js';
+import { campaignDepotOffers,reduceCampaignDepot } from '../js/core/campaign-depot.js';
+import { reduceCampaignBank } from '../js/core/banking.js';
+import { reduceCampaignExchange } from '../js/core/campaign-exchange.js';
+import { reduceCampaignPod } from '../js/core/campaign-pod.js';
+import { cityServiceAt } from '../js/core/city-doors.js';
 import { createPodGeometry } from '../js/core/city-pod.js';
 
 export async function campaignGroundTests(test,equal) {
-  const names=['maps','initial-navigation','initial-economy','initial-location','ship-inventory','city-walk','surface-walk','ship-walk'];
-  const [maps,navigation,economy,location,inventory,cityWalk,surfaceWalk,shipWalk]=await Promise.all(names.map(n=>fetch(`../data/${n}.json`).then(r=>r.json())));
-  const content={maps,navigation,economy,location,inventory,cityWalk,surfaceWalk};
+  const names=['maps','initial-navigation','initial-economy','initial-location','ship-inventory','city-walk','surface-walk','ship-walk','dialogue-systems'];
+  const [maps,navigation,economy,location,inventory,cityWalk,surfaceWalk,shipWalk,systems]=await Promise.all(names.map(n=>fetch(`../data/${n}.json`).then(r=>r.json())));
+  const content={maps,navigation,economy,location,inventory,cityWalk,surfaceWalk,dialogue:{systems}};
   const start=createCampaignStart({...createCharacter(),name:'Ground pilot'},content,12345),world=createGroundWorld(content,start);
   const city=world.city('city-01',false),spawn=city.pod.spawn;
   const legacyGeometry=createCityGeometry(city.map,cityWalk,start.shipLocation);
@@ -60,6 +65,8 @@ export async function campaignGroundTests(test,equal) {
     equal(groundCameraAt({x:296,y:211}),c);
     equal(groundCameraAt({x:0,y:24},true),{x:35,y:0});
     equal(groundCameraAt({x:0,y:0},true),{x:35,y:20});
+    equal(groundPointerDelta({x:1,y:1},{x:1119,y:570},true),{x:-5,y:-4});
+    equal(groundPointerDelta({x:1118,y:575},{x:4,y:0},true),{x:3,y:4});
     equal(scrollGroundCamera(c,{x:186,y:155}),{attempted:{x:5,y:3},camera:c,scrolled:false});
     equal(scrollGroundCamera(c,{x:185,y:153}).attempted,{x:4,y:3});
     equal(scrollGroundCamera(c,{x:200,y:155}).attempted,c);
@@ -106,6 +113,23 @@ export async function campaignGroundTests(test,equal) {
     for(const a of back)s=run(s,a);
     s=run(s,{type:'board'});equal(s.pod,{...parked,occupied:true});equal(s.pod.cargo,cargo);
     roundtrip(s);
+  });
+  await test('Local foot depot servicing preserves a surface pod and rejects remote-city financial actions',()=>{
+    let s=run(surface,{type:'park'});s=run(s,{type:'enterCity'});
+    const parked=structuredClone(s.pod),foot=world.foot(s);
+    for(const a of route(foot,s.travel.cityPosition,p=>cityServiceAt(city.map,p)==='depot',tryStep))s=run(s,a);
+    s.travel.scene='depot';roundtrip(s);
+    equal(campaignDepotOffers(s,content,city)[2].reason,'depotVehicleAbsent');
+    const fixed=reduceCampaignDepot(s,content,city,{type:'repair',units:1});
+    equal(fixed.resources.hull,16);equal(fixed.pod,parked);
+    equal(fixed.economy.accounts[0].balance,s.economy.accounts[0].balance-145);roundtrip(fixed);
+    reject(()=>reduceCampaignDepot(s,content,city,{type:'auxiliary',units:1}),'depotVehicleAbsent');
+    const remote=structuredClone(s);remote.ground.cityId='city-02';const before=JSON.stringify(remote);
+    reject(()=>reduceCampaignDepot(remote,content,city,{type:'repair',units:1}),'depotUnavailable');
+    reject(()=>reduceCampaignBank(remote,city.map,{type:'deposit',amount:1}),'bankUnavailable');
+    reject(()=>reduceCampaignExchange(remote,content,city.map,{type:'enter'}),'exchangeUnavailable');
+    reject(()=>reduceCampaignPod(remote,city.pod,{type:'dock'}),'podUnavailable');
+    equal(JSON.stringify(remote),before);
   });
   function canClear(g,p) {
     // A zero delta is not movement. Probe whether a legal neighboring movement

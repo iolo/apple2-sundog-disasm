@@ -29,7 +29,7 @@ async browserPage => {
       const codec=campaignSaveCodec(a.campaignContent,a.shipWalk,city),s=codec.create({...createCharacter(),name:'Trader pilot'},12345),room=roomAt(city.rooms,city.map,street);
       s.ship.position={x:54,y:118};s.ship.minutes=420;s.ship.inventory.carried=[139,235,0,0];s.dialogue.attributes=[30,40,50,30,81];
       s.dialogue.cash+=5000;s.economy.accounts[0].balance-=5000;
-      s.travel={scene:'room',cityPosition:street,roomPosition:{x:30,y:31}};
+      s.travel={scene:'room',cityPosition:street,roomPosition:{x:30,y:31}};s.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(s.travel.cityPosition);
       const p=populateRoom(room,0),traffic=initialRoomTraffic(p,room);traffic.actors=[traffic.actors.at(-1)];traffic.waiting=0;
       let frame=createRoomCounter(room,traffic,13,s.travel.roomPosition);frame.service='talking';
       frame=openRoomCounter(a.campaignContent.dialogue,room,frame,{...s.dialogue,system:a.campaignContent.dialogue.systems.systems[0],

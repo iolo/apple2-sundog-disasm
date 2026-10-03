@@ -22,7 +22,7 @@ async browserPage => {
         import('/js/core/room-actors.js'),import('/js/core/room-traffic.js')]);
       const assets=await loadAssets(),codec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,assets.cityGeometry);
       const state=codec.create({...createCharacter(),name:'Counter test'},12345),room=assets.cityGeometry.rooms[15],p=populateRoom(room,12345);
-      state.ship.position={x:54,y:118};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:14,y:71}};
+      state.ship.position={x:54,y:118};state.travel={scene:'room',cityPosition:{x:311,y:267},roomPosition:{x:14,y:71}};state.ground.camera=(await import('/js/core/ground-camera.js')).groundCameraAt(state.travel.cityPosition);
       state.encounters={randomState:p.randomState,roomSeed:p.seed,roomState:initialRoomTraffic(p),counter:{service:'idle',conversation:null}};
       const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([JSON.stringify(codec.make(state,0))],{type:'application/json'}));link.download='dialogue-fixture.json';link.click();
     });
@@ -39,7 +39,7 @@ async browserPage => {
     await page.locator('#dialogue-item-0').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='161','First item reaches its source description');
     const english=await page.locator('#dialogue-text').innerText(),saved=await exportGame();
-    assert(saved.version===21&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version21 replay inputs');
+    assert(saved.version===22&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version22 replay inputs');
     await page.locator('#dialogue-language').click();
     assert(await page.locator('html').getAttribute('lang')==='ko','Conversation language switches to Korean');
     const korean=await page.locator('#dialogue-text').innerText();

@@ -34,7 +34,7 @@ async browserPage => {
       for(let i=0;i<queue.length;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
         if(cityDoorAt(map,p)?.scene===6&&cityDoorAt(map,p)?.type===type){end=k;break}
-        for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++) {
+        for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
           if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
@@ -47,7 +47,7 @@ async browserPage => {
     if((await state()).paused==='true')await page.locator('#walk-pause').click();
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
-      const before=await state(),cx=Math.max(0,Math.min(30,Math.floor(Number(before.x)/28)-5)),cy=Math.max(0,Math.min(18,Math.floor(Number(before.y)/32)-3));
+      const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
       await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
       await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
       const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
@@ -64,7 +64,7 @@ async browserPage => {
     await page.keyboard.down('ArrowDown');await page.clock.runFor(200);await page.keyboard.up('ArrowDown');await page.locator('#walk-airlock').click();
     await walkToBuilding(5);const street=await exportGame();await page.locator('#walk-airlock').click();
     const entered=await exportGame(),ex=s=>s.state.economy.exchange;
-    assert(entered.version===21&&entered.scope==='landed-parking-1','Exchange exports version21');
+    assert(entered.version===22&&entered.scope==='landed-ground-1','Exchange exports version22');
     assert(ex(entered).visit.offers.length===8&&ex(entered).market.lastUpdateDay===0,'Ordinary entry creates and persists eight offer rows');
     assert(entered.state.encounters.randomState!==street.state.encounters.randomState,'Entry advances continuing gameplay RNG');
     const cheapest=s=>ex(s).visit.offers.map((o,i)=>({o,i})).filter(r=>r.o).sort((a,b)=>a.o.price-b.o.price)[0].i;
@@ -118,10 +118,11 @@ async browserPage => {
     const forged=structuredClone(again),forgedRow=ex(forged).visit.offers.find(Boolean);forgedRow.price++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects a forged asking price');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Rejected import preserves all live progress');
-    const previous=structuredClone(again);previous.version=13;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
+    const previous=structuredClone(again);previous.version=13;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
     assert((await importGame(previous)).includes('imported'),'Version13 traded exchange progress imports');
-    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Version13 migration preserves cargo, money, market, offers and RNG');
-    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
+    const migratedExchange=structuredClone(again.state);migratedExchange.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedExchange.travel.cityPosition);
+    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedExchange),'Version13 migration preserves cargo, money, market, offers and RNG');
+    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     assert((await importGame(legacy)).includes('imported'),'Version12 exchange preview imports through normal UI');
     const migrated=await exportGame();
     assert(ex(migrated).visit.offers.length===8&&migrated.state.encounters.randomState!==legacy.state.encounters.randomState,'Legacy exchange gets its first board exactly at resume');
