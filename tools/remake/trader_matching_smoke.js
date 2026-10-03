@@ -86,6 +86,7 @@ async browserPage => {
           if(locale==='ko')await page.locator('#dialogue-language').click();
           for(const [width,height] of [[1280,720],[640,480],[390,844],[844,390]]) {
             await page.setViewportSize({width,height});await page.clock.runFor(50);
+            await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
             assert(await page.locator('#dialogue-panel').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.top>=0&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1&&el.scrollWidth<=el.clientWidth&&[...el.querySelectorAll('button')].every(b=>{const q=b.getBoundingClientRect();return q.top>=r.top&&q.bottom<=r.bottom})}),`${locale} referral trade controls fit ${width}x${height}`);
           }
         }
@@ -110,5 +111,9 @@ async browserPage => {
     await page.locator('#walk-airlock').click();const fresh=await exported();
     assert(!fresh.state.dialogue.flags[65]&&!fresh.state.dialogue.flags[66]&&fresh.state.encounters.roomState.tavern.contact===null,'Fresh room entry clears the old referral and starts a new visit');
     assert(errors.length===0,'No uncaught matching errors');return {browser:browser.version(),checks,errors};
-  } catch(e) {return {browser:browser.version(),checks,errors,failures:[e.message]}} finally {await context.close()}
+  } catch(e) {
+    await page.screenshot({path:'output/playwright/remake/trader-matching-error.png'});
+    const layout=await page.locator('#dialogue-panel').evaluateAll(nodes=>nodes.map(el=>({box:el.getBoundingClientRect().toJSON(),scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,viewport:[innerWidth,innerHeight]})));
+    return {browser:browser.version(),checks,errors,failures:[e.message],layout};
+  } finally {await context.close()}
 }

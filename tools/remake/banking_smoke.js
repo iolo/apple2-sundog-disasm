@@ -73,7 +73,7 @@ async browserPage => {
       await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/banking-import.json');await settled();
       const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
     };
-    assert(original.version===18&&original.scope==='landed-depot-1','Banking exports version18 with active accounts');
+    assert(original.version===19&&original.scope==='landed-failures-1','Banking exports version19 with active accounts');
     assert(original.state.economy.accounts.length===12,'All twelve original system accounts initialize');
     await page.locator('#bank-deposit').click();
     assert(await page.locator('#bank-confirm').isDisabled(),'Zero-amount confirmation is disabled');
@@ -134,10 +134,10 @@ async browserPage => {
     const forged=structuredClone(transferred);forged.state.economy.accounts[11].balance++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects invented wealth');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(transferred.state),'Rejected import leaves the active transaction result intact');
-    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
+    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
     assert((await importGame(legacy)).includes('imported'),'Version11 bank visit migrates through normal import UI');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(original.state),'Legacy migration seeds original accounts without changing prior cash or other state');
-    assert((await importGame(transferred)).includes('imported'),'Valid version18 transfer progress imports');
+    assert((await importGame(transferred)).includes('imported'),'Valid version19 transfer progress imports');
     await page.locator('#bank-withdraw').click();await page.locator('#bank-step-all').click();await page.locator('#bank-confirm').click();
     assert(await page.locator('#bank-withdraw').isDisabled()&&await page.locator('#bank-transfer').isDisabled(),'Zero account disables withdrawal and transfer');
     const emptied=await exportGame();

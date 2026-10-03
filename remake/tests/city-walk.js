@@ -57,7 +57,7 @@ export async function cityWalkTests(test,equal) {
     state.ship.position={...SHIP_REENTRY};state.travel={scene:'city',cityPosition:{...geometry.spawn}};
     state.ship.minutes=321;
     const saved=codec.make(state,0),loaded=codec.parse(JSON.stringify(saved));
-    equal(loaded,saved);equal(loaded.version,18);equal(loaded.scope,'landed-depot-1');
+    equal(loaded,saved);equal(loaded.version,19);equal(loaded.scope,'landed-failures-1');
     loaded.state.travel.cityPosition.x++;equal(saved.state.travel.cityPosition,geometry.spawn);
     equal(saved.state.start,fresh().start);equal(saved.state.ship.inventory.carried[0],31);
     equal(saved.state.equipment[0].units[0].performance,0);
@@ -69,7 +69,7 @@ export async function cityWalkTests(test,equal) {
     }
   });
   await test('Version2 migration preserves active equipment and creates only an interior scene',()=>{
-    const old=codec.make(fresh(),0);old.version=2;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-engineering-1';delete old.state.travel;delete old.state.encounters;delete old.state.dialogue;
+    const old=codec.make(fresh(),0);old.version=2;delete old.state.engineering;delete old.state.resources;delete old.state.pod;delete old.state.economy;old.scope='landed-engineering-1';delete old.state.travel;delete old.state.encounters;delete old.state.dialogue;
     old.state.ship.minutes=456;
     const before=JSON.stringify(old),next=codec.parse(before);
     equal(next.state.travel,{scene:'ship',cityPosition:null});equal(next.state.equipment,old.state.equipment);

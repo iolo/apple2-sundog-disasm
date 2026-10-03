@@ -555,5 +555,8 @@
   "depotCompleted": "Service completed.",
   "depotLess": "Fewer units",
   "depotMore": "More units",
-  "depotAll": "Maximum"
+  "depotAll": "Maximum",
+  "equipmentPending": "Checking installed component…",
+  "equipmentFailed": "Component failed. Fit a replacement or compatible shunt.",
+  "equipmentReadiness": "Hull {hull}/16 · Fuel {fuel}/255 · Offline units {offline}/24"
 }

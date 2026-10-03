@@ -1,5 +1,62 @@
 # SunDog web remake progress
 
+## R08d — Live engineering failures, replacement and version19 saves — 2026-10-03
+
+Connected the R08c failure lifecycle to actual engineering-bay access and atomic
+carried/installed exchanges. Faulty components use their masked type for fit,
+retain the original byte and pending source offset, and temporarily contribute
+output before burnout. A working replacement or compatible shunt restores output.
+Displaced parts return to the supplying pocket; failed fits and remote/wrong-bank
+requests preserve state. No fees, RNG draws or game minutes are invented.
+
+The visible engineering frame uses a250ms presentation update, suspended while
+saves are open or the document is hidden. Pending moves wait for resolution to
+avoid the native stale-target replacement hazard. Frame entry deliberately
+recalculates output after destroying encoded parts, canonicalizing the native
+stale cache. These adaptations are recorded in `equipment-failures.md`. The panel
+adds hull/fuel/offline-unit feedback, localized failure messages and Saved games.
+This status display does not grant flight permission.
+
+Version19 `landed-failures-1` persists six pending offsets and validates encoded
+bytes against their corresponding temporary output. Unmatched targets, extra
+faults, forged output and changed metadata fail atomically. Versions1–18 retain
+their historical gates before receiving empty pending state; version18 resources
+and depot cargo survive migration. Updated historical test fixtures to omit the
+new field, including an older version2 browser fixture that also retained fields
+introduced after version2.
+
+The carried-fault browser fixture is explicit. R08c's trader test establishes an
+interpreter producer, not an ordinary current-Drahew faulty-component purchase
+journey: current local availability constrains visitor/referral selection. Fresh
+replacement and servicing journeys are independently exercised. No new landed
+damage event was invented; regional offers and combat remain R09/R10 work.
+
+Validation receipts (Chrome154.0.8037.92):
+
+- `engineering-live-rules-validation.json`:278 rule groups, including six new
+  campaign-engineering groups; no failures or page errors.
+- `engineering-failures-validation.json`:28 UI checks of fit, pending save/pause,
+  burnout, replacement, malformed imports and version18 migration; both locales
+  at four viewport sizes. Korean failure presentation was visually reviewed.
+- `engineering-exchange-regression-validation.json`:37 fresh-character component
+  exchange/shunt/cannibalization and version1/version2 import checks.
+- `engineering-depot-regression-validation.json`:44 fresh-character service,
+  auxiliary cargo, loaded return and version19 persistence checks.
+- `engineering-traders-regression-validation.json`:75 referral/transfer/reload
+  checks. An initial viewport assertion raced the resize handler; the harness now
+  waits for stage dimensions and captures failure diagnostics. The rerun passed
+  without a product layout change; the Korean screenshot was visually reviewed.
+- `engineering-cargo-regression-validation.json`:33 fresh-character loading,
+  capacity, driving, docking, resale and save/reload checks.
+- `engineering-dialogue-regression-validation.json`:19 conversation, localization
+  and replay persistence checks. All236 UI checks pass without page errors.
+
+R08 remains active. Next connect source machinery controls/dependencies, power/fuel
+updates and automatic auxiliary consumption, then independent parked-pod boarding,
+surface traversal and return. The combined acceptance gate remains incomplete;
+`r08-completion.md` preserves every outstanding requirement. No original-emulator
+capture or full-R08 completion is claimed.
+
 ## R08c — Encoded component failure core and corrected repair semantics — 2026-10-03
 
 Traced Game14 procedures7–11 and Library24 procedures8/13 against the current

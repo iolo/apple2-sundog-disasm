@@ -1,3 +1,4 @@
+import { initialEngineering, validateEngineering, canonicalEngineeringGroup } from './campaign-engineering.js';
 import { initialShipResources, validateShipResources } from './ship-resources.js';
 import { initialCampaignPod, validateCampaignPod, validateLocalCargo } from './campaign-pod.js';
 import { createCampaignStart, CREATION_RECIPE } from './campaign.js';
@@ -17,7 +18,7 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
-const VERSION = 18, SCOPE = 'landed-depot-1';
+const VERSION = 19, SCOPE = 'landed-failures-1';
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&
@@ -42,11 +43,12 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
-      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=walk.snapshot(value.ship);
       if (!sameTree(value.ship,ship)) fail();
+      const engineering=version>=19?validateEngineering(value.engineering):initialEngineering();
       let equipment;
       if (version===1) equipment=start.equipment.map(recalculateEquipment);
       else {
@@ -54,11 +56,15 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         equipment=value.equipment.map((group,i)=>{
           const initial=start.equipment[i];
           if (!Array.isArray(group?.units) || group.units.length!==4) fail();
-          for (const unit of group.units) {
-            if (!Array.isArray(unit?.components) || unit.components.length!==4 ||
-                Array.from(unit.components).some((byte,socket)=>!Number.isInteger(byte) || (byte!==0 && byte!==7 && !fitsComponent(initial,byte,socket)))) fail();
+          let expected;
+          if(version>=19)expected=canonicalEngineeringGroup(group,initial,engineering.pendingFailures[i]);
+          else {
+            for(const unit of group.units) {
+              if(!Array.isArray(unit?.components)||unit.components.length!==4||
+                Array.from(unit.components).some((byte,socket)=>!Number.isInteger(byte)||(byte!==0&&byte!==7&&!fitsComponent(initial,byte,socket))))fail();
+            }
+            expected=recalculateEquipment({...initial,units:group.units});
           }
-          const expected=recalculateEquipment({...initial,units:group.units});
           if (!sameTree(group,expected)) fail();
           return expected;
         });
@@ -139,7 +145,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       }
       // Legacy interior saves remain empty until their next entry, preserving
       // the saved position without spawning an occupant on top of the player.
-      return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources};
+      return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering};
     } catch { fail(); }
   }
   function validate(value) {
@@ -159,7 +165,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===14 && value.scope==='landed-purchases-1') ||
       (value?.version===15 && value.scope==='landed-personal-trade-1') ||
       (value?.version===16 && value.scope==='landed-local-cargo-1') ||
-      (value?.version===17 && value.scope==='landed-trader-matching-1');
+      (value?.version===17 && value.scope==='landed-trader-matching-1') ||
+      (value?.version===18 && value.scope==='landed-depot-1');
     if (!keysMatch(value,['format','version','scope','slot','savedAt','state']) ||
         value.format!==CAMPAIGN_FORMAT || (!legacy && (value.version!==VERSION || value.scope!==SCOPE)) ||
         !Number.isInteger(value.slot) || value.slot<0 || value.slot>3 ||
@@ -172,7 +179,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start)};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start),engineering:initialEngineering()};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {

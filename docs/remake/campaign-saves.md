@@ -1,11 +1,11 @@
-# Campaign save boundary — through R08b
+# Campaign save boundary — through R08d
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version18, scope `landed-depot-1`, and validates/upgrades version1 `landed-ship-1`,
+version19, scope `landed-failures-1`, and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
-version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, and version17 `landed-trader-matching-1`.
+version11 `landed-services-1`, version12 `landed-banking-1`, version13 `landed-exchange-1`, version14 `landed-purchases-1`, version15 `landed-personal-trade-1`, version16 `landed-local-cargo-1`, version17 `landed-trader-matching-1`, and version18 `landed-depot-1`.
 `openCampaignStore` gives four indexed slots in the separate
 `sundog-campaigns` database. R04h exposes this through title and ship Saved games;
 see [character-to-ship flow](campaign-ui.md).
@@ -41,10 +41,21 @@ preserved exactly. Fresh room entry clears the request; leaving discards actors.
 
 Version18 adds active `resources` and depot purchases. Legacy saves receive an
 owned copy of initial hull/fuel and inactive machinery after historical validation.
-Only version18 accepts world-origin auxiliary fuel cargo and detached pod depot
+Versions18 onward accept world-origin auxiliary fuel cargo and detached pod depot
 visits. See [depot services](depot-services.md) for source rules and constraints.
 
-The state has nine explicit parts:
+Version19 adds pending faulty installations and their temporary performance cache.
+Versions1–18 validate their original plain installed-part rules before receiving
+an empty engineering state. Version18 resources and depot cargo carry forward.
+See [component failures](equipment-failures.md) for update ordering and browser
+timing adaptations.
+
+The state has ten explicit parts:
+
+- `engineering`: six `pendingFailures` source offsets (`unit*5+socket`), with31
+  meaning none. Only each marked socket may contain a compatible encoded faulty
+  component. Its temporary output uses the masked type; all other output remains
+  canonical. Multiple combat faults are outside this installation-only scope.
 
 - `resources`: current hull/fuel and inactive warp/shield/gun/engine fields.
   Depot purchases change hull/fuel without rewriting the immutable `start` record.
@@ -101,7 +112,7 @@ Current play uses the active state blocks, including `economy.accounts` and
 Carried cash can increase through withdrawals or personal-item sales and decrease
 through purchases, deposits, lodging and bartender tips; system transfers conserve account totals.
 Local warehouse trades update cash/accounts, stock and stored cargo together.
-Other cities, ship resources and navigation are not yet mutable; allowing
+Other cities and navigation are not yet mutable; allowing
 those actions later requires an explicit schema and transition update.
 
 ## Validation and transactions
@@ -112,8 +123,9 @@ independent of JSON object key order. Changed creation balances, cargo, resource
 creation RNG states, locations, old recipes and extra fields fail validation. Validation
 returns newly owned objects; it never silently repairs unsupported progress.
 
-Active equipment accepts empty/destroyed sockets or compatible plain components.
-Validation recomputes unit output, total output and special availability, rejecting
+Active equipment accepts empty/destroyed sockets, compatible plain components,
+and version19's matching pending encoded installation. Validation recomputes unit
+output, total output and special availability, rejecting
 false cached values or changed requirements. Version1 first passes its original
 two-part state checks; only then is active equipment derived from creation data.
 Version2 preserves its validated active equipment. Both acquire an interior
@@ -188,8 +200,8 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version18 only on explicit save. The raw original slot remains the comparison
-record for stale-write protection. Other cities, unattended pod parking, encoded component repair and
+as version19 only on explicit save. The raw original slot remains the comparison
+record for stale-write protection. Other cities, unattended pod parking and
 power/charging controls remain outside this version's supported scope.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
