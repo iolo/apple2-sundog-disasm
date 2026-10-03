@@ -1,5 +1,36 @@
 # SunDog web remake progress
 
+## R08a — Source depot pricing and atomic service core — 2026-10-03
+
+Started R08 against the completed R07 worktree. Traced Game19 procedures18–26
+and Library28 payment/comparison routines. Added an isolated depot core for
+fuel units, hull repair points and auxiliary fuel loads, with source price
+adjustments and overflow/truncation order. Services allow exact funds, spend
+local bank funds before cash, preserve unrelated resources/cargo and reject
+absence, full capacity, malformed state and insufficient funds atomically.
+
+The source's Repair Ship service changes hull only; component damage/repair is
+separate engineering work. Auxiliary fuel uses the current world number in its
+origin byte, rather than an ordinary cargo city. The source leaves its price word
+unwritten; new lots use canonical zero. Paid refueling preserves source remainder
+rounding, including fuel15→47 for one purchased unit; cancelled reviews make no
+resource write. These details and exact source offsets are in
+`docs/remake/depot-services.md`.
+
+Validation: seven new depot groups pass standalone and the full259-group Chrome
+rule suite passes with no failures/page errors (`depot-core-rules-validation.json`).
+Checks include69,632 system-field/hull combinations, all256 fuel starts, exact
+and insufficient funds, bank/cash spill, fixed multi-point repair quotes,
+auxiliary cargo ownership/world origin, absent vehicles and malformed inputs.
+No live depot UI, native emulator capture or new campaign save version is claimed.
+
+R08 remains in progress. Version17 and the read-only depot panel are unchanged.
+Next connect active ship resources, actual depot entry/presence and auxiliary
+cargo to validated saves and localized confirmation controls. The full milestone
+also retains component damage/repair/readiness, parked pod boarding and surface
+travel/return; `docs/remake/r08-completion.md` tracks every requirement.
+
+
 ## R07h — Bartender trader matching, version17 saves and R07 completion — 2026-10-01
 
 Enabled the bartender Buy/Sell referral branches. A request retains its source
