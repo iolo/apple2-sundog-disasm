@@ -2,6 +2,7 @@ import { canDockPod, canDrivePod, podReachability, podExchangeAt, podServiceAt, 
 import { interactionAt } from './ship-walk.js';
 import { SHIP_REENTRY } from './city-walk.js';
 import { initialPodCargo, validateCargoSlots, reduceWarehouseCargo } from './cargo.js';
+import { refuelOnPodDock } from './ship-power.js';
 
 const keys=(v,names)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===names.length&&names.every(k=>Object.hasOwn(v,k));
 const reachability=new WeakMap();
@@ -33,6 +34,8 @@ export function reduceCampaignPod(previous,geometry,action) {
   } else if(action.type==='dock') {
     if(next.travel.scene!=='city'||p.attached||!canDockPod(geometry,p.position,p.heading))throw new Error('podUnavailable');
     p.attached=true;p.position=null;p.heading=16;
+    const refueled=refuelOnPodDock(next.resources.fuel,p.cargo);
+    next.resources.fuel=refueled.fuel;p.cargo=refueled.cargo;
     next.travel={scene:'ship',cityPosition:null};next.ship.position={...POD_REENTRY};
   } else if(action.type==='move') {
     if(next.travel.scene!=='city'||p.attached)throw new Error('podUnavailable');

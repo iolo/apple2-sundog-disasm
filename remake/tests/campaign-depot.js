@@ -64,7 +64,7 @@ export async function campaignDepotTests(test,equal) {
     equal(codec.snapshot(service(s,'repair')),service(s,'repair'));reject(()=>service(s,'auxiliary'),'depotVehicleAbsent');
     reject(()=>service(fresh(),'refuel'),'depotUnavailable');reject(()=>service(leave(arrive()),'refuel'),'depotUnavailable');
   });
-  await test('Auxiliary fuel survives warehouse Store/Fetch and loaded docking without being sold',()=>{
+  await test('Auxiliary fuel survives warehouse Store/Fetch and fills the empty tank on docking without being sold',()=>{
     const s=service(arrive(),'auxiliary',2),lots=structuredClone(s.pod.cargo);
     equal(lots[0],{commodityId:'cargo-01',quality:7,originWorld:'world-01',pricePaid:0});
     let e=leave(s);for(const a of route(e.pod.position,(p,h)=>podServiceAt(g,p,h)==='exchange'))e=run(e,a);
@@ -73,7 +73,7 @@ export async function campaignDepotTests(test,equal) {
     equal(exchangeSaleQuote(e,content,slot),null);reject(()=>trade(e,{type:'sell',slot}),'exchangeNotNegotiable');equal(codec.snapshot(e),e);
     e=run(e,{type:'fetch',slot});e=trade(e,{type:'leave'});
     for(const a of route(e.pod.position,(p,h)=>canDockPod(g,p,h)))e=run(e,a);e=run(e,{type:'dock'});
-    equal(e.pod.cargo,lots);equal(e.resources,s.resources);equal(codec.snapshot(e),e);
+    equal(e.pod.cargo,[null,lots[1]]);equal(e.resources,{...s.resources,fuel:255});equal(codec.snapshot(e),e);
   });
   await test('Version17 migration preserves prior state and rejects injected R08 resource/cargo fields',()=>{
     const current=codec.make(fresh(),0),old=structuredClone(current);old.version=17;delete old.state.engineering;old.scope='landed-trader-matching-1';delete old.state.resources;

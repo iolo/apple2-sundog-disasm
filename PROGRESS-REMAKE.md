@@ -1,5 +1,50 @@
 # SunDog web remake progress
 
+## R08e — Source power phases and live auxiliary docking refill — 2026-10-03
+
+Traced Library24 procedures14–17 and its procedure9 caller. Added an owned power
+phase core with odd-phase gun charging/decay, shield target arithmetic and
+maintenance, cloaker fuel cost, warp charging/discharge and source RNG consumption.
+It preserves the cost/refuel/charge ordering and exact fuel-exhaustion control
+cleanup. Pascal's raw phase FJP uses bit0, so gun charging runs on phases1/3.
+Warp attempts consume RNG and2 fuel even when the performance roll fails. Shield
+target reductions take the immediate negative difference returned by proc14.
+Equipment dependency cleanup composes with this core without re-enabling systems
+after repair. Motion, phase/clock ownership, beacon arrival and combat stay outside
+this pure power-phase operation.
+
+The source has two automatic auxiliary consumers. Library24 proc16 adds255 when
+working fuel is nonpositive and the pod is attached, preserving a deficit and
+stopping after the first load. Game15 proc10 instead sets255 below5 fuel; its
+proc11 caller distinguishes pod return from foot airlock entry via word45 bit13.
+Connected that second helper to the actual validated docking transition. Empty
+tanks consume the first auxiliary lot; full tanks retain loads. Invalid docks,
+ordinary goods, cryogens, money and RNG remain unchanged. Version19 already
+represents these values, so no format extension is required; loading never
+repeats docking or consumes another load.
+
+Validation: eight power rule groups and one campaign docking group added;
+**287 full Chrome rule groups pass**, with no failures or page errors in
+`ship-power-rules-validation.json`. The fixed RNG vector was independently
+calculated with seven bytewise carry shifts (12345→1580217, result23576).
+An older depot rule expected auxiliary cargo to survive docking with an empty
+tank; its assertion now checks the recovered automatic refill behavior.
+
+The extended fresh-character depot test passes **56 UI checks** in Chrome
+154.0.8037.92 (`auxiliary-docking-validation.json`). Besides the prior full-tank
+service/transport journey, it creates another character, buys two auxiliary loads
+without refueling, drives back, docks, saves/reloads and departs/docks again.
+The first return fills the tank and consumes one load; subsequent loads/docks
+preserve the remaining load. The journey uses ordinary controls and purchases,
+without injected cargo or resource state. Existing English/Korean service and
+review viewport checks also pass. `git diff --check` passes.
+
+General machinery is still an isolated core, not an enabled cockpit or engineering
+power UI. Next connect source controls/dependencies and deterministic phase/clock/
+save ownership, then parked-pod boarding and surface traversal/return. Full R08
+acceptance remains open. Source offsets, ordering and integration boundaries are
+in `docs/remake/ship-power.md`; no native-emulator capture is claimed.
+
 ## R08d — Live engineering failures, replacement and version19 saves — 2026-10-03
 
 Connected the R08c failure lifecycle to actual engineering-bay access and atomic

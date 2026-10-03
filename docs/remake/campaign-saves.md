@@ -1,4 +1,4 @@
-# Campaign save boundary — through R08d
+# Campaign save boundary — through R08e
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
 version19, scope `landed-failures-1`, and validates/upgrades version1 `landed-ship-1`,
@@ -43,6 +43,9 @@ Version18 adds active `resources` and depot purchases. Legacy saves receive an
 owned copy of initial hull/fuel and inactive machinery after historical validation.
 Versions18 onward accept world-origin auxiliary fuel cargo and detached pod depot
 visits. See [depot services](depot-services.md) for source rules and constraints.
+R08e's automatic docking refill uses the existing255 fuel/null cargo values and
+therefore retains version19. Only an actual dock consumes a load; importing or
+loading an already-docked save does not repeat it.
 
 Version19 adds pending faulty installations and their temporary performance cache.
 Versions1–18 validate their original plain installed-part rules before receiving

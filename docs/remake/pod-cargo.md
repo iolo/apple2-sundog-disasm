@@ -10,8 +10,12 @@ The two columns show the actual pod and warehouse manifests in English/Korean.
 Return horizontally to the ship and Dock pod. The ship inventory displays the
 same cargo manifest. A loaded pod can depart again, unload at the exchange and
 sell its cargo into the local bank account. Foot visits cannot load a remote pod.
+R08e adds the native auxiliary-fuel docking exception: when ship fuel is below5,
+the first auxiliary lot is consumed and fuel becomes255. Ordinary goods and
+cryogens remain intact; full tanks retain auxiliary loads. See [ship power](ship-power.md).
 The current pod journey is confined to Drahew. Leaving the pod on foot, other
-cities, surface travel and depot work remain the broader R08/R09 transport work.
+cities and surface travel remain the broader R08/R09 transport work. R08b adds
+reachable depot entry and purchases.
 
 ## Source movement and browser presentation
 
