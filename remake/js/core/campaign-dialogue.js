@@ -1,4 +1,5 @@
 import { ATTRIBUTES } from './character.js';
+import { validateDialogueInput as canonicalDialogueInput, MAX_DIALOGUE_INPUTS } from './dialogue-input.js';
 import { campaignLocation } from './regional-world.js';
 import { recordPersonalSales } from './personal-trade.js';
 import { updateLodgingAccess } from './room-lodging.js';
@@ -9,7 +10,7 @@ const keys=(v,names)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).
 const integer=(v,min,max)=>Number.isInteger(v)&&v>=min&&v<=max;
 const array=(v,n,test)=>Array.isArray(v)&&v.length===n&&Object.keys(v).length===n&&Array.from(v).every(test);
 const fail=()=>{throw new Error('invalidCampaign')};
-export const MAX_DIALOGUE_INPUTS=1024;
+export { MAX_DIALOGUE_INPUTS } from './dialogue-input.js';
 export const initialCounter=()=>({service:'idle',conversation:null});
 export function initialCampaignDialogue(start) {
   return {cash:start.credits,attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
@@ -40,13 +41,7 @@ export function validateCounterRecord(value) {
   return {service:value.service,conversation:c===null ? null : {seed:c.seed,inputs:c.inputs.map(validateDialogueInput)}};
 }
 function validateDialogueInput(input) {
-  const fields={sale:['type','slot'],purchase:['type','slot'],reply:['type','slot'],item:['type','item'],offer:['type','direction','step'],cancel:['type'],timeout:['type']};
-  if(!Object.hasOwn(fields,input?.type)||!keys(input,fields[input.type]))fail();
-  if(input.type==='reply'&&!integer(input.slot,0,2))fail();
-  if(['purchase','sale'].includes(input.type)&&!integer(input.slot,0,3))fail();
-  if(input.type==='item'&&!integer(input.item,8,255))fail();
-  if(input.type==='offer'&&(!['increase','decrease'].includes(input.direction)||![1,10,100,1000,10000].includes(input.step)))fail();
-  return Object.fromEntries(fields[input.type].map(k=>[k,input[k]]));
+  try{return canonicalDialogueInput(input)}catch{fail()}
 }
 function setup(state,content) {
   const location=campaignLocation(state,content),index=content.navigation.systems.findIndex(s=>s.id===location.systemId);

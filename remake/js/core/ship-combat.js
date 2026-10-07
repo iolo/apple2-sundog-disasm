@@ -40,6 +40,42 @@ function randomFor(state) {
     get draws(){return draws},range(lo,hi){return lo+this.next()%(hi-lo+1)},
     absorb(result){draws+=result.draws;state.randomState=result.randomState;rng=sourceRandom(result.randomState)}};
 }
+
+// Game12 proc22's Comm preparation; startup proc3 dispatches Game16 kind19.
+export function prepareShipCommunication(previous) {
+  const state=snapshot(previous),f=state.flags;
+  if(!f[40]||f[47])throw Error('shipCommunicationUnavailable');
+  f[35]=f[44]=true;f[48]=f[49]=f[50]=false;
+  return {state,workspace:{item:0,mood:0,quantity:state.words[214]+1},kind:19,sceneMiddle:1};
+}
+
+// Game12 proc9 $0754–$07BE. Agree starts a six-tick cargo deadline; it does
+// not transfer bank money, jettison automatically or grant a permanent truce.
+export function resumeShipCommunication(previous,flags,randomState) {
+  if(!previous?.flags?.[35]||!previous.flags[40]||previous.flags[47])throw Error('shipCommunicationUnavailable');
+  const state=snapshot({...previous,flags,randomState}),f=state.flags;
+  f[35]=f[44]=false;
+  const communication={pending:false,ticks:0};
+  if(f[49]){f[49]=false;state.words[215]=128;state.words[207]=2}
+  else if(f[51]){communication.pending=true;communication.ticks=6;f[51]=false}
+  else f[44]=true;
+  f[41]=false;f[47]=true;
+  return {state,communication};
+}
+
+// Game12 proc10 $0B8A–$0BAC, once after a due power tick. The zero test is
+// performed before decrement, so aggression resumes on the following tick.
+export function stepShipCommunication(previous,communication) {
+  if(!communication||Object.keys(communication).length!==2||
+    typeof communication.pending!=='boolean'||!integer(communication.ticks,0,6)||
+    !communication.pending&&communication.ticks!==0)throw Error('invalidShipCommunication');
+  const state=snapshot(previous),next={...communication};
+  if(next.pending) {
+    if(next.ticks>0)next.ticks--;
+    else {next.pending=false;state.flags[44]=true}
+  }
+  return {state,communication:next};
+}
 function drift(value,type,rng) {
   const limit=4-type;
   return Math.max(-limit,Math.min(limit,value+rng.next()%(limit+1)-(limit>>1)));

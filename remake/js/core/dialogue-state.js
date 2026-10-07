@@ -8,12 +8,16 @@ const money=n=>integer(n,0,32767999); // Canonical positive library28 thousands/
 // Game16 procedures37/38/39, counter kinds12–14, visitors17/21/22 and lodging23. Numeric
 // local identities keep unproven field names out of gameplay semantics.
 export function setupCounterDialogue(input) {
+  return setupDialogue(input,[12,13,14,17,21,22,23],1);
+}
+
+function setupDialogue(input,kinds,firstCity) {
   const {kind,system,attributes,carried,flags,workspace,city,hour,surface,cash,randomState}=input??{};
-  if(![12,13,14,17,21,22,23].includes(kind)||typeof system?.local16!=='boolean'||
+  if(!kinds.includes(kind)||typeof system?.local16!=='boolean'||
     ![29,30,31,32].every(n=>integer(system[`local${n}`],0,15))||
     !list(attributes,5,byte)||!list(carried,4,byte)||!list(flags,128,b=>typeof b==='boolean')||
     !integer(workspace?.lastCity,0,63)||!integer(workspace?.mood,0,4)||
-    !byte(workspace?.quantity)||!byte(workspace?.gate)||!integer(city,1,63)||!integer(hour,0,23)||
+    !byte(workspace?.quantity)||!byte(workspace?.gate)||!integer(city,firstCity,63)||!integer(hour,0,23)||
     !integer(surface?.x,0,63)||!integer(surface?.y,0,31)||!money(cash)||
     ([17,22].includes(kind)&&!byte(workspace?.item)))throw new Error('invalidDialogueSetup');
   sourceRandom(randomState); // Validate, but do not draw: setup38 is a flag-fill loop.
@@ -41,6 +45,45 @@ export function setupCounterDialogue(input) {
       17:null,18:[17,22].includes(kind)&&flags[66],20:workspace.gate!==0,29:system.local29,30:system.local30,
       31:system.local31,32:system.local32,33:[17,22].includes(kind) ? 4 : workspace.mood,36:null,40:system.local30,41:[17,22].includes(kind) ? workspace.item : 0,
       53:[0,0,0],87:thresholds,100:Math.min(cash,fee),102:0,104:cash,106:fee,108:kind===23 ? `${fee} Cr` : '',124:''}}};
+}
+
+// Game16 proc39's case table, not the physical order of its code blocks.
+// The host supplies actual scene/system/colony context. Space has city0.
+export function setupEncounterDialogue(input) {
+  if(!integer(input?.sceneMiddle,0,15)||
+    (input?.kind===19&&!money(input.bankBalance))||
+    (input?.kind===18&&!byte(input.colonyProgress)))throw new Error('invalidDialogueSetup');
+  const setup=setupDialogue(input,[15,16,18,19,22],0),s=setup.state,v=s.locals;
+  const random=sourceRandom(setup.randomState);
+  const quote=amount=>{
+    // Signed Pascal arithmetic can produce a negative amount for malformed or
+    // non-ground quantities. The positive money representation cannot hold it.
+    if(!money(amount))throw new Error('unsupportedDialogueValuation');
+    v[100]=v[106]=amount;v[108]=`${amount} Cr`;
+  };
+  const word=n=>(n<<16)>>16;
+  if(s.kind===15) {
+    const value=random.next()&3071;
+    // Library22 proc36 sums odd numbers, then compares n with r*r-r.
+    // This is nearest integer sqrt, rather than truncation.
+    let root=0;
+    while((root+1)*(root+1)-(root+1)<value)root++;
+    v[40]=word(v[30]*(60-root));
+    v[40]=word(v[40]*word(s.workspace.quantity*s.workspace.quantity));
+    quote(v[40]);s.entry=51;
+  } else if(s.kind===16)s.entry=65;
+  else if(s.kind===18) {
+    const rare=random.next()%100<1; // Eager LAND: draw even if the other terms fail.
+    if(input.colonyProgress>1&&rare&&!s.flags[125]) {
+      quote(10000);s.flags[125]=true;s.entry=224;
+    } else {quote(5+random.next()%41);s.entry=49}
+  } else if(s.kind===19) {
+    v[104]=input.bankBalance;
+    if(input.sceneMiddle===1)s.entry=64;
+    else {quote(479*v[30]);s.entry=50}
+  }
+  setup.randomState=random.state;
+  return setup;
 }
 
 // Game16 procedures2/3, mode0. Refresh the working valuation and strings;

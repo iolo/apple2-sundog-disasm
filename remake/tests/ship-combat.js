@@ -1,7 +1,8 @@
 import { createInitialEquipment } from '../js/core/initialization.js';
 import { recalculateEquipment } from '../js/core/equipment.js';
 import { createEquipmentFailureState } from '../js/core/equipment-failures.js';
-import { produceShipEncounter, stepShipCombat, fireShipGun, jettisonShipCargo } from '../js/core/ship-combat.js';
+import { produceShipEncounter, stepShipCombat, fireShipGun, jettisonShipCargo,
+  prepareShipCommunication, resumeShipCommunication, stepShipCommunication } from '../js/core/ship-combat.js';
 
 const lot=(id=2)=>({commodityId:`cargo-${String(id).padStart(2,'0')}`,quality:7,originCity:'city-01',pricePaid:0});
 const fresh=(seed=29)=>({flags:Array(128).fill(false),
@@ -28,6 +29,44 @@ function byteStream(seed,count) {
 
 export async function shipCombatTests(test,equal) {
   const verifyStream=(seed,result)=>equal(result.state.randomState,byteStream(seed,result.draws).state);
+  await test('Source Comm prepares kind19, resets only48–50 and rejects missing or repeated contacts',()=>{
+    const s=fresh();s.flags[40]=s.flags[48]=s.flags[49]=s.flags[50]=s.flags[51]=true;
+    const before=JSON.stringify(s),r=prepareShipCommunication(s);
+    equal([r.kind,r.sceneMiddle,r.workspace],[19,1,{item:0,mood:0,quantity:2}]);
+    equal([35,44,48,49,50,51].map(n=>r.state.flags[n]),[true,true,false,false,false,true]);
+    equal(r.state.randomState,s.randomState);equal(r.state.cargo,s.cargo);equal(JSON.stringify(s),before);
+    for(const flag of [40,47]) {
+      const next=structuredClone(s);next.flags[flag]=flag===47;
+      let error;try{prepareShipCommunication(next)}catch(e){error=e.message}equal(error,'shipCommunicationUnavailable');
+    }
+  });
+  await test('Source Comm return prioritizes retreat, clears handshake and closes repeat communication',()=>{
+    const s=fresh();s.flags[40]=true;const prepared=prepareShipCommunication(s).state;
+    const flags=[...prepared.flags];flags[49]=flags[51]=true;
+    const r=resumeShipCommunication(prepared,flags,12345);
+    equal([r.state.words[215],r.state.words[207]],[128,2]);equal(r.communication,{pending:false,ticks:0});
+    equal([35,41,44,47,49,51].map(n=>r.state.flags[n]),[false,false,false,true,false,true]);
+    equal(r.state.randomState,12345);equal(r.state.cargo,s.cargo);
+    let error;try{resumeShipCommunication(r.state,r.state.flags,12345)}catch(e){error=e.message}
+    equal(error,'shipCommunicationUnavailable');
+  });
+  await test('Accepted cargo demand grants six source ticks and resumes aggression on the seventh',()=>{
+    const s=fresh();s.flags[40]=true;const prepared=prepareShipCommunication(s).state;
+    const flags=[...prepared.flags];flags[51]=true;
+    let r=resumeShipCommunication(prepared,flags,12345);
+    equal(r.communication,{pending:true,ticks:6});equal(r.state.flags[44],false);equal(r.state.flags[51],false);
+    for(let tick=1;tick<=6;tick++) {
+      r=stepShipCommunication(r.state,JSON.parse(JSON.stringify(r.communication)));
+      equal(r.communication,{pending:true,ticks:6-tick});equal(r.state.flags[44],false);
+      equal(r.state.randomState,12345);equal(r.state.cargo,s.cargo);
+    }
+    r=stepShipCommunication(r.state,r.communication);equal(r.communication,{pending:false,ticks:0});equal(r.state.flags[44],true);
+    equal(stepShipCommunication(r.state,r.communication),r);
+    const hostile=resumeShipCommunication(prepared,prepared.flags,12345);
+    equal(hostile.communication,{pending:false,ticks:0});equal(hostile.state.flags[44],true);
+    let error;try{stepShipCommunication(r.state,{pending:false,ticks:1})}catch(e){error=e.message}
+    equal(error,'invalidShipCommunication');
+  });
   await test('Arrival encounter reproduces the seven-draw source vector, including cryogen cargo',()=>{
     for(const id of [2,30,31]) {
       const s=fresh(2536397490),before=JSON.stringify(s);s.cargo=[lot(id),null];
