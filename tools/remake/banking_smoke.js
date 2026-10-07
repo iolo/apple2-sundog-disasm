@@ -73,7 +73,7 @@ async browserPage => {
       await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/banking-import.json');await settled();
       const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
     };
-    assert(original.version===23&&original.scope==='regional-flight-1','Banking exports version23 with active accounts');
+    assert(original.version===24&&original.scope==='ground-encounters-1','Banking exports version24 with active accounts');
     assert(original.state.economy.accounts.length===12,'All twelve original system accounts initialize');
     await page.locator('#bank-deposit').click();
     assert(await page.locator('#bank-confirm').isDisabled(),'Zero-amount confirmation is disabled');
@@ -134,11 +134,11 @@ async browserPage => {
     const forged=structuredClone(transferred);forged.state.economy.accounts[11].balance++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects invented wealth');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(transferred.state),'Rejected import leaves the active transaction result intact');
-    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
+    const legacy=structuredClone(original);legacy.version=11;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;legacy.scope='landed-services-1';delete legacy.state.economy;
     assert((await importGame(legacy)).includes('imported'),'Version11 bank visit migrates through normal import UI');
-    const migratedBank=structuredClone(original.state);migratedBank.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedBank.travel.cityPosition);
+    const migratedBank=structuredClone(original.state);migratedBank.combat={clock:{scene:null,moving:false,limit:15,minutesPerTick:1,iterations:0,elapsed:0,podDirection:null},ground:null,rewards:[],defeat:null};migratedBank.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedBank.travel.cityPosition);
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedBank),'Legacy migration seeds original accounts without changing prior cash or other state');
-    assert((await importGame(transferred)).includes('imported'),'Valid version23 transfer progress imports');
+    assert((await importGame(transferred)).includes('imported'),'Valid version24 transfer progress imports');
     await page.locator('#bank-withdraw').click();await page.locator('#bank-step-all').click();await page.locator('#bank-confirm').click();
     assert(await page.locator('#bank-withdraw').isDisabled()&&await page.locator('#bank-transfer').isDisabled(),'Zero account disables withdrawal and transfer');
     const emptied=await exportGame();

@@ -1,0 +1,40 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10h",
+  "status": "in progress",
+  "ruleGroups": 431,
+  "uiChecks": 144,
+  "receipts": [
+    {
+      "path": "r10h-rules-validation.json",
+      "kind": "rules",
+      "checks": 431,
+      "browser": "154.0.8037.97"
+    },
+    {
+      "path": "r10h-ground-ui-validation.json",
+      "kind": "ui",
+      "checks": 81,
+      "browser": "154.0.8037.97"
+    },
+    {
+      "path": "r10h-dialogue-validation.json",
+      "kind": "ui",
+      "checks": 19,
+      "browser": "154.0.8037.97"
+    },
+    {
+      "path": "r10h-navigation-validation.json",
+      "kind": "ui",
+      "checks": 44,
+      "browser": "154.0.8037.97"
+    }
+  ],
+  "boundary": "Ground UI uses controlled actual-map imports and declared gate seeds. Navigation uses a fresh ordinary-control campaign. Native full combat outcomes and fresh-character ground/space acceptance remain pending.",
+  "static": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "classifiedStrings": 584,
+    "originalInputHashesVerified": true
+  }
+}

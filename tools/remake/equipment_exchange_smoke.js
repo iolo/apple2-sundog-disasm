@@ -121,7 +121,7 @@ async browserPage => {
     assert((await page.locator('#checkpoint-message').innerText()).includes('Invalid'),'False imported performance is rejected');
     await page.locator('#checkpoint-back').click();const intact=await exportGame();
     assert(JSON.stringify(intact.equipment)===JSON.stringify(changed.equipment),'Rejected import leaves the live repaired equipment intact');
-    const legacy=JSON.parse(JSON.stringify(envelope));legacy.version=1;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-ship-1';delete legacy.state.equipment;
+    const legacy=JSON.parse(JSON.stringify(envelope));legacy.version=1;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy;legacy.scope='landed-ship-1';delete legacy.state.equipment;
     await page.locator('#walk-saves').click();await settled();await importValue(legacy);
     assert((await page.locator('#checkpoint-message').innerText()).includes('imported'),'Version1 campaign imports through the normal save UI');
     await page.locator('#checkpoint-back').click();const upgraded=await exportGame();

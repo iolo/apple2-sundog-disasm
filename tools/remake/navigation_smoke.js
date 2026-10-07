@@ -45,7 +45,7 @@ async browserPage => {
         const keys=[...(p.dx?[p.dx>0?'ArrowRight':'ArrowLeft']:[]),...(p.dy?[p.dy>0?'ArrowDown':'ArrowUp']:[])];
         for(const key of keys)await page.keyboard.down(key);
         for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
-        for(const key of keys)await page.keyboard.up(key);
+        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(50); // Let the source host observe the released movement button.
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
@@ -53,7 +53,7 @@ async browserPage => {
         }else await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
         await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
       }
-      const after=await state();if(goal==='surface'&&after.scene==='surface'){assert(true,'City boundary enters the surface through normal movement');return}if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}`);
+      const after=await state();if(goal==='surface'&&after.scene==='surface'){assert(true,'City boundary enters the surface through normal movement');return}if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${JSON.stringify(p)}; before ${JSON.stringify(before)}`);
     }
     assert(true,`${goal} reached through normal movement (${points.length} steps)`);
     if(goal==='street'){await page.locator('#walk-pause').click();return}
@@ -67,7 +67,7 @@ async browserPage => {
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-07T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-07T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('R09 pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const initial=await exported();assert(initial.version===23&&initial.scope==='regional-flight-1','Live campaign uses regional flight format23');
+    const initial=await exported();assert(initial.version===24&&initial.scope==='ground-encounters-1','Live campaign uses regional flight and ground encounter format24');
     await route('depart');await route('depot');await page.locator('#depot-refuel').click();await page.locator('#depot-all').click();await page.locator('#depot-confirm').click();await page.locator('#service-leave').click();await route('dock');await route('navigation');
     const cancelled=await exported();await page.locator('#nav-launch').click();await page.locator('#nav-cancel').click();assert(JSON.stringify((await exported()).state)===JSON.stringify(cancelled.state),'Destination cancellation changes no campaign state, fuel or RNG');
     for(const lang of ['en','ko']) {

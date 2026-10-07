@@ -1,5 +1,8 @@
 # Ground encounter host and save boundary — R10g
 
+R10h subsequently activates this boundary in the [live ground UI](ground-encounter-ui.md).
+The following scope statement records the original core checkpoint.
+
 This checkpoint joins normal ground movement, the due threat gate, chase,
 mandatory Game16 dialogue, Game17 combat and verified return in one core host.
 Version24 `ground-encounters-1` is opt-in through `content.combat:{chase,ground}`.

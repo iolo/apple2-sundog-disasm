@@ -245,7 +245,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R07 — Trading and banking **(complete, R07h)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport **(complete, R08m)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world **(complete, R09f)** | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
-| R10 — Encounters and combat **(in progress, R10g)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
+| R10 — Encounters and combat **(in progress, R10h)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
 | R11 — Colony campaign | Implement the complete verified contract progression: finding Banville, goods requirements/deliveries, cryogen discovery/transport, staged updates and completion. Complete any remaining campaign-critical content. | Fresh-game-to-ending playthrough using ordinary controls and legitimate resource transactions; duplicate deliveries cannot advance twice; save/resume during progression preserves requirements. Depends on R07–R10 and R01's early campaign research. |
 | R12 — Presentation and audio | Complete SVG coverage for reachable content, source-informed sound effects, transition polish, controls/help, English/Korean editorial pass and small-viewport handling. Add hosted offline caching only if chosen. | No untranslated reachable strings/missing glyphs, missing art, external runtime requests or inaccessible essential controls; audio mute/activation works. Depends on R11; incremental polish is allowed earlier. |
 | R13 — Release validation | Reproduce the core playthroughs, validate all static references and save migrations, document intentional differences and run instructions, and capture Chrome screenshots/behavior receipts. | All acceptance criteria below met and no unacknowledged core-rule blockers. Update history and commit the final checkpoint. Depends on R12. |
@@ -461,6 +461,26 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R10h (2026-10-07) activates version24 ground encounters in the live
+asset loader and UI. Ground movement/time use the source host; chase, mandatory
+dialogue, combat, post-fight return and death markers connect to four slots and
+JSON replay. Source window rows/glyphs render over the frozen return map.
+Arrow/pointer movement, Space/right-click fire, primary-pointer aim mode and
+surrender cancellation have English/Korean controls/help. Personal inventory,
+boarding and pod access remain owned by the encounter until verified return.
+Pause/help/saves retain clock/actors/RNG, and death saves cannot restart time.
+Controlled actual-map UI fixtures prove escape, surrender, source laser victory
+and reward, prior-injury fatal damage and fresh-page continuation. Explicit
+30/60/144Hz browser display timers yield identical live campaign/replay/RNG.
+Existing navigation and room dialogue regressions accompany the full rules.
+Chrome154.0.8037.97 passes431 rule groups and144 UI checks:81 ground encounter,
+19 room dialogue and44 navigation checks.22 exporter tests,171 deterministic
+artifacts,584 classified strings and original input hashes verify.
+See `docs/remake/ground-encounter-ui.md` and `r10h-*-validation.json`.
+R10 remains open: actual ship arrival/power/combat, tactical sensors/aim/fire,
+cargo/cryogen loss, native death/wreck/recovery dispatch, rare reward entry224
+and fresh-character ordinary-play avoid/fight/lose acceptance remain required.
 
 Checkpoint R10g (2026-10-07) joins actual ground movement, source due clock and
 eager threat production to chase, mandatory encounter dialogue, combat and
