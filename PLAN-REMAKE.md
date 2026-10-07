@@ -245,7 +245,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R07 — Trading and banking **(complete, R07h)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport **(complete, R08m)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world **(complete, R09f)** | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
-| R10 — Encounters and combat **(in progress, R10d)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
+| R10 — Encounters and combat **(in progress, R10e)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
 | R11 — Colony campaign | Implement the complete verified contract progression: finding Banville, goods requirements/deliveries, cryogen discovery/transport, staged updates and completion. Complete any remaining campaign-critical content. | Fresh-game-to-ending playthrough using ordinary controls and legitimate resource transactions; duplicate deliveries cannot advance twice; save/resume during progression preserves requirements. Depends on R07–R10 and R01's early campaign research. |
 | R12 — Presentation and audio | Complete SVG coverage for reachable content, source-informed sound effects, transition polish, controls/help, English/Korean editorial pass and small-viewport handling. Add hosted offline caching only if chosen. | No untranslated reachable strings/missing glyphs, missing art, external runtime requests or inaccessible essential controls; audio mute/activation works. Depends on R11; incremental polish is allowed earlier. |
 | R13 — Release validation | Reproduce the core playthroughs, validate all static references and save migrations, document intentional differences and run instructions, and capture Chrome screenshots/behavior receipts. | All acceptance criteria below met and no unacknowledged core-rule blockers. Update history and commit the final checkpoint. Depends on R12. |
@@ -461,6 +461,22 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R10e (2026-10-07) ports Game21's eager ground threat gate, actual
+map/system threshold, cleared chase window, raw-pointer player movement,
+signed-counter chaser cadence, blocked-step catch and strict escape edges.
+A campaign-context producer preserves the legitimate return pose and shared
+RNG. Caught sessions derive the Game17 window from the original screen pose.
+The complete controlled native path now matches all four rolls,36 iterations,
+counter32731, kind16/direction3 and all six initialized combat actors/RNG.
+Thirteen new groups cover production suppression, visitor branches, collision,
+atomic rejection and JSON resume/pause at30/60/144 Hz. All394 Chrome rule groups
+pass without failures/page errors;22 exporter tests,171 deterministic artifacts,
+584 source strings and original input hashes verify. See
+`docs/remake/ground-chase.md` and `r10e-rules-validation.json`. Live version23
+remains current. Next: enemy dialogue setup/outcome dispatch and actual host
+clock/session/save/UI integration; tactical controls, ship encounters, cargo
+loss, defeat/recovery and ordinary avoid/fight/lose remain full R10 gates.
 
 Checkpoint R10d (2026-10-07) records a prepared original-game city encounter
 from a fresh owned MAME0.285/Apple IIe boot on copied disks. Declared city/foot

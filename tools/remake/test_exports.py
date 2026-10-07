@@ -14,6 +14,19 @@ from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_ground_chase_draws_the_native_clear_window_and_full_collision_glyph(self):
+        root = Path(__file__).resolve().parents[2]
+        data = json.loads(build()['data/ground-chase.json'])
+        font = (root / 'assets/font/font.bin').read_bytes()
+        for index in [22, 23, 24]:
+            self.assertEqual(data['glyphs'][str(index)], [n & 127 for n in reversed(font[index*8:index*8+8])])
+        self.assertEqual(data['glyphs']['24'], [127]*8)
+        # Library22 $163E/$164A retain the native colour phase in bit7;
+        # collision and monochrome rendering use their low seven bits.
+        self.assertEqual(data['patterns'], [
+            [0,127,0,0,0,42,85,127,0,42,85,127],
+            [0,127,0,0,0,85,42,127,0,85,42,127]])
+
     def test_flight_starports_match_independent_clean_character_records(self):
         root = Path(__file__).resolve().parents[2]
         captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())

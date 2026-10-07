@@ -60,6 +60,14 @@ initialization comparison. No native shot/damage, negotiation, robbery,
 defeat/recovery, ordinary browser campaign journey or cycle-equivalent timing
 is proven. Timed dialogue-settling experiments are excluded from this receipt.
 
+R10e's [ground-chase port](ground-chase.md) additionally matches this whole
+prepared gate/chase/catch path before initialization: all four native rolls,
+36 chase iterations, counter32731, direction3, kind16 and the intervening RNG
+states. It derives the combat window from the unchanged original screen pose
+and then reaches the same six actors without injecting them. This extends the
+deterministic browser comparison; it does not broaden the controlled native
+capture or establish live campaign acceptance.
+
 ## Reproduction
 
 Start a new owned console using verified local ROMs:
