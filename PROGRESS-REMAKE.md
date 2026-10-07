@@ -1,3 +1,56 @@
+## R10i — Campaign ship host and source scheduling audit — 2026-10-07
+
+Added `campaign-space.js` and opt-in version25 `ship-encounters-1`, joining actual
+regional motion, source production, power and contact combat in scheduler order.
+One campaign owner retains contact flags/words, range memory,12 packed cooldowns
+and normal-clock remainder. Actual resources/equipment/pending failures/cargo/RNG
+commit through their existing owners. Partial due ticks, paused continuation and
+JSON reload agree across normal cadences; active-contact arrival resets its
+cooldown before a world retreat. Successful warp clears40/47 without producing
+a new contact. Live asset loader/UI remains24 pending space controls.
+
+The source audit finds and corrects earlier transcriptions: Library24 `$02BC`
+returns before RNG when engines are off; LAND at `$02D3` allows movement only on
+odd powered phases; phase3 fuel is spent even on failed motion rolls. The
+non-arrival jump `$067E→$04BA` still runs the encounter gate. LEQI at `$0553`
+requires system nibble3 <= roll, and LESI at `$051F` excludes cryogens31 from
+production. Cryogens still qualify for jettison-induced retreat. Previous
+R09f/R10a/R10h statements and receipts predate these corrections; source notes
+and the R09 completion audit now identify the current continuation evidence.
+
+Ship shots spend actual charge/use actual dexterity and wrap the visited kill
+cooldown to4 bits. Source hull/component/shunt damage persists; raw combat caches
+validate separately from historical masked installation caches. Engineering
+burnout clears the cache marker and preserves contact state. Durable ship
+destruction does not invent personal death: the retained-pointer zero-output
+case leaves hull intact, while direct hull0 and simultaneous condition death
+also save/reload and freeze further actions/time. Native recovery remains open.
+
+Jettison removes actual attached-pod lots in reverse source order, retains eager
+RNG and cooldown signals, and aggregates canonical loss receipts. Stored plus
+lost cryogens conserve creation's17-lot multiset exactly; destroyed purchases
+still count in the wealth bound. Duplicate/lost/restored cryogens, bogus cost,
+raw-cache forgery, extra fields and malformed contacts reject atomically. Every
+historical version1–24 validates before migration; historical24 cannot import
+new hull loss, raw combat failures or missing cryogens.
+
+Fourteen new campaign rule groups plus one flight gate regression join the full
+446-group browser suite. Fresh ordinary-control regional regression passes64
+checks: purchases17,100, foreign sales39,200, return570 minutes/fuel108. Navigation
+passes44 checks across both locales/four viewports and real saved charging. The
+smoke test now waits for actual charge and resumes after exporting (which pauses
+play), rather than assuming a lucky first charging roll.22 exporter tests,171
+deterministic artifacts,584 source-string records and all original input hashes
+verify. Receipts are `r10i-{rules,journey,navigation}-validation.json`;
+`space-host.md` documents source boundaries and outstanding integration.
+
+R10 remains active. Next: frozen space Comm context/returns/deadline, native
+sensors/reticle/input and bolt confirmation, then live25 activation/localized
+help and display-refresh/resume proof. Full native death/wreck/recovery, rare
+kind18 target224 and fresh-character ground/space avoid/fight/lose acceptance
+remain required. The core fixtures and regional regression are not substitutes
+for live encounter acceptance. The user PRD remains untouched and untracked.
+
 # SunDog web remake progress
 
 ## R10h — Live ground encounters and version24 activation — 2026-10-07
@@ -262,7 +315,8 @@ evidence and documentation. The user PRD remains untouched and untracked.
 Added isolated ship encounter production, enemy movement/retreat/attacks,
 laser/cannon fire, shields, component/hull damage and cargo jettison. The source
 jump-table audit corrects several easy-to-miss rules: pending attacks run even
-during movement cooldown/aim/retreat; cryogens qualify for pirate production;
+during movement cooldown/aim/retreat; initial cryogen producer eligibility is
+corrected by R10i (source LESI excludes31);
 jettison draws for empty/auxiliary slots; signed16 enemy strength overflow uses
 32767; surviving hull penetration can select multiple groups; an inoperative
 group's retained record pointer can cause defeat without changing actual hull.

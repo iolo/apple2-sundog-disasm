@@ -33,7 +33,7 @@ export function canonicalEngineeringGroup(group,initial,pending) {
 
 export function reduceCampaignEngineering(previous,{type,groupIndex,from,to}) {
   const bay=equipmentBayAt(previous.ship.position);
-  if(previous.travel.scene!=='ship'||bay===null||!Number.isInteger(groupIndex)||groupIndex<0||groupIndex>5||
+  if(previous.travel.scene!=='ship'||previous.space?.defeat||previous.combat?.defeat||bay===null||!Number.isInteger(groupIndex)||groupIndex<0||groupIndex>5||
     Math.floor(groupIndex/3)!==Math.floor(bay/3))throw new Error('equipmentUnavailable');
   const engineering=validateEngineering(previous.engineering),pending=engineering.pendingFailures[groupIndex];
   const next=structuredClone(previous),session={group:next.equipment[groupIndex],pendingFailure:pending};
@@ -62,6 +62,7 @@ export function reduceCampaignEngineering(previous,{type,groupIndex,from,to}) {
     message=byte>127?'equipmentPending':exchanged.message;
   } else throw new Error('equipmentUnavailable');
   next.equipment[groupIndex]=result.group;next.engineering.pendingFailures[groupIndex]=result.pendingFailure;
+  if(next.space)next.space.combatFailures[groupIndex]=false;
   return {state:reconcileMachinery(next),message};
 }
 

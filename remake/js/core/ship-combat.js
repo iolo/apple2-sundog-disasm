@@ -81,16 +81,17 @@ function drift(value,type,rng) {
   return Math.max(-limit,Math.min(limit,value+rng.next()%(limit+1)-(limit>>1)));
 }
 
-// Library24 proc12 $04BA–$0621: arrival-only encounter production, after the
-// movement roll/arrival. Packed system nibbles3/7 are supplied by the host.
+// Library24 proc12 $04BA–$0621: engine-powered movement production. The
+// non-arrival jump at $042D also reaches this gate. System nibbles3/7 come
+// from the host; the historical API name `piracy` denotes the lower bound.
 export function produceShipEncounter(previous,{cityPresent,system}={}) {
   const state=snapshot(previous),rng=randomFor(state),f=state.flags,w=state.words;
   if(typeof cityPresent!=='boolean'||!integer(system?.piracy,0,15)||!integer(system?.cooldown,0,15))fail();
   const nextSystem={...system};let produced=false;
   if(!f[40]&&!f[12]&&!f[36]) {
     const roll=rng.next()&15; // Eager LAND draws even when a city is present.
-    const valuable=state.cargo.some(l=>l&&Number(l.commodityId.slice(6))>1&&Number(l.commodityId.slice(6))<=31);
-    if(!cityPresent&&roll===13&&valuable&&system.piracy>=(rng.next()&15)) {
+    const valuable=state.cargo.some(l=>l&&Number(l.commodityId.slice(6))>1&&Number(l.commodityId.slice(6))<31);
+    if(!cityPresent&&roll===13&&valuable&&system.piracy<=(rng.next()&15)) {
       if(system.cooldown<=(rng.next()&7)) {
         w[214]=rng.next()&3;f[40]=f[41]=f[44]=true;f[45]=f[46]=f[47]=false;
         w[217]=state.rangeMemory=127;w[206]=rng.next()&1023;w[205]=rng.next()&1023;

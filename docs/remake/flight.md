@@ -16,9 +16,12 @@ attached pod, flight progress and gameplay RNG belong to campaign state.
 | Capital landing tile, other-city pilotage and side selection | Game13 proc26 `$10C4–$123B`, proc12 `$12E9–$12F1` |
 | Distress delay and one-time fuel255 | Game13 proc52 `$2512–$257A`, Library24 proc15 `$0DAE–$0DF4` |
 
-The source eagerly draws the motion RNG even when engines are off. Motion runs
-before existing machinery power and uses its four-phase clock. No second clock
-or fuel ledger is introduced. A detached pod stays on its original world.
+R10i corrects the earlier engines-off RNG transcription: `$02BC→$0678→$0676`
+returns before RNG when flag1 is off. With engines on, every phase draws, but
+LAND at `$02D3` permits motion only on odd phases. `$0416–$0423` deducts phase3
+fuel even when the motion roll fails. Motion runs before existing machinery
+power and uses its four-phase clock. No second clock or fuel ledger is
+introduced. A detached pod stays on its original world.
 
 Explicit browser adaptation: the native planetary animation becomes a resumable
 five/twenty game-minute transition using its displayed ETA. This is not a claim
@@ -75,3 +78,11 @@ R09 is complete at R09f. The [completion audit](r09-completion.md) and
 [validation inventory](r09-validation-summary.json) supersede intermediate
 checkpoint totals:345 rule groups,667 UI checks and the audited ordinary-play
 two-system trade/refuel/return/reload journey pass.
+
+R10i's producer audit also follows the non-arrival pointer `$067E→$04BA`: pirate
+production runs during powered motion, not only on arrival. The opted-in ship
+host preserves contact flags through power and runs combat afterward. Its
+normal-clock remainder survives partial-tick JSON saves; the live loader stays
+version24 until space UI activation. These flight corrections apply to the live
+version24 runtime as well. The R09f/R10h receipts predate them; R10i records new
+regional journey and navigation regression receipts.

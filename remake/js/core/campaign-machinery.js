@@ -2,6 +2,7 @@ import { stepShipPower } from './ship-power.js';
 import { equipmentDependencyResult } from './equipment-failures.js';
 import { conditionHour } from './survival.js';
 import { stepCampaignFlight,finishCampaignFlight } from './campaign-flight.js';
+import { campaignShipSource,commitCampaignShipSource,stepCampaignSpaceProducer,stepCampaignSpaceCombat } from './campaign-space.js';
 
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
 export const initialMachinery=()=>({phase:0,cloaked:false});
@@ -14,6 +15,7 @@ export function validateMachinery(value,equipment,resources) {
 }
 
 function sourceState(state) {
+  if(state.space)return campaignShipSource(state);
   const r=state.resources,flags=Array(128).fill(false);
   flags[0]=r.warp.charging;flags[1]=r.enginesPowered;
   flags[2]=r.guns.powered;flags[4]=r.shields.targetCharge>0;flags[7]=state.pod.attached;flags[12]=state.machinery.cloaked;
@@ -21,6 +23,7 @@ function sourceState(state) {
     cargo:state.pod.cargo,randomState:state.encounters.randomState};
 }
 function applySource(state,source) {
+  if(state.space){commitCampaignShipSource(state,source);return}
   const r=state.resources,w=source.words;
   r.fuel=w[227];r.guns={charge:w[226],powered:source.flags[2]};r.shields={charge:w[225],targetCharge:w[224]};
   state.machinery.cloaked=source.flags[12];state.pod.cargo=source.cargo;state.encounters.randomState=source.randomState;
@@ -37,7 +40,7 @@ export function reconcileMachinery(state) {
   return state.flight?finishCampaignFlight(next):next;
 }
 export function reduceMachineryControl(previous,action) {
-  if(previous.travel.scene!=='ship')throw Error('machineryUnavailable');
+  if(previous.travel.scene!=='ship'||previous.space?.defeat||previous.combat?.defeat)throw Error('machineryUnavailable');
   const next=structuredClone(previous),r=next.resources;
   if(action.type==='guns'&&typeof action.enabled==='boolean') {
     if(action.enabled&&next.equipment[2].performance===0)throw Error('machineryInoperative');
@@ -54,13 +57,22 @@ export function reduceMachineryControl(previous,action) {
 }
 
 // One owner for the aboard clock and power phases. Normal cycles250ms, sleep
-// cycles50ms; source clock advances at phase1. Fractional browser time is transient.
-export function advanceCampaignMachinery(previous,survival,milliseconds,paused=false) {
+// cycles50ms; source clock advances at phase1. Space-enabled saves own the
+// integer millisecond remainder; historical hosts retain their transient clock.
+export function advanceCampaignMachinery(previous,survival,milliseconds,paused=false,content=null) {
   if(previous.travel.scene!=='ship')throw Error('machineryUnavailable');
-  if(paused||survival.dead)return {state:previous,survival:{...survival,elapsed:0},cycles:0};
-  const elapsed=survival.elapsed+Math.max(0,Math.min(250,milliseconds));
-  if(elapsed<(survival.sleeping?50:250))return {state:previous,survival:{...survival,elapsed},cycles:0};
-  let next=structuredClone(previous);const s={...survival,condition:{...survival.condition},elapsed};
+  const space=!!previous.space;
+  if(space&&(!integer(milliseconds,0,60000)||!content?.dialogue?.systems))throw Error('invalidCampaignSpace');
+  const ownedSurvival=space?{...survival,minutes:previous.ship.minutes,condition:{...previous.ship.condition},
+    dead:previous.ship.condition.vigor===0||!!previous.space.defeat||!!previous.combat.defeat}:survival;
+  if(paused||ownedSurvival.dead||previous.combat?.defeat)
+    return {state:previous,survival:{...ownedSurvival,elapsed:space?previous.space.elapsed:0},cycles:0};
+  const elapsed=(space?previous.space.elapsed:ownedSurvival.elapsed)+(space?milliseconds:Math.max(0,Math.min(250,milliseconds)));
+  if(elapsed<(ownedSurvival.sleeping?50:250)) {
+    const state=space?structuredClone(previous):previous;if(space)state.space.elapsed=elapsed;
+    return {state,survival:{...ownedSurvival,elapsed},cycles:0};
+  }
+  let next=structuredClone(previous);const s={...ownedSurvival,condition:{...ownedSurvival.condition},elapsed};
   let cycles=0;
   while(!s.dead&&s.elapsed>=(s.sleeping?50:250)) {
     const sleeping=s.sleeping;s.elapsed-=sleeping?50:250;
@@ -72,12 +84,15 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
         if(hour.exhausted&&!s.sleeping&&!s.dead){s.sleeping=true;s.forced=true;s.sleepPhase=0}
       }
     }
+    next.ship.minutes=s.minutes;
     let workingFuel=next.resources.fuel;
     if(next.flight) {
       const moved=stepCampaignFlight(next,phase);next=moved.state;workingFuel=moved.workingFuel;
+      if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived});
     }
     applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase,workingFuel).state);
     if(next.flight){next.ship.minutes=s.minutes;next=finishCampaignFlight(next)}
+    if(space){next=stepCampaignSpaceCombat(next);if(next.space.defeat)s.dead=true}
     next.machinery.phase=phase%4;cycles++;
     if(sleeping) {
       s.sleepPhase=(s.sleepPhase+1)%2;
@@ -87,5 +102,7 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
   }
   if(s.dead){s.sleeping=false;s.elapsed=0}
   next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  if(space)next.space.elapsed=s.elapsed;
+  if(s.condition.vigor===0&&next.combat&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
   return {state:next,survival:s,cycles};
 }

@@ -59,7 +59,7 @@ export async function campaignFlightTests(test,equal) {
       equal(canStand(g,g.spawn),true);equal(g.pod.spawn!==null,true);
     }
   });
-  await test('Sublight movement spends fuel only on successful phase3 steps and HALT preserves the current position',()=>{
+  await test('Powered sublight spends phase3 fuel and HALT preserves the current position',()=>{
     let state=launch(fresh());state.equipment[1].performance=16;
     state=act(state,{type:'sublight',angle:0});const from=structuredClone(state.regional.shipLocation.orbit),fuel=state.resources.fuel;
     state.machinery.phase=2;state=ticks(state,1);equal(state.resources.fuel,fuel-1);equal(state.flight.motion.progress,1);
@@ -71,8 +71,17 @@ export async function campaignFlightTests(test,equal) {
   });
   await test('Source LESI requires a motion roll strictly below engine performance',()=>{
     let s=act(launch(fresh()),{type:'sublight',angle:0});s.encounters.randomState=512;s.equipment[1].performance=1;s.machinery.phase=2;
-    const rng=sourceRandom(512);equal(rng.next()&15,1);const stopped=ticks(s,1);equal(stopped.flight.motion.progress,0);equal(stopped.resources.fuel,s.resources.fuel);equal(stopped.encounters.randomState,rng.state);
+    const rng=sourceRandom(512);equal(rng.next()&15,1);const stopped=ticks(s,1);equal(stopped.flight.motion.progress,0);equal(stopped.resources.fuel,s.resources.fuel-1);equal(stopped.encounters.randomState,rng.state);
     s.equipment[1].performance=2;const moved=ticks(s,1);equal(moved.flight.motion.progress,1);equal(moved.resources.fuel,s.resources.fuel-1);
+  });
+  await test('Library24 flag1 returns before RNG, while powered even phases draw without moving',()=>{
+    const base=fresh(),rng=base.encounters.randomState;
+    equal(ticks(base,4).encounters.randomState,rng);
+    const orbit=launch(base);equal(orbit.encounters.randomState,rng);
+    let moving=act(orbit,{type:'sublight',angle:0});moving.equipment[1].performance=16;moving.machinery.phase=1;
+    const stream=sourceRandom(moving.encounters.randomState);stream.next();
+    const even=ticks(moving,1);equal(even.flight.motion.progress,0);equal(even.encounters.randomState,stream.state);
+    const odd=ticks(even,1);equal(odd.flight.motion.progress,1);equal(odd.resources.fuel,moving.resources.fuel-1);
   });
   await test('Warp charging shares source power phases/RNG and cancellation discharges without refunding fuel',()=>{
     let state=fresh();const target='system-02',required=warpRequirement(state.start.systems,'system-01',target);
