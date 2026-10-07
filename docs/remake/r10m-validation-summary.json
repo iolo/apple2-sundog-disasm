@@ -1,0 +1,33 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10m",
+  "date": "2026-10-08",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 27,
+  "ruleGroups": 482,
+  "newCampaignTacticalRuleGroups": 12,
+  "tacticalCoreRuleGroups": 13,
+  "browserUiChecks": 0,
+  "receipts": [
+    {
+      "receipt": "r10m-rules-validation.json",
+      "kind": "rules",
+      "checks": 482,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584
+  },
+  "boundaries": [
+    "Campaign tactical tests use declared working equipment, fuel, contacts and cargo. They do not establish ordinary-play acceptance.",
+    "Logical tactical frames use50ms and initial grace0 is a declared browser adaptation, not native CPU timing or universal stack contents.",
+    "Discrete submenu actions represent completed button release; selected submenus do not hold future main frames in the release-poll loop.",
+    "Version27 validates historical1–26 before migration; source zero-output gun-loop power is allowed only with a validated firing record in27.",
+    "Live UI remains24. Native aim/fire/Comm input, source inhibition/salvage, live controls, display-refresh/sleep/reload and ordinary encounter acceptance remain required.",
+    "Full native death/wreck/recovery and rare reward224 remain R10 gates. R09 stays complete; colony progression remains R11."
+  ]
+}

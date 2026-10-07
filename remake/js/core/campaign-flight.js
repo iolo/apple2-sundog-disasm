@@ -66,7 +66,7 @@ export function landingLocation(state,content,cityId) {
 
 export function reduceCampaignFlight(previous,content,action) {
   if(!previous.regional||!previous.flight||previous.travel.scene!=='ship'||previous.pod.occupied||previous.space?.defeat||previous.combat?.defeat||previous.space?.communication?.conversation||previous.space?.activity?.sleeping)throw Error('flightUnavailable');
-  const next=structuredClone(previous),r=next.resources,f=next.flight,ship=currentShipLocation(next),mode=flightMode(next);
+  let next=structuredClone(previous);const r=next.resources,f=next.flight,ship=currentShipLocation(next),mode=flightMode(next);
   const busy=()=>{if(f.motion)throw Error('flightBusy')};
   const engine=()=>{if(r.fuel===0)throw Error('machineryNoFuel');if(next.equipment[1].performance===0)throw Error('flightNoEngines')};
   if(action.type==='cancelWarp') {
@@ -95,7 +95,7 @@ export function reduceCampaignFlight(previous,content,action) {
     } else f.lastEvent='flightGravityFailure';
     next.encounters.randomState=rng.state;
     r.warp={charge:0,targetCharge:0,targetSystemId:null,charging:false};r.enginesPowered=false;
-    if(success)finishCampaignSpaceWarp(next);
+    if(success)next=finishCampaignSpaceWarp(next,content);
   } else if(action.type==='sublight') {
     busy();engine();if(mode==='landed')throw Error('flightUnavailable');
     let destination;

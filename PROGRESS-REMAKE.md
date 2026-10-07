@@ -1,3 +1,44 @@
+## R10m — Saved campaign tactical frames and entry calls — 2026-10-08
+
+Connected the tactical record to actual campaign machinery through opt-in27
+`ship-tactical-1` (`content.space:true,tactical:true`). Saved reticle/cache/menu,
+armed choices, held x/y/fire and a50ms logical-frame remainder retain the source
+main bit0/firing/due dispatch, pre/post-call movement and phase1 counter354 reset.
+Shots, contact, actual resource charges, damage, system cooldown and RNG keep
+their existing campaign owners. Normal entry commits its three startup calls
+once. Successful warp commits its prior call followed by those three; gravity
+failure does not enter the sequence. Comm stores byte-sized reticle values and
+restores them without repeating startup. Sleep/destruction releases the firing
+controller, retaining durable terminal state.
+
+The source proc15 release loop `$0F17–$0F3B` returns after buttons are released;
+a selected submenu alone does not keep later main frames in polling. The core
+now requires explicit polling, while discrete campaign submenu actions represent
+completed release input. Initial grace0 and50ms logical-frame duration remain
+declared browser adaptations, not native universal stack data or CPU timing.
+
+Versions1–26 validate historically first. An active26 save receives the missing
+controller without RNG/time/resource changes, preserving its full0–249ms budget
+in carry until the first unpaused advance or ship-view exit. Current tactical
+remainders are0–49ms. Exact record/input/Comm/view/terminal checks reject invalid
+imports. Valid source inoperative gun loops may retain power in27; historical26
+remains strict. Armed jettison commits actual losses and paid costs, excludes
+cryogens31 from selectable slots and preserves pending cargo deadlines.
+
+Twelve new campaign groups cover entry/targeting vectors, native frame ordering,
+30/60/144Hz rules-state equivalence, partial reload/pause, gun/menu/sensor gates,
+actual losses/wealth, Comm/deadline, warp, sleep/defeat and atomic rejection.
+These are declared working-equipment/fuel/contact/cargo contexts, not ordinary
+campaign acceptance. All482 Chrome155 rule groups and22 exporter tests pass;
+171 deterministic artifacts and584 classified source records verify. See
+`docs/remake/r10m-rules-validation.json` and `ship-tactical.md`.
+
+R10 remains active. Live UI stays24 pending native aim/fire/Comm observations,
+source inhibition/salvage and controls. Live display-refresh/sleep/reload,
+ordinary ground/space avoid/fight/lose with gear/shields, full native
+wreck/death/recovery and rare reward224 remain required. R09 stays complete;
+colony progression remains R11. The user PRD remains untouched and untracked.
+
 ## R10l — Native tactical entry/frame reference and redraw correction — 2026-10-08
 
 Two owned MAME0.285 Apple IIe/joystick sessions on copied media record25 source

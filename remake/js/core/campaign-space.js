@@ -5,6 +5,8 @@ import { produceShipEncounter,stepShipCombat,fireShipGun,jettisonShipCargo,
   prepareShipCommunication,resumeShipCommunication,stepShipCommunication } from './ship-combat.js';
 import { startEncounterDialogue,restoreEncounterDialogue,advanceEncounterDialogue,validateEncounterDialogueRecord } from './encounter-dialogue.js';
 import { validateCampaignDialogue } from './campaign-dialogue.js';
+import { validateShipTactical,selectShipTacticalMenu,confirmShipJettison,setShipTacticalGun } from './ship-tactical.js';
+import { enterCampaignShipTactical } from './campaign-machinery.js';
 
 const LEGACY_CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
 const CONTACT_FLAGS=Object.freeze([29,35,36,40,41,42,43,44,45,46,47]);
@@ -26,11 +28,36 @@ export const initialShipActivity=()=>({sleeping:false,forced:false,sleepPhase:0}
 
 // Utility12 $0289–$0291 clears system word8/nibble7 for all12 systems.
 // Resource, equipment, cargo and RNG fields have existing campaign owners.
-export const initialCampaignSpace=()=>({flags:Array(128).fill(false),
+export const initialCampaignSpace=({tactical=false}={})=>({flags:Array(128).fill(false),
   words:{205:512,206:512,207:0,208:0,209:0,214:0,215:0,216:0,217:127,347:0,354:0},
   rangeMemory:127,cooldowns:Array(12).fill(0),elapsed:0,view:'ship',
   combatFailures:Array(6).fill(false),losses:[],defeat:null,
-  communication:initialShipCommunication(),activity:initialShipActivity()});
+  communication:initialShipCommunication(),activity:initialShipActivity(),...(tactical?{tactical:null}:{})});
+
+export const neutralShipControl=()=>({x:0,y:0,fire:false});
+export function validateShipControl(value) {
+  if(!keys(value,['x','y','fire'])||![value.x,value.y].every(n=>integer(n,-8,8))||typeof value.fire!=='boolean')fail();
+  return {...value};
+}
+// Migration does not re-enter Game12 or spend its startup RNG/time. Historical
+// saves have no reticle; initialize that missing browser state explicitly.
+export function migrateCampaignTactical(campaign,space) {
+  const next=structuredClone(space);
+  next.tactical=next.view==='tactical'&&!next.defeat&&!campaign.combat.defeat?{
+    record:{reticle:{angle:currentShipLocation(campaign).orbit.angle,radius:128},contact:next.flags[40],
+      visible:false,grace:0,focused:true,firing:false,sensors:campaign.equipment[3].performance,
+      frameLimit:5,menu:0,jettisonChoices:null},control:neutralShipControl(),carry:next.elapsed}:null;
+  if(next.tactical)next.elapsed=0;
+  return next;
+}
+export function clearCampaignTactical(state) {
+  if(Object.hasOwn(state.space,'tactical')) {
+    if(state.space.tactical?.record.firing)state.resources.guns.powered=false;
+    if(state.space.tactical)state.space.elapsed+=state.space.tactical.carry;
+    state.space.tactical=null;
+  }
+  return state;
+}
 
 export function validateSpaceLosses(value) {
   if(!Array.isArray(value)||!dense(value,value.length)||value.length>512)fail();
@@ -58,8 +85,8 @@ export function canonicalCombatEngineeringGroup(group,initial,pending) {
   return recalculateEquipment({...initial,units});
 }
 
-export function validateCampaignSpace(campaign,value,{communication=true,content}={}) {
-  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[])])||
+export function validateCampaignSpace(campaign,value,{communication=true,tactical=false,content}={}) {
+  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[]),...(tactical?['tactical']:[])])||
     !dense(value.flags,128)||!value.flags.every((b,i)=>typeof b==='boolean'&&((communication?CONTACT_FLAGS:LEGACY_CONTACT_FLAGS).includes(i)||!b))||
     !keys(value.words,CONTACT_WORDS.map(String))||!dense(value.cooldowns,12)||!value.cooldowns.every(n=>integer(n,0,15))||
     !dense(value.combatFailures,6)||!value.combatFailures.every(b=>typeof b==='boolean')||
@@ -87,6 +114,19 @@ export function validateCampaignSpace(campaign,value,{communication=true,content
     if(c.conversation!==null) {
       if(!next.flags[40]||next.flags[47]||!next.flags[44]||next.view!=='tactical'||c.pending||next.words[354]!==0||campaign.dialogue.flags.slice(48,51).some(Boolean))fail();
       restoreCampaignShipCommunication({...campaign,space:next},content);
+    }
+  }
+  if(tactical) {
+    const controller=next.tactical,terminal=next.defeat||campaign.combat.defeat;
+    if((controller!==null)!==(next.view==='tactical'&&!terminal))fail();
+    if(controller!==null) {
+      if(!keys(controller,['record','control','carry'])||next.activity.sleeping||next.elapsed>=50||
+        !integer(controller.carry,0,249)||controller.carry>0&&next.elapsed!==0)fail();
+      controller.record=validateShipTactical(controller.record);controller.control=validateShipControl(controller.control);
+      if(controller.record.frameLimit!==5)fail();
+      if(next.communication.conversation&&(controller.record.menu!==0||controller.record.firing||
+        controller.record.reticle.angle<0||controller.record.reticle.angle>255||controller.record.reticle.radius<0||controller.record.reticle.radius>255||
+        !sameTree(controller.control,neutralShipControl())))fail();
     }
   }
   return next;
@@ -146,8 +186,9 @@ export function stepCampaignSpaceCombat(previous) {
   return commitCampaignShipSource(next,result.state,{combatDamage:true});
 }
 
-export function finishCampaignSpaceWarp(state) {
+export function finishCampaignSpaceWarp(state,content) {
   if(state.space){leaveCampaignShipDeadline(state);state.space.flags[40]=state.space.flags[47]=false;state.space.view='tactical'}
+  if(state.space&&Object.hasOwn(state.space,'tactical'))return enterCampaignShipTactical(clearCampaignTactical(state),content,{warp:true});
   return state;
 }
 
@@ -193,6 +234,12 @@ export function reduceCampaignShipCommunication(previous,content,action) {
   const next=structuredClone(previous),c=next.space.communication;
   if(action.type==='comm') {
     if(c.conversation)throw Error('shipCommunicationUnavailable');
+    if(next.space.tactical) {
+      const t=next.space.tactical;
+      if(t.record.menu!==0||t.record.firing)throw Error('shipCommunicationUnavailable');
+      // Game12 stores bytes16/17 before handing control to Game16.
+      t.record.reticle={angle:t.record.reticle.angle&255,radius:t.record.reticle.radius&255};t.control=neutralShipControl();
+    }
     const prepared=prepareShipCommunication(campaignShipSource(next));
     commitCampaignShipSource(next,prepared.state);
     next.space.words[354]=0; // Game16 proc30 $0E4E–$0E62, scene-middle<3.
@@ -211,6 +258,11 @@ export function reduceCampaignShipCommunication(previous,content,action) {
         {visitors:true,traderMatching:true,groundEncounters:true});
       next.ship.inventory.carried=[...out.carried];commitCampaignShipSource(next,resumed.state);
       c.conversation=null;Object.assign(c,resumed.communication);
+      if(next.space.tactical) {
+        const t=next.space.tactical;
+        Object.assign(t.record,{contact:next.space.flags[40],visible:false,focused:true,firing:false,
+          sensors:next.equipment[3].performance,menu:0,jettisonChoices:null});t.control=neutralShipControl();
+      }
     } else {c.conversation.record=result.record;next.encounters.randomState=result.conversation.randomState}
   } else throw Error('shipCommunicationUnavailable');
   return next;
@@ -218,28 +270,41 @@ export function reduceCampaignShipCommunication(previous,content,action) {
 
 // These reducers operate on the actual aboard state. UI sensor/reticle mapping
 // and the source bolt-arming confirmation are separate controls, still pending.
-export function reduceCampaignSpace(previous,action) {
+export function reduceCampaignSpace(previous,action,content=null) {
   if(!previous.space||previous.travel.scene!=='ship'||previous.space.defeat||previous.combat.defeat)throw Error('spaceUnavailable');
   if(previous.space.communication?.conversation)throw Error('spaceUnavailable');
   const next=structuredClone(previous);
   if(action.type==='sleep'&&next.space.activity) {
     if(next.space.activity.sleeping)throw Error('spaceUnavailable');
-    leaveCampaignShipDeadline(next);next.space.view='ship';next.space.elapsed=0;next.space.activity={sleeping:true,forced:false,sleepPhase:0};return next;
+    leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.view='ship';next.space.elapsed=0;next.space.activity={sleeping:true,forced:false,sleepPhase:0};return next;
   }
   if(action.type==='wake'&&next.space.activity?.sleeping) {
     if(next.space.activity.forced)throw Error('spaceWakeUnavailable');
     next.space.activity.sleeping=false;next.space.elapsed=0;return next;
   }
   if(next.space.activity?.sleeping)throw Error('spaceUnavailable');
-  if(action.type==='view'&&['ship','tactical'].includes(action.view)) {if(action.view==='ship')leaveCampaignShipDeadline(next);next.space.view=action.view;return next}
+  if(action.type==='view'&&['ship','tactical'].includes(action.view)) {
+    if(action.view==='ship'){leaveCampaignShipDeadline(next);clearCampaignTactical(next)}
+    else if(Object.hasOwn(next.space,'tactical'))return enterCampaignShipTactical(next,content);
+    next.space.view=action.view;return next;
+  }
   if(next.space.view!=='tactical')throw Error('spaceUnavailable');
   const index=next.start.systems.findIndex(s=>s.id===currentShipLocation(next).systemId);
+  if(next.space.tactical&&['menu','gun','aim'].includes(action.type)) {
+    const t=next.space.tactical;
+    if(action.type==='aim'){t.control=validateShipControl(action.control);return next}
+    const result=action.type==='menu'?selectShipTacticalMenu(campaignShipSource(next),t.record,action.menu):
+      setShipTacticalGun(campaignShipSource(next),t.record,{firing:action.firing,focused:action.focused});
+    commitCampaignShipSource(next,result.state);t.record=result.tactical;t.control=neutralShipControl();return next;
+  }
   if(action.type==='fire') {
+    if(Object.hasOwn(next.space,'tactical'))throw Error('spaceUnavailable');
     const result=fireShipGun(campaignShipSource(next),{focused:action.focused,dexterity:next.dialogue.attributes[2]});
     commitCampaignShipSource(next,result.state);next.space.cooldowns[index]=(next.space.cooldowns[index]+result.cooldownIncrement)&15;
   } else if(action.type==='jettison') {
     if(!next.pod.attached)throw Error('spaceCargoUnavailable');
-    const result=jettisonShipCargo(campaignShipSource(next),action.selection);
+    const result=next.space.tactical?confirmShipJettison(campaignShipSource(next),next.space.tactical.record,action.selection):jettisonShipCargo(campaignShipSource(next),action.selection);
+    if(next.space.tactical)next.space.tactical.record=result.tactical;
     for(const {lot} of result.jettisoned) {
       const entry=next.space.losses.find(e=>signature(e.lot)===signature(lot));
       if(entry)entry.count++;else next.space.losses.push({lot:structuredClone(lot),count:1});
