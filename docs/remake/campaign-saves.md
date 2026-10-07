@@ -1,4 +1,16 @@
-# Campaign save boundary — live R10h
+# Campaign save boundary — live24; opt-in R10i25
+
+R10i adds opt-in version25 `ship-encounters-1` with `content.space:true`. The
+new `space` block owns source contact fields,12 packed cooldowns, normal aboard
+clock remainder, view context, combat-failure cache markers, aggregated cargo
+loss receipts and a durable ship-destruction marker. Resources, equipment,
+pending failures, cargo and RNG remain in their existing campaign owners.
+Historical versions1–24 validate before adding an idle space record. Version24
+still rejects hull damage, raw combat caches and missing cryogens. Version25
+conserves stored plus lost cryogens and counts destroyed paid lots in the wealth
+bound. Contact progress is validated canonically, not by replaying the entire
+campaign RNG history. Live UI remains24 until space controls are connected.
+See [space host](space-host.md).
 
 R10g adds opt-in version24 `ground-encounters-1` when content supplies the
 source `combat:{chase,ground}` assets. Its `combat:{clock,ground,rewards,defeat}`

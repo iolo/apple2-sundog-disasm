@@ -67,8 +67,8 @@ export async function shipCombatTests(test,equal) {
     let error;try{stepShipCommunication(r.state,{pending:false,ticks:1})}catch(e){error=e.message}
     equal(error,'invalidShipCommunication');
   });
-  await test('Arrival encounter reproduces the seven-draw source vector, including cryogen cargo',()=>{
-    for(const id of [2,30,31]) {
+  await test('Movement encounter reproduces the seven-draw source vector for ordinary cargo',()=>{
+    for(const id of [2,30]) {
       const s=fresh(2536397490),before=JSON.stringify(s);s.cargo=[lot(id),null];
       const result=produceShipEncounter(s,{cityPresent:false,system:{piracy:12,cooldown:1}});
       equal(result.produced,true);equal(result.draws,7);equal(result.state.randomState,1314226212);
@@ -86,9 +86,10 @@ export async function shipCombatTests(test,equal) {
     const cases=[
       {cityPresent:true,piracy:15,cooldown:0,cargo:[lot(),null],draws:1,next:0},
       {cityPresent:false,piracy:15,cooldown:0,cargo:[null,null],draws:1,next:0},
-      {cityPresent:false,piracy:11,cooldown:0,cargo:[lot(),null],draws:2,next:0},
+      {cityPresent:false,piracy:13,cooldown:0,cargo:[lot(),null],draws:2,next:0},
       {cityPresent:false,piracy:12,cooldown:2,cargo:[lot(),null],draws:3,next:1},
       {cityPresent:false,piracy:15,cooldown:0,cargo:[{commodityId:'cargo-01',quality:7,originWorld:'world-01',pricePaid:0},null],draws:1,next:0},
+      {cityPresent:false,piracy:0,cooldown:0,cargo:[lot(31),null],draws:1,next:0},
     ];
     for(const c of cases) {const s=fresh(seed);s.cargo=c.cargo;const r=produceShipEncounter(s,{cityPresent:c.cityPresent,system:{piracy:c.piracy,cooldown:c.cooldown}});equal([r.produced,r.draws,r.system.cooldown],[false,c.draws,c.next]);verifyStream(seed,r)}
   });

@@ -1,0 +1,54 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10i",
+  "date": "2026-10-07",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 25,
+  "ruleGroups": 446,
+  "browserUiChecks": 108,
+  "receipts": [
+    {
+      "receipt": "r10i-rules-validation.json",
+      "kind": "rules",
+      "script": null,
+      "checks": 446,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "receipt": "r10i-journey-validation.json",
+      "kind": "ui",
+      "script": "r09_journey_smoke.js",
+      "checks": 64,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "receipt": "r10i-navigation-validation.json",
+      "kind": "ui",
+      "script": "navigation_smoke.js",
+      "checks": 44,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3
+  },
+  "journey": {
+    "origin": "system-01/world-01/city-01",
+    "destination": "system-02/world-03/city-09",
+    "pricePaid": 17100,
+    "saleProceeds": 39200,
+    "minutes": 570,
+    "fuel": 108
+  },
+  "boundaries": [
+    "Opt-in ship host fixtures set equipment/contact seeds to isolate source rules; they are not fresh-character ordinary-play encounter acceptance.",
+    "Live UI remains version24. Space Comm, sensors/reticle/input, jettison bolt confirmation and live25 activation remain pending.",
+    "Native damage/outcome confirmation, full death/wreck/recovery dispatch and rare reward224 remain required.",
+    "Normal ship cadence/pause/partial-tick JSON continuation is proven in rule fixtures; live space frame-rate and sleep restoration remain pending.",
+    "Current regional journey/navigation regressions use ordinary controls and the corrected live flight reducers. R09f/R10h receipts precede this source scheduling audit."
+  ]
+}

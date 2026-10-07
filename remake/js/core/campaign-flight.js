@@ -1,6 +1,7 @@
 import { currentShipLocation,warpRequirement } from './regional-world.js';
 import { sourceRandom } from './random.js';
 import { groundCameraAt } from './ground-camera.js';
+import { finishCampaignSpaceWarp } from './campaign-space.js';
 
 export const initialFlight=()=>({motion:null,refuelAt:null,lastEvent:null});
 export const flightMode=state=>currentShipLocation(state).cityId?'landed':currentShipLocation(state).worldId?'orbit':'space';
@@ -64,7 +65,7 @@ export function landingLocation(state,content,cityId) {
 }
 
 export function reduceCampaignFlight(previous,content,action) {
-  if(!previous.regional||!previous.flight||previous.travel.scene!=='ship'||previous.pod.occupied)throw Error('flightUnavailable');
+  if(!previous.regional||!previous.flight||previous.travel.scene!=='ship'||previous.pod.occupied||previous.space?.defeat||previous.combat?.defeat)throw Error('flightUnavailable');
   const next=structuredClone(previous),r=next.resources,f=next.flight,ship=currentShipLocation(next),mode=flightMode(next);
   const busy=()=>{if(f.motion)throw Error('flightBusy')};
   const engine=()=>{if(r.fuel===0)throw Error('machineryNoFuel');if(next.equipment[1].performance===0)throw Error('flightNoEngines')};
@@ -94,6 +95,7 @@ export function reduceCampaignFlight(previous,content,action) {
     } else f.lastEvent='flightGravityFailure';
     next.encounters.randomState=rng.state;
     r.warp={charge:0,targetCharge:0,targetSystemId:null,charging:false};r.enginesPowered=false;
+    if(success)finishCampaignSpaceWarp(next);
   } else if(action.type==='sublight') {
     busy();engine();if(mode==='landed')throw Error('flightUnavailable');
     let destination;
@@ -139,21 +141,24 @@ export function reduceCampaignFlight(previous,content,action) {
 // minute transitions using the displayed ETA (explicit browser scheduling).
 export function stepCampaignFlight(previous,phase) {
   const next=structuredClone(previous),f=next.flight,r=next.resources;
-  if(!f)return {state:next,workingFuel:r.fuel,arrived:false};
-  const rng=sourceRandom(next.encounters.randomState),roll=rng.next()&15;
+  if(!f)return {state:next,workingFuel:r.fuel,arrived:false,encounterDue:false};
+  // $02BC returns before RNG when flag1 is off. LAND at $02D3 retains
+  // phase bit0: draw on every powered tick, move only on odd phases.
+  const encounterDue=r.enginesPowered;
+  const rng=sourceRandom(next.encounters.randomState),roll=encounterDue?rng.next()&15:null;
   let workingFuel=r.fuel,arrived=false;
-  if(f.motion?.type==='sublight'&&r.enginesPowered&&roll<next.equipment[1].performance) {
+  if(encounterDue&&phase===3)workingFuel--; // $0416, including failed motion rolls.
+  if(f.motion?.type==='sublight'&&encounterDue&&(phase&1)&&roll<next.equipment[1].performance) {
     const m=f.motion;m.progress++;
     const delta=orbitalDelta(m.from.orbit,m.to.orbit);
     next.regional.shipLocation.orbit={angle:angle(m.from.orbit.angle+Math.trunc(m.progress*delta.angle/m.duration)),radius:m.from.orbit.radius+Math.trunc(m.progress*delta.radius/m.duration)};
-    if(phase===3)workingFuel--;
     if(m.progress===m.duration){setShip(next,m.to);f.motion=null;r.enginesPowered=false;f.lastEvent='flightArrival';arrived=true}
   } else if(f.motion&&f.motion.type!=='sublight'&&phase===1) {
     f.motion.progress++;
     if(f.motion.progress===f.motion.duration){setShip(next,f.motion.to);f.motion=null;f.lastEvent='flightArrival';arrived=true}
   }
   next.encounters.randomState=rng.state;
-  return {state:next,workingFuel,arrived};
+  return {state:next,workingFuel,arrived,encounterDue};
 }
 
 // Library24 proc15 $0DAE–$0DF4, after power: the distress beacon fills255 once.

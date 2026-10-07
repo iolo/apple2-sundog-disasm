@@ -1,5 +1,6 @@
 import { initialRegional,regionalGroundStart,validateRegionalCargo } from './regional-world.js';
 import { initialCampaignCombat,validateCampaignCombat,validateGroundRewards } from './campaign-combat.js';
+import { initialCampaignSpace,validateCampaignSpace,validateSpaceLosses,canonicalCombatEngineeringGroup } from './campaign-space.js';
 import { createGroundWorld } from './campaign-ground.js';
 import { initialFlight } from './campaign-flight.js';
 import { validateRegionalFlight } from './regional-saves.js';
@@ -50,12 +51,13 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Ground-aware callers opt into22 by supplying the source world resources.
   // Existing city-only callers keep their21 contract until live integration.
   if(baseline.combat&&!baseline.regional)throw Error('invalidCampaignContent');
-  const VERSION=baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
+  if(baseline.space!==undefined&&(baseline.space!==true||!baseline.combat||baseline.dialogue?.systems?.systems?.length!==12))throw Error('invalidCampaignContent');
+  const VERSION=baseline.space?25:baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.space?'ship-encounters-1':baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
   let groundValidator=null,groundSeed=null;
   let populationCache=null;
   function snapshot(value, version = VERSION) {
     try {
-      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : []),...(version>=20 ? ['machinery'] : []),...(version>=22 ? ['ground'] : []),...(version>=23 ? ['regional','flight'] : []),...(version>=24 ? ['combat'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
+      if (!keysMatch(value,version===1 ? ['start','ship'] : version===2 ? ['start','ship','equipment'] : version<6 ? ['start','ship','equipment','travel'] : version<8 ? ['start','ship','equipment','travel','encounters'] : ['start','ship','equipment','travel','encounters','dialogue',...(version>=12 ? ['economy'] : []),...(version>=16 ? ['pod'] : []),...(version>=18 ? ['resources'] : []),...(version>=19 ? ['engineering'] : []),...(version>=20 ? ['machinery'] : []),...(version>=22 ? ['ground'] : []),...(version>=23 ? ['regional','flight'] : []),...(version>=24 ? ['combat'] : []),...(version>=25 ? ['space'] : [])]) || value.start?.creation?.recipe!==CREATION_RECIPE) fail();
       const start=createCampaignStart(value.start.character,baseline,value.start.creation.seed);
       if (!sameTree(value.start,start)) fail();
       const ship=(version>=21&&value.pod?.attached===false?detachedWalk:walk).snapshot(value.ship,{allowInactiveCondition:version>=24});
@@ -69,7 +71,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
           const initial=start.equipment[i];
           if (!Array.isArray(group?.units) || group.units.length!==4) fail();
           let expected;
-          if(version>=19)expected=canonicalEngineeringGroup(group,initial,engineering.pendingFailures[i]);
+          if(version>=25&&value.space?.combatFailures?.[i]===true)expected=canonicalCombatEngineeringGroup(group,initial,engineering.pendingFailures[i]);
+          else if(version>=19)expected=canonicalEngineeringGroup(group,initial,engineering.pendingFailures[i]);
           else {
             for(const unit of group.units) {
               if(!Array.isArray(unit?.components)||unit.components.length!==4||
@@ -134,12 +137,12 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const banking=version>=12 ? validateBanking(version>=13 ? {accounts:value.economy.accounts} : value.economy) : initialBanking(start);
       const economy={...banking,exchange:version>=13 ? validateExchange(value.economy.exchange,start,ship,travel,baseline,{movableCargo:version>=16,auxiliaryFuel:version>=18,regional:version>=23}) : initialExchange(start),
         personalTrade:version>=15 ? validatePersonalTrade(value.economy.personalTrade,baseline.dialogue?.items||baseline.items) : initialPersonalTrade()};
-      const resources=version>=18 ? validateShipResources(value.resources,start,{machinery:version>=20,flight:version>=23}) : initialShipResources(start);
+      const resources=version>=18 ? validateShipResources(value.resources,start,{machinery:version>=20,flight:version>=23,combat:version>=25}) : initialShipResources(start);
       const machinery=version>=20?validateMachinery(value.machinery,equipment,resources):initialMachinery();
       let storedCosts;
       if(version>=23) {
         for(const c of regional.cities)validateExchange({...c,visit:null},start,ship,{scene:'ship',cityPosition:null},baseline,{movableCargo:true,auxiliaryFuel:true,regional:true});
-        storedCosts=validateRegionalCargo(start,economy.exchange,pod,regional);
+        storedCosts=validateRegionalCargo(start,economy.exchange,pod,regional,version>=25?validateSpaceLosses(value.space?.losses):[]);
         validateRegionalFlight({...value,start,ship,equipment,ground,pod,travel,resources,regional,flight},baseline);
       } else {if(version>=16)validateLocalCargo(start,economy.exchange,pod);storedCosts=[...economy.exchange.warehouse.slots,...pod.cargo].reduce((sum,c)=>sum+(c?.pricePaid||0),0)}
       if(version<12 && dialogue.cash>start.credits)fail();
@@ -191,8 +194,9 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         const world=createGroundWorld({...baseline,...baseline.ground},regionalGroundStart(campaign));
         combat=validateCampaignCombat(campaign,value.combat,world,baseline);
       }
+      const space=version>=25?validateCampaignSpace({travel,pod,combat,ship,resources},value.space):null;
       return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,
-        ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null,legacyDialogueSurface:encounters.counter?.conversation?structuredClone(start.playerLocation.surfacePosition):null},flight:flight??initialFlight()}:{}),...(VERSION>=24?{combat:combat??initialCampaignCombat()}:{})};
+        ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null,legacyDialogueSurface:encounters.counter?.conversation?structuredClone(start.playerLocation.surfacePosition):null},flight:flight??initialFlight()}:{}),...(VERSION>=24?{combat:combat??initialCampaignCombat()}:{}),...(VERSION>=25?{space:space??initialCampaignSpace()}:{})};
     } catch { fail(); }
   }
   function validate(value) {
@@ -216,6 +220,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===18 && value.scope==='landed-depot-1') ||
       (value?.version===19 && value.scope==='landed-failures-1') ||
       (value?.version===20 && value.scope==='landed-power-1') ||
+      (VERSION>=25 && value?.version===24 && value.scope==='ground-encounters-1') ||
       (VERSION>=24 && value?.version===23 && value.scope==='regional-flight-1') ||
       (VERSION>=23 && value?.version===22 && value.scope==='landed-ground-1') ||
       (VERSION>=22 && value?.version===21 && value.scope==='landed-parking-1');
@@ -231,7 +236,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       const start=createCampaignStart(character,baseline,seed);
       return {start,ship:walk.snapshot({position:start.playerLocation.position,inventory:start.inventory,
         condition:start.condition,minutes:start.minutes}),equipment:start.equipment.map(recalculateEquipment),travel:{scene:'ship',cityPosition:null},
-        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start),engineering:initialEngineering(),machinery:initialMachinery(),...(VERSION>=22?{ground:migratedGround(start,{scene:'ship',cityPosition:null})}:{}),...(VERSION>=23?{regional:initialRegional(start),flight:initialFlight()}:{}),...(VERSION>=24?{combat:initialCampaignCombat()}:{})};
+        encounters:{randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null},dialogue:initialCampaignDialogue(start),economy:{...initialBanking(start),exchange:initialExchange(start),personalTrade:initialPersonalTrade()},pod:initialCampaignPod(),resources:initialShipResources(start),engineering:initialEngineering(),machinery:initialMachinery(),...(VERSION>=22?{ground:migratedGround(start,{scene:'ship',cityPosition:null})}:{}),...(VERSION>=23?{regional:initialRegional(start),flight:initialFlight()}:{}),...(VERSION>=24?{combat:initialCampaignCombat()}:{}),...(VERSION>=25?{space:initialCampaignSpace()}:{})};
     },
     make: (state,slot) => validate({format:CAMPAIGN_FORMAT,version:VERSION,scope:SCOPE,slot,savedAt:new Date().toISOString(),state}),
     parse(text) {
