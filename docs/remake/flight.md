@@ -33,3 +33,40 @@ All335 groups pass in Chrome154.0.8037.97 with no page errors;21 exporter tests
 and169 deterministic artifacts pass. See `r09-flight-core-validation.json`.
 The live application/save codec still awaits regional integration; this
 checkpoint does not claim the two-system UI acceptance journey.
+
+## R09 integration and final source audit
+
+Live Navigation uses the existing Canvas/SVG/ESM presentation and four save
+slots. Its star chart uses generated3D positions for jump costs (the drawing
+projects X/Y); system charts use generated orbital angles, source radii and16
+radius43 points. Planet charts use all city surface markers. Destination drafts
+are transient and confirmation alone changes the campaign. Ordinary destination
+services use their actual world/system/city and retain separate economic owners.
+
+The closing source audit corrected an intermediate shift transcription:
+Game13 proc36 `$1BD9–$1BE2` calls Library22 proc30 (`ASL/ROL`, left shift),
+not proc31 (`ROR`, arithmetic right shift). Successful motion steps are
+`(abs(radiusDelta)/3 + ((abs(angleDelta)*(r0+r1)) >> 8)) << 2`, then add1;
+integer division truncates. Displayed ETA at `$1C09–$1C15` is
+`1 + (steps >> 1)`. Independent numeric vectors produce37 and153 steps,
+with displayed19 and77 minutes. Earlier intermediate receipts precede this
+correction; final rule/journey receipts establish the accepted implementation.
+
+Colony positions likewise validate against generated source terrain, where disk
+13 tiles become14–20 before city markers are overlaid. Raw disk tiles alone
+cannot validate a legitimate colony location. Regional saves preserve this one
+position globally while ground domains change. Banville's construction/delivery
+logic remains R11. Encounter scheduling and combat remain R10.
+
+The motion gate at Library24 `$02CD–$02D3` is `LESI` (strict less-than),
+so roll1 fails at performance1 and succeeds at performance2. The final boundary
+vector verifies both outcomes and phase3 fuel. Earlier intermediate motion used
+an inclusive comparison; the source audit corrected it before R09 completion.
+
+Regional counters read their actual outer city tile (Game16 proc39
+`$1256–$1267`, globals38/39), rather than the world's city marker. Save23's
+`legacyDialogueSurface` exists only for an open migrated historical conversation,
+must equal immutable creation coordinates, and clears on its verified return.
+This preserves old quoted prices while new regional conversations use the actual
+entry tile. Tests cover source valuation27 at tile11/8, historical valuation33,
+exact replay, invalid hints and atomic hint removal.

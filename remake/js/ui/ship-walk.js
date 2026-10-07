@@ -127,7 +127,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     try {
       const result=reduceCampaignCounter(liveCampaign(),assets.campaignContent,currentRoom(),action);
       encounters=result.state.encounters;campaignDialogue=result.state.dialogue;dialogueFrame=result.conversation;dialogueError='';
-      inventory=result.state.ship.inventory;campaignEconomy=result.state.economy;
+      inventory=result.state.ship.inventory;campaignEconomy=result.state.economy;campaignRegional=result.state.regional;
       travel=result.state.travel;
       roomPopulation={actors:encounters.roomState.actors,geometry:roomActorGeometry(roomGeometry(),encounters.roomState.actors)};
       if(dialogueFrame||action.type==='dialogue'){stop();state.paused=true;roomElapsed=0;survival={...survival,elapsed:0}}

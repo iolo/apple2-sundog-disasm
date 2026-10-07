@@ -54,7 +54,7 @@ function setup(state,content) {
   const system=content.dialogue?.systems.systems[index];
   if(!system||index<0||world<0)fail();
   return {context:{...state.dialogue,system,city:Number(location.cityId.slice(-2)),
-    hour:Math.floor(state.ship.minutes/60)%24,surface:location.surfacePosition,
+    hour:Math.floor(state.ship.minutes/60)%24,surface:state.regional?.legacyDialogueSurface??location.surfacePosition,
     cash:state.dialogue.cash,carried:state.ship.inventory.carried},
     places:{systems:content.navigation.systems.map(s=>s.name),worlds:content.navigation.worlds.map(w=>w.name),system:index+1,world:world+1}};
 }
@@ -127,5 +127,6 @@ export function reduceCampaignCounter(previous,content,room,action) {
     state.travel.lodging=frame.lodging;
     state.dialogue.flags[57]=updateLodgingAccess(room,frame.lodging,frame.position).sheltered;
   }
+  if(state.regional&&!counter.conversation)state.regional.legacyDialogueSurface=null;
   return {state,conversation:frame.conversation};
 }

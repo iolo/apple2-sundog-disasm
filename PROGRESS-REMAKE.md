@@ -1,5 +1,23 @@
 # SunDog web remake progress
 
+## R09e — Closing source audit and complete landing coverage — 2026-10-07
+
+Corrected intermediate flight transcription: Game13's final ETA arithmetic is
+a LEFT shift2, with motion steps distinct from displayed ETA; Library24's engine
+gate is strict LESI. Source vectors37/153 and an equal-roll boundary prove this.
+Regional colony coordinates now validate against generated terrain. Counters use
+actual city map tiles; a bounded historical-conversation hint preserves old quotes
+until verified return. See `docs/remake/flight.md` for addresses and migration.
+
+All345 Chrome rule groups pass without page errors, including every ordinary
+city and Banville landing/access/save, global colony migration and old-conversation
+replay.21 exporter tests,169 deterministic artifacts and584 string records verify.
+The expanded suite exceeded its old60-second harness wait;120 seconds now covers
+the full suite. Earlier intermediate flight receipts precede these corrections;
+the final receipt is `r09-final-rules-validation.json`. Source-complete flight UI
+and affected R08 regressions remain in the closing validation batch before R09
+can be marked complete. README now describes active regional flight/services.
+
 ## R09d — Live navigation and regional trade journey — 2026-10-07
 
 Enabled version23 and all regional service contexts in the live app. Pilotage
