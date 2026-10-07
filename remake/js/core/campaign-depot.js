@@ -3,20 +3,22 @@ import { podServiceAt } from './city-pod.js';
 import { validateCampaignPod } from './campaign-pod.js';
 import { validateShipResources } from './ship-resources.js';
 import { depotPrices, quoteDepotService, purchaseDepotService } from './depot.js';
+import { campaignLocation,currentShipLocation } from './regional-world.js';
 
 function setup(state,content,geometry) {
   const driving=state.pod.occupied,{travel,start}=state;
-  if(state.ground&&(state.ground.cityId!==start.shipLocation.cityId||(driving&&state.ground.podCityId!==state.ground.cityId)))throw new Error('depotUnavailable');
+  if(state.ground&&((!state.regional&&state.ground.cityId!==start.shipLocation.cityId)||(driving&&state.ground.podCityId!==state.ground.cityId)))throw new Error('depotUnavailable');
   if(travel.scene!=='depot'||cityServiceAt(geometry.map,travel.cityPosition,driving?'pod':'foot')!=='depot'||
     (driving&&podServiceAt(geometry.pod,travel.cityPosition,state.pod.heading)!=='depot'))throw new Error('depotUnavailable');
   if(!state.ground||state.pod.attached||state.ground.podCityId===state.ground.cityId)validateCampaignPod(state.pod,travel,geometry.pod);
-  const resources=validateShipResources(state.resources,start),location=start.playerLocation;
+  const resources=validateShipResources(state.resources,start,{flight:!!state.flight}),location=campaignLocation(state,content),ship=currentShipLocation(state);
+  if(state.regional&&geometry.map.cityId!==location.cityId)throw new Error('depotUnavailable');
   const system=content.dialogue?.systems.systems.find(s=>s.id===location.systemId);
   const account=state.economy.accounts.find(a=>a.systemId===location.systemId);
   if(!system||!account)throw new Error('depotUnavailable');
   const visit={local12:system.local31,local13:system.local30,local14:system.local32,
     cityId:location.cityId,worldId:location.worldId,
-    shipPresent:start.shipLocation.cityId===location.cityId&&start.shipLocation.worldId===location.worldId&&start.shipLocation.systemId===location.systemId,
+    shipPresent:ship.cityId===location.cityId&&ship.worldId===location.worldId&&ship.systemId===location.systemId,
     podPresent:driving};
   return {visit,session:{hull:resources.hull,fuel:resources.fuel,cash:state.dialogue.cash,bankBalance:account.balance,pod:state.pod.cargo}};
 }
@@ -39,6 +41,6 @@ export function reduceCampaignDepot(previous,content,geometry,action) {
   const {session,visit}=setup(previous,content,geometry);
   const paid=purchaseDepotService(session,visit,action),next=structuredClone(previous);
   next.resources.hull=paid.hull;next.resources.fuel=paid.fuel;next.pod.cargo=paid.pod;
-  next.dialogue.cash=paid.cash;next.economy.accounts.find(a=>a.systemId===previous.start.playerLocation.systemId).balance=paid.bankBalance;
+  next.dialogue.cash=paid.cash;next.economy.accounts.find(a=>a.systemId===campaignLocation(previous,content).systemId).balance=paid.bankBalance;
   return next;
 }

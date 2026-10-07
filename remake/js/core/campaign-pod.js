@@ -4,6 +4,7 @@ import { SHIP_REENTRY } from './city-walk.js';
 import { initialPodCargo, validateCargoSlots, reduceWarehouseCargo } from './cargo.js';
 import { refuelOnPodDock } from './ship-power.js';
 import { parkedPodGeometry, canBoardParkedPod, findPodFootExit } from './parked-pod.js';
+import { currentShipLocation } from './regional-world.js';
 
 const keys=(v,names)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===names.length&&names.every(k=>Object.hasOwn(v,k));
 const reachability=new WeakMap();
@@ -37,7 +38,7 @@ export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryF
   return {attached:value.attached,position:value.position&&{...value.position},heading:value.heading,cargo,occupied};
 }
 export function reduceCampaignPod(previous,geometry,action,city=null) {
-  if(previous.ground&&(previous.ground.cityId!==previous.start.shipLocation.cityId||
+  if(previous.ground&&((['depart','dock'].includes(action.type)?previous.ground.cityId!==currentShipLocation(previous).cityId:!previous.regional&&previous.ground.cityId!==previous.start.shipLocation.cityId)||
     (previous.pod.occupied&&previous.ground.podCityId!==previous.ground.cityId)))throw new Error('podUnavailable');
   validateCampaignPod(previous.pod,previous.travel,geometry);
   const next=structuredClone(previous),p=next.pod;
