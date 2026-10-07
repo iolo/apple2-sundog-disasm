@@ -296,6 +296,9 @@ def build():
     patterns = [[int(v.strip().removeprefix('$'), 16) & 127 for v in
                  re.search(label+r':\s+\.byte ([^;]+)', native)[1].split(',')]
                 for label in ['L_164A', 'L_163E']]
+    outputs['data/ground-chase.json'] = encode(dict(
+        version=1, glyphs={str(index): glyph(index) for index in [22, 23, 24]}, patterns=patterns,
+        source='game21 procedures1/30/40; library22 procedures7/22/51, patterns8/11; shared font glyphs22–24'))
     read('src/pcode/game_18.s')
     rooms = room_layouts(read('assets/interaction-records/records.bin'), patterns)
     for room in rooms:

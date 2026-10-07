@@ -1,5 +1,43 @@
 # SunDog web remake progress
 
+## R10e — Source city threat and chase transition — 2026-10-07
+
+Ported Game21's eager due-tick threat gate, actual city tile/system threshold,
+window preparation, four entry sides, fast/alternating chase, raw-pointer
+movement and blocked-step catch. Escape uses the source strict edges and
+consumes no outcome RNG; catch wins a simultaneous escape and keeps the strict
+system comparison and tile12 visitor branch. Signed counter wrap and native
+full-mask/visible-glyph collision are retained. New generated ground-chase data
+contains source glyphs22–24 and Library22 pixel patterns.
+
+The campaign-context producer derives the current world's system and actual
+camera/map tile, preserves travel/ground/ship/pod/money/inventory and advances
+only the owned campaign RNG. A caught session derives the Game17 window from
+the original screen pose and initializes the existing combat core. The complete
+prepared R10d reference now matches all four rolls, the36-iteration catch,
+counter32731, kind16/direction3, both intermediate RNG states, all six actor
+records, carried weapon swap and final initialization RNG. No forced catch or
+actor injection is used between production and initialization.
+
+Added13 focused groups with an independent byte/carry oracle: all entry/pace
+branches, clamped windows/fills, raw pointer and Boolean bit0 timing, threshold
+equality/visitors, four escape edges, simultaneous catch/escape, held-movement
+escape, actual home/foreign contexts, eager suppressed ticks, atomic rejection
+and JSON sub-tick continuation/pause at30/60/144 Hz. All13 Node groups and all394
+Chrome154.0.8037.97 rule groups pass without failures/page errors, recorded in
+docs/remake/r10e-rules-validation.json.22 exporter tests,171 deterministic
+artifacts,584 source-string records, original disk/manual hashes and diff checks
+pass. See docs/remake/ground-chase.md for source offsets and adaptations.
+
+R10 remains active. The producer accepts a tick already deemed due and is not
+yet called by live ground clocks/controls. Campaign saves remain version23;
+the JSON session validator does not substitute for future campaign replay
+validation. Initial enemy conversation must precede active combat. Next:
+source enemy dialogue setup/outcomes, followed by actual host/session/save/UI
+integration. Ship production/tactical controls, cargo loss, defeat/recovery,
+ordinary avoid/fight/lose and live timing acceptance still remain. The user's
+PRD stays untouched and untracked.
+
 ## R10d — Prepared original-game ground reference — 2026-10-07
 
 A fresh owned MAME0.285/Apple IIe joystick session resumed the supplied slot
