@@ -4,7 +4,8 @@
 record and its complete player/NPC combat iteration. This is an isolated core;
 the live campaign remains version23 and does not produce or display encounters
 yet. Ground threat production/chasing, campaign ownership, enemy dialogue setup,
-controls, persistence and original-game ground evidence remain required R10 work.
+controls and persistence remain required R10 work. R10d supplies the
+[prepared original-game ground observation](ground-encounter-reference.md).
 
 ## Source procedures
 
@@ -69,7 +70,7 @@ acceptance is claimed by this checkpoint.
 
 ## Validation
 
-Twenty ground rule groups cover initialization, native byte packing, shield
+Twenty-one ground rule groups cover initialization, native byte packing, shield
 identity/exhaustion/underflow, strict hit tolerance, full scatter volleys, NPC
 collision, player-hidden fleeing, friendly-fire compaction and recovery,
 avoid/fight/lose outcomes, surrender/cancellation,
@@ -83,3 +84,15 @@ draws. NPC fire at seed12345 causes56 damage in two draws, or spends one shield
 charge in one draw. These are fixture/source vectors, not natural campaign
 encounters. [The full Chrome receipt](r10c-rules-validation.json) reports380
 passing rule groups with no failures or page errors in Chrome154.0.8037.97.
+
+## Native initialization comparison — R10d
+
+A fresh controlled MAME run now verifies six Game17 actor records, the carried
+laser swap and the final RNG state against browser initialization. From seed
+1183653752, the core consumes29 draws and ends at native state1537047451. The
+receipt-derived regression preserves the original records and prepared window.
+See [the ground reference](ground-encounter-reference.md) for declared city
+setup, source gate/chase/catch and the limits of this comparison. Native
+shot/damage, negotiation and complete session/outcome equivalence remain
+unverified. The [R10d Chrome receipt](r10d-rules-validation.json) reports381
+passing groups with no failures or page errors.

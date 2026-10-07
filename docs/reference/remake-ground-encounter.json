@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-07",
+  "emulator": "MAME 0.285 / apple2e / joystick / owned Qt debugger",
+  "scope": "Controlled original-game city-foot context and RNG seed, followed by unmodified Game21 gate/chase/catch and Game17 initialization. Fresh boot of the supplied being-played slot, not a fresh-game campaign journey or natural unseeded encounter.",
+  "bootstrapSequence": "docs/reference/game-play.json through frame18000",
+  "probes": [
+    "tools/remake/encounter_reference.lua",
+    "tools/remake/ground_reference.lua"
+  ],
+  "reproduction": "docs/remake/ground-encounter-reference.md",
+  "setup": {
+    "words": {
+      "36": 5193,
+      "37": 529,
+      "38": 3086,
+      "39": 1801,
+      "40": 147,
+      "41": 115,
+      "73": 529,
+      "45": 13099,
+      "292": 5,
+      "347": 0
+    },
+    "flags": {
+      "7": true,
+      "28": false,
+      "40": false,
+      "48": false,
+      "49": false,
+      "114": false
+    },
+    "settleFrameCallbacks": 1200,
+    "randomAddress": 44516,
+    "randomSeedBytes": [
+      52,
+      42,
+      0,
+      0
+    ],
+    "randomSeed": 10804,
+    "seedPoint": "Native Library22 proc3 entry, immediately before the Game21 proc1 $1F11 MOD64 gate; Game21 code/segment and native RNG pattern verified."
+  },
+  "observed": {
+    "groundScene": 3,
+    "mapKind": "city",
+    "tile": 8,
+    "systemThreshold": 12,
+    "chaseWindow": {
+      "left": 100,
+      "top": 66,
+      "right": 180,
+      "bottom": 126
+    },
+    "chasePlayer": {
+      "x": 137,
+      "y": 99
+    },
+    "chaseEnemy": {
+      "x": 137,
+      "y": 76
+    },
+    "slowEnemy": true,
+    "catch": {
+      "player": {
+        "x": 137,
+        "y": 99
+      },
+      "enemy": {
+        "x": 137,
+        "y": 93
+      },
+      "counter": 32731,
+      "direction": 3,
+      "kind": 16,
+      "scene": 5
+    },
+    "combatActorCount": 6,
+    "combatBounds": {
+      "left": 70,
+      "top": 40,
+      "right": 209,
+      "bottom": 135
+    },
+    "nativeRandomBeforeInitialization": 1183653752,
+    "nativeRandomAfterInitialization": 1537047451,
+    "browserInitializationDraws": 29
+  },
+  "comparison": "remake/tests/fixtures/ground-native-init.json; six packed actor records, carried weapon swap and final native RNG match the browser core.",
+  "notProven": [
+    "Natural unseeded production",
+    "Native shot/damage arithmetic",
+    "Negotiation outcomes",
+    "Native robbery/defeat/recovery",
+    "Live browser campaign/UI acceptance",
+    "Cycle-equivalent browser timing"
+  ],
+  "excluded": "Earlier invalid off-map/water/direct-scene probes and timed dialogue-settling experiments are excluded. Published captures are from the fresh corrected city fixture only.",
+  "originalSHA256": {
+    "sundog-disk1-game.dsk": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "sundog-disk2-util.dsk": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+  },
+  "captureSHA256": {
+    "remake-ground-city.json": "7963b787827d96d02a68836093818441d14847f6454afce5fbf769f7a5a883f6",
+    "remake-ground-city.png": "600c7ad9f8cb4822cc62270465f59fe38d7130c9aa9205695d50be274e00bf80",
+    "remake-ground-gate.json": "f3cd6338c37fa7757956b3b6a5535dbfced34ff854bbf5f8894afd84b43b1318",
+    "remake-ground-gate.png": "600c7ad9f8cb4822cc62270465f59fe38d7130c9aa9205695d50be274e00bf80",
+    "remake-ground-chase.json": "e9f54d71165692eb5b6a689c634b1fcd9d2a5a445f5e51d808c9f226fca6f1df",
+    "remake-ground-chase.png": "d46292dc04ad865afb50354205c7399b6b7639334e262a272185484fd612529d",
+    "remake-ground-caught.json": "c01394269630f49f695aeaadbc8be49694e9ed5c7f043c4a1993d04f3a240d6c",
+    "remake-ground-caught.png": "75ba1231c0689d5ca360abaa69177237fb71f2e6cc90a3e43b8e2cc6713d875a",
+    "remake-ground-combat-initial.json": "34ff42fa857a5072f3f4bc806b945340565d12b42cedb843812381c2a5a27797",
+    "remake-ground-combat-initial.png": "0c6c8070e2e140b2737795af4f010863b06dedf11df913da954ffe627f6990d6"
+  },
+  "fixtureSHA256": "6b04bc307d42375b8590f5a84d39b093027d10ec91627e4aa7f2b5a673abdb65"
+}

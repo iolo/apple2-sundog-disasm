@@ -41,6 +41,16 @@ export async function groundCombatTests(test,equal) {
       equal(r.state.flags[50],true);equal(r.state.actors[0][4],0);checkRng(12345,r);
     }
   });
+  await test('Prepared original-game mugger initialization matches all six actor records and native RNG',async()=>{
+    const f=await fetch('fixtures/ground-native-init.json').then(r=>r.json());
+    const a={width:f.arena.width,height:f.arena.height,bounds:f.arena.bounds,
+      collisionRows:content.glyphs[24],glyphs:content.glyphs,
+      backgrounds:{ship:Array.from({length:f.arena.height},()=>Array(Math.ceil(f.arena.width/7)).fill(0))}};
+    const v={...f.input,cash:0,flags:Array(128).fill(false)};
+    const r=createGroundCombat(v,a);
+    equal(r.state.actors,f.actors);equal(r.state.randomState,f.randomState);
+    equal(r.state.carried,f.carriedAfter);equal(r.draws,f.draws);checkRng(v.randomState,r);
+  });
   await test('Combat health preserves native byte packing before its minimum33 clamp',()=>{
     const v=input();v.attributes[0]=100;v.condition[2]=255;
     equal(createGroundCombat(v,arena()).state.actors[0][3]>>>8,33);

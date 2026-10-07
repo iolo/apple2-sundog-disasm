@@ -35,14 +35,19 @@ browser timing. The R10a arithmetic vectors remain source-derived. Frame
 callback durations bound the probes; they do not establish cycle-equivalent
 simulation timing or an exact count of source machinery ticks.
 
-## Ground research still open
+## Ground observation — R10d
 
-A controlled scene3 setup rendered the original surface terrain and ship.
+An earlier controlled scene3 setup drew the city map with an off-map actor
+position; it was initially described as surface terrain.
 Changing directly to scene5/kind16 without Game21 proc40's chase/window
 preparation produced an invalid striped encounter window. That probe is
-excluded from passing evidence and its helper was removed. Ground capture must
-follow the prepared chase/encounter path; no original-game ground encounter is
-claimed complete. R10's ground evidence and avoid/fight/lose acceptance remain.
+excluded from passing evidence and its helper was removed. R10d now follows
+the actual Game21 gate/chase/catch in a corrected city-foot
+fixture and captures six Game17 actors. All packed actor records and final
+native RNG match browser initialization. See the
+[ground reference](ground-encounter-reference.md) for ten hashed captures,
+reproduction and scope. The controlled ground observation gate is met; live
+avoid/fight/lose and native damage/outcome evidence remain open.
 
 ## Reproduction
 

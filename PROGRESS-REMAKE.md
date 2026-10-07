@@ -1,5 +1,39 @@
 # SunDog web remake progress
 
+## R10d — Prepared original-game ground reference — 2026-10-07
+
+A fresh owned MAME0.285/Apple IIe joystick session resumed the supplied slot
+on verified copied media, prepared declared city/foot fields, and seeded the
+live RNG at the actual Game21 gate. Unmodified source procedures prepared the
+chase window, caught the idle actor via the blocked-step rule, selected kind16
+and initialized six Game17 actors. Ten raw JSON/PNG captures, hashes and source
+activation records are retained under docs/reference/remake-ground-*.
+
+All six five-word actor records, the carried laser swap and final native RNG
+match browser initialization in29 draws. Added a receipt-derived regression
+fixture and the21st focused ground group. The owned debugger helpers validate
+Game21's loaded segment/call bytes, locate the unique relocated RNG entry,
+resolve later Game17 loading, and read bounded source activation records.
+The bootstrap now supports --debug. Every owned breakpoint and held input was
+cleared; both research sessions and the fresh replay process exited. Originals
+verify unchanged. No native shot/damage or negotiation outcome is claimed.
+
+The failed probes were outside the populated city map: retained exit flags
+replaced their coordinates and tile0 did not produce a prepared encounter.
+Corrected flag28/114, tile8 and direction context reproduce the native path.
+Scene3 is city, scene4 is world surface; retain the eager RNG draw and actual
+scene/foot/special-city predicates during integration. Invalid direct-scene and
+timed dialogue-settling experiments are excluded from published passing evidence.
+
+Validation:21 focused groups pass in Node; all381 Chrome rule groups pass in
+154.0.8037.97 with no failures/page errors (r10d-rules-validation.json). The
+first Chrome process ended with SIGTERM before a receipt; a clean rerun passed.
+Native records/fixture/hash consistency, helper execution and bootstrap Python
+compilation pass. R10 remains active with live schema23: campaign threat/chase,
+enemy dialogue, ship/ground clocks and saves, tactical/localized UI, cargo loss,
+defeat/recovery, ordinary avoid/fight/lose and live timing acceptance remain.
+The user's PRD stays untouched. See docs/remake/ground-encounter-reference.md.
+
 ## R10c — Source ground-combat session — 2026-10-07
 
 Implemented the complete Game17 combat iteration in an isolated owned session:

@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--skill-dir', type=Path,
                         default=Path.home() / '.codex/skills/a2skills/a2-mame')
     parser.add_argument('--prepare-only', action='store_true')
+    parser.add_argument('--debug', action='store_true', help='enable the owned MAME debugger')
     args = parser.parse_args()
     verify_inputs()
     launcher = args.skill_dir.resolve() / 'scripts/launch.py'
@@ -73,6 +74,8 @@ def main():
     command = [sys.executable, str(launcher), '--mame', str(wrapper), '--driver', 'apple2e',
                '--rompath', str(args.rompath.resolve()), '--output-dir', str(out / 'session'),
                '--disk', str(ROOT / 'sundog-disk1-game.dsk'), '--script', str(script), '--headless']
+    if args.debug:
+        command.append('--debug')
     (out / 'launch.json').write_text(json.dumps(command, indent=2) + '\n')
     print('Launch: ' + json.dumps(command), flush=True)
     if not args.prepare_only:
