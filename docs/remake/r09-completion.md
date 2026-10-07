@@ -115,3 +115,18 @@ this receipt supersedes them for current continuation. Navigation likewise uses
 [r10i-navigation-validation.json](r10i-navigation-validation.json); it waits for
 actual charge because a source charging roll can fail. These regressions do not
 claim live space encounter acceptance, which remains R10.
+
+## Current-code regression, 2026-10-08
+
+Rechecked R09 against code checkpoint `5a673bf` after the R10n changes.
+[r09-current-journey-validation.json](r09-current-journey-validation.json)
+passes all64 ordinary-control journey checks in Chrome155.0.8059.39 with no page
+errors. The fresh seed12345 run buys for17,100, sells abroad for39,200 and returns
+home after570 game minutes with fuel108, matching the R10i regression above.
+Cargo, regional accounts, stock, location and RNG remain consistent across the
+round trip and repeated fresh-page reloads.
+
+Static verification also passes:22 exporter tests,171 deterministic artifacts,
+584 classified source-string records and all three original-input hashes.
+No R09 acceptance gate needs reopening. R10 remains in progress under its own
+[requirement audit](r10-completion.md).
