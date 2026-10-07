@@ -47,12 +47,12 @@ export function campaignLocation(state,content) {
 
 export function regionalGroundStart(state) {
   const ship=currentShipLocation(state);
-  return {...state.start,shipLocation:ship,playerLocation:ship};
+  return {...state.start,shipLocation:ship,playerLocation:{...ship,worldId:state.ground?.worldId??ship.worldId}};
 }
 
 export function initialRegional(start) {
   const active=start.playerLocation.cityId;
-  return {shipLocation:structuredClone(start.shipLocation),
+  return {shipLocation:structuredClone(start.shipLocation),podWorldId:start.shipLocation.worldId,colonyPosition:null,
     cities:start.economy.markets.filter(m=>ordinaryCity(m.cityId)&&m.cityId!==active).map(m=>({market:structuredClone(m),warehouse:structuredClone(start.economy.warehouses.find(w=>w.cityId===m.cityId))})),
     cargoProceeds:0};
 }
@@ -71,7 +71,7 @@ export function selectRegionalExchange(previous,cityId) {
 }
 
 export function validateRegionalCargo(start,exchange,pod,regional) {
-  if(!keys(regional,['shipLocation','cities','cargoProceeds'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
+  if(!keys(regional,['shipLocation','podWorldId','colonyPosition','cities','cargoProceeds'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
     !Number.isSafeInteger(regional.cargoProceeds)||regional.cargoProceeds<0||regional.cargoProceeds>32767999)fail();
   const ids=[exchange.market.cityId,...regional.cities.map(c=>c.market.cityId)].sort();
   if(JSON.stringify(ids)!==JSON.stringify(start.economy.markets.filter(m=>ordinaryCity(m.cityId)).map(m=>m.cityId)))fail();

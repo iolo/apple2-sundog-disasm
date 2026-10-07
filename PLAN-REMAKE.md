@@ -462,6 +462,12 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R09b (2026-10-07) adds source flight rules and capital landing exports.
+All335 Chrome rule groups,21 exporter tests and169 deterministic artifacts pass.
+The planetary overlay's resumable5/20-minute browser timing is an explicit
+adaptation. See `docs/remake/flight.md`. Regional saves/live navigation and the
+two-system ordinary-play acceptance remain required; live saves remain version22.
+
 Checkpoint R09a (2026-10-07) adds regional membership/economic ownership,
 3D source jump distance and charge requirements, destination service context,
 origin-aware cargo settlement and global cryogen conservation.325 rule groups
