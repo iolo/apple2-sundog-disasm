@@ -1,4 +1,8 @@
-# Ship tactical controls and campaign host — R10k–R10n
+# Ship tactical controls and campaign host — R10k–R10o
+
+R10o adds [source bounty/wreck/tractor salvage](ship-salvage.md) and its actual
+campaign bank/cargo ownership in opt-in29 `ship-salvage-1`. The earlier R10k–R10n
+boundary below is retained as history; the live space UI remains pending.
 
 `ship-tactical.js` adds source-facing Game12 controls alongside the existing
 ship-combat and campaign-space owners. R10m connects the record to actual

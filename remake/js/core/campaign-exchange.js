@@ -28,7 +28,7 @@ export function exchangeSaleQuote(state,content,slot) {
   return quoteExchangeCargo(cargo,{market,location,originLocation,items:items(content)},'sell');
 }
 
-export function validateExchange(value,start,ship,travel,content,{movableCargo=false,auxiliaryFuel=false,regional=false}={}) {
+export function validateExchange(value,start,ship,travel,content,{movableCargo=false,auxiliaryFuel=false,regional=false,salvage=false}={}) {
   if(regional&&!ordinaryCity(value?.market?.cityId))fail();
   const initial=initialExchange(start,regional?value.market.cityId:start.playerLocation.cityId),m=value?.market,w=value?.warehouse;
   if(!keys(value,['market','warehouse','visit'])||!keys(m,['cityId','templateIndex','demand','supply','lastUpdateDay'])||
@@ -45,7 +45,8 @@ export function validateExchange(value,start,ship,travel,content,{movableCargo=f
       return {...initial.warehouse.slots[i]}; // Cryogens cannot be sold/moved here.
     }
     if(cargo===null)return null;
-    let lot;try {lot=validateCargoLot(cargo,{auxiliaryFuel})} catch {fail()}
+    let lot;try {lot=validateCargoLot(cargo,{auxiliaryFuel,salvage})} catch {fail()}
+    if(salvage&&lot.originCity===null)return lot;
     if(auxiliaryFuel&&lot.commodityId==='cargo-01') {if((regional?!start.worlds.some(w=>w.id===lot.originWorld):lot.originWorld!==start.playerLocation.worldId)||(!regional&&m.lastUpdateDay===-16))fail();return lot}
     if(movableCargo&&lot.commodityId==='cargo-31')return lot;
     if(!integer(number(lot.commodityId),2,30)||(regional?!ordinaryCity(lot.originCity):lot.originCity!==m.cityId)||lot.pricePaid<100||(!regional&&m.lastUpdateDay===-16))fail();

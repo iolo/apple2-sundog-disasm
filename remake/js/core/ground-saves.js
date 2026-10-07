@@ -19,7 +19,7 @@ export function migratedGround(start,travel) {
 }
 
 // One validator owns immutable world data and bounded caches across snapshots.
-export function groundSaveValidator(content,start,rooms,{regional=false}={}) {
+export function groundSaveValidator(content,start,rooms,{regional=false,salvage=false}={}) {
   const world=createGroundWorld(content,start),cityChecks=new Map(),surfaceChecks=new Map();
   function surfaceCheck(colony) {
     const key=colony?`${colony.x}/${colony.y}`:'none';
@@ -93,13 +93,13 @@ export function groundSaveValidator(content,start,rooms,{regional=false}={}) {
   }
   function pod(value,state) {
     if(!keys(value,['attached','position','heading','cargo','occupied'])||typeof value.attached!=='boolean'||typeof value.occupied!=='boolean')fail();
-    const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true});
+    const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true,salvage});
     if(value.attached) {if(value.position!==null||value.heading!==16||value.occupied)fail()}
     else {
       if(regional&&state.regional.podWorldId!==world.worldId) {
         if(value.occupied)fail();
         const remote={...state,ground:{...state.ground,worldId:state.regional.podWorldId,cityId:state.ground.podCityId,colonyPosition:state.regional.podWorldId==='world-01'?state.regional.colonyPosition:null},travel:{scene:'ship',cityPosition:null}};
-        return groundSaveValidator(content,regionalGroundStart(remote),rooms,{regional:true}).pod(value,remote);
+        return groundSaveValidator(content,regionalGroundStart(remote),rooms,{regional:true,salvage}).pod(value,remote);
       }
       if(value.occupied&&(!['city','surface','exchange','depot'].includes(state.travel.scene)||state.ground.podCityId!==state.ground.cityId||!same(value.position,state.travel.cityPosition)))fail();
       if(state.ground.podCityId===null) {if(value.heading!==26||!surfaceCheck(state.ground.colonyPosition).reached(value.position))fail()}

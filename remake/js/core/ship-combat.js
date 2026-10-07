@@ -31,7 +31,7 @@ function snapshot(value) {
         u.components.every(b=>integer(b,0,255)))))fail();
   sourceRandom(value.randomState);
   const next=structuredClone(value);
-  next.cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true});
+  next.cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true,salvage:true});
   return next;
 }
 export { snapshot as snapshotShipCombat };

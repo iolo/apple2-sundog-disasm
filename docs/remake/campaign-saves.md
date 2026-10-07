@@ -1,6 +1,14 @@
-# Campaign save boundary — live24; opt-in R10n28
+# Campaign save boundary — live24; opt-in R10o29
 
-R10n extends `content.space:true,tactical:true` to version28 `ship-input-1`.
+R10o extends `content.space:true,tactical:true` to version29 `ship-salvage-1`.
+It owns bounded bounty/wreck receipts and the tactical wreck/tractor record,
+validates unknown-origin salvage across pod/warehouses/archives/losses, and admits
+source bounty income in the wealth bound. Versions1–28 validate historically
+before empty receipt/null-wreck migration, without granting old kills a bounty or
+cargo. See [ship salvage](ship-salvage.md) for exact rules and evidence boundaries.
+Live24 and space-only26 remain unchanged.
+
+R10n extended `content.space:true,tactical:true` to version28 `ship-input-1`.
 The exact controller fields are `{record,control,carry,trigger}`. Trigger owns
 boolean `latched` and `previous`: buffered short presses survive partial saves,
 while held buttons cannot fire again after recharge/reload. Historical27 must

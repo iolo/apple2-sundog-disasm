@@ -55,7 +55,7 @@ range-memory update or duplicate kill.
 ## Full kill continuation remains required
 
 The visually inspected [message](../reference/remake-tactical-input-kill-message.png)
-shows TARGET DESTROYED and a1000Cr bounty. It is an ordinary paused Library22
+shows TARGET DESTROYED and a3000Cr bounty. It is an ordinary paused Library22
 message context, not a Game12 debugger stop. Metadata therefore retains its
 actual VM segment/IP without inventing a Game12 offset.
 
@@ -66,8 +66,9 @@ cargo/type/quality draws. The kill capture has local27=1 and changed RNG bytes.
 The held-fire capture's range20→21 belongs to the wreck branch, not ordinary
 contact movement. The gun arithmetic alone draws no RNG; the full kill does.
 
-Bounty, wreck, inhibition, tractor/salvage and their persistent campaign owners
-remain to implement. This observation does not establish salvage collection,
+R10o now implements bounty, wreck, inhibition and tractor/salvage in the saved
+opt-in campaign host; see [ship salvage](ship-salvage.md). The earlier1000Cr
+claim is corrected by the screenshot and proc6 locals13/14/3. This observation does not establish salvage collection,
 full ship-death/recovery or ordinary combat acceptance.
 
 ## Comm byte return and dispatcher correction

@@ -24,7 +24,7 @@
     "Refilled charge100 remains100 on the next held-primary loop. A later fresh empty-space press reaches the actual charge-clearing instruction with charge0, global40/cached contact false.",
     "Secondary button exits the firing loop and clears source gun power/firing.",
     "Comm stores radius777 as byte9 and angle-1 as255. Return at Game12 07D1 restores angle255/radius9. Native phase352 advances3\u21924 while clock21,21,0,0 remains unchanged, consistent with the one Game13 2588 dispatcher call before restoration; the three Game12 startup calls are skipped.",
-    "Full native kill continuation shows a1000Cr bounty and creates a wreck. Its RNG advances in proc6; this is not evidence that full kills use no RNG."
+    "Full native kill continuation shows a3000Cr bounty and creates a wreck. Its RNG advances in proc6; this is not evidence that full kills use no RNG."
   ],
   "notProven": [
     "Natural encounter production or ordinary fresh-character avoid/fight/lose acceptance.",

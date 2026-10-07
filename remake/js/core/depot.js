@@ -43,6 +43,7 @@ function validateSession(value) {
     !Array.isArray(value.pod)||value.pod.length!==2||Object.keys(value.pod).length!==2||
     !Array.from(value.pod).every(lot=>lot===null||(lot&&typeof lot==='object'&&!Array.isArray(lot))))fail();
   for(const lot of value.pod)if(lot!==null) {
+    if(lot.originCity===null){validateCargoLot(lot,{salvage:true});continue}
     if(lot.commodityId==='cargo-01') {
       if(!keys(lot,['commodityId','quality','originWorld','pricePaid'])||lot.quality!==7||lot.pricePaid!==0||
         !/^world-(0[1-9]|1[0-8])$/.test(lot.originWorld))fail();

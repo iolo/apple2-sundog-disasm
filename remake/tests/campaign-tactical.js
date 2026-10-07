@@ -6,6 +6,13 @@ import { createSurvival } from '../js/core/survival.js';
 import { advanceCampaignMachinery,reduceMachineryControl } from '../js/core/campaign-machinery.js';
 import { reduceCampaignSpace,reduceCampaignShipCommunication } from '../js/core/campaign-space.js';
 import { reduceCampaignFlight } from '../js/core/campaign-flight.js';
+import { reduceWarehouseCargo } from '../js/core/cargo.js';
+import { reduceCampaignExchange,exchangeSaleQuote } from '../js/core/campaign-exchange.js';
+import { createGroundWorld } from '../js/core/campaign-ground.js';
+import { regionalGroundStart } from '../js/core/regional-world.js';
+import { cityServiceAt } from '../js/core/city-doors.js';
+import { cityReachability,SHIP_REENTRY } from '../js/core/city-walk.js';
+import { groundCameraAt } from '../js/core/ground-camera.js';
 
 export async function campaignTacticalTests(test,equal) {
   const names=['initial-navigation','initial-economy','initial-location','ship-inventory','ship-walk','maps',
@@ -33,9 +40,106 @@ export async function campaignTacticalTests(test,equal) {
   const reply=(s,input)=>reduceCampaignShipCommunication(s,content,{type:'dialogue',input});
   const agree=s=>reply(reply(comm(s),{type:'reply',slot:0}),{type:'cancel'});
   const reject=(f,code='invalidCampaign')=>{let message;try{f()}catch(e){message=e.message}equal(message,code)};
+  const kill=(seed=29,enemyType=1)=>{
+    let s=gun(enter(fixture()));s.resources.guns.charge=100;s.space.words[217]=20;s.space.words[214]=enemyType;s.encounters.randomState=seed;
+    return tick(action(s,{type:'aim',control:{x:0,y:0,fire:true}})).state;
+  };
+  const tractor=s=>action(action(s,{type:'gun',firing:false,focused:true}),{type:'tractor'});
 
-  await test('Tactical28 validates historical26 before migration, preserving RNG/time and the full partial-clock budget',()=>{
-    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[28,'ship-input-1']);equal(reload(initial),initial);
+  await test('Actual ship kills credit only their system account, persist bounded bounty/wreck receipts and cannot award twice on held fire',()=>{
+    const before=gun(enter(fixture())),s=kill();
+    equal(s.economy.accounts[0].balance,before.economy.accounts[0].balance+2000);
+    equal(s.economy.accounts.slice(1),before.economy.accounts.slice(1));equal(s.dialogue.cash,before.dialogue.cash);
+    equal(s.space.bounties,[{systemId:'system-01',enemyType:1,count:1}]);
+    equal(s.space.wrecks,[{lot:{commodityId:'cargo-26',quality:7,originCity:null,pricePaid:0},count:1}]);
+    equal(s.space.flags[36],true);equal(s.space.words[217],21);equal(s.encounters.randomState,61296285);equal(reload(s),s);
+    const held=run(reload(s),500);equal(held.space.bounties,s.space.bounties);equal(held.space.wrecks,s.space.wrecks);
+    equal(held.economy.accounts,s.economy.accounts);equal(held.encounters.randomState,s.encounters.randomState);
+    const missing=structuredClone(s);missing.space.bounties=[];reject(()=>codec.snapshot(missing));
+    const wrong=structuredClone(s);wrong.space.bounties[0].systemId='system-02';reject(()=>codec.snapshot(wrong));
+    const extra=structuredClone(s);extra.space.bounties[0].amount=2000;reject(()=>codec.snapshot(extra));
+    const doubled=structuredClone(s);doubled.space.wrecks[0].count=2;reject(()=>codec.snapshot(doubled));
+    const unpaid=kill(29,0);equal(unpaid.economy.accounts,before.economy.accounts);
+    equal(unpaid.space.bounties,[{systemId:'system-01',enemyType:0,count:1}]);equal(unpaid.space.wrecks[0].count,1);equal(reload(unpaid),unpaid);
+    let overflow=gun(enter(fixture()));overflow.resources.guns.charge=100;overflow.space.words[217]=20;overflow.economy.accounts[0].balance=32767999;
+    overflow=action(overflow,{type:'aim',control:{x:0,y:0,fire:true}});const capped=structuredClone(overflow);
+    reject(()=>tick(overflow),'bankOverflow');equal(overflow,capped);
+  });
+  await test('Tractor calls every50ms frame, runs actual due power/time and copies into slot2 once through pause, partial reload and display cadences',()=>{
+    const start=tractor(kill()),pull=tick(start,100).state;
+    equal(start.space.tactical.record.wreck.tractorSlot,1);equal(start.space.words[207],-4);
+    equal(pull.space.words[217],13);equal(pull.pod.cargo,[null,null]);equal(reload(pull),pull);
+    equal(tick(reload(pull),60000,true).state,pull);
+    const done=tick(reload(pull),150);equal(done.frames,3);equal(done.cycles,2);
+    equal(done.state.ship.minutes,start.ship.minutes+1);equal(done.state.space.words[217],1);
+    equal(done.state.pod.cargo,[null,start.space.tactical.record.wreck.lot]);equal(done.state.space.flags[36],false);
+    equal(done.state.space.tactical.record.wreck,null);equal(reload(done.state),done.state);
+    const expected=run(start,1000);
+    for(const hz of [30,60,144]) {
+      let state=start,last=0;
+      for(let frame=1;frame<=hz;frame++) {const now=Math.floor(frame*1000/hz);state=tick(state,now-last).state;last=now;if(frame===Math.floor(hz/3))state=reload(state)}
+      equal(state,expected);
+    }
+    const partial=tick(start,17).state;equal(tick(reload(partial),33).state,tick(start).state);
+    for(const a of [{type:'aim',control:{x:0,y:0,fire:false}},{type:'view',view:'ship'},{type:'sleep'},{type:'menu',menu:0},{type:'tractor'}])reject(()=>action(start,a),'shipTractorActive');
+    reject(()=>reduceMachineryControl(start,{type:'shields',delta:64}),'shipTractorActive');
+    reject(()=>reduceCampaignFlight(start,content,{type:'halt'}),'shipTractorActive');
+    reject(()=>comm(start),'shipTractorActive');
+  });
+  await test('Full pods and absent wrecks reject tractor atomically; source detached pods retain the same actual manifest owner',()=>{
+    const s=action(kill(),{type:'gun',firing:false,focused:true}),full=structuredClone(s);
+    const purchased={commodityId:'cargo-02',quality:7,originCity:'city-01',pricePaid:100};
+    full.pod.cargo=[structuredClone(purchased),structuredClone(purchased)];full.economy.accounts[0].balance-=200;
+    equal(reload(full),full);const before=structuredClone(full);
+    reject(()=>action(full,{type:'tractor'}),'shipTractorNoRoom');equal(full,before);
+    const empty=action(enter(fixture()),{type:'menu',menu:3});reject(()=>action(empty,{type:'tractor'}),'shipTractorOutOfRange');
+    const detached=structuredClone(s);detached.pod.attached=false;
+    // Isolate proc18's source access rule. No second hold or attachment grant.
+    const pulling=action(detached,{type:'tractor'});equal(pulling.pod,detached.pod);equal(pulling.space.tactical.record.wreck.tractorSlot,1);
+  });
+  await test('Newly collected wreck fuel enters cargo after the due machinery call and refuels only on its next actual call',()=>{
+    const s=tractor(kill(0));s.space.words[217]=5;s.space.words[354]=4;s.machinery.phase=0;s.resources.fuel=0;
+    const before=structuredClone(s),loaded=tick(s).state;
+    equal(s,before);equal(loaded.resources.fuel,0);
+    equal(loaded.pod.cargo,[null,{commodityId:'cargo-01',quality:4,originCity:null,pricePaid:0}]);
+    equal(loaded.machinery.phase,1);equal(reload(loaded),loaded);
+    loaded.space.words[354]=4;const consumed=tick(loaded).state;
+    equal(consumed.resources.fuel,255);equal(consumed.pod.cargo,[null,null]);equal(consumed.space.wrecks,loaded.space.wrecks);equal(reload(consumed),consumed);
+  });
+  await test('Historical28 validates its exact old cargo/controller before adding empty salvage owners without retroactive bounty or RNG',()=>{
+    let s=gun(enter(fixture()));s.space.flags[36]=true;s.space.words[216]=0;s.space.tactical.record.contact=false;
+    s=action(s,{type:'aim',control:{x:0,y:0,fire:true}});const h=codec.make(s,0);
+    h.version=28;h.scope='ship-input-1';delete h.state.space.bounties;delete h.state.space.wrecks;delete h.state.space.tactical.record.wreck;
+    const migrated=codec.validate(h).state;equal(migrated,s);equal(reload(migrated),migrated);
+    const extra=structuredClone(h);extra.state.space.wrecks=[];reject(()=>codec.validate(extra));
+    const record=structuredClone(h);record.state.space.tactical.record.wreck=null;reject(()=>codec.validate(record));
+    const cargo=structuredClone(h);cargo.state.pod.cargo[0]={commodityId:'cargo-25',quality:6,originCity:null,pricePaid:0};reject(()=>codec.validate(cargo));
+    const missing=codec.make(s,0);delete missing.state.space.bounties;reject(()=>codec.validate(missing));
+  });
+  await test('Salvage has one wreck/pod/warehouse/loss owner, survives regional archives and sells through the actual exchange into its account',()=>{
+    const collected=run(tractor(kill()),250),lot=collected.pod.cargo[1];equal(reload(collected),collected);
+    const session=reduceWarehouseCargo({warehouse:collected.economy.exchange.warehouse,pod:collected.pod.cargo},
+      {cityId:'city-01',transport:'pod'},{type:'store',slot:1},{auxiliaryFuel:true,salvage:true});
+    const stored=structuredClone(collected);stored.economy.exchange.warehouse=session.warehouse;stored.pod.cargo=session.pod;equal(reload(stored),stored);
+    const archived=structuredClone(stored);archived.economy.exchange.warehouse.slots[0]=null;
+    const remote=archived.regional.cities.find(c=>c.market.cityId==='city-09').warehouse;remote.slots[remote.slots.indexOf(null)]=lot;
+    equal(reload(archived),archived);const duplicated=structuredClone(archived);duplicated.pod.cargo[0]=lot;reject(()=>codec.snapshot(duplicated));
+    const invented=structuredClone(stored);invented.space.wrecks=[];reject(()=>codec.snapshot(invented));
+    const armed=action(collected,{type:'menu',menu:2}),lost=action(armed,{type:'jettison',selection:2});
+    equal(lost.pod.cargo,[null,null]);equal(lost.space.losses,[{lot,count:1}]);equal(reload(lost),lost);
+    let visiting=action(stored,{type:'view',view:'ship'});
+    const world=createGroundWorld({...content,...content.ground},regionalGroundStart(visiting)),city=world.city('city-01',true),reached=cityReachability(city);
+    let door;for(let y=192;y<576&&!door;y++)for(let x=280;x<840;x++)if(cityServiceAt(city.map,{x,y})==='exchange'&&reached({x,y})){door={x,y};break}
+    equal(!!door,true);visiting.ship.position={...SHIP_REENTRY};visiting.travel={scene:'city',cityPosition:door};visiting.ground.camera=groundCameraAt(door);
+    visiting=reduceCampaignExchange(visiting,content,city.map,{type:'enter'});equal(reload(visiting),visiting);
+    const quote=exchangeSaleQuote(visiting,content,0),bank=visiting.economy.accounts[0].balance;equal(quote>0,true);
+    const sold=reduceCampaignExchange(visiting,content,city.map,{type:'sell',slot:0});
+    equal(sold.economy.accounts[0].balance,bank+quote);equal(sold.economy.accounts.slice(1),visiting.economy.accounts.slice(1));
+    equal(sold.regional.cargoProceeds,quote);equal(sold.economy.exchange.warehouse.slots[0],null);equal(reload(sold),sold);
+  });
+
+  await test('Tactical29 validates historical26 before migration, preserving RNG/time and the full partial-clock budget',()=>{
+    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[29,'ship-salvage-1']);equal(reload(initial),initial);
     const historical=old.make(old.create({...createCharacter(),name:'Tactical host'},12345),0);
     equal(codec.validate(historical).state,initial);
     const active=structuredClone(historical);active.state.space.view='tactical';active.state.space.elapsed=249;active.state.space.words[354]=3;
@@ -50,6 +154,7 @@ export async function campaignTacticalTests(test,equal) {
   await test('Historical27 validates its exact controller before adding button state without manufacturing a press',()=>{
     let s=gun(enter(fixture()));s=action(s,{type:'aim',control:{x:0,y:0,fire:true}});
     const historical=codec.make(s,0);historical.version=27;historical.scope='ship-tactical-1';delete historical.state.space.tactical.trigger;
+    delete historical.state.space.bounties;delete historical.state.space.wrecks;delete historical.state.space.tactical.record.wreck;
     const migrated=codec.validate(historical).state;
     equal(migrated.space.tactical.trigger,{latched:false,previous:true});
     equal(migrated.encounters,s.encounters);equal(migrated.ship,s.ship);equal(migrated.resources,s.resources);equal(reload(migrated),migrated);
@@ -140,7 +245,7 @@ export async function campaignTacticalTests(test,equal) {
     const before=JSON.stringify(s),shot=tick(s).state;equal(shot.resources.guns.charge,0);equal(shot.space.words[216],0);equal(shot.space.words[354],2);
     equal(shot.space.cooldowns[0],1);equal(shot.space.tactical.record.contact,false);
     equal(shot.space.tactical.record.reticle,{angle:120,radius:(s.regional.shipLocation.orbit.angle-8<<16)>>16});
-    equal(shot.encounters.randomState,s.encounters.randomState);equal(reload(shot),shot);equal(JSON.stringify(s),before);
+    equal(shot.encounters.randomState,61296285);equal(reload(shot),shot);equal(JSON.stringify(s),before);
     const stopped=action(shot,{type:'menu',menu:0});equal(stopped.resources.guns.powered,false);equal(stopped.space.tactical.record.firing,false);
     const broken=enter(fixture());broken.equipment[2].units.forEach(u=>u.components[0]=0);broken.equipment[2]=recalculateEquipment(broken.equipment[2]);broken.resources.guns.charge=0;
     const loop=gun(broken);equal(loop.resources.guns.powered,true);equal(reload(loop),loop);equal(tick(loop).state.space.words[216],200);
@@ -237,6 +342,19 @@ export async function campaignTacticalTests(test,equal) {
       const bad=structuredClone(s);change(bad);reject(()=>codec.snapshot(bad));
     }
     reject(()=>action(s,{type:'aim',control:{x:0,y:0,fire:false,extra:1}}),'invalidCampaignSpace');equal(JSON.stringify(s),before);
+    const wreck=kill(),pulling=tractor(wreck);
+    for(const change of [v=>v.space.tactical.record.wreck.extra=1,v=>v.space.tactical.record.wreck.lot.commodityId='cargo-31',
+      v=>v.space.tactical.record.wreck.lot.quality=3,v=>v.space.tactical.record.wreck.lot.pricePaid=100,
+      v=>v.space.tactical.record.wreck.lot.originCity='city-01',v=>v.space.tactical.record.wreck.present=false,
+      v=>v.space.tactical.record.wreck.tractorSlot=2,v=>v.space.flags[36]=false,v=>v.space.words[216]=1,
+      v=>v.space.wrecks[0].count=0,v=>v.space.wrecks[0].extra=1,v=>v.space.bounties[0].count=0]) {
+      const bad=structuredClone(wreck);change(bad);reject(()=>codec.snapshot(bad));
+    }
+    for(const change of [v=>v.space.tactical.record.menu=0,v=>v.space.tactical.record.firing=true,
+      v=>v.space.tactical.control.x=1,v=>v.space.tactical.trigger.latched=true,
+      v=>v.pod.cargo[1]=v.space.tactical.record.wreck.lot]) {
+      const bad=structuredClone(pulling);change(bad);reject(()=>codec.snapshot(bad));
+    }
     const opened=comm(s),bad=structuredClone(opened);bad.space.tactical.record.menu=3;reject(()=>codec.snapshot(bad));
     const input=structuredClone(opened);input.space.tactical.trigger.latched=true;reject(()=>codec.snapshot(input));
     reject(()=>campaignSaveCodec({...legacy,tactical:false},walk),'invalidCampaignContent');

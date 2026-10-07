@@ -6,7 +6,9 @@ import { produceShipEncounter,stepShipCombat,fireShipGun,jettisonShipCargo,
 import { startEncounterDialogue,restoreEncounterDialogue,advanceEncounterDialogue,validateEncounterDialogueRecord } from './encounter-dialogue.js';
 import { validateCampaignDialogue } from './campaign-dialogue.js';
 import { validateShipTactical,selectShipTacticalMenu,confirmShipJettison,setShipTacticalGun,
-  initialShipTrigger,validateShipTrigger } from './ship-tactical.js';
+  initialShipTrigger,validateShipTrigger,startShipTacticalTractor } from './ship-tactical.js';
+import { shipBounty,isShipSalvage } from './ship-salvage.js';
+import { MAX_CREDITS } from './banking.js';
 import { enterCampaignShipTactical,advanceCampaignShipDispatch } from './campaign-machinery.js';
 
 const LEGACY_CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
@@ -18,7 +20,7 @@ const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).leng
 const dense=(v,n)=>Array.isArray(v)&&v.length===n&&Object.keys(v).length===n&&
   Array.from({length:n},(_,i)=>Object.hasOwn(v,i)).every(Boolean);
 const fail=()=>{throw Error('invalidCampaignSpace')};
-const signature=lot=>JSON.stringify(lot);
+const signature=lot=>JSON.stringify([lot.commodityId,lot.quality,lot.originCity??null,lot.originWorld??null,lot.pricePaid]);
 const sameTree=(value,expected)=>{
   if(expected===null||typeof expected!=='object')return value===expected;
   if(Array.isArray(expected))return dense(value,expected.length)&&expected.every((v,i)=>sameTree(value[i],v));
@@ -33,7 +35,7 @@ export const initialCampaignSpace=({tactical=false}={})=>({flags:Array(128).fill
   words:{205:512,206:512,207:0,208:0,209:0,214:0,215:0,216:0,217:127,347:0,354:0},
   rangeMemory:127,cooldowns:Array(12).fill(0),elapsed:0,view:'ship',
   combatFailures:Array(6).fill(false),losses:[],defeat:null,
-  communication:initialShipCommunication(),activity:initialShipActivity(),...(tactical?{tactical:null}:{})});
+  communication:initialShipCommunication(),activity:initialShipActivity(),...(tactical?{tactical:null,bounties:[],wrecks:[]}:{})});
 
 export const neutralShipControl=()=>({x:0,y:0,fire:false});
 export function validateShipControl(value) {
@@ -60,15 +62,64 @@ export function clearCampaignTactical(state) {
   return state;
 }
 
-export function validateSpaceLosses(value) {
+export function validateSpaceLosses(value,{salvage=false}={}) {
   if(!Array.isArray(value)||!dense(value,value.length)||value.length>512)fail();
   const seen=new Set();
   return value.map(entry=>{
     if(!keys(entry,['lot','count'])||!integer(entry.count,1,65535))fail();
-    const lot=validateCargoLot(entry.lot,{auxiliaryFuel:true}),key=signature(lot);
+    const lot=validateCargoLot(entry.lot,{auxiliaryFuel:true,salvage}),key=signature(lot);
     if(seen.has(key)||lot.commodityId==='cargo-31'&&entry.count>17)fail();
     seen.add(key);return {lot,count:entry.count};
   });
+}
+
+export function validateSpaceBounties(value,content) {
+  if(!dense(value,value?.length)||value.length>48)fail();
+  const seen=new Set();
+  return value.map(entry=>{
+    if(!keys(entry,['systemId','enemyType','count'])||!integer(entry.enemyType,0,3)||!integer(entry.count,1,65535))fail();
+    const system=content?.dialogue?.systems?.systems.find(s=>s.id===entry.systemId),key=`${entry.systemId}/${entry.enemyType}`;
+    if(!system||seen.has(key))fail();
+    const amount=shipBounty(entry.enemyType,{piracy:system.local32,coefficient:system.local30});
+    seen.add(key);return {...entry,amount:amount*entry.count};
+  });
+}
+function validateSpaceWrecks(value) {
+  if(!dense(value,value?.length)||value.length>120)fail();
+  const seen=new Set();
+  return value.map(entry=>{
+    if(!keys(entry,['lot','count'])||!integer(entry.count,1,65535))fail();
+    const lot=validateCargoLot(entry.lot,{salvage:true}),key=signature(lot);
+    if(!isShipSalvage(lot)||seen.has(key))fail();seen.add(key);return {lot,count:entry.count};
+  });
+}
+export function recordCampaignShipKill(state,aftermath,content) {
+  const systemId=currentShipLocation(state).systemId,system=content.dialogue.systems.systems.find(s=>s.id===systemId);
+  if(!system)fail();
+  const enemyType=state.space.words[214],amount=shipBounty(enemyType,{piracy:system.local32,coefficient:system.local30});
+  if(amount) {
+    const bank=state.economy.accounts.find(a=>a.systemId===systemId);
+    if(!bank||bank.balance+amount>MAX_CREDITS)throw Error('bankOverflow');
+    bank.balance+=amount;
+  }
+  // Keep zero-bounty kills too: one killed contact can generate at most one
+  // wreck, even in a system that grants no bank credit for that enemy type.
+  const bounty=state.space.bounties.find(e=>e.systemId===systemId&&e.enemyType===enemyType);
+  if(bounty)bounty.count++;else state.space.bounties.push({systemId,enemyType,count:1});
+  validateSpaceBounties(state.space.bounties,content);
+  if(aftermath.wreck) {
+    const lot=aftermath.wreck.lot,entry=state.space.wrecks.find(e=>signature(e.lot)===signature(lot));
+    if(entry)entry.count++;else state.space.wrecks.push({lot:structuredClone(lot),count:1});
+    state.space.wrecks=validateSpaceWrecks(state.space.wrecks);
+  }
+}
+function validateSalvageOwnership(campaign,space) {
+  const owned=[...campaign.pod.cargo,...campaign.economy.exchange.warehouse.slots,
+    ...campaign.regional.cities.flatMap(c=>c.warehouse.slots)].filter(isShipSalvage);
+  if(space.tactical?.record.wreck)owned.push(space.tactical.record.wreck.lot);
+  const counts=new Map();for(const lot of owned)counts.set(signature(lot),(counts.get(signature(lot))||0)+1);
+  for(const entry of space.losses)if(isShipSalvage(entry.lot))counts.set(signature(entry.lot),(counts.get(signature(entry.lot))||0)+entry.count);
+  for(const [key,count] of counts)if((space.wrecks.find(e=>signature(e.lot)===key)?.count||0)<count)fail();
 }
 
 // Combat recomputes from raw damaged bytes; installation computes with one
@@ -86,8 +137,8 @@ export function canonicalCombatEngineeringGroup(group,initial,pending) {
   return recalculateEquipment({...initial,units});
 }
 
-export function validateCampaignSpace(campaign,value,{communication=true,tactical=false,input=false,content}={}) {
-  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[]),...(tactical?['tactical']:[])])||
+export function validateCampaignSpace(campaign,value,{communication=true,tactical=false,input=false,salvage=false,content}={}) {
+  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[]),...(tactical?['tactical']:[]),...(salvage?['bounties','wrecks']:[])])||
     !dense(value.flags,128)||!value.flags.every((b,i)=>typeof b==='boolean'&&((communication?CONTACT_FLAGS:LEGACY_CONTACT_FLAGS).includes(i)||!b))||
     !keys(value.words,CONTACT_WORDS.map(String))||!dense(value.cooldowns,12)||!value.cooldowns.every(n=>integer(n,0,15))||
     !dense(value.combatFailures,6)||!value.combatFailures.every(b=>typeof b==='boolean')||
@@ -101,7 +152,7 @@ export function validateCampaignSpace(campaign,value,{communication=true,tactica
   if(value.defeat===null?w[347]!==0||campaign.resources.hull===0:
     !keys(value.defeat,['reason','minutes'])||value.defeat.reason!=='shipDestroyed'||
     value.defeat.minutes!==campaign.ship.minutes||w[347]!==1||value.elapsed!==0)fail();
-  const next={...structuredClone(value),losses:validateSpaceLosses(value.losses),
+  const next={...structuredClone(value),losses:validateSpaceLosses(value.losses,{salvage}),
     ...(!communication?{communication:initialShipCommunication(),activity:initialShipActivity()}:{} )};
   if(communication) {
     const c=next.communication,a=next.activity;
@@ -123,13 +174,24 @@ export function validateCampaignSpace(campaign,value,{communication=true,tactica
     if(controller!==null) {
       if(!keys(controller,['record','control','carry',...(input?['trigger']:[])])||next.activity.sleeping||next.elapsed>=50||
         !integer(controller.carry,0,249)||controller.carry>0&&next.elapsed!==0)fail();
-      controller.record=validateShipTactical(controller.record);controller.control=validateShipControl(controller.control);
+      controller.record=validateShipTactical(controller.record,{salvage});controller.control=validateShipControl(controller.control);
       if(input)controller.trigger=validateShipTrigger(controller.trigger);
       if(controller.record.frameLimit!==5)fail();
+      if(salvage&&controller.record.wreck) {
+        const wreck=controller.record.wreck;
+        if(wreck.present&&(!next.flags[36]||next.words[216]!==0||controller.record.contact||!integer(next.words[217],1,128))||
+          wreck.tractorSlot!==null&&(campaign.pod.cargo[wreck.tractorSlot]!==null||next.communication.conversation!==null||
+            !sameTree(controller.control,neutralShipControl())||!sameTree(controller.trigger,initialShipTrigger())))fail();
+      }
       if(next.communication.conversation&&(controller.record.menu!==0||controller.record.firing||
         controller.record.reticle.angle<0||controller.record.reticle.angle>255||controller.record.reticle.radius<0||controller.record.reticle.radius>255||
         !sameTree(controller.control,neutralShipControl())||input&&!sameTree(controller.trigger,initialShipTrigger())))fail();
     }
+  }
+  if(salvage) {
+    validateSpaceBounties(next.bounties,content);next.wrecks=validateSpaceWrecks(next.wrecks);
+    if(next.wrecks.reduce((n,e)=>n+e.count,0)>next.bounties.reduce((n,e)=>n+e.count,0))fail();
+    validateSalvageOwnership(campaign,next);
   }
   return next;
 }
@@ -233,6 +295,7 @@ export function restoreCampaignShipCommunication(state,content) {
 
 export function reduceCampaignShipCommunication(previous,content,action) {
   if(!previous.space?.communication||previous.travel.scene!=='ship'||previous.space.view!=='tactical'||previous.space.defeat||previous.combat.defeat||previous.space.activity.sleeping)throw Error('shipCommunicationUnavailable');
+  if(previous.space.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
   let next=structuredClone(previous),c=next.space.communication;
   if(action.type==='comm') {
     if(c.conversation)throw Error('shipCommunicationUnavailable');
@@ -287,6 +350,7 @@ export function reduceCampaignShipCommunication(previous,content,action) {
 export function reduceCampaignSpace(previous,action,content=null) {
   if(!previous.space||previous.travel.scene!=='ship'||previous.space.defeat||previous.combat.defeat)throw Error('spaceUnavailable');
   if(previous.space.communication?.conversation)throw Error('spaceUnavailable');
+  if(previous.space.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
   const next=structuredClone(previous);
   if(action.type==='sleep'&&next.space.activity) {
     if(next.space.activity.sleeping)throw Error('spaceUnavailable');
@@ -304,6 +368,10 @@ export function reduceCampaignSpace(previous,action,content=null) {
   }
   if(next.space.view!=='tactical')throw Error('spaceUnavailable');
   const index=next.start.systems.findIndex(s=>s.id===currentShipLocation(next).systemId);
+  if(action.type==='tractor'&&next.space.tactical) {
+    const t=next.space.tactical,result=startShipTacticalTractor(campaignShipSource(next),t.record);
+    commitCampaignShipSource(next,result.state);t.record=result.tactical;t.control=neutralShipControl();t.trigger=initialShipTrigger();return next;
+  }
   if(next.space.tactical&&['menu','gun','aim'].includes(action.type)) {
     const t=next.space.tactical;
     if(action.type==='aim') {
@@ -328,7 +396,7 @@ export function reduceCampaignSpace(previous,action,content=null) {
       const entry=next.space.losses.find(e=>signature(e.lot)===signature(lot));
       if(entry)entry.count++;else next.space.losses.push({lot:structuredClone(lot),count:1});
     }
-    next.space.losses=validateSpaceLosses(next.space.losses);
+    next.space.losses=validateSpaceLosses(next.space.losses,{salvage:Object.hasOwn(next.space,'wrecks')});
     commitCampaignShipSource(next,result.state);if(result.resetSystemCooldown)next.space.cooldowns[index]=0;
   } else throw Error('spaceUnavailable');
   return next;

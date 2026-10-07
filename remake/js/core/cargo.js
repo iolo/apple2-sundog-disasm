@@ -9,7 +9,12 @@ const fail=()=>{throw new Error('invalidCargo')};
 
 // Ordinary exchange lots and initialized cryogens are valid in historical saves.
 // R08 depot hosts opt into auxiliary fuel with its world-origin record.
-export function validateCargoLot(lot,{auxiliaryFuel=false}={}) {
+export function validateCargoLot(lot,{auxiliaryFuel=false,salvage=false}={}) {
+  if(salvage&&lot?.originCity===null) {
+    if(!keys(lot,['commodityId','quality','originCity','pricePaid'])||
+      !/^cargo-(0[1-9]|[12][0-9]|30)$/.test(lot.commodityId)||!integer(lot.quality,4,7)||lot.pricePaid!==0)fail();
+    return {commodityId:lot.commodityId,quality:lot.quality,originCity:null,pricePaid:0};
+  }
   if(auxiliaryFuel&&lot?.commodityId==='cargo-01') {
     if(!keys(lot,['commodityId','quality','originWorld','pricePaid'])||lot.quality!==7||lot.pricePaid!==0||
       !/^world-(0[1-9]|1[0-8])$/.test(lot.originWorld))fail();

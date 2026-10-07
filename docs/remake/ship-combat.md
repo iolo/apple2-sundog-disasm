@@ -1,5 +1,10 @@
 # Ship combat rules — R10a
 
+This page retains the R10a core checkpoint. R10o now connects
+[bounty/wreck/tractor salvage](ship-salvage.md) into opt-in29 actual campaign
+bank/cargo ownership; the [full requirement audit](r10-completion.md) records
+current evidence and the remaining live/native/ordinary-play gates.
+
 `remake/js/core/ship-combat.js` implements an isolated, source-facing combat
 session. R10i connects it to an opt-in campaign machinery/save host; live
 space controls remain pending. R09 remains complete.

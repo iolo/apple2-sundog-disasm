@@ -53,14 +53,20 @@ export function quoteExchangeCargo(cargo,{market,location,originLocation,items},
   if(!location.capital)price=side==='sell' ? adjust(price,8,6) : adjust(price,6,8);
   let ceiling=price;
   if(side==='sell') {
-    if(!ordinaryCity(cargo.originCity)||originLocation?.cityId!==cargo.originCity||
-      !/^world-(0[1-9]|1[0-8])$/.test(originLocation.worldId)||!/^system-(0[1-9]|1[0-2])$/.test(originLocation.systemId)||
-      !integer(cargo.pricePaid,0,3276700)||cargo.pricePaid%100!==0)fail();
-    ceiling=cargo.pricePaid/100;
-    if(cargo.originCity!==location.cityId) {
-      if(originLocation.worldId===location.worldId)ceiling=adjust(ceiling,8,6);
-      else if(originLocation.systemId===location.systemId)ceiling=adjust(ceiling,8,4);
-      else ceiling=price;
+    // Source origin0 scans past all worlds/systems (proc19), so it receives
+    // the ordinary quote as its ceiling despite a paid-price word of0.
+    if(cargo.originCity===null) {
+      if(cargo.pricePaid!==0||!integer(cargo.quality,4,7))fail();
+    } else {
+      if(!ordinaryCity(cargo.originCity)||originLocation?.cityId!==cargo.originCity||
+        !/^world-(0[1-9]|1[0-8])$/.test(originLocation.worldId)||!/^system-(0[1-9]|1[0-2])$/.test(originLocation.systemId)||
+        !integer(cargo.pricePaid,0,3276700)||cargo.pricePaid%100!==0)fail();
+      ceiling=cargo.pricePaid/100;
+      if(cargo.originCity!==location.cityId) {
+        if(originLocation.worldId===location.worldId)ceiling=adjust(ceiling,8,6);
+        else if(originLocation.systemId===location.systemId)ceiling=adjust(ceiling,8,4);
+        else ceiling=price;
+      }
     }
   }
   // Library22 proc37 uses a lower-bound branch followed by an upper-bound
