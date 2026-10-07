@@ -82,7 +82,7 @@ export async function shipTacticalTests(test,equal) {
     equal([even.state.words[354],even.called,even.updated,even.due],[2,false,false,false]);equal(even.state.words[215],20);
     const odd=beginShipTacticalFrame(even.state,p.tactical,idle,options);equal([odd.called,odd.updated,odd.due],[true,true,false]);
     const visible={...p.tactical,visible:true,grace:0};s.words[354]=4;
-    const skipped=beginShipTacticalFrame(s,visible,idle,options);equal([skipped.called,skipped.updated,skipped.due],[true,false,false]);
+    const skipped=beginShipTacticalFrame(s,visible,idle,options);equal([skipped.called,skipped.redraw,skipped.updated,skipped.due],[true,false,true,true]);
     const due=beginShipTacticalFrame(s,p.tactical,idle,options);equal(due.due,true);
     const menu=selectShipTacticalMenu(s,visible,1);menu.state.words[354]=2;
     const half=beginShipTacticalFrame(menu.state,menu.tactical,idle,options);equal([half.state.words[354],half.called,half.updated,half.due],[2,true,true,false]);
@@ -90,6 +90,18 @@ export async function shipTacticalTests(test,equal) {
     equal([rootPolling.state.words[354],rootPolling.called,rootPolling.updated],[2,true,true]);
     const gunFrame=gun(s);gunFrame.state.words[354]=1;
     equal(beginShipTacticalFrame(gunFrame.state,gunFrame.tactical,idle,options).called,true);
+  });
+  await test('Native redraw false branch still moves and runs due machinery before post-due movement',()=>{
+    const s=fresh(),p=setup(s);Object.assign(s.words,{205:510,206:516,208:1,209:2,215:0,217:39,354:10});
+    const visible={...p.tactical,visible:true,grace:0,reticle:{angle:16,radius:128}};
+    const begun=beginShipTacticalFrame(s,visible,idle,options);
+    equal([begun.state.words[354],begun.called,begun.redraw,begun.updated,begun.due],[11,true,false,true,true]);
+    equal([begun.state.words[205],begun.state.words[206]],[512,520]);equal(begun.tactical.grace,0);
+    // Actual native phase4 clock resets354, with a combat velocity change to0/3.
+    const after=structuredClone(begun.state);after.words[354]=0;after.words[208]=0;after.words[209]=3;
+    const finished=finishShipTacticalFrame(after,begun.tactical,begun.delta);
+    equal([finished.state.words[205],finished.state.words[206],finished.state.words[354]],[512,526,0]);
+    equal(finished.tactical.visible,true);equal(finished.tactical.grace,0);
   });
   await test('A due frame moves before combat and again after it, refreshing sensor cache before updating source contact',()=>{
     const s=fresh(),p=setup(s);s.words[354]=4;s.words[217]=100;s.flags[44]=false;

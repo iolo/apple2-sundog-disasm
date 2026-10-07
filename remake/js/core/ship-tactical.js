@@ -110,9 +110,12 @@ export function beginShipTacticalFrame(previous,record,control,{dexterity,worldA
   if(!menu)state.words[354]=signed(state.words[354]+1);
   const delta=shipTacticalAim(state,tactical,{x:control.x,y:control.y});
   const called=menu||tactical.firing||!!(state.words[354]&1);
-  const update=called&&(!tactical.visible||state.words[354]===(tactical.frameLimit>>1)||tactical.grace>0);
-  if(update){tactical.grace=signed(tactical.grace-1);({state,tactical}=moveShipTactical(state,tactical,delta))}
-  return {state,tactical,delta,called,updated:update,due:update&&state.words[354]>=tactical.frameLimit,shot};
+  const redraw=called&&(!tactical.visible||state.words[354]===(tactical.frameLimit>>1)||tactical.grace>0);
+  if(redraw)tactical.grace=signed(tactical.grace-1);
+  // The false branch at $0AD8 uses table $0BF8, whose target is $0B5D,
+  // not the return at $0BF6. It skips drawing but still moves and checks due.
+  if(called)({state,tactical}=moveShipTactical(state,tactical,delta));
+  return {state,tactical,delta,called,redraw,updated:called,due:called&&state.words[354]>=tactical.frameLimit,shot};
 }
 export function finishShipTacticalFrame(previous,record,delta) {
   const state=snapshotShipCombat(previous),tactical=validateShipTactical(record);
