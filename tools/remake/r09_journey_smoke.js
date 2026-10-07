@@ -67,7 +67,7 @@ async browserPage => {
   }
   async function command(type) {await page.locator('#nav-'+type).click();await page.locator('#nav-confirm').click()}
   async function destination(scale,id) {await page.locator('#nav-scale-'+scale).click();await page.locator('#nav-destination').selectOption(id);await page.locator('#nav-select').click();await page.locator('#nav-confirm').click()}
-  async function arrive() {await page.locator('#nav-run').click();for(let i=0;i<100;i++){await page.clock.runFor(250);if(!(await state()).flight)break}assert(!(await state()).flight,'The confirmed journey reaches its destination through the live clock')}
+  async function arrive() {await page.locator('#nav-run').click();for(let i=0;i<1024;i++){await page.clock.runFor(250);if(!(await state()).flight)break}assert(!(await state()).flight,'The confirmed journey reaches its destination through the live clock')}
   async function charge() {await page.locator('#nav-run').click();for(let i=0;i<256;i++){await page.clock.runFor(250);if(await page.locator('#nav-warp').isEnabled())break}assert(await page.locator('#nav-warp').isEnabled(),'Warp engine reaches its requested charge through the live power phases')}
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-07T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-07T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();

@@ -30,6 +30,21 @@ export async function campaignDialogueTests(test,equal) {
     while(state.encounters.counter.service!=='talking'&&ticks++<500)state=act(state,{type:'tick'});
     equal(state.encounters.counter.service,'talking');return state;
   }
+  const [exchange,surfaceWalk,flight]=await Promise.all(['exchange-defaults','surface-walk','flight-defaults'].map(n=>fetch(`../data/${n}.json`).then(r=>r.json())));
+  const regionalContent={...content,exchange,flight,regional:true,ground:{maps,cityWalk:cityData,surfaceWalk}},regionalCodec=campaignSaveCodec(regionalContent,ship,city);
+  await test('Regional counter valuation reads the actual city map tile, not the world city marker',()=>{
+    const s=regionalCodec.validate(codec.make(inRoom(),0)).state,state=talking(s),frame=restoreCampaignConversation(state,regionalContent,room).conversation;
+    equal(frame.state.locals[4],27); // Game16 $1256–$1267:26+(11+8)%9.
+    equal(regionalCodec.snapshot(state),state);equal(state.regional.legacyDialogueSurface,null);
+  });
+  await test('Historical open conversations preserve their old valuation until return, then clear the migration hint',()=>{
+    const old=talking(),before=restoreCampaignConversation(old,content,room),s=regionalCodec.validate(codec.make(old,0)).state;
+    equal(s.regional.legacyDialogueSurface,{x:10,y:6});equal(restoreCampaignConversation(s,regionalContent,room),before);
+    equal(regionalCodec.parse(JSON.stringify(regionalCodec.make(s,0))).state,s);
+    const bad=structuredClone(s);bad.regional.legacyDialogueSurface.x++;reject(()=>regionalCodec.snapshot(bad));
+    const ended=reduceCampaignCounter(s,regionalContent,room,{type:'dialogue',input:{type:'cancel'}}).state;equal(ended.regional.legacyDialogueSurface,null);equal(regionalCodec.snapshot(ended),ended);
+    const orphan=structuredClone(ended);orphan.regional.legacyDialogueSurface={x:10,y:6};reject(()=>regionalCodec.snapshot(orphan));
+  });
   await test('Purchases replay multiple transfers, then commit cash and inventory once without changing accounts or cargo',()=>{
     const initial=inRoom();initial.ship.inventory.carried=[0,0,0,0];
     // Withdraw within the existing wealth bound so equipment quotes are affordable.

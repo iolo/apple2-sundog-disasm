@@ -28,8 +28,8 @@ export async function campaignFlightTests(test,equal) {
   await test('Sublight ETA retains signed shortest-angle interpolation and source truncation',()=>{
     equal(orbitalDelta({angle:250,radius:20},{angle:6,radius:43}),{angle:12,radius:23});
     equal(orbitalDelta({angle:0,radius:43},{angle:128,radius:20}),{angle:128,radius:-23});
-    equal(sublightDuration({angle:250,radius:20},{angle:6,radius:43}),3);
-    equal(sublightDuration({angle:0,radius:43},{angle:128,radius:20}),10);
+    equal(sublightDuration({angle:250,radius:20},{angle:6,radius:43}),37);
+    equal(sublightDuration({angle:0,radius:43},{angle:128,radius:20}),153);
   });
   await test('Launch and landing are owned timed transitions that preserve creation, cargo and survival',()=>{
     const base=fresh(),before=JSON.stringify(base),started=act(base,{type:'launch'});
@@ -63,9 +63,16 @@ export async function campaignFlightTests(test,equal) {
     let state=launch(fresh());state.equipment[1].performance=16;
     state=act(state,{type:'sublight',angle:0});const from=structuredClone(state.regional.shipLocation.orbit),fuel=state.resources.fuel;
     state.machinery.phase=2;state=ticks(state,1);equal(state.resources.fuel,fuel-1);equal(state.flight.motion.progress,1);
+    // Integer interpolation can retain the first pixel while progress advances.
+    for(let i=0;i<16&&state.regional.shipLocation.orbit.angle===from.angle&&state.regional.shipLocation.orbit.radius===from.radius;i++)state=ticks(state,1);
     equal(state.regional.shipLocation.orbit.angle!==from.angle||state.regional.shipLocation.orbit.radius!==from.radius,true);
     const halted=act(state,{type:'halt'});equal(halted.regional.shipLocation,state.regional.shipLocation);equal(halted.flight.motion,null);equal(halted.resources.enginesPowered,false);
     reject(()=>act(state,{type:'sublight',worldId:'world-18'}),'flightBusy');
+  });
+  await test('Source LESI requires a motion roll strictly below engine performance',()=>{
+    let s=act(launch(fresh()),{type:'sublight',angle:0});s.encounters.randomState=512;s.equipment[1].performance=1;s.machinery.phase=2;
+    const rng=sourceRandom(512);equal(rng.next()&15,1);const stopped=ticks(s,1);equal(stopped.flight.motion.progress,0);equal(stopped.resources.fuel,s.resources.fuel);equal(stopped.encounters.randomState,rng.state);
+    s.equipment[1].performance=2;const moved=ticks(s,1);equal(moved.flight.motion.progress,1);equal(moved.resources.fuel,s.resources.fuel-1);
   });
   await test('Warp charging shares source power phases/RNG and cancellation discharges without refunding fuel',()=>{
     let state=fresh();const target='system-02',required=warpRequirement(state.start.systems,'system-01',target);

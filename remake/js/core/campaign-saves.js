@@ -182,7 +182,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       // the saved position without spawning an occupant on top of the player.
       if(groundCheck)groundCheck.player({...value,ground,pod,travel});
       return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,
-        ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null},flight:flight??initialFlight()}:{})};
+        ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null,legacyDialogueSurface:encounters.counter?.conversation?structuredClone(start.playerLocation.surfacePosition):null},flight:flight??initialFlight()}:{})};
     } catch { fail(); }
   }
   function validate(value) {

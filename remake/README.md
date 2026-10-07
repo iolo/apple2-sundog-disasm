@@ -1,12 +1,12 @@
 # SunDog web remake
 
-Current milestone: a playable landed campaign with character creation, ship and
+Current milestone: a playable regional campaign with character creation, ship and
 city walking, inventory/condition/survival, component exchange, bank deposits,
-withdrawals and inter-system transfers, local exchange purchases/warehouse sales,
+withdrawals and inter-system transfers, regional exchange purchases/warehouse sales,
 shop purchases and information, paid lodging with working bedroom doors, and tavern
 seating, conversations, visitor item buying/selling, food/ale purchases and bartender
 trader referrals. Local pod driving and warehouse Store/Fetch/Swap retain cargo
-through loaded docking. Surface travel connects the starting world’s cities with
+through loaded docking. Surface travel connects the18 worlds’ cities with
 independent parking, foot visits and saved return journeys. Depot visits offer confirmed hull repairs, ship refueling
 and auxiliary fuel loading with saved resources and cargo. TransStation visits
 remain read-only.
@@ -16,8 +16,8 @@ Engineering's Power panel runs guns, shields and installed cloakers with real
 fuel costs, auxiliary consumption and saved charge/phase progress.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Regional transport, flight, combat and colony progression
-are still pending. Evidence is in
+inspector remain available. Regional flight and all57 ordinary-city services are active. Combat and colony
+progression remain pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
 
 From the repository root:
@@ -112,8 +112,10 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version22 saves retain city/surface domains, the camera, independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
-by replaying the saved RNG and inputs,
+Version23 saves retain city/surface domains, the camera, independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+by replaying the saved RNG and inputs. Regional saves also preserve the actual
+ship/pod worlds, all57 city economies, flight progress, warp targets and distress
+deadlines. They preserve the clock and RNG across mid-flight reloads,
 and retain active cash, lodging doors and tavern seat/visitor state. Earlier campaign versions migrate
 after validation. Shop and bartender purchases use cash: accept a quote, then choose an empty
 carried slot to pay. Saves replay purchases until the conversation returns;
@@ -126,7 +128,7 @@ source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration and R07 trading/banking are complete. Their evidence
 and boundaries are recorded in `../docs/remake/r06-completion.md` and
-`../docs/remake/r07-completion.md`. Surface traversal and the combined acceptance audit remain R08; intercity travel remains R09.
+`../docs/remake/r07-completion.md`. R08 ground transport is complete; R09 adds regional flight and destination services.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
@@ -150,7 +152,7 @@ must fit. A faulty installed part briefly contributes output, then burns out;
 fit a working replacement or compatible shunt to restore that unit. Moves wait
 while the part is being checked. **Saves** pauses the update and preserves pending
 faults; opening a saved pending frame resolves its failure. Hull, fuel and offline
-unit counts are status information; flight controls remain pending. See
+unit counts remain visible alongside active flight controls. See
 `../docs/remake/equipment-failures.md` for source rules and timing adaptations.
 
 Choose **Power** from engineering to switch gun charging on/off, adjust shields,
@@ -173,10 +175,24 @@ both positions. Move away from the ship before parking if its hull blocks your
 walking exit. Continue past a city boundary to reach the world surface. Move
 onto a city marker and choose **Enter city** to visit its outdoor streets; return
 to Drahew to dock at your ship. Surface parking retains the pod and cargo while
-you walk into a city. Return to its saved position to board again. Version22
+you walk into a city. Return to its saved position to board again. Version23
 saves preserve the camera and both locations, including a remote parked pod.
-Other cities' buildings/markets and regional flight remain pending. See
+Ordinary cities have their own buildings, markets and warehouses. A detached pod
+stays on its original world when the ship flies away. See
 `../docs/remake/surface-travel.md` and `../docs/remake/parked-pod.md`.
+
+Walk to pilotage (the source interaction station at the front of the ship) and
+open **Navigation**. The **Stars**, **System** and **Planet** tabs select map
+scales. Review a destination and Confirm; Cancel leaves campaign state intact.
+Choose **Launch**, confirm, then Resume for the transition. In orbit, select a
+world or one of16 safe warp points. At a warp point, select another system,
+Resume charging, then review/confirm **Warp jump**. Planetary gravity can prevent
+jumps and consume charge. Select a world, travel there, then choose its capital
+under Planet to land. Other-city landing requires working special pilotage.
+Pause and Saves stop time; loading resumes paused. **Halt** stops sublight motion
+at its current position. **Distress call** requests one timed full refuel while
+airborne. Source launch clearance checks both packed account words; see
+`../docs/remake/flight.md` for that rule and explicit timing adaptations.
 
 At the exchange, choose a lot under **Offers** and Confirm to buy it into the
 local warehouse. Payment uses the bank first, then cash. Under **Warehouse**,

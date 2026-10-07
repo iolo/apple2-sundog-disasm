@@ -462,6 +462,12 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R09e (2026-10-07) closes the source audit: corrected left-shift flight
+duration and strict engine comparison, generated-terrain colony validation,
+actual regional counter coordinates and historical quote preservation. All345
+Chrome groups pass, including all57 ordinary cities plus Banville.21 exporter
+tests/169 artifacts/584 strings verify. Final UI/regressions and audit remain.
+
 Checkpoint R09d (2026-10-07) enables live version23, localized navigation and
 regional services.44 navigation checks cover three scales/four viewports/both
 locales. A64-check ordinary-play two-system land/trade/refuel/return/reload

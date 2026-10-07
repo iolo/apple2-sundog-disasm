@@ -11,10 +11,11 @@ export function orbitalDelta(from,to) {
   if(delta>128)delta-=256;else if(delta< -128)delta+=256;
   return {angle:delta,radius:to.radius-from.radius};
 }
-// Game13 proc36 $1BAE–$1BE2; Library22 proc31 is arithmetic right shift.
+// Game13 proc36 $1BAE–$1BE2: proc31 shifts right8, then proc30 shifts LEFT2.
+// Word211 is successful motion steps; displayed ETA is1+(word211>>1).
 export function sublightDuration(from,to) {
   const delta=orbitalDelta(from,to);
-  return ((Math.trunc(Math.abs(delta.radius)/3)+((Math.abs(delta.angle)*(from.radius+to.radius))>>8))>>2)+1;
+  return ((Math.trunc(Math.abs(delta.radius)/3)+((Math.abs(delta.angle)*(from.radius+to.radius))>>8))<<2)+1;
 }
 export function flightOrbit(state,content,worldId) {
   const world=content.navigation.worlds.find(w=>w.id===worldId),generated=state.start.worlds.find(w=>w.id===worldId);
@@ -141,7 +142,7 @@ export function stepCampaignFlight(previous,phase) {
   if(!f)return {state:next,workingFuel:r.fuel,arrived:false};
   const rng=sourceRandom(next.encounters.randomState),roll=rng.next()&15;
   let workingFuel=r.fuel,arrived=false;
-  if(f.motion?.type==='sublight'&&r.enginesPowered&&roll<=next.equipment[1].performance) {
+  if(f.motion?.type==='sublight'&&r.enginesPowered&&roll<next.equipment[1].performance) {
     const m=f.motion;m.progress++;
     const delta=orbitalDelta(m.from.orbit,m.to.orbit);
     next.regional.shipLocation.orbit={angle:angle(m.from.orbit.angle+Math.trunc(m.progress*delta.angle/m.duration)),radius:m.from.orbit.radius+Math.trunc(m.progress*delta.radius/m.duration)};

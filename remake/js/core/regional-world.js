@@ -42,7 +42,7 @@ export function campaignLocation(state,content) {
   if(cityId&&city?.id!==cityId)fail();
   const system=content.navigation.systems.find(s=>s.worldIds.includes(worldId));
   return {...ship,systemId:system?.id??ship.systemId,worldId,cityId,
-    surfacePosition:content.ground?.surfaceWalk.cities.find(c=>c.cityId===cityId)?.position??ship.surfacePosition};
+    surfacePosition:state.travel?.cityPosition?{x:Math.floor(state.travel.cityPosition.x/28),y:Math.floor(state.travel.cityPosition.y/(state.travel.scene==='surface'?24:32))}:ship.surfacePosition};
 }
 
 export function regionalGroundStart(state) {
@@ -54,7 +54,7 @@ export function initialRegional(start) {
   const active=start.playerLocation.cityId;
   return {shipLocation:structuredClone(start.shipLocation),podWorldId:start.shipLocation.worldId,colonyPosition:null,
     cities:start.economy.markets.filter(m=>ordinaryCity(m.cityId)&&m.cityId!==active).map(m=>({market:structuredClone(m),warehouse:structuredClone(start.economy.warehouses.find(w=>w.cityId===m.cityId))})),
-    cargoProceeds:0};
+    cargoProceeds:0,legacyDialogueSurface:null};
 }
 
 export function selectRegionalExchange(previous,cityId) {
@@ -71,7 +71,7 @@ export function selectRegionalExchange(previous,cityId) {
 }
 
 export function validateRegionalCargo(start,exchange,pod,regional) {
-  if(!keys(regional,['shipLocation','podWorldId','colonyPosition','cities','cargoProceeds'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
+  if(!keys(regional,['shipLocation','podWorldId','colonyPosition','cities','cargoProceeds','legacyDialogueSurface'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
     !Number.isSafeInteger(regional.cargoProceeds)||regional.cargoProceeds<0||regional.cargoProceeds>32767999)fail();
   const ids=[exchange.market.cityId,...regional.cities.map(c=>c.market.cityId)].sort();
   if(JSON.stringify(ids)!==JSON.stringify(start.economy.markets.filter(m=>ordinaryCity(m.cityId)).map(m=>m.cityId)))fail();

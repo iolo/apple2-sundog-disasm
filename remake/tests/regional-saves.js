@@ -1,3 +1,8 @@
+import { createGroundWorld } from '../js/core/campaign-ground.js';
+import { regionalGroundStart } from '../js/core/regional-world.js';
+import { placeSurfaceColony } from '../js/core/surface-map.js';
+import { recalculateEquipment } from '../js/core/equipment.js';
+import { canStand } from '../js/core/ship-walk.js';
 import { campaignSaveCodec } from '../js/core/campaign-saves.js';
 import { createCharacter } from '../js/core/character.js';
 import { reduceCampaignFlight } from '../js/core/campaign-flight.js';
@@ -33,7 +38,7 @@ export async function regionalSaveTests(test,equal) {
   });
   await test('Regional imports reject impossible membership, interpolation, charge, duplicated stock and extra fields',()=>{
     const s=act(arrive(act(ready(),{type:'launch'})),{type:'sublight',angle:0});
-    for(const mutate of [x=>x.regional.shipLocation.systemId='system-12',x=>x.flight.motion.progress++,x=>x.flight.motion.duration++,x=>x.flight.extra=true,x=>x.regional.cities[1]=x.regional.cities[0],x=>x.regional.cargoProceeds=-1,x=>x.resources.enginesPowered=false,x=>{x.resources.warp={charge:20,targetCharge:21,targetSystemId:'system-02',charging:true}}]){const bad=structuredClone(s);mutate(bad);reject(()=>codec.snapshot(bad))}
+    for(const mutate of [x=>x.regional.shipLocation.systemId='system-12',x=>x.flight.motion.progress=x.flight.motion.duration-1,x=>x.flight.motion.duration++,x=>x.flight.extra=true,x=>x.regional.cities[1]=x.regional.cities[0],x=>x.regional.cargoProceeds=-1,x=>x.resources.enginesPowered=false,x=>{x.resources.warp={charge:20,targetCharge:21,targetSystemId:'system-02',charging:true}}]){const bad=structuredClone(s);mutate(bad);reject(()=>codec.snapshot(bad))}
     const bad=ready(),owner=bad.regional.cities.find(c=>c.warehouse.slots.some(Boolean));owner.warehouse.slots[0]=null;reject(()=>codec.snapshot(bad));
   });
   await test('Every capital supports regional save/reload and independent destination exchange ownership',()=>{
@@ -41,6 +46,25 @@ export async function regionalSaveTests(test,equal) {
       let s=arrive(act(ready(),{type:'launch'}));s.regional.shipLocation.systemId=w.systemId;s.regional.shipLocation.worldId=w.id;
       s=arrive(act(s,{type:'land',cityId:w.capitalCityId}));s=selectRegionalExchange(s,w.capitalCityId);
       equal(codec.parse(JSON.stringify(codec.make(s,0))).state,s);
+    }
+  });
+  await test('Regional colony coordinates validate against generated terrain and historical22 placement migrates exactly',()=>{
+    const original=old.create({...createCharacter(),name:'Colony pilot'},12345),world=createGroundWorld({...content,...content.ground},original.start),placed=placeSurfaceColony(world.surfaceBase,original.encounters.randomState);
+    original.ground.colonyPosition=placed.position;original.encounters.randomState=placed.randomState;
+    const migrated=codec.validate(old.make(original,0)).state;equal(migrated.regional.colonyPosition,placed.position);equal(codec.snapshot(migrated),migrated);
+    const bad=structuredClone(migrated);bad.regional.colonyPosition={...surfaceWalk.cities[0].position};bad.ground.colonyPosition=bad.regional.colonyPosition;reject(()=>codec.snapshot(bad));
+  });
+  await test('All57 ordinary city landings and Banville have valid access, canonical regional saves and source arrival geometry',()=>{
+    const capital=arrive(act(ready(),{type:'launch'}));
+    // Declared working-pilotage/colony fixtures isolate landing and content
+    // coverage. The UI acceptance journey uses ordinary capital landings.
+    capital.equipment[5].units[0].components=[...capital.equipment[5].spares];capital.equipment[5].units[0].components[capital.equipment[5].requiredSocket]=capital.equipment[5].requiredComponent;capital.equipment[5]=recalculateEquipment(capital.equipment[5]);
+    const placed=placeSurfaceColony(createGroundWorld({...content,...content.ground},capital.start).surfaceBase,capital.encounters.randomState);
+    capital.ground.colonyPosition=placed.position;capital.regional.colonyPosition=placed.position;
+    for(const city of [...economy.cities,economy.colonyCity]) {
+      let s=structuredClone(capital);s.regional.shipLocation.worldId=city.worldId;s.regional.shipLocation.systemId=exchange.worlds.find(w=>w.id===city.worldId).systemId;
+      s=arrive(act(s,{type:'land',cityId:city.id}));const world=createGroundWorld({...content,...content.ground},regionalGroundStart(s)),g=world.city(city.id,true);
+      equal(canStand(g,g.spawn),true);equal(g.pod.spawn!==null,true);equal(codec.snapshot(s),s);
     }
   });
   await test('A pod left on Jondd remains validated after flight to another world and through a full return',()=>{

@@ -1,3 +1,4 @@
+import { composeSurfaceMap } from './surface-map.js';
 import { regionalIndex,warpRequirement } from './regional-world.js';
 import { flightOrbit,orbitalDelta,sublightDuration } from './campaign-flight.js';
 const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===n.length&&n.every(k=>Object.hasOwn(v,k));
@@ -33,7 +34,8 @@ export function validateRegionalFlight(state,content) {
     }
   }
   location(r.shipLocation);
-  if(r.colonyPosition!==null&&(!point(r.colonyPosition,40,24)||content.ground.maps.worlds.find(w=>w.id==='world-01').tiles[r.colonyPosition.y][r.colonyPosition.x]<14))fail();
+  if(r.legacyDialogueSurface!==null&&(!state.encounters?.counter?.conversation||!same(r.legacyDialogueSurface,state.start.playerLocation.surfacePosition)))fail();
+  if(r.colonyPosition!==null&&(!point(r.colonyPosition,40,24)||composeSurfaceMap(content.ground.maps.worlds.find(w=>w.id==='world-01'),content.ground.surfaceWalk.cities).tiles[r.colonyPosition.y][r.colonyPosition.x]<14))fail();
   if(!index.worlds.has(g.worldId)||!same(g.colonyPosition,g.worldId==='world-01'?r.colonyPosition:null))fail();
   if(pod.attached) {
     if(r.podWorldId!==r.shipLocation.worldId||g.podCityId!==r.shipLocation.cityId)fail();
