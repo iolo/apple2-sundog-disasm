@@ -1,5 +1,42 @@
 # SunDog web remake progress
 
+## R10c — Source ground-combat session — 2026-10-07
+
+Implemented the complete Game17 combat iteration in an isolated owned session:
+source actor count/placement/packed health and skill, shield/weapon preparation,
+one-pixel player movement, historical-target NPC pursuit, strict hit tolerance,
+laser and five-shot scatter volleys, personal shield charges, immediate actor
+removal, NPC recovery, knock-out robbery, surrender/cancellation and truce/flee.
+Dynamic glyphs use the source HGR collision buffer. Retained source charge
+underflow, byte health packing, history jump targets and friendly-fire slot
+compaction instead of replacing them with simpler rules. Exported glyphs22–25,
+including the full collision mask and fallen actor, as ground-combat content.
+
+Dialogue suspension serializes the activation record without regenerating its
+actors/history or redrawing RNG. Personal health/vigor and packed charges write
+back through an explicit checkpoint. Fixed50 ms browser iterations preserve a
+serialized remainder and freeze during pause.20 focused groups cover independent
+byte/carry RNG vectors, source boundaries, collision, avoid/fight/lose,
+surrender, fatal hits, JSON continuation and identical30/60/144 Hz results.
+These fixtures are isolated source evidence, not ordinary live-campaign play.
+
+Validation: all380 rule groups pass in Chrome154.0.8037.97 with no failures/page
+errors (`docs/remake/r10c-rules-validation.json`).21 exporter tests pass;170
+deterministic artifacts and584 classified strings verify; whitespace checks
+pass. The initial localhost test was denied by the sandbox and rerun with the
+authorized harness outside it. Focused Node checks and the complete Chrome
+suite pass after correcting fixture arithmetic and adding flee/friendly-fire
+coverage. No native-emulator ground capture is claimed.
+
+`docs/remake/ground-combat.md` records source procedures, host contract and
+bounded browser adaptations. `r10-completion.md` preserves every original R10
+gate and the actual Game16 case-table mappings. Reserved predicate12–14 and
+builtin12–15 defaults match the source; remaining dialogue work is encounter
+setup/context/outcome integration. Next: prepared Game21 threat/chase/native
+evidence, encounter dialogue, campaign clocks and versioned saves, tactical and
+localized UI, cargo-loss ownership and live avoid/fight/lose acceptance. R10
+remains active; live version23 and the user's untracked PRD stay unchanged.
+
 ## R10b — Original-game space encounter evidence — 2026-10-07
 
 Captured a controlled space contact and the enemy Comm conversation in an
