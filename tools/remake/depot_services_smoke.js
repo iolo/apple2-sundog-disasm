@@ -40,7 +40,7 @@ async browserPage => {
         const keys=[...(p.dx?[p.dx>0?'ArrowRight':'ArrowLeft']:[]),...(p.dy?[p.dy>0?'ArrowDown':'ArrowUp']:[])];
         for(const key of keys)await page.keyboard.down(key);
         for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
-        for(const key of keys)await page.keyboard.up(key);
+        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(50); // Let the source host observe the released movement button.
       } else {
         await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
         await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
@@ -69,7 +69,7 @@ async browserPage => {
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-03T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-03T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Depot pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const initial=await exported();assert(initial.version===23&&initial.scope==='regional-flight-1','Fresh campaign exports version23 active resources');
+    const initial=await exported();assert(initial.version===24&&initial.scope==='ground-encounters-1','Fresh campaign exports version24 active resources');
     await route('depart');await route('depot');assert((await state()).scene==='depot','Normal pod driving reaches the depot');
     const arrived=await exported();await fits('services');
     await page.locator('#depot-repair').click();assert((await page.locator('#depot-price').innerText()).includes('145'),'Hull repair quotes the source local price');

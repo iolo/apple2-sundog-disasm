@@ -1,4 +1,4 @@
-# Campaign save boundary — live R09f, opt-in R10g
+# Campaign save boundary — live R10h
 
 R10g adds opt-in version24 `ground-encounters-1` when content supplies the
 source `combat:{chase,ground}` assets. Its `combat:{clock,ground,rewards,defeat}`
@@ -9,8 +9,9 @@ Terminal returns replay before committing personal losses, condition and income
 once. Versions1–23 validate historically before receiving default combat fields;
 older scopes cannot inject encounter quantity, rewards, inactive condition or
 sessions. Standalone checkpoint formats remain unchanged. See
-[ground host and persistence](ground-host.md). Live asset/UI activation remains
-pending, so the following version23 description still governs the live game.
+[ground host and persistence](ground-host.md). R10h activates24 in the live
+asset loader and ground UI; see [live encounters](ground-encounter-ui.md).
+The following version23 description records the underlying regional fields.
 
 R09 activates version23, scope`regional-flight-1`, in the live UI. The asset
 loader supplies `regional:true`, flight defaults and

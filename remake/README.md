@@ -16,9 +16,18 @@ Engineering's Power panel runs guns, shields and installed cloakers with real
 fuel costs, auxiliary consumption and saved charge/phase progress.
 English/Korean controls and four campaign save slots cover the current scenes,
 including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Regional flight and all57 ordinary-city services are active. Combat and colony
-progression remain pending. Evidence is in
+inspector remain available. Regional flight and all57 ordinary-city services are active.
+City threats now lead to playable chase, encounter dialogue and ground combat.
+Carried weapons/shields, source surrender/robbery, post-fight rewards and death
+persist in version24 saves. Space combat and colony progression remain pending. Evidence is in
 `../docs/remake/behavior-matrix.md`.
+
+During ground encounters, move with arrows or a held pointer. In combat, aim
+with the pointer and hold Space or the right mouse button to fire. Toggle
+**Aim & fire** for a held touch/primary pointer. S cancels an agreed surrender.
+Pause, help and saved games freeze the encounter. Inventory and boarding return
+when it ends. See `../docs/remake/ground-encounter-ui.md` for save ownership,
+source behavior and adaptation boundaries.
 
 From the repository root:
 

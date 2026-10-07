@@ -43,7 +43,7 @@ async browserPage => {
         const keys=[...(p.dx?[p.dx>0?'ArrowRight':'ArrowLeft']:[]),...(p.dy?[p.dy>0?'ArrowDown':'ArrowUp']:[])];
         for(const key of keys)await page.keyboard.down(key);
         for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
-        for(const key of keys)await page.keyboard.up(key);
+        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(50); // Let the source host observe the released movement button.
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
@@ -69,7 +69,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Two normally purchased cargo lots are loaded before surface departure');
     await page.locator('#service-leave').click();await route('surface');const outbound=await reload();
-    assert(outbound.version===23&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version23 reloads the live surface scene');
+    assert(outbound.version===24&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version24 reloads the live surface scene');
     assert(outbound.state.ground.colonyPosition!==null,'First surface entry persists colony placement');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();

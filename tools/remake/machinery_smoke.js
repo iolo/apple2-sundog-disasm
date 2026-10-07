@@ -51,7 +51,7 @@ async browserPage => {
     await page.locator('#campaign-saves').click();await settled();await importValue(fixture);await page.locator('#checkpoint-back').click();await openPower();
     assert(await page.locator('#power-cloak').isDisabled(),'Cloaker cannot activate without a working special component');
     await page.locator('#power-guns').click();await page.locator('#power-shield-full').click();
-    const enabled=await exportGame();assert(enabled.version===23&&enabled.scope==='regional-flight-1'&&enabled.state.resources.guns.powered&&enabled.state.resources.shields.targetCharge===255,'Version23 saves active gun and shield controls');
+    const enabled=await exportGame();assert(enabled.version===24&&enabled.scope==='ground-encounters-1'&&enabled.state.resources.guns.powered&&enabled.state.resources.shields.targetCharge===255,'Version24 saves active gun and shield controls');
     await resumeFor(300);const first=await exportGame();
     assert(first.state.machinery.phase===1&&first.state.ship.minutes===enabled.state.ship.minutes+1&&first.state.resources.fuel===12,'First power phase advances the clock once and pays gun charging fuel');
     assert(first.state.resources.guns.charge===Math.min(255,(enabled.state.equipment[2].performance+1)*16),'Gun charge follows actual installed performance');
@@ -74,7 +74,7 @@ async browserPage => {
     await page.screenshot({path:'output/playwright/remake/machinery-ko.png'});await page.setViewportSize({width:1280,height:720});await page.clock.runFor(100);await page.locator('#power-language').click();
     await page.locator('#power-close').focus();await page.keyboard.press('Shift+Tab');assert(await page.locator('#power-saves').evaluate(el=>el===document.activeElement),'Keyboard focus remains inside the machinery panel');
     const bad=structuredClone(off);bad.state.machinery.phase=4;await load(bad);assert(JSON.stringify((await exportGame()).state)===JSON.stringify(off.state),'Invalid phase import leaves active resources and state unchanged');
-    const legacy=structuredClone(fixture);legacy.version=19;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;legacy.scope='landed-failures-1';delete legacy.state.machinery;await load(legacy);
+    const legacy=structuredClone(fixture);legacy.version=19;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;legacy.scope='landed-failures-1';delete legacy.state.machinery;await load(legacy);
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(fixture.state),'Version19 imports with an empty power phase and unchanged cargo/resources');
     const damaged=structuredClone(fixture);damaged.state.ship.inventory.carried=[0,0,0,0];
     const g=damaged.state.equipment[2];g.units=g.units.map((u,i)=>({components:i===0?[...g.spares]:[0,0,0,0],performance:i===0?4:0}));g.performance=4;g.specialAvailable=false;damaged.state.resources.guns={charge:200,powered:true};

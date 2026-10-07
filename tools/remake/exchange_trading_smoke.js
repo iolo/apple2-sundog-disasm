@@ -64,7 +64,7 @@ async browserPage => {
     await page.keyboard.down('ArrowDown');await page.clock.runFor(200);await page.keyboard.up('ArrowDown');await page.locator('#walk-airlock').click();
     await walkToBuilding(5);const street=await exportGame();await page.locator('#walk-airlock').click();
     const entered=await exportGame(),ex=s=>s.state.economy.exchange;
-    assert(entered.version===23&&entered.scope==='regional-flight-1','Exchange exports version23');
+    assert(entered.version===24&&entered.scope==='ground-encounters-1','Exchange exports version24');
     assert(ex(entered).visit.offers.length===8&&ex(entered).market.lastUpdateDay===0,'Ordinary entry creates and persists eight offer rows');
     assert(entered.state.encounters.randomState!==street.state.encounters.randomState,'Entry advances continuing gameplay RNG');
     const cheapest=s=>ex(s).visit.offers.map((o,i)=>({o,i})).filter(r=>r.o).sort((a,b)=>a.o.price-b.o.price)[0].i;
@@ -118,12 +118,12 @@ async browserPage => {
     const forged=structuredClone(again),forgedRow=ex(forged).visit.offers.find(Boolean);forgedRow.price++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects a forged asking price');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Rejected import preserves all live progress');
-    const previous=structuredClone(again);previous.version=13;delete previous.state.regional;delete previous.state.flight;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
+    const previous=structuredClone(again);previous.version=13;delete previous.state.combat;delete previous.state.regional;delete previous.state.flight;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
     assert((await importGame(previous)).includes('imported'),'Version13 traded exchange progress imports');
-    const migratedExchange=structuredClone(again.state);migratedExchange.regional.cargoProceeds=0; // Historical local sales needed no regional proceeds ledger.
+    const migratedExchange=structuredClone(again.state);migratedExchange.combat={clock:{scene:null,moving:false,limit:15,minutesPerTick:1,iterations:0,elapsed:0,podDirection:null},ground:null,rewards:[],defeat:null};migratedExchange.regional.cargoProceeds=0; // Historical local sales needed no regional proceeds ledger.
     migratedExchange.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedExchange.travel.cityPosition);
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedExchange),'Version13 migration preserves cargo, money, market, offers and RNG');
-    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
+    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     assert((await importGame(legacy)).includes('imported'),'Version12 exchange preview imports through normal UI');
     const migrated=await exportGame();
     assert(ex(migrated).visit.offers.length===8&&migrated.state.encounters.randomState!==legacy.state.encounters.randomState,'Legacy exchange gets its first board exactly at resume');

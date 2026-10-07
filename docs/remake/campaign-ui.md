@@ -1,4 +1,12 @@
-# Character-to-ship flow — R04h
+# Character-to-ship flow — R04h, updated R10h
+
+The current live campaign is version24 `ground-encounters-1`. Regional flight,
+services and [live ground encounters](ground-encounter-ui.md) use the existing
+creation/title/four-slot flow. Encounter clocks, chase/dialogue/combat inputs,
+verified personal returns and durable death markers save and reload. Ended
+campaigns now permit save/export; loading them preserves death. Sleeping saves
+remain unavailable. The older scope descriptions below record the original
+creation/room checkpoints; see [current save validation](campaign-saves.md).
 
 The title now offers Create a character and Saved games. After allocating
 attributes, Board ship opens a short boarding form. Unspent points require
@@ -30,14 +38,14 @@ writing a slot remains explicit. There is no autosave. Storage failure disables
 slot writes but retains import/export and retry. Existing transactional conflict
 protection prevents stale tabs from overwriting newer records.
 
-Sleeping sessions cannot open saves. Death offers Back and Saves; it cannot be
-saved/exported or reset through the preview's restart control. Loading a living
+Sleeping sessions cannot open saves. Death offers Back and Saves; version24 can
+save/export it with a defeat marker. It cannot reset through the preview's restart control. Loading a living
 save restores the paused session. The preview reset is absent throughout campaign
 play. English and Korean cover the new flow and its validation messages.
 
 ## Supported scope
 
-The save is now `sundog-campaign` version7, scope `landed-traffic-1`:
+The historical R06f save was `sundog-campaign` version7, scope `landed-traffic-1`:
 immutable creation record plus active ship position, inventory, condition,
 whole elapsed minutes, equipment, active ship/city/bank/room scene and gameplay RNG. R05f adds
 [component exchange](component-exchange.md) at the six engineering bays; R06b adds

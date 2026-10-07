@@ -659,5 +659,14 @@
   "dialogueMessage96_212": "아! 친절한 분이시군요. 복 받으세요!",
   "dialogueMessage96_221": "고마워요. 절대 잊지 않겠습니다!",
   "dialogueMessage96_235": "감사합니다! 이제 어머니가 수술을 받을 수 있어요!",
-  "dialogueMessage96_247": "이런, 정말 잘 속는군!"
+  "dialogueMessage96_247": "이런, 정말 잘 속는군!",
+  "groundChaseHint": "누군가 뒤따라옵니다. 창 밖으로 이동해 피하세요.",
+  "groundCombatHint": "체력 {health} · 상대 {enemies} · 조준해 쏘거나 이동해 피하세요.",
+  "groundCombatPaused": "일시정지 · 체력 {health} · 상대 {enemies}",
+  "groundEncounterControls": "방향키나 누른 포인터로 이동합니다. 전투에서는 포인터로 조준하고 Space나 마우스 오른쪽 버튼을 눌러 쏩니다. 터치는 조준·발사 모드로 바꾸세요. S로 합의한 항복을 취소합니다.",
+  "groundEncounterHelp": "대답에 따라 다음 상황이 달라집니다. 휴대한 무기와 실드로 싸우며 창 가장자리로 피할 수 있습니다. 일시정지·도움말·저장 화면에서는 상황이 멈춥니다. 돌아오기 전에는 소지품이나 승선을 이용할 수 없습니다.",
+  "groundAimMode": "조준·발사",
+  "groundMoveMode": "이동",
+  "groundCancelSurrender": "항복 취소",
+  "groundEncounterUnavailable": "상황을 진행할 수 없습니다. 이전 저장 게임을 불러오세요."
 }

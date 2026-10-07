@@ -659,5 +659,14 @@
   "dialogueMessage96_212": "Oh! Bless you kind friend!",
   "dialogueMessage96_221": "Thanks mac, I'll never forget it!",
   "dialogueMessage96_235": "Thank you! Now my mother can get an operation!",
-  "dialogueMessage96_247": "Boy, what a sucker!"
+  "dialogueMessage96_247": "Boy, what a sucker!",
+  "groundChaseHint": "Someone is following you. Move beyond the window to escape.",
+  "groundCombatHint": "Health {health} · Contacts {enemies} · Aim and fire, or move to escape.",
+  "groundCombatPaused": "Paused · Health {health} · Contacts {enemies}",
+  "groundEncounterControls": "Arrows or a held pointer move. In combat, aim with the pointer and hold Space or the right mouse button to fire. Toggle Aim & fire for touch. S cancels an agreed surrender.",
+  "groundEncounterHelp": "Replies decide what happens next. Your carried weapon and shield supply combat equipment. The window edge offers escape. Pause, help and saved games freeze the encounter. Inventory and boarding are unavailable until you return.",
+  "groundAimMode": "Aim & fire",
+  "groundMoveMode": "Move",
+  "groundCancelSurrender": "Cancel surrender",
+  "groundEncounterUnavailable": "The encounter cannot advance. Load an earlier saved game."
 }

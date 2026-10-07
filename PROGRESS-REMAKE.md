@@ -1,5 +1,44 @@
 # SunDog web remake progress
 
+## R10h — Live ground encounters and version24 activation — 2026-10-07
+
+Connected the ground host to the live city/surface loop and enabled source
+combat assets/version24. Movement, time and due threat production have one
+owner, using absolute frame timestamps and serialized50ms remainders. Chase,
+mandatory Game16, source combat, post-fight dialogue and verified returns render
+through exported glyph/window rows over the frozen campaign map. The thin arena
+outline is presentation, not a collision wall or native copied-map claim.
+
+Added arrow/held-pointer movement, hover aim with Space/right-click fire,
+primary-pointer Aim & fire mode, and S/button cancellation of pending surrender.
+Both locales include combat health/contact hints and help. Inventory, boarding
+and pod actions return after the encounter. Modal and scene transitions clear
+held input and resume paused. Four slots and JSON preserve partial clocks,
+chase/dialogue/combat/post-fight phases and source losses/rewards. Fatal damage
+opens the existing ended-campaign UI and now saves/exports a durable marker;
+reload cannot restart it. Loading a living save remains explicit.
+
+Controlled actual-map imports use declared gate seeds and the owned starting
+laser; all subsequent production, dialogue, movement, shots and returns use
+ordinary UI. The later fatal fixture uses the prior source knockout's actual
+injury. These prove live integration, not fresh-character ordinary-play campaign
+acceptance or native combat-outcome parity. Browser display-timer shims at
+30/60/144Hz produce identical campaign fields, replay controls and RNG. Korean
+portrait combat presentation is visually inspected. Navigation regression
+drivers now allow one released host tick between single-step pod inputs, so
+the source acceleration gate sees the release rather than continuing a held
+direction. Current-schema assertions and historical fixtures follow24.
+
+Chrome154.0.8037.97 passes431 rule groups and144 UI checks:81 live ground
+encounter,19 room dialogue and44 navigation checks, with no page errors.
+22 exporter tests,171 deterministic artifacts,584 classified strings and
+original input hashes verify. See `docs/remake/ground-encounter-ui.md`,
+`r10h-*-validation.json` and `r10h-validation-summary.json` for evidence.
+R10 remains active: ship production/power/combat, tactical controls, cargo/cryogen
+loss, native death/wreck/recovery dispatch, rare reward entry224 and fresh
+ordinary-play avoid/fight/lose acceptance remain required. R09 stays complete;
+the user's untracked PRD remains untouched.
+
 ## R10g — Ground host, replay saves and verified returns — 2026-10-07
 
 Joined actual ground movement and Game21's due threat production to chase,

@@ -43,7 +43,7 @@ async browserPage => {
         const keys=[...(p.dx?[p.dx>0?'ArrowRight':'ArrowLeft']:[]),...(p.dy?[p.dy>0?'ArrowDown':'ArrowUp']:[])];
         for(const key of keys)await page.keyboard.down(key);
         for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
-        for(const key of keys)await page.keyboard.up(key);
+        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(50); // Let the source host observe the released movement button.
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
@@ -72,7 +72,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Fresh-character purchases fill both pod cargo slots');
     await page.locator('#service-leave').click();await route('street');const street=await exported();await page.locator('#walk-pod').click();const parked=await reload();
-    assert(parked.version===23&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version23 preserves the independent parked pod and player positions');
+    assert(parked.version===24&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version24 preserves the independent parked pod and player positions');
     assert(JSON.stringify(parked.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Parking and reload preserve both purchased cargo lots');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();
