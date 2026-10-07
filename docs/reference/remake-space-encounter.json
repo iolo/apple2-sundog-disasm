@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-07",
+  "emulator": "MAME 0.285 / apple2e / joystick",
+  "scope": "Original-game space contact and enemy dialogue observed using declared RAM setup in the existing supplied save; not natural generation or fresh-game acceptance.",
+  "bootstrapSequence": "docs/reference/game-play.json through frame18000",
+  "probes": "tools/remake/encounter_reference.lua",
+  "reproduction": "docs/remake/encounter-reference.md",
+  "observed": {
+    "enemyActive": true,
+    "enemyType": 1,
+    "enemyHealth": 200,
+    "dialogueScene": 9,
+    "workspaceKind": 9,
+    "workspaceEnemyLevel": 2,
+    "choices": [
+      "Agree",
+      "Refuse",
+      "Dismiss It"
+    ]
+  },
+  "inputNote": "The captured input probe is named tactical-select; it actually opened the Comm dialogue. The observed result is retained rather than relabeled as tactical aiming.",
+  "notProven": [
+    "Natural encounter production",
+    "Native hit/damage arithmetic",
+    "Native retained-pointer defeat",
+    "Ground encounter",
+    "Fresh-game avoid/fight/lose journey",
+    "Cycle-equivalent browser timing"
+  ],
+  "originalSHA256": {
+    "sundog-disk1-game.dsk": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "sundog-disk2-util.dsk": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+  },
+  "captureSHA256": {
+    "remake-space-contact.json": "7d88432376b3e46368ef6f0574e5544298ace42757a61a6bf353fabbbd61abf1",
+    "remake-space-contact.png": "5dd2786f5d3dde37097f96cdce6266862942c2bfe43a7f2f7a52173362e2ee21",
+    "remake-space-input.json": "e82f9a1bff6a2679c7a11f23d08fbd662a9a9c767879147118d6fd494ce899ab",
+    "remake-space-input.png": "e7e0935bf14a5db2bc6c1bfa4ea4fcf50debd39db22222939589597de1d4d699",
+    "remake-space-dialogue.json": "51a0bc9028b2de50b7f2a1893e66fd1afbcec0e8842af00360c3ea0d6e0a35c5",
+    "remake-space-dialogue.png": "db22bd97a5a1061ba20842b9e02c5a533667af22c14e3bd5de6348b3d702abd4"
+  }
+}
