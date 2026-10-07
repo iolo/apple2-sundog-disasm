@@ -1,0 +1,42 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10o",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "browser": "155.0.8059.39",
+  "ruleGroups": 500,
+  "focusedRuleGroups": 43,
+  "newRuleGroups": 12,
+  "regionalUiChecks": 64,
+  "receipts": [
+    "r10o-rules-validation.json",
+    "r10o-journey-validation.json"
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3,
+    "retainedNativeArtifactHashes": 48
+  },
+  "saveScopes": {
+    "live": 24,
+    "spaceOnly": 26,
+    "tactical": 29
+  },
+  "journey": {
+    "origin": "system-01/world-01/city-01",
+    "destination": "system-02/world-03/city-09",
+    "pricePaid": 17100,
+    "saleProceeds": 39200,
+    "minutes": 570,
+    "fuel": 108
+  },
+  "boundaries": [
+    "Native bounty/wreck/RNG vector reuses declared R10n captures; no new native tractor or recovery capture is claimed.",
+    "Tractor/cargo/account/timing tests use declared source/campaign fixtures and actual reducers; they are not ordinary encounter acceptance.",
+    "The live regional journey preserves R09 and does not activate space encounters.",
+    "Live space controls, native full collection/death/recovery, rare reward224 and ordinary encounter/equipment/timing acceptance remain full R10 requirements."
+  ]
+}

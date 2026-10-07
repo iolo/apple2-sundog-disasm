@@ -69,7 +69,7 @@ export async function shipTacticalTests(test,equal) {
     const s=fresh(),p=setup(s);s.flags[20]=true;
     for(let n=0;n<=16;n++) {
       const t={...p.tactical,sensors:n,visible:true};
-      equal(shipTacticalControls(s,t),{guns:n>1,jettison:n>0,shields:n>2,cloak:n>2,comm:true,sensorTarget:n>1,rangePlots:n>4});
+      equal(shipTacticalControls(s,t),{guns:n>1,jettison:n>0,shields:n>2,cloak:n>2,comm:true,sensorTarget:n>1,rangePlots:n>4,tractor:false});
     }
     s.flags[7]=s.flags[20]=false;s.flags[47]=true;
     const gated=shipTacticalControls(s,p.tactical);equal([gated.jettison,gated.cloak,gated.comm],[false,false,false]);

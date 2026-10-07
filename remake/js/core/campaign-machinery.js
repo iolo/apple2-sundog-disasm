@@ -3,10 +3,10 @@ import { equipmentDependencyResult } from './equipment-failures.js';
 import { conditionHour } from './survival.js';
 import { stepCampaignFlight,finishCampaignFlight } from './campaign-flight.js';
 import { campaignShipSource,commitCampaignShipSource,stepCampaignSpaceProducer,stepCampaignSpaceCombat,
-  stepCampaignShipCommunication,leaveCampaignShipDeadline,clearCampaignTactical,neutralShipControl } from './campaign-space.js';
+  stepCampaignShipCommunication,leaveCampaignShipDeadline,clearCampaignTactical,neutralShipControl,recordCampaignShipKill } from './campaign-space.js';
 
 import { prepareShipTactical,beginShipTacticalFrame,finishShipTacticalFrame,shipTacticalControls,
-  initialShipTrigger,readShipTrigger } from './ship-tactical.js';
+  initialShipTrigger,readShipTrigger,completeShipTacticalTractor } from './ship-tactical.js';
 import { currentShipLocation } from './regional-world.js';
 
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
@@ -45,6 +45,7 @@ export function reconcileMachinery(state) {
   return state.flight?finishCampaignFlight(next):next;
 }
 export function reduceMachineryControl(previous,action) {
+  if(previous.space?.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
   if(previous.travel.scene!=='ship'||previous.space?.defeat||previous.combat?.defeat||previous.space?.communication?.conversation||previous.space?.activity?.sleeping)throw Error('machineryUnavailable');
   const next=structuredClone(previous),r=next.resources;
   if(next.space?.tactical) {
@@ -175,12 +176,17 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
         const index=next.start.systems.findIndex(system=>system.id===currentShipLocation(next).systemId);
         next.space.cooldowns[index]=(next.space.cooldowns[index]+begun.shot.cooldownIncrement)&15;
       }
+      if(begun.aftermath)recordCampaignShipKill(next,begun.aftermath,content);
       if(begun.due) {
         next=machineryCycle(next,s,content);cycles++;
         if(next.space.tactical&&!next.space.defeat&&!s.dead) {
           const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,begun.delta);
           commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
         }
+      }
+      if(next.space.tactical?.record.wreck&&next.space.tactical.record.wreck.tractorSlot!==null&&!next.space.defeat&&!s.dead) {
+        const completed=completeShipTacticalTractor(campaignShipSource(next),next.space.tactical.record);
+        commitCampaignShipSource(next,completed.state);next.space.tactical.record=completed.tactical;
       }
       frames++;
     } else {next=machineryCycle(next,s,content);cycles++}

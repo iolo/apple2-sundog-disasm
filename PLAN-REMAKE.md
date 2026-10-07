@@ -245,7 +245,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R07 — Trading and banking **(complete, R07h)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport **(complete, R08m)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
 | R09 — Flight and regional world **(complete, R09f)** | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
-| R10 — Encounters and combat **(in progress, R10n)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
+| R10 — Encounters and combat **(in progress, R10o)** | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
 | R11 — Colony campaign | Implement the complete verified contract progression: finding Banville, goods requirements/deliveries, cryogen discovery/transport, staged updates and completion. Complete any remaining campaign-critical content. | Fresh-game-to-ending playthrough using ordinary controls and legitimate resource transactions; duplicate deliveries cannot advance twice; save/resume during progression preserves requirements. Depends on R07–R10 and R01's early campaign research. |
 | R12 — Presentation and audio | Complete SVG coverage for reachable content, source-informed sound effects, transition polish, controls/help, English/Korean editorial pass and small-viewport handling. Add hosted offline caching only if chosen. | No untranslated reachable strings/missing glyphs, missing art, external runtime requests or inaccessible essential controls; audio mute/activation works. Depends on R11; incremental polish is allowed earlier. |
 | R13 — Release validation | Reproduce the core playthroughs, validate all static references and save migrations, document intentional differences and run instructions, and capture Chrome screenshots/behavior receipts. | All acceptance criteria below met and no unacknowledged core-rule blockers. Update history and commit the final checkpoint. Depends on R12. |
@@ -461,6 +461,19 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R10o (2026-10-08) implements source bounty/wreck/inhibition and
+blocking tractor collection in opt-in29 `ship-salvage-1`. Current-system bank
+credits and bounded production receipts join actual cargo, fuel, RNG and clock
+owners; unknown-origin salvage moves/sells through regional warehouses and
+conserves stored/lost ownership. Native R10n bytes reproduce cargo25/quality6 and
+packed217; the captured bounty is corrected to3000Cr from its screenshot/proc6
+locals. Historical1–28 validate first and migrate without retroactive bounty or
+cargo. All500 browser rule groups,64 ordinary regional journey checks,22
+exporter tests,171 artifacts,584 strings and original/native hashes pass.
+Live24/space-only26 remain unchanged. Live tactical controls, native full
+collection/death/recovery, rare reward224 and ordinary campaign acceptance still
+remain R10 gates. See `docs/remake/ship-salvage.md` and the full R10 audit.
 
 Checkpoint R10n (2026-10-08) observes prepared native aim, fresh/held/empty-space
 fire, gun-loop exit and Comm byte storage/restoration. Opt-in28 `ship-input-1`

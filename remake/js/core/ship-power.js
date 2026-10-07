@@ -3,7 +3,7 @@ import { sourceRandom } from './random.js';
 
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
 const fail=()=>{throw new Error('invalidShipPower')};
-const cargoCopy=cargo=>validateCargoSlots(cargo,'pod',{auxiliaryFuel:true});
+const cargoCopy=cargo=>validateCargoSlots(cargo,'pod',{auxiliaryFuel:true,salvage:true});
 
 // Library24 proc16: consume the first auxiliary lot only when attached and
 // working fuel <=0. Add255 BEFORE clamping; a deficit reduces the refill.

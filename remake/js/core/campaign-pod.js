@@ -21,10 +21,10 @@ export function campaignFootGeometry(city,pod) {
 // overlaps one wall pixel there; the adjacent (99,119) is clear and connected.
 export const POD_REENTRY=Object.freeze({x:99,y:119});
 export const initialCampaignPod=()=>({attached:true,position:null,heading:16,cargo:initialPodCargo(),occupied:false});
-export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryFuel=true,parking=true}={}) {
+export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryFuel=true,parking=true,salvage=false}={}) {
   if(!keys(value,['attached','position','heading','cargo',...(parking?['occupied']:[])])||typeof value.attached!=='boolean'||(parking&&typeof value.occupied!=='boolean'))throw new Error('invalidPod');
   const occupied=parking?value.occupied:!value.attached;
-  const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel});
+  const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel,salvage});
   if(value.attached) {
     if(value.position!==null||value.heading!==16||occupied)throw new Error('invalidPod');
   } else {
@@ -40,7 +40,7 @@ export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryF
 export function reduceCampaignPod(previous,geometry,action,city=null) {
   if(previous.ground&&((['depart','dock'].includes(action.type)?previous.ground.cityId!==currentShipLocation(previous).cityId:!previous.regional&&previous.ground.cityId!==previous.start.shipLocation.cityId)||
     (previous.pod.occupied&&previous.ground.podCityId!==previous.ground.cityId)))throw new Error('podUnavailable');
-  validateCampaignPod(previous.pod,previous.travel,geometry);
+  validateCampaignPod(previous.pod,previous.travel,geometry,{salvage:Object.hasOwn(previous.space||{},'wrecks')});
   const next=structuredClone(previous),p=next.pod;
   if(action.type==='depart') {
     if(next.travel.scene!=='ship'||!p.attached||interactionAt(next.ship.position)!==3||!canDrivePod(geometry,geometry.spawn,16))throw new Error('podUnavailable');
@@ -70,7 +70,7 @@ export function reduceCampaignPod(previous,geometry,action,city=null) {
   } else if(['store','fetch','swap'].includes(action.type)) {
     if(next.travel.scene!=='exchange'||!p.occupied||!podExchangeAt(geometry,p.position,p.heading))throw new Error('cargoUnavailable');
     const loaded=reduceWarehouseCargo({warehouse:next.economy.exchange.warehouse,pod:p.cargo},
-      {cityId:next.economy.exchange.market.cityId,transport:'pod'},action,{auxiliaryFuel:true});
+      {cityId:next.economy.exchange.market.cityId,transport:'pod'},action,{auxiliaryFuel:true,salvage:Object.hasOwn(next.space||{},'wrecks')});
     next.economy.exchange.warehouse=loaded.warehouse;p.cargo=loaded.pod;
   } else throw new Error('podUnavailable');
   return next;

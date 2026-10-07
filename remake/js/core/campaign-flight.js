@@ -65,6 +65,7 @@ export function landingLocation(state,content,cityId) {
 }
 
 export function reduceCampaignFlight(previous,content,action) {
+  if(previous.space?.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
   if(!previous.regional||!previous.flight||previous.travel.scene!=='ship'||previous.pod.occupied||previous.space?.defeat||previous.combat?.defeat||previous.space?.communication?.conversation||previous.space?.activity?.sleeping)throw Error('flightUnavailable');
   let next=structuredClone(previous);const r=next.resources,f=next.flight,ship=currentShipLocation(next),mode=flightMode(next);
   const busy=()=>{if(f.motion)throw Error('flightBusy')};

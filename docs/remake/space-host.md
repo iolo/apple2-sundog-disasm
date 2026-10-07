@@ -1,4 +1,4 @@
-# Campaign ship encounter host — R10i–R10n
+# Campaign ship encounter host — R10i–R10o
 
 `campaign-space.js` connects the source ship-combat primitives to actual
 regional flight, machinery, resources, equipment, pod cargo and campaign RNG.
@@ -8,6 +8,9 @@ to26 `ship-communication-1` (`content.space:true`). R10m adds opt-in27
 and saved reticle/input/menu state. R10n extends it to28 `ship-input-1`, saving
 button edges and correcting cached-contact firing and the one Comm-return
 dispatcher call; see [tactical host](ship-tactical.md).
+R10o extends tactical saves to29 `ship-salvage-1`, connecting source bounty,
+wreck drift/inhibition and blocking tractor collection into actual bank/cargo
+owners; see [ship salvage](ship-salvage.md). Space-only saves remain26.
 The live asset loader/UI
 remains version24 pending sensors, reticle/input, bolt arming and recovery
 integration, including exposing the verified Comm reducer. This document

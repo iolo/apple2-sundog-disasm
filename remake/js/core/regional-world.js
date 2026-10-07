@@ -70,7 +70,7 @@ export function selectRegionalExchange(previous,cityId) {
   next.economy.exchange={...selected,visit:null};return next;
 }
 
-export function validateRegionalCargo(start,exchange,pod,regional,losses=[]) {
+export function validateRegionalCargo(start,exchange,pod,regional,losses=[],{salvage=false}={}) {
   if(!keys(regional,['shipLocation','podWorldId','colonyPosition','cities','cargoProceeds','legacyDialogueSurface'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
     !Number.isSafeInteger(regional.cargoProceeds)||regional.cargoProceeds<0||regional.cargoProceeds>32767999)fail();
   const ids=[exchange.market.cityId,...regional.cities.map(c=>c.market.cityId)].sort();
@@ -82,7 +82,7 @@ export function validateRegionalCargo(start,exchange,pod,regional,losses=[]) {
   const initial=start.economy.warehouses.flatMap(w=>w.slots).filter(c=>c?.commodityId==='cargo-31');
   const lostCryogens=losses.filter(e=>e.lot.commodityId==='cargo-31').flatMap(e=>Array(e.count).fill(signature(e.lot)));
   if(JSON.stringify([...all.filter(c=>c.commodityId==='cargo-31').map(signature),...lostCryogens].sort())!==JSON.stringify(initial.map(signature).sort()))fail();
-  if([...all,...losses.map(e=>e.lot)].some(c=>c.commodityId==='cargo-01'? !start.worlds.some(w=>w.id===c.originWorld):c.commodityId!=='cargo-31'&&(!ordinaryCity(c.originCity)||c.pricePaid<100)))fail();
+  if([...all,...losses.map(e=>e.lot)].some(c=>salvage&&c.originCity===null?false:c.commodityId==='cargo-01'? !start.worlds.some(w=>w.id===c.originWorld):c.commodityId!=='cargo-31'&&(!ordinaryCity(c.originCity)||c.pricePaid<100)))fail();
   // Destroyed purchases retain their cost in the wealth bound. A loss receipt
   // cannot be used as a new income allowance or to duplicate a cryogen.
   return all.reduce((sum,c)=>sum+c.pricePaid,0)+losses.reduce((sum,e)=>sum+e.count*e.lot.pricePaid,0);
