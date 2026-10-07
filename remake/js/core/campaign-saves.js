@@ -52,7 +52,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Existing city-only callers keep their21 contract until live integration.
   if(baseline.combat&&!baseline.regional)throw Error('invalidCampaignContent');
   if(baseline.space!==undefined&&(baseline.space!==true||!baseline.combat||baseline.dialogue?.systems?.systems?.length!==12))throw Error('invalidCampaignContent');
-  const VERSION=baseline.space?25:baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.space?'ship-encounters-1':baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
+  const VERSION=baseline.space?26:baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.space?'ship-communication-1':baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
   let groundValidator=null,groundSeed=null;
   let populationCache=null;
   function snapshot(value, version = VERSION) {
@@ -194,7 +194,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         const world=createGroundWorld({...baseline,...baseline.ground},regionalGroundStart(campaign));
         combat=validateCampaignCombat(campaign,value.combat,world,baseline);
       }
-      const space=version>=25?validateCampaignSpace({travel,pod,combat,ship,resources},value.space):null;
+      const space=version>=25?validateCampaignSpace({start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,ground,regional,flight,combat},value.space,{communication:version>=26,content:baseline}):null;
       return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,
         ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null,legacyDialogueSurface:encounters.counter?.conversation?structuredClone(start.playerLocation.surfacePosition):null},flight:flight??initialFlight()}:{}),...(VERSION>=24?{combat:combat??initialCampaignCombat()}:{}),...(VERSION>=25?{space:space??initialCampaignSpace()}:{})};
     } catch { fail(); }
@@ -220,6 +220,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===18 && value.scope==='landed-depot-1') ||
       (value?.version===19 && value.scope==='landed-failures-1') ||
       (value?.version===20 && value.scope==='landed-power-1') ||
+      (VERSION>=26 && value?.version===25 && value.scope==='ship-encounters-1') ||
       (VERSION>=25 && value?.version===24 && value.scope==='ground-encounters-1') ||
       (VERSION>=24 && value?.version===23 && value.scope==='regional-flight-1') ||
       (VERSION>=23 && value?.version===22 && value.scope==='landed-ground-1') ||

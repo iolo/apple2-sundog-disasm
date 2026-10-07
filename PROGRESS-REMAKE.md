@@ -1,3 +1,48 @@
+## R10j — Saved space Comm, cargo deadline and sleep — 2026-10-07
+
+Added opt-in26 `ship-communication-1` with actual kind19/scene-middle1 Comm,
+frozen visited-system/account, cash/attributes/carried items, source flags,
+workspace/city/hour/surface inputs and exact seed/input replay. Nullable ship
+worlds and an independently parked ground domain do not select the wrong bank.
+Open imports reconstruct context and continuing RNG; completed/forged records,
+extra fields and mismatched owners reject atomically. Personal/workspace/account
+changes commit only at verified return. Source preparation clears48–50 but
+retains51; these return flags keep their shared dialogue owner so prior ground
+returns survive accurately. Game16's scene-middle<3 overlay resets word354.
+Clock, production/combat and unrelated ship controls freeze during Comm.
+
+Actual Game12 returns consume49 before51, retaining retreat/cargo-demand/hostile
+branches. Agree does not debit money or remove cargo. The saved counter runs
+after movement/production/power/combat: six decrements, then aggression on the
+seventh due call. Source tactical exit immediately restores aggression if a
+demand is pending. Jettison intentionally leaves that counter running, matching
+proc21; it cannot become a permanent truce. Partial due ticks, pause and JSON
+resume preserve the same counter/RNG, and source initial dismissal retains the
+intermediate hostile message before returning.
+
+Saved activity owns voluntary/forced sleep,50ms remainder and the alternating
+rest-recovery phase. Reconstructed survival defaults cannot wake a loaded
+sleeping character. Exhaustion exits tactical context, retains the forced wake
+gate through rest128 and releases it above128. Sleep death clears activity and
+time remainder, preserves the durable marker and freezes subsequent calls.
+Historical1–25 validate before migration;25 still rejects new fields/flag35
+under its original nine-field schema before adding idle communication/activity.
+
+Eleven new campaign groups bring the ship-host set to25 and the full Chrome
+suite to457 passing groups with no failures/page errors.22 exporter tests,171
+deterministic artifacts,584 source strings and three original input hashes
+verify. Receipts: `docs/remake/r10j-rules-validation.json` and
+`r10j-validation-summary.json`. These are declared core fixtures, not a new
+native capture or ordinary-play space encounter acceptance. R10i's live
+regional/navigation receipts remain the latest UI evidence; live UI stays24.
+
+R10 remains active. Next: source tactical frames/entry, sensors/aim/input and
+bolt confirmation, then live26 activation, English/Korean help and display-
+refresh/resume acceptance. Full native death/wreck/recovery, rare kind18 target224
+and fresh-character ground/space avoid/fight/lose acceptance remain required.
+R09's completed flight/regional gates remain closed; colony progression is R11.
+The user PRD remains untouched and untracked.
+
 ## R10i — Campaign ship host and source scheduling audit — 2026-10-07
 
 Added `campaign-space.js` and opt-in version25 `ship-encounters-1`, joining actual

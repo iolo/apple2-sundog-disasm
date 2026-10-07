@@ -6,7 +6,8 @@ import { createSurvival } from '../js/core/survival.js';
 import { reduceCampaignFlight } from '../js/core/campaign-flight.js';
 import { advanceCampaignMachinery,reduceMachineryControl,reconcileMachinery } from '../js/core/campaign-machinery.js';
 import { reduceCampaignEngineering } from '../js/core/campaign-engineering.js';
-import { reduceCampaignSpace,stepCampaignSpaceProducer } from '../js/core/campaign-space.js';
+import { reduceCampaignSpace,stepCampaignSpaceProducer,reduceCampaignShipCommunication,
+  restoreCampaignShipCommunication,validateCampaignSpace } from '../js/core/campaign-space.js';
 
 // Independent byte/carry RNG oracle, with source call counts below.
 function stream(seed,count) {
@@ -48,9 +49,13 @@ export async function campaignSpaceTests(test,equal) {
     Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:20,216:200,217:20});return s;
   };
   const reject=(run,code='invalidCampaign')=>{let message;try{run()}catch(e){message=e.message}equal(message,code)};
+  const comm=s=>reduceCampaignShipCommunication(s,content,{type:'comm'});
+  const reply=(s,input)=>reduceCampaignShipCommunication(s,content,{type:'dialogue',input});
+  const tactical=s=>reduceCampaignSpace(s,{type:'view',view:'tactical'});
+  const agree=s=>reply(reply(comm(tactical(s)),{type:'reply',slot:0}),{type:'cancel'});
 
-  await test('Space version25 validates before migration and leaves historical24 hull/failure/cryogen rules strict',()=>{
-    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[25,'ship-encounters-1']);equal(reload(initial),initial);
+  await test('Space version26 validates before migration and leaves historical24 hull/failure/cryogen rules strict',()=>{
+    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[26,'ship-communication-1']);equal(reload(initial),initial);
     const historical=old.make(old.create({...createCharacter(),name:'Space host'},12345),0);
     equal(codec.validate(historical).state,initial);
     const bad=structuredClone(historical);bad.state.resources.hull--;reject(()=>codec.validate(bad));
@@ -199,5 +204,154 @@ export async function campaignSpaceTests(test,equal) {
       const bad=structuredClone(s);change(bad);const before=JSON.stringify(bad);reject(()=>codec.snapshot(bad));equal(JSON.stringify(bad),before);
     }
     const atGround=contact();atGround.travel={scene:'city',cityPosition:{x:0,y:0}};reject(()=>codec.snapshot(atGround));
+  });
+  await test('Historical25 validates its original nine space fields before adding idle communication and activity',()=>{
+    const s=contact(4);s.space.flags[45]=true;const damaged=tick(s).state;
+    const save=codec.make(damaged,0);save.version=25;save.scope='ship-encounters-1';
+    delete save.state.space.communication;delete save.state.space.activity;
+    equal(codec.validate(save).state,damaged);
+    for(const change of [v=>v.space.communication={conversation:null,pending:false,ticks:0},
+      v=>v.space.activity={sleeping:true,forced:false,sleepPhase:0},v=>v.space.flags[35]=true,
+      v=>v.space.flags[49]=true,v=>v.space.flags[51]=true]) {
+      const bad=structuredClone(save);change(bad.state);reject(()=>codec.validate(bad));
+    }
+    const wrongScope=structuredClone(save);wrongScope.scope='ship-communication-1';reject(()=>codec.validate(wrongScope));
+  });
+  await test('Comm freezes actual source inputs and replay while clocks and unrelated ship controls cannot advance',()=>{
+    const s=tactical(contact());s.space.words[354]=10;
+    const before=JSON.stringify(s),opened=comm(s),frozen=opened.space.communication.conversation;
+    equal(JSON.stringify(s),before);equal(frozen.context.kind,19);equal(frozen.context.sceneMiddle,1);
+    equal(frozen.context.city,0);equal(frozen.context.workspace,{...s.dialogue.workspace,item:0,mood:0,quantity:2});
+    equal(frozen.context.bankBalance,s.economy.accounts[0].balance);equal(frozen.context.cash,s.dialogue.cash);
+    equal(frozen.context.attributes,s.dialogue.attributes);equal(frozen.context.carried,s.ship.inventory.carried);
+    equal(Object.keys(frozen),['context','record']);equal(Object.keys(frozen.record),['seed','inputs']);equal(opened.space.words[354],0);equal(reload(opened),opened);
+    const midway=reply(opened,{type:'reply',slot:0});equal(reload(midway),midway);
+    equal(restoreCampaignShipCommunication(reload(midway),content),restoreCampaignShipCommunication(midway,content));
+    equal(midway.economy,opened.economy);equal(midway.dialogue,opened.dialogue);equal(midway.ship,opened.ship);
+    equal(tick(midway,60000).state,midway);equal(tick(midway,250).cycles,0);
+    reject(()=>act(midway,{type:'distress'}),'flightUnavailable');
+    reject(()=>reduceMachineryControl(midway,{type:'guns',enabled:true}),'machineryUnavailable');
+    const atBay=structuredClone(midway);atBay.ship.position={x:109,y:60};
+    reject(()=>reduceCampaignEngineering(atBay,{type:'enter',groupIndex:1}),'equipmentUnavailable');
+    for(const action of [{type:'view',view:'ship'},{type:'sleep'},{type:'jettison',selection:3},{type:'fire',focused:true}])
+      reject(()=>reduceCampaignSpace(midway,action),'spaceUnavailable');
+    reject(()=>comm(midway),'shipCommunicationUnavailable');
+  });
+  await test('Space Comm uses the visited bank/system and a nullable airborne world rather than the parked ground domain',()=>{
+    let s=contact(1);s.regional.shipLocation.worldId=null;s.regional.podWorldId=null;s.regional.shipLocation.orbit.radius=43;
+    s=act(s,{type:'setWarp',systemId:'system-02'});s.resources.warp.charge=s.resources.warp.targetCharge;s=act(s,{type:'warp'});
+    equal(s.regional.shipLocation.systemId,'system-02');equal(s.ground.worldId,'world-01');equal(s.regional.shipLocation.worldId,null);
+    s.space.flags[40]=s.space.flags[44]=true;s.encounters.randomState=1;
+    const opened=comm(s),context=opened.space.communication.conversation.context;
+    equal(context.system,systems.systems.find(s=>s.id==='system-02'));equal(context.bankBalance,s.economy.accounts[1].balance);
+    equal(context.city,0);equal(reload(opened),opened);equal(restoreCampaignShipCommunication(opened,content).view.state,64);
+    const returned=reply(reply(reload(opened),{type:'reply',slot:0}),{type:'cancel'});
+    equal(returned.economy.accounts,s.economy.accounts);equal(returned.dialogue.cash,s.dialogue.cash);equal(reload(returned),returned);
+  });
+  await test('Agree commits once without payment or automatic jettison; six ticks then the seventh restore aggression after combat',()=>{
+    const initial=buyCargo(contact()),agreed=agree(initial);
+    equal(agreed.space.communication,{conversation:null,pending:true,ticks:6});equal(agreed.space.flags[44],false);
+    equal(agreed.space.flags[35],false);equal(agreed.space.flags[41],false);equal(agreed.space.flags[47],true);equal(agreed.dialogue.flags[51],false);
+    equal(agreed.economy.accounts,initial.economy.accounts);equal(agreed.dialogue.cash,initial.dialogue.cash);equal(agreed.pod.cargo,initial.pod.cargo);
+    let s=reload(tick(agreed,249).state);equal(s.space.communication.ticks,6);
+    s=tick(s,1).state;equal(s.space.communication.ticks,5);equal(s.space.flags[44],false);
+    for(let n=4;n>=0;n--){s=reload(tick(s).state);equal(s.space.communication.ticks,n);equal(s.space.flags[44],false)}
+    const rng=s.encounters.randomState,hull=s.resources.hull;
+    s=reload(tick(s).state);equal(s.space.communication,{conversation:null,pending:false,ticks:0});equal(s.space.flags[44],true);
+    equal(s.encounters.randomState,rng);equal(s.space.flags[45],false);equal(s.resources.hull,hull);
+    const next=tick(s).state;equal(next.encounters.randomState,stream(rng,2).state);equal(reload(next),next);
+    reject(()=>comm(s),'shipCommunicationUnavailable');reject(()=>reply(s,{type:'cancel'}),'shipCommunicationUnavailable');
+  });
+  await test('Source Refuse can negotiate retreat; failed refusal or dismissal retains hostility without a cargo demand',()=>{
+    const s=tactical(contact(1));s.dialogue.flags[48]=s.dialogue.flags[50]=s.dialogue.flags[51]=true;const opened=comm(s);
+    equal(opened.dialogue.flags.slice(48,52),[false,false,false,true]); // Shared globals: source clears48–50, retaining51.
+    const refused=reply(opened,{type:'reply',slot:1}),bluffed=reply(reload(refused),{type:'reply',slot:2});
+    const fled=reply(reload(bluffed),{type:'cancel'});
+    equal([fled.space.words[215],fled.space.words[207]],[128,2]);equal(fled.space.flags[44],false);equal(fled.dialogue.flags[49],false);equal(fled.dialogue.flags[51],true);
+    equal(fled.space.communication,{conversation:null,pending:false,ticks:0});equal(fled.encounters.randomState,270844305);equal(reload(fled),fled);
+    const failure=reply(reply(comm(tactical(contact(29))),{type:'reply',slot:1}),{type:'cancel'});
+    equal(failure.space.flags[44],true);equal(failure.space.communication.pending,false);equal(reload(failure),failure);
+    const dismissed=reply(reply(comm(tactical(contact(29))),{type:'cancel'}),{type:'cancel'});
+    equal(dismissed.space.flags[44],true);equal(dismissed.space.flags[47],true);equal(reload(dismissed),dismissed);
+  });
+  await test('Jettison during Agree preserves the source pending deadline; leaving tactical context restores aggression immediately',()=>{
+    const agreed=agree(buyCargo(contact(29))),partial=tick(agreed,500).state;
+    const lost=reduceCampaignSpace(partial,{type:'jettison',selection:1});
+    equal(lost.pod.cargo,[null,null]);equal(lost.space.words[215],128);equal(lost.space.words[207],1);
+    equal(lost.space.flags[44],false);equal(lost.space.communication,partial.space.communication);equal(reload(lost),lost);
+    const overdue=run(lost,1250);equal(overdue.space.flags[44],true);equal(overdue.space.communication.pending,false);equal(reload(overdue),overdue);
+    const left=reduceCampaignSpace(reload(partial),{type:'view',view:'ship'});
+    equal(left.space.flags[44],true);equal(left.space.communication,{conversation:null,pending:false,ticks:0});equal(reload(left),left);
+    const sleeping=reduceCampaignSpace(partial,{type:'sleep'});equal(sleeping.space.view,'ship');equal(sleeping.space.flags[44],true);
+    equal(sleeping.space.communication.pending,false);equal(reload(sleeping),sleeping);
+    let warp=structuredClone(partial);warp.regional.shipLocation.worldId=null;warp.regional.podWorldId=null;warp.regional.shipLocation.orbit.radius=43;
+    warp=act(warp,{type:'setWarp',systemId:'system-02'});warp.resources.warp.charge=warp.resources.warp.targetCharge;
+    const jumped=act(warp,{type:'warp'});equal(jumped.space.flags[40],false);equal(jumped.space.communication.pending,false);equal(reload(jumped),jumped);
+  });
+  await test('Comm returns and demand clocks continue identically through pauses, JSON reloads and caller display cadences',()=>{
+    const s=agree(contact());equal(run(s,2000,10),run(s,2000,100));equal(run(s,2000,250),tick(s,2000).state);
+    const partial=tick(s,17).state,paused=tick(reload(partial),60000,createSurvival(partial.ship.condition),true);
+    equal(paused.state,partial);equal(paused.survival.elapsed,17);equal(tick(reload(paused.state),233).state,tick(s).state);
+    const opened=comm(tactical(contact())),waiting=reply(opened,{type:'reply',slot:0});
+    equal(reply(reload(waiting),{type:'cancel'}),reply(waiting,{type:'cancel'}));
+  });
+  await test('Saved voluntary sleep owns its remainder and rest phase, ignoring reconstructed transient survival defaults',()=>{
+    const s=fresh();s.ship.condition.rest=100;
+    const sleeping=reduceCampaignSpace(tick(s,249).state,{type:'sleep'});equal(sleeping.space.elapsed,0);
+    equal(sleeping.space.activity,{sleeping:true,forced:false,sleepPhase:0});
+    const partial=tick(sleeping,49).state;equal(reload(partial),partial);equal(partial.space.elapsed,49);
+    const first=tick(reload(partial),1,createSurvival(partial.ship.condition)).state;
+    equal(first,tick(sleeping,50).state);equal(first.space.activity.sleepPhase,1);equal(first.ship.condition.rest,100);
+    const second=tick(reload(first),50).state;equal(second.space.activity.sleepPhase,0);equal(second.ship.condition.rest,101);
+    equal(run(sleeping,4000,10),tick(sleeping,4000).state);equal(tick(partial,60000,survival(partial),true).state,partial);
+    const awake=reduceCampaignSpace(first,{type:'wake'});equal(awake.space.activity,{sleeping:false,forced:false,sleepPhase:1});
+    equal(awake.space.elapsed,0);equal(reload(awake),awake);equal(tick(awake,249).cycles,0);
+    reject(()=>act(first,{type:'distress'}),'flightUnavailable');reject(()=>reduceMachineryControl(first,{type:'guns',enabled:true}),'machineryUnavailable');
+    reject(()=>reduceCampaignSpace(first,{type:'view',view:'tactical'}),'spaceUnavailable');reject(()=>reduceCampaignSpace(first,{type:'sleep'}),'spaceUnavailable');
+  });
+  await test('Forced sleep survives reload and unlocks wake only after source rest recovery; sleep death stays terminal',()=>{
+    const s=fresh();s.ship.minutes=59;s.ship.condition={vigor:200,rest:1,health:200,nourishment:200};s.machinery.phase=0;
+    const forced=tick(s).state;equal(forced.space.activity,{sleeping:true,forced:true,sleepPhase:0});equal(forced.space.view,'ship');
+    equal(forced.ship.condition.rest,0);equal(reload(forced),forced);reject(()=>reduceCampaignSpace(forced,{type:'wake'}),'spaceWakeUnavailable');
+    const after=tick(reload(forced),12850,createSurvival(forced.ship.condition)).state;
+    equal(after.ship.condition.rest,128);equal(after.space.activity.forced,true);equal(after.space.activity.sleepPhase,1);equal(reload(after),after);
+    reject(()=>reduceCampaignSpace(after,{type:'wake'}),'spaceWakeUnavailable');
+    const rested=tick(reload(after),50).state;equal(rested.ship.condition.rest,129);equal(rested.space.activity.forced,false);
+    equal(reload(reduceCampaignSpace(rested,{type:'wake'})).space.activity.sleeping,false);
+    const fatal=reduceCampaignSpace(fresh(),{type:'sleep'});fatal.ship.minutes=59;fatal.machinery.phase=0;
+    fatal.ship.condition={vigor:1,rest:0,health:0,nourishment:0};
+    const dead=tick(fatal,50).state;equal(dead.combat.defeat,{reason:'conditionDeath',minutes:60});
+    equal(dead.space.activity.sleeping,false);equal(dead.space.activity.forced,false);equal(dead.space.elapsed,0);
+    equal(tick(reload(dead),60000).state,dead);reject(()=>reduceCampaignSpace(dead,{type:'wake'}),'spaceUnavailable');
+    const forged=structuredClone(dead);forged.space.elapsed=1;reject(()=>codec.snapshot(forged));
+  });
+  await test('Exhaustion exits a pending tactical demand and restores source aggression before subsequent sleeping calls',()=>{
+    const s=agree(contact());s.ship.minutes=59;s.machinery.phase=0;s.ship.condition={vigor:200,rest:1,health:200,nourishment:200};
+    const forced=tick(s).state;equal(forced.space.view,'ship');equal(forced.space.flags[44],true);equal(forced.space.communication.pending,false);
+    equal(forced.space.activity,{sleeping:true,forced:true,sleepPhase:0});equal(reload(forced),forced);
+  });
+  await test('Forged Comm inputs, frozen owners, deadline and sleep records reject atomically without trusting derived frames',()=>{
+    const opened=comm(tactical(contact()));
+    for(const change of [s=>s.economy.accounts[0].balance--,s=>s.dialogue.cash--,s=>s.ship.minutes+=60,s=>s.dialogue.attributes[2]++,
+      s=>s.ship.inventory.carried[0]=12,s=>s.space.words[214]=2,s=>s.space.words[354]=1,s=>s.space.flags[35]=false,s=>s.space.flags[44]=false,
+      s=>s.space.communication.conversation.context.bankBalance--,s=>s.space.communication.conversation.context.system.local32=0,
+      s=>s.space.communication.conversation.context.extra=1,s=>s.space.communication.conversation.frame={},
+      s=>s.space.communication.conversation.record.inputs=[{type:'reply',slot:0},{type:'cancel'}],
+      s=>s.space.communication.conversation.record.inputs=[{type:'cancel',money:100}],s=>s.encounters.randomState++,
+      s=>s.space.activity.sleeping=true,s=>s.space.communication.pending=true,s=>s.space.communication.ticks=7]) {
+      const bad=structuredClone(opened);change(bad);const before=JSON.stringify(bad);reject(()=>codec.snapshot(bad));equal(JSON.stringify(bad),before);
+    }
+    const waiting=reply(opened,{type:'reply',slot:0}),before=JSON.stringify(waiting);
+    reject(()=>reply(waiting,{type:'cancel',money:100}),'invalidEncounterDialogue');equal(JSON.stringify(waiting),before);
+    for(const change of [s=>s.space.communication.ticks=1,s=>s.space.communication.pending=true,s=>s.space.activity.forced=true,
+      s=>s.space.activity.sleepPhase=2,s=>s.space.activity.extra=1]) {
+      const bad=fresh();change(bad);reject(()=>codec.snapshot(bad));
+    }
+    const sleeping=reduceCampaignSpace(fresh(),{type:'sleep'});sleeping.space.elapsed=50;reject(()=>codec.snapshot(sleeping));
+    sleeping.space.elapsed=0;
+    reject(()=>validateCampaignSpace({...sleeping,travel:{scene:'city'}},sleeping.space,{content}),'invalidCampaignSpace');
+    const pending=agree(contact());pending.space.view='ship';reject(()=>codec.snapshot(pending));
+    const unconsumed=agree(contact());unconsumed.dialogue.flags[51]=true;reject(()=>codec.snapshot(unconsumed));
+    const healthy=reduceCampaignSpace(fresh(),{type:'sleep'});healthy.space.activity.forced=true;healthy.ship.condition.rest=129;reject(()=>codec.snapshot(healthy));
   });
 }

@@ -74,8 +74,11 @@ Game12 procedure9 `$0754–$07BE` clears35/44 and prioritizes:
 It then clears41 and sets47, preventing a repeated Comm. Procedure10
 `$0B8A–$0BAC` tests the deadline before decrementing; after six decrements,
 aggression resumes on the following due tick. Agree is not a permanent truce,
-bank payment or automatic jettison. These source helpers still need the live
-ship power clock and versioned save ownership.
+bank payment or automatic jettison. R10j connects these helpers to actual ship
+ticks and opt-in26 saves with frozen context/verified returns; live controls
+remain pending. Source tactical exit restores aggression when pending, and
+jettison leaves the deadline running. Game16's space overlay resets word354
+without advancing ship machinery. See [the campaign host](space-host.md).
 
 ## Unresolved reward target
 
