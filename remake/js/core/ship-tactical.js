@@ -104,9 +104,11 @@ export function beginShipTacticalFrame(previous,record,control,{dexterity,worldA
     shot=fireShipGun(state,{focused:tactical.focused,dexterity});state=shot.state;
     if(shot.hit&&state.words[216]===0){tactical.contact=tactical.visible=false;tactical.reticle={angle:128,radius:worldAngle}}
   }
-  const menu=polling||tactical.menu!==0&&!tactical.firing;
+  const menu=polling;
   // Idle main-loop FJP tests bit0; menu polling calls proc12 without the
   // main-loop increment, while the firing loop calls it on every iteration.
+  // Proc15 returns after button release: a selected submenu is not itself
+  // that blocking polling context, and subsequent main frames still increment.
   if(!menu)state.words[354]=signed(state.words[354]+1);
   const delta=shipTacticalAim(state,tactical,{x:control.x,y:control.y});
   const called=menu||tactical.firing||!!(state.words[354]&1);

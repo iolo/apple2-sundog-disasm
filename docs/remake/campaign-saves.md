@@ -1,4 +1,18 @@
-# Campaign save boundary — live24; opt-in R10j26
+# Campaign save boundary — live24; opt-in R10m27
+
+R10m adds `content.space:true,tactical:true` opt-in version27 `ship-tactical-1`.
+`space.tactical` is null outside an active tactical view, or stores exact
+`{record,control,carry}` fields. The record owns signed reticle/grace, cached
+contact/sensors, visibility, firing mode, frameLimit5, menu and armed choices;
+control owns signed x/y−8..8 and held fire. Current tactical frames retain a
+0–49ms remainder. Historical active26 remainder0–249ms moves into carry without
+RNG/time/resource changes and is consumed only by an unpaused advance, or
+returned on exit. Versions1–26 validate historically before migration. Frozen
+Comm requires neutral input, menu0, no firing and a byte-sized reticle. A valid
+source inoperative firing loop may retain gun power in27;26 remains strict.
+Normal entry commits three actual machinery calls once, while Comm return skips
+startup. Source phase1 resets counter354 in this context. See
+[tactical host](ship-tactical.md). The live loader remains24 pending controls.
 
 R10j extends `content.space:true` to version26 `ship-communication-1`, adding
 `space.communication:{conversation,pending,ticks}` and

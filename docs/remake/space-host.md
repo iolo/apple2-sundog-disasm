@@ -1,9 +1,12 @@
-# Campaign ship encounter host — R10i/R10j
+# Campaign ship encounter host — R10i/R10j/R10m
 
 `campaign-space.js` connects the source ship-combat primitives to actual
 regional flight, machinery, resources, equipment, pod cargo and campaign RNG.
 R10i introduced opt-in25 `ship-encounters-1`; R10j extends the opt-in core/save
-to26 `ship-communication-1` (`content.space:true`). The live asset loader/UI
+to26 `ship-communication-1` (`content.space:true`). R10m adds opt-in27
+`ship-tactical-1` with `content.tactical:true`, actual entry/frame/clock calls
+and saved reticle/input/menu state; see [tactical host](ship-tactical.md).
+The live asset loader/UI
 remains version24 pending sensors, reticle/input, bolt arming and recovery
 integration, including exposing the verified Comm reducer. This document
 does not claim live space encounter acceptance or full R10 completion.
@@ -58,7 +61,7 @@ Version25 still requires its exact nine-field space record and original flag
 set before migration; it cannot import26 conversations, sleep or flag35. Old scopes
 cannot import hull loss, multiple raw failed components or missing cryogens.
 
-Normal due ticks remain250ms and minute advancement remains phase1. Version25
+Normal ship-view due ticks remain250ms and minute advancement remains phase1. Version25
 owns the0–249ms remainder rather than reconstructing it from an ephemeral
 survival object; pause preserves it and a JSON reload can finish the next tick
 exactly. Calls accept integer0–60000ms and process all due ticks. Historical
@@ -102,8 +105,8 @@ preserve the counter and remainder. Game12 exit `$14D4–$14E0` restores44 if a
 demand is pending; changing to ship view, sleeping, exhaustion, destruction or
 a successful warp ends the local deadline. Source jettison proc21 does not
 clear it: cargo-induced retreat can still regain aggression when it expires.
-The missing source tactical frame movement remains a separate integration gate;
-these deadline fixtures do not claim native frame-by-frame escape timing.
+R10m joins the deadline to actual tactical-frame due calls in opt-in27;
+the earlier26 deadline fixtures alone do not claim native frame-by-frame timing.
 
 `activity:{sleeping,forced,sleepPhase}` owns the persisted aboard sleep state.
 Sleep switches to ship view and clears the presentation remainder, then uses

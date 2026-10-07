@@ -85,7 +85,9 @@ export async function shipTacticalTests(test,equal) {
     const skipped=beginShipTacticalFrame(s,visible,idle,options);equal([skipped.called,skipped.redraw,skipped.updated,skipped.due],[true,false,true,true]);
     const due=beginShipTacticalFrame(s,p.tactical,idle,options);equal(due.due,true);
     const menu=selectShipTacticalMenu(s,visible,1);menu.state.words[354]=2;
-    const half=beginShipTacticalFrame(menu.state,menu.tactical,idle,options);equal([half.state.words[354],half.called,half.updated,half.due],[2,true,true,false]);
+    const half=beginShipTacticalFrame(menu.state,menu.tactical,idle,{...options,polling:true});equal([half.state.words[354],half.called,half.updated,half.due],[2,true,true,false]);
+    const released=beginShipTacticalFrame(menu.state,menu.tactical,idle,options);
+    equal([released.state.words[354],released.called,released.due],[3,true,false]);
     const rootPolling=beginShipTacticalFrame(menu.state,{...visible,menu:0},idle,{...options,polling:true});
     equal([rootPolling.state.words[354],rootPolling.called,rootPolling.updated],[2,true,true]);
     const gunFrame=gun(s);gunFrame.state.words[354]=1;
