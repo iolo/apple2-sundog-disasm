@@ -1,4 +1,5 @@
 import { ATTRIBUTES } from './character.js';
+import { campaignLocation } from './regional-world.js';
 import { recordPersonalSales } from './personal-trade.js';
 import { updateLodgingAccess } from './room-lodging.js';
 import { requestRoomCounter, cancelRoomCounter, moveRoomCounter, tickRoomCounter,
@@ -48,7 +49,7 @@ function validateDialogueInput(input) {
   return Object.fromEntries(fields[input.type].map(k=>[k,input[k]]));
 }
 function setup(state,content) {
-  const location=state.start.playerLocation,index=content.navigation.systems.findIndex(s=>s.id===location.systemId);
+  const location=campaignLocation(state,content),index=content.navigation.systems.findIndex(s=>s.id===location.systemId);
   const world=content.navigation.worlds.findIndex(w=>w.id===location.worldId);
   const system=content.dialogue?.systems.systems[index];
   if(!system||index<0||world<0)fail();

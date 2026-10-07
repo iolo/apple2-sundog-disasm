@@ -1,5 +1,26 @@
 # SunDog web remake progress
 
+## R09a — Regional membership and economic ownership core — 2026-10-07
+
+Added cross-checked12-system/18-world/57-city membership and separate Banville
+mapping, source3D integer jump distance/charge requirements, independent dormant
+city economies and active exchange selection. Regional bank/depot/dialogue/pod
+callers use the actual destination while legacy callers retain historical guards.
+Foreign cargo quotation now supplies its true origin, regional sales credit the
+visited account, and all17 initial cryogens remain conserved across archives and
+pod cargo. Creation data stays immutable. See `docs/remake/regional-world.md`.
+
+Six new regional rule groups and all319 existing groups pass in the required
+Chrome154.0.8037.97 (`r09-regional-core-validation.json`). Fixed the browser harness
+timeout argument so its intended60-second wait actually applies and timeout errors
+include collected page errors. Earlier30-second attempts timed out; only the
+completed325-group passing receipt is acceptance evidence. Whitespace checks pass.
+
+R09 remains in progress. This core is not yet the live app/save boundary (version22
+unchanged). Next: source launch/orbit/sub-light/warp/landing core, then regional
+saves/geometry/live controls and the two-system trade/return/reload journey.
+The user's `PRD-REMAKE.md` remains untouched and untracked.
+
 ## R08m — Combined acceptance and R08 completion — 2026-10-03
 
 Completed the fresh-character engineering/service/ground acceptance journey.

@@ -1,4 +1,5 @@
 import { atCityBank } from './city-doors.js';
+import { campaignLocation } from './regional-world.js';
 
 // Library28 stores credits as signed thousands + a canonical 0..999 remainder.
 // Reachable bank-only progress stays nonnegative; overflow is rejected atomically.
@@ -57,9 +58,11 @@ export function transferBankFunds(cash,economy,systemId,{type,amount,targetSyste
   return {cash,economy:next};
 }
 
-export function reduceCampaignBank(previous,map,action) {
-  if(previous.ground&&previous.ground.cityId!==previous.start.playerLocation.cityId)throw new Error('bankUnavailable');
+export function reduceCampaignBank(previous,map,action,content=null) {
+  if(!previous.regional&&previous.ground&&previous.ground.cityId!==previous.start.playerLocation.cityId)throw new Error('bankUnavailable');
   if(previous.travel.scene!=='bank'||!atCityBank(map,previous.travel.cityPosition))throw new Error('bankUnavailable');
-  const next=transferBankFunds(previous.dialogue.cash,previous.economy,previous.start.playerLocation.systemId,action);
+  const location=previous.regional?campaignLocation(previous,content):previous.start.playerLocation;
+  if(previous.regional&&map.cityId!==location.cityId)throw new Error('bankUnavailable');
+  const next=transferBankFunds(previous.dialogue.cash,previous.economy,location.systemId,action);
   return {...previous,dialogue:{...previous.dialogue,cash:next.cash},economy:next.economy};
 }

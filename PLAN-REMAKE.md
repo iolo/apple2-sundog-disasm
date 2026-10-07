@@ -462,6 +462,13 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R09a (2026-10-07) adds regional membership/economic ownership,
+3D source jump distance and charge requirements, destination service context,
+origin-aware cargo settlement and global cryogen conservation.325 rule groups
+pass in Chrome. Live app/saves remain version22; flight rules, regional save/UI
+integration and the two-system acceptance journey remain required for R09.
+See `docs/remake/regional-world.md`.
+
 Checkpoint R08m (2026-10-03) closes R08. A74-check fresh-character journey combines
 component replacement, exact-cost hull/fuel services, working machinery, two
 purchased cargo lots, surface parking/foot retrieval, Obburg arrival and loaded

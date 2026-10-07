@@ -15,7 +15,8 @@ RULES = '''async page => {
   p.on('pageerror',e=>errors.push(e.message));
   try {
     await p.goto('http://127.0.0.1:8000/tests/');
-    await p.waitForFunction(()=>document.documentElement.dataset.result,{timeout:60000});
+    try {await p.waitForFunction(()=>document.documentElement.dataset.result,null,{timeout:60000})}
+    catch(e) {return {browser:page.context().browser().version(),status:'fail',errors,failures:[e.message]}}
     const lines=(await p.locator('#results').innerText()).split('\\n');
     return {browser:page.context().browser().version(),checks:lines.length,
       status:await p.locator('html').getAttribute('data-result'),
