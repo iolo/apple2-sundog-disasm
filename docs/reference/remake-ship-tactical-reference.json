@@ -1,0 +1,670 @@
+{
+  "date": "2026-10-08",
+  "emulator": "MAME0.285 / apple2e / joystick / owned Qt debugger",
+  "scope": "Prepared supplied-save space contact, native tactical entry, movement/frame/clock and joystick bolt-arming observations. Declared RAM fixtures, not natural encounter production or fresh-character acceptance.",
+  "bootstrapSequence": "docs/reference/game-play.json through frame18000",
+  "helpers": [
+    "tools/remake/encounter_reference.lua",
+    "tools/remake/ground_reference.lua",
+    "tools/remake/tactical_reference.lua"
+  ],
+  "setups": [
+    "spaceContact writes the fields documented by encounter_reference.lua; actual Game13 dispatch restores353=5 before Game12 entry.",
+    "Session1 center setup explicitly writes205/206=512 and208/209=0 after a due call; other source owners are retained.",
+    "Session2 raw pod records are retained from the supplied save. Joystick input reaches the bolt-arming screen; no jettison selection is confirmed."
+  ],
+  "observed": [
+    "The proc12 false redraw branch still moves and tests the machinery threshold; table0BF8 targets0B5D, not return0BF6.",
+    "Own movement runs before and after a due machinery call.",
+    "Counter354 survives intervening phase calls and resets at the actual phase1 clock call.",
+    "Main-loop bit0 dispatch: the ready captures advance1\u21922\u21923, with no own movement at even2 and one move at odd3.",
+    "The three proc9 startup machinery call sites are reached in order. The first two observed calls advance phase3\u21924\u21921; the second resets354 and adds a game minute.",
+    "Parent grace local3 contains raw34012 (signed\u221231524) before entry initialization; it is not a universal zero.",
+    "The original BOLTS ARMED screen is reached through joystick input. Retained pod records have types1/13, matching Ship's fuel/stock embryos labels; both satisfy the native1\u201330 selection gate. No cargo is discarded."
+  ],
+  "notProven": [
+    "Natural space production or fresh-character avoid/fight/lose acceptance",
+    "Native aim/fire input progression, hit/damage, Comm-return reticle, salvage and full death/recovery",
+    "Campaign tactical saves, live space UI and30/60/144Hz timing",
+    "Rare dialogue reward224",
+    "Cycle-equivalent browser timing or universal initial native stack values"
+  ],
+  "contexts": [
+    {
+      "file": "remake-tactical-bolts-context.json",
+      "ipOffset": "0x04ca",
+      "debugger": "run",
+      "phase": 1,
+      "counter": 1,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        419
+      ],
+      "velocity": [
+        0,
+        65535
+      ],
+      "range": 30,
+      "cooldown": 20,
+      "graceRaw": 1,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-center-setup.json",
+      "ipOffset": "0x0b8a",
+      "debugger": "stop",
+      "phase": 2,
+      "counter": 5,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-clock-reset.json",
+      "ipOffset": "0x0b8a",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 0,
+      "frameLimit": 5,
+      "coordinates": [
+        929,
+        756
+      ],
+      "velocity": [
+        3,
+        1
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-entry.json",
+      "ipOffset": "0x04da",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 2,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 127,
+      "cooldown": 40,
+      "graceRaw": 34012,
+      "visibleRaw": 44496,
+      "reticleRaw": [
+        187,
+        120
+      ]
+    },
+    {
+      "file": "remake-tactical-offscreen-gate.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 2,
+      "counter": 7,
+      "frameLimit": 5,
+      "coordinates": [
+        899,
+        730
+      ],
+      "velocity": [
+        3,
+        3
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-offscreen-next-gate.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 9,
+      "frameLimit": 5,
+      "coordinates": [
+        911,
+        742
+      ],
+      "velocity": [
+        3,
+        3
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-offscreen-post-due.json",
+      "ipOffset": "0x0b8a",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 7,
+      "frameLimit": 5,
+      "coordinates": [
+        905,
+        736
+      ],
+      "velocity": [
+        3,
+        3
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-offscreen-post-move.json",
+      "ipOffset": "0x0bb9",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 7,
+      "frameLimit": 5,
+      "coordinates": [
+        911,
+        742
+      ],
+      "velocity": [
+        3,
+        3
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-offscreen-pre-due.json",
+      "ipOffset": "0x0b70",
+      "debugger": "stop",
+      "phase": 2,
+      "counter": 7,
+      "frameLimit": 5,
+      "coordinates": [
+        905,
+        736
+      ],
+      "velocity": [
+        3,
+        3
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-ready.json",
+      "ipOffset": "0x1388",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 1,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 117,
+      "cooldown": 30,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-ready2.json",
+      "ipOffset": "0x1388",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 2,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 117,
+      "cooldown": 30,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-ready3.json",
+      "ipOffset": "0x1388",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 3,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 116,
+      "cooldown": 29,
+      "graceRaw": 2,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-branch.json",
+      "ipOffset": "0x0ad8",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 3,
+      "frameLimit": 5,
+      "coordinates": [
+        532,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-due-gate.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 5,
+      "frameLimit": 5,
+      "coordinates": [
+        538,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-gate.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 3,
+      "frameLimit": 5,
+      "coordinates": [
+        532,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-post-due.json",
+      "ipOffset": "0x0bb9",
+      "debugger": "stop",
+      "phase": 2,
+      "counter": 5,
+      "frameLimit": 5,
+      "coordinates": [
+        550,
+        516
+      ],
+      "velocity": [
+        3,
+        2
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-pre-due.json",
+      "ipOffset": "0x0b70",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 5,
+      "frameLimit": 5,
+      "coordinates": [
+        544,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-redraw-false-return.json",
+      "ipOffset": "0x0bf6",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 3,
+      "frameLimit": 5,
+      "coordinates": [
+        538,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-startup1.json",
+      "ipOffset": "0x0655",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 2,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 127,
+      "cooldown": 40,
+      "graceRaw": 34012,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-startup2.json",
+      "ipOffset": "0x06c4",
+      "debugger": "stop",
+      "phase": 4,
+      "counter": 2,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 127,
+      "cooldown": 40,
+      "graceRaw": 34012,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-startup3.json",
+      "ipOffset": "0x074f",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 0,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 127,
+      "cooldown": 40,
+      "graceRaw": 34012,
+      "visibleRaw": 0,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-visible-after-due.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 1,
+      "counter": 1,
+      "frameLimit": 5,
+      "coordinates": [
+        526,
+        512
+      ],
+      "velocity": [
+        3,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-visible-grace0.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 4,
+      "counter": 11,
+      "frameLimit": 5,
+      "coordinates": [
+        516,
+        510
+      ],
+      "velocity": [
+        2,
+        1
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 0,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-visible-grace1.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 3,
+      "counter": 9,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        510
+      ],
+      "velocity": [
+        0,
+        65535
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 1,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    },
+    {
+      "file": "remake-tactical-visible-grace2.json",
+      "ipOffset": "0x0ac5",
+      "debugger": "stop",
+      "phase": 2,
+      "counter": 7,
+      "frameLimit": 5,
+      "coordinates": [
+        512,
+        512
+      ],
+      "velocity": [
+        0,
+        0
+      ],
+      "range": 39,
+      "cooldown": 0,
+      "graceRaw": 2,
+      "visibleRaw": 1,
+      "reticleRaw": [
+        16,
+        128
+      ]
+    }
+  ],
+  "originalSHA256": {
+    "sundog-disk1-game.dsk": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "sundog-disk2-util.dsk": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+    "sundog.pdf": "dadc5fb2aac8a5a88f6bedb6f8a4742367a62eec313a8f9c058bad602aabc2a1"
+  },
+  "captureSHA256": {
+    "remake-tactical-bolts-context.json": "85b149cb601b4ea99d8ed632c9bae16e33ccc0140221401856cebb471deb42cb",
+    "remake-tactical-bolts-input.json": "b08330c6927eca054791c26ddf4270470b229fcaf9ff4dd1ce2872d548ad28c9",
+    "remake-tactical-bolts.png": "f030c54d5600181c240def6efeece34bb47b60cc0276e24cadf290d1e59db5ba",
+    "remake-tactical-center-setup.json": "11697049f0d1ff76010659fec08cf7c088327e1973e45044e6dadb82b4a8c93c",
+    "remake-tactical-clock-reset.json": "e4e359d7fada95bce8c60ed6b286ef4ee6261d146792dd6778bf78f8bacf8eb3",
+    "remake-tactical-entry.json": "d71cb9dbae66cd2af84dbc9a55c974b9ee875a9ede73dd64eb8a73757d00a795",
+    "remake-tactical-offscreen-gate.json": "89eddfbd3609fa1d153fa901d53aef7ea3918a76ced7dec2cc3907f45ab2d8bc",
+    "remake-tactical-offscreen-next-gate.json": "11e3c4e7ab6fd6eb7526570a7c05d67375c729d92432d586d656dc796b536a25",
+    "remake-tactical-offscreen-post-due.json": "474c4e6e9861744295d2e8e09388d61a8deb979006fdabff171789c2060ee392",
+    "remake-tactical-offscreen-post-move.json": "0134a95e661823e9134c6804ca2ab6312fa7ad063bdb36cbe2b3ffb30003becc",
+    "remake-tactical-offscreen-post-move.png": "9e789e1611c0e17769359ecb9011175d14c87a00b1e283292c0b1aacf199a1f2",
+    "remake-tactical-offscreen-pre-due.json": "76bbe5c94edff0ed8922c490618fc89c0c7579e2157a4c57eb20d2613004457e",
+    "remake-tactical-ready.json": "62c310b51ada95ace6b5de7edb77cf42a0215e33ef7e81c2622ca6410dd3a3c0",
+    "remake-tactical-ready2.json": "5abfe4fd7de374b9fd5ed2ad5cfe9644d390ac59947b7cec2fe050f1d803fce7",
+    "remake-tactical-ready3.json": "264f446408d94156cdc9e5b77053da88dc92048df82116ce5cac1c7a55a49d4a",
+    "remake-tactical-redraw-false-branch.json": "f1cf75733d98593e234eab7137a1bec79d34edee614b6201c83b22067c544f12",
+    "remake-tactical-redraw-false-due-gate.json": "4643ffe837caa622df7f29dad4ef9fd70322392df35b75bb284b8140b1a7900b",
+    "remake-tactical-redraw-false-due-gate.png": "e879ee3c4d2f2ba36847ed61da5090bb0917eb976d81c653c47135bd36f8f0ef",
+    "remake-tactical-redraw-false-gate.json": "6aff0763e9bac61f324c2d7e46358e8dd40f39239ba0d7db33a32f828191b4e8",
+    "remake-tactical-redraw-false-post-due.json": "65a90c9e6d41d56df2289a7096b0d206ca3eeb429726f6ddf34f6b1e107a3c66",
+    "remake-tactical-redraw-false-pre-due.json": "fd65d42d887e8adb386deeedf5aad7585ad5f43180ee73c899bd006dd12d14f7",
+    "remake-tactical-redraw-false-return.json": "cbc18fc6bac76ecd5a0cb87af06a03f1fad99ffd27c3681fbf0faa7088a1e1ec",
+    "remake-tactical-startup1.json": "bfaa4d5dc19005c097e6d46379f769d42b1235616f252de65f079d5884ce3f0b",
+    "remake-tactical-startup2.json": "513c2b9d1536e25acc5cd40b063b487c1e6da7d6509c93d2299039f2d6b8cb9c",
+    "remake-tactical-startup3.json": "4d003d8c9e8eda5b1305b750cf8a57bd0d5932728d0e11a19531e34a9f8d22e7",
+    "remake-tactical-visible-after-due.json": "b5edc66de2c53604807739ffc5bd28b041bc0fd5aa2470621d64e2aacf9b663d",
+    "remake-tactical-visible-grace0.json": "04c538618dc6f137a5dbb3a7cb7d984cf87c606e5fd59e596ed7dda84274d6c1",
+    "remake-tactical-visible-grace1.json": "b08d3d77645affba29c3dde27bc7c7037e106af959a89e36db585f30a0f84af5",
+    "remake-tactical-visible-grace2.json": "f1bff22a32a3677da17070582f612de18308de877171e022db19ebea157d9eb3"
+  }
+}

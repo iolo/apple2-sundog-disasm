@@ -1,4 +1,4 @@
-# Ship tactical control core — R10k
+# Ship tactical control core — R10k/R10l
 
 `ship-tactical.js` adds source-facing Game12 controls alongside the existing
 ship-combat and campaign-space owners. This is a core checkpoint: live UI
@@ -23,7 +23,7 @@ tested, but campaign persistence and UI resume remain integration requirements.
 | Game12 proc10 `$088F–$0996` | Reticle radius subtracts x deflection; angle subtracts y. Active contact range adds speed and clamps at5 while positive cooldown decrements by1. Coordinates add twice the corresponding deflection plus `(3−(updatedRange>>5))*velocity`, wrapping at1024. The far-range factor may be negative. |
 | `$0942–$0996` | With cached sensors>1, visibility uses inclusive absolute half-coordinate offsets65/45 and range108. Offscreen movement sets grace2. With lower cached sensor output, the source visibility local is retained, while rendering capability remains unavailable. |
 | Main loop `$1388–$139C`; firing `$0F7A–$0F84`; menu `$0F17–$0F19` | Main and firing loops increment counter354. Main dispatch tests bit0 before proc12; firing calls it every iteration. Menu polling calls proc12 without that main-loop increment, including polling the main menu. The caller supplies that polling context. |
-| Proc12 `$0AC5–$0BF4` | Update only when invisible, at the half-limit counter, or while grace>0. Move before a due machinery call, then refresh cached sensor output and move again using the old captured contact before replacing it with flag40. A due call still needs the actual host movement→production→power→combat/deadline sequence. |
+| Proc12 `$0AC5–$0BF4` | Redraw/decrement grace only when invisible, at the half-limit counter, or while grace>0. The false branch through table `$0BF8` jumps to `$0B5D`: movement and the due machinery check still run. Move before a due call, then refresh sensors and move again using the old captured contact before replacing it with flag40. |
 | Proc17/proc7 | Selecting laser/cannon starts the powered firing loop; leaving it turns gun power off. A held shot spends actual charge before movement and uses actual dexterity. A kill retains source counter/cooldown signals and resets the reticle to angle128/current world angle before further manual movement. |
 
 `prepareShipTactical` reports **three startup machinery calls**, corresponding
@@ -40,9 +40,11 @@ Counter354 is shared frame/time state, not a dedicated hit total. Library22
 proc29 `$0450–$0451` resets it at the phase1 clock call; Game16's space overlay
 also resets it. The campaign adapter still needs to own the frame counter and
 its source context before live activation. The half-counter/visibility/grace
-gate is ported literally; its complete native runtime progression still needs
-a prepared timing/input capture. No substitute unconditional tactical movement
-tick has been added to the live campaign host.
+gate affects drawing, not the machinery check. R10l's prepared native captures
+correct the R10k interpretation that skipped movement/due calls when that gate
+was false. The core now reports `redraw` separately from `updated`/`due`.
+The campaign host still needs integration; native input/entry context is being
+audited separately from these movement and phase-clock observations.
 
 Game13's successful warp writes354=353+1 at `$18AC–$18B2`, clears the
 engine/contact/Comm flags and calls actual Library24 proc9 at `$18DA` before
@@ -72,13 +74,15 @@ discarding cargo; the menu primitive does not cancel it.
 
 ## Verification and next integration
 
-Twelve groups cover all paddle counter values, source entry/target RNG,
+Thirteen groups cover all paddle counter values, source entry/target RNG,
 cached sensor capability thresholds, reacquisition/manual/tracking modes,
 signed movement and wrap, visibility boundaries and stale cache, main/menu/
 firing counter gates, pre/post-combat movement, charge/kill/loop exit, bolt
 arming/selection/cancellation/stale auxiliary choice and atomic malformed-input
 rejection. The prepared working-equipment/contact fixtures are declared source
-contexts, not naturally generated campaign encounters or a new native capture.
+contexts, not naturally generated campaign encounters. R10l adds a prepared
+native movement/clock reference and a regression for its visible/grace-zero
+sequence; see [tactical reference](ship-tactical-reference.md).
 
 Next: verify native frame/entry/input progression; connect this record, startup
 calls, counter resets and source inhibition/salvage context to campaign ticks/

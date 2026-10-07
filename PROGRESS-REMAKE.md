@@ -1,3 +1,32 @@
+## R10l — Native tactical entry/frame reference and redraw correction — 2026-10-08
+
+Two owned MAME0.285 Apple IIe/joystick sessions on copied media record25 source
+contexts and29 hashed raw artifacts.24 contexts are debugger stops; one is an
+ordinary paused bolt-menu snapshot. The prepared source contact shows startup
+call sites, actual frame limit5, odd/even main dispatch, own movement before
+and after due machinery, phase1 clock reset and ordinary joystick bolt arming.
+Initial grace is raw34012 (signed−31524), retained stack data rather than a
+universal zero. Slot types1/13 match the Ship's fuel/stock embryos labels and
+qualify for Both; no discard or native loss outcome is claimed.
+
+Native observation exposed a consequential R10k transcription mistake. The
+false redraw branch at0AD8 uses table0BF8, whose target is0B5D, not return0BF6.
+It skips drawing/grace decrement but still moves and checks due machinery.
+Corrected `beginShipTacticalFrame` and added an independent regression using
+the observed visible/grace-zero sequence. All470 Chrome groups pass, including
+13 tactical groups.14 native entry/movement/clock assertions pass.22 exporter
+tests,171 deterministic artifacts,584 string records and all3 original input
+sizes/hashes verify. Native screenshots were inspected; both MAME sessions and
+the Chrome browser were closed. Failed preliminary probes are excluded.
+
+See `ship-tactical-reference.md`, its metadata/raw captures and the R10l receipt.
+Live UI remains24 and opt-in saves26. Next: campaign frame/startup/counter/save
+integration with declared initial-grace adaptation, native aim/fire and Comm
+reticle input, then live English/Korean controls, cadence/sleep/reload and
+legitimate ordinary-play avoid/fight/lose. Full native death/wreck/recovery and
+rare reward224 remain required. R10 stays active; R09 remains complete and
+colony progression is R11. The user PRD is untouched.
+
 ## R10k — Source tactical control core — 2026-10-08
 
 Added isolated Game12 tactical controls: native paddle motion, explicit entry

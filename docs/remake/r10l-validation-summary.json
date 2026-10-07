@@ -1,0 +1,45 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10l",
+  "date": "2026-10-08",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 26,
+  "ruleGroups": 470,
+  "tacticalRuleGroups": 13,
+  "newRuleGroups": 1,
+  "nativeSourceContexts": 25,
+  "nativeDebuggerStops": 24,
+  "nativeArtifacts": 29,
+  "nativeObservationAssertions": 14,
+  "browserUiChecks": 0,
+  "receipts": [
+    {
+      "receipt": "r10l-rules-validation.json",
+      "kind": "rules",
+      "checks": 470,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "receipt": "../reference/remake-ship-tactical-reference.json",
+      "kind": "prepared-native-tactical",
+      "contexts": 25,
+      "hashedArtifacts": 29,
+      "emulator": "MAME0.285 / apple2e / joystick"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3
+  },
+  "boundaries": [
+    "Native sessions resume the supplied being-played slot with declared contact/center RAM setup. They do not establish natural piracy or fresh-character campaign acceptance.",
+    "Twenty-four source contexts are owned debugger stops. The bolt-menu context is an ordinary paused snapshot; early failed/non-breakpoint probes are excluded.",
+    "Native redraw false branches still move/check due machinery, correcting R10k. Initial grace retains native stack contents, not a universal zero.",
+    "The original bolt screen is reached through joystick input with retained types1/13. No discard, native loss accounting or cryogen menu reachability is claimed.",
+    "Live UI remains24 and opt-in campaign saves26. Campaign frame/save integration, native aim/fire/Comm reticle, live controls and cadence/sleep/reload remain required.",
+    "Ordinary ground/space avoid/fight/lose, full death/wreck/recovery and rare reward224 remain R10 gates. R09 is complete; colony progression remains R11."
+  ]
+}
