@@ -23,7 +23,7 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
     if(!cityIds.has(id))throw new Error('groundUnavailable');
     const key=`${id}/${attached}`;
     if(!cities.has(key)) {
-      const location=id===start.shipLocation.cityId?start.shipLocation:null,map=cityMaps[id];
+      const location=worldId===start.shipLocation.worldId&&id===start.shipLocation.cityId?start.shipLocation:null,map=cityMaps[id];
       const g=createCityGeometry(map,{...cityWalk,shipRows:attached?cityWalk.shipRows:cityWalk.detachedShipRows},location,{surfaceTravel:true});
       g.pod=createPodGeometry(map,cityWalk,location,{surfaceTravel:true});cities.set(key,g);
     }
@@ -41,7 +41,7 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
   }
   function foot(state) {
     const {ground,pod}=state,g=city(ground.cityId,pod.attached);
-    if(pod.attached||ground.podCityId!==ground.cityId)return g;
+    if(pod.attached||ground.podCityId!==ground.cityId||(state.regional&&state.regional.podWorldId!==ground.worldId))return g;
     const key=`${ground.cityId}/${pod.position.x}/${pod.position.y}/${pod.heading}`;
     if(footCache?.key!==key)footCache={key,geometry:parkedPodGeometry(g,g.pod,pod.position,pod.heading)};
     return footCache.geometry;
@@ -87,7 +87,7 @@ export function reduceCampaignGround(previous,world,action) {
       if(exit) {
         if(g.worldId==='world-01'&&g.colonyPosition===null) {
           const placed=placeSurfaceColony(world.surfaceBase,next.encounters.randomState);
-          g.colonyPosition=placed.position;next.encounters.randomState=placed.randomState;
+          g.colonyPosition=placed.position;if(next.regional)next.regional.colonyPosition=placed.position;next.encounters.randomState=placed.randomState;
         }
         g.cityId=null;next.travel={scene:'surface',cityPosition:exit};
         if(p.occupied){p.heading=26;p.position={...exit};g.podCityId=null}
@@ -107,7 +107,7 @@ export function reduceCampaignGround(previous,world,action) {
     }
     g.camera=groundCameraAt(entry.position);
   } else if(action.type==='park'||action.type==='board') {
-    if(p.attached||g.podCityId!==g.cityId)throw new Error('podUnavailable');
+    if(p.attached||g.podCityId!==g.cityId||(next.regional&&next.regional.podWorldId!==g.worldId))throw new Error('podUnavailable');
     if(action.type==='park') {
       if(!p.occupied)throw new Error('podUnavailable');
       // Game21 proc8 draws unattended pods only in scene3; proc25's surface

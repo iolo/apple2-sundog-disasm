@@ -1,3 +1,4 @@
+import { regionalSaveTests } from './regional-saves.js';
 import { campaignEngineeringTests } from './campaign-engineering.js';
 import { shipPowerTests } from './ship-power.js';
 import { campaignMachineryTests } from './campaign-machinery.js';
@@ -134,5 +135,7 @@ await roomCounterTests(test, equal);
 await campaignDialogueTests(test, equal);
 await lodgingTests(test, equal);
 await tavernDialogueTests(test, equal);
+await regionalSaveTests(test,equal);
+
 document.querySelector('#results').textContent = results.join('\n');
 document.documentElement.dataset.result = results.some(r => r.startsWith('FAIL')) ? 'fail' : 'pass';
