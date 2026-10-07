@@ -10,7 +10,7 @@ do not establish completion of the live campaign milestone.
 | Ground threats | [Ground chase core](ground-chase.md) ports Game21's eager gate, actual map/system context, window, player/chaser ticks, blocked-step catch and escape. The controlled R10d path matches records/RNG. [Ground combat core](ground-combat.md) implements source actors, collision, weapons, shields, surrender and robbery. [R10h live host](ground-encounter-ui.md) connects movement/due clocks, chase, mandatory dialogue, combat, version24 saves and verified personal returns. | Prove fresh-character campaign acceptance through ordinary controls; retain native background/timing adaptation boundaries. |
 | Pirate encounters | [Ship combat core](ship-combat.md) implements source production, movement, firing, damage and jettison. [R10i ship host](space-host.md) runs production during actual powered flight before power/combat, owns contact flags and system cooldown, and commits failures/hull/defeat/RNG in opt-in25. | Activate the host with live space controls and source frame/inhibit context; complete ordinary campaign acceptance. |
 | Negotiation/evasion | Source cores include retreat/surrender flags, ground boundary escape and cargo-induced retreat. [Native space dialogue](encounter-reference.md) shows Comm and Agree/Refuse/Dismiss It. R10j connects actual frozen context/verified returns and the six-decrement/seventh-call cargo deadline to ticks/saves, including source exit aggression and jettison retaining the deadline. R10h live fixtures exercise ground escape, surrender/cancellation and refusal/fight on the same activation. | Expose space negotiation/deadline in live controls. Complete peaceful and fresh-character ordinary-play negotiation acceptance; Agree is not a permanent truce. |
-| Tactical controls | [R10k/R10m tactical host](ship-tactical.md) adds native paddle mapping, sensor/menu gates, automatic/manual aim, source own movement, visibility and pre/post-due frame ordering. R10m connects actual startup/due calls, phase1 counter reset and saved controller/input/menu in opt-in27. R10h live ground controls cover arrows/held pointer, Space/right-click/primary-pointer fire, surrender cancellation, pause and English/Korean help. | Complete native aim/fire/Comm-reticle input observation, source inhibition/salvage context and live sensors/contact/aim/fire interactions. Prove remaining controls through ordinary campaign acceptance. |
+| Tactical controls | [R10k–R10n tactical host](ship-tactical.md) adds native paddle mapping, sensor/menu gates, automatic/manual aim, source own movement, visibility and pre/post-due frame ordering. R10m connects startup/due calls and phase1 counter reset. [R10n native input](ship-tactical-input-reference.md) observes manual aim, fresh/held/empty-space fire, loop exit and Comm byte storage/return; opt-in28 saves the button latch and corrects cached-contact firing plus Game13's one return call. R10h live ground controls cover arrows/held pointer, Space/right-click/primary-pointer fire, surrender cancellation, pause and English/Korean help. | Implement source bounty/wreck/inhibition/tractor/salvage and live sensors/contact/aim/fire interactions. Prove remaining controls through ordinary campaign acceptance. |
 | Weapons/shields/damage | Ship and ground vectors cover charge, damage, equipment failure, health, hull and source quirks. R10h live laser shots and defeat commit personal inventory/condition with verified returns. | Activate R10i ship mutations in the live UI; complete equipment/shield and recovery acceptance through ordinary campaign play. |
 | Cargo jettison | R10k core requires source bolt arming and preserves menu choices/stale auxiliary selection. Source selectable slots are types1–30, excluding cryogens31. Ship primitive preserves reverse slot order and RNG draws. R10i applies actual removals/loss ownership and cooldowns, conserving stored+lost cryogens and destroyed purchase costs. R10m joins armed choices and actual losses/costs to saved campaign state while retaining the due Comm deadline. | Connect live bolt-arming controls to actual cargo loss/deadline owners; prove UI loss/conservation and negotiation acceptance. Forced-selector cryogen-loss fixtures do not establish native menu reachability. |
 | Defeat/recovery | Ship core sets defeat word347/scene12; ground core preserves scene-middle12 and source knock-out/robbery. R10h commits personal losses/condition, opens the ended-campaign scene and saves/reloads durable death markers without restarting time. R10i saves actual ship destruction independently of personal condition. | Trace and integrate full native death/wreck/recovery dispatch and legitimate continuation. Do not invent automatic restoration. |
@@ -26,8 +26,13 @@ declared browser initialization adaptation. R10m completes opt-in campaign
 frame/save integration: normal entry commits three actual calls, successful warp
 commits its prior call plus those three, and verified Comm return skips startup.
 Proc15's polling applies only while waiting for button release; a selected
-submenu does not stop future main-frame counter increments. Native aim/fire/Comm
-reticle input, inhibition/salvage and live ordinary-play acceptance remain open.
+submenu does not stop future main-frame counter increments. R10n observes
+native aim/fire/Comm reticle input and corrects two consequential host assumptions:
+primary is a fresh edge, and Game13 performs one actual return dispatcher call
+before Game12's restoration (which still skips its three startup calls). Native
+kill continuation also shows bounty, wreck/inhibition and RNG draws beyond gun
+arithmetic. Those campaign owners remain to implement; the captured bounty does
+not prove browser salvage or full death/recovery acceptance.
 
 R10g opt-in version24 preserves version1–23 validation before migration and
 adds ground session/reward/defeat fields. Space loss ownership was pending at
@@ -36,7 +41,9 @@ R10h live version24 is now `ground-encounters-1`. R10i adds opt-in25
 `ship-encounters-1`; R10j extends it to opt-in26 `ship-communication-1` with frozen
 Comm/returns/deadlines and saved sleep activity. R10m adds opt-in27
 `ship-tactical-1` with `content.tactical:true`, exact controller/input/menu state,
-historical carry migration and source startup/frame/clock integration. Live
+historical carry migration and source startup/frame/clock integration. R10n
+extends the opt-in to28 `ship-input-1`, exact saved button-latch/history, strict
+historical27 migration and the corrected native Comm dispatch ordering. Live
 remains24 until space controls are connected and verified. Its source
 audit corrects prior arrival-only production, reversed system comparison,
 cryogen producer eligibility, engines-off RNG, even-phase movement and failed

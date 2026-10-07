@@ -111,7 +111,9 @@ Remove each owned breakpoint, release touched joystick inputs and exit only the
 owned process. Scheduled exit must be observed as terminal. Both sessions were
 closed; all three original input sizes/hashes verify afterward.
 
-Native aim/fire input, Comm reticle restoration, salvage, damage/death/recovery
-and rare reward224 remain open. Campaign frame/save integration, live localized
-space controls, display-refresh/sleep/reload and legitimate ordinary-play
+R10n's [native input reference](ship-tactical-input-reference.md) subsequently
+observes aim/fire and Comm byte restoration, correcting button edges, cached
+contact and the surrounding Game13 dispatcher call. Salvage, damage/death/recovery
+and rare reward224 remain open. Live localized space controls,
+display-refresh/sleep/reload and legitimate ordinary-play
 avoid/fight/lose acceptance remain required by the [R10 audit](r10-completion.md).

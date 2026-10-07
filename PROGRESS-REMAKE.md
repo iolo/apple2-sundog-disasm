@@ -1,3 +1,54 @@
+## R10n — Native tactical input and saved source button edges — 2026-10-08
+
+Observed prepared original-game manual aim, fresh/held fire, empty-space charge
+expenditure, gun-loop exit and signed Comm-reticle storage/return. Two owned
+MAME0.285 unenhanced IIe sessions used disposable media and declared RAM fixtures;
+19 source contexts (16 debugger stops) and48 hashed artifacts retain their scope.
+The input session and durable-console Comm session exited0 after breakpoint/input
+cleanup. A bootstrap-only session whose console handle was lost was terminated
+after approval and is excluded from gameplay proof. All three original hashes
+still verify. See `docs/remake/ship-tactical-input-reference.md` and its metadata.
+
+Library22 proc2 returns a fresh edge, combining the dispatch latch and sampled
+button. Holding primary does not refire after recharge. Opt-in28 `ship-input-1`
+saves exact `{latched,previous}` alongside held x/y/fire; short released presses
+survive fractional saves/pause. Both firing polls consume the same logical-frame
+sample. Historical27 validates its exact controller first, then receives a
+cleared latch and `previous=control.fire` without RNG/time/resource changes or
+a manufactured press. Live24 and space-only26 remain unchanged.
+
+Native x8/y−7 moves angle16/radius128 to23/120 and coordinates512/512 to528/498,
+matching the source vector. A kill clears cached local31 while global40 remains
+true until an actual combat call. The gun host now uses that captured contact;
+an empty-space press spends charge without duplicate hits/cooldowns. The native
+full kill additionally shows1000Cr bounty, wreck local27 and further proc6 RNG.
+Those campaign bounty/wreck/inhibition/tractor/salvage owners remain required;
+pure gun arithmetic's no-draw result is not a full-kill RNG claim.
+
+Comm stores radius777→9 and angle−1→255, then restores255/9 at `$07D1`.
+The phase advances3→4 with unchanged clock. This exposes R10m's omitted Game13
+`$2588` machinery call before Game12 consumes return bits. The host now commits
+verified dialogue outputs, runs that actual call, then restores retreat/deadline
+state and the reticle. The three tactical startup calls remain skipped. Pending
+cargo starts at6 after dispatch; partial timing persists. Contact loss and forced
+sleep/defeat can interrupt restoration without requiring global40 or recreating
+an ended controller. Historical26 retains its earlier schedule.
+
+All488 Chrome155 rule groups pass, including15 pure tactical and16 campaign
+tactical groups. Coverage adds held/short-pulse firing across due recharge,
+30/60/144Hz rules-state continuation/reload/pause, strict28/27 imports and exact
+Comm phase/power/clock/deadline/sleep/contact-loss returns.22 exporter tests,
+171 deterministic artifacts and584 classified strings verify. Failed intermediate
+checks and a terminated browser run are excluded from the passing receipt.
+See `docs/remake/r10n-validation-summary.json`. Browser and native sessions closed.
+
+R10 remains active: live space controls/help, display-refresh/sleep/reload,
+ordinary ground/space avoid/fight/lose with legitimate gear/shields, full native
+death/wreck/recovery and rare reward224 remain open. Next implement source
+bounty/wreck/inhibition/tractor/salvage before live activation. The full audit
+retains every R10 gate. R09 is complete; colony progression remains R11.
+The user PRD stays untouched and untracked.
+
 ## R10m — Saved campaign tactical frames and entry calls — 2026-10-08
 
 Connected the tactical record to actual campaign machinery through opt-in27

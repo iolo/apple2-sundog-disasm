@@ -53,7 +53,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   if(baseline.combat&&!baseline.regional)throw Error('invalidCampaignContent');
   if(baseline.space!==undefined&&(baseline.space!==true||!baseline.combat||baseline.dialogue?.systems?.systems?.length!==12))throw Error('invalidCampaignContent');
   if(baseline.tactical!==undefined&&(baseline.tactical!==true||!baseline.space))throw Error('invalidCampaignContent');
-  const VERSION=baseline.tactical?27:baseline.space?26:baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.tactical?'ship-tactical-1':baseline.space?'ship-communication-1':baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
+  const VERSION=baseline.tactical?28:baseline.space?26:baseline.combat?24:baseline.regional?23:baseline.ground?22:21,SCOPE=baseline.tactical?'ship-input-1':baseline.space?'ship-communication-1':baseline.combat?'ground-encounters-1':baseline.regional?'regional-flight-1':baseline.ground?'landed-ground-1':'landed-parking-1';
   let groundValidator=null,groundSeed=null;
   let populationCache=null;
   function snapshot(value, version = VERSION) {
@@ -196,8 +196,11 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
         combat=validateCampaignCombat(campaign,value.combat,world,baseline);
       }
       const campaign={start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,ground,regional,flight,combat};
-      let space=version>=25?validateCampaignSpace(campaign,value.space,{communication:version>=26,tactical:version>=27,content:baseline}):null;
+      let space=version>=25?validateCampaignSpace(campaign,value.space,{communication:version>=26,tactical:version>=27,input:version>=28,content:baseline}):null;
       if(VERSION>=27&&version<27)space=migrateCampaignTactical(campaign,space??initialCampaignSpace());
+      // Historical27 had held input, without a sampled-button latch. Preserve
+      // an already held button as previously read; migration creates no press.
+      if(VERSION>=28&&version<28&&space.tactical)space.tactical.trigger={latched:false,previous:space.tactical.control.fire};
       return {start,ship,equipment,travel,encounters,dialogue,economy,pod,resources,engineering,machinery,
         ...(VERSION>=22?{ground:ground??migratedGround(start,travel)}:{}),...(VERSION>=23?{regional:regional??{...initialRegional(start),colonyPosition:ground?.colonyPosition??null,legacyDialogueSurface:encounters.counter?.conversation?structuredClone(start.playerLocation.surfacePosition):null},flight:flight??initialFlight()}:{}),...(VERSION>=24?{combat:combat??initialCampaignCombat()}:{}),...(VERSION>=25?{space:space??initialCampaignSpace()}:{})};
     } catch { fail(); }
@@ -223,6 +226,7 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       (value?.version===18 && value.scope==='landed-depot-1') ||
       (value?.version===19 && value.scope==='landed-failures-1') ||
       (value?.version===20 && value.scope==='landed-power-1') ||
+      (VERSION>=28 && value?.version===27 && value.scope==='ship-tactical-1') ||
       (VERSION>=27 && value?.version===26 && value.scope==='ship-communication-1') ||
       (VERSION>=26 && value?.version===25 && value.scope==='ship-encounters-1') ||
       (VERSION>=25 && value?.version===24 && value.scope==='ground-encounters-1') ||

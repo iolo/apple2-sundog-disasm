@@ -5,8 +5,9 @@ import { produceShipEncounter,stepShipCombat,fireShipGun,jettisonShipCargo,
   prepareShipCommunication,resumeShipCommunication,stepShipCommunication } from './ship-combat.js';
 import { startEncounterDialogue,restoreEncounterDialogue,advanceEncounterDialogue,validateEncounterDialogueRecord } from './encounter-dialogue.js';
 import { validateCampaignDialogue } from './campaign-dialogue.js';
-import { validateShipTactical,selectShipTacticalMenu,confirmShipJettison,setShipTacticalGun } from './ship-tactical.js';
-import { enterCampaignShipTactical } from './campaign-machinery.js';
+import { validateShipTactical,selectShipTacticalMenu,confirmShipJettison,setShipTacticalGun,
+  initialShipTrigger,validateShipTrigger } from './ship-tactical.js';
+import { enterCampaignShipTactical,advanceCampaignShipDispatch } from './campaign-machinery.js';
 
 const LEGACY_CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
 const CONTACT_FLAGS=Object.freeze([29,35,36,40,41,42,43,44,45,46,47]);
@@ -85,7 +86,7 @@ export function canonicalCombatEngineeringGroup(group,initial,pending) {
   return recalculateEquipment({...initial,units});
 }
 
-export function validateCampaignSpace(campaign,value,{communication=true,tactical=false,content}={}) {
+export function validateCampaignSpace(campaign,value,{communication=true,tactical=false,input=false,content}={}) {
   if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[]),...(tactical?['tactical']:[])])||
     !dense(value.flags,128)||!value.flags.every((b,i)=>typeof b==='boolean'&&((communication?CONTACT_FLAGS:LEGACY_CONTACT_FLAGS).includes(i)||!b))||
     !keys(value.words,CONTACT_WORDS.map(String))||!dense(value.cooldowns,12)||!value.cooldowns.every(n=>integer(n,0,15))||
@@ -120,13 +121,14 @@ export function validateCampaignSpace(campaign,value,{communication=true,tactica
     const controller=next.tactical,terminal=next.defeat||campaign.combat.defeat;
     if((controller!==null)!==(next.view==='tactical'&&!terminal))fail();
     if(controller!==null) {
-      if(!keys(controller,['record','control','carry'])||next.activity.sleeping||next.elapsed>=50||
+      if(!keys(controller,['record','control','carry',...(input?['trigger']:[])])||next.activity.sleeping||next.elapsed>=50||
         !integer(controller.carry,0,249)||controller.carry>0&&next.elapsed!==0)fail();
       controller.record=validateShipTactical(controller.record);controller.control=validateShipControl(controller.control);
+      if(input)controller.trigger=validateShipTrigger(controller.trigger);
       if(controller.record.frameLimit!==5)fail();
       if(next.communication.conversation&&(controller.record.menu!==0||controller.record.firing||
         controller.record.reticle.angle<0||controller.record.reticle.angle>255||controller.record.reticle.radius<0||controller.record.reticle.radius>255||
-        !sameTree(controller.control,neutralShipControl())))fail();
+        !sameTree(controller.control,neutralShipControl())||input&&!sameTree(controller.trigger,initialShipTrigger())))fail();
     }
   }
   return next;
@@ -168,8 +170,8 @@ export function commitCampaignShipSource(state,source,{combatDamage=false}={}) {
 
 // Called after movement, before power. The native non-arrival jump also runs
 // the producer; planetary browser overlays keep their declared separate ETA.
-export function stepCampaignSpaceProducer(previous,content,{enabled,arrived}) {
-  if(!previous.space||!enabled||previous.space.defeat||previous.space.communication?.conversation)return previous;
+export function stepCampaignSpaceProducer(previous,content,{enabled,arrived,dispatch=false}) {
+  if(!previous.space||!enabled||previous.space.defeat||previous.space.communication?.conversation&&!dispatch)return previous;
   const next=structuredClone(previous),source=campaignShipSource(next),ship=currentShipLocation(next);
   if(arrived&&source.flags[40])source.words[215]=0; // $049B–$04A6.
   const index=next.start.systems.findIndex(s=>s.id===ship.systemId),system=content.dialogue.systems.systems.find(s=>s.id===ship.systemId);
@@ -180,8 +182,8 @@ export function stepCampaignSpaceProducer(previous,content,{enabled,arrived}) {
   return next;
 }
 
-export function stepCampaignSpaceCombat(previous) {
-  if(!previous.space||!previous.space.flags[40]||previous.space.defeat||previous.space.communication?.conversation)return previous;
+export function stepCampaignSpaceCombat(previous,{dispatch=false}={}) {
+  if(!previous.space||!previous.space.flags[40]||previous.space.defeat||previous.space.communication?.conversation&&!dispatch)return previous;
   const next=structuredClone(previous),result=stepShipCombat(campaignShipSource(next));
   return commitCampaignShipSource(next,result.state,{combatDamage:true});
 }
@@ -231,14 +233,14 @@ export function restoreCampaignShipCommunication(state,content) {
 
 export function reduceCampaignShipCommunication(previous,content,action) {
   if(!previous.space?.communication||previous.travel.scene!=='ship'||previous.space.view!=='tactical'||previous.space.defeat||previous.combat.defeat||previous.space.activity.sleeping)throw Error('shipCommunicationUnavailable');
-  const next=structuredClone(previous),c=next.space.communication;
+  let next=structuredClone(previous),c=next.space.communication;
   if(action.type==='comm') {
     if(c.conversation)throw Error('shipCommunicationUnavailable');
     if(next.space.tactical) {
       const t=next.space.tactical;
       if(t.record.menu!==0||t.record.firing)throw Error('shipCommunicationUnavailable');
       // Game12 stores bytes16/17 before handing control to Game16.
-      t.record.reticle={angle:t.record.reticle.angle&255,radius:t.record.reticle.radius&255};t.control=neutralShipControl();
+      t.record.reticle={angle:t.record.reticle.angle&255,radius:t.record.reticle.radius&255};t.control=neutralShipControl();t.trigger=initialShipTrigger();
     }
     const prepared=prepareShipCommunication(campaignShipSource(next));
     commitCampaignShipSource(next,prepared.state);
@@ -249,19 +251,31 @@ export function reduceCampaignShipCommunication(previous,content,action) {
     restoreCampaignShipCommunication(next,content);
     const setup=shipDialogueSetup(next,content,c.conversation.record.seed),result=advanceEncounterDialogue(content.dialogue,setup.context,c.conversation.record,action.input,{places:setup.places,randomState:next.encounters.randomState});
     if(result.outcome) {
-      const out=result.outcome,resumed=resumeShipCommunication(campaignShipSource(next),out.flags,out.randomState);
+      const out=result.outcome;
       const bank=next.economy.accounts.find(a=>a.systemId===currentShipLocation(next).systemId);bank.balance=out.bankBalance;
       // Ship/resource slots remain owned by their adapters. Dialogue owns the
       // remaining globals and its full source-return workspace/personal fields.
       const flags=[...out.flags];CONTACT_FLAGS.forEach(n=>flags[n]=previous.dialogue.flags[n]);
       next.dialogue=validateCampaignDialogue({cash:out.cash,attributes:out.attributes,flags,workspace:out.workspace},
         {visitors:true,traderMatching:true,groundEncounters:true});
-      next.ship.inventory.carried=[...out.carried];commitCampaignShipSource(next,resumed.state);
+      next.ship.inventory.carried=[...out.carried];
+      if(Object.hasOwn(next.space,'tactical')) {
+        const returned=campaignShipSource(next);returned.flags=[...out.flags];returned.randomState=out.randomState;
+        commitCampaignShipSource(next,returned);
+        next=advanceCampaignShipDispatch(next,content);c=next.space.communication;
+        if(next.space.defeat||next.combat.defeat||next.space.activity.sleeping) {
+          c.conversation=null;c.pending=false;c.ticks=0;next.space.flags[35]=false;return next;
+        }
+      }
+      const source=campaignShipSource(next),resumed=resumeShipCommunication(source,
+        Object.hasOwn(next.space,'tactical')?source.flags:out.flags,
+        Object.hasOwn(next.space,'tactical')?source.randomState:out.randomState);
+      commitCampaignShipSource(next,resumed.state);
       c.conversation=null;Object.assign(c,resumed.communication);
       if(next.space.tactical) {
         const t=next.space.tactical;
         Object.assign(t.record,{contact:next.space.flags[40],visible:false,focused:true,firing:false,
-          sensors:next.equipment[3].performance,menu:0,jettisonChoices:null});t.control=neutralShipControl();
+          sensors:next.equipment[3].performance,menu:0,jettisonChoices:null});t.control=neutralShipControl();t.trigger=initialShipTrigger();
       }
     } else {c.conversation.record=result.record;next.encounters.randomState=result.conversation.randomState}
   } else throw Error('shipCommunicationUnavailable');
@@ -292,10 +306,15 @@ export function reduceCampaignSpace(previous,action,content=null) {
   const index=next.start.systems.findIndex(s=>s.id===currentShipLocation(next).systemId);
   if(next.space.tactical&&['menu','gun','aim'].includes(action.type)) {
     const t=next.space.tactical;
-    if(action.type==='aim'){t.control=validateShipControl(action.control);return next}
+    if(action.type==='aim') {
+      t.control=validateShipControl(action.control);
+      // Native dispatch-hook ORs presses into its buffer between polls.
+      if(t.control.fire)t.trigger.latched=true;
+      return next;
+    }
     const result=action.type==='menu'?selectShipTacticalMenu(campaignShipSource(next),t.record,action.menu):
       setShipTacticalGun(campaignShipSource(next),t.record,{firing:action.firing,focused:action.focused});
-    commitCampaignShipSource(next,result.state);t.record=result.tactical;t.control=neutralShipControl();return next;
+    commitCampaignShipSource(next,result.state);t.record=result.tactical;t.control=neutralShipControl();t.trigger=initialShipTrigger();return next;
   }
   if(action.type==='fire') {
     if(Object.hasOwn(next.space,'tactical'))throw Error('spaceUnavailable');

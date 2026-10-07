@@ -53,7 +53,9 @@ export function prepareShipCommunication(previous) {
 // Game12 proc9 $0754–$07BE. Agree starts a six-tick cargo deadline; it does
 // not transfer bank money, jettison automatically or grant a permanent truce.
 export function resumeShipCommunication(previous,flags,randomState) {
-  if(!previous?.flags?.[35]||!previous.flags[40]||previous.flags[47])throw Error('shipCommunicationUnavailable');
+  // The Game13 dispatcher may clear40 before this return branch runs. Game12
+  // tests the outstanding Comm flag35, rather than requiring a surviving ship.
+  if(!previous?.flags?.[35]||previous.flags[47])throw Error('shipCommunicationUnavailable');
   const state=snapshot({...previous,flags,randomState}),f=state.flags;
   f[35]=f[44]=false;
   const communication={pending:false,ticks:0};
@@ -185,14 +187,14 @@ export function stepShipCombat(previous) {
 
 // Game12 proc7 $0296–$0461 and proc9 $04F2: actual charge expenditure and
 // aimed/spray hit/damage. The host supplies dexterity, not a made-up aim rating.
-export function fireShipGun(previous,{focused,dexterity}={}) {
+export function fireShipGun(previous,{focused,dexterity,contact=previous?.flags?.[40]}={}) {
   const state=snapshot(previous),w=state.words,f=state.flags,events=[];
-  if(typeof focused!=='boolean'||!integer(dexterity,0,255))fail();
+  if(typeof focused!=='boolean'||!integer(dexterity,0,255)||typeof contact!=='boolean')fail();
   if(state.equipment[2].group.performance===0||w[226]===0)throw Error('shipGunUnavailable');
   const miss=Math.abs(w[206]-512)+Math.abs(w[205]-512),accuracy=1+Math.trunc((5+dexterity)/10);
   const tolerance=Math.max(0,focused?accuracy-(w[217]>>5):2*accuracy-(w[217]>>4));
   let damage=0,hit=false,cooldownIncrement=0;
-  if(f[40]) {
+  if(contact) {
     state.rangeMemory=(state.rangeMemory+127)>>1;
     if(miss<=tolerance) {
       hit=true;w[215]=4;w[354]=signed(w[354]+1);

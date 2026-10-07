@@ -1,8 +1,9 @@
-# Ship tactical controls and campaign host — R10k/R10l/R10m
+# Ship tactical controls and campaign host — R10k–R10n
 
 `ship-tactical.js` adds source-facing Game12 controls alongside the existing
 ship-combat and campaign-space owners. R10m connects the record to actual
-campaign calls and opt-in27 saves (`content.space:true,tactical:true`); live UI
+campaign calls; R10n corrects native button/cache and Comm dispatch in opt-in28
+`ship-input-1` saves (`content.space:true,tactical:true`). The live UI
 remains24. This does not activate space
 encounters or claim complete R10 tactical, timing or ordinary-play acceptance.
 
@@ -12,7 +13,7 @@ The core accepts the validated ship-combat source state and a separate bounded
 tactical record: reticle angle/radius, captured contact presence, visibility,
 signed grace counter, focused/firing mode, cached sensor output, source frame
 limit, menu0–3 and armed jettison choices. All operations clone their inputs.
-Version27 owns it in `space.tactical:{record,control,carry}`. Campaign persistence
+Version28 owns it in `space.tactical:{record,control,carry,trigger}`. Campaign persistence
 is tested; live UI input and resume remain integration requirements.
 
 | Source | Implemented behavior |
@@ -25,13 +26,14 @@ is tested; live UI input and resume remain integration requirements.
 | `$0942–$0996` | With cached sensors>1, visibility uses inclusive absolute half-coordinate offsets65/45 and range108. Offscreen movement sets grace2. With lower cached sensor output, the source visibility local is retained, while rendering capability remains unavailable. |
 | Main loop `$1388–$139C`; firing `$0F7A–$0F84`; menu `$0F17–$0F3B` | Main and firing loops increment counter354. Main dispatch tests bit0 before proc12; firing calls it every iteration. Proc15 polls proc12 without the increment while waiting for button release, then returns. A selected submenu does not keep subsequent main frames in that polling loop. The core caller supplies an explicit polling context. |
 | Proc12 `$0AC5–$0BF4` | Redraw/decrement grace only when invisible, at the half-limit counter, or while grace>0. The false branch through table `$0BF8` jumps to `$0B5D`: movement and the due machinery check still run. Move before a due call, then refresh sensors and move again using the old captured contact before replacing it with flag40. |
-| Proc17/proc7 | Selecting laser/cannon starts the powered firing loop; leaving it turns gun power off. A held shot spends actual charge before movement and uses actual dexterity. A kill retains source counter/cooldown signals and resets the reticle to angle128/current world angle before further manual movement. |
+| Proc17/proc7; Library22 native proc2 | Selecting laser/cannon starts the powered firing loop; leaving it turns gun power off. A fresh primary edge spends actual charge before movement and uses actual dexterity. Held primary does not refire after recharge. A kill clears captured contact before global40 and resets the reticle to angle128/current world angle. |
 
 `prepareShipTactical` reports **three startup machinery calls**, corresponding
 to proc9 `$0655/$06C4/$074F`; it does not silently run them. R10m's campaign
 adapter commits those calls in order through the actual flight, production,
-power, combat and clock owners. The Comm-return branch skips them,
-restoring the byte-sized reticle from workspace16/17 instead. The source frame
+power, combat and clock owners. The Comm-return branch skips those three calls,
+restoring the byte-sized reticle from workspace16/17 instead. R10n also commits
+Game13's one dispatcher call at `$2588` before that restoration. The source frame
 limit353 and existing grace local3 are explicit preparation inputs. Game13
 startup sets353=5, while other overlays change/restore it. This core does not
 guess a CPU-cycle duration, a native initial grace value, or a universal limit.
@@ -45,8 +47,9 @@ continuation retains its earlier host schedule. The half-counter/visibility/grac
 gate affects drawing, not the machinery check. R10l's prepared native captures
 correct the R10k interpretation that skipped movement/due calls when that gate
 was false. The core now reports `redraw` separately from `updated`/`due`.
-Native aim/fire/Comm input still needs observation separately from the verified
-entry, movement and phase-clock captures.
+R10n's [native input reference](ship-tactical-input-reference.md) separately
+observes aim, fresh/held fire, empty-space expenditure, loop exit and Comm byte
+storage/restoration, and exposes the omitted Game13 return call.
 
 Game13's successful warp writes354=353+1 at `$18AC–$18B2`, clears the
 engine/contact/Comm flags and calls actual Library24 proc9 at `$18DA` before
@@ -88,17 +91,30 @@ controls whether proc12 runs, and counter354/frameLimit controls actual due
 machinery calls. Movement occurs before a due call and again afterward using
 the old captured contact, then refreshes contact and sensors. A phase1 call
 resets354; its minute, resources, combat damage and RNG use existing campaign
-owners. A held shot spends charge first and commits the actual packed system
+owners. A fresh shot spends charge first and commits the actual packed system
 cooldown on a kill. No second combat RNG or resource simulation is introduced.
 The50ms cadence is a presentation adaptation, not native CPU-cycle equivalence.
 
 Discrete submenu actions represent completed button-release input. They do not
 hold the host in proc15's release-poll loop. Saved controls are signed x/y−8..8
-plus held fire. Comm truncates both reticle values to bytes before freezing the
-conversation, then restores them on verified return without startup calls.
+plus held fire. Version28 saves `trigger:{latched,previous}`: Library22's
+dispatch hook buffers a press between polls, while proc2 returns only a rising
+edge. Both native firing polls consume that state; the logical frame samples
+one fixed input, so its second poll can clear a short released pulse without
+inventing another press. Holding/reloading cannot manufacture a repeat shot.
+Comm truncates both reticle values to bytes before freezing the conversation.
+Verified Game16 outputs commit first, then one actual Game13 machinery call
+runs before Game12 consumes retreat/deadline flags and restores its reticle.
+The new deadline starts at6 afterward. Fractional frame/carry remains saved;
+dispatch may remove contact or enter sleep/defeat. There are no three startup
+calls on this branch. Frozen/returned Comm resets the held control and latch.
 Sleep/terminal transitions release firing power and remove the controller.
 
-Version27 validates versions1–26 under their exact historical contracts first.
+Version28 validates versions1–27 under their exact historical contracts first.
+Historical27's exact three-field controller receives a cleared latch and
+`previous=control.fire`, preserving an already held input without creating a
+press or spending RNG/time/resources. Version27 introduced the following
+historical26 migration:
 An active historical26 view receives the missing controller without consuming
 RNG, resources or time. Its0–249ms remainder becomes `carry`, preserving the full
 budget for the first unpaused advance; current tactical remainders are0–49ms.
@@ -110,7 +126,7 @@ historical26 retains its strict zero-output machinery rule.
 
 ## Verification and next integration
 
-Thirteen groups cover all paddle counter values, source entry/target RNG,
+Fifteen groups cover all paddle counter values, source entry/target RNG,
 cached sensor capability thresholds, reacquisition/manual/tracking modes,
 signed movement and wrap, visibility boundaries and stale cache, main/menu/
 firing counter gates, pre/post-combat movement, charge/kill/loop exit, bolt
@@ -120,14 +136,19 @@ contexts, not naturally generated campaign encounters. R10l adds a prepared
 native movement/clock reference and a regression for its visible/grace-zero
 sequence; see [tactical reference](ship-tactical-reference.md).
 
-Twelve campaign groups add exact entry/RNG/resource vectors, native frame
+Sixteen campaign groups add exact entry/RNG/resource vectors, native frame
 ordering,30/60/144Hz rules-state equivalence, pause/reload, historical migration,
 gun loops, cached control gates, actual cargo costs/losses, byte-sized Comm
 return, due deadlines, successful/failed warp and sleep/destruction/import guards.
 These use declared working equipment/fuel/contact/cargo setups. They do not
 establish ordinary-play or live display-refresh acceptance.
 
-Next: observe native aim/fire/Comm input; finish source inhibition/salvage context;
+R10n adds saved held/short-pulse edges across recharge/pause/reload and all three
+caller cadences, strict28/27 migration, native cache/aim vectors and the actual
+Comm dispatcher phase/power/clock/deadline/sleep/contact-loss return. These are
+rule-state checks, not live space input/display acceptance.
+
+Next: implement source bounty/wreck/inhibition/tractor/salvage context;
 expose sensors/aim/fire/Comm/bolt controls with English/Korean help;
 activate the live ship host and prove30/60/144Hz, pause/sleep/reload and legitimate
 ordinary-play avoid/fight/lose outcomes. Full death/wreck/recovery and rare

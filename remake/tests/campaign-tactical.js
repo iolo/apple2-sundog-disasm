@@ -34,8 +34,8 @@ export async function campaignTacticalTests(test,equal) {
   const agree=s=>reply(reply(comm(s),{type:'reply',slot:0}),{type:'cancel'});
   const reject=(f,code='invalidCampaign')=>{let message;try{f()}catch(e){message=e.message}equal(message,code)};
 
-  await test('Tactical27 validates historical26 before migration, preserving RNG/time and the full partial-clock budget',()=>{
-    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[27,'ship-tactical-1']);equal(reload(initial),initial);
+  await test('Tactical28 validates historical26 before migration, preserving RNG/time and the full partial-clock budget',()=>{
+    const initial=fresh(),save=codec.make(initial,0);equal([save.version,save.scope],[28,'ship-input-1']);equal(reload(initial),initial);
     const historical=old.make(old.create({...createCharacter(),name:'Tactical host'},12345),0);
     equal(codec.validate(historical).state,initial);
     const active=structuredClone(historical);active.state.space.view='tactical';active.state.space.elapsed=249;active.state.space.words[354]=3;
@@ -46,6 +46,53 @@ export async function campaignTacticalTests(test,equal) {
     const consumed=tick(migrated,1).state;equal(consumed.space.tactical.carry,0);equal(consumed.space.elapsed,0);
     const forged=structuredClone(active);forged.state.space.tactical=migrated.space.tactical;reject(()=>codec.validate(forged));
     const exited=action(migrated,{type:'view',view:'ship'});equal(exited.space.elapsed,249);equal(exited.space.tactical,null);equal(reload(exited),exited);
+  });
+  await test('Historical27 validates its exact controller before adding button state without manufacturing a press',()=>{
+    let s=gun(enter(fixture()));s=action(s,{type:'aim',control:{x:0,y:0,fire:true}});
+    const historical=codec.make(s,0);historical.version=27;historical.scope='ship-tactical-1';delete historical.state.space.tactical.trigger;
+    const migrated=codec.validate(historical).state;
+    equal(migrated.space.tactical.trigger,{latched:false,previous:true});
+    equal(migrated.encounters,s.encounters);equal(migrated.ship,s.ship);equal(migrated.resources,s.resources);equal(reload(migrated),migrated);
+    equal(tick(migrated).state.resources.guns.charge,s.resources.guns.charge);
+    const extra=structuredClone(historical);extra.state.space.tactical.trigger={latched:false,previous:true};reject(()=>codec.validate(extra));
+    const missing=codec.make(s,0);delete missing.state.space.tactical.trigger;reject(()=>codec.validate(missing));
+  });
+  await test('Held campaign fire shoots once through due recharge, JSON continuation and30/60/144Hz until a new press',()=>{
+    let s=gun(enter(fixture()));s.resources.guns.charge=5;s.space.words[217]=20;
+    s=action(s,{type:'aim',control:{x:0,y:0,fire:true}});
+    const first=tick(s).state;equal(first.space.words[216],104);equal(first.resources.guns.charge,0);
+    equal(first.space.tactical.trigger,{latched:false,previous:true});
+    const held=run(first,2000);equal(held.space.words[216],104);equal(held.resources.guns.charge>0,true);equal(reload(held),held);
+    equal(tick(reload(held),60000,true).state,held);
+    for(const hz of [30,60,144]) {
+      let state=first,previous=0;
+      for(let frame=1;frame<=2*hz;frame++) {const now=Math.floor(frame*1000/hz);state=tick(state,now-previous).state;previous=now;if(frame===hz)state=reload(state)}
+      equal(state,held);
+    }
+    const released=tick(action(held,{type:'aim',control:{x:0,y:0,fire:false}})).state;
+    equal(released.space.tactical.trigger,{latched:false,previous:false});
+    const again=tick(action(released,{type:'aim',control:{x:0,y:0,fire:true}})).state;
+    const noPress=tick(released).state;
+    // The target has retreated off center during recharge. The new press is
+    // still a shot. This due power phase recharges it immediately for4 fuel;
+    // compare the otherwise identical frame without a press.
+    equal(again.resources.guns.charge,255);equal(noPress.resources.guns.charge,255);
+    equal(again.resources.fuel,noPress.resources.fuel-4);
+    equal(again.space.words[216],104);equal(again.space.cooldowns[0],0);
+    equal(again.space.tactical.trigger,{latched:false,previous:true});equal(reload(again),again);
+  });
+  await test('A short press survives partial save/pause, spends empty-space charge and cannot duplicate a cached kill',()=>{
+    let s=gun(enter(fixture()));s.space.tactical.record.contact=false;s.space.words[216]=0;s.resources.guns.charge=100;
+    s=action(s,{type:'aim',control:{x:0,y:0,fire:true}});
+    s=action(s,{type:'aim',control:{x:0,y:0,fire:false}});
+    const partial=tick(s,17).state;equal(partial.space.tactical.trigger,{latched:true,previous:false});
+    equal(tick(reload(partial),60000,true).state,partial);
+    const fired=tick(reload(partial),33).state;
+    equal(fired.resources.guns.charge,0);equal(fired.space.words[354],1);equal(fired.space.cooldowns,s.space.cooldowns);
+    equal(fired.space.flags[40],true);equal(fired.space.tactical.trigger,{latched:false,previous:false});equal(reload(fired),fired);
+    const broken=gun(enter(fixture()));broken.resources.guns.charge=0;
+    const pressed=action(broken,{type:'aim',control:{x:0,y:0,fire:true}}),charged=run(pressed,500);
+    equal(charged.resources.guns.charge>0,true);equal(charged.space.words[216],200);equal(reload(charged),charged);
   });
   await test('Campaign entry commits three actual ordered machinery calls once, retaining source contact and cached sensor context',()=>{
     const s=fixture();s.space.flags[36]=s.space.flags[47]=true;s.resources.guns.charge=100;const before=JSON.stringify(s),entered=enter(s);
@@ -87,7 +134,7 @@ export async function campaignTacticalTests(test,equal) {
     const partial=tick(s,17).state;equal(tick(reload(partial),60000,true).state,partial);
     equal(tick(reload(partial),33).state,tick(s,50).state);equal(reload(reference),reference);
   });
-  await test('Campaign gun loops spend actual charge before movement, keep kill cooldowns and permit source inoperative-loop power only in27',()=>{
+  await test('Campaign gun loops spend actual charge before movement, keep kill cooldowns and permit source inoperative-loop power only in28',()=>{
     let s=enter(fixture());s.resources.guns.charge=100;s.space.words[217]=20;
     s=gun(s);s=action(s,{type:'aim',control:{x:8,y:8,fire:true}});equal(reload(s),s);
     const before=JSON.stringify(s),shot=tick(s).state;equal(shot.resources.guns.charge,0);equal(shot.space.words[216],0);equal(shot.space.words[354],2);
@@ -125,18 +172,42 @@ export async function campaignTacticalTests(test,equal) {
     const cancelled=action(armed,{type:'menu',menu:0});equal(cancelled.pod.cargo,armed.pod.cargo);equal(cancelled.encounters.randomState,armed.encounters.randomState);
   });
   await test('Frozen campaign Comm restores a byte-sized reticle without repeating startup calls and counts only actual due deadlines',()=>{
-    let s=enter(fixture());s.space.tactical.record.reticle={angle:777,radius:-1};s=tick(s,17).state;
-    const opened=comm(s);equal(opened.space.tactical.record.reticle,{angle:9,radius:255});equal(reload(opened),opened);equal(tick(opened,60000).state,opened);
+    let s=enter(fixture());s.space.tactical.record.reticle={angle:-1,radius:777};s=tick(s,17).state;
+    const opened=comm(s);equal(opened.space.tactical.record.reticle,{angle:255,radius:9});equal(reload(opened),opened);equal(tick(opened,60000).state,opened);
     reject(()=>action(opened,{type:'aim',control:{x:1,y:0,fire:false}}),'spaceUnavailable');
     const agreed=reply(reply(opened,{type:'reply',slot:0}),{type:'cancel'});
-    equal(agreed.ship.minutes,opened.ship.minutes);equal(agreed.machinery,opened.machinery);equal(agreed.resources,opened.resources);
-    equal(agreed.space.tactical.record.reticle,{angle:9,radius:255});equal(agreed.space.communication.ticks,6);equal(agreed.space.words[354],0);equal(reload(agreed),agreed);
+    // Native Game13 $2588 advances phase3→4 before Game12 restores255/9.
+    // The host stores phase modulo4. There are no three startup calls.
+    equal(agreed.ship.minutes,opened.ship.minutes);equal(opened.machinery.phase,3);equal(agreed.machinery.phase,0);equal(agreed.resources,opened.resources);
+    equal(agreed.space.elapsed,17);equal(agreed.space.tactical.record.reticle,{angle:255,radius:9});equal(agreed.space.communication.ticks,6);equal(agreed.space.words[354],0);equal(reload(agreed),agreed);
     let state=agreed,due=0;
     for(let frame=0;due<7&&frame<100;frame++) {
       const r=tick(state);state=reload(r.state);
       if(r.cycles){due++;equal(state.space.communication.ticks,Math.max(0,6-due));equal(state.space.flags[44],due===7)}
     }
     equal(due,7);equal(state.space.communication.pending,false);
+  });
+  await test('Comm return runs exactly one actual dispatcher phase before arming its deadline, including power, clock and forced sleep',()=>{
+    for(const phase of [0,1,2,3]) {
+      const s=enter(fixture());s.machinery.phase=phase;s.resources.guns.charge=100;
+      const returned=agree(s);
+      equal(returned.machinery.phase,(phase+1)%4);
+      equal(returned.ship.minutes,s.ship.minutes+(phase===0?1:0));
+      equal(returned.resources.guns.charge,phase%2===0?92:100);
+      equal(returned.space.communication,{conversation:null,pending:true,ticks:6});
+      equal(returned.space.flags[35],false);equal(returned.space.flags[47],true);equal(reload(returned),returned);
+      equal(tick(reload(returned),60000,true).state,returned);
+    }
+    const s=enter(fixture());s.machinery.phase=0;s.ship.minutes=59;
+    s.ship.condition={vigor:200,rest:1,health:200,nourishment:200};
+    const sleeping=agree(s);
+    equal(sleeping.ship.minutes,60);equal(sleeping.space.activity.sleeping,true);equal(sleeping.space.activity.forced,true);
+    equal(sleeping.space.view,'ship');equal(sleeping.space.tactical,null);equal(sleeping.space.flags[35],false);
+    equal(sleeping.space.communication,{conversation:null,pending:false,ticks:0});equal(reload(sleeping),sleeping);
+    const escaped=enter(fixture());escaped.space.words[217]=129;
+    const returned=agree(escaped);
+    equal(returned.space.flags[40],false);equal(returned.space.flags[47],true);equal(returned.space.tactical.record.contact,false);
+    equal(returned.space.communication,{conversation:null,pending:true,ticks:6});equal(reload(returned),returned);
   });
   await test('Successful warp commits its counter/call followed by three entry calls, while gravity failure retains the active host',()=>{
     const s=run(reduceCampaignFlight(fixture(),content,{type:'launch'}),4250);
@@ -161,11 +232,13 @@ export async function campaignTacticalTests(test,equal) {
     for(const change of [v=>v.space.tactical=null,v=>v.space.tactical.extra=1,v=>v.space.tactical.record.extra=1,
       v=>v.space.tactical.record.frameLimit=15,v=>v.space.tactical.record.grace=32768,v=>v.space.tactical.control.x=9,
       v=>v.space.tactical.control.fire=1,v=>v.space.tactical.control.extra=1,v=>v.space.elapsed=50,
+      v=>v.space.tactical.trigger=null,v=>v.space.tactical.trigger.extra=1,v=>v.space.tactical.trigger.latched=1,v=>v.space.tactical.trigger.previous=0,
       v=>v.space.tactical.carry=250,v=>{v.space.tactical.carry=1;v.space.elapsed=1},v=>v.space.view='ship']) {
       const bad=structuredClone(s);change(bad);reject(()=>codec.snapshot(bad));
     }
     reject(()=>action(s,{type:'aim',control:{x:0,y:0,fire:false,extra:1}}),'invalidCampaignSpace');equal(JSON.stringify(s),before);
     const opened=comm(s),bad=structuredClone(opened);bad.space.tactical.record.menu=3;reject(()=>codec.snapshot(bad));
+    const input=structuredClone(opened);input.space.tactical.trigger.latched=true;reject(()=>codec.snapshot(input));
     reject(()=>campaignSaveCodec({...legacy,tactical:false},walk),'invalidCampaignContent');
   });
 }
