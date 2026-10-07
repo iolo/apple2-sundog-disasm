@@ -1,0 +1,40 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10j",
+  "date": "2026-10-07",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 26,
+  "ruleGroups": 457,
+  "shipHostRuleGroups": 25,
+  "newCampaignRuleGroups": 11,
+  "browserUiChecks": 0,
+  "receipts": [
+    {
+      "receipt": "r10j-rules-validation.json",
+      "kind": "rules",
+      "script": null,
+      "checks": 457,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3
+  },
+  "previousUiEvidence": [
+    "r10i-journey-validation.json",
+    "r10i-navigation-validation.json"
+  ],
+  "boundaries": [
+    "Opt-in26 communication/sleep tests use declared contact/equipment contexts. They are not fresh-character ordinary-play encounter acceptance.",
+    "Live UI remains version24. Space Comm controls, source tactical frames/entry, sensors/reticle/input, jettison bolt confirmation and live26 activation remain pending.",
+    "The saved six-decrement/seventh-call deadline follows actual machinery calls; the still-missing native tactical frame movement means these fixtures do not establish native escape timing.",
+    "Core pause/cadence/partial-tick/reload and voluntary/forced sleep are proven. Live space display-refresh and sleep/resume UI acceptance remain pending.",
+    "No new native capture or UI acceptance run is claimed. R10i regional/navigation receipts remain the latest live flight regression evidence.",
+    "Full native death/wreck/recovery dispatch, rare reward224 and ordinary ground/space avoid/fight/lose acceptance remain required.",
+    "R09 flight/regional requirements are complete. Colony contract progression remains R11."
+  ]
+}

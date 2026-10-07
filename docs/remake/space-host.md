@@ -1,10 +1,11 @@
-# Campaign ship encounter host — R10i
+# Campaign ship encounter host — R10i/R10j
 
 `campaign-space.js` connects the source ship-combat primitives to actual
 regional flight, machinery, resources, equipment, pod cargo and campaign RNG.
-This is an opt-in core/save checkpoint (`content.space:true`, version25
-`ship-encounters-1`). The live asset loader/UI remains version24 pending space
-Comm, sensors, reticle/input, bolt arming and recovery integration. This document
+R10i introduced opt-in25 `ship-encounters-1`; R10j extends the opt-in core/save
+to26 `ship-communication-1` (`content.space:true`). The live asset loader/UI
+remains version24 pending sensors, reticle/input, bolt arming and recovery
+integration, including exposing the verified Comm reducer. This document
 does not claim live space encounter acceptance or full R10 completion.
 
 ## Source scheduler and corrected gates
@@ -36,27 +37,83 @@ records fresh navigation and regional trade/return regressions.
 
 ## State owners and persistence
 
-The `space` block owns only contact flags29/36/40–47, words205–209/214–217/347/354,
+The `space` block owns only contact flags29/35/36/40–47, words205–209/214–217/347/354,
 range-memory byte193,12 cooldown nibbles, an integer normal-clock remainder,
 ship/tactical context, six combat-cache markers, loss receipts and destruction.
 Other flag slots must be false in this block. The adapter derives power,
 attachment, cloaking and working-special flags from their existing owners.
 Resources own hull/fuel/charges; equipment and engineering own component bytes
 and pending offsets; pod owns the two actual lots; encounters owns RNG.
+Game16 return flags48–51 remain in the shared campaign dialogue owner so a
+ground return cannot be shadowed by a second space flag array. Preparing Comm
+clears48–50 but retains51; the verified Game12 return consumes49 or51 according
+to its source priority. Other campaign dialogue flags supply source context.
 
 Contact state is bounded canonical progress, like regional flight progress.
 It is not an anti-cheat replay of the entire campaign history. Exact-field,
 dense-array, byte/range, location, machinery, component-cache and cargo/wealth
-checks reject malformed imports atomically. Version25 validates versions1–24
-under their historical rules before adding an idle space record. Old scopes
+checks reject malformed imports atomically. Version26 validates versions1–25
+under their historical rules before adding idle communication/activity records.
+Version25 still requires its exact nine-field space record and original flag
+set before migration; it cannot import26 conversations, sleep or flag35. Old scopes
 cannot import hull loss, multiple raw failed components or missing cryogens.
 
 Normal due ticks remain250ms and minute advancement remains phase1. Version25
 owns the0–249ms remainder rather than reconstructing it from an ephemeral
 survival object; pause preserves it and a JSON reload can finish the next tick
 exactly. Calls accept integer0–60000ms and process all due ticks. Historical
-hosts retain their existing capped/transient presentation clock. Sleep-mode
-UI restoration and live display-refresh acceptance remain integration work.
+hosts retain their existing capped/transient presentation clock. R10j adds
+saved sleep-mode restoration in the core; exposing it in the live space UI and
+display-refresh acceptance remain integration work.
+
+## R10j communication and sleep ownership
+
+`reduceCampaignShipCommunication` prepares actual kind19/scene-middle1 Comm
+from Game12 proc22 `$1272–$1356`. Frozen inputs include the actual visited
+system/account, personal cash/attributes/carried items, source flags, workspace,
+city, hour and surface position. It uses `currentShipLocation`, not the parked
+ground world's campaign location. A nullable world between planets is valid;
+the tested foreign-system opening and Agree path do not request a random place.
+The quantity is actual enemy type+1; mood/item are0. Game16 proc30
+`$0E4E–$0E62` resets word354 for scene-middle<3. This does not advance ship
+machinery or the clock: Game16 has no Library24 proc9 scheduler call.
+
+Only `{context,record:{seed,inputs}}` is saved, with exact fields and bounded
+validated inputs. The frozen tree must equal setup reconstructed from canonical
+owners; replay must reach the exact continuing campaign RNG and remain open.
+Imported frames, locals, messages, completed records, extra fields and owner
+mismatches fail atomically. This proves the dialogue transition, not the entire
+campaign history: canonical contact/progress is still not a full anti-cheat log.
+Clock, production/combat and flight/power/engineering/space controls freeze while
+Comm is open. Personal/workspace/account changes publish only on verified return;
+the source preparation's control flags publish at opening.
+
+Game12 proc9 `$0754–$07BE` consumes49 first, setting cooldown215=128 and speed207=2
+for retreat. Otherwise51 starts `{pending:true,ticks:6}` without payment or
+automatic cargo loss; other returns restore hostility. All clear35/41 and set47
+to prevent a second Comm with that contact. Source initial Dismiss It enters
+the hostile message first; its following dismiss returns, rather than skipping
+the source intermediate view.
+
+The saved counter runs after movement→production→power→combat, matching Game12
+`$0B87–$0BAC`. Six due calls decrement to0; the seventh sets aggression44, so that
+call cannot retroactively schedule an enemy shot. Pause and fractional due ticks
+preserve the counter and remainder. Game12 exit `$14D4–$14E0` restores44 if a
+demand is pending; changing to ship view, sleeping, exhaustion, destruction or
+a successful warp ends the local deadline. Source jettison proc21 does not
+clear it: cargo-induced retreat can still regain aggression when it expires.
+The missing source tactical frame movement remains a separate integration gate;
+these deadline fixtures do not claim native frame-by-frame escape timing.
+
+`activity:{sleeping,forced,sleepPhase}` owns the persisted aboard sleep state.
+Sleep switches to ship view and clears the presentation remainder, then uses
+50ms due calls, the existing machinery phase/minute owner and one rest point
+every second sleep iteration. A reload ignores an ephemeral survival object's
+default awake state. Sleeping remainders must be0–49ms. Exhaustion retains forced
+sleep until rest>128; wake cannot bypass it. Death clears sleep/forced/remainder
+and freezes subsequent calls. Historical25 adds default awake activity because
+its format did not own sleep state. These are serialized browser-cadence rules,
+not Apple II CPU-cycle equivalence or full native recovery dispatch.
 
 Installation failures retain their historical masked output cache. Combat
 failures recalculate from raw high bytes and may contain multiple damaged
@@ -104,13 +161,23 @@ successful/failed warp and malformed-import atomic rejection. Test contexts
 explicitly set working equipment/contact seeds to isolate the rules; they are
 not fresh-character ordinary-play encounter acceptance.
 
+R10j adds eleven campaign groups (25 total ship-host groups), including strict25
+migration, frozen Comm/replay and unavailable controls, actual foreign account
+with a nullable world, Agree/Refuse/Bluff/Dismiss returns, shared return flags,
+deadline ordering/exit/jettison, pause/cadence/reload, voluntary/forced sleep and
+sleep death, and malformed frozen/counter/activity imports. Contexts remain
+declared fixtures, not ordinary-play encounter acceptance. No additional native
+capture or UI activation is claimed. [The current rule receipt](r10j-rules-validation.json)
+reports457 passing groups in Chrome155.0.8059.39 with no errors.22 exporter tests,
+171 artifacts,584 source strings and three original input hashes verify.
+
 The full original R10 scope remains in [the requirement audit](r10-completion.md):
-space frozen Comm context/returns and actual cargo deadline; sensors/aim/input
+live Comm/deadline controls; sensors/aim/input
 and localized help; source jettison confirmation; full native recovery and rare
 kind18 target224; live frame-rate/resume proof; and fresh-character ordinary
 ground/space avoid/fight/lose acceptance. Colony progression remains R11.
 
-The final [rule receipt](r10i-rules-validation.json) reports446 passing groups
+R10i's earlier [rule receipt](r10i-rules-validation.json) reports446 passing groups
 in Chrome155.0.8059.39 without failures/page errors. [The regional journey](r10i-journey-validation.json)
 passes64 ordinary-control checks and [navigation](r10i-navigation-validation.json)
 passes44 across both locales/four viewports, with charging reload/cancellation.

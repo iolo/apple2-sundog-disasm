@@ -1,9 +1,14 @@
 import { currentShipLocation } from './regional-world.js';
 import { validateCargoLot } from './cargo.js';
 import { fitsComponent,recalculateEquipment } from './equipment.js';
-import { produceShipEncounter,stepShipCombat,fireShipGun,jettisonShipCargo } from './ship-combat.js';
+import { produceShipEncounter,stepShipCombat,fireShipGun,jettisonShipCargo,
+  prepareShipCommunication,resumeShipCommunication,stepShipCommunication } from './ship-combat.js';
+import { startEncounterDialogue,restoreEncounterDialogue,advanceEncounterDialogue,validateEncounterDialogueRecord } from './encounter-dialogue.js';
+import { validateCampaignDialogue } from './campaign-dialogue.js';
 
-const CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
+const LEGACY_CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
+const CONTACT_FLAGS=Object.freeze([29,35,36,40,41,42,43,44,45,46,47]);
+const RETURN_FLAGS=Object.freeze([48,49,50,51]);
 const CONTACT_WORDS=Object.freeze([205,206,207,208,209,214,215,216,217,347,354]);
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
 const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===n.length&&n.every(k=>Object.hasOwn(v,k));
@@ -11,13 +16,21 @@ const dense=(v,n)=>Array.isArray(v)&&v.length===n&&Object.keys(v).length===n&&
   Array.from({length:n},(_,i)=>Object.hasOwn(v,i)).every(Boolean);
 const fail=()=>{throw Error('invalidCampaignSpace')};
 const signature=lot=>JSON.stringify(lot);
+const sameTree=(value,expected)=>{
+  if(expected===null||typeof expected!=='object')return value===expected;
+  if(Array.isArray(expected))return dense(value,expected.length)&&expected.every((v,i)=>sameTree(value[i],v));
+  return keys(value,Object.keys(expected))&&Object.keys(expected).every(k=>sameTree(value[k],expected[k]));
+};
+export const initialShipCommunication=()=>({conversation:null,pending:false,ticks:0});
+export const initialShipActivity=()=>({sleeping:false,forced:false,sleepPhase:0});
 
 // Utility12 $0289–$0291 clears system word8/nibble7 for all12 systems.
 // Resource, equipment, cargo and RNG fields have existing campaign owners.
 export const initialCampaignSpace=()=>({flags:Array(128).fill(false),
   words:{205:512,206:512,207:0,208:0,209:0,214:0,215:0,216:0,217:127,347:0,354:0},
   rangeMemory:127,cooldowns:Array(12).fill(0),elapsed:0,view:'ship',
-  combatFailures:Array(6).fill(false),losses:[],defeat:null});
+  combatFailures:Array(6).fill(false),losses:[],defeat:null,
+  communication:initialShipCommunication(),activity:initialShipActivity()});
 
 export function validateSpaceLosses(value) {
   if(!Array.isArray(value)||!dense(value,value.length)||value.length>512)fail();
@@ -45,9 +58,9 @@ export function canonicalCombatEngineeringGroup(group,initial,pending) {
   return recalculateEquipment({...initial,units});
 }
 
-export function validateCampaignSpace(campaign,value) {
-  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat'])||
-    !dense(value.flags,128)||!value.flags.every((b,i)=>typeof b==='boolean'&&(CONTACT_FLAGS.includes(i)||!b))||
+export function validateCampaignSpace(campaign,value,{communication=true,content}={}) {
+  if(!keys(value,['flags','words','rangeMemory','cooldowns','elapsed','view','combatFailures','losses','defeat',...(communication?['communication','activity']:[])])||
+    !dense(value.flags,128)||!value.flags.every((b,i)=>typeof b==='boolean'&&((communication?CONTACT_FLAGS:LEGACY_CONTACT_FLAGS).includes(i)||!b))||
     !keys(value.words,CONTACT_WORDS.map(String))||!dense(value.cooldowns,12)||!value.cooldowns.every(n=>integer(n,0,15))||
     !dense(value.combatFailures,6)||!value.combatFailures.every(b=>typeof b==='boolean')||
     !integer(value.rangeMemory,0,255)||!integer(value.elapsed,0,249)||!['ship','tactical'].includes(value.view))fail();
@@ -60,11 +73,28 @@ export function validateCampaignSpace(campaign,value) {
   if(value.defeat===null?w[347]!==0||campaign.resources.hull===0:
     !keys(value.defeat,['reason','minutes'])||value.defeat.reason!=='shipDestroyed'||
     value.defeat.minutes!==campaign.ship.minutes||w[347]!==1||value.elapsed!==0)fail();
-  return {...structuredClone(value),losses:validateSpaceLosses(value.losses)};
+  const next={...structuredClone(value),losses:validateSpaceLosses(value.losses),
+    ...(!communication?{communication:initialShipCommunication(),activity:initialShipActivity()}:{} )};
+  if(communication) {
+    const c=next.communication,a=next.activity;
+    if(!keys(c,['conversation','pending','ticks'])||typeof c.pending!=='boolean'||!integer(c.ticks,0,6)||!c.pending&&c.ticks!==0||
+      !keys(a,['sleeping','forced','sleepPhase'])||typeof a.sleeping!=='boolean'||typeof a.forced!=='boolean'||!integer(a.sleepPhase,0,1)||
+      a.forced&&!a.sleeping||a.forced&&campaign.ship.condition.rest>128||a.sleeping&&next.elapsed>=50||
+      (next.defeat||campaign.combat.defeat)&&(a.sleeping||c.conversation!==null||next.elapsed!==0)||
+      a.sleeping&&(campaign.travel.scene!=='ship'||next.view==='tactical'||c.conversation!==null)||
+      c.pending&&(next.view!=='tactical'||c.conversation!==null||!next.flags[47]||campaign.dialogue.flags[51]))fail();
+    if((c.conversation!==null)!==next.flags[35])fail();
+    if(c.conversation!==null) {
+      if(!next.flags[40]||next.flags[47]||!next.flags[44]||next.view!=='tactical'||c.pending||next.words[354]!==0||campaign.dialogue.flags.slice(48,51).some(Boolean))fail();
+      restoreCampaignShipCommunication({...campaign,space:next},content);
+    }
+  }
+  return next;
 }
 
 export function campaignShipSource(state) {
-  const r=state.resources,flags=[...state.space.flags];
+  const r=state.resources,flags=[...state.dialogue.flags];
+  CONTACT_FLAGS.forEach(n=>flags[n]=state.space.flags[n]);
   flags[0]=r.warp.charging;flags[1]=r.enginesPowered;flags[2]=r.guns.powered;
   flags[4]=r.shields.targetCharge>0;flags[7]=state.pod.attached;flags[12]=state.machinery.cloaked;
   state.equipment.forEach((g,i)=>flags[16+i]=g.specialAvailable);
@@ -85,6 +115,9 @@ export function commitCampaignShipSource(state,source,{combatDamage=false}={}) {
   r.warp={charge:w[223],targetCharge:w[222],targetSystemId:f[0]?r.warp.targetSystemId:null,charging:f[0]};
   state.machinery.cloaked=f[12];state.pod.cargo=structuredClone(source.cargo);state.encounters.randomState=source.randomState;
   CONTACT_FLAGS.forEach(n=>s.flags[n]=f[n]);CONTACT_WORDS.forEach(n=>s.words[n]=w[n]);s.rangeMemory=source.rangeMemory;
+  // Game16's return bits are shared with ground encounters. Keep their one
+  // campaign-global owner rather than shadowing an earlier ground return.
+  RETURN_FLAGS.forEach(n=>state.dialogue.flags[n]=f[n]);
   source.equipment.forEach(({group,pendingFailure},i)=>{
     if(combatDamage&&JSON.stringify(group.units)!==JSON.stringify(state.equipment[i].units)&&pendingFailure!==31)s.combatFailures[i]=true;
     state.equipment[i]=structuredClone(group);state.engineering.pendingFailures[i]=pendingFailure;
@@ -96,7 +129,7 @@ export function commitCampaignShipSource(state,source,{combatDamage=false}={}) {
 // Called after movement, before power. The native non-arrival jump also runs
 // the producer; planetary browser overlays keep their declared separate ETA.
 export function stepCampaignSpaceProducer(previous,content,{enabled,arrived}) {
-  if(!previous.space||!enabled||previous.space.defeat)return previous;
+  if(!previous.space||!enabled||previous.space.defeat||previous.space.communication?.conversation)return previous;
   const next=structuredClone(previous),source=campaignShipSource(next),ship=currentShipLocation(next);
   if(arrived&&source.flags[40])source.words[215]=0; // $049B–$04A6.
   const index=next.start.systems.findIndex(s=>s.id===ship.systemId),system=content.dialogue.systems.systems.find(s=>s.id===ship.systemId);
@@ -108,22 +141,97 @@ export function stepCampaignSpaceProducer(previous,content,{enabled,arrived}) {
 }
 
 export function stepCampaignSpaceCombat(previous) {
-  if(!previous.space||!previous.space.flags[40]||previous.space.defeat)return previous;
+  if(!previous.space||!previous.space.flags[40]||previous.space.defeat||previous.space.communication?.conversation)return previous;
   const next=structuredClone(previous),result=stepShipCombat(campaignShipSource(next));
   return commitCampaignShipSource(next,result.state,{combatDamage:true});
 }
 
 export function finishCampaignSpaceWarp(state) {
-  if(state.space){state.space.flags[40]=state.space.flags[47]=false;state.space.view='tactical'}
+  if(state.space){leaveCampaignShipDeadline(state);state.space.flags[40]=state.space.flags[47]=false;state.space.view='tactical'}
   return state;
+}
+
+// Game12 $14D4–$14E0: leaving a pending demand restores aggression. Dropping
+// cargo does not clear local28 either; only the source deadline/exit owns it.
+export function leaveCampaignShipDeadline(state) {
+  const c=state.space.communication;
+  if(c?.pending){state.space.flags[44]=true;c.pending=false;c.ticks=0}
+}
+
+export function stepCampaignShipCommunication(previous) {
+  if(!previous.space?.communication?.pending||previous.space.view!=='tactical'||previous.space.defeat||previous.space.communication.conversation)return previous;
+  const next=structuredClone(previous),c=next.space.communication;
+  const result=stepShipCommunication(campaignShipSource(next),{pending:c.pending,ticks:c.ticks});
+  commitCampaignShipSource(next,result.state);Object.assign(c,result.communication);
+  return next;
+}
+
+function shipDialogueSetup(state,content,seed) {
+  const ship=currentShipLocation(state),system=content.dialogue.systems.systems.find(s=>s.id===ship.systemId);
+  const bank=state.economy.accounts.find(a=>a.systemId===ship.systemId);
+  if(!system||!bank)fail();
+  const source=campaignShipSource(state),workspace={...state.dialogue.workspace,item:0,mood:0,quantity:source.words[214]+1};
+  return {context:{kind:19,system:structuredClone(system),attributes:[...state.dialogue.attributes],carried:[...state.ship.inventory.carried],
+    flags:source.flags,workspace,city:ship.cityId?Number(ship.cityId.slice(-2)):0,hour:Math.floor(state.ship.minutes/60)%24,
+    surface:{...ship.surfacePosition},cash:state.dialogue.cash,bankBalance:bank.balance,randomState:seed,sceneMiddle:1},
+    places:{systems:content.navigation.systems.map(s=>s.name),worlds:content.navigation.worlds.map(w=>w.name),
+      system:content.navigation.systems.findIndex(s=>s.id===ship.systemId)+1,world:content.navigation.worlds.findIndex(w=>w.id===ship.worldId)+1}};
+}
+
+// Freeze setup inputs, never interpreter frames/messages/outcomes. Imports
+// must match the still-frozen canonical campaign owners and replay to its RNG.
+export function restoreCampaignShipCommunication(state,content) {
+  const frozen=state.space.communication.conversation;
+  if(!keys(frozen,['context','record']))fail();
+  const record=validateEncounterDialogueRecord(frozen.record),setup=shipDialogueSetup(state,content,record.seed);
+  if(!sameTree(frozen.context,setup.context))fail();
+  return restoreEncounterDialogue(content.dialogue,setup.context,record,{places:setup.places,randomState:state.encounters.randomState});
+}
+
+export function reduceCampaignShipCommunication(previous,content,action) {
+  if(!previous.space?.communication||previous.travel.scene!=='ship'||previous.space.view!=='tactical'||previous.space.defeat||previous.combat.defeat||previous.space.activity.sleeping)throw Error('shipCommunicationUnavailable');
+  const next=structuredClone(previous),c=next.space.communication;
+  if(action.type==='comm') {
+    if(c.conversation)throw Error('shipCommunicationUnavailable');
+    const prepared=prepareShipCommunication(campaignShipSource(next));
+    commitCampaignShipSource(next,prepared.state);
+    next.space.words[354]=0; // Game16 proc30 $0E4E–$0E62, scene-middle<3.
+    const setup=shipDialogueSetup(next,content,next.encounters.randomState),opened=startEncounterDialogue(content.dialogue,setup.context,{places:setup.places});
+    c.conversation={context:setup.context,record:opened.record};c.pending=false;c.ticks=0;next.encounters.randomState=opened.conversation.randomState;
+  } else if(action.type==='dialogue'&&c.conversation) {
+    restoreCampaignShipCommunication(next,content);
+    const setup=shipDialogueSetup(next,content,c.conversation.record.seed),result=advanceEncounterDialogue(content.dialogue,setup.context,c.conversation.record,action.input,{places:setup.places,randomState:next.encounters.randomState});
+    if(result.outcome) {
+      const out=result.outcome,resumed=resumeShipCommunication(campaignShipSource(next),out.flags,out.randomState);
+      const bank=next.economy.accounts.find(a=>a.systemId===currentShipLocation(next).systemId);bank.balance=out.bankBalance;
+      // Ship/resource slots remain owned by their adapters. Dialogue owns the
+      // remaining globals and its full source-return workspace/personal fields.
+      const flags=[...out.flags];CONTACT_FLAGS.forEach(n=>flags[n]=previous.dialogue.flags[n]);
+      next.dialogue=validateCampaignDialogue({cash:out.cash,attributes:out.attributes,flags,workspace:out.workspace},
+        {visitors:true,traderMatching:true,groundEncounters:true});
+      next.ship.inventory.carried=[...out.carried];commitCampaignShipSource(next,resumed.state);
+      c.conversation=null;Object.assign(c,resumed.communication);
+    } else {c.conversation.record=result.record;next.encounters.randomState=result.conversation.randomState}
+  } else throw Error('shipCommunicationUnavailable');
+  return next;
 }
 
 // These reducers operate on the actual aboard state. UI sensor/reticle mapping
 // and the source bolt-arming confirmation are separate controls, still pending.
 export function reduceCampaignSpace(previous,action) {
   if(!previous.space||previous.travel.scene!=='ship'||previous.space.defeat||previous.combat.defeat)throw Error('spaceUnavailable');
+  if(previous.space.communication?.conversation)throw Error('spaceUnavailable');
   const next=structuredClone(previous);
-  if(action.type==='view'&&['ship','tactical'].includes(action.view)) {next.space.view=action.view;return next}
+  if(action.type==='sleep'&&next.space.activity) {
+    if(next.space.activity.sleeping)throw Error('spaceUnavailable');
+    leaveCampaignShipDeadline(next);next.space.view='ship';next.space.elapsed=0;next.space.activity={sleeping:true,forced:false,sleepPhase:0};return next;
+  }
+  if(action.type==='wake'&&next.space.activity?.sleeping) {
+    if(next.space.activity.forced)throw Error('spaceWakeUnavailable');
+    next.space.activity.sleeping=false;next.space.elapsed=0;return next;
+  }
+  if(next.space.activity?.sleeping)throw Error('spaceUnavailable');
+  if(action.type==='view'&&['ship','tactical'].includes(action.view)) {if(action.view==='ship')leaveCampaignShipDeadline(next);next.space.view=action.view;return next}
   if(next.space.view!=='tactical')throw Error('spaceUnavailable');
   const index=next.start.systems.findIndex(s=>s.id===currentShipLocation(next).systemId);
   if(action.type==='fire') {

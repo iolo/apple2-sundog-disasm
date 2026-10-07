@@ -1,4 +1,17 @@
-# Campaign save boundary — live24; opt-in R10i25
+# Campaign save boundary — live24; opt-in R10j26
+
+R10j extends `content.space:true` to version26 `ship-communication-1`, adding
+`space.communication:{conversation,pending,ticks}` and
+`space.activity:{sleeping,forced,sleepPhase}`. Open Comm stores exact frozen
+source setup inputs and a bounded seed/input replay, never interpreter frames.
+Reconstructed canonical context and continuing RNG must match; a terminal
+record must already have returned and been removed. The source six-decrement
+cargo deadline resumes across partial due ticks/pause/reload, restoring
+aggression on the seventh due call or tactical exit. Jettison does not cancel
+it. Sleep owns a0–49ms remainder and rest-recovery phase, including forced wake
+gating; awake retains0–249ms. Game16 return flags48–51 keep their shared dialogue
+owner. Historical25 validates its original nine space fields/flag set before
+idle communication/awake activity are added. The live loader remains24.
 
 R10i adds opt-in version25 `ship-encounters-1` with `content.space:true`. The
 new `space` block owns source contact fields,12 packed cooldowns, normal aboard
