@@ -462,6 +462,12 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R09d (2026-10-07) enables live version23, localized navigation and
+regional services.44 navigation checks cover three scales/four viewports/both
+locales. A64-check ordinary-play two-system land/trade/refuel/return/reload
+journey passes, including gravity failure and profitable cargo settlement.
+Affected R08 regressions, content coverage and the completion audit remain.
+
 Checkpoint R09c (2026-10-07) validates opt-in version23 regional-flight saves,
 all18 capital domains and exact mid-flight reload continuation. Historical
 versions1–22 validate before migration. All340 Chrome rule groups pass. The

@@ -1,9 +1,10 @@
+import { campaignLocation } from '../core/regional-world.js';
 import { escapeHTML } from './html.js';
 import { exchangeSaleQuote } from '../core/campaign-exchange.js';
 
 export function exchangePanel({state,content,name,tab='offers',draft=null,message='',t}) {
   if(tab==='cargo'&&state.pod.occupied)return cargoPanel({state,name,draft,message,t});
-  const e=state.economy.exchange,account=state.economy.accounts.find(a=>a.systemId===state.start.playerLocation.systemId);
+  const e=state.economy.exchange,account=state.economy.accounts.find(a=>a.systemId===campaignLocation(state,content).systemId);
   const label=c=>t(`cargo${c.commodityId.slice(6)}`),quality=c=>String.fromCharCode(72-c.quality);
   const rows=tab==='offers' ? e.visit.offers : e.warehouse.slots;
   const price=(c,i)=>tab==='offers' ? c.price : exchangeSaleQuote(state,content,i);

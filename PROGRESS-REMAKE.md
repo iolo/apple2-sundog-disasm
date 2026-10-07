@@ -1,5 +1,30 @@
 # SunDog web remake progress
 
+## R09d — Live navigation and regional trade journey — 2026-10-07
+
+Enabled version23 and all regional service contexts in the live app. Pilotage
+opens star/system/planet charts, destination review/confirmation/cancellation,
+launch/landing, charge/jump/cancel, halt and distress controls. Flight continues
+on the existing clock, with pause/save controls and airborne airlock guards.
+English/Korean controls fit four tested viewports in all three map scales;
+captured layouts were visually inspected.44 navigation checks pass.
+
+The64-check fresh-character journey uses ordinary movement, depot payment,
+two real board purchases, pod loading, launch, a real gravity failure, safe-point
+travel, charging/jump to system02, landing in city09, foreign trade/refuel and
+return to Drahew. Lots bought for22,700 sell for28,800; visited accounts, archived
+home stock, cargo, creation, clock/RNG and mid-flight progress survive repeated
+fresh-page reloads. No campaign fixture supplies this journey; read-only price
+planning selects actual board offers. Both receipts report no page errors.
+See `r09-navigation-validation.json` and `r09-journey-validation.json`.
+
+The chart initially inherited the ship canvas's full-screen positioning and
+blocked confirmation; that rule is overridden. The journey now waits for a
+successful source engine roll before its mid-travel assertion. Only passing
+reruns above are evidence. Updated regression scripts' live format assertions
+and historical fixture field sets. Remaining R09 work: broader regional content
+coverage, affected R08 regressions, help/documentation and completion audit.
+
 ## R09c — Regional persistence and ground domains — 2026-10-07
 
 Added opt-in version23 regional-flight saves. Historical versions1–22 validate

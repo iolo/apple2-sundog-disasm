@@ -69,7 +69,7 @@ async browserPage => {
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-03T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-03T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Depot pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const initial=await exported();assert(initial.version===22&&initial.scope==='landed-ground-1','Fresh campaign exports version22 active resources');
+    const initial=await exported();assert(initial.version===23&&initial.scope==='regional-flight-1','Fresh campaign exports version23 active resources');
     await route('depart');await route('depot');assert((await state()).scene==='depot','Normal pod driving reaches the depot');
     const arrived=await exported();await fits('services');
     await page.locator('#depot-repair').click();assert((await page.locator('#depot-price').innerText()).includes('145'),'Hull repair quotes the source local price');

@@ -1,8 +1,9 @@
+import { campaignLocation } from '../core/regional-world.js';
 import { campaignDepotOffers, campaignDepotQuote } from '../core/campaign-depot.js';
 import { escapeHTML } from './html.js';
 
 export function depotPanel({state,content,geometry,name,draft=null,message='',t}) {
-  const offers=campaignDepotOffers(state,content,geometry),account=state.economy.accounts.find(a=>a.systemId===state.start.playerLocation.systemId);
+  const offers=campaignDepotOffers(state,content,geometry),account=state.economy.accounts.find(a=>a.systemId===campaignLocation(state,content).systemId);
   const offer=draft&&offers.find(o=>o.type===draft.type);
   let quote=null;
   if(draft)try {quote=campaignDepotQuote(state,content,geometry,draft.type,draft.units)}catch {}

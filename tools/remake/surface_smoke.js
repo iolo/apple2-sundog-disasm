@@ -69,7 +69,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Two normally purchased cargo lots are loaded before surface departure');
     await page.locator('#service-leave').click();await route('surface');const outbound=await reload();
-    assert(outbound.version===22&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version22 reloads the live surface scene');
+    assert(outbound.version===23&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version23 reloads the live surface scene');
     assert(outbound.state.ground.colonyPosition!==null,'First surface entry persists colony placement');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();
