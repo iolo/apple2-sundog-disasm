@@ -1,5 +1,51 @@
 # SunDog web remake progress
 
+## R10f — Encounter dialogue setup, replay and source returns — 2026-10-07
+
+Ported actual Game16 kind15/16/18/19/22 setup from the case-pointer table,
+including post-fight money quotes, attackers, payment visitors, bank-backed
+police, space city0 and referral state. The post-fight square-root helper rounds
+to the nearest integer; signed16 multiplication and eager reward-check draws
+are retained. Existing counter setup and historical campaign validation keep
+their earlier boundaries. Shared input validation now serves both replay paths.
+
+Encounter records contain only seed and exact inputs. Setup belongs to the
+host's frozen context; restored interpreter locals, views, pending balances,
+inventory and RNG are derived. Outcomes publish only on source return and
+preserve flags48–51 for the host. Police fuel payment debits the supplied system
+bank; ordinary visitor payment debits personal cash. Search after a fight now
+transfers the complete selected charged gift byte into an empty carried slot
+for zero credits. Tests feed negotiated flee into the existing Game17 activation
+without regenerating actors/history or drawing RNG.
+
+Traced startup's scene9 dispatch to Game16 kind19. Added Game12 Comm preparation,
+retreat/hostile/cargo-deadline return and the six-due-tick countdown. Its zero
+test precedes decrement, so hostility resumes on the following tick. Agree does
+not pay money, automatically jettison cargo or grant a permanent truce.
+
+Added31 Korean enemy-message templates and encounter-specific panel title/scope.
+Fifteen encounter groups plus three Comm groups bring Chrome154.0.8037.97 rules
+to412 passing groups. The declared isolated encounter-panel fixture passes105
+checks: all five kinds and both police contexts in English/Korean at640×480,
+390×844,844×390 and1920×1080, actual reply/continue/purchase buttons, locale
+invariance and JSON replay. Korean mugger portrait and gift desktop screenshots
+were visually inspected.22 exporter tests,171 deterministic artifacts,584
+classified strings and original disk/manual hashes verify.
+
+Rare kind18 requests state224 after setting reward flag125. The hash-verified
+utility disk contains a supported dialogue header at102, but103/104 fail that
+layout. The runner rejects224 atomically; native observation and final playable
+handling remain an explicit R10 requirement. No replacement text or native
+outcome is claimed. See docs/remake/encounter-dialogue.md and the R10f receipts.
+
+R10 remains active and live campaign saves remain version23. This checkpoint's
+host context and panel fixtures do not establish live campaign/save acceptance.
+Next: actual due host clocks, mandatory encounter conversation, chase/combat
+sessions and versioned save/return ownership, followed by tactical controls,
+ship encounter production, cargo/cryogen loss, defeat/recovery and ordinary
+avoid/fight/lose acceptance. The full milestone audit retains every gate.
+The user's untracked PRD remains untouched.
+
 ## R10e — Source city threat and chase transition — 2026-10-07
 
 Ported Game21's eager due-tick threat gate, actual city tile/system threshold,

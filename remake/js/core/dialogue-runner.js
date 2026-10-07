@@ -58,7 +58,7 @@ export function enterDialogueState(content,previous,target,{offerStep}={}) {
   throw new Error('dialogueRedirectLimit');
 }
 
-export function startCounterConversation(content,setup,{places}={}) {
+export function startDialogueConversation(content,setup,{places}={}) {
   const frame={state:structuredClone(setup.state),randomState:setup.randomState,
     dictionary:structuredClone(content.text.base),block:null,panel:null,view:null,ended:false,places};
   Object.assign(frame.state.locals,{19:false,43:0,95:[0,0,0,0,0]});
@@ -66,11 +66,13 @@ export function startCounterConversation(content,setup,{places}={}) {
   return enterDialogueState(content,frame,frame.state.entry);
 }
 
+export const startCounterConversation=startDialogueConversation;
+
 // An action1 display is the native draggable offer. Never infer acceptance
 // from a stale panel left over by a quote, information or impatience record.
 export function dialoguePurchase(content,frame) {
   const s=frame.state,v=s.locals;
-  if(frame.ended||![12,13,14,17,21,22].includes(s.kind)||v[18]||v[19]||
+  if(frame.ended||![12,13,14,15,17,21,22].includes(s.kind)||v[18]||v[19]||
     !frame.view||frame.view.state<16||dialogueRecord(content.scripts,frame.view.state).action?.opcode!==1)return null;
   const item=frame.panel?.items?.[0];
   if(frame.panel?.items?.length!==1||!Number.isInteger(item)||item<=7||item>255||
