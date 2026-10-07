@@ -34,6 +34,7 @@ function snapshot(value) {
   next.cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true});
   return next;
 }
+export { snapshot as snapshotShipCombat };
 function randomFor(state) {
   let rng=sourceRandom(state.randomState),draws=0;
   return {next(){draws++;const n=rng.next();state.randomState=rng.state;return n},

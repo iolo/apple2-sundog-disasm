@@ -1,0 +1,39 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10k",
+  "date": "2026-10-08",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 26,
+  "ruleGroups": 469,
+  "newTacticalRuleGroups": 12,
+  "browserUiChecks": 0,
+  "receipts": [
+    {
+      "receipt": "r10k-rules-validation.json",
+      "kind": "rules",
+      "script": null,
+      "checks": 469,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3
+  },
+  "previousUiEvidence": [
+    "r10i-journey-validation.json",
+    "r10i-navigation-validation.json"
+  ],
+  "boundaries": [
+    "Tactical rules use declared source contact/equipment contexts. No new native capture or ordinary-play encounter acceptance is claimed.",
+    "Live UI remains24 and opt-in campaign saves26. The tactical record is separately JSON-round-tripped, not yet campaign-saved or exposed in live controls.",
+    "Three startup machinery calls, actual source frame/grace context, successful-warp counter/call ordering and Comm reticle restoration require campaign integration.",
+    "Native main/menu/firing gates and pre/post-due movement are literal source ports. Complete native timing/input progression still needs observation.",
+    "Cryogens31 are excluded by the source Jettison menu. Lower-level forced-selector loss fixtures prove accounting only.",
+    "Live space display-refresh/sleep/reload, legitimate avoid/fight/lose, full death/wreck/recovery and rare reward224 remain R10 requirements.",
+    "R09 is complete. Colony progression remains R11."
+  ]
+}
