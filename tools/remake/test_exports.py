@@ -14,6 +14,18 @@ from dialogue_dictionary_asset import encode_base, encode_extra, text_bytes
 
 
 class ExportTests(unittest.TestCase):
+    def test_flight_starports_match_independent_clean_character_records(self):
+        root = Path(__file__).resolve().parents[2]
+        captured = json.loads((root / 'docs/reference/remake-clean-character.json').read_text())
+        raw = bytes.fromhex(captured['worldTablesHex'])
+        data = json.loads(build()['data/flight-defaults.json'])
+        self.assertEqual(len(data['worlds']), 18)
+        for i, world in enumerate(data['worlds']):
+            tile = raw[250+i*16]
+            self.assertEqual(world['landingTile'], tile)
+            self.assertEqual(world['landingPosition'], dict(x=10+tile%20, y=6+tile//20))
+        self.assertEqual(data['shipPosition'], dict(x=150, y=115))
+
     def test_surface_assets_and_city_coordinates_match_capture(self):
         root = Path(__file__).resolve().parents[2]
         data = json.loads(build()['data/surface-walk.json'])

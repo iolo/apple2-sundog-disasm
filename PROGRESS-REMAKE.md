@@ -1,5 +1,20 @@
 # SunDog web remake progress
 
+## R09b — Flight rules and source landing defaults — 2026-10-07
+
+Implemented source launch clearance, landing/pilotage gates, sublight ETA and
+motion, halt, warp charging/cancellation, gravity outcomes and distress refuel.
+Motion shares machinery's clock, fuel and RNG; detached pods stay behind.
+Exported18 capital landing tiles and the150/115 ship anchor. Native planetary
+animations use an explicitly documented resumable5/20-minute browser adaptation.
+See `docs/remake/flight.md` for procedure/address evidence and boundaries.
+
+All335 Chrome rule groups pass without page errors, including10 new declared
+flight groups and all18 capital spawns.21 exporter tests and169 deterministic
+artifacts pass; whitespace checks pass. Receipt: `r09-flight-core-validation.json`.
+R09 remains active: regional persistence/live navigation and the ordinary-play
+two-system trade/return/reload journey remain. Live saves are still version22.
+
 ## R09a — Regional membership and economic ownership core — 2026-10-07
 
 Added cross-checked12-system/18-world/57-city membership and separate Banville

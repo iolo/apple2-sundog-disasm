@@ -112,6 +112,20 @@ def starting_location(raw):
                 source='utility_disk1 procedures18/21; game15 procedure11; game21 procedures6/9')
 
 
+def flight_defaults(raw):
+    """Game13 proc26's starport tile and source landing/ship anchors."""
+    navigation = navigation_defaults(raw)
+    worlds = []
+    for i, world in enumerate(navigation['worlds']):
+        tile = raw[250 + i * 16]
+        if tile >= 240:
+            raise ValueError('Invalid starport tile')
+        worlds.append(dict(id=world['id'], landingTile=tile,
+                           landingPosition=dict(x=10 + tile % 20, y=6 + tile // 20)))
+    return dict(version=1, worlds=worlds, shipPosition=dict(x=150, y=115),
+                source='game13 procedures12/26/32/35/36/39/52; library24 procedures6/12/15')
+
+
 def economy_defaults(raw, worlds, utility):
     """Only utility templates, city metadata and recipes; never working records."""
     if len(raw) != 505 or len(worlds) != 1440:
@@ -230,6 +244,7 @@ def build():
     outputs['data/initial-navigation.json'] = encode(navigation_defaults(defaults))
     outputs['data/exchange-defaults.json'] = encode(exchange_defaults(defaults))
     outputs['data/initial-location.json'] = encode(starting_location(defaults))
+    outputs['data/flight-defaults.json'] = encode(flight_defaults(defaults))
     for source in ['src/pcode/startup_7.s', 'src/pcode/game_8.s', 'src/pcode/game_15.s', 'src/pcode/game_21.s']:
         read(source)
     read('src/pcode/game_20.s')

@@ -1,6 +1,7 @@
 import { stepShipPower } from './ship-power.js';
 import { equipmentDependencyResult } from './equipment-failures.js';
 import { conditionHour } from './survival.js';
+import { stepCampaignFlight,finishCampaignFlight } from './campaign-flight.js';
 
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
 export const initialMachinery=()=>({phase:0,cloaked:false});
@@ -14,21 +15,26 @@ export function validateMachinery(value,equipment,resources) {
 
 function sourceState(state) {
   const r=state.resources,flags=Array(128).fill(false);
+  flags[0]=r.warp.charging;flags[1]=r.enginesPowered;
   flags[2]=r.guns.powered;flags[4]=r.shields.targetCharge>0;flags[7]=state.pod.attached;flags[12]=state.machinery.cloaked;
-  return {flags,words:{222:0,223:0,224:r.shields.targetCharge,225:r.shields.charge,226:r.guns.charge,227:r.fuel,349:0,350:0},
+  return {flags,words:{222:r.warp.targetCharge,223:r.warp.charge,224:r.shields.targetCharge,225:r.shields.charge,226:r.guns.charge,227:r.fuel,349:0,350:0},
     cargo:state.pod.cargo,randomState:state.encounters.randomState};
 }
 function applySource(state,source) {
   const r=state.resources,w=source.words;
   r.fuel=w[227];r.guns={charge:w[226],powered:source.flags[2]};r.shields={charge:w[225],targetCharge:w[224]};
   state.machinery.cloaked=source.flags[12];state.pod.cargo=source.cargo;state.encounters.randomState=source.randomState;
+  if(state.flight) {
+    r.warp={charge:w[223],targetCharge:w[222],targetSystemId:source.flags[0]?r.warp.targetSystemId:null,charging:source.flags[0]};
+    r.enginesPowered=source.flags[1];
+  }
 }
 // Called after equipment recalculation, not on every power tick. A repaired
 // system remains off; removing its last working unit clears only source dependents.
 export function reconcileMachinery(state) {
   const next=structuredClone(state);
   applySource(next,equipmentDependencyResult(next.equipment,sourceState(next)));
-  return next;
+  return state.flight?finishCampaignFlight(next):next;
 }
 export function reduceMachineryControl(previous,action) {
   if(previous.travel.scene!=='ship')throw Error('machineryUnavailable');
@@ -54,7 +60,7 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
   if(paused||survival.dead)return {state:previous,survival:{...survival,elapsed:0},cycles:0};
   const elapsed=survival.elapsed+Math.max(0,Math.min(250,milliseconds));
   if(elapsed<(survival.sleeping?50:250))return {state:previous,survival:{...survival,elapsed},cycles:0};
-  const next=structuredClone(previous),s={...survival,condition:{...survival.condition},elapsed};
+  let next=structuredClone(previous);const s={...survival,condition:{...survival.condition},elapsed};
   let cycles=0;
   while(!s.dead&&s.elapsed>=(s.sleeping?50:250)) {
     const sleeping=s.sleeping;s.elapsed-=sleeping?50:250;
@@ -66,7 +72,12 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
         if(hour.exhausted&&!s.sleeping&&!s.dead){s.sleeping=true;s.forced=true;s.sleepPhase=0}
       }
     }
-    applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase).state);
+    let workingFuel=next.resources.fuel;
+    if(next.flight) {
+      const moved=stepCampaignFlight(next,phase);next=moved.state;workingFuel=moved.workingFuel;
+    }
+    applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase,workingFuel).state);
+    if(next.flight){next.ship.minutes=s.minutes;next=finishCampaignFlight(next)}
     next.machinery.phase=phase%4;cycles++;
     if(sleeping) {
       s.sleepPhase=(s.sleepPhase+1)%2;
