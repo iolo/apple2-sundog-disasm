@@ -1,4 +1,4 @@
-# Remake behavior evidence — through R10a
+# Remake behavior evidence — through R10b
 
 For city/building milestone evidence, see [R06 completion audit](r06-completion.md).
 Active deposits, withdrawals and inter-system transfers are traced and implemented
@@ -19,7 +19,8 @@ R09 activates regional flight, destination services and version23 saves across
 [audit](r09-completion.md) maps all requirements to345 rule groups and667 UI
 checks, including the ordinary-play two-system trade/return/reload journey.
 R10a adds isolated source ship-combat rules and15 deterministic rule groups;
-live integration and original-game encounter observations remain pending.
+R10b observes a controlled original-game space contact and enemy Comm dialogue.
+Live integration, native damage checks and ground observations remain pending.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 
@@ -31,7 +32,7 @@ characters and includes historical variants; it is not a localization catalog.
 
 | Flow / rule | Evidence | Status | Fixture / browser acceptance |
 | --- | --- | --- | --- |
-| Ship encounter, weapon, damage and jettison core | Library24 proc11/12/13; Game12 proc7/9/21; Library22 proc3/30/31/40 | Source-derived isolated rules; live integration and native observation pending | Fifteen groups cover arrival cargo/RNG gates, motion/aim jump paths, shield and signed16 penetration, component/shunt failure, retained-pointer defeat, laser/cannon charge/accuracy, jettison and atomic guards. See `ship-combat.md`. |
+| Ship encounter, weapon, damage and jettison core | Library24 proc11/12/13; Game12 proc7/9/21; Library22 proc3/30/31/40; `remake-space-encounter.json` | Source-derived isolated rules; native contact/dialogue observed with declared fixture; live integration and native damage observation pending | Fifteen groups cover arrival cargo/RNG gates, motion/aim jump paths, shield and signed16 penetration, component/shunt failure, retained-pointer defeat, laser/cannon charge/accuracy, jettison and atomic guards. See `ship-combat.md` and `encounter-reference.md`. |
 | Regional membership, reachability and economic ownership | Utility generated navigation/economy records; Library24 proc6 `$00A8–$00E9`; Game13 proc32; Game20 proc16 `$06B8–$07BC` | Source-derived, rule and ordinary-play UI validated; no new emulator capture | All12 systems,18 worlds,57 ordinary cities and Banville agree; all systems connect in the tested seeded graph. Independent stock/warehouses, origin-sensitive settlement, visited accounts and17 conserved cryogens. See `regional-world.md` and `r09-completion.md`. |
 | Navigation, flight and landing | Game13 proc12/26/32/34/35/36/38/39/52; Library24 proc9/12/15; Library22 proc30/31 | Source-derived rules; explicit planetary timing adaptation; browser validated | Three localized map scales, review/confirm/cancel, launch/orbit/sublight/halt/warp/landing/city flight/distress. Source strict motion rolls, left-shift duration, shared fuel/clock/RNG and gravity failures. All58 city landings have declared-fixture access/save coverage;64 UI checks complete a fresh-character two-system trade/refuel/return. See `flight.md`. |
 | Regional saves and counter context | Historical schemas1–22; Game16 proc39 `$1256–$1267`; source flight/ground state | Browser persistence adaptation, source state rules and migration validated | Version23 retains actual ship/pod worlds, all city economies, colony coordinates, motion interpolation, charge and distress deadline. Old conversations preserve original quotes until return; new counters use actual city tiles. Rejected imports are atomic; mid-flight continuation reproduces clock/RNG/resources. See `campaign-saves.md` and `r09-final-rules-validation.json`. |

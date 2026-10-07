@@ -70,3 +70,9 @@ pixel equality or complete gameplay coverage is not claimed.
 These observations do not identify an unmodified commercial release.
 Starting/deleting games, combat, travel, sound, and long-running behavior have
 not yet been validated. Original state may contain prior players' saved games.
+
+Remake R10b adds [controlled space encounter evidence](../remake/encounter-reference.md):
+`remake-space-encounter.json` indexes the contact, joystick input and enemy Comm
+screens/RAM receipts. The fixture resumes an existing supplied save and declares
+its RAM setup. It observes contact/dialogue only; combat damage, ground encounters,
+natural production and a fresh-game avoid/fight/lose journey remain unproven.

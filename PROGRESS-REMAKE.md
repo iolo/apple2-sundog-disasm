@@ -1,5 +1,34 @@
 # SunDog web remake progress
 
+## R10b — Original-game space encounter evidence — 2026-10-07
+
+Captured a controlled space contact and the enemy Comm conversation in an
+owned MAME0.285/Apple IIe joystick session. The fixture resumes the supplied
+being-played save on copied media and explicitly sets type1, health200,
+coordinates512/512, range127 and encounter flags. Screenshots and native
+before/setup/after receipts are retained under `docs/reference/remake-space-*`,
+with scope/hash metadata in `remake-space-encounter.json`. The conversation
+shows Agree/Refuse/Dismiss It; native scene9, workspace kind9 and level2 verify.
+The input probe retained its experimental `tactical-select` name but opened
+Comm, so it is not claimed as an aiming observation. No shot or dialogue choice
+was executed; no natural-generation or fresh-game outcome is claimed.
+
+Added an owned-console bootstrap and bounded probe/capture helpers. The
+bootstrap verifies input media, copies disks, isolates MAME outputs and uses
+the installed a2-mame launcher. Its prepare-only flow and joystick wrapper's
+ROM verification pass. Original disks/manual verify unchanged after the
+session; all touched input overrides were cleared and the owned process exited.
+See `docs/remake/encounter-reference.md` for reproduction and scope.
+
+Ground research remains open: surface terrain rendered, but direct scene5/kind16
+injection without the Game21 chase/window preparation produced an invalid
+striped window. It is excluded from passing evidence and that helper was
+removed. R10 still needs the prepared ground path, ground rules, enemy dialogue
+predicates/actions, negotiation, live machinery/save/UI/loss integration,
+bounty/wreck/defeat/recovery and avoid/fight/lose acceptance. The existing360
+passing rule groups remain current because this checkpoint changes only tools,
+evidence and documentation. The user PRD remains untouched and untracked.
+
 ## R10a — Source ship-combat core — 2026-10-07
 
 Added isolated ship encounter production, enemy movement/retreat/attacks,

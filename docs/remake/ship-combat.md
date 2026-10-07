@@ -3,6 +3,9 @@
 `remake/js/core/ship-combat.js` implements an isolated, source-facing combat
 session. It is not yet connected to campaign machinery, live controls or saves.
 R09 remains complete; this is the first R10 implementation checkpoint.
+R10b subsequently captured an original-game space contact and enemy dialogue;
+see [encounter reference](encounter-reference.md). Native damage arithmetic and
+the ground encounter still require evidence.
 
 ## Source evidence
 
