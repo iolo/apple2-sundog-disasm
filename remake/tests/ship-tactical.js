@@ -3,7 +3,8 @@ import { recalculateEquipment } from '../js/core/equipment.js';
 import { createEquipmentFailureState } from '../js/core/equipment-failures.js';
 import { shipPaddleMotion,validateShipTactical,prepareShipTactical,shipTacticalControls,
   selectShipTacticalMenu,confirmShipJettison,setShipTacticalGun,shipTacticalAim,
-  moveShipTactical,beginShipTacticalFrame,finishShipTacticalFrame } from '../js/core/ship-tactical.js';
+  moveShipTactical,beginShipTacticalFrame,finishShipTacticalFrame,
+  initialShipTrigger,readShipTrigger,validateShipTrigger } from '../js/core/ship-tactical.js';
 import { stepShipCombat } from '../js/core/ship-combat.js';
 
 const lot=(id=2)=>({commodityId:`cargo-${String(id).padStart(2,'0')}`,quality:7,originCity:'city-01',pricePaid:0});
@@ -18,6 +19,30 @@ const gun=s=>{const p=setup(s),menu=selectShipTacticalMenu(p.state,p.tactical,3)
 
 export async function shipTacticalTests(test,equal) {
   const reject=(f,expected='invalidShipTactical')=>{let message;try{f()}catch(e){message=e.message}equal(message,expected)};
+  await test('Native primary-button edges consume the dispatch latch once, retain a held press and accept a released short pulse',()=>{
+    let t=initialShipTrigger();const before=JSON.stringify(t);
+    const pressed=readShipTrigger(t,true);equal(pressed.fire,true);equal(JSON.stringify(t),before);t=pressed.trigger;
+    equal(readShipTrigger(t,true),{fire:false,trigger:{latched:false,previous:true}});
+    t=readShipTrigger(t,false).trigger;equal(readShipTrigger(t,true).fire,true);
+    const pulse=readShipTrigger({...initialShipTrigger(),latched:true},false);
+    equal(pulse,{fire:true,trigger:{latched:false,previous:true}});
+    equal(readShipTrigger(pulse.trigger,false),{fire:false,trigger:initialShipTrigger()});
+    reject(()=>validateShipTrigger({latched:false,previous:1}));reject(()=>validateShipTrigger({latched:false,previous:false,extra:0}));
+  });
+  await test('Native joystick deflection moves the reticle and a cleared cached contact cannot be killed twice while flag40 remains',()=>{
+    const s=fresh();Object.assign(s.words,{207:0,217:20,215:40});
+    const p=prepareShipTactical(s,{worldAngle:16,frameLimit:5,grace:0});
+    const g=setShipTacticalGun(p.state,{...p.tactical,menu:3,visible:true},{firing:true,focused:true});
+    const moved=beginShipTacticalFrame(g.state,g.tactical,{x:8,y:-7,fire:false},{dexterity:61,worldAngle:16});
+    equal(moved.tactical.reticle,{angle:23,radius:120});
+    equal([moved.state.words[206],moved.state.words[205],moved.state.words[215],moved.state.words[354]],[528,498,39,1]);
+    // Native proc7 clears local31 before the next Library24 call clears40.
+    const stale=fresh();stale.words[216]=0;stale.words[354]=4;
+    const loop=gun(stale),noContact={...loop.tactical,contact:false,visible:false};
+    const shot=beginShipTacticalFrame(loop.state,noContact,{...idle,fire:true},options);
+    equal(shot.shot.hit,false);equal(shot.shot.cooldownIncrement,0);equal(shot.state.words[226],0);
+    equal([shot.state.words[354],shot.state.words[215],shot.state.rangeMemory],[5,20,127]);equal(shot.state.randomState,29);
+  });
   await test('Native paddle counters map through all32 signed motion entries with byte saturation',()=>{
     const native=[8,7,6,5,5,4,4,3,3,2,2,2,1,1,1,0,0,-1,-1,-1,-2,-2,-2,-3,-3,-4,-4,-5,-5,-6,-7,-8];
     for(let counter=0;counter<=255;counter++) {

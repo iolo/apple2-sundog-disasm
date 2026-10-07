@@ -5,7 +5,8 @@ import { stepCampaignFlight,finishCampaignFlight } from './campaign-flight.js';
 import { campaignShipSource,commitCampaignShipSource,stepCampaignSpaceProducer,stepCampaignSpaceCombat,
   stepCampaignShipCommunication,leaveCampaignShipDeadline,clearCampaignTactical,neutralShipControl } from './campaign-space.js';
 
-import { prepareShipTactical,beginShipTacticalFrame,finishShipTacticalFrame,shipTacticalControls } from './ship-tactical.js';
+import { prepareShipTactical,beginShipTacticalFrame,finishShipTacticalFrame,shipTacticalControls,
+  initialShipTrigger,readShipTrigger } from './ship-tactical.js';
 import { currentShipLocation } from './regional-world.js';
 
 const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
@@ -66,7 +67,7 @@ export function reduceMachineryControl(previous,action) {
 }
 
 
-function machineryCycle(previous,s,content) {
+function machineryCycle(previous,s,content,{dispatch=false}={}) {
   let next=previous;const space=!!next.space;
   const sleeping=s.sleeping;
   const phase=next.machinery.phase+1;
@@ -82,11 +83,11 @@ function machineryCycle(previous,s,content) {
   let workingFuel=next.resources.fuel;
   if(next.flight) {
     const moved=stepCampaignFlight(next,phase);next=moved.state;workingFuel=moved.workingFuel;
-    if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived});
+    if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived,dispatch});
   }
   applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase,workingFuel).state);
   if(next.flight){next.ship.minutes=s.minutes;next=finishCampaignFlight(next)}
-  if(space){next=stepCampaignSpaceCombat(next);next=stepCampaignShipCommunication(next);if(next.space.defeat)s.dead=true}
+  if(space){next=stepCampaignSpaceCombat(next,{dispatch});next=stepCampaignShipCommunication(next);if(next.space.defeat)s.dead=true}
   next.machinery.phase=phase%4;
   if(space&&s.sleeping&&!sleeping){leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.view='ship'}
   if(sleeping) {
@@ -94,6 +95,21 @@ function machineryCycle(previous,s,content) {
     if(!s.dead&&s.sleepPhase===0)s.condition.rest=Math.min(255,s.condition.rest+1);
     if(s.condition.rest>128)s.forced=false;
   }
+  return next;
+}
+
+// Game13 main dispatch $2588 runs one Library24 call before Game12 consumes
+// the Game16 return bits. Keep the conversation frozen until that call ends;
+// the cargo deadline is only armed by the subsequent Game12 return branch.
+export function advanceCampaignShipDispatch(previous,content) {
+  if(!content?.tactical||!previous.space?.communication?.conversation)throw Error('shipCommunicationUnavailable');
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  next=machineryCycle(next,s,content,{dispatch:true});
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
   return next;
 }
 
@@ -114,7 +130,7 @@ export function enterCampaignShipTactical(previous,content,{warp=false}={}) {
   const prepared=prepareShipTactical(campaignShipSource(next),{
     worldAngle:currentShipLocation(next).orbit.angle,frameLimit:5,grace:0});
   commitCampaignShipSource(next,prepared.state);
-  next.space.tactical={record:prepared.tactical,control:neutralShipControl(),carry:0};
+  next.space.tactical={record:prepared.tactical,control:neutralShipControl(),carry:0,trigger:initialShipTrigger()};
   for(let i=0;i<prepared.startupCycles&&!s.dead&&!s.sleeping&&!next.space.defeat;i++)next=machineryCycle(next,s,content);
   next.ship.minutes=s.minutes;next.ship.condition={...s.condition};next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
   if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
@@ -146,9 +162,15 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
     const sleeping=s.sleeping;s.elapsed-=sleeping?50:next.space?.tactical?50:250;
     if(next.space?.tactical&&!sleeping) {
       const controller=next.space.tactical;
-      const begun=beginShipTacticalFrame(campaignShipSource(next),controller.record,controller.control,
+      const firing=controller.record.firing;
+      const input=readShipTrigger(controller.trigger,controller.control.fire);controller.trigger=input.trigger;
+      const begun=beginShipTacticalFrame(campaignShipSource(next),controller.record,{...controller.control,fire:input.fire},
         {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle});
       commitCampaignShipSource(next,begun.state);controller.record=begun.tactical;
+      // Gun proc17 polls before proc12; proc12 polls again after its first
+      // movement. With one sampled input per logical frame no second edge can
+      // occur, but the second poll must clear a released buffered press.
+      if(firing)controller.trigger=readShipTrigger(controller.trigger,controller.control.fire).trigger;
       if(begun.shot) {
         const index=next.start.systems.findIndex(system=>system.id===currentShipLocation(next).systemId);
         next.space.cooldowns[index]=(next.space.cooldowns[index]+begun.shot.cooldownIncrement)&15;

@@ -1,0 +1,41 @@
+{
+  "milestone": "R10",
+  "checkpoint": "R10n",
+  "date": "2026-10-08",
+  "status": "pass",
+  "liveVersion": 24,
+  "optInVersion": 28,
+  "ruleGroups": 488,
+  "campaignTacticalRuleGroups": 16,
+  "tacticalCoreRuleGroups": 15,
+  "browserUiChecks": 0,
+  "receipts": [
+    {
+      "receipt": "r10n-rules-validation.json",
+      "kind": "rules",
+      "checks": 488,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584
+  },
+  "nativeChecks": {
+    "metadata": "../reference/remake-tactical-input-reference.json",
+    "sourceContexts": 19,
+    "debuggerStops": 16,
+    "hashedArtifacts": 48,
+    "originalHashes": 3,
+    "ownedSessionsClosed": true
+  },
+  "boundaries": [
+    "Native aim/fire/Comm observations resume the supplied save with explicit contact/charge/reticle RAM fixtures. They are not natural encounter or fresh-character acceptance.",
+    "Native full kill shows bounty/wreck and additional RNG; source bounty/wreck/inhibition/tractor/salvage campaign owners remain to implement.",
+    "Version28 saves source button latch/history and corrects the one Game13 Comm-return call before Game12 consumes return flags. It still skips the three tactical startup calls. Historical27 validates before migration; historical26 retains its earlier host schedule.",
+    "Logical tactical frames use50ms and one sampled input; initial grace0 is a declared browser adaptation, not CPU-cycle equivalence or universal native stack contents.",
+    "Live24 remains unchanged. Space UI/help, live30/60/144Hz pause/sleep/reload and legitimate ground/space avoid/fight/lose remain required.",
+    "Full native death/wreck/recovery and rare reward224 remain R10 gates. R09 stays complete; colony progression remains R11."
+  ]
+}

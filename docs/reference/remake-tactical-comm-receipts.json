@@ -1,0 +1,1931 @@
+{
+  "operations": [
+    {
+      "request": {
+        "lua": "a2.call(\"c-resume-status\",\"status\")"
+      },
+      "receipt": {
+        "result": {
+          "time": 7.829320806416e-06,
+          "driver": "apple2e",
+          "paused": false,
+          "version": "0.285",
+          "debugger": "stop"
+        },
+        "id": "c-resume-status",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-devices\",\"devices\")"
+      },
+      "receipt": {
+        "result": {
+          "images": [
+            {
+              "instance": "floppydisk1",
+              "filename": "/tmp/sundog-r10n-comm-03/session/media.dsk",
+              "tag": ":sl6:diskiing:0:525"
+            },
+            {
+              "instance": "floppydisk2",
+              "tag": ":sl6:diskiing:1:525"
+            },
+            {
+              "instance": "cassette",
+              "tag": ":tape"
+            }
+          ],
+          "cpus": [
+            ":maincpu"
+          ],
+          "screens": [
+            ":screen"
+          ]
+        },
+        "id": "c-devices",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-boot-go\",\"go\")"
+      },
+      "receipt": {
+        "result": {
+          "scheduled": "go"
+        },
+        "id": "c-boot-go",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-boot-status\",\"status\")"
+      },
+      "receipt": {
+        "result": {
+          "time": 299.98333333195,
+          "driver": "apple2e",
+          "paused": true,
+          "version": "0.285",
+          "debugger": "run"
+        },
+        "id": "c-boot-status",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "root=\"/home/iolo/workspace/retro/apple2-sundog-disasm/\"; a2.loadRefs=function() dofile(root..\"tools/remake/encounter_reference.lua\"); dofile(root..\"tools/remake/ground_reference.lua\"); dofile(root..\"tools/remake/tactical_reference.lua\"); return dofile(root..\"tools/remake/tactical_input_reference.lua\") end; a2.call(\"c-load-refs\",\"loadRefs\")"
+      },
+      "receipt": {
+        "result": true,
+        "id": "c-load-refs",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-contact\",\"spaceContact\",root..\"docs/reference/remake-tactical-comm-contact\")"
+      },
+      "receipt": {
+        "result": {
+          "duration": 480,
+          "scheduled": true,
+          "name": "space-contact",
+          "setup": {
+            "equipment": [
+              [
+                31,
+                28,
+                26,
+                158,
+                0,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                12,
+                3,
+                0,
+                0
+              ],
+              [
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                23,
+                3,
+                31,
+                28,
+                30,
+                24,
+                15,
+                31,
+                0,
+                0
+              ],
+              [
+                0,
+                24,
+                26,
+                29,
+                0,
+                0,
+                152,
+                26,
+                29,
+                0,
+                0,
+                24,
+                26,
+                29,
+                0,
+                31,
+                24,
+                26,
+                29,
+                4,
+                31,
+                24,
+                26,
+                29,
+                4,
+                6,
+                19,
+                2
+              ],
+              [
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                16,
+                31,
+                20,
+                2
+              ],
+              [
+                31,
+                24,
+                23,
+                28,
+                3,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                0,
+                0,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                28,
+                11,
+                31,
+                21,
+                1
+              ],
+              [
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                8,
+                31,
+                22,
+                2
+              ]
+            ],
+            "globalsBase": 44474,
+            "carried": [
+              0,
+              12,
+              235,
+              0
+            ],
+            "pc": 57644,
+            "clock": [
+              16,
+              21,
+              0,
+              0
+            ],
+            "frames": 504,
+            "flags": {
+              "51": false,
+              "45": false,
+              "49": true,
+              "29": false,
+              "47": false,
+              "48": false,
+              "0": false,
+              "1": false,
+              "2": false,
+              "43": false,
+              "12": false,
+              "36": false,
+              "46": false,
+              "7": true,
+              "41": true,
+              "40": true,
+              "50": false,
+              "44": false,
+              "4": false,
+              "5": false,
+              "35": false
+            },
+            "condition": [
+              237,
+              235,
+              255,
+              228
+            ],
+            "rangeMemory": 45,
+            "attributes": [
+              66,
+              53,
+              61,
+              65,
+              15
+            ],
+            "workspace": [
+              16,
+              0,
+              0,
+              10,
+              0,
+              9,
+              0,
+              0,
+              0,
+              3,
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "words": {
+              "222": 0,
+              "203": 0,
+              "217": 127,
+              "207": 65535,
+              "206": 512,
+              "225": 100,
+              "215": 40,
+              "354": 1,
+              "224": 0,
+              "227": 228,
+              "205": 512,
+              "351": 1,
+              "347": 0,
+              "216": 200,
+              "209": 0,
+              "45": 12731,
+              "352": 1,
+              "226": 100,
+              "41": 99,
+              "40": 50,
+              "353": 16,
+              "204": 0,
+              "208": 0,
+              "223": 0,
+              "214": 1
+            },
+            "location": [
+              16,
+              43,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              99,
+              0
+            ],
+            "hull": 16
+          }
+        },
+        "id": "c-contact",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-contact-status\",\"status\")"
+      },
+      "receipt": {
+        "result": {
+          "time": 307.98333333192,
+          "driver": "apple2e",
+          "paused": true,
+          "version": "0.285",
+          "debugger": "run"
+        },
+        "id": "c-contact-status",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-ready-bp\",\"tacticalOpcodeBreakpoint\",0x1388)"
+      },
+      "receipt": {
+        "result": {
+          "id": 1,
+          "offset": 5000
+        },
+        "id": "c-ready-bp",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-ready-go\",\"go\")"
+      },
+      "receipt": {
+        "result": {
+          "scheduled": "go"
+        },
+        "id": "c-ready-go",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-ready-save\",\"tacticalStoppedSave\",root..\"docs/reference/remake-tactical-comm-ready\",0x1388)"
+      },
+      "receipt": {
+        "result": {
+          "segmentBase": 18224,
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-ready",
+          "ip": 23224
+        },
+        "id": "c-ready-save",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-reticle-setup\",\"tacticalCommSetup\",root..\"docs/reference/remake-tactical-comm-setup.json\")"
+      },
+      "receipt": {
+        "result": {
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-setup.json",
+          "reticle": {
+            "angle": -1,
+            "radius": 777
+          }
+        },
+        "id": "c-reticle-setup",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-store-bp2\",\"tacticalOpcodeBreakpoint\",0x1320)"
+      },
+      "receipt": {
+        "result": {
+          "id": 3,
+          "offset": 4896
+        },
+        "id": "c-store-bp2",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-comm-click2\",\"encounterInput\",\"comm-click2\",root..\"docs/reference/remake-tactical-comm-click2\",170,180,0,90)"
+      },
+      "receipt": {
+        "result": {
+          "duration": 90,
+          "scheduled": true,
+          "name": "comm-click2",
+          "setup": {
+            "equipment": [
+              [
+                31,
+                28,
+                26,
+                158,
+                0,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                12,
+                3,
+                0,
+                0
+              ],
+              [
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                23,
+                3,
+                31,
+                28,
+                30,
+                24,
+                15,
+                31,
+                0,
+                0
+              ],
+              [
+                0,
+                24,
+                26,
+                29,
+                0,
+                0,
+                152,
+                26,
+                29,
+                0,
+                0,
+                24,
+                26,
+                29,
+                0,
+                31,
+                24,
+                26,
+                29,
+                4,
+                31,
+                24,
+                26,
+                29,
+                4,
+                6,
+                19,
+                2
+              ],
+              [
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                16,
+                31,
+                20,
+                2
+              ],
+              [
+                31,
+                24,
+                23,
+                28,
+                3,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                0,
+                0,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                28,
+                11,
+                31,
+                21,
+                1
+              ],
+              [
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                8,
+                31,
+                22,
+                2
+              ]
+            ],
+            "globalsBase": 44474,
+            "carried": [
+              0,
+              12,
+              235,
+              0
+            ],
+            "pc": 57290,
+            "clock": [
+              21,
+              21,
+              0,
+              0
+            ],
+            "frames": 8121,
+            "flags": {
+              "51": false,
+              "45": false,
+              "49": true,
+              "29": false,
+              "47": false,
+              "48": false,
+              "0": false,
+              "1": false,
+              "2": false,
+              "43": false,
+              "12": false,
+              "36": false,
+              "46": false,
+              "7": true,
+              "41": true,
+              "40": true,
+              "50": false,
+              "44": false,
+              "4": false,
+              "5": false,
+              "35": false
+            },
+            "condition": [
+              237,
+              235,
+              255,
+              228
+            ],
+            "rangeMemory": 45,
+            "attributes": [
+              66,
+              53,
+              61,
+              65,
+              15
+            ],
+            "workspace": [
+              16,
+              0,
+              0,
+              10,
+              0,
+              9,
+              0,
+              0,
+              0,
+              3,
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "words": {
+              "222": 0,
+              "203": 0,
+              "217": 82,
+              "207": 65535,
+              "206": 512,
+              "225": 0,
+              "215": 72,
+              "354": 5,
+              "224": 0,
+              "227": 228,
+              "205": 507,
+              "351": 1,
+              "347": 0,
+              "216": 200,
+              "209": 0,
+              "45": 12546,
+              "352": 2,
+              "226": 20,
+              "41": 99,
+              "40": 50,
+              "353": 5,
+              "204": 0,
+              "208": 65535,
+              "223": 0,
+              "214": 1
+            },
+            "location": [
+              16,
+              43,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              99,
+              0
+            ],
+            "hull": 16
+          }
+        },
+        "id": "c-comm-click2",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-store-status2\",\"status\")"
+      },
+      "receipt": {
+        "result": {
+          "time": 315.13153748271,
+          "driver": "apple2e",
+          "paused": false,
+          "version": "0.285",
+          "debugger": "stop"
+        },
+        "id": "c-store-status2",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-store-save2\",\"tacticalStoppedSave\",root..\"docs/reference/remake-tactical-comm-store\",0x1320)"
+      },
+      "receipt": {
+        "result": {
+          "segmentBase": 18224,
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-store",
+          "ip": 23120
+        },
+        "id": "c-store-save2",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-store-clear2\",\"clear_breakpoint\",3)"
+      },
+      "receipt": {
+        "result": {
+          "cleared": true
+        },
+        "id": "c-store-clear2",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-return-bp\",\"tacticalOpcodeBreakpoint\",0x07d1)"
+      },
+      "receipt": {
+        "result": {
+          "id": 4,
+          "offset": 2001
+        },
+        "id": "c-return-bp",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-dialogue-go\",\"go\")"
+      },
+      "receipt": {
+        "result": {
+          "scheduled": "go"
+        },
+        "id": "c-dialogue-go",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-dialogue-visible-save\",\"groundSourceSave\",root..\"docs/reference/remake-tactical-comm-dialogue-visible\")"
+      },
+      "receipt": {
+        "result": {
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-dialogue-visible"
+        },
+        "id": "c-dialogue-visible-save",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-dialogue-point-save\",\"groundSourceSave\",root..\"docs/reference/remake-tactical-comm-dialogue-point-context\")"
+      },
+      "receipt": {
+        "result": {
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-dialogue-point-context"
+        },
+        "id": "c-dialogue-point-save",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-dismiss-click\",\"encounterInput\",\"comm-dismiss-click\",root..\"docs/reference/remake-tactical-comm-dismiss-click\",190,220,0,120)"
+      },
+      "receipt": {
+        "result": {
+          "duration": 120,
+          "scheduled": true,
+          "name": "comm-dismiss-click",
+          "setup": {
+            "equipment": [
+              [
+                31,
+                28,
+                26,
+                158,
+                0,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                12,
+                3,
+                0,
+                0
+              ],
+              [
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                23,
+                3,
+                31,
+                28,
+                30,
+                24,
+                15,
+                31,
+                0,
+                0
+              ],
+              [
+                0,
+                24,
+                26,
+                29,
+                0,
+                0,
+                152,
+                26,
+                29,
+                0,
+                0,
+                24,
+                26,
+                29,
+                0,
+                31,
+                24,
+                26,
+                29,
+                4,
+                31,
+                24,
+                26,
+                29,
+                4,
+                6,
+                19,
+                2
+              ],
+              [
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                16,
+                31,
+                20,
+                2
+              ],
+              [
+                31,
+                24,
+                23,
+                28,
+                3,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                0,
+                0,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                28,
+                11,
+                31,
+                21,
+                1
+              ],
+              [
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                8,
+                31,
+                22,
+                2
+              ]
+            ],
+            "globalsBase": 44474,
+            "carried": [
+              0,
+              12,
+              235,
+              0
+            ],
+            "pc": 53909,
+            "clock": [
+              21,
+              21,
+              0,
+              0
+            ],
+            "frames": 12614,
+            "flags": {
+              "51": false,
+              "45": false,
+              "49": false,
+              "29": false,
+              "47": false,
+              "48": false,
+              "0": false,
+              "1": false,
+              "2": false,
+              "43": false,
+              "12": false,
+              "36": false,
+              "46": false,
+              "7": true,
+              "41": true,
+              "40": true,
+              "50": false,
+              "44": true,
+              "4": false,
+              "5": false,
+              "35": true
+            },
+            "condition": [
+              237,
+              235,
+              255,
+              228
+            ],
+            "rangeMemory": 45,
+            "attributes": [
+              66,
+              53,
+              61,
+              65,
+              15
+            ],
+            "workspace": [
+              16,
+              0,
+              0,
+              10,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              9,
+              255,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "words": {
+              "222": 0,
+              "203": 2,
+              "217": 80,
+              "207": 65535,
+              "206": 512,
+              "225": 0,
+              "215": 70,
+              "354": 123,
+              "224": 0,
+              "227": 228,
+              "205": 505,
+              "351": 1,
+              "347": 0,
+              "216": 200,
+              "209": 0,
+              "45": 14619,
+              "352": 3,
+              "226": 12,
+              "41": 99,
+              "40": 50,
+              "353": 150,
+              "204": 0,
+              "208": 65535,
+              "223": 0,
+              "214": 1
+            },
+            "location": [
+              16,
+              43,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              99,
+              0
+            ],
+            "hull": 16
+          }
+        },
+        "id": "c-dismiss-click",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-dialogue-cancel\",\"encounterInput\",\"comm-dialogue-cancel\",root..\"docs/reference/remake-tactical-comm-dialogue-cancel\",190,220,1,240)"
+      },
+      "receipt": {
+        "result": {
+          "duration": 240,
+          "scheduled": true,
+          "name": "comm-dialogue-cancel",
+          "setup": {
+            "equipment": [
+              [
+                31,
+                28,
+                26,
+                158,
+                0,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                12,
+                3,
+                0,
+                0
+              ],
+              [
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                23,
+                3,
+                31,
+                28,
+                30,
+                24,
+                15,
+                31,
+                0,
+                0
+              ],
+              [
+                0,
+                24,
+                26,
+                29,
+                0,
+                0,
+                152,
+                26,
+                29,
+                0,
+                0,
+                24,
+                26,
+                29,
+                0,
+                31,
+                24,
+                26,
+                29,
+                4,
+                31,
+                24,
+                26,
+                29,
+                4,
+                6,
+                19,
+                2
+              ],
+              [
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                16,
+                31,
+                20,
+                2
+              ],
+              [
+                31,
+                24,
+                23,
+                28,
+                3,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                0,
+                0,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                28,
+                11,
+                31,
+                21,
+                1
+              ],
+              [
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                8,
+                31,
+                22,
+                2
+              ]
+            ],
+            "globalsBase": 44474,
+            "carried": [
+              0,
+              12,
+              235,
+              0
+            ],
+            "pc": 58318,
+            "clock": [
+              21,
+              21,
+              0,
+              0
+            ],
+            "frames": 13752,
+            "flags": {
+              "51": false,
+              "45": false,
+              "49": false,
+              "29": false,
+              "47": false,
+              "48": false,
+              "0": false,
+              "1": false,
+              "2": false,
+              "43": false,
+              "12": false,
+              "36": false,
+              "46": false,
+              "7": true,
+              "41": true,
+              "40": true,
+              "50": false,
+              "44": true,
+              "4": false,
+              "5": false,
+              "35": true
+            },
+            "condition": [
+              237,
+              235,
+              255,
+              228
+            ],
+            "rangeMemory": 45,
+            "attributes": [
+              66,
+              53,
+              61,
+              65,
+              7
+            ],
+            "workspace": [
+              16,
+              0,
+              0,
+              10,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              9,
+              255,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "words": {
+              "222": 0,
+              "203": 2,
+              "217": 80,
+              "207": 65535,
+              "206": 512,
+              "225": 0,
+              "215": 70,
+              "354": 52,
+              "224": 0,
+              "227": 228,
+              "205": 505,
+              "351": 1,
+              "347": 0,
+              "216": 200,
+              "209": 0,
+              "45": 14619,
+              "352": 3,
+              "226": 12,
+              "41": 99,
+              "40": 50,
+              "353": 150,
+              "204": 0,
+              "208": 65535,
+              "223": 0,
+              "214": 1
+            },
+            "location": [
+              16,
+              43,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              99,
+              0
+            ],
+            "hull": 16
+          }
+        },
+        "id": "c-dialogue-cancel",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-acknowledge\",\"encounterInput\",\"comm-acknowledge\",root..\"docs/reference/remake-tactical-comm-acknowledge\",190,220,0,120)"
+      },
+      "receipt": {
+        "result": {
+          "duration": 120,
+          "scheduled": true,
+          "name": "comm-acknowledge",
+          "setup": {
+            "equipment": [
+              [
+                31,
+                28,
+                26,
+                158,
+                0,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                4,
+                31,
+                28,
+                26,
+                30,
+                12,
+                3,
+                0,
+                0
+              ],
+              [
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                24,
+                4,
+                31,
+                28,
+                30,
+                23,
+                3,
+                31,
+                28,
+                30,
+                24,
+                15,
+                31,
+                0,
+                0
+              ],
+              [
+                0,
+                24,
+                26,
+                29,
+                0,
+                0,
+                152,
+                26,
+                29,
+                0,
+                0,
+                24,
+                26,
+                29,
+                0,
+                31,
+                24,
+                26,
+                29,
+                4,
+                31,
+                24,
+                26,
+                29,
+                4,
+                6,
+                19,
+                2
+              ],
+              [
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                4,
+                31,
+                27,
+                25,
+                26,
+                16,
+                31,
+                20,
+                2
+              ],
+              [
+                31,
+                24,
+                23,
+                28,
+                3,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                0,
+                0,
+                31,
+                24,
+                28,
+                28,
+                4,
+                31,
+                24,
+                28,
+                28,
+                11,
+                31,
+                21,
+                1
+              ],
+              [
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                0,
+                0,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                4,
+                31,
+                25,
+                27,
+                25,
+                8,
+                31,
+                22,
+                2
+              ]
+            ],
+            "globalsBase": 44474,
+            "carried": [
+              0,
+              12,
+              235,
+              0
+            ],
+            "pc": 58294,
+            "clock": [
+              21,
+              21,
+              0,
+              0
+            ],
+            "frames": 14804,
+            "flags": {
+              "51": false,
+              "45": false,
+              "49": false,
+              "29": false,
+              "47": false,
+              "48": false,
+              "0": false,
+              "1": false,
+              "2": false,
+              "43": false,
+              "12": false,
+              "36": false,
+              "46": false,
+              "7": true,
+              "41": true,
+              "40": true,
+              "50": false,
+              "44": true,
+              "4": false,
+              "5": false,
+              "35": true
+            },
+            "condition": [
+              237,
+              235,
+              255,
+              228
+            ],
+            "rangeMemory": 45,
+            "attributes": [
+              66,
+              53,
+              61,
+              65,
+              7
+            ],
+            "workspace": [
+              16,
+              0,
+              0,
+              10,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              9,
+              255,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "words": {
+              "222": 0,
+              "203": 2,
+              "217": 80,
+              "207": 65535,
+              "206": 512,
+              "225": 0,
+              "215": 70,
+              "354": 61,
+              "224": 0,
+              "227": 228,
+              "205": 505,
+              "351": 1,
+              "347": 0,
+              "216": 200,
+              "209": 0,
+              "45": 14619,
+              "352": 3,
+              "226": 12,
+              "41": 99,
+              "40": 50,
+              "353": 150,
+              "204": 0,
+              "208": 65535,
+              "223": 0,
+              "214": 1
+            },
+            "location": [
+              16,
+              43,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              99,
+              0
+            ],
+            "hull": 16
+          }
+        },
+        "id": "c-acknowledge",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-after-ack-status\",\"status\")"
+      },
+      "receipt": {
+        "result": {
+          "time": 337.18138676827,
+          "driver": "apple2e",
+          "paused": false,
+          "version": "0.285",
+          "debugger": "stop"
+        },
+        "id": "c-after-ack-status",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-return-save\",\"tacticalStoppedSave\",root..\"docs/reference/remake-tactical-comm-return\",0x07d1)"
+      },
+      "receipt": {
+        "result": {
+          "segmentBase": 18224,
+          "path": "/home/iolo/workspace/retro/apple2-sundog-disasm/docs/reference/remake-tactical-comm-return",
+          "ip": 20225
+        },
+        "id": "c-return-save",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-return-clear\",\"clear_breakpoint\",4)"
+      },
+      "receipt": {
+        "result": {
+          "cleared": true
+        },
+        "id": "c-return-clear",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-clean-release\",\"encounterRelease\")"
+      },
+      "receipt": {
+        "result": {
+          "released": true
+        },
+        "id": "c-clean-release",
+        "ok": true
+      }
+    },
+    {
+      "request": {
+        "lua": "a2.call(\"c-clean-exit\",\"exit\")"
+      },
+      "receipt": {
+        "result": {
+          "scheduled": "exit"
+        },
+        "id": "c-clean-exit",
+        "ok": true
+      }
+    }
+  ],
+  "ownedSessionTerminal": {
+    "worker": 1904583,
+    "ownedChild": 1906128,
+    "live": false,
+    "exitCode": 0
+  },
+  "excludedFailedOperations": [
+    "c-store-save: not a debugger stop; no artifact was captured."
+  ],
+  "completionEvidence": "Source saves verify actual dispatch stops. Scheduled input/go receipts alone are not completion."
+}

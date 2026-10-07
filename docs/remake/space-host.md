@@ -1,11 +1,13 @@
-# Campaign ship encounter host — R10i/R10j/R10m
+# Campaign ship encounter host — R10i–R10n
 
 `campaign-space.js` connects the source ship-combat primitives to actual
 regional flight, machinery, resources, equipment, pod cargo and campaign RNG.
 R10i introduced opt-in25 `ship-encounters-1`; R10j extends the opt-in core/save
 to26 `ship-communication-1` (`content.space:true`). R10m adds opt-in27
 `ship-tactical-1` with `content.tactical:true`, actual entry/frame/clock calls
-and saved reticle/input/menu state; see [tactical host](ship-tactical.md).
+and saved reticle/input/menu state. R10n extends it to28 `ship-input-1`, saving
+button edges and correcting cached-contact firing and the one Comm-return
+dispatcher call; see [tactical host](ship-tactical.md).
 The live asset loader/UI
 remains version24 pending sensors, reticle/input, bolt arming and recovery
 integration, including exposing the verified Comm reducer. This document
@@ -98,6 +100,15 @@ to prevent a second Comm with that contact. Source initial Dismiss It enters
 the hostile message first; its following dismiss returns, rather than skipping
 the source intermediate view.
 
+R10n's opt-in28 `ship-input-1` corrects the surrounding return dispatch. Native
+phase3→4 and unchanged clock, together with Game13 `$2588`, establish one actual
+machinery call before Game12 consumes the return bits. Verified dialogue outputs
+commit before this call; the new deadline starts at6 afterward. Contact may
+disappear or sleep/defeat may interrupt restoration. The three tactical startup
+calls remain skipped. Historical space-only26 retains its earlier host schedule;
+active27 saves migrate to28 without replaying any call at load time. See
+[native input/Comm reference](ship-tactical-input-reference.md).
+
 The saved counter runs after movement→production→power→combat, matching Game12
 `$0B87–$0BAC`. Six due calls decrement to0; the seventh sets aggression44, so that
 call cannot retroactively schedule an enemy shot. Pause and fractional due ticks
@@ -138,7 +149,7 @@ The tactical reducers spend actual gun charge, use actual dialogue dexterity,
 commit health/hit counters and wrap the visited system's kill cooldown to4 bits.
 Source contact40 persists after a lethal shot until the next combat tick.
 Tactical context stops cooldown-driven contact drift, while power and pending
-enemy fire still run. Sensor/aim/input mapping remains pending.
+enemy fire still run. Live sensor/aim/input integration remains pending.
 
 Jettison processes Both as slot2 then slot1, retains the source eager RNG draws,
 and clears the visited cooldown when the source requests it. Its campaign
@@ -170,7 +181,7 @@ with a nullable world, Agree/Refuse/Bluff/Dismiss returns, shared return flags,
 deadline ordering/exit/jettison, pause/cadence/reload, voluntary/forced sleep and
 sleep death, and malformed frozen/counter/activity imports. Contexts remain
 declared fixtures, not ordinary-play encounter acceptance. No additional native
-capture or UI activation is claimed. [The current rule receipt](r10j-rules-validation.json)
+capture or UI activation is claimed. [The R10j rule receipt](r10j-rules-validation.json)
 reports457 passing groups in Chrome155.0.8059.39 with no errors.22 exporter tests,
 171 artifacts,584 source strings and three original input hashes verify.
 

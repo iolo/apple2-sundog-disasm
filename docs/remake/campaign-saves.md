@@ -1,6 +1,23 @@
-# Campaign save boundary — live24; opt-in R10m27
+# Campaign save boundary — live24; opt-in R10n28
 
-R10m adds `content.space:true,tactical:true` opt-in version27 `ship-tactical-1`.
+R10n extends `content.space:true,tactical:true` to version28 `ship-input-1`.
+The exact controller fields are `{record,control,carry,trigger}`. Trigger owns
+boolean `latched` and `previous`: buffered short presses survive partial saves,
+while held buttons cannot fire again after recharge/reload. Historical27 must
+validate its original three-field controller before adding a cleared latch and
+`previous=control.fire`, without consuming RNG/time/resources or creating an
+edge. Extra trigger fields in27 and missing/malformed fields in28 reject.
+Frozen Comm requires a cleared trigger as well as neutral control.
+
+Native R10n Comm evidence corrects the return schedule: commit verified Game16
+outputs, run Game13's one actual machinery call, then consume Game12 return flags
+and restore the byte reticle. There are no three startup calls. The deadline
+starts at6 after dispatch; fractional time/carry is preserved. Dispatch can
+advance the clock, spend power, clear a contact or cause forced sleep/defeat,
+whose existing terminal owners survive reload. See
+[native input reference](ship-tactical-input-reference.md).
+
+R10m introduced opt-in version27 `ship-tactical-1`.
 `space.tactical` is null outside an active tactical view, or stores exact
 `{record,control,carry}` fields. The record owns signed reticle/grace, cached
 contact/sensors, visibility, firing mode, frameLimit5, menu and armed choices;

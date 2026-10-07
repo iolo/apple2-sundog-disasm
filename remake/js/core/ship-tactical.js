@@ -5,6 +5,18 @@ const integer=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
 const signed=n=>(n<<16)>>16;
 const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===n.length&&n.every(k=>Object.hasOwn(v,k));
 const fail=()=>{throw Error('invalidShipTactical')};
+export const initialShipTrigger=()=>({latched:false,previous:false});
+export function validateShipTrigger(value) {
+  if(!keys(value,['latched','previous'])||typeof value.latched!=='boolean'||typeof value.previous!=='boolean')fail();
+  return {...value};
+}
+// Library22 native proc2 $0C89–$0CB5: combine the sampled button with the
+// dispatch-hook latch, consume the latch and return only a rising edge for0.
+export function readShipTrigger(value,held) {
+  const trigger=validateShipTrigger(value);if(typeof held!=='boolean')fail();
+  const pressed=held||trigger.latched;
+  return {fire:pressed&&!trigger.previous,trigger:{latched:false,previous:pressed}};
+}
 // Native viewscreen $0ADF–$0AFE. Low paddle counts mean positive motion.
 const PADDLE=Object.freeze([8,7,6,5,5,4,4,3,3,2,2,2,1,1,1,0,0,-1,-1,-1,-2,-2,-2,-3,-3,-4,-4,-5,-5,-6,-7,-8]);
 export function shipPaddleMotion(x,y) {
@@ -95,13 +107,15 @@ export function moveShipTactical(previous,record,delta) {
   }
   return {state,tactical};
 }
+// control.fire is the already sampled primary edge. The campaign adapter owns
+// held-button/latch history; calling this pure frame alone does not poll it.
 export function beginShipTacticalFrame(previous,record,control,{dexterity,worldAngle,polling=false}) {
   let state=snapshotShipCombat(previous),tactical=validateShipTactical(record);
   if(!keys(control,['x','y','fire'])||![control.x,control.y].every(n=>integer(n,-8,8))||typeof control.fire!=='boolean'||
     !integer(dexterity,0,255)||!integer(worldAngle,0,255)||typeof polling!=='boolean')fail();
   let shot=null;
   if(tactical.firing&&control.fire&&state.equipment[2].group.performance>0&&state.words[226]>0) {
-    shot=fireShipGun(state,{focused:tactical.focused,dexterity});state=shot.state;
+    shot=fireShipGun(state,{focused:tactical.focused,dexterity,contact:tactical.contact});state=shot.state;
     if(shot.hit&&state.words[216]===0){tactical.contact=tactical.visible=false;tactical.reticle={angle:128,radius:worldAngle}}
   }
   const menu=polling;
