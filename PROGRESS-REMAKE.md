@@ -1,5 +1,39 @@
 # SunDog web remake progress
 
+## R10g — Ground host, replay saves and verified returns — 2026-10-07
+
+Joined actual ground movement and Game21's due threat production to chase,
+mandatory Game16, Game17 combat and return. The host preserves cached clock
+rates/edges, source scene-refresh idle behavior and one condition update when
+the hour changes. City foot movement uses10 iterations/10 minutes; surface foot
+uses2/120; pod rates are10/1 and2/20; idle is15/1. Browser iterations remain50ms
+and condition-hour behavior retains the existing model. Death consumes the
+eager gate draw before suppressing chase. Encounter arenas freeze the map pose
+and ground clock; dialogue resumes the same actors and working state.
+
+Added opt-in save24 `ground-encounters-1`: clock, bounded seed/input record,
+source-priced post-fight reward receipts and durable defeat marker. Replay
+derives actors, conversation, cash, inventory and RNG from the frozen campaign;
+terminal returns replay again before committing. Surrender/knockout losses,
+source health and post-fight income apply once without granting replacement
+items or moving the return point. Historical1–23 and standalone checkpoint
+validation retain their earlier fields, quantity and living-condition rules.
+
+Nineteen host groups bring Chrome154.0.8037.97 to431 passing rule groups with no
+failures/page errors. Controlled actual-map fixtures cover partial clocks,
+chase/dialogue/combat JSON continuation, escape, surrender, owned laser combat,
+360-credit reward, medicine/weapon knockout loss, fatal damage after a previous
+source injury, malformed imports and30/60/144Hz plus pause.22 exporter tests,
+171 deterministic artifacts,584 classified strings and original input hashes
+verify. See `docs/remake/ground-host.md` and `r10g-rules-validation.json`.
+
+R09 remains complete. R10 remains active: live UI still uses23 until ground
+host controls, rendering and save24 are connected. These core fixtures do not
+establish ordinary-play campaign acceptance, native combat-outcome parity or
+live recovery. Ship encounter production, tactical controls, cargo/cryogen
+loss ownership, death/wreck/recovery dispatch, rare reward entry224 and live
+avoid/fight/lose acceptance remain required. The user's PRD remains untouched.
+
 ## R10f — Encounter dialogue setup, replay and source returns — 2026-10-07
 
 Ported actual Game16 kind15/16/18/19/22 setup from the case-pointer table,
