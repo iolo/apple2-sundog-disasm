@@ -21,10 +21,11 @@ export function checkpointCodec(geometry) {
       if (canStand(geometry, next) && !reachable.has(`${next.x},${next.y}`)) queue.push(next);
     }
   }
-  function snapshot(value) {
+  function snapshot(value,{allowInactiveCondition=false}={}) {
     if (!value || !integer(value.position?.x, 0, geometry.width - 7) || !integer(value.position?.y, 7, geometry.height - 1) ||
         !reachable.has(`${value.position.x},${value.position.y}`) || !integer(value.minutes, 0, Number.MAX_SAFE_INTEGER - 1440)) fail();
-    if (CONDITION_FIELDS.some(key => !integer(value.condition?.[key], 0, 255)) || value.condition.vigor === 0 || value.condition.rest === 0) fail();
+    if (typeof allowInactiveCondition!=='boolean'||CONDITION_FIELDS.some(key => !integer(value.condition?.[key], 0, 255)) ||
+      !allowInactiveCondition&&(value.condition.vigor === 0 || value.condition.rest === 0)) fail();
     for (const [key, size] of Object.entries(CAPACITY)) {
       const items = value.inventory?.[key];
       if (!Array.isArray(items) || items.length !== size || Array.from(items).some(byte => !integer(byte, 0, 255) || (byte !== 0 && itemType(byte) < 7))) fail();

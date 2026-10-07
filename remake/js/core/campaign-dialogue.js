@@ -16,14 +16,14 @@ export function initialCampaignDialogue(start) {
   return {cash:start.credits,attributes:ATTRIBUTES.map(key=>start.character.attributes[key]),flags:Array(128).fill(false),
     workspace:{lastCity:0,mood:3,quantity:1,gate:0,item:0,actor:0}};
 }
-export function validateCampaignDialogue(value,{legacyCash,visitors=false,traderMatching=false}={}) {
+export function validateCampaignDialogue(value,{legacyCash,visitors=false,traderMatching=false,groundEncounters=false}={}) {
   const legacy=legacyCash!==undefined;
   if(!keys(value,legacy ? ['attributes','flags','workspace'] : ['cash','attributes','flags','workspace'])||
     (!legacy&&!integer(value.cash,0,32767999))||!array(value.attributes,5,n=>integer(n,0,255))||
     !array(value.flags,128,b=>typeof b==='boolean')||(!traderMatching&&value.flags[65])||
     !keys(value.workspace,['lastCity','mood','quantity','gate','item','actor']))fail();
   const w=value.workspace;
-  if(!integer(w.lastCity,0,63)||!integer(w.mood,0,4)||w.quantity!==1||!integer(w.gate,0,1)||
+  if(!integer(w.lastCity,0,63)||!integer(w.mood,0,4)||!(groundEncounters?integer(w.quantity,1,5):w.quantity===1)||!integer(w.gate,0,1)||
     !integer(w.item,0,255)||!integer(w.actor,0,visitors ? 8 : 0)||w.actor===1)fail();
   return {cash:legacy ? legacyCash : value.cash,attributes:[...value.attributes],flags:[...value.flags],workspace:
     Object.fromEntries(['lastCity','mood','quantity','gate','item','actor'].map(k=>[k,w[k]]))};
