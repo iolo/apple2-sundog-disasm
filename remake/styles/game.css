@@ -310,3 +310,24 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .power-buttons{display:flex;gap:10px}
 .power-actions{position:absolute;left:32px;right:32px;bottom:14px;border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between}
 #power-message{font-size:14px;line-height:1.4;margin-top:8px}
+#navigation-panel{position:absolute;inset:0;background:var(--ink);color:var(--paper)}
+#navigation-panel h1{font-size:24px;font-weight:normal}
+#nav-location,#nav-resources{position:absolute;left:32px;right:32px;margin:0;font-size:15px;line-height:20px}
+#nav-location{top:58px;color:var(--amber)}
+#nav-resources{top:81px;color:var(--muted)}
+.nav-scales{position:absolute;top:106px;left:32px;right:32px;display:flex;gap:16px;border-bottom:1px solid var(--line)}
+.nav-scales button{font-size:16px;padding:4px 10px}
+.nav-scales [aria-pressed="true"]{color:var(--amber);border-bottom:2px solid var(--amber)}
+.nav-workspace{position:absolute;top:143px;left:32px;right:32px;height:220px;display:grid;grid-template-columns:320px 1fr;gap:18px}
+#walk-screen #nav-chart{position:static;inset:auto;pointer-events:none;width:320px;height:220px;border-right:1px solid var(--line)}
+.nav-destinations{display:flex;flex-direction:column;gap:8px;font-size:16px;min-width:0}
+.nav-destinations h2{font-size:21px;line-height:24px;font-weight:normal;margin:8px 0}
+.nav-destinations p{font-size:16px;line-height:22px;margin:0 0 14px}
+.nav-destinations select{font:14px Mulmaru;background:var(--ink);color:var(--paper);border:1px solid var(--line);width:100%;max-width:none;height:142px;min-height:128px}
+.nav-destinations option{padding:3px 5px}
+.nav-destinations option:disabled{color:#687168}
+.nav-destinations button{border:1px solid var(--line);padding:7px;font-size:16px}
+#nav-status{position:absolute;top:369px;left:32px;right:32px;font-size:14px;line-height:18px;margin:0;color:var(--amber)}
+.nav-commands{position:absolute;top:394px;left:32px;right:32px;display:flex;gap:12px;font-size:15px}
+.nav-commands button{border:1px solid var(--line);padding:5px 8px}
+.nav-actions{position:absolute;bottom:4px;left:32px;right:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;padding-top:5px;font-size:16px}

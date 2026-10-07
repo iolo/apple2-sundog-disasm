@@ -63,7 +63,7 @@ async browserPage => {
     await page.locator('[data-dialogue-purchase="0"]').focus();await page.keyboard.press('Enter');
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='83','Keyboard purchase returns to the source equipment-shop root');
     const bought=await exportGame();
-    assert(bought.version===22&&bought.scope==='landed-ground-1'&&bought.state.encounters.counter.conversation.inputs.at(-1).type==='purchase','Version22 stores the explicit purchase input');
+    assert(bought.version===23&&bought.scope==='regional-flight-1'&&bought.state.encounters.counter.conversation.inputs.at(-1).type==='purchase','Version23 stores the explicit purchase input');
     await reload();assert(JSON.stringify((await exportGame()).state)===JSON.stringify(bought.state),'Fresh-page reload after transfer preserves replay and RNG');
     await accept();assert(await page.locator('[data-dialogue-purchase="0"]').isDisabled(),'Replayed purchase occupies its destination');
     const working=await page.locator('#dialogue-purchase').innerText();assert(working.includes('Cash:'),'Purchase panel shows working cash after the prior transfer');
