@@ -1,3 +1,28 @@
+## R10k — Source tactical control core — 2026-10-08
+
+Added isolated Game12 tactical controls: native paddle motion, explicit entry
+context and target RNG, cached sensor/menu gates, automatic/manual aiming,
+signed reticle/contact movement and visibility, and source main/menu/firing
+frame gates. A due frame moves before machinery and again after it, refreshing
+sensors before replacing the captured contact. Gun-loop controls retain actual
+power, charge, damage and kill signals. Jettison requires source bolt arming;
+selectable cargo is types1–30, excluding cryogens31, and stale auxiliary choices
+retain the source RNG draw if power has consumed the selected slot.
+
+All469 Chrome rule groups pass without page errors, including12 new tactical
+groups.22 exporter tests,171 deterministic artifacts,584 source-string records
+and all3 original input sizes/hashes verify. See `ship-tactical.md` and the
+R10k validation summary. The browser was closed after validation.
+
+Live UI remains24 and opt-in campaign saves26. The tactical record is not yet
+saved by the campaign host. Source entry needs three actual machinery calls;
+Comm return skips them and restores a byte-sized reticle. Native frame limit,
+grace and polling context must be owned explicitly, with a prepared timing/input
+capture before claiming complete runtime progression. Next: that capture and
+campaign frame/save integration, then localized space controls and ordinary-play
+acceptance. Full death/wreck/recovery and rare reward224 also remain R10.
+R09 remains complete; colony progression is R11. The user PRD stays untouched.
+
 ## R10j — Saved space Comm, cargo deadline and sleep — 2026-10-07
 
 Added opt-in26 `ship-communication-1` with actual kind19/scene-middle1 Comm,

@@ -36,7 +36,7 @@ confirmation; it is not an observed original-game result yet.
 ## State and host responsibilities
 
 The session owns128 source flags; words205–209 and214–217 for the enemy;
-resource/control words222/224–226; defeat word347; hit-cycle word354; six
+resource/control words222/224–226; defeat word347; shared frame/time word354; six
 equipment failure records; hull; scene high nibble; ship-world presence;
 range-memory byte193; two pod lots; and the campaign RNG state. Operations
 validate and clone inputs before changing them. Invalid calls do not mutate
@@ -94,3 +94,9 @@ movement runs before production, power and contact combat; engines-off ticks do
 not invoke production. Actual arrival sets an existing contact's cooldown0,
 and a successful warp clears40/47 rather than producing a new arrival contact.
 See [space host](space-host.md) for validation and remaining live integration.
+
+R10k adds the [tactical control core](ship-tactical.md): native paddle mapping,
+source sensor/menu gates, automatic/manual aim, own movement before/after due
+calls and source bolt arming. Its actual frame/campaign-save/UI integration
+remains open. The source menu excludes cryogens31 even though the lower-level
+jettison primitive can process a forced selector containing them.
