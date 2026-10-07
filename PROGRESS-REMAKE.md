@@ -1,5 +1,20 @@
 # SunDog web remake progress
 
+## R09c — Regional persistence and ground domains — 2026-10-07
+
+Added opt-in version23 regional-flight saves. Historical versions1–22 validate
+before migration. Actual ship/pod worlds, all57 independent city economies,
+global cryogens, colony placement, flight interpolation, warp requirements and
+one distress deadline are bounded and checked. Regional geometry supports all
+worlds, destination services and pods left behind on another world.
+
+Five new rule groups prove exact reload continuation during all flight phases,
+all18 capital saves, historical rejection and unattended-pod return. All340
+Chrome groups pass without page errors (`r09-regional-save-validation.json`);
+whitespace checks pass. Live loader remains22 until the next UI checkpoint.
+Remaining R09 work: navigation controls/localization and ordinary-play two-system
+land/trade/return/reload acceptance with service/ground regressions.
+
 ## R09b — Flight rules and source landing defaults — 2026-10-07
 
 Implemented source launch clearance, landing/pilotage gates, sublight ETA and

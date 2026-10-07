@@ -462,6 +462,11 @@ by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
 
+Checkpoint R09c (2026-10-07) validates opt-in version23 regional-flight saves,
+all18 capital domains and exact mid-flight reload continuation. Historical
+versions1–22 validate before migration. All340 Chrome rule groups pass. The
+live loader still uses22; navigation/UI and ordinary-play acceptance remain.
+
 Checkpoint R09b (2026-10-07) adds source flight rules and capital landing exports.
 All335 Chrome rule groups,21 exporter tests and169 deterministic artifacts pass.
 The planetary overlay's resumable5/20-minute browser timing is an explicit

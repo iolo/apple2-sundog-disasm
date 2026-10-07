@@ -1,3 +1,4 @@
+import { regionalGroundStart } from './regional-world.js';
 import { createGroundWorld,initialGround } from './campaign-ground.js';
 import { cityReachability,cityShipAnchor } from './city-walk.js';
 import { podReachability,podHeading,podServiceAt } from './city-pod.js';
@@ -18,7 +19,7 @@ export function migratedGround(start,travel) {
 }
 
 // One validator owns immutable world data and bounded caches across snapshots.
-export function groundSaveValidator(content,start,rooms) {
+export function groundSaveValidator(content,start,rooms,{regional=false}={}) {
   const world=createGroundWorld(content,start),cityChecks=new Map(),surfaceChecks=new Map();
   function surfaceCheck(colony) {
     const key=colony?`${colony.x}/${colony.y}`:'none';
@@ -29,7 +30,7 @@ export function groundSaveValidator(content,start,rooms) {
     // Only the starting city's exits seed the connected surface component.
     for(const c of g.map.cities)for(const [x,y] of [[0,16],[21,16],[11,7],[11,23],[0,7],[0,23],[21,7],[21,23]]) {
       const index=(c.position.y*24+y)*1120+c.position.x*28+x;arrivals.add(index);
-      if(c.cityId===start.shipLocation.cityId&&!seen[index]){seen[index]=1;queue[tail++]=index}
+      if((regional||c.cityId===start.shipLocation.cityId)&&!seen[index]){seen[index]=1;queue[tail++]=index}
     }
     while(head<tail) {
       const index=queue[head++],x=index%1120,y=Math.floor(index/1120);
@@ -51,15 +52,15 @@ export function groundSaveValidator(content,start,rooms) {
   }
   function metadata(value,travel,pod) {
     if(!keys(value,['worldId','cityId','podCityId','colonyPosition','camera'])||value.worldId!==world.worldId||
-      ![null,...world.cityIds].includes(value.cityId)||![null,...world.cityIds].includes(value.podCityId)||
-      !point(value.camera,40,24)||(travel.scene==='surface')!==(value.cityId===null)||
+      ![null,...world.cityIds].includes(value.cityId)||!(regional?[null,...content.economy.cities.map(c=>c.id),'city-60']:[null,...world.cityIds]).includes(value.podCityId)||
+      !point(value.camera,40,24)||(travel.scene==='surface')!==(value.cityId===null)&&!(regional&&travel.scene==='ship')||
       (!['city','surface','ship','room','bank','exchange','depot','transstation'].includes(travel.scene))||
-      (!['city','surface'].includes(travel.scene)&&value.cityId!==start.shipLocation.cityId)||
+      (!regional&&!['city','surface'].includes(travel.scene)&&value.cityId!==start.shipLocation.cityId)||
       (pod.attached&&value.podCityId!==start.shipLocation.cityId))fail();
     if(value.colonyPosition!==null) {
       if(world.worldId!=='world-01'||!point(value.colonyPosition,40,24)||world.surfaceBase.tiles[value.colonyPosition.y][value.colonyPosition.x]<14)fail();
-    } else if(value.cityId!==start.shipLocation.cityId||value.podCityId!==start.shipLocation.cityId)fail();
-    if(value.colonyPosition!==null) {
+    } else if(!regional&&(value.cityId!==start.shipLocation.cityId||value.podCityId!==start.shipLocation.cityId))fail();
+    if(value.colonyPosition!==null&&!regional) {
       const reached=surfaceCheck(value.colonyPosition).cities;
       if((value.cityId!==null&&!reached.has(value.cityId))||(value.podCityId!==null&&!reached.has(value.podCityId)))fail();
     }
@@ -74,7 +75,7 @@ export function groundSaveValidator(content,start,rooms) {
       camera:{x:value.camera.x,y:value.camera.y}};
   }
   function cityCheck(state,cityId,driving) {
-    const p=state.pod,local=!p.attached&&state.ground.podCityId===cityId;
+    const p=state.pod,local=!p.attached&&state.ground.podCityId===cityId&&(!regional||state.regional.podWorldId===world.worldId);
     const key=`${cityId}/${driving}/${p.attached}/${!driving&&local?`${p.position.x}/${p.position.y}/${p.heading}`:''}`;
     if(cityChecks.has(key))return cityChecks.get(key);
     const city=world.city(cityId,p.attached),g=driving?city.pod:local?world.foot({...state,ground:{...state.ground,cityId}}):city;
@@ -95,6 +96,11 @@ export function groundSaveValidator(content,start,rooms) {
     const cargo=validateCargoSlots(value.cargo,'pod',{auxiliaryFuel:true});
     if(value.attached) {if(value.position!==null||value.heading!==16||value.occupied)fail()}
     else {
+      if(regional&&state.regional.podWorldId!==world.worldId) {
+        if(value.occupied)fail();
+        const remote={...state,ground:{...state.ground,worldId:state.regional.podWorldId,cityId:state.ground.podCityId,colonyPosition:state.regional.podWorldId==='world-01'?state.regional.colonyPosition:null},travel:{scene:'ship',cityPosition:null}};
+        return groundSaveValidator(content,regionalGroundStart(remote),rooms,{regional:true}).pod(value,remote);
+      }
       if(value.occupied&&(!['city','surface','exchange','depot'].includes(state.travel.scene)||state.ground.podCityId!==state.ground.cityId||!same(value.position,state.travel.cityPosition)))fail();
       if(state.ground.podCityId===null) {if(value.heading!==26||!surfaceCheck(state.ground.colonyPosition).reached(value.position))fail()}
       else {
