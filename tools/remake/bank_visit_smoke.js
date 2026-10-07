@@ -103,7 +103,7 @@ async browserPage => {
     assert((await state()).scene==='ship'&&(await state()).mode==='walk','Preview remains isolated from bank campaign progress');
     await page.locator('#walk-back').click();await page.locator('#home').click();await page.locator('#resume-campaign').click();
     assert((await state()).scene==='city'&&(await state()).x===before.x,'Campaign resumes at the bank door after using the preview');
-    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result);
+    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',unitResults.filter(s=>s.startsWith('FAIL')).join('\n')||'All browser rule groups pass');
     assert(errors.length===0,`No browser exceptions: ${errors.join(', ')}`);

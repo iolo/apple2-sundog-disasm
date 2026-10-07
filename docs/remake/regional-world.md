@@ -37,3 +37,8 @@ acceptance is claimed here. Six new rule groups plus all319 existing groups pass
 in Chrome154.0.8037.97 (`r09-regional-core-validation.json`). Tests include declared
 foreign-lot fixtures and atomic rejection; no native emulator capture is claimed.
 Flight rules and live integration remain required before R09 completion.
+
+The paragraph above records the R09a core checkpoint. R09f completes live
+navigation, regional services and version23 saves. See the
+[completion audit](r09-completion.md) for current acceptance evidence and the
+ordinary-play two-system trade/return/reload journey.

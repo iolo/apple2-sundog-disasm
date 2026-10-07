@@ -1,5 +1,42 @@
 # SunDog web remake progress
 
+## R09f — Regional flight acceptance and completion — 2026-10-07
+
+Closed the remaining navigation, regional content, persistence and regression
+gates. The final 64-check fresh-character journey uses ordinary controls to buy
+two cargo lots for 22,700, load and launch, fail a real gravity-field warp, reach
+a safe point, charge/jump to system02, land in city09, sell for 35,700, refuel and
+return home. It preserves independent markets/accounts, cargo ownership,
+immutable creation and clock/RNG across repeated reloads, including mid-flight.
+The audited journey takes 292 game minutes and returns with fuel172. These
+figures supersede the pre-audit R09d receipt and its shorter motion duration.
+
+The closing inventory in `docs/remake/r09-validation-summary.json` records 345
+rule groups and 667 UI checks across 12 passing receipts, all using Chrome
+154.0.8037.97 with no page errors. UI coverage: combined engineering/ground
+journey74, surface/help60, rooms102, banking44, exchange64, services78,
+dialogue19, trader referrals75, taverns43, navigation44 and regional journey64.
+Embedded rule results are counted once. All 57 ordinary cities plus Banville
+have valid source landing geometry, access and canonical saves; all 18 capitals
+and the connected 12-system graph are checked. 21 exporter tests,169
+deterministic artifacts and584 classified source-string records verify.
+
+The room run completed gameplay but initially hit its embedded rule suite's
+old30-second wait. Extended embedded waits to120 seconds; UI jobs now open a
+blank tab instead of unnecessarily starting another rule suite. The passing
+room receipt was rerun directly to disk after console truncation affected an
+intermediate report. Historical version13 sales initialize the new regional
+proceeds ledger to zero while retaining all original economic progress.
+Failed/intermediate reports are excluded from the closing inventory.
+
+Updated current save documentation, behavior evidence, README and the plan.
+Final navigation screenshots in English and Korean were visually inspected.
+`docs/remake/r09-completion.md` audits every R09 requirement and records declared
+landing fixtures, resumable5/20-minute planetary timing and the absence of a new
+native-emulator capture. No R09 gate remains. Encounters/combat are R10;
+colony delivery/growth/ending are R11. The user PRD remains untouched and
+untracked. Next: R10.
+
 ## R09e — Closing source audit and complete landing coverage — 2026-10-07
 
 Corrected intermediate flight transcription: Game13's final ETA arithmetic is

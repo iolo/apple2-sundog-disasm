@@ -106,7 +106,7 @@ async browserPage => {
     assert(true,'A wall-position import reports validation failure');
     await page.locator('#checkpoint-back').click();
     assert((await state()).scene==='city'&&(await state()).x==='287'&&(await state()).y==='217','Invalid wall-position import leaves the current campaign intact');
-    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result);
+    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',unitResults.filter(s=>s.startsWith('FAIL')).join('\n')||'All browser rule groups pass');
     assert(errors.length===0,`No browser exceptions: ${errors.join(', ')}`);

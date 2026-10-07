@@ -74,7 +74,7 @@ async browserPage => {
     await page.context().setOffline(false);
     await open(); await move(54, 86); await page.locator('#walk-inventory').click();
     assert((await label('stores', 10)).includes('Shield (7)') && (await label('carried', 0)).includes('Empty'), 'Reload resets the isolated walkthrough inventory');
-    await page.goto('http://127.0.0.1:8000/tests/'); await page.waitForFunction(() => document.documentElement.dataset.result);
+    await page.goto('http://127.0.0.1:8000/tests/'); await page.waitForFunction(() => document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults = (await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result') === 'pass', `${unitResults.length} browser tests pass`);
     const touchContext = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true });

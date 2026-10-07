@@ -128,7 +128,10 @@ source evidence; lodging is described in `../docs/remake/lodging.md` and taverns
 in `../docs/remake/tavern-dialogue.md`.
 R06 city/building exploration and R07 trading/banking are complete. Their evidence
 and boundaries are recorded in `../docs/remake/r06-completion.md` and
-`../docs/remake/r07-completion.md`. R08 ground transport is complete; R09 adds regional flight and destination services.
+`../docs/remake/r07-completion.md`. R08 ground transport and R09 regional flight
+are complete. The regional acceptance audit and current validation inventory
+are in `../docs/remake/r09-completion.md` and
+`../docs/remake/r09-validation-summary.json`. Encounters/combat are next in R10.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances

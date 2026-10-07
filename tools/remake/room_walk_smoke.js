@@ -199,7 +199,7 @@ async browserPage => {
     assert(fallback.state.encounters.randomState===0&&JSON.stringify(fallback.state.ship)===JSON.stringify(zero.state.ship)&&JSON.stringify(fallback.state.travel.cityPosition)===JSON.stringify(zero.state.travel.cityPosition),'Fallback entry preserves ship progress, return anchor and zero RNG state');
     await page.locator('#walk-language').click();
     assert(await page.locator('html').getAttribute('lang')==='ko'&&JSON.stringify((await exportGame()).state)===JSON.stringify(fallback.state),'Fallback room switches to Korean without changing campaign state');
-    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result);
+    await page.goto('http://127.0.0.1:8000/tests/');await page.waitForFunction(()=>document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',unitResults.filter(s=>s.startsWith('FAIL')).join('\n')||'All browser rule groups pass');
     assert(errors.length===0,`No browser exceptions: ${errors.join(', ')}`);

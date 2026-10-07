@@ -74,7 +74,7 @@ async (browserPage) => {
     await page.locator('#walk-surface').focus(); await page.keyboard.down('ArrowUp'); await page.waitForTimeout(140); await page.keyboard.up('ArrowUp');
     assert((await position()).y < 110, 'Walking works after network disconnect');
     await page.context().setOffline(false);
-    await page.goto('http://127.0.0.1:8000/tests/'); await page.waitForFunction(() => document.documentElement.dataset.result);
+    await page.goto('http://127.0.0.1:8000/tests/'); await page.waitForFunction(() => document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults = (await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result') === 'pass', unitResults.join('\n'));
     const touchContext = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, hasTouch: true });

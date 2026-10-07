@@ -14,8 +14,8 @@ const items=content=>content.dialogue?.items||content.items;
 const day=ship=>Math.floor(ship.minutes/1440)%16384;
 const stamp=(offer,market)=>offer&&({...offer,demand:market.demand[number(offer.commodityId)-1],supply:market.supply[number(offer.commodityId)-1]});
 
-// Only the starting city is mutable. R07g moves local lots through active pod
-// cargo; other cities and colony delivery retain their later movement scope.
+// Regional callers select independent city owners; legacy callers remain local.
+// Active pod cargo has one owner. Colony delivery retains its R11 scope.
 export function initialExchange(start,id=start.playerLocation.cityId) {
   return {market:structuredClone(start.economy.markets.find(m=>m.cityId===id)),
     warehouse:structuredClone(start.economy.warehouses.find(w=>w.cityId===id)),visit:null};

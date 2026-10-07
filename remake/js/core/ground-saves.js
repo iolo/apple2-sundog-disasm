@@ -27,7 +27,7 @@ export function groundSaveValidator(content,start,rooms,{regional=false}={}) {
     const g=world.surface(colony),seen=new Uint8Array(1120*576),queue=new Int32Array(seen.length),arrivals=new Set();
     let head=0,tail=0;
     // Every source side/corner city exit is a legitimate transition anchor.
-    // Only the starting city's exits seed the connected surface component.
+    // Regional worlds seed all city exits; historical scopes seed the starting city.
     for(const c of g.map.cities)for(const [x,y] of [[0,16],[21,16],[11,7],[11,23],[0,7],[0,23],[21,7],[21,23]]) {
       const index=(c.position.y*24+y)*1120+c.position.x*28+x;arrivals.add(index);
       if((regional||c.cityId===start.shipLocation.cityId)&&!seen[index]){seen[index]=1;queue[tail++]=index}

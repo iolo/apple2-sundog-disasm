@@ -1,4 +1,4 @@
-# Remake behavior evidence — through R08
+# Remake behavior evidence — through R09
 
 For city/building milestone evidence, see [R06 completion audit](r06-completion.md).
 Active deposits, withdrawals and inter-system transfers are traced and implemented
@@ -14,6 +14,10 @@ cargo saves. The [R07 audit](r07-completion.md) records its completed scope.
 R08 adds source engineering failures, services, landed machinery, independent
 parking, surface travel and version22 saves. Its [audit](r08-completion.md) maps
 requirements to current rule and live journey evidence.
+R09 activates regional flight, destination services and version23 saves across
+12 systems,18 worlds and57 ordinary cities plus Banville. Its
+[audit](r09-completion.md) maps all requirements to345 rule groups and667 UI
+checks, including the ordinary-play two-system trade/return/reload journey.
 The entries below retain their checkpoint-specific evidence; current save behavior
 is in [campaign saves](campaign-saves.md).
 
@@ -25,6 +29,9 @@ characters and includes historical variants; it is not a localization catalog.
 
 | Flow / rule | Evidence | Status | Fixture / browser acceptance |
 | --- | --- | --- | --- |
+| Regional membership, reachability and economic ownership | Utility generated navigation/economy records; Library24 proc6 `$00A8–$00E9`; Game13 proc32; Game20 proc16 `$06B8–$07BC` | Source-derived, rule and ordinary-play UI validated; no new emulator capture | All12 systems,18 worlds,57 ordinary cities and Banville agree; all systems connect in the tested seeded graph. Independent stock/warehouses, origin-sensitive settlement, visited accounts and17 conserved cryogens. See `regional-world.md` and `r09-completion.md`. |
+| Navigation, flight and landing | Game13 proc12/26/32/34/35/36/38/39/52; Library24 proc9/12/15; Library22 proc30/31 | Source-derived rules; explicit planetary timing adaptation; browser validated | Three localized map scales, review/confirm/cancel, launch/orbit/sublight/halt/warp/landing/city flight/distress. Source strict motion rolls, left-shift duration, shared fuel/clock/RNG and gravity failures. All58 city landings have declared-fixture access/save coverage;64 UI checks complete a fresh-character two-system trade/refuel/return. See `flight.md`. |
+| Regional saves and counter context | Historical schemas1–22; Game16 proc39 `$1256–$1267`; source flight/ground state | Browser persistence adaptation, source state rules and migration validated | Version23 retains actual ship/pod worlds, all city economies, colony coordinates, motion interpolation, charge and distress deadline. Old conversations preserve original quotes until return; new counters use actual city tiles. Rejected imports are atomic; mid-flight continuation reproduces clock/RNG/resources. See `campaign-saves.md` and `r09-final-rules-validation.json`. |
 | Parked pod ownership and boarding | Game21 proc6/7/8/16/21/25; Game18 proc21/26; Game15 proc8 | Source-derived, campaign rules and fresh-character browser journey validated | R08h separates pod occupancy/location from player foot visits, uses parked and detached-ship collision, blocks remote loading and preserves version21 saves.42 UI checks cover loaded parking, walking, reload and return. See `parked-pod.md`. |
 | Depot services and auxiliary cargo | Game19 procedures18–26; Library28 payment; Library24 proc16; Game15 proc10 | Source-derived, campaign rules and fresh-character browser journey validated; no emulator capture | R08b activates services and auxiliary transport; R08e connects docking refill; R08f connects machinery consumption and verifies ordinary purchase/return/running systems/reload. See `depot-services.md`. |
 | Landed machinery and readiness | Library24 proc8/9/14–17; Game12 proc1/17/19/23 | Source-derived, live rule/UI verification; explicit control/cadence adaptations | R08f runs guns/shields/cloaker with one aboard clock, dependency shutdown and version20 phase/resource saves.293 rule groups and31 machinery UI checks pass. Flight remains R09. See `ship-power.md`. |

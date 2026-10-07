@@ -80,7 +80,7 @@ async (page) => {
   assert((await page.locator('.pager').innerText()).includes('01 / 60'), 'All world/city layouts browse after disconnecting network');
   await page.context().setOffline(false);
   await page.goto(`${root}tests/`);
-  await page.waitForFunction(() => document.documentElement.dataset.result);
+  await page.waitForFunction(() => document.documentElement.dataset.result,null,{timeout:120000});
   assert(await page.locator('html').getAttribute('data-result') === 'pass', 'Browser rule/localization/storage tests');
   await page.goto('http://127.0.0.1:8001/archive/');
   await page.waitForFunction(() => document.documentElement.dataset.ready === 'true');

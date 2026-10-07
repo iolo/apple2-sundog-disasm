@@ -40,7 +40,7 @@ function sameTree(value, expected) {
 }
 
 // `start` remains immutable; equipment is active, independently owned state.
-// Version20 owns landed machinery; flight/navigation remain a later boundary.
+// Regional content opts into version23 flight; legacy consumers keep landed scopes.
 export function campaignSaveCodec(content, geometry, cityGeometry=null) {
   // Own the content used for replay validation; later caller edits cannot
   // retroactively change what this codec accepts.

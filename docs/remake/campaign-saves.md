@@ -1,10 +1,32 @@
-# Campaign save boundary — through R08m
+# Campaign save boundary — through R09f
 
-R08l activates version22, scope`landed-ground-1`, in the live UI. The asset loader
-supplies`ground:{maps,cityWalk,surfaceWalk}` to the codec for all campaign saves.
-R08m verifies319 rule groups and the combined servicing/ground reload journey.
-A city-only codec remains version21 for isolated historical consumers and rejects
-version22 rather than loading a scene it cannot render.
+R09 activates version23, scope`regional-flight-1`, in the live UI. The asset
+loader supplies `regional:true`, flight defaults and
+`ground:{maps,cityWalk,surfaceWalk}`. Ground-only and city-only consumers retain
+versions22 and21 respectively and reject newer scopes they cannot render.
+The [R09 completion audit](r09-completion.md) records345 rule groups and667 UI
+checks, including a two-system trade/return/reload journey.
+
+Version23 adds `regional:{shipLocation,podWorldId,colonyPosition,cities,
+cargoProceeds,legacyDialogueSurface}` and
+`flight:{motion,refuelAt,lastEvent}`. The archive owns56 dormant ordinary city
+economies; the active exchange owns the remaining city. Cargo and all17 cryogens
+have one owner across warehouses and pod. Money plus stored purchase costs is
+bounded by creation wealth and validated personal/cargo gross proceeds.
+Ship and pod worlds remain independent when a pod is left behind.
+
+Regional validation checks membership, destination geometry, generated colony
+terrain, motion kind/target/duration/interpolation, charge requirements, engine
+flags and a single distress deadline. All18 capitals and57 ordinary cities plus
+Banville have landing/access/save coverage. Mid-launch, sublight, charging,
+landing and distress reloads continue with identical clock, RNG and resources.
+All historical versions1–22 validate before regional metadata is added; they
+cannot inject flight or archive fields. An open historical conversation retains
+its creation surface coordinates in a strictly bounded `legacyDialogueSurface`
+hint until verified return, preserving old quotes. New counters use actual city
+tiles. See [regional ownership](regional-world.md) and [flight rules](flight.md).
+
+The following version22 description records the earlier ground-only boundary.
 
 Version22 adds`ground:{worldId,cityId,podCityId,colonyPosition,camera}` and the
 `surface` travel scene. It retains the existing travel position, pod cargo and
@@ -37,7 +59,8 @@ including all21 legacy schemas, ground travel round trips, key-order independent
 imports, source-arrival recovery, remote-service rejection and malformed saves.
 
 `campaignSaveCodec(content, geometry, cityGeometry)` writes `sundog-campaign`
-version22 with ground content (version21 for city-only content), and validates/upgrades version1 `landed-ship-1`,
+version23 with regional content, version22 with ground content (version21 for
+city-only content), and validates/upgrades version1 `landed-ship-1`,
 version2 `landed-engineering-1`, version3 `landed-city-1`, version4 `landed-bank-1`,
 version5 `landed-rooms-1`, version6 `landed-occupants-1`, version7 `landed-traffic-1`
 version8 `landed-dialogue-1`, version9 `landed-lodging-1`, version10 `landed-taverns-1`
@@ -109,7 +132,8 @@ The state has eleven explicit parts:
   Depot purchases change hull/fuel without rewriting the immutable `start` record.
   Hull remains from its initial value through16; fuel/charges permit0–255.
   Shield targets follow source button steps (0,63,64,127,128,191,192,255).
-  Warp and engine fields remain inactive pending R09. Historical18/19 require
+  Version23 activates warp charge/target/destination and engine motion; older
+  schemas require those fields to remain inactive. Historical18/19 require
   fuel multiples of16 or255 and zero/off machinery before migration.
 
 - `start`: the immutable creation record, including recipe/seed, both RNG states,
@@ -254,12 +278,13 @@ Stored/imported JSON has no dependency on that internal name.
 R04h uses `codec.create`, `make`, `parse` and the four-slot store for the campaign
 menu and character-to-ship handoff, retaining the complete creation record.
 There is no automatic save. A legacy slot is upgraded in memory on load and written
-as version22 only on explicit save. The raw original slot remains the comparison
+as version23 in the live app only on explicit save. The raw original slot remains the comparison
 record for stale-write protection. Version21 derives old occupancy after historical
 checks; old formats cannot inject parked positions or the new field. Detached
 interior saves use the connected original ship-section collision region.
 Version22 additionally supports other-city outdoor travel and the surface.
-Other-city transactions and flight/warp controls remain outside this scope.
+Version23 extends that boundary to other-city transactions and flight/warp
+controls, retaining historical validation for version22.
 See [city walking](city-walking.md) for the source trace and active-position rules.
 See [city buildings](city-buildings.md) for door dispatch and bank service scope.
 See [building interiors](building-interiors.md) for supported room layouts and adaptations.
