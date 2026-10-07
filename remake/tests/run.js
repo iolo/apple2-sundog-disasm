@@ -1,6 +1,7 @@
 import { regionalSaveTests } from './regional-saves.js';
 import { campaignEngineeringTests } from './campaign-engineering.js';
 import { shipPowerTests } from './ship-power.js';
+import { shipCombatTests } from './ship-combat.js';
 import { campaignMachineryTests } from './campaign-machinery.js';
 import { equipmentFailureTests } from './equipment-failures.js';
 import { campaignDepotTests } from './campaign-depot.js';
@@ -111,6 +112,7 @@ await equipmentTests(test, equal);
 await equipmentFailureTests(test, equal);
 await campaignEngineeringTests(test, equal);
 await shipPowerTests(test, equal);
+await shipCombatTests(test, equal);
 await campaignMachineryTests(test, equal);
 await depotTests(test, equal);
 await campaignDepotTests(test, equal);

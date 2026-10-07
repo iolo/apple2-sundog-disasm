@@ -1,5 +1,30 @@
 # SunDog web remake progress
 
+## R10a — Source ship-combat core — 2026-10-07
+
+Added isolated ship encounter production, enemy movement/retreat/attacks,
+laser/cannon fire, shields, component/hull damage and cargo jettison. The source
+jump-table audit corrects several easy-to-miss rules: pending attacks run even
+during movement cooldown/aim/retreat; cryogens qualify for pirate production;
+jettison draws for empty/auxiliary slots; signed16 enemy strength overflow uses
+32767; surviving hull penetration can select multiple groups; an inoperative
+group's retained record pointer can cause defeat without changing actual hull.
+These are source-derived rules, not yet native-emulator observations.
+
+Fifteen focused groups pass under Node and in the full360-group Chrome
+154.0.8037.97 run, with no failures or page errors. The tests retain literal
+encounter/fire vectors and an independent byte/carry RNG oracle, and verify
+draw ordering, strict comparisons, atomic guards and caller ownership. Receipt:
+`docs/remake/r10a-rules-validation.json`; source/scope trace:
+`docs/remake/ship-combat.md`.
+
+R10 remains in progress. The core is not yet connected to live version23
+campaign machinery, controls or saves. Next: original-game encounter evidence,
+ground threats/combat, enemy dialogue and negotiation, tactical controls,
+versioned encounter/loss persistence, bounty/wreck/defeat/recovery, localized UI
+and ordinary-control avoid/fight/lose acceptance. R09 remains complete; colony
+progression remains R11. The user PRD is untouched and untracked.
+
 ## R09f — Regional flight acceptance and completion — 2026-10-07
 
 Closed the remaining navigation, regional content, persistence and regression
