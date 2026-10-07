@@ -70,3 +70,8 @@ must equal immutable creation coordinates, and clears on its verified return.
 This preserves old quoted prices while new regional conversations use the actual
 entry tile. Tests cover source valuation27 at tile11/8, historical valuation33,
 exact replay, invalid hints and atomic hint removal.
+
+R09 is complete at R09f. The [completion audit](r09-completion.md) and
+[validation inventory](r09-validation-summary.json) supersede intermediate
+checkpoint totals:345 rule groups,667 UI checks and the audited ordinary-play
+two-system trade/refuel/return/reload journey pass.

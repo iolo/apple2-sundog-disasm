@@ -244,7 +244,7 @@ English/Korean text and relevant save fields are added with each feature.
 | R06 — City and building exploration **(complete, R06s)** | Integrate live city tiles, runtime map composition/variants, ship-to-city transitions, doors/interiors, basic NPC interaction and the dialogue interpreter/actions needed here. | Leave and reenter ship/buildings without losing state; known tile/door locations behave correctly; a recorded dialogue branch works in both languages. Depends on R05. |
 | R07 — Trading and banking **(complete, R07h)** | Implement shops, cash/system accounts, transfers, exchange quotes, buy/sell, warehouse ownership, cargo loading and capacity. Resolve price/stock update rules and relevant dialogue conditions. | Local trade loop reconciles cash, banks, stock, warehouse and cargo; insufficient funds/capacity cannot partially commit. Test manual-described bank-first purchases and local deposits against source/runtime. Depends on R06. |
 | R08 — Engineering and ground transport **(complete, R08m)** | Implement equipment failures/replacement, repair/fuel services, ship readiness, pod boarding/departure, surface traversal and return. Resolve walkable/drivable terrain and ship/pod/cargo ownership. | A damaged ship can be serviced with proper costs; pod can reach a supported destination and return with inventory intact; invalid terrain and transitions are rejected. Depends on R07. |
-| R09 — Flight and regional world | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
+| R09 — Flight and regional world **(complete, R09f)** | Integrate verified system/planet/city associations and full live map dataset. Implement navigation scales, destination confirmation/cancellation, launch, orbit, in-system travel, warp, landing, fuel/charge/time and failure paths. | Travel between two systems, land, trade, return and reload with consistent location/resources. Validate all content references and reachability of required campaign destinations. Depends on R08. |
 | R10 — Encounters and combat | Complete dialogue predicates/actions, ground threats, pirate encounters, negotiation/evasion, tactical controls, weapons/shields/damage, cargo jettison and defeat/recovery. | Deterministic fixtures cover avoid/fight/lose outcomes; at least one ground and one space encounter has original-game evidence; timing is independent of display refresh. Depends on R09. |
 | R11 — Colony campaign | Implement the complete verified contract progression: finding Banville, goods requirements/deliveries, cryogen discovery/transport, staged updates and completion. Complete any remaining campaign-critical content. | Fresh-game-to-ending playthrough using ordinary controls and legitimate resource transactions; duplicate deliveries cannot advance twice; save/resume during progression preserves requirements. Depends on R07–R10 and R01's early campaign research. |
 | R12 — Presentation and audio | Complete SVG coverage for reachable content, source-informed sound effects, transition polish, controls/help, English/Korean editorial pass and small-viewport handling. Add hosted offline caching only if chosen. | No untranslated reachable strings/missing glyphs, missing art, external runtime requests or inaccessible essential controls; audio mute/activation works. Depends on R11; incremental polish is allowed earlier. |
@@ -461,6 +461,17 @@ R06 still needs special city composition and service-dispatch review, followed
 by its final completion audit; food/item trading retains R07 ownership.
 
 ## Validation and completion
+
+Checkpoint R09f (2026-10-07) closes R09. The final ordinary-play journey buys,
+transports and sells cargo across two systems, refuels abroad and returns home
+through repeated reloads. All 345 rule groups and 667 UI checks pass in Chrome
+154.0.8037.97; 21 exporter tests, 169 deterministic artifacts and 584 classified
+source-string records verify. Coverage includes all 18 worlds, all 57 ordinary
+city landings plus Banville, independent economies and pods, version23 flight
+saves, historical migration and affected R08 services/ground/room regressions.
+See `docs/remake/r09-completion.md` and `r09-validation-summary.json` for the
+requirement audit, current receipts and explicit timing/evidence boundaries.
+Next: R10 encounters and combat; colony contract progression remains R11.
 
 Checkpoint R09e (2026-10-07) closes the source audit: corrected left-shift flight
 duration and strict engine comparison, generated-terrain colony validation,

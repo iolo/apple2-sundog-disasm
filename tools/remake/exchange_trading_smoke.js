@@ -120,7 +120,8 @@ async browserPage => {
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Rejected import preserves all live progress');
     const previous=structuredClone(again);previous.version=13;delete previous.state.regional;delete previous.state.flight;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
     assert((await importGame(previous)).includes('imported'),'Version13 traded exchange progress imports');
-    const migratedExchange=structuredClone(again.state);migratedExchange.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedExchange.travel.cityPosition);
+    const migratedExchange=structuredClone(again.state);migratedExchange.regional.cargoProceeds=0; // Historical local sales needed no regional proceeds ledger.
+    migratedExchange.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedExchange.travel.cityPosition);
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedExchange),'Version13 migration preserves cargo, money, market, offers and RNG');
     const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     assert((await importGame(legacy)).includes('imported'),'Version12 exchange preview imports through normal UI');

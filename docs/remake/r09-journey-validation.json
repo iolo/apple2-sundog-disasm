@@ -72,8 +72,8 @@
     "origin": "system-01/world-01/city-01",
     "destination": "system-02/world-03/city-09",
     "pricePaid": 22700,
-    "saleProceeds": 28800,
-    "minutes": 180,
-    "fuel": 228
+    "saleProceeds": 35700,
+    "minutes": 292,
+    "fuel": 172
   }
 }

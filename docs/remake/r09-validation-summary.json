@@ -1,0 +1,114 @@
+{
+  "milestone": "R09",
+  "checkpoint": "R09f",
+  "date": "2026-10-07",
+  "status": "pass",
+  "ruleGroups": 345,
+  "browserUiChecks": 667,
+  "receipts": [
+    {
+      "receipt": "r09-final-rules-validation.json",
+      "script": null,
+      "checks": 345,
+      "kind": "rules",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-r08-journey-validation.json",
+      "script": "r08_journey_smoke.js",
+      "checks": 74,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-surface-validation.json",
+      "script": "surface_smoke.js",
+      "checks": 60,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-rooms-validation.json",
+      "script": "room_walk_smoke.js",
+      "checks": 102,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-banking-validation.json",
+      "script": "banking_smoke.js",
+      "checks": 44,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-exchange-validation.json",
+      "script": "exchange_trading_smoke.js",
+      "checks": 64,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-services-validation.json",
+      "script": "city_service_smoke.js",
+      "checks": 78,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-dialogue-validation.json",
+      "script": "dialogue_smoke.js",
+      "checks": 19,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-traders-validation.json",
+      "script": "trader_matching_smoke.js",
+      "checks": 75,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-taverns-validation.json",
+      "script": "tavern_smoke.js",
+      "checks": 43,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-navigation-validation.json",
+      "script": "navigation_smoke.js",
+      "checks": 44,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    },
+    {
+      "receipt": "r09-journey-validation.json",
+      "script": "r09_journey_smoke.js",
+      "checks": 64,
+      "kind": "ui",
+      "browser": "154.0.8037.97"
+    }
+  ],
+  "staticChecks": {
+    "sourceStringRecords": 584,
+    "exporterTests": 21,
+    "deterministicArtifacts": 169
+  },
+  "journey": {
+    "origin": "system-01/world-01/city-01",
+    "destination": "system-02/world-03/city-09",
+    "pricePaid": 22700,
+    "saleProceeds": 35700,
+    "minutes": 292,
+    "fuel": 172
+  },
+  "boundaries": [
+    "Planetary overlays use explicit resumable5/20 game-minute browser timing; no cycle-equivalent timing or new native-emulator flight capture is claimed.",
+    "All58 landing/access/save coverage uses declared working-pilotage/colony fixtures; the two-system UI journey starts a fresh character and changes campaign state only through ordinary controls.",
+    "System connectivity is checked for acceptance seed12345, not every possible generated seed.",
+    "Embedded rule lists are counted once. Failed and truncated intermediate reports are excluded.",
+    "Encounters/combat remain R10; colony deliveries/growth/ending remain R11."
+  ]
+}

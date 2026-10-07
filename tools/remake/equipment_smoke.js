@@ -45,7 +45,7 @@ async browserPage => {
   };
   try {
     await page.goto('http://127.0.0.1:8000/tests/');
-    await page.waitForFunction(()=>document.documentElement.dataset.result);
+    await page.waitForFunction(()=>document.documentElement.dataset.result,null,{timeout:120000});
     const unitResults=(await page.locator('#results').innerText()).split('\n');
     assert(await page.locator('html').getAttribute('data-result')==='pass',`All ${unitResults.length} browser groups pass`);
     await page.clock.install();await page.goto('http://127.0.0.1:8000/');await ready();

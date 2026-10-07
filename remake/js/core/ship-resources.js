@@ -5,7 +5,7 @@ export const initialShipResources=start=>structuredClone(start.shipResources);
 
 // Version20 activates landed guns/shields and permits consumed fuel levels.
 // Historical18/19 validation keeps all charges off and depot-only fuel values.
-// Warp destinations/charging and engine motion retain their R09 boundary.
+// Flight-enabled scopes accept active warp/engine state; legacy scopes keep it off.
 export function validateShipResources(value,start,{machinery=true,flight=false}={}) {
   if(!keys(value,['hull','fuel','warp','shields','guns','enginesPowered'])||
     !Number.isInteger(value.hull)||value.hull<start.shipResources.hull||value.hull>16||

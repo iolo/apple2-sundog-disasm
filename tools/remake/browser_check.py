@@ -39,7 +39,7 @@ def main():
         threading.Thread(target=server.serve_forever,daemon=True).start()
         try:
             cli=['npx','--yes','--package','@playwright/cli','playwright-cli','-s=remake']
-            opened=subprocess.run([*cli,'open','http://127.0.0.1:8000/tests/','--config=tools/remake/chrome.config.json'],cwd=ROOT,capture_output=True,text=True)
+            opened=subprocess.run([*cli,'open','about:blank' if args.script else 'http://127.0.0.1:8000/tests/','--config=tools/remake/chrome.config.json'],cwd=ROOT,capture_output=True,text=True)
             if opened.returncode or '### Error' in opened.stdout:
                 raise RuntimeError(opened.stdout+opened.stderr)
             checked=subprocess.run([*cli,'run-code',code],cwd=ROOT,capture_output=True,text=True)

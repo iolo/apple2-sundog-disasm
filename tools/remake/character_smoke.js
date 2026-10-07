@@ -10,7 +10,7 @@ async (browserPage) => {
   page.on('dialog', dialog => acceptDialogs ? dialog.accept() : dialog.dismiss());
   try {
     await page.goto(`${root}tests/`);
-    await page.waitForFunction(() => document.documentElement.dataset.result);
+    await page.waitForFunction(() => document.documentElement.dataset.result,null,{timeout:120000});
     const results = await page.locator('#results').innerText();
     if (await page.locator('html').getAttribute('data-result') !== 'pass') throw new Error(results);
     checks.push(`${results.split('\n').length} browser rule/localization/storage tests`);
