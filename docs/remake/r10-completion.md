@@ -6,7 +6,7 @@ do not establish completion of the live campaign milestone.
 
 | Original requirement | Current evidence | Remaining work |
 | --- | --- | --- |
-| Complete dialogue predicates/actions | Existing Game16 interpreter has source predicate/action/builtin handlers. Predicate12–14 case pointers at `$047C/$047E/$0480` target the default false branch; builtin dispatch `$10E8` covers0–11, with later codes taking its default. [R10f encounter dialogue](encounter-dialogue.md) adds actual kind15/16/18/19/22 setup, bank/personal money outcomes, charged free-gift transfer, replay and enemy localization. R10h owns ground context/outcomes in live24. R10j connects frozen actual space context/verified returns in opt-in26. R10r connects live Comm and frozen actual conversation/save owners. | R10x observes native target224 reaching the zero-divisor trap. Complete playable handling of this source exception and remaining ordinary negotiation acceptance. |
+| Complete dialogue predicates/actions | Existing Game16 interpreter has source predicate/action/builtin handlers. Predicate12–14 case pointers at `$047C/$047E/$0480` target the default false branch; builtin dispatch `$10E8` covers0–11, with later codes taking its default. [R10f encounter dialogue](encounter-dialogue.md) adds actual kind15/16/18/19/22 setup, bank/personal money outcomes, charged free-gift transfer, replay and enemy localization. R10h owns ground context/outcomes in live24. R10j connects frozen actual space context/verified returns in opt-in26. R10r connects live Comm and frozen actual conversation/save owners. | R10y implements a replayable stopped conversation and explicit save access for the observed224 trap, with no invented payout. Complete remaining ordinary space negotiation acceptance. |
 | Ground threats | [Ground chase core](ground-chase.md) ports Game21's eager gate, actual map/system context, window, player/chaser ticks, blocked-step catch and escape. The controlled R10d path matches records/RNG. [Ground combat core](ground-combat.md) implements source actors, collision, weapons, shields, surrender and robbery. [R10h live host](ground-encounter-ui.md) connects movement/due clocks, chase, mandatory dialogue, combat, version24 saves and verified personal returns. R10r retains these owners in live29; its [68-check exchange journey](r10r-exchange-trading-validation.json) starts a fresh seed12345 character and escapes two naturally produced city chases using ordinary held-arrow controls without personal/economic losses. | R10w proves ordinary fresh-character victory/knockout, legitimate laser/shield use and explicit earlier-slot recovery. R10x proves ordinary peaceful payment negotiation and exact persistence. Complete ordinary terminal defeat acceptance; retain native background/timing adaptation boundaries. |
 | Pirate encounters | [Ship combat core](ship-combat.md) implements source production, movement, firing, damage and jettison. [R10i ship host](space-host.md) runs production during actual powered flight before power/combat, owns contact flags and system cooldown, and commits failures/hull/defeat/RNG in opt-in25. R10r activates version29 with live contact/sensors, tactical controls and source frame/inhibit context;110 controlled browser checks pass. | Complete ordinary fresh-character space encounter acceptance. |
 | Negotiation/evasion | Source cores include retreat/surrender flags, ground boundary escape and cargo-induced retreat. [Native space dialogue](encounter-reference.md) shows Comm and Agree/Refuse/Dismiss It. R10j connects actual frozen context/verified returns and the six-decrement/seventh-call cargo deadline to ticks/saves, including source exit aggression and jettison retaining the deadline. R10h live fixtures exercise ground escape, surrender/cancellation and refusal/fight on the same activation. R10r exposes actual Comm, verified Agree deadline and source exit aggression in live controls, with exact fresh-page restores. | R10x proves ordinary peaceful ground payment. Complete fresh-character ordinary space negotiation acceptance; Agree is not a permanent truce. |
@@ -228,3 +228,24 @@ The [R10x inventory](r10x-validation-summary.json) separates these results from
 prior rule and controlled UI baselines. No gameplay core changed. Fatal Warp,
 rare-branch playable handling, ordinary space avoid/fight/lose, ship equipment,
 cargo-demand/jettison and ordinary terminal defeat/recovery remain required.
+
+## R10y defined rare-dialogue exception handling
+
+[The source-fault boundary](dialogue-source-fault.md) now recognizes the captured
+rare224 failure as a stopped, replayable conversation. It preserves the source
+quote/flag and second RNG draw, gives no payout or source return, and exposes
+bilingual checkpoint access. Unsupported targets, malformed descriptors and
+fault gameplay inputs still reject atomically. Unsafe dictionary writes are an
+explicitly skipped native failure side effect; no reward text is invented.
+
+All510 rules,48 isolated fault/checkpoint UI checks,105 existing dialogue panel
+checks and100 controlled live ground checks pass.23 exporter tests,171 artifacts,
+584 source strings and the14-context/33-artifact native reference verify. The
+new host fixture proves JSON replay, freeze and no reward commit under declared
+colony2; its forged immutable phase remains rejected by the campaign codec.
+Ordinary colony advancement/reachability is not claimed, and no save-version
+change or imported interpreter frame is introduced. See the
+[R10y inventory](r10y-validation-summary.json).
+
+R10 remains open for fatal Warp, ordinary space avoid/fight/lose, ship equipment/
+shields, cargo-demand/jettison and ordinary terminal defeat/recovery acceptance.

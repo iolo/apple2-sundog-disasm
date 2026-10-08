@@ -43,6 +43,13 @@ background or Apple II video/cycle parity.
 
 ## Saves and outcomes
 
+R10y adds [defined rare-dialogue failure handling](dialogue-source-fault.md).
+The source fault remains a frozen dialogue activation, with no gameplay
+continuation or reward. Its English/Korean panel retains saved-game access;
+the fault derives from existing replay rather than an imported frame. The
+declared colony2 host fixture does not establish ordinary colony reachability
+or an importable live colony save, and strict creation validation is retained.
+
 All four campaign slots and JSON import/export support partial due clocks,
 chase, mandatory dialogue, combat and post-fight dialogue. Restore validates and
 replays before replacing live state, clears held input and resumes paused. It

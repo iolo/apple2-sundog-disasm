@@ -7,10 +7,26 @@ import { saleItem } from './personal-trade.js';
 // Source procedure34's redirect loop, with procedure23's exact ordering:
 // controls -> selection -> rendering -> transition predicates -> replies -> action.
 export function enterDialogueState(content,previous,target,{offerStep}={}) {
+  if(previous.fault)throw new Error('dialogueSourceFault');
   if(previous.ended)throw new Error('dialogueAlreadyEnded');
   const frame=structuredClone(previous),s=frame.state,v=s.locals;
   const handlers=dialogueEffects(frame,content.items);
   for(let hops=0;hops<64;hops++) {
+    if(target===224) {
+      const exception=content.scripts.exceptions?.[224];
+      if(s.kind!==18||s.entry!==224||!s.flags[125]||frame.block!==null||
+        exception?.block!==103||exception.kind!=='zeroRandomSelector'||exception.runtimeError!==6)
+        throw new Error('unsupportedDialogueState');
+      // Original Game16 proc24 draws for selector0, then MODI0 traps. Preserve
+      // its RNG/flag/quote owners, with no invented message, award or return.
+      // Browser adaptation: skip unsafe dictionary writes and retain a frozen,
+      // replayable conversation with access to the existing checkpoint UI.
+      const random=sourceRandom(frame.randomState);random.next();frame.randomState=random.state;
+      v[19]=false;v[43]=0;frame.offerControls=false;frame.block=103;
+      frame.fault={state:224,block:103,reason:exception.kind,runtimeError:6};
+      frame.view={state:224,word:null,text:'',replies:[]};
+      return frame;
+    }
     if(!Number.isInteger(target)||target<0||target>223)throw new Error('unsupportedDialogueState');
     if(target<16) {
       const redirect=handlers.builtin(target,offerStep);
@@ -92,6 +108,7 @@ export function dialogueSale(content,frame) {
 // Explicit browser inputs replace pointer hit-testing and CPU-loop timing.
 // Timeout is a caller event in source delay units, not a wall-clock assertion.
 export function advanceDialogue(content,previous,input) {
+  if(previous.fault)throw new Error('dialogueSourceFault');
   if(previous.ended||!previous.view)throw new Error('dialogueAlreadyEnded');
   const frame=structuredClone(previous),s=frame.state,v=s.locals;
   let target,offerStep;

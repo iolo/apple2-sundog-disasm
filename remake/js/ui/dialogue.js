@@ -4,6 +4,7 @@ import { roomDialogueInputAllowed } from '../core/room-counter.js';
 import { dialoguePurchase, dialogueSale } from '../core/dialogue-runner.js';
 
 export function dialogueMessage(frame,t,locale) {
+  if(frame.fault)return t('dialogueInterruptedHint');
   if(locale==='en')return frame.view.text;
   return t(`dialogueMessage${frame.block}_${frame.view.word}`,{
     item:t(`item${frame.state.locals[41]&31}`),price:frame.state.locals[108].replace(/ Cr$/,'')||frame.state.locals[106],
@@ -11,6 +12,11 @@ export function dialogueMessage(frame,t,locale) {
 }
 
 export function dialoguePanel({frame,assets,t,locale,message='',encounter=false}) {
+  if(frame.fault)return `<div class="help-shade"><section id="dialogue-panel" class="help dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="dialogue-title">
+    <header><h2 id="dialogue-title">${t('dialogueInterrupted')}</h2><button id="dialogue-language" data-walk="language">${t('language')}</button></header>
+    <p id="dialogue-text" role="status">${escapeHTML(dialogueMessage(frame,t,locale))}</p>
+    <footer><button id="dialogue-exit" data-walk="back">${t('backShort')}</button><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
+  </section></div>`;
   const v=frame.state.locals;
   encounter ||= [15,16,18,19].includes(frame.state.kind);
   const visitor=[17,21,22].includes(frame.state.kind),bartender=frame.state.kind===12;

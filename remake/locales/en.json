@@ -254,6 +254,8 @@
   "dialogueBack": "Back / leave",
   "dialogueScope": "Choose goods for a quote, then buy into an empty carried slot.",
   "dialogueUnavailable": "This conversation could not continue. Your progress is unchanged.",
+  "dialogueInterrupted": "Conversation interrupted",
+  "dialogueInterruptedHint": "The conversation could not continue. Load an earlier save, or return to the menu.",
   "dialogueHistoryFull": "This conversation is too long to save. Leave the conversation to continue.",
   "dialogueMessage94_147": "What can I get you?",
   "dialogueMessage94_150": "What else can I show you?",

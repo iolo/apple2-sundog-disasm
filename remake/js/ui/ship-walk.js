@@ -376,7 +376,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if(dialogueFrame) {
       for(const child of root.children)child.inert=true;
       root.insertAdjacentHTML('beforeend',dialoguePanel({frame:dialogueFrame,assets,t,locale:locale(),message:dialogueError||spaceMessage,encounter:!!groundEncounter()||!!campaignSpace?.communication.conversation}));
-      (root.querySelector('#dialogue-panel').querySelector(`[id="${focus||''}"]:not(:disabled)`)||root.querySelector('#dialogue-cancel')).focus({preventScroll:true});
+      (root.querySelector('#dialogue-panel').querySelector(`[id="${focus||''}"]:not(:disabled)`)||root.querySelector('#dialogue-cancel')||root.querySelector('#dialogue-saves')).focus({preventScroll:true});
     } else if (survival.sleeping || survival.dead) {
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? campaignSpace?.defeat?'shipDestroyed':'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>${campaignSpace&&!outsideShip()?`<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>`:''}`}</section></div>`);
@@ -554,7 +554,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if (event.isComposing) return;
     if(event.target.id==='walk-surface')settleGroundClock();
     if(dialogueFrame) {
-      if(event.key==='Escape'){event.preventDefault();dialogueAction({type:'cancel'});render()}
+      if(event.key==='Escape'){event.preventDefault();if(!dialogueFrame.fault){dialogueAction({type:'cancel'});render()}}
       if(event.key==='Tab') {
         const buttons=[...root.querySelectorAll('#dialogue-panel button:not(:disabled)')],i=buttons.indexOf(document.activeElement);
         event.preventDefault();buttons[(i+(event.shiftKey ? -1 : 1)+buttons.length)%buttons.length].focus();

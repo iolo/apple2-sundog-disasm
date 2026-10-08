@@ -89,6 +89,18 @@ class ExportTests(unittest.TestCase):
             self.assertFalse(system['local16'])
             self.assertEqual(system['local29'], 0)
 
+    def test_native_reward_exception_is_separate_from_normal_dialogue_banks(self):
+        root = Path(__file__).resolve().parents[2]
+        data = json.loads(build()['data/dialogue.json'])
+        self.assertEqual([bank['block'] for bank in data['banks']], list(range(90, 103)))
+        self.assertEqual(data['exceptions'], {'224': dict(block=103, kind='zeroRandomSelector',
+            runtimeError=6, source='docs/reference/remake-reward-reference.json')})
+        native = json.loads((root / 'docs/reference/remake-reward-zero-modulus.json').read_text())
+        self.assertEqual(native['evaluationStack']['bytes'][:4], [0, 0, 5, 75])
+        trap = json.loads((root / 'docs/reference/remake-reward-zero-error.json').read_text())
+        self.assertEqual(trap['source']['cpu']['PC'], 0xd7ed)
+        self.assertEqual(trap['source']['randomBytes'], [151, 203, 5, 0])
+
     def test_dialogue_text_round_trips_dictionary_and_every_message(self):
         root = Path(__file__).resolve().parents[2]
         content = json.loads(build()['data/dialogue-text.json'])

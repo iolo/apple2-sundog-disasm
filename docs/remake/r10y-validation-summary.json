@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10y",
+  "checkpointStatus": "pass",
+  "baseCommit": "bf47887",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "rules": 510,
+  "uiChecks": 253,
+  "receipts": [
+    {
+      "file": "r10y-rules-validation.json",
+      "kind": "rule suite",
+      "checks": 510,
+      "browser": "155.0.8059.39",
+      "sha256": "40404748066bb3189b19d6e5df9558b329c8e22f2103c74709b3be70c9ed97c6"
+    },
+    {
+      "file": "r10y-source-fault-validation.json",
+      "kind": "declared isolated source fault and checkpoint UI",
+      "checks": 48,
+      "browser": "155.0.8059.39",
+      "sha256": "f11e681843659096a2de5138278ba6c04c3a3a9569045cc80ee12d24686bf8e7"
+    },
+    {
+      "file": "r10y-dialogue-validation.json",
+      "kind": "existing isolated source dialogue UI",
+      "checks": 105,
+      "browser": "155.0.8059.39",
+      "sha256": "bf65c6537ea2348d72823d15708e92a75f5257e945dc5c80e50a66d2549cbd0d"
+    },
+    {
+      "file": "r10y-ground-validation.json",
+      "kind": "controlled live ground UI",
+      "checks": 100,
+      "browser": "155.0.8059.39",
+      "sha256": "e379f05e5cdf0737720a863e33449040396f97598dbf8b9c0ce8faa358d23115"
+    }
+  ],
+  "staticChecks": {
+    "exporterTests": 23,
+    "deterministicArtifacts": 171,
+    "classifiedSourceStrings": 584,
+    "nativeReferenceContexts": 14,
+    "nativeReferenceArtifacts": 33,
+    "freshNativeCapture": false
+  },
+  "proven": [
+    "Defined stopped conversation for observed rare224 zero-divisor exception",
+    "Exact native two-draw vector and quote/flag ownership with unchanged personal cash and no reward return",
+    "Replay-derived fault, atomic input/descriptor rejection and frozen declared ground host",
+    "Bilingual interruption panel with existing save access and explicit earlier conversation recovery",
+    "Normal dialogue and controlled live ground regressions",
+    "Fault retains the existing Back-to-menu action when no earlier save exists"
+  ],
+  "adaptations": [
+    "Unsafe native dictionary writes skipped",
+    "Fault quote/flag remain in the pending conversation projection; campaign personal owners stay frozen until verified return",
+    "JavaScript remains usable with explicit checkpoint access"
+  ],
+  "scopeLimits": [
+    "Fault UI uses a declared source context and fixture codec with the real panels and IndexedDB",
+    "Colony2 host fixture is not an importable fresh campaign; strict immutable creation validation still rejects it",
+    "No ordinary rare-branch reachability or full live colony save is claimed",
+    "Conversation recovery is separate from ordinary campaign terminal recovery"
+  ],
+  "remaining": [
+    "Fatal native Warp pre-entry/return context",
+    "Ordinary fresh-character space avoid/fight/lose",
+    "Ordinary ship equipment/shields",
+    "Ordinary cargo-demand/Comm/jettison negotiation",
+    "Ordinary terminal defeat/recovery acceptance"
+  ],
+  "cleanup": {
+    "browser": "closed after checks",
+    "native": "No new native session; retained R10x clean-exit reference verified"
+  }
+}

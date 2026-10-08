@@ -50,8 +50,10 @@ source/native contexts, literal stack/RNG/quote/cash owners, dictionary mutation
 breakpoint cleanup and the owned emulator's clean exit0. The
 [reference manifest](../reference/remake-reward-reference.json) hashes33 artifacts.
 
-The remake continues to reject224 before publishing campaign changes. Final
-playable handling of this observed source exception remains R10 work. This
+At R10x the remake rejected224 before publishing campaign changes.
+[R10y now defines browser handling](dialogue-source-fault.md): a replayable,
+stopped conversation with the exact draws, no payout and explicit earlier-save
+access. This
 capture rules out claiming a verified10000Cr payout or inventing missing reward
 text. It does not establish ordinary rare-branch reachability or close the full
 [R10 requirement audit](r10-completion.md).

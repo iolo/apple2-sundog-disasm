@@ -62,10 +62,38 @@ export async function encounterDialogueTests(test,equal) {
       equal(s.state.flags[125],rewarded||reward);equal(s.randomState,r.state);equal(JSON.stringify(flags),before);
     }
   });
-  await test('Unsupported reward target224 rejects before publishing source flags, cash or RNG',()=>{
-    const c=context({kind:18,colonyProgress:2,randomState:0}),before=JSON.stringify(c);
-    equal(setupEncounterDialogue(c).state.entry,224);
-    fail(()=>startEncounterDialogue(content,c),'unsupportedDialogueState');equal(JSON.stringify(c),before);
+  await test('Native reward224 traps after two exact source draws without a payout or return',()=>{
+    const c=context({kind:18,colonyProgress:2,randomState:23}),before=JSON.stringify(c);
+    const prepared=setupEncounterDialogue(c);equal(prepared.state.entry,224);equal(prepared.randomState,2967);
+    const result=startEncounterDialogue(content,c),frame=result.conversation;
+    equal(frame.fault,{state:224,block:103,reason:'zeroRandomSelector',runtimeError:6});
+    equal(frame.randomState,379799);equal(frame.state.flags[125],true);
+    equal([frame.state.locals[100],frame.state.locals[104],frame.state.locals[106]],[10000,500,10000]);
+    equal(frame.view,{state:224,word:null,text:'',replies:[]});equal(frame.ended,false);equal(result.outcome,null);
+    equal(frame.dictionary,text.base);equal(frame.state.carried,c.carried);equal(frame.state.attributes,c.attributes);
+    equal(JSON.stringify(c),before);
+  });
+  await test('Stopped source dialogue restores exactly and refuses every gameplay input atomically',()=>{
+    const c=context({kind:18,colonyProgress:2,randomState:23}),r=startEncounterDialogue(content,c);
+    equal(restoreEncounterDialogue(content,c,JSON.parse(JSON.stringify(r.record)),{randomState:379799}),r.conversation);
+    const before=JSON.stringify({c,r,content});
+    for(const input of [{type:'cancel'},{type:'timeout'},{type:'reply',slot:0},{type:'purchase',slot:2},{type:'item',item:12}])
+      fail(()=>step(c,r.record,input),'dialogueSourceFault');
+    fail(()=>restoreEncounterDialogue(content,c,{seed:23,inputs:[{type:'cancel'}]}),'dialogueSourceFault');
+    fail(()=>restoreEncounterDialogue(content,c,r.record,{randomState:2967}),'invalidEncounterDialogue');
+    equal(JSON.stringify({c,r,content}),before);
+    for(const colonyProgress of [0,1])equal(startEncounterDialogue(content,{...c,colonyProgress}).conversation.fault,undefined);
+    const flags=[...c.flags];flags[125]=true;
+    equal(startEncounterDialogue(content,{...c,flags}).conversation.fault,undefined);
+  });
+  await test('Reward exception requires the verified semantic descriptor and leaves setup owners untouched on rejection',()=>{
+    const c=context({kind:18,colonyProgress:2,randomState:23}),before=JSON.stringify(c);
+    for(const descriptor of [undefined,{block:104,kind:'zeroRandomSelector',runtimeError:6},
+      {block:103,kind:'reward',runtimeError:6},{block:103,kind:'zeroRandomSelector',runtimeError:5}]) {
+      const bad={...content,scripts:{...scripts,exceptions:{224:descriptor}}};
+      fail(()=>startEncounterDialogue(bad,c),'unsupportedDialogueState');
+    }
+    equal(JSON.stringify(c),before);
   });
   await test('Ground police quotes every other scene from system valuation and owns bank money',()=>{
     for(let sceneMiddle=0;sceneMiddle<16;sceneMiddle++)if(sceneMiddle!==1) {
