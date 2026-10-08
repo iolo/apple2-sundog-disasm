@@ -120,6 +120,26 @@ function tacticalMachineryCycle(previous,s,content,delta) {
   return {state:next,cycles};
 }
 
+function finishFatalTacticalEntry(previous,s,content) {
+  let next=previous;
+  // A fatal startup call does not exit proc9. After its remaining calls,
+  // proc15 polls once and the main loop executes once before testing347.
+  for(const polling of [true,false]) {
+    const frame=beginShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,neutralShipControl(),
+      {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle,polling});
+    commitCampaignShipSource(next,frame.state);next.space.tactical.record=frame.tactical;
+    if(frame.due) {
+      next=machineryCycle(next,s,content,{defeatExit:true});
+      if(next.space.tactical) {
+        const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,frame.delta);
+        commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
+      }
+    }
+  }
+  leaveCampaignShipDeadline(next);clearCampaignTactical(next);
+  return machineryCycle(next,s,content,{defeatExit:true});
+}
+
 // Game13 main dispatch $2588 runs one Library24 call before Game12 consumes
 // the Game16 return bits. Keep the conversation frozen until that call ends;
 // the cargo deadline is only armed by the subsequent Game12 return branch.
@@ -153,7 +173,9 @@ export function enterCampaignShipTactical(previous,content,{warp=false}={}) {
     worldAngle:currentShipLocation(next).orbit.angle,frameLimit:5,grace:0});
   commitCampaignShipSource(next,prepared.state);
   next.space.tactical={record:prepared.tactical,control:neutralShipControl(),carry:0,trigger:initialShipTrigger()};
-  for(let i=0;i<prepared.startupCycles&&!s.dead&&!s.sleeping&&!next.space.defeat;i++)next=machineryCycle(next,s,content);
+  for(let i=0;i<prepared.startupCycles&&(!s.dead||next.space.defeat)&&!s.sleeping;i++)
+    next=machineryCycle(next,s,content,{defeatExit:!!next.space.defeat});
+  if(next.space.defeat&&next.space.tactical)next=finishFatalTacticalEntry(next,s,content);
   next.ship.minutes=s.minutes;next.ship.condition={...s.condition};next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
   if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
   if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};

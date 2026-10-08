@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10t",
+  "emulator": "MAME0.285 / unenhanced apple2e / owned Qt debugger",
+  "scope": "Declared existing-main startup re-entry, counter0 and fatal hit; no ordinary encounter or fresh-character acceptance.",
+  "runner": "tools/remake/capture_startup_defeat_reference.py",
+  "terminal": {
+    "ownedChild": 3286278,
+    "exitCode": 0,
+    "clean": true
+  },
+  "contexts": [
+    {
+      "file": "remake-startup-defeat-main.json",
+      "segment": 12,
+      "offset": "0x1388"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first.json",
+      "segment": 12,
+      "offset": "0x655"
+    },
+    {
+      "file": "remake-startup-defeat-fire-before.json",
+      "segment": 24,
+      "offset": "0x84c"
+    },
+    {
+      "file": "remake-startup-defeat-fatal.json",
+      "segment": 24,
+      "offset": "0x96a"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first-after.json",
+      "segment": 12,
+      "offset": "0x658"
+    },
+    {
+      "file": "remake-startup-defeat-startup-second-after.json",
+      "segment": 12,
+      "offset": "0x6c7"
+    },
+    {
+      "file": "remake-startup-defeat-startup-third-after.json",
+      "segment": 12,
+      "offset": "0x752"
+    },
+    {
+      "file": "remake-startup-defeat-menu-before.json",
+      "segment": 12,
+      "offset": "0xf19"
+    },
+    {
+      "file": "remake-startup-defeat-menu-after.json",
+      "segment": 12,
+      "offset": "0xf2b"
+    },
+    {
+      "file": "remake-startup-defeat-first-main.json",
+      "segment": 12,
+      "offset": "0x1388"
+    },
+    {
+      "file": "remake-startup-defeat-main-exit-check.json",
+      "segment": 12,
+      "offset": "0x14cc"
+    },
+    {
+      "file": "remake-startup-defeat-death.json",
+      "segment": 7,
+      "offset": "0x4b2"
+    }
+  ],
+  "notProven": [
+    "Fatal warp pre-entry call",
+    "Fatal second/third startup call by a native capture",
+    "Fatal Comm dispatcher",
+    "Ordinary encounter/recovery acceptance"
+  ],
+  "artifacts": [
+    {
+      "file": "remake-startup-defeat-startup-setup.json",
+      "sha256": "3d641676029424556c2247ec0831d415b75fb9524beff27a3cc90b8bccbdc9b2"
+    },
+    {
+      "file": "remake-startup-defeat-fatal-setup.json",
+      "sha256": "be03a585886226dea62eb882b8da18d7dabc0ab773be5973c36d1f41d26f73cc"
+    },
+    {
+      "file": "remake-startup-defeat-main.json",
+      "sha256": "a7cb5b804221aa20a5ed12b004f6e753f9c5f4526398782f52c6bdf8157521e3"
+    },
+    {
+      "file": "remake-startup-defeat-main.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first.json",
+      "sha256": "60b064da92c8863987d20a4d73e381ad83ae3027df3f09c2d1e4861954ae5424"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-startup-defeat-fire-before.json",
+      "sha256": "5350c1a0b01c22e010ce8a6023b07aa4c2b8812b183cd330ea68fb0bed36e8f7"
+    },
+    {
+      "file": "remake-startup-defeat-fire-before.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-startup-defeat-fatal.json",
+      "sha256": "1418af11a5d3fbfcad40254ab5eb1c90cc35c8d6d909fb6a85c8ac179795c1dd"
+    },
+    {
+      "file": "remake-startup-defeat-fatal.png",
+      "sha256": "a76cb8f79e6ff8ae6b80829010c9b5c1d8950e05c069316372efc12f21974af7"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first-after.json",
+      "sha256": "69adaca551dc8059bdbed954dc8f6e22fc7525e240e808cbbe2fd956911e7e07"
+    },
+    {
+      "file": "remake-startup-defeat-startup-first-after.png",
+      "sha256": "a76cb8f79e6ff8ae6b80829010c9b5c1d8950e05c069316372efc12f21974af7"
+    },
+    {
+      "file": "remake-startup-defeat-startup-second-after.json",
+      "sha256": "cba9d4a14f6238be3656f9b97ebbfed5bf74b681ccb1cadc08c8e9bcbcac97e0"
+    },
+    {
+      "file": "remake-startup-defeat-startup-second-after.png",
+      "sha256": "6ba992b0fb193fcb298c1c623beef90fbb7818189ef48d8a82ca7900e121dc90"
+    },
+    {
+      "file": "remake-startup-defeat-startup-third-after.json",
+      "sha256": "0067abab0827bcb4fd71782074aa4faf92e1c952949e8f7c5ec6fce064751214"
+    },
+    {
+      "file": "remake-startup-defeat-startup-third-after.png",
+      "sha256": "c6456f8bbe166153e9250c03d96a2c2a70189373700f62e9d740ae7ecf616488"
+    },
+    {
+      "file": "remake-startup-defeat-menu-before.json",
+      "sha256": "a54f63d711a92cfb9543d8653e51f80d313e0133b8aa8d4c42bb35866b36e36f"
+    },
+    {
+      "file": "remake-startup-defeat-menu-before.png",
+      "sha256": "daf9fc5974bb4046ff685e316e6b8e4aab64f6360f12c2d34f1718ddcd0d9bb1"
+    },
+    {
+      "file": "remake-startup-defeat-menu-after.json",
+      "sha256": "a1b526ee78f96f3f56401447f2764d0696085f59da1c19d22b10a23f1e908545"
+    },
+    {
+      "file": "remake-startup-defeat-menu-after.png",
+      "sha256": "1c81c137b2c33ba96bb90fe14164a8114779f802bbbdd2afad7f709abfa8d7d0"
+    },
+    {
+      "file": "remake-startup-defeat-first-main.json",
+      "sha256": "3a1996e206add50d5d41b1233ab16bfc84326e2f629a8c24e7a57493ca229c8a"
+    },
+    {
+      "file": "remake-startup-defeat-first-main.png",
+      "sha256": "f7e58722fd2a0a9230b166e0510d6b1012421c199194999584ebd98ca18ba61f"
+    },
+    {
+      "file": "remake-startup-defeat-main-exit-check.json",
+      "sha256": "d7a031f07c23b6a1c590c960e2a0c49b65196cb0693a8e5b55f5336829f0e1cf"
+    },
+    {
+      "file": "remake-startup-defeat-main-exit-check.png",
+      "sha256": "f7e58722fd2a0a9230b166e0510d6b1012421c199194999584ebd98ca18ba61f"
+    },
+    {
+      "file": "remake-startup-defeat-death.json",
+      "sha256": "8888c6bace8e0c964316e61a17e3c671f68a3de4c924d88568f342e8ef341844"
+    },
+    {
+      "file": "remake-startup-defeat-death.png",
+      "sha256": "6b29945b06dcb78efa2c4827bedc16090282a23640ed5c57bb1be78ea34b5920"
+    },
+    {
+      "file": "remake-startup-defeat-receipts.json",
+      "sha256": "11f3d4a4ebad8c1368de9add3f6f4be4ef32c0ffbbba773ed4279f9410410d7f"
+    }
+  ]
+}

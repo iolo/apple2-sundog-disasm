@@ -1,0 +1,42 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10t",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "baseCommit": "339ec0e",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ruleGroups": 505,
+  "uiChecks": 110,
+  "nativeContexts": 12,
+  "nativeArtifacts": 27,
+  "nativeScope": "declared counter0 startup re-entry; fatal first call through remaining startup, menu/main movement and death dispatch",
+  "receipts": [
+    {
+      "file": "r10t-rules-validation.json",
+      "kind": "rules",
+      "checks": 505,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10t-space-ui-validation.json",
+      "kind": "ui",
+      "checks": 110,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "focusedGroups": 47,
+  "static": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "classifiedStrings": 584,
+    "originalInputHashes": 3
+  },
+  "remaining": [
+    "Native fatal second/third startup, warp pre-entry and Comm-dispatch contexts",
+    "Rare dialogue reward224",
+    "Ordinary fresh-character ground fight/lose and space avoid/fight/lose",
+    "Legitimate equipment/shields, negotiation/jettison and defeat/recovery acceptance"
+  ]
+}

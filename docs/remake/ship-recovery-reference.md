@@ -106,3 +106,10 @@ owners/clock and terminal receipts. The [validation summary](r10p-validation-sum
 records501 passing Chrome rule groups,19 focused ship-combat groups,22 exporter
 tests,171 deterministic artifacts,584 source-string records and three original
 input hashes. It retains R10's in-progress status.
+
+## R10t first-startup follow-up
+
+[The declared first-startup capture](ship-startup-defeat-reference.md) now
+observes the complete fatal first-call continuation and death dispatch. It
+corrects the earlier host's immediate startup freeze. Other startup/warp/Comm
+contexts and ordinary recovery acceptance remain under the full R10 audit.

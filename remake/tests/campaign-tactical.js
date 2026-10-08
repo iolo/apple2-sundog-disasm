@@ -374,6 +374,23 @@ export async function campaignTacticalTests(test,equal) {
     equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);equal(dead.space.elapsed,0);
     equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);equal(result.survival.dead,true);equal(s,before);
   });
+  await test('Fatal first startup call completes the native remaining startup, menu/main movement and death dispatch before freezing',()=>{
+    const s=fixture();s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};
+    s.resources.enginesPowered=false;s.resources.shields={charge:0,targetCharge:0};
+    s.encounters.randomState=28;s.machinery.phase=1;s.space.flags[45]=true;
+    s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:40,216:200,217:5,354:0});
+    const before=structuredClone(s),dead=enter(s);
+    // Native R10t counter0: calls2/3 continue after the phase2 hit. Menu and
+    // first main movement give cooldown32->31->30; Game13 returns it to26.
+    equal([dead.resources.hull,dead.resources.guns.charge,dead.machinery.phase],[0,52,1]);
+    equal([dead.space.words[215],dead.space.words[217],dead.space.words[354]],[26,5,0]);
+    equal(dead.encounters.randomState,0xc3870fdc);equal(dead.ship.minutes,1279);
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);
+    equal(dead.space.elapsed,0);equal(dead.ship.condition,s.ship.condition);
+    equal(dead.equipment,s.equipment);equal(dead.pod.cargo,s.pod.cargo);equal(s,before);
+    equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
+  });
   await test('Fatal exit releases gun power and demand before its actual phase1 clock without re-running after reload',()=>{
     const s=gun(enter(fixture()));s.resources.hull=1;s.resources.guns.charge=68;s.resources.shields={charge:0,targetCharge:0};
     s.encounters.randomState=28;s.machinery.phase=3;s.ship.minutes=59;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
