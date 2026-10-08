@@ -1,3 +1,27 @@
+## R10t — Fatal first-startup continuation — 2026-10-08
+
+Captured the original first-startup fatal return in an owned MAME0.285
+unenhanced IIe session on copied media. A declared counter0/source-call/hit
+fixture retains12 asserted source contexts and27 hashed artifacts. Owned
+breakpoints and inputs are released; terminal exit0 is observed. See
+`docs/remake/ship-startup-defeat-reference.md` for the exact scope and replay.
+
+The native startup procedure completes its other two calls after hull loss,
+then performs the initial release poll and one main iteration before death
+dispatch. Live29 now matches phase1, gun52, cooldown26, clock+1 and unchanged
+post-hit RNG/condition. Terminal state freezes through exact save/reload.
+
+505 Chrome rule groups,110 live space UI checks and47 focused tactical groups
+pass.22 exporter tests,171 deterministic artifacts,584 classified strings and
+three original hashes verify. Native and browser sessions are closed. See
+`docs/remake/r10t-validation-summary.json`.
+
+R10 remains active for native fatal second/third startup, warp pre-entry and
+Comm-dispatch contexts, reward224 and ordinary ground/space encounter,
+equipment/shields, negotiation/jettison and defeat/recovery acceptance. The
+original R10 row and audit remain authoritative; R09 remains complete. The
+user's untracked PRD is untouched.
+
 ## R10s — Native Tractor continuation and return-menu call — 2026-10-08
 
 Captured the original Tractor pull/copy/inhibit/return sequence in an owned
