@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "complete",
+  "checkpoint": "R10ac",
+  "checkpointStatus": "pass",
+  "baseCommit": "a8fbe0c",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ruleGroups": 515,
+  "uiChecks": 228,
+  "receipts": [
+    {
+      "file": "r10ac-rules-validation.json",
+      "kind": "complete Chrome rules",
+      "checks": 515,
+      "browser": "155.0.8059.39",
+      "sha256": "d297bf2b3a11fc3a41a2234c9085526c718fc59cd6594e7d9305adf63e4553a9"
+    },
+    {
+      "file": "r10ac-warp-defeat-ui-validation.json",
+      "kind": "declared fatal Warp live controls and recovery",
+      "checks": 54,
+      "browser": "155.0.8059.39",
+      "sha256": "841c04d96de872efaed7d5f5c4878ef1378072b5223074e647e5ff6a7b1abf33"
+    },
+    {
+      "file": "r10ac-space-ui-validation.json",
+      "kind": "controlled tactical UI regression",
+      "checks": 110,
+      "browser": "155.0.8059.39",
+      "sha256": "7f86639e70248c428eaa683ea05dd073558a44fc80542ecdf14a6a46a5b1aaeb"
+    },
+    {
+      "file": "r10ac-r09-journey-validation.json",
+      "kind": "ordinary two-system trading regression",
+      "checks": 64,
+      "browser": "155.0.8059.39",
+      "sha256": "da43d30025ef9a4c0079a8b82abd5dfa1c483421ef0e22b43c433b542082c2c4"
+    }
+  ],
+  "ordinaryAcceptance": {
+    "checks": 143,
+    "receipts": [
+      {
+        "file": "r10w-ordinary-ground-fight-validation.json",
+        "kind": "retained ordinary acceptance",
+        "checks": 17,
+        "browser": "155.0.8059.39",
+        "sha256": "c46bcc25cac3de6b3ee3a960ef1a04184340d54ca9041d6aacce83e157051b36"
+      },
+      {
+        "file": "r10w-ordinary-ground-loss-validation.json",
+        "kind": "retained ordinary acceptance",
+        "checks": 14,
+        "browser": "155.0.8059.39",
+        "sha256": "46201af209a194a16bfe1e9c6d5e812be02913493a68ded97e6dd9cfc3f1d0cb"
+      },
+      {
+        "file": "r10x-ordinary-ground-negotiation-validation.json",
+        "kind": "retained ordinary acceptance",
+        "checks": 32,
+        "browser": "155.0.8059.39",
+        "sha256": "bb6ab91b08f89177c589c1c7975bb95700e755c50d794e5be5ed4a73c494fbd9"
+      },
+      {
+        "file": "r10z-ordinary-space-negotiation-loss-validation.json",
+        "kind": "retained ordinary acceptance",
+        "checks": 44,
+        "browser": "155.0.8059.39",
+        "sha256": "d6a02711bb9969bd0c53c8469cdb3ec0edc47e1943ef27ef178764fe9ae02b8a"
+      },
+      {
+        "file": "r10ab-ordinary-space-fight-salvage-validation.json",
+        "kind": "retained ordinary acceptance",
+        "checks": 36,
+        "browser": "155.0.8059.39",
+        "sha256": "4cf98bf2ac48fb8d9e1abcb4be6430988850220674eaddacedc849ec21001fe9"
+      }
+    ],
+    "additionalGroundAvoidance": "R10r exchange journey, scoped in r10r-validation-summary.json"
+  },
+  "nativeWarpReference": {
+    "checkpoint": "R10aa",
+    "inventory": "r10aa-validation-summary.json",
+    "contexts": 33,
+    "artifacts": 77,
+    "verifiedThisCheckpoint": true,
+    "newEmulatorSessionsThisCheckpoint": 0,
+    "scope": "declared phase1 fatal pre-action/successful Warp return with healthy control; two owned clean exits0"
+  },
+  "focusedRules": {
+    "campaignTacticalGroups": 33,
+    "node": "24.21.0",
+    "failures": []
+  },
+  "staticChecks": {
+    "exporterTests": 23,
+    "deterministicArtifacts": 171,
+    "classifiedStrings": 584
+  },
+  "originalInputs": {
+    "verified": true,
+    "gameDiskSha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "utilityDiskSha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+    "manualSha256": "dadc5fb2aac8a5a88f6bedb6f8a4742367a62eec313a8f9c058bad602aabc2a1"
+  },
+  "implementationFiles": {
+    "remake/js/core/campaign-flight.js": "1cc061f43f7ceebed63aed4c65dc63f91dd01c59a954ee15fd4c8cf82b5b5ab1",
+    "remake/js/core/campaign-machinery.js": "d021d099587a6f51ef7545fe230c67897c43822cde6f4f2dadb81468ef0f3463",
+    "remake/js/core/campaign-space.js": "6ff14aea044094bc7d010a6d798094f0d4daab61df3756d85ce29f3ce5d9aba6"
+  },
+  "proven": [
+    "Native fatal Warp pre-action/jump/Nav vector matches without normal tactical startup",
+    "Every starting phase preserves fatal-hit timestamps and exact terminal reload/freeze",
+    "Narrow completed-Warp phase2 clock-crossing validation with forged timestamp/context rejection",
+    "Six healthy Warp calls, two gravity-failure calls; Nav calls outside Game12 preserve the cargo deadline",
+    "Personal forced-sleep/death boundaries remain guarded",
+    "English/Korean terminal panels, explicit earlier-slot recovery and resumed navigation",
+    "Full tactical cadence/pause/input/menu/damage/Comm/cargo/recovery regression",
+    "Ordinary R09 round trip: purchases17100, sales45300, return574 minutes/fuel107",
+    "All original R10 requirement gates audited and complete"
+  ],
+  "limits": [
+    "Native captures are prepared contexts, without ordinary native reachability or cycle-exact timing claims",
+    "Other Warp phases/fatal gravity failure are source-derived host checks, not additional native observations",
+    "Ordinary ground loss is living knockout/robbery; ordinary terminal ground death is unclaimed",
+    "Rare224 is the observed stopped source fault without invented payout; colony progression remains R11"
+  ],
+  "saveSchemaChanged": false,
+  "gameplayCoreChanged": true,
+  "cleanup": {
+    "browser": "owned remake session closed after checks",
+    "native": "no new sessions; R10aa owned sessions already exited0",
+    "push": "none"
+  }
+}

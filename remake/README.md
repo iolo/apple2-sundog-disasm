@@ -19,7 +19,10 @@ including open dialogue, seated visitors and rented rooms. The independent walkt
 inspector remain available. Regional flight and all57 ordinary-city services are active.
 City threats now lead to playable chase, encounter dialogue and ground combat.
 Carried weapons/shields, source surrender/robbery, post-fight rewards and death
-persist in version24 saves. Space combat and colony progression remain pending. Evidence is in
+persist alongside ship encounters in version29 campaign saves. Powered flight
+produces pirates; tactical controls support negotiation, weapons, shields,
+jettison, wreck collection and explicit saved-point recovery. Colony progression
+remains R11. Evidence is in `../docs/remake/r10-completion.md` and
 `../docs/remake/behavior-matrix.md`.
 
 During ground encounters, move with arrows or a held pointer. In combat, aim
@@ -28,6 +31,15 @@ with the pointer and hold Space or the right mouse button to fire. Toggle
 Pause, help and saved games freeze the encounter. Inventory and boarding return
 when it ends. See `../docs/remake/ground-encounter-ui.md` for save ownership,
 source behavior and adaptation boundaries.
+
+Open **Tactical** from Navigation when aboard the ship. Working sensors unlock
+controls. Select Laser or Cannon, then Resume; arrows or direction buttons pan
+the sight. Space, Fire or a fresh pointer press fires once. Release before firing
+again. Comm opens negotiations, and accepted cargo demands retain a deadline.
+Jettison requires bolt arming and a slot choice. Tractor pulls a wreck into an
+empty pod slot and locks other ship actions until collection. Pause, help and
+saves freeze play. A destroyed ship ends the campaign; load an earlier saved
+campaign explicitly to recover. See `../docs/remake/space-encounter-ui.md`.
 
 From the repository root:
 

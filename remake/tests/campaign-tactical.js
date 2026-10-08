@@ -366,16 +366,101 @@ export async function campaignTacticalTests(test,equal) {
     equal(dead.space.elapsed,0);equal(dead.ship.condition,s.ship.condition);equal(s,before);
     equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
   });
-  await test('Successful warp commits its counter/call followed by three entry calls, while gravity failure retains the active host',()=>{
+  await test('Native fatal Warp pre-action hit completes the observed jump/Nav return without normal tactical startup',()=>{
+    const s=fixture();s.regional.shipLocation.worldId=null;s.regional.podWorldId=null;
+    s.regional.shipLocation.cityId=null;s.ground.cityId=null;s.ground.podCityId=null;
+    s.regional.shipLocation.orbit={angle:16,radius:43};
+    s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};
+    s.resources.enginesPowered=false;s.resources.shields={charge:0,targetCharge:0};
+    s.machinery.phase=1;s.encounters.randomState=28;s.space.flags[41]=s.space.flags[45]=true;
+    s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:44,216:200,217:5,354:3});
+    const charged=reduceCampaignFlight(s,content,{type:'setWarp',systemId:'system-11'});
+    charged.resources.warp.charge=charged.resources.warp.targetCharge;
+    const before=structuredClone(charged),dead=reduceCampaignFlight(charged,content,{type:'warp'});
+    // Native R10aa phase4 is encoded as0 in the campaign phase remainder.
+    equal([dead.resources.hull,dead.resources.guns.charge,dead.resources.fuel,dead.machinery.phase],[0,60,228,0]);
+    equal([dead.space.words[215],dead.space.words[217],dead.space.words[354]],[40,5,6]);
+    equal(dead.encounters.randomState,0xc387ee1f);equal(dead.ship.minutes,1278);
+    equal(dead.regional.shipLocation.systemId,'system-11');equal(dead.regional.shipLocation.orbit,{angle:16,radius:43});
+    equal(dead.space.flags[40],false);equal(dead.space.flags[47],false);equal(dead.space.flags[41],true);
+    equal(dead.resources.warp,{charge:0,targetCharge:0,targetSystemId:null,charging:false});
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);equal(dead.space.elapsed,0);
+    equal(dead.ship.condition,charged.ship.condition);equal(dead.equipment,charged.equipment);equal(dead.pod.cargo,charged.pod.cargo);
+    equal(dead.economy.accounts,charged.economy.accounts);equal(charged,before);
+    equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
+  });
+  await test('Fatal Warp preserves the hit minute through both Nav suffix calls at every starting phase',()=>{
+    for(const phase of [0,1,2,3]) {
+      const s=fixture();Object.assign(s.regional.shipLocation,{worldId:null,cityId:null,orbit:{angle:16,radius:43},surfacePosition:{x:0,y:0},cityPosition:{x:0,y:0},position:{x:0,y:0}});
+      s.regional.podWorldId=null;s.ground.cityId=null;s.ground.podCityId=null;
+      s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};s.resources.enginesPowered=false;s.resources.shields={charge:0,targetCharge:0};
+      s.machinery.phase=phase;s.encounters.randomState=28;s.space.flags[41]=s.space.flags[45]=true;
+      s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+      Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:44,216:200,217:5,354:3});
+      const charged=reduceCampaignFlight(s,content,{type:'setWarp',systemId:'system-11'});charged.resources.warp.charge=charged.resources.warp.targetCharge;
+      const dead=reduceCampaignFlight(charged,content,{type:'warp'});
+      equal(dead.resources.hull,0);equal(dead.encounters.randomState,0xc387ee1f);equal(dead.machinery.phase,(phase+3)%4);
+      equal(dead.ship.minutes,1278+(phase===1?0:1));equal(dead.space.defeat.minutes,1278+(phase===0?1:0));
+      equal(dead.space.words[354],phase===0||phase===1?6:0);equal(dead.resources.guns.charge,phase%2===0?52:60);
+      equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
+      if(phase===3)for(const mutate of [v=>{v.flight.lastEvent='flightGravityFailure'},v=>{v.space.words[354]=6},v=>{v.space.defeat.minutes--}]) {
+        const forged=structuredClone(dead);mutate(forged);reject(()=>reload(forged));
+      }
+    }
+  });
+  await test('A fatal pre-action Warp gravity failure retains location and finishes only the source Nav return call',()=>{
+    const s=run(reduceCampaignFlight(fixture(),content,{type:'launch'}),4250);
+    s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};
+    s.resources.enginesPowered=false;s.resources.shields={charge:0,targetCharge:0};
+    s.machinery.phase=1;s.encounters.randomState=28;s.space.flags[40]=s.space.flags[45]=true;s.space.flags[44]=false;
+    s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:44,216:200,217:5,354:3});
+    const charged=reduceCampaignFlight(s,content,{type:'setWarp',systemId:'system-02'});charged.resources.warp.charge=charged.resources.warp.targetCharge;
+    const before=structuredClone(charged),dead=reduceCampaignFlight(charged,content,{type:'warp'});
+    equal(dead.flight.lastEvent,'flightGravityFailure');equal(dead.regional.shipLocation,charged.regional.shipLocation);
+    equal([dead.machinery.phase,dead.resources.guns.charge,dead.space.words[215],dead.space.words[354]],[3,60,36,3]);
+    equal(dead.encounters.randomState,0xc387ee1f);equal(dead.ship.minutes,1278);equal(dead.resources.hull,0);
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);
+    equal(dead.ship.condition,charged.ship.condition);equal(charged,before);equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
+  });
+  await test('Warp pre-action phase1 retains personal sleep/death guards without inventing a jump or a ship defeat',()=>{
+    for(const condition of [{vigor:200,rest:1,health:200,nourishment:200},{vigor:1,rest:0,health:0,nourishment:0}]) {
+      const s=fixture();s.regional.shipLocation.worldId=null;s.regional.shipLocation.cityId=null;
+      s.ground.cityId=null;s.ground.podCityId=null;s.regional.podWorldId=null;s.regional.shipLocation.orbit={angle:16,radius:43};
+      s.regional.shipLocation.surfacePosition={x:0,y:0};s.regional.shipLocation.cityPosition={x:0,y:0};s.regional.shipLocation.position={x:0,y:0};
+      s.space.flags[40]=false;s.machinery.phase=0;s.ship.minutes=59;s.ship.condition=condition;
+      const charged=reduceCampaignFlight(s,content,{type:'setWarp',systemId:'system-02'});charged.resources.warp.charge=charged.resources.warp.targetCharge;
+      const next=reduceCampaignFlight(charged,content,{type:'warp'});
+      equal(next.ship.minutes,60);equal(next.machinery.phase,1);equal(next.regional.shipLocation,charged.regional.shipLocation);
+      equal(next.resources.warp.targetSystemId,'system-02');equal(next.space.defeat,null);equal(next.space.tactical,null);
+      equal(next.encounters.randomState,charged.encounters.randomState);equal(reload(next),next);
+      if(condition.vigor===1){equal(next.combat.defeat,{reason:'conditionDeath',minutes:60});equal(tick(reload(next),60000).state,next)}
+      else {equal(next.space.activity.sleeping,true);equal(next.space.activity.forced,true)}
+    }
+  });
+  await test('Warp runs the accepted pre-action and Nav display calls, with successful post-jump/startup and failed active-host returns',()=>{
     const s=run(reduceCampaignFlight(fixture(),content,{type:'launch'}),4250);
     s.space.flags[40]=s.space.flags[47]=true;s.resources.guns.charge=100;
+    Object.assign(s.space.words,{207:0,215:40,216:200,217:100});
     let charged=reduceCampaignFlight(s,content,{type:'setWarp',systemId:'system-02'});charged.resources.warp.charge=charged.resources.warp.targetCharge;
     const failed=reduceCampaignFlight(charged,content,{type:'warp'});equal(failed.space.flags[40],true);equal(failed.space.flags[47],true);equal(failed.space.tactical,null);equal(reload(failed),failed);
     charged.regional.shipLocation.worldId=null;charged.regional.podWorldId=null;charged.regional.shipLocation.orbit.radius=43;
     const jumped=reduceCampaignFlight(charged,content,{type:'warp'});
     equal(jumped.regional.shipLocation.systemId,'system-02');equal(jumped.space.flags[40],false);equal(jumped.space.flags[47],false);
-    equal(jumped.machinery.phase,charged.machinery.phase);equal(jumped.ship.minutes,charged.ship.minutes+1);equal(jumped.resources.guns.charge,84);
+    // Six source calls: accepted pre-action, post-jump, Nav display, three startup.
+    equal(jumped.machinery.phase,(charged.machinery.phase+2)%4);equal(jumped.ship.minutes,charged.ship.minutes+1);equal(jumped.resources.guns.charge,76);
     equal(jumped.space.words[354],0);equal(jumped.space.tactical.record.contact,false);equal(reload(jumped),jumped);
+  });
+  await test('Accepted Warp Nav calls outside Game12 retain the six-tick cargo deadline on gravity failure',()=>{
+    const s=run(reduceCampaignFlight(fixture(),content,{type:'launch'}),4250);
+    s.space.flags[40]=true;s.space.flags[44]=false;
+    Object.assign(s.space.words,{207:0,215:100,216:200,217:100});
+    let charged=enter(s);charged.space.flags[47]=true;charged.space.communication.pending=true;charged.space.communication.ticks=6;
+    charged=reduceCampaignFlight(charged,content,{type:'setWarp',systemId:'system-02'});charged.resources.warp.charge=charged.resources.warp.targetCharge;
+    const failed=reduceCampaignFlight(charged,content,{type:'warp'});
+    equal(failed.flight.lastEvent,'flightGravityFailure');equal(failed.space.communication,{conversation:null,pending:true,ticks:6});
+    equal(failed.space.flags[47],true);equal(reload(failed),failed);
   });
   await test('Native fatal tactical frame finishes movement and one Game13 display call before freezing saved defeat',()=>{
     const s=enter(fixture());s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};

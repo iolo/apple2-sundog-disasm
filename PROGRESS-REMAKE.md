@@ -1,3 +1,27 @@
+## R10ac — Warp host matching and R10 completion — 2026-10-08
+
+R10 is complete under its original requirement audit. The accepted Warp host
+now runs pre-action machinery before gravity RNG, then the successful
+post-jump and Nav display calls. Fatal success matches native phase4/gun60/
+cooldown40/counter6/time1278/RNG0xc387ee1f and freezes without tactical startup.
+Healthy success runs six calls, failed gravity two; Nav calls outside Game12
+preserve the cargo deadline. Every phase retains its fatal-hit minute. Narrow
+completed-Warp phase2 clock-crossing validation adds no save fields/version.
+
+All 515 Chrome rule groups and 228 UI checks pass:54 live Warp/recovery checks
+in English/Korean,110 tactical cadence/input/menu/combat/cargo regressions and
+64 ordinary R09 journey checks. The round trip buys for 17,100Cr, sells abroad
+for 45,300Cr and returns at 574 minutes/fuel107 with exact resource/location
+reloads. All 33 focused tactical groups,23 exporter tests,171 artifacts,584
+strings, original inputs and the native 33-context/77-artifact Warp reference
+verify. Terminal screens were inspected; owned browser sessions closed.
+
+The full audit accounts for every original R10 gate while retaining ordinary
+acceptance and prepared native scope separately. Ordinary terminal ground
+death is unclaimed; rare224 retains its observed stopped source fault without
+invented payout. No R10 work is deferred. No push; PRD-REMAKE.md is untouched.
+Next: R11 colony progression, deliveries, growth and ending.
+
 ## R10ab — Ordinary space laser victory, shield overflow and Tractor — 2026-10-08
 
 A fresh seed12345 character uses only normal controls for paid fuel/cargo,

@@ -2,6 +2,7 @@ import { currentShipLocation,warpRequirement } from './regional-world.js';
 import { sourceRandom } from './random.js';
 import { groundCameraAt } from './ground-camera.js';
 import { finishCampaignSpaceWarp } from './campaign-space.js';
+import { beginCampaignShipWarp } from './campaign-machinery.js';
 
 export const initialFlight=()=>({motion:null,refuelAt:null,lastEvent:null});
 export const flightMode=state=>currentShipLocation(state).cityId?'landed':currentShipLocation(state).worldId?'orbit':'space';
@@ -67,7 +68,7 @@ export function landingLocation(state,content,cityId) {
 export function reduceCampaignFlight(previous,content,action) {
   if(previous.space?.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
   if(!previous.regional||!previous.flight||previous.travel.scene!=='ship'||previous.pod.occupied||previous.space?.defeat||previous.combat?.defeat||previous.space?.communication?.conversation||previous.space?.activity?.sleeping)throw Error('flightUnavailable');
-  let next=structuredClone(previous);const r=next.resources,f=next.flight,ship=currentShipLocation(next),mode=flightMode(next);
+  let next=structuredClone(previous);let r=next.resources,f=next.flight;const ship=currentShipLocation(next),mode=flightMode(next);
   const busy=()=>{if(f.motion)throw Error('flightBusy')};
   const engine=()=>{if(r.fuel===0)throw Error('machineryNoFuel');if(next.equipment[1].performance===0)throw Error('flightNoEngines')};
   if(action.type==='cancelWarp') {
@@ -83,6 +84,12 @@ export function reduceCampaignFlight(previous,content,action) {
   } else if(action.type==='warp') {
     busy();
     if(mode==='landed'||!r.warp.charging||!r.warp.targetSystemId||r.warp.charge<r.warp.targetCharge||next.equipment[0].performance===0)throw Error('flightWarpNotReady');
+    const targetSystemId=r.warp.targetSystemId;
+    next=beginCampaignShipWarp(next,content);r=next.resources;f=next.flight;
+    // Preserve the existing personal survival boundary when this accepted
+    // action's pre-call forces sleep or ends the personal campaign. Ship347
+    // alone continues through the captured original Warp/Nav suffix.
+    if(next.combat?.defeat||next.space?.activity.sleeping)return next;
     const rng=sourceRandom(next.encounters.randomState),radius=ship.orbit.radius;
     const chance=ship.worldId?0:(radius+7)*2,success=chance>rng.next()%100;
     let landingAngle=ship.orbit.angle;
@@ -91,12 +98,12 @@ export function reduceCampaignFlight(previous,content,action) {
         const center=32+((landingAngle+8)>>4),half=((43-radius)>>2)+1;
         landingAngle=(center-half+rng.next()%(2*half+1))&15;
       } else landingAngle=((landingAngle+8)>>4)&15;
-      setShip(next,emptyLocation(r.warp.targetSystemId,null,{angle:landingAngle*16,radius:43}));
+      setShip(next,emptyLocation(targetSystemId,null,{angle:landingAngle*16,radius:43}));
       f.lastEvent='flightWarpComplete';
     } else f.lastEvent='flightGravityFailure';
     next.encounters.randomState=rng.state;
     r.warp={charge:0,targetCharge:0,targetSystemId:null,charging:false};r.enginesPowered=false;
-    if(success)next=finishCampaignSpaceWarp(next,content);
+    next=finishCampaignSpaceWarp(next,content,{success});
   } else if(action.type==='sublight') {
     busy();engine();if(mode==='landed')throw Error('flightUnavailable');
     let destination;

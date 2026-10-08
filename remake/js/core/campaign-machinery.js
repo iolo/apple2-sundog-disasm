@@ -68,7 +68,7 @@ export function reduceMachineryControl(previous,action) {
 }
 
 
-function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false}={}) {
+function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false,deadline=true}={}) {
   let next=previous;const space=!!next.space;
   const sleeping=s.sleeping;
   const phase=next.machinery.phase+1;
@@ -92,7 +92,7 @@ function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false}={})
     next=stepCampaignSpaceCombat(next,{dispatch,defeatExit});
     // Game12 proc12 continues its deadline branch after fatal damage. The
     // Game13 display-return call is outside proc12 and does not poll it again.
-    if(!defeatExit)next=stepCampaignShipCommunication(next,{terminal:!!next.space.tactical});
+    if(deadline&&!defeatExit)next=stepCampaignShipCommunication(next,{terminal:!!next.space.tactical});
     if(next.space.defeat)s.dead=true;
   }
   next.machinery.phase=phase%4;
@@ -159,6 +159,40 @@ export function advanceCampaignShipDispatch(previous,content) {
   next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
   if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
   if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  return next;
+}
+
+// Game13 proc27 $1F94 runs machinery before dispatching an accepted Nav
+// action. A fatal hit does not cancel the selected Warp command.
+export function beginCampaignShipWarp(previous,content) {
+  if(!Object.hasOwn(previous.space||{},'tactical'))return previous;
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  next=machineryCycle(next,s,content,{deadline:false});
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  if(next.combat.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
+  return next;
+}
+
+// Warp proc35 $18DA performs its post-jump call; Nav proc44 supplies the
+// display-return call before Game13 tests347. R10aa observes phase2->3->4,
+// counter6 and unchanged clock/RNG after a fatal pre-action hit. No Game12
+// startup occurs on that fatal return.
+export function finishCampaignShipWarpReturn(previous,content,{success}) {
+  if(!Object.hasOwn(previous.space||{},'tactical'))return previous;
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  if(success){next.space.words[354]=6;next=machineryCycle(next,s,content,{defeatExit:!!next.space.defeat,deadline:false})}
+  next=machineryCycle(next,s,content,{defeatExit:true});
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  if(s.dead||next.space.defeat||next.combat.defeat) {
+    leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.elapsed=0;
+    next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase};
+  }
   return next;
 }
 

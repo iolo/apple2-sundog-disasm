@@ -9,7 +9,7 @@ import { validateShipTactical,selectShipTacticalMenu,confirmShipJettison,setShip
   initialShipTrigger,validateShipTrigger,startShipTacticalTractor } from './ship-tactical.js';
 import { shipBounty,isShipSalvage } from './ship-salvage.js';
 import { MAX_CREDITS } from './banking.js';
-import { enterCampaignShipTactical,advanceCampaignShipDispatch } from './campaign-machinery.js';
+import { enterCampaignShipTactical,advanceCampaignShipDispatch,finishCampaignShipWarpReturn } from './campaign-machinery.js';
 
 const LEGACY_CONTACT_FLAGS=Object.freeze([29,36,40,41,42,43,44,45,46,47]);
 const CONTACT_FLAGS=Object.freeze([29,35,36,40,41,42,43,44,45,46,47]);
@@ -149,12 +149,17 @@ export function validateCampaignSpace(campaign,value,{communication=true,tactica
     !integer(w[217],0,32767)||!integer(w[347],0,1)||!integer(w[354],-32768,32767))fail();
   if((value.flags[40]||value.view==='tactical'||value.defeat!==null)&&
     (campaign.travel.scene!=='ship'||campaign.pod.occupied||campaign.combat.ground!==null))fail();
-  // Current29 preserves the fatal-hit minute even if the one Game13 exit
-  // call crosses phase1. Historical contracts still require equal timestamps.
+  // Current29 preserves the fatal-hit minute when the Game13 return crosses
+  // phase1. Successful Warp has two suffix calls: its phase1 post-jump call
+  // can finish at phase2 with counter0. Keep this extra case tied to that
+  // completed source Warp context; historical contracts retain equal times.
   if(value.defeat===null?w[347]!==0||campaign.resources.hull===0:
     !keys(value.defeat,['reason','minutes'])||value.defeat.reason!=='shipDestroyed'||
-    !(value.defeat.minutes===campaign.ship.minutes||salvage&&campaign.machinery.phase===1&&
-      value.defeat.minutes===campaign.ship.minutes-1)||w[347]!==1||value.elapsed!==0)fail();
+    !(value.defeat.minutes===campaign.ship.minutes||salvage&&value.defeat.minutes===campaign.ship.minutes-1&&
+      (campaign.machinery.phase===1||campaign.machinery.phase===2&&
+        campaign.flight.lastEvent==='flightWarpComplete'&&campaign.flight.motion===null&&
+        campaign.regional.shipLocation.worldId===null&&campaign.regional.shipLocation.orbit.radius===43&&
+        value.view==='tactical'&&!value.flags[40]&&!value.flags[47]&&w[354]===0))||w[347]!==1||value.elapsed!==0)fail();
   const next={...structuredClone(value),losses:validateSpaceLosses(value.losses,{salvage}),
     ...(!communication?{communication:initialShipCommunication(),activity:initialShipActivity()}:{} )};
   if(communication) {
@@ -253,9 +258,14 @@ export function stepCampaignSpaceCombat(previous,{dispatch=false,defeatExit=fals
   return commitCampaignShipSource(next,result.state,{combatDamage:true});
 }
 
-export function finishCampaignSpaceWarp(state,content) {
-  if(state.space){leaveCampaignShipDeadline(state);state.space.flags[40]=state.space.flags[47]=false;state.space.view='tactical'}
-  if(state.space&&Object.hasOwn(state.space,'tactical'))return enterCampaignShipTactical(clearCampaignTactical(state),content,{warp:true});
+export function finishCampaignSpaceWarp(state,content,{success=true}={}) {
+  if(success&&state.space){leaveCampaignShipDeadline(state);state.space.flags[40]=state.space.flags[47]=false;state.space.view='tactical'}
+  if(state.space&&Object.hasOwn(state.space,'tactical')) {
+    let next=finishCampaignShipWarpReturn(state,content,{success});
+    if(success&&!next.space.defeat&&!next.combat.defeat&&!next.space.activity.sleeping)
+      next=enterCampaignShipTactical(clearCampaignTactical(next),content);
+    return next;
+  }
   return state;
 }
 
