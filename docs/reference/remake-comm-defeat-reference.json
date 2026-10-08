@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10v",
+  "emulator": "MAME0.285 / unenhanced apple2e / owned Qt debugger",
+  "scope": "Declared original Comm command entry, unattended Game16 timed return and prepared fatal dispatcher hit. No ordinary acceptance.",
+  "runner": "tools/remake/capture_comm_defeat_reference.py",
+  "terminal": {
+    "ownedChild": 3345763,
+    "exitCode": 0,
+    "clean": true
+  },
+  "contexts": [
+    {
+      "file": "remake-comm-defeat-main.json",
+      "segment": 12,
+      "offset": "0x1388"
+    },
+    {
+      "file": "remake-comm-defeat-comm-store.json",
+      "segment": 12,
+      "offset": "0x1320"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch.json",
+      "segment": 13,
+      "offset": "0x2588"
+    },
+    {
+      "file": "remake-comm-defeat-fire-before.json",
+      "segment": 24,
+      "offset": "0x84c"
+    },
+    {
+      "file": "remake-comm-defeat-fatal.json",
+      "segment": 24,
+      "offset": "0x96a"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch-after.json",
+      "segment": 13,
+      "offset": "0x258b"
+    },
+    {
+      "file": "remake-comm-defeat-counter.json",
+      "segment": 13,
+      "offset": "0x20e8"
+    },
+    {
+      "file": "remake-comm-defeat-death.json",
+      "segment": 7,
+      "offset": "0x4b2"
+    }
+  ],
+  "notProven": [
+    "Fatal warp pre-entry call",
+    "Ordinary encounter/equipment/negotiation/recovery acceptance"
+  ],
+  "artifacts": [
+    {
+      "file": "remake-comm-defeat-comm-entry.json",
+      "sha256": "72d241876680c8202702d8a453602289992da2442c698eac57ec0deefcec2a6e"
+    },
+    {
+      "file": "remake-comm-defeat-fatal-setup.json",
+      "sha256": "dbfd383cd16f81be8a0360e96355e12af4c2c25738b52e94671e03adee05bcb1"
+    },
+    {
+      "file": "remake-comm-defeat-main.json",
+      "sha256": "29b9a0a5279209539aab706f5b7565f1f1ecd82a7a95f02991a7b7209dbe5238"
+    },
+    {
+      "file": "remake-comm-defeat-main.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-comm-defeat-comm-store.json",
+      "sha256": "1486dcab92a03412d98f42bad413c44dc8f21356b8f43fe8aa19af766ad6320f"
+    },
+    {
+      "file": "remake-comm-defeat-comm-store.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch.json",
+      "sha256": "eb66f801f9d30c63cf7177f747743201dd810f624a5e2253944e0bab0ded0333"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-comm-defeat-fire-before.json",
+      "sha256": "4c9bd6d3166850af04f62888062606412b1e324310033244b9cc909897a4993b"
+    },
+    {
+      "file": "remake-comm-defeat-fire-before.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-comm-defeat-fatal.json",
+      "sha256": "aef249ef2e915b4cb23630de021d0017f2e61c410c2ffe8a62407d563c4123b9"
+    },
+    {
+      "file": "remake-comm-defeat-fatal.png",
+      "sha256": "a76cb8f79e6ff8ae6b80829010c9b5c1d8950e05c069316372efc12f21974af7"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch-after.json",
+      "sha256": "6d4e7c75440c3469994cf7219c685408ba14dfe4b24d07fe1fd069198640edb0"
+    },
+    {
+      "file": "remake-comm-defeat-dispatch-after.png",
+      "sha256": "14d72c2c930903a47e3c21ea2d4258db70ac9e223623804bbe494d32e1243a27"
+    },
+    {
+      "file": "remake-comm-defeat-counter.json",
+      "sha256": "a2979a04a79d1d319a7d7e26dbaad73a3c521f3bbea69e980a1c70b449c23a6e"
+    },
+    {
+      "file": "remake-comm-defeat-counter.png",
+      "sha256": "ebfd2049a09c963b718762ed579e04732b9f4ea8b762c305a7a90c1be8c80c88"
+    },
+    {
+      "file": "remake-comm-defeat-death.json",
+      "sha256": "e10c9436c528f833006d9724ef1d9c344f183bf0caa2efb4f6694cc0d3f0d549"
+    },
+    {
+      "file": "remake-comm-defeat-death.png",
+      "sha256": "158ee855d26c48d393d7cbc48629ccb21cf208a91160e24ea62ca6297453fb8f"
+    },
+    {
+      "file": "remake-comm-defeat-receipts.json",
+      "sha256": "196855cf612503994b583074ccfbf1cfe2c6bc4ed641620b477649323b3508e0"
+    }
+  ]
+}

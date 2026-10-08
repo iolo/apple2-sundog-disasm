@@ -113,3 +113,8 @@ input hashes. It retains R10's in-progress status.
 observes the complete fatal first-call continuation and death dispatch. It
 corrects the earlier host's immediate startup freeze. Other startup/warp/Comm
 contexts and ordinary recovery acceptance remain under the full R10 audit.
+
+R10v captures [fatal Comm dispatch](ship-comm-defeat-reference.md): one
+machinery call followed by a UI poll, with no extra display-return phase.
+This closes that declared native context check; fatal warp pre-entry and
+ordinary recovery acceptance remain open.

@@ -148,6 +148,13 @@ export function advanceCampaignShipDispatch(previous,content) {
   let next=structuredClone(previous);
   const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
   next=machineryCycle(next,s,content,{dispatch:true});
+  if(next.space.defeat) {
+    // Game13 $25E9 clears the Game16 return flag. Its first proc45 UI poll
+    // increments354 ($20DE-$20E4), then exits on347 before another due call.
+    next.dialogue.flags[51]=false;next.space.flags[35]=false;
+    next.space.words[354]=1;
+    next.space.communication={conversation:null,pending:false,ticks:0};
+  }
   next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
   next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
   if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}

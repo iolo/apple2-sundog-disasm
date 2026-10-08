@@ -1,0 +1,813 @@
+{
+  "operations": [
+    {
+      "id": "load",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 7.829320806416e-06,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "devices",
+      "result": {
+        "screens": [
+          ":screen"
+        ],
+        "images": [
+          {
+            "tag": ":sl6:diskiing:0:525",
+            "instance": "floppydisk1",
+            "filename": "/tmp/sundog-r10v-comm-05/session/media.dsk"
+          },
+          {
+            "tag": ":sl6:diskiing:1:525",
+            "instance": "floppydisk2"
+          },
+          {
+            "tag": ":tape",
+            "instance": "cassette"
+          }
+        ],
+        "cpus": [
+          ":maincpu"
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "boot-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "refs",
+      "result": {
+        "driver": "apple2e",
+        "paused": true,
+        "time": 299.98333333195,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "contact",
+      "result": {
+        "scheduled": true,
+        "setup": {
+          "clock": [
+            16,
+            21,
+            0,
+            0
+          ],
+          "globalsBase": 44474,
+          "location": [
+            16,
+            43,
+            12,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50,
+            0,
+            99,
+            0
+          ],
+          "hull": 16,
+          "frames": 4,
+          "rangeMemory": 45,
+          "equipment": [
+            [
+              31,
+              28,
+              26,
+              158,
+              0,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              12,
+              3,
+              0,
+              0
+            ],
+            [
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              23,
+              3,
+              31,
+              28,
+              30,
+              24,
+              15,
+              31,
+              0,
+              0
+            ],
+            [
+              0,
+              24,
+              26,
+              29,
+              0,
+              0,
+              152,
+              26,
+              29,
+              0,
+              0,
+              24,
+              26,
+              29,
+              0,
+              31,
+              24,
+              26,
+              29,
+              4,
+              31,
+              24,
+              26,
+              29,
+              4,
+              6,
+              19,
+              2
+            ],
+            [
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              16,
+              31,
+              20,
+              2
+            ],
+            [
+              31,
+              24,
+              23,
+              28,
+              3,
+              31,
+              24,
+              28,
+              28,
+              4,
+              31,
+              24,
+              28,
+              0,
+              0,
+              31,
+              24,
+              28,
+              28,
+              4,
+              31,
+              24,
+              28,
+              28,
+              11,
+              31,
+              21,
+              1
+            ],
+            [
+              31,
+              25,
+              27,
+              0,
+              0,
+              31,
+              25,
+              27,
+              0,
+              0,
+              31,
+              25,
+              27,
+              25,
+              4,
+              31,
+              25,
+              27,
+              25,
+              4,
+              31,
+              25,
+              27,
+              25,
+              8,
+              31,
+              22,
+              2
+            ]
+          ],
+          "flags": {
+            "36": false,
+            "44": false,
+            "47": false,
+            "46": false,
+            "48": false,
+            "49": true,
+            "29": false,
+            "51": false,
+            "43": false,
+            "40": true,
+            "41": true,
+            "0": false,
+            "1": false,
+            "2": false,
+            "4": false,
+            "5": false,
+            "7": true,
+            "50": false,
+            "35": false,
+            "45": false,
+            "12": false
+          },
+          "condition": [
+            237,
+            235,
+            255,
+            228
+          ],
+          "carried": [
+            0,
+            12,
+            235,
+            0
+          ],
+          "attributes": [
+            66,
+            53,
+            61,
+            65,
+            15
+          ],
+          "pc": 57644,
+          "workspace": [
+            16,
+            0,
+            0,
+            10,
+            0,
+            9,
+            0,
+            0,
+            0,
+            3,
+            3,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "words": {
+            "45": 12731,
+            "214": 1,
+            "204": 0,
+            "208": 0,
+            "207": 65535,
+            "217": 127,
+            "226": 100,
+            "40": 50,
+            "41": 99,
+            "216": 200,
+            "206": 512,
+            "225": 100,
+            "222": 0,
+            "353": 16,
+            "227": 228,
+            "347": 0,
+            "352": 1,
+            "203": 0,
+            "351": 1,
+            "223": 0,
+            "215": 40,
+            "354": 1,
+            "224": 0,
+            "209": 0,
+            "205": 512
+          }
+        },
+        "name": "space-contact",
+        "duration": 480
+      },
+      "ok": true
+    },
+    {
+      "id": "main-bp",
+      "result": {
+        "id": 1,
+        "offset": 5000
+      },
+      "ok": true
+    },
+    {
+      "id": "main-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "main-status-7",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 308.08872577788,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "main-save",
+      "result": {
+        "ip": 23224,
+        "segmentBase": 18224,
+        "path": "/tmp/sundog-r10v-comm-05/main"
+      },
+      "ok": true
+    },
+    {
+      "id": "main-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-entry",
+      "result": {
+        "commandOffset": 5208,
+        "path": "/tmp/sundog-r10v-comm-05/comm-entry.json"
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-store-bp",
+      "result": {
+        "id": 2,
+        "offset": 4896
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-store-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-store-status-13",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 308.10699647665,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-store-save",
+      "result": {
+        "ip": 23120,
+        "segmentBase": 18224,
+        "path": "/tmp/sundog-r10v-comm-05/comm-store"
+      },
+      "ok": true
+    },
+    {
+      "id": "comm-store-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-bp",
+      "result": {
+        "id": 3,
+        "segment": 13,
+        "offset": 9608
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-status-18",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 309.64999999857,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-status-19",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 315.48333333188,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-status-20",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 323.13333333185,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-status-21",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 329.44999999848,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-status-22",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 329.52685848486,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-save",
+      "result": {
+        "segment": 13,
+        "offset": 9608,
+        "path": "/tmp/sundog-r10v-comm-05/dispatch"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "fire-before-bp",
+      "result": {
+        "id": 4,
+        "segment": 24,
+        "offset": 2124
+      },
+      "ok": true
+    },
+    {
+      "id": "fire-before-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "fire-before-status-27",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 329.54669602645,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "fire-before-save",
+      "result": {
+        "segment": 24,
+        "offset": 2124,
+        "path": "/tmp/sundog-r10v-comm-05/fire-before"
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-setup",
+      "result": {
+        "hull": 1,
+        "wordEdits": {
+          "217": 5,
+          "225": 0,
+          "207": 0,
+          "215": 40,
+          "214": 1
+        },
+        "randomState": 28,
+        "path": "/tmp/sundog-r10v-comm-05/fatal-setup.json"
+      },
+      "ok": true
+    },
+    {
+      "id": "fire-before-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-bp",
+      "result": {
+        "id": 5,
+        "segment": 24,
+        "offset": 2410
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-status-33",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 330.04610882739,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-save",
+      "result": {
+        "segment": 24,
+        "offset": 2410,
+        "path": "/tmp/sundog-r10v-comm-05/fatal"
+      },
+      "ok": true
+    },
+    {
+      "id": "fatal-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-after-bp",
+      "result": {
+        "id": 6,
+        "segment": 13,
+        "offset": 9611
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-after-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-after-status-38",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 330.25759248368,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-after-save",
+      "result": {
+        "segment": 13,
+        "offset": 9611,
+        "path": "/tmp/sundog-r10v-comm-05/dispatch-after"
+      },
+      "ok": true
+    },
+    {
+      "id": "dispatch-after-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "counter-bp",
+      "result": {
+        "id": 7,
+        "segment": 13,
+        "offset": 8424
+      },
+      "ok": true
+    },
+    {
+      "id": "counter-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "counter-status-43",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 331.54128988043,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "counter-save",
+      "result": {
+        "segment": 13,
+        "offset": 8424,
+        "path": "/tmp/sundog-r10v-comm-05/counter"
+      },
+      "ok": true
+    },
+    {
+      "id": "counter-clear",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "death-bp",
+      "result": {
+        "id": 8,
+        "segment": 7,
+        "offset": 1202
+      },
+      "ok": true
+    },
+    {
+      "id": "death-go",
+      "result": {
+        "scheduled": "go"
+      },
+      "ok": true
+    },
+    {
+      "id": "death-status-48",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 333.0333333318,
+        "version": "0.285",
+        "debugger": "run"
+      },
+      "ok": true
+    },
+    {
+      "id": "death-status-49",
+      "result": {
+        "driver": "apple2e",
+        "paused": false,
+        "time": 333.33326286927,
+        "version": "0.285",
+        "debugger": "stop"
+      },
+      "ok": true
+    },
+    {
+      "id": "death-save",
+      "result": {
+        "segment": 7,
+        "offset": 1202,
+        "path": "/tmp/sundog-r10v-comm-05/death"
+      },
+      "ok": true
+    },
+    {
+      "id": "clear-8",
+      "result": {
+        "cleared": true
+      },
+      "ok": true
+    },
+    {
+      "id": "release",
+      "result": {
+        "released": true
+      },
+      "ok": true
+    },
+    {
+      "id": "exit",
+      "result": {
+        "scheduled": "exit"
+      },
+      "ok": true
+    }
+  ],
+  "terminal": {
+    "ownedChild": 3345763,
+    "exitCode": 0,
+    "clean": true
+  }
+}

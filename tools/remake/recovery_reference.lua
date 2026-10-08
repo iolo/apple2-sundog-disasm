@@ -4,7 +4,7 @@
 local m=manager.machine
 local s=m.devices[':maincpu'].spaces.program
 local json=require('json')
-local segments={ [7]={size=0x074a,procedures=8}, [24]={size=0x10d0,procedures=17} }
+local segments={ [7]={size=0x074a,procedures=8}, [13]={size=0x27e4,procedures=52}, [24]={size=0x10d0,procedures=17} }
 local function source(segment,offset)
   assert(m.paused or m.debugger.execution_state=='stop')
   local spec=assert(segments[segment])
@@ -67,5 +67,20 @@ function a2.recoveryStartupSetup(path)
     commandOffset=0x1381,flag35=false,localEdits={['14']=0,['28']=0},wordEdits={['354']=0}}
   local f=assert(io.open(path,'w'));f:write(json.stringify(result));f:close()
   return {path=path,commandOffset=0x1381}
+end
+function a2.recoveryCommSetup(path)
+  assert(m.paused and m.debugger.execution_state=='stop')
+  local before={state=a2.encounterCapture(),context=a2.tacticalSourceContext()}
+  local c=before.context
+  assert(c.source.vm.ip-c.segmentBase==0x1388,'use the Game12 main-loop stop')
+  assert(before.state.words['347']==0 and before.state.flags['40'])
+  -- Invoke the original Comm case in the existing main activation. This is
+  -- declared command-entry setup, not proof of ordinary native menu selection.
+  a2.write(0x58,{(c.segmentBase+0x1458)&255,(c.segmentBase+0x1458)>>8})
+  local result={scope='declared existing-main original Comm case call at1458',
+    before=before,after={state=a2.encounterCapture(),context=a2.tacticalSourceContext()},
+    commandOffset=0x1458}
+  local f=assert(io.open(path,'w'));f:write(json.stringify(result));f:close()
+  return {path=path,commandOffset=0x1458}
 end
 return true
