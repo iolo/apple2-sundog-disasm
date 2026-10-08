@@ -41,6 +41,8 @@ import { advanceGroundHost, restoreCampaignGroundHost } from '../core/ground-hos
 import { advanceGroundEncounter } from '../core/ground-encounter.js';
 import { snapshotCampaignGroundHost } from '../core/campaign-combat.js';
 import { drawGroundEncounter } from '../render/ground-encounter.js';
+import { reduceCampaignSpace,reduceCampaignShipCommunication,restoreCampaignShipCommunication,neutralShipControl } from '../core/campaign-space.js';
+import { spacePanel,drawSpace } from './space.js';
 
 export const WALK_BOUNDS = { x: 32, y: 46, width: 640, height: 384 };
 const CITY_BOUNDS={x:145,y:126,width:350,height:240};
@@ -53,6 +55,9 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   let campaignMode=false, campaignStart=null;
   let campaignEquipment=null,campaignDialogue=null;
   let campaignGround=null,groundWorld=null,campaignRegional=null,campaignFlight=null;
+  let campaignSpace=null,spaceMessage='';
+  const inSpace=()=>campaignMode&&!outsideShip()&&!!campaignSpace?.tactical&&!survival.dead&&!survival.sleeping;
+  const tractorActive=()=>!!campaignSpace?.tactical?.record.wreck&&campaignSpace.tactical.record.wreck.tractorSlot!==null;
   let campaignCombat=null,groundHost=null,combatAim=null,fireHeld=false,firePointer=false,aimMode=false,cancelSurrender=false;
   const groundEncounter=()=>campaignMode?groundHost?.encounter?.activation:null;
   let navigationOpen=false,navigationScale='system',navigationDraft=null,navigationMessage='',navigationChoice=null;
@@ -107,16 +112,53 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const timeLabel = () => t('gameTime', { day: Math.floor(survival.minutes / 1440), hour: String(Math.floor(survival.minutes / 60) % 24).padStart(2, '0'), minute: String(survival.minutes % 60).padStart(2, '0') });
   const keys = new Set();
   const directions = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
-  const stop = () => { keys.clear(); activePointer = null;fireHeld=false;firePointer=false;cancelSurrender=false; state = { ...state, held: false, pointer: null, elapsed: 0 }; };
+  const spaceSignature=()=>JSON.stringify([campaignSpace?.tactical?.record.menu,campaignSpace?.tactical?.record.firing,
+    campaignSpace?.tactical?.record.sensors,campaignSpace?.tactical?.record.wreck?.present,
+    campaignSpace?.tactical?.record.wreck?.tractorSlot,campaignSpace?.flags[40],campaignSpace?.flags[47]]);
+  const stop = ({releaseSpace=true}={}) => { keys.clear(); activePointer = null;fireHeld=false;firePointer=false;cancelSurrender=false; state = { ...state, held: false, pointer: null, elapsed: 0 };
+    if(releaseSpace&&campaignMode&&campaignSpace?.tactical&&!tractorActive())campaignSpace.tactical.control=neutralShipControl();
+  };
   const codec = checkpointCodec(assets.shipWalk),detachedCodec=checkpointCodec(detachedShipGeometry(assets.shipWalk));
   const selectedCodec=()=>campaignMode ? campaignCodec : codec;
   const liveShip=()=>({position:outsideShip() ? SHIP_REENTRY : state.position,inventory,condition,minutes:survival.minutes});
-  const liveCampaign=(snapshot=true)=>({start:campaignStart,ship:snapshot?(campaignPod.attached?codec:detachedCodec).snapshot(liveShip(),{allowInactiveCondition:true}):liveShip(),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,resources:campaignResources,engineering:campaignEngineering,machinery:campaignMachinery,ground:campaignGround,regional:campaignRegional,flight:campaignFlight,combat:campaignCombat,
+  const liveCampaign=(snapshot=true)=>({start:campaignStart,ship:snapshot?(campaignPod.attached?codec:detachedCodec).snapshot(liveShip(),{allowInactiveCondition:true}):liveShip(),equipment:campaignEquipment,encounters,dialogue:campaignDialogue,economy:campaignEconomy,pod:campaignPod,resources:campaignResources,engineering:campaignEngineering,machinery:campaignMachinery,ground:campaignGround,regional:campaignRegional,flight:campaignFlight,combat:campaignCombat,...(campaignSpace?{space:campaignSpace}:{}),
     travel:inRoom() ? {...travel,roomPosition:state.position} : {scene:travel.scene,cityPosition:inCity()||inSurface() ? state.position : null}});
+  function commitCampaign(next) {
+    campaignStart=next.start;campaignGround=next.ground;campaignRegional=next.regional;campaignFlight=next.flight;campaignCombat=next.combat;
+    campaignSpace=next.space??null;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;
+    campaignPod=next.pod;campaignResources=next.resources;campaignEngineering=next.engineering;campaignMachinery=next.machinery;travel=next.travel;encounters=next.encounters;
+    inventory=next.ship.inventory;condition=next.ship.condition;
+    survival={...survival,condition,minutes:next.ship.minutes,dead:condition.vigor===0||!!campaignCombat?.defeat||!!campaignSpace?.defeat,
+      ...(!outsideShip()&&campaignSpace?{...campaignSpace.activity,elapsed:campaignSpace.elapsed}:{})};
+  }
+  function settleAboardClock() {
+    if(!campaignMode||!campaignSpace||outsideShip()||!previous||state.paused||dialogueFrame||checkpoints.active||help||equipmentOpen||inventoryOpen&&!survival.sleeping)return;
+    const now=performance.now(),oldLocation=campaignRegional.shipLocation,activity=`${survival.sleeping}/${survival.forced}/${survival.dead}`;
+    const advanced=advanceCampaignMachinery(liveCampaign(false),survival,Math.max(0,Math.min(60000,Math.floor(now)-Math.floor(previous))),false,assets.campaignContent);
+    commitCampaign(advanced.state);survival=advanced.survival;previous=now;
+    if(oldLocation.cityId!==campaignRegional.shipLocation.cityId||oldLocation.worldId!==campaignRegional.shipLocation.worldId)rebuildGround();
+    if(activity!==`${survival.sleeping}/${survival.forced}/${survival.dead}`){stop();selected=null;render()}
+  }
+  function spaceAction(action,{pause=true}={}) {
+    try {
+      if(pause)settleCampaignClock();
+      const next=action.type==='comm'||action.type==='dialogue'?reduceCampaignShipCommunication(liveCampaign(false),assets.campaignContent,action):
+        ['shields','cloak'].includes(action.type)?reduceMachineryControl(liveCampaign(false),action):reduceCampaignSpace(liveCampaign(false),action,assets.campaignContent);
+      commitCampaign(next);spaceMessage='';
+      dialogueFrame=campaignSpace.communication.conversation?restoreCampaignShipCommunication(liveCampaign(false),assets.campaignContent):null;
+      if(pause){stop();state.paused=true;previous=0}
+      return true;
+    }catch(error){spaceMessage=error.message;return false}
+  }
+  function spaceInput(control) {
+    if(inSpace()&&!tractorActive()) {
+      settleCampaignClock();
+      if(inSpace())spaceAction({type:'aim',control},{pause:false});
+    }
+  }
   function exchangeAction(action) {
     const next=['store','fetch','swap'].includes(action.type) ? reduceCampaignPod(liveCampaign(),activeCity().pod,action) : reduceCampaignExchange(liveCampaign(),assets.campaignContent,activeCity().map,action);
-    campaignPod=next.pod;campaignRegional=next.regional;
-    campaignEconomy=next.economy;campaignDialogue=next.dialogue;encounters=next.encounters;travel=next.travel;
+    commitCampaign(next);
   }
   function prepareCampaignRestore(value) {
     const next=campaignCodec.snapshot(value);
@@ -125,8 +167,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   }
   function engineeringAction(action) {
     const result=reduceCampaignEngineering(liveCampaign(),action);
-    campaignEquipment=result.state.equipment;campaignEngineering=result.state.engineering;
-    inventory=result.state.ship.inventory;campaignResources=result.state.resources;campaignMachinery=result.state.machinery;equipmentMessage=result.message;
+    commitCampaign(result.state);equipmentMessage=result.message;
   }
   function resetExchangeDraft() {exchangeDraft=null;exchangeMessage='';exchangeTab='offers';depotDraft=null;depotMessage=''}
   function applyGroundHost(next) {
@@ -152,7 +193,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       stop();state.paused=true;previous=0;
     }catch(error){dialogueError=['dialogueHistoryFull','dialogueSlotOccupied','dialogueInsufficientCash','dialogueCashOverflow'].includes(error.message)?error.message:'dialogueUnavailable'}
   }
-  const dialogueAction=input=>groundEncounter()?encounterDialogue(input):counterAction({type:'dialogue',input});
+  const dialogueAction=input=>campaignSpace?.communication.conversation?spaceAction({type:'dialogue',input}):groundEncounter()?encounterDialogue(input):counterAction({type:'dialogue',input});
   function counterAction(action) {
     try {
       const result=reduceCampaignCounter(liveCampaign(),assets.campaignContent,currentRoom(),action);
@@ -173,17 +214,21 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     bankDraft=null;bankMessage='';
     if(campaignMode)roomPopulation=inRoom()&&encounters.roomState ? {actors:encounters.roomState.actors,geometry:roomActorGeometry(roomGeometry(),encounters.roomState.actors)} : null;
     roomMessage='';roomElapsed=0;
-    stop();state={...createWalk(geometry()),position:inRoom() ? travel.roomPosition : inCity()||inSurface() ? travel.cityPosition : next.position,paused:true};
+    stop({releaseSpace:false});state={...createWalk(geometry()),position:inRoom() ? travel.roomPosition : inCity()||inSurface() ? travel.cityPosition : next.position,paused:true};
     inventory=next.inventory;condition=next.condition;survival={...createSurvival(condition),minutes:next.minutes};
     dialogueFrame=inRoom()&&encounters.counter?.conversation ? restoreCampaignConversation(liveCampaign(),assets.campaignContent,currentRoom()).conversation : null;
     if(campaignMode&&campaignCombat) {
       groundHost=restoreCampaignGroundHost(liveCampaign(false),groundWorld,assets.campaignContent);
       dialogueFrame=groundHost.encounter?.activation.conversation??dialogueFrame;
-      survival.dead=campaignCombat.defeat!==null;
+      survival.dead=campaignCombat.defeat!==null||!!campaignSpace?.defeat||condition.vigor===0;
       if(groundHost.exhausted&&!survival.dead)survival={...startSleep(survival),forced:true};
     }
+    if(campaignMode&&!outsideShip()&&campaignSpace) {
+      survival={...survival,...campaignSpace.activity,elapsed:campaignSpace.elapsed};
+      if(campaignSpace.communication.conversation)dialogueFrame=restoreCampaignShipCommunication(liveCampaign(false),assets.campaignContent);
+    }
     combatAim=null;aimMode=false;
-    dialogueError='';
+    dialogueError='';spaceMessage='';
     inventoryOpen=false;selected=null;equipmentOpen=false;machineryOpen=false;navigationOpen=false;navigationDraft=null;navigationMessage='';machineryMessage='';help=false;previous=0;
   }
   const checkpoints = checkpointScreen({ stage, background:root,
@@ -196,7 +241,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     describe:value=>campaignMode ? t('campaignSummary',{name:value.state.start.character.name,day:Math.floor(value.state.ship.minutes/1440)}) :
       t('checkpointSummary',{hours:Math.floor(value.state.minutes/60),minute:String(value.state.minutes%60).padStart(2,'0'),x:value.state.position.x,y:value.state.position.y}),
     snapshot: () => {
-      if (survival.sleeping || survival.forced || survival.dead&&!campaignMode) throw new Error('invalidCheckpoint');
+      if ((survival.sleeping || survival.forced)&&(!campaignMode||!campaignSpace||outsideShip()) || survival.dead&&!campaignMode) throw new Error('invalidCheckpoint');
       if(campaignMode) {
         if(!campaignStart)throw new Error('invalidCampaign');
         return liveCampaign();
@@ -205,15 +250,15 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     },
     restore: value => {
       const next=campaignMode ? prepareCampaignRestore(value) : selectedCodec().snapshot(value); // Prepare before replacing live state.
-      if(campaignMode) {campaignStart=next.start;campaignGround=next.ground;campaignRegional=next.regional;campaignFlight=next.flight;campaignCombat=next.combat;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;campaignResources=next.resources;campaignEngineering=next.engineering;campaignMachinery=next.machinery;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
+      if(campaignMode) {commitCampaign(next);restoreShip(next.ship);resetExchangeDraft()}
       else restoreShip(next);
     },
     close: () => {
       if(campaignMode && !campaignStart) {api.hide();close();return}
-      render(); root.querySelector(survival.dead ? '#sleep-saves' : dialogueFrame ? '#dialogue-saves' : inBank() ? '#bank-saves' : inService() ? '#service-saves' : navigationOpen ? '#nav-saves' : machineryOpen ? '#power-saves' : equipmentOpen ? '#equipment-saves' : '#walk-saves').focus();
+      render(); root.querySelector(survival.dead||survival.sleeping ? '#sleep-saves' : dialogueFrame ? '#dialogue-saves' : inBank() ? '#bank-saves' : inService() ? '#service-saves' : navigationOpen ? '#nav-saves' : inSpace() ? '#space-saves' : machineryOpen ? '#power-saves' : equipmentOpen ? '#equipment-saves' : '#walk-saves')?.focus();
     },
   });
-  function pause() { stop(); state.paused = true; if (open) render(); }
+  function pause() { settleCampaignClock();stop(); state.paused = true; if (open) render(); }
   function draw() {
     if (!open) return;
     const canvas = root.querySelector('canvas'), context = canvas.getContext('2d');
@@ -303,7 +348,13 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     root.dataset.system=campaignRegional?.shipLocation.systemId??'';root.dataset.world=campaignRegional?.shipLocation.worldId??'';root.dataset.flight=campaignFlight?.motion?.type??'';root.dataset.flightProgress=campaignFlight?.motion?.progress??'';
     const navigationButton=root.querySelector('#walk-navigation');if(navigationButton)navigationButton.disabled=outsideShip()||interactionAt(state.position)!==1;
     if(navigationOpen)drawNavigation(root.querySelector('#nav-chart'),liveCampaign(false),assets.campaignContent,navigationScale);
+    if(inSpace())drawSpace(root.querySelector('#space-panel'),liveCampaign(false),t,timeLabel());
+    root.dataset.space=campaignMode?campaignSpace?.view??'':'';
+    root.dataset.contact=campaignMode?campaignSpace?.flags[40]??false:false;
+    root.dataset.shipHull=campaignMode?campaignResources?.hull??'':'';root.dataset.shipGun=campaignMode?campaignResources?.guns.charge??'':'';
+    root.dataset.shipRange=campaignMode?campaignSpace?.words[217]??'':'';root.dataset.shipHealth=campaignMode?campaignSpace?.words[216]??'':'';
     root.dataset.mode=campaignMode ? 'campaign' : 'walk';
+    root.dataset.rest=condition.rest;root.dataset.nourishment=condition.nourishment;
     root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
     const clock = root.querySelector('#walk-clock'); if (clock) clock.textContent = timeLabel();
     const sleepClock = root.querySelector('#sleep-clock'); if (sleepClock) sleepClock.textContent = timeLabel();
@@ -324,11 +375,11 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if(groundEncounter())for(const id of ['walk-inventory','walk-airlock','walk-pod'])root.querySelector('#'+id)?.remove();
     if(dialogueFrame) {
       for(const child of root.children)child.inert=true;
-      root.insertAdjacentHTML('beforeend',dialoguePanel({frame:dialogueFrame,assets,t,locale:locale(),message:dialogueError,encounter:!!groundEncounter()}));
+      root.insertAdjacentHTML('beforeend',dialoguePanel({frame:dialogueFrame,assets,t,locale:locale(),message:dialogueError||spaceMessage,encounter:!!groundEncounter()||!!campaignSpace?.communication.conversation}));
       (root.querySelector('#dialogue-panel').querySelector(`[id="${focus||''}"]:not(:disabled)`)||root.querySelector('#dialogue-cancel')).focus({preventScroll:true});
     } else if (survival.sleeping || survival.dead) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? 'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>`}</section></div>`);
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help sleep-panel" role="dialog" aria-modal="true" aria-labelledby="sleep-title"><h2 id="sleep-title">${t(survival.dead ? campaignSpace?.defeat?'shipDestroyed':'conditionDeath' : survival.forced ? 'exhaustedSleep' : 'sleeping')}</h2><p id="sleep-clock">${timeLabel()}</p><p id="sleep-rest">${t('sleepRest', { value: condition.rest })}</p><p>${t(survival.dead ? (campaignMode ? 'campaignDeath' : 'deathScope') : 'sleepHint')}</p>${survival.dead ? `${campaignMode ? `<button id="sleep-back" data-walk="back">${t('backShort')}</button>` : `<button id="sleep-restart" data-walk="restart">${t('restartWalk')}</button>`}<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>` : `<button id="sleep-pause" data-walk="sleep-pause">${t(state.paused ? 'walkResume' : 'walkPause')}</button><button id="sleep-wake" data-walk="wake" ${survival.forced ? 'disabled' : ''}>${t('wake')}</button>${campaignSpace&&!outsideShip()?`<button id="sleep-saves" data-walk="checkpoints">${t('shipSaves')}</button>`:''}`}</section></div>`);
       const panel = root.querySelector('.sleep-panel');
       (panel.querySelector(`#${focus || 'sleep-pause'}:not(:disabled)`) || panel.querySelector('button')).focus({ preventScroll: true });
     } else if (inBank()) {
@@ -341,8 +392,12 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       (root.querySelector('#service-panel').querySelector(`[id="${focus || ''}"]:not(:disabled)`) || root.querySelector(exchangeDraft ? '#exchange-cancel' : depotDraft ? '#depot-cancel' : '#service-leave')).focus({preventScroll:true});
     } else if (help) {
       for (const child of root.children) child.inert = true;
-      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t(groundEncounter()?'encounterDialogueTitle':'walkTitle')}</h2><p>${t(groundEncounter()?'groundEncounterControls':campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(groundEncounter()?'groundEncounterHelp':campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
+      root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t(inSpace()?'spaceTitle':groundEncounter()?'encounterDialogueTitle':'walkTitle')}</h2><p>${t(inSpace()?'spaceControls':groundEncounter()?'groundEncounterControls':campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(inSpace()?'spaceHelp':groundEncounter()?'groundEncounterHelp':campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
       root.querySelector('#walk-close-help').focus();
+    } else if (inSpace()) {
+      for(const child of root.children)child.inert=true;
+      root.insertAdjacentHTML('beforeend',spacePanel({state:liveCampaign(false),paused:state.paused,time:timeLabel(),message:spaceMessage,t}));
+      (root.querySelector(`#space-panel [id="${focus||''}"]:not(:disabled)`)||root.querySelector('#space-surface')).focus({preventScroll:true});
     } else if (navigationOpen) {
       for(const child of root.children)child.inert=true;
       root.insertAdjacentHTML('beforeend',navigationPanel({state:liveCampaign(false),content:assets.campaignContent,scale:navigationScale,draft:navigationDraft,message:navigationMessage,paused:state.paused,time:timeLabel(),t,choice:navigationChoice}));
@@ -362,8 +417,41 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     } else if (focus) document.getElementById(focus)?.focus({ preventScroll: true });
     draw();
   }
+  function advanceLiveGround(now,simulationPaused) {
+    const oldPhase=groundEncounter()?.phase,oldScene=travel.scene;
+    try {
+      const campaign=liveCampaign(false);
+      groundHost={...(groundHost??restoreCampaignGroundHost(campaign,groundWorld,assets.campaignContent)),campaign,exhausted:false};
+      let move=state.held&&!firePointer,fire=!!groundEncounter()?.combat&&(firePointer||fireHeld)&&!!combatAim;
+      let pointer=state.pointer??combatAim;
+      if(keys.size) {
+        let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
+        move=!!(dx||dy);
+        const encounter=groundEncounter(),p=encounter?.combat?{x:encounter.combat.actors[0][1],y:encounter.combat.actors[0][0]}:encounter?.chase.player;
+        pointer=p?{x:Math.max(0,Math.min(279,p.x+(encounter.phase==='chase'?0:3)+Math.sign(dx)*2)),y:Math.max(0,Math.min(191,p.y-(encounter.phase==='chase'?0:3)+Math.sign(dy)*2))}:
+          viewportPointer({x:state.position.x+3+Math.sign(dx)*(driving()?8:2),y:state.position.y-3+Math.sign(dy)*(driving()?8:2)});
+      }
+      if(fire)pointer=combatAim;
+      const milliseconds=previous?Math.max(0,Math.min(60000,Math.floor(now)-Math.floor(previous))):0;
+      const didTick=!simulationPaused&&groundHost.clock.elapsed+milliseconds>=50;
+      const next=advanceGroundHost(groundHost,groundWorld,assets.campaignContent,milliseconds,
+        {move,fire,cancelSurrender,pointer},{paused:simulationPaused});
+      previous=now;
+      const activity=`${survival.sleeping}/${survival.forced}/${survival.dead}`;
+      const terminal=applyGroundHost(next);
+      if(didTick)cancelSurrender=false;
+      if(terminal||dialogueFrame||travel.scene!==oldScene){stop();state.paused=true}
+      if(terminal||oldPhase!==groundEncounter()?.phase||travel.scene!==oldScene||activity!==`${survival.sleeping}/${survival.forced}/${survival.dead}`){stop();selected=null;render()}
+    }catch(error){previous=now;roomMessage='groundEncounterUnavailable';stop();state.paused=true;render()}
+  }
+  function settleGroundClock() {
+    if(!campaignMode||!['city','surface'].includes(travel.scene)||!previous||state.paused||dialogueFrame||inService()||checkpoints.active||help||equipmentOpen||inventoryOpen||survival.sleeping||survival.dead)return;
+    advanceLiveGround(performance.now(),false);draw();
+  }
+  function settleCampaignClock() {settleGroundClock();settleAboardClock()}
   function loop(now) {
     if (!open) return;
+    const framePrevious=previous;
     if(equipmentOpen&&!checkpoints.active&&!document.hidden) {
       const index=inspectEquipment(campaignEquipment,state.position,equipmentOffset).index;
       if(campaignEngineering.pendingFailures[index]!==31) {
@@ -375,45 +463,23 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     const simulationPaused=state.paused||!!dialogueFrame||inService()||checkpoints.active||help||equipmentOpen||(inventoryOpen&&!survival.sleeping);
     const groundActive=campaignMode&&['city','surface'].includes(travel.scene)&&!survival.sleeping&&!survival.dead;
     if(groundActive) {
-      const oldPhase=groundEncounter()?.phase,oldScene=travel.scene;
-      try {
-        const campaign=liveCampaign(false);
-        groundHost={...(groundHost??restoreCampaignGroundHost(campaign,groundWorld,assets.campaignContent)),campaign,exhausted:false};
-        let move=state.held&&!firePointer,fire=!!groundEncounter()?.combat&&(firePointer||fireHeld)&&!!combatAim;
-        let pointer=state.pointer??combatAim;
-        if(keys.size) {
-          let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
-          move=!!(dx||dy);
-          const encounter=groundEncounter(),p=encounter?.combat?{x:encounter.combat.actors[0][1],y:encounter.combat.actors[0][0]}:encounter?.chase.player;
-          pointer=p?{x:Math.max(0,Math.min(279,p.x+(encounter.phase==='chase'?0:3)+Math.sign(dx)*2)),y:Math.max(0,Math.min(191,p.y-(encounter.phase==='chase'?0:3)+Math.sign(dy)*2))}:
-            viewportPointer({x:state.position.x+3+Math.sign(dx)*(driving()?8:2),y:state.position.y-3+Math.sign(dy)*(driving()?8:2)});
-        }
-        if(fire)pointer=combatAim;
-        const milliseconds=previous?Math.max(0,Math.min(60000,Math.floor(now)-Math.floor(previous))):0;
-        const didTick=!simulationPaused&&groundHost.clock.elapsed+milliseconds>=50;
-        const next=advanceGroundHost(groundHost,groundWorld,assets.campaignContent,milliseconds,
-          {move,fire,cancelSurrender,pointer},{paused:simulationPaused});
-        const terminal=applyGroundHost(next);
-        if(didTick)cancelSurrender=false;
-        if(terminal||dialogueFrame||travel.scene!==oldScene){stop();state.paused=true}
-        if(terminal||oldPhase!==groundEncounter()?.phase||travel.scene!==oldScene)render();
-      }catch(error){roomMessage='groundEncounterUnavailable';stop();state.paused=true;render()}
+      advanceLiveGround(now,simulationPaused);
     } else {
       if(campaignMode&&campaignStart&&!outsideShip()) {
-        const advanced=advanceCampaignMachinery(liveCampaign(false),survival,previous?now-previous:0,simulationPaused);
-        survival=advanced.survival;campaignResources=advanced.state.resources;campaignMachinery=advanced.state.machinery;campaignPod=advanced.state.pod;encounters=advanced.state.encounters;
-        const oldLocation=campaignRegional?.shipLocation;campaignRegional=advanced.state.regional;campaignFlight=advanced.state.flight;campaignGround=advanced.state.ground;
+        const oldLocation=campaignRegional?.shipLocation,signature=spaceSignature();
+        const advanced=advanceCampaignMachinery(liveCampaign(false),survival,previous?Math.max(0,Math.min(60000,Math.floor(now)-Math.floor(previous))):0,simulationPaused,assets.campaignContent);
+        commitCampaign(advanced.state);survival=advanced.survival;previous=now;
         if(oldLocation?.cityId!==campaignRegional?.shipLocation.cityId||oldLocation?.worldId!==campaignRegional?.shipLocation.worldId)rebuildGround();
-        if(advanced.cycles&&(machineryOpen||navigationOpen))render();
+        if(advanced.cycles&&(machineryOpen||navigationOpen)||signature!==spaceSignature())render();
       } else survival=advanceSurvival(survival,previous?now-previous:0,simulationPaused);
       condition=survival.condition;
-      if(campaignMode&&survival.dead&&campaignCombat&&!campaignCombat.defeat)
+      if(campaignMode&&survival.dead&&condition.vigor===0&&campaignCombat&&!campaignCombat.defeat)
         campaignCombat={...campaignCombat,defeat:{reason:'conditionDeath',minutes:survival.minutes}};
-      if(keys.size&&!state.paused) {
+      if(keys.size&&!state.paused&&!inSpace()) {
         let dx=0,dy=0;for(const key of keys){dx+=directions[key][0];dy+=directions[key][1]}
         state.held=!!(dx||dy);state.pointer={x:state.position.x+3+Math.sign(dx)*2,y:state.position.y-3+Math.sign(dy)*2};
       }
-      if(!survival.sleeping&&!survival.dead&&!inService()&&!(inRoom()&&roomPopulation))state=advanceWalk(state,previous?now-previous:0,geometry());
+      if(!survival.sleeping&&!survival.dead&&!inSpace()&&!inService()&&!(inRoom()&&roomPopulation))state=advanceWalk(state,framePrevious?now-framePrevious:0,geometry());
     }
     if (before !== `${survival.sleeping}/${survival.forced}/${survival.dead}`) { stop(); selected = null; render(); }
     if(inRoom()&&roomPopulation&&!dialogueFrame&&!state.paused&&!survival.sleeping&&!survival.dead&&!checkpoints.active&&!help&&!inventoryOpen) {
@@ -452,20 +518,41 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     return {x:Math.max(0,Math.min(279,Math.floor((pointer.x-camera.x*28+1120)%1120))),
       y:Math.max(0,Math.min(191,Math.floor((pointer.y-camera.y*(inSurface()?24:32)+height)%height)))};
   }
+  const spacePoint=event=>{
+    const box=root.querySelector('#space-surface').getBoundingClientRect();
+    return {x:Math.max(-8,Math.min(8,Math.round(((event.clientX-box.left)/box.width-.5)*16))),
+      y:Math.max(-8,Math.min(8,Math.round(((event.clientY-box.top)/box.height-.5)*16))),fire:true};
+  };
+  const spaceKeys=()=>{
+    let x=0,y=0;for(const key of keys){x+=directions[key][0]*8;y+=directions[key][1]*8}
+    spaceInput({x:Math.max(-8,Math.min(8,x)),y:Math.max(-8,Math.min(8,y)),fire:fireHeld});
+  };
   root.addEventListener('pointerdown', event => {
+    if(inSpace()&&(event.target.id==='space-surface'||event.target.id==='space-fire'||event.target.dataset.spaceX!==undefined)) {
+      if(state.paused||tractorActive()||![0,2].includes(event.button)||activePointer!==null)return;
+      event.preventDefault();keys.clear();event.target.focus();activePointer=event.pointerId;event.target.setPointerCapture(event.pointerId);
+      spaceInput(event.target.id==='space-surface'?spacePoint(event):event.target.id==='space-fire'?{x:0,y:0,fire:true}:
+        {x:Number(event.target.dataset.spaceX),y:Number(event.target.dataset.spaceY),fire:fireHeld});return;
+    }
     if (event.target.id !== 'walk-surface' || (event.button!==0&&!(event.button===2&&groundEncounter()?.phase==='combat')) || state.paused || help || activePointer !== null) return;
-    event.preventDefault(); keys.clear(); activePointer = event.pointerId;
-    event.target.setPointerCapture(event.pointerId); event.target.focus();
+    settleGroundClock();if(state.paused||survival.sleeping||survival.dead||dialogueFrame)return;
+    event.preventDefault();keys.clear();event.target.focus();activePointer=event.pointerId;event.target.setPointerCapture(event.pointerId);
     firePointer=groundEncounter()?.phase==='combat'&&(aimMode||event.button===2);
     if(groundEncounter())combatAim=point(event);
     state = { ...state, pointer: point(event), held: true };
   });
-  root.addEventListener('pointermove', event => { if(event.target.id==='walk-surface'&&groundEncounter())combatAim=point(event);if (event.pointerId === activePointer) state.pointer = point(event); });
-  root.addEventListener('contextmenu',event=>{if(event.target.id==='walk-surface'&&groundEncounter())event.preventDefault()});
-  for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => { if (event.pointerId === activePointer) name==='pointerup' ? releaseWalk() : stop(); });
-  root.addEventListener('change',event=>{if(navigationOpen&&event.target.id==='nav-destination'){navigationChoice=event.target.value;state.paused=true;stop();render()}});
+  root.addEventListener('pointermove', event => {if(event.target.id==='walk-surface')settleGroundClock();if(inSpace()&&event.target.id==='space-surface'&&event.pointerId===activePointer){spaceInput(spacePoint(event));return}if(event.target.id==='walk-surface'&&groundEncounter())combatAim=point(event);if (event.pointerId === activePointer&&event.target.id==='walk-surface') state.pointer = point(event); });
+  root.addEventListener('contextmenu',event=>{if(event.target.id==='space-surface'||event.target.id==='walk-surface'&&groundEncounter())event.preventDefault()});
+  for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(name, event => {
+    if(event.pointerId!==activePointer)return;
+    if(event.target.id==='walk-surface')settleGroundClock();
+    if(event.target.id.startsWith('space-')){activePointer=null;spaceKeys();return}
+    name==='pointerup' ? releaseWalk() : stop();
+  });
+  root.addEventListener('change',event=>{if(navigationOpen&&event.target.id==='nav-destination'){settleCampaignClock();navigationChoice=event.target.value;state.paused=true;stop();render()}});
   root.addEventListener('keydown', event => {
     if (event.isComposing) return;
+    if(event.target.id==='walk-surface')settleGroundClock();
     if(dialogueFrame) {
       if(event.key==='Escape'){event.preventDefault();dialogueAction({type:'cancel'});render()}
       if(event.key==='Tab') {
@@ -533,7 +620,16 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
     if (help) {
       if (event.key === 'Tab') { event.preventDefault(); root.querySelector('#walk-close-help').focus(); }
-      if (event.key === 'Escape') { event.preventDefault(); help = false; render(); root.querySelector('#walk-help').focus(); }
+      if (event.key === 'Escape') { event.preventDefault(); help = false; render(); root.querySelector(inSpace()?'#space-help':'#walk-help').focus(); }
+      return;
+    }
+    if(inSpace()) {
+      if(event.key==='Escape'){event.preventDefault();const menu=campaignSpace.tactical.record.menu;if(menu)spaceAction({type:'menu',menu:0});else openSpaceNavigation();render();return}
+      if(event.key==='Tab'){const buttons=[...root.querySelectorAll('#space-panel button:not(:disabled),#space-surface')],i=buttons.indexOf(document.activeElement);event.preventDefault();buttons[(i+(event.shiftKey?-1:1)+buttons.length)%buttons.length].focus();return}
+      if(event.target.id==='space-surface'&&!state.paused&&!tractorActive()) {
+        if(directions[event.key]){event.preventDefault();keys.add(event.key);spaceKeys()}
+        if(event.key===' '){event.preventDefault();fireHeld=true;spaceKeys()}
+      }
       return;
     }
     if (event.key === 'Escape') { event.preventDefault(); api.hide(); close(); return; }
@@ -547,8 +643,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if (event.target.id === 'walk-surface' && (event.key === 'Enter' || event.key.toLowerCase() === 'i')) { event.preventDefault(); openInventory(); return; }
     if (event.target.id === 'walk-surface' && directions[event.key]) { event.preventDefault(); keys.add(event.key); }
   });
-  root.addEventListener('keyup', event => { if(event.key===' '){fireHeld=false;firePointer=false}if (directions[event.key]) { keys.delete(event.key); if (!keys.size) releaseWalk(); } });
-  root.addEventListener('focusout', event => { if (event.target.id === 'walk-surface') stop(); });
+  root.addEventListener('keyup', event => {if(event.target.id==='walk-surface')settleGroundClock(); if(event.key===' '){fireHeld=false;firePointer=false}if (directions[event.key])keys.delete(event.key);if(inSpace()&&(directions[event.key]||event.key===' ')){spaceKeys();return}if(directions[event.key]&&!keys.size)releaseWalk(); });
+  root.addEventListener('focusout', event => { if (event.target.id==='space-surface'||event.target.id==='walk-surface')settleCampaignClock();if (event.target.id === 'walk-surface'||event.target.id==='space-surface')stop(); });
   function openInventory() { if(groundEncounter())return;stop(); state.paused = true; inventoryOpen = true; selected = null; inventoryMessage = ''; render(); }
   function requestCounter() {
     if(!counterAvailable())return;
@@ -564,7 +660,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if(!campaignMode||!['city','surface'].includes(travel.scene)||groundEncounter()||survival.sleeping||survival.dead)return;
     try {
       const next=reduceCampaignGround(liveCampaign(),groundWorld,{type:driving()?'park':'board'});
-      campaignPod=next.pod;campaignGround=next.ground;travel=next.travel;restoreShip(next.ship);roomMessage='';
+      commitCampaign(next);restoreShip(next.ship);roomMessage='';
     }catch(error){roomMessage=error.message==='podExitBlocked'?'podExitBlocked':'podUnavailable';stop();state.paused=true}
     render();root.querySelector('#walk-surface').focus();
   }
@@ -574,7 +670,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     roomMessage='';roomElapsed=0;
     if(inSurface()) {
       const next=reduceCampaignGround(liveCampaign(),groundWorld,{type:'enterCity'});
-      campaignGround=next.ground;campaignPod=next.pod;travel=next.travel;if(travel.scene==='city')campaignGround.camera=groundCameraAt(travel.cityPosition);restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
+      commitCampaign(next);if(travel.scene==='city')campaignGround.camera=groundCameraAt(travel.cityPosition);restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
     }
     if(inRoom()) {
       campaignDialogue.flags[57]=false;
@@ -608,7 +704,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
     if(driving()||(!outsideShip()&&interactionAt(state.position)===3)) {
       const next=reduceCampaignPod(liveCampaign(),activeCity().pod,{type:driving()?'dock':'depart'});
-      campaignPod=next.pod;campaignResources=next.resources;campaignEngineering=next.engineering;campaignMachinery=next.machinery;travel=next.travel;if(travel.scene==='city')campaignGround.camera=groundCameraAt(travel.cityPosition);restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
+      commitCampaign(next);if(travel.scene==='city')campaignGround.camera=groundCameraAt(travel.cityPosition);restoreShip(next.ship);render();root.querySelector('#walk-surface').focus();return;
     }
     const exiting=!inCity();travel={scene:exiting ? 'city' : 'ship',cityPosition:null};
     state={...createWalk(geometry()),position:{...(exiting ? activeCity().spawn : SHIP_REENTRY)},paused:true};
@@ -630,7 +726,8 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   function closeMachinery(){machineryOpen=false;state.paused=true;openEquipment()}
   function closeEquipment() { equipmentOpen=false; equipmentSelected=null; render(); root.querySelector('#walk-equipment').focus(); }
   function finishSleep() {
-    survival = wakeUp(survival);
+    if(campaignMode&&!outsideShip()&&campaignSpace){if(!spaceAction({type:'wake'}))return}
+    else survival = wakeUp(survival);
     if (survival.sleeping || survival.dead) return;
     state.paused = true; inventoryOpen = true; inventoryMessage = 'wokeUp'; previous = 0;
     render(); root.querySelector('#inventory-sleep').focus();
@@ -641,12 +738,29 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
   });
   root.addEventListener('click', event => {
+    const space=event.target.closest('button[data-space]');
+    if(space&&inSpace()) {
+      const action=space.dataset.space;
+      if(action==='fire') {if(event.detail===0&&!state.paused){spaceInput({x:0,y:0,fire:true});spaceInput({x:0,y:0,fire:false})}return}
+      settleCampaignClock();stop();
+      if(action==='run'){state.paused=!state.paused;previous=state.paused?0:performance.now()}
+      else if(action==='navigation')openSpaceNavigation();
+      else if(action==='menu')spaceAction({type:'menu',menu:Number(space.dataset.menu)});
+      else if(['laser','cannon','gun-off'].includes(action))spaceAction({type:'gun',firing:action!=='gun-off',focused:action!=='cannon'});
+      else if(action==='shields')spaceAction({type:'shields',delta:Number(space.dataset.delta)});
+      else if(action==='cloak')spaceAction({type:'cloak',enabled:!campaignMachinery.cloaked});
+      else if(action==='jettison')spaceAction({type:'jettison',selection:Number(space.dataset.selection)});
+      else if(action==='tractor'){if(spaceAction({type:'tractor'})){state.paused=false;previous=performance.now()}}
+      else if(action==='comm')spaceAction({type:'comm'});
+      render();return;
+    }
     const power=event.target.closest('[data-power]');
     if(machineryOpen&&power) {
       try {
+        settleCampaignClock();
         const type=power.dataset.power;
         const action=type==='shields'?{type,delta:Number(power.dataset.delta)}:{type,enabled:type==='guns'?!campaignResources.guns.powered:!campaignMachinery.cloaked};
-        const next=reduceMachineryControl(liveCampaign(),action);campaignResources=next.resources;campaignMachinery=next.machinery;machineryMessage='';
+        const next=reduceMachineryControl(liveCampaign(),action);commitCampaign(next);machineryMessage='';
       }catch(e){machineryMessage=e.message}
       render();return;
     }
@@ -658,7 +772,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
         else if(depot.dataset.depotAction==='cancel')depotDraft=null;
         else if(depot.dataset.depotAction==='confirm'&&depotDraft) {
           const next=reduceCampaignDepot(liveCampaign(),assets.campaignContent,activeCity(),depotDraft);
-          campaignResources=next.resources;campaignPod=next.pod;campaignDialogue=next.dialogue;campaignEconomy=next.economy;
+          commitCampaign(next);
           depotDraft=null;depotMessage='depotCompleted';
         } else if(depot.dataset.depotUnits&&depotDraft) {
           const offer=campaignDepotOffers(liveCampaign(),assets.campaignContent,activeCity()).find(o=>o.type===depotDraft.type);
@@ -728,33 +842,34 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     }
     const nav=event.target.closest('[data-nav],[data-nav-scale]');
     if(navigationOpen&&nav) {
-      stop();navigationMessage='';
+      settleCampaignClock();stop();navigationMessage='';
       try {
         if(nav.dataset.navScale){navigationScale=nav.dataset.navScale;navigationChoice=null;navigationDraft=null;state.paused=true}
         else if(nav.dataset.nav==='close'){navigationOpen=false;state.paused=true}
         else if(nav.dataset.nav==='cancel'){navigationDraft=null;state.paused=true}
-        else if(nav.dataset.nav==='run'){state.paused=!state.paused;previous=0}
+        else if(nav.dataset.nav==='run'){state.paused=!state.paused;previous=state.paused?0:performance.now()}
+        else if(nav.dataset.nav==='tactical'){if(spaceAction({type:'view',view:'tactical'}))navigationOpen=false}
         else if(nav.dataset.nav==='select'){const id=root.querySelector('#nav-destination').value,selected=navigationDestinations(liveCampaign(false),assets.campaignContent,navigationScale).find(d=>d.id===id);if(selected&&!selected.disabled){navigationDraft={id,action:selected.action};state.paused=true}}
         else if(['launch','warp','distress'].includes(nav.dataset.nav)){navigationDraft={action:{type:nav.dataset.nav}};state.paused=true}
         else {
           const action=nav.dataset.nav==='confirm'?navigationDraft?.action:{type:nav.dataset.nav};
-          if(action){const next=reduceCampaignFlight(liveCampaign(false),assets.campaignContent,action);campaignFlight=next.flight;campaignRegional=next.regional;campaignResources=next.resources;campaignMachinery=next.machinery;campaignGround=next.ground;encounters=next.encounters;navigationDraft=null;state.paused=true;rebuildGround();if(action.type==='warp')navigationScale='system'}
+          if(action){const next=reduceCampaignFlight(liveCampaign(false),assets.campaignContent,action);commitCampaign(next);navigationDraft=null;state.paused=true;rebuildGround();if(action.type==='warp'){navigationScale='system';if(inSpace())navigationOpen=false}}
         }
       }catch(error){navigationMessage=error.message;state.paused=true}
       render();return;
     }
     const action = event.target.closest('[data-walk]')?.dataset.walk;
     if (!action) return;
-    stop();
+    settleCampaignClock();stop();
     if(action==='combat-mode'&&groundEncounter()?.phase==='combat'){aimMode=!aimMode;render();root.querySelector('#walk-surface').focus();return}
     if(action==='cancel-surrender'&&groundEncounter()?.phase==='combat'&&!state.paused){cancelSurrender=true;root.querySelector('#walk-surface').focus();return}
     if (action === 'checkpoints') {
       state.paused = true; survival = { ...survival, elapsed:0 }; selected = null;
       void checkpoints.show(); return;
     }
-    if (action === 'sleep') { selected = null; survival = startSleep(survival); state.paused = false; previous = 0; render(); return; }
+    if (action === 'sleep') { selected = null;if(campaignMode&&!outsideShip()&&campaignSpace){if(!spaceAction({type:'sleep'}))return}else survival = startSleep(survival); state.paused = false; previous = performance.now(); render(); return; }
     if (action === 'wake') { finishSleep(); return; }
-    if (action === 'sleep-pause') { state.paused = !state.paused; previous = 0; render(); return; }
+    if (action === 'sleep-pause') { state.paused = !state.paused; previous = state.paused?0:performance.now(); render(); return; }
     if (action === 'restart' && !campaignMode) {
       inventory = createInventory(assets.shipInventory); condition = createCondition(assets.shipInventory.condition);
       survival = createSurvival(condition); state = createWalk(assets.shipWalk); inventoryOpen = false; selected = null; previous = 0;
@@ -765,7 +880,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if ((action === 'leave-bank' || action === 'leave-service') && inService()) {leaveService();return}
     if(action==='power'&&equipmentOpen){equipmentOpen=false;equipmentMoving=false;equipmentSelected=null;machineryOpen=true;machineryMessage='';state.paused=true;survival={...survival,elapsed:0};render();return}
     if(action==='close-power'&&machineryOpen){closeMachinery();return}
-    if(action==='power-run'&&machineryOpen){state.paused=!state.paused;previous=0;render();return}
+    if(action==='power-run'&&machineryOpen){state.paused=!state.paused;previous=state.paused?0:performance.now();render();return}
     if(action==='navigation'&&campaignMode&&!outsideShip()&&interactionAt(state.position)===1){navigationOpen=true;navigationDraft=null;navigationMessage='';state.paused=true;survival={...survival,elapsed:0};render();return}
     if (action === 'equipment') { openEquipment(); return; }
     if(action==='pod'){podAction();return}
@@ -791,14 +906,17 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       }
     }
     if (action === 'reset' && !campaignMode) { state = createWalk(assets.shipWalk); previous = 0; }
-    if (action === 'pause') { state.paused = !state.paused; previous = 0; }
+    if (action === 'pause') { state.paused = !state.paused; previous = campaignMode&&(campaignSpace&&!outsideShip()||['city','surface'].includes(travel.scene))&&!state.paused?performance.now():0; }
     if (action === 'help') { help = true; state.paused = true; }
     if (action === 'close-help') help = false;
     render();
     if (action === 'reset' || (action === 'pause' && !state.paused)) root.querySelector('#walk-surface').focus();
-    if (action === 'close-help') root.querySelector('#walk-help').focus();
+    if (action === 'close-help') root.querySelector(inSpace()?'#space-help':'#walk-help').focus();
   });
   window.addEventListener('blur', () => { if (open) pause(); });
+  function openSpaceNavigation() {
+    if(spaceAction({type:'view',view:'ship'})){navigationOpen=true;navigationDraft=null;navigationMessage='';state.paused=true}
+  }
   document.addEventListener('visibilitychange', () => { if (open && document.hidden) pause(); });
   function switchMode(next) {
     if(next===campaignMode)return;
@@ -811,7 +929,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       state=createWalk(assets.shipWalk);inventory=createInventory(assets.shipInventory);
       condition=createCondition(assets.shipInventory.condition);survival=createSurvival(condition);
     }
-    dialogueFrame=campaignMode?(groundHost?.encounter?.activation.conversation??
+    dialogueFrame=campaignMode?(campaignSpace?.communication.conversation?restoreCampaignShipCommunication(liveCampaign(false),assets.campaignContent):groundHost?.encounter?.activation.conversation??
       (inRoom()&&encounters?.counter?.conversation?restoreCampaignConversation(liveCampaign(),assets.campaignContent,currentRoom()).conversation:null)):null;
     state={...state,paused:true};previous=0;
   }
@@ -827,7 +945,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     showCampaign(value) {
       const next=value ? prepareCampaignRestore(value) : null;
       switchMode(true);
-      if(next) {campaignStart=next.start;campaignGround=next.ground;campaignRegional=next.regional;campaignFlight=next.flight;campaignCombat=next.combat;campaignEquipment=next.equipment;campaignDialogue=next.dialogue;campaignEconomy=next.economy;campaignPod=next.pod;campaignResources=next.resources;campaignEngineering=next.engineering;campaignMachinery=next.machinery;travel=next.travel;encounters=next.encounters;restoreShip(next.ship);resetExchangeDraft()}
+      if(next) {commitCampaign(next);restoreShip(next.ship);resetExchangeDraft()}
       if(campaignStart)show();
     },
     showCampaignSaves() {switchMode(true);state.paused=true;show();void checkpoints.show()},

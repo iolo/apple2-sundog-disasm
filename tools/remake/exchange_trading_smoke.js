@@ -21,6 +21,22 @@ async browserPage => {
     await page.locator('#checkpoint-file').setInputFiles('output/playwright/remake/room-fixture.json');await settled();
     const message=await page.locator('#checkpoint-message').innerText();await page.locator('#checkpoint-back').click();return message;
   };
+  const escapeChase=async()=>{
+    const saved=await exportGame();
+    const chase=await page.evaluate(async value=>{
+      const [{loadAssets},{createGroundWorld},{regionalGroundStart},{restoreCampaignGroundHost}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/campaign-ground.js'),import('/js/core/regional-world.js'),import('/js/core/ground-host.js')]);
+      const a=await loadAssets(),world=createGroundWorld({...a.campaignContent,...a.campaignContent.ground},regionalGroundStart(value.state));
+      return restoreCampaignGroundHost(value.state,world,a.campaignContent).encounter.activation.chase;
+    },saved);
+    const dx=Math.sign(chase.player.x-chase.enemy.x)||(chase.player.x-chase.window.left<38?-1:1);
+    const dy=Math.sign(chase.player.y-chase.enemy.y)||(chase.player.y-chase.window.top<34?-1:1);
+    await page.locator('#walk-pause').click();await page.locator('#walk-surface').focus();
+    const keys=[dx<0?'ArrowLeft':'ArrowRight',dy<0?'ArrowUp':'ArrowDown'];for(const key of keys)await page.keyboard.down(key);
+    for(let i=0;i<400&&(await state()).encounter==='chase';i++)await page.clock.runFor(16);
+    for(const key of keys)await page.keyboard.up(key);
+    assert((await state()).encounter===''&&(await state()).dead==='false','Fresh-character source city chase escapes through ordinary held-arrow controls');
+    const escaped=await exportGame();assert(JSON.stringify(escaped.state.ship.inventory)===JSON.stringify(saved.state.ship.inventory)&&JSON.stringify(escaped.state.ship.condition)===JSON.stringify(saved.state.ship.condition)&&escaped.state.dialogue.cash===saved.state.dialogue.cash&&JSON.stringify(escaped.state.economy)===JSON.stringify(saved.state.economy),'Ordinary chase escape preserves personal items, condition, money and regional economy');
+  };
   const walkToBuilding=async type=>{
     const from=await state();
     const route=await page.evaluate(async ({from,type})=>{
@@ -29,15 +45,22 @@ async browserPage => {
       const [maps,navigation,economy,location,content]=await Promise.all(['maps','initial-navigation','initial-economy','initial-location','city-walk'].map(n=>fetch(`/data/${n}.json`).then(r=>r.json())));
       const map=createCityMaps(maps,navigation,economy)['city-01'];
       const g=createCityGeometry(map,content,{...location,position:location.shipPosition});
-      const start=Number(from.y)*g.width+Number(from.x),previous=new Int32Array(g.width*g.height).fill(-1),queue=[start];
+      const start=Number(from.y)*g.width+Number(from.x),previous=new Int32Array(g.width*g.height).fill(-1),distance=new Int32Array(g.width*g.height).fill(2147483647),queue=[[0,start]];
+      distance[start]=0;
+      const offer=(cost,node)=>{queue.push([cost,node]);let i=queue.length-1;while(i){const parent=(i-1)>>1;if(queue[parent][0]<=cost)break;queue[i]=queue[parent];i=parent}queue[i]=[cost,node]};
       previous[start]=start;let end;
-      for(let i=0;i<queue.length;i++) {
-        const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
+      while(queue.length) {
+        const [cost,k]=queue[0],last=queue.pop();
+        if(queue.length){let i=0;while(2*i+1<queue.length){let child=2*i+1;if(child+1<queue.length&&queue[child+1][0]<queue[child][0])child++;if(queue[child][0]>=last[0])break;queue[i]=queue[child];i=child}queue[i]=last}
+        if(cost!==distance[k])continue;const p={x:k%g.width,y:Math.floor(k/g.width)};
         if(cityDoorAt(map,p)?.scene===6&&cityDoorAt(map,p)?.type===type){end=k;break}
         for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
-          if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
+          if(!canStand(g,q))continue;
+          // Prefer eligible city terrain; native threat setup rejects tiles0/1.
+          const tile=map.tiles[((Math.floor((q.y-3)/32)%24)+24)%24][((Math.floor((q.x+3)/28)%40)+40)%40]&15,nextCost=cost+(tile<2?30:1);
+          if(nextCost<distance[next]){distance[next]=nextCost;previous[next]=k;offer(nextCost,next)}
         }
       }
       if(end===undefined)throw Error('No reachable building');
@@ -48,9 +71,9 @@ async browserPage => {
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
       const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
-      await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
-      await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
-      const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
+      await page.mouse.move(box.x+(145+(point.x+3.5-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.5-cy*32)*1.25)*box.height/480);
+      await page.mouse.down();for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}await page.mouse.up();
+      const after=await state();if(after.encounter==='chase'){await escapeChase();return walkToBuilding(type)}if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}; after ${JSON.stringify(after)}`);
     }
     return route.length;
   };
@@ -64,7 +87,7 @@ async browserPage => {
     await page.keyboard.down('ArrowDown');await page.clock.runFor(200);await page.keyboard.up('ArrowDown');await page.locator('#walk-airlock').click();
     await walkToBuilding(5);const street=await exportGame();await page.locator('#walk-airlock').click();
     const entered=await exportGame(),ex=s=>s.state.economy.exchange;
-    assert(entered.version===24&&entered.scope==='ground-encounters-1','Exchange exports version24');
+    assert(entered.version===29&&entered.scope==='ship-salvage-1','Exchange exports version29');
     assert(ex(entered).visit.offers.length===8&&ex(entered).market.lastUpdateDay===0,'Ordinary entry creates and persists eight offer rows');
     assert(entered.state.encounters.randomState!==street.state.encounters.randomState,'Entry advances continuing gameplay RNG');
     const cheapest=s=>ex(s).visit.offers.map((o,i)=>({o,i})).filter(r=>r.o).sort((a,b)=>a.o.price-b.o.price)[0].i;
@@ -118,12 +141,12 @@ async browserPage => {
     const forged=structuredClone(again),forgedRow=ex(forged).visit.offers.find(Boolean);forgedRow.price++;
     assert((await importGame(forged)).includes('Invalid'),'Import rejects a forged asking price');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(again.state),'Rejected import preserves all live progress');
-    const previous=structuredClone(again);previous.version=13;delete previous.state.combat;delete previous.state.regional;delete previous.state.flight;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
+    const previous=structuredClone(again);previous.version=13;delete previous.state.space;delete previous.state.combat;delete previous.state.regional;delete previous.state.flight;delete previous.state.ground;delete previous.state.pod?.occupied;delete previous.state.machinery;delete previous.state.engineering;delete previous.state.resources;delete previous.state.pod;delete previous.state.economy.personalTrade;previous.scope='landed-exchange-1';
     assert((await importGame(previous)).includes('imported'),'Version13 traded exchange progress imports');
-    const migratedExchange=structuredClone(again.state);migratedExchange.combat={clock:{scene:null,moving:false,limit:15,minutesPerTick:1,iterations:0,elapsed:0,podDirection:null},ground:null,rewards:[],defeat:null};migratedExchange.regional.cargoProceeds=0; // Historical local sales needed no regional proceeds ledger.
+    const migratedExchange=structuredClone(again.state);migratedExchange.space=structuredClone(initial.state.space);migratedExchange.combat={clock:{scene:null,moving:false,limit:15,minutesPerTick:1,iterations:0,elapsed:0,podDirection:null},ground:null,rewards:[],defeat:null};migratedExchange.regional.cargoProceeds=0; // Historical local sales needed no regional proceeds ledger.
     migratedExchange.ground.camera=await page.evaluate(async p=>(await import('/js/core/ground-camera.js')).groundCameraAt(p),migratedExchange.travel.cityPosition);
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(migratedExchange),'Version13 migration preserves cargo, money, market, offers and RNG');
-    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
+    const legacy=structuredClone(entered);legacy.version=12;delete legacy.state.space;delete legacy.state.combat;delete legacy.state.regional;delete legacy.state.flight;delete legacy.state.ground;delete legacy.state.pod?.occupied;delete legacy.state.machinery;delete legacy.state.engineering;delete legacy.state.resources;delete legacy.state.pod;delete legacy.state.economy.personalTrade;legacy.scope='landed-banking-1';delete legacy.state.economy.exchange;
     assert((await importGame(legacy)).includes('imported'),'Version12 exchange preview imports through normal UI');
     const migrated=await exportGame();
     assert(ex(migrated).visit.offers.length===8&&migrated.state.encounters.randomState!==legacy.state.encounters.randomState,'Legacy exchange gets its first board exactly at resume');

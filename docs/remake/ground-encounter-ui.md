@@ -1,7 +1,8 @@
 # Live ground encounters — R10h
 
-The live asset loader now supplies both source ground encounter datasets and
-enables campaign version24 `ground-encounters-1`. City/surface movement and time
+R10h supplied both source ground encounter datasets and enabled campaign
+version24 `ground-encounters-1`. R10r now uses live29 `ship-salvage-1`; its
+current timing and ordinary avoidance evidence appears below. City/surface movement and time
 run through the [R10g ground host](ground-host.md), replacing the UI's separate
 movement and one-minute-per-second survival updates on those scenes. Ship,
 service, interior and sleep controllers retain their existing owners.
@@ -83,3 +84,36 @@ rerun after activation.
 [The R10 audit](r10-completion.md) remains authoritative. Ship production and
 combat UI, cargo/cryogen loss, native death/wreck/recovery dispatch, rare reward
 entry224 and ordinary-play avoid/fight/lose acceptance remain required.
+
+## R10r active-host timing check
+
+R10r activates campaign version29 `ship-salvage-1` while retaining these ground
+owners. Ground input changes, focus release, pause and saves now settle the
+elapsed interval before changing controls. Resume anchors the next interval at
+the actual current time; consumed timestamps are committed before scene or
+activity rendering can change focus. Pointer focus precedes capture, so focus
+release cannot erase a newly captured press.
+
+[The current100-check receipt](r10r-ground-ui-validation.json) retains the
+controlled encounter/outcome checks and adds actual held-arrow and captured
+pointer paths at30/60/144Hz. Each path saves after137ms (remainder37), freezes
+through1000ms of pause, reloads, runs another137ms (remainder24), reloads again,
+and completes726ms with a zero remainder. Complete campaign state, including
+position, clock and RNG, matches at all three display rates. Fixtures are
+explicit; this does not establish fresh-character encounter acceptance.
+
+## R10r ordinary ground avoidance
+
+[The68-check exchange journey](r10r-exchange-trading-validation.json) starts a
+fresh seed12345 character, walks from the ship to the exchange and encounters
+two naturally produced city chases before its later migration/rejection probes.
+All campaign changes use ordinary controls. Read-only source geometry guides
+foot routes toward eligible city terrain; native `SYSTEMERROR21,40` behavior
+for tiles0/1 remains in the core. When a chase appears, its actual saved replay
+provides the visible player/pursuer positions for an escape direction; held
+arrows reach the source boundary. Both escapes preserve inventory, condition,
+cash and the complete regional economy. No encounter, actor, gate seed,
+equipment or condition is injected for this first leg.
+
+This proves ordinary fresh-character ground avoidance. Ground fight/lose,
+equipment/shield, negotiation and recovery acceptance remain R10 work.

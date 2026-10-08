@@ -1,5 +1,5 @@
-// Combined R08 acceptance: fresh character, real engineering/service payments,
-// loaded ground round trip, independent parking and reload. No campaign fixture.
+// R09 acceptance: fresh character, paid fuel, purchased cargo and a two-system
+// flight/trading round trip with fresh-page reloads. No campaign fixture.
 // Route planning only reads geometry; all state changes use normal controls.
 async browserPage => {
   const browser=browserPage.context().browser(),checks=[],errors=[];
@@ -9,7 +9,7 @@ async browserPage => {
   const ready=()=>page.waitForFunction(()=>document.documentElement.dataset.ready==='true');
   const settled=()=>page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
   const state=()=>page.locator('#walk-screen').evaluate(el=>({...el.dataset}));
-  const saves=async()=>{await page.locator(await page.locator('#navigation-panel').count()?'#nav-saves':await page.locator('#power-panel').count()?'#power-saves':await page.locator('#equipment-panel').count()?'#equipment-saves':['exchange','depot'].includes((await state()).scene)?'#service-saves':'#walk-saves').click();await settled()};
+  const saves=async()=>{await page.locator(await page.locator('#navigation-panel').count()?'#nav-saves':await page.locator('#space-panel').count()?'#space-saves':await page.locator('#power-panel').count()?'#power-saves':await page.locator('#equipment-panel').count()?'#equipment-saves':['exchange','depot'].includes((await state()).scene)?'#service-saves':'#walk-saves').click();await settled()};
   const exported=async()=>{await saves();const pending=page.waitForEvent('download');await page.locator('#export-checkpoint').click();let text='';for await(const part of await(await pending).createReadStream())text+=part;await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text)};
   const reload=async()=>{const before=await exported();await saves();await page.locator('#save-checkpoint-0').click();await settled();await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exported()).state)===JSON.stringify(before.state),'Fresh-page reload preserves pod location, cargo, accounts and RNG');return before};
   async function route(goal) {
@@ -49,9 +49,15 @@ async browserPage => {
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
-          await page.mouse.move(box.x+(145+(p.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.75-cy*32)*1.25)*box.height/480);
+          await page.mouse.move(box.x+(145+(p.x+3.5-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.5-cy*32)*1.25)*box.height/480);
         }else await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
-        await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
+        await page.mouse.down();
+        if(before.scene==='city') {
+          // Release after one source step: scrolling changes the map under a
+          // stationary held pointer and can otherwise cause another step.
+          for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
+        } else await page.clock.runFor(100);
+        await page.mouse.up();
       }
       const after=await state();if(goal==='surface'&&after.scene==='surface'){assert(true,'City boundary enters the surface through normal movement');return}if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}`);
     }
@@ -65,8 +71,9 @@ async browserPage => {
     const selected=await page.evaluate(async s=>{const {loadAssets}=await import('/js/render/assets.js'),a=await loadAssets(),{quoteExchangeCargo,exchangeLocation}=await import('/js/core/exchange.js'),market=s.start.economy.markets.find(m=>m.cityId==='city-09'),originLocation=exchangeLocation(a.campaignContent.exchange,'city-01'),location=exchangeLocation(a.campaignContent.exchange,'city-09');return s.economy.exchange.visit.offers.map((o,i)=>({o,i,quote:o?quoteExchangeCargo({commodityId:o.commodityId,quality:o.quality,originCity:'city-01',pricePaid:o.price},{market,location,originLocation,items:a.campaignContent.dialogue.items},'sell'):0})).filter(v=>v.o&&v.o.price<s.dialogue.cash+s.economy.accounts[0].balance&&v.quote>v.o.price).sort((a,b)=>(b.quote-b.o.price)-(a.quote-a.o.price))[0]},s);
     if(!selected)throw Error('No affordable profitable cargo');await page.locator(`#exchange-row-${selected.i}`).click();await page.locator('#exchange-confirm').click();
   }
-  async function command(type) {await page.locator('#nav-'+type).click();await page.locator('#nav-confirm').click()}
-  async function destination(scale,id) {await page.locator('#nav-scale-'+scale).click();await page.locator('#nav-destination').selectOption(id);await page.locator('#nav-select').click();await page.locator('#nav-confirm').click()}
+  async function navigation() {if(await page.locator('#navigation-panel').count())return;await page.locator(await page.locator('#space-panel').count()?'#space-navigation':'#walk-navigation').click()}
+  async function command(type) {await navigation();await page.locator('#nav-'+type).click();await page.locator('#nav-confirm').click()}
+  async function destination(scale,id) {await navigation();await page.locator('#nav-scale-'+scale).click();await page.locator('#nav-destination').selectOption(id);await page.locator('#nav-select').click();await page.locator('#nav-confirm').click()}
   async function arrive() {await page.locator('#nav-run').click();for(let i=0;i<1024;i++){await page.clock.runFor(250);if(!(await state()).flight)break}assert(!(await state()).flight,'The confirmed journey reaches its destination through the live clock')}
   async function charge() {await page.locator('#nav-run').click();for(let i=0;i<256;i++){await page.clock.runFor(250);if(await page.locator('#nav-warp').isEnabled())break}assert(await page.locator('#nav-warp').isEnabled(),'Warp engine reaches its requested charge through the live power phases')}
   try {
@@ -76,9 +83,9 @@ async browserPage => {
     const bought=await exported();const slots=bought.state.economy.exchange.warehouse.slots.map((c,i)=>c?.originCity==='city-01'?i:null).filter(i=>i!==null);assert(slots.length===2,'Two ordinary board purchases are available to load');
     for(const i of slots){await page.locator('#cargo-warehouse-'+i).click();await page.locator('#exchange-confirm').click()}
     const loaded=await reload(),homeMarket=loaded.state.economy.exchange.market,totalPaid=loaded.state.pod.cargo.reduce((n,c)=>n+c.pricePaid,0);assert(loaded.state.pod.cargo.every(Boolean),'Both normally purchased lots are loaded');await page.locator('#service-leave').click();await route('dock');await route('navigation');
-    await command('launch');await arrive();const orbit=await exported();await destination('star','system-02');await charge();await command('warp');const failed=await reload();assert(failed.state.flight.lastEvent==='flightGravityFailure'&&JSON.stringify(failed.state.regional.shipLocation)===JSON.stringify(orbit.state.regional.shipLocation)&&failed.state.resources.warp.charge===0,'Warp in a gravity field fails and consumes the real accumulated charge');await page.locator('#walk-navigation').click();
-    await destination('system','point-0');await page.locator('#nav-run').click();for(let i=0;i<32;i++){await page.clock.runFor(250);if(Number((await state()).flightProgress)>0)break}const mid=await reload();assert(mid.state.flight.motion?.type==='sublight'&&mid.state.flight.motion.progress>0,'Mid-sublight reload preserves the live journey');await page.locator('#walk-navigation').click();await arrive();const point=await exported();assert(point.state.regional.shipLocation.orbit.radius===43&&point.state.regional.shipLocation.worldId===null,'Travel reaches a safe source warp point');
-    await destination('star','system-02');await charge();await command('warp');const jumped=await reload();assert(jumped.state.regional.shipLocation.systemId==='system-02'&&jumped.state.flight.lastEvent==='flightWarpComplete','Actual charged jump reaches system02');assert(JSON.stringify(jumped.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Jump retains both purchased cargo lots');await page.locator('#walk-navigation').click();
+    await command('launch');await arrive();const orbit=await exported();await destination('star','system-02');await charge();await command('warp');const failed=await reload();assert(failed.state.flight.lastEvent==='flightGravityFailure'&&JSON.stringify(failed.state.regional.shipLocation)===JSON.stringify(orbit.state.regional.shipLocation)&&failed.state.resources.warp.charge===0,'Warp in a gravity field fails and consumes the real accumulated charge');await navigation();
+    await destination('system','point-0');await page.locator('#nav-run').click();for(let i=0;i<32;i++){await page.clock.runFor(250);if(Number((await state()).flightProgress)>0)break}const mid=await reload();assert(mid.state.flight.motion?.type==='sublight'&&mid.state.flight.motion.progress>0,'Mid-sublight reload preserves the live journey');await navigation();await arrive();const point=await exported();assert(point.state.regional.shipLocation.orbit.radius===43&&point.state.regional.shipLocation.worldId===null,'Travel reaches a safe source warp point');
+    await destination('star','system-02');await charge();await command('warp');const jumped=await reload();assert(jumped.state.regional.shipLocation.systemId==='system-02'&&jumped.state.flight.lastEvent==='flightWarpComplete','Actual charged jump reaches system02');assert(JSON.stringify(jumped.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Jump retains both purchased cargo lots');await navigation();
     await destination('system','world-03');await arrive();await destination('planet','city-09');await arrive();const landing=await reload();assert(landing.state.regional.shipLocation.cityId==='city-09'&&landing.state.ground.worldId==='world-03','Foreign capital landing reloads the correct regional ground domain');await route('depart');await route('exchange');const entered=await exported();assert(entered.state.economy.exchange.market.cityId==='city-09','Foreign exchange owns its actual stock');assert(JSON.stringify(entered.state.regional.cities.find(c=>c.market.cityId==='city-01').market)===JSON.stringify(homeMarket),'Home market survives in the dormant archive');
     await page.locator('#exchange-cargo').click();for(const i of [0,1]){await page.locator('#cargo-pod-'+i).click();await page.locator('#exchange-confirm').click()}
     const stored=await reload();assert(stored.state.pod.cargo.every(c=>c===null),'Cargo unloads into the foreign warehouse without duplication');await page.locator('#exchange-warehouse').click();

@@ -10,14 +10,31 @@ async browserPage => {
   const saves=async()=>{await page.locator((await state()).scene==='exchange'?'#service-saves':'#walk-saves').click();await settled()};
   const exported=async()=>{await saves();const pending=page.waitForEvent('download');await page.locator('#export-checkpoint').click();let text='';for await(const part of await(await pending).createReadStream())text+=part;await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text)};
   const reload=async()=>{const before=await exported();await saves();await page.locator('#save-checkpoint-0').click();await settled();await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exported()).state)===JSON.stringify(before.state),'Fresh-page reload preserves pod location, cargo, accounts and RNG');return before};
+  const rations=[];
+  async function eat() {
+    if(Number((await state()).nourishment)>=80)return;
+    if(!rations.length)throw Error('The ordinary journey has exhausted its carried food');
+    await page.locator('#walk-inventory').click();await page.locator('#slot-carried-'+rations.shift()).click();await page.locator('#inventory-use').click();
+    assert(Number((await state()).nourishment)>=80,'Owned carried food restores source nourishment without a new purchase');
+    await page.locator('#inventory-close').click();
+  }
+  async function rest() {
+    if((await state()).sleeping!=='true')return;
+    if((await state()).paused==='true')await page.locator('#sleep-pause').click();
+    for(let i=0;i<256&&Number((await state()).rest)<240;i++)await page.clock.runFor(250);
+    assert(await page.locator('#sleep-wake').isEnabled(),'Actual forced rest recovers enough to wake without granting condition');
+    await page.locator('#sleep-wake').click();await page.locator('#inventory-close').click();
+    await page.locator('#walk-pause').click();await page.clock.runFor(100); // Observe released movement before a new pod press.
+  }
   async function route(goal) {
+    await rest();await eat();
     const from=await state(),saved=(await exported()).state;
     const points=await page.evaluate(async({from,goal,saved})=>{
-      const [{loadAssets},{canStand,interactionAt},{tryPodStep,canDockPod,podExchangeAt}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/ship-walk.js'),import('/js/core/city-pod.js')]);
+      const [{loadAssets},{canStand,interactionAt},{tryPodStep,canDockPod,podExchangeAt,podServiceAt}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/ship-walk.js'),import('/js/core/city-pod.js')]);
       const [{campaignFootGeometry},{canBoardParkedPod},{canBoardShip},{cityServiceAt},{detachedShipGeometry}]=await Promise.all([import('/js/core/campaign-pod.js'),import('/js/core/parked-pod.js'),import('/js/core/city-walk.js'),import('/js/core/city-doors.js'),import('/js/core/ship-walk.js')]);
       const {trySurfaceStep,surfaceCityAt}=await import('/js/core/surface-walk.js');const {nearbySurfacePod}=await import('/js/core/campaign-ground.js');const a=await loadAssets(),{createGroundWorld}=await import('/js/core/campaign-ground.js'),world=createGroundWorld({...a.campaignContent,...a.campaignContent.ground},saved.start),pod=from.transport==='pod',city=from.scene==='city',surface=from.scene==='surface',g=surface?world.surface(saved.ground.colonyPosition):city?(pod?world.city(saved.ground.cityId,false).pod:world.foot(saved)):(saved.pod.attached?a.shipWalk:detachedShipGeometry(a.shipWalk));
       let routeBounds=null;if(city&&goal!=='surface'){const size=world.size(saved.ground.cityId),half=Math.floor((size+1)/2);routeBounds={left:(12-size)*28+46,right:(17+size)*28+227,top:(7-half)*32+59,bottom:(11+half)*32+138}} // Stay inside source camera exit thresholds while routing to a city destination.
-      const reached=(p,h)=>goal==='surface'?p.x<125:goal.startsWith('city-')?surfaceCityAt(g.map,p)?.cityId===goal:goal==='street'?p.x===360&&p.y===215:goal==='pod'?(surface?nearbySurfacePod(p,saved.pod.position):canBoardParkedPod(g,p,saved.pod.position)):goal==='footExchange'?cityServiceAt(a.cityGeometry.map,p)==='exchange':goal==='ship'?canBoardShip(g,p):goal==='airlock'?interactionAt(p)===4:goal==='depart'?interactionAt(p)===3:goal==='dock'?canDockPod(g,p,h):podExchangeAt(g,p,h);
+      const reached=(p,h)=>goal==='surface'?p.x<125:goal.startsWith('city-')?surfaceCityAt(g.map,p)?.cityId===goal:goal==='street'?p.x===360&&p.y===215:goal==='pod'?(surface?nearbySurfacePod(p,saved.pod.position):canBoardParkedPod(g,p,saved.pod.position)):goal==='footExchange'?cityServiceAt(a.cityGeometry.map,p)==='exchange':goal==='ship'?canBoardShip(g,p):goal==='airlock'?interactionAt(p)===4:goal==='stores'?interactionAt(p)===6:goal==='engineering'?interactionAt(p)===8:goal==='depot'?podServiceAt(g,p,h)==='depot':goal==='depart'?interactionAt(p)===3:goal==='dock'?canDockPod(g,p,h):podExchangeAt(g,p,h);
       const start=Number(from.y)*g.width+Number(from.x),queue=[start],seen=new Map([[start,null]]);let end=reached({x:Number(from.x),y:Number(from.y)},Number(from.heading))?start:undefined;
       for(let i=0;i<queue.length&&end===undefined;i++) {
         const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
@@ -36,26 +53,42 @@ async browserPage => {
     },{from,goal,saved});
     if((await state()).paused==='true')await page.locator('#walk-pause').click();
     const box=await page.locator('#stage').boundingBox();
-    for(const p of points) {
+    for(let i=0;i<points.length;i++) {
+      let p=points[i];
+      await rest();await eat();if((await state()).paused==='true')await page.locator('#walk-pause').click();
       const before=await state();
       if(before.transport==='pod'||before.scene==='surface') {
+        let steps=1;
+        if(before.transport==='pod'&&p.x-Number(before.x)===p.dx&&p.y-Number(before.y)===p.dy) {
+          // A held native pod direction moves one pixel, then two per tick.
+          // Drive straight segments continuously rather than restarting each
+          // pixel and charging a separate moving/idle clock cycle for it.
+          while(i+steps<points.length&&steps<31&&points[i+steps].dx===p.dx&&points[i+steps].dy===p.dy&&points[i+steps].x-points[i+steps-1].x===p.dx&&points[i+steps].y-points[i+steps-1].y===p.dy)steps++;
+          if(steps%2===0)steps--;p=points[i+steps-1];i+=steps-1;
+        }
         await page.locator('#walk-surface').focus();
         const keys=[...(p.dx?[p.dx>0?'ArrowRight':'ArrowLeft']:[]),...(p.dy?[p.dy>0?'ArrowDown':'ArrowUp']:[])];
         for(const key of keys)await page.keyboard.down(key);
-        for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
-        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(50); // Let the source host observe the released movement button.
+        for(let t=0;t<(steps+2)*5;t++){await page.clock.runFor(16);const n=await state();if(Number(n.x)===p.x&&Number(n.y)===p.y||n.sleeping==='true'||n.scene!==before.scene)break}
+        for(const key of keys)await page.keyboard.up(key);await page.clock.runFor(100); // Ensure a source iteration observes release before the next pod press.
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
-          await page.mouse.move(box.x+(145+(p.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.75-cy*32)*1.25)*box.height/480);
+          await page.mouse.move(box.x+(145+(p.x+3.5-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.5-cy*32)*1.25)*box.height/480);
         }else await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
-        await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
+        await page.mouse.down();
+        if(before.scene==='city') {
+          // Release after one source step: scrolling changes the map under a
+          // stationary held pointer and can otherwise cause another step.
+          for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}
+        } else await page.clock.runFor(100);
+        await page.mouse.up();
       }
-      const after=await state();if(goal==='surface'&&after.scene==='surface'){assert(true,'City boundary enters the surface through normal movement');return}if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}`);
+      const after=await state();if(after.sleeping==='true'){await rest();return route(goal)}if(goal==='surface'&&after.scene==='surface'){assert(true,'City boundary enters the surface through normal movement');return}if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}; before ${JSON.stringify(before)}; after ${JSON.stringify(after)}`);
     }
     assert(true,`${goal} reached through normal movement (${points.length} steps)`);
     if(goal==='street'){await page.locator('#walk-pause').click();return}
-    const button=goal==='pod'?'#walk-pod':'#walk-airlock';assert(await page.locator(button).isEnabled(),`${goal} action is available at the reached location`);await page.locator(button).click();
+    const button=goal==='stores'?'#walk-inventory':goal==='engineering'?'#walk-equipment':goal==='pod'?'#walk-pod':'#walk-airlock';assert(await page.locator(button).isEnabled(),`${goal} action is available at the reached location`);await page.locator(button).click();
   }
   async function buy() {
     await page.locator('#exchange-offers').click();const s=(await exported()).state;
@@ -69,7 +102,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Two normally purchased cargo lots are loaded before surface departure');
     await page.locator('#service-leave').click();await route('surface');const outbound=await reload();
-    assert(outbound.version===24&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version24 reloads the live surface scene');
+    assert(outbound.version===29&&outbound.state.travel.scene==='surface'&&outbound.state.ground.cityId===null,'Version29 reloads the live surface scene');
     assert(outbound.state.ground.colonyPosition!==null,'First surface entry persists colony placement');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();
@@ -89,6 +122,8 @@ async browserPage => {
     assert(await page.locator('#walk-pod').isDisabled(),'A surface pod cannot be boarded remotely from a city');
     await route('ship');const aboard=await reload();assert(JSON.stringify(aboard.state.pod)===JSON.stringify(parked.state.pod),'Foot ship return preserves the remote surface pod and cargo');
     await page.locator('#walk-inventory').click();assert(await page.locator('#pod-manifest').count()===0,'Remote surface cargo is not exposed aboard the ship');await page.locator('#inventory-close').click();
+    await route('stores');for(let i=0;i<4;i++){await page.locator('#slot-stores-'+(5+i)).click();await page.locator('#slot-carried-'+i).click();rations.push(i)}
+    await page.locator('#inventory-close').click();const supplied=await exported();assert(supplied.state.ship.inventory.carried.every(b=>b===8)&&[5,6,7,8].every(i=>supplied.state.ship.inventory.stores[i]===0),'Four existing food rations transfer from real ship stores into carried slots');
     await route('airlock');await route('surface');await route('pod');const retrieved=await reload();
     assert(retrieved.state.pod.occupied&&JSON.stringify(retrieved.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Foot surface return retrieves both purchased cargo lots');
     await route('city-02');const remote=await reload();assert(remote.state.ground.cityId==='city-02'&&remote.state.ground.podCityId==='city-02','Pod reaches and reloads another source city');

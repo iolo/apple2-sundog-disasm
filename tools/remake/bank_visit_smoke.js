@@ -14,8 +14,25 @@ async browserPage => {
     let text='';for await(const part of await (await pending).createReadStream())text+=part;
     await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text);
   };
+  const escapeChase=async()=>{
+    const saved=await exportGame();
+    const chase=await page.evaluate(async value=>{
+      const [{loadAssets},{createGroundWorld},{regionalGroundStart},{restoreCampaignGroundHost}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/campaign-ground.js'),import('/js/core/regional-world.js'),import('/js/core/ground-host.js')]);
+      const a=await loadAssets(),world=createGroundWorld({...a.campaignContent,...a.campaignContent.ground},regionalGroundStart(value.state));
+      return restoreCampaignGroundHost(value.state,world,a.campaignContent).encounter.activation.chase;
+    },saved);
+    const dx=Math.sign(chase.player.x-chase.enemy.x)||(chase.player.x-chase.window.left<38?-1:1);
+    const dy=Math.sign(chase.player.y-chase.enemy.y)||(chase.player.y-chase.window.top<34?-1:1);
+    await page.locator('#walk-pause').click();await page.locator('#walk-surface').focus();
+    const keys=[dx<0?'ArrowLeft':'ArrowRight',dy<0?'ArrowUp':'ArrowDown'];for(const key of keys)await page.keyboard.down(key);
+    for(let i=0;i<400&&(await state()).encounter==='chase';i++)await page.clock.runFor(16);
+    for(const key of keys)await page.keyboard.up(key);
+    assert((await state()).encounter===''&&(await state()).dead==='false','Fresh-character source city chase escapes through ordinary held-arrow controls');
+    const escaped=await exportGame();assert(JSON.stringify(escaped.state.ship.inventory)===JSON.stringify(saved.state.ship.inventory)&&JSON.stringify(escaped.state.ship.condition)===JSON.stringify(saved.state.ship.condition)&&escaped.state.dialogue.cash===saved.state.dialogue.cash&&JSON.stringify(escaped.state.economy)===JSON.stringify(saved.state.economy),'Ordinary chase escape preserves personal items, condition, money and regional economy');
+  };
   try {
-    await page.clock.install();await page.goto('http://127.0.0.1:8000/');await ready();
+    await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));
+    await page.clock.install({time:new Date('2026-10-08T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-08T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Bank pilot');
     await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
     const initial=await exportGame();
@@ -30,15 +47,22 @@ async browserPage => {
       const [maps,navigation,economy,location,content]=await Promise.all(['maps','initial-navigation','initial-economy','initial-location','city-walk'].map(n=>fetch(`/data/${n}.json`).then(r=>r.json())));
       const map=createCityMaps(maps,navigation,economy)['city-01'];
       const g=createCityGeometry(map,content,{...location,position:location.shipPosition});
-      const start=Number(from.y)*g.width+Number(from.x),previous=new Int32Array(g.width*g.height).fill(-1),queue=[start];
+      const start=Number(from.y)*g.width+Number(from.x),previous=new Int32Array(g.width*g.height).fill(-1),distance=new Int32Array(g.width*g.height).fill(2147483647),queue=[[0,start]];
+      distance[start]=0;
+      const offer=(cost,node)=>{queue.push([cost,node]);let i=queue.length-1;while(i){const parent=(i-1)>>1;if(queue[parent][0]<=cost)break;queue[i]=queue[parent];i=parent}queue[i]=[cost,node]};
       previous[start]=start;let end;
-      for(let i=0;i<queue.length;i++) {
-        const k=queue[i],p={x:k%g.width,y:Math.floor(k/g.width)};
+      while(queue.length) {
+        const [cost,k]=queue[0],last=queue.pop();
+        if(queue.length){let i=0;while(2*i+1<queue.length){let child=2*i+1;if(child+1<queue.length&&queue[child+1][0]<queue[child][0])child++;if(queue[child][0]>=last[0])break;queue[i]=queue[child];i=child}queue[i]=last}
+        if(cost!==distance[k])continue;const p={x:k%g.width,y:Math.floor(k/g.width)};
         if(atCityBank(map,p)){end=k;break}
         for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) {
           if(!dx&&!dy)continue;
           const q={x:p.x+dx,y:p.y+dy},next=q.y*g.width+q.x;
-          if(previous[next]===-1&&canStand(g,q)){previous[next]=k;queue.push(next)}
+          if(!canStand(g,q))continue;
+          // Prefer eligible city terrain; native threat setup rejects tiles0/1.
+          const tile=map.tiles[((Math.floor((q.y-3)/32)%24)+24)%24][((Math.floor((q.x+3)/28)%40)+40)%40]&15,nextCost=cost+(tile<2?30:1);
+          if(nextCost<distance[next]){distance[next]=nextCost;previous[next]=k;offer(nextCost,next)}
         }
       }
       if(end===undefined)throw Error('No reachable bank');
@@ -49,11 +73,11 @@ async browserPage => {
     const box=await page.locator('#stage').boundingBox();
     for(const point of route) {
       const before=await state(),cx=Number(before.cameraX),cy=Number(before.cameraY);
-      await page.mouse.move(box.x+(145+(point.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.75-cy*32)*1.25)*box.height/480);
-      await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
-      const after=await state();if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
+      await page.mouse.move(box.x+(145+(point.x+3.5-cx*28)*1.25)*box.width/640,box.y+(126+(point.y-2.5-cy*32)*1.25)*box.height/480);
+      await page.mouse.down();for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}await page.mouse.up();
+      const after=await state();if(after.encounter==='chase'){await escapeChase();if((await state()).paused==='true')await page.locator('#walk-pause').click()}if(Number(after.x)!==point.x||Number(after.y)!==point.y)throw Error(`Route stopped at ${after.x},${after.y}, expected ${JSON.stringify(point)}`);
     }
-    assert(await page.locator('#walk-airlock').innerText()==='Enter bank','Walking to the original bank door changes the contextual action');
+    assert(await page.locator('#walk-airlock').innerText()==='Enter bank',`Walking to the original bank door changes the contextual action (${await page.locator('#walk-airlock').innerText()}; ${JSON.stringify(await state())})`);
     const outside=await exportGame();
     await page.locator('#walk-airlock').tap();
     assert((await state()).scene==='bank'&&await page.locator('#bank-panel').isVisible(),'Touch opens the bank at a reachable source door');
@@ -65,7 +89,7 @@ async browserPage => {
     const before=await state();await page.keyboard.press('ArrowRight');await page.clock.runFor(5000);
     assert(JSON.stringify(await state())===JSON.stringify(before),'Bank inquiry freezes movement and survival time');
     const bank=await exportGame();
-    assert(bank.version===24&&bank.scope==='ground-encounters-1'&&bank.state.travel.scene==='bank','Version24 export records the bank visit');
+    assert(bank.version===29&&bank.scope==='ship-salvage-1'&&bank.state.travel.scene==='bank','Version29 export records the bank visit');
     assert(JSON.stringify(bank.state.ship)===JSON.stringify(outside.state.ship)&&JSON.stringify(bank.state.start)===JSON.stringify(initial.state.start)&&JSON.stringify(bank.state.equipment)===JSON.stringify(initial.state.equipment),'Visit preserves street position, inventory, condition, time, balances, equipment and creation');
     await saves();await page.locator('#save-checkpoint-0').click();await settled();
     await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();

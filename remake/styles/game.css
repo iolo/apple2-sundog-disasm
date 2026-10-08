@@ -331,3 +331,20 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .nav-commands{position:absolute;top:394px;left:32px;right:32px;display:flex;gap:12px;font-size:15px}
 .nav-commands button{border:1px solid var(--line);padding:5px 8px}
 .nav-actions{position:absolute;bottom:4px;left:32px;right:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;padding-top:5px;font-size:16px}
+
+#space-panel{position:absolute;inset:0;background:var(--ink);color:var(--paper)}
+#space-panel h1{font-size:24px;font-weight:normal}
+#space-resources,#space-clock{position:absolute;left:32px;right:32px;font-size:14px;line-height:20px}
+#space-resources{top:64px;color:var(--amber)}
+#space-clock{top:86px;color:var(--muted)}
+.space-workspace{position:absolute;left:32px;right:32px;top:118px;height:200px;display:grid;grid-template-columns:320px 1fr;gap:20px}
+#walk-screen #space-surface{position:static;inset:auto;width:320px;height:200px;border:1px solid var(--line);touch-action:none;pointer-events:auto}
+.space-readings{font-size:15px;line-height:19px;display:flex;flex-direction:column;gap:6px}
+.space-pan{display:grid;grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,34px);gap:2px;margin-top:auto;justify-content:center}
+.space-pan button{padding:0;min-height:34px;font-size:24px;border:1px solid var(--line);touch-action:none}
+#space-pan-up{grid-column:2;grid-row:1}#space-pan-left{grid-column:1;grid-row:2}#space-pan-right{grid-column:3;grid-row:2}#space-pan-down{grid-column:2;grid-row:3}
+#space-status{position:absolute;left:32px;right:32px;top:327px;font-size:14px;line-height:19px;color:var(--amber)}
+.space-commands{position:absolute;left:32px;right:32px;top:370px;display:flex;flex-wrap:wrap;gap:6px;font-size:15px}
+.space-commands button{border:1px solid var(--line);padding:4px 8px;min-height:34px}
+#space-fire{touch-action:none}
+.space-actions{position:absolute;left:32px;right:32px;bottom:8px;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:5px;font-size:16px}

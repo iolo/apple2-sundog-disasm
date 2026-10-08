@@ -47,5 +47,5 @@ export async function loadAssets() {
   cityGeometry.pod=createPodGeometry(cityMaps[location.cityId],cityWalk,{...location,position:location.shipPosition});
   const [scripts,text,items,systems]=dialogueData,dialogue={scripts,text,items,systems};
   const [chase,ground]=combatData;
-  return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue,exchange,flight,regional:true,ground:{maps,cityWalk,surfaceWalk},combat:{chase,ground}}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
+  return { catalog, maps, cityMaps, colonyMaps, cityGeometry, shipWalk, shipInventory, campaignContent:{navigation,economy,location,inventory:shipInventory,dialogue,exchange,flight,regional:true,ground:{maps,cityWalk,surfaceWalk},combat:{chase,ground},space:true,tactical:true}, images: Object.fromEntries(images), locales: { en: locales[0], ko: locales[1] } };
 }

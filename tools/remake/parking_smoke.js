@@ -47,9 +47,9 @@ async browserPage => {
       } else {
         if(before.scene==='city') {
           const cx=Number(before.cameraX),cy=Number(before.cameraY);
-          await page.mouse.move(box.x+(145+(p.x+3.25-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.75-cy*32)*1.25)*box.height/480);
+          await page.mouse.move(box.x+(145+(p.x+3.5-cx*28)*1.25)*box.width/640,box.y+(126+(p.y-2.5-cy*32)*1.25)*box.height/480);
         }else await page.mouse.move(box.x+(32+(p.x+3.25)*640/280)*box.width/640,box.y+(46+(p.y-2.75)*2)*box.height/480);
-        await page.mouse.down();await page.clock.runFor(100);await page.mouse.up();
+        await page.mouse.down();if(before.scene==='city'){for(let t=0;t<10;t++){await page.clock.runFor(16);const n=await state();if(n.x!==before.x||n.y!==before.y)break}}else await page.clock.runFor(100);await page.mouse.up();
       }
       const after=await state();if(Number(after.x)!==p.x||Number(after.y)!==p.y)throw Error(`Route ${goal}: ${after.x},${after.y}, expected ${p.x},${p.y}`);
     }
@@ -72,7 +72,7 @@ async browserPage => {
     for(const i of [0,1]){await page.locator(`#cargo-warehouse-${i}`).click();await page.locator('#exchange-confirm').click()}
     const loaded=await exported();assert(loaded.state.pod.cargo.every(Boolean),'Fresh-character purchases fill both pod cargo slots');
     await page.locator('#service-leave').click();await route('street');const street=await exported();await page.locator('#walk-pod').click();const parked=await reload();
-    assert(parked.version===24&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version24 preserves the independent parked pod and player positions');
+    assert(parked.version===29&&!parked.state.pod.occupied&&!parked.state.pod.attached&&JSON.stringify(parked.state.pod.position)===JSON.stringify(street.state.pod.position),'Version29 preserves the independent parked pod and player positions');
     assert(JSON.stringify(parked.state.pod.cargo)===JSON.stringify(loaded.state.pod.cargo),'Parking and reload preserve both purchased cargo lots');
     for(const lang of ['en','ko']) {
       if((await page.locator('html').getAttribute('lang'))!==lang)await page.locator('#walk-language').click();

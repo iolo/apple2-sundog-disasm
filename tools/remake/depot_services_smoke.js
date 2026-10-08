@@ -10,7 +10,7 @@ async browserPage => {
   const saves=async()=>{await page.locator(await page.locator('#power-panel').count()?'#power-saves':await page.locator('#equipment-panel').count()?'#equipment-saves':['exchange','depot'].includes((await state()).scene)?'#service-saves':'#walk-saves').click();await settled()};
   const exported=async()=>{await saves();const pending=page.waitForEvent('download');await page.locator('#export-checkpoint').click();let text='';for await(const part of await(await pending).createReadStream())text+=part;await settled();await page.locator('#checkpoint-back').click();return JSON.parse(text)};
   const reload=async()=>{const before=await exported();await saves();await page.locator('#save-checkpoint-0').click();await settled();await page.reload();await ready();await page.locator('#campaign-saves').click();await settled();await page.locator('#load-checkpoint-0').click();await settled();await page.locator('#checkpoint-back').click();assert(JSON.stringify((await exported()).state)===JSON.stringify(before.state),'Fresh-page reload preserves pod location, cargo, accounts and RNG');return before};
-  async function route(goal) {
+  async function route(goal,beforeAction) {
     const from=await state();
     const points=await page.evaluate(async({from,goal})=>{
       const [{loadAssets},{canStand,interactionAt},{tryPodStep,canDockPod,podServiceAt}]=await Promise.all([import('/js/render/assets.js'),import('/js/core/ship-walk.js'),import('/js/core/city-pod.js')]);
@@ -49,6 +49,7 @@ async browserPage => {
     }
     const action=goal==='engineering'?'#walk-equipment':'#walk-airlock';
     assert(await page.locator(action).isEnabled(),`${goal} reached through normal movement (${points.length} steps)`);
+    if(beforeAction)await beforeAction();
     await page.locator(action).click();
   }
   async function fits(label) {
@@ -69,7 +70,7 @@ async browserPage => {
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));await page.clock.install({time:new Date('2026-10-03T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-03T00:00:01Z'));await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Depot pilot');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const initial=await exported();assert(initial.version===24&&initial.scope==='ground-encounters-1','Fresh campaign exports version24 active resources');
+    const initial=await exported();assert(initial.version===29&&initial.scope==='ship-salvage-1','Fresh campaign exports version29 active resources');
     await route('depart');await route('depot');assert((await state()).scene==='depot','Normal pod driving reaches the depot');
     const arrived=await exported();await fits('services');
     await page.locator('#depot-repair').click();assert((await page.locator('#depot-price').innerText()).includes('145'),'Hull repair quotes the source local price');
@@ -105,9 +106,9 @@ async browserPage => {
     await route('depart');await route('depot');
     await page.locator('#depot-auxiliary').click();await page.locator('#depot-all').click();await page.locator('#depot-confirm').click();const auxOnly=await reload();
     assert(auxOnly.state.resources.fuel===0&&auxOnly.state.pod.cargo.every(c=>c?.commodityId==='cargo-01'),'Fresh campaign buys two auxiliary loads while the ship tank remains empty');
-    await page.locator('#service-leave').click();await route('dock');const refueled=await reload();
+    await page.locator('#service-leave').click();let beforeDock;await route('dock',async()=>{beforeDock=await exported()});const refueled=await reload();
     assert(refueled.state.resources.fuel===255&&refueled.state.pod.cargo[0]===null&&JSON.stringify(refueled.state.pod.cargo[1])===JSON.stringify(auxOnly.state.pod.cargo[1]),'Docking consumes the first auxiliary load and fills the empty ship tank');
-    assert(JSON.stringify(refueled.state.economy)===JSON.stringify(auxOnly.state.economy)&&JSON.stringify(refueled.state.dialogue)===JSON.stringify(auxOnly.state.dialogue)&&refueled.state.encounters.randomState===auxOnly.state.encounters.randomState,'Automatic docking refill changes no money or RNG');
+    assert(JSON.stringify(refueled.state.economy)===JSON.stringify(beforeDock.state.economy)&&JSON.stringify(refueled.state.dialogue)===JSON.stringify(beforeDock.state.dialogue)&&refueled.state.encounters.randomState===beforeDock.state.encounters.randomState,'Automatic docking refill changes no money or RNG');
     await route('depart');await route('dock');const redocked=await reload();
     assert(redocked.state.resources.fuel===255&&JSON.stringify(redocked.state.pod.cargo)===JSON.stringify(refueled.state.pod.cargo),'Reload and docking again do not consume the remaining load from a full tank');
     await route('engineering');await page.locator('#equipment-power').click();
