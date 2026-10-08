@@ -159,3 +159,16 @@ Static checks pass22 exporter tests,171 deterministic artifacts and584
 classified source-string records. R09 remains complete. This regression does
 not close the remaining tactical control, encounter, timing or recovery gates
 in the [R10 audit](r10-completion.md).
+
+## Committed R10r regression, 2026-10-08
+
+Repeated the full ordinary-control R09 journey against committed checkpoint
+`2096c7d` after reviewing every original R09 requirement. All64 checks pass in
+Chrome155.0.8059.39 with no failures or page errors. The fresh receipt is
+byte-identical to `r09-space-host-journey-validation.json`: purchases17,100,
+foreign sales45,300, return573 game minutes and fuel108. The live space-host
+changes described above are now committed in R10r.
+
+Repeated static verification passes22 exporter tests,171 deterministic artifacts
+and584 classified source-string records. No R09 requirement needs reopening;
+there are no remaining R09 implementation or acceptance tasks.
