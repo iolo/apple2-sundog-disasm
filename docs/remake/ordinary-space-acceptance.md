@@ -65,3 +65,45 @@ It does not prove space victory, weapon aiming/fire acceptance, shield absorptio
 under ordinary enemy fire, Tractor collection through ordinary campaign play,
 fatal native Warp return, or terminal ground death. Earlier controlled evidence
 retains its declared scope. The [full R10 audit](r10-completion.md) remains open.
+
+## R10ab ordinary laser victory, shield overflow and Tractor
+
+The [maintained fight/salvage runner](../../tools/remake/ordinary_space_fight_salvage_smoke.js)
+starts another fresh seed12345 character and repeats the legitimate paid fuel,
+8900Cr commodity24 and8200Cr commodity25 purchases and ordinary launch. It
+finishes actual sublight travel at minute216 before requesting full shields.
+An open-space type2 pirate has health218 and range97. No campaign imports,
+contact/RNG writes or fabricated damage are used.
+
+An actual pending enemy hit consumes shields255→0 at minute223 before overflow
+damages a force-shield component31→159. Hull remains15, performance16→12 and
+the pending failure owner records the source result. A fresh page restores every
+owner exactly. This proves buffer consumption and overflow damage, not complete
+absorption of that high-strength attack.
+
+Normal Laser selection, legal pointer aim and fresh press/release firing defeat
+the pirate after38 observed aim samples. At minute233 the enemy has health0,
+hull remains15 and fuel is75. The source produces a commodity23/quality6 wreck,
+with unknown origin and zero purchase cost. Only the current-system bank gains
+3000Cr (9862→12862); personal cash153 and both purchased lots are unchanged.
+The bounty and wreck each have one receipt, preserved through fresh reload.
+
+Normal bolt arming and slot2 jettison remove the actual commodity25 purchase
+once. Tractor then selects that deliberately empty slot and pulls the real wreck
+from range61 to1. Partial-pull reload and completed reload preserve the complete
+campaign. At minute237, fuel55 and shields255, slot2 contains the salvaged
+commodity23/quality6 while slot1 retains the original paid commodity24 lot.
+The loss ledger retains the discarded purchase, and neither bank credit nor
+collection repeats during reload or paused elapsed time. Creation data is
+unchanged at every checkpoint.
+
+All36 [Chrome checks](r10ab-ordinary-space-fight-salvage-validation.json) pass
+with no page errors; victory and collected screenshots were inspected. The
+[R10ab inventory](r10ab-validation-summary.json) retains literal owners and
+receipt hashes. No gameplay core or save schema changed in this checkpoint,
+so the R10y510-rule baseline remains historical current-core evidence.
+
+This completes the remaining ordinary space fight, aim/fire, shield-damage and
+Tractor acceptance. Browser matching for the captured fatal Warp return and
+the final complete requirement/regression audit remain open. Terminal ground
+death is unclaimed; earlier prepared references retain their declared scope.

@@ -1,3 +1,19 @@
+## R10ab — Ordinary space laser victory, shield overflow and Tractor — 2026-10-08
+
+A fresh seed12345 character uses only normal controls for paid fuel/cargo,
+launch and flight, shield targets, manual laser aim/fresh fire and salvage.
+Actual enemy fire consumes a full shield buffer and commits component overflow
+damage. Laser victory kills a real pirate, creates a source wreck and credits
+only the current system with3000Cr. Normal slot2 jettison retains the paid-lot
+loss; Tractor loads the actual wreck while retaining slot1's purchased cargo.
+
+All36 Chrome checks pass with no errors, complete-state fresh-page reloads
+through damage/victory/pulling/collection, immutable creation and duplicate
+reward/collection guards. Victory and collected screenshots were inspected.
+This checkpoint adds evidence and its maintained runner; no gameplay core or
+save schema changes. R10 remains active for browser fatal-Warp matching and
+the final full audit. R09 stays complete and PRD-REMAKE.md stays untouched.
+
 ## R10aa — Native fatal Warp pre-entry and return — 2026-10-08
 
 The prepared native Warp context now has a successful healthy control and an
