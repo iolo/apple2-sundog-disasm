@@ -1,3 +1,28 @@
+## R10z — Ordinary space cargo negotiation, loss and terminal recovery — 2026-10-08
+
+A fresh seed12345 character buys fuel and two exchange lots, loads the pod and
+produces a contact through normal powered flight. The unshielded branch uses no
+player shots or fabricated damage; continuing ordinary contacts reaches actual
+ship destruction at minute325. Fresh-page reload preserves the complete terminal
+campaign, and elapsed time leaves it frozen. Explicit slot1 recovery restores
+the earlier living encounter exactly and resumes ordinary Comm.
+
+The second branch opens kind19, agrees to the cargo demand and retains the source
+six-tick deadline. Full-shield controls and manually armed Both jettison remove
+the two purchased lots once in reverse order, retaining costs/quality/origin in
+the loss ledger. Ordinary elapsed time produces contact escape, hull15, shields
+128 toward255 and fuel221. Agreement transfers no personal/bank money. Every
+checkpoint preserves immutable creation; fresh-page reloads compare complete
+campaign JSON. All44 Chrome journey checks pass with no page errors; destruction
+and escape screenshots were inspected. Original input hashes verify.
+
+No gameplay core or save schema changed. The latest rule baseline remains the
+R10y510 groups, with its controlled UI receipts separately scoped. R10 remains
+active for fatal native Warp, ordinary space victory/aim/fire, shield absorption
+and remaining ordinary equipment/Tractor acceptance. Terminal ground death is
+unclaimed; ordinary ship terminal defeat/recovery is now proven. R09 stays
+complete and the user's PRD is untouched. See the R10z inventory and full audit.
+
 ## R10y — Defined rare-dialogue source fault and recovery access — 2026-10-08
 
 The R10x native zero-divisor observation now has explicit browser handling.

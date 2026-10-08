@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10z",
+  "checkpointStatus": "pass",
+  "baseCommit": "74293e0",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "uiChecks": 44,
+  "receipts": [
+    {
+      "file": "r10z-ordinary-space-negotiation-loss-validation.json",
+      "kind": "ordinary fresh-character space negotiation, loss and terminal recovery",
+      "checks": 44,
+      "browser": "155.0.8059.39",
+      "sha256": "d6a02711bb9969bd0c53c8469cdb3ec0edc47e1943ef27ef178764fe9ae02b8a"
+    }
+  ],
+  "priorBaseline": {
+    "checkpoint": "R10y",
+    "rules": 510,
+    "uiChecks": 253,
+    "inventory": "r10y-validation-summary.json",
+    "freshRuleRun": false,
+    "gameplayCoreChanged": false,
+    "saveSchemaChanged": false
+  },
+  "originalInputs": {
+    "verified": true,
+    "gameDiskSha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "utilityDiskSha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+    "manualSha256": "dadc5fb2aac8a5a88f6bedb6f8a4742367a62eec313a8f9c058bad602aabc2a1"
+  },
+  "proven": [
+    "Fresh-character contact production through ordinary paid fuel/cargo and powered flight",
+    "Ordinary unshielded ship destruction, durable terminal reload and complete clock freeze",
+    "Explicit earlier-slot restoration of the complete legitimate encounter and resumed Comm",
+    "Actual kind19 Agree and preserved six-tick cargo deadline with exact fresh-page saves",
+    "Manual bolt arming and Both jettison with two actual paid lots and reverse loss order",
+    "Cargo-induced contact escape with hull15 and actual shield charging0 to128 toward255",
+    "Independent personal/bank/cargo owners and immutable creation throughout all branches"
+  ],
+  "scopeLimits": [
+    "Unshielded continuation can encounter later naturally produced contacts; fatal type2 differs from initial type1",
+    "No ordinary space victory, weapon aiming/fire or shield absorption claim",
+    "No ordinary Tractor collection or native menu-reachability claim",
+    "No fatal native Warp or terminal ground-death claim",
+    "English desktop journey; prior controlled bilingual/viewport/timing checks remain separately scoped"
+  ],
+  "remaining": [
+    "Fatal native Warp pre-entry/return context",
+    "Ordinary fresh-character space victory and aiming/fire",
+    "Ordinary shield absorption and remaining equipment/Tractor acceptance"
+  ],
+  "cleanup": {
+    "browser": "owned remake CLI session closed after checks",
+    "native": "No new native session"
+  }
+}
