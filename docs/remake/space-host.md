@@ -143,8 +143,11 @@ Ship destruction commits source word347 and a durable reason/time. The native
 retained-pointer zero-output case can leave the actual hull nonzero. Personal
 condition is not fabricated to represent ship death. If the condition clock
 and hull both become terminal on one scheduler call, both owner records persist.
-Subsequent clocks/actions freeze. Native death/wreck/recovery dispatch remains
-pending; the marker does not invent recovery or fulfill that R10 gate.
+Subsequent clocks/actions freeze. R10p observes the native fatal hit, death
+dialog and saved-point restart/Play continuation; see [recovery reference](ship-recovery-reference.md).
+The native exit advances one further phase in that capture. Browser exit/restart
+integration and ordinary recovery acceptance remain pending; the marker alone
+does not fulfill that R10 gate.
 
 ## Shots and cargo loss
 

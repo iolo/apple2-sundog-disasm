@@ -1,0 +1,28 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10p",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "browser": "155.0.8059.39",
+  "ruleGroups": 501,
+  "focusedShipCombatGroups": 19,
+  "newRuleGroups": 1,
+  "receipts": ["r10p-rules-validation.json"],
+  "nativeReference": "../reference/remake-recovery-reference.json",
+  "nativeArtifactHashes": 26,
+  "nativeSourceContexts": 8,
+  "nativeExitCode": 0,
+  "staticChecks": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "sourceStringRecords": 584,
+    "originalInputHashes": 3
+  },
+  "boundaries": [
+    "The contact and fatal hit use declared RAM fixtures; native damage, death dispatch and joystick saved-point/Play continuation are observed.",
+    "The native post-fatal exit phase still requires browser integration. No browser recovery completion is claimed.",
+    "Native tractor collection, rare reward224, live space controls/timing/sleep/reload and ordinary encounter/equipment/recovery acceptance remain full R10 gates.",
+    "The R10o regional journey receipt remains the latest regional UI evidence; no new R09 journey or campaign UI run is claimed."
+  ]
+}
