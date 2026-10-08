@@ -138,3 +138,24 @@ Chrome155.0.8059.39 with no page errors; the new receipt is byte-identical to
 570 minutes and fuel108. Repeated static checks pass22 exporter tests,
 171 deterministic artifacts and584 classified source-string records. R09 has
 no remaining implementation or acceptance task.
+
+## Live space-host working-tree regression, 2026-10-08
+
+Rechecked the ordinary R09 journey with the uncommitted R10 live tactical UI
+and version29 `ship-salvage-1` enabled on top of `96225a2`. The journey harness
+now opens the visible tactical Saves and Navigation controls after a successful
+warp; all campaign mutations still use ordinary controls, with no injected
+equipment, cargo, money, fuel or destination state.
+
+[r09-space-host-journey-validation.json](r09-space-host-journey-validation.json)
+passes all64 checks in Chrome155.0.8059.39, with no failures or page errors.
+The fresh seed12345 run buys for17,100, sells abroad for45,300 and returns
+home after573 game minutes with fuel108. These are this working-tree run's
+results; the earlier committed-code receipts remain distinct. Cargo, regional
+accounts, stock, immutable creation and location survive the round trip and
+repeated fresh-page reloads.
+
+Static checks pass22 exporter tests,171 deterministic artifacts and584
+classified source-string records. R09 remains complete. This regression does
+not close the remaining tactical control, encounter, timing or recovery gates
+in the [R10 audit](r10-completion.md).

@@ -1,4 +1,14 @@
-# Campaign save boundary — live24; opt-in R10o29
+# Campaign save boundary — live29, R10r
+
+R10r activates version29 `ship-salvage-1` in the live loader. Actual tactical
+controls, source Comm/deadline, bounty/wreck/tractor/cargo-loss owners and ship
+defeat now save and restore through the browser. Aboard sleep/rest state and its
+partial budget are durable. Physical controls are released when opening Saved
+Games, while source button history and buffered presses remain owned. Explicit
+earlier-slot recovery restores all owners after terminal ship destruction.
+Live30/60/144Hz input, pause, reload and sleep checks match complete campaign
+state. See [live space controls](space-encounter-ui.md) for controlled evidence
+and the remaining ordinary-play/native gates.
 
 R10o extends `content.space:true,tactical:true` to version29 `ship-salvage-1`.
 It owns bounded bounty/wreck receipts and the tactical wreck/tractor record,
@@ -6,7 +16,8 @@ validates unknown-origin salvage across pod/warehouses/archives/losses, and admi
 source bounty income in the wealth bound. Versions1–28 validate historically
 before empty receipt/null-wreck migration, without granting old kills a bounty or
 cargo. See [ship salvage](ship-salvage.md) for exact rules and evidence boundaries.
-Live24 and space-only26 remain unchanged.
+At R10o, live24 and space-only26 remained unchanged; R10r activates the existing
+tactical29 boundary without weakening historical validation.
 
 R10n extended `content.space:true,tactical:true` to version28 `ship-input-1`.
 The exact controller fields are `{record,control,carry,trigger}`. Trigger owns
@@ -37,7 +48,7 @@ Comm requires neutral input, menu0, no firing and a byte-sized reticle. A valid
 source inoperative firing loop may retain gun power in27;26 remains strict.
 Normal entry commits three actual machinery calls once, while Comm return skips
 startup. Source phase1 resets counter354 in this context. See
-[tactical host](ship-tactical.md). The live loader remains24 pending controls.
+[tactical host](ship-tactical.md). At R10m the live loader remained24 pending controls.
 
 R10j extends `content.space:true` to version26 `ship-communication-1`, adding
 `space.communication:{conversation,pending,ticks}` and
@@ -50,7 +61,7 @@ aggression on the seventh due call or tactical exit. Jettison does not cancel
 it. Sleep owns a0–49ms remainder and rest-recovery phase, including forced wake
 gating; awake retains0–249ms. Game16 return flags48–51 keep their shared dialogue
 owner. Historical25 validates its original nine space fields/flag set before
-idle communication/awake activity are added. The live loader remains24.
+idle communication/awake activity are added. At R10j the live loader remained24.
 
 R10i adds opt-in version25 `ship-encounters-1` with `content.space:true`. The
 new `space` block owns source contact fields,12 packed cooldowns, normal aboard
@@ -61,7 +72,7 @@ Historical versions1–24 validate before adding an idle space record. Version24
 still rejects hull damage, raw combat caches and missing cryogens. Version25
 conserves stored plus lost cryogens and counts destroyed paid lots in the wealth
 bound. Contact progress is validated canonically, not by replaying the entire
-campaign RNG history. Live UI remains24 until space controls are connected.
+campaign RNG history. At R10i live UI remained24 until space controls were connected.
 See [space host](space-host.md).
 
 R10g adds opt-in version24 `ground-encounters-1` when content supplies the

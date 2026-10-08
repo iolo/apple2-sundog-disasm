@@ -1,0 +1,181 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10r",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "baseCommit": "96225a2",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ruleGroups": 503,
+  "uiChecks": 1183,
+  "receipts": [
+    {
+      "file": "r10r-bank-visit-validation.json",
+      "kind": "ui",
+      "checks": 28,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-banking-validation.json",
+      "kind": "ui",
+      "checks": 44,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-city-service-validation.json",
+      "kind": "ui",
+      "checks": 84,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-city-walk-validation.json",
+      "kind": "ui",
+      "checks": 44,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-depot-services-validation.json",
+      "kind": "ui",
+      "checks": 61,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-dialogue-validation.json",
+      "kind": "ui",
+      "checks": 19,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-engineering-failures-validation.json",
+      "kind": "ui",
+      "checks": 28,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-exchange-trading-validation.json",
+      "kind": "ui",
+      "checks": 68,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-ground-ui-validation.json",
+      "kind": "ui",
+      "checks": 100,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-lodging-validation.json",
+      "kind": "ui",
+      "checks": 27,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-machinery-validation.json",
+      "kind": "ui",
+      "checks": 31,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-navigation-validation.json",
+      "kind": "ui",
+      "checks": 44,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-parking-validation.json",
+      "kind": "ui",
+      "checks": 42,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-personal-trade-validation.json",
+      "kind": "ui",
+      "checks": 34,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-pod-cargo-validation.json",
+      "kind": "ui",
+      "checks": 33,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-r08-journey-validation.json",
+      "kind": "ui",
+      "checks": 81,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-room-walk-validation.json",
+      "kind": "ui",
+      "checks": 102,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-rules-validation.json",
+      "kind": "rules",
+      "checks": 503,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-shop-purchases-validation.json",
+      "kind": "ui",
+      "checks": 29,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-space-ui-validation.json",
+      "kind": "ui",
+      "checks": 110,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-surface-validation.json",
+      "kind": "ui",
+      "checks": 67,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10r-tavern-validation.json",
+      "kind": "ui",
+      "checks": 43,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r09-space-host-journey-validation.json",
+      "kind": "ui",
+      "checks": 64,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "static": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "classifiedSourceStrings": 584,
+    "verifiedOriginalInputs": 3
+  },
+  "ordinaryGroundAvoidance": {
+    "receipt": "r10r-exchange-trading-validation.json",
+    "freshSeed": 12345,
+    "naturallyProducedChasesEscaped": 2,
+    "preserved": [
+      "personal inventory",
+      "personal condition",
+      "cash",
+      "regional economy"
+    ]
+  },
+  "displayRates": [
+    30,
+    60,
+    144
+  ],
+  "boundaries": [
+    "Controlled tactical/ground fixtures do not replace ordinary encounter fight/lose, equipment/shield, negotiation/jettison and defeat/recovery acceptance.",
+    "Native full tractor collection and fatal entry/startup/Comm-dispatch contexts remain open.",
+    "Rare kind18 reward target224 remains unsupported and rejected atomically pending native observation and resolution.",
+    "Native terrain SYSTEMERROR21,40 behavior for tiles0/1 remains in the core; ordinary foot route planning prefers eligible city terrain.",
+    "R09 remains complete; R11 cannot replace any remaining R10 gate."
+  ]
+}

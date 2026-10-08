@@ -55,7 +55,7 @@ async browserPage => {
     await page.goto('http://127.0.0.1:8000/');await ready();
     await page.locator('#create-character').click();await page.locator('#character-name').fill('Ground pilot');
     await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const original=await exported();assert(original.version===24&&original.scope==='ground-encounters-1','Live asset loader enables version24');
+    const original=await exported();assert(original.version===29&&original.scope==='ship-salvage-1','Live asset loader retains ground encounters in version29');
     const baseline=await fixture(original);await imported(baseline);await run(500);
     const partial=await reloaded();assert(partial.state.combat.ground===null&&partial.state.combat.clock.iterations>0,'Partial due clock survives fresh-page load');
     await run(350);assert((await state()).encounter==='chase','Restored clock produces the chase without a new RNG seed');
@@ -158,6 +158,21 @@ async browserPage => {
       refresh.push((await exported()).state);
     }
     assert(JSON.stringify(refresh[0])===JSON.stringify(refresh[1])&&JSON.stringify(refresh[1])===JSON.stringify(refresh[2]),'Live30/60/144Hz display loops yield identical campaign, replay inputs and RNG');
+    const inputRates=[],movingFixture=await fixture(original,12345);
+    for(const hz of [30,60,144]) {
+      await page.evaluate(hz=>localStorage.setItem('ground-test-hz',hz),hz);await page.reload();await ready();
+      await page.locator('#campaign-saves').click();await settled();await imported(movingFixture);await run(0);
+      await page.locator('#walk-surface').focus();await page.keyboard.down('ArrowRight');await page.clock.runFor(137);await page.keyboard.up('ArrowRight');
+      const partial=await exported();assert(partial.state.combat.clock.elapsed===37,`${hz}Hz ground input/save retains the complete137ms budget`);
+      await page.clock.runFor(1000);assert(JSON.stringify((await exported()).state)===JSON.stringify(partial.state),`${hz}Hz ground pause freezes every campaign owner`);
+      await reloaded();await run(0);const pose=await state();
+      await point(Number(pose.x)-Number(pose.cameraX)*28+1,Number(pose.y)-Number(pose.cameraY)*32-3);
+      await page.mouse.down();await page.clock.runFor(137);await page.mouse.up();
+      const pointerPartial=await exported();assert(pointerPartial.state.combat.clock.elapsed===24,`${hz}Hz captured ground pointer preserves its partial budget after reload`);
+      await reloaded();await run(0);await page.locator('#walk-surface').focus();await page.keyboard.down('ArrowDown');await page.clock.runFor(726);await page.keyboard.up('ArrowDown');
+      const completed=await exported();assert(completed.state.combat.clock.elapsed===0,`${hz}Hz resumed ground controls consume exactly1000ms`);inputRates.push(completed.state);
+    }
+    assert(JSON.stringify(inputRates[0])===JSON.stringify(inputRates[1])&&JSON.stringify(inputRates[1])===JSON.stringify(inputRates[2]),'Live30/60/144Hz held ground keys, captured pointer, partial save, pause and fresh reload yield identical complete campaign state');
     assert(errors.length===0,'No uncaught browser errors');
     return {browser:browser.version(),fixture:'controlled actual-map placement and gate seeds; live controls, terminal outcomes and fresh-page saves',checks:checks.length,results:checks,errors};
   }finally{await context.close()}
