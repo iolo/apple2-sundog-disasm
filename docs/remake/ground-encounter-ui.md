@@ -117,3 +117,14 @@ equipment or condition is injected for this first leg.
 
 This proves ordinary fresh-character ground avoidance. Ground fight/lose,
 equipment/shield, negotiation and recovery acceptance remain R10 work.
+
+## R10w ordinary ground victory and loss
+
+[Two fresh-character journeys](ordinary-ground-acceptance.md) now prove
+ordinary natural threat/catch, refusal, laser victory, actual shield charge
+consumption and unarmed knockout/robbery. Neither imports a campaign or
+fabricates combat actors/damage. Exact fresh-page reloads preserve the reward
+and injury, and explicit earlier-slot loading restores the living fresh
+character and movement. Peaceful negotiation and ordinary terminal defeat
+remain separate acceptance work; controlled terminal references above retain
+their original scope.

@@ -21,7 +21,10 @@ function a2.recoverySourceBreakpoint(segment,offset)
   local spec=assert(segments[segment])
   assert(math.type(offset)=='integer' and offset>=0 and offset<spec.size)
   local slot=0xbdb6+2*(segment-12)
-  local exp=string.format('w@0x58==(w@0x%x-0x%x+0x%x)',slot,spec.size,offset)
+  -- Unloaded segment slots can retain addresses now occupied by another
+  -- module. Match the active VM segment and trailer tag before its offset.
+  local exp=string.format('w@0x56==w@0x%x && b@(w@0x%x)==0x%x && b@(w@0x%x+1)==0x%x && w@0x58==(w@0x%x-0x%x+0x%x)',
+    slot,slot,segment,slot,spec.procedures,slot,spec.size,offset)
   return {id=m.devices[':maincpu'].debug:bpset(0xd293,exp,''),segment=segment,offset=offset}
 end
 function a2.recoverySourceSave(path,segment,offset)

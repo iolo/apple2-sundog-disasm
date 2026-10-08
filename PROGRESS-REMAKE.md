@@ -1,3 +1,31 @@
+## R10w — Ordinary ground fights, shield use and knockout recovery — 2026-10-08
+
+Added two reproducible Chrome journeys using fresh seed12345 characters and
+ordinary UI controls. Read-only geometry finds city routes and exported saves
+supply source actor positions; neither runner imports or mutates campaign state.
+The armed journey transfers the actual stores laser/shield, catches a natural
+threat, defeats three enemies and commits one2016Cr reward. Five shield charges
+are consumed while health stays255. The unarmed journey reaches a natural
+knockout, health87/vigor174 and cash0; storage/bank owners remain intact.
+Fresh-page loads preserve complete campaigns, and explicit earlier-slot loading
+restores the fresh character and ordinary movement. All31 ordinary UI checks
+pass (17 victory,14 knockout/recovery), with no browser errors. See
+`docs/remake/ordinary-ground-acceptance.md` and the R10w validation inventory.
+
+Source breakpoints now also match the active VM segment and trailer tags,
+preventing unloaded-module address reuse from satisfying an offset condition.
+A fresh owned IIe Comm capture passes all8 existing native-vector context checks
+with the guarded helper and exits0. Prepared Warp probes are excluded from
+completion evidence: a healthy control also fails in the post-jump renderer,
+so no fatal Warp death continuation or host correction is claimed here. A
+previous abandoned R10s-02 diagnostic process was identified from its owned PID
+receipt and terminated; it is not a clean-exit acceptance capture.
+
+R10 remains active for fatal Warp, reward224, peaceful ground negotiation,
+ordinary space avoid/fight/lose, ship equipment/shields, cargo-demand/jettison
+and ordinary terminal defeat/recovery. Original scope and the completion audit
+are retained. R09 remains complete; the user's PRD remains untouched.
+
 ## R10v — Native fatal Comm dispatcher and UI poll — 2026-10-08
 
 Captured the original fatal Comm return in an owned MAME0.285 unenhanced IIe

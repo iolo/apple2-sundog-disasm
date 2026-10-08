@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10w",
+  "checkpointStatus": "pass",
+  "baseCommit": "51d7e08",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ordinaryUiChecks": 31,
+  "newGameplayCoreChanges": false,
+  "priorRuleBaseline": {
+    "checkpoint": "R10v",
+    "checks": 507,
+    "file": "r10v-rules-validation.json",
+    "rerunThisCheckpoint": false
+  },
+  "nativeHelperRegression": {
+    "file": "r10w-native-breakpoint-validation.json",
+    "contexts": 8,
+    "newGameplayGate": false
+  },
+  "receipts": [
+    {
+      "file": "r10w-ordinary-ground-fight-validation.json",
+      "kind": "ordinary ground fight",
+      "checks": 17,
+      "browser": "155.0.8059.39",
+      "sha256": "c46bcc25cac3de6b3ee3a960ef1a04184340d54ca9041d6aacce83e157051b36"
+    },
+    {
+      "file": "r10w-ordinary-ground-loss-validation.json",
+      "kind": "ordinary ground knockout and recovery",
+      "checks": 14,
+      "browser": "155.0.8059.39",
+      "sha256": "46201af209a194a16bfe1e9c6d5e812be02913493a68ded97e6dd9cfc3f1d0cb"
+    }
+  ],
+  "proven": [
+    "Fresh-character natural ground victory against three enemies and one2016Cr reward",
+    "Legitimate laser/shield transfers and five shield charges consumed",
+    "Fresh-character natural knockout/robbery: health87, vigor174, cash0",
+    "Complete fresh-page persistence and explicit earlier-slot recovery after living knockout"
+  ],
+  "remaining": [
+    "Fatal native Warp pre-entry/return context",
+    "Rare dialogue reward224",
+    "Peaceful ordinary ground negotiation",
+    "Ordinary fresh-character space avoid/fight/lose",
+    "Ordinary ship equipment/shields",
+    "Ordinary cargo-demand/Comm/jettison negotiation",
+    "Ordinary terminal defeat/recovery acceptance"
+  ],
+  "excluded": [
+    "Prepared Warp renderer-failure probes; healthy control also fails",
+    "Failed extended ordinary ground death attempts; living knockouts/visitors do not establish terminal death"
+  ],
+  "cleanup": {
+    "browser": "closed after checks",
+    "nativeComm": "owned clean exit0",
+    "historicalR10s02Diagnostic": "verified owned abandoned PID terminated; excluded from acceptance"
+  }
+}
