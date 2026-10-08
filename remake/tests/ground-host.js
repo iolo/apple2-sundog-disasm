@@ -116,6 +116,27 @@ export async function groundHostTests(test,equal) {
     const paused=advanceGroundHost(r,world,content,60000);equal(paused.campaign,r.campaign);equal(paused.encounter,r.encounter);
     fail(()=>advanceGroundEncounter(r.encounter,content,{type:'tick',control:idle,ticks:1}),'groundEncounterTickUnavailable');
   });
+  await test('Declared rare-dialogue host replays its fault, freezes time and cannot publish a reward',()=>{
+    const state=campaign();state.encounters.randomState=10916;
+    // Explicit source condition fixture, not legitimate colony progression or
+    // an importable fresh campaign. The top-level codec must still reject it.
+    state.start.economy.colony.completedPhase=2;
+    const r=prepared(state),a=r.encounter.activation;
+    equal(a.phase,'dialogue');equal(a.combat.kind,18);equal(a.conversation.fault.runtimeError,6);
+    equal(a.conversation.randomState,4196256831);equal(a.conversation.state.flags[125],true);
+    equal(a.conversation.state.locals[104],153);equal(r.campaign.dialogue,state.dialogue);
+    equal(r.campaign.ship,state.ship);equal(r.campaign.economy,state.economy);
+    const saved=snapshotCampaignGroundHost(r,world,content);
+    equal(Object.keys(saved.combat.ground),['seed','inputs']);equal(saved.combat.rewards,[]);equal(saved.combat.defeat,null);
+    const loaded=restoreCampaignGroundHost(JSON.parse(JSON.stringify(saved)),world,content);
+    equal(loaded.encounter.activation,a);equal(loaded.clock,r.clock);
+    const frozen=advanceGroundHost(loaded,world,content,60000);
+    equal(frozen.campaign,loaded.campaign);equal(frozen.encounter,loaded.encounter);equal(frozen.clock,loaded.clock);
+    const before=JSON.stringify(loaded);
+    fail(()=>dialogue(loaded,{type:'cancel'}),'dialogueSourceFault');
+    fail(()=>finishCampaignGroundEncounter(saved,world,content),'groundEncounterReturnUnavailable');
+    fail(()=>codec.snapshot(saved),'invalidCampaign');equal(JSON.stringify(loaded),before);
+  });
   await test('Save24 validates historical23 first, adding only default combat fields and retaining old quote bounds',()=>{
     const legacy=old.make(old.create({...createCharacter(),name:'Legacy host'},12345),0),migrated=codec.validate(legacy);
     equal([migrated.version,migrated.scope],[24,'ground-encounters-1']);

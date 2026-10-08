@@ -7,7 +7,7 @@ async browserPage => {
     await page.goto('http://127.0.0.1:8000/');
     await page.waitForFunction(()=>document.documentElement.dataset.ready==='true');
     // Declared isolated dialogue fixture: source setup, runner and real panel.
-    // This does not import an encounter into the live version23 campaign.
+    // This does not import an encounter into the live campaign.
     await page.evaluate(async()=>{
       const [{startEncounterDialogue,restoreEncounterDialogue,advanceEncounterDialogue},{dialoguePanel},{translator}]=await Promise.all([
         import('/js/core/encounter-dialogue.js'),import('/js/ui/dialogue.js'),import('/js/ui/i18n.js')]);
@@ -84,6 +84,6 @@ async browserPage => {
     await page.screenshot({path:'output/playwright/remake/r10f-gift-ko-640.png'});
     await page.locator('[data-dialogue-purchase="2"]').click();const gift=(await state()).outcome;
     assert(gift.carried[2]===237&&gift.cash===cash,'Empty-slot transfer accepts the charged gift for zero credits');
-    return {browser:browser.version(),fixture:'isolated source encounter dialogue; live campaign schema remains23',checks:checks.length,results:checks,errors};
+    return {browser:browser.version(),fixture:'isolated source encounter dialogue; no live campaign import',checks:checks.length,results:checks,errors};
   } finally {await context.close()}
 }

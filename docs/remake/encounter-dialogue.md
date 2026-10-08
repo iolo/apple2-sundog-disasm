@@ -80,7 +80,7 @@ remain pending. Source tactical exit restores aggression when pending, and
 jettison leaves the deadline running. Game16's space overlay resets word354
 without advancing ship machinery. See [the campaign host](space-host.md).
 
-## Unresolved reward target
+## Rare reward target and observed source failure
 
 Kind18's rare branch `$1368–$137B` quotes10000, sets125 and requests224.
 Game16 procedure34 maps that state to disk2 block103, beyond the audited
@@ -91,10 +91,12 @@ the actual rare branch in a declared Game16 activation: block103's zero
 selector draws again, then reaches the original zero-divisor trap at CPU
 `$D7ED`. No successful dialogue return or10000Cr award is established.
 
-The runner currently rejects224 atomically, leaving campaign cash, flags and
-RNG untouched. Final playable handling of this observed source exception
-remains explicit R10 work. It is not deferred
-to R11 because colony progress participates in the condition.
+At R10x the runner rejected224 atomically. [R10y](dialogue-source-fault.md) now
+preserves the source quote/flag and second RNG draw in a stopped conversation,
+with no payout or successful return. Its bilingual panel exposes save access
+and explicit earlier-checkpoint recovery. Invalid targets/descriptors continue
+to reject atomically. Ordinary colony advancement remains R11; the rare parser
+failure has defined handling without inventing reward text or a10000Cr award.
 
 ## Validation
 

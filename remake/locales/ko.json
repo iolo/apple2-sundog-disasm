@@ -254,6 +254,8 @@
   "dialogueBack": "돌아가기 / 대화 종료",
   "dialogueScope": "상품 가격을 확인한 뒤 빈 소지품 칸을 선택해 구매하세요.",
   "dialogueUnavailable": "대화를 계속할 수 없습니다. 진행 상태는 유지됩니다.",
+  "dialogueInterrupted": "대화 중단",
+  "dialogueInterruptedHint": "대화를 계속할 수 없습니다. 이전 저장을 불러오거나 메뉴로 돌아가세요.",
   "dialogueHistoryFull": "저장할 수 있는 대화 길이를 넘었습니다. 대화를 종료한 뒤 계속하세요.",
   "dialogueMessage94_147": "무엇을 드릴까요?",
   "dialogueMessage94_150": "다른 무엇을 보여 드릴까요?",

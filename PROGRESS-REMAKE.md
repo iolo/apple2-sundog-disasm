@@ -1,3 +1,36 @@
+## R10y — Defined rare-dialogue source fault and recovery access — 2026-10-08
+
+The R10x native zero-divisor observation now has explicit browser handling.
+A normalized semantic exception describes224 separately from the thirteen normal
+dialogue banks. The runner accepts only the initial rare kind18 setup, keeps
+the10000Cr quote/125flag in the owned conversation, draws for selector0 and stops
+with runtime error6. Literal native seed23 ends atRNG379799 and cash500, with no
+message, reply, reward receipt or successful return. Unsupported descriptors/
+states and subsequent gameplay inputs reject atomically. Unsafe native dictionary
+writes are skipped as an explicit browser adaptation.
+
+The English/Korean interruption panel retains language, focus, existing save
+access and Back to the menu without requiring an earlier save. Escape cannot dismiss the fault; restoration requires an explicit earlier
+checkpoint. Faults derive from replay, not serialized interpreter frames. A
+declared colony2/gate10916 host fixture proves JSON reconstruction, clock/condition/
+combat freeze and no reward commit. Top-level saves still reject its forged
+immutable colony phase; no ordinary colony reachability or importable live colony
+save is claimed. Existing campaign personal owners stay frozen until verified
+returns; no save version or terminal death marker is added.
+
+All510 Chrome rule groups pass.48 fault/checkpoint UI checks cover both locales
+and four viewports, exact fresh-page IndexedDB reconstruction and explicit earlier
+dialogue recovery using the real panels and an isolated fixture codec.105 normal
+dialogue and100 controlled live ground UI checks also pass. Both390px fault
+screenshots were visually inspected.23 exporter tests,171 deterministic artifacts,
+584 classified strings and the native14-context/33-artifact reference verify.
+The existing dialogue runner's stale live-version scope label was corrected.
+See `docs/remake/dialogue-source-fault.md` and the R10y inventory.
+
+R10 remains active for fatal Warp, ordinary space avoid/fight/lose, ship equipment/
+shields, cargo-demand/jettison and ordinary terminal defeat/recovery. R09 remains
+complete. The full requirement audit and the user's untouched PRD are retained.
+
 ## R10x — Peaceful visitor and native rare-branch failure — 2026-10-08
 
 The new ordinary Chrome journey creates a fresh seed12345 character, repeats

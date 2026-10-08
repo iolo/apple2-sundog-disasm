@@ -73,7 +73,12 @@ def dialogue_records(audit):
                   records=[normalize(r) for r in b['records']]) for b in audit['banks']]
     if [b['block'] for b in banks] != list(range(90, 103)):
         raise ValueError('Expected the thirteen classified dialogue banks')
-    return dict(version=1, source='game_16 procedures23–29/34; docs/reference/dialogue-scripts.json', banks=banks)
+    # R10x observes state224 loading non-dialogue block103: selector0 reaches
+    # MODI0 and the original runtime error6. Keep this semantic exception apart
+    # from the thirteen classified banks; there is no message or award record.
+    return dict(version=1, source='game_16 procedures23–29/34; docs/reference/dialogue-scripts.json', banks=banks,
+                exceptions={'224': dict(block=103, kind='zeroRandomSelector', runtimeError=6,
+                                        source='docs/reference/remake-reward-reference.json')})
 
 
 def dialogue_text(dictionary, messages, storage):
