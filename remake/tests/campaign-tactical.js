@@ -3,7 +3,7 @@ import { createCharacter } from '../js/core/character.js';
 import { createInitialEquipment } from '../js/core/initialization.js';
 import { recalculateEquipment } from '../js/core/equipment.js';
 import { createSurvival } from '../js/core/survival.js';
-import { advanceCampaignMachinery,reduceMachineryControl } from '../js/core/campaign-machinery.js';
+import { advanceCampaignMachinery,reduceMachineryControl,advanceCampaignShipDispatch } from '../js/core/campaign-machinery.js';
 import { reduceCampaignSpace,reduceCampaignShipCommunication } from '../js/core/campaign-space.js';
 import { reduceCampaignFlight } from '../js/core/campaign-flight.js';
 import { reduceWarehouseCargo } from '../js/core/cargo.js';
@@ -345,6 +345,26 @@ export async function campaignTacticalTests(test,equal) {
     const returned=agree(escaped);
     equal(returned.space.flags[40],false);equal(returned.space.flags[47],true);equal(returned.space.tactical.record.contact,false);
     equal(returned.space.communication,{conversation:null,pending:true,ticks:6});equal(reload(returned),returned);
+  });
+  await test('Native fatal Comm dispatch clears returned demand and polls once without a second machinery call',()=>{
+    // Declared R10v dispatch fixture: Game16 has returned flag51, and the
+    // original Library24 hit is prepared independently of dialogue RNG.
+    const s=comm(enter(fixture()));s.machinery.phase=1;s.encounters.randomState=28;
+    s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};
+    s.resources.enginesPowered=false;s.resources.shields={charge:0,targetCharge:0};
+    s.space.flags[41]=s.space.flags[45]=true;s.dialogue.flags[51]=true;s.ship.minutes=1278;
+    s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:40,216:200,217:5,354:0});
+    const before=structuredClone(s),dead=advanceCampaignShipDispatch(s,content);
+    equal([dead.resources.hull,dead.resources.guns.charge,dead.machinery.phase],[0,68,2]);
+    equal([dead.space.words[215],dead.space.words[217],dead.space.words[354]],[40,5,1]);
+    equal(dead.encounters.randomState,0xc3870fdc);equal(dead.ship.minutes,1278);
+    equal(dead.space.flags[35],false);equal(dead.dialogue.flags[51],false);
+    equal(dead.space.flags[41],true);equal(dead.space.flags[44],true);
+    equal(dead.space.communication,{conversation:null,pending:false,ticks:0});
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);
+    equal(dead.space.elapsed,0);equal(dead.ship.condition,s.ship.condition);equal(s,before);
+    equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
   });
   await test('Successful warp commits its counter/call followed by three entry calls, while gravity failure retains the active host',()=>{
     const s=run(reduceCampaignFlight(fixture(),content,{type:'launch'}),4250);

@@ -1,3 +1,28 @@
+## R10v — Native fatal Comm dispatcher and UI poll — 2026-10-08
+
+Captured the original fatal Comm return in an owned MAME0.285 unenhanced IIe
+session on copied media using the repository runner.8 asserted contexts and19
+hashed artifacts retain declared original command entry, unattended Game16
+timed return and the prepared fatal hit. An additional diagnostic breakpoint
+locates the counter increment in Game13's first UI poll at20E8. The retained
+runner reproduces it with a source breakpoint; both successful sessions and
+all excluded probes release owned resources and exit0.
+
+The host now clears returned flag51 through its campaign dialogue owner and
+commits counter1 before the ended-campaign scene. Native phase2, gun68,
+cooldown40, range5, time and post-hit RNG remain unchanged: there is no extra
+machinery call on this path. The regression verifies owners, immutable input,
+exact terminal save/reload and freeze. See `docs/remake/ship-comm-defeat-reference.md`.
+
+507 Chrome rule groups,110 live space UI checks and49 focused tactical groups
+pass. Native receipt/hash/source checks and syntax/whitespace checks pass;
+owned browser and native sessions are closed. See `docs/remake/r10v-validation-summary.json`.
+
+R10 remains active for fatal warp pre-entry, reward224 and ordinary ground/space
+encounter, equipment/shields, negotiation/jettison and defeat/recovery acceptance.
+The original R10 row and audit remain authoritative. R09 remains complete;
+the untracked user PRD is untouched.
+
 ## R10u — Native later-startup fatal returns — 2026-10-08
 
 Captured fatal hits in the actual second and third normal startup calls in two
