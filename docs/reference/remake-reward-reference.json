@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10x",
+  "emulator": "MAME0.285 / unenhanced apple2e / owned Qt debugger",
+  "scope": "Existing original Comm activation; declared kind18, colony progress2, flag125false and RNG23 at Game16 proc39 entry. No ordinary reward reachability.",
+  "runner": "tools/remake/capture_reward_reference.py",
+  "terminal": {
+    "ownedChild": 3519181,
+    "exitCode": 0,
+    "clean": true
+  },
+  "contexts": [
+    {
+      "file": "remake-reward-main.json",
+      "segment": 12,
+      "offset": "0x1388"
+    },
+    {
+      "file": "remake-reward-comm-store.json",
+      "segment": 12,
+      "offset": "0x1320"
+    },
+    {
+      "file": "remake-reward-reward-entry.json",
+      "segment": 16,
+      "offset": "0x1252"
+    },
+    {
+      "file": "remake-reward-rare.json",
+      "segment": 16,
+      "offset": "0x1368"
+    },
+    {
+      "file": "remake-reward-requested.json",
+      "segment": 16,
+      "offset": "0x137b"
+    },
+    {
+      "file": "remake-reward-bank-read.json",
+      "segment": 16,
+      "offset": "0x115c"
+    },
+    {
+      "file": "remake-reward-bank-loaded.json",
+      "segment": 16,
+      "offset": "0x115f"
+    },
+    {
+      "file": "remake-reward-header-test.json",
+      "segment": 16,
+      "offset": "0xee0"
+    },
+    {
+      "file": "remake-reward-header-return.json",
+      "segment": 16,
+      "offset": "0xf69"
+    },
+    {
+      "file": "remake-reward-record.json",
+      "segment": 16,
+      "offset": "0x1163"
+    },
+    {
+      "file": "remake-reward-record-mode.json",
+      "segment": 16,
+      "offset": "0xd7c"
+    },
+    {
+      "file": "remake-reward-zero-selector.json",
+      "segment": 16,
+      "offset": "0xa34"
+    },
+    {
+      "file": "remake-reward-zero-modulus.json",
+      "segment": 16,
+      "offset": "0xa36"
+    },
+    {
+      "file": "remake-reward-zero-error.json",
+      "segment": 16,
+      "offset": "0xa36"
+    }
+  ],
+  "notProven": [
+    "Ordinary rare-branch reachability",
+    "Successful reward dialogue return",
+    "10000Cr award",
+    "Final playable browser exception handling"
+  ],
+  "artifacts": [
+    {
+      "file": "remake-reward-comm-entry.json",
+      "sha256": "24de07d7006a0762fffdebba657ce6c5c98393e91effad9ea2afc7d0445b64dc"
+    },
+    {
+      "file": "remake-reward-reward-setup.json",
+      "sha256": "02c2f08f8caa7d112dd56a15465308b18b653b0f6533bdd36267bcddd6745325"
+    },
+    {
+      "file": "remake-reward-error.json",
+      "sha256": "b9eeb2e5a6319547973e40c36925b600ff272cd9dbce45a52e70fe62e7c7ebde"
+    },
+    {
+      "file": "remake-reward-error.png",
+      "sha256": "f180d06f23d67886c9ab68530f08f35a85283f14ccf78de38bdd4bcdcbc7a979"
+    },
+    {
+      "file": "remake-reward-main.json",
+      "sha256": "0d7df2d48e4be4c18fc36e2f279aefd5cb833b7667b970fd75a81719f5b8443a"
+    },
+    {
+      "file": "remake-reward-main.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-reward-comm-store.json",
+      "sha256": "971cf10ac056f7162d5162d8b8bc59106dbdf88998ab026b287d136cafcc3dce"
+    },
+    {
+      "file": "remake-reward-comm-store.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-reward-reward-entry.json",
+      "sha256": "5dd01bca9e6547ec7b2d64f382a8447246069f9a564fa0eaadfd1ccd1428e560"
+    },
+    {
+      "file": "remake-reward-reward-entry.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-rare.json",
+      "sha256": "8b308dec606e33743ce82b116f81a201d9f2b8cd7103736bd76dca537e258ce4"
+    },
+    {
+      "file": "remake-reward-rare.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-requested.json",
+      "sha256": "aee05cca0a95d39fb335cdd446d673aea44e83de2816664e71124e5f65e30f1b"
+    },
+    {
+      "file": "remake-reward-requested.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-bank-read.json",
+      "sha256": "275a1457a126b34386abb202c5b241937665049725ad038f3a1eadd2deda14e6"
+    },
+    {
+      "file": "remake-reward-bank-read.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-bank-loaded.json",
+      "sha256": "2d3a40cf401a80f8c987ef29e28f58122c17623a6fb332054b7ace9b5304584b"
+    },
+    {
+      "file": "remake-reward-bank-loaded.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-header-test.json",
+      "sha256": "2528d3c5657a6bfbed183bfb43894c08984eec56b28e8db74d2ea5d093a3a8c6"
+    },
+    {
+      "file": "remake-reward-header-test.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-header-return.json",
+      "sha256": "3d4e440d922cd9b14826299f80ef4d42545733445c08760aa1d4e8768fe43cfc"
+    },
+    {
+      "file": "remake-reward-header-return.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-record.json",
+      "sha256": "e25d71b9441cdd7345904b624a5852308dffd1f99d910694ba8cca62c4a75eef"
+    },
+    {
+      "file": "remake-reward-record.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-record-mode.json",
+      "sha256": "3181bf6c683669c465bb8685b010424e1cdd85518abd1ed5a852056e5e407f24"
+    },
+    {
+      "file": "remake-reward-record-mode.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-zero-selector.json",
+      "sha256": "c1ea043782277ebefd8663eb9ede90a9b45d753fa79310efb9c83661f4fb3d6e"
+    },
+    {
+      "file": "remake-reward-zero-selector.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-zero-modulus.json",
+      "sha256": "9a899b08312b2b929311909b4862edbcf70aeae49ee9810c2fba03559ad04dce"
+    },
+    {
+      "file": "remake-reward-zero-modulus.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-zero-error.json",
+      "sha256": "5838b5dd2a0ca3fc80cb47ee3e53857884c400653325aafb40d9dfd6c215f80b"
+    },
+    {
+      "file": "remake-reward-zero-error.png",
+      "sha256": "46a5373b3757b29fdab7d14c40abcd4308b7c0d0157be047051c777e8c8457e4"
+    },
+    {
+      "file": "remake-reward-receipts.json",
+      "sha256": "4e7c81302467b9d800969c49e7a507f87fe6d756e77643c80dd2e66d1323d353"
+    }
+  ]
+}

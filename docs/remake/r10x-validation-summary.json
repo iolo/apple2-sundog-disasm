@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10x",
+  "checkpointStatus": "pass",
+  "baseCommit": "21aca36",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ordinaryUiChecks": 32,
+  "newGameplayCoreChanges": false,
+  "priorRuleBaseline": {
+    "checkpoint": "R10v",
+    "checks": 507,
+    "file": "r10v-rules-validation.json",
+    "rerunThisCheckpoint": false
+  },
+  "receipts": [
+    {
+      "file": "r10x-ordinary-ground-negotiation-validation.json",
+      "kind": "ordinary peaceful ground payment; includes repeated fresh victory setup",
+      "checks": 32,
+      "browser": "155.0.8059.39",
+      "sha256": "bb6ab91b08f89177c589c1c7975bb95700e755c50d794e5be5ed4a73c494fbd9"
+    }
+  ],
+  "nativeReference": {
+    "file": "../reference/remake-reward-reference.json",
+    "contexts": 14,
+    "artifacts": 33,
+    "verifier": "tools/remake/verify_reward_reference.py",
+    "ordinaryAcceptance": false
+  },
+  "proven": [
+    "Fresh-character naturally produced kind18 visitor and source Yes payment",
+    "One11Cr personal payment and peaceful flag50 departure without attacks",
+    "Exact pending/accepted/departing/returned fresh-page persistence",
+    "Declared native rare224 branch loading block103 and reaching original MODI0 trap"
+  ],
+  "remaining": [
+    "Fatal native Warp pre-entry/return context",
+    "Final playable browser handling of observed rare224 source exception",
+    "Ordinary fresh-character space avoid/fight/lose",
+    "Ordinary ship equipment/shields",
+    "Ordinary cargo-demand/Comm/jettison negotiation",
+    "Ordinary terminal defeat/recovery acceptance"
+  ],
+  "excluded": [
+    "Failed bounded native rare-branch diagnostic probes and helper-loader attempt; owned processes closed",
+    "First two ordinary negotiation assertions used campaign cash before encounter return or compared pre-wait condition; corrected owner/clock boundaries and reran the full journey",
+    "Prior prepared Warp renderer failures and failed ordinary terminal death attempts"
+  ],
+  "cleanup": {
+    "browser": "closed after ordinary checks",
+    "native": "owned clean exit0; all owned breakpoints cleared and inputs released"
+  }
+}

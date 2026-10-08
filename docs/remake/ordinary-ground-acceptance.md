@@ -1,4 +1,4 @@
-# Ordinary ground fight and loss acceptance — R10w
+# Ordinary ground encounter acceptance — R10w/R10x
 
 Two Chrome journeys create a new default character, `Ground pilot`, with seed
 12345 through the normal character UI. Neither imports a campaign nor writes
@@ -38,6 +38,28 @@ Paused elapsed time leaves all owners frozen. Explicitly loading slot0 restores
 the exact earlier fresh campaign; walking to stores proves resumed play. This
 is recovery by the player's earlier save, not automatic restoration.
 
+## Peaceful payment visitor — R10x
+
+The [negotiation runner](../../tools/remake/ordinary_ground_negotiation_smoke.js)
+repeats the fresh armed victory, then stays in the ordinary city until its next
+source gate naturally produces kind18. At campaign minute309, the payment
+visitor opens entry49 with an11Cr quote. The ordinary Yes reply reaches113;
+cancelling that response returns to the same encounter with peaceful flag50.
+The existing visitor departs without player shots or enemy attacks.
+
+The encounter owns the payment while departure is active. Personal campaign
+cash commits2169→2158 when the encounter returns. Bank accounts, inventory,
+immutable creation data and all four personal condition bytes remain unchanged
+from visitor catch through departure. Normal elapsed city time before catch
+consumes rest/nourishment/vigor; the receipt retains that separate clock effect.
+Fresh-page saves reproduce pending, accepted, departing and returned states
+exactly, and never repeat the11Cr payment or previous2016Cr fight reward.
+
+All32 checks in this journey pass, including its repeated victory setup and
+the new ordinary peaceful acceptance. See the
+[negotiation receipt](r10x-ordinary-ground-negotiation-validation.json) and
+[R10x inventory](r10x-validation-summary.json).
+
 ## Validation and limits
 
 All31 ordinary Chrome checks pass (17 victory,14 knockout/recovery), with no
@@ -50,9 +72,10 @@ copying the entire world dataset into every checkpoint.
 - [Ordinary loss receipt](r10w-ordinary-ground-loss-validation.json).
 - [Checkpoint inventory](r10w-validation-summary.json).
 
-This closes the ordinary ground victory/knockout, personal laser/shield and
-explicit earlier-slot recovery contexts. It does not prove peaceful ground
-negotiation, terminal ground death, any ordinary space encounter, cargo-demand
-negotiation/jettison, fatal Warp return or the rare reward224. The original
+These journeys close ordinary ground victory/knockout, peaceful visitor
+negotiation, personal laser/shield and explicit earlier-slot recovery contexts.
+They do not prove terminal ground death, any ordinary space encounter,
+cargo-demand negotiation/jettison, fatal Warp return or playable rare reward224
+handling. The original
 [R10 requirement audit](r10-completion.md) remains in progress. Earlier
 controlled terminal fixtures remain separately scoped evidence.

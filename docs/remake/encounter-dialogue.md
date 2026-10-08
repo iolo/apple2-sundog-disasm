@@ -86,13 +86,14 @@ Kind18's rare branch `$1368–$137B` quotes10000, sets125 and requests224.
 Game16 procedure34 maps that state to disk2 block103, beyond the audited
 dialogue banks90–102. [The bank audit](r10f-reward-bank-audit.json) reads the
 hash-verified rebuilt **utility disk**:102 has a supported dialogue header;
-103/104 do not. This does not establish the original game's behavior when
-executing the rare branch. No native observation or replacement reward text
-is claimed.
+103/104 do not. [R10x's native observation](reward-reference.md) now reaches
+the actual rare branch in a declared Game16 activation: block103's zero
+selector draws again, then reaches the original zero-divisor trap at CPU
+`$D7ED`. No successful dialogue return or10000Cr award is established.
 
 The runner currently rejects224 atomically, leaving campaign cash, flags and
-RNG untouched. Native observation, interpretation of this source exception
-and final playable handling remain explicit R10 work. They are not deferred
+RNG untouched. Final playable handling of this observed source exception
+remains explicit R10 work. It is not deferred
 to R11 because colony progress participates in the condition.
 
 ## Validation
