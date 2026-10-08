@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "date": "2026-10-08",
+  "driver": "apple2e",
+  "mame": "0.285",
+  "nativeContexts": 8,
+  "scope": "Repeat of declared R10v Comm/fatal vector with active-segment/trailer-tag breakpoint conditions; no new ordinary/native acceptance gate.",
+  "verifier": "verify_comm_defeat_reference.check",
+  "terminal": {
+    "ownedChild": 3450730,
+    "exitCode": 0,
+    "clean": true
+  },
+  "helperSha256": "228228c401dd92cea13fde8c7ae6e474d59bd15fb34bd271fea1b6c3be787d36",
+  "operationsSha256": "b69e99c313231502a9c8c21a2d10054c8301ded21a9b6f93d9656f00adfb7cb9",
+  "reference": "docs/reference/remake-comm-defeat-reference.json"
+}
