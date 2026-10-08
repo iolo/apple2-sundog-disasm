@@ -1,3 +1,28 @@
+## R10s — Native Tractor continuation and return-menu call — 2026-10-08
+
+Captured the original Tractor pull/copy/inhibit/return sequence in an owned
+MAME0.285 unenhanced IIe session on copied media. The declared wreck, empty-slot
+and original command-entry fixture retains12 asserted source contexts and26
+hashed artifacts. Breakpoints and inputs are released; terminal exit0 is
+observed. Native menu selection, a new kill and ordinary fresh-character
+acceptance are not claimed. See `docs/remake/ship-salvage-reference.md`.
+
+The capture exposes the omitted release poll after collection: phase2→3,
+gun68→60, counter5 unchanged. Live29 now commits that call after the lot copy,
+retaining due-before-copy fuel ownership, movement and terminal handling.
+The regression checks five ranges, slot1 preservation, phase/charge/RNG/time
+and exact partial/completed reloads, including the phase1 counter-reset guard.
+
+504 Chrome rule groups,110 live space UI checks and46 focused tactical groups
+pass.22 exporter tests,171 deterministic artifacts,584 classified strings and
+three original hashes verify. Native and browser sessions are closed. See
+`docs/remake/r10s-validation-summary.json`.
+
+R10 remains active for fatal startup/Comm contexts, reward224 and ordinary
+encounter/equipment/shields/negotiation/jettison/recovery acceptance. The original
+R10 row and full audit remain authoritative. R09 remains complete. The user's
+untracked PRD is untouched.
+
 ## R10n — Native tactical input and saved source button edges — 2026-10-08
 
 Observed prepared original-game manual aim, fresh/held fire, empty-space charge

@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10s",
+  "emulator": "MAME0.285 / unenhanced apple2e / joystick / owned Qt debugger",
+  "scope": "Declared wreck, empty pod slot2 and original Tractor case-entry fixture. Not native menu selection, a new kill or ordinary fresh-character acceptance.",
+  "bootstrapSequence": "docs/reference/game-play.json through frame18000 on disposable media",
+  "helpers": [
+    "tools/remake/encounter_reference.lua",
+    "tools/remake/ground_reference.lua",
+    "tools/remake/tactical_reference.lua",
+    "tools/remake/tactical_input_reference.lua",
+    "tools/remake/salvage_reference.lua"
+  ],
+  "runner": "tools/remake/capture_salvage_reference.py",
+  "terminal": {
+    "ownedChild": 3232853,
+    "exitCode": 0,
+    "clean": true
+  },
+  "contexts": [
+    {
+      "file": "remake-salvage-main.json",
+      "game12Offset": "0x1388"
+    },
+    {
+      "file": "remake-salvage-entry.json",
+      "game12Offset": "0x0fca"
+    },
+    {
+      "file": "remake-salvage-loop-1.json",
+      "game12Offset": "0x1048"
+    },
+    {
+      "file": "remake-salvage-loop-2.json",
+      "game12Offset": "0x1048"
+    },
+    {
+      "file": "remake-salvage-loop-3.json",
+      "game12Offset": "0x1048"
+    },
+    {
+      "file": "remake-salvage-loop-4.json",
+      "game12Offset": "0x1048"
+    },
+    {
+      "file": "remake-salvage-loop-5.json",
+      "game12Offset": "0x1048"
+    },
+    {
+      "file": "remake-salvage-copied.json",
+      "game12Offset": "0x1072"
+    },
+    {
+      "file": "remake-salvage-complete.json",
+      "game12Offset": "0x1096"
+    },
+    {
+      "file": "remake-salvage-menu-before.json",
+      "game12Offset": "0x0f19"
+    },
+    {
+      "file": "remake-salvage-menu-after.json",
+      "game12Offset": "0x0f2b"
+    },
+    {
+      "file": "remake-salvage-returned.json",
+      "game12Offset": "0x1388"
+    }
+  ],
+  "observed": [
+    "Five pulls21->17->13->9->5->1; drift-4 and source counter1..5.",
+    "Slot2 selected; slot1 retained; copy217/0 follows the due phase1->2.",
+    "Copy precedes inhibition/parent-wreck clearing.",
+    "Proc15 release poll calls proc12 without incrementing354; phase2->3 and gun68->60 before main returns.",
+    "RNG, clock, equipment, condition and carried inventory unchanged in this prepared vector."
+  ],
+  "notProven": [
+    "Native menu reachability by this probe; the command entry is explicitly redirected.",
+    "Naturally won kill, ordinary fresh-character space encounter, reward224, fatal startup or Comm return."
+  ],
+  "artifacts": [
+    {
+      "file": "remake-salvage-setup.json",
+      "sha256": "40bfd1bcd7c094f06d24e410894bd8d0f39d6e0ef0744d60c43076f41e223d84"
+    },
+    {
+      "file": "remake-salvage-main.json",
+      "sha256": "0b38015ced6233e26846dce5fa6062ca9e8ae2bc9dd113d6b90782692108fd96"
+    },
+    {
+      "file": "remake-salvage-main.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-salvage-entry.json",
+      "sha256": "e435b08b85f862917a42885d0423f39e89dc6d7b84520458b4660b3057ae617d"
+    },
+    {
+      "file": "remake-salvage-entry.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-salvage-loop-1.json",
+      "sha256": "d72e5855683cba5e35e5d0905d208e7870b071dca6aa238eab421227fd0b3ca3"
+    },
+    {
+      "file": "remake-salvage-loop-1.png",
+      "sha256": "3d5138f62f640f84a159cb86d4354482487972ead48c591a636cd57eb2d1ca61"
+    },
+    {
+      "file": "remake-salvage-loop-2.json",
+      "sha256": "bd790fff50eeb7cdfc0c218d41eaac1d7e5e18f49286169891caba32949769af"
+    },
+    {
+      "file": "remake-salvage-loop-2.png",
+      "sha256": "d846ef377a7ec1fd0011ba93475e8a9ab65c426bc045a68f43f2400e7f6de536"
+    },
+    {
+      "file": "remake-salvage-loop-3.json",
+      "sha256": "85b62b5541972cd9494449c9a44cc076dbba5984a0577ee19a2f1957ab8660a3"
+    },
+    {
+      "file": "remake-salvage-loop-3.png",
+      "sha256": "142036880cc54e2b102f63955171a8a557cc8e348963eaba658c6a6c72920a0c"
+    },
+    {
+      "file": "remake-salvage-loop-4.json",
+      "sha256": "ce624b34cfa328430a783f6a527eddab19ac1b685f7a26746e63d465e90bf0d9"
+    },
+    {
+      "file": "remake-salvage-loop-4.png",
+      "sha256": "c3e3d92b3def35db3b20588edfc99309236b3ca7f675dce8b234f840574451bf"
+    },
+    {
+      "file": "remake-salvage-loop-5.json",
+      "sha256": "f1271a4448d0a57f885543e6acce5d53f3a5100f76181574294dd21cbbf241b0"
+    },
+    {
+      "file": "remake-salvage-loop-5.png",
+      "sha256": "e322e4ae12d6512790f3ca7757f1eb32bf6e697b62c1a0558d77794192fc42fc"
+    },
+    {
+      "file": "remake-salvage-copied.json",
+      "sha256": "9ec87079a399daf78d2ff9fdc478c8c4f793ac2be195f77e42b81ff851fdc644"
+    },
+    {
+      "file": "remake-salvage-copied.png",
+      "sha256": "f8c19b590cad25b70d6dca2d90c34fbd5d57662e28c5829d20a9236971e2cfc7"
+    },
+    {
+      "file": "remake-salvage-complete.json",
+      "sha256": "f229bde61d5e2e45e89d460fb60a3a51eaab0892b01351621749e07cea0995ce"
+    },
+    {
+      "file": "remake-salvage-complete.png",
+      "sha256": "f8c19b590cad25b70d6dca2d90c34fbd5d57662e28c5829d20a9236971e2cfc7"
+    },
+    {
+      "file": "remake-salvage-menu-before.json",
+      "sha256": "f964ccf0de445256a2bc13a2b50edf094a806c77eb2a106edf5eae58e351ad0f"
+    },
+    {
+      "file": "remake-salvage-menu-before.png",
+      "sha256": "a52780824a7ddfb502ea2d0cffe7bb84ab49d11b32ad3a5c47a3ff1db92521f8"
+    },
+    {
+      "file": "remake-salvage-menu-after.json",
+      "sha256": "05fd168bbcb6a49a639acaced8391cd9e78d39f379ef2ca4f1e106a213492862"
+    },
+    {
+      "file": "remake-salvage-menu-after.png",
+      "sha256": "bd53ff4eb86fe82629742f7f5ac62fa600e00f7bbe8c5cb69d91c6dbd7bbabdc"
+    },
+    {
+      "file": "remake-salvage-returned.json",
+      "sha256": "adb07be52b900f4938fe0ea73920ba90b7615face6285036a9452e0c880bc142"
+    },
+    {
+      "file": "remake-salvage-returned.png",
+      "sha256": "e584d55dee8ce159555aa408cede97dcac53e7ba19bf3564660a37f72ddd51c0"
+    },
+    {
+      "file": "remake-salvage-receipts.json",
+      "sha256": "e638013267d208356ea6b86f539a7cbf9ab794b93039e95eb72e0cb97c7628c9"
+    }
+  ]
+}

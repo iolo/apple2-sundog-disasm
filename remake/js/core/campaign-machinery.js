@@ -105,6 +105,21 @@ function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false}={})
   return next;
 }
 
+function tacticalMachineryCycle(previous,s,content,delta) {
+  let next=machineryCycle(previous,s,content),cycles=1;
+  if(next.space.tactical) {
+    const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,delta);
+    commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
+    if(next.space.defeat) {
+      // Game12 finishes post-hit movement before Game13's one display-return
+      // call. This applies to both ordinary frames and proc15 menu polling.
+      leaveCampaignShipDeadline(next);clearCampaignTactical(next);
+      next=machineryCycle(next,s,content,{defeatExit:true});cycles++;
+    }
+  }
+  return {state:next,cycles};
+}
+
 // Game13 main dispatch $2588 runs one Library24 call before Game12 consumes
 // the Game16 return bits. Keep the conversation frozen until that call ends;
 // the cargo deadline is only armed by the subsequent Game12 return branch.
@@ -184,24 +199,22 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
       }
       if(begun.aftermath)recordCampaignShipKill(next,begun.aftermath,content);
       if(begun.due) {
-        next=machineryCycle(next,s,content);cycles++;
-        if(next.space.tactical) {
-          const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,begun.delta);
-          commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
-          if(next.space.defeat) {
-            // Game12 $0BB5 finishes movement before exiting, including a
-            // fatal hit. Release its firing loop/deadline before Game13
-            // $26B2 -> proc12 -> proc13 $0C2A refreshes navigation. That one
-            // Library24 call uses scene12; CSP4 EXIT(13,12) at $1314 prevents
-            // proc18's second call. Only this new transition may run it.
-            leaveCampaignShipDeadline(next);clearCampaignTactical(next);
-            next=machineryCycle(next,s,content,{defeatExit:true});cycles++;
-          }
-        }
+        const due=tacticalMachineryCycle(next,s,content,begun.delta);next=due.state;cycles+=due.cycles;
       }
       if(next.space.tactical?.record.wreck&&next.space.tactical.record.wreck.tractorSlot!==null&&!next.space.defeat&&!s.dead) {
         const completed=completeShipTacticalTractor(campaignShipSource(next),next.space.tactical.record);
         commitCampaignShipSource(next,completed.state);next.space.tactical.record=completed.tactical;
+        if(completed.loaded) {
+          // Proc18 returns through main $14CA -> proc15. Its first release
+          // poll calls proc12 at $0F19 without incrementing354, after the lot
+          // copy. R10s observes phase2->3/charge68->60 here before main returns.
+          const polled=beginShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,neutralShipControl(),
+            {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle,polling:true});
+          commitCampaignShipSource(next,polled.state);next.space.tactical.record=polled.tactical;
+          if(polled.due) {
+            const due=tacticalMachineryCycle(next,s,content,polled.delta);next=due.state;cycles+=due.cycles;
+          }
+        }
       }
       frames++;
     } else {next=machineryCycle(next,s,content);cycles++}

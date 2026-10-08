@@ -97,6 +97,38 @@ export async function campaignTacticalTests(test,equal) {
     // Isolate proc18's source access rule. No second hold or attachment grant.
     const pulling=action(detached,{type:'tractor'});equal(pulling.pod,detached.pod);equal(pulling.space.tactical.record.wreck.tractorSlot,1);
   });
+  await test('Native R10s Tractor copies slot2 after its fifth due call, then runs the release-menu phase before returning control',()=>{
+    const start=tractor(kill()),lot={commodityId:'cargo-25',quality:6,originCity:null,pricePaid:0},
+      retained={commodityId:'cargo-01',quality:7,originWorld:'world-01',pricePaid:0};
+    start.space.tactical.record.wreck.lot=lot;start.space.wrecks=[{lot,count:1}];
+    start.pod.cargo=[retained,null];start.resources.guns={charge:68,powered:false};
+    start.resources.enginesPowered=false;start.machinery.phase=1;
+    start.space.words[354]=0;start.space.words[217]=21;start.space.words[208]=start.space.words[209]=0;
+    start.encounters.randomState=0x128222d1;
+    const initial=structuredClone(start),minutes=start.ship.minutes;
+    let state=start;
+    for(const range of [17,13,9,5]) {
+      state=tick(state).state;
+      equal(state.space.words[217],range);equal(state.machinery.phase,1);
+      equal(state.resources.guns.charge,68);equal(state.pod.cargo,[retained,null]);
+      equal(reload(state),state);
+    }
+    const collected=tick(state);
+    equal(collected.frames,1);equal(collected.cycles,2);
+    equal(collected.state.space.words[217],1);equal(collected.state.space.words[354],5);
+    equal(collected.state.machinery.phase,3);equal(collected.state.resources.guns.charge,60);
+    equal(collected.state.pod.cargo,[retained,lot]);equal(collected.state.space.flags[36],false);
+    equal(collected.state.space.tactical.record.wreck,null);
+    equal(collected.state.encounters.randomState,0x128222d1);equal(collected.state.ship.minutes,minutes);
+    equal(reload(collected.state),collected.state);equal(start,initial);
+    // The menu call sees the newly copied auxiliary fuel. The loop's due call
+    // precedes the copy, so it cannot consume that lot first.
+    const fuel=structuredClone(start),fuelLot={commodityId:'cargo-01',quality:4,originCity:null,pricePaid:0};
+    fuel.pod.cargo=[null,null];fuel.resources.fuel=0;
+    fuel.space.tactical.record.wreck.lot=fuelLot;fuel.space.wrecks=[{lot:fuelLot,count:1}];
+    const consumed=run(fuel,250);equal(consumed.resources.fuel,255);equal(consumed.pod.cargo,[null,null]);
+    equal(consumed.space.wrecks,fuel.space.wrecks);equal(reload(consumed),consumed);
+  });
   await test('Newly collected wreck fuel enters cargo after the due machinery call and refuels only on its next actual call',()=>{
     const s=tractor(kill(0));s.space.words[217]=5;s.space.words[354]=4;s.machinery.phase=0;s.resources.fuel=0;
     const before=structuredClone(s),loaded=tick(s).state;

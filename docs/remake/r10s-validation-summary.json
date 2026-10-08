@@ -1,0 +1,42 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10s",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "baseCommit": "2096c7d",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "ruleGroups": 504,
+  "uiChecks": 110,
+  "nativeContexts": 12,
+  "nativeArtifacts": 26,
+  "nativeScope": "declared wreck/empty-slot/original command-entry fixture; full Tractor continuation and return-menu poll",
+  "receipts": [
+    {
+      "file": "r10s-rules-validation.json",
+      "kind": "rules",
+      "checks": 504,
+      "browser": "155.0.8059.39"
+    },
+    {
+      "file": "r10s-space-ui-validation.json",
+      "kind": "ui",
+      "checks": 110,
+      "browser": "155.0.8059.39"
+    }
+  ],
+  "focusedGroups": 46,
+  "static": {
+    "exporterTests": 22,
+    "deterministicArtifacts": 171,
+    "classifiedStrings": 584,
+    "originalInputHashes": 3
+  },
+  "remaining": [
+    "Fatal tactical entry/startup and Comm-dispatch contexts",
+    "Rare dialogue reward224",
+    "Ordinary fresh-character ground fight/lose and space avoid/fight/lose",
+    "Legitimate equipment/shields, negotiation/jettison and defeat/recovery acceptance"
+  ]
+}
