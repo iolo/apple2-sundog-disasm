@@ -1,3 +1,30 @@
+## R10x — Peaceful visitor and native rare-branch failure — 2026-10-08
+
+The new ordinary Chrome journey creates a fresh seed12345 character, repeats
+legitimate equipment/ground victory, then meets a naturally produced kind18
+visitor. Yes reaches113 and the existing visitor departs under peaceful flag50.
+Its11Cr personal payment commits once on encounter return:2169→2158. Fresh-page
+reloads preserve every pending/departing/returned state exactly. Bank accounts,
+inventory, immutable creation and condition bytes stay unchanged through the
+conversation/departure. Normal city time before catch consumes rest/food/vigor
+independently. All32 journey checks pass, with no page errors.
+
+The checked-in native runner declares kind18/colony2/flag125false/RNG23 at the
+actual Game16 setup entry in an existing original Comm activation. The rare
+branch quotes10000Cr, sets125 and loads utility block103. Its header changes the
+dictionary beyond entry64; its zero selector draws19205 then executes MODI0.
+The actual native zero-divisor branch atCPU D7ED is captured.14 stopped contexts
+and33 hashed artifacts verify, with clean owned IIe exit0 and input/breakpoint
+cleanup. Working cash/condition/equipment/location/clock remain unchanged through
+the trap. No successful reward return or cash award is claimed. Failed bounded
+probes are excluded; this is declared parser evidence, not ordinary reachability.
+
+No gameplay core changes were needed for the peaceful acceptance. Browser224
+remains atomic rejection; final playable exception handling stays open. R10 also
+still requires fatal Warp, ordinary space avoid/fight/lose, ship equipment/shields,
+cargo-demand/jettison and ordinary terminal defeat/recovery. The full audit is
+retained, R09 remains complete and the user's PRD is untouched.
+
 ## R10w — Ordinary ground fights, shield use and knockout recovery — 2026-10-08
 
 Added two reproducible Chrome journeys using fresh seed12345 characters and

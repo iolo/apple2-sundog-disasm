@@ -1,0 +1,2007 @@
+{
+  "browser": "155.0.8059.39",
+  "fixture": "fresh seed12345; ordinary ground victory followed by naturally produced kind18 visitor and Yes payment; no state imports",
+  "checks": 32,
+  "results": [
+    "Ordinary ship walk reaches 54,86",
+    "Actual stores transfers equip the laser and seven-charge shield",
+    "Each item has exactly one legitimate owner",
+    "Ordinary ship walk reaches 54,110",
+    "Ordinary city walking produces a natural chase without state import",
+    "Standing in the natural chase reaches source catch and mandatory conversation",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Natural catch starts the source threat conversation",
+    "Ordinary refusal enters the same source combat activation",
+    "Legitimate laser shots win the natural encounter and reach post-fight dialogue",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Ordinary victory commits exactly one source reward",
+    "Victory preserves the legitimate laser owner",
+    "Five actual enemy shots consume five shield charges and preserve personal health",
+    "Ordinary combat preserves immutable character creation",
+    "Further ordinary city time produces the natural payment visitor",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Natural visitor owns the source kind18 and inclusive5–45Cr payment quote",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Ordinary Yes reply reaches the source payment response",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "Peaceful agreement debits the quoted personal payment once in the existing encounter owner",
+    "Source peaceful return makes the existing visitor depart without attacking",
+    "Fresh-page reload preserves the exact ordinary encounter state",
+    "The same visitor leaves the ordinary city encounter",
+    "Departure and reload do not repeat the payment or earlier fight reward",
+    "The peaceful conversation and departure preserve all personal condition bytes",
+    "Peaceful negotiation preserves legitimate equipment and stored owners",
+    "The visitor cannot debit a bank account",
+    "Peaceful negotiation preserves immutable character creation",
+    "Ordinary peaceful journey has no browser errors"
+  ],
+  "errors": [],
+  "quote": 11,
+  "pose": {
+    "x": "455",
+    "y": "319",
+    "paused": "true",
+    "encounter": "",
+    "combatX": "",
+    "combatY": "",
+    "enemies": "0",
+    "combatHealth": "",
+    "podX": "",
+    "podY": "",
+    "podHeading": "16",
+    "transport": "foot",
+    "city": "city-01",
+    "cameraX": "9",
+    "cameraY": "6",
+    "heading": "",
+    "scene": "city",
+    "room": "",
+    "occupants": "0",
+    "service": "",
+    "dialogue": "",
+    "minutes": "309",
+    "sleeping": "false",
+    "dead": "false",
+    "system": "system-01",
+    "world": "world-01",
+    "flight": "",
+    "flightProgress": "",
+    "space": "ship",
+    "contact": "false",
+    "shipHull": "15",
+    "shipGun": "0",
+    "shipRange": "127",
+    "shipHealth": "0",
+    "mode": "campaign",
+    "rest": "235",
+    "nourishment": "240",
+    "seed": "12345"
+  },
+  "visitor": {
+    "kind": 18,
+    "phase": "dialogue",
+    "context": {
+      "kind": 18,
+      "system": {
+        "id": "system-01",
+        "local16": false,
+        "local29": 0,
+        "local30": 8,
+        "local31": 14,
+        "local32": 12
+      },
+      "attributes": [
+        30,
+        30,
+        30,
+        30,
+        0
+      ],
+      "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "carried": [
+        12,
+        75,
+        0,
+        0
+      ],
+      "cash": 2169,
+      "workspace": {
+        "lastCity": 1,
+        "mood": 4,
+        "quantity": 1,
+        "gate": 0,
+        "item": 0,
+        "actor": 2
+      },
+      "city": 1,
+      "hour": 5,
+      "surface": {
+        "x": 16,
+        "y": 9
+      },
+      "sceneMiddle": 3,
+      "colonyProgress": 0,
+      "randomState": 2774646907
+    }
+  },
+  "departure": {
+    "phase": "combat",
+    "flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "states": {
+    "initial": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "261b6035fa884bec46beed33df9faccdc0f9e8f57194edff2d5eccda40d5420b",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "ship",
+        "cityPosition": null
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 5,
+          "y": 3
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 110
+        },
+        "inventory": {
+          "carried": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            235,
+            12,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 255,
+          "rest": 255,
+          "health": 255,
+          "nourishment": 255
+        },
+        "minutes": 0
+      },
+      "cash": 153,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 774770200,
+      "combat": {
+        "clock": {
+          "scene": null,
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": null,
+        "rewards": [],
+        "defeat": null
+      }
+    },
+    "armed": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "eaea0891cf168000cd29d9eea85e0be8010028bd59736aa6855f6c24f74ec4e4",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "ship",
+        "cityPosition": null
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 5,
+          "y": 3
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 86
+        },
+        "inventory": {
+          "carried": [
+            12,
+            235,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 255,
+          "rest": 255,
+          "health": 255,
+          "nourishment": 255
+        },
+        "minutes": 1
+      },
+      "cash": 153,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 774770200,
+      "combat": {
+        "clock": {
+          "scene": null,
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": null,
+        "rewards": [],
+        "defeat": null
+      }
+    },
+    "caught": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "ff63543fe33b94308b352e0fc3c201eacf07caced9c051c6725757ae3d183940",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            235,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 249,
+          "rest": 243,
+          "health": 255,
+          "nourishment": 246
+        },
+        "minutes": 192
+      },
+      "cash": 153,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 3644453711,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": true,
+          "limit": 10,
+          "minutesPerTick": 10,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": {
+            "x": 1,
+            "y": -1
+          }
+        },
+        "ground": {
+          "seed": 3290213181,
+          "inputs": [
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": false,
+                "cancelSurrender": false,
+                "pointer": null
+              },
+              "ticks": 17
+            }
+          ]
+        },
+        "rewards": [],
+        "defeat": null
+      }
+    },
+    "won": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "309d67ce8fff481a944b5fabfea3f531cb599400a178353db74f8eab226d8afc",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            235,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 249,
+          "rest": 243,
+          "health": 255,
+          "nourishment": 246
+        },
+        "minutes": 192
+      },
+      "cash": 153,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 198306850,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": true,
+          "limit": 10,
+          "minutesPerTick": 10,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": {
+            "x": 1,
+            "y": -1
+          }
+        },
+        "ground": {
+          "seed": 3290213181,
+          "inputs": [
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": false,
+                "cancelSurrender": false,
+                "pointer": null
+              },
+              "ticks": 17
+            },
+            {
+              "type": "dialogue",
+              "input": {
+                "type": "cancel"
+              }
+            },
+            {
+              "type": "dialogue",
+              "input": {
+                "type": "cancel"
+              }
+            },
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": true,
+                "cancelSurrender": false,
+                "pointer": {
+                  "x": 203,
+                  "y": 128
+                }
+              },
+              "ticks": 10
+            },
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": true,
+                "cancelSurrender": false,
+                "pointer": {
+                  "x": 227,
+                  "y": 115
+                }
+              },
+              "ticks": 4
+            },
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": true,
+                "cancelSurrender": false,
+                "pointer": {
+                  "x": 230,
+                  "y": 109
+                }
+              },
+              "ticks": 1
+            },
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": true,
+                "cancelSurrender": false,
+                "pointer": {
+                  "x": 229,
+                  "y": 110
+                }
+              },
+              "ticks": 1
+            },
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": true,
+                "cancelSurrender": false,
+                "pointer": {
+                  "x": 228,
+                  "y": 111
+                }
+              },
+              "ticks": 2
+            }
+          ]
+        },
+        "rewards": [],
+        "defeat": null
+      }
+    },
+    "reward": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "432099292045e61ae1bda509d54dfa0b44d1068315a1ae0489e1ae4c75f82692",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            75,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 249,
+          "rest": 243,
+          "health": 255,
+          "nourishment": 246
+        },
+        "minutes": 192
+      },
+      "cash": 2169,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 198306850,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": true,
+          "limit": 10,
+          "minutesPerTick": 10,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": {
+            "x": 1,
+            "y": -1
+          }
+        },
+        "ground": null,
+        "rewards": [
+          {
+            "kind": 15,
+            "systemId": "system-01",
+            "quantity": 3,
+            "seed": 423618654,
+            "amount": 2016
+          }
+        ],
+        "defeat": null
+      }
+    },
+    "pending": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "3749905e677a80d8511dd15119c39a9af2a19cca14c3bd8f74b96239b2fcf4b6",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            75,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 245,
+          "rest": 235,
+          "health": 255,
+          "nourishment": 240
+        },
+        "minutes": 309
+      },
+      "cash": 2169,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 3821294919,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": {
+          "seed": 3511397118,
+          "inputs": [
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": false,
+                "cancelSurrender": false,
+                "pointer": null
+              },
+              "ticks": 34
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "kind": 15,
+            "systemId": "system-01",
+            "quantity": 3,
+            "seed": 423618654,
+            "amount": 2016
+          }
+        ],
+        "defeat": null
+      }
+    },
+    "accepted": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "32507c498bb9a743796545350bf8b07b05de106b2d3c213ce6bd6fdb8d360542",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            75,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 245,
+          "rest": 235,
+          "health": 255,
+          "nourishment": 240
+        },
+        "minutes": 309
+      },
+      "cash": 2169,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 2833851219,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": {
+          "seed": 3511397118,
+          "inputs": [
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": false,
+                "cancelSurrender": false,
+                "pointer": null
+              },
+              "ticks": 34
+            },
+            {
+              "type": "dialogue",
+              "input": {
+                "type": "reply",
+                "slot": 1
+              }
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "kind": 15,
+            "systemId": "system-01",
+            "quantity": 3,
+            "seed": 423618654,
+            "amount": 2016
+          }
+        ],
+        "defeat": null
+      }
+    },
+    "departing": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "d083f7233d335d76cf5f1d032aa2522bc6085e5fd50d863156bbed309a047416",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            75,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 245,
+          "rest": 235,
+          "health": 255,
+          "nourishment": 240
+        },
+        "minutes": 309
+      },
+      "cash": 2169,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 2833851219,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": {
+          "seed": 3511397118,
+          "inputs": [
+            {
+              "type": "tick",
+              "control": {
+                "move": false,
+                "fire": false,
+                "cancelSurrender": false,
+                "pointer": null
+              },
+              "ticks": 34
+            },
+            {
+              "type": "dialogue",
+              "input": {
+                "type": "reply",
+                "slot": 1
+              }
+            },
+            {
+              "type": "dialogue",
+              "input": {
+                "type": "cancel"
+              }
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "kind": 15,
+            "systemId": "system-01",
+            "quantity": 3,
+            "seed": 423618654,
+            "amount": 2016
+          }
+        ],
+        "defeat": null
+      }
+    },
+    "peaceful": {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "hashes": {
+        "campaign": "8890a8a6ad69475799a5a1e24ba4d868a2e445b2df64a8de6078beb8cd74daa5",
+        "creation": "d93a881079448211881a4df517fec3f39bc755b6ce08bb4adbc2a3f52b166a4c"
+      },
+      "travel": {
+        "scene": "city",
+        "cityPosition": {
+          "x": 455,
+          "y": 319
+        }
+      },
+      "ground": {
+        "worldId": "world-01",
+        "cityId": "city-01",
+        "podCityId": "city-01",
+        "colonyPosition": null,
+        "camera": {
+          "x": 9,
+          "y": 6
+        }
+      },
+      "ship": {
+        "position": {
+          "x": 54,
+          "y": 118
+        },
+        "inventory": {
+          "carried": [
+            12,
+            75,
+            0,
+            0
+          ],
+          "locker": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "stores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            8,
+            8,
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "condition": {
+          "vigor": 245,
+          "rest": 235,
+          "health": 255,
+          "nourishment": 240
+        },
+        "minutes": 309
+      },
+      "cash": 2158,
+      "accounts": [
+        {
+          "systemId": "system-01",
+          "balance": 29474
+        },
+        {
+          "systemId": "system-02",
+          "balance": 3137
+        },
+        {
+          "systemId": "system-03",
+          "balance": 3356
+        },
+        {
+          "systemId": "system-04",
+          "balance": 3510
+        },
+        {
+          "systemId": "system-05",
+          "balance": 3833
+        },
+        {
+          "systemId": "system-06",
+          "balance": 4513
+        },
+        {
+          "systemId": "system-07",
+          "balance": 4593
+        },
+        {
+          "systemId": "system-08",
+          "balance": 3294
+        },
+        {
+          "systemId": "system-09",
+          "balance": 4674
+        },
+        {
+          "systemId": "system-10",
+          "balance": 5857
+        },
+        {
+          "systemId": "system-11",
+          "balance": 4667
+        },
+        {
+          "systemId": "system-12",
+          "balance": 5378
+        }
+      ],
+      "randomState": 2075846492,
+      "combat": {
+        "clock": {
+          "scene": "city",
+          "moving": false,
+          "limit": 15,
+          "minutesPerTick": 1,
+          "iterations": 0,
+          "elapsed": 0,
+          "podDirection": null
+        },
+        "ground": null,
+        "rewards": [
+          {
+            "kind": 15,
+            "systemId": "system-01",
+            "quantity": 3,
+            "seed": 423618654,
+            "amount": 2016
+          }
+        ],
+        "defeat": null
+      }
+    }
+  },
+  "status": "pass"
+}
