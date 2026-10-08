@@ -57,8 +57,12 @@ storage/restoration, and exposes the omitted Game13 return call.
 
 Game13's successful warp writes354=353+1 at `$18AC–$18B2`, clears the
 engine/contact/Comm flags and calls actual Library24 proc9 at `$18DA` before
-tactical entry. R10m's successful warp commits that first actual call followed
-by the three tactical startup calls. Gravity failure does not enter this path.
+tactical entry. R10m initially committed that call and three startup calls.
+R10aa/R10ac additionally observe/implement the accepted Nav pre-action and
+Nav display-return calls: six calls on healthy success, two on gravity failure.
+Fatal success performs pre-action/post-jump/Nav return only, then freezes
+without Game12 startup. See [Warp reference](ship-warp-defeat-reference.md).
+Nav calls outside Game12 preserve its pending cargo deadline on failure.
 
 ## Source bolt arming and selection
 

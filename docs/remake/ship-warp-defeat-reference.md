@@ -78,7 +78,40 @@ use the checked-in runner and helper.
 
 This proves the declared native fatal Warp pre-entry/successful-jump return.
 It does not prove a fatal gravity-failure return or ordinary Warp defeat
-reachability. Browser host matching is still required: the existing successful
-Warp adapter has no pre-action machinery call and uses normal tactical startup
-instead of the observed fatal Nav/death suffix. The
+reachability. At R10aa, browser host matching was still required: that adapter lacked the
+pre-action call and used normal tactical startup on fatal return. R10ac below
+implements and verifies the captured Nav/death suffix. The
 [full R10 audit](r10-completion.md) remains open.
+
+## R10ac browser host integration
+
+The live Warp adapter now commits the accepted Game13 pre-action machinery
+call before gravity RNG, the successful post-jump call and the Nav display
+return. A fatal pre-action hit still completes the accepted jump; its final
+phase remainder0/gun60/cooldown40/counter6/RNG0xc387ee1f matches R10aa.
+Terminal return clears the controller and freezes every owner without normal
+Game12 startup. Healthy successful returns then perform the normal three-call
+startup, for six calls in total. Failed gravity commits only pre-action and
+Nav display calls, preserving location. Calls outside Game12 do not poll its
+cargo deadline.
+
+Rule coverage includes exact terminal save/reload, every starting phase and
+atomic rejection of forged earlier fatal timestamps. When the post-jump call
+crosses phase1, the second suffix call ends at phase2 with counter0. The live29
+validator accepts that one-minute fatal timestamp difference only for completed
+Warp, cleared contact/deadline flags, tactical terminal context and radius43.
+Historical versions keep their existing contract. No save fields or version
+change.
+
+The original native capture remains the phase1 pre-action/successful-jump
+fixture; other phase and gravity-failure checks are source-derived host tests,
+not additional native observations. Personal forced sleep/death retains the
+existing browser survival boundary before jump selection.
+
+[54 focused Chrome UI checks](r10ac-warp-defeat-ui-validation.json) cover the
+native phase1 vector in English desktop and Korean portrait, plus the
+source-derived phase3 clock-crossing return. Actual Warp review/confirmation
+produces the terminal panel; complete-state fresh reload, paused terminal
+time, explicit earlier-slot restoration and a new navigation action all pass.
+All three terminal screenshots were inspected. The [515-rule receipt](r10ac-rules-validation.json)
+also passes, including all phases and forged timestamp rejection.

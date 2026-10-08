@@ -86,3 +86,15 @@ normal-clock remainder survives partial-tick JSON saves; the live loader stays
 version24 until space UI activation. These flight corrections apply to the live
 version24 runtime as well. The R09f/R10h receipts predate them; R10i records new
 regional journey and navigation regression receipts.
+
+## R10ac accepted Warp machinery and terminal return
+
+The [native Warp reference](ship-warp-defeat-reference.md) adds Game13's
+accepted pre-action and Nav display-return calls around gravity/jump handling.
+Live tactical campaigns now perform six machinery calls on healthy success
+(pre-action, post-jump, Nav display, three startup), two on gravity failure,
+and three on fatal success before terminal freeze. The accepted destination
+is retained if pre-action damage clears power controls. Ship destruction
+does not invent cancellation or tactical startup. Browser personal sleep/death
+retains its existing survival guard. Historical non-tactical hosts preserve
+their earlier behavior; live29 retains its save shape and version.

@@ -172,3 +172,17 @@ changes described above are now committed in R10r.
 Repeated static verification passes22 exporter tests,171 deterministic artifacts
 and584 classified source-string records. No R09 requirement needs reopening;
 there are no remaining R09 implementation or acceptance tasks.
+
+## R10ac Warp call-order regression, 2026-10-08
+
+The [current ordinary journey](r10ac-r09-journey-validation.json) passes all 64
+checks after the accepted Warp pre-action/Nav return correction. A fresh
+seed 12345 character buys for 17,100Cr, sells abroad for 45,300Cr and returns
+home at 574 game minutes with fuel107. These figures supersede the earlier
+573-minute/fuel108 continuation for the current implementation.
+
+Only normal controls and actual paid fuel/cargo are used. Exact fresh-page
+reloads preserve destinations, resources, independent markets/accounts, stock
+and immutable creation. All 515 Chrome rules and static input/content checks
+pass. R09 stays complete; R10 is now complete under its original
+[requirement audit](r10-completion.md).
