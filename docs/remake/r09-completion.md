@@ -130,3 +130,11 @@ Static verification also passes:22 exporter tests,171 deterministic artifacts,
 584 classified source-string records and all three original-input hashes.
 No R09 acceptance gate needs reopening. R10 remains in progress under its own
 [requirement audit](r10-completion.md).
+
+Repeated the ordinary-control journey at checkpoint `5cac1df` after R10o's
+shared cargo/save changes and R10p's recovery evidence. All64 checks pass in
+Chrome155.0.8059.39 with no page errors; the new receipt is byte-identical to
+`r09-current-journey-validation.json`, including purchases17,100, sales39,200,
+570 minutes and fuel108. Repeated static checks pass22 exporter tests,
+171 deterministic artifacts and584 classified source-string records. R09 has
+no remaining implementation or acceptance task.
