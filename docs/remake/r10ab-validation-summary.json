@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10ab",
+  "checkpointStatus": "pass",
+  "baseCommit": "842158b",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "uiChecks": 36,
+  "receipts": [
+    {
+      "file": "r10ab-ordinary-space-fight-salvage-validation.json",
+      "kind": "ordinary fresh-character space laser victory, shield overflow and Tractor salvage",
+      "checks": 36,
+      "browser": "155.0.8059.39",
+      "sha256": "4cf98bf2ac48fb8d9e1abcb4be6430988850220674eaddacedc849ec21001fe9"
+    }
+  ],
+  "priorBaseline": {
+    "checkpoint": "R10y",
+    "rules": 510,
+    "uiChecks": 253,
+    "inventory": "r10y-validation-summary.json",
+    "freshRuleRun": false,
+    "gameplayCoreChanged": false,
+    "saveSchemaChanged": false
+  },
+  "originalInputs": {
+    "verified": true,
+    "gameDiskSha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082",
+    "utilityDiskSha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d",
+    "manualSha256": "dadc5fb2aac8a5a88f6bedb6f8a4742367a62eec313a8f9c058bad602aabc2a1"
+  },
+  "proven": [
+    "Ordinary paid cargo/fuel and actual powered-flight contact production without campaign injection",
+    "Ordinary enemy fire consumes the shield buffer and commits overflow component damage with exact reload",
+    "Ordinary manual laser aim and fresh pointer fire defeat a pirate and produce a source wreck",
+    "The actual current-system bank receives one3000Cr bounty with independent personal cash and cargo owners",
+    "Normal armed jettison empties only the second paid slot; Tractor collects the real wreck there while retaining the first paid lot",
+    "Exact complete-state fresh-page reloads during damage, victory, pulling and collected states; paused time cannot duplicate rewards or collection",
+    "Immutable creation data is unchanged at every checkpoint"
+  ],
+  "scopeLimits": [
+    "Unshielded continuation can encounter later naturally produced contacts; fatal type2 differs from initial type1",
+    "No ordinary space victory, weapon aiming/fire or shield absorption claim",
+    "No ordinary Tractor collection or native menu-reachability claim",
+    "No fatal native Warp or terminal ground-death claim",
+    "English desktop journey; prior controlled bilingual/viewport/timing checks remain separately scoped"
+  ],
+  "remaining": [
+    "Match the browser Warp host to the R10aa fatal pre-action jump/Nav return and verify affected live paths",
+    "Complete final R10 requirement/regression audit; terminal ground death remains unclaimed"
+  ],
+  "cleanup": {
+    "browser": "owned remake CLI session closed after checks",
+    "native": "No new native session"
+  }
+}
