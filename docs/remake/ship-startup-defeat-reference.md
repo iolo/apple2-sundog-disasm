@@ -52,3 +52,7 @@ fatal second/third startup calls, the warp pre-entry call and Comm dispatch
 remain separate audit work. Reward224 and ordinary encounter, equipment,
 negotiation/jettison and recovery acceptance remain in the unchanged full R10
 scope. R10 is in progress.
+
+R10u subsequently retains [the second/third normal-startup returns](ship-later-startup-defeat-reference.md).
+The metadata above preserves R10t's historical scope; the later evidence closes
+those two declared context checks. Warp pre-entry and Comm remain open.

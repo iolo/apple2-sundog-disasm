@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture a declared fatal first-startup-call continuation on copied IIe media."""
+"""Capture a declared fatal startup-call continuation on copied IIe media."""
 import argparse
 import sys,json,time
 from pathlib import Path
@@ -9,7 +9,10 @@ from capture_salvage_reference import Console
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output-dir',required=True,type=Path)
 parser.add_argument('--rompath',required=True,type=Path)
+parser.add_argument('--fatal-call',type=int,choices=(1,2,3),default=1)
 args=parser.parse_args()
+call_name=('first','second','third')[args.fatal_call-1]
+call_offset=(0x0655,0x06c4,0x074f)[args.fatal_call-1]
 out=args.output_dir.resolve()
 if out.exists():parser.error('output directory must be new')
 c=Console(out,args.rompath.resolve())
@@ -27,8 +30,8 @@ try:
  bp=c.source_breakpoint('main-bp',0x1388);c.capture('main',0x1388)
  c.call('main-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
  c.call('startup-setup','recoveryStartupSetup',str(out/'startup-setup.json'))
- bp=c.source_breakpoint('startup-first-bp',0x0655);c.capture('startup-first',0x0655)
- c.call('startup-first-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
+ bp=c.source_breakpoint('startup-'+call_name+'-bp',call_offset);c.capture('startup-'+call_name,call_offset)
+ c.call('startup-'+call_name+'-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
  def rb(name,seg,offset):
   bp=c.call(name+'-bp','recoverySourceBreakpoint',seg,offset)['id'];c.breakpoints.append(bp);return bp
  def capture(name,seg,offset):
@@ -44,7 +47,8 @@ try:
  c.call('fire-before-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
  bp=rb('fatal',24,0x096a);capture('fatal',24,0x096a)
  c.call('fatal-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
- for name,offset in [('startup-first-after',0x0658),('startup-second-after',0x06c7),('startup-third-after',0x0752)]:
+ returns=[('startup-first-after',0x0658),('startup-second-after',0x06c7),('startup-third-after',0x0752)]
+ for name,offset in returns[args.fatal_call-1:]:
   bp=c.source_breakpoint(name+'-bp',offset);c.capture(name,offset)
   c.call(name+'-clear','clear_breakpoint',bp);c.breakpoints.remove(bp)
  for name,offset in [('menu-before',0x0f19),('menu-after',0x0f2b),('first-main',0x1388),('main-exit-check',0x14cc)]:

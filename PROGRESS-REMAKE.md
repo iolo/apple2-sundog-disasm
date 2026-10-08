@@ -1,3 +1,22 @@
+## R10u — Native later-startup fatal returns — 2026-10-08
+
+Captured fatal hits in the actual second and third normal startup calls in two
+owned MAME0.285 unenhanced IIe sessions on copied media.21 asserted source
+contexts and48 hashed artifacts retain the declared counter0/source re-entry
+and fatal fixtures. Both sessions release owned breakpoints/inputs and exit0.
+Native cooldown30/34, phase1, gun52 and clock+1 confirm the existing generic
+R10t return sequence. See `docs/remake/ship-later-startup-defeat-reference.md`.
+
+Added complete host entry regressions with delayed aim/fire on call2 or call3,
+including post-hit aggression RNG, immutable inputs, exact terminal save/reload
+and frozen time.506 Chrome rule groups and48 focused tactical groups pass.
+The owned browser session is closed. See `docs/remake/r10u-validation-summary.json`.
+
+R10's declared native normal-startup context checks are now covered. Fatal
+warp pre-entry and Comm dispatch, reward224 and ordinary encounter/equipment/
+shields/negotiation/jettison/recovery acceptance remain open under the original
+R10 row and audit. R09 remains complete; the untracked user PRD is untouched.
+
 ## R10t — Fatal first-startup continuation — 2026-10-08
 
 Captured the original first-startup fatal return in an owned MAME0.285
