@@ -1,0 +1,2498 @@
+{
+  "operations": [
+    {
+      "ok": true,
+      "id": "load",
+      "result": {
+        "paused": false,
+        "time": 7.829320806416e-06,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "devices",
+      "result": {
+        "cpus": [
+          ":maincpu"
+        ],
+        "screens": [
+          ":screen"
+        ],
+        "images": [
+          {
+            "filename": "/tmp/sundog-r10aa-warp-canonical-healthy-01/session/media.dsk",
+            "instance": "floppydisk1",
+            "tag": ":sl6:diskiing:0:525"
+          },
+          {
+            "instance": "floppydisk2",
+            "tag": ":sl6:diskiing:1:525"
+          },
+          {
+            "instance": "cassette",
+            "tag": ":tape"
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "boot-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "refs",
+      "result": {
+        "paused": true,
+        "time": 299.98333333195,
+        "driver": "apple2e",
+        "debugger": "run",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "contact",
+      "result": {
+        "setup": {
+          "location": [
+            16,
+            43,
+            12,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50,
+            0,
+            99,
+            0
+          ],
+          "condition": [
+            237,
+            235,
+            255,
+            228
+          ],
+          "pc": 57644,
+          "frames": 4,
+          "words": {
+            "351": 1,
+            "225": 100,
+            "215": 40,
+            "205": 512,
+            "208": 0,
+            "354": 1,
+            "204": 0,
+            "224": 0,
+            "214": 1,
+            "217": 127,
+            "207": 65535,
+            "353": 16,
+            "227": 228,
+            "352": 1,
+            "203": 0,
+            "347": 0,
+            "223": 0,
+            "226": 100,
+            "41": 99,
+            "206": 512,
+            "216": 200,
+            "222": 0,
+            "40": 50,
+            "209": 0,
+            "45": 12731
+          },
+          "attributes": [
+            66,
+            53,
+            61,
+            65,
+            15
+          ],
+          "rangeMemory": 45,
+          "flags": {
+            "7": true,
+            "5": false,
+            "4": false,
+            "2": false,
+            "1": false,
+            "0": false,
+            "51": false,
+            "48": false,
+            "36": false,
+            "50": false,
+            "29": false,
+            "35": false,
+            "49": true,
+            "40": true,
+            "41": true,
+            "44": false,
+            "43": false,
+            "45": false,
+            "46": false,
+            "47": false,
+            "12": false
+          },
+          "carried": [
+            0,
+            12,
+            235,
+            0
+          ],
+          "globalsBase": 44474,
+          "hull": 16,
+          "equipment": [
+            [
+              31,
+              28,
+              26,
+              158,
+              0,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              4,
+              31,
+              28,
+              26,
+              30,
+              12,
+              3,
+              0,
+              0
+            ],
+            [
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              24,
+              4,
+              31,
+              28,
+              30,
+              23,
+              3,
+              31,
+              28,
+              30,
+              24,
+              15,
+              31,
+              0,
+              0
+            ],
+            [
+              0,
+              24,
+              26,
+              29,
+              0,
+              0,
+              152,
+              26,
+              29,
+              0,
+              0,
+              24,
+              26,
+              29,
+              0,
+              31,
+              24,
+              26,
+              29,
+              4,
+              31,
+              24,
+              26,
+              29,
+              4,
+              6,
+              19,
+              2
+            ],
+            [
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              4,
+              31,
+              27,
+              25,
+              26,
+              16,
+              31,
+              20,
+              2
+            ],
+            [
+              31,
+              24,
+              23,
+              28,
+              3,
+              31,
+              24,
+              28,
+              28,
+              4,
+              31,
+              24,
+              28,
+              0,
+              0,
+              31,
+              24,
+              28,
+              28,
+              4,
+              31,
+              24,
+              28,
+              28,
+              11,
+              31,
+              21,
+              1
+            ],
+            [
+              31,
+              25,
+              27,
+              0,
+              0,
+              31,
+              25,
+              27,
+              0,
+              0,
+              31,
+              25,
+              27,
+              25,
+              4,
+              31,
+              25,
+              27,
+              25,
+              4,
+              31,
+              25,
+              27,
+              25,
+              8,
+              31,
+              22,
+              2
+            ]
+          ],
+          "workspace": [
+            16,
+            0,
+            0,
+            10,
+            0,
+            9,
+            0,
+            0,
+            0,
+            3,
+            3,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "clock": [
+            16,
+            21,
+            0,
+            0
+          ]
+        },
+        "duration": 480,
+        "scheduled": true,
+        "name": "space-contact"
+      }
+    },
+    {
+      "ok": true,
+      "id": "main-bp",
+      "result": {
+        "offset": 5000,
+        "id": 1
+      }
+    },
+    {
+      "ok": true,
+      "id": "main-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "main-status-7",
+      "result": {
+        "paused": false,
+        "time": 308.08872577788,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "main-save",
+      "result": {
+        "ip": 23224,
+        "segmentBase": 18224,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/main"
+      }
+    },
+    {
+      "ok": true,
+      "id": "main-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "exit-setup",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/exit-setup.json"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-bp",
+      "result": {
+        "id": 2,
+        "segment": 13,
+        "offset": 9885
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-status-13",
+      "result": {
+        "paused": false,
+        "time": 308.23539244455,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-save",
+      "result": {
+        "offset": 9885,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/ship-main"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-main-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-setup",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-setup.json"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-bp",
+      "result": {
+        "id": 3,
+        "segment": 13,
+        "offset": 9064
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-status-20",
+      "result": {
+        "paused": false,
+        "time": 308.42798884306,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-save",
+      "result": {
+        "offset": 9064,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-poll"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-poll-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "choice-setup",
+      "result": {
+        "locals": {
+          "8": 0,
+          "7": 157,
+          "6": 243,
+          "5": 169,
+          "4": 177,
+          "3": 0,
+          "2": 274,
+          "1": 0,
+          "10": 17258,
+          "12": 128,
+          "13": 96,
+          "14": 0,
+          "11": 16,
+          "9": 125
+        },
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/choice-setup.json"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-call-bp",
+      "result": {
+        "id": 4,
+        "segment": 13,
+        "offset": 8084
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-call-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-call-status-27",
+      "result": {
+        "paused": false,
+        "time": 308.42896652949,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-call-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-call-save",
+      "result": {
+        "offset": 8084,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/action-first-call"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-bp",
+      "result": {
+        "id": 5,
+        "segment": 24,
+        "offset": 2124
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-status-33",
+      "result": {
+        "paused": false,
+        "time": 308.4539215109,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-save",
+      "result": {
+        "offset": 2124,
+        "segment": 24,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/fire-before"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-setup",
+      "result": {
+        "wordEdits": {
+          "217": 5,
+          "225": 0,
+          "207": 0,
+          "215": 40,
+          "214": 1
+        },
+        "randomState": 28,
+        "hull": 1,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/fatal-setup.json"
+      }
+    },
+    {
+      "ok": true,
+      "id": "healthy-setup",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/healthy-setup.json"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fire-before-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-bp",
+      "result": {
+        "id": 6,
+        "segment": 24,
+        "offset": 2410
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-status-41",
+      "result": {
+        "paused": false,
+        "time": 308.58781757667,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-save",
+      "result": {
+        "offset": 2410,
+        "segment": 24,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/fatal"
+      }
+    },
+    {
+      "ok": true,
+      "id": "fatal-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-bp",
+      "result": {
+        "id": 7,
+        "segment": 13,
+        "offset": 8087
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-status-47",
+      "result": {
+        "paused": false,
+        "time": 308.84888823629,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-save",
+      "result": {
+        "offset": 8087,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/action-first-after"
+      }
+    },
+    {
+      "ok": true,
+      "id": "action-first-after-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-bp",
+      "result": {
+        "id": 8,
+        "segment": 13,
+        "offset": 5984
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-status-53",
+      "result": {
+        "paused": false,
+        "time": 308.85116069665,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-save",
+      "result": {
+        "offset": 5984,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/warp-entry"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-entry-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-bp",
+      "result": {
+        "id": 9,
+        "segment": 13,
+        "offset": 6362
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-status-59",
+      "result": {
+        "paused": false,
+        "time": 309.58333333191,
+        "driver": "apple2e",
+        "debugger": "run",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-status-60",
+      "result": {
+        "paused": false,
+        "time": 313.66666666522,
+        "driver": "apple2e",
+        "debugger": "run",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-status-61",
+      "result": {
+        "paused": false,
+        "time": 317.98333333187,
+        "driver": "apple2e",
+        "debugger": "run",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-status-62",
+      "result": {
+        "paused": false,
+        "time": 320.11522607147,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-save",
+      "result": {
+        "offset": 6362,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/warp-post-call"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-call-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-bp",
+      "result": {
+        "id": 10,
+        "segment": 13,
+        "offset": 6365
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-status-68",
+      "result": {
+        "paused": false,
+        "time": 320.21541788983,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-save",
+      "result": {
+        "offset": 6365,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/warp-post-return"
+      }
+    },
+    {
+      "ok": true,
+      "id": "warp-post-return-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-bp",
+      "result": {
+        "id": 11,
+        "segment": 13,
+        "offset": 8148
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-status-74",
+      "result": {
+        "paused": false,
+        "time": 321.19809551755,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-save",
+      "result": {
+        "offset": 8148,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-return"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-return-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-bp",
+      "result": {
+        "id": 12,
+        "segment": 13,
+        "offset": 9242
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-status-80",
+      "result": {
+        "paused": false,
+        "time": 321.20006165574,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-pause",
+      "result": {
+        "paused": true,
+        "time": 321.20006165574,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-generic",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-action-return-generic"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-segments",
+      "result": {
+        "address": 48544,
+        "mapping": "CPU-visible",
+        "bytes": [
+          242,
+          180,
+          26,
+          184,
+          0,
+          255,
+          54,
+          184,
+          158,
+          166,
+          226,
+          180,
+          188,
+          149,
+          60,
+          122,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          216,
+          92,
+          220,
+          132,
+          2,
+          110,
+          220,
+          132,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          170,
+          173,
+          186,
+          173,
+          174,
+          149,
+          46,
+          71,
+          126,
+          138,
+          18,
+          100,
+          186,
+          173,
+          186,
+          173,
+          74,
+          177,
+          178,
+          176,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          164,
+          178,
+          74,
+          67,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-stack",
+      "result": {
+        "address": 480,
+        "mapping": "CPU-visible",
+        "bytes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          2,
+          125,
+          225,
+          0,
+          0,
+          0,
+          0,
+          4,
+          53,
+          1,
+          0,
+          247,
+          226,
+          0,
+          0,
+          7,
+          7,
+          74,
+          174,
+          171,
+          213,
+          44,
+          184,
+          58,
+          184
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-code",
+      "result": {
+        "address": 33037,
+        "mapping": "CPU-visible",
+        "bytes": [
+          223,
+          198,
+          9,
+          174,
+          27,
+          222,
+          147,
+          157,
+          29,
+          129,
+          91,
+          141,
+          161,
+          246,
+          167,
+          29,
+          82,
+          5,
+          192,
+          16,
+          1,
+          186,
+          147,
+          161,
+          13,
+          157,
+          29,
+          128,
+          203,
+          167,
+          29,
+          72,
+          198,
+          7,
+          1,
+          1,
+          174,
+          12,
+          174,
+          44,
+          0,
+          209,
+          29,
+          129,
+          93,
+          173,
+          0,
+          233
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-save",
+      "result": {
+        "offset": 9242,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-action-return"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-action-return-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-bp",
+      "result": {
+        "id": 13,
+        "segment": 13,
+        "offset": 9243
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-status-92",
+      "result": {
+        "paused": false,
+        "time": 321.20011352499,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-pause",
+      "result": {
+        "paused": true,
+        "time": 321.20011352499,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-generic",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-not-generic"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-segments",
+      "result": {
+        "address": 48544,
+        "mapping": "CPU-visible",
+        "bytes": [
+          242,
+          180,
+          26,
+          184,
+          0,
+          255,
+          54,
+          184,
+          158,
+          166,
+          226,
+          180,
+          188,
+          149,
+          60,
+          122,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          216,
+          92,
+          220,
+          132,
+          2,
+          110,
+          220,
+          132,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          170,
+          173,
+          186,
+          173,
+          174,
+          149,
+          46,
+          71,
+          126,
+          138,
+          18,
+          100,
+          186,
+          173,
+          186,
+          173,
+          74,
+          177,
+          178,
+          176,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          164,
+          178,
+          74,
+          67,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-stack",
+      "result": {
+        "address": 480,
+        "mapping": "CPU-visible",
+        "bytes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          2,
+          125,
+          225,
+          0,
+          0,
+          0,
+          0,
+          4,
+          53,
+          1,
+          0,
+          247,
+          226,
+          0,
+          0,
+          7,
+          7,
+          74,
+          174,
+          0,
+          0,
+          44,
+          184,
+          58,
+          184
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-code",
+      "result": {
+        "address": 33037,
+        "mapping": "CPU-visible",
+        "bytes": [
+          223,
+          198,
+          9,
+          174,
+          27,
+          222,
+          147,
+          157,
+          29,
+          129,
+          91,
+          141,
+          161,
+          246,
+          167,
+          29,
+          82,
+          5,
+          192,
+          16,
+          1,
+          186,
+          147,
+          161,
+          13,
+          157,
+          29,
+          128,
+          203,
+          167,
+          29,
+          72,
+          198,
+          7,
+          1,
+          1,
+          174,
+          12,
+          174,
+          44,
+          0,
+          209,
+          29,
+          129,
+          93,
+          173,
+          0,
+          233
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-save",
+      "result": {
+        "offset": 9243,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-not"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-not-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-bp",
+      "result": {
+        "id": 14,
+        "segment": 13,
+        "offset": 9244
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-status-104",
+      "result": {
+        "paused": false,
+        "time": 321.20016539424,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-pause",
+      "result": {
+        "paused": true,
+        "time": 321.20016539424,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-generic",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-test-generic"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-segments",
+      "result": {
+        "address": 48544,
+        "mapping": "CPU-visible",
+        "bytes": [
+          242,
+          180,
+          26,
+          184,
+          0,
+          255,
+          54,
+          184,
+          158,
+          166,
+          226,
+          180,
+          188,
+          149,
+          60,
+          122,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          216,
+          92,
+          220,
+          132,
+          2,
+          110,
+          220,
+          132,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          170,
+          173,
+          186,
+          173,
+          174,
+          149,
+          46,
+          71,
+          126,
+          138,
+          18,
+          100,
+          186,
+          173,
+          186,
+          173,
+          74,
+          177,
+          178,
+          176,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          164,
+          178,
+          74,
+          67,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-stack",
+      "result": {
+        "address": 480,
+        "mapping": "CPU-visible",
+        "bytes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          2,
+          125,
+          225,
+          0,
+          0,
+          0,
+          0,
+          4,
+          53,
+          1,
+          0,
+          247,
+          226,
+          0,
+          0,
+          7,
+          7,
+          74,
+          174,
+          255,
+          255,
+          44,
+          184,
+          58,
+          184
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-code",
+      "result": {
+        "address": 33037,
+        "mapping": "CPU-visible",
+        "bytes": [
+          223,
+          198,
+          9,
+          174,
+          27,
+          222,
+          147,
+          157,
+          29,
+          129,
+          91,
+          141,
+          161,
+          246,
+          167,
+          29,
+          82,
+          5,
+          192,
+          16,
+          1,
+          186,
+          147,
+          161,
+          13,
+          157,
+          29,
+          128,
+          203,
+          167,
+          29,
+          72,
+          198,
+          7,
+          1,
+          1,
+          174,
+          12,
+          174,
+          44,
+          0,
+          209,
+          29,
+          129,
+          93,
+          173,
+          0,
+          233
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-save",
+      "result": {
+        "offset": 9244,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-test"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-test-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-bp",
+      "result": {
+        "id": 15,
+        "segment": 13,
+        "offset": 9282
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-status-116",
+      "result": {
+        "paused": false,
+        "time": 322.03959874714,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-pause",
+      "result": {
+        "paused": true,
+        "time": 322.03959874714,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-generic",
+      "result": {
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-exit-generic"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-segments",
+      "result": {
+        "address": 48544,
+        "mapping": "CPU-visible",
+        "bytes": [
+          242,
+          180,
+          26,
+          184,
+          0,
+          255,
+          54,
+          184,
+          158,
+          166,
+          226,
+          180,
+          188,
+          149,
+          60,
+          122,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          216,
+          92,
+          220,
+          132,
+          2,
+          110,
+          220,
+          132,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          0,
+          255,
+          170,
+          173,
+          186,
+          173,
+          174,
+          149,
+          46,
+          71,
+          126,
+          138,
+          18,
+          100,
+          186,
+          173,
+          186,
+          173,
+          74,
+          177,
+          178,
+          176,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          164,
+          178,
+          74,
+          67,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-stack",
+      "result": {
+        "address": 480,
+        "mapping": "CPU-visible",
+        "bytes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          2,
+          125,
+          225,
+          0,
+          0,
+          0,
+          0,
+          4,
+          53,
+          31,
+          227,
+          247,
+          226,
+          115,
+          0,
+          18,
+          0,
+          112,
+          212,
+          0,
+          0,
+          44,
+          184,
+          58,
+          184
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-code",
+      "result": {
+        "address": 33037,
+        "mapping": "CPU-visible",
+        "bytes": [
+          223,
+          198,
+          9,
+          174,
+          27,
+          222,
+          147,
+          157,
+          29,
+          129,
+          91,
+          141,
+          161,
+          246,
+          167,
+          29,
+          82,
+          5,
+          192,
+          16,
+          1,
+          186,
+          147,
+          161,
+          13,
+          157,
+          29,
+          128,
+          203,
+          167,
+          29,
+          72,
+          198,
+          7,
+          1,
+          1,
+          174,
+          12,
+          174,
+          44,
+          0,
+          209,
+          29,
+          129,
+          93,
+          173,
+          0,
+          233
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-save",
+      "result": {
+        "offset": 9282,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/nav-exit"
+      }
+    },
+    {
+      "ok": true,
+      "id": "nav-exit-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-bp",
+      "result": {
+        "id": 16,
+        "segment": 13,
+        "offset": 9861
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-go",
+      "result": {
+        "scheduled": "go"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-status-128",
+      "result": {
+        "paused": false,
+        "time": 322.03979154417,
+        "driver": "apple2e",
+        "debugger": "stop",
+        "version": "0.285"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-all-vectors",
+      "result": {
+        "address": 53280,
+        "mapping": "CPU-visible",
+        "bytes": [
+          239,
+          209,
+          53,
+          215,
+          239,
+          209,
+          213,
+          213,
+          239,
+          209,
+          71,
+          215,
+          239,
+          209,
+          239,
+          209
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-save",
+      "result": {
+        "offset": 9861,
+        "segment": 13,
+        "path": "/tmp/sundog-r10aa-warp-canonical-healthy-01/ship-nav-return"
+      }
+    },
+    {
+      "ok": true,
+      "id": "ship-nav-return-clear",
+      "result": {
+        "cleared": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "release",
+      "result": {
+        "released": true
+      }
+    },
+    {
+      "ok": true,
+      "id": "exit",
+      "result": {
+        "scheduled": "exit"
+      }
+    }
+  ],
+  "terminal": {
+    "ownedChild": 3622469,
+    "exitCode": 0,
+    "clean": true
+  }
+}
