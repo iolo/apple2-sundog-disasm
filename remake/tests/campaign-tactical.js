@@ -391,6 +391,29 @@ export async function campaignTacticalTests(test,equal) {
     equal(dead.equipment,s.equipment);equal(dead.pod.cargo,s.pod.cargo);equal(s,before);
     equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
   });
+  await test('Delayed startup shots preserve second/third-call death ordering and terminal reload',()=>{
+    // Native R10u separately captures the fatal suffix of each actual call.
+    // These seeds exercise complete host entry without injecting between calls:
+    // aim/fire on calls1/2, or missed aim/aim/fire on calls1/2/3.
+    // Aggression remains enabled here: the second-call vector fires again in
+    // the display return (14 draws total); the third-call vector aims (11).
+    // Native suffix fixtures instead retain flag44=false and RNG after hit.
+    for(const [seed,cooldown,randomState] of [[28,30,2072506791],[3149629074,34,3972438770]]) {
+      const s=fixture();s.resources.hull=1;s.resources.fuel=228;
+      s.resources.guns={charge:68,powered:false};s.resources.enginesPowered=false;
+      s.resources.shields={charge:0,targetCharge:0};s.encounters.randomState=seed;
+      s.machinery.phase=1;s.space.flags[44]=true;s.space.flags[45]=false;
+      s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+      Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:40,216:200,217:5,354:0});
+      const before=structuredClone(s),dead=enter(s);
+      equal([dead.resources.hull,dead.resources.guns.charge,dead.machinery.phase],[0,52,1]);
+      equal([dead.space.words[215],dead.space.words[217],dead.space.words[354]],[cooldown,5,0]);
+      equal(dead.encounters.randomState,randomState);equal(dead.ship.minutes,1279);
+      equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);
+      equal(dead.space.elapsed,0);equal(dead.ship.condition,s.ship.condition);equal(s,before);
+      equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);
+    }
+  });
   await test('Fatal exit releases gun power and demand before its actual phase1 clock without re-running after reload',()=>{
     const s=gun(enter(fixture()));s.resources.hull=1;s.resources.guns.charge=68;s.resources.shields={charge:0,targetCharge:0};
     s.encounters.randomState=28;s.machinery.phase=3;s.ship.minutes=59;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
