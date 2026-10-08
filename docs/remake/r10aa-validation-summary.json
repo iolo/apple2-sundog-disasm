@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-08",
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10aa",
+  "checkpointStatus": "pass",
+  "baseCommit": "52af0aa",
+  "liveVersion": 29,
+  "liveScope": "ship-salvage-1",
+  "nativeContexts": 33,
+  "nativeArtifacts": 77,
+  "references": [
+    {
+      "file": "../reference/remake-warp-defeat-healthy-reference.json",
+      "nativeContexts": 16,
+      "artifacts": 38,
+      "sha256": "f6f4fbde3146b6f184900d82770f6138d687801bc5d41216546f781bb4890417",
+      "terminal": {
+        "ownedChild": 3622469,
+        "exitCode": 0,
+        "clean": true
+      }
+    },
+    {
+      "file": "../reference/remake-warp-defeat-fatal-reference.json",
+      "nativeContexts": 17,
+      "artifacts": 39,
+      "sha256": "2484bd8eef590528f5a61db4296b004a95cfa4c1102df5dace2313f7710028c5",
+      "terminal": {
+        "ownedChild": 3626870,
+        "exitCode": 0,
+        "clean": true
+      }
+    }
+  ],
+  "priorBaseline": {
+    "rules": 510,
+    "ruleInventory": "r10y-validation-summary.json",
+    "ordinaryUiChecks": 44,
+    "ordinaryInventory": "r10z-validation-summary.json",
+    "freshRuleRun": false,
+    "freshUiAcceptance": false,
+    "gameplayCoreChanged": false,
+    "saveSchemaChanged": false
+  },
+  "originalInputsVerified": true,
+  "proven": [
+    "Valid declared native Warp display context with successful healthy control",
+    "Fatal pre-action machinery hit continues through original Warp jump and Nav return to original death entry",
+    "Exact phase4/gun60/cooldown40/counter6/time/RNG/location and independent personal owners",
+    "Original opcode vectors preserved through the healthy and fatal return",
+    "Two clean owned IIe exits with input and breakpoint cleanup"
+  ],
+  "scopeLimits": [
+    "Declared IP/local/target/display/pending-shot contexts, not ordinary campaign reachability",
+    "No native code patch",
+    "Fatal successful-jump continuation only; no fatal gravity-failure capture",
+    "Browser fatal Warp host matching remains unimplemented",
+    "Active/failed ordinary weapon diagnostics excluded from this native checkpoint"
+  ],
+  "remaining": [
+    "Browser host matching of observed fatal Warp pre-entry/return",
+    "Ordinary space victory, aiming and fire",
+    "Ordinary shield damage/absorption and remaining equipment/Tractor acceptance"
+  ],
+  "cleanup": {
+    "native": "Both canonical owned sessions exit0",
+    "browser": "Ordinary weapon diagnostic separate; not included in this checkpoint"
+  }
+}

@@ -1,3 +1,29 @@
+## R10aa — Native fatal Warp pre-entry and return — 2026-10-08
+
+The prepared native Warp context now has a successful healthy control and an
+observed fatal continuation. A bounded diagnostic found a zero status-window307
+with intact row tables. The declared original Game15 window geometry makes the
+healthy control return through Nav without corrupting interpreter opcode vectors.
+The canonical runner replays the existing Game12 exit/original Game13 Nav call
+and command7 operands, retaining every IP/local/display setup as an explicit
+fixture. It does not claim ordinary campaign reachability or patch native code.
+
+A prepared fatal hit inside Nav's pre-action machinery call still enters Warp,
+jumps to system11, clears contact, performs its post-jump call and returns through
+Nav to original Game7 death entry. Final phase4/gun60/cooldown40/counter6, clock
+18/21 and RNGbytes31/238/135/195 are retained; personal condition, inventory and
+equipment stay unchanged through the suffix. It does not run normal Game12
+three-call startup or add another clock advance after the Nav display call.
+
+All33 source contexts and77 hashed artifacts verify from the checked-in runner,
+with two clean owned IIe exits0 and input/breakpoint cleanup. Healthy and fatal
+Nav screenshots were inspected. Original disk/manual hashes verify. No gameplay
+core or save schema changed; the R10y510-rule baseline and R10z44 ordinary UI
+checks remain separately scoped. Browser host matching is still required, along
+with remaining ordinary space victory/weapons/shields/Tractor acceptance. The
+active weapon diagnostic is excluded from this native inventory. R10 remains in
+progress, R09 stays complete and the user's PRD is untouched.
+
 ## R10z — Ordinary space cargo negotiation, loss and terminal recovery — 2026-10-08
 
 A fresh seed12345 character buys fuel and two exchange lots, loads the pod and

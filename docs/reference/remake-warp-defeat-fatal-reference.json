@@ -1,0 +1,264 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10aa",
+  "healthyControl": false,
+  "emulator": "MAME0.285 / unenhanced apple2e / owned Qt debugger",
+  "scope": "Declared Game12 exit, original Nav call/command7 re-entry, source Game15 status-window geometry, charged target11 and prepared pending hit; original Warp and return code. No ordinary reachability.",
+  "runner": "tools/remake/capture_warp_defeat_reference.py",
+  "terminal": {
+    "ownedChild": 3626870,
+    "exitCode": 0,
+    "clean": true
+  },
+  "nativeContexts": 17,
+  "contexts": [
+    {
+      "file": "remake-warp-defeat-fatal-main.json",
+      "segment": 12,
+      "offset": "0x1388"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-main.json",
+      "segment": 13,
+      "offset": "0x269d"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-poll.json",
+      "segment": 13,
+      "offset": "0x2368"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-call.json",
+      "segment": 13,
+      "offset": "0x1f94"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fire-before.json",
+      "segment": 24,
+      "offset": "0x84c"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fatal.json",
+      "segment": 24,
+      "offset": "0x96a"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-after.json",
+      "segment": 13,
+      "offset": "0x1f97"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-entry.json",
+      "segment": 13,
+      "offset": "0x1760"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-call.json",
+      "segment": 13,
+      "offset": "0x18da"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-return.json",
+      "segment": 13,
+      "offset": "0x18dd"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-return.json",
+      "segment": 13,
+      "offset": "0x1fd4"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-action-return.json",
+      "segment": 13,
+      "offset": "0x241a"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-not.json",
+      "segment": 13,
+      "offset": "0x241b"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-test.json",
+      "segment": 13,
+      "offset": "0x241c"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-exit.json",
+      "segment": 13,
+      "offset": "0x2442"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-nav-return.json",
+      "segment": 13,
+      "offset": "0x2685"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-death.json",
+      "segment": 7,
+      "offset": "0x4b2"
+    }
+  ],
+  "notProven": [
+    "Browser fatal Warp host integration",
+    "Fatal gravity-failure return",
+    "Ordinary campaign Warp defeat reachability"
+  ],
+  "artifacts": [
+    {
+      "file": "remake-warp-defeat-fatal-exit-setup.json",
+      "sha256": "e2fdc83ddc2cf2d3efb6feff7832fe4f4f34077b2c258e57b4accfd76682a12f"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-setup.json",
+      "sha256": "b5f243b8d32fb64e4abf9a68f60ff2764bcd021e4bd14499180daedc0c8afb03"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-choice-setup.json",
+      "sha256": "d19002f5984ef3fe57b06e01d134d86ab8f10615cefa874746f045070c61f610"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fatal-setup.json",
+      "sha256": "310ea267fdcc1b738ce5eb7f73dd64956c9049cca8c3b0096433d8a60c626623"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-main.json",
+      "sha256": "2b8e4e0cea58e86cf5d9c10169c19e75fc96f8f3ea6baaea9f9a3af7b518994e"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-main.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-main.json",
+      "sha256": "180a5d8df8075975b0e351f1b8b99ba83fb7985245d2e413968dbd74158a5ffc"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-main.png",
+      "sha256": "3dd19d7a3e70707a3f1c43a00596d2a437a1949929a3c643ed1bc1eaf60dd4fd"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-poll.json",
+      "sha256": "690e16c2ed2e1d1146c68d1fbcb879c5f96b122502c1bcb2fe1a559fac4c34ba"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-poll.png",
+      "sha256": "5b128db80b15ef8beba582dc5687b8200ffc75388b36fe02898ac962b0581ed7"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-call.json",
+      "sha256": "56cdbc3beafffa9609a0b453cacc847758d3fafe274287a1536a49e0e89242c5"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-call.png",
+      "sha256": "5b128db80b15ef8beba582dc5687b8200ffc75388b36fe02898ac962b0581ed7"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fire-before.json",
+      "sha256": "cff1370f81f9798c601d78ebf12fcf3ac043c78718a41cd86240de0104ce850a"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fire-before.png",
+      "sha256": "5b128db80b15ef8beba582dc5687b8200ffc75388b36fe02898ac962b0581ed7"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fatal.json",
+      "sha256": "7d7f0014bc290665f7384390ff791c420f9c9eac926d4e43ec16850b28f5c0b1"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-fatal.png",
+      "sha256": "4d35ffae34755f7c3f9dc0b423deba2635e25b13b01ee8e30ecd059a7e7ad1a8"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-after.json",
+      "sha256": "f837997f6f0b1049a1ba289c5a1da3f951dc591f5fb3ac52071c7a0b9d23701b"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-action-first-after.png",
+      "sha256": "12b0376d2de53091faf8154e7dd2d912abf27c0f067f078f6ea385534e6e5df1"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-entry.json",
+      "sha256": "4848d7183accfd742dec0e3302037391e0eacee55a38e4937e06227cc0447310"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-entry.png",
+      "sha256": "12b0376d2de53091faf8154e7dd2d912abf27c0f067f078f6ea385534e6e5df1"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-call.json",
+      "sha256": "91ee0f7de9f880d4600a80b9efb20b565cec977407ffe45f5d7199efcaf4da5a"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-call.png",
+      "sha256": "e5e087286c286f9c1ec28690a6dcfc9440875a10706d5fcf185f86d3ccffab95"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-return.json",
+      "sha256": "cb506622462f3ac6803294c97a15a95251a8043e714fe6fb572cda8f6cbdebb4"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-warp-post-return.png",
+      "sha256": "e5e087286c286f9c1ec28690a6dcfc9440875a10706d5fcf185f86d3ccffab95"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-return.json",
+      "sha256": "246be72eeaafd41554ceb97ca7d1f96b3c343f10101850e9412fb22228243e7a"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-return.png",
+      "sha256": "002051b976f9f0141673c4e8db44470a483510f65514857a3f716bc8a2733e98"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-action-return.json",
+      "sha256": "d3dadd093be2bf6c1a0db899658ca441b41656381afc43a9f254ca511dfceae5"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-action-return.png",
+      "sha256": "002051b976f9f0141673c4e8db44470a483510f65514857a3f716bc8a2733e98"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-not.json",
+      "sha256": "f8f92892d09c7cf9146178efec57c6d3737f93d52a791898a63d0d29725698ef"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-not.png",
+      "sha256": "002051b976f9f0141673c4e8db44470a483510f65514857a3f716bc8a2733e98"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-test.json",
+      "sha256": "53486c22c1afcb828947c7f8fc094ce2179ea98b50f72e7e1f499fda7f5064df"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-test.png",
+      "sha256": "002051b976f9f0141673c4e8db44470a483510f65514857a3f716bc8a2733e98"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-exit.json",
+      "sha256": "29e9801e29cb5a3c7620bb34ce1e80af240fba9e94066e625047a11f966491fb"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-nav-exit.png",
+      "sha256": "d7cc9198838b4bd0b68d1cbe458a14bc4e903cb80ec769548abb9025b75d9cde"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-nav-return.json",
+      "sha256": "91a92bd66d9f2de3f8073d7181c64fe02fdf0af893488128c91ab1bcd1e0bfa2"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-ship-nav-return.png",
+      "sha256": "d7cc9198838b4bd0b68d1cbe458a14bc4e903cb80ec769548abb9025b75d9cde"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-death.json",
+      "sha256": "ac76c4060f4251bc30f4a1b89aa4a7aea251e5f19490360ebf33c56345e4c5dd"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-death.png",
+      "sha256": "42362d2117e4e91ec7ab4ec42e598d1992ad808396251f5dfccd74aab7ccf932"
+    },
+    {
+      "file": "remake-warp-defeat-fatal-receipts.json",
+      "sha256": "f45cc00f2111d8081420b8db72f6851591571558a5dbc675d0e036cf47e97bc9"
+    }
+  ]
+}
