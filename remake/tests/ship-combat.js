@@ -29,6 +29,19 @@ function byteStream(seed,count) {
 
 export async function shipCombatTests(test,equal) {
   const verifyStream=(seed,result)=>equal(result.state.randomState,byteStream(seed,result.draws).state);
+  await test('Native R10p fatal hull hit matches five RNG draws, defeat word and death scene without personal damage',()=>{
+    // recovery_reference.lua at Library24 proc13 $084c: seed28, pending45,
+    // range5, shields0 and hull1. Native $096a has already set347/scene12;
+    // startup7 $04b2 independently observes the subsequent hull0 store.
+    const s=fresh(28);s.sceneHigh=1;s.hull=1;s.words[215]=40;s.words[217]=5;
+    s.flags[40]=s.flags[45]=true;const before=structuredClone(s),r=stepShipCombat(s);
+    equal(byteStream(28,5),{rolls:[3584,3591,3719,3975,28295],state:0xc3870fdc});
+    equal([r.draws,r.state.randomState,r.state.hull,r.state.words[347],r.state.sceneHigh],
+      [5,0xc3870fdc,0,1,12]);
+    equal(r.hits,[{kind:'hull',damage:1}]);equal(r.events,['hullHit','shipDestroyed']);
+    equal([r.state.flags[43],r.state.flags[45]],[true,false]);
+    equal(r.state.equipment,s.equipment);equal(r.state.cargo,s.cargo);equal(s,before);
+  });
   await test('Source Comm prepares kind19, resets only48–50 and rejects missing or repeated contacts',()=>{
     const s=fresh();s.flags[40]=s.flags[48]=s.flags[49]=s.flags[50]=s.flags[51]=true;
     const before=JSON.stringify(s),r=prepareShipCommunication(s);

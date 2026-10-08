@@ -1,0 +1,308 @@
+{
+  "date": "2026-10-08",
+  "checkpoint": "R10p",
+  "emulator": "MAME0.285 / apple2e / owned Qt debugger",
+  "scope": "Prepared supplied-save space contact and declared fatal-hit fixture; native death dispatch and joystick saved-point restart/Play continuation. Not fresh-character acceptance.",
+  "helpers": [
+    "tools/remake/encounter_reference.lua",
+    "tools/remake/ground_reference.lua",
+    "tools/remake/tactical_reference.lua",
+    "tools/remake/recovery_reference.lua"
+  ],
+  "bootstrap": "docs/reference/game-play.json through frame18000, disposable media",
+  "setup": "At verified Library24 proc13 $084c, write207=0,214=1,215=40,217=5,225=0,hull1,RNG28,pending fire45. Enemy health and all personal owners are retained.",
+  "observed": [
+    "Five source RNG draws3584/3591/3719/3975/28295 produce fatal hull damage. Bytes220/15/135/195 are retained.",
+    "Library24 $096a observes347=1 and scene-high12 before the final hull-byte store. Startup7 $04b2 observes hull0 with unchanged personal condition.",
+    "Fatal capture phase2 advances to phase3 before the death dialog; clock21:18 remains unchanged. Browser exit-phase integration is still pending.",
+    "Native death dialog offers restart at last saved point. Physical axes95/240 and a fresh primary press select Yes.",
+    "Utility-side prompt requires disposable disk1 (marker0), despite repository game filename. Native reload opens the title/menu with hull16,347=0 and clock16:48.",
+    "Play SunDog, disposable disk2 (marker9), fresh primary acknowledgment and release resume the ship interior. Continued clock17:45 verifies resumed game machinery."
+  ],
+  "excluded": [
+    "Wrong initial Library24 trailer-size breakpoint was cleared before the fatal setup; it contributes no proof.",
+    "Off-target Yes clicks and rejected disk2 at the utility-side prompt are excluded.",
+    "Startup7 $063e breakpoint was never reached across the native reload/utility transition and was cleared. No exact reload opcode is claimed.",
+    "Scheduled-operation receipts alone do not prove completion; source stops, retained captures, inspected screens and exit0 do."
+  ],
+  "notProven": [
+    "Native full tractor collection",
+    "Browser full defeat-exit/restart integration",
+    "Live space controls, timing/sleep/reload and ordinary avoid/fight/lose acceptance",
+    "Rare dialogue reward224"
+  ],
+  "contexts": [
+    {
+      "file": "remake-recovery-ready.json",
+      "vm": {
+        "procedure": 40434,
+        "ip": 40394,
+        "mp": 23984,
+        "segment": 44458
+      },
+      "debugger": "run",
+      "sceneWord": 12987,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        16,
+        21,
+        0,
+        0
+      ],
+      "phase": 1
+    },
+    {
+      "file": "remake-recovery-main.json",
+      "vm": {
+        "procedure": 23720,
+        "ip": 23224,
+        "mp": 17160,
+        "segment": 23768
+      },
+      "debugger": "stop",
+      "sceneWord": 12546,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        17,
+        21,
+        0,
+        0
+      ],
+      "phase": 2
+    },
+    {
+      "file": "remake-recovery-due.json",
+      "vm": {
+        "procedure": 21298,
+        "ip": 21175,
+        "mp": 17140,
+        "segment": 23768
+      },
+      "debugger": "stop",
+      "sceneWord": 12546,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        17,
+        21,
+        0,
+        0
+      ],
+      "phase": 2
+    },
+    {
+      "file": "remake-recovery-fire-before.json",
+      "vm": {
+        "procedure": 36744,
+        "ip": 36138,
+        "mp": 17086,
+        "segment": 38318
+      },
+      "debugger": "stop",
+      "sceneWord": 12546,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        18,
+        21,
+        0,
+        0
+      ],
+      "phase": 2
+    },
+    {
+      "file": "remake-recovery-fatal.json",
+      "vm": {
+        "procedure": 36744,
+        "ip": 36424,
+        "mp": 17086,
+        "segment": 38318
+      },
+      "debugger": "stop",
+      "sceneWord": 15362,
+      "defeatWord": 1,
+      "hull": 1,
+      "clock": [
+        18,
+        21,
+        0,
+        0
+      ],
+      "phase": 2
+    },
+    {
+      "file": "remake-recovery-death-dispatch.json",
+      "vm": {
+        "procedure": 38262,
+        "ip": 37668,
+        "mp": 32374,
+        "segment": 38332
+      },
+      "debugger": "stop",
+      "sceneWord": 15371,
+      "defeatWord": 1,
+      "hull": 0,
+      "clock": [
+        18,
+        21,
+        0,
+        0
+      ],
+      "phase": 3
+    },
+    {
+      "file": "remake-recovery-restored.json",
+      "vm": {
+        "procedure": 33108,
+        "ip": 32978,
+        "mp": 32282,
+        "segment": 35454
+      },
+      "debugger": "run",
+      "sceneWord": 12987,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        48,
+        16,
+        0,
+        0
+      ],
+      "phase": 0
+    },
+    {
+      "file": "remake-recovery-continued.json",
+      "vm": {
+        "procedure": 40434,
+        "ip": 40400,
+        "mp": 23984,
+        "segment": 44458
+      },
+      "debugger": "run",
+      "sceneWord": 12987,
+      "defeatWord": 0,
+      "hull": 16,
+      "clock": [
+        45,
+        17,
+        0,
+        0
+      ],
+      "phase": 1
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "remake-recovery-ready.json",
+      "sha256": "1893853be4c6d7ff899f9f4510cac851ce3f4d22deecfad3c4de9e965e43e6db"
+    },
+    {
+      "file": "remake-recovery-ready.png",
+      "sha256": "4176dbd1f4e735a5f4b1dcbcbceec4088fbf431ac0aa0faae7c5fa4dc3e6afa5"
+    },
+    {
+      "file": "remake-recovery-main.json",
+      "sha256": "fd62243b7d116ae56f87b63111af75da2ad83905ca241d410d734de2fb8c243b"
+    },
+    {
+      "file": "remake-recovery-main.png",
+      "sha256": "ffe4fd0079713705572688194e0ef650d73d41a051b0c0416c0149b9f7f70772"
+    },
+    {
+      "file": "remake-recovery-due.json",
+      "sha256": "9755a3fdb77a8ce2542a48e96049afa6b67542015e3b962ca940bfa3a0d8ebe2"
+    },
+    {
+      "file": "remake-recovery-due.png",
+      "sha256": "ffe4fd0079713705572688194e0ef650d73d41a051b0c0416c0149b9f7f70772"
+    },
+    {
+      "file": "remake-recovery-fire-before.json",
+      "sha256": "32ffaf6125e9a38018c8c1293765b15ce9a29a9cfbe9120f32de793175bc51d1"
+    },
+    {
+      "file": "remake-recovery-fire-before.png",
+      "sha256": "b01a095555f7b28335801fa8495ca51c483d8be027e2294b3b82e54a9491e005"
+    },
+    {
+      "file": "remake-recovery-fatal.json",
+      "sha256": "c36fcb1faac50fd8a082f8aafa664fad0e0a4f22509432d0c9c8b9ed7b396ff6"
+    },
+    {
+      "file": "remake-recovery-fatal.png",
+      "sha256": "a76cb8f79e6ff8ae6b80829010c9b5c1d8950e05c069316372efc12f21974af7"
+    },
+    {
+      "file": "remake-recovery-death-dispatch.json",
+      "sha256": "b71cd61a66ee7dab8bd3df82b9ec703336bb86c74022769f2ca1f3fba3655b88"
+    },
+    {
+      "file": "remake-recovery-death-dispatch.png",
+      "sha256": "6b29945b06dcb78efa2c4827bedc16090282a23640ed5c57bb1be78ea34b5920"
+    },
+    {
+      "file": "remake-recovery-death-screen.json",
+      "sha256": "a2e00f5b3baad423d6c80a78a4b4c4b8c7ae97c76ae06d40cdff91c4c3b77349"
+    },
+    {
+      "file": "remake-recovery-death-screen.png",
+      "sha256": "d46db149fcd6120e22938865129315ad363df01c78659620e22310a8b11e8aae"
+    },
+    {
+      "file": "remake-recovery-yes-aim2.json",
+      "sha256": "6258b0b52c1cccd154601b4ea23b2e70d72cc1596211ff0bd96a5fa79b777b2e"
+    },
+    {
+      "file": "remake-recovery-yes-aim2.png",
+      "sha256": "60d7c24873292fd653667ef3f2e802599af1da097bb7b3204b0aad1a253a642b"
+    },
+    {
+      "file": "remake-recovery-yes-confirm2.json",
+      "sha256": "84d7bf09157ac34948468d5db82068480fa06f4504ee3b7830a7b8855de86559"
+    },
+    {
+      "file": "remake-recovery-yes-confirm2.png",
+      "sha256": "851380f6ed627d95e88d47f8e8f591c75923e4dc57b48e5f19b608a404698b77"
+    },
+    {
+      "file": "remake-recovery-restored.json",
+      "sha256": "1371033857a5b81607b84a8cfcd83f242cc2e0368c2568149edd88c30691af17"
+    },
+    {
+      "file": "remake-recovery-restored.png",
+      "sha256": "e0193eb0361f455f6825475f9a9a6f2543d9fc218a953cffcfea140d6c9df594"
+    },
+    {
+      "file": "remake-recovery-play-release.json",
+      "sha256": "cbe1587f1cf681de884323230cec14799d5f4e84f8da5aa94dd4951faee82148"
+    },
+    {
+      "file": "remake-recovery-play-release.png",
+      "sha256": "1c4a2808fa3b3deb32dfe8652996e89e7f6c2c2332aaf83579962fb378b0dbba"
+    },
+    {
+      "file": "remake-recovery-continued.json",
+      "sha256": "8f00cb280185e11fff0d49eebec91832b73d1e915003a73d5269cef66c302748"
+    },
+    {
+      "file": "remake-recovery-continued.png",
+      "sha256": "52d93626e506de65a97f49b6fc55887d24762e0bb428a76253f6d43d2265bf1e"
+    },
+    {
+      "file": "remake-recovery-fatal-setup.json",
+      "sha256": "b6cc2178164e307c4d51820b407e85ced6bb62e73ce6cd82b24e00cddb89bb18"
+    },
+    {
+      "file": "remake-recovery-receipts.json",
+      "sha256": "68634a5b479f0073c127988fb000dc6166271f771fb45e52f38949f7181a0654"
+    }
+  ],
+  "terminal": {
+    "worker": 2278160,
+    "ownedChild": 2278739,
+    "live": false,
+    "exitCode": 0
+  }
+}
