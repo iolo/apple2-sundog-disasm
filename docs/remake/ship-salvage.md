@@ -91,3 +91,12 @@ Live sensors/contact/aim/fire/Comm/bolt/tractor controls and localized help,
 ordinary campaign avoid/fight/lose/equipment acceptance, native full tractor and
 death/recovery dispatch, rare reward224, and live cadence/sleep/reload acceptance
 remain under the unchanged [full R10 requirement audit](r10-completion.md).
+
+## R10s native collection follow-up
+
+[The prepared native reference](ship-salvage-reference.md) now observes all five
+Tractor pulls, the actual slot2 transfer, inhibition clearing and the return-menu
+poll. That poll runs proc12 once after copying, without incrementing354. The
+host now preserves its observed phase2→3/charge68→60 before returning control;
+newly collected fuel is available to that following call. Native menu selection
+and ordinary fresh-character encounter acceptance remain separate gates.
