@@ -21,12 +21,11 @@ its final store. [Startup7 `$04B2`](../reference/remake-recovery-death-dispatch.
 independently observes hull0 after Game12/Game13 return. Personal condition
 remains237/235/255/228; ship death must not fabricate personal injury.
 
-The capture also exposes an integration gap: phase2 at the fatal hit becomes
+The capture exposed an integration gap: phase2 at the fatal hit becomes
 phase3 before the dialog, gun charge68 becomes60 and contact cooldown40 becomes35.
-Clock21:18 and RNG bytes remain unchanged. The current campaign host freezes
-at the fatal call. Its full tactical exit/dispatcher sequencing still needs
-integration; this evidence does not authorize simply repairing the hull or
-resetting the defeat word.
+Clock21:18 and RNG bytes remain unchanged. R10p's campaign host froze at the
+fatal call. R10q now reproduces this due-frame exit in the opt-in29 host, as
+described below; the live UI and ordinary recovery acceptance remain pending.
 
 ## Legitimate continuation
 
@@ -62,9 +61,38 @@ and checks input immutability against an independent byte/carry RNG oracle.
 
 Browser recovery must load a validated saved campaign with all owners restored.
 The existing save screen already supports explicit saved-slot loading; live
-space defeat detection, correct exit sequencing and ordinary UI acceptance
+space defeat detection and ordinary UI acceptance
 remain R10 work. Native tractor collection, rare reward224 and the other full
 [R10 acceptance gates](r10-completion.md) also remain open.
+
+## Due-frame defeat exit — R10q
+
+Game12 proc12 does not return at the fatal hit: `$0B8A` polls its demand
+deadline, `$0BAD` refreshes sensors, and `$0BB5` moves again using the captured
+contact. Thus cooldown40 becomes39 before the tactical loop exits. Game12
+`$14D4` releases a pending demand; proc17's gun-loop exit clears power2.
+
+Game13 main `$26B2` calls proc12 with both boolean parameters true. Its
+initial proc13 call at `$1300` runs Library24 proc9 at `$0C2A`. Because the
+ship is now in scene12, combat uses the non-tactical movement branch, subtracting
+another4 from cooldown. The native power phase3 subtracts8 from the unpowered
+gun charge. CSP4 `EXIT(13,12)` at `$1314` returns before proc18 at `$131B` can
+run its own Library24 call. This accounts for exactly one additional phase,
+not a fresh tactical frame or a blanket extra tick on every terminal update.
+
+`advanceCampaignMachinery` completes the due frame's post-move, releases the
+controller/deadline, and performs that one actual flight/production/power/combat
+call. Subsequent terminal updates remain frozen. Two new campaign rule groups
+compare the R10p literal phase/charge/cooldown/RNG vector, owner preservation,
+input immutability, and saved terminal continuation. A separate phase4→1
+case verifies the real hour update and gun/deadline release. Current29 accepts
+the fatal-hit timestamp one minute before dispatch only at phase1; earlier
+historical formats retain equal timestamps, and imports never replay the exit.
+
+[R10q rules](r10q-rules-validation.json) pass503 Chrome155.0.8059.39 groups;
+45 focused tactical/salvage/campaign groups also pass. This proof covers fatal
+damage during a due Game12 frame. Fatal entry/startup and Comm-dispatch contexts
+still need auditing, as do live recovery controls and ordinary campaign play.
 
 Reproduce using the [a2-mame skill](/home/iolo/.codex/skills/a2skills/a2-mame/SKILL.md),
 `encounter_bootstrap.py --debug` and the helpers in metadata. Verify model,

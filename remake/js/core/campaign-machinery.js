@@ -68,7 +68,7 @@ export function reduceMachineryControl(previous,action) {
 }
 
 
-function machineryCycle(previous,s,content,{dispatch=false}={}) {
+function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false}={}) {
   let next=previous;const space=!!next.space;
   const sleeping=s.sleeping;
   const phase=next.machinery.phase+1;
@@ -84,11 +84,17 @@ function machineryCycle(previous,s,content,{dispatch=false}={}) {
   let workingFuel=next.resources.fuel;
   if(next.flight) {
     const moved=stepCampaignFlight(next,phase);next=moved.state;workingFuel=moved.workingFuel;
-    if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived,dispatch});
+    if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived,dispatch,defeatExit});
   }
   applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase,workingFuel).state);
   if(next.flight){next.ship.minutes=s.minutes;next=finishCampaignFlight(next)}
-  if(space){next=stepCampaignSpaceCombat(next,{dispatch});next=stepCampaignShipCommunication(next);if(next.space.defeat)s.dead=true}
+  if(space){
+    next=stepCampaignSpaceCombat(next,{dispatch,defeatExit});
+    // Game12 proc12 continues its deadline branch after fatal damage. The
+    // Game13 display-return call is outside proc12 and does not poll it again.
+    if(!defeatExit)next=stepCampaignShipCommunication(next,{terminal:!!next.space.tactical});
+    if(next.space.defeat)s.dead=true;
+  }
   next.machinery.phase=phase%4;
   if(space&&s.sleeping&&!sleeping){leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.view='ship'}
   if(sleeping) {
@@ -179,9 +185,18 @@ export function advanceCampaignMachinery(previous,survival,milliseconds,paused=f
       if(begun.aftermath)recordCampaignShipKill(next,begun.aftermath,content);
       if(begun.due) {
         next=machineryCycle(next,s,content);cycles++;
-        if(next.space.tactical&&!next.space.defeat&&!s.dead) {
+        if(next.space.tactical) {
           const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,begun.delta);
           commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
+          if(next.space.defeat) {
+            // Game12 $0BB5 finishes movement before exiting, including a
+            // fatal hit. Release its firing loop/deadline before Game13
+            // $26B2 -> proc12 -> proc13 $0C2A refreshes navigation. That one
+            // Library24 call uses scene12; CSP4 EXIT(13,12) at $1314 prevents
+            // proc18's second call. Only this new transition may run it.
+            leaveCampaignShipDeadline(next);clearCampaignTactical(next);
+            next=machineryCycle(next,s,content,{defeatExit:true});cycles++;
+          }
         }
       }
       if(next.space.tactical?.record.wreck&&next.space.tactical.record.wreck.tractorSlot!==null&&!next.space.defeat&&!s.dead) {

@@ -149,9 +149,12 @@ export function validateCampaignSpace(campaign,value,{communication=true,tactica
     !integer(w[217],0,32767)||!integer(w[347],0,1)||!integer(w[354],-32768,32767))fail();
   if((value.flags[40]||value.view==='tactical'||value.defeat!==null)&&
     (campaign.travel.scene!=='ship'||campaign.pod.occupied||campaign.combat.ground!==null))fail();
+  // Current29 preserves the fatal-hit minute even if the one Game13 exit
+  // call crosses phase1. Historical contracts still require equal timestamps.
   if(value.defeat===null?w[347]!==0||campaign.resources.hull===0:
     !keys(value.defeat,['reason','minutes'])||value.defeat.reason!=='shipDestroyed'||
-    value.defeat.minutes!==campaign.ship.minutes||w[347]!==1||value.elapsed!==0)fail();
+    !(value.defeat.minutes===campaign.ship.minutes||salvage&&campaign.machinery.phase===1&&
+      value.defeat.minutes===campaign.ship.minutes-1)||w[347]!==1||value.elapsed!==0)fail();
   const next={...structuredClone(value),losses:validateSpaceLosses(value.losses,{salvage}),
     ...(!communication?{communication:initialShipCommunication(),activity:initialShipActivity()}:{} )};
   if(communication) {
@@ -232,8 +235,8 @@ export function commitCampaignShipSource(state,source,{combatDamage=false}={}) {
 
 // Called after movement, before power. The native non-arrival jump also runs
 // the producer; planetary browser overlays keep their declared separate ETA.
-export function stepCampaignSpaceProducer(previous,content,{enabled,arrived,dispatch=false}) {
-  if(!previous.space||!enabled||previous.space.defeat||previous.space.communication?.conversation&&!dispatch)return previous;
+export function stepCampaignSpaceProducer(previous,content,{enabled,arrived,dispatch=false,defeatExit=false}) {
+  if(!previous.space||!enabled||previous.space.defeat&&!defeatExit||previous.space.communication?.conversation&&!dispatch)return previous;
   const next=structuredClone(previous),source=campaignShipSource(next),ship=currentShipLocation(next);
   if(arrived&&source.flags[40])source.words[215]=0; // $049B–$04A6.
   const index=next.start.systems.findIndex(s=>s.id===ship.systemId),system=content.dialogue.systems.systems.find(s=>s.id===ship.systemId);
@@ -244,8 +247,8 @@ export function stepCampaignSpaceProducer(previous,content,{enabled,arrived,disp
   return next;
 }
 
-export function stepCampaignSpaceCombat(previous,{dispatch=false}={}) {
-  if(!previous.space||!previous.space.flags[40]||previous.space.defeat||previous.space.communication?.conversation&&!dispatch)return previous;
+export function stepCampaignSpaceCombat(previous,{dispatch=false,defeatExit=false}={}) {
+  if(!previous.space||!previous.space.flags[40]||previous.space.defeat&&!defeatExit||previous.space.communication?.conversation&&!dispatch)return previous;
   const next=structuredClone(previous),result=stepShipCombat(campaignShipSource(next));
   return commitCampaignShipSource(next,result.state,{combatDamage:true});
 }
@@ -263,8 +266,8 @@ export function leaveCampaignShipDeadline(state) {
   if(c?.pending){state.space.flags[44]=true;c.pending=false;c.ticks=0}
 }
 
-export function stepCampaignShipCommunication(previous) {
-  if(!previous.space?.communication?.pending||previous.space.view!=='tactical'||previous.space.defeat||previous.space.communication.conversation)return previous;
+export function stepCampaignShipCommunication(previous,{terminal=false}={}) {
+  if(!previous.space?.communication?.pending||previous.space.view!=='tactical'||previous.space.defeat&&!terminal||previous.space.communication.conversation)return previous;
   const next=structuredClone(previous),c=next.space.communication;
   const result=stepShipCommunication(campaignShipSource(next),{pending:c.pending,ticks:c.ticks});
   commitCampaignShipSource(next,result.state);Object.assign(c,result.communication);

@@ -145,9 +145,13 @@ condition is not fabricated to represent ship death. If the condition clock
 and hull both become terminal on one scheduler call, both owner records persist.
 Subsequent clocks/actions freeze. R10p observes the native fatal hit, death
 dialog and saved-point restart/Play continuation; see [recovery reference](ship-recovery-reference.md).
-The native exit advances one further phase in that capture. Browser exit/restart
-integration and ordinary recovery acceptance remain pending; the marker alone
-does not fulfill that R10 gate.
+The native exit advances one further phase in that capture. R10q integrates
+the due Game12 frame's post-move and one Game13 display-return machinery call
+in opt-in29, preserving its phase/charge/cooldown/RNG vector and freezing later
+updates. A phase1 exit retains the fatal-hit minute separately from the clock's
+one-minute advance. Historical saves do not replay this transition. Fatal
+entry/startup and Comm-dispatch contexts, live recovery and ordinary acceptance
+remain pending; the marker alone does not fulfill that R10 gate.
 
 ## Shots and cargo loss
 
