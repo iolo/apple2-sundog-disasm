@@ -325,6 +325,37 @@ export async function campaignTacticalTests(test,equal) {
     equal(jumped.machinery.phase,charged.machinery.phase);equal(jumped.ship.minutes,charged.ship.minutes+1);equal(jumped.resources.guns.charge,84);
     equal(jumped.space.words[354],0);equal(jumped.space.tactical.record.contact,false);equal(reload(jumped),jumped);
   });
+  await test('Native fatal tactical frame finishes movement and one Game13 display call before freezing saved defeat',()=>{
+    const s=enter(fixture());s.resources.hull=1;s.resources.fuel=228;s.resources.guns={charge:68,powered:false};
+    s.resources.shields={charge:0,targetCharge:0};s.encounters.randomState=28;s.machinery.phase=1;
+    s.ship.minutes=1278;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    s.space.rangeMemory=45;s.space.flags[45]=true;
+    Object.assign(s.space.words,{205:512,206:512,207:0,208:0,209:0,214:1,215:41,216:200,217:5,354:4});
+    const before=structuredClone(s),result=tick(s),dead=result.state;
+    // R10p $096A -> Startup7 $04B2: phase2 ->3, gun68 ->60,
+    // cooldown40 ->35 (one post-due move then the non-tactical -4).
+    equal([result.frames,result.cycles,dead.machinery.phase],[1,2,3]);
+    equal([dead.resources.hull,dead.resources.guns.charge,dead.resources.fuel],[0,60,228]);
+    equal([dead.space.words[215],dead.space.words[217],dead.space.words[354]],[35,5,5]);
+    equal(dead.encounters.randomState,0xc3870fdc);equal(dead.ship.minutes,1278);equal(dead.ship.condition,s.ship.condition);
+    equal(dead.equipment,s.equipment);equal(dead.pod.cargo,s.pod.cargo);
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:1278});equal(dead.space.tactical,null);equal(dead.space.elapsed,0);
+    equal(reload(dead),dead);equal(tick(reload(dead),60000).state,dead);equal(result.survival.dead,true);equal(s,before);
+  });
+  await test('Fatal exit releases gun power and demand before its actual phase1 clock without re-running after reload',()=>{
+    const s=gun(enter(fixture()));s.resources.hull=1;s.resources.guns.charge=68;s.resources.shields={charge:0,targetCharge:0};
+    s.encounters.randomState=28;s.machinery.phase=3;s.ship.minutes=59;s.ship.condition={vigor:237,rest:235,health:255,nourishment:228};
+    s.space.flags[45]=true;s.space.communication.pending=true;s.space.communication.ticks=2;
+    Object.assign(s.space.words,{207:0,208:0,209:0,215:41,217:5,354:4});
+    const dead=tick(s).state;equal(dead.ship.minutes,60);equal(dead.machinery.phase,1);
+    equal(dead.resources.guns,{charge:60,powered:false});equal(dead.space.words[354],0);
+    equal(dead.ship.condition,{vigor:237,rest:231,health:255,nourishment:225});
+    equal(dead.space.defeat,{reason:'shipDestroyed',minutes:59});equal(dead.space.communication.pending,false);
+    equal(dead.space.communication.ticks,0);equal(dead.space.flags[44],true);equal(reload(dead),dead);
+    equal(tick(reload(dead),60000).state,dead);
+    const forged=structuredClone(dead);forged.space.defeat.minutes=58;reject(()=>codec.snapshot(forged));
+    const wrongPhase=structuredClone(dead);wrongPhase.machinery.phase=2;reject(()=>codec.snapshot(wrongPhase));
+  });
   await test('Voluntary/forced sleep and ship defeat release the saved firing loop and retain durable terminal ownership',()=>{
     const active=gun(enter(fixture())),sleeping=action(active,{type:'sleep'});equal(sleeping.space.tactical,null);equal(sleeping.resources.guns.powered,false);equal(reload(sleeping),sleeping);
     const forced=structuredClone(active);forced.ship.minutes=59;forced.ship.condition={vigor:200,rest:1,health:200,nourishment:200};forced.machinery.phase=0;forced.space.words[354]=4;

@@ -1,0 +1,27 @@
+{
+  "milestone": "R10",
+  "milestoneStatus": "in progress",
+  "checkpoint": "R10q",
+  "checkpointStatus": "pass",
+  "date": "2026-10-08",
+  "browser": "155.0.8059.39",
+  "ruleGroups": 503,
+  "focusedTacticalSalvageCampaignGroups": 45,
+  "newRuleGroups": 2,
+  "receipts": ["r10q-rules-validation.json"],
+  "nativeReference": "../reference/remake-recovery-reference.json",
+  "fatalVector": {
+    "hull": 0,
+    "phase": 3,
+    "gunCharge": 60,
+    "contactCooldown": 35,
+    "randomState": 3280408540,
+    "minutes": 1278,
+    "condition": {"vigor": 237, "rest": 235, "health": 255, "nourishment": 228}
+  },
+  "boundaries": [
+    "This implements fatal damage during a due Game12 frame and the one Game13 display-return call; fatal entry/startup and Comm-dispatch contexts still need auditing.",
+    "The browser remains on live24 until space controls and saved host integration are connected and verified.",
+    "Native tractor collection, rare reward224, live space timing/sleep/reload and ordinary encounter/equipment/recovery acceptance remain full R10 gates."
+  ]
+}
