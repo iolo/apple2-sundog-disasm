@@ -24,7 +24,7 @@ import { isTavern } from './room-seating.js';
 import { populateRoom } from './room-actors.js';
 import { initialRoomTraffic, validateRoomTraffic } from './room-traffic.js';
 import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, validateCounterRecord, restoreCampaignConversation } from './campaign-dialogue.js';
-import { initialColony, validateColony } from './colony.js';
+import { initialColony, validateColony, colonyBonusTotal } from './colony.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
 export const CAMPAIGN_LIMIT = 131072;
@@ -155,7 +155,8 @@ export function campaignSaveCodec(content, geometry, cityGeometry=null) {
       if(dialogue.cash+economy.accounts.reduce((sum,a)=>sum+a.balance,0)+storedCosts>
         start.credits+start.systems.reduce((sum,s)=>sum+s.bankBalance,0)+economy.personalTrade.proceeds.reduce((sum,p)=>sum+p,0)+(regional?.cargoProceeds??0)+
           (version>=24?validateGroundRewards(value.combat?.rewards,baseline).reduce((sum,r)=>sum+r.amount,0):0)+
-          (version>=29?validateSpaceBounties(value.space?.bounties,baseline).reduce((sum,r)=>sum+r.amount,0):0))fail();
+          (version>=29?validateSpaceBounties(value.space?.bounties,baseline).reduce((sum,r)=>sum+r.amount,0):0)+
+          (version>=30?colonyBonusTotal(colony,baseline,start):0))fail();
       let encounters={randomState:start.gameplayRandomState,roomSeed:null,roomState:null,counter:null};
       if(version>=6) {
         const validSeed=n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff;

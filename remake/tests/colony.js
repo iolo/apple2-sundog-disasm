@@ -1,4 +1,4 @@
-import { initialColony, colonyDemand, reduceCampaignColony, validateColony } from '../js/core/colony.js';
+import { initialColony, colonyDemand, colonyDeliveryQuote, colonyBonusTotal, reduceCampaignColony, validateColony } from '../js/core/colony.js';
 import { campaignSaveCodec } from '../js/core/campaign-saves.js';
 import { createCharacter } from '../js/core/character.js';
 import { createCityMaps } from '../js/core/city-map.js';
@@ -38,8 +38,13 @@ export async function colonyTests(test,equal) {
       equal(s.pod.cargo[0],null);
     }
     equal(colonyDemand(s.colony,content)[12],1);
-    s.pod.cargo[0]=lot(13);s=reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0});
+    const bankBefore=s.economy.accounts[0].balance;
+    s.pod.cargo[0]={...lot(13),pricePaid:5000};
+    equal(colonyDeliveryQuote(s.pod.cargo[0],content,s.start),6200);
+    s=reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0});
     equal([s.colony.completedPhase,s.colony.activePhase],[1,2]);
+    equal(s.economy.accounts[0].balance,bankBefore+1500);
+    equal(colonyBonusTotal(s.colony,content,s.start),1500);
     s.pod.cargo[0]=lot(8);reject(()=>reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0}),'colonyNotNeeded');
     s.pod.cargo[0]=null;s=reduceCampaignColony(s,content,geometry,{type:'leave'});
     s=reduceCampaignColony(s,content,geometry,{type:'enter'});equal([s.colony.completedPhase,s.colony.activePhase],[1,2]);

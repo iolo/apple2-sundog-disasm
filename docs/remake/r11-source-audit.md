@@ -27,10 +27,21 @@ it displays the fulfilled-contract text and sets the ending fields
 (`$00FB–$013B`). Game21 procedure 26 uses *completed* phase, rather than
 active phase, to clip Banville's expanding city map.
 
-Game20 procedure 25 (`$14B4–$14C8`) accumulates a quarter of each delivery
-quote, then calls procedure 4 after *each* delivery. The final unit of a
-phase therefore advances it during the visit. Entering the Center also runs
-procedure 4 through procedure 5. Delivery price/quality acceptance and the
-exact bonus amount require a further source trace. The browser implementation
-keeps each consumed lot in a bounded receipt ledger so a save cannot both
-retain and deliver the same cryogen.
+Game20 procedure 25 (`$14B4–$14C8`) accumulates each delivery quote shifted
+right by two, then calls procedure 4 after *each* delivery. The final unit of
+a phase therefore advances it during the visit. Entering the Center also runs
+procedure 4 through procedure 5. Procedure 4 (`$0144–$0179`) converts the
+accumulated hundred-credit units to the bank money format and pays the bonus
+for completed phases 1–8; its phase-9 ending branch skips that payout.
+Procedure 5 (`$03CE–$03D8`) restores the carried accumulator on Center entry,
+and procedure 7 (`$0442–$0451`) stores it on exit.
+
+Procedure 16 (`$0B7D–$0BC4`) uses the template demand and preserved supply
+for Center quotes. The initial colony supply is zero (`$0318–$0326`). The
+same scaling, quality, technology, city-capital and origin ceiling factors
+used by ordinary sales follow at `$0BC4–$0C70`. The browser computes the
+Center quote from the generated world-1 template and source-backed city
+membership, then adds `floor(quote / 400) * 100` credits for each delivered
+lot at phase completion. This is source-derived; no independent original-game
+bonus capture has been run. The receipt ledger keeps each consumed lot so a
+save cannot both retain and deliver the same cryogen.

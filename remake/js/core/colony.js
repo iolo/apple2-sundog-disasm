@@ -1,6 +1,8 @@
 import { validateCargoLot } from './cargo.js';
 import { cityServiceAt } from './city-doors.js';
 import { podServiceAt } from './city-pod.js';
+import { exchangeLocation, scaleExchangePrice } from './exchange.js';
+import { MAX_CREDITS } from './banking.js';
 
 const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===n.length&&n.every(k=>Object.hasOwn(v,k));
 const integer=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
@@ -8,6 +10,38 @@ const fail=()=>{throw Error('invalidColony')};
 const recipes=content=>content?.economy?.colonyRequirements;
 const number=id=>Number(id?.slice(6));
 export const initialColony=()=>({completedPhase:0,activePhase:0,warehouse:[null,null,null,null],receipts:[]});
+
+const adjust=(value,a,b)=>{
+  const factor=8+Math.abs(a-b);
+  return a>=b?scaleExchangePrice(value,factor,8):scaleExchangePrice(value,8,factor);
+};
+
+// Game20 proc16 uses the selected world-1 template demand and the colony's
+// initially empty supply (proc5 $0318–$0326). City60 is not the capital.
+// The source returns hundreds of credits. Proc25 $14B4–$14C4 shifts each
+// resulting quote right by two before adding it to the phase bonus counter.
+export function colonyDeliveryQuote(lot,content,start) {
+  const n=number(lot.commodityId),base=(content.dialogue?.items||content.items)?.find(i=>i.id===lot.commodityId)?.valueByte;
+  const template=content.economy?.templates?.[start.economy.selector],system=content.exchange?.systems?.find(s=>s.id==='system-01');
+  if(!integer(n,2,31)||!integer(base,0,255)||!template||!system||!integer(lot.quality,1,7))fail();
+  let price=adjust(base,template.demand[n-1],0);
+  price=adjust(price,system.priceLevel,8);price=adjust(price,lot.quality,6);
+  if(n>=16&&n<=24)price=adjust(price,8,system.technologyLevel);
+  price=adjust(price,8,6);
+  let ceiling=price;
+  if(lot.originCity!==null) {
+    const origin=exchangeLocation(content.exchange,lot.originCity);ceiling=lot.pricePaid/100;
+    if(origin.worldId==='world-01')ceiling=adjust(ceiling,8,6);
+    else if(origin.systemId==='system-01')ceiling=adjust(ceiling,8,4);
+    else ceiling=price;
+  }
+  return (price<1?1:price>ceiling?ceiling:price)*100;
+}
+
+export function colonyBonusTotal(colony,content,start) {
+  return colony.receipts.reduce((sum,r)=>sum+(r.phase<=8&&r.phase<=colony.completedPhase?
+    Math.floor(colonyDeliveryQuote(r.lot,content,start)/400)*100:0),0);
+}
 
 export function colonyDemand(colony,content) {
   const demands=recipes(content);
@@ -77,7 +111,14 @@ export function reduceCampaignColony(previous,content,geometry,action) {
     // Game20 proc25 $14C8 calls proc4 after every delivery. The last unit
     // advances the phase during this visit; no second Center entry is needed.
     if(colonyDemand(c,content).every(n=>n===0)){
+      const phase=c.activePhase;
       c.completedPhase=c.activePhase;c.activePhase++;
+      if(phase<9) {
+        const bonus=c.receipts.filter(r=>r.phase===phase).reduce((sum,r)=>sum+Math.floor(colonyDeliveryQuote(r.lot,content,next.start)/400)*100,0);
+        const account=next.economy.accounts.find(a=>a.systemId==='system-01');
+        if(!account||account.balance+bonus>MAX_CREDITS)throw Error('bankOverflow');
+        account.balance+=bonus;
+      }
     }
   } else throw Error('colonyInvalidSelection');
   return next;
