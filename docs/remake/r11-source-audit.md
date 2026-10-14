@@ -27,9 +27,10 @@ it displays the fulfilled-contract text and sets the ending fields
 (`$00FB–$013B`). Game21 procedure 26 uses *completed* phase, rather than
 active phase, to clip Banville's expanding city map.
 
-Delivery price/quality acceptance and the bonus amount require a further
-source trace. The browser implementation should keep each consumed lot in a
-bounded receipt ledger so a save cannot both retain and deliver the same
-cryogen. A phase update must occur once when demand becomes zero; entering
-the Center is the source-visible update point. This document distinguishes
-that source behavior from the still-unresolved financial rules.
+Game20 procedure 25 (`$14B4–$14C8`) accumulates a quarter of each delivery
+quote, then calls procedure 4 after *each* delivery. The final unit of a
+phase therefore advances it during the visit. Entering the Center also runs
+procedure 4 through procedure 5. Delivery price/quality acceptance and the
+exact bonus amount require a further source trace. The browser implementation
+keeps each consumed lot in a bounded receipt ledger so a save cannot both
+retain and deliver the same cryogen.

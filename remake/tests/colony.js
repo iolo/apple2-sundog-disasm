@@ -25,19 +25,21 @@ export async function colonyTests(test,equal) {
     s.ground={...s.ground,worldId:'world-01',cityId:'city-60',podCityId:'city-60'};
     s.travel={scene:'city',cityPosition:position};s.pod={...s.pod,attached:false,occupied,position:pod,heading:16};return s;
   };
-  await test('Banville Center starts once, consumes one actual pod lot per requirement and advances only on reentry',()=>{
+  await test('Banville Center starts once, consumes one actual pod lot per requirement and advances on the final delivery',()=>{
     let s=service(fresh(),foot,false);equal(cityServiceAt(map,foot),'colony');equal(podServiceAt(geometry,pod,16),'colony');
     s=reduceCampaignColony(s,content,geometry,{type:'enter'});equal([s.colony.completedPhase,s.colony.activePhase],[0,1]);
     equal(colonyDemand(s.colony,content).reduce((a,b)=>a+b,0),4);
     reject(()=>reduceCampaignColony(s,content,geometry,{type:'enter'}),'colonyUnavailable');
     s=reduceCampaignColony(s,content,geometry,{type:'leave'});
     s=service(s);s=reduceCampaignColony(s,content,geometry,{type:'enter'});
-    for(const id of [8,9,11,13]) {
+    for(const id of [8,9,11]) {
       s.pod.cargo[0]=lot(id);
       s=reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0});
       equal(s.pod.cargo[0],null);
     }
-    equal(colonyDemand(s.colony,content).every(n=>n===0),true);
+    equal(colonyDemand(s.colony,content)[12],1);
+    s.pod.cargo[0]=lot(13);s=reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0});
+    equal([s.colony.completedPhase,s.colony.activePhase],[1,2]);
     s.pod.cargo[0]=lot(8);reject(()=>reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0}),'colonyNotNeeded');
     s.pod.cargo[0]=null;s=reduceCampaignColony(s,content,geometry,{type:'leave'});
     s=reduceCampaignColony(s,content,geometry,{type:'enter'});equal([s.colony.completedPhase,s.colony.activePhase],[1,2]);

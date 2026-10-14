@@ -74,6 +74,11 @@ export function reduceCampaignColony(previous,content,geometry,action) {
     const lot=from[action.slot],i=number(lot.commodityId)-1;
     if(i<1||i>30||colonyDemand(c,content)[i]===0)throw Error('colonyNotNeeded');
     c.receipts.push({phase:c.activePhase,lot});from[action.slot]=null;
+    // Game20 proc25 $14C8 calls proc4 after every delivery. The last unit
+    // advances the phase during this visit; no second Center entry is needed.
+    if(colonyDemand(c,content).every(n=>n===0)){
+      c.completedPhase=c.activePhase;c.activePhase++;
+    }
   } else throw Error('colonyInvalidSelection');
   return next;
 }
