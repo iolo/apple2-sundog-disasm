@@ -432,7 +432,7 @@
   "colonyCompletedPhases": "Completed phases",
   "colonyTitle": "Banville Center",
   "colonyPhase": "Phase {phase} · {remaining} phases remaining",
-  "colonyReady": "This phase is complete. Leave and reenter the Center for the next update.",
+  "colonyReady": "This phase is complete.",
   "colonyEnding": "You have fulfilled your contract.",
   "colonyFootHint": "Bring the pod to the Center to deliver or move cargo.",
   "colonyPodHint": "Deliver needed goods from the pod or Center warehouse.",

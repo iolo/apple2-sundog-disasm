@@ -1,9 +1,18 @@
+## R11c — Delivery-time phase update — 2026-10-15
+
+Game20 procedure 25 `$14C8` calls the phase check after every delivery.
+The final required lot now advances the phase during that Center visit;
+entry still starts phase 1. The source audit, bilingual copy and phase test
+were corrected. All 519 Chrome rule groups pass without page errors. R11
+remains open for delivery valuation/bonus and ordinary-control campaign proof.
+
 ## R11b — Live Banville Center and contract state — 2026-10-15
 
 Banville's tile-15 entrance opens the Center on foot or in the pod. The
 Center starts phase 1, shows the nine verified recipe demands, accepts one
 needed pod or Center-warehouse lot at a time, and advances the completed phase
-only on reentry after demand reaches zero. Delivered lots carry their origin
+only on reentry after demand reached zero (corrected by R11c). Delivered lots
+carry their origin
 and paid-cost records; all 17 cryogens remain conserved across ordinary
 warehouses, the pod, Center storage, delivery receipts and ship losses.
 Completed phase grows the live city map.
