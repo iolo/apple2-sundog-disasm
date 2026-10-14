@@ -29,11 +29,11 @@ export function validateCampaignPod(value,travel,geometry,{depot=true,auxiliaryF
     if(value.position!==null||value.heading!==16||occupied)throw new Error('invalidPod');
   } else {
     if(!geometry||!keys(value.position,['x','y'])||
-      (occupied&&(!(depot?['city','exchange','depot']:['city','exchange']).includes(travel.scene)||value.position.x!==travel.cityPosition?.x||value.position.y!==travel.cityPosition?.y))||
-      (!occupied&&!['ship','city','room','bank','exchange','depot','transstation'].includes(travel.scene)))throw new Error('invalidPod');
+      (occupied&&(!(depot?['city','exchange','depot','colony']:['city','exchange']).includes(travel.scene)||value.position.x!==travel.cityPosition?.x||value.position.y!==travel.cityPosition?.y))||
+      (!occupied&&!['ship','city','room','bank','exchange','depot','transstation','colony'].includes(travel.scene)))throw new Error('invalidPod');
     if(!reachability.has(geometry))reachability.set(geometry,podReachability(geometry));
     if(!reachability.get(geometry)(value.position,value.heading)||
-      (occupied&&['exchange','depot'].includes(travel.scene)&&podServiceAt(geometry,value.position,value.heading)!==travel.scene))throw new Error('invalidPod');
+      (occupied&&['exchange','depot','colony'].includes(travel.scene)&&podServiceAt(geometry,value.position,value.heading)!==travel.scene))throw new Error('invalidPod');
   }
   return {attached:value.attached,position:value.position&&{...value.position},heading:value.heading,cargo,occupied};
 }

@@ -30,5 +30,7 @@ export function atCityBank(map, position) {
 // Type4 is the pod exchange entrance; foot entry is type5.
 export function cityServiceAt(map, position, mode='foot') {
   const door=cityDoorAt(map,position,mode);
-  return door?.scene===6 ? ({1:'transstation',2:'bank',3:'depot',4:'exchange',5:'exchange'})[door.type] ?? null : null;
+  if(door?.scene!==6)return null;
+  if(map?.cityId==='city-60'&&[4,5].includes(door.type))return 'colony';
+  return ({1:'transstation',2:'bank',3:'depot',4:'exchange',5:'exchange'})[door.type] ?? null;
 }

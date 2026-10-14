@@ -51,7 +51,9 @@ export function canDockPod(geometry,position,heading) {
 }
 export function podServiceAt(geometry,position,heading) {
   const door=cityDoorAt(geometry.map,position,'pod');
-  return canDrivePod(geometry,position,heading)&&door?.scene===6 ? ({3:'depot',4:'exchange'})[door.type]??null : null;
+  if(!canDrivePod(geometry,position,heading)||door?.scene!==6)return null;
+  if(geometry.map?.cityId==='city-60'&&door.type===4)return 'colony';
+  return ({3:'depot',4:'exchange'})[door.type]??null;
 }
 export function podExchangeAt(geometry,position,heading) {
   return podServiceAt(geometry,position,heading)==='exchange';
