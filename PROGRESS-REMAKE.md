@@ -1,3 +1,26 @@
+## R11b — Live Banville Center and contract state — 2026-10-15
+
+Banville's tile-15 entrance opens the Center on foot or in the pod. The
+Center starts phase 1, shows the nine verified recipe demands, accepts one
+needed pod or Center-warehouse lot at a time, and advances the completed phase
+only on reentry after demand reaches zero. Delivered lots carry their origin
+and paid-cost records; all 17 cryogens remain conserved across ordinary
+warehouses, the pod, Center storage, delivery receipts and ship losses.
+Completed phase grows the live city map.
+
+Campaign save version 30 owns the Center warehouse, phase and bounded receipts.
+Version 29 migrates to empty progress; malformed, duplicate and over-demand
+receipts are rejected atomically. English/Korean Center controls and copy are
+present. All 519 Chrome rule groups pass, including four new Center groups,
+with no page errors. Source findings are recorded in
+`docs/remake/r11-source-audit.md`; the original disks and generated source are
+unchanged. The user-owned `PRD-REMAKE.md` remains untouched.
+
+R11 remains open. Next: trace and implement source delivery valuation/phase
+bonus, exercise Banville through ordinary UI navigation, then complete a
+fresh-game-to-ending journey with legitimately bought goods and transported
+cryogens. The current rule fixtures do not satisfy that final journey gate.
+
 ## R10ac — Warp host matching and R10 completion — 2026-10-08
 
 R10 is complete under its original requirement audit. The accepted Warp host

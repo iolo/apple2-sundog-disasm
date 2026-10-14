@@ -12,13 +12,13 @@ const same=(a,b)=>a?.x===b?.x&&a?.y===b?.y;
 
 // Geometry/content ownership is separate from campaign state. Only a ship in
 // this city contributes its exterior, spawn and docking gates.
-export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk},start) {
+export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk},start,{completedPhase=start.economy.colony.completedPhase}={}) {
   const worldId=start.playerLocation.worldId;
-  const cityMaps=createCityMaps(maps,navigation,economy,{completedPhase:start.economy.colony.completedPhase});
+  const cityMaps=createCityMaps(maps,navigation,economy,{completedPhase});
   const surfaceBase=composeSurfaceMap(maps.worlds.find(m=>m.id===worldId),surfaceWalk.cities);
   const cityIds=new Set(surfaceBase.cities.map(c=>c.cityId));if(worldId==='world-01')cityIds.add('city-60');
   const cities=new Map(),surfaces=new Map();let footCache=null;
-  const size=id=>id==='city-60'?Math.min(9,start.economy.colony.completedPhase):9;
+  const size=id=>id==='city-60'?Math.min(9,completedPhase):9;
   function city(id,attached) {
     if(!cityIds.has(id))throw new Error('groundUnavailable');
     const key=`${id}/${attached}`;

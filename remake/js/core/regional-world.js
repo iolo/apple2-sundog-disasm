@@ -70,14 +70,15 @@ export function selectRegionalExchange(previous,cityId) {
   next.economy.exchange={...selected,visit:null};return next;
 }
 
-export function validateRegionalCargo(start,exchange,pod,regional,losses=[],{salvage=false}={}) {
+export function validateRegionalCargo(start,exchange,pod,regional,losses=[],{salvage=false,colony=null}={}) {
   if(!keys(regional,['shipLocation','podWorldId','colonyPosition','cities','cargoProceeds','legacyDialogueSurface'])||!Array.isArray(regional.cities)||regional.cities.length!==56||
     !Number.isSafeInteger(regional.cargoProceeds)||regional.cargoProceeds<0||regional.cargoProceeds>32767999)fail();
   const ids=[exchange.market.cityId,...regional.cities.map(c=>c.market.cityId)].sort();
   if(JSON.stringify(ids)!==JSON.stringify(start.economy.markets.filter(m=>ordinaryCity(m.cityId)).map(m=>m.cityId)))fail();
   if(regional.cities.some(c=>!keys(c,['market','warehouse'])||c.market.cityId!==c.warehouse.cityId)||
     regional.cities.some((c,i)=>i&&c.market.cityId<=regional.cities[i-1].market.cityId))fail();
-  const all=[...exchange.warehouse.slots,...regional.cities.flatMap(c=>c.warehouse.slots),...pod.cargo].filter(Boolean);
+  const all=[...exchange.warehouse.slots,...regional.cities.flatMap(c=>c.warehouse.slots),...pod.cargo,
+    ...(colony?.warehouse??[]),...(colony?.receipts.map(r=>r.lot)??[])].filter(Boolean);
   const signature=c=>[c.commodityId,c.quality,c.originCity,c.pricePaid].join('/');
   const initial=start.economy.warehouses.flatMap(w=>w.slots).filter(c=>c?.commodityId==='cargo-31');
   const lostCryogens=losses.filter(e=>e.lot.commodityId==='cargo-31').flatMap(e=>Array(e.count).fill(signature(e.lot)));

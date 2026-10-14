@@ -278,6 +278,12 @@ select{background:var(--ink);border:1px solid var(--line);padding:8px;max-width:
 .cargo-columns .exchange-list button { grid-template-columns:1fr; gap:2px; font-size:15px; }
 .cargo-columns .exchange-list button small { text-align:left; font-size:12px; }
 .cargo-columns [aria-pressed="true"] { color:var(--amber); background:#293026; }
+.colony-lot { display:flex; align-items:center; gap:5px; min-height:35px; border-bottom:1px solid var(--muted); }
+.colony-lot span { flex:1; min-width:0; }
+.colony-lot button { font-size:13px; padding:4px; }
+#colony-requirements { max-height:115px; }
+#colony-requirements div { display:flex; justify-content:space-between; gap:12px; padding:2px 6px; }
+#colony-message { min-height:22px; color:var(--amber); }
 @media (max-width:600px),(max-height:500px) { .exchange-list button { min-height:44px; } }
 
 .exchange-columns { display:grid; grid-template-columns:1fr 44px 105px; gap:8px; padding:0 8px; font-size:13px; color:var(--muted); }
