@@ -1,3 +1,15 @@
+## R11d — Source-derived Center bonus — 2026-10-15
+
+Game20 procedures 16/25/4 now govern Center valuation and phase rewards:
+delivery quotes use Banville's world-1 template, its preserved zero supply,
+source scaling and origin ceiling. Each quote contributes its shifted quarter;
+completing phases 1–8 credits the local bank once. Phase 9 enters the ending
+without a bonus. Save wealth validation includes only earned completed-phase
+bonuses, computed from bounded delivery receipts. A representative 6,200Cr
+quote pays a 1,500Cr bonus after a four-item phase. All 519 Chrome rule groups
+pass. This is source-derived; no independent original-game bonus capture is
+claimed. Next: ordinary UI journey to Banville and full contract completion.
+
 ## R11c — Delivery-time phase update — 2026-10-15
 
 Game20 procedure 25 `$14C8` calls the phase check after every delivery.
