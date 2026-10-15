@@ -1,3 +1,35 @@
+## R11ac — Second phase-eight cryogen, cloaker, and paid spices — 2026-10-16
+
+The ordinary-controls campaign collected the distinct city-52 cryogen and
+installed a cloaker bought in city 43. The cryogen reached the Banville Center
+without paid cargo aboard and became the second phase-eight cryogen receipt.
+At the home capital, a control node recovered from a failed pilotage unit sold
+for 1,140 credits without reducing working pilotage. Food, sleep, and a rescue
+supported the interworld flight to city 07. Its refreshed exchange quoted
+quality-one cargo 14 at 2,400 credits, so a normal sale of an unused stinger
+raised the launch reserve. The paid spices were bought and loaded for that
+price.
+
+On the return, three pirate contacts retreated when the cloaker was activated;
+the ship lost neither hull nor cargo. The remaining interworld distance was
+flown in short cloaked segments with ordinary distress rescues at each fuel
+stop. Replayed segment checkpoints and fresh-page reloads preserve the route.
+The Center accepted cargo 14 once, and a normal city flight returned the empty
+ship to the capital. The active checkpoint is
+`output/playwright/remake/r11-phase-eight-city07-good14-city01-returned.json`:
+48 receipts, phase 8 active, hull 16, fuel 152, rest 175, nourishment 70,
+2,552 credits in the system-01 bank, an empty pod, and the cloaker installed.
+Thirty-seven passing Chrome journeys record 397 UI checks without page errors;
+the full browser rule suite passes all 523 groups. See
+`docs/remake/r11ac-phase-eight-second-cryogen-and-spices-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 8 still needs paid goods 02, 04, 05, 20 and 25.
+Phase 9 needs paid goods 02, 07, 16, 24, 26, 28 and 29, a third distinct
+cryogen, and the ending. The unclaimed city-57 cryogen can cover that last
+cryogen delivery. Continue the campaign before broader fragility cleanup,
+per the user's priority.
+
 ## R11ab — First phase-eight cryogen and pirate retreat — 2026-10-16
 
 The ordinary-controls campaign funded and bought cargo 02 at city 49 and

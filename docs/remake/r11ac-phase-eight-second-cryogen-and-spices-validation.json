@@ -1,0 +1,1266 @@
+{
+  "milestone": "R11ac",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-city49-cryo-city01-returned.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-city07-good14-city01-returned.json",
+  "uiChecks": 397,
+  "runCount": 37,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 48,
+    "phaseEightReceipts": [
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-49",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-52",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-14",
+        "originCity": "city-07",
+        "pricePaid": 2400
+      }
+    ],
+    "location": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 152,
+    "condition": {
+      "vigor": 82,
+      "rest": 175,
+      "health": 255,
+      "nourishment": 70
+    },
+    "system01Bank": 2552,
+    "cash": 0,
+    "equipmentPerformance": [
+      4,
+      7,
+      4,
+      4,
+      4,
+      8
+    ],
+    "cloakerAvailable": true,
+    "carried": [
+      0,
+      24,
+      235,
+      8
+    ],
+    "pod": [
+      null,
+      null
+    ],
+    "spaceLosses": [
+      {
+        "lot": {
+          "commodityId": "cargo-02",
+          "quality": 1,
+          "originCity": "city-49",
+          "pricePaid": 4100
+        },
+        "count": 1
+      }
+    ]
+  },
+  "rules": {
+    "browser": "155.0.8059.39",
+    "checks": 523,
+    "status": "pass",
+    "failures": [],
+    "errors": []
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_city49_cryo_next_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty phase-eight carrier launches from city one for the remaining cryogen",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch",
+        "Ordinary rescue refuels the outbound ship",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-eight world-seventeen launch"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 213,
+        "hull": 16,
+        "shield": 0,
+        "minutes": 223031
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_cryo_system11_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty carrier waits at the safe outbound warp point",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The direct world-seventeen warp is within the live ship range",
+        "Ordinary machinery charges the direct world-seventeen warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches its selected system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct world-seventeen warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 95,
+        "shield": 0,
+        "hull": 16,
+        "charge": 118,
+        "minutes": 223091
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty carrier arrives in system eleven with the city-49 cryogen delivered",
+        "Ordinary rescue refuels the long world-seventeen approach",
+        "The empty pod needs no pirate shielding on the cryogen approach",
+        "Ordinary sublight reaches world 17 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The second phase-eight cryogen flight lands at city 52",
+        "The world-seventeen landing checkpoint exports unchanged",
+        "No uncaught errors on the world-seventeen supplier approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 189,
+        "hull": 16,
+        "shield": 0,
+        "bank": 9775,
+        "condition": {
+          "vigor": 129,
+          "rest": 103,
+          "health": 255,
+          "nourishment": 41
+        },
+        "minutes": 223299,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_cryo_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-52 landing is ready for its distinct cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (224 steps)",
+        "exchange action is available",
+        "City 52 retains its distinct initialized cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "The second distinct phase-eight cryogen survives a fresh-page reload",
+        "The city-52 cryogen checkpoint exports unchanged",
+        "No uncaught errors in city-52 cryogen collection"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 9775,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-52",
+            "pricePaid": 0
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 127,
+          "rest": 101,
+          "health": 255,
+          "nourishment": 40
+        },
+        "minutes": 223332
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_bank_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City-52 cryogen and system-eleven funds are available",
+        "bankPark reached through normal movement (0 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (13 steps)",
+        "bank action is available",
+        "The city-52 bank opens after ordinary pod parking and foot entry",
+        "Fresh-page save reload preserves Center progress",
+        "Normal bank withdrawal funds a cloaker referral without touching the cryogen",
+        "The funded city-52 checkpoint exports unchanged",
+        "No uncaught errors on the city-52 bank withdrawal"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "cash": 6000,
+        "bank": 3775,
+        "city": "city-52",
+        "pod": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-52",
+            "pricePaid": 0
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 127,
+          "rest": 101,
+          "health": 255,
+          "nourishment": 40
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_system10_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The bank withdrawal and city-52 cryogen resume unchanged",
+        "The normal transfer funds system ten and preserves both launch reserves",
+        "No uncaught errors on the system-ten transfer"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "cash": 6000,
+        "system10Bank": 3357,
+        "system11Bank": 1775
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_system10_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded cryogen carrier is ready to depart for system ten",
+        "pod reached through normal movement (6 steps)",
+        "pod action is available",
+        "dock reached through normal movement (225 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "System-eleven clearance permits the normal launch",
+        "The warp engine charges through live power phases",
+        "The short system-ten warp charges in orbit",
+        "The cryogen carrier reaches a guaranteed warp radius",
+        "Fresh-page save reload preserves Center progress",
+        "The normal warp carries the distinct cryogen and purchase cash to system ten",
+        "The system-ten warp checkpoint exports unchanged",
+        "No uncaught errors on the cryogen-only system-ten warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 31,
+        "hull": 16,
+        "bank": 3357,
+        "cash": 6000,
+        "minutes": 223533
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_system10_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-52 cryogen carrier arrives at the system-ten warp point",
+        "Ordinary rescue refuels the long world-fifteen approach",
+        "Cryogen-only cargo does not attract pirates",
+        "Ordinary sublight reaches world 15 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The cryogen carrier lands at system-ten city 43",
+        "The world-fifteen landing checkpoint exports unchanged",
+        "No uncaught errors on the world-fifteen supplier approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 140,
+        "hull": 16,
+        "shield": 0,
+        "bank": 3357,
+        "condition": {
+          "vigor": 113,
+          "rest": 87,
+          "health": 255,
+          "nourishment": 33
+        },
+        "minutes": 223757,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city43_cloaker_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-43 purchase begins with system-ten cash and a protected cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (116 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (63 steps)",
+        "bank action is available",
+        "System-ten withdrawal covers the 6,900-credit cloaker quote",
+        "tavern reached through normal movement (82 steps)",
+        "tavern action is available",
+        "The returning bartender opens a fresh live menu",
+        "The bartender reopens after an unrelated offer",
+        "The bartender can refer a cloaker seller",
+        "The cloaker referral is available in system ten: [{\"item\":\"15\",\"disabled\":false,\"text\":\"Brawnboost\"},{\"item\":\"16\",\"disabled\":false,\"text\":\"Mindboost\"},{\"item\":\"17\",\"disabled\":false,\"text\":\"Dexboost\"},{\"item\":\"18\",\"disabled\":false,\"text\":\"Charmboost\"},{\"item\":\"19\",\"disabled\":false,\"text\":\"Concentrator\"},{\"item\":\"20\",\"disabled\":false,\"text\":\"Autoslew\"},{\"item\":\"21\",\"disabled\":false,\"text\":\"Cloaker\"},{\"item\":\"22\",\"disabled\":false,\"text\":\"Ground scanner\"}]",
+        "The bartender accepts the cloaker request",
+        "The item-21 referral is pending",
+        "The live seller reaches the pilot",
+        "The seller quotes item 21",
+        "The withdrawn cash covers the offered cloaker",
+        "Fresh-page save reload preserves Center progress",
+        "The paid cloaker and 46 receipts survive fresh-page reload",
+        "The city-43 cloaker purchase exports unchanged",
+        "No uncaught errors on the funded cloaker purchase"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll sell you a cloaker for 6900 Cr.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 600,
+        "bank": 1857,
+        "carried": [
+          12,
+          21,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city43_cloaker_install_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid cloaker and city-52 cryogen precede ordinary engineering",
+        "roomExit reached through normal movement (4 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (23 steps)",
+        "pod action is available",
+        "dock reached through normal movement (117 steps)",
+        "dock action is available",
+        "shieldBay reached through normal movement (127 steps)",
+        "shieldBay action is available",
+        "The force-shield engineering bay opens",
+        "The paid cloaker replaces the standard shield socket and preserves the cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "Working cloaker and launch clearance survive fresh-page reload",
+        "The cloaker-ready checkpoint exports unchanged",
+        "No uncaught errors on the ordinary cloaker installation"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 224017,
+        "cash": 600,
+        "bank": 1857,
+        "shieldPerformance": 4,
+        "cloaker": true,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-52",
+            "pricePaid": 0
+          },
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The working cloaker and cryogen are ready for the homeward flight",
+        "navigation reached through normal movement (80 steps)",
+        "navigation action is available",
+        "The installed cloaker is available in tactical controls",
+        "The ordinary Cloak control powers the installed component",
+        "The cloaker powers off before the cryogen-only leg",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary rescue fills the homebound tank",
+        "The warp engine charges through live power phases",
+        "The direct home warp charges before engine-powered point flight",
+        "The homeward point flight reaches safe warp radius",
+        "Fresh-page save reload preserves Center progress",
+        "The home warp preserves the cryogen and installed cloaker",
+        "The city-52 home-warp checkpoint exports unchanged",
+        "No uncaught errors on the cloaker-equipped cryogen return"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 29,
+        "hull": 16,
+        "cloaker": true,
+        "cash": 600,
+        "minutes": 224235
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_home_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-52 cryogen returns to the home-system warp point",
+        "Ordinary rescue refuels the long homeworld approach",
+        "Cryogen-only cargo does not attract pirates",
+        "Ordinary sublight reaches world 01 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The second phase-eight cryogen lands at Banville",
+        "The homeworld landing checkpoint exports unchanged",
+        "No uncaught errors on the homeworld supplier approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 175,
+        "hull": 16,
+        "shield": 0,
+        "bank": 1200,
+        "condition": {
+          "vigor": 81,
+          "rest": 65,
+          "health": 255,
+          "nourishment": 22
+        },
+        "minutes": 224444,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_cryo_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The distinct city-52 cryogen lands at Banville after the paid cargo concession",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The distinct city-52 cryogen creates one phase-eight receipt",
+        "The city-52 cryogen delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-52 cryogen delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 1200,
+        "receipts": 47,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 224457
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city52_cryo_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City-49 cryogen has been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 175,
+        "hull": 16,
+        "bank": 1200,
+        "condition": {
+          "vigor": 77,
+          "rest": 63,
+          "health": 255,
+          "nourishment": 21
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_node_salvage_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The capital has a spare node in a failed pilotage unit",
+        "pilotageBay reached through normal movement (73 steps)",
+        "pilotageBay action is available",
+        "Ordinary pilotage engineering opens",
+        "Fresh-page save reload preserves Center progress",
+        "An unused node moves into a carried slot without reducing pilotage",
+        "The capital node checkpoint exports unchanged",
+        "No uncaught errors retrieving the capital spare"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "cash": 600,
+        "bank": 1200,
+        "carried": [
+          12,
+          24,
+          235,
+          31
+        ],
+        "pilotage": 8
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_node_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The unused pilotage node is carried to finance the phase-eight local good",
+        "depart reached through normal movement (118 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1740,
+        "bank": 1200,
+        "carried": [
+          12,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_good14_fed_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The normal spare sale leaves cash for a phase-eight market deposit",
+        "The capital bartender offers food before the interworld flight",
+        "The first ration restores nourishment through ordinary inventory use",
+        "The bartender offers a travel ration",
+        "bank reached through normal movement (271 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary deposit funds cargo 14 while preserving launch clearance {\"bank\":2912,\"cash\":0,\"carried\":[12,24,235,8],\"nourishment\":94}",
+        "The cargo-14 funding checkpoint exports unchanged",
+        "No uncaught errors during the capital deposit"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 2912,
+        "cash": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded empty carrier can seek world-two spices",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary rescue refuels the interworld flight",
+        "The selected flight reaches its destination through the live clock",
+        "Sublight reaches the second home-system world",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary pilotage reaches the world-two supplier",
+        "The city-07 supplier checkpoint exports unchanged",
+        "No uncaught errors on the world-two supplier flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 130,
+        "hull": 16,
+        "bank": 2912,
+        "condition": {
+          "vigor": 52,
+          "rest": 230,
+          "health": 255,
+          "nourishment": 85
+        },
+        "minutes": 225462
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The world-two supplier is ready for cargo 14",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (536 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-07 market opens through its ordinary exchange",
+        "The spice-market checkpoint exports unchanged",
+        "No uncaught errors on the world-two market visit"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 2912,
+        "quote": 2400,
+        "clearanceAfter": 512,
+        "supply": 3,
+        "offers": [
+          {
+            "commodityId": "cargo-25",
+            "quality": 2,
+            "price": 4800,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 5,
+            "price": 5200,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 4,
+            "price": 4000,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 2,
+            "price": 6200,
+            "demand": 0,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 4,
+            "price": 7400,
+            "demand": 0,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 6,
+            "price": 7200,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 2,
+            "price": 3900,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 7,
+            "price": 10400,
+            "demand": 0,
+            "supply": 7
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_stinger_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The world-two supplier has an unused stinger and needs launch reserve",
+        "park reached through normal movement (0 steps)",
+        "park action is available",
+        "tavern reached through normal movement (154 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the unused stinger sale request",
+        "The sale referral records the stinger",
+        "A referred buyer reaches the seller at the table",
+        "The buyer quotes the unused stinger",
+        "The ordinary sale slot accepts the stinger",
+        "Fresh-page save reload preserves Center progress",
+        "Only the unused stinger leaves and enough cash enters the reserve",
+        "The city-07 surplus sale exports unchanged",
+        "No uncaught errors on the world-two surplus sale"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "cash": 2040,
+        "bank": 2912,
+        "carried": [
+          0,
+          24,
+          235,
+          8
+        ],
+        "condition": {
+          "vigor": 60,
+          "rest": 214,
+          "health": 255,
+          "nourishment": 81
+        },
+        "minutes": 225705
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_funded_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The unused stinger sale provides the missing launch reserve",
+        "bank reached through normal movement (119 steps)",
+        "bank action is available",
+        "Ordinary bank deposit pools the stinger proceeds with the supplier account",
+        "pod reached through normal movement (62 steps)",
+        "pod action is available",
+        "exchange reached through normal movement (0 steps)",
+        "exchange action is available",
+        "The live spice quote 2400 leaves launch clearance after the surplus sale",
+        "The actual spice offer preserves launch clearance",
+        "Ordinary market visits offer quality-one cargo 14",
+        "Paid spices enter the warehouse with launch reserve",
+        "Fresh-page save reload preserves Center progress",
+        "Paid spices and launch clearance survive a fresh-page reload",
+        "The loaded spice checkpoint exports unchanged",
+        "No uncaught errors funding and buying world-two spices"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "quote": 2400,
+        "offerPrice": 2400,
+        "bank": 2552,
+        "pod": [
+          {
+            "commodityId": "cargo-14",
+            "quality": 1,
+            "originCity": "city-07",
+            "pricePaid": 2400
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 66,
+          "rest": 202,
+          "health": 255,
+          "nourishment": 78
+        },
+        "minutes": 225889
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid world-two spices and the installed cloaker are ready for return",
+        "dock reached through normal movement (533 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The funded ship launches with spices intact",
+        "Ordinary rescue refuels the contract carrier",
+        "Full shields cover the interworld cargo leg",
+        "A second rescue is scheduled ahead of the protected flight",
+        "The ordinary world-one approach is selected with the paid lot aboard",
+        "The protected departure checkpoint exports unchanged",
+        "No uncaught errors preparing the paid interworld leg"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "refuelAt": 226040,
+        "condition": {
+          "vigor": 70,
+          "rest": 194,
+          "health": 255,
+          "nourishment": 76
+        },
+        "minutes": 226010
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a survivable contact or world-one orbit with spices intact",
+        "The spice approach checkpoint exports unchanged",
+        "No uncaught errors on the protected spice approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": true,
+        "world": "world-02",
+        "fuel": 149,
+        "hull": 16,
+        "shield": 255,
+        "refuelAt": 226040,
+        "minutes": 226025
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloak_contact_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid spices, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 46,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 226031,
+        "refuelAt": 226040,
+        "motion": 21
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_midflight_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact is still in powered flight with a rescue due",
+        "Ordinary Halt preserves the scheduled rescue while saving the remaining fuel",
+        "The scheduled rescue fills the stationary tank",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes from its intermediate orbit with cargo intact",
+        "The refueled flight exports unchanged",
+        "No uncaught errors on the timed midflight rescue"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 251,
+        "progress": 0,
+        "duration": 89,
+        "shield": 255,
+        "minutes": 226040
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a survivable contact or world-one orbit with spices intact",
+        "The spice approach checkpoint exports unchanged",
+        "No uncaught errors on the protected spice approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": true,
+        "world": "world-02",
+        "fuel": 180,
+        "hull": 16,
+        "shield": 255,
+        "refuelAt": null,
+        "minutes": 226055
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloak_contact_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid spices, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 86,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 226061,
+        "refuelAt": null,
+        "motion": 23
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_midflight_rescue_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second cleared contact is still in powered flight with low fuel",
+        "Ordinary Halt saves the remaining fuel after the second retreat",
+        "A new ordinary rescue is scheduled while stationary",
+        "The scheduled rescue fills the stationary tank",
+        "Shields recharge after the long stationary rescue",
+        "Another rescue is scheduled into the remaining cargo leg",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes from its intermediate orbit with cargo intact",
+        "The refueled flight exports unchanged",
+        "No uncaught errors on the timed midflight rescue"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 223,
+        "progress": 0,
+        "duration": 61,
+        "shield": 255,
+        "minutes": 226099
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a survivable contact or world-one orbit with spices intact",
+        "The spice approach checkpoint exports unchanged",
+        "No uncaught errors on the protected spice approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": true,
+        "world": "world-02",
+        "fuel": 173,
+        "hull": 16,
+        "shield": 255,
+        "refuelAt": 226129,
+        "minutes": 226109
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloak_contact_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid spices, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 83,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 226116,
+        "refuelAt": 226129,
+        "motion": 13
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloaked_segment_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Three pirate retreats leave the paid spices and installed cloaker intact",
+        "Shields power down for the cloaked-only passage",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid spices remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "segment": 1,
+        "orbit": {
+          "angle": 166,
+          "radius": 25
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 76,
+          "rest": 184,
+          "health": 255,
+          "nourishment": 73
+        },
+        "minutes": 226147
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloaked_segment_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the spice carrier ready for another rescue",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid spices remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "segment": 2,
+        "orbit": {
+          "angle": 146,
+          "radius": 23
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 76,
+          "rest": 184,
+          "health": 255,
+          "nourishment": 73
+        },
+        "minutes": 226195
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloaked_segment_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the spice carrier ready for another rescue",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid spices remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "segment": 3,
+        "orbit": {
+          "angle": 130,
+          "radius": 21
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 78,
+          "rest": 181,
+          "health": 255,
+          "nourishment": 72
+        },
+        "minutes": 226243
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_cloaked_tail_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Three short cloaked segments reach the near-home orbit with spices intact",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Ordinary cloaked segments reach world-one orbit",
+        "Fresh-page reload preserves the world-one arrival",
+        "The paid spice carrier reaches world one intact after planned rescues",
+        "The world-one spice orbit exports unchanged",
+        "No uncaught errors on the cloaked interworld finish"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "segments": 1,
+        "fuel": 152,
+        "hull": 16,
+        "shield": 0,
+        "condition": {
+          "vigor": 80,
+          "rest": 178,
+          "health": 255,
+          "nourishment": 71
+        },
+        "minutes": 226281
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid spice carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "The world-two spices land at Banville intact",
+        "The paid spice landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 152,
+        "hull": 16,
+        "bank": 2552,
+        "condition": {
+          "vigor": 80,
+          "rest": 178,
+          "health": 255,
+          "nourishment": 71
+        },
+        "minutes": 226286
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid city-07 spices land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid city-07 spices create one phase-eight receipt",
+        "The city-07 spice delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-07 spice delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 2552,
+        "receipts": 48,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 226299
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city07_good14_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid city-07 spices have been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 152,
+        "hull": 16,
+        "bank": 2552,
+        "condition": {
+          "vigor": 82,
+          "rest": 175,
+          "health": 255,
+          "nourishment": 70
+        }
+      }
+    }
+  ]
+}
