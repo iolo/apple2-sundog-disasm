@@ -1,3 +1,24 @@
+## R11k — Phase-three food resupply and empty-tile encounter guard — 2026-10-15
+
+The continuing twelve-receipt campaign drives to city 02, parks, withdraws
+500 credits from its home account while preserving launch clearance, and buys
+four tavern food rations. The return walk consumes one ration; the remaining
+three, all twelve receipts and phase-three requirements survive an ordinary
+save, fresh-page reload and readable export in
+`output/playwright/remake/r11-phase-three-resupplied.json`. The Chrome journey
+and all 523 rule groups pass without page errors.
+
+That return walk exposed a blocking source-era edge case: a threat gate can
+fire while the character stands on an empty city tile, where chase creation
+raises `groundChaseInvalidTile` and freezes the web host. The gate still takes
+its normal random draw, but skips chase creation on tiles below 2. Direct
+chase creation retains its strict tile validation. The user-owned
+`PRD-REMAKE.md` remains untouched.
+
+R11 remains open. Phase 3 needs goods 20 and 22 and two additional distinct
+cryogens; phases 4–9 and the ending follow. The next journey starts from the
+resupplied city-02 pod checkpoint.
+
 ## R11j — Two distinct phase-three cryogens and damaged-hull depot access — 2026-10-15
 
 The ten-receipt seed-12345 campaign buys food, transfers bank funds, fully
