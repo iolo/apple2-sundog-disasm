@@ -1,3 +1,31 @@
+## R11z — Phase-seven remote pair collected and returned to home system — 2026-10-15
+
+The continuing ordinary-controls playthrough restored food and rest, funded
+the remote systems, and repaired the failed warp engine by moving an intact
+component between existing units. It collected the distinct city-40 cryogen,
+then bought cargo 15 at city 23. The quoted 2,100-credit price left too little
+in the local bank for launch, so an ordinary bartender referral sold a spare
+scanner for 375 credits; depositing the proceeds left 1,222 credits after the
+purchase. Both lots are aboard the pod and have survived fresh-page reloads.
+
+The paid carrier survived pirate contacts, fuel exhaustion, two distress
+rescues, and a charged warp back to system 01. The active safe checkpoint is
+`output/playwright/remake/r11-phase-seven-city23-home-warp.json`: phase 7,
+41 delivered receipts, cargo 15 and city-40 cryogen aboard, hull 13, fuel 59,
+rest 107, nourishment 95. The system-01, -05 and -09 banks hold 1,017,
+1,222 and 5,174 credits respectively. Twenty-one passing Chrome journeys
+record 232 UI checks without page errors; see
+`docs/remake/r11z-phase-seven-remote-pair-validation.json`.
+
+The next leg is the system-01 point-to-Banville flight and delivery. This
+53-minute sublight leg needs a midflight fuel rescue, and paid cargo has drawn
+pirates. Exploratory continuations reached the home approach but one stalled
+short of the world and later continuations lost the ship in combat. These
+branches were not accepted as progress; restart from the safe warp checkpoint.
+After the pair is delivered, phase 7 still needs cargo 17 and one more
+distinct cryogen. Phases 8–9 and the ending remain. Broader UI fragility work
+stays after the campaign, per the user's priority.
+
 ## R11y — Four phase-seven goods delivered — 2026-10-15
 
 The continuing ordinary-controls playthrough funded phase seven through

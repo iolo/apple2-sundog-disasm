@@ -1,0 +1,708 @@
+{
+  "milestone": "R11z",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-seven-foreign-pair-delivered.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-seven-city23-home-warp.json",
+  "uiChecks": 232,
+  "runCount": 21,
+  "result": {
+    "activePhase": 7,
+    "completedPhase": 6,
+    "receipts": 41,
+    "location": {
+      "systemId": "system-01",
+      "worldId": null,
+      "cityId": null,
+      "orbit": {
+        "angle": 96,
+        "radius": 43
+      },
+      "surfacePosition": {
+        "x": 0,
+        "y": 0
+      },
+      "cityPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "hull": 13,
+    "fuel": 59,
+    "condition": {
+      "vigor": 151,
+      "rest": 107,
+      "health": 255,
+      "nourishment": 95
+    },
+    "pod": [
+      {
+        "commodityId": "cargo-31",
+        "quality": 7,
+        "originCity": "city-40",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-15",
+        "quality": 1,
+        "originCity": "city-23",
+        "pricePaid": 2100
+      }
+    ],
+    "banks": {
+      "system-01": 1017,
+      "system-05": 1222,
+      "system-09": 5174
+    }
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_seven_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "fuel": 28,
+        "hull": 13,
+        "bank": 6817,
+        "condition": {
+          "vigor": 133,
+          "rest": 80,
+          "health": 255,
+          "nourishment": 69
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_resupply_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 26,
+      "journey": {
+        "bank": 6717,
+        "cash": 136,
+        "condition": {
+          "vigor": 147,
+          "rest": 218,
+          "health": 255,
+          "nourishment": 140
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ],
+        "minutes": 213358
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_remaining_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 17,
+      "journey": {
+        "homeBank": 1017,
+        "systemFiveBank": 2811,
+        "systemNineBank": 5174,
+        "condition": {
+          "vigor": 157,
+          "rest": 198,
+          "health": 255,
+          "nourishment": 130
+        },
+        "fuel": 28,
+        "minutes": 213644
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_second_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "contact": false,
+        "fuel": 95,
+        "hull": 13,
+        "shield": 128,
+        "minutes": 213743
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_home_warp_repair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 18,
+      "journey": {
+        "warpPerformance": 4,
+        "hull": 13,
+        "fuel": 63,
+        "bank": 1017,
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ],
+        "minutes": 213759
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_system08_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "contact": false,
+        "fuel": 183,
+        "shield": 0,
+        "hull": 13,
+        "charge": 85,
+        "minutes": 213872
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city40_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "contact": false,
+        "fuel": 222,
+        "hull": 13,
+        "shield": 0,
+        "bank": 1094,
+        "condition": {
+          "vigor": 171,
+          "rest": 175,
+          "health": 255,
+          "nourishment": 121
+        },
+        "minutes": 214031,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city40_cryogen_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 10,
+      "journey": {
+        "minutes": 214084,
+        "fuel": 222,
+        "condition": {
+          "vigor": 173,
+          "rest": 172,
+          "health": 255,
+          "nourishment": 120
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ],
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-40",
+          "pricePaid": 0
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city40_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "contact": false,
+        "fuel": 189,
+        "hull": 13,
+        "minutes": 214175
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_system05_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 10,
+      "journey": {
+        "fuel": 167,
+        "hull": 13,
+        "charge": 85,
+        "minutes": 214291
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "contact": false,
+        "fuel": 102,
+        "hull": 13,
+        "shield": 0,
+        "bank": 2811,
+        "condition": {
+          "vigor": 171,
+          "rest": 148,
+          "health": 255,
+          "nourishment": 112
+        },
+        "minutes": 214576,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "bank": 2811,
+        "quote": 2100,
+        "clearanceAfter": 711,
+        "supply": 3,
+        "offers": [
+          {
+            "commodityId": "cargo-16",
+            "quality": 2,
+            "price": 4600,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-22",
+            "quality": 3,
+            "price": 5900,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 6,
+            "price": 8400,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 3,
+            "price": 4100,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-30",
+            "quality": 3,
+            "price": 7400,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 4,
+            "price": 7900,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 5,
+            "price": 19000,
+            "demand": 7,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 7,
+            "price": 4000,
+            "demand": 0,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_scanner_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 19,
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 375 Cr for your scanner.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 511,
+        "bank": 2811,
+        "carried": [
+          12,
+          0,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_deposit_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "bank": 3322,
+        "cash": 0,
+        "cryogen": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-40",
+            "pricePaid": 0
+          },
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_purchase_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "bank": 1222,
+        "offer": {
+          "commodityId": "cargo-15",
+          "quality": 1,
+          "price": 2100,
+          "demand": 0,
+          "supply": 3
+        },
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-40",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 1,
+            "originCity": "city-23",
+            "pricePaid": 2100
+          }
+        ],
+        "fuel": 102,
+        "condition": {
+          "vigor": 161,
+          "rest": 125,
+          "health": 255,
+          "nourishment": 104
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 16,
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 202,
+          "targetCharge": 202,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "refuelAt": 215315,
+        "minutes": 215285
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 5,
+      "journey": {
+        "contact": true,
+        "fuel": 113,
+        "shield": 255,
+        "minutes": 215307
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_contact_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 3,
+      "journey": {
+        "initial": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "215307",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-05",
+          "world": "world-08",
+          "flight": "sublight",
+          "flightProgress": "19",
+          "space": "ship",
+          "contact": "true",
+          "shipHull": "13",
+          "shipGun": "0",
+          "shipRange": "119",
+          "shipHealth": "215",
+          "mode": "campaign",
+          "rest": "117",
+          "nourishment": "100",
+          "seed": "12345"
+        },
+        "final": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "215365",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-05",
+          "world": "world-08",
+          "flight": "",
+          "flightProgress": "",
+          "space": "ship",
+          "contact": "false",
+          "shipHull": "13",
+          "shipGun": "0",
+          "shipRange": "143",
+          "shipHealth": "195",
+          "mode": "campaign",
+          "rest": "115",
+          "nourishment": "99",
+          "seed": "12345"
+        },
+        "trace": [
+          {
+            "i": 0,
+            "contact": "true",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "215"
+          },
+          {
+            "i": 64,
+            "contact": "false",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "249"
+          },
+          {
+            "i": 128,
+            "contact": "false",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "176"
+          },
+          {
+            "i": 192,
+            "contact": "false",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "206"
+          }
+        ],
+        "location": {
+          "systemId": "system-05",
+          "worldId": "world-08",
+          "cityId": null,
+          "orbit": {
+            "angle": 77,
+            "radius": 34
+          },
+          "surfacePosition": {
+            "x": 0,
+            "y": 0
+          },
+          "cityPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "fuel": 0,
+        "shield": 255,
+        "hull": 13
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_point_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 5,
+      "journey": {
+        "contact": true,
+        "contacts": 1,
+        "refuels": 1,
+        "fuel": 234,
+        "shield": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_rescue_contact_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 3,
+      "journey": {
+        "initial": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "215416",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-05",
+          "world": "world-08",
+          "flight": "sublight",
+          "flightProgress": "15",
+          "space": "ship",
+          "contact": "true",
+          "shipHull": "13",
+          "shipGun": "0",
+          "shipRange": "119",
+          "shipHealth": "226",
+          "mode": "campaign",
+          "rest": "113",
+          "nourishment": "98",
+          "seed": "12345"
+        },
+        "final": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "215439",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-05",
+          "world": "",
+          "flight": "",
+          "flightProgress": "",
+          "space": "tactical",
+          "contact": "false",
+          "shipHull": "13",
+          "shipGun": "0",
+          "shipRange": "137",
+          "shipHealth": "226",
+          "mode": "campaign",
+          "rest": "113",
+          "nourishment": "98",
+          "seed": "12345"
+        },
+        "trace": [
+          {
+            "i": 0,
+            "contact": "true",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "226"
+          }
+        ],
+        "location": {
+          "systemId": "system-05",
+          "worldId": null,
+          "cityId": null,
+          "orbit": {
+            "angle": 96,
+            "radius": 43
+          },
+          "surfacePosition": {
+            "x": 0,
+            "y": 0
+          },
+          "cityPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "fuel": 123,
+        "shield": 255,
+        "hull": 13
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "contact": false,
+        "fuel": 59,
+        "shield": 0,
+        "hull": 13,
+        "charge": 202,
+        "minutes": 215614
+      }
+    }
+  ]
+}
