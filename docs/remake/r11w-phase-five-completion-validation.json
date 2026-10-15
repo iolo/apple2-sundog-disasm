@@ -1,0 +1,1253 @@
+{
+  "milestone": "R11w",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-complete.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-five-complete.json",
+  "uiChecks": 399,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_five_city01_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The phase-five campaign begins at the Banville Center with an empty pod",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the phase-five capital flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 42,
+        "hull": 7,
+        "bank": 11584,
+        "condition": {
+          "vigor": 161,
+          "rest": 161,
+          "health": 255,
+          "nourishment": 99
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city01_depot_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The phase-five capital landing can fund needed ship repairs",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "depot reached through normal movement (68 steps)",
+        "depot action is available",
+        "The ordinary capital depot opens with the saved damaged ship",
+        "No uncaught errors inspecting the home depot"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "offers": "Drahew Depot\n\ud55c\uad6d\uc5b4\n\nHull 7/16 \u00b7 Fuel 42/255 \u00b7 Empty pod slots 2/2\n\nCash 0 \u00b7 Local bank 11584\n\nRefuel ship\n157 credits/unit\nSpace for 14 units\nRepair hull\n436 credits/unit\nSpace for 9 units\nLoad auxiliary fuel\n2200 credits/unit\nSpace for 2 units\n\nConfirm to pay from the local bank first, then cash.\n\nLeave service\nSaves",
+        "bank": 11584,
+        "condition": {
+          "vigor": 163,
+          "rest": 158,
+          "health": 255,
+          "nourishment": 98
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city01_repair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The home capital depot can restore the damaged phase-five ship",
+        "Staged ordinary depot repair reaches hull 9 at the reviewed price",
+        "Staged ordinary depot repair reaches hull 13 at the reviewed price",
+        "Staged ordinary depot repair reaches hull 16 at the reviewed price",
+        "Fresh-page save reload preserves Center progress",
+        "The repaired phase-five ship survives fresh-page reload",
+        "The repaired capital checkpoint exports unchanged",
+        "No uncaught errors on staged phase-five repairs"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "hull": 16,
+        "fuel": 42,
+        "bank": 9117,
+        "prices": [
+          "872 credits",
+          "1160 credits",
+          "435 credits"
+        ],
+        "condition": {
+          "vigor": 163,
+          "rest": 158,
+          "health": 255,
+          "nourishment": 98
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city01_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The repaired phase-five ship has funds for local procurement",
+        "exchange reached through normal movement (216 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city-01 market visit refreshes and survives reload",
+        "The phase-five market checkpoint exports unchanged",
+        "No uncaught errors on the city-01 market visit"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 201618,
+        "cash": 0,
+        "bank": 9117,
+        "supply": [
+          {
+            "id": 9,
+            "units": 6
+          },
+          {
+            "id": 12,
+            "units": 6
+          },
+          {
+            "id": 24,
+            "units": 2
+          },
+          {
+            "id": 25,
+            "units": 4
+          },
+          {
+            "id": 26,
+            "units": 4
+          },
+          {
+            "id": 31,
+            "units": 0
+          }
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 1400,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 3,
+            "price": 1100,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 7,
+            "price": 1800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 5,
+            "price": 3600,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 5,
+            "price": 8900,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 3,
+            "price": 2900,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 2,
+            "price": 1000,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 4,
+            "price": 18000,
+            "demand": 3,
+            "supply": 2
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city01_survey_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The capital market has all five phase-five goods in stock",
+        "Repeated ordinary market visits quote every phase-five good",
+        "The price survey preserves the paid campaign account",
+        "No uncaught errors during the local market survey"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minima": {
+          "9": {
+            "visit": 48,
+            "row": 4,
+            "quality": 1,
+            "price": 1500
+          },
+          "12": {
+            "visit": 26,
+            "row": 2,
+            "quality": 1,
+            "price": 2500
+          },
+          "24": {
+            "visit": 19,
+            "row": 4,
+            "quality": 1,
+            "price": 6100
+          },
+          "25": {
+            "visit": 3,
+            "row": 3,
+            "quality": 1,
+            "price": 4600
+          },
+          "26": {
+            "visit": 25,
+            "row": 7,
+            "quality": 1,
+            "price": 6400
+          }
+        },
+        "supply": [
+          {
+            "id": 9,
+            "units": 6
+          },
+          {
+            "id": 12,
+            "units": 6
+          },
+          {
+            "id": 24,
+            "units": 2
+          },
+          {
+            "id": 25,
+            "units": 4
+          },
+          {
+            "id": 26,
+            "units": 4
+          }
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-12",
+            "quality": 5,
+            "price": 3600,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 4,
+            "price": 13900,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 4,
+            "price": 2000,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 4,
+            "price": 3200,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 1,
+            "price": 1500,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 2,
+            "price": 2700,
+            "demand": 5,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 4,
+            "price": 12800,
+            "demand": 1,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 3,
+            "price": 7500,
+            "demand": 5,
+            "supply": 4
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city03_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The repaired ship starts from the home capital market",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary pilotage reaches the nearby lower-price market",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (538 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-03 market opens and survives fresh-page reload",
+        "The neighboring market checkpoint exports unchanged",
+        "No uncaught errors on the lower-price city flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 9117,
+        "pod": {
+          "attached": false,
+          "position": {
+            "x": 357,
+            "y": 529
+          },
+          "heading": 18,
+          "cargo": [
+            null,
+            null
+          ],
+          "occupied": true
+        },
+        "condition": {
+          "vigor": 167,
+          "rest": 152,
+          "health": 255,
+          "nourishment": 96
+        },
+        "supply": [
+          {
+            "id": 9,
+            "units": 5
+          },
+          {
+            "id": 12,
+            "units": 0
+          },
+          {
+            "id": 24,
+            "units": 1
+          },
+          {
+            "id": 25,
+            "units": 3
+          },
+          {
+            "id": 26,
+            "units": 4
+          }
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-11",
+            "quality": 6,
+            "price": 3600,
+            "demand": 4,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 1300,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 5,
+            "price": 1900,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 3,
+            "price": 1100,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 6,
+            "price": 6500,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 1,
+            "price": 7800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 5,
+            "price": 6400,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 6,
+            "price": 7200,
+            "demand": 0,
+            "supply": 1
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city03_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first phase-five trade starts at the nearby market",
+        "Ordinary exchange purchase secures quality-one cargo 26",
+        "Ordinary exchange purchase secures quality-one cargo 25",
+        "Two legal trade lots cost 9,100 credits; remaining bank 17",
+        "Purchased cargo 26 is in warehouse",
+        "Purchased cargo 25 is in warehouse",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid lots ride in the pod after fresh-page reload",
+        "The trade cargo checkpoint exports unchanged",
+        "No uncaught errors during ordinary market purchases"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 17,
+        "spent": 9100,
+        "pod": [
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "originCity": "city-03",
+            "pricePaid": 5100
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 1,
+            "originCity": "city-03",
+            "pricePaid": 4000
+          }
+        ],
+        "minutes": 201728
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city01_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The two paid trade lots start loaded at city 03",
+        "dock reached through normal movement (535 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "City flight accepts the low balance and returns both lots to the capital",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "Both trade lots unload into the capital warehouse",
+        "The visited exchange exposes both imported lots for sale",
+        "Fresh-page save reload preserves Center progress",
+        "Normal warehouse settlement earns a positive profit: 1800",
+        "The trade sale checkpoint exports unchanged",
+        "No uncaught errors during the city trade return"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 10917,
+        "profit": 1800,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 201842
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city04_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second phase-five trade starts with the settled capital account",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (407 steps)",
+        "exchange action is available",
+        "The city-04 market has both planned profitable commodities",
+        "Paid city-04 cargo 24 enters warehouse",
+        "Paid city-04 cargo 26 enters warehouse",
+        "The two city-04 purchases debit their live quoted prices: 8700",
+        "Cargo 24 remains available to load",
+        "Cargo 26 remains available to load",
+        "Both city-04 trade lots ride in the pod",
+        "dock reached through normal movement (408 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "Second trade unloads both lots at the capital",
+        "Both imported city-04 lots appear for sale",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary sale earns a profit: 1400",
+        "The city-04 trade checkpoint exports unchanged",
+        "No uncaught errors in the second trade"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 12317,
+        "profit": 1400,
+        "spent": 8700,
+        "minutes": 202043
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city05_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The third phase-five trade starts with the settled home account",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (350 steps)",
+        "exchange action is available",
+        "The city-05 market opens after ordinary pilotage",
+        "The live city-05 board offers an affordable high-value trade",
+        "The selected trade lot is paid and stored at its displayed price",
+        "The high-value paid lot travels in the pod",
+        "dock reached through normal movement (351 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "The city-05 trade lot unloads at the capital",
+        "The paid imported lot is available for sale",
+        "Fresh-page save reload preserves Center progress",
+        "The city-05 trade earns its planned margin: 2700",
+        "The high-value trade checkpoint exports unchanged",
+        "No uncaught errors in the third trade"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 15017,
+        "profit": 2700,
+        "spent": 11000,
+        "commodity": "cargo-28",
+        "quality": 1,
+        "minutes": 202266
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city05_second_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The fourth phase-five trade starts with the settled home account",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (382 steps)",
+        "exchange action is available",
+        "The city-05 market opens after ordinary pilotage",
+        "The live city-05 board offers an affordable high-value trade",
+        "The selected trade lot is paid and stored at its displayed price",
+        "The high-value paid lot travels in the pod",
+        "dock reached through normal movement (383 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "The city-05 trade lot unloads at the capital",
+        "The paid imported lot is available for sale",
+        "Fresh-page save reload preserves Center progress",
+        "The city-05 trade earns its planned margin: 2000",
+        "The high-value trade checkpoint exports unchanged",
+        "No uncaught errors in the fourth trade"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 17017,
+        "profit": 2000,
+        "spent": 8000,
+        "commodity": "cargo-24",
+        "quality": 6,
+        "minutes": 202450
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city05_goods_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Phase-five procurement starts from the funded home account",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "The contract supplier opens in city 05",
+        "Paid required cargo 24 enters the city-05 warehouse",
+        "Paid required cargo 25 enters the city-05 warehouse",
+        "Paid required cargo 9 enters the city-05 warehouse",
+        "Paid required cargo 12 enters the city-05 warehouse",
+        "Four required lots debit exactly their displayed live prices",
+        "Required cargo 24 is available to load",
+        "Required cargo 25 is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Two paid lots ride in the pod and two remain safely stored after reload",
+        "The four-goods procurement checkpoint exports unchanged",
+        "No uncaught errors during phase-five procurement"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 5617,
+        "spent": 11400,
+        "pod": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 4800
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 3600
+          }
+        ],
+        "warehouse": [
+          null,
+          null,
+          {
+            "commodityId": "cargo-09",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 1200
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 1800
+          }
+        ],
+        "minutes": 202544
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_first_pair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first paid phase-five pair starts loaded in city 05",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary pilotage lands both paid lots at Banville",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid lots become one phase-five receipt each",
+        "The first phase-five delivery checkpoint exports unchanged",
+        "No uncaught errors on the first phase-five delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 5617,
+        "receipts": 25,
+        "phase": 5,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 202625
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_second_pair_pickup_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second goods pickup starts after the first two receipts",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (70 steps)",
+        "exchange action is available",
+        "The two previously paid lots remain in the city-05 warehouse",
+        "Fresh-page save reload preserves Center progress",
+        "Both stored paid lots load without a second purchase or duplication",
+        "The second pair checkpoint exports unchanged",
+        "No uncaught errors on the second pair pickup"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 5617,
+        "receipts": 25,
+        "pod": [
+          {
+            "commodityId": "cargo-09",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 1200
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 1800
+          }
+        ],
+        "minutes": 202678
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_second_pair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second paid phase-five pair starts loaded in city 05",
+        "dock reached through normal movement (71 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary pilotage lands both paid lots at Banville",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid lots become one phase-five receipt each",
+        "The second phase-five delivery checkpoint exports unchanged",
+        "No uncaught errors on the second phase-five delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 5617,
+        "receipts": 27,
+        "phase": 5,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 202731
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_cargo26_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The final paid good starts after four phase-five receipts",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (222 steps)",
+        "exchange action is available",
+        "City 04 stocks the last required ordinary good",
+        "The live board offers quality-one cargo 26",
+        "The paid cargo 26 leaves sufficient home launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The final paid phase-five good rides in the pod after reload",
+        "The cargo-26 checkpoint exports unchanged",
+        "No uncaught errors on the last ordinary-good purchase"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 2017,
+        "price": 3600,
+        "pod": [
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "originCity": "city-04",
+            "pricePaid": 3600
+          },
+          null
+        ],
+        "receipts": 27,
+        "minutes": 202793
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_cargo26_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The last paid phase-five good starts loaded in city 04",
+        "dock reached through normal movement (223 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary pilotage lands paid cargo 26 at Banville",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Paid cargo 26 become one phase-five receipt each",
+        "The fifth phase-five delivery checkpoint exports unchanged",
+        "No uncaught errors on the fifth phase-five delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "bank": 2017,
+        "receipts": 28,
+        "phase": 5,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 202854
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_shields_repair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The ship has a salvageable shield component and one empty stores slot",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "An ordinary inventory transfer frees one carried engineering slot",
+        "shieldBay reached through normal movement (81 steps)",
+        "shieldBay action is available",
+        "The force-shields engineering bay opens",
+        "The intact shield component is removed from a failed unit",
+        "One shield unit works after ordinary component exchange",
+        "Fresh-page save reload preserves Center progress",
+        "The shield repair and phase-five receipts survive fresh-page reload",
+        "The repaired outbound checkpoint exports unchanged",
+        "No uncaught errors on the ordinary shield repair"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "hull": 16,
+        "shieldPerformance": 4,
+        "fuel": 42,
+        "bank": 2017,
+        "receipts": 28
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded ship leaves Banville for two unclaimed cryogens",
+        "navigation reached through normal movement (80 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch",
+        "Ordinary rescue refuels the outbound ship",
+        "Tactical shields cover the outbound warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-five launch"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 154,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 202953
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_system06_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct sixth-system warp is within the live ship range",
+        "Ordinary machinery charges the direct sixth-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches the cryogen source system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct sixth-system warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 225,
+        "shield": 0,
+        "hull": 16,
+        "charge": 202,
+        "minutes": 203239
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city26_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The healthy ship arrives in the sixth system with all paid goods delivered",
+        "Shields recharge before the inhabited-world approach",
+        "Ordinary sublight reaches world 09",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The cryogen pickup flight lands at the world-nine capital",
+        "The world-nine landing checkpoint exports unchanged",
+        "No uncaught errors on the cryogen-source approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 119,
+        "hull": 16,
+        "shield": 0,
+        "bank": 1100,
+        "condition": {
+          "vigor": 137,
+          "rest": 91,
+          "health": 255,
+          "nourishment": 70
+        },
+        "minutes": 203282
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city26_cryogen_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The world-nine landing and empty pod are ready for the city-26 cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (200 steps)",
+        "exchange action is available",
+        "City 26 still owns its distinct initialized cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "The city-26 cryogen loads into the live pod and survives reload",
+        "The cryogen checkpoint exports unchanged",
+        "No uncaught errors on the scanner-enabled cryogen pickup"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 203308,
+        "fuel": 119,
+        "condition": {
+          "vigor": 137,
+          "rest": 91,
+          "health": 255,
+          "nourishment": 70
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          7
+        ],
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-26",
+          "pricePaid": 0
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_city28_cryogen_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first distinct cryogen rides with one empty pod slot",
+        "dock reached through normal movement (197 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (64 steps)",
+        "exchange action is available",
+        "The second distinct cryogen remains in the city-28 warehouse",
+        "Fresh-page save reload preserves Center progress",
+        "Two different initialized cryogens ride together after fresh-page reload",
+        "The two-cryogen checkpoint exports unchanged",
+        "No uncaught errors on the second cryogen pickup"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 119,
+        "hull": 16,
+        "bank": 1100,
+        "cryogens": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-26",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-28",
+            "pricePaid": 0
+          }
+        ],
+        "minutes": 203372
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_system06_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded ship departs city 28 with both distinct cryogens",
+        "dock reached through normal movement (65 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Foreign-bank clearance allows the return launch",
+        "Ordinary rescue refuels the cryogen carrier",
+        "Shields cover the nearby return warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The safe sixth-system warp point retains both cryogens",
+        "The return point checkpoint exports unchanged",
+        "No uncaught errors on the cryogen return launch"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 145,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 203461
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_system03_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct intermediate-system warp is within the live ship range",
+        "Ordinary machinery charges the direct intermediate-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches the system 03",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct intermediate-system warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 185,
+        "shield": 0,
+        "hull": 16,
+        "charge": 58,
+        "minutes": 203590
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cryogen carrier waits at the intermediate warp point",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "The direct home-system warp is within the live ship range",
+        "Ordinary machinery charges the direct home-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches the home system",
+        "The homeward warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 75,
+        "shield": 0,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 203774
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_home_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The home warp point retains both distinct cryogens",
+        "Ordinary rescue supplies the Banville approach",
+        "Shields recharge before the homeworld approach",
+        "Ordinary sublight reaches homeworld orbit",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Both cryogens land at Banville",
+        "The Banville cryogen landing checkpoint exports unchanged",
+        "No uncaught errors on the phase-five home approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": false,
+        "fuel": 131,
+        "hull": 16,
+        "bank": 2017,
+        "cryogens": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-26",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-28",
+            "pricePaid": 0
+          }
+        ],
+        "minutes": 203934
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_five_complete_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The Banville landing retains two distinct initialized cryogens",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cryogen pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Both cryogens enter the Center while their demand remains unmet",
+        "The city-26 cryogen occupies its own pod slot",
+        "The city-28 cryogen occupies its own pod slot",
+        "Fresh-page save reload preserves Center progress",
+        "Distinct cryogen receipts complete phase five and credit its bonus exactly once",
+        "The phase-five completion checkpoint exports unchanged",
+        "No uncaught errors on phase-five completion"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 203946,
+        "fuel": 131,
+        "hull": 16,
+        "bank": 6517,
+        "bonus": 4500,
+        "receipts": 30,
+        "phase": 6
+      }
+    }
+  ]
+}
