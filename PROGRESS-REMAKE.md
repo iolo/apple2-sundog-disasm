@@ -1,3 +1,25 @@
+## R11an — Final paid chronographs collected — 2026-10-16
+
+The ordinary-controls campaign consumed its carried food ration and slept
+before launching empty from Banville. It reached the home warp point in
+five short cloaked segments, jumped directly to system 03, and approached
+world 06 in four cloaked segments with ordinary fuel rescues. City 17's
+live exchange still stocked quality-one chronographs at 2,800 credits.
+The lot was bought through normal rotating offers and loaded into the pod.
+System-three launch clearance is 1,056 credits.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-chronograph-city17-loaded.json`:
+59 receipts, phase 9 active, hull 16, fuel 255, with paid chronographs
+aboard. Ten passing Chrome journeys recorded 110 UI checks without page
+errors or production changes. See
+`docs/remake/r11an-phase-nine-final-paid-chronograph-pickup-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Deliver this final paid lot, collect the last distinct
+cryogen at city 57, and validate the ending before broader fragility
+cleanup, per the user's priority.
+
 ## R11am — Phase-nine radioactives and furs/silks delivered — 2026-10-16
 
 The ordinary-controls campaign carried the paid quality-one radioactives
