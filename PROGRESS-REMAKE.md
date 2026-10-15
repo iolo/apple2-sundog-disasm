@@ -1,3 +1,29 @@
+## R11aj — Phase-nine system-three funding and antimatter pickup — 2026-10-16
+
+The ordinary-controls campaign bought quality-one seeds and meats at city 05
+for 1,700 and 2,000 credits, preserving 1,280 credits of home launch clearance.
+A pirate intercepted the outbound flight, but the installed cloaker cleared
+contact with both lots and hull 16 intact. A routine fuel-out distress rescue
+completed the short warp-point leg. The ship warped directly to system 03,
+then crossed to world 06 in five short cloaked segments with ordinary fuel
+rescues. It landed at city 17 and sold both exports at live quotes of 3,000
+and 4,600 credits. The system-three bank rose from 1,756 to 9,356 credits.
+
+City 17 then sold quality-one antimatter for 4,800 credits and hand weapons
+for 3,400 credits. Both paid lots are aboard, and the system-three bank retains
+1,156 credits of launch clearance. The active checkpoint is
+`output/playwright/remake/r11-phase-nine-city17-antimatter-trade-loaded.json`:
+56 receipts, phase 9 active, hull 16, fuel 255, with the paid antimatter and
+return-trade lot in the pod. Fourteen passing Chrome journeys recorded 141 UI
+checks without page errors or production changes. See
+`docs/remake/r11aj-phase-nine-system-three-export-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Deliver paid goods 07, 02, 16 and 28, collect the final
+distinct cryogen at city 57, and audit the ending. The hand-weapon resale at
+the home capital is intended to fund the remaining purchases. Continue the
+campaign before broader fragility cleanup, per the user's priority.
+
 ## R11ai — First three phase-nine receipts and trade funding — 2026-10-16
 
 The ordinary-controls campaign returned to the home capital and bought
