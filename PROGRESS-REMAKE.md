@@ -1,3 +1,21 @@
+## R11i — Cross-system procurement and phase-two completion — 2026-10-15
+
+The eight-receipt campaign transfers 5,000 credits between system accounts at
+the home bank, buys food and fuel, charges a warp to system 02, lands at city
+09 and buys phase-two goods 10 and 21 at normal exchange prices. It returns
+through the funded local depot and bank: five fuel units plus a cash deposit
+leave the source launch-clearance balance above 1,000 credits. A nearer warp
+point shortens the final home-system approach, avoiding the space encounter
+that defeated a longer route. Both paid lots retain their city-09 origin
+through the flight and Banville delivery. The live Center advances exactly
+once to phase 3; a fresh-page reload and readable export preserve ten distinct
+receipts. Four chained Chrome journeys pass without page errors or edited
+campaign state.
+
+R11 remains open for phases 3–9 and the final ending. The next controls leg
+needs phase-three goods 20 and 22 plus four distinct cryogens; food, fuel and
+credit funding must be sustained across the remaining worlds.
+
 ## R11h — First off-world cryogen return — 2026-10-15
 
 The same six-receipt campaign buys fuel at city 01, attaches its pod, flies
