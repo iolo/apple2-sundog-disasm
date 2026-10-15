@@ -1,3 +1,20 @@
+## R11g — Repeatable food supply and local phase-two delivery — 2026-10-15
+
+The continuing seed-12345 controls journey withdraws 1,000 credits from the
+home system bank, walks through a live city tavern with moving patrons, buys
+four food rations from the bartender, and returns to the pod. The save/reload
+preserves the five earlier Center receipts and three remaining rations after
+ordinary travel consumed one. The next checkpoint buys phase-two good 12 at
+the city 01 exchange, loads the paid lot, delivers it to Banville and reloads
+with six distinct receipts. Both Chrome journeys pass with no page errors;
+neither modifies a campaign save outside the UI. The three chained exports
+let the remaining journey resume from actual progress.
+
+R11 remains open. Phase 2 still needs goods 10, 14 and 21 plus the unique
+city 06 cryogen. The next leg must fund ship fuel, visit other worlds through
+normal flight controls, and return the cryogen to Banville. Phases 3–9 and
+the final ending gate remain after that.
+
 ## R11f — Imported campaign continuation and first cryogen — 2026-10-15
 
 The fresh controls journey now finishes phase 1: four ordinary purchases from
