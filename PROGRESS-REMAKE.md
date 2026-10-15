@@ -1,3 +1,26 @@
+## R11x — Phase-six completion across three cryogen cities — 2026-10-15
+
+The ordinary-controls playthrough funded phase six through legal same-world
+trades, bought paid cargo 18 and 27 in city 01 and cargo 17 and 21 in city
+26, and delivered each lot exactly once. The return with the foreign paid
+pair survived pirate contacts by charging full shields. The ship then
+collected the three initialized cryogens from city 31 and city 33 on world
+10, and city 36 on world 11. Long sublight legs used normal distress rescue
+after fuel exhaustion. Food and rest were restored through ordinary inventory
+and sleep controls before the final return.
+
+The last cryogen delivery completed phase 6, credited its 7,100-credit bonus
+once, and advanced the Center to phase 7. The fresh-page-reloaded checkpoint
+is `output/playwright/remake/r11-phase-six-complete.json`: 37 receipts, an
+empty pod, hull 16, fuel 32, rest 209, nourishment 118, and 11,517 credits
+in the system-01 bank. Forty Chrome journeys pass 602 UI checks without page
+errors; see `docs/remake/r11x-phase-six-completion-validation.json`.
+
+R11 remains open. Phase 7 requires paid cargo 03, 06, 09, 15, 17 and 30,
+plus two distinct cryogens. Five initialized cryogens remain in cities 40,
+42, 49, 52 and 57 for phases 7–9. Complete those phases and the ending
+before the broader UI fragility pass.
+
 ## R11w — Phase-five completion with distinct cryogens — 2026-10-15
 
 The continuing ordinary-controls playthrough repaired hull 7 to 16 and
