@@ -1,3 +1,29 @@
+## R11u — Preflight hull repair and revised homeward route — 2026-10-15
+
+The R11t bank transfer left hull 5 exposed to repeated pirates on the
+world-07 approach. The continuing playthrough resumed from the saved city-22
+landing before that transfer, used normal pilotage to reach the world-08
+capital at city 21, and bought four depot hull-repair units for 3,248 credits.
+It then transferred 3,800 through the bank to system 04, keeping 1,085 in
+system 05 for launch. The hull-9 ship reached a nearby warp point, survived
+a pirate contact, charged the return warp, and entered system 04. Another
+pirate was defeated on the world-07 approach; normal Halt and distress
+refueled the ship before continuing. The paid city-47 silichips remained in
+the pod throughout, including fresh-page reloads.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-four-repaired-world07-halted.json`:
+phase 4, 21 receipts, cargo 17 aboard, system-04 bank 9,510, hull 9, fuel
+255, and an approach orbit at angle 56/radius 41. Nine chained Chrome
+journeys pass 74 checks without page errors; see
+`docs/remake/r11u-preflight-repair-validation.json`. This repaired route
+supersedes the R11t homeward-point branch for the active playthrough.
+
+R11 remains open. The next flight must reach world 07, land at city 20,
+purchase cargo 23, and deliver it with cargo 17 to Banville to finish phase
+4. Phases 5–9 and the ending then remain. Broad UI fragility cleanup follows
+campaign completion.
+
 ## R11t — Last phase-four lot funded; homeward warp point reached — 2026-10-15
 
 The 21-receipt campaign carried the paid city-47 silichips from city 20 to

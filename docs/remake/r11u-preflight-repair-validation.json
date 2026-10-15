@@ -1,0 +1,275 @@
+{
+  "milestone": "R11u",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-city22-landed.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-four-repaired-world07-halted.json",
+  "uiChecks": 74,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_four_city21_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The donor world can pilot to its capital depot",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary city flight reaches the world-eight capital with silichips aboard",
+        "The city-21 landing checkpoint exports unchanged",
+        "No uncaught errors on the capital flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 199366,
+        "fuel": 187,
+        "condition": {
+          "vigor": 153,
+          "rest": 50,
+          "health": 255,
+          "nourishment": 146
+        },
+        "bank": 8133
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city21_repair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The donor-city landing can fund a preflight hull repair",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "depot reached through normal movement (40 steps)",
+        "depot action is available",
+        "Four normal depot repair units restore hull 9 for 3,248 credits",
+        "bankPark reached through normal movement (114 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (161 steps)",
+        "bank action is available",
+        "The 3,800-credit transfer funds the last lot and preserves launch clearance",
+        "pod reached through normal movement (154 steps)",
+        "pod action is available",
+        "dock reached through normal movement (142 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The repaired funded ship survives docking and fresh-page reload",
+        "The repaired funding checkpoint exports unchanged",
+        "No uncaught errors on the repair and bank route"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 199733,
+        "hull": 9,
+        "fuel": 187,
+        "sourceBank": 1085,
+        "destinationBank": 9510,
+        "offer": "Repair hull\n812 credits/unit\nSpace for 11 units",
+        "quote": "3248 credits"
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city21_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded campaign departs the bank city with silichips aboard",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Normal rescue refuels the homeward launch",
+        "Tactical shields cover the local warp-point leg",
+        "The nearby point encounter preserves shields and cargo"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": true,
+        "hull": 9,
+        "shield": 128,
+        "fuel": 199
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city21_home_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live world-eight approach starts with charged shields and paid silichips",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "Normal movement or laser fire resolves the point contact",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary laser hits drive off the pirate without losing the paid lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 199803,
+        "hull": 9,
+        "shield": 128,
+        "gun": 255,
+        "enemy": 243,
+        "lot": {
+          "commodityId": "cargo-17",
+          "quality": 2,
+          "originCity": "city-47",
+          "pricePaid": 2800
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city21_home_after_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The point contact escapes with the outbound flight still active",
+        "Fresh-page save reload preserves Center progress",
+        "Normal flight reaches the homeward warp point",
+        "The homeward point checkpoint exports unchanged",
+        "No uncaught errors finishing the point flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 104,
+        "condition": {
+          "vigor": 133,
+          "rest": 18,
+          "health": 255,
+          "nourishment": 130
+        },
+        "orbit": {
+          "angle": 32,
+          "radius": 43
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_repaired_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded silichips wait at the homeward warp point",
+        "Ordinary point rescue fuels the homeward warp",
+        "System 04 is the live warp target",
+        "Ordinary machinery charges the homeward warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp returns the paid silichips to system 04",
+        "The homeward warp checkpoint exports unchanged",
+        "No uncaught errors on the homeward warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "fuel": 123,
+        "shield": 0,
+        "hull": 9,
+        "orbit": {
+          "angle": 32,
+          "radius": 43
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_repaired_world07_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The homeward warp retains the funded account and silichips",
+        "Ordinary forced rest recovers enough to wake",
+        "Ordinary rescue refuels the world-seven approach",
+        "Tactical shields cover the world-seven flight",
+        "The world-seven contact preserves charged shields and silichips"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "contact": true,
+        "hull": 9,
+        "shield": 128,
+        "fuel": 202,
+        "progress": 16
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_repaired_world07_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live world-eight approach starts with charged shields and paid silichips",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "The live laser fires when the moving target enters source accuracy",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary laser hits drive off the pirate without losing the paid lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 200256,
+        "hull": 9,
+        "shield": 128,
+        "gun": 0,
+        "enemy": 0,
+        "lot": {
+          "commodityId": "cargo-17",
+          "quality": 2,
+          "originCity": "city-47",
+          "pricePaid": 2800
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_repaired_world07_halt_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The third pirate retreat leaves a nearly empty tank on the bank-world course",
+        "Normal Halt stops the engine before fuel exhaustion",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary stationary rescue restores fuel and preserves cargo",
+        "The halted rescue checkpoint exports unchanged",
+        "No uncaught errors while halting and refueling"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 200388,
+        "fuel": 255,
+        "shield": 0,
+        "hull": 9,
+        "orbit": {
+          "angle": 56,
+          "radius": 41
+        }
+      }
+    }
+  ],
+  "result": {
+    "phase": 4,
+    "receipts": 21,
+    "system": "system-04",
+    "world": null,
+    "orbit": {
+      "angle": 56,
+      "radius": 41
+    },
+    "cargo": [
+      {
+        "commodityId": "cargo-17",
+        "quality": 2,
+        "originCity": "city-47",
+        "pricePaid": 2800
+      },
+      null
+    ],
+    "system04Bank": 9510,
+    "system05Bank": 1085,
+    "hull": 9,
+    "fuel": 255,
+    "shield": 0,
+    "condition": {
+      "vigor": 121,
+      "rest": 234,
+      "health": 255,
+      "nourishment": 119
+    }
+  }
+}
