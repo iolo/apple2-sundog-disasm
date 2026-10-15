@@ -1,3 +1,26 @@
+## R11ae — Paid phase-eight synthesizers — 2026-10-16
+
+The ordinary-controls campaign salvaged two spare distorters from redundant
+ship units and sold them through separate bartender referrals in city 47 for
+1,368 credits each. The system-11 bank funded a quality-one cargo-20 lot at
+the live 2,600-credit price. After food and rest, the ship returned by normal
+point flight and warp. The cloaker cleared pirate contacts, while short
+cloaked legs and ordinary distress rescues preserved the paid cargo and hull
+on the long homeworld approach. Banville Center accepted the synthesizers
+once as the fifth phase-eight receipt. The empty ship returned to the home
+capital. The active checkpoint is
+`output/playwright/remake/r11-phase-eight-city47-good20-city01-returned.json`:
+50 total receipts, phase 8 active, hull 16, fuel 230, home bank 1,232,
+system-11 bank 1,895, and an empty pod. Forty-two passing Chrome journeys
+recorded 370 UI checks without page errors or production changes. See
+`docs/remake/r11ae-phase-eight-synthesizers-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 8 still needs paid goods 02, 04 and 05. Phase 9
+needs paid goods 02, 07, 16, 24, 26, 28 and 29, a third distinct cryogen,
+and the ending. Continue the campaign before broader fragility cleanup,
+per the user's priority.
+
 ## R11ad — Paid phase-eight pharmaceuticals — 2026-10-16
 
 The ordinary-controls campaign recovered two control nodes from redundant

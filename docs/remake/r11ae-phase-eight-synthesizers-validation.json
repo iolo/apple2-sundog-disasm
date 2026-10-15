@@ -1,0 +1,1217 @@
+{
+  "milestone": "R11ae",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-city02-good25-city01-returned.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-city47-good20-city01-returned.json",
+  "runCount": 42,
+  "uiChecks": 370,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 50,
+    "phaseEightReceipts": [
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-49",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-52",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-14",
+        "originCity": "city-07",
+        "pricePaid": 2400
+      },
+      {
+        "commodityId": "cargo-25",
+        "originCity": "city-02",
+        "pricePaid": 3600
+      },
+      {
+        "commodityId": "cargo-20",
+        "originCity": "city-47",
+        "pricePaid": 2600
+      }
+    ],
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 230,
+    "bank": 1232,
+    "podCargo": [
+      null,
+      null
+    ]
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_city01_two_distorters_salvage_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two spare distortion units remain in nonworking ship units",
+        "warpBay reached through normal movement (75 steps)",
+        "warpBay action is available",
+        "Ordinary engineering opens the redundant warp unit",
+        "engineBay reached through normal movement (7 steps)",
+        "engineBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Two spare units leave while warp, engines, pilotage and cloaker still work",
+        "The supplier-funding salvage checkpoint exports unchanged",
+        "No uncaught errors recovering redundant distortion units"
+      ],
+      "journey": {
+        "bank": 1232,
+        "carried": [
+          30,
+          24,
+          235,
+          30
+        ],
+        "warp": 4,
+        "engines": 4,
+        "condition": {
+          "vigor": 116,
+          "rest": 125,
+          "health": 255,
+          "nourishment": 121
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_outbound_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty ship carries two spare distorters to fund city-47 cargo 20",
+        "navigation reached through normal movement (82 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch",
+        "Ordinary rescue refuels the outbound ship",
+        "Tactical shields cover the outbound warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-eight city-47 supplier launch"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 67,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 227474
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_outbound_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct city-47 supplier warp is within the live ship range",
+        "Ordinary machinery charges the direct city-47 supplier warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches its selected system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct city-47 supplier warp"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 107,
+        "shield": 0,
+        "hull": 16,
+        "charge": 118,
+        "minutes": 227695
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The two sale parts survive the direct warp into system eleven",
+        "Ordinary rescue fuels the world-sixteen approach",
+        "Fresh-page save reload preserves Center progress",
+        "Normal sublight flight reaches the city-47 world",
+        "The world-sixteen orbit checkpoint exports unchanged",
+        "No uncaught errors on the world-sixteen approach"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 71,
+        "hull": 16,
+        "minutes": 227974,
+        "condition": {
+          "vigor": 136,
+          "rest": 105,
+          "health": 255,
+          "nourishment": 111
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The supplier ship orbits world sixteen with its surplus parts",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary landing reaches city 47 with both sale parts",
+        "The city-47 landing exports unchanged",
+        "No uncaught errors on the city-47 landing"
+      ],
+      "journey": {
+        "fuel": 71,
+        "hull": 16,
+        "bank": 1775,
+        "condition": {
+          "vigor": 136,
+          "rest": 105,
+          "health": 255,
+          "nourishment": 111
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_first_distorter_referral_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two redundant distortion units are carried to fund city-47 cargo 20",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (308 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (243 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the distortion unit sale request",
+        "The sale referral stores the item and direction",
+        "No uncaught errors arranging the city-47 buyer"
+      ],
+      "journey": {
+        "flags": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "workspace": {
+          "lastCity": 47,
+          "mood": 3,
+          "quantity": 1,
+          "gate": 1,
+          "item": 30,
+          "actor": 0
+        },
+        "travel": {
+          "scene": "room",
+          "cityPosition": {
+            "x": 675,
+            "y": 333
+          },
+          "roomPosition": {
+            "x": 40,
+            "y": 31
+          }
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_first_distorter_handover_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-47 bartender has referred a buyer for the spare unit",
+        "A referred visitor reaches the open right-hand table: {\"screen\":{\"x\":\"118\",\"y\":\"86\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"468\",\"podY\":\"519\",\"podHeading\":\"20\",\"transport\":\"foot\",\"city\":\"city-47\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"room\",\"room\":\"6\",\"occupants\":\"6\",\"service\":\"talking\",\"dialogue\":\"32\",\"minutes\":\"228333\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-16\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"133\",\"shipHealth\":\"153\",\"shipTargetX\":\"653\",\"shipTargetY\":\"84\",\"mode\":\"campaign\",\"rest\":\"93\",\"nourishment\":\"105\",\"seed\":\"12345\"},\"flags\":[false,true,true,false],\"tavern\":{\"playerSeat\":9,\"secondary\":0,\"contact\":{\"actor\":6,\"kind\":17}},\"actors\":[{\"slot\":2,\"words\":[31,61,31,61,31,61,5912,793,1,194]},{\"slot\":3,\"words\":[31,50,31,50,31,50,5912,792,4,65]},{\"slot\":4,\"words\":[31,97,31,97,31,97,5912,792,3,99]},{\"slot\":5,\"words\":[31,30,31,30,31,30,5912,24,2,64]},{\"slot\":6,\"words\":[86,90,86,90,86,90,5912,23,7684,101]},{\"slot\":0,\"words\":[18,30,18,30,18,30,5891,2,3,0]}]}",
+        "The visitor quotes the spare distortion unit",
+        "The normal sale slot accepts the carried distortion unit",
+        "Only the first distortion unit leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The first distortion unit sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the first city-47 spare sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1368 Cr for your s/t distorter.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1368,
+        "bank": 1775,
+        "carried": [
+          0,
+          24,
+          235,
+          30
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_second_distorter_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first distorter sale leaves a second carried node for funding",
+        "The bartender opens the live referral menu",
+        "Bartender remains available after declining a referral",
+        "Bartender reopens after a declined referral",
+        "The bartender can find a buyer",
+        "The bartender accepts the distortion unit sale request",
+        "The sale referral stores the item and direction: {\"flags\":[false,true,true,false],\"workspace\":{\"lastCity\":47,\"mood\":3,\"quantity\":1,\"gate\":1,\"item\":30,\"actor\":0}}",
+        "A referred visitor reaches the seller at the table: {\"x\":\"118\",\"y\":\"86\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"468\",\"podY\":\"519\",\"podHeading\":\"20\",\"transport\":\"foot\",\"city\":\"city-47\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"room\",\"room\":\"6\",\"occupants\":\"6\",\"service\":\"talking\",\"dialogue\":\"32\",\"minutes\":\"228351\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-16\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"133\",\"shipHealth\":\"153\",\"shipTargetX\":\"653\",\"shipTargetY\":\"84\",\"mode\":\"campaign\",\"rest\":\"93\",\"nourishment\":\"105\",\"seed\":\"12345\"}",
+        "The visitor quotes the spare distortion unit",
+        "The normal sale slot accepts the carried distortion unit",
+        "Only the distortion unit leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The distortion unit sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 1368 Cr for your s/t distorter.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 2736,
+        "bank": 1775,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two local spare-part sales provide cash for cargo 20",
+        "bank reached through normal movement (66 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary city-47 deposit funds cargo 20 with launch clearance",
+        "The city-47 funding checkpoint exports unchanged",
+        "No uncaught errors during the city-47 deposit"
+      ],
+      "journey": {
+        "bank": 4511,
+        "cash": 0,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-47 bank funds the local cargo-20 market",
+        "pod reached through normal movement (184 steps)",
+        "pod action is available",
+        "exchange reached through normal movement (180 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-47 exchange opens through ordinary controls",
+        "The city-47 market checkpoint exports unchanged",
+        "No uncaught errors on the city-47 market visit"
+      ],
+      "journey": {
+        "bank": 4511,
+        "quote": 2600,
+        "clearanceAfter": 1911,
+        "supply": 6,
+        "offers": [
+          {
+            "commodityId": "cargo-16",
+            "quality": 2,
+            "price": 2800,
+            "demand": 4,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-16",
+            "quality": 5,
+            "price": 3700,
+            "demand": 4,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-16",
+            "quality": 4,
+            "price": 3400,
+            "demand": 4,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-21",
+            "quality": 2,
+            "price": 4200,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 4,
+            "price": 3400,
+            "demand": 2,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 6,
+            "price": 4200,
+            "demand": 2,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 4,
+            "price": 5500,
+            "demand": 4,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 5,
+            "price": 3700,
+            "demand": 2,
+            "supply": 6
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-47 synthesizer supplier has an empty carrier",
+        "The live quality-one price preserves launch clearance",
+        "The actual cargo-20 offer preserves launch clearance",
+        "Ordinary market visits offer quality-one synthesizers",
+        "Paid synthesizers enter the warehouse with clearance",
+        "Fresh-page save reload preserves Center progress",
+        "Paid synthesizers and launch clearance survive a fresh-page reload",
+        "The loaded cargo-20 checkpoint exports unchanged",
+        "No uncaught errors purchasing city-47 synthesizers"
+      ],
+      "journey": {
+        "quote": 2600,
+        "offerPrice": 2600,
+        "bank": 1911,
+        "pod": [
+          {
+            "commodityId": "cargo-20",
+            "quality": 1,
+            "originCity": "city-47",
+            "pricePaid": 2600
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 146,
+          "rest": 83,
+          "health": 255,
+          "nourishment": 100
+        },
+        "minutes": 228642
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_resupply_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid synthesizers are loaded before return resupply",
+        "bankPark reached through normal movement (128 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (133 steps)",
+        "bank action is available",
+        "Ordinary bank withdrawal provides travel-food cash",
+        "tavern reached through normal movement (66 steps)",
+        "tavern action is available",
+        "The city-47 bartender offers travel food",
+        "The first ration restores nourishment before the long return",
+        "The bartender offers a second carried ration",
+        "bank reached through normal movement (66 steps)",
+        "bank action is available",
+        "Remaining cash returns to the bank with one ration carried",
+        "pod reached through normal movement (123 steps)",
+        "pod action is available",
+        "dock reached through normal movement (242 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "Fresh-page save reload preserves Center progress",
+        "Paid synthesizers, launch funds, food and rest survive docking and reload",
+        "The resupplied return checkpoint exports unchanged",
+        "No uncaught errors during city-47 return resupply"
+      ],
+      "journey": {
+        "minutes": 229204,
+        "fuel": 71,
+        "condition": {
+          "vigor": 154,
+          "rest": 242,
+          "health": 255,
+          "nourishment": 164
+        },
+        "cash": 0,
+        "bank": 1895,
+        "carried": [
+          0,
+          24,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The rested paid synthesizers are ready for the homeward launch",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "City-47 bank clearance allows the return launch",
+        "Ordinary rescue refuels the contract carrier",
+        "The warp engine charges through live power phases",
+        "The home warp charges safely before engine-powered sublight",
+        "A second ordinary orbit rescue restores fuel after warp charge",
+        "Full shields cover the nearby homeward warp-point leg",
+        "Another ordinary rescue is scheduled for the protected sublight leg",
+        "The charged home warp and paid cargo persist across point selection",
+        "The ready-warp departure checkpoint exports unchanged",
+        "No uncaught errors preparing the synthesizer home warp"
+      ],
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 118,
+          "targetCharge": 118,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "refuelAt": 229354,
+        "minutes": 229324
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid synthesizers",
+        "The protected contact retains the paid synthesizers and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 123,
+        "shield": 255,
+        "minutes": 229345
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_cloak_contact_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 29,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 229351,
+        "refuelAt": 229354,
+        "motion": 13
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid synthesizers in the protected point flight",
+        "The protected contact retains the paid synthesizers and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 205,
+        "shield": 255,
+        "minutes": 229364
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_second_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 111,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 229370,
+        "refuelAt": null,
+        "motion": 21
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_second_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid synthesizers in the protected point flight",
+        "The protected contact retains the paid synthesizers and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 1,
+        "shield": 255,
+        "minutes": 229392
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_third_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 0,
+        "hull": 16,
+        "shield": 0,
+        "minutes": 229398,
+        "refuelAt": null
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_recharge_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The third pirate leaves the paid lot stranded safely before the warp point",
+        "Ordinary stationary rescue refuels the intact carrier",
+        "The warp engine charges through live power phases",
+        "The home warp recharges after the fuel-out stop",
+        "A second stationary rescue restores full point-flight fuel",
+        "Half shields protect the remaining short point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The recharged carrier selects the nearby safe point with cargo intact",
+        "The recharged point checkpoint exports unchanged",
+        "No uncaught errors on the ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "fuel": 247,
+        "shield": 128,
+        "warp": {
+          "charge": 118,
+          "targetCharge": 118,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "orbit": {
+          "angle": 78,
+          "radius": 32
+        },
+        "minutes": 229532
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_after_recharge_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid synthesizers",
+        "The protected contact retains the paid synthesizers and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 247,
+        "shield": 128,
+        "minutes": 229533
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_after_recharge_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 167,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 229539,
+        "refuelAt": null,
+        "motion": 2
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_final_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact remains in a short powered flight with cargo intact",
+        "Ordinary Halt preserves the charged warp while saving remaining fuel",
+        "The ordinary distress call schedules a stationary rescue",
+        "Ordinary stationary rescue fills the protected tank",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes the short safe-point leg with full fuel and charged warp",
+        "The refueled final leg exports unchanged",
+        "No uncaught errors on the ordinary midflight rescue"
+      ],
+      "journey": {
+        "fuel": 253,
+        "progress": 0,
+        "duration": 13,
+        "shield": 128,
+        "orbit": {
+          "angle": 78,
+          "radius": 33
+        },
+        "minutes": 229569
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_final_leg_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid synthesizers",
+        "The protected contact retains the paid synthesizers and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 237,
+        "shield": 128,
+        "minutes": 229574
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_final_leg_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 159,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 229581,
+        "refuelAt": null,
+        "motion": 4
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_last_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact remains in a short powered flight with cargo intact",
+        "Ordinary Halt preserves the charged warp while saving remaining fuel",
+        "The ordinary distress call schedules a stationary rescue",
+        "Ordinary stationary rescue fills the protected tank",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes the short safe-point leg with full fuel and charged warp",
+        "The refueled final leg exports unchanged",
+        "No uncaught errors on the ordinary midflight rescue"
+      ],
+      "journey": {
+        "fuel": 253,
+        "progress": 0,
+        "duration": 9,
+        "shield": 128,
+        "orbit": {
+          "angle": 78,
+          "radius": 36
+        },
+        "minutes": 229611
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_point_last_leg_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid synthesizers",
+        "Fresh-page save reload preserves Center progress",
+        "The protected point flight reaches the safe warp radius",
+        "The no-contact point checkpoint exports unchanged",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 210,
+        "shield": 128,
+        "minutes": 229625
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid synthesizers wait at the safe point with a charged home warp",
+        "The charged safe-point warp is available",
+        "Fresh-page save reload preserves Center progress",
+        "The guaranteed warp carries the paid synthesizers home",
+        "The home-warp checkpoint exports unchanged",
+        "No uncaught errors on the guaranteed home warp"
+      ],
+      "journey": {
+        "fuel": 206,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 229627
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_homeworld_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid synthesizers reach the home-system point with intact shields",
+        "Charged shields stop drawing fuel during stationary rescue waits",
+        "The first ordinary rescue fills the home-approach tank",
+        "A second rescue is scheduled before the home approach",
+        "The approach is staged shortly before the second rescue",
+        "Shields recharge for the outbound approach",
+        "Fresh-page save reload preserves Center progress",
+        "The protected paid carrier selects world one with an in-flight rescue due",
+        "The timed homeworld departure exports unchanged",
+        "No uncaught errors preparing the protected home approach"
+      ],
+      "journey": {
+        "fuel": 247,
+        "shield": 128,
+        "refuelAt": 229844,
+        "duration": 69,
+        "minutes": 229833
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_homeworld_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a contact, fuel stop or world-one orbit with synthesizers intact",
+        "The synthesizer approach checkpoint exports unchanged",
+        "No uncaught errors on the protected synthesizer approach"
+      ],
+      "journey": {
+        "contact": true,
+        "stalled": false,
+        "world": null,
+        "fuel": 238,
+        "hull": 16,
+        "shield": 128,
+        "refuelAt": 229844,
+        "minutes": 229837
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_homeworld_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid synthesizers, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 158,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 229843,
+        "refuelAt": 229844,
+        "motion": 7
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "One pirate retreat leaves the paid synthesizers and installed cloaker intact",
+        "Shields power down for the cloaked-only passage",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 1,
+        "orbit": {
+          "angle": 90,
+          "radius": 38
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 176,
+          "rest": 198,
+          "health": 255,
+          "nourishment": 142
+        },
+        "minutes": 229862
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the synthesizer carrier ready for another rescue",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 2,
+        "orbit": {
+          "angle": 95,
+          "radius": 35
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 178,
+          "rest": 194,
+          "health": 255,
+          "nourishment": 140
+        },
+        "minutes": 229964
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the synthesizer carrier ready for another rescue",
+        "Segment 3 halts without losing the paid cargo",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 3,
+        "orbit": {
+          "angle": 101,
+          "radius": 31
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 182,
+          "rest": 187,
+          "health": 255,
+          "nourishment": 136
+        },
+        "minutes": 230045
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the synthesizer carrier ready for another rescue",
+        "Segment 4 halts without losing the paid cargo",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 4,
+        "orbit": {
+          "angle": 105,
+          "radius": 29
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 186,
+          "rest": 181,
+          "health": 255,
+          "nourishment": 132
+        },
+        "minutes": 230187
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the synthesizer carrier ready for another rescue",
+        "Segment 5 halts without losing the paid cargo",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 5,
+        "orbit": {
+          "angle": 108,
+          "radius": 27
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 188,
+          "rest": 178,
+          "health": 255,
+          "nourishment": 130
+        },
+        "minutes": 230266
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_cloaked_segment_6_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The prior cloaked segment leaves the synthesizer carrier ready for another rescue",
+        "Segment 6 halts without losing the paid cargo",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 turns cloak off before rescue",
+        "The planned cloaked segment halts before world-one orbit",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid synthesizers remain safe at the intermediate orbit",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 6,
+        "orbit": {
+          "angle": 111,
+          "radius": 25
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 184,
+          "rest": 172,
+          "health": 255,
+          "nourishment": 126
+        },
+        "minutes": 230376
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_tail_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Six cloaked segments bring paid synthesizers near world one",
+        "Final approach has an ordinary rescue scheduled",
+        "The final approach starts with a full stationary tank",
+        "The final approach starts under cloak",
+        "Fresh-page reload preserves the world-one arrival",
+        "The paid synthesizers survive the final cloaked leg",
+        "The final approach checkpoint exports unchanged",
+        "No uncaught errors on the cloaked home approach"
+      ],
+      "journey": {
+        "arrived": false,
+        "orbit": {
+          "angle": 117,
+          "radius": 22
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 180,
+          "rest": 166,
+          "health": 255,
+          "nourishment": 124
+        },
+        "minutes": 230477
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_home_final_orbit_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Seven cloaked segments bring paid synthesizers near world one",
+        "Final approach has an ordinary rescue scheduled",
+        "The final approach starts with a full stationary tank",
+        "The final approach starts under cloak",
+        "Fresh-page reload preserves the world-one arrival",
+        "The paid synthesizers survive the final cloaked leg",
+        "The final approach checkpoint exports unchanged",
+        "No uncaught errors on the cloaked home approach"
+      ],
+      "journey": {
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 230,
+        "condition": {
+          "vigor": 178,
+          "rest": 160,
+          "health": 255,
+          "nourishment": 122
+        },
+        "minutes": 230609
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid synthesizer carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "The world-two synthesizers land at Banville intact",
+        "The paid synthesizer landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 1232,
+        "condition": {
+          "vigor": 178,
+          "rest": 160,
+          "health": 255,
+          "nourishment": 122
+        },
+        "minutes": 230614
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid city-02 synthesizers land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid city-02 synthesizers create one phase-eight receipt",
+        "The city-02 synthesizer delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-02 synthesizer delivery"
+      ],
+      "journey": {
+        "bank": 1232,
+        "receipts": 50,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 230627
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city47_good20_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid city-02 synthesizers have been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 1232,
+        "condition": {
+          "vigor": 176,
+          "rest": 157,
+          "health": 255,
+          "nourishment": 121
+        }
+      }
+    }
+  ]
+}
