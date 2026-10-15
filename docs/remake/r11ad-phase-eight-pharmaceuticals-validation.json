@@ -1,0 +1,399 @@
+{
+  "milestone": "R11ad",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-city07-good14-city01-returned.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-city02-good25-city01-returned.json",
+  "runCount": 9,
+  "uiChecks": 113,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 49,
+    "phaseEightReceipts": [
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-49",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-52",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-14",
+        "originCity": "city-07",
+        "pricePaid": 2400
+      },
+      {
+        "commodityId": "cargo-25",
+        "originCity": "city-02",
+        "pricePaid": 3600
+      }
+    ],
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 152,
+    "bank": 1232,
+    "podCargo": [
+      null,
+      null
+    ]
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_city01_two_nodes_salvage_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two surplus nodes remain in redundant engine and pilotage units",
+        "The carried ration restores nourishment before the next supplier leg",
+        "engineBay reached through normal movement (82 steps)",
+        "engineBay action is available",
+        "Ordinary engineering opens the redundant engine unit",
+        "pilotageBay reached through normal movement (130 steps)",
+        "pilotageBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Two spare nodes leave while one engine and scanner-equipped pilotage unit still work",
+        "The two-node funding checkpoint exports unchanged",
+        "No uncaught errors recovering redundant nodes"
+      ],
+      "journey": {
+        "bank": 2552,
+        "carried": [
+          31,
+          24,
+          235,
+          31
+        ],
+        "engine": 4,
+        "pilotage": 4,
+        "condition": {
+          "vigor": 82,
+          "rest": 175,
+          "health": 255,
+          "nourishment": 150
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_first_node_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two redundant control nodes are carried for the local pharmaceutical purchase",
+        "depart reached through normal movement (118 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "Bartender remains available after declining a referral",
+        "Bartender reopens after a declined referral",
+        "Bartender remains available after declining a referral",
+        "Bartender reopens after a declined referral",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1140,
+        "bank": 2552,
+        "carried": [
+          0,
+          24,
+          235,
+          31
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_second_node_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first node sale leaves a second carried node for funding",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction: {\"flags\":[false,true,true,false],\"workspace\":{\"lastCity\":1,\"mood\":3,\"quantity\":1,\"gate\":1,\"item\":31,\"actor\":0}}",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 2280,
+        "bank": 2552,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_good25_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The two surplus node sales provide market cash",
+        "bank reached through normal movement (271 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary bank deposit funds the pharmaceutical lot with launch reserve",
+        "The funded checkpoint exports unchanged",
+        "No uncaught errors during the capital deposit"
+      ],
+      "journey": {
+        "bank": 4832,
+        "cash": 0,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_good25_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded carrier can seek city-02 pharmaceuticals",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world city-02 supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (450 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-02 market opens through its ordinary exchange",
+        "The pharmaceutical-market checkpoint exports unchanged",
+        "No uncaught errors on the city-02 supplier visit"
+      ],
+      "journey": {
+        "bank": 4832,
+        "quote": 3600,
+        "clearanceAfter": 1232,
+        "supply": 4,
+        "offers": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "price": 900,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 3,
+            "price": 800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 4,
+            "price": 1600,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 3,
+            "price": 13000,
+            "demand": 3,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 4,
+            "price": 5200,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 1,
+            "price": 3600,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 3,
+            "price": 4400,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 7,
+            "price": 15600,
+            "demand": 6,
+            "supply": 6
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_good25_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-02 pharmaceutical supplier has an empty carrier",
+        "The live quality-one price preserves launch clearance",
+        "The actual pharmaceutical offer preserves launch clearance",
+        "Ordinary market visits offer quality-one cargo 25",
+        "Paid pharmaceuticals enter the warehouse with clearance",
+        "Fresh-page save reload preserves Center progress",
+        "Paid pharmaceuticals and launch clearance survive a fresh-page reload",
+        "The loaded pharmaceutical checkpoint exports unchanged",
+        "No uncaught errors purchasing city-02 pharmaceuticals"
+      ],
+      "journey": {
+        "quote": 3600,
+        "offerPrice": 3600,
+        "bank": 1232,
+        "pod": [
+          {
+            "commodityId": "cargo-25",
+            "quality": 1,
+            "originCity": "city-02",
+            "pricePaid": 3600
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 110,
+          "rest": 133,
+          "health": 255,
+          "nourishment": 124
+        },
+        "minutes": 227215
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_good25_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid pharmaceuticals are loaded for the Center",
+        "dock reached through normal movement (446 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The same-world flight lands paid pharmaceuticals at Banville intact",
+        "The Banville landing checkpoint exports unchanged",
+        "No uncaught errors on the pharmaceutical return"
+      ],
+      "journey": {
+        "bank": 1232,
+        "fuel": 152,
+        "hull": 16,
+        "condition": {
+          "vigor": 114,
+          "rest": 127,
+          "health": 255,
+          "nourishment": 122
+        },
+        "minutes": 227312
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_good25_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid city-02 pharmaceuticals land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid city-02 pharmaceuticals create one phase-eight receipt",
+        "The city-02 pharmaceutical delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-02 pharmaceutical delivery"
+      ],
+      "journey": {
+        "bank": 1232,
+        "receipts": 49,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 227325
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_good25_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid city-02 pharmaceuticals have been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "journey": {
+        "fuel": 152,
+        "hull": 16,
+        "bank": 1232,
+        "condition": {
+          "vigor": 116,
+          "rest": 125,
+          "health": 255,
+          "nourishment": 121
+        }
+      }
+    }
+  ]
+}

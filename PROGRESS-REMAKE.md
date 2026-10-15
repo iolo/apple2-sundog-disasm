@@ -1,3 +1,26 @@
+## R11ad — Paid phase-eight pharmaceuticals — 2026-10-16
+
+The ordinary-controls campaign recovered two control nodes from redundant
+ship units, leaving a working engine and scanner-equipped pilotage unit.
+Two bartender referrals sold the spare nodes for 1,140 credits each. A normal
+bank deposit raised the home account to 4,832 credits. The ship flew to
+city 02, bought quality-one cargo 25 for the live 3,600-credit offer, and
+loaded it with 1,232 credits left for launch clearance. The same-world
+flight returned the paid lot to the Banville Center. The Center accepted it
+once as the fourth phase-eight receipt, and the empty ship returned to the
+home capital. The active checkpoint is
+`output/playwright/remake/r11-phase-eight-city02-good25-city01-returned.json`:
+49 total receipts, phase 8 active, hull 16, fuel 152, home bank 1,232,
+and an empty pod. Nine passing Chrome journeys recorded 113 UI checks
+without page errors or production changes. See
+`docs/remake/r11ad-phase-eight-pharmaceuticals-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 8 still needs paid goods 02, 04, 05 and 20.
+Phase 9 needs paid goods 02, 07, 16, 24, 26, 28 and 29, a third distinct
+cryogen, and the ending. Continue those campaign tasks before broader
+fragility cleanup, per the user's priority.
+
 ## R11ac — Second phase-eight cryogen, cloaker, and paid spices — 2026-10-16
 
 The ordinary-controls campaign collected the distinct city-52 cryogen and
