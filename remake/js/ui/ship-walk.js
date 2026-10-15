@@ -403,7 +403,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
       for (const child of root.children) child.inert = true;
       root.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help" role="dialog" aria-modal="true" aria-labelledby="walk-help-title"><h2 id="walk-help-title">${t(inSpace()?'spaceTitle':groundEncounter()?'encounterDialogueTitle':'walkTitle')}</h2><p>${t(inSpace()?'spaceControls':groundEncounter()?'groundEncounterControls':campaignMode ? 'campaignControls' : 'walkControls')}</p><p>${t(inSpace()?'spaceHelp':groundEncounter()?'groundEncounterHelp':campaignMode ? 'campaignPlayScope' : 'walkScope')}</p><button id="walk-close-help" data-walk="close-help">${t('close')}</button></section></div>`);
       root.querySelector('#walk-close-help').focus();
-    } else if (inSpace()) {
+    } else if (inSpace() && !inventoryOpen) {
       for(const child of root.children)child.inert=true;
       root.insertAdjacentHTML('beforeend',spacePanel({state:liveCampaign(false),paused:state.paused,time:timeLabel(),message:spaceMessage,t}));
       (root.querySelector(`#space-panel [id="${focus||''}"]:not(:disabled)`)||root.querySelector('#space-surface')).focus({preventScroll:true});
@@ -743,6 +743,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     if(campaignMode&&!outsideShip()&&campaignSpace){if(!spaceAction({type:'wake'}))return}
     else survival = wakeUp(survival);
     if (survival.sleeping || survival.dead) return;
+    navigationOpen=false; navigationDraft=null;
     state.paused = true; inventoryOpen = true; inventoryMessage = 'wokeUp'; previous = 0;
     render(); root.querySelector('#inventory-sleep').focus();
   }

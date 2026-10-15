@@ -1,3 +1,25 @@
+## R11p — First non-capital cryogen pickup — 2026-10-15
+
+The paid working pilotage unit enables a normal 20-minute city flight from
+Sheshco to non-capital Zandasa (city 45). The pilot became exhausted as the
+flight ended. Waking had been blocked because the retained navigation panel
+covered the post-sleep inventory, leaving its focus target absent. Wake now
+closes that pending navigation view and gives the inventory precedence over a
+space view. The ordinary sleep/wake flow and fresh-page save then complete.
+At Zandasa, the pod reached the exchange and loaded the city's distinct
+initialized cryogen through the normal warehouse control. The latest readable
+checkpoint is `output/playwright/remake/r11-phase-four-city45-cryogen-loaded.json`:
+phase 4, 18 delivered receipts, one city-45 cryogen in the pod, fuel 253, and
+working pilotage. Two Chrome journeys pass 19 checks, all 523 browser rule
+groups pass, and the 23 export tests and both deterministic data checks pass.
+See `docs/remake/r11p-city45-validation.json`.
+
+R11 remains open. Next is return and deliver this cryogen, then buy and deliver
+phase-four cargo 16, 17, 19 and 23. The first city-45 market visit refreshed
+cargo 16 supply to zero; its offered cargo 19 starts at 8,000 credits, above
+current local spending power. Funding and source selection for the paid lots
+remain campaign work, followed by phases 5–9 and the ending.
+
 ## R11o — Paid pilotage upgrade unlocks non-capital cities — 2026-10-15
 
 The continuing 18-receipt phase-four campaign reached system 10 through normal

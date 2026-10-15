@@ -1,0 +1,88 @@
+{
+  "milestone": "R11p",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-pilotage-ready.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-four-city45-cryogen-loaded.json",
+  "uiChecks": 19,
+  "rules": {
+    "browser": "155.0.8059.39",
+    "checks": 523,
+    "status": "pass",
+    "failures": [],
+    "errors": []
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_four_city45_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The real scanner has unlocked non-capital pilotage in the continuing campaign",
+        "navigation reached through normal movement (73 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary forced rest recovers enough to wake",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary 20-minute city flight lands at cryogen city 45",
+        "The non-capital landing exports unchanged",
+        "No uncaught errors on the scanner-enabled flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 165120,
+        "fuel": 253,
+        "condition": {
+          "vigor": 108,
+          "rest": 241,
+          "health": 255,
+          "nourishment": 117
+        },
+        "bank": 1357
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city45_cryogen_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The non-capital landing and empty pod are ready for the city-45 cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (517 steps)",
+        "exchange action is available",
+        "City 45 still owns its distinct initialized cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "The city-45 cryogen loads into the live pod and survives reload",
+        "The cryogen checkpoint exports unchanged",
+        "No uncaught errors on the scanner-enabled cryogen pickup"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 165189,
+        "fuel": 253,
+        "condition": {
+          "vigor": 110,
+          "rest": 237,
+          "health": 255,
+          "nourishment": 116
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ],
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-45",
+          "pricePaid": 0
+        }
+      }
+    }
+  ],
+  "staticChecks": {
+    "test_exports": "23 passed",
+    "export_assets": "171 artifacts verified",
+    "source_index": "584 strings verified"
+  }
+}
