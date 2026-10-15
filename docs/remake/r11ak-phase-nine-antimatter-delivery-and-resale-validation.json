@@ -1,0 +1,544 @@
+{
+  "milestone": "R11ak",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-city17-antimatter-trade-loaded.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-city02-handweapons-sold.json",
+  "runCount": 18,
+  "uiChecks": 169,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 57,
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-02",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 31,
+        "y": 14
+      },
+      "cityPosition": {
+        "x": 8,
+        "y": 9
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 126,
+    "homeBank": 14580,
+    "system03Bank": 1156,
+    "podCargo": [
+      null,
+      null
+    ],
+    "shipCondition": {
+      "vigor": 107,
+      "rest": 123,
+      "health": 255,
+      "nourishment": 27
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid antimatter and hand weapons is ready for its homeward launch",
+        "dock reached through normal movement (378 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Foreign-bank clearance allows the return launch",
+        "Ordinary rescue refuels the antimatter carrier",
+        "The warp engine charges through live power phases",
+        "The home warp charges safely before engine-powered sublight",
+        "A second ordinary orbit rescue restores fuel after the warp charge",
+        "Full shields cover the nearby homeward warp-point leg",
+        "Another ordinary rescue is scheduled for the protected sublight leg",
+        "The charged home warp persists across the ordinary point selection",
+        "The ready-warp departure checkpoint exports unchanged",
+        "No uncaught errors while charging and resupplying the home warp"
+      ],
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 85,
+          "targetCharge": 85,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "refuelAt": 244206,
+        "minutes": 244176
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and both paid goods",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The protected contact retains both paid goods and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 223,
+        "shield": 255,
+        "minutes": 244177
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid antimatter, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the antimatter and trade lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 129,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 244183,
+        "refuelAt": 244206,
+        "motion": 4
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid antimatter on its outbound point flight",
+        "A second contact still preserves the antimatter cargo",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 103,
+        "shield": 255,
+        "minutes": 244188
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_second_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid antimatter, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the antimatter and trade lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 1,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 244194,
+        "refuelAt": 244206,
+        "motion": 7
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The intact carrier has a pending ordinary rescue",
+        "The carrier holds position before fuel-out",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary rescue fills the stationary carrier after halting the point flight",
+        "The rescued carrier checkpoint exports unchanged",
+        "No uncaught errors on the pending ordinary rescue"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 255,
+        "shield": 0,
+        "orbit": {
+          "angle": 118,
+          "radius": 23
+        },
+        "condition": {
+          "vigor": 146,
+          "rest": 173,
+          "health": 255,
+          "nourishment": 44
+        },
+        "minutes": 244206
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked safe system-three point approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid antimatter and trade lot",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 31
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 144,
+          "rest": 170,
+          "health": 255,
+          "nourishment": 43
+        },
+        "minutes": 244272
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked safe system-three point approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid antimatter and trade lot",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 125,
+          "radius": 38
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 142,
+          "rest": 167,
+          "health": 255,
+          "nourishment": 42
+        },
+        "minutes": 244368
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_point_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked safe system-three point approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 128,
+          "radius": 43
+        },
+        "fuel": 126,
+        "condition": {
+          "vigor": 140,
+          "rest": 164,
+          "health": 255,
+          "nourishment": 41
+        },
+        "minutes": 244408
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The antimatter carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct home-system warp is within the live ship range",
+        "Ordinary machinery charges the direct home-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the antimatter to the home system",
+        "The antimatter warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 159,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 244598
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_home_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid antimatter and trade lot",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 126,
+          "radius": 34
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 124,
+          "rest": 140,
+          "health": 255,
+          "nourishment": 33
+        },
+        "minutes": 244880
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_home_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked homeworld approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid antimatter and trade lot",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 23
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 113,
+          "rest": 128,
+          "health": 255,
+          "nourishment": 29
+        },
+        "minutes": 245106
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_home_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched antimatter carrier is ready for the cloaked homeworld approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid antimatter and trade lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 126,
+        "condition": {
+          "vigor": 110,
+          "rest": 125,
+          "health": 255,
+          "nourishment": 28
+        },
+        "minutes": 245187
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_banville_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The antimatter carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "Antimatter and return hand weapons land at Banville intact",
+        "The antimatter carrier landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 126,
+        "hull": 16,
+        "bank": 1280,
+        "condition": {
+          "vigor": 110,
+          "rest": 125,
+          "health": 255,
+          "nourishment": 28
+        },
+        "minutes": 245192
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid antimatter and trade hand weapons land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid antimatter remain in their pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "Antimatter create one phase-nine receipt while the return hand weapons remain aboard",
+        "The antimatter delivery checkpoint exports unchanged",
+        "No uncaught errors on the antimatter delivery"
+      ],
+      "journey": {
+        "bank": 1280,
+        "receipts": 57,
+        "phase": 9,
+        "pod": [
+          null,
+          {
+            "commodityId": "cargo-27",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 3400
+          }
+        ],
+        "minutes": 245205
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_handweapons_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The antimatter are delivered and the return hand weapons remain in the pod",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the hand-weapon carrier to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the city-02 with trade hand weapons",
+        "The hand-weapon carrier city-02 landing exports unchanged",
+        "No uncaught errors on the city-02 hand-weapon flight"
+      ],
+      "journey": {
+        "fuel": 126,
+        "hull": 16,
+        "bank": 1280,
+        "condition": {
+          "vigor": 107,
+          "rest": 123,
+          "health": 255,
+          "nourishment": 27
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_handweapons_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The return hand-weapon lot reaches the city-02",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (200 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-02 exchange opens normally",
+        "The city-02 exchange quotes a gain on world-two hand weapons",
+        "The city-02 hand-weapon market checkpoint exports unchanged",
+        "No uncaught errors on the city-02 hand-weapon-market visit"
+      ],
+      "journey": {
+        "bank": 1280,
+        "quote": 13300,
+        "market": "city-02"
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_handweapons_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-02 exchange accepts the paid return hand weapons",
+        "The city-02 quotes a hand-weapon-trade gain",
+        "The ordinary warehouse receives the hand weapons from the pod",
+        "Fresh-page save reload preserves Center progress",
+        "The hand-weapon sale credits the home bank once",
+        "The hand-weapon-sale checkpoint exports unchanged",
+        "No uncaught errors on the ordinary hand-weapon sale"
+      ],
+      "journey": {
+        "quote": 13300,
+        "bank": 14580,
+        "pod": [
+          null,
+          null
+        ]
+      }
+    }
+  ]
+}
