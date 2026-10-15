@@ -1,3 +1,31 @@
+## R11v — Phase-four completion with two paid lots — 2026-10-15
+
+The continuing ordinary-controls playthrough repaired hull 5 to 16 in the
+world-08 capital, transferred enough money for the final market, and brought
+the paid city-47 silichips back to system 04. Repeated pirate contacts, normal
+Halt and distress refueling, and a fresh-page reload preserved that lot.
+At city 20 the exchange sold a quality-1 nullgrav lot for 5,100 credits;
+both lots remained in the pod. On the homeward trip the ship survived two
+more point contacts and made two shorter charged jumps through system 03,
+because the direct system-04-to-01 charge of 253 exhausted fuel. An intact
+part moved from a failed warp unit to the tactical display through ordinary
+engineering controls before the world-01 approach. Cannon fire drove off
+the final pirate; normal pilotage landed at Banville. The Center accepted
+both paid lots exactly once, advancing from phase 4 to phase 5 on the last
+delivery. A fresh-page reload and export preserve the 23 receipts, empty pod,
+and 11,584-credit system-01 bank balance.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-four-complete.json`: phase 5,
+completed phase 4, 23 receipts, hull 7, fuel 42, and nourishment 99.
+Thirty-four chained Chrome journeys pass 236 checks without page errors;
+see `docs/remake/r11v-phase-four-completion-validation.json`.
+
+R11 remains open. Phase 5 needs paid cargo 09, 12, 24, 25 and 26 plus two
+distinct cryogens. Phases 6–9 and the ending follow. Repair the ship and
+resupply before the next intersystem leg; broad UI fragility cleanup remains
+deferred until the campaign is complete.
+
 ## R11u — Preflight hull repair and revised homeward route — 2026-10-15
 
 The R11t bank transfer left hull 5 exposed to repeated pirates on the
