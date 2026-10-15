@@ -1,0 +1,764 @@
+{
+  "milestone": "R11y",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-six-complete.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-seven-foreign-pair-delivered.json",
+  "uiChecks": 401,
+  "runCount": 23,
+  "result": {
+    "activePhase": 7,
+    "completedPhase": 6,
+    "receipts": 41,
+    "phaseSevenReceipts": [
+      {
+        "commodityId": "cargo-09",
+        "originCity": "city-01"
+      },
+      {
+        "commodityId": "cargo-30",
+        "originCity": "city-01"
+      },
+      {
+        "commodityId": "cargo-03",
+        "originCity": "city-17"
+      },
+      {
+        "commodityId": "cargo-06",
+        "originCity": "city-17"
+      }
+    ],
+    "homeBank": 6817,
+    "systemThreeBank": 1756,
+    "hull": 13,
+    "fuel": 28,
+    "condition": {
+      "vigor": 135,
+      "rest": 82,
+      "health": 255,
+      "nourishment": 70
+    },
+    "pod": [
+      null,
+      null
+    ]
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_seven_city01_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "fuel": 32,
+        "hull": 16,
+        "bank": 11517,
+        "condition": {
+          "vigor": 127,
+          "rest": 205,
+          "health": 255,
+          "nourishment": 117
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "minutes": 210044,
+        "cash": 68,
+        "bank": 11517,
+        "supply": [
+          {
+            "id": 3,
+            "units": 0
+          },
+          {
+            "id": 6,
+            "units": 0
+          },
+          {
+            "id": 9,
+            "units": 6
+          },
+          {
+            "id": 15,
+            "units": 0
+          },
+          {
+            "id": 17,
+            "units": 0
+          },
+          {
+            "id": 30,
+            "units": 2
+          }
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 1,
+            "price": 900,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 4,
+            "price": 2000,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 3,
+            "price": 1800,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 5,
+            "price": 2200,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 4,
+            "price": 3200,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-30",
+            "quality": 1,
+            "price": 12500,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 3,
+            "price": 2900,
+            "demand": 5,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "price": 6100,
+            "demand": 0,
+            "supply": 2
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_trade_loop_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 29,
+      "journey": {
+        "rounds": [
+          {
+            "round": 1,
+            "openingBank": 11517,
+            "closingBank": 12917,
+            "profit": 1400,
+            "lots": [
+              {
+                "commodityId": "cargo-30",
+                "quality": 1,
+                "price": 11100,
+                "quote": 12500
+              }
+            ]
+          }
+        ],
+        "bank": 12917
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city03_trade_loop_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 85,
+      "journey": {
+        "rounds": [
+          {
+            "round": 2,
+            "openingBank": 12917,
+            "closingBank": 14417,
+            "profit": 1500,
+            "lots": [
+              {
+                "commodityId": "cargo-25",
+                "quality": 2,
+                "price": 4300,
+                "quote": 5000
+              },
+              {
+                "commodityId": "cargo-24",
+                "quality": 2,
+                "price": 5900,
+                "quote": 6700
+              }
+            ]
+          },
+          {
+            "round": 3,
+            "openingBank": 14417,
+            "closingBank": 17617,
+            "profit": 3200,
+            "lots": [
+              {
+                "commodityId": "cargo-28",
+                "quality": 6,
+                "price": 12800,
+                "quote": 16000
+              }
+            ]
+          },
+          {
+            "round": 4,
+            "openingBank": 17617,
+            "closingBank": 20817,
+            "profit": 3200,
+            "lots": [
+              {
+                "commodityId": "cargo-28",
+                "quality": 3,
+                "price": 9200,
+                "quote": 11500
+              },
+              {
+                "commodityId": "cargo-24",
+                "quality": 4,
+                "price": 7100,
+                "quote": 8000
+              }
+            ]
+          }
+        ],
+        "bank": 20817
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city05_trade_loop_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 58,
+      "journey": {
+        "rounds": [
+          {
+            "round": 5,
+            "openingBank": 20817,
+            "closingBank": 22917,
+            "profit": 2100,
+            "lots": [
+              {
+                "commodityId": "cargo-24",
+                "quality": 3,
+                "price": 5800,
+                "quote": 7200
+              },
+              {
+                "commodityId": "cargo-12",
+                "quality": 6,
+                "price": 3000,
+                "quote": 3700
+              }
+            ]
+          },
+          {
+            "round": 6,
+            "openingBank": 22917,
+            "closingBank": 25217,
+            "profit": 2300,
+            "lots": [
+              {
+                "commodityId": "cargo-25",
+                "quality": 5,
+                "price": 5700,
+                "quote": 6700
+              },
+              {
+                "commodityId": "cargo-24",
+                "quality": 7,
+                "price": 10000,
+                "quote": 11300
+              }
+            ]
+          }
+        ],
+        "bank": 25217
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city02_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 30,
+      "journey": {
+        "rounds": [
+          {
+            "round": 7,
+            "openingBank": 25217,
+            "closingBank": 28517,
+            "profit": 3300,
+            "lots": [
+              {
+                "commodityId": "cargo-24",
+                "quality": 5,
+                "price": 7100,
+                "quote": 8800
+              },
+              {
+                "commodityId": "cargo-29",
+                "quality": 5,
+                "price": 11300,
+                "quote": 12900
+              }
+            ]
+          }
+        ],
+        "bank": 28517
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_local_goods_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 8,
+      "journey": {
+        "bank": 13817,
+        "spent": 14700,
+        "pod": [
+          {
+            "commodityId": "cargo-09",
+            "quality": 5,
+            "originCity": "city-01",
+            "pricePaid": 2200
+          },
+          {
+            "commodityId": "cargo-30",
+            "quality": 1,
+            "originCity": "city-01",
+            "pricePaid": 12500
+          }
+        ],
+        "minutes": 211450
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_local_pair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 18,
+      "journey": {
+        "bank": 13817,
+        "receipts": 39,
+        "phase": 7,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 211510
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_system03_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 21,
+      "journey": {
+        "homeBank": 6817,
+        "foreignBank": 8056,
+        "condition": {
+          "vigor": 151,
+          "rest": 116,
+          "health": 255,
+          "nourishment": 87
+        },
+        "fuel": 32,
+        "minutes": 211846
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 11,
+      "journey": {
+        "contact": false,
+        "fuel": 116,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 211938
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_system03_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "contact": false,
+        "fuel": 153,
+        "shield": 0,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 212115
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city17_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "contact": false,
+        "fuel": 113,
+        "hull": 16,
+        "shield": 0,
+        "bank": 8056,
+        "condition": {
+          "vigor": 145,
+          "rest": 102,
+          "health": 255,
+          "nourishment": 80
+        },
+        "minutes": 212268,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city17_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 9,
+      "journey": {
+        "bank": 8056,
+        "quote": [
+          4100,
+          3500
+        ],
+        "clearanceAfter": 456,
+        "supply": [
+          3,
+          1
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-02",
+            "quality": 5,
+            "price": 6500,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 2,
+            "price": 4400,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 5,
+            "price": 6000,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 2,
+            "price": 4900,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 4,
+            "price": 5900,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 4,
+            "price": 7500,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-07",
+            "quality": 4,
+            "price": 8200,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "price": 800,
+            "demand": 0,
+            "supply": 1
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city17_trade_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 13,
+      "journey": {
+        "quote": 4500,
+        "pricePaid": 4900,
+        "bank": 3156,
+        "city": "city-16",
+        "requiresAlternative": true
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city16_refund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 19,
+      "journey": {
+        "quote": 8500,
+        "netProfit": 1300,
+        "bank": 9356,
+        "condition": {
+          "vigor": 141,
+          "rest": 94,
+          "health": 255,
+          "nourishment": 76
+        },
+        "minutes": 212496
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city17_contract_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 8,
+      "journey": {
+        "bank": 1756,
+        "pod": [
+          {
+            "commodityId": "cargo-06",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 3500
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 4100
+          }
+        ],
+        "condition": {
+          "vigor": 141,
+          "rest": 94,
+          "health": 255,
+          "nourishment": 76
+        },
+        "minutes": 212496
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 16,
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 85,
+          "targetCharge": 85,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "refuelAt": 212695,
+        "minutes": 212665
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_precharged_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 5,
+      "journey": {
+        "contact": true,
+        "fuel": 198,
+        "shield": 255,
+        "minutes": 212670
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_precharged_contact_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 3,
+      "journey": {
+        "initial": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "212670",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-03",
+          "world": "world-06",
+          "flight": "sublight",
+          "flightProgress": "6",
+          "space": "ship",
+          "contact": "true",
+          "shipHull": "16",
+          "shipGun": "0",
+          "shipRange": "119",
+          "shipHealth": "173",
+          "mode": "campaign",
+          "rest": "88",
+          "nourishment": "73",
+          "seed": "12345"
+        },
+        "final": {
+          "x": "45",
+          "y": "103",
+          "paused": "true",
+          "encounter": "",
+          "combatX": "",
+          "combatY": "",
+          "enemies": "0",
+          "combatHealth": "",
+          "podX": "",
+          "podY": "",
+          "podHeading": "16",
+          "transport": "foot",
+          "city": "",
+          "cameraX": "0",
+          "cameraY": "0",
+          "heading": "",
+          "scene": "ship",
+          "room": "",
+          "occupants": "0",
+          "service": "",
+          "dialogue": "",
+          "minutes": "212699",
+          "sleeping": "false",
+          "dead": "false",
+          "system": "system-03",
+          "world": "",
+          "flight": "",
+          "flightProgress": "",
+          "space": "ship",
+          "contact": "true",
+          "shipHull": "16",
+          "shipGun": "0",
+          "shipRange": "123",
+          "shipHealth": "242",
+          "mode": "campaign",
+          "rest": "88",
+          "nourishment": "73",
+          "seed": "12345"
+        },
+        "trace": [
+          {
+            "i": 0,
+            "contact": "true",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "173"
+          },
+          {
+            "i": 64,
+            "contact": "false",
+            "flight": "sublight",
+            "paused": "false",
+            "dead": "false",
+            "shield": "249"
+          }
+        ],
+        "location": {
+          "systemId": "system-03",
+          "worldId": null,
+          "cityId": null,
+          "orbit": {
+            "angle": 128,
+            "radius": 43
+          },
+          "surfacePosition": {
+            "x": 0,
+            "y": 0
+          },
+          "cityPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "fuel": 230,
+        "shield": 255,
+        "hull": 16
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_precharged_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 6,
+      "journey": {
+        "fuel": 222,
+        "shield": 255,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 212701
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_foreign_home_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 4,
+      "journey": {
+        "contact": true,
+        "hull": 16,
+        "shield": 255,
+        "fuel": 78
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_foreign_home_contact_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 8,
+      "journey": {
+        "fuel": 28,
+        "hull": 13,
+        "bank": 6817,
+        "minutes": 212857
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_foreign_pair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": 12,
+      "journey": {
+        "bank": 6817,
+        "receipts": 41,
+        "phase": 7,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 212869
+      }
+    }
+  ]
+}
