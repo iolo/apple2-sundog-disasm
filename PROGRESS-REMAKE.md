@@ -1,3 +1,24 @@
+## R11r — First two paid phase-four lots delivered — 2026-10-15
+
+The 19-receipt campaign survived the return from Banville to city 02 and bought
+two ordinary food rations. It reached system 07 by charged warp, transferred
+3,500 credits through its bank to system 06, and bought more food. Working
+pilotage landed directly at non-capital city 26. Its refreshed exchange board
+sold cargo 16 for 3,700 and cargo 19 for 3,600 credits. After loading both
+lots, a normal bank deposit restored the local account to 1,100 credits for
+launch clearance. A street beggar interrupted the bank walk; the visible reply
+ended the encounter without changing the cargo. Both paid lots survived pod
+docking, the homeward warp, landing, surface travel and fresh-page reload.
+Banville now records 21 distinct receipts in phase 4. Nine chained Chrome
+journeys pass 150 checks without page errors. The readable checkpoint is
+`output/playwright/remake/r11-phase-four-city26-two-delivered.json`; see
+`docs/remake/r11r-city26-validation.json`.
+
+R11 remains open. Phase 4 needs cargo 17 and 23; phases 5–9 and the ending
+follow. The pilot has 652 cash and 68 fuel, with 1,184 in the home account.
+System 03, 04 and 08 accounts retain transferable balances for the final
+phase-four purchases. Broad UI fragility cleanup follows campaign completion.
+
 ## R11q — City-45 cryogen delivered — 2026-10-15
 
 The continuing phase-four campaign returned the unique Zandasa cryogen by
