@@ -1,0 +1,1295 @@
+{
+  "milestone": "R11ai",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-complete.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-city01-spices-sold.json",
+  "runCount": 33,
+  "uiChecks": 377,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 56,
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 165,
+    "homeBank": 4980,
+    "podCargo": [
+      null,
+      null
+    ],
+    "shipCondition": {
+      "vigor": 172,
+      "rest": 196,
+      "health": 255,
+      "nourishment": 65
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pod waits at the completed phase-eight Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The phase-nine capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 16280,
+        "condition": {
+          "vigor": 154,
+          "rest": 111,
+          "health": 255,
+          "nourishment": 98
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city04_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The phase-nine carrier departs the home capital with funded clearance",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world droid and clothing supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (407 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-04 exchange opens normally",
+        "Both quality-one phase-nine goods are in stock and leave launch clearance",
+        "The city-04 market checkpoint exports unchanged",
+        "No uncaught errors on the phase-nine city-04 buying trip"
+      ],
+      "journey": {
+        "bank": 16280,
+        "quotes": [
+          4800,
+          4500
+        ],
+        "supply": [
+          2,
+          4
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-09",
+            "quality": 5,
+            "price": 1900,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 7,
+            "price": 9000,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 4,
+            "price": 2500,
+            "demand": 5,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 4,
+            "price": 10200,
+            "demand": 1,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 1,
+            "price": 4000,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 5,
+            "price": 5700,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 4,
+            "price": 3300,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 2,
+            "price": 1400,
+            "demand": 0,
+            "supply": 5
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city04_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-04 market has the first two phase-nine goods and funded clearance",
+        "Ordinary visits offer quality-one cargo-24 within launch clearance",
+        "Paid cargo-24 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-26 within launch clearance",
+        "Paid cargo-26 enters the warehouse",
+        "The two purchases preserve home-system launch clearance",
+        "The cargo-24 warehouse lot is available to load",
+        "The cargo-26 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid phase-nine lots and launch clearance survive a fresh-page reload",
+        "The two-lot checkpoint exports unchanged",
+        "No uncaught errors buying the first two phase-nine goods"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "price": 4800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "price": 4500,
+            "demand": 4,
+            "supply": 4
+          }
+        ],
+        "bank": 6980,
+        "pod": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "originCity": "city-04",
+            "pricePaid": 4800
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "originCity": "city-04",
+            "pricePaid": 4500
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city04_banville_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid phase-nine goods are aboard at the city-04 exchange",
+        "dock reached through normal movement (408 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The phase-nine pair lands at Banville intact",
+        "The phase-nine pair landing exports unchanged",
+        "No uncaught errors on the first phase-nine delivery flight"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 6980,
+        "pod": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "originCity": "city-04",
+            "pricePaid": 4800
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "originCity": "city-04",
+            "pricePaid": 4500
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city04_pair_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid city-04 phase-nine lots land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid cargo-24 remains in its pod slot until delivery",
+        "The paid cargo-26 remains in its pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "The first two paid phase-nine lots create exactly two receipts without an interim bonus",
+        "The phase-nine pair checkpoint exports unchanged",
+        "No uncaught errors on the first phase-nine pair delivery"
+      ],
+      "journey": {
+        "bank": 6980,
+        "receipts": 55,
+        "phase": 9,
+        "completedPhase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 241168
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_trade_arrive_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pod waits at the first phase-nine pair delivery at Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the city-02 trade market",
+        "The phase-nine city-02 landing exports unchanged",
+        "No uncaught errors on the trade-goods flight"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 6980,
+        "condition": {
+          "vigor": 150,
+          "rest": 103,
+          "health": 255,
+          "nourishment": 94
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_trade_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty phase-nine carrier reaches the trade supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (437 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-02 exchange opens normally",
+        "Quality-one droids are in stock and preserve home-system launch clearance",
+        "The city-02 trade market checkpoint exports unchanged",
+        "No uncaught errors on the city-02 trade visit"
+      ],
+      "journey": {
+        "bank": 6980,
+        "quote": 4800,
+        "supply": 2,
+        "offers": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 5,
+            "price": 7100,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 7,
+            "price": 9000,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 2,
+            "price": 9200,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 4,
+            "price": 1600,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 3,
+            "price": 13000,
+            "demand": 3,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 6,
+            "price": 3200,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 5,
+            "price": 1700,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 7,
+            "price": 2200,
+            "demand": 0,
+            "supply": 6
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_trade_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-02 droid market has stock and funded launch clearance",
+        "Ordinary visits offer quality-one droids at the live trade price",
+        "Paid trade droids enter the warehouse with home-system launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The paid droids and clearance survive a fresh-page reload",
+        "The trade-loaded checkpoint exports unchanged",
+        "No uncaught errors buying quality-one trade droids"
+      ],
+      "journey": {
+        "price": 4800,
+        "quality": 1,
+        "bank": 2180,
+        "pod": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "originCity": "city-02",
+            "pricePaid": 4800
+          },
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city02_trade_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid trade droids are aboard at the city-02 exchange",
+        "dock reached through normal movement (438 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The trade carrier leaves city 02 with hull and cargo intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary distress refuels the rested trade carrier after launch",
+        "The trade-launch checkpoint exports unchanged",
+        "No uncaught errors leaving the trade supplier"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "condition": {
+          "vigor": 152,
+          "rest": 237,
+          "health": 255,
+          "nourishment": 90
+        },
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 139,
+          "radius": 20
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 154,
+          "rest": 233,
+          "health": 255,
+          "nourishment": 89
+        },
+        "minutes": 241518
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 153,
+          "radius": 21
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 156,
+          "rest": 229,
+          "health": 255,
+          "nourishment": 88
+        },
+        "minutes": 241614
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 173,
+          "radius": 22
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 160,
+          "rest": 221,
+          "health": 255,
+          "nourishment": 86
+        },
+        "minutes": 241710
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 189,
+          "radius": 23
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 164,
+          "rest": 213,
+          "health": 255,
+          "nourishment": 84
+        },
+        "minutes": 241806
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 207,
+          "radius": 24
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 166,
+          "rest": 209,
+          "health": 255,
+          "nourishment": 83
+        },
+        "minutes": 241902
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_6_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 222,
+          "radius": 26
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 170,
+          "rest": 201,
+          "health": 255,
+          "nourishment": 81
+        },
+        "minutes": 241998
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_7_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 238,
+          "radius": 28
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 172,
+          "rest": 197,
+          "health": 255,
+          "nourishment": 80
+        },
+        "minutes": 242094
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_approach_8_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked world-two trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid trade droids",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid trade droids",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": true,
+        "orbit": {
+          "angle": 247,
+          "radius": 30
+        },
+        "fuel": 230,
+        "condition": {
+          "vigor": 174,
+          "rest": 189,
+          "health": 255,
+          "nourishment": 78
+        },
+        "minutes": 242174
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The trade carrier is in world-two orbit with landing fuel",
+        "Ordinary pilotage completes the city-07 landing",
+        "Fresh-page reload preserves the Banville landing",
+        "The trade droids land at city 07 intact",
+        "The trade landing exports unchanged",
+        "No uncaught errors on the city-07 landing"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 2180,
+        "condition": {
+          "vigor": 174,
+          "rest": 189,
+          "health": 255,
+          "nourishment": 78
+        },
+        "minutes": 242179
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid trade droids reach the world-two market",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (382 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-07 exchange opens normally",
+        "Droid proceeds fund art objects and return spices with launch clearance",
+        "The city-07 trade market checkpoint exports unchanged",
+        "No uncaught errors on the city-07 trade visit"
+      ],
+      "journey": {
+        "bank": 2180,
+        "quotes": {
+          "sellDroids": 7200,
+          "buyArt": 5700,
+          "buySpices": 2600
+        },
+        "supply": [
+          7,
+          2
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-29",
+            "quality": 6,
+            "price": 9300,
+            "demand": 0,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 6,
+            "price": 4400,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 4,
+            "price": 3500,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 4,
+            "price": 5200,
+            "demand": 1,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 5,
+            "price": 5700,
+            "demand": 1,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 2,
+            "price": 6200,
+            "demand": 0,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 5,
+            "price": 3900,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 1,
+            "price": 3600,
+            "demand": 1,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_trade_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-07 exchange accepts the paid trade droids",
+        "The refreshed market quotes a droid-trade gain",
+        "The ordinary warehouse receives the trade droids from the pod",
+        "Fresh-page save reload preserves Center progress",
+        "The droid sale credits the home-system bank once",
+        "The droid-sale checkpoint exports unchanged",
+        "No uncaught errors on the ordinary droid sale"
+      ],
+      "journey": {
+        "quote": 7200,
+        "bank": 9380,
+        "pod": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_pair_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The droid proceeds fund art objects and return spices",
+        "Ordinary visits offer quality-one cargo-29 within launch clearance",
+        "Paid cargo-29 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-14 within launch clearance",
+        "Paid cargo-14 enters the warehouse",
+        "The two purchases preserve 1,080 credits of home-system launch clearance",
+        "The cargo-29 warehouse lot is available to load",
+        "The cargo-14 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Art objects, return spices and launch clearance survive a fresh-page reload",
+        "The city-07 pair checkpoint exports unchanged",
+        "No uncaught errors buying art objects and return spices"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-29",
+            "quality": 1,
+            "price": 5700,
+            "demand": 0,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 1,
+            "price": 2600,
+            "demand": 0,
+            "supply": 2
+          }
+        ],
+        "bank": 1080,
+        "pod": [
+          {
+            "commodityId": "cargo-29",
+            "quality": 1,
+            "originCity": "city-07",
+            "pricePaid": 5700
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 1,
+            "originCity": "city-07",
+            "pricePaid": 2600
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_pair_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid art objects and return spices are aboard at the city-07 exchange",
+        "dock reached through normal movement (383 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The two-lot carrier leaves city 07 with hull and cargo intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary distress refuels the rested two-lot carrier after launch",
+        "The two-lot launch checkpoint exports unchanged",
+        "No uncaught errors leaving the world-two supplier"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "condition": {
+          "vigor": 172,
+          "rest": 236,
+          "health": 255,
+          "nourishment": 75
+        },
+        "orbit": {
+          "angle": 247,
+          "radius": 30
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 231,
+          "radius": 30
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 174,
+          "rest": 232,
+          "health": 255,
+          "nourishment": 74
+        },
+        "minutes": 242421
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 214,
+          "radius": 29
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 176,
+          "rest": 228,
+          "health": 255,
+          "nourishment": 73
+        },
+        "minutes": 242517
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 199,
+          "radius": 29
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 180,
+          "rest": 220,
+          "health": 255,
+          "nourishment": 71
+        },
+        "minutes": 242613
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 174,
+          "radius": 27
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 178,
+          "rest": 212,
+          "health": 255,
+          "nourishment": 69
+        },
+        "minutes": 242709
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 141,
+          "radius": 23
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 176,
+          "rest": 208,
+          "health": 255,
+          "nourishment": 68
+        },
+        "minutes": 242805
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_home_approach_6_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld two-lot approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both loaded lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both loaded lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 165,
+        "condition": {
+          "vigor": 172,
+          "rest": 200,
+          "health": 255,
+          "nourishment": 66
+        },
+        "minutes": 242891
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_banville_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The art-object carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "Art objects and return spices land at Banville intact",
+        "The two-lot Banville landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 165,
+        "hull": 16,
+        "bank": 1080,
+        "condition": {
+          "vigor": 172,
+          "rest": 200,
+          "health": 255,
+          "nourishment": 66
+        },
+        "minutes": 242896
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city07_art_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid art objects and trade spices land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid art objects remain in their pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "Art objects create one phase-nine receipt while the return spices remain aboard",
+        "The art-object delivery checkpoint exports unchanged",
+        "No uncaught errors on the art-object delivery"
+      ],
+      "journey": {
+        "bank": 1080,
+        "receipts": 56,
+        "phase": 9,
+        "pod": [
+          null,
+          {
+            "commodityId": "cargo-14",
+            "quality": 1,
+            "originCity": "city-07",
+            "pricePaid": 2600
+          }
+        ],
+        "minutes": 242909
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city01_spices_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The art objects are delivered and the return spices remain in the pod",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the spice carrier to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the capital with trade spices",
+        "The spice-carrier capital landing exports unchanged",
+        "No uncaught errors on the capital spice flight"
+      ],
+      "journey": {
+        "fuel": 165,
+        "hull": 16,
+        "bank": 1080,
+        "condition": {
+          "vigor": 172,
+          "rest": 196,
+          "health": 255,
+          "nourishment": 65
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city01_spices_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The return spice lot reaches the capital",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (267 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The capital exchange opens normally",
+        "The capital exchange quotes a gain on world-two spices",
+        "The capital spice market checkpoint exports unchanged",
+        "No uncaught errors on the capital spice-market visit"
+      ],
+      "journey": {
+        "bank": 1080,
+        "quote": 3900,
+        "market": "city-01"
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city01_spices_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The capital exchange accepts the paid return spices",
+        "The capital quotes a spice-trade gain",
+        "The ordinary warehouse receives the spices from the pod",
+        "Fresh-page save reload preserves Center progress",
+        "The spice sale credits the home bank once",
+        "The spice-sale checkpoint exports unchanged",
+        "No uncaught errors on the ordinary spice sale"
+      ],
+      "journey": {
+        "quote": 3900,
+        "bank": 4980,
+        "pod": [
+          null,
+          null
+        ]
+      }
+    }
+  ]
+}
