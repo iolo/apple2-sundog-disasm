@@ -1,3 +1,28 @@
+## R11s — Silichips loaded; last cargo market located — 2026-10-15
+
+The 21-receipt phase-four campaign resupplied at city 02, transferred 2,300
+credits from system 03 to system 11, and bought a displayed 2,800-credit
+cargo-17 lot at city 47. Food and a normal deposit kept the system-11 bank
+above launch clearance. The pilot carried that paid lot to system 08,
+transferred 2,200 credits to system 04, and repaired the failed tactical display
+with an intact component recovered from an already failed gun unit. During the
+system-04 warp charge, a real pirate attacked. Shields and laser were charged
+through normal tactical controls; two aimed hits drove the pirate away. An
+ordinary distress call refueled the ship before it resumed the jump. The paid
+silichips survived the fight and fresh-page reload. At world 07, city 19's
+first market refresh left cargo 23 at zero supply. A normal city flight reached
+city 20, whose refreshed market has three units of cargo 23 available. The
+checkpoint is `output/playwright/remake/r11-phase-four-city20-market.json`:
+phase 4, 21 receipts, cargo 17 in the pod, 5,710 credits in system 04's bank,
+and 238 fuel. Sixteen chained Chrome journeys pass 220 checks without
+page errors; see `docs/remake/r11s-last-phase-four-lots-validation.json`.
+
+R11 remains open. The cheapest city-20 cargo-23 quote is 5,100 credits;
+leaving this bank launchable requires a further transfer. System 05 has 2,133
+credits and can send 1,000 while retaining its own launch balance. After that,
+the two paid lots can be returned to Banville to complete phase 4. Phases 5–9
+and the ending remain. Broad UI fragility cleanup follows campaign completion.
+
 ## R11r — First two paid phase-four lots delivered — 2026-10-15
 
 The 19-receipt campaign survived the return from Banville to city 02 and bought
