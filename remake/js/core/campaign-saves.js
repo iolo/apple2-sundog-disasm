@@ -27,7 +27,9 @@ import { initialCampaignDialogue, validateCampaignDialogue, initialCounter, vali
 import { initialColony, validateColony, colonyBonusTotal } from './colony.js';
 
 export const CAMPAIGN_FORMAT = 'sundog-campaign';
-export const CAMPAIGN_LIMIT = 131072;
+// Pretty-printed exports remain human-readable and importable through R11's
+// receipt ledger; a valid phase-one export already exceeds 128 KiB on disk.
+export const CAMPAIGN_LIMIT = 262144;
 const cityValidators=new WeakMap();
 const fail = () => { throw new Error('invalidCampaign'); };
 const keysMatch = (value, keys) => value && typeof value==='object' && !Array.isArray(value) &&

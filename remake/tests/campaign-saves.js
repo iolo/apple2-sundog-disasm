@@ -24,6 +24,8 @@ export async function campaignSaveTests(test,equal) {
     restored.state.ship.inventory.carried[0]=0;equal(state.ship.inventory.carried[0],235);
     restored.state.start.podLocation.position.x=999;equal(save.state.start.podLocation.position.x,147);
     equal(JSON.stringify(save).length<CAMPAIGN_LIMIT,true);
+    const readable=JSON.stringify(save,null,2);
+    equal(readable.length<CAMPAIGN_LIMIT,true);equal(codec.parse(readable),save);
   });
   await test('Campaign imports reject stale recipes, altered generation and unsupported progress',()=>{
     const valid=codec.make(fresh(),0),before=JSON.stringify(valid);

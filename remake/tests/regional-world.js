@@ -5,6 +5,9 @@ import { createCityMaps } from '../js/core/city-map.js';
 import { reduceCampaignExchange,validateExchange,exchangeSaleQuote } from '../js/core/campaign-exchange.js';
 import { reduceCampaignBank } from '../js/core/banking.js';
 import { cityServiceAt,atCityBank } from '../js/core/city-doors.js';
+import { createGroundWorld } from '../js/core/campaign-ground.js';
+import { canDrivePod,podReachability,podServiceAt,tryPodStep } from '../js/core/city-pod.js';
+import { reduceCampaignPod } from '../js/core/campaign-pod.js';
 
 export async function regionalWorldTests(test,equal) {
   const names=['initial-navigation','initial-economy','initial-location','ship-inventory','ship-walk','exchange-defaults','items','maps','surface-walk','city-walk'];
@@ -73,5 +76,27 @@ export async function regionalWorldTests(test,equal) {
     validateRegionalCargo(base.start,next.economy.exchange,next.pod,next.regional);
     const bad=structuredClone(next);bad.pod.cargo[1]=bad.pod.cargo[0];reject(()=>validateRegionalCargo(base.start,bad.economy.exchange,bad.pod,bad.regional),'invalidRegional');
     bad.pod.cargo=[null,null];reject(()=>validateRegionalCargo(base.start,bad.economy.exchange,bad.pod,bad.regional),'invalidRegional');
+  });
+  await test('A remote city pod can fetch its own cryogen after entering from the surface',()=>{
+    const world=createGroundWorld({...content,...content.ground},base.start),g=world.city('city-02',false).pod;
+    const origin=g.podOrigins.find(o=>canDrivePod(g,o.position,o.heading));
+    equal(Boolean(origin),true);
+    const queue=[origin],seen=new Set([`${origin.position.x}/${origin.position.y}`]);let target=null;
+    for(let i=0;i<queue.length&&!target;i++)for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(dx||dy){
+      const moved=tryPodStep(g,queue[i].position,dx,dy);if(!moved)continue;
+      const key=`${moved.position.x}/${moved.position.y}`;if(seen.has(key))continue;
+      seen.add(key);queue.push(moved);
+      if(podServiceAt(g,moved.position,moved.heading)==='exchange'){target=moved;break}
+    }
+    equal(Boolean(target),true);equal(podReachability(g)(target.position,target.heading),true);
+    let s=selectRegionalExchange(structuredClone(base),'city-02');
+    s.ground={...s.ground,cityId:'city-02',podCityId:'city-02'};
+    s.pod={...s.pod,attached:false,occupied:true,position:target.position,heading:target.heading};
+    s.travel={scene:'exchange',cityPosition:target.position};
+    equal(s.economy.exchange.warehouse.slots[0]?.commodityId,'cargo-31');
+    const moved=reduceCampaignPod(s,g,{type:'fetch',slot:0});
+    equal(moved.pod.cargo[0],s.economy.exchange.warehouse.slots[0]);
+    equal(moved.economy.exchange.warehouse.slots[0],null);
+    validateRegionalCargo(moved.start,moved.economy.exchange,moved.pod,moved.regional);
   });
 }
