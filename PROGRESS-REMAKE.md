@@ -1,3 +1,23 @@
+## R11l — Paid phase-three synthesizers and funded cryogen route — 2026-10-15
+
+From the resupplied twelve-receipt checkpoint, ordinary surface travel returns
+the pod to Drahew. An orbit distress call supplies fuel for a charged warp to
+system 12, where a bank transfer sends 4,300 credits to system 11 while
+preserving launch clearance. A second long warp and another rescue reach
+world 16. Its city-47 exchange sells a real 4,400-credit cargo-20 lot; the
+first market refresh leaves cargo 22 too scarce and expensive to buy without
+losing clearance. A city-47 bank transfer sends 3,500 credits to system 06,
+again leaving the departure account valid. The paid lot survives pod loading,
+docking, warps, landing, surface travel, delivery at Banville and fresh-page
+reload. The checkpoint `output/playwright/remake/r11-phase-three-good20-delivered.json`
+holds 13 distinct receipts. All chained Chrome journeys pass without page
+errors; no production rules changed after R11k's 523-group pass.
+
+R11 remains open. Phase 3 needs cargo 22 and two distinct cryogens. System 06
+has 8,013 credits and world 09 holds cryogens at cities 26 and 28. The current
+character has no carried food, so the next leg begins with ordinary resupply.
+Phases 4–9 and the ending remain. The user-owned `PRD-REMAKE.md` stays untouched.
+
 ## R11k — Phase-three food resupply and empty-tile encounter guard — 2026-10-15
 
 The continuing twelve-receipt campaign drives to city 02, parks, withdraws
