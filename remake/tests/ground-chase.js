@@ -184,7 +184,7 @@ export async function groundChaseTests(test,equal) {
     equal(world.city('city-01',true).map.tiles[8][14],24);
     equal(campaignGroundThreatContext(campaign(),world,campaignContent).tile,8);
   });
-  await test('Bad tile/context/control/session imports reject atomically before publishing any RNG mutation',()=>{
+  await test('Empty city tiles skip the chase after its gate draw; bad imports reject atomically',()=>{
     const input={position:{x:140,y:96},tile:0,threshold:12,randomState:1382964},before=JSON.stringify(input);
     reject(()=>createGroundChase(input,content),'groundChaseInvalidTile');equal(JSON.stringify(input),before);
     for(const edit of [s=>s.extra=true,s=>s.window.left++,s=>s.copyOrigin.y++,s=>s.randomState=-1,
@@ -200,7 +200,9 @@ export async function groundChaseTests(test,equal) {
     reject(()=>createGroundChase({...input,tile:8},invalidContent));
     const state=campaign();state.travel.cityPosition={x:252,y:192};state.ground.camera={x:4,y:3};
     const saved=JSON.stringify(state);
-    reject(()=>produceCampaignGroundChase(state,world,campaignContent,content),'groundChaseInvalidTile');
+    const empty=produceCampaignGroundChase(state,world,campaignContent,content);
+    equal(empty.session,null);equal(empty.draws,1);
+    equal(empty.campaign.encounters.randomState,oracle(state.encounters.randomState,1).state);
     equal(JSON.stringify(state),saved);
   });
 }

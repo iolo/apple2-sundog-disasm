@@ -177,7 +177,9 @@ export function produceCampaignGroundChase(previous,world,content,chaseContent) 
   const context=campaignGroundThreatContext(previous,world,content),gate=groundThreatGate(context);
   const next=structuredClone(previous);next.encounters.randomState=gate.randomState;
   let session=null,draws=gate.draws;
-  if(gate.triggered) {
+  // Game21 raises SYSTEMERROR21,40 when the eager gate fires on an empty
+  // city tile. Keep the gate draw, but do not freeze a continuing campaign.
+  if(gate.triggered&&context.tile>=2) {
     const r=createGroundChase({position:context.position,tile:context.tile,threshold:context.threshold,randomState:gate.randomState},chaseContent);
     session=r.state;next.encounters.randomState=session.randomState;draws+=r.draws;
   }
