@@ -1,3 +1,30 @@
+## R11ah — Phase-eight completion — 2026-10-16
+
+The ordinary-controls campaign carried the paid city-36 clothing lot to
+city 24 through a direct system-five warp, cloaked world-eight flight, and
+normal fuel rescues. City 24 paid 13,600 credits for it. The ship flew to
+city 22, where refreshed quality-one rare earths and exotic metals cost
+6,900 and 4,300 credits. Both paid lots fit in the pod, leaving 3,622
+credits in the system-five bank for launch clearance. The carrier reached
+the system-five point under cloak, exhausted its initial fuel during the
+direct home-warp charge, recovered through an ordinary distress rescue, and
+completed the jump. Further cloaked segments and rescues brought both lots
+to Banville with hull 16. The Center accepted each lot once, completed
+phase 8, and unlocked phase 9.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-eight-complete.json`: 53 receipts,
+phase 9 active, phase 8 complete, an empty pod, hull 16, fuel 230,
+16,280 credits in the home bank, and 3,622 in the system-five bank.
+Thirty-five passing Chrome journeys recorded 354 UI checks without page
+errors or production changes. See
+`docs/remake/r11ah-phase-eight-completion-validation.json`. The user PRD
+remains untouched.
+
+R11 remains open. Phase 9 needs paid goods 02, 07, 16, 24, 26, 28 and 29,
+one third distinct cryogen, and the ending audit. Continue the campaign
+before broader fragility cleanup, per the user's priority.
+
 ## R11ag — Trade-funded phase-eight clothing route — 2026-10-16
 
 The ordinary-controls campaign sold a damaged spare shield for 600 credits

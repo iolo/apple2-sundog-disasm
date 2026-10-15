@@ -1,0 +1,1245 @@
+{
+  "milestone": "R11ah",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-clothing-city36-loaded.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-complete.json",
+  "runCount": 35,
+  "uiChecks": 354,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 53,
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-60",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 19,
+        "y": 12
+      },
+      "cityPosition": {
+        "x": 7,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 230,
+    "homeBank": 16280,
+    "system05Bank": 3622,
+    "podCargo": [
+      null,
+      null
+    ],
+    "shipCondition": {
+      "vigor": 154,
+      "rest": 111,
+      "health": 255,
+      "nourishment": 98
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_system07_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid grade-C clothing and system-seven clearance await launch",
+        "dock reached through normal movement (141 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The city-36 bank clearance allows ordinary launch",
+        "Ordinary rescue refuels the clothing carrier",
+        "Shields cover the outbound warp-point leg",
+        "A pirate contact pauses the clothing carrier with cargo intact"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 137,
+        "shield": 128,
+        "hull": 16
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_system07_point_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid clothing, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the clothing lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 46,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 236742,
+        "refuelAt": null,
+        "motion": 21
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_system07_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid clothing on its outbound point flight",
+        "Fresh-page save reload preserves Center progress",
+        "The clothing carrier reaches the safe warp radius",
+        "The clothing point checkpoint exports unchanged",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 17,
+        "shield": 128,
+        "minutes": 236752
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_system05_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The clothing carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct system-five warp is within the live ship range",
+        "Ordinary machinery charges the direct system-five warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the clothing to system seven",
+        "The clothing warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-five warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 217,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 236902
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_leg_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The safe system-five warp point retains clothing and a working cloaker",
+        "The outbound world-eight leg begins under cloak",
+        "Fresh-page reload preserves the intermediate orbit",
+        "A short cloaked leg preserves clothing and stops before fuel exhaustion",
+        "The first cloaked leg exports unchanged",
+        "No uncaught errors on the cloaked approach"
+      ],
+      "journey": {
+        "arrived": false,
+        "orbit": {
+          "angle": 167,
+          "radius": 42
+        },
+        "fuel": 23,
+        "condition": {
+          "vigor": 144,
+          "rest": 78,
+          "health": 255,
+          "nourishment": 99
+        },
+        "minutes": 236917
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_rescue_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first short cloaked leg pauses intact for an ordinary rescue",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary stationary rescue refuels the intact clothing carrier",
+        "The first rescued leg checkpoint exports unchanged",
+        "No uncaught errors on ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 255,
+        "orbit": {
+          "angle": 167,
+          "radius": 42
+        },
+        "condition": {
+          "vigor": 142,
+          "rest": 74,
+          "health": 255,
+          "nourishment": 97
+        },
+        "minutes": 237042
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid clothing",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 183,
+          "radius": 38
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 138,
+          "rest": 68,
+          "health": 255,
+          "nourishment": 94
+        },
+        "minutes": 237218
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid clothing",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 198,
+          "radius": 35
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 134,
+          "rest": 58,
+          "health": 255,
+          "nourishment": 90
+        },
+        "minutes": 237455
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_rescue_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The fifth short cloaked leg pauses intact for an ordinary rescue",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary stationary rescue refuels the intact clothing carrier",
+        "The fifth rescued leg checkpoint exports unchanged",
+        "No uncaught errors on ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 255,
+        "orbit": {
+          "angle": 198,
+          "radius": 35
+        },
+        "condition": {
+          "vigor": 132,
+          "rest": 50,
+          "health": 255,
+          "nourishment": 88
+        },
+        "minutes": 237589
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid clothing",
+        "Segment 7 has an ordinary rescue scheduled",
+        "Segment 7 rescue fills the stationary tank",
+        "Segment 7 starts under cloak",
+        "Segment 7 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 205,
+          "radius": 33
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 126,
+          "rest": 38,
+          "health": 255,
+          "nourishment": 85
+        },
+        "minutes": 237773
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 8 has an ordinary rescue scheduled",
+        "Segment 8 rescue fills the stationary tank",
+        "Segment 8 starts under cloak",
+        "Segment 8 preserves the paid clothing",
+        "Segment 9 has an ordinary rescue scheduled",
+        "Segment 9 rescue fills the stationary tank",
+        "Segment 9 starts under cloak",
+        "Segment 9 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 218,
+          "radius": 30
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 115,
+          "rest": 22,
+          "health": 255,
+          "nourishment": 81
+        },
+        "minutes": 237986
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 10 has an ordinary rescue scheduled",
+        "Segment 10 rescue fills the stationary tank",
+        "Segment 10 starts under cloak",
+        "Segment 10 preserves the paid clothing",
+        "Segment 11 has an ordinary rescue scheduled",
+        "Segment 11 rescue fills the stationary tank",
+        "Segment 11 starts under cloak",
+        "Segment 11 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 235,
+          "radius": 26
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 96,
+          "rest": 2,
+          "health": 255,
+          "nourishment": 76
+        },
+        "minutes": 238269
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_6_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 12 has an ordinary rescue scheduled",
+        "Ordinary forced rest recovers enough to wake",
+        "Segment 12 rescue fills the stationary tank",
+        "Segment 12 starts under cloak",
+        "Segment 12 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "One cloaked segment preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": false,
+        "orbit": {
+          "angle": 250,
+          "radius": 22
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 96,
+          "rest": 242,
+          "health": 255,
+          "nourishment": 153
+        },
+        "minutes": 238459
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_cloaked_progress_7_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first rescued orbit is ready for further cloaked clothing segments",
+        "Segment 13 has an ordinary rescue scheduled",
+        "Segment 13 rescue fills the stationary tank",
+        "Segment 13 starts under cloak",
+        "Segment 13 preserves the paid clothing",
+        "Segment 14 has an ordinary rescue scheduled",
+        "Segment 14 rescue fills the stationary tank",
+        "Segment 14 starts under cloak",
+        "Segment 14 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 22,
+          "radius": 14
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 104,
+          "rest": 226,
+          "health": 255,
+          "nourishment": 145
+        },
+        "minutes": 238725
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_world08_orbit_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The clothing carrier is one short cloaked step from world eight",
+        "The final world-eight hop starts under cloak",
+        "The paid clothing reaches world-eight orbit intact",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Cloak is off at the destination orbit",
+        "The world-eight orbit exports unchanged",
+        "No uncaught errors on the final cloaked hop"
+      ],
+      "journey": {
+        "orbit": {
+          "angle": 28,
+          "radius": 12
+        },
+        "fuel": 10,
+        "condition": {
+          "vigor": 104,
+          "rest": 226,
+          "health": 255,
+          "nourishment": 145
+        },
+        "minutes": 238727
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_city24_landing_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cloaker has carried the trade clothing into world-eight orbit",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The clothing carrier lands at the target system-five buyer",
+        "The clothing buyer landing exports unchanged",
+        "No uncaught errors on the clothing-buyer landing"
+      ],
+      "journey": {
+        "fuel": 10,
+        "hull": 16,
+        "bank": 1222,
+        "condition": {
+          "vigor": 104,
+          "rest": 226,
+          "health": 255,
+          "nourishment": 145
+        },
+        "minutes": 238732
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_city24_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The system-five buyer receives grade-C trade clothing",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (190 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-24 exchange opens normally",
+        "The city-24 market checkpoint exports unchanged",
+        "No uncaught errors on the clothing-buyer market visit"
+      ],
+      "journey": {
+        "bank": 1222,
+        "quotes": {
+          "clothing": 13600,
+          "rareEarths": 7700,
+          "exoticMetals": 6700
+        },
+        "rareEarthsSupply": 1,
+        "exoticMetalsSupply": 1,
+        "offers": [
+          {
+            "commodityId": "cargo-28",
+            "quality": 5,
+            "price": 14100,
+            "demand": 6,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 4,
+            "price": 12500,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 5,
+            "price": 3100,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 2,
+            "price": 2300,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 5,
+            "price": 5100,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 1,
+            "price": 7600,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 2,
+            "price": 3800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-23",
+            "quality": 1,
+            "price": 7600,
+            "demand": 0,
+            "supply": 2
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_city24_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-24 exchange accepts the paid trade clothing",
+        "The refreshed market quotes a substantial clothing-trade gain",
+        "The ordinary warehouse receives the clothing from the pod",
+        "Fresh-page save reload preserves Center progress",
+        "The clothing sale credits the system-five bank once",
+        "The clothing-sale checkpoint exports unchanged",
+        "No uncaught errors on the ordinary clothing sale"
+      ],
+      "journey": {
+        "quote": 13600,
+        "bank": 14822,
+        "pod": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The clothing proceeds fund the last two phase-eight lots",
+        "dock reached through normal movement (191 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world rare-earth and exotic-metal supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (254 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-22 exchange opens normally",
+        "Both quality-one goods are in stock and leave enough bank balance for launch",
+        "The city-22 market checkpoint exports unchanged",
+        "No uncaught errors on the city-22 buying trip"
+      ],
+      "journey": {
+        "bank": 14822,
+        "quotes": [
+          6900,
+          4300
+        ],
+        "supply": [
+          2,
+          6
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-05",
+            "quality": 3,
+            "price": 5100,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 6,
+            "price": 2000,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-29",
+            "quality": 2,
+            "price": 10400,
+            "demand": 7,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 5,
+            "price": 2400,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 7,
+            "price": 10800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 3,
+            "price": 10200,
+            "demand": 7,
+            "supply": 7
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 4,
+            "price": 8600,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 4,
+            "price": 2400,
+            "demand": 0,
+            "supply": 4
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-22 market has both final phase-eight goods and funded clearance",
+        "Ordinary visits offer quality-one cargo-04 within launch clearance",
+        "Paid cargo-04 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-05 within launch clearance",
+        "Paid cargo-05 enters the warehouse",
+        "The two purchases preserve system-five launch clearance",
+        "The cargo-04 warehouse lot is available to load",
+        "The cargo-05 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid phase-eight lots and launch clearance survive a fresh-page reload",
+        "The two-lot checkpoint exports unchanged",
+        "No uncaught errors buying the two final phase-eight goods"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-04",
+            "quality": 1,
+            "price": 6900,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 1,
+            "price": 4300,
+            "demand": 0,
+            "supply": 6
+          }
+        ],
+        "bank": 3622,
+        "pod": [
+          {
+            "commodityId": "cargo-04",
+            "quality": 1,
+            "originCity": "city-22",
+            "pricePaid": 6900
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 1,
+            "originCity": "city-22",
+            "pricePaid": 4300
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid phase-eight goods are aboard at the city-22 exchange",
+        "dock reached through normal movement (255 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The final phase-eight pair leaves city 22 with hull and cargo intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary distress refuels the loaded carrier after launch",
+        "The launched checkpoint exports unchanged",
+        "No uncaught errors leaving the two-lot supplier"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "orbit": {
+          "angle": 28,
+          "radius": 12
+        },
+        "pod": [
+          {
+            "commodityId": "cargo-04",
+            "quality": 1,
+            "originCity": "city-22",
+            "pricePaid": 6900
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 1,
+            "originCity": "city-22",
+            "pricePaid": 4300
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_point_progress_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked warp-point leg",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid clothing",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 29,
+          "radius": 27
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 112,
+          "rest": 210,
+          "health": 255,
+          "nourishment": 137
+        },
+        "minutes": 238969
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_point_progress_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked warp-point leg",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid clothing",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 30,
+          "radius": 34
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 116,
+          "rest": 202,
+          "health": 255,
+          "nourishment": 133
+        },
+        "minutes": 239065
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_point_progress_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked warp-point leg",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid clothing",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid clothing",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": true,
+        "orbit": {
+          "angle": 32,
+          "radius": 43
+        },
+        "fuel": 113,
+        "condition": {
+          "vigor": 118,
+          "rest": 198,
+          "health": 255,
+          "nourishment": 131
+        },
+        "minutes": 239155
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_home_charge_stall_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both final phase-eight goods wait at the safe system-five warp point",
+        "The direct home-system warp is within live ship range",
+        "The paused warp charge preserves both paid lots"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": true,
+        "fuel": 0,
+        "hull": 16,
+        "charge": {
+          "charge": 112,
+          "targetCharge": 0,
+          "targetSystemId": null,
+          "charging": false
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both final phase-eight goods wait at the safe system-five warp point",
+        "Ordinary point rescue refuels the stalled homeward warp",
+        "The direct home-system warp is within live ship range",
+        "Ordinary machinery charges the direct home warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries both paid lots to the home system",
+        "The home-warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 25,
+        "hull": 16,
+        "charge": 202,
+        "minutes": 239475
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 45,
+          "radius": 40
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 136,
+          "rest": 169,
+          "health": 255,
+          "nourishment": 120
+        },
+        "minutes": 239675
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 61,
+          "radius": 37
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 144,
+          "rest": 157,
+          "health": 255,
+          "nourishment": 116
+        },
+        "minutes": 239923
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 74,
+          "radius": 34
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 152,
+          "rest": 145,
+          "health": 255,
+          "nourishment": 112
+        },
+        "minutes": 240152
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 90,
+          "radius": 30
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 160,
+          "rest": 133,
+          "health": 255,
+          "nourishment": 108
+        },
+        "minutes": 240409
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 103,
+          "radius": 26
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 160,
+          "rest": 123,
+          "health": 255,
+          "nourishment": 104
+        },
+        "minutes": 240642
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_6_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 117,
+          "radius": 22
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 156,
+          "rest": 115,
+          "health": 255,
+          "nourishment": 100
+        },
+        "minutes": 240872
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_homeworld_progress_7_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched two-lot carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves both paid lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 230,
+        "condition": {
+          "vigor": 154,
+          "rest": 113,
+          "health": 255,
+          "nourishment": 99
+        },
+        "minutes": 240955
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_banville_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid two-lot carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "The system-eleven two-lots land at Banville intact",
+        "The paid two-lot landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 1080,
+        "condition": {
+          "vigor": 154,
+          "rest": 111,
+          "health": 255,
+          "nourishment": 98
+        },
+        "minutes": 240960
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city22_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid city-22 phase-eight lots land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid cargo-04 remains in its pod slot until delivery",
+        "The paid cargo-05 remains in its pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "The two paid lots complete phase eight exactly once and unlock phase nine",
+        "The phase-eight completion checkpoint exports unchanged",
+        "No uncaught errors on the final phase-eight delivery"
+      ],
+      "journey": {
+        "bank": 16280,
+        "receipts": 53,
+        "phase": 9,
+        "completedPhase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 240973
+      }
+    }
+  ]
+}
