@@ -1,3 +1,34 @@
+## R11n — Phase-four local goods and campaign continuity — 2026-10-15
+
+The phase-three completion checkpoint continues through ordinary Banville-to-
+Drahew surface travel, a paid city-01 purchase of cargo 08 and 18, warehouse-to-
+pod loading, bartender food purchases, forced rest, and delivery back to the
+Center. Fresh-page reload and readable export preserve 18 distinct receipts;
+phase 4 remains active. The two paid lots cost 1,200 and 5,000 credits, and the
+home account retains 1,184 credits. The three chained Chrome journeys pass
+without page errors. Checkpoint:
+`output/playwright/remake/r11-phase-four-local-delivered.json`.
+
+R11 remains open. Phase 4 still needs cargo 16, 17, 19 and 23 plus one more
+distinct cryogen. The remaining cryogens are in non-capital cities, and this
+campaign's pilotage has no working special component. Funding, access to those
+cities, phases 5–9 and the ending remain to be proven through ordinary controls.
+
+## R11m — Phase-three completion with paid goods and four cryogens — 2026-10-15
+
+The thirteen-receipt campaign repairs a failed warp unit using onboard parts,
+funds system 05 through a normal bank transfer, and buys paid cargo 22 at
+city 22. A real pirate contact interrupts its two-lot home flight. Normal Comm
+provides a six-tick pause; tactical pan, laser charge and aimed fire destroy
+the pirate while preserving both lots. The ship lands at Drahew, buys food from
+its bartender, and delivers cargo 22 and the city-21 cryogen at Banville.
+
+The next ordinary trip takes the city-16 cryogen from world 06, returns it to
+Banville and advances the Center exactly once to phase 4. Fresh-page reload
+preserves all 16 receipts and the new phase. Chained Chrome journeys pass
+without page errors; `output/playwright/remake/r11-phase-three-complete.json`
+is the readable checkpoint. R11 remains open for phases 4–9 and the ending.
+
 ## R11l — Paid phase-three synthesizers and funded cryogen route — 2026-10-15
 
 From the resupplied twelve-receipt checkpoint, ordinary surface travel returns
