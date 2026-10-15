@@ -1,3 +1,26 @@
+## R11y — Four phase-seven goods delivered — 2026-10-15
+
+The continuing ordinary-controls playthrough funded phase seven through
+seven paid same-world trades and one additional world-six resale. It bought
+and delivered paid cargo 09 and 30 from city 01, then cargo 03 and 06 from
+city 17. Each lot created one phase-seven receipt. The long return with the
+foreign pair survived two pirate contacts by charging the home warp before
+the shielded sublight leg and using ordinary distress rescues. A fresh-page
+reload preserves the 41 receipts and empty pod.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-seven-foreign-pair-delivered.json`: phase
+7 remains active, hull 13, fuel 28, rest 82, nourishment 70, and 6,817
+credits in the system-01 bank. Twenty-three Chrome journeys pass 401 UI
+checks without page errors; see
+`docs/remake/r11y-phase-seven-four-goods-validation.json`.
+
+R11 remains open. Phase 7 still needs paid cargo 15 and 17 plus two distinct
+cryogens. The next leg should restore food and rest, repair the damaged hull,
+fund the remote purchases, and collect the remaining goods and cryogens.
+Phases 8–9 and the ending follow. Broader UI fragility work remains after
+the campaign, per the user's priority.
+
 ## R11x — Phase-six completion across three cryogen cities — 2026-10-15
 
 The ordinary-controls playthrough funded phase six through legal same-world
