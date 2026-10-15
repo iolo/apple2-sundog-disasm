@@ -1,0 +1,391 @@
+{
+  "milestone": "R11am",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-city17-radio-furs-loaded.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-city17-radio-furs-delivered.json",
+  "runCount": 11,
+  "uiChecks": 114,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 59,
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-60",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 19,
+        "y": 12
+      },
+      "cityPosition": {
+        "x": 7,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 152,
+    "homeBank": 2280,
+    "system03Bank": 3856,
+    "podCargo": [
+      null,
+      null
+    ],
+    "shipCondition": {
+      "vigor": 162,
+      "rest": 179,
+      "health": 255,
+      "nourishment": 58
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid radioactives and furs/silks are aboard at the city-17 exchange",
+        "dock reached through normal movement (391 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The two-lot carrier leaves city 07 with hull and cargo intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary distress refuels the rested two-lot carrier after launch",
+        "The two-lot launch checkpoint exports unchanged",
+        "No uncaught errors leaving the world-six supplier"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "condition": {
+          "vigor": 148,
+          "rest": 240,
+          "health": 255,
+          "nourishment": 74
+        },
+        "orbit": {
+          "angle": 117,
+          "radius": 19
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_point_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked safe system-three point approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid radioactive and furs/silks pair",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid radioactive and furs/silks pair",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 30
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 150,
+          "rest": 236,
+          "health": 255,
+          "nourishment": 73
+        },
+        "minutes": 247260
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_point_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked safe system-three point approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid radioactive and furs/silks pair",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid radioactive and furs/silks pair",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 126,
+          "radius": 39
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 152,
+          "rest": 232,
+          "health": 255,
+          "nourishment": 72
+        },
+        "minutes": 247356
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_point_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked safe system-three point approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid radioactive and furs/silks pair",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 128,
+          "radius": 43
+        },
+        "fuel": 178,
+        "condition": {
+          "vigor": 154,
+          "rest": 228,
+          "health": 255,
+          "nourishment": 71
+        },
+        "minutes": 247393
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The radioactive-furs carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct home-system warp is within the live ship range",
+        "Ordinary machinery charges the direct home-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the radioactives and furs/silks to the home system",
+        "The radioactives and furs/silks warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 165,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 247552
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_home_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid radioactives and furs/silks",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid radioactives and furs/silks",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 126,
+          "radius": 35
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 168,
+          "rest": 200,
+          "health": 255,
+          "nourishment": 64
+        },
+        "minutes": 247853
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_home_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked homeworld approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid radioactives and furs/silks",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid radioactives and furs/silks",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 23
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 164,
+          "rest": 185,
+          "health": 255,
+          "nourishment": 60
+        },
+        "minutes": 248096
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_home_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched radioactive-furs carrier is ready for the cloaked homeworld approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid radioactives and furs/silks",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 152,
+        "condition": {
+          "vigor": 162,
+          "rest": 179,
+          "health": 255,
+          "nourishment": 58
+        },
+        "minutes": 248186
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_banville_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The radioactive-furs carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "Radioactives and furs/silks land at Banville intact",
+        "The radioactive-furs carrier landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 152,
+        "hull": 16,
+        "bank": 2280,
+        "condition": {
+          "vigor": 162,
+          "rest": 179,
+          "health": 255,
+          "nourishment": 58
+        },
+        "minutes": 248191
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radioactives_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid radioactives and paid furs/silks land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid radioactives remain in their pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "Radioactives create one phase-nine receipt while the remaining furs/silks remain aboard",
+        "The radioactives delivery checkpoint exports unchanged",
+        "No uncaught errors on the radioactives delivery"
+      ],
+      "journey": {
+        "bank": 2280,
+        "receipts": 58,
+        "phase": 9,
+        "pod": [
+          null,
+          {
+            "commodityId": "cargo-28",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 5700
+          }
+        ],
+        "minutes": 248203
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_furs_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid furs/silks remain aboard after the radioactive delivery",
+        "Fresh-page save reload preserves Center progress",
+        "Furs/silks create receipt 59 and empty the paid-goods pod",
+        "The paired delivery checkpoint exports unchanged",
+        "No uncaught errors on the furs/silks delivery"
+      ],
+      "journey": {
+        "bank": 2280,
+        "receipts": 59,
+        "phase": 9,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 248203
+      }
+    }
+  ]
+}

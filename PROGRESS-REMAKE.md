@@ -1,3 +1,28 @@
+## R11am — Phase-nine radioactives and furs/silks delivered — 2026-10-16
+
+The ordinary-controls campaign carried the paid quality-one radioactives
+and furs/silks from city 17 to Banville. After a normal city-17 launch,
+five cloaked point segments and ordinary rescues reached safe warp radius.
+The direct home jump succeeded. Five further cloaked homeworld segments
+brought both lots to Banville with hull 16. The Center accepted radioactives
+as phase-nine receipt 58 and furs/silks as receipt 59; the pod is empty and
+phase 9 remains active.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-city17-radio-furs-delivered.json`:
+59 receipts, hull 16, fuel 152, home bank 2,280, system-three bank 3,856.
+That system-three balance can buy the final quality-one chronograph lot for
+2,800 credits while keeping 1,056 credits for launch. Eleven passing
+Chrome journeys recorded 114 UI checks without page errors or production
+changes. See
+`docs/remake/r11am-phase-nine-radioactive-furs-delivery-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Deliver the final paid chronographs from city 17, collect
+the last distinct cryogen at city 57, then validate the ending. Complete
+those campaign tasks before broader fragility cleanup, per the user's
+priority.
+
 ## R11al — Phase-nine three-good funding and paired pickup — 2026-10-16
 
 The ordinary-controls campaign took the 14,580-credit home balance to the
