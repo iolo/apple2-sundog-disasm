@@ -1,0 +1,401 @@
+{
+  "milestone": "R11ao",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-chronograph-city17-loaded.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-chronographs-delivered.json",
+  "runCount": 11,
+  "uiChecks": 122,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 60,
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-60",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 19,
+        "y": 12
+      },
+      "cityPosition": {
+        "x": 7,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 152,
+    "homeBank": 2280,
+    "system03Bank": 1056,
+    "podCargo": [
+      null,
+      null
+    ],
+    "shipCondition": {
+      "vigor": 174,
+      "rest": 175,
+      "health": 255,
+      "nourishment": 97
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_city17_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid chronographs are aboard at the city-17 exchange",
+        "dock reached through normal movement (378 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The chronograph carrier leaves city 07 with hull and cargo intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary distress refuels the rested chronograph carrier after launch",
+        "The chronograph launch checkpoint exports unchanged",
+        "No uncaught errors leaving the world-six supplier"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "condition": {
+          "vigor": 182,
+          "rest": 242,
+          "health": 255,
+          "nourishment": 115
+        },
+        "orbit": {
+          "angle": 117,
+          "radius": 19
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_point_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked safe system-three point approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid chronograph lot",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid chronograph lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 121,
+          "radius": 27
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 184,
+          "rest": 238,
+          "health": 255,
+          "nourishment": 114
+        },
+        "minutes": 249279
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_point_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked safe system-three point approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid chronograph lot",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid chronograph lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 124,
+          "radius": 35
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 188,
+          "rest": 230,
+          "health": 255,
+          "nourishment": 112
+        },
+        "minutes": 249375
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_point_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked safe system-three point approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid chronograph lot",
+        "Segment 7 has an ordinary rescue scheduled",
+        "Segment 7 rescue fills the stationary tank",
+        "Segment 7 starts under cloak",
+        "Segment 7 preserves the paid chronograph lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 127,
+          "radius": 41
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 190,
+          "rest": 226,
+          "health": 255,
+          "nourishment": 111
+        },
+        "minutes": 249471
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_point_approach_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked safe system-three point approach",
+        "Segment 8 has an ordinary rescue scheduled",
+        "Segment 8 rescue fills the stationary tank",
+        "Segment 8 starts under cloak",
+        "Segment 8 preserves the paid chronograph lot",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 128,
+          "radius": 43
+        },
+        "fuel": 217,
+        "condition": {
+          "vigor": 192,
+          "rest": 222,
+          "health": 255,
+          "nourishment": 110
+        },
+        "minutes": 249504
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The chronograph carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct home-system warp is within the live ship range",
+        "Ordinary machinery charges the direct home-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the chronographs to the home system",
+        "The chronographs warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 171,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 249679
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_home_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked homeworld approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid chronographs",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid chronographs",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 126,
+          "radius": 34
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 184,
+          "rest": 194,
+          "health": 255,
+          "nourishment": 103
+        },
+        "minutes": 249916
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_home_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked homeworld approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid chronographs",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid chronographs",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 22
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 176,
+          "rest": 178,
+          "health": 255,
+          "nourishment": 98
+        },
+        "minutes": 250207
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_home_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched chronograph carrier is ready for the cloaked homeworld approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid chronographs",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 152,
+        "condition": {
+          "vigor": 174,
+          "rest": 175,
+          "health": 255,
+          "nourishment": 97
+        },
+        "minutes": 250284
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronograph_banville_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The chronograph carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "Chronographs land at Banville intact",
+        "The chronograph carrier landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 152,
+        "hull": 16,
+        "bank": 2280,
+        "condition": {
+          "vigor": 174,
+          "rest": 175,
+          "health": 255,
+          "nourishment": 97
+        },
+        "minutes": 250289
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_chronographs_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid chronographs and no other cargo land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "The paid chronographs remain in their pod slot until delivery",
+        "Fresh-page save reload preserves Center progress",
+        "Chronographs create one phase-nine receipt while the empty pod remain aboard",
+        "The chronographs delivery checkpoint exports unchanged",
+        "No uncaught errors on the chronographs delivery"
+      ],
+      "journey": {
+        "bank": 2280,
+        "receipts": 60,
+        "phase": 9,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 250302
+      }
+    }
+  ]
+}
