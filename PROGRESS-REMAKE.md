@@ -1,3 +1,20 @@
+## R11q — City-45 cryogen delivered — 2026-10-15
+
+The continuing phase-four campaign returned the unique Zandasa cryogen by
+ordinary pod docking, launch, sublight flight, deep-space rescue and charged
+warp. A fresh-page reload preserved its origin at Jondd. After a normal
+world-01 landing, the pilot bought food at Drahew's tavern to survive the
+surface trip and delivered the lot at Banville's Center. The Center now holds
+19 distinct receipts, including the city-45 cryogen, and remains on phase 4.
+Both UI journeys pass 39 checks without page errors; the saved checkpoint is
+`output/playwright/remake/r11-phase-four-city45-delivered.json`. See
+`docs/remake/r11q-city45-delivery-validation.json`.
+
+R11 remains open. Phase 4 needs paid cargo 16, 17, 19 and 23. The pilot has
+3,639 cash, the home account has 1,184, and survival supplies are low after
+the return. These lots need source selection and legitimate funding before
+phases 5–9 and the ending. Broad fragility cleanup follows campaign completion.
+
 ## R11p — First non-capital cryogen pickup — 2026-10-15
 
 The paid working pilotage unit enables a normal 20-minute city flight from

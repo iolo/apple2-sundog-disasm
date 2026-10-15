@@ -1,0 +1,101 @@
+{
+  "milestone": "R11q",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-city45-cryogen-loaded.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-four-city45-delivered.json",
+  "uiChecks": 39,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_four_city45_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The non-capital cryogen begins its ordinary return to Banville",
+        "dock reached through normal movement (514 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The cryogen remains aboard after driving back to the ship",
+        "The selected flight reaches its destination through the live clock",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary deep-space rescue funds the homeward warp",
+        "Return warp charges through live power phases",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp returns the unique cryogen to Jondd",
+        "The home-warp checkpoint exports unchanged",
+        "No uncaught errors on the unique cryogen return warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 165512,
+        "fuel": 219,
+        "condition": {
+          "vigor": 120,
+          "rest": 217,
+          "health": 255,
+          "nourishment": 111
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ],
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-45",
+          "pricePaid": 0
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city45_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The home-system checkpoint carries the city-45 cryogen",
+        "The selected flight reaches its destination through the live clock",
+        "The shorter home-system route reaches world 01 without losing the ship",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary landing preserves the unique city-45 cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (256 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (25 steps)",
+        "tavern action is available",
+        "The bartender sells food for the long surface route",
+        "pod reached through normal movement (24 steps)",
+        "pod action is available",
+        "City boundary enters the surface",
+        "Ordinary forced rest recovers enough to wake",
+        "city-60 reached through normal movement (178 steps)",
+        "city-60 action is available",
+        "colony reached through normal movement (123 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-45 cryogen counts once toward phase four",
+        "The city-45 delivery checkpoint exports unchanged",
+        "No uncaught errors on city-45 cryogen delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 172438,
+        "fuel": 167,
+        "condition": {
+          "vigor": 114,
+          "rest": 119,
+          "health": 255,
+          "nourishment": 45
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ]
+      }
+    }
+  ]
+}
