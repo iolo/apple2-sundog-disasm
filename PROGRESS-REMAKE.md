@@ -1,3 +1,32 @@
+## R11ak — Phase-nine antimatter delivery and return-trade sale — 2026-10-16
+
+The ordinary-controls campaign launched the quality-one antimatter and
+hand-weapon lots from city 17 with 1,156 credits of system-three launch
+clearance. A homeward warp was charged at world 06, but two pirate contacts
+interrupted the point flight. The installed cloaker cleared both without
+hull or cargo loss. The ship halted with one fuel unit, received its
+scheduled distress rescue, and completed the warp-point approach in short
+cloaked segments. It recharged the home jump at safe radius and reached
+system 01. More cloaked segments and ordinary rescues brought the carrier
+to Banville with hull 16. The Center accepted paid antimatter once as
+phase-nine receipt 57 while hand weapons remained in the pod.
+
+The ship flew to city 02 and sold the quality-one hand weapons for their
+live quote of 13,300 credits, against the 3,400-credit purchase price.
+The home bank now holds 14,580 credits; the system-three bank holds 1,156.
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-city02-handweapons-sold.json`:
+57 receipts, phase 9 active, hull 16, fuel 126, and an empty pod. Eighteen
+passing Chrome journeys recorded 169 UI checks without page errors or
+production changes. See
+`docs/remake/r11ak-phase-nine-antimatter-delivery-and-resale-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 9 still needs paid goods 02, 16 and 28, the final
+distinct cryogen at city 57, and the ending audit. Wire enough home funds
+to system 03, then continue those deliveries before broader fragility
+cleanup, per the user's priority.
+
 ## R11aj — Phase-nine system-three funding and antimatter pickup — 2026-10-16
 
 The ordinary-controls campaign bought quality-one seeds and meats at city 05
