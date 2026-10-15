@@ -362,6 +362,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
     root.dataset.contact=campaignMode?campaignSpace?.flags[40]??false:false;
     root.dataset.shipHull=campaignMode?campaignResources?.hull??'':'';root.dataset.shipGun=campaignMode?campaignResources?.guns.charge??'':'';
     root.dataset.shipRange=campaignMode?campaignSpace?.words[217]??'':'';root.dataset.shipHealth=campaignMode?campaignSpace?.words[216]??'':'';
+    root.dataset.shipTargetX=campaignMode?campaignSpace?.words[206]??'':'';root.dataset.shipTargetY=campaignMode?campaignSpace?.words[205]??'':'';
     root.dataset.mode=campaignMode ? 'campaign' : 'walk';
     root.dataset.rest=condition.rest;root.dataset.nourishment=condition.nourishment;
     root.dataset.seed=campaignStart && campaignMode ? campaignStart.creation.seed : '';
@@ -530,7 +531,7 @@ export function shipWalkScreen({ stage, background, assets, t, language, locale=
   const spacePoint=event=>{
     const box=root.querySelector('#space-surface').getBoundingClientRect();
     return {x:Math.max(-8,Math.min(8,Math.round(((event.clientX-box.left)/box.width-.5)*16))),
-      y:Math.max(-8,Math.min(8,Math.round(((event.clientY-box.top)/box.height-.5)*16))),fire:true};
+      y:Math.max(-8,Math.min(8,Math.round(((event.clientY-box.top)/box.height-.5)*16))),fire:!!(event.buttons&1)};
   };
   const spaceKeys=()=>{
     let x=0,y=0;for(const key of keys){x+=directions[key][0]*8;y+=directions[key][1]*8}

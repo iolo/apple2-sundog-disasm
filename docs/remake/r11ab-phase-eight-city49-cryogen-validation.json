@@ -1,0 +1,472 @@
+{
+  "milestone": "R11ab",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-seven-complete.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-city49-cryo-city01-returned.json",
+  "uiChecks": 200,
+  "runCount": 22,
+  "result": {
+    "activePhase": 8,
+    "receipts": 46,
+    "location": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 10,
+    "condition": {
+      "vigor": 141,
+      "rest": 115,
+      "health": 255,
+      "nourishment": 47
+    },
+    "system01Bank": 1200,
+    "system11Bank": 9775,
+    "equipmentPerformance": [
+      4,
+      7,
+      4,
+      4,
+      4,
+      8
+    ],
+    "pod": [
+      null,
+      null
+    ],
+    "spaceLosses": [
+      {
+        "lot": {
+          "commodityId": "cargo-02",
+          "quality": 1,
+          "originCity": "city-49",
+          "pricePaid": 4100
+        },
+        "count": 1
+      }
+    ]
+  },
+  "rules": {
+    "browser": "155.0.8059.39",
+    "checks": 523,
+    "status": "pass",
+    "failures": [],
+    "errors": []
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_market_scout_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The read-only market plan starts from completed phase seven",
+        "Each phase-eight good has at least one initialized supplier",
+        "No page errors during read-only market scouting"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Phase seven is complete with an empty pod at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_system11_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The phase-eight ship can repair and fund the world-seventeen expedition",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "depot reached through normal movement (68 steps)",
+        "depot action is available",
+        "Three final hull points fit the home repair budget",
+        "Normal depot repair restores the full hull",
+        "bankPark reached through normal movement (320 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (219 steps)",
+        "bank action is available",
+        "Normal transfer funds phase-eight system eleven while preserving home clearance",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The repaired, funded carrier survives docking and fresh-page reload",
+        "The system-eleven funding checkpoint exports unchanged",
+        "No uncaught errors during phase-eight repair and funding"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_next_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The repaired funded ship leaves Banville for world seventeen",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch",
+        "Ordinary rescue refuels the outbound ship",
+        "Tactical shields cover the outbound warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-eight world-seventeen launch"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_system11_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct world-seventeen warp is within the live ship range",
+        "Ordinary machinery charges the direct world-seventeen warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches its selected system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct world-seventeen warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The ship arrives in system eleven with prior paid goods delivered",
+        "Ordinary rescue refuels the long world-seventeen approach",
+        "The empty pod needs no pirate shielding on the cryogen approach",
+        "Ordinary sublight reaches world 17 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The paid-goods pickup flight lands at the world-seventeen supplier",
+        "The world-seventeen landing checkpoint exports unchanged",
+        "No uncaught errors on the world-seventeen supplier approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_pair_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded world-seventeen landing is ready for cargo 02 and a distinct cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (174 steps)",
+        "exchange action is available",
+        "City 49 retains its distinct initialized cryogen",
+        "Ordinary market visits offer affordable quality-one cargo 02",
+        "The paid phase-eight good is in city-49 warehouse and debits the remote account",
+        "Fresh-page save reload preserves Center progress",
+        "The paid good and distinct cryogen survive a fresh-page reload",
+        "The city-49 pair checkpoint exports unchanged",
+        "No uncaught errors in world-seventeen first-pair procurement"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-49 cargo and cryogen are ready for homeward launch",
+        "dock reached through normal movement (171 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "City-49 bank clearance allows the return launch",
+        "Ordinary rescue refuels the contract carrier",
+        "The warp engine charges through live power phases",
+        "The home warp charges safely before engine-powered sublight",
+        "A second ordinary orbit rescue restores fuel after the warp charge",
+        "Full shields cover the nearby homeward warp-point leg",
+        "Another ordinary rescue is scheduled for the protected sublight leg",
+        "The charged home warp persists across the ordinary point selection",
+        "The ready-warp departure checkpoint exports unchanged",
+        "No uncaught errors while charging and resupplying the home warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and both phase-eight lots",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The protected contact retains both phase-eight lots and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_point_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live world-seventeen point flight starts with full shields and both phase-eight lots",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "The ordinary tactical contact clears or the laser engages",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary tactical controls clear the contact without losing either lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves both phase-eight lots in the protected point flight",
+        "The protected contact retains both phase-eight lots and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_point_second_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live world-seventeen point flight starts with full shields and both phase-eight lots",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "The ordinary tactical contact clears or the laser engages",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary tactical controls clear the contact without losing either lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_point_loop_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The twice-cleared city-49 pair resumes its protected point flight",
+        "Ordinary Comm and shields clear contact 1",
+        "Both phase-eight lots survive point contact 1",
+        "Any point-flight stall is safe and caused by empty fuel",
+        "Ordinary distress rescue refuels the stalled point flight",
+        "Ordinary Comm and shields clear contact 2",
+        "Both phase-eight lots survive point contact 2",
+        "Ordinary Comm and shields clear contact 3",
+        "Both phase-eight lots survive point contact 3",
+        "Ordinary Comm and shields clear contact 4",
+        "Both phase-eight lots survive point contact 4",
+        "Ordinary flight and contacts reach a near-point orbit safe for a home warp",
+        "Fresh-page save reload preserves Center progress",
+        "The city-49 paid pair survives near-point arrival and fresh-page reload",
+        "The near-point checkpoint exports unchanged",
+        "No uncaught errors on the protected city-49 point flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_near_point_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The intact city-49 pair is close enough to jump before another pirate contact",
+        "Ordinary halt holds the ship at the safe near-point orbit",
+        "Normal machinery charges the home warp while stationary",
+        "The near-point home warp is ready with fuel aboard",
+        "Fresh-page save reload preserves Center progress",
+        "The gravity-failure branch survives reload"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_final_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The gravity-failed ship remains intact just three radius units from a guaranteed jump",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary five-minute sublight reaches the guaranteed warp radius",
+        "The safe warp-point checkpoint exports unchanged",
+        "No uncaught errors on the final point crossing"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_final_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-49 pair waits at the guaranteed system-eleven warp radius",
+        "Ordinary point rescue funds the final home warp",
+        "Normal machinery charges the final home warp",
+        "The radius-43 home warp is ready with fuel aboard",
+        "Fresh-page save reload preserves Center progress",
+        "The guaranteed warp carries both phase-eight lots home",
+        "The home-warp checkpoint exports unchanged",
+        "No uncaught errors on the guaranteed home warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_home_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both phase-eight lots return to the home system point",
+        "The first ordinary rescue fills the approach tank",
+        "A second rescue is scheduled before the home approach",
+        "The approach starts shortly before the scheduled rescue",
+        "Shields charge fully ahead of pirate contact",
+        "The contact retains both lots and charged shields",
+        "No uncaught errors on the timed rescue approach"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_home_jettison_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both lots enter the first homeworld contact in fixed pod slots",
+        "Ordinary pod-slot jettison records the paid cargo loss and keeps the distinct cryogen",
+        "The pirate retreats after taking the valuable pod lot",
+        "The carrier and unique cryogen survive the concession",
+        "No uncaught errors during the source cargo concession"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_home_cryo_only_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Conceded-contact checkpoint preserves the cryogen and continuing flight",
+        "The cryogen reaches homeworld orbit intact",
+        "Fresh-page save reload preserves Center progress",
+        "The distinct city-49 cryogen lands at Banville",
+        "The Banville landing checkpoint exports unchanged",
+        "No uncaught errors on the home contact continuation"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_cryo_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The distinct city-49 cryogen lands at Banville after the paid cargo concession",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The distinct city-49 cryogen creates one phase-eight receipt",
+        "The city-49 cryogen delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-49 cryogen delivery"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_cryo_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City-49 cryogen has been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "active journey"
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_home_precise_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected paid pair resumes at the first homeworld pirate contact",
+        "Ordinary Comm opens a safe aiming interval",
+        "Fine pointer aiming scores at least one live laser hit",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary precision fire clears the pirate without losing either lot",
+        "The precise-contact checkpoint exports unchanged",
+        "No uncaught errors during pointer-aimed pirate combat"
+      ],
+      "errors": [],
+      "failures": [],
+      "branch": "alternate combat proof"
+    }
+  ]
+}
