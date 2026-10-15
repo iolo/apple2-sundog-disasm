@@ -61,6 +61,31 @@ export async function colonyTests(test,equal) {
     const bad=structuredClone(s);bad.colony.warehouse[0]=cryo;
     reject(()=>validateRegionalCargo(bad.start,bad.economy.exchange,bad.pod,bad.regional,[],{colony:bad.colony}),'invalidRegional');
   });
+  await test('All nine recipes consume the 17 distinct starting cryogens and reach the ending exactly once',()=>{
+    let s=service(fresh()),cryogens=[],paid=0;
+    for(const warehouse of [s.economy.exchange.warehouse,...s.regional.cities.map(c=>c.warehouse)])
+      for(let i=0;i<warehouse.slots.length;i++)if(warehouse.slots[i]?.commodityId==='cargo-31'){
+        cryogens.push(warehouse.slots[i]);warehouse.slots[i]=null;
+      }
+    equal(cryogens.length,17);
+    const firstBank=s.economy.accounts[0].balance;
+    s=reduceCampaignColony(s,content,geometry,{type:'enter'});
+    for(let phase=1;phase<=9;phase++){
+      for(let i=0;i<31;i++)for(let unit=0;unit<economy.colonyRequirements[phase-1][i];unit++){
+        const next=i===30?cryogens.shift():lot(i+1);
+        if(i!==30){s.economy.accounts[0].balance-=next.pricePaid;paid+=next.pricePaid}
+        s.pod.cargo[0]=next;s=reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0});
+        equal(s.pod.cargo[0],null);
+      }
+      equal([s.colony.completedPhase,s.colony.activePhase],[phase,phase+1]);
+      equal(colonyDemand(s.colony,content).reduce((a,b)=>a+b,0),phase===9?0:economy.colonyRequirements[phase].reduce((a,b)=>a+b,0));
+    }
+    equal(cryogens.length,0);equal(s.colony.receipts.length,61);
+    equal(validateColony(s.colony,content),s.colony);
+    validateRegionalCargo(s.start,s.economy.exchange,s.pod,s.regional,[],{colony:s.colony});
+    equal(s.economy.accounts[0].balance,firstBank-paid+colonyBonusTotal(s.colony,content,s.start));
+    reject(()=>reduceCampaignColony(s,content,geometry,{type:'deliver',container:'pod',slot:0}),'colonyUnavailable');
+  });
   await test('Version 30 preserves phase receipts, rejects overdelivery and migrates version 29 without invented progress',()=>{
     const s=fresh(),old=structuredClone(s);delete old.colony;
     const legacy={format:'sundog-campaign',version:29,scope:'ship-salvage-1',slot:0,savedAt:new Date().toISOString(),state:old};

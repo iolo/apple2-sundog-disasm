@@ -1,3 +1,25 @@
+## R11e — Live phase context and campaign journey checkpoints — 2026-10-15
+
+The ground rare-dialogue setup now reads the completed phase from live colony
+state, enabling its existing phase-gated source branch during an actual R11
+campaign. A regression checks that live phase 2 overrides the creation-time
+phase 0. A nine-phase contract test delivers all 61 recipe lots, consumes the
+17 distinct initialized cryogens, verifies their conservation, and reaches the
+fulfilled state exactly once. These rule fixtures use synthetic paid ordinary
+lots; they are not an ordinary-controls endgame playthrough.
+
+The Chrome controls journey now creates a fresh seed-12345 game, buys three
+needed goods at normal exchange prices, discovers Banville, enters the Center,
+delivers two actual pod lots and reloads the version-30 save in a fresh page.
+It passes with no page errors. All 521 Chrome rule groups pass. The extended
+journey also reached city 02 during the next supply run; its missing fourth
+good and depleted carried food show why the full acceptance path needs market
+search and planned food resupply. R11 remains open for all 61 legitimate
+deliveries through normal controls, including cross-world cryogen transport,
+the final ending and intermediate save/resume checks. R12 presentation/audio
+and R13 release validation follow R11. Broader polish and fragility work can
+wait until those remaining gates are finished.
+
 ## R11d — Source-derived Center bonus — 2026-10-15
 
 Game20 procedures 16/25/4 now govern Center valuation and phase rewards:

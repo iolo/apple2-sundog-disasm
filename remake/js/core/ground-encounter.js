@@ -27,9 +27,8 @@ function setup(campaign,combat,content,persistentWorkspace) {
     attributes:combat.attributes,flags:combat.flags,carried:combat.carried,cash:combat.cash,workspace,
     city:Number(location.cityId.slice(-2)),hour:Math.floor(campaign.ship.minutes/60)%24,
     surface:location.surfacePosition,sceneMiddle:combat.sceneMid,
-    colonyProgress:campaign.start.economy.colony.completedPhase,randomState:combat.randomState};
-  // The colony producer remains R11. Hosts that own active colony progress
-  // must supply that verified value before enabling the rare reward branch.
+    colonyProgress:campaign.colony?.completedPhase??campaign.start.economy.colony.completedPhase,
+    randomState:combat.randomState};
   const places={systems:content.navigation.systems.map(s=>s.name),worlds:content.navigation.worlds.map(w=>w.name),
     system:systemIndex+1,world:worldIndex+1};
   const prepared=setupEncounterDialogue(context);

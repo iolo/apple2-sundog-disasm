@@ -137,6 +137,13 @@ export async function groundHostTests(test,equal) {
     fail(()=>finishCampaignGroundEncounter(saved,world,content),'groundEncounterReturnUnavailable');
     fail(()=>codec.snapshot(saved),'invalidCampaign');equal(JSON.stringify(loaded),before);
   });
+  await test('Ground rare dialogue reads the live completed colony phase',()=>{
+    const state=campaign();state.encounters.randomState=10916;
+    state.colony={completedPhase:2};
+    const r=prepared(state),a=r.encounter.activation;
+    equal(state.start.economy.colony.completedPhase,0);
+    equal(a.context.colonyProgress,2);equal(a.conversation.state.entry,224);
+  });
   await test('Save24 validates historical23 first, adding only default combat fields and retaining old quote bounds',()=>{
     const legacy=old.make(old.create({...createCharacter(),name:'Legacy host'},12345),0),migrated=codec.validate(legacy);
     equal([migrated.version,migrated.scope],[24,'ground-encounters-1']);
