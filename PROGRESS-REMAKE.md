@@ -1,3 +1,33 @@
+## R11w — Phase-five completion with distinct cryogens — 2026-10-15
+
+The continuing ordinary-controls playthrough repaired hull 7 to 16 and
+funded the next contract through four legal same-world exchange trades.
+It bought paid cargo 09, 12, 24 and 25 at city 05, and cargo 26 at city 04.
+The Center accepted all five lots exactly once. A failed shield bank was
+restored with an intact component from another unit through normal ship
+engineering controls before the intersystem flight.
+
+The ship collected separate initialized cryogens from the city-26 and
+city-28 warehouses on world 09. A direct system-06-to-01 warp charge could
+outlast its fuel while waiting for a space rescue, so the successful return
+used two shorter charged jumps through system 03. Both cryogens reached
+Banville intact and received distinct phase-five receipts. The second
+delivery advanced the Center to phase 6 and credited the 4,500-credit phase
+bonus. Fresh-page reloads preserve the 30 receipts, empty pod, hull 16,
+fuel 131, and 6,517-credit system-01 bank balance.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-five-complete.json`. Twenty-eight
+chained Chrome journeys pass 399 checks without page errors; see
+`docs/remake/r11w-phase-five-completion-validation.json`.
+
+R11 remains open. Phase 6 needs paid cargo 17, 18, 21 and 27 plus three
+cryogens. The city-26/27 markets stock the first three goods, city 04 stocks
+cargo 27, and the unclaimed city-31, city-33 and city-36 cryogens can supply
+the three distinct loads. Fund the purchases and reserve launch clearance
+before the next intersystem leg. Phases 7–9 and the ending follow; broad UI
+fragility cleanup remains deferred until the campaign is complete.
+
 ## R11v — Phase-four completion with two paid lots — 2026-10-15
 
 The continuing ordinary-controls playthrough repaired hull 5 to 16 in the
