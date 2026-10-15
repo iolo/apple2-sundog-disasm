@@ -1,0 +1,586 @@
+{
+  "milestone": "R11aj",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-city01-spices-sold.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-city17-antimatter-trade-loaded.json",
+  "runCount": 14,
+  "uiChecks": 141,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 56,
+    "shipLocation": {
+      "systemId": "system-03",
+      "worldId": "world-06",
+      "cityId": "city-17",
+      "orbit": {
+        "angle": 117,
+        "radius": 19
+      },
+      "surfacePosition": {
+        "x": 9,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 25,
+        "y": 20
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 255,
+    "homeBank": 1280,
+    "system03Bank": 1156,
+    "podCargo": [
+      {
+        "commodityId": "cargo-07",
+        "quality": 1,
+        "originCity": "city-17",
+        "pricePaid": 4800
+      },
+      {
+        "commodityId": "cargo-27",
+        "quality": 1,
+        "originCity": "city-17",
+        "pricePaid": 3400
+      }
+    ],
+    "shipCondition": {
+      "vigor": 152,
+      "rest": 182,
+      "health": 255,
+      "nourishment": 47
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded empty carrier departs the home capital",
+        "dock reached through normal movement (268 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world export supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (280 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-05 exchange opens normally",
+        "Both export goods are in stock and leave home launch clearance",
+        "The city-05 export market checkpoint exports unchanged",
+        "No uncaught errors on the city-05 export-market visit"
+      ],
+      "journey": {
+        "bank": 4980,
+        "quotes": [
+          1700,
+          2000
+        ],
+        "supply": [
+          4,
+          6
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-24",
+            "quality": 1,
+            "price": 4800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 2,
+            "price": 800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-24",
+            "quality": 4,
+            "price": 6400,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 3,
+            "price": 1400,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 4,
+            "price": 11100,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 4,
+            "price": 2300,
+            "demand": 4,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 4,
+            "price": 6600,
+            "demand": 5,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 2,
+            "price": 1200,
+            "demand": 0,
+            "supply": 6
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-05 exchange has both affordable export goods",
+        "Ordinary visits offer quality-one cargo-11 within launch clearance",
+        "Paid cargo-11 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-12 within launch clearance",
+        "Paid cargo-12 enters the warehouse",
+        "The export purchases preserve 1,280 credits of home launch clearance",
+        "The cargo-11 warehouse lot is available to load",
+        "The cargo-12 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid export lots and launch clearance survive a fresh-page reload",
+        "The export-pair checkpoint exports unchanged",
+        "No uncaught errors buying the export pair"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-11",
+            "quality": 1,
+            "price": 1700,
+            "demand": 4,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 1,
+            "price": 2000,
+            "demand": 1,
+            "supply": 6
+          }
+        ],
+        "bank": 1280,
+        "pod": [
+          {
+            "commodityId": "cargo-11",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 1700
+          },
+          {
+            "commodityId": "cargo-12",
+            "quality": 1,
+            "originCity": "city-05",
+            "pricePaid": 2000
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two paid exports and launch clearance await at city 05",
+        "dock reached through normal movement (281 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The export carrier launches with both lots aboard",
+        "Ordinary rescue refuels the export carrier",
+        "Shields cover the outbound warp-point leg",
+        "A pirate contact pauses the export carrier with both lots intact"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 175,
+        "shield": 128,
+        "hull": 16
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_point_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid exports, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the export lots and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 97,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 243198,
+        "refuelAt": null,
+        "motion": 10
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid export on its outbound point flight",
+        "Fresh-page save reload preserves Center progress",
+        "The export carrier stalls intact near the safe warp radius: {\"location\":{\"systemId\":\"system-01\",\"worldId\":\"world-01\",\"cityId\":null,\"orbit\":{\"angle\":126,\"radius\":36},\"surfacePosition\":{\"x\":0,\"y\":0},\"cityPosition\":{\"x\":0,\"y\":0},\"position\":{\"x\":0,\"y\":0}},\"fuel\":0,\"motion\":null,\"flags\":{\"motion\":null,\"refuelAt\":null,\"lastEvent\":\"flightNoEngines\"}}",
+        "The export stall checkpoint exports unchanged",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 0,
+        "shield": 128,
+        "minutes": 243230
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_point_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The export carrier stalls intact before the safe warp point",
+        "Ordinary stationary rescue refuels the export carrier",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby safe point is selected after rescue",
+        "The rescued point checkpoint exports unchanged",
+        "No uncaught errors on ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "fuel": 255,
+        "shield": 0,
+        "orbit": {
+          "angle": 126,
+          "radius": 36
+        },
+        "condition": {
+          "vigor": 166,
+          "rest": 232,
+          "health": 255,
+          "nourishment": 60
+        },
+        "minutes": 243260
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_point_after_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The refueled export carrier is ready for the short safe-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The export carrier reaches the safe warp radius",
+        "The export point checkpoint exports unchanged",
+        "No uncaught errors on the rescued point leg"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 233,
+        "shield": 0,
+        "minutes": 243281
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city05_export_system03_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The export carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct system-three warp is within the live ship range",
+        "Ordinary machinery charges the direct system-three warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the export to system seven",
+        "The export warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-three warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 147,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 243484
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_export_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched export carrier is ready for the cloaked world-six trade approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the paid export lots",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the paid export lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 125,
+          "radius": 35
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 159,
+          "rest": 204,
+          "health": 255,
+          "nourishment": 53
+        },
+        "minutes": 243698
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_export_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched export carrier is ready for the cloaked world-six trade approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the paid export lots",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the paid export lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 121,
+          "radius": 26
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 155,
+          "rest": 188,
+          "health": 255,
+          "nourishment": 49
+        },
+        "minutes": 243900
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_export_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched export carrier is ready for the cloaked world-six trade approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the paid export lots",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the cargo and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 117,
+          "radius": 19
+        },
+        "fuel": 35,
+        "condition": {
+          "vigor": 154,
+          "rest": 185,
+          "health": 255,
+          "nourishment": 48
+        },
+        "minutes": 243982
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_export_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid exports arrive safely at world 06",
+        "Ordinary rescue refuels the city-17 landing",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The export carrier lands at city 17 with both lots",
+        "The export landing checkpoint exports unchanged",
+        "No uncaught errors on the export landing"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "bank": 1756,
+        "condition": {
+          "vigor": 154,
+          "rest": 185,
+          "health": 255,
+          "nourishment": 48
+        },
+        "minutes": 244017
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_export_sell_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both export lots reach the city-17 market intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (377 steps)",
+        "exchange action is available",
+        "Live city-17 quotes profitably value both exports",
+        "Export cargo-11 is in the pod before sale",
+        "Export cargo-11 reaches the market warehouse",
+        "Export cargo-12 is in the pod before sale",
+        "Export cargo-12 reaches the market warehouse",
+        "Fresh-page save reload preserves Center progress",
+        "Two ordinary sales fund the system-three account",
+        "The funded supplier checkpoint exports unchanged",
+        "No uncaught errors on the two export sales"
+      ],
+      "journey": {
+        "quotes": [
+          3000,
+          4600
+        ],
+        "purchaseQuotes": [
+          3800,
+          4800,
+          2800,
+          3400,
+          5700
+        ],
+        "bank": 9356,
+        "supply": [
+          4,
+          5,
+          4,
+          0,
+          2,
+          4,
+          5,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          3,
+          0,
+          0,
+          0
+        ],
+        "condition": {
+          "vigor": 152,
+          "rest": 182,
+          "health": 255,
+          "nourishment": 47
+        },
+        "minutes": 244053
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_antimatter_trade_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-17 exchange has antimatter and hand weapons",
+        "Ordinary visits offer quality-one cargo-07 within launch clearance",
+        "Paid cargo-07 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-27 within launch clearance",
+        "Paid cargo-27 enters the warehouse",
+        "The antimatter and return-trade purchases preserve 1,156 credits of home launch clearance",
+        "The cargo-07 warehouse lot is available to load",
+        "The cargo-27 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid city-17 lots and launch clearance survive a fresh-page reload",
+        "The antimatter-trade pair checkpoint exports unchanged",
+        "No uncaught errors buying the antimatter-trade pair"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-07",
+            "quality": 1,
+            "price": 4800,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 1,
+            "price": 3400,
+            "demand": 0,
+            "supply": 5
+          }
+        ],
+        "bank": 1156,
+        "pod": [
+          {
+            "commodityId": "cargo-07",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 4800
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 3400
+          }
+        ]
+      }
+    }
+  ]
+}
