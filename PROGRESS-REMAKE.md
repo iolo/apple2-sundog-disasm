@@ -1,3 +1,32 @@
+## R11al — Phase-nine three-good funding and paired pickup — 2026-10-16
+
+The ordinary-controls campaign took the 14,580-credit home balance to the
+city-01 bank and wired 12,200 credits to system 03. It left 2,380 credits
+at home and raised the system-three bank to 13,356. A 100-credit
+withdrawal bought two food rations; the pilot consumed one and carried the
+other. Normal sleep restored rest before the next interstellar trip.
+
+The empty carrier launched, reached the home warp point in five cloaked
+segments with ordinary rescues, and jumped directly to system 03. Seven
+more cloaked segments and rescues brought it to city 17 with hull 16.
+The live market still quoted quality-one radioactives at 3,800 credits,
+furs/silks at 5,700, and chronographs at 2,800. The first two paid lots
+are now in the pod. System-three launch clearance is 3,856 credits, enough
+to buy the final chronograph lot after this pair is delivered.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-city17-radio-furs-loaded.json`:
+57 receipts, phase 9 active, hull 16, fuel 255, with paid radioactives and
+furs/silks aboard. Thirteen passing Chrome journeys recorded 157 UI checks
+without page errors or production changes. See
+`docs/remake/r11al-phase-nine-three-good-funding-and-pair-pickup-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Deliver paid goods 02 and 28, collect and deliver paid
+chronographs 16 from city 17, then the last distinct cryogen at city 57
+and the ending audit. Continue campaign completion before broader
+fragility cleanup, per the user's priority.
+
 ## R11ak — Phase-nine antimatter delivery and return-trade sale — 2026-10-16
 
 The ordinary-controls campaign launched the quality-one antimatter and
