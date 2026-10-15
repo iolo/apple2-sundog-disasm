@@ -1,0 +1,337 @@
+{
+  "milestone": "R11o",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-local-delivered.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-four-pilotage-ready.json",
+  "checks": 145,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_four_world15_smoke.js",
+      "checks": [
+        "System-ten journey continues the legitimate eighteen-receipt campaign",
+        "City boundary enters the surface",
+        "Ordinary forced rest recovers enough to wake",
+        "city-01 reached through normal movement (283 steps)",
+        "city-01 action is available",
+        "dock reached through normal movement (562 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The selected flight reaches its destination through the live clock",
+        "The warp engine charges through live power phases",
+        "A paid-fuel warp reaches the only system listing pilotage item 22",
+        "The selected flight reaches its destination through the live clock",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary flight lands at system-ten capital Sheshco",
+        "The landing checkpoint exports unchanged",
+        "No uncaught errors on the system-ten flight"
+      ],
+      "journey": {
+        "minutes": 163842,
+        "fuel": 9,
+        "condition": {
+          "vigor": 142,
+          "rest": 71,
+          "health": 255,
+          "nourishment": 151
+        },
+        "carried": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bank": 5857
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_world14_smoke.js",
+      "checks": [
+        "Funding flight resumes the legitimate low-fuel system-ten landing",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ordinary orbit distress rescue refuels the pilot",
+        "The selected flight reaches its destination through the live clock",
+        "The warp engine charges through live power phases",
+        "The charged warp reaches the funding system",
+        "The selected flight reaches its destination through the live clock",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary flight lands at system-nine capital Tennow",
+        "The funding landing checkpoint exports unchanged",
+        "No uncaught errors on the funding flight"
+      ],
+      "journey": {
+        "minutes": 164097,
+        "fuel": 26,
+        "condition": {
+          "vigor": 147,
+          "rest": 63,
+          "health": 255,
+          "nourishment": 143
+        },
+        "bank": 4674
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_fund_smoke.js",
+      "checks": [
+        "The donor-system transfer begins at the legitimate Tennow landing",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (205 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (45 steps)",
+        "bank action is available",
+        "The 3,500-credit transfer funds item 22 and preserves both launch accounts",
+        "pod reached through normal movement (44 steps)",
+        "pod action is available",
+        "dock reached through normal movement (202 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The funded campaign survives docking and a fresh-page reload",
+        "The funded checkpoint exports unchanged",
+        "No uncaught errors on the bank-transfer leg"
+      ],
+      "journey": {
+        "minutes": 164250,
+        "fuel": 26,
+        "condition": {
+          "vigor": 144,
+          "rest": 51,
+          "health": 255,
+          "nourishment": 137
+        },
+        "sourceBank": 1174,
+        "destinationBank": 9357
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_return_smoke.js",
+      "checks": [
+        "The return flight starts from the funded Tennow checkpoint",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ordinary orbit distress rescue refuels the pilot",
+        "The selected flight reaches its destination through the live clock",
+        "The warp engine charges through live power phases",
+        "The charged warp returns to the trader system",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary orbit rescue restores landing fuel",
+        "The selected flight reaches its destination through the live clock",
+        "The refueled ship finishes the final minute into W’orrad orbit",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary flight lands back at Sheshco",
+        "The funding landing checkpoint exports unchanged",
+        "No uncaught errors on the funding flight"
+      ],
+      "journey": {
+        "minutes": 164610,
+        "fuel": 253,
+        "condition": {
+          "vigor": 130,
+          "rest": 27,
+          "health": 255,
+          "nourishment": 126
+        },
+        "bank": 9357
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_cash_ready_smoke.js",
+      "checks": [
+        "Pilotage purchase starts from the funded Sheshco return",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (116 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (51 steps)",
+        "bank action is available",
+        "Normal bank withdrawal funds trader while retaining launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The cash withdrawal and all colony receipts survive reload",
+        "The cash-ready checkpoint exports unchanged",
+        "No uncaught errors on the bank withdrawal"
+      ],
+      "journey": {
+        "cash": 8188,
+        "bank": 1357,
+        "condition": {
+          "vigor": 124,
+          "rest": 19,
+          "health": 255,
+          "nourishment": 124
+        }
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_sale_item_smoke.js",
+      "checks": [
+        "Surplus sale begins with funded cash and a failed unit containing a control node",
+        "pod reached through normal movement (51 steps)",
+        "pod action is available",
+        "dock reached through normal movement (117 steps)",
+        "dock action is available",
+        "pilotageBay reached through normal movement (120 steps)",
+        "pilotageBay action is available",
+        "Normal engineering retrieves the control node without reducing working pilotage",
+        "stores reached through normal movement (74 steps)",
+        "stores action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The sale item, laser and shield survive fresh-page reload",
+        "The sale-item checkpoint exports unchanged",
+        "No uncaught errors while retrieving the spare"
+      ],
+      "journey": {
+        "cash": 8188,
+        "bank": 1357,
+        "carried": [
+          31,
+          12,
+          235,
+          0
+        ],
+        "pilotage": 12
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_surplus_sale_smoke.js",
+      "checks": [
+        "The genuine surplus-control-node sale starts from the continuing campaign",
+        "depart reached through normal movement (77 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (116 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (24 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control-node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the surplus control node",
+        "The normal sale slot accepts the carried component",
+        "Only the surplus component leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The paid sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 2280 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 10468,
+        "bank": 1357,
+        "carried": [
+          0,
+          12,
+          235,
+          0
+        ]
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_buy_smoke.js",
+      "checks": [
+        "The scanner purchase begins with real proceeds, an empty slot and defensive gear",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "tavern reached through normal movement (0 steps)",
+        "tavern action is available",
+        "The returning bartender opens a fresh live menu",
+        "The bartender can refer a scanner seller",
+        "The purchased part remains available in system ten",
+        "The bartender accepts the scanner request",
+        "The item-22 referral is pending",
+        "The live seller reaches the pilot",
+        "The seller quotes item 22",
+        "The real proceeds cover the offered scanner",
+        "Fresh-page save reload preserves Center progress",
+        "The paid scanner and all eighteen receipts survive fresh-page reload",
+        "The scanner purchase exports unchanged",
+        "No uncaught errors on the funded scanner purchase"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll sell you a ground scanner for 6885 Cr.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 3583,
+        "bank": 1357,
+        "carried": [
+          22,
+          12,
+          235,
+          0
+        ]
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    },
+    {
+      "script": "tools/remake/r11_phase_four_pilotage_install_smoke.js",
+      "checks": [
+        "Engineering begins with the real paid scanner in the eighteen-receipt campaign",
+        "roomExit reached through normal movement (4 steps)",
+        "roomExit action is available",
+        "Normal aimed laser fire resolves the street fight",
+        "pod reached through normal movement (3 steps)",
+        "pod action is available",
+        "dock reached through normal movement (117 steps)",
+        "dock action is available",
+        "pilotageBay reached through normal movement (120 steps)",
+        "pilotageBay action is available",
+        "The ordinary pilotage engineering panel opens",
+        "The real scanner remains carried after street combat",
+        "The paid scanner replaces the standard socket and unlocks non-capital pilotage",
+        "Fresh-page save reload preserves Center progress",
+        "Working pilotage and colony progress survive fresh-page reload",
+        "The pilotage checkpoint exports unchanged",
+        "No uncaught errors on the ordinary engineering installation"
+      ],
+      "journey": {
+        "minutes": 164991,
+        "fuel": 253,
+        "condition": {
+          "vigor": 108,
+          "rest": 3,
+          "health": 255,
+          "nourishment": 120
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ],
+        "pilotagePerformance": 12,
+        "specialAvailable": true
+      },
+      "browser": "155.0.8059.39",
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

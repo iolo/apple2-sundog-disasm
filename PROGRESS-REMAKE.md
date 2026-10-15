@@ -1,3 +1,28 @@
+## R11o — Paid pilotage upgrade unlocks non-capital cities — 2026-10-15
+
+The continuing 18-receipt phase-four campaign reached system 10 through normal
+flight, since its bartender is the first system that can refer a seller for the
+ground scanner (item 22). A fuel-short return required an ordinary distress
+rescue and the final minute of sublight travel before landing. At system 09's
+bank, a 3,500-credit transfer funded system 10; its bank then supplied 8,000
+cash while retaining launch clearance. Engineering recovered a control node
+from an already failed pilotage unit. A live tavern buyer paid 2,280 credits
+for it, and a second referred visitor sold the scanner for 6,885. The pilot
+carried an onboard laser and shield through the purchase, won the natural
+street fight on leaving the tavern, and installed the paid scanner in a working
+pilotage unit. The group retains performance 12 and now reports
+`specialAvailable: true`. Fresh-page reload and export preserve the upgrade,
+cash 3,655, fuel 253, phase 4 and all 18 distinct receipts. Nine chained Chrome
+journeys pass 145 checks without page errors; evidence is in
+`docs/remake/r11o-pilotage-validation.json` and checkpoint
+`output/playwright/remake/r11-phase-four-pilotage-ready.json`.
+
+R11 remains open. Phase 4 still needs cargo 16, 17, 19 and 23 plus one
+distinct cryogen. City 45 on the current world holds a cryogen; cities 43–46
+offer three of the four goods, while city 41 also offers cargo 17. Funding and
+transport for these paid lots, phases 5–9 and the ending remain. Broad UI
+fragility cleanup follows the remaining campaign work as requested.
+
 ## R11n — Phase-four local goods and campaign continuity — 2026-10-15
 
 The phase-three completion checkpoint continues through ordinary Banville-to-
