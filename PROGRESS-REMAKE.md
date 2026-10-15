@@ -1,3 +1,18 @@
+## R11h — First off-world cryogen return — 2026-10-15
+
+The same six-receipt campaign buys fuel at city 01, attaches its pod, flies
+through normal navigation to world 02 and lands at city 06. The live exchange
+supplies that city's unique initialized cryogen and a normally purchased
+phase-two good 14. A second controls journey parks the pod, buys four food
+rations from the city 06 bartender, refuels at its depot, returns by ship to
+world 01, and delivers both lots to Banville. A fresh-page reload confirms
+eight distinct receipts, the preserved city-06 cryogen origin and paid good.
+Both Chrome journeys pass without page errors or edited campaign state.
+
+R11 remains open. Phase 2 now needs ordinary goods 10 and 21 from world 03.
+Funding and a cross-system flight are the next controls gate; phases 3–9 and
+the final ending still remain.
+
 ## R11g — Repeatable food supply and local phase-two delivery — 2026-10-15
 
 The continuing seed-12345 controls journey withdraws 1,000 credits from the
