@@ -1,0 +1,478 @@
+{
+  "milestone": "R11r",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-four-city45-delivered.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-four-city26-two-delivered.json",
+  "uiChecks": 150,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_four_city45_resupply_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-45 delivery survives for the next paid lot",
+        "City boundary enters the surface",
+        "city-02 reached through normal movement (47 steps)",
+        "city-02 action is available",
+        "The pod parks before walking to city services",
+        "tavern reached through normal movement (35 steps)",
+        "tavern action is available",
+        "The source tavern door opens a live room",
+        "The bartender opens the ordinary food menu",
+        "The first purchased ration restores nourishment before departure",
+        "The bartender offers a second ration",
+        "The bartender sells a food ration for carried cash",
+        "Tavern exit is reachable after purchasing food",
+        "pod reached through normal movement (165 steps)",
+        "pod action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Purchased food restores nourishment and a carried ration survives reload",
+        "Food resupply preserves every earlier Center receipt",
+        "The resupplied campaign exports unchanged",
+        "No uncaught errors on the ordinary bank and tavern loop"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 173116,
+        "cash": 3611,
+        "condition": {
+          "vigor": 102,
+          "rest": 95,
+          "health": 255,
+          "nourishment": 113
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_system07_fund_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The resupplied campaign departs for system-seven funding",
+        "City boundary enters the surface",
+        "Ordinary forced rest recovers enough to wake",
+        "city-01 reached through normal movement (349 steps)",
+        "city-01 action is available",
+        "dock reached through normal movement (562 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary home-orbit distress fuels the long warp",
+        "The selected flight reaches its destination through the live clock",
+        "The nearby home warp point is reached",
+        "Live navigation accepts the funded system-07 warp target",
+        "The warp engine charges through live power phases",
+        "The charged warp reaches the funded seventh system",
+        "Ordinary space rescue fuels the world-ten approach",
+        "The selected flight reaches its destination through the live clock",
+        "Sublight engines reach world 10",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary flight lands at world-ten capital",
+        "The world-ten landing exports unchanged",
+        "No uncaught errors on the world-ten flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 179974,
+        "fuel": 101,
+        "condition": {
+          "vigor": 95,
+          "rest": 6,
+          "health": 255,
+          "nourishment": 63
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ],
+        "bank": 4593
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_system06_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The world-ten landing reaches the donor-system bank",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (144 steps)",
+        "bankPark action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "bank reached through normal movement (62 steps)",
+        "bank action is available",
+        "The 3,500-credit transfer funds world-nine cargo",
+        "tavern reached through normal movement (53 steps)",
+        "tavern action is available",
+        "The system-seven bartender opens a food menu",
+        "The bartender sells a second carried ration",
+        "pod reached through normal movement (115 steps)",
+        "pod action is available",
+        "dock reached through normal movement (145 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The funded, fed campaign survives docking and a fresh-page reload",
+        "The funded checkpoint exports unchanged",
+        "No uncaught errors on the bank-transfer leg"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 180436,
+        "fuel": 101,
+        "condition": {
+          "vigor": 88,
+          "rest": 224,
+          "health": 255,
+          "nourishment": 132
+        },
+        "sourceBank": 1093,
+        "destinationBank": 5513
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded campaign departs for world-nine cargo",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary home-orbit distress fuels the long warp",
+        "The selected flight reaches its destination through the live clock",
+        "The nearby home warp point is reached",
+        "Live navigation accepts the funded system-06 warp target",
+        "The warp engine charges through live power phases",
+        "The charged warp reaches the funded sixth system",
+        "Ordinary space rescue fuels the world-nine approach",
+        "The selected flight reaches its destination through the live clock",
+        "Sublight engines reach world 09",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary flight lands at world-nine capital",
+        "The world-nine landing exports unchanged",
+        "No uncaught errors on the world-nine flight"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 180821,
+        "fuel": 203,
+        "condition": {
+          "vigor": 100,
+          "rest": 200,
+          "health": 255,
+          "nourishment": 123
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ],
+        "bank": 5513
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded non-capital landing is ready for phase-four purchases",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (452 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The first ordinary city-26 market visit refreshes and survives reload",
+        "The market checkpoint exports unchanged",
+        "No uncaught errors on the city-26 market visit"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 180897,
+        "fuel": 203,
+        "condition": {
+          "vigor": 102,
+          "rest": 196,
+          "health": 255,
+          "nourishment": 122
+        },
+        "cash": 3555,
+        "bank": 5513,
+        "supply": [
+          {
+            "id": 16,
+            "units": 6
+          },
+          {
+            "id": 17,
+            "units": 2
+          },
+          {
+            "id": 19,
+            "units": 5
+          },
+          {
+            "id": 23,
+            "units": 2
+          }
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-19",
+            "quality": 5,
+            "price": 5200,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 5,
+            "price": 4300,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-14",
+            "quality": 6,
+            "price": 4800,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-16",
+            "quality": 5,
+            "price": 3700,
+            "demand": 1,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 1900,
+            "demand": 2,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-21",
+            "quality": 5,
+            "price": 4200,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 5,
+            "price": 6000,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "price": 1700,
+            "demand": 2,
+            "supply": 1
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The refreshed city-26 board offers paid chronographs",
+        "The chronograph lot is bought at its displayed price",
+        "An ordinary market visit offers a funded low-quality cadcam lot",
+        "Both required paid lots leave enough credits for bank launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The two paid phase-four lots load into the pod and survive reload",
+        "The two-lot checkpoint exports unchanged",
+        "No uncaught errors on the city-26 purchase"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 180897,
+        "fuel": 203,
+        "condition": {
+          "vigor": 102,
+          "rest": 196,
+          "health": 255,
+          "nourishment": 122
+        },
+        "cash": 1768,
+        "bank": 0,
+        "lots": [
+          {
+            "commodityId": "cargo-16",
+            "quality": 5,
+            "originCity": "city-26",
+            "pricePaid": 3700
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 1,
+            "originCity": "city-26",
+            "pricePaid": 3600
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_dock_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both paid lots are loaded before restoring launch clearance",
+        "bankPark reached through normal movement (198 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (80 steps)",
+        "bank action is available",
+        "The ordinary bank deposit restores launch clearance",
+        "pod reached through normal movement (123 steps)",
+        "pod action is available",
+        "dock reached through normal movement (265 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid lots and departure funds survive normal docking and reload",
+        "The docked checkpoint exports unchanged",
+        "No uncaught errors on the bank and dock leg"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 181237,
+        "fuel": 203,
+        "condition": {
+          "vigor": 114,
+          "rest": 176,
+          "health": 255,
+          "nourishment": 116
+        },
+        "cash": 668,
+        "bank": 1100,
+        "lots": [
+          {
+            "commodityId": "cargo-16",
+            "quality": 5,
+            "originCity": "city-26",
+            "pricePaid": 3700
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 1,
+            "originCity": "city-26",
+            "pricePaid": 3600
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two legitimate paid lots start the return to Banville",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The selected flight reaches its destination through the live clock",
+        "Ordinary deep-space rescue funds the homeward warp",
+        "Return warp charges through live power phases",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp returns both paid lots to Jondd",
+        "The two-lot home-warp checkpoint exports unchanged",
+        "No uncaught errors on the two-lot return warp"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 181490,
+        "fuel": 127,
+        "condition": {
+          "vigor": 122,
+          "rest": 164,
+          "health": 255,
+          "nourishment": 112
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          8
+        ],
+        "lots": [
+          {
+            "commodityId": "cargo-16",
+            "quality": 5,
+            "originCity": "city-26",
+            "pricePaid": 3700
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 1,
+            "originCity": "city-26",
+            "pricePaid": 3600
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_four_city26_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The home-system checkpoint carries both paid city-26 goods",
+        "The selected flight reaches its destination through the live clock",
+        "The shorter home-system route reaches world 01 without losing the ship",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary landing preserves both paid goods",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (256 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (25 steps)",
+        "tavern action is available",
+        "The bartender sells food for the long surface route",
+        "pod reached through normal movement (24 steps)",
+        "pod action is available",
+        "City boundary enters the surface",
+        "Ordinary forced rest recovers enough to wake",
+        "city-60 reached through normal movement (248 steps)",
+        "city-60 action is available",
+        "colony reached through normal movement (123 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid goods count once toward phase four",
+        "The twenty-one-receipt checkpoint exports unchanged",
+        "No uncaught errors on two paid-good deliveries"
+      ],
+      "errors": [],
+      "failures": [],
+      "journey": {
+        "minutes": 188425,
+        "fuel": 68,
+        "condition": {
+          "vigor": 136,
+          "rest": 85,
+          "health": 255,
+          "nourishment": 71
+        },
+        "carried": [
+          12,
+          27,
+          235,
+          0
+        ]
+      }
+    }
+  ]
+}
