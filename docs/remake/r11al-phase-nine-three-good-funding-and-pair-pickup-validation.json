@@ -1,0 +1,572 @@
+{
+  "milestone": "R11al",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-city02-handweapons-sold.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-city17-radio-furs-loaded.json",
+  "runCount": 13,
+  "uiChecks": 157,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 57,
+    "shipLocation": {
+      "systemId": "system-03",
+      "worldId": "world-06",
+      "cityId": "city-17",
+      "orbit": {
+        "angle": 117,
+        "radius": 19
+      },
+      "surfacePosition": {
+        "x": 17,
+        "y": 18
+      },
+      "cityPosition": {
+        "x": 25,
+        "y": 20
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 255,
+    "homeBank": 2280,
+    "system03Bank": 3856,
+    "podCargo": [
+      {
+        "commodityId": "cargo-02",
+        "quality": 1,
+        "originCity": "city-17",
+        "pricePaid": 3800
+      },
+      {
+        "commodityId": "cargo-28",
+        "quality": 1,
+        "originCity": "city-17",
+        "pricePaid": 5700
+      }
+    ],
+    "shipCondition": {
+      "vigor": 144,
+      "rest": 141,
+      "health": 255,
+      "nourishment": 76
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_city01_system03_fund_resupply_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid hand-weapon sale funds the last three city-17 goods",
+        "dock reached through normal movement (197 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "Normal sleep restores interstellar travel rest",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (221 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (111 steps)",
+        "bank action is available",
+        "The 12,200-credit wire funds all three remaining paid goods",
+        "A 100-credit withdrawal funds ordinary food for the pilot",
+        "tavern reached through normal movement (43 steps)",
+        "tavern action is available",
+        "The capital bartender opens the food menu",
+        "The first purchased ration restores nourishment through normal inventory use",
+        "The bartender offers a carried ration for the next leg",
+        "pod reached through normal movement (131 steps)",
+        "pod action is available",
+        "dock reached through normal movement (217 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The wire, food, and rested pilot survive docking and reload",
+        "The resupplied funding checkpoint exports unchanged",
+        "No uncaught errors on the system-three wire and food resupply"
+      ],
+      "journey": {
+        "homeBank": 2280,
+        "system03Bank": 13356,
+        "cash": 68,
+        "condition": {
+          "vigor": 98,
+          "rest": 217,
+          "health": 255,
+          "nourishment": 99
+        },
+        "carried": [
+          0,
+          0,
+          0,
+          8
+        ],
+        "minutes": 245746
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_outbound_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded and resupplied carrier is ready for city-17 pickup",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows ordinary launch",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary orbit rescue refuels the empty pickup carrier",
+        "The outbound launch checkpoint exports unchanged",
+        "No uncaught errors on the funded outbound launch"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "condition": {
+          "vigor": 100,
+          "rest": 213,
+          "health": 255,
+          "nourishment": 98
+        },
+        "minutes": 245790
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_home_point_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the empty pickup pod",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 123,
+          "radius": 29
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 102,
+          "rest": 209,
+          "health": 255,
+          "nourishment": 97
+        },
+        "minutes": 245856
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_home_point_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the empty pickup pod",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 125,
+          "radius": 36
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 106,
+          "rest": 201,
+          "health": 255,
+          "nourishment": 95
+        },
+        "minutes": 245952
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_home_point_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 128,
+          "radius": 43
+        },
+        "fuel": 74,
+        "condition": {
+          "vigor": 106,
+          "rest": 201,
+          "health": 255,
+          "nourishment": 95
+        },
+        "minutes": 245997
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_system03_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pickup carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct system-three warp is within the live ship range",
+        "Ordinary machinery charges the direct system-three warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the empty carrier to system seven",
+        "The export warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-three warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 177,
+        "hull": 16,
+        "charge": 85,
+        "minutes": 246186
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_world06_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-six approach",
+        "Segment 2 has an ordinary rescue scheduled",
+        "Segment 2 rescue fills the stationary tank",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the empty pickup pod",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 126,
+          "radius": 37
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 122,
+          "rest": 174,
+          "health": 255,
+          "nourishment": 87
+        },
+        "minutes": 246443
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_world06_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-six approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the empty pickup pod",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 122,
+          "radius": 29
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 128,
+          "rest": 165,
+          "health": 255,
+          "nourishment": 84
+        },
+        "minutes": 246641
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_world06_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-six approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the empty pickup pod",
+        "Segment 7 has an ordinary rescue scheduled",
+        "Segment 7 rescue fills the stationary tank",
+        "Segment 7 starts under cloak",
+        "Segment 7 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 118,
+          "radius": 20
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 136,
+          "rest": 153,
+          "health": 255,
+          "nourishment": 80
+        },
+        "minutes": 246841
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_world06_approach_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-six approach",
+        "Segment 8 has an ordinary rescue scheduled",
+        "Segment 8 rescue fills the stationary tank",
+        "Segment 8 starts under cloak",
+        "Segment 8 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 1,
+        "arrived": true,
+        "orbit": {
+          "angle": 117,
+          "radius": 19
+        },
+        "fuel": 217,
+        "condition": {
+          "vigor": 140,
+          "rest": 147,
+          "health": 255,
+          "nourishment": 78
+        },
+        "minutes": 246977
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pickup carrier arrive safely at world 06",
+        "Ordinary rescue refuels the city-17 landing",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The pickup carrier lands at city 17 with an empty pod",
+        "The pickup landing checkpoint exports unchanged",
+        "No uncaught errors on the pickup landing"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "bank": 13356,
+        "condition": {
+          "vigor": 140,
+          "rest": 147,
+          "health": 255,
+          "nourishment": 78
+        },
+        "minutes": 247012
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_next_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The foreign supplier visit starts with the funded empty pod",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (390 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The live city-17 market stocks all three remaining paid goods",
+        "The foreign market checkpoint exports unchanged",
+        "No uncaught errors on the paid-goods market visit"
+      ],
+      "journey": {
+        "bank": 13356,
+        "quote": [
+          3800,
+          5700,
+          2800
+        ],
+        "clearanceAfterPair": 3856,
+        "supply": [
+          5,
+          3,
+          3
+        ],
+        "offers": [
+          {
+            "commodityId": "cargo-07",
+            "quality": 4,
+            "price": 6800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 3,
+            "price": 4000,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 3,
+            "price": 6800,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 2,
+            "price": 3700,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 7,
+            "price": 6300,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 6,
+            "price": 6200,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-16",
+            "quality": 4,
+            "price": 3700,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 5,
+            "price": 5000,
+            "demand": 0,
+            "supply": 5
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_city17_radio_furs_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-17 exchange has radioactives and furs/silks",
+        "Ordinary visits offer quality-one cargo-02 within launch clearance",
+        "Paid cargo-02 enters the warehouse",
+        "Ordinary visits offer quality-one cargo-28 within launch clearance",
+        "Paid cargo-28 enters the warehouse",
+        "The radioactive and furs/silks purchases preserve 3,856 credits of home launch clearance",
+        "The cargo-02 warehouse lot is available to load",
+        "The cargo-28 warehouse lot is available to load",
+        "Fresh-page save reload preserves Center progress",
+        "Both paid city-17 lots and launch clearance survive a fresh-page reload",
+        "The radioactive-furs pair checkpoint exports unchanged",
+        "No uncaught errors buying the radioactive-furs pair"
+      ],
+      "journey": {
+        "picks": [
+          {
+            "commodityId": "cargo-02",
+            "quality": 1,
+            "price": 3800,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 1,
+            "price": 5700,
+            "demand": 2,
+            "supply": 3
+          }
+        ],
+        "bank": 3856,
+        "pod": [
+          {
+            "commodityId": "cargo-02",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 3800
+          },
+          {
+            "commodityId": "cargo-28",
+            "quality": 1,
+            "originCity": "city-17",
+            "pricePaid": 5700
+          }
+        ]
+      }
+    }
+  ]
+}
