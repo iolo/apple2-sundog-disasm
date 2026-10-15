@@ -1,3 +1,27 @@
+## R11t — Last phase-four lot funded; homeward warp point reached — 2026-10-15
+
+The 21-receipt campaign carried the paid city-47 silichips from city 20 to
+system 05 through ordinary launch, sublight travel, charged warp and tactical
+encounters. Pirates interrupted both the outbound warp-point leg and the
+world-08 approach. Normal Comm, shield and laser controls resolved those
+contacts; the ship also halted before fuel exhaustion and received ordinary
+distress refuels. Combat bounties raised the system-05 account to 8,133
+credits. At city 22, the bank transferred 7,000 to system 04, leaving 1,133
+locally for launch clearance. The ship then launched and reached the nearby
+homeward warp point; a further pirate escaped during that short flight.
+
+The fresh-page-reloaded checkpoint is
+`output/playwright/remake/r11-phase-four-city22-home-point.json`: phase 4,
+21 receipts, cargo 17 still in the pod, 12,710 credits in system 04, 1,133
+in system 05, hull 5, fuel 113 and shields 128. Twenty-two chained Chrome
+journeys pass 147 checks without page errors; see
+`docs/remake/r11t-bounty-funding-validation.json`.
+
+R11 remains open. The next leg is the charged warp to system 04, city-20
+cargo-23 purchase, hull repair, and delivery of cargo 17 and 23 to Banville.
+That will complete phase 4; phases 5–9 and the ending remain. Broad UI
+fragility cleanup follows campaign completion.
+
 ## R11s — Silichips loaded; last cargo market located — 2026-10-15
 
 The 21-receipt phase-four campaign resupplied at city 02, transferred 2,300
