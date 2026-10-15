@@ -1,0 +1,2248 @@
+{
+  "milestone": "R11af",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-city47-good20-city01-returned.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-city49-good02-city01-returned.json",
+  "runCount": 51,
+  "uiChecks": 487,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 51,
+    "phaseEightReceipts": [
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-49",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-31",
+        "originCity": "city-52",
+        "pricePaid": 0
+      },
+      {
+        "commodityId": "cargo-14",
+        "originCity": "city-07",
+        "pricePaid": 2400
+      },
+      {
+        "commodityId": "cargo-25",
+        "originCity": "city-02",
+        "pricePaid": 3600
+      },
+      {
+        "commodityId": "cargo-20",
+        "originCity": "city-47",
+        "pricePaid": 2600
+      },
+      {
+        "commodityId": "cargo-02",
+        "originCity": "city-49",
+        "pricePaid": 4100
+      }
+    ],
+    "shipLocation": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-01",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 10,
+        "y": 6
+      },
+      "cityPosition": {
+        "x": 12,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 230,
+    "homeBank": 1020,
+    "system11Bank": 1447,
+    "equipmentPerformance": {
+      "warp-drives": 4,
+      "sub-c-engines": 4,
+      "ships-guns": 0,
+      "tactical-display": 4,
+      "force-shields": 4,
+      "pilotage": 4
+    },
+    "podCargo": [
+      null,
+      null
+    ]
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_remaining_market_scout_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The read-only market plan starts from the synthesizer delivery",
+        "Each phase-eight good has at least one initialized supplier",
+        "No page errors during read-only market scouting"
+      ],
+      "journey": {
+        "plan": {
+          "2": [
+            {
+              "cityId": "city-50",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 3900
+            },
+            {
+              "cityId": "city-51",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 3900
+            },
+            {
+              "cityId": "city-53",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 3900
+            },
+            {
+              "cityId": "city-16",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 7,
+              "price": 4100
+            },
+            {
+              "cityId": "city-49",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 4,
+              "price": 4500
+            },
+            {
+              "cityId": "city-17",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-48",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 4900
+            },
+            {
+              "cityId": "city-20",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 5,
+              "price": 5700
+            },
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6600
+            },
+            {
+              "cityId": "city-18",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 6,
+              "price": 6700
+            },
+            {
+              "cityId": "city-19",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 3,
+              "price": 6800
+            },
+            {
+              "cityId": "city-10",
+              "worldId": "world-03",
+              "systemId": "system-02",
+              "supply": 5,
+              "price": 7000
+            }
+          ],
+          "4": [
+            {
+              "cityId": "city-23",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6900
+            },
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6900
+            },
+            {
+              "cityId": "city-22",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 1,
+              "price": 7700
+            },
+            {
+              "cityId": "city-14",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 3,
+              "price": 8000
+            },
+            {
+              "cityId": "city-13",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 3,
+              "price": 10000
+            },
+            {
+              "cityId": "city-25",
+              "worldId": "world-09",
+              "systemId": "system-06",
+              "supply": 1,
+              "price": 10900
+            },
+            {
+              "cityId": "city-26",
+              "worldId": "world-09",
+              "systemId": "system-06",
+              "supply": 1,
+              "price": 11100
+            },
+            {
+              "cityId": "city-55",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-56",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-57",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-30",
+              "worldId": "world-10",
+              "systemId": "system-07",
+              "supply": 2,
+              "price": 12800
+            },
+            {
+              "cityId": "city-31",
+              "worldId": "world-10",
+              "systemId": "system-07",
+              "supply": 2,
+              "price": 12800
+            }
+          ],
+          "5": [
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 6,
+              "price": 4300
+            },
+            {
+              "cityId": "city-50",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-51",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-53",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-22",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 3,
+              "price": 5400
+            },
+            {
+              "cityId": "city-49",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 1,
+              "price": 5400
+            },
+            {
+              "cityId": "city-52",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 1,
+              "price": 5400
+            },
+            {
+              "cityId": "city-16",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 2,
+              "price": 5700
+            },
+            {
+              "cityId": "city-14",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 5,
+              "price": 5800
+            },
+            {
+              "cityId": "city-23",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6000
+            },
+            {
+              "cityId": "city-48",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 6200
+            },
+            {
+              "cityId": "city-21",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 3,
+              "price": 6800
+            }
+          ]
+        },
+        "accounts": [
+          {
+            "systemId": "system-01",
+            "balance": 1232
+          },
+          {
+            "systemId": "system-02",
+            "balance": 1020
+          },
+          {
+            "systemId": "system-03",
+            "balance": 1756
+          },
+          {
+            "systemId": "system-04",
+            "balance": 1410
+          },
+          {
+            "systemId": "system-05",
+            "balance": 1222
+          },
+          {
+            "systemId": "system-06",
+            "balance": 2180
+          },
+          {
+            "systemId": "system-07",
+            "balance": 1093
+          },
+          {
+            "systemId": "system-08",
+            "balance": 1094
+          },
+          {
+            "systemId": "system-09",
+            "balance": 1174
+          },
+          {
+            "systemId": "system-10",
+            "balance": 1857
+          },
+          {
+            "systemId": "system-11",
+            "balance": 1895
+          },
+          {
+            "systemId": "system-12",
+            "balance": 1078
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_distorter_plasma_salvage_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "A spare distorter and plasma tube remain in redundant ship units",
+        "The carried ration restores nourishment before the next supplier leg",
+        "warpBay reached through normal movement (75 steps)",
+        "warpBay action is available",
+        "Ordinary engineering opens the redundant warp unit",
+        "gunsBay reached through normal movement (7 steps)",
+        "gunsBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Two spare parts leave while warp, guns, pilotage and cloaker still work",
+        "The cargo-02 funding salvage exports unchanged",
+        "No uncaught errors recovering redundant parts"
+      ],
+      "journey": {
+        "bank": 1232,
+        "carried": [
+          30,
+          24,
+          235,
+          29
+        ],
+        "warp": 4,
+        "guns": 4,
+        "condition": {
+          "vigor": 176,
+          "rest": 157,
+          "health": 255,
+          "nourishment": 201
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_distorter_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two redundant distorters are carried for the next paid cargo purchase",
+        "depart reached through normal movement (103 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the distorter sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare distorter",
+        "The normal sale slot accepts the carried distorter",
+        "Only the distorter leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The distorter sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1026 Cr for your s/t distorter.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1026,
+        "bank": 1232,
+        "carried": [
+          0,
+          24,
+          235,
+          29
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_plasma_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first distorter sale leaves a carried plasma tube for funding",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the plasma tube sale request",
+        "The sale referral stores the item and direction: {\"flags\":[false,true,true,false],\"workspace\":{\"lastCity\":1,\"mood\":4,\"quantity\":1,\"gate\":1,\"item\":29,\"actor\":0}}",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare plasma tube",
+        "The normal sale slot accepts the carried plasma tube",
+        "Only the plasma tube leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The plasma tube sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 732 Cr for your plasma tube.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1748,
+        "bank": 1232,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_gun_node_salvage_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The final gun node can fund radioactives while pilotage and cloak remain available",
+        "roomExit reached through normal movement (34 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (45 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "gunsBay reached through normal movement (105 steps)",
+        "gunsBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The final gun node is carried while travel and defense systems still work",
+        "The gun-node salvage exports unchanged",
+        "No uncaught errors while retrieving the final gun node"
+      ],
+      "journey": {
+        "cash": 1748,
+        "bank": 1232,
+        "gun": 0,
+        "cloaker": true,
+        "carried": [
+          31,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_gun_node_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The final gun node is carried to fund radioactives",
+        "depart reached through normal movement (103 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (38 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 2888,
+        "bank": 1232,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_good02_system11_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Three spare-part sales provide cash for the city-50 radioactives",
+        "bank reached through normal movement (159 steps)",
+        "bank action is available",
+        "Ordinary bank deposit collects the spare-part proceeds",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary bank transfer and docking prepare the city-50 lot",
+        "The funded checkpoint exports unchanged",
+        "No uncaught errors during the capital deposit and transfer"
+      ],
+      "journey": {
+        "homeBank": 1020,
+        "supplierBank": 4995,
+        "cash": 0,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city50_good02_outbound_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty ship has transferred funds for city-50 cargo 02",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch: {\"location\":{\"systemId\":\"system-01\",\"worldId\":\"world-01\",\"cityId\":null,\"orbit\":{\"angle\":121,\"radius\":20},\"surfacePosition\":{\"x\":0,\"y\":0},\"cityPosition\":{\"x\":0,\"y\":0},\"position\":{\"x\":0,\"y\":0}},\"bank\":1020,\"nav\":[]}",
+        "Ordinary rescue refuels the outbound ship",
+        "Tactical shields cover the outbound warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-eight city-50 supplier launch"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 55,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 231745
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city50_good02_outbound_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct city-50 supplier warp is within the live ship range",
+        "Ordinary machinery charges the direct city-50 supplier warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches its selected system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct city-50 supplier warp"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 175,
+        "shield": 0,
+        "hull": 16,
+        "charge": 118,
+        "minutes": 231871
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city50_good02_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The ship arrives in system eleven with prior paid goods delivered",
+        "Ordinary rescue refuels the long world-seventeen approach",
+        "The empty pod carries no paid goods on the supplier approach",
+        "Ordinary sublight reaches world 17 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The paid-goods pickup flight lands at the world-seventeen supplier",
+        "The world-seventeen landing checkpoint exports unchanged",
+        "No uncaught errors on the world-seventeen supplier approach"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 153,
+        "hull": 16,
+        "shield": 0,
+        "bank": 4995,
+        "condition": {
+          "vigor": 166,
+          "rest": 99,
+          "health": 255,
+          "nourishment": 149
+        },
+        "minutes": 232122,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city50_good02_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-50 bank funds the local cargo-02 market",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The city-50 cargo pod boards for the exchange: {\"x\":\"271\",\"y\":\"499\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"271\",\"podY\":\"499\",\"podHeading\":\"16\",\"transport\":\"pod\",\"city\":\"city-50\",\"cameraX\":\"4\",\"cameraY\":\"12\",\"heading\":\"16\",\"scene\":\"city\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"232130\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"99\",\"nourishment\":\"149\",\"seed\":\"12345\"}",
+        "exchange reached through normal movement (491 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-50 exchange opens through ordinary controls",
+        "The city-50 market checkpoint exports unchanged",
+        "No uncaught errors on the city-50 market visit"
+      ],
+      "journey": {
+        "bank": 4995,
+        "quote": 6800,
+        "clearanceAfter": -1805,
+        "supply": 0,
+        "offers": [
+          {
+            "commodityId": "cargo-03",
+            "quality": 3,
+            "price": 5300,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 3,
+            "price": 800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-10",
+            "quality": 3,
+            "price": 400,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 2,
+            "price": 5900,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 2,
+            "price": 700,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-10",
+            "quality": 4,
+            "price": 400,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 1,
+            "price": 600,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 6,
+            "price": 1300,
+            "demand": 1,
+            "supply": 5
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city50_market_scout_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The read-only market plan starts at the refreshed city-50 exchange",
+        "Each phase-eight good has at least one initialized supplier",
+        "No page errors during read-only market scouting"
+      ],
+      "journey": {
+        "plan": {
+          "2": [
+            {
+              "cityId": "city-51",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 3900
+            },
+            {
+              "cityId": "city-53",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 3900
+            },
+            {
+              "cityId": "city-16",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 7,
+              "price": 4100
+            },
+            {
+              "cityId": "city-49",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 4,
+              "price": 4500
+            },
+            {
+              "cityId": "city-17",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-48",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 6,
+              "price": 4900
+            },
+            {
+              "cityId": "city-20",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 5,
+              "price": 5700
+            },
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6600
+            },
+            {
+              "cityId": "city-18",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 6,
+              "price": 6700
+            },
+            {
+              "cityId": "city-19",
+              "worldId": "world-07",
+              "systemId": "system-04",
+              "supply": 3,
+              "price": 6800
+            },
+            {
+              "cityId": "city-10",
+              "worldId": "world-03",
+              "systemId": "system-02",
+              "supply": 5,
+              "price": 7000
+            },
+            {
+              "cityId": "city-11",
+              "worldId": "world-03",
+              "systemId": "system-02",
+              "supply": 4,
+              "price": 7000
+            }
+          ],
+          "4": [
+            {
+              "cityId": "city-23",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6900
+            },
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6900
+            },
+            {
+              "cityId": "city-22",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 1,
+              "price": 7700
+            },
+            {
+              "cityId": "city-14",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 3,
+              "price": 8000
+            },
+            {
+              "cityId": "city-13",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 3,
+              "price": 10000
+            },
+            {
+              "cityId": "city-25",
+              "worldId": "world-09",
+              "systemId": "system-06",
+              "supply": 1,
+              "price": 10900
+            },
+            {
+              "cityId": "city-26",
+              "worldId": "world-09",
+              "systemId": "system-06",
+              "supply": 1,
+              "price": 11100
+            },
+            {
+              "cityId": "city-55",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-56",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-57",
+              "worldId": "world-18",
+              "systemId": "system-12",
+              "supply": 4,
+              "price": 11500
+            },
+            {
+              "cityId": "city-30",
+              "worldId": "world-10",
+              "systemId": "system-07",
+              "supply": 2,
+              "price": 12800
+            },
+            {
+              "cityId": "city-31",
+              "worldId": "world-10",
+              "systemId": "system-07",
+              "supply": 2,
+              "price": 12800
+            }
+          ],
+          "5": [
+            {
+              "cityId": "city-24",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 6,
+              "price": 4300
+            },
+            {
+              "cityId": "city-51",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-53",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 4900
+            },
+            {
+              "cityId": "city-22",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 3,
+              "price": 5400
+            },
+            {
+              "cityId": "city-49",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 1,
+              "price": 5400
+            },
+            {
+              "cityId": "city-52",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 1,
+              "price": 5400
+            },
+            {
+              "cityId": "city-16",
+              "worldId": "world-06",
+              "systemId": "system-03",
+              "supply": 2,
+              "price": 5700
+            },
+            {
+              "cityId": "city-14",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 5,
+              "price": 5800
+            },
+            {
+              "cityId": "city-23",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 2,
+              "price": 6000
+            },
+            {
+              "cityId": "city-48",
+              "worldId": "world-17",
+              "systemId": "system-11",
+              "supply": 2,
+              "price": 6200
+            },
+            {
+              "cityId": "city-21",
+              "worldId": "world-08",
+              "systemId": "system-05",
+              "supply": 3,
+              "price": 6800
+            },
+            {
+              "cityId": "city-13",
+              "worldId": "world-04",
+              "systemId": "system-02",
+              "supply": 5,
+              "price": 7300
+            }
+          ]
+        },
+        "accounts": [
+          {
+            "systemId": "system-01",
+            "balance": 1020
+          },
+          {
+            "systemId": "system-02",
+            "balance": 1020
+          },
+          {
+            "systemId": "system-03",
+            "balance": 1756
+          },
+          {
+            "systemId": "system-04",
+            "balance": 1410
+          },
+          {
+            "systemId": "system-05",
+            "balance": 1222
+          },
+          {
+            "systemId": "system-06",
+            "balance": 2180
+          },
+          {
+            "systemId": "system-07",
+            "balance": 1093
+          },
+          {
+            "systemId": "system-08",
+            "balance": 1094
+          },
+          {
+            "systemId": "system-09",
+            "balance": 1174
+          },
+          {
+            "systemId": "system-10",
+            "balance": 1857
+          },
+          {
+            "systemId": "system-11",
+            "balance": 4995
+          },
+          {
+            "systemId": "system-12",
+            "balance": 1078
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city51_good02_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City 50 has refreshed out of radioactives while city 51 still has supply",
+        "dock reached through normal movement (492 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Ordinary pod docking prepares the alternate supplier flight",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches alternate supplier city 51",
+        "The city-51 landing exports unchanged",
+        "No uncaught errors on the alternate supplier flight"
+      ],
+      "journey": {
+        "fuel": 153,
+        "hull": 16,
+        "bank": 4995,
+        "condition": {
+          "vigor": 164,
+          "rest": 95,
+          "health": 255,
+          "nourishment": 145
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city51_good02_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-51 bank funds the local cargo-02 market",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The city-51 cargo pod boards for the exchange: {\"x\":\"887\",\"y\":\"307\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"887\",\"podY\":\"307\",\"podHeading\":\"16\",\"transport\":\"pod\",\"city\":\"city-51\",\"cameraX\":\"26\",\"cameraY\":\"6\",\"heading\":\"16\",\"scene\":\"city\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"232254\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"95\",\"nourishment\":\"145\",\"seed\":\"12345\"}",
+        "exchange reached through normal movement (539 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-51 exchange opens through ordinary controls",
+        "The city-51 market checkpoint exports unchanged",
+        "No uncaught errors on the city-51 market visit"
+      ],
+      "journey": {
+        "bank": 4995,
+        "quote": 6000,
+        "clearanceAfter": -1005,
+        "supply": 1,
+        "offers": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 2,
+            "price": 500,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-10",
+            "quality": 5,
+            "price": 500,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 3,
+            "price": 600,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 6,
+            "price": 800,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 1,
+            "price": 4800,
+            "demand": 2,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 5,
+            "price": 1100,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 700,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "price": 600,
+            "demand": 0,
+            "supply": 4
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city53_good02_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City 51 quotes radioactives beyond the funded launch budget",
+        "dock reached through normal movement (536 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Ordinary pod docking prepares the alternate supplier flight",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches alternate supplier city 53",
+        "The city-53 landing exports unchanged",
+        "No uncaught errors on the alternate supplier flight"
+      ],
+      "journey": {
+        "fuel": 153,
+        "hull": 16,
+        "bank": 4995,
+        "condition": {
+          "vigor": 162,
+          "rest": 91,
+          "health": 255,
+          "nourishment": 141
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city53_good02_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-53 bank funds the local cargo-02 market",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The city-53 cargo pod boards for the exchange: {\"x\":\"607\",\"y\":\"179\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"607\",\"podY\":\"179\",\"podHeading\":\"16\",\"transport\":\"pod\",\"city\":\"city-53\",\"cameraX\":\"16\",\"cameraY\":\"2\",\"heading\":\"16\",\"scene\":\"city\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"232372\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"91\",\"nourishment\":\"141\",\"seed\":\"12345\"}",
+        "exchange reached through normal movement (355 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-53 exchange opens through ordinary controls",
+        "The city-53 market checkpoint exports unchanged",
+        "No uncaught errors on the city-53 market visit"
+      ],
+      "journey": {
+        "bank": 4995,
+        "quote": 6000,
+        "clearanceAfter": -1005,
+        "supply": 1,
+        "offers": [
+          {
+            "commodityId": "cargo-03",
+            "quality": 7,
+            "price": 6900,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 4,
+            "price": 4900,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 6,
+            "price": 5600,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 2,
+            "price": 5300,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 7,
+            "price": 9000,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 6,
+            "price": 9900,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 3,
+            "price": 4400,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 7,
+            "price": 2800,
+            "demand": 3,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_plasma_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "City 53 quotes radioactives beyond budget; the disabled gun retains a saleable plasma tube",
+        "dock reached through normal movement (352 steps)",
+        "dock action is available",
+        "The cargo pod docks for salvage: {\"x\":\"99\",\"y\":\"119\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"\",\"podY\":\"\",\"podHeading\":\"16\",\"transport\":\"foot\",\"city\":\"city-53\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"ship\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"232471\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"87\",\"nourishment\":\"137\",\"seed\":\"12345\"}",
+        "gunsBay reached through normal movement (105 steps)",
+        "gunsBay action is available",
+        "The disabled gun opens for salvage: {\"x\":\"109\",\"y\":\"67\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"\",\"podY\":\"\",\"podHeading\":\"16\",\"transport\":\"foot\",\"city\":\"city-53\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"ship\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"232482\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"87\",\"nourishment\":\"137\",\"seed\":\"12345\"}",
+        "The nonworking gun yields a plasma tube without affecting travel or cloak",
+        "navigation reached through normal movement (75 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the earlier radioactives market",
+        "The city-49 supplier landing exports unchanged",
+        "No uncaught errors on the funded alternate supplier flight"
+      ],
+      "journey": {
+        "fuel": 153,
+        "hull": 16,
+        "bank": 4995,
+        "carried": [
+          29,
+          24,
+          235,
+          0
+        ],
+        "condition": {
+          "vigor": 158,
+          "rest": 85,
+          "health": 255,
+          "nourishment": 135
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_plasma_referral_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "A spare plasma tube is carried to fund the city-49 radioactives",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (225 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (47 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the plasma tube sale request",
+        "The sale referral stores the item and direction",
+        "No uncaught errors arranging the city-49 buyer"
+      ],
+      "journey": {
+        "flags": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "workspace": {
+          "lastCity": 49,
+          "mood": 3,
+          "quantity": 1,
+          "gate": 1,
+          "item": 29,
+          "actor": 0
+        },
+        "travel": {
+          "scene": "room",
+          "cityPosition": {
+            "x": 563,
+            "y": 364
+          },
+          "roomPosition": {
+            "x": 50,
+            "y": 31
+          }
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_plasma_handover_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-49 bartender has referred a buyer for the spare unit",
+        "A referred visitor reaches the open right-hand table: {\"screen\":{\"x\":\"118\",\"y\":\"86\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"519\",\"podY\":\"391\",\"podHeading\":\"20\",\"transport\":\"foot\",\"city\":\"city-49\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"room\",\"room\":\"7\",\"occupants\":\"6\",\"service\":\"talking\",\"dialogue\":\"32\",\"minutes\":\"232635\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"81\",\"nourishment\":\"131\",\"seed\":\"12345\"},\"flags\":[false,true,true,false],\"tavern\":{\"playerSeat\":9,\"secondary\":0,\"contact\":{\"actor\":6,\"kind\":17}},\"actors\":[{\"slot\":2,\"words\":[31,45,31,45,31,45,5912,792,1,227]},{\"slot\":3,\"words\":[31,68,31,68,31,68,5912,792,3,104]},{\"slot\":4,\"words\":[31,81,31,81,31,81,5912,24,4,67]},{\"slot\":5,\"words\":[31,55,31,55,31,55,5912,24,0,140]},{\"slot\":6,\"words\":[86,90,86,90,86,90,5912,7,7428,0]},{\"slot\":0,\"words\":[18,55,18,55,18,55,5891,2,3,0]}]}",
+        "The visitor quotes the spare plasma tube",
+        "The normal sale slot accepts the carried plasma tube",
+        "Only the first plasma tube leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The first plasma tube sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the city-49 spare sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll offer 488 Cr for your plasma tube.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 488,
+        "bank": 4995,
+        "carried": [
+          0,
+          24,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_cryofuse_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first cryofuse sale leaves a carried cryofuse for funding",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the cryofuse sale request",
+        "The sale referral stores the item and direction: {\"flags\":[false,true,true,false],\"workspace\":{\"lastCity\":49,\"mood\":3,\"quantity\":1,\"gate\":1,\"item\":24,\"actor\":0}}",
+        "A referred visitor reaches the seller at the table: {\"x\":\"118\",\"y\":\"86\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"519\",\"podY\":\"391\",\"podHeading\":\"20\",\"transport\":\"foot\",\"city\":\"city-49\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"room\",\"room\":\"7\",\"occupants\":\"6\",\"service\":\"talking\",\"dialogue\":\"32\",\"minutes\":\"232687\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-11\",\"world\":\"world-17\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"137\",\"shipHealth\":\"179\",\"shipTargetX\":\"560\",\"shipTargetY\":\"755\",\"mode\":\"campaign\",\"rest\":\"79\",\"nourishment\":\"129\",\"seed\":\"12345\"}",
+        "The visitor quotes the spare cryofuse",
+        "The normal sale slot accepts the carried cryofuse",
+        "Only the cryofuse leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The cryofuse sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll offer 80 Cr for your cryofuse.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 568,
+        "bank": 4995,
+        "carried": [
+          0,
+          0,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two local spare-part sales provide cash for cargo 02",
+        "bank reached through normal movement (100 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary city-49 deposit funds cargo 02 with launch clearance",
+        "The city-49 funding checkpoint exports unchanged",
+        "No uncaught errors during the city-49 deposit"
+      ],
+      "journey": {
+        "bank": 5563,
+        "cash": 0,
+        "carried": [
+          0,
+          0,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-49 bank funds the local cargo-02 market",
+        "pod reached through normal movement (72 steps)",
+        "pod action is available",
+        "exchange reached through normal movement (110 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-49 exchange opens through ordinary controls",
+        "The city-49 market checkpoint exports unchanged",
+        "No uncaught errors on the city-49 market visit"
+      ],
+      "journey": {
+        "bank": 5563,
+        "quote": 4100,
+        "clearanceAfter": 1463,
+        "supply": 5,
+        "offers": [
+          {
+            "commodityId": "cargo-03",
+            "quality": 4,
+            "price": 6400,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 4,
+            "price": 1000,
+            "demand": 2,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 7,
+            "price": 2200,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-02",
+            "quality": 3,
+            "price": 4800,
+            "demand": 0,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 5,
+            "price": 6300,
+            "demand": 2,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 700,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 2,
+            "price": 4700,
+            "demand": 2,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 4,
+            "price": 5600,
+            "demand": 2,
+            "supply": 2
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-49 radioactive supplier has an empty carrier",
+        "The live quality-one price preserves launch clearance",
+        "The actual cargo-02 offer preserves launch clearance",
+        "Ordinary market visits offer quality-one radioactives",
+        "Paid radioactives enter the warehouse with clearance",
+        "Fresh-page save reload preserves Center progress",
+        "Paid radioactives and launch clearance survive a fresh-page reload",
+        "The loaded cargo-02 checkpoint exports unchanged",
+        "No uncaught errors purchasing city-49 radioactives"
+      ],
+      "journey": {
+        "quote": 4100,
+        "offerPrice": 4100,
+        "bank": 1463,
+        "pod": [
+          {
+            "commodityId": "cargo-02",
+            "quality": 1,
+            "originCity": "city-49",
+            "pricePaid": 4100
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 150,
+          "rest": 73,
+          "health": 255,
+          "nourishment": 125
+        },
+        "minutes": 232888
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_resupply_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid radioactives are loaded before return resupply",
+        "bankPark reached through normal movement (116 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (154 steps)",
+        "bank action is available",
+        "Ordinary bank withdrawal provides travel-food cash",
+        "tavern reached through normal movement (42 steps)",
+        "tavern action is available",
+        "The city-49 bartender offers travel food",
+        "The first ration restores nourishment before the long return",
+        "The bartender offers a second carried ration",
+        "bank reached through normal movement (42 steps)",
+        "bank action is available",
+        "Remaining cash returns to the bank with one ration carried",
+        "pod reached through normal movement (147 steps)",
+        "pod action is available",
+        "dock reached through normal movement (275 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "Fresh-page save reload preserves Center progress",
+        "Paid radioactives, launch funds, food and rest survive docking and reload",
+        "The resupplied return checkpoint exports unchanged",
+        "No uncaught errors during city-49 return resupply"
+      ],
+      "journey": {
+        "minutes": 233455,
+        "fuel": 153,
+        "condition": {
+          "vigor": 144,
+          "rest": 241,
+          "health": 255,
+          "nourishment": 187
+        },
+        "cash": 0,
+        "bank": 1447,
+        "carried": [
+          0,
+          0,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The rested paid radioactives are ready for the homeward launch",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "City-47 bank clearance allows the return launch",
+        "Ordinary rescue refuels the contract carrier",
+        "The warp engine charges through live power phases",
+        "The home warp charges safely before engine-powered sublight",
+        "A second ordinary orbit rescue restores fuel after warp charge",
+        "Full shields cover the nearby homeward warp-point leg",
+        "Another ordinary rescue is scheduled for the protected sublight leg",
+        "The charged home warp and paid cargo persist across point selection",
+        "The ready-warp departure checkpoint exports unchanged",
+        "No uncaught errors preparing the radioactive home warp"
+      ],
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 118,
+          "targetCharge": 118,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "refuelAt": 233612,
+        "minutes": 233582
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid radioactives",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The protected contact retains the paid radioactives and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 148,
+        "shield": 255,
+        "minutes": 233597
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_cloak_contact_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 58,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 233604,
+        "refuelAt": 233612,
+        "motion": 8
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid radioactives in the protected point flight",
+        "The protected contact retains the paid radioactives and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 226,
+        "shield": 255,
+        "minutes": 233617
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_second_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 123,
+        "hull": 16,
+        "shield": 255,
+        "minutes": 233623,
+        "refuelAt": null,
+        "motion": 15
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_second_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid radioactives in the protected point flight",
+        "Fresh-page save reload preserves Center progress",
+        "The fuel stall preserves the paid radioactives and hull",
+        "The safe fuel stall exports unchanged",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "stalled": true,
+        "fuel": 0,
+        "hull": 16,
+        "minutes": 233648
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_recharge_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The fuel-out leaves the paid lot stranded safely before the warp point",
+        "Ordinary stationary rescue refuels the intact carrier",
+        "The warp engine charges through live power phases",
+        "The home warp recharges after the fuel-out stop",
+        "A second stationary rescue restores full point-flight fuel",
+        "Half shields protect the remaining short point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The recharged carrier selects the nearby safe point with cargo intact",
+        "The recharged point checkpoint exports unchanged",
+        "No uncaught errors on the ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "fuel": 247,
+        "shield": 128,
+        "warp": {
+          "charge": 118,
+          "targetCharge": 118,
+          "targetSystemId": "system-01",
+          "charging": true
+        },
+        "orbit": {
+          "angle": 113,
+          "radius": 32
+        },
+        "minutes": 233778
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_after_recharge_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid radioactives",
+        "The protected contact retains the paid radioactives and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 163,
+        "shield": 128,
+        "minutes": 233807
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_after_recharge_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 83,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 233813,
+        "refuelAt": null,
+        "motion": 15
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_final_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact remains in a short powered flight with cargo intact",
+        "Ordinary Halt preserves the charged warp while saving remaining fuel",
+        "The ordinary distress call schedules a stationary rescue",
+        "Ordinary stationary rescue fills the protected tank",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes the short safe-point leg with full fuel and charged warp",
+        "The refueled final leg exports unchanged",
+        "No uncaught errors on the ordinary midflight rescue"
+      ],
+      "journey": {
+        "fuel": 253,
+        "progress": 0,
+        "duration": 73,
+        "shield": 128,
+        "orbit": {
+          "angle": 124,
+          "radius": 33
+        },
+        "minutes": 233843
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_final_leg_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid radioactives",
+        "The protected contact retains the paid radioactives and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 211,
+        "shield": 128,
+        "minutes": 233857
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_final_leg_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 120,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 233863,
+        "refuelAt": null,
+        "motion": 12
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_last_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact remains in a short powered flight with cargo intact",
+        "Ordinary Halt preserves the charged warp while saving remaining fuel",
+        "The ordinary distress call schedules a stationary rescue",
+        "Ordinary stationary rescue fills the protected tank",
+        "Fresh-page reload preserves the resumed flight",
+        "The paid carrier resumes the short safe-point leg with full fuel and charged warp",
+        "The refueled final leg exports unchanged",
+        "No uncaught errors on the ordinary midflight rescue"
+      ],
+      "journey": {
+        "fuel": 253,
+        "progress": 0,
+        "duration": 17,
+        "shield": 128,
+        "orbit": {
+          "angle": 132,
+          "radius": 34
+        },
+        "minutes": 233893
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_last_leg_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and the paid radioactives",
+        "The protected contact retains the paid radioactives and shields",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 180,
+        "shield": 128,
+        "minutes": 233917
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_point_last_leg_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries: {\"flags\":false,\"cloaked\":false,\"hull\":16,\"cargo\":[{\"commodityId\":\"cargo-02\",\"quality\":1,\"originCity\":\"city-49\",\"pricePaid\":4100},null],\"receipts\":50,\"location\":{\"systemId\":\"system-11\",\"worldId\":null,\"cityId\":null,\"orbit\":{\"angle\":128,\"radius\":43},\"surfacePosition\":{\"x\":0,\"y\":0},\"cityPosition\":{\"x\":0,\"y\":0},\"position\":{\"x\":0,\"y\":0}}}",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 0,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 233931,
+        "refuelAt": null
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid radioactives reach a safe warp point after fuel-out",
+        "Ordinary stationary rescue restores warp fuel",
+        "The warp engine charges through live power phases",
+        "The home warp charges at the safe radius",
+        "The ordinary warp command is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid radioactives arrive in the home system intact",
+        "The home-warp checkpoint exports unchanged",
+        "No uncaught errors on the rescued home warp"
+      ],
+      "journey": {
+        "fuel": 127,
+        "hull": 16,
+        "shield": 0,
+        "minutes": 234069
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_homeworld_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid radioactives reach the home-system point with its paid cargo intact",
+        "Charged shields stop drawing fuel during stationary rescue waits",
+        "The first ordinary rescue fills the home-approach tank",
+        "A second rescue is scheduled before the home approach",
+        "The approach is staged shortly before the second rescue",
+        "Shields recharge for the outbound approach",
+        "Fresh-page save reload preserves Center progress",
+        "The protected paid carrier selects world one with an in-flight rescue due",
+        "The timed homeworld departure exports unchanged",
+        "No uncaught errors preparing the protected home approach"
+      ],
+      "journey": {
+        "fuel": 247,
+        "shield": 128,
+        "refuelAt": 234290,
+        "duration": 33,
+        "minutes": 234279
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_homeworld_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a contact, fuel stop or world-one orbit with radioactives intact",
+        "The radioactive approach checkpoint exports unchanged",
+        "No uncaught errors on the protected radioactive approach"
+      ],
+      "journey": {
+        "contact": true,
+        "stalled": false,
+        "world": null,
+        "fuel": 219,
+        "hull": 16,
+        "shield": 128,
+        "refuelAt": null,
+        "minutes": 234301
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_homeworld_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 141,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 234308,
+        "refuelAt": null,
+        "motion": 14
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_homeworld_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The charged and fueled paid carrier has world one selected",
+        "Ordinary flight reaches a contact, fuel stop or world-one orbit with radioactives intact",
+        "The radioactive approach checkpoint exports unchanged",
+        "No uncaught errors on the protected radioactive approach"
+      ],
+      "journey": {
+        "contact": true,
+        "stalled": false,
+        "world": null,
+        "fuel": 132,
+        "hull": 16,
+        "shield": 128,
+        "refuelAt": null,
+        "minutes": 234310
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_homeworld_second_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid radioactives, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the paid lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 42,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 234316,
+        "refuelAt": null,
+        "motion": 17
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_home_cloaked_progress_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "One pirate retreat leaves the paid radioactives and installed cloaker intact",
+        "Shields power down for the cloaked-only passage",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank: {\"waiting\":234447,\"minutes\":234447,\"refuelAt\":null,\"fuel\":255,\"screen\":{\"x\":\"45\",\"y\":\"103\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"\",\"podY\":\"\",\"podHeading\":\"16\",\"transport\":\"foot\",\"city\":\"\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"ship\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"234447\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-01\",\"world\":\"\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"133\",\"shipHealth\":\"240\",\"shipTargetX\":\"315\",\"shipTargetY\":\"492\",\"mode\":\"campaign\",\"rest\":\"177\",\"nourishment\":\"153\",\"seed\":\"12345\"}}",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The cloaked approach ends safely",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid radioactives remain safe after the cloaked home approach",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 1,
+        "orbit": {
+          "angle": 124,
+          "radius": 28
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 178,
+          "rest": 177,
+          "health": 255,
+          "nourishment": 153
+        },
+        "minutes": 234465
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_home_cloaked_progress_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first cloaked segment leaves the paid radioactives and cloaker intact",
+        "Shields power down for the cloaked-only passage",
+        "Segment 1 halts without losing the paid cargo",
+        "Segment 1 has an ordinary rescue scheduled",
+        "Segment 1 rescue fills the stationary tank: {\"waiting\":234536,\"minutes\":234536,\"refuelAt\":null,\"fuel\":255,\"screen\":{\"x\":\"45\",\"y\":\"103\",\"paused\":\"true\",\"encounter\":\"\",\"combatX\":\"\",\"combatY\":\"\",\"enemies\":\"0\",\"combatHealth\":\"\",\"podX\":\"\",\"podY\":\"\",\"podHeading\":\"16\",\"transport\":\"foot\",\"city\":\"\",\"cameraX\":\"0\",\"cameraY\":\"0\",\"heading\":\"\",\"scene\":\"ship\",\"room\":\"\",\"occupants\":\"0\",\"service\":\"\",\"dialogue\":\"\",\"minutes\":\"234536\",\"sleeping\":\"false\",\"dead\":\"false\",\"system\":\"system-01\",\"world\":\"\",\"flight\":\"\",\"flightProgress\":\"\",\"space\":\"ship\",\"contact\":\"false\",\"shipHull\":\"16\",\"shipGun\":\"0\",\"shipRange\":\"133\",\"shipHealth\":\"240\",\"shipTargetX\":\"315\",\"shipTargetY\":\"492\",\"mode\":\"campaign\",\"rest\":\"174\",\"nourishment\":\"151\",\"seed\":\"12345\"}}",
+        "Segment 1 starts under cloak",
+        "Segment 1 turns cloak off before rescue",
+        "The cloaked approach ends safely",
+        "Fresh-page reload preserves the intermediate orbit",
+        "The paid radioactives remain safe after the cloaked home approach",
+        "The cloaked segment exports unchanged",
+        "No uncaught errors on the cloaked segment"
+      ],
+      "journey": {
+        "segment": 1,
+        "orbit": {
+          "angle": 122,
+          "radius": 22
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 182,
+          "rest": 171,
+          "health": 255,
+          "nourishment": 149
+        },
+        "minutes": 234554
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_home_final_orbit_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two cloaked segments bring paid radioactives near world one",
+        "Final approach has an ordinary rescue scheduled",
+        "The final approach starts with a full stationary tank",
+        "The final approach starts under cloak",
+        "Fresh-page reload preserves the world-one arrival",
+        "The paid radioactives survive the final cloaked leg",
+        "The final approach checkpoint exports unchanged",
+        "No uncaught errors on the cloaked home approach"
+      ],
+      "journey": {
+        "arrived": true,
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        },
+        "fuel": 230,
+        "condition": {
+          "vigor": 186,
+          "rest": 165,
+          "health": 255,
+          "nourishment": 145
+        },
+        "minutes": 234695
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid radioactive carrier is in homeworld orbit with landing fuel",
+        "Ordinary pilotage completes the Banville landing",
+        "Fresh-page reload preserves the Banville landing",
+        "The system-eleven radioactives land at Banville intact",
+        "The paid radioactive landing exports unchanged",
+        "No uncaught errors on the Banville landing"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 1020,
+        "condition": {
+          "vigor": 186,
+          "rest": 165,
+          "health": 255,
+          "nourishment": 145
+        },
+        "minutes": 234700
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid city-49 radioactives land at Banville intact",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid city-49 radioactives create one phase-eight receipt",
+        "The city-49 radioactive delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-49 radioactive delivery"
+      ],
+      "journey": {
+        "bank": 1020,
+        "receipts": 51,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 234712
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city49_good02_city01_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid city-49 radioactives have been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "journey": {
+        "fuel": 230,
+        "hull": 16,
+        "bank": 1020,
+        "condition": {
+          "vigor": 186,
+          "rest": 162,
+          "health": 255,
+          "nourishment": 143
+        }
+      }
+    }
+  ]
+}
