@@ -1,3 +1,27 @@
+## R11j — Two distinct phase-three cryogens and damaged-hull depot access — 2026-10-15
+
+The ten-receipt seed-12345 campaign buys food, transfers bank funds, fully
+repairs its combat-damaged hull, refuels and flies through a shorter warp
+point to world 03. Ordinary exchange cargo controls load the separate city
+09 and city 11 initialized cryogens. The pod returns over the surface to
+the ship city; a live ground chase is escaped with movement controls. A full
+paid tank and cash deposit preserve the source bank launch condition for the
+return warp. The ship lands on world 01 and delivers both unique cryogens to
+Banville. Fresh-page reload and readable export preserve 12 distinct receipts
+while phase 3 remains active. The three chained Chrome journeys and all 523
+rule groups pass without page errors.
+
+The journey exposed a campaign-critical depot mismatch: the current save
+allows a combat-damaged hull below the creation value, but depot entry still
+applied the older undamaged-hull bound and threw `invalidShipResources`.
+Depot validation now uses the live campaign's combat scope, with a focused
+regression for a damaged ship paying for repair. The user-owned
+`PRD-REMAKE.md` remains untouched.
+
+R11 remains open. Phase 3 needs goods 20 and 22 plus two more unique cryogens.
+The current character has no carried food, so ordinary bank/tavern resupply
+precedes the next world trip. Phases 4–9 and ending verification follow.
+
 ## R11i — Cross-system procurement and phase-two completion — 2026-10-15
 
 The eight-receipt campaign transfers 5,000 credits between system accounts at

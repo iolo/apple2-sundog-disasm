@@ -6,6 +6,7 @@ import { campaignSaveCodec } from '../js/core/campaign-saves.js';
 import { reduceCampaignPod, POD_REENTRY } from '../js/core/campaign-pod.js';
 import { reduceCampaignExchange, exchangeSaleQuote } from '../js/core/campaign-exchange.js';
 import { campaignDepotOffers, campaignDepotQuote, reduceCampaignDepot } from '../js/core/campaign-depot.js';
+import { initialCampaignCombat } from '../js/core/campaign-combat.js';
 import { createCharacter } from '../js/core/character.js';
 
 export async function campaignDepotTests(test,equal) {
@@ -48,6 +49,14 @@ export async function campaignDepotTests(test,equal) {
     equal(codec.parse(JSON.stringify(codec.make(filled,0))).state,filled);equal(JSON.stringify(s),before);
     equal(campaignDepotOffers(filled,content,city).slice(0,2).map(o=>o.reason),['depotCapacity','depotCapacity']);
     reject(()=>service(filled,'refuel'),'depotCapacity');reject(()=>service(filled,'repair'),'depotCapacity');
+  });
+  await test('A combat-damaged ship can enter a depot and pay for hull repairs',()=>{
+    const damaged=arrive();damaged.resources.hull=7;damaged.combat=initialCampaignCombat();
+    const repair=campaignDepotOffers(damaged,content,city).find(o=>o.type==='repair');
+    equal(repair.maximum,9);equal(repair.reason,'');
+    const fixed=service(damaged,'repair');
+    equal(fixed.resources.hull,8);
+    equal(fixed.economy.accounts[0].balance,damaged.economy.accounts[0].balance-repair.unitPrice);
   });
   await test('Depot payment is bank-first, accepts exact funds and rolls back insufficient/full requests',()=>{
     const s=arrive();s.economy.accounts[0].balance=100;s.dialogue.cash=57;
