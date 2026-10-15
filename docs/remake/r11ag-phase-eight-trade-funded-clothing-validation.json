@@ -1,0 +1,760 @@
+{
+  "milestone": "R11ag",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-eight-city49-good02-city01-returned.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-eight-clothing-city36-loaded.json",
+  "runCount": 22,
+  "uiChecks": 196,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 51,
+    "shipLocation": {
+      "systemId": "system-07",
+      "worldId": "world-11",
+      "cityId": "city-36",
+      "orbit": {
+        "angle": 162,
+        "radius": 25
+      },
+      "surfacePosition": {
+        "x": 29,
+        "y": 18
+      },
+      "cityPosition": {
+        "x": 7,
+        "y": 11
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 166,
+    "homeBank": 1080,
+    "system05Bank": 1222,
+    "system07Bank": 1093,
+    "podCargo": [
+      {
+        "commodityId": "cargo-26",
+        "quality": 5,
+        "originCity": "city-36",
+        "pricePaid": 6000
+      },
+      null
+    ],
+    "shipCondition": {
+      "vigor": 148,
+      "rest": 88,
+      "health": 255,
+      "nourishment": 104
+    },
+    "equipmentPerformance": {
+      "warp-drives": 4,
+      "sub-c-engines": 4,
+      "ships-guns": 0,
+      "tactical-display": 4,
+      "force-shields": 4,
+      "pilotage": 4
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_eight_city01_shield_referral_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The returned ship carries one damaged spare shield that can fund trade",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (18 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the spare shield sale request",
+        "The referral records the spare shield",
+        "No uncaught errors during the shield referral"
+      ],
+      "journey": {
+        "cash": 0,
+        "bank": 1020,
+        "carried": [
+          0,
+          0,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_shield_handover_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The normal shield referral is pending in the tavern",
+        "A free tavern seat is reached for the referred buyer",
+        "A referred buyer reaches the tavern table",
+        "The spare-shield referral survives tavern seating: {\"workspace\":{\"lastCity\":1,\"mood\":4,\"quantity\":1,\"gate\":1,\"item\":235,\"actor\":0},\"flags\":[true,true,false]}",
+        "The buyer quotes the spare shield",
+        "The carried spare shield can be sold",
+        "Fresh-page save reload preserves Center progress",
+        "Only the spare shield leaves and the proceeds survive reload",
+        "The shield-sale checkpoint exports unchanged",
+        "No uncaught errors during ordinary spare-item trade"
+      ],
+      "journey": {
+        "quote": "Conversation\n\ud55c\uad6d\uc5b4\n\nI'll offer 600 Cr for your shield.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 600,
+        "bank": 1020,
+        "carried": [
+          0,
+          0,
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_rapidheal_pickup_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shield sale funds part of a grain purchase and one spare medical item remains",
+        "roomExit reached through normal movement (86 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (45 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "The parked pod docks at the capital ship",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary ship storage provides a spare rapidheal for sale",
+        "depart reached through normal movement (77 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The medical item reaches the tavern intact",
+        "The medical-item checkpoint exports unchanged",
+        "No uncaught errors while retrieving the unused medical item"
+      ],
+      "journey": {
+        "cash": 600,
+        "bank": 1020,
+        "carried": [
+          10,
+          0,
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_rapidheal_referral_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "An unused rapidheal is carried to the capital tavern",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the unused rapidheal sale request",
+        "The referral records the unused rapidheal",
+        "No uncaught errors during the rapidheal referral"
+      ],
+      "journey": {
+        "cash": 600,
+        "bank": 1020,
+        "carried": [
+          10,
+          0,
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_rapidheal_handover_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The normal rapidheal referral is pending in the tavern",
+        "A free tavern seat is reached for the referred buyer",
+        "A referred buyer reaches the tavern table",
+        "The spare-rapidheal referral survives tavern seating: {\"workspace\":{\"lastCity\":1,\"mood\":3,\"quantity\":1,\"gate\":1,\"item\":10,\"actor\":0},\"flags\":[true,true,false]}",
+        "The buyer quotes the spare rapidheal",
+        "The carried spare rapidheal can be sold",
+        "Fresh-page save reload preserves Center progress",
+        "Only the spare rapidheal leaves and the proceeds survive reload",
+        "The rapidheal-sale checkpoint exports unchanged",
+        "No uncaught errors during ordinary spare-item trade"
+      ],
+      "journey": {
+        "quote": "Conversation\n\ud55c\uad6d\uc5b4\n\nI'll offer 360 Cr for your rapidheal.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 960,
+        "bank": 1020,
+        "carried": [
+          0,
+          0,
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city01_grain_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two spare-item sales provide exactly 960 credits for the grain trade",
+        "bank reached through normal movement (271 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The home bank funds a low-cost grain lot while retaining launch clearance",
+        "The grain-funding checkpoint exports unchanged",
+        "No uncaught errors during ordinary bank deposit"
+      ],
+      "journey": {
+        "bank": 1980,
+        "cash": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_grain_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The home bank funds a small grain purchase",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world city-02 grain supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (437 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-02 exchange opens normally",
+        "The grain-market checkpoint exports unchanged",
+        "No uncaught errors on the city-02 grain visit"
+      ],
+      "journey": {
+        "bank": 1980,
+        "quote": 700,
+        "clearanceAfter": 1280,
+        "supply": 4,
+        "offers": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 6,
+            "price": 1200,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 5,
+            "price": 5700,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 5,
+            "price": 1100,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-26",
+            "quality": 2,
+            "price": 5500,
+            "demand": 5,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 3,
+            "price": 4700,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 2,
+            "price": 9200,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 4,
+            "price": 11100,
+            "demand": 6,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 4,
+            "price": 5200,
+            "demand": 0,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_city02_grain_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-02 grain market has inventory and the home account holds 1,980 credits",
+        "Ordinary market visits offer grain affordable with launch clearance",
+        "Paid grain enters the warehouse with home-system launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The paid grain and launch clearance survive a fresh-page reload",
+        "The grain-loaded checkpoint exports unchanged",
+        "No uncaught errors buying the grain trade cargo"
+      ],
+      "journey": {
+        "price": 900,
+        "quality": 4,
+        "bank": 1080,
+        "pod": [
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "originCity": "city-02",
+            "pricePaid": 900
+          },
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Paid grain and home-bank clearance await launch",
+        "dock reached through normal movement (433 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The city-02 bank clearance allows ordinary launch",
+        "Ordinary rescue refuels the grain carrier",
+        "Shields cover the outbound warp-point leg",
+        "A pirate contact pauses the grain carrier with cargo intact"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 229,
+        "shield": 128,
+        "hull": 16
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid grain, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the grain lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 151,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 235882,
+        "refuelAt": null,
+        "motion": 9
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_continue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cleared contact leaves the paid grain on its outbound point flight",
+        "A second contact still preserves the grain cargo",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": true,
+        "fuel": 89,
+        "shield": 128,
+        "minutes": 235902
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_second_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid grain, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the grain lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 0,
+        "hull": 16,
+        "shield": 128,
+        "minutes": 235908,
+        "refuelAt": null
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The grain carrier stalls intact before the safe warp point",
+        "Ordinary stationary rescue refuels the grain carrier",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby safe point is selected after rescue",
+        "The rescued point checkpoint exports unchanged",
+        "No uncaught errors on ordinary fuel-out recovery"
+      ],
+      "journey": {
+        "fuel": 255,
+        "shield": 0,
+        "orbit": {
+          "angle": 125,
+          "radius": 33
+        },
+        "condition": {
+          "vigor": 160,
+          "rest": 110,
+          "health": 255,
+          "nourishment": 115
+        },
+        "minutes": 235938
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_home_point_after_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The refueled grain carrier is ready for the short safe-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The grain carrier reaches the safe warp radius",
+        "The grain point checkpoint exports unchanged",
+        "No uncaught errors on the rescued point leg"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 224,
+        "shield": 0,
+        "minutes": 235968
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_system07_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The grain carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct system-seven warp is within the live ship range",
+        "Ordinary machinery charges the direct system-seven warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the grain to system seven",
+        "The grain warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-seven warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 53,
+        "hull": 16,
+        "charge": 157,
+        "minutes": 236190
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_city35_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The grain carrier reaches system seven with the paid lot intact",
+        "Ordinary rescue refuels the world-eleven approach",
+        "Shields cover the inhabited-world approach",
+        "The long sublight leg stalls safely at zero fuel",
+        "Ordinary rescue refuels the stalled sublight leg",
+        "World-eleven contact preserves the paid grain"
+      ],
+      "journey": {
+        "contact": true,
+        "hull": 16,
+        "shield": 0,
+        "fuel": 217
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_world11_cloak_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The pirate contact begins with paid grain, full shields and a working cloaker",
+        "The installed cloaker remains available in combat",
+        "Normal tactical controls activate cloak during contact",
+        "The pirate retreats from the active cloaker",
+        "Fresh-page reload preserves the cloaker result",
+        "The cloaker is off after preserving the grain lot and prior deliveries",
+        "The cleared contact exports unchanged",
+        "No uncaught errors while repelling the pirate"
+      ],
+      "journey": {
+        "fuel": 166,
+        "hull": 16,
+        "shield": 0,
+        "minutes": 236475,
+        "refuelAt": null
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_city35_landing_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cloaker has carried paid grain into world-eleven orbit",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The grain carrier lands at the system-seven buyer",
+        "The grain buyer landing exports unchanged",
+        "No uncaught errors on the grain-buyer landing"
+      ],
+      "journey": {
+        "fuel": 166,
+        "hull": 16,
+        "bank": 1093,
+        "condition": {
+          "vigor": 150,
+          "rest": 92,
+          "health": 255,
+          "nourishment": 106
+        },
+        "minutes": 236480
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_city35_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The system-seven buyer receives the grade-D paid grain",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (303 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-35 exchange opens normally",
+        "The city-35 market checkpoint exports unchanged",
+        "No uncaught errors on the grain-buyer market visit"
+      ],
+      "journey": {
+        "bank": 1093,
+        "quotes": {
+          "grain": 6000,
+          "clothing": 7300
+        },
+        "grainSupply": 0,
+        "clothingSupply": 0,
+        "offers": [
+          {
+            "commodityId": "cargo-17",
+            "quality": 6,
+            "price": 11500,
+            "demand": 1,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-09",
+            "quality": 4,
+            "price": 4000,
+            "demand": 2,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-06",
+            "quality": 6,
+            "price": 11500,
+            "demand": 0,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 5,
+            "price": 18300,
+            "demand": 5,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-27",
+            "quality": 2,
+            "price": 15000,
+            "demand": 2,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 3,
+            "price": 14900,
+            "demand": 5,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 6,
+            "price": 15800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-30",
+            "quality": 5,
+            "price": 23500,
+            "demand": 2,
+            "supply": 4
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_grain_city35_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-35 exchange accepts the paid grade-D grain",
+        "The refreshed market quotes a substantial grain-trade gain",
+        "The ordinary warehouse receives the grain from the pod",
+        "Fresh-page save reload preserves Center progress",
+        "The grain sale credits the system-seven bank once",
+        "The grain-sale checkpoint exports unchanged",
+        "No uncaught errors on the ordinary grain sale"
+      ],
+      "journey": {
+        "quote": 6000,
+        "bank": 7093,
+        "pod": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_city36_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The grain proceeds can fund clothing in system seven",
+        "dock reached through normal movement (304 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The ship lands at the same-world clothing supplier",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (144 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-36 exchange opens normally",
+        "The clothing-market checkpoint exports unchanged",
+        "No uncaught errors on the city-36 clothing visit"
+      ],
+      "journey": {
+        "bank": 7093,
+        "quote": 4100,
+        "clearanceAfter": 2993,
+        "supply": 6,
+        "offers": [
+          {
+            "commodityId": "cargo-03",
+            "quality": 2,
+            "price": 12000,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-25",
+            "quality": 4,
+            "price": 9300,
+            "demand": 2,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-10",
+            "quality": 1,
+            "price": 800,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-05",
+            "quality": 6,
+            "price": 18100,
+            "demand": 2,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 4,
+            "price": 23100,
+            "demand": 7,
+            "supply": 5
+          },
+          {
+            "commodityId": "cargo-04",
+            "quality": 3,
+            "price": 15100,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 6,
+            "price": 6000,
+            "demand": 0,
+            "supply": 4
+          },
+          {
+            "commodityId": "cargo-23",
+            "quality": 2,
+            "price": 13700,
+            "demand": 1,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_eight_clothing_city36_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-36 clothing market has stock and funded clearance",
+        "Ordinary visits offer grade-C clothing within launch clearance",
+        "Paid clothing enters the warehouse with system-seven launch clearance",
+        "Fresh-page save reload preserves Center progress",
+        "The paid clothing and clearance survive a fresh-page reload",
+        "The clothing-loaded checkpoint exports unchanged",
+        "No uncaught errors buying grade-C clothing"
+      ],
+      "journey": {
+        "price": 6000,
+        "quality": 5,
+        "bank": 1093,
+        "pod": [
+          {
+            "commodityId": "cargo-26",
+            "quality": 5,
+            "originCity": "city-36",
+            "pricePaid": 6000
+          },
+          null
+        ]
+      }
+    }
+  ]
+}

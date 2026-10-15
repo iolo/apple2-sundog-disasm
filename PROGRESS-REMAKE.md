@@ -1,3 +1,29 @@
+## R11ag — Trade-funded phase-eight clothing route — 2026-10-16
+
+The ordinary-controls campaign sold a damaged spare shield for 600 credits
+and an unused rapidheal for 360 credits, then deposited the proceeds at the
+home bank. City 02 sold a grade-D grain lot for 900 credits while leaving
+1,080 credits of home launch clearance. The ship carried it through a direct
+system-seven warp, two cloaked pirate retreats, and ordinary fuel rescues.
+City 35's refreshed exchange paid 6,000 credits for that grain, crediting
+the system-seven bank once. Its clothing supply had refreshed to zero, so
+the ship flew to nearby city 36 and bought grade-C clothing for 6,000 credits.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-eight-clothing-city36-loaded.json`:
+51 receipts, phase 8 active, clothing in the pod, hull 16, fuel 166, and
+1,093 credits left in the system-seven bank for launch. Warp, engines,
+shields, pilotage, and cloaking work; guns remain disabled. Twenty-two
+passing Chrome journeys recorded 196 UI checks without page errors or
+production changes. See
+`docs/remake/r11ag-phase-eight-trade-funded-clothing-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Sell the clothing in system five, buy and deliver phase-eight
+goods 05 and 04, then complete phase nine and its ending audit. The high-grade
+clothing purchase is trade funding, not a colony receipt. Continue the
+campaign before broader fragility cleanup, per the user's priority.
+
 ## R11af — Paid phase-eight radioactives — 2026-10-16
 
 The ordinary-controls campaign sold a spare distorter, plasma tube, and the
