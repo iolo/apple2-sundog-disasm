@@ -1,3 +1,30 @@
+## R11aa — Phase-seven completion and final-pair return — 2026-10-16
+
+The ordinary-controls playthrough brought the city-23 cargo 15 and city-40
+cryogen through a timed rescue, two pirate contacts, and the Banville Center.
+After delivering them, it sold spare parts from failed ship units through
+normal tavern referrals, restored the damaged gun, repaired hull 4 to 13,
+and preserved launch clearance. It then collected the distinct city-42
+cryogen, transferred 4,000 credits from system 09 to system 06, and funded
+paid cargo 17 at city 25 by selling one more spare control node. Both final
+lots survived the staged warp through system 03, a timed home-system rescue,
+Banville landing, and fresh-page reloads. The Center accepted each exactly
+once and advanced from phase 7 to phase 8 with its bonus.
+
+The active checkpoint is `output/playwright/remake/r11-phase-seven-complete.json`:
+45 receipts, empty pod, hull 13, fuel 206, rest 210, nourishment 79, and
+14,335 credits in the system-01 bank. Thirty-five passing Chrome journeys
+record 435 UI checks without page errors; see
+`docs/remake/r11aa-phase-seven-completion-validation.json`. The sequence now
+includes the previously missing timed-rescue source checkpoint, so it is
+reproducible from R11z's committed warp point. The user PRD remains untouched.
+
+R11 remains open. Phase 8 needs paid goods 02, 04, 05, 14, 20 and 25 plus
+two distinct cryogens. Phase 9 needs paid goods 02, 07, 16, 24, 26, 28 and
+29 plus one cryogen, followed by the ending. The unclaimed initialized
+cryogens in cities 49, 52 and 57 cover those three deliveries. Continue the
+campaign before broader UI fragility cleanup, per the user's priority.
+
 ## R11z — Phase-seven remote pair collected and returned to home system — 2026-10-15
 
 The continuing ordinary-controls playthrough restored food and rest, funded
