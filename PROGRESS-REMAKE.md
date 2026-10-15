@@ -1,3 +1,30 @@
+## R11f — Imported campaign continuation and first cryogen — 2026-10-15
+
+The fresh controls journey now finishes phase 1: four ordinary purchases from
+city 01 and city 02, two pod loads per trip, both Center deliveries, a ship
+food resupply, two fresh-page reloads and the exact one-time bank bonus. The
+version-30 phase-1 export is then imported through the normal checkpoint UI
+and resumed with the same seed, receipts and colony pose. A second controls
+journey fetches city 02's unique initialized cryogen from its warehouse,
+reloads it in the pod, returns to Banville, delivers it and exports phase-2
+progress with five receipts. Neither journey uses an edited campaign save.
+
+This exposed two R11 path blockers. Remote cities had no ship spawn, so the
+pod reducer's reachability check had no origin and rejected a legitimate
+cargo fetch. It now uses the source surface-entry poses as fixed origins; a
+regression transfers city 02's cryogen through the ordinary cargo reducer.
+Readable exports reached 202 KB while the import cap was 128 KB. The bounded
+cap is now 256 KB so the app can reimport its own phase-1 export. Both locales
+also cover the former `blockedPodDeparture` error. All 522 Chrome rule groups
+pass without page errors. The phase-1 controls run and the phase-2 cryogen
+continuation both pass separately.
+
+R11 remains open: phase 2 still needs four ordinary goods and one more
+cryogen, and phases 3–9 still need legitimate procurement, cross-world
+transport, food/fuel funding and final ending verification. Next: prove
+repeatable food purchases through a reachable tavern, then continue the
+phase-2 transaction chain from the exported checkpoint.
+
 ## R11e — Live phase context and campaign journey checkpoints — 2026-10-15
 
 The ground rare-dialogue setup now reads the completed phase from live colony

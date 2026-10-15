@@ -4,7 +4,7 @@ import { cityReachability,cityShipAnchor } from './city-walk.js';
 import { podReachability,podHeading,podServiceAt } from './city-pod.js';
 import { findPodFootExit } from './parked-pod.js';
 import { validateCargoSlots } from './cargo.js';
-import { canStandSurface,surfaceCityEntry } from './surface-walk.js';
+import { canStandSurface,surfaceCityEntryOrigins } from './surface-walk.js';
 
 const keys=(v,n)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===n.length&&n.every(k=>Object.hasOwn(v,k));
 const integer=(v,a,b)=>Number.isInteger(v)&&v>=a&&v<=b;
@@ -79,10 +79,8 @@ export function groundSaveValidator(content,start,rooms,{regional=false,salvage=
     const key=`${cityId}/${driving}/${p.attached}/${!driving&&local?`${p.position.x}/${p.position.y}/${p.heading}`:''}`;
     if(cityChecks.has(key))return cityChecks.get(key);
     const city=world.city(cityId,p.attached),g=driving?city.pod:local?world.foot({...state,ground:{...state.ground,cityId}}):city;
-    const marker={cityId,position:{x:5,y:5}},map={cities:[marker],tiles:Array.from({length:24},()=>Array(40).fill(0))};map.tiles[5][5]=13;
     const entries=new Map();
-    for(let y=0;y<24;y++)for(let x=0;x<28;x++) {
-      const e=surfaceCityEntry(map,{x:140+x-3,y:120+y+3},world.size(cityId));
+    for(const e of surfaceCityEntryOrigins(world.size(cityId))) {
       const heading=podHeading(Math.floor((e.direction-1)/3)-1,(e.direction-1)%3-1);
       entries.set(`${e.position.x}/${e.position.y}/${heading}`,{position:e.position,heading});
     }

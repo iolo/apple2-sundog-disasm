@@ -76,3 +76,19 @@ export function surfaceCityEntry(map,position,size=9) {
   else {ty=b.bottom;direction=4}
   return {cityId:city.cityId,position:{x:tx*28+20,y:ty*32+12},direction};
 }
+
+// Every fractional position on a surface city tile can be an entry. Keep the
+// distinct resulting city poses as fixed reachability origins for a remote
+// pod, whose city has no ship spawn. This is independent of the current pod
+// pose, so a forged isolated pose cannot validate itself as an origin.
+export function surfaceCityEntryOrigins(size=9) {
+  cityTravelBounds(size);
+  const marker={cityId:'city-01',position:{x:5,y:5}},map={cities:[marker],tiles:Array.from({length:24},()=>Array(40).fill(0))};
+  map.tiles[5][5]=13;
+  const entries=new Map();
+  for(let y=0;y<24;y++)for(let x=0;x<28;x++){
+    const entry=surfaceCityEntry(map,{x:140+x-3,y:120+y+3},size);
+    entries.set(`${entry.position.x}/${entry.position.y}/${entry.direction}`,{position:entry.position,direction:entry.direction});
+  }
+  return [...entries.values()];
+}

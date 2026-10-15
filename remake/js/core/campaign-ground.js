@@ -4,7 +4,7 @@ import { createPodGeometry,tryPodStep,podHeading } from './city-pod.js';
 import { tryStep } from './ship-walk.js';
 import { parkedPodGeometry,findPodFootExit,canBoardParkedPod } from './parked-pod.js';
 import { composeSurfaceMap,placeSurfaceColony } from './surface-map.js';
-import { createSurfaceGeometry,trySurfaceStep,surfaceCityAt,citySurfaceExit,surfaceCityEntry } from './surface-walk.js';
+import { createSurfaceGeometry,trySurfaceStep,surfaceCityAt,citySurfaceExit,surfaceCityEntry,surfaceCityEntryOrigins } from './surface-walk.js';
 import { groundCameraAt,scrollGroundCamera } from './ground-camera.js';
 
 const integer=(n,min,max)=>Number.isInteger(n)&&n>=min&&n<=max;
@@ -25,7 +25,10 @@ export function createGroundWorld({maps,navigation,economy,cityWalk,surfaceWalk}
     if(!cities.has(key)) {
       const location=worldId===start.shipLocation.worldId&&id===start.shipLocation.cityId?start.shipLocation:null,map=cityMaps[id];
       const g=createCityGeometry(map,{...cityWalk,shipRows:attached?cityWalk.shipRows:cityWalk.detachedShipRows},location,{surfaceTravel:true});
-      g.pod=createPodGeometry(map,cityWalk,location,{surfaceTravel:true});cities.set(key,g);
+      g.pod=createPodGeometry(map,cityWalk,location,{surfaceTravel:true});
+      g.pod.podOrigins=surfaceCityEntryOrigins(size(id)).map(entry=>({position:entry.position,
+        heading:({8:16,6:18,2:20,4:14})[entry.direction]}));
+      cities.set(key,g);
     }
     return cities.get(key);
   }

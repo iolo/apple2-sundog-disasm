@@ -554,6 +554,7 @@
   "cargoPodFull": "Both pod slots are full. Store or swap cargo first.",
   "cargoWarehouseFull": "The warehouse is full. Fetch or swap cargo first.",
   "cargoUnavailable": "Bring your pod to the exchange to load cargo.",
+  "blockedPodDeparture": "The pod cannot depart from this city entrance.",
   "cargoInvalidSelection": "Choose an occupied cargo slot.",
   "depotResources": "Hull {hull}/16 · Fuel {fuel}/255 · Empty pod slots {slots}/2",
   "depotFunds": "Cash {cash} · Local bank {balance}",
