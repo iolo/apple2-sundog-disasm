@@ -1,3 +1,30 @@
+## R11ai — First three phase-nine receipts and trade funding — 2026-10-16
+
+The ordinary-controls campaign returned to the home capital and bought
+quality-one droids and clothing at city 04 for 4,800 and 4,500 credits.
+Banville accepted both as the first two phase-nine receipts. The ship then
+bought another paid droid lot at city 02 for 4,800 credits, carried it under
+cloak to city 07, and sold it there for 7,200 credits. That trade funded a
+quality-one art-object lot for 5,700 credits and a 2,600-credit spice lot
+for resale, leaving 1,080 credits of launch clearance. Both lots returned
+intact through cloaked interworld flight and ordinary fuel rescues. The
+Center accepted the art objects once as receipt 56, while the spices stayed
+aboard. Selling those spices at the home capital for 3,900 credits raised
+the home bank to 4,980 credits. Phase-nine deliveries have paid no interim
+bonus, as intended.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-city01-spices-sold.json`: 56
+receipts, phase 9 active, an empty pod, hull 16, fuel 165, and 4,980
+credits in the home bank. Thirty-three passing Chrome journeys recorded
+377 UI checks without page errors or production changes. See
+`docs/remake/r11ai-phase-nine-local-pair-and-trade-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 9 needs paid goods 02, 07, 16 and 28, the final
+distinct cryogen at city 57, and the ending audit. Continue those campaign
+tasks before broader fragility cleanup, per the user's priority.
+
 ## R11ah — Phase-eight completion — 2026-10-16
 
 The ordinary-controls campaign carried the paid city-36 clothing lot to
