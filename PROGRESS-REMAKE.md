@@ -1,3 +1,34 @@
+## R11ab — First phase-eight cryogen and pirate retreat — 2026-10-16
+
+The ordinary-controls campaign funded and bought cargo 02 at city 49 and
+collected its distinct cryogen. The ship returned through system-11 point
+flight, four pirate contacts, an unlucky near-point warp attempt, and a
+successful home warp. A normal laser-combat branch proved that precise
+right-button aiming can hit and clear the first homeworld pirate while
+retaining both lots. That branch lost the shield and sensor units, however,
+and a later contact was fatal. The active journey instead conceded the paid
+cargo 02 through the source pod-slot jettison command. This recorded one
+ordinary cargo loss, made the pirate retreat, and let the unique cryogen
+reach the Banville Center without further contacts. A normal city flight then
+returned the empty pod and ship to the home capital for resupply.
+
+The active checkpoint is `output/playwright/remake/r11-phase-eight-city49-cryo-city01-returned.json`:
+46 receipts, phase 8 active, empty pod, hull 16, fuel 10, rest 115,
+nourishment 47, all ship systems operational, 1,200 credits in the system-01
+bank and 9,775 in system 11. The lost cargo 02 must be bought again. The
+right-button tactical pointer now aims without firing; left-button fire
+remains available. Twenty-two passing Chrome journeys record 200 UI checks,
+including the separate live laser-combat proof, without page errors. The
+full browser rule suite passes all 523 groups. See
+`docs/remake/r11ab-phase-eight-city49-cryogen-validation.json`. The user PRD
+remains untouched.
+
+R11 remains open. Resupply the landed ship, arrange finance and a cloaker if
+feasible, then deliver phase-eight goods 02, 04, 05, 14, 20 and 25 plus a
+second distinct cryogen. Phase 9 still requires goods 02, 07, 16, 24, 26,
+28 and 29 plus a third cryogen and the ending. Broader fragility cleanup
+follows the campaign, per the user's priority.
+
 ## R11aa — Phase-seven completion and final-pair return — 2026-10-16
 
 The ordinary-controls playthrough brought the city-23 cargo 15 and city-40
