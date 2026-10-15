@@ -11,7 +11,7 @@ function setup(state,content,geometry) {
   if(travel.scene!=='depot'||cityServiceAt(geometry.map,travel.cityPosition,driving?'pod':'foot')!=='depot'||
     (driving&&podServiceAt(geometry.pod,travel.cityPosition,state.pod.heading)!=='depot'))throw new Error('depotUnavailable');
   if(!state.ground||state.pod.attached||state.ground.podCityId===state.ground.cityId)validateCampaignPod(state.pod,travel,geometry.pod);
-  const resources=validateShipResources(state.resources,start,{flight:!!state.flight}),location=campaignLocation(state,content),ship=currentShipLocation(state);
+  const resources=validateShipResources(state.resources,start,{flight:!!state.flight,combat:!!state.combat}),location=campaignLocation(state,content),ship=currentShipLocation(state);
   if(state.regional&&geometry.map.cityId!==location.cityId)throw new Error('depotUnavailable');
   const system=content.dialogue?.systems.systems.find(s=>s.id===location.systemId);
   const account=state.economy.accounts.find(a=>a.systemId===location.systemId);
