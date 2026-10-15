@@ -1,0 +1,1192 @@
+{
+  "milestone": "R11aa",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-seven-city23-home-warp.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-seven-complete.json",
+  "uiChecks": 435,
+  "runCount": 35,
+  "result": {
+    "activePhase": 8,
+    "completedPhase": 7,
+    "receipts": 45,
+    "location": {
+      "systemId": "system-01",
+      "worldId": "world-01",
+      "cityId": "city-60",
+      "orbit": {
+        "angle": 121,
+        "radius": 20
+      },
+      "surfacePosition": {
+        "x": 19,
+        "y": 12
+      },
+      "cityPosition": {
+        "x": 7,
+        "y": 7
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 13,
+    "fuel": 206,
+    "condition": {
+      "vigor": 167,
+      "rest": 210,
+      "health": 255,
+      "nourishment": 79
+    },
+    "system01Bank": 14335,
+    "system06Bank": 2180,
+    "system09Bank": 1174,
+    "pod": [
+      null,
+      null
+    ]
+  },
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_seven_city23_home_timed_rescue_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both phase-seven lots return to the home system point",
+        "The first ordinary rescue fills the approach tank",
+        "A second rescue is scheduled before the home approach",
+        "The approach starts shortly before the scheduled rescue",
+        "Shields charge fully ahead of pirate contact",
+        "The paid carrier meets the reproducible homeworld contact",
+        "The contact retains both lots and charged shields",
+        "No uncaught errors on the timed rescue approach"
+      ],
+      "journey": {
+        "minutes": 215783,
+        "refuelAt": 215797,
+        "fuel": 163,
+        "hull": 13,
+        "shields": 255
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_home_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live homeworld approach starts with full shields and both phase-seven lots",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "The live laser fires when the moving target enters source accuracy",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary laser hits clear the contact without losing either lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "journey": {
+        "minutes": 215801,
+        "hull": 12,
+        "shield": 128,
+        "gun": 255,
+        "enemy": 57,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-40",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 1,
+            "originCity": "city-23",
+            "pricePaid": 2100
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_home_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Cleared contact checkpoint preserves both lots and continuing flight",
+        "Second contact retains both lots and a live ship"
+      ],
+      "journey": {
+        "contact": true,
+        "hull": 12,
+        "fuel": 211,
+        "shield": 255
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_home_second_pirate_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The live homeworld approach starts with full shields and both phase-seven lots",
+        "Ordinary Comm gives six safe tactical ticks",
+        "The laser charges behind the safe Comm window",
+        "The live laser fires when the moving target enters source accuracy",
+        "Fresh-page save reload preserves the pirate result",
+        "Ordinary laser hits clear the contact without losing either lot",
+        "The cleared-contact checkpoint exports unchanged",
+        "No uncaught errors during the pirate fight"
+      ],
+      "journey": {
+        "minutes": 215831,
+        "hull": 4,
+        "shield": 192,
+        "gun": 0,
+        "enemy": 126,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-40",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 1,
+            "originCity": "city-23",
+            "pricePaid": 2100
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_emergency_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The rescued carrier reaches homeworld orbit with both lots despite battle damage",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Both phase-seven lots land at Banville through ordinary controls",
+        "The Banville paid-pair landing checkpoint exports unchanged",
+        "No uncaught errors on the emergency homeworld landing"
+      ],
+      "journey": {
+        "fuel": 52,
+        "hull": 4,
+        "bank": 1017,
+        "condition": {
+          "vigor": 147,
+          "rest": 99,
+          "health": 255,
+          "nourishment": 91
+        },
+        "minutes": 215836,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-40",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-15",
+            "quality": 1,
+            "originCity": "city-23",
+            "pricePaid": 2100
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city23_pair_deliver_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid cargo and distinct city-40 cryogen land at Banville",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The paid lot and distinct cryogen each create one phase-seven receipt",
+        "The city-23 pair delivery checkpoint exports unchanged",
+        "No uncaught errors on the city-23 pair delivery"
+      ],
+      "journey": {
+        "bank": 1017,
+        "receipts": 43,
+        "phase": 7,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 215848
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_final_return_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Five paid goods and one cryogen have been delivered at the Banville Center",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "Normal pod docking returns the ship to departure readiness",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The ordinary city flight reaches the home capital",
+        "The capital landing exports unchanged",
+        "No uncaught errors on the capital resupply flight"
+      ],
+      "journey": {
+        "fuel": 52,
+        "hull": 4,
+        "bank": 1017,
+        "condition": {
+          "vigor": 147,
+          "rest": 97,
+          "health": 255,
+          "nourishment": 90
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_rapidheal_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The damaged carrier has a spare rapidheal and minimal home-bank reserves",
+        "stores reached through normal movement (13 steps)",
+        "stores action is available",
+        "Ordinary inventory moves one spare rapidheal to the sale slot",
+        "depart reached through normal movement (77 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (219 steps)",
+        "bank action is available",
+        "Ordinary bank withdrawal funds a bartender referral",
+        "tavern reached through normal movement (43 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the rapidheal sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare rapidheal",
+        "The normal sale slot accepts the carried rapidheal",
+        "Only the rapidheal leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The rapidheal sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll offer 240 Cr for your rapidheal.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 340,
+        "bank": 917,
+        "carried": [
+          12,
+          0,
+          235,
+          8
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_two_nodes_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "A damaged gun, empty pockets, and spare failed-unit control nodes precede ordinary engineering",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (251 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "gunsBay reached through normal movement (67 steps)",
+        "gunsBay action is available",
+        "The normal gun engineering bay opens",
+        "An intact plasma tube restores one ship-gun unit",
+        "stores reached through normal movement (67 steps)",
+        "stores action is available",
+        "warpBay reached through normal movement (67 steps)",
+        "warpBay action is available",
+        "shieldBay reached through normal movement (130 steps)",
+        "shieldBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Two failed-unit control nodes and the working gun survive fresh-page reload",
+        "The repair-and-sale-item checkpoint exports unchanged",
+        "No uncaught errors during ordinary gun engineering and retrieval"
+      ],
+      "journey": {
+        "hull": 4,
+        "gun": 4,
+        "carried": [
+          12,
+          31,
+          235,
+          31
+        ],
+        "cash": 340,
+        "bank": 917
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_node_one_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two surplus failed-unit nodes and a repaired gun precede the home-capital sale",
+        "depart reached through normal movement (125 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll offer 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 1470,
+        "bank": 917,
+        "carried": [
+          12,
+          0,
+          235,
+          31
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_node_two_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second surplus node remains after the first normal sale",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "tavern reached through normal movement (0 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll offer 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 2610,
+        "bank": 917,
+        "carried": [
+          12,
+          0,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_gun_nodes_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The repaired gun retains two intact nodes in separate failed units",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (45 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "gunsBay reached through normal movement (105 steps)",
+        "gunsBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "Two more spare nodes leave failed gun units without affecting the repaired gun",
+        "The gun-node checkpoint exports unchanged",
+        "No uncaught errors while retrieving failed-unit gun nodes"
+      ],
+      "journey": {
+        "cash": 2610,
+        "bank": 917,
+        "gun": 4,
+        "carried": [
+          12,
+          31,
+          235,
+          31
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_node_three_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Two surplus failed-unit nodes and a repaired gun precede the home-capital sale",
+        "depart reached through normal movement (103 steps)",
+        "depart action is available",
+        "bankPark reached through normal movement (333 steps)",
+        "bankPark action is available",
+        "tavern reached through normal movement (56 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller at the table",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 3750,
+        "bank": 917,
+        "carried": [
+          12,
+          0,
+          235,
+          31
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_node_four_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The second surplus node remains after the first normal sale",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "tavern reached through normal movement (0 steps)",
+        "tavern action is available",
+        "The bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the control node sale request",
+        "The sale referral stores the item and direction",
+        "A referred visitor reaches the seller with the control node request: 32",
+        "The visitor quotes the spare control node",
+        "The normal sale slot accepts the carried control node",
+        "Only the control node leaves and cash increases once",
+        "Fresh-page save reload preserves Center progress",
+        "The control node sale survives fresh-page reload",
+        "The completed sale exports unchanged",
+        "No uncaught errors on the ordinary surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll pay 1140 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 4890,
+        "bank": 917,
+        "carried": [
+          12,
+          0,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_shield_node_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shield bank retains an intact node in a failed unit",
+        "roomExit reached through normal movement (4 steps)",
+        "roomExit action is available",
+        "pod reached through normal movement (45 steps)",
+        "pod action is available",
+        "dock reached through normal movement (331 steps)",
+        "dock action is available",
+        "shieldBay reached through normal movement (127 steps)",
+        "shieldBay action is available",
+        "Fresh-page save reload preserves Center progress",
+        "A spare shield node leaves its failed unit without affecting working shields",
+        "The shield-node checkpoint exports unchanged",
+        "No uncaught errors while retrieving the spare shield node"
+      ],
+      "journey": {
+        "cash": 4890,
+        "bank": 917,
+        "shields": 4,
+        "carried": [
+          12,
+          31,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_hull13_bank_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The damaged ship and reserve control node are ready for staged repairs",
+        "depart reached through normal movement (125 steps)",
+        "depart action is available",
+        "depot reached through normal movement (68 steps)",
+        "depot action is available",
+        "Normal depot repair reaches hull 8 while preserving the spare node",
+        "Normal depot repair reaches hull 12 while preserving the spare node",
+        "Normal depot repair reaches hull 13 while preserving the spare node",
+        "Staged repair reserves at least 1,001 credits for clearance",
+        "bankPark reached through normal movement (320 steps)",
+        "bankPark action is available",
+        "bank reached through normal movement (71 steps)",
+        "bank action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The repaired ship retains clearance funds after a fresh-page reload",
+        "The hull-and-bank checkpoint exports unchanged",
+        "No uncaught errors during ordinary depot repair and deposit"
+      ],
+      "journey": {
+        "hull": 13,
+        "bank": 1449,
+        "prices": [
+          {
+            "units": 4,
+            "price": 2324
+          },
+          {
+            "units": 4,
+            "price": 1744
+          },
+          {
+            "units": 1,
+            "price": 290
+          }
+        ],
+        "carried": [
+          12,
+          31,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_preflight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The repaired phase-seven ship has a stored ration and clearance reserve",
+        "pod reached through normal movement (218 steps)",
+        "pod action is available",
+        "depot reached through normal movement (319 steps)",
+        "depot action is available",
+        "Two refuel units fit the clearance reserve",
+        "Normal depot fuel preserves the stored ration and clearance",
+        "dock reached through normal movement (69 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "The pilot sleeps voluntarily before launch",
+        "Ordinary forced rest recovers enough to wake",
+        "Fresh-page save reload preserves Center progress",
+        "Fuel, rest, food and clearance survive fresh-page reload",
+        "The preflight checkpoint exports unchanged",
+        "No uncaught errors during normal fuel and rest resupply"
+      ],
+      "journey": {
+        "bank": 1135,
+        "price": 314,
+        "fuel": 84,
+        "condition": {
+          "vigor": 97,
+          "rest": 242,
+          "health": 255,
+          "nourishment": 139
+        },
+        "carried": [
+          12,
+          31,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city01_next_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The resupplied ship leaves Banville for the last phase-seven goods and cryogen",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Home-bank clearance allows the ordinary launch",
+        "Ordinary rescue refuels the outbound ship",
+        "Tactical shields cover the outbound warp-point leg",
+        "Fresh-page save reload preserves Center progress",
+        "The nearby point-8 sublight leg reaches safe warp radius",
+        "The outbound point checkpoint exports unchanged",
+        "No uncaught errors on the phase-seven final-pair launch"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 137,
+        "hull": 13,
+        "shield": 128,
+        "minutes": 217851
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_system09_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The shielded ship waits at the safe outbound warp point",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields stop drawing fuel while stationary warp charging",
+        "The direct cryogen-system warp is within the live ship range",
+        "Ordinary machinery charges the direct cryogen-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches its selected system",
+        "The outbound warp checkpoint exports unchanged",
+        "No uncaught errors on the direct cryogen-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 111,
+        "shield": 0,
+        "hull": 13,
+        "charge": 118,
+        "minutes": 218030
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city42_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The ship arrives in system eight with prior paid goods delivered",
+        "Ordinary rescue refuels the long world-fourteen approach",
+        "The empty pod needs no pirate shielding on the cryogen approach",
+        "Ordinary sublight reaches world 14 after rescue",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The paid-goods pickup flight lands at the world-fourteen supplier",
+        "The world-fourteen landing checkpoint exports unchanged",
+        "No uncaught errors on the cryogen-source approach"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 151,
+        "hull": 13,
+        "shield": 0,
+        "bank": 5174,
+        "condition": {
+          "vigor": 113,
+          "rest": 210,
+          "health": 255,
+          "nourishment": 125
+        },
+        "minutes": 218270,
+        "refuels": 0
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city42_cryogen_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The world-fourteen landing and empty pod are ready for the city-42 cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (461 steps)",
+        "exchange action is available",
+        "City 42 still owns its distinct initialized cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "The city-42 cryogen loads into the live pod and survives reload",
+        "The cryogen checkpoint exports unchanged",
+        "No uncaught errors on the scanner-enabled cryogen pickup"
+      ],
+      "journey": {
+        "minutes": 218349,
+        "fuel": 151,
+        "condition": {
+          "vigor": 117,
+          "rest": 202,
+          "health": 255,
+          "nourishment": 123
+        },
+        "carried": [
+          12,
+          31,
+          235,
+          0
+        ],
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-42",
+          "pricePaid": 0
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city42_fund_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-42 cryogen and system-nine funds are ready for the last paid lot",
+        "park reached through normal movement (0 steps)",
+        "park action is available",
+        "bank reached through normal movement (212 steps)",
+        "bank action is available",
+        "Normal bank transfer funds cargo 17 and preserves system-nine clearance",
+        "pod reached through normal movement (207 steps)",
+        "pod action is available",
+        "dock reached through normal movement (462 steps)",
+        "dock action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The funded cryogen carrier survives docking and fresh-page reload",
+        "The funded cryogen checkpoint exports unchanged",
+        "No uncaught errors on ordinary transfer and docking"
+      ],
+      "journey": {
+        "sourceBank": 1174,
+        "destinationBank": 5700,
+        "fuel": 151,
+        "hull": 13,
+        "cryogen": {
+          "commodityId": "cargo-31",
+          "quality": 7,
+          "originCity": "city-42",
+          "pricePaid": 0
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city42_point_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The first distinct phase-seven cryogen is ready to leave world fourteen",
+        "navigation reached through normal movement (87 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The foreign bank permits the cryogen launch",
+        "Fresh-page save reload preserves Center progress",
+        "The cryogen reaches the safe point-nine warp radius",
+        "The cryogen warp-point checkpoint exports unchanged",
+        "No uncaught errors on the world-fourteen return launch"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 43,
+        "hull": 13,
+        "minutes": 218960
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city42_system06_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cryogen carrier waits at the intermediate warp point",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "The direct system-06 warp is within the live ship range",
+        "Ordinary machinery charges the direct system-06 warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches the system 06",
+        "The homeward warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-06 warp"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 143,
+        "shield": 0,
+        "hull": 13,
+        "charge": 85,
+        "minutes": 219087
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city26_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded cryogen carrier arrives in system six for cargo 17",
+        "Ordinary rescue fills the inhabited-world approach tank",
+        "Shields recharge before the inhabited-world approach",
+        "The long world-nine sublight leg stalls safely at zero fuel",
+        "Ordinary rescue refuels the stalled world-nine leg",
+        "Ordinary sublight reaches world 09",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The paid-goods pickup flight lands at the world-nine supplier",
+        "The world-nine landing checkpoint exports unchanged",
+        "No uncaught errors on the cryogen-source approach"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 254,
+        "hull": 13,
+        "shield": 0,
+        "bank": 5700,
+        "condition": {
+          "vigor": 151,
+          "rest": 148,
+          "health": 255,
+          "nourishment": 106
+        },
+        "minutes": 219364,
+        "refuels": 1
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_market_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The funded cryogen carrier can inspect the world-nine capital",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (342 steps)",
+        "exchange action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The city-25 capital stocks cargo 17 alongside the carried cryogen",
+        "The city-25 market checkpoint exports unchanged",
+        "No uncaught errors on the capital market visit"
+      ],
+      "journey": {
+        "bank": 5700,
+        "quote": 5800,
+        "clearanceAfter": -100,
+        "supply": 1,
+        "offers": [
+          {
+            "commodityId": "cargo-04",
+            "quality": 4,
+            "price": 14200,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-03",
+            "quality": 5,
+            "price": 13800,
+            "demand": 0,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-19",
+            "quality": 3,
+            "price": 7000,
+            "demand": 0,
+            "supply": 2
+          },
+          {
+            "commodityId": "cargo-11",
+            "quality": 4,
+            "price": 3600,
+            "demand": 3,
+            "supply": 1
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 4,
+            "price": 1600,
+            "demand": 1,
+            "supply": 3
+          },
+          {
+            "commodityId": "cargo-18",
+            "quality": 4,
+            "price": 6400,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-21",
+            "quality": 4,
+            "price": 4800,
+            "demand": 0,
+            "supply": 6
+          },
+          {
+            "commodityId": "cargo-08",
+            "quality": 2,
+            "price": 1300,
+            "demand": 1,
+            "supply": 3
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_node_sale_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-25 supplier has a spare node and a 501-credit launch-reserve gap",
+        "park reached through normal movement (0 steps)",
+        "park action is available",
+        "bank reached through normal movement (293 steps)",
+        "bank action is available",
+        "A normal withdrawal funds the bartender referral",
+        "tavern reached through normal movement (204 steps)",
+        "tavern action is available",
+        "The city-25 bartender opens the live referral menu",
+        "The bartender can find a buyer",
+        "The bartender accepts the node sale request",
+        "The node referral stores the item and direction",
+        "A referred visitor reaches the seller for the node",
+        "The visitor quotes the spare node",
+        "The normal sale slot accepts the carried node",
+        "Fresh-page save reload preserves Center progress",
+        "The node sale covers the city-26 paid cargo and launch reserve",
+        "The foreign node sale exports unchanged",
+        "No uncaught errors on the foreign surplus sale"
+      ],
+      "journey": {
+        "quote": "Conversation\n한국어\n\nI'll give 2280 Cr for your control node.\n\nAccept\nNo\nDiscuss it\n\nAccept a quote, then choose a carried slot to complete the trade.\n\nBack / leave\nContinue\nSaves",
+        "cash": 2380,
+        "bank": 5600,
+        "carried": [
+          12,
+          0,
+          235,
+          0
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_buy_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The capital node sale funds the last paid lot and preserves the cryogen",
+        "roomExit reached through normal movement (48 steps)",
+        "roomExit action is available",
+        "bank reached through normal movement (204 steps)",
+        "bank action is available",
+        "Normal bank deposit pools the node proceeds with system-six purchase funds",
+        "pod reached through normal movement (286 steps)",
+        "pod action is available",
+        "exchange reached through normal movement (0 steps)",
+        "exchange action is available",
+        "The capital market still stocks cargo 17",
+        "The capital cargo-17 quote 5800 preserves launch clearance",
+        "The live cargo-17 offer 5800 preserves clearance",
+        "Paid cargo 17 enters the capital warehouse with clearance",
+        "Fresh-page save reload preserves Center progress",
+        "Both distinct phase-seven lots and launch clearance survive fresh-page reload",
+        "The final-pair checkpoint exports unchanged",
+        "No uncaught errors in final phase-seven procurement"
+      ],
+      "journey": {
+        "quote": 5800,
+        "offerPrice": 5800,
+        "bank": 2180,
+        "pod": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-42",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 1,
+            "originCity": "city-25",
+            "pricePaid": 5800
+          }
+        ],
+        "minutes": 220431
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_precharged_departure_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-25 cargo and city-40 cryogen are ready for homeward launch",
+        "dock reached through normal movement (339 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "City-23 bank clearance allows the return launch",
+        "Ordinary rescue refuels the contract carrier",
+        "The warp engine charges through live power phases",
+        "The home warp charges safely before engine-powered sublight",
+        "A second ordinary orbit rescue restores fuel after the warp charge",
+        "Full shields cover the nearby homeward warp-point leg",
+        "Another ordinary rescue is scheduled for the protected sublight leg",
+        "The charged home warp persists across the ordinary point selection",
+        "The ready-warp departure checkpoint exports unchanged",
+        "No uncaught errors while charging and resupplying the home warp"
+      ],
+      "journey": {
+        "fuel": 223,
+        "shield": 255,
+        "warp": {
+          "charge": 58,
+          "targetCharge": 58,
+          "targetSystemId": "system-03",
+          "charging": true
+        },
+        "refuelAt": 220684,
+        "minutes": 220654
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_point_flight_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The protected flight begins with a ready home warp and both paid goods",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The protected point flight reaches the safe warp radius",
+        "The no-contact point checkpoint exports unchanged",
+        "No uncaught errors on the protected point flight"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 88,
+        "shield": 255,
+        "minutes": 220682
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_city25_system03_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid goods reach the safe warp radius despite the live contact",
+        "The home warp is already charged at the safe point",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries both paid phase-seven goods into the home system",
+        "The home-system checkpoint exports unchanged",
+        "No uncaught errors on the homeward warp"
+      ],
+      "journey": {
+        "fuel": 80,
+        "shield": 255,
+        "hull": 13,
+        "charge": 58,
+        "minutes": 220683
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_final_home_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The cryogen carrier waits at the intermediate warp point",
+        "Ordinary point rescue fills fuel for the distant warp",
+        "Shields release their power draw before the home warp charge",
+        "The direct home-system warp is within the live ship range",
+        "Ordinary machinery charges the direct home-system warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp reaches the home system",
+        "The homeward warp checkpoint exports unchanged",
+        "No uncaught errors on the direct home-system warp"
+      ],
+      "journey": {
+        "contact": false,
+        "fuel": 159,
+        "shield": 0,
+        "hull": 13,
+        "charge": 85,
+        "minutes": 220732
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_final_home_approach_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "Both phase-seven lots return to the home system point",
+        "The first ordinary rescue fills the approach tank",
+        "A second rescue is scheduled before the home approach",
+        "The approach starts shortly before the scheduled rescue",
+        "Shields charge fully ahead of pirate contact",
+        "The home approach retains both lots at contact or orbit",
+        "No uncaught errors on the timed rescue approach"
+      ],
+      "journey": {
+        "contact": false,
+        "minutes": 220983,
+        "refuelAt": null,
+        "fuel": 206,
+        "hull": 13,
+        "shields": 255
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_final_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The rescued carrier reaches homeworld orbit with both lots with full shields",
+        "navigation reached through normal movement (0 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "Both phase-seven lots land at Banville through ordinary controls",
+        "The Banville paid-pair landing checkpoint exports unchanged",
+        "No uncaught errors on the final homeworld landing"
+      ],
+      "journey": {
+        "fuel": 206,
+        "hull": 13,
+        "bank": 1135,
+        "condition": {
+          "vigor": 167,
+          "rest": 210,
+          "health": 255,
+          "nourishment": 79
+        },
+        "minutes": 220988,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-42",
+            "pricePaid": 0
+          },
+          {
+            "commodityId": "cargo-17",
+            "quality": 1,
+            "originCity": "city-25",
+            "pricePaid": 5800
+          }
+        ]
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_seven_complete_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The paid cargo and distinct city-42 cryogen land at Banville",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "pod reached through normal movement (0 steps)",
+        "pod action is available",
+        "The parked cargo pod boards through its ordinary control",
+        "colony reached through normal movement (32 steps)",
+        "colony action is available",
+        "Fresh-page save reload preserves Center progress",
+        "The final paid lot and city-42 cryogen complete phase seven exactly once",
+        "The phase-seven final pair delivery checkpoint exports unchanged",
+        "No uncaught errors on the phase-seven final pair delivery"
+      ],
+      "journey": {
+        "bank": 14335,
+        "receipts": 45,
+        "phase": 8,
+        "pod": [
+          null,
+          null
+        ],
+        "minutes": 221001
+      }
+    }
+  ]
+}
