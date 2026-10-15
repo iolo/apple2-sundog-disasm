@@ -1,3 +1,32 @@
+## R11af — Paid phase-eight radioactives — 2026-10-16
+
+The ordinary-controls campaign sold a spare distorter, plasma tube, and the
+last gun control node at the home capital, then transferred 3,100 credits to
+system 11 while retaining home launch clearance. Removing that node disabled
+the guns; warp, engines, shields, pilotage, and cloaking remained available.
+The city-50 exchange refreshed to zero cargo-02 supply. Cities 51 and 53
+quoted above the available budget, so the ship flew on to city 49. Sales of
+another plasma tube from the now-disabled gun and a spare cryofuse raised the
+system-11 bank to 5,563 credits. City 49 refreshed to a 4,100-credit
+quality-one cargo-02 quote, and the paid lot was bought and loaded.
+
+Food, rest, ordinary distress rescues, and cloaking preserved that lot through
+four pirate contacts on the return. A nearer safe point shortened the final
+system-11 leg; two cloaked homeworld segments and a final hop reached Banville
+orbit. The Center accepted the radioactives once as receipt 51, and the empty
+ship returned to the capital. The active checkpoint is
+`output/playwright/remake/r11-phase-eight-city49-good02-city01-returned.json`:
+phase 8 active, hull 16, fuel 230, home bank 1,020, system-11 bank 1,447,
+an empty pod, working cloaker, and disabled guns. Fifty-one passing Chrome
+journeys recorded 487 UI checks without page errors or production changes.
+See `docs/remake/r11af-phase-eight-radioactives-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Phase 8 still needs paid goods 04 and 05. Phase 9 needs
+paid goods 02, 07, 16, 24, 26, 28 and 29, a third distinct cryogen, and
+the ending. Continue the campaign before broader fragility cleanup, per the
+user's priority.
+
 ## R11ae — Paid phase-eight synthesizers — 2026-10-16
 
 The ordinary-controls campaign salvaged two spare distorters from redundant
