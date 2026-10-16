@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SunDog — painted illustrations</title>
+  <style>
+    :root { color-scheme: light; --ink: #203c3b; --muted: #596762; --line: #c8c9ba; --paper: #f3f0e6; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 1400px; margin: auto; padding: 40px clamp(18px, 4vw, 64px) 72px; }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:hover { color: #92611f; }
+    a:focus-visible { outline: 3px solid #92611f; outline-offset: 6px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) 200px; align-items: center; gap: 48px; padding: 0 0 36px; border-bottom: 1px solid var(--line); }
+    .eyebrow, .page { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 650; color: var(--muted); }
+    h1 { font: 500 clamp(36px, 5vw, 62px)/1.06 Georgia, serif; letter-spacing: -.035em; margin: 18px 0 24px; }
+    .intro p { max-width: 66ch; }
+    .intro figure img { width: 100%; height: auto; display: block; }
+    .links { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; margin-top: 24px; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; }
+    section { padding: 32px 0 40px; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+    .page { margin: 0 0 4px; }
+    h2 { font: 500 clamp(24px, 3vw, 32px)/1.2 Georgia, serif; margin: 0; }
+    .download { font-size: 13px; white-space: nowrap; }
+    .note { font-size: 14px; color: var(--muted); margin: 12px 0 24px; max-width: 90ch; }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .image { display: flex; align-items: center; justify-content: center; min-height: 300px; height: min(58vw, 640px); overflow: hidden; }
+    .original { background: #fff; }
+    .painted { background: #162a2a; }
+    .transparent { background-color: #e1e4dc; background-image: conic-gradient(#cdd2c8 25%, transparent 0 50%, #cdd2c8 0 75%, transparent 0); background-size: 24px 24px; }
+    .image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    footer { padding-top: 28px; font-size: 13px; color: var(--muted); }
+    @media (max-width: 640px) {
+      main { padding-top: 24px; }
+      .intro { grid-template-columns: 1fr; gap: 20px; }
+      .intro figure { width: 160px; }
+      .comparison { grid-template-columns: 1fr; gap: 24px; }
+      .image { height: auto; min-height: 0; }
+      .image img { height: auto; max-height: none; }
+      .section-heading { align-items: start; flex-direction: column; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <div>
+        <p class="eyebrow">SunDog: Frozen Legacy · illustration study</p>
+        <h1>The manual, in color.</h1>
+        <p>Nine scene paintings and three joystick illustrations, guided by the original cover’s teal and green shadows, amber light, and painted science-fiction style.</p>
+        <p>Each new interpretation is shown beside its source drawing. Open any image at full size to compare details. The HTML manual now uses ten standalone paintings; the two combat panels remain separate for later assembly with their screen images and legends.</p>
+        <nav class="links" aria-label="Related files"><a href="../index.html">HTML manual</a><a href="prompts.json">Generation prompts</a><a href="manifest.json">Image provenance</a></nav>
+      </div>
+      <figure><a href="../images/cover.webp"><img src="../images/cover.webp" alt="Original SunDog color cover used as the painting style reference" width="1320" height="1652"></a><figcaption>Original cover · style reference</figcaption></figure>
+    </header>
+    <section id="frontispiece" aria-labelledby="frontispiece-title">
+      <div class="section-heading"><div><p class="page">PDF page 2</p><h2 id="frontispiece-title">Frontispiece · planetary cargo port</h2></div><a class="download" href="frontispiece-painted.png" download>Download PNG</a></div>
+      <p class="note">Standalone artwork; the original title and publisher logo remain in the PDF source.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/frontispiece.webp"><img src="../images/frontispiece.webp" alt="Original PDF drawing: Frontispiece · planetary cargo port" width="1309" height="1763" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="frontispiece-painted.png"><img src="frontispiece-painted.png" alt="Color-painted adaptation: Frontispiece · planetary cargo port" width="1122" height="1402" loading="lazy"></a><figcaption>Painted adaptation · 1122 × 1402</figcaption></figure>
+      </div>
+    </section>
+    <section id="joystick-pointer" aria-labelledby="joystick-pointer-title">
+      <div class="section-heading"><div><p class="page">PDF page 10</p><h2 id="joystick-pointer-title">Joystick · move the pointer</h2></div><a class="download" href="joystick-pointer-painted.png" download>Download PNG</a></div>
+      <p class="note">Transparent cutout. Neither button is pressed.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/joystick-pointer.webp"><img src="../images/joystick-pointer.webp" alt="Original PDF drawing: Joystick · move the pointer" width="296" height="265" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image transparent" href="joystick-pointer-painted.png"><img src="joystick-pointer-painted.png" alt="Color-painted adaptation: Joystick · move the pointer" width="1326" height="1187" loading="lazy"></a><figcaption>Painted adaptation · 1326 × 1187 · transparent PNG</figcaption></figure>
+      </div>
+    </section>
+    <section id="joystick-action" aria-labelledby="joystick-action-title">
+      <div class="section-heading"><div><p class="page">PDF page 10</p><h2 id="joystick-action-title">Joystick · action button</h2></div><a class="download" href="joystick-action-painted.png" download>Download PNG</a></div>
+      <p class="note">Transparent cutout. The lower button, 0, is pressed.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/joystick-action.webp"><img src="../images/joystick-action.webp" alt="Original PDF drawing: Joystick · action button" width="309" height="252" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image transparent" href="joystick-action-painted.png"><img src="joystick-action-painted.png" alt="Color-painted adaptation: Joystick · action button" width="1389" height="1132" loading="lazy"></a><figcaption>Painted adaptation · 1389 × 1132 · transparent PNG</figcaption></figure>
+      </div>
+    </section>
+    <section id="joystick-back" aria-labelledby="joystick-back-title">
+      <div class="section-heading"><div><p class="page">PDF page 10</p><h2 id="joystick-back-title">Joystick · back button</h2></div><a class="download" href="joystick-back-painted.png" download>Download PNG</a></div>
+      <p class="note">Transparent cutout. The upper button, 1, is pressed.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/joystick-back.webp"><img src="../images/joystick-back.webp" alt="Original PDF drawing: Joystick · back button" width="291" height="281" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image transparent" href="joystick-back-painted.png"><img src="joystick-back-painted.png" alt="Color-painted adaptation: Joystick · back button" width="1277" height="1232" loading="lazy"></a><figcaption>Painted adaptation · 1277 × 1232 · transparent PNG</figcaption></figure>
+      </div>
+    </section>
+    <section id="ship-walk" aria-labelledby="ship-walk-title">
+      <div class="section-heading"><div><p class="page">PDF page 11</p><h2 id="ship-walk-title">Walking aboard the ship</h2></div><a class="download" href="ship-walk-painted.png" download>Download PNG</a></div>
+      <p class="note">The movement sequence and destination marker are retained.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/ship-walk.webp"><img src="../images/ship-walk.webp" alt="Original PDF drawing: Walking aboard the ship" width="684" height="552" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="ship-walk-painted.png"><img src="ship-walk-painted.png" alt="Color-painted adaptation: Walking aboard the ship" width="1396" height="1127" loading="lazy"></a><figcaption>Painted adaptation · 1396 × 1127</figcaption></figure>
+      </div>
+    </section>
+    <section id="ground-walk" aria-labelledby="ground-walk-title">
+      <div class="section-heading"><div><p class="page">PDF page 15</p><h2 id="ground-walk-title">Walking toward the cargo pod</h2></div><a class="download" href="ground-walk-painted.png" download>Download PNG</a></div>
+      <p class="note">The motion trail, destination circle and guide lines are retained.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/ground-walk.webp"><img src="../images/ground-walk.webp" alt="Original PDF drawing: Walking toward the cargo pod" width="705" height="566" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="ground-walk-painted.png"><img src="ground-walk-painted.png" alt="Color-painted adaptation: Walking toward the cargo pod" width="1400" height="1123" loading="lazy"></a><figcaption>Painted adaptation · 1400 × 1123</figcaption></figure>
+      </div>
+    </section>
+    <section id="ground-enter" aria-labelledby="ground-enter-title">
+      <div class="section-heading"><div><p class="page">PDF page 15</p><h2 id="ground-enter-title">Entering the cargo pod</h2></div><a class="download" href="ground-enter-painted.png" download>Download PNG</a></div>
+      <p class="note">Companion painting with the pilot at the pod entrance.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/ground-enter.webp"><img src="../images/ground-enter.webp" alt="Original PDF drawing: Entering the cargo pod" width="703" height="568" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="ground-enter-painted.png"><img src="ground-enter-painted.png" alt="Color-painted adaptation: Entering the cargo pod" width="1396" height="1127" loading="lazy"></a><figcaption>Painted adaptation · 1396 × 1127</figcaption></figure>
+      </div>
+    </section>
+    <section id="encounter-art" aria-labelledby="encounter-art-title">
+      <div class="section-heading"><div><p class="page">PDF page 17</p><h2 id="encounter-art-title">An alien encounter</h2></div><a class="download" href="encounter-art-painted.png" download>Download PNG</a></div>
+      <p class="note">The foreground pilot, hooded alien and smaller background figure follow the drawing.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/encounter-art.webp"><img src="../images/encounter-art.webp" alt="Original PDF drawing: An alien encounter" width="906" height="507" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="encounter-art-painted.png"><img src="encounter-art-painted.png" alt="Color-painted adaptation: An alien encounter" width="1677" height="938" loading="lazy"></a><figcaption>Painted adaptation · 1677 × 938</figcaption></figure>
+      </div>
+    </section>
+    <section id="combat-move" aria-labelledby="combat-move-title">
+      <div class="section-heading"><div><p class="page">PDF page 18</p><h2 id="combat-move-title">Combat · movement panel</h2></div><a class="download" href="combat-move-painted.png" download>Download PNG</a></div>
+      <p class="note">Illustrated panel only. The map, joystick and MOVE legend are separate elements in the PDF source.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/combat-move.webp"><img src="../images/combat-move.webp" alt="Original PDF drawing: Combat · movement panel" width="1065" height="589" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="combat-move-painted.png"><img src="combat-move-painted.png" alt="Color-painted adaptation: Combat · movement panel" width="1397" height="1126" loading="lazy"></a><figcaption>Painted adaptation · 1397 × 1126</figcaption></figure>
+      </div>
+    </section>
+    <section id="combat-fire" aria-labelledby="combat-fire-title">
+      <div class="section-heading"><div><p class="page">PDF page 18</p><h2 id="combat-fire-title">Combat · firing panel</h2></div><a class="download" href="combat-fire-painted.png" download>Download PNG</a></div>
+      <p class="note">Illustrated panel only. The map, joystick and FIRE legend are separate elements in the PDF source.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/combat-fire.webp"><img src="../images/combat-fire.webp" alt="Original PDF drawing: Combat · firing panel" width="1072" height="604" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="combat-fire-painted.png"><img src="combat-fire-painted.png" alt="Color-painted adaptation: Combat · firing panel" width="1397" height="1126" loading="lazy"></a><figcaption>Painted adaptation · 1397 × 1126</figcaption></figure>
+      </div>
+    </section>
+    <section id="uniteller-art" aria-labelledby="uniteller-art-title">
+      <div class="section-heading"><div><p class="page">PDF page 19</p><h2 id="uniteller-art-title">At the Uniteller</h2></div><a class="download" href="uniteller-art-painted.png" download>Download PNG</a></div>
+      <p class="note">The seven figures, tether lines, terminal signs and forehead appendage are retained.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/uniteller-art.webp"><img src="../images/uniteller-art.webp" alt="Original PDF drawing: At the Uniteller" width="887" height="501" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="uniteller-art-painted.png"><img src="uniteller-art-painted.png" alt="Color-painted adaptation: At the Uniteller" width="1668" height="943" loading="lazy"></a><figcaption>Painted adaptation · 1668 × 943</figcaption></figure>
+      </div>
+    </section>
+    <section id="back-cover" aria-labelledby="back-cover-title">
+      <div class="section-heading"><div><p class="page">PDF page 22</p><h2 id="back-cover-title">Back cover · spaceport</h2></div><a class="download" href="back-cover-painted.png" download>Download PNG</a></div>
+      <p class="note">The port structures, loading area and floor marking 94 follow the drawing.</p>
+      <div class="comparison">
+        <figure><a class="image original" href="../images/back-cover.webp"><img src="../images/back-cover.webp" alt="Original PDF drawing: Back cover · spaceport" width="1320" height="1652" loading="lazy"></a><figcaption>Original PDF drawing</figcaption></figure>
+        <figure><a class="image painted" href="back-cover-painted.png"><img src="back-cover-painted.png" alt="Color-painted adaptation: Back cover · spaceport" width="1121" height="1403" loading="lazy"></a><figcaption>Painted adaptation · 1121 × 1403</figcaption></figure>
+      </div>
+    </section>
+    <footer>Generated with the built-in image generation tool on 16 October 2026. These are new painted adaptations, not recovered historical color artwork. The original PDF remains the reference for exact text and instructional details.</footer>
+  </main>
+</body>
+</html>
+
