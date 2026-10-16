@@ -196,6 +196,10 @@ def build():
     outputs['data/ground-combat.json'] = encode(dict(
         version=1, glyphs={str(index): glyph(index) for index in [22, 23, 24, 25]},
         source='game17 procedures2/3/9/14/17; library22 procedures9/22; shared font glyphs22–25'))
+    for index in (22, 23, 24, 25):
+        path = f'assets/svg/encounter-glyph-{index}.svg'
+        outputs[path] = svg(pixel_rows([[value] for value in glyph(index)]))
+        images[f'encounter-glyph-{index}'] = path
     outputs['assets/svg/player.svg'] = svg(pixel_rows([[value] for value in glyph(12)]))
     images['player'] = 'assets/svg/player.svg'
     outputs['assets/svg/city-player.svg'] = svg(pixel_rows([[value] for value in glyph(10)]))

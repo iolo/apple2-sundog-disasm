@@ -2,7 +2,7 @@ import { groundChaseGeometry } from '../core/ground-chase.js';
 
 // Source low-seven-bit rows and glyphs, projected into the existing city view.
 // The underlying campaign map remains the encounter's frozen return location.
-export function drawGroundEncounter(context,activation,content,bounds,aim=null) {
+export function drawGroundEncounter(context,activation,content,bounds,assets,aim=null) {
   const chase=activation.phase==='chase',arena=chase?groundChaseGeometry(activation.chase,content.chase):activation.arena;
   if(!arena)return;
   const window=chase?activation.chase.window:arena.bounds,sx=bounds.width/280,sy=bounds.height/192;
@@ -15,9 +15,8 @@ export function drawGroundEncounter(context,activation,content,bounds,aim=null) 
   const actors=chase?[[activation.chase.player,22],[activation.chase.enemy,23]]:
     activation.combat.actors.map(a=>[{x:a[1],y:a[0]},a[2]>>>8]);
   for(const [position,glyph] of actors) {
-    const rows=(chase?content.chase:content.ground).glyphs[glyph];
-    for(let y=0;y<8;y++)for(let x=0;x<7;x++)if(rows[y]&(1<<x))
-      context.fillRect(bounds.x+(position.x+x)*sx,bounds.y+(position.y-7+y)*sy,sx,sy);
+    const path=assets.catalog.images[`encounter-glyph-${glyph}`];
+    context.drawImage(assets.images[path],bounds.x+position.x*sx,bounds.y+(position.y-7)*sy,7*sx,8*sy);
   }
   // A presentation outline distinguishes the combat window; it is not a wall.
   context.strokeStyle='#969d8c';context.lineWidth=1;

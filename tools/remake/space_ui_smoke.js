@@ -56,7 +56,7 @@ async browserPage => {
     await page.clock.install({time:new Date('2026-10-08T00:00:00Z')});await page.clock.pauseAt(new Date('2026-10-08T00:00:01Z'));
     await page.goto('http://127.0.0.1:8000/');await ready();await page.locator('#create-character').click();
     await page.locator('#character-name').fill('Space controls');await page.locator('#prepare-campaign').click();await page.locator('#campaign-seed').fill('12345');await page.locator('#start-campaign').click();
-    const original=await exported();assert(original.version===29&&original.scope==='ship-salvage-1','Live campaign owns version29 space and tactical state');
+    const original=await exported();assert(original.version===30&&original.scope==='colony-contract-1','Live campaign owns version30 space and tactical state');
     await imported(await fixture(original));await page.locator('#walk-navigation').click();await page.locator('#nav-tactical').click();
     assert(await page.locator('#space-panel').isVisible(),'Pilotage enters the live tactical panel through navigation');
     const entry=await reload();assert(entry.state.machinery.phase===3&&entry.state.resources.guns.charge===84,'Live tactical entry commits the source three startup calls');
@@ -99,7 +99,7 @@ async browserPage => {
     await imported(await fixture(original,{tactical:true,contact:false}));await page.locator('#space-guns').click();await page.locator('#space-laser').click();await run(0);
     const emptyBox=await page.locator('#space-surface').boundingBox();await page.mouse.move(emptyBox.x+emptyBox.width/2,emptyBox.y+emptyBox.height/2);
     await page.mouse.down({button:'right'});await page.clock.runFor(50);await page.mouse.up({button:'right'});const empty=await exported();
-    assert(empty.state.resources.guns.charge===0&&!empty.state.space.bounties.length&&empty.state.space.words[216]===0,'Right-pointer empty-space fire spends actual stored charge without a reward');
+    assert(empty.state.resources.guns.charge===0&&!empty.state.space.bounties.length&&empty.state.space.words[216]===0,`Right-pointer empty-space fire spends actual stored charge without a reward (charge ${empty.state.resources.guns.charge}, bounties ${empty.state.space.bounties.length}, contact ${empty.state.space.words[216]})`);
     await imported(await fixture(original,{tactical:true,contact:false}));await page.locator('#space-guns').click();await page.locator('#space-laser').click();await run(0);
     await page.locator('#space-fire').focus();await page.keyboard.press('Enter');await page.clock.runFor(17);
     const buffered=await reload();assert(buffered.state.space.tactical.trigger.latched&&buffered.state.space.elapsed===17,'Fire-button activation retains its buffered press and partial budget through a fresh-page save');

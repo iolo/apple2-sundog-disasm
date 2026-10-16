@@ -1,0 +1,1389 @@
+{
+  "browser": "155.0.8059.84",
+  "status": "pass",
+  "checks": [
+    "colony ending en 1280: 4 enabled controls inside stage",
+    "colony ending en 390: 4 enabled controls inside stage",
+    "colony ending ko 1280: 4 enabled controls inside stage",
+    "colony ending ko 390: 4 enabled controls inside stage",
+    "exchange en 1280: 15 enabled controls inside stage",
+    "exchange en 390: 15 enabled controls inside stage",
+    "exchange en: bottom offer reached through bounded scrolling",
+    "exchange en: sound toggle works inside modal",
+    "exchange ko 1280: 15 enabled controls inside stage",
+    "exchange ko 390: 15 enabled controls inside stage",
+    "exchange ko: bottom offer reached through bounded scrolling",
+    "exchange ko: sound toggle works inside modal",
+    "bank en 1280: 7 enabled controls inside stage",
+    "bank en 390: 7 enabled controls inside stage",
+    "bank ko 1280: 7 enabled controls inside stage",
+    "bank ko 390: 7 enabled controls inside stage",
+    "depot en 1280: 7 enabled controls inside stage",
+    "depot en 390: 7 enabled controls inside stage",
+    "depot ko 1280: 7 enabled controls inside stage",
+    "depot ko 390: 7 enabled controls inside stage",
+    "room en 1280: 5 enabled controls inside stage",
+    "room en 390: 5 enabled controls inside stage",
+    "room ko 1280: 5 enabled controls inside stage",
+    "room ko 390: 5 enabled controls inside stage",
+    "surface en 1280: 9 enabled controls inside stage",
+    "surface en 390: 9 enabled controls inside stage",
+    "surface ko 1280: 9 enabled controls inside stage",
+    "surface ko 390: 9 enabled controls inside stage",
+    "tactical en 1280: 10 enabled controls inside stage",
+    "tactical en 390: 10 enabled controls inside stage",
+    "tactical ko 1280: 10 enabled controls inside stage",
+    "tactical ko 390: 10 enabled controls inside stage",
+    "ground combat en 1280: 7 enabled controls inside stage",
+    "ground combat en 390: 7 enabled controls inside stage",
+    "ground combat ko 1280: 7 enabled controls inside stage",
+    "ground combat ko 390: 7 enabled controls inside stage"
+  ],
+  "errors": [],
+  "layouts": [
+    {
+      "name": "colony ending",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "colony ending",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "colony ending",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "colony ending",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "exchange",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "exchange-offers",
+          "reachable": true
+        },
+        {
+          "id": "exchange-warehouse",
+          "reachable": true
+        },
+        {
+          "id": "exchange-cargo",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-0",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-1",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-2",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-3",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-4",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-5",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-6",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-7",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "exchange",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "exchange-offers",
+          "reachable": true
+        },
+        {
+          "id": "exchange-warehouse",
+          "reachable": true
+        },
+        {
+          "id": "exchange-cargo",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-0",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-1",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-2",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-3",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-4",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-5",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-6",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-7",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "exchange",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "exchange-offers",
+          "reachable": true
+        },
+        {
+          "id": "exchange-warehouse",
+          "reachable": true
+        },
+        {
+          "id": "exchange-cargo",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-0",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-1",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-2",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-3",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-4",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-5",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-6",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-7",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "exchange",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "exchange-offers",
+          "reachable": true
+        },
+        {
+          "id": "exchange-warehouse",
+          "reachable": true
+        },
+        {
+          "id": "exchange-cargo",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-0",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-1",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-2",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-3",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-4",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-5",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-6",
+          "reachable": true
+        },
+        {
+          "id": "exchange-row-7",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "bank",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "bank-language",
+          "reachable": true
+        },
+        {
+          "id": "bank-deposit",
+          "reachable": true
+        },
+        {
+          "id": "bank-withdraw",
+          "reachable": true
+        },
+        {
+          "id": "bank-transfer",
+          "reachable": true
+        },
+        {
+          "id": "bank-leave",
+          "reachable": true
+        },
+        {
+          "id": "bank-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "bank",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "bank-language",
+          "reachable": true
+        },
+        {
+          "id": "bank-deposit",
+          "reachable": true
+        },
+        {
+          "id": "bank-withdraw",
+          "reachable": true
+        },
+        {
+          "id": "bank-transfer",
+          "reachable": true
+        },
+        {
+          "id": "bank-leave",
+          "reachable": true
+        },
+        {
+          "id": "bank-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "bank",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "bank-language",
+          "reachable": true
+        },
+        {
+          "id": "bank-deposit",
+          "reachable": true
+        },
+        {
+          "id": "bank-withdraw",
+          "reachable": true
+        },
+        {
+          "id": "bank-transfer",
+          "reachable": true
+        },
+        {
+          "id": "bank-leave",
+          "reachable": true
+        },
+        {
+          "id": "bank-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "bank",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "bank-language",
+          "reachable": true
+        },
+        {
+          "id": "bank-deposit",
+          "reachable": true
+        },
+        {
+          "id": "bank-withdraw",
+          "reachable": true
+        },
+        {
+          "id": "bank-transfer",
+          "reachable": true
+        },
+        {
+          "id": "bank-leave",
+          "reachable": true
+        },
+        {
+          "id": "bank-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "depot",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "depot-refuel",
+          "reachable": true
+        },
+        {
+          "id": "depot-repair",
+          "reachable": true
+        },
+        {
+          "id": "depot-auxiliary",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "depot",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "depot-refuel",
+          "reachable": true
+        },
+        {
+          "id": "depot-repair",
+          "reachable": true
+        },
+        {
+          "id": "depot-auxiliary",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "depot",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "depot-refuel",
+          "reachable": true
+        },
+        {
+          "id": "depot-repair",
+          "reachable": true
+        },
+        {
+          "id": "depot-auxiliary",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "depot",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "service-language",
+          "reachable": true
+        },
+        {
+          "id": "depot-refuel",
+          "reachable": true
+        },
+        {
+          "id": "depot-repair",
+          "reachable": true
+        },
+        {
+          "id": "depot-auxiliary",
+          "reachable": true
+        },
+        {
+          "id": "service-leave",
+          "reachable": true
+        },
+        {
+          "id": "service-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "room",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-language",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-cancel",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-continue",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "room",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-language",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-cancel",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-continue",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "room",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-language",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-cancel",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-continue",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "room",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-language",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-cancel",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-continue",
+          "reachable": true
+        },
+        {
+          "id": "dialogue-saves",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "walk-pod",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-inventory",
+          "reachable": true
+        },
+        {
+          "id": "walk-airlock",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "walk-pod",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-inventory",
+          "reachable": true
+        },
+        {
+          "id": "walk-airlock",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "walk-pod",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-inventory",
+          "reachable": true
+        },
+        {
+          "id": "walk-airlock",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "walk-pod",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-inventory",
+          "reachable": true
+        },
+        {
+          "id": "walk-airlock",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "tactical",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "space-navigation",
+          "reachable": true
+        },
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "space-language",
+          "reachable": true
+        },
+        {
+          "id": "space-shields",
+          "reachable": true
+        },
+        {
+          "id": "space-guns",
+          "reachable": true
+        },
+        {
+          "id": "space-bolts",
+          "reachable": true
+        },
+        {
+          "id": "space-comm",
+          "reachable": true
+        },
+        {
+          "id": "space-run",
+          "reachable": true
+        },
+        {
+          "id": "space-saves",
+          "reachable": true
+        },
+        {
+          "id": "space-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "tactical",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "space-navigation",
+          "reachable": true
+        },
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "space-language",
+          "reachable": true
+        },
+        {
+          "id": "space-shields",
+          "reachable": true
+        },
+        {
+          "id": "space-guns",
+          "reachable": true
+        },
+        {
+          "id": "space-bolts",
+          "reachable": true
+        },
+        {
+          "id": "space-comm",
+          "reachable": true
+        },
+        {
+          "id": "space-run",
+          "reachable": true
+        },
+        {
+          "id": "space-saves",
+          "reachable": true
+        },
+        {
+          "id": "space-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "tactical",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "space-navigation",
+          "reachable": true
+        },
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "space-language",
+          "reachable": true
+        },
+        {
+          "id": "space-shields",
+          "reachable": true
+        },
+        {
+          "id": "space-guns",
+          "reachable": true
+        },
+        {
+          "id": "space-bolts",
+          "reachable": true
+        },
+        {
+          "id": "space-comm",
+          "reachable": true
+        },
+        {
+          "id": "space-run",
+          "reachable": true
+        },
+        {
+          "id": "space-saves",
+          "reachable": true
+        },
+        {
+          "id": "space-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "tactical",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "space-navigation",
+          "reachable": true
+        },
+        {
+          "id": "modal-sound",
+          "reachable": true
+        },
+        {
+          "id": "space-language",
+          "reachable": true
+        },
+        {
+          "id": "space-shields",
+          "reachable": true
+        },
+        {
+          "id": "space-guns",
+          "reachable": true
+        },
+        {
+          "id": "space-bolts",
+          "reachable": true
+        },
+        {
+          "id": "space-comm",
+          "reachable": true
+        },
+        {
+          "id": "space-run",
+          "reachable": true
+        },
+        {
+          "id": "space-saves",
+          "reachable": true
+        },
+        {
+          "id": "space-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "ground combat",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "combat-mode",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "ground combat",
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "combat-mode",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "ground combat",
+      "locale": "ko",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "combat-mode",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "name": "ground combat",
+      "locale": "ko",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buttons": [
+        {
+          "id": "walk-back",
+          "reachable": true
+        },
+        {
+          "id": "walk-sound",
+          "reachable": true
+        },
+        {
+          "id": "walk-language",
+          "reachable": true
+        },
+        {
+          "id": "combat-mode",
+          "reachable": true
+        },
+        {
+          "id": "walk-pause",
+          "reachable": true
+        },
+        {
+          "id": "walk-saves",
+          "reachable": true
+        },
+        {
+          "id": "walk-help",
+          "reachable": true
+        }
+      ]
+    }
+  ]
+}

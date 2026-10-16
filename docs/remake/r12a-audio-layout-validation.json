@@ -1,0 +1,611 @@
+{
+  "browser": "155.0.8059.84",
+  "status": "pass",
+  "checks": [
+    "1280 sound starts enabled",
+    "1280 title: enabled controls inside stage",
+    "1280 sound mutes",
+    "1280 mute creates no oscillator",
+    "1280 muted navigation is silent",
+    "1280 enabling sound starts user-activated cue",
+    "1280 Korean switch (ko; errors: )",
+    "1280 Korean inspector: enabled controls inside stage",
+    "1280 Korean help: enabled controls inside stage",
+    "1280 help can mute sound",
+    "1280 Korean character: enabled controls inside stage",
+    "1280 Korean campaign setup: enabled controls inside stage",
+    "1280 campaign opens",
+    "1280 Korean ship: enabled controls inside stage",
+    "1280 Korean campaign help: enabled controls inside stage",
+    "1280 campaign help describes colony objective",
+    "1280 ship mute",
+    "1280 Korean saves: enabled controls inside stage",
+    "1280 saves show muted state",
+    "1280 saves can enable audio",
+    "1280 mute survives reload",
+    "390 sound starts enabled",
+    "390 title: enabled controls inside stage",
+    "390 sound mutes",
+    "390 mute creates no oscillator",
+    "390 muted navigation is silent",
+    "390 enabling sound starts user-activated cue",
+    "390 Korean switch (ko; errors: )",
+    "390 Korean inspector: enabled controls inside stage",
+    "390 Korean help: enabled controls inside stage",
+    "390 help can mute sound",
+    "390 Korean character: enabled controls inside stage",
+    "390 Korean campaign setup: enabled controls inside stage",
+    "390 campaign opens",
+    "390 Korean ship: enabled controls inside stage",
+    "390 Korean campaign help: enabled controls inside stage",
+    "390 campaign help describes colony objective",
+    "390 ship mute",
+    "390 Korean saves: enabled controls inside stage",
+    "390 saves show muted state",
+    "390 saves can enable audio",
+    "390 mute survives reload"
+  ],
+  "errors": [],
+  "layouts": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "title",
+      "buttons": [
+        {
+          "id": "sound",
+          "inside": true
+        },
+        {
+          "id": "language",
+          "inside": true
+        },
+        {
+          "id": "create-character",
+          "inside": true
+        },
+        {
+          "id": "campaign-saves",
+          "inside": true
+        },
+        {
+          "id": "explore",
+          "inside": true
+        },
+        {
+          "id": "about",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean inspector",
+      "buttons": [
+        {
+          "id": "home",
+          "inside": true
+        },
+        {
+          "id": "nav-ship",
+          "inside": true
+        },
+        {
+          "id": "nav-cities",
+          "inside": true
+        },
+        {
+          "id": "nav-worlds",
+          "inside": true
+        },
+        {
+          "id": "sound",
+          "inside": true
+        },
+        {
+          "id": "language",
+          "inside": true
+        },
+        {
+          "id": "previous",
+          "inside": true
+        },
+        {
+          "id": "next",
+          "inside": true
+        },
+        {
+          "id": "begin-walk",
+          "inside": true
+        },
+        {
+          "id": "help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean help",
+      "buttons": [
+        {
+          "id": "help-sound",
+          "inside": true
+        },
+        {
+          "id": "close-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean character",
+      "buttons": [
+        {
+          "id": "character-back",
+          "inside": true
+        },
+        {
+          "id": "character-sound",
+          "inside": true
+        },
+        {
+          "id": "character-language",
+          "inside": true
+        },
+        {
+          "id": "plus-strength",
+          "inside": true
+        },
+        {
+          "id": "plus-intelligence",
+          "inside": true
+        },
+        {
+          "id": "plus-dexterity",
+          "inside": true
+        },
+        {
+          "id": "plus-charisma",
+          "inside": true
+        },
+        {
+          "id": "plus-luck",
+          "inside": true
+        },
+        {
+          "id": "reset-character",
+          "inside": true
+        },
+        {
+          "id": "show-drafts",
+          "inside": true
+        },
+        {
+          "id": "prepare-campaign",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean campaign setup",
+      "buttons": [
+        {
+          "id": "character-back",
+          "inside": true
+        },
+        {
+          "id": "character-sound",
+          "inside": true
+        },
+        {
+          "id": "character-language",
+          "inside": true
+        },
+        {
+          "id": "edit-character",
+          "inside": true
+        },
+        {
+          "id": "start-campaign",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean ship",
+      "buttons": [
+        {
+          "id": "walk-back",
+          "inside": true
+        },
+        {
+          "id": "walk-sound",
+          "inside": true
+        },
+        {
+          "id": "walk-language",
+          "inside": true
+        },
+        {
+          "id": "walk-pause",
+          "inside": true
+        },
+        {
+          "id": "walk-inventory",
+          "inside": true
+        },
+        {
+          "id": "walk-saves",
+          "inside": true
+        },
+        {
+          "id": "walk-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean campaign help",
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "inside": true
+        },
+        {
+          "id": "walk-close-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scene": "Korean saves",
+      "buttons": [
+        {
+          "id": "checkpoint-back",
+          "inside": true
+        },
+        {
+          "id": "checkpoint-sound",
+          "inside": true
+        },
+        {
+          "id": "checkpoint-language",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-0",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-1",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-2",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-3",
+          "inside": true
+        },
+        {
+          "id": "import-checkpoint",
+          "inside": true
+        },
+        {
+          "id": "export-checkpoint",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "title",
+      "buttons": [
+        {
+          "id": "sound",
+          "inside": true
+        },
+        {
+          "id": "language",
+          "inside": true
+        },
+        {
+          "id": "create-character",
+          "inside": true
+        },
+        {
+          "id": "campaign-saves",
+          "inside": true
+        },
+        {
+          "id": "explore",
+          "inside": true
+        },
+        {
+          "id": "about",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean inspector",
+      "buttons": [
+        {
+          "id": "home",
+          "inside": true
+        },
+        {
+          "id": "nav-ship",
+          "inside": true
+        },
+        {
+          "id": "nav-cities",
+          "inside": true
+        },
+        {
+          "id": "nav-worlds",
+          "inside": true
+        },
+        {
+          "id": "sound",
+          "inside": true
+        },
+        {
+          "id": "language",
+          "inside": true
+        },
+        {
+          "id": "previous",
+          "inside": true
+        },
+        {
+          "id": "next",
+          "inside": true
+        },
+        {
+          "id": "begin-walk",
+          "inside": true
+        },
+        {
+          "id": "help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean help",
+      "buttons": [
+        {
+          "id": "help-sound",
+          "inside": true
+        },
+        {
+          "id": "close-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean character",
+      "buttons": [
+        {
+          "id": "character-back",
+          "inside": true
+        },
+        {
+          "id": "character-sound",
+          "inside": true
+        },
+        {
+          "id": "character-language",
+          "inside": true
+        },
+        {
+          "id": "plus-strength",
+          "inside": true
+        },
+        {
+          "id": "plus-intelligence",
+          "inside": true
+        },
+        {
+          "id": "plus-dexterity",
+          "inside": true
+        },
+        {
+          "id": "plus-charisma",
+          "inside": true
+        },
+        {
+          "id": "plus-luck",
+          "inside": true
+        },
+        {
+          "id": "reset-character",
+          "inside": true
+        },
+        {
+          "id": "show-drafts",
+          "inside": true
+        },
+        {
+          "id": "prepare-campaign",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean campaign setup",
+      "buttons": [
+        {
+          "id": "character-back",
+          "inside": true
+        },
+        {
+          "id": "character-sound",
+          "inside": true
+        },
+        {
+          "id": "character-language",
+          "inside": true
+        },
+        {
+          "id": "edit-character",
+          "inside": true
+        },
+        {
+          "id": "start-campaign",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean ship",
+      "buttons": [
+        {
+          "id": "walk-back",
+          "inside": true
+        },
+        {
+          "id": "walk-sound",
+          "inside": true
+        },
+        {
+          "id": "walk-language",
+          "inside": true
+        },
+        {
+          "id": "walk-pause",
+          "inside": true
+        },
+        {
+          "id": "walk-inventory",
+          "inside": true
+        },
+        {
+          "id": "walk-saves",
+          "inside": true
+        },
+        {
+          "id": "walk-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean campaign help",
+      "buttons": [
+        {
+          "id": "modal-sound",
+          "inside": true
+        },
+        {
+          "id": "walk-close-help",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scene": "Korean saves",
+      "buttons": [
+        {
+          "id": "checkpoint-back",
+          "inside": true
+        },
+        {
+          "id": "checkpoint-sound",
+          "inside": true
+        },
+        {
+          "id": "checkpoint-language",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-0",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-1",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-2",
+          "inside": true
+        },
+        {
+          "id": "save-checkpoint-3",
+          "inside": true
+        },
+        {
+          "id": "import-checkpoint",
+          "inside": true
+        },
+        {
+          "id": "export-checkpoint",
+          "inside": true
+        }
+      ]
+    }
+  ]
+}
