@@ -1,3 +1,26 @@
+## R11aq — Colony campaign complete — 2026-10-16
+
+The final city-57 cryogen returned to Banville through ordinary controls.
+Five short cloaked segments reached a safe system-12 warp point, the direct
+home jump charged at 22, and nine more cloaked segments reached world 01.
+Ordinary rescues supplied fuel without cargo loss or hull damage. The ship
+landed at Banville, and the Center accepted the distinct cryogen as receipt
+61. Phase 9 completed, active phase advanced to 10, and the colony ending
+appeared immediately and after a fresh-page save reload.
+
+The final checkpoint is
+`output/playwright/remake/r11-phase-nine-cryo57-delivered.json`.
+The complete ledger matches all nine source demand recipes: 61 receipts,
+including 17 cryogens from distinct cities and all seven paid phase-nine
+goods. The pod is empty, hull is 16, and pilot health is 255. Twelve passing
+Chrome journeys recorded 144 UI checks with no page errors. See
+`docs/remake/r11aq-r11-completion-validation.json` for the journey and
+receipt audit. No production code changed in this final leg. The user-owned
+`PRD-REMAKE.md` remains untouched.
+
+R11 is complete. Broader fragility cleanup remains for later work, as the
+user requested.
+
 ## R11ap — Final distinct cryogen collected — 2026-10-16
 
 The ordinary-controls campaign launched empty from Banville after rest,
