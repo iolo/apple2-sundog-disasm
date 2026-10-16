@@ -1,29 +1,13 @@
 # SunDog web remake
 
-Current milestone: a playable regional campaign with character creation, ship and
-city walking, inventory/condition/survival, component exchange, bank deposits,
-withdrawals and inter-system transfers, regional exchange purchases/warehouse sales,
-shop purchases and information, paid lodging with working bedroom doors, and tavern
-seating, conversations, visitor item buying/selling, food/ale purchases and bartender
-trader referrals. Local pod driving and warehouse Store/Fetch/Swap retain cargo
-through loaded docking. Surface travel connects the18 worlds’ cities with
-independent parking, foot visits and saved return journeys. Depot visits offer confirmed hull repairs, ship refueling
-and auxiliary fuel loading with saved resources and cargo. TransStation visits
-remain read-only.
-Engineering accepts compatible faulty parts, resolves their burnout, and restores
-output through working replacements or shunts. Pending failures can be saved.
-Engineering's Power panel runs guns, shields and installed cloakers with real
-fuel costs, auxiliary consumption and saved charge/phase progress.
-English/Korean controls and four campaign save slots cover the current scenes,
-including open dialogue, seated visitors and rented rooms. The independent walkthrough and map
-inspector remain available. Regional flight and all57 ordinary-city services are active.
-City threats now lead to playable chase, encounter dialogue and ground combat.
-Carried weapons/shields, source surrender/robbery, post-fight rewards and death
-persist alongside ship encounters in version29 campaign saves. Powered flight
-produces pirates; tactical controls support negotiation, weapons, shields,
-jettison, wreck collection and explicit saved-point recovery. Colony progression
-remains R11. Evidence is in `../docs/remake/r10-completion.md` and
-`../docs/remake/behavior-matrix.md`.
+The full colony campaign is playable from a new character to the ending. Ship,
+city and surface travel, regional trade and banking, survival, engineering,
+ground encounters, pirates and all nine contract phases work through ordinary
+controls. Four versioned campaign slots and JSON import/export preserve progress;
+character drafts and the independent ship walkthrough have separate saves.
+English and Korean are available throughout. See `../docs/remake/r11aq-r11-completion-validation.json`
+for the completed campaign receipt and `../docs/remake/behavior-matrix.md` for
+the source and adaptation record.
 
 During ground encounters, move with arrows or a held pointer. In combat, aim
 with the pointer and hold Space or the right mouse button to fire. Toggle
@@ -53,6 +37,10 @@ a subdirectory. No package install, build, external font request or backend is
 needed. ESM requires HTTP; double-clicking `index.html` is not supported.
 Local serving works without internet. A hosted copy does not yet cache for an
 offline restart.
+The Sound button in the title, map inspector and ship header toggles short
+Apple II speaker inspired cues. Audio starts only after a user action; the mute
+choice persists in this browser. Sound timing and pitch are browser adaptations. See
+`../docs/remake/audio.md`.
 
 Use the preview tabs and previous/next buttons to browse. Select a map tile or
 ship point to inspect coordinates. Focus the display and press Enter, then
@@ -133,7 +121,7 @@ The dialogue foundation exports all96 classified records and all165 messages,
 and implements source selection rules, English text expansion, counter setup,
 stateful predicates, controls/actions and a conversation runner. Live counters
 support Talk/Enter, information, item quotes and room return in English/Korean.
-Version23 saves retain city/surface domains, the camera, independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
+Version30 saves retain city/surface domains, the camera, independent parked pod/player positions, occupancy, power phases/charges, pending engineering failures, active hull/fuel, auxiliary cargo, local stock, offers, warehouse cargo, personal-sale totals and all twelve system accounts and restore open conversations
 by replaying the saved RNG and inputs. Regional saves also preserve the actual
 ship/pod worlds, all57 city economies, flight progress, warp targets and distress
 deadlines. They preserve the clock and RNG across mid-flight reloads,
@@ -152,7 +140,8 @@ and boundaries are recorded in `../docs/remake/r06-completion.md` and
 `../docs/remake/r07-completion.md`. R08 ground transport and R09 regional flight
 are complete. The regional acceptance audit and current validation inventory
 are in `../docs/remake/r09-completion.md` and
-`../docs/remake/r09-validation-summary.json`. Encounters/combat are next in R10.
+`../docs/remake/r09-validation-summary.json`. Encounters and combat were
+completed in R10; the colony contract was completed in R11.
 
 At a bank, choose **Deposit**, **Withdraw** or **Transfer**. Select an amount with
 the original increments, All or Clear; Confirm commits it. Cancel leaves balances
@@ -200,7 +189,8 @@ walking exit. Continue past a city boundary to reach the world surface. Move
 onto a city marker and choose **Enter city** to visit its outdoor streets; return
 to Drahew to dock at your ship. Surface parking retains the pod and cargo while
 you walk into a city. Return to its saved position to board again. Version23
-saves preserve the camera and both locations, including a remote parked pod.
+introduced saves for the camera and both locations, including a remote parked
+pod; current saves retain them.
 Ordinary cities have their own buildings, markets and warehouses. A detached pod
 stays on its original world when the ship flies away. See
 `../docs/remake/surface-travel.md` and `../docs/remake/parked-pod.md`.
@@ -236,8 +226,8 @@ python3 tools/remake/export_assets.py --check
 Campaign creation uses the verified generated equipment, system
 coordinates/balances and orbital angles. Active engineering, banking and ground
 progress are saved separately from the immutable creation record. See
-`../docs/remake/initialization.md` for source evidence, seed boundaries and the
-remaining campaign fields. With cc65/sim65 installed, verify native RNG and the
+`../docs/remake/initialization.md` for source evidence and seed boundaries.
+With cc65/sim65 installed, verify native RNG and the
 clean equipment reference using:
 
 ```sh
@@ -247,7 +237,7 @@ python3 tools/remake/initialization_reference.py
 
 SVGs are generated from delivered Apple II assets; see `data/provenance.json`.
 Mulmaru is distributed under OFL 1.1; see `assets/fonts/LICENSE.txt` and its
-provenance record. This browser preview introduces no claim of new rights in
+provenance record. This browser remake introduces no claim of new rights in
 the original SunDog artwork or game content.
 
 R07g connects the cargo-loading core (four warehouse slots, two pod slots,

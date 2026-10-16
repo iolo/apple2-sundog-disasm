@@ -3,7 +3,7 @@ import { openDraftStore, makeDraft, validateDraft, parseDraft } from '../core/dr
 
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-export function characterScreen({ stage, background, t, language, close, start }) {
+export function characterScreen({ stage, background, t, audio, language, close, start }) {
   const root = document.createElement('section');
   root.id = 'character-screen'; root.hidden = true;
   stage.append(root);
@@ -14,12 +14,12 @@ export function characterScreen({ stage, background, t, language, close, start }
     if (!open) return;
     const focus = document.activeElement?.id;
     const left = pointsLeft(character);
-    root.innerHTML = `<header class="topline"><button id="character-back" data-do="close">← ${t('backShort')}</button><h1>${t('characterTitle')}</h1><button id="character-language" data-do="language">${t('language')}</button></header>
+    root.innerHTML = `<header class="topline"><button id="character-back" data-do="close">← ${t('backShort')}</button><h1>${t('characterTitle')}</h1><span class="right"><button id="character-sound" data-do="sound" aria-pressed="${audio.enabled}" aria-label="${t(audio.supported?audio.enabled?'soundOn':'soundOff':'soundUnavailable')}" ${audio.supported?'':'disabled'}>${t(audio.supported?audio.enabled?'soundShortOn':'soundShortOff':'soundShortUnavailable')}</button><button id="character-language" data-do="language">${t('language')}</button></span></header>
       <p class="draft-note">${t('draftNote')}</p>
       ${tab === 'character' ? `<div class="character-form"><label for="character-name">${t('characterName')}</label><input id="character-name" type="text" autocomplete="off" spellcheck="false" aria-describedby="name-hint" value="${escape(character.name)}"><span id="name-hint">${t('nameHint')}</span>
       <div class="attributes">${ATTRIBUTES.map(key => {
         const value = character.attributes[key];
-        return `<div class="attribute-row"><span>${t(key)}</span><span class="attribute-cost">${t('pointCost', { cost: increaseCost(value + 1) })}</span><button id="minus-${key}" data-do="adjust" data-key="${key}" data-delta="-1" aria-label="${t('decrease', { attribute: t(key) })}" ${value === minimum(key) ? 'disabled' : ''}>−</button><output id="value-${key}">${value}</output><button id="plus-${key}" data-do="adjust" data-key="${key}" data-delta="1" aria-label="${t('increase', { attribute: t(key) })}" ${increaseCost(value + 1) > left ? 'disabled' : ''}>+</button></div>`;
+        return `<div class="attribute-row"><span>${t(key)}</span><span class="attribute-cost">${t('pointCost', { cost: increaseCost(value + 1) })}</span><button id="minus-${key}" data-do="adjust" data-key="${key}" data-delta="-1" aria-label="${t('decrease', { attribute: t(key) })}" ${value === minimum(key) ? 'disabled' : ''}>-</button><output id="value-${key}">${value}</output><button id="plus-${key}" data-do="adjust" data-key="${key}" data-delta="1" aria-label="${t('increase', { attribute: t(key) })}" ${increaseCost(value + 1) > left ? 'disabled' : ''}>+</button></div>`;
       }).join('')}</div><p id="points-left">${t('pointsLeft', { points: left })}</p></div>
       <div class="draft-actions"><button id="reset-character" data-do="reset">${t('resetCharacter')}</button><button id="show-drafts" data-do="drafts">${t('draftSlots')}</button><button id="prepare-campaign" class="primary" data-do="prepare">${t('boardShip')} →</button></div>`
         : tab === 'launch' ? `<div class="launch-form enter"><h2>${escape(character.name)}</h2><p>${t('campaignLaunchScope')}</p><label for="campaign-seed">${t('campaignSeed')}</label><input id="campaign-seed" inputmode="numeric" type="text" maxlength="10" value="${escape(seed)}" aria-describedby="seed-hint"><p id="seed-hint">${t('campaignSeedHint')}</p><p>${t('campaignSaveReminder')}</p></div><div class="draft-actions"><button id="edit-character" data-do="edit">← ${t('editCharacter')}</button><button id="start-campaign" class="primary" data-do="start">${t('boardShip')} →</button></div>`
@@ -40,6 +40,8 @@ export function characterScreen({ stage, background, t, language, close, start }
     const button = event.target.closest('[data-do]');
     if (!button || busy) return;
     const action = button.dataset.do, slot = Number(button.dataset.slot);
+    if(action==='sound'){audio.toggle();render();root.querySelector('#character-sound')?.focus();return}
+    audio.play('select',true);
     message = '';
     try {
       if (action === 'close') { api.hide(); close(); return; }

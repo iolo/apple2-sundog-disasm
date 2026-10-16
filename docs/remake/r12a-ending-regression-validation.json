@@ -1,0 +1,31 @@
+{
+  "browser": "155.0.8059.84",
+  "checks": [
+    "The distinct city-57 cryogen lands at Banville intact",
+    "depart reached through normal movement (85 steps)",
+    "depart action is available",
+    "pod reached through normal movement (0 steps)",
+    "pod action is available",
+    "The parked cargo pod boards through its ordinary control",
+    "colony reached through normal movement (32 steps)",
+    "colony action is available",
+    "The colony ending appears immediately after final delivery",
+    "Fresh-page save reload preserves Center progress",
+    "The colony ending survives a fresh-page reload",
+    "The distinct city-57 cryogen creates one final phase-nine receipt",
+    "The city-57 cryogen delivery checkpoint exports unchanged",
+    "No uncaught errors on the city-57 cryogen delivery"
+  ],
+  "errors": [],
+  "failures": [],
+  "journey": {
+    "bank": 2280,
+    "receipts": 61,
+    "phase": 10,
+    "pod": [
+      null,
+      null
+    ],
+    "minutes": 253225
+  }
+}

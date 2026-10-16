@@ -7,6 +7,7 @@ import { characterScreen } from './ui/character.js';
 import { shipWalkScreen } from './ui/ship-walk.js';
 import { campaignSaveCodec } from './core/campaign-saves.js';
 import { campaignSeed } from './core/campaign-seed.js';
+import { createAudio } from './platform/audio.js';
 
 const viewport = document.querySelector('#viewport');
 const stage = document.querySelector('#stage');
@@ -14,10 +15,11 @@ const canvas = document.querySelector('#scene');
 const ui = document.querySelector('#interface');
 const announcement = document.querySelector('#announcement');
 let state = createPreview(), locale = readLocale(), assets, scale = 1, help = false;
+const audio = createAudio();
 let returnFocus = null;
 let counts, walker, campaignCodec;
 const t = (key, parameters) => translator(assets.locales, locale)(key, parameters);
-const creator = characterScreen({ stage, background: ui, t,
+const creator = characterScreen({ stage, background: ui, t, audio,
   language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
   close: () => document.querySelector('#create-character')?.focus(),
   start: (character,seedText) => {
@@ -61,20 +63,21 @@ function render() {
   const availableCity=state.view==='cities' && assets.cityMaps[assets.maps.cities[state.indices.cities].id];
   document.documentElement.lang = locale;
   const language = `<button id="language" data-action="language" lang="${locale === 'en' ? 'ko' : 'en'}">${t('language')}</button>`;
+  const sound = (id='sound') => `<button id="${id}" data-action="sound" aria-pressed="${audio.enabled}" aria-label="${t(audio.supported ? audio.enabled ? 'soundOn' : 'soundOff' : 'soundUnavailable')}" ${audio.supported ? '' : 'disabled'}>${t(audio.supported ? audio.enabled ? 'soundShortOn' : 'soundShortOff' : 'soundShortUnavailable')}</button>`;
   const footer = `<footer class="bottomline"><button id="about" data-action="help">${t('about')}</button><span>${t('previewNote')}</span></footer>`;
   if (state.view === 'title') {
-    ui.innerHTML = `<header class="topline"><span class="edition">${t('edition')}</span>${language}</header>
+    ui.innerHTML = `<header class="topline"><span class="edition">${t('edition')}</span><span class="right">${sound()}${language}</span></header>
       <section class="hero enter"><h1>SunDog</h1><div class="subtitle">${t('subtitle')}</div><p>${t('intro')}</p></section>
       <div class="hero-actions"><button id="create-character" class="primary" data-action="character">${t('createCharacter')} →</button>
       <div>${walker?.hasCampaign ? `<button id="resume-campaign" data-action="resume-campaign">${t('resumeCampaign')}</button>` : ''}<button id="campaign-saves" data-action="campaign-saves">${t('campaignTitle')}</button></div>
       <button id="explore" data-action="view" data-view="ship">${t('explore')} ↗</button></div>${footer}`;
   } else {
     ui.innerHTML = `<header class="topline"><button id="home" class="brand" data-action="view" data-view="title" aria-label="${t('homeLabel')}">SunDog</button>
-      <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav>${language}</header>
+      <nav>${['ship', 'cities', 'worlds'].map(view => `<button id="nav-${view}" data-action="view" data-view="${view}" aria-pressed="${state.view === view}">${t(view)}</button>`).join('')}</nav><span class="right">${sound()}${language}</span></header>
       <section class="scene-heading${city ? ' city-heading' : ''}"><div><h1>${city ? city.name : t(`${state.view}Title`)}</h1><p>${city ? t(city.cityId==='city-60' ? 'colonyViewDescription' : 'cityViewDescription') : state.view==='cities'&&!availableCity ? t('cityStoredOnly') : t(`${state.view}Description`)}</p></div>
-      <div class="pager"><button id="previous" data-action="step" data-delta="-1" aria-label="${t('previous')}">‹</button>
+      <div class="pager"><button id="previous" data-action="step" data-delta="-1" aria-label="${t('previous')}">←</button>
       <span>${String(state.indices[state.view] + 1).padStart(2, '0')} / ${counts[state.view]}</span>
-      <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">›</button></div></section>
+      <button id="next" data-action="step" data-delta="1" aria-label="${t('next')}">→</button></div></section>
       <div id="inspect" class="inspect-surface${city ? ' city-surface' : ''}" role="button" tabindex="0" aria-label="${t('surface')}"></div>
       ${city?.cityId==='city-60' ? `<label class="colony-phase" for="colony-phase">${t('colonyCompletedPhases')}<select id="colony-phase">${Array.from({length:10},(_,phase)=>`<option value="${phase}" ${phase===state.colonyPhase ? 'selected' : ''}>${phase}</option>`).join('')}</select></label>` : ''}
       ${city ? `<div class="city-pan" aria-label="${t('cityPan')}">${[['left',-1,0,'←'],['up',0,-1,'↑'],['down',0,1,'↓'],['right',1,0,'→']].map(([direction,dx,dy,glyph])=>`<button id="city-${direction}" data-action="city-pan" data-dx="${dx}" data-dy="${dy}" aria-label="${t(`cityPan-${direction}`)}">${glyph}</button>`).join('')}</div>` : ''}
@@ -85,7 +88,7 @@ function render() {
   if (help) {
     // Only the dialog is interactive while it is visible.
     for (const child of ui.children) child.inert = true;
-    ui.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help enter" role="dialog" aria-modal="true" aria-labelledby="help-title"><h2 id="help-title">${t('helpTitle')}</h2><p>${t('helpBody')}</p><p>${t('helpScope')}</p><button id="close-help" data-action="close-help">${t('close')} · Esc</button></section></div>`);
+    ui.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help enter" role="dialog" aria-modal="true" aria-labelledby="help-title"><h2 id="help-title">${t('helpTitle')}</h2><p>${t('helpBody')}</p><p>${t('helpScope')}</p>${sound('help-sound')}<button id="close-help" data-action="close-help">${t('close')} · Esc</button></section></div>`);
     document.querySelector('#close-help').focus();
   } else if (focused) {
     document.getElementById(focused)?.focus({ preventScroll: true });
@@ -115,6 +118,8 @@ ui.addEventListener('click', event => {
   const button = event.target.closest('[data-action]');
   if (!button || !assets) return;
   const action = button.dataset.action;
+  if (action === 'sound') { audio.toggle(); render(); document.getElementById(button.id)?.focus(); return; }
+  audio.play(action === 'view' ? 'transition' : 'select', true);
   if (action === 'character') { creator.show(); return; }
   if (action === 'walk') { walker.show(); return; }
   if (action === 'resume-campaign') {walker.showCampaign();return}
@@ -187,7 +192,7 @@ resize();
 try {
   assets = await loadAssets();
   campaignCodec=campaignSaveCodec(assets.campaignContent,assets.shipWalk,assets.cityGeometry);
-  walker = shipWalkScreen({ stage, background: ui, assets, t,
+  walker = shipWalkScreen({ stage, background: ui, assets, t, audio,
     locale:()=>locale,
     language: () => { locale = locale === 'en' ? 'ko' : 'en'; saveLocale(locale); render(); },
     close: () => {render();document.querySelector(state.view==='title' ? (walker.hasCampaign ? '#resume-campaign' : '#campaign-saves') : '#begin-walk')?.focus()},

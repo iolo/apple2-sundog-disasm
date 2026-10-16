@@ -1,7 +1,7 @@
 import { CHECKPOINT_LIMIT, openCheckpointStore } from '../core/checkpoints.js';
 import { escapeHTML } from './html.js';
 
-export function checkpointScreen({ stage, background, codec, t, language, snapshot, restore, close,
+export function checkpointScreen({ stage, background, codec, t, audio={enabled:false,supported:false,play(){},toggle(){}}, language, snapshot, restore, close,
   openStore=()=>openCheckpointStore(codec), storeKey=()=> 'checkpoints',
   limit=()=>CHECKPOINT_LIMIT, filename=()=> 'sundog-ship-checkpoint.json', describe }) {
   const root = document.createElement('section'); root.id = 'checkpoint-screen'; root.hidden = true; root.tabIndex = -1; stage.append(root);
@@ -13,7 +13,7 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
   function render() {
     if (!open) return;
     const focus = document.activeElement?.id, canSave = !!current();
-    root.innerHTML = `<header class="topline"><button id="checkpoint-back" data-checkpoint="close" ${busy ? 'disabled' : ''}>← ${t('backShort')}</button><h2 id="checkpoint-title">${t('checkpointTitle')}</h2><button id="checkpoint-language" data-checkpoint="language" ${busy ? 'disabled' : ''}>${t('language')}</button></header>
+    root.innerHTML = `<header class="topline"><button id="checkpoint-back" data-checkpoint="close" ${busy ? 'disabled' : ''}>← ${t('backShort')}</button><h2 id="checkpoint-title">${t('checkpointTitle')}</h2><span class="right"><button id="checkpoint-sound" data-checkpoint="sound" aria-pressed="${audio.enabled}" aria-label="${t(audio.supported?audio.enabled?'soundOn':'soundOff':'soundUnavailable')}" ${busy||!audio.supported?'disabled':''}>${t(audio.supported?audio.enabled?'soundShortOn':'soundShortOff':'soundShortUnavailable')}</button><button id="checkpoint-language" data-checkpoint="language" ${busy ? 'disabled' : ''}>${t('language')}</button></span></header>
       <p class="checkpoint-note">${t('checkpointScope')}</p><div class="checkpoint-list">${[0,1,2,3].map(slot => {
         const raw = slots.find(item => item.slot === slot); let value;
         try { if (raw) value = codec.validate(raw); } catch { /* Preserve unreadable records until explicit replacement/deletion. */ }
@@ -50,6 +50,8 @@ export function checkpointScreen({ stage, background, codec, t, language, snapsh
   root.addEventListener('click', event => {
     const button = event.target.closest('[data-checkpoint]'); if (!button || busy) return;
     const action = button.dataset.checkpoint, slot = Number(button.dataset.slot);
+    if(action==='sound'){audio.toggle();render();root.querySelector('#checkpoint-sound')?.focus();return}
+    audio.play('select',true);
     if (action === 'close') { hide(); return; }
     if (action === 'language') { language(); return; }
     if (action === 'import') { root.querySelector('#checkpoint-file').click(); return; }

@@ -1,3 +1,31 @@
+## R12a — Presentation and audio complete — 2026-10-16
+
+Reachable ground encounter glyphs 22–25 now export as SVG from the source font.
+The static audit verifies all 156 catalog SVG paths, dynamic room/pod/tile
+references, 60 city and 18 world maps, English/Korean key and interpolation
+parity, all 165 dialogue messages, and Mulmaru coverage for the UI's text.
+The completed Banville Center presents the fulfilled 61-delivery ledger and a
+save reminder. Stale development copy was replaced, help now covers encounters
+and the colony objective, and a short reveal marks scene changes while honoring
+reduced motion.
+
+Speaker-inspired Web Audio cues cover selection, transitions, combat, damage,
+warp and the ending. The persistent Sound control is available through the
+title, character setup, ship, dialogs and saves. It activates from a user
+action, mutes immediately and leaves unsupported browsers playable. A tactical
+regression exposed an accepted right-click that never set the fire bit; the
+input path now fires as its control advertised. The 110-check tactical browser
+journey passes, including its 30/60/144 Hz state comparison. Hosted offline
+caching was not selected; the static folder runs locally without internet.
+
+Required Chrome 155.0.8059.84 passes 525 rule groups, 42 audio/desktop/portrait
+checks, 36 saved-scene layout checks, 17 ordinary ground checks and 14 final
+delivery/reload checks, all without page errors. The exporter verifies 175
+deterministic artifacts and its 23 tests pass. See
+`docs/remake/r12-presentation-audit.md` and the `r12a-*-validation.json`
+receipts. R12 is complete; R13 release validation is next. The user-owned
+`PRD-REMAKE.md` remains untouched.
+
 ## R11aq — Colony campaign complete — 2026-10-16
 
 The final city-57 cryogen returned to Banville through ordinary controls.
