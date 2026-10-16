@@ -1,0 +1,101 @@
+{
+  "browser": "155.0.8059.84",
+  "scope": "Fresh seed12345 character; ordinary paid fuel, purchased cargo, launch and sublight contact; explicit saved-point branches; no imports or state mutations outside UI",
+  "checks": [
+    "depart reached through normal movement (76 steps)",
+    "depart action is available at the reached location",
+    "depot reached through normal movement (71 steps)",
+    "depot action is available at the reached location",
+    "exchange reached through normal movement (216 steps)",
+    "exchange action is available at the reached location",
+    "Two ordinary board purchases are available to load",
+    "Fresh-page reload preserves the complete campaign state",
+    "Both normally purchased lots are loaded",
+    "dock reached through normal movement (270 steps)",
+    "dock action is available at the reached location",
+    "navigation reached through normal movement (87 steps)",
+    "navigation action is available at the reached location",
+    "The confirmed journey reaches its destination through the live clock",
+    "Powered flight naturally produces a contact and normal Navigation opens tactical controls",
+    "Encounter begins with legitimate initial hull and an actual living enemy",
+    "Fresh-page reload preserves the complete campaign state",
+    "An unshielded ordinary encounter reaches the actual ship-destruction scene",
+    "Fresh-page reload preserves the complete campaign state",
+    "Ordinary destruction commits its durable defeat marker",
+    "Ship destruction does not invent personal injury",
+    "Terminal time and all owners remain frozen after fresh-page reload",
+    "Explicit earlier-slot recovery restores the exact legitimate encounter",
+    "Fresh-page reload preserves the complete campaign state",
+    "Ordinary Comm freezes the actual kind19 enemy conversation",
+    "Ordinary Comm freezes flight, machinery and combat while waiting",
+    "Fresh-page reload preserves the complete campaign state",
+    "Ordinary Agree arms the source six-tick cargo deadline",
+    "Agreement leaves purchased cargo aboard until explicit jettison",
+    "Cargo negotiation does not invent a cash or bank transfer",
+    "Normal shield controls request full charge from actual working equipment",
+    "Normal bolt controls offer Both for the two purchased ordinary cargo lots",
+    "Fresh-page reload preserves the complete campaign state",
+    "Explicit Both jettison removes and records both legitimate cargo lots",
+    "Jettison retains the source-owned negotiation deadline",
+    "Cargo loss retains actual lot identity, quality, price and reverse slot order",
+    "Fresh-page reload preserves the complete campaign state",
+    "Jettison leads to an ordinary contact escape without destruction",
+    "Live power charges requested shields using actual fuel",
+    "Ordinary cargo escape preserves the initial hull",
+    "Escape and reload do not repeat the cargo loss",
+    "Every ordinary branch preserves immutable creation data",
+    "Destruction does not manufacture jettison or transfer purchased cargo",
+    "Ordinary ship damage leaves personal cash and bank accounts independent"
+  ],
+  "failures": [],
+  "errors": [],
+  "creationHash": "28244a3c8d72d5698d47e9eb505eeae5a400ef51de7cbe8eab89553f4419598d",
+  "delivery": "isolated remake/ copy",
+  "stageHashes": {
+    "tactical": "2bcfdcf5b1a7714bf6df94069add8a1624eebf3b7977e304c4c985175ea3e460",
+    "dead": "82c592da9788cb6c9eab6c349b4e6cc875f95ab9254625d735b100bc0fd71a95",
+    "pending": "8e260d591e0dea313f9e4f2143712f24b8d32ec8a0367b9fb9882bc21575dfdf",
+    "agreed": "a9e5f6130f39ead38bc7293d6292628606278ceddbd822a9f847ba48312833f3",
+    "shields": "97b4c3a58a2508c078d71ca1afe0cfd9206bfe942d976bc5745a94c38ef7bdf1",
+    "jettisoned": "a24e289b86e61fc1cebfc74842fd189cbd2c5d4b1800eb7a2f8c9f311d265053",
+    "escaped": "d686d069fb0a672bba3357d47f04a14316a44a9617d9c74835d024893f9574a9",
+    "initial": "8878cd99e9f1b12304cb7a322388e2afdbe733ff0aeddb5fdcfe6de4d16aac04",
+    "loaded": "95c5e8e4a585a2691e489a2b6b01e9271c35297b09f4b3661cc1b184a94ac3d2",
+    "orbit": "9c3cdad728e6bf86ce85a1faa2dfbfd275be037509ba080da13abe0cb58d6b8c",
+    "contact": "b19a6e9469609e2dc2018929fc9b6cd9fee0c8180fe2c666aed2abf2a90f1844"
+  },
+  "diagnosticCounts": {
+    "pose": 40,
+    "lossSamples": 91
+  },
+  "final": {
+    "hull": 15,
+    "fuel": 221,
+    "homeBank": 9862,
+    "podCargo": [
+      null,
+      null
+    ],
+    "bounties": [],
+    "losses": [
+      {
+        "lot": {
+          "commodityId": "cargo-25",
+          "quality": 6,
+          "originCity": "city-01",
+          "pricePaid": 8200
+        },
+        "count": 1
+      },
+      {
+        "lot": {
+          "commodityId": "cargo-24",
+          "quality": 4,
+          "originCity": "city-01",
+          "pricePaid": 8900
+        },
+        "count": 1
+      }
+    ]
+  }
+}

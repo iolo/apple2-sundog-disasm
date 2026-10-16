@@ -1,3 +1,34 @@
+## R13a — Release validation complete — 2026-10-16
+
+The standalone `remake/` folder now has a release audit, direct run instructions,
+intentional-difference record and selected Chrome screenshots in
+`docs/remake/r13-release.md`. The R11 ordinary-controls campaign reached the
+ending with 61 receipts and 17 distinct cryogens; its game core is unchanged.
+Current-build isolated-copy Chrome runs reproduce a fresh two-system
+trade/refuel/return loop, ground victory, peaceful payment, ground knockout and
+recovery, space victory/salvage, space loss/recovery, and the final delivery.
+The active Center layout now keeps requirements and cargo scroll-reachable in
+English desktop and Korean portrait views without overlapping its footer.
+
+Static audits cover 285 module imports, 176 named runtime resources, all 18
+worlds and 57 ordinary cities, 174 dialogue message references, 29 redirect
+targets, 156 SVGs and 739 matched locale keys. Every historical campaign save
+version 1–29 migrates to version 30 in a synthetic fresh-state check; four UI
+slots, import/export and failure preservation pass. Six compressed R11 stage
+checkpoints are hashed and restorable. Five milestones reopen in the current UI
+and survive fresh-page save/reload with exactly equal campaign state. The
+isolated `remake/` copy has no missing or external requests at the tested
+desktop/portrait sizes and device scales 1/2. Chrome 155's measured normal-scene
+frame intervals were 16.7 ms median and 95th percentile on this machine, and
+the dependency-free browser rule suite passes all 525 groups. The final receipt
+inventory is in the release audit; no campaign-rule blocker remains.
+
+TransStation routes, original disk-save import, physical gamepad support and a
+hosted offline cache are outside the release scope and documented. The
+exceptional original reward224 zero-divisor branch remains a recoverable stopped
+conversation. R13 completes the planned remake; optional follow-ups are listed
+in `PLAN-REMAKE.md`. The user-owned `PRD-REMAKE.md` remains untouched.
+
 ## R12a — Presentation and audio complete — 2026-10-16
 
 Reachable ground encounter glyphs 22–25 now export as SVG from the source font.

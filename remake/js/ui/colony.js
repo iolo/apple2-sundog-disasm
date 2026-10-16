@@ -13,7 +13,7 @@ export function colonyPanel({state,content,draft=null,message='',t}) {
   const requirements=finished?`<p id="colony-ending">${t('colonyEnding')}</p><p id="colony-ending-summary">${t('colonyEndingSummary',{receipts:colony.receipts.length})}</p>`:
     `<p id="colony-phase">${t('colonyPhase',{phase:colony.activePhase,remaining:10-colony.activePhase})}</p>
     <div id="colony-requirements" class="exchange-list">${demand.map((n,i)=>n>0?`<div><span>${escapeHTML(t(`cargo${String(i+1).padStart(2,'0')}`))}</span><strong>${n}</strong></div>`:'').join('')||`<p>${t('colonyReady')}</p>`}</div>`;
-  return `<div class="help-shade"><section id="service-panel" class="help bank-panel exchange-panel${finished?' colony-finished':''}" role="dialog" aria-modal="true" aria-labelledby="service-title">
+  return `<div class="help-shade"><section id="service-panel" class="help bank-panel exchange-panel ${finished?'colony-finished':'colony-active'}" role="dialog" aria-modal="true" aria-labelledby="service-title">
     <header><h2 id="service-title">${escapeHTML(t('colonyTitle'))}</h2><button id="service-language" data-walk="language">${t('language')}</button></header>
     ${requirements}
     ${finished?'':`<p>${t(driving?'colonyPodHint':'colonyFootHint')}</p>`}

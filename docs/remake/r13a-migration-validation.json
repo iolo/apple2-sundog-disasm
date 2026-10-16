@@ -1,0 +1,184 @@
+{
+  "browser": "155.0.8059.84",
+  "status": "pass",
+  "errors": [],
+  "currentVersion": 30,
+  "currentScope": "colony-contract-1",
+  "versions": [
+    {
+      "version": 1,
+      "scope": "landed-ship-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 2,
+      "scope": "landed-engineering-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 3,
+      "scope": "landed-city-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 4,
+      "scope": "landed-bank-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 5,
+      "scope": "landed-rooms-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 6,
+      "scope": "landed-occupants-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 7,
+      "scope": "landed-traffic-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 8,
+      "scope": "landed-dialogue-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 9,
+      "scope": "landed-lodging-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 10,
+      "scope": "landed-taverns-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 11,
+      "scope": "landed-services-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 12,
+      "scope": "landed-banking-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 13,
+      "scope": "landed-exchange-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 14,
+      "scope": "landed-purchases-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 15,
+      "scope": "landed-personal-trade-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 16,
+      "scope": "landed-local-cargo-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 17,
+      "scope": "landed-trader-matching-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 18,
+      "scope": "landed-depot-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 19,
+      "scope": "landed-failures-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 20,
+      "scope": "landed-power-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 21,
+      "scope": "landed-parking-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 22,
+      "scope": "landed-ground-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 23,
+      "scope": "regional-flight-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 24,
+      "scope": "ground-encounters-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 25,
+      "scope": "ship-encounters-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 26,
+      "scope": "ship-communication-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 27,
+      "scope": "ship-tactical-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 28,
+      "scope": "ship-input-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    },
+    {
+      "version": 29,
+      "scope": "ship-salvage-1",
+      "exact": true,
+      "wrongScopeRejected": true
+    }
+  ],
+  "delivery": "isolated remake/ copy"
+}

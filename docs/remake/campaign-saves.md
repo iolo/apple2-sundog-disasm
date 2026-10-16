@@ -1,4 +1,10 @@
-# Campaign save boundary — live29, R10r
+# Campaign save boundary — live30
+
+The current browser campaign uses version30 `colony-contract-1`, including the
+nine-phase delivery ledger and completed ending. Versions1–29 validate their
+original field scopes before migration; current-code release checks import all
+29 directly and reject mismatched scopes. The sections below retain the
+historical development of the save boundary, beginning with R10r.
 
 R10r activates version29 `ship-salvage-1` in the live loader. Actual tactical
 controls, source Comm/deadline, bounty/wreck/tractor/cargo-loss owners and ship

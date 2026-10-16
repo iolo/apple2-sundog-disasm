@@ -1,0 +1,44 @@
+{
+  "r11-phase-one-checkpoint.json": {
+    "sha256": "a981f3a0b711b2fea3ce197d599db74a570028d427e01fc0157d7d3acff1df7f",
+    "bytes": 202487,
+    "activePhase": 2,
+    "receipts": 4,
+    "scene": "colony"
+  },
+  "r11-phase-two-complete.json": {
+    "sha256": "871ff11b6144607df072c9e13490d70913e883c98c975f5b3c27bc5c9d9b6b07",
+    "bytes": 203387,
+    "activePhase": 3,
+    "receipts": 10,
+    "scene": "colony"
+  },
+  "r11-phase-five-complete.json": {
+    "sha256": "6b654a5336bf8591f39c6c9fcf1234262ade1e85f31f49b850ff8e35f96f5ffb",
+    "bytes": 207645,
+    "activePhase": 6,
+    "receipts": 30,
+    "scene": "colony"
+  },
+  "r11-phase-eight-complete.json": {
+    "sha256": "70a771a3809e6712d3114528e09672d90da1678978527202e5e83f8961981544",
+    "bytes": 211464,
+    "activePhase": 9,
+    "receipts": 53,
+    "scene": "colony"
+  },
+  "r11-phase-nine-cryo57-loaded.json": {
+    "sha256": "a221e1176c24ad3cde1aa044e08d398fca42497ee2058b124a8b906688f05d9c",
+    "bytes": 214324,
+    "activePhase": 9,
+    "receipts": 60,
+    "scene": "exchange"
+  },
+  "r11-phase-nine-cryo57-delivered.json": {
+    "sha256": "f88375b04ed32e140c8d933a7011f18502b39a394db7f787ff548db6fdb364b5",
+    "bytes": 212954,
+    "activePhase": 10,
+    "receipts": 61,
+    "scene": "colony"
+  }
+}

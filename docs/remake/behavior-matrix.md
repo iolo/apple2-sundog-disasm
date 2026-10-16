@@ -1,4 +1,12 @@
-# Remake behavior evidence — through R10b
+# Remake behavior evidence — historical matrix through R10b
+
+This table records what was known at each earlier checkpoint; rows that say a
+feature was pending are historical, not the current release status. The
+[R09](r09-completion.md), [R10](r10-completion.md),
+[R11](r11aq-r11-completion-validation.json), and
+[R12](r12-presentation-audit.md) audits record the completed gameplay and
+presentation scopes. The [R13 release audit](r13-release.md) is the current
+acceptance inventory.
 
 For city/building milestone evidence, see [R06 completion audit](r06-completion.md).
 Active deposits, withdrawals and inter-system transfers are traced and implemented
@@ -73,32 +81,22 @@ characters and includes historical variants; it is not a localization catalog.
 | Lodging rental and bedrooms | Game16 procedures3/39, bank95 states96–101; Game18 procedures15/19/21/25 | Source-derived,179 browser rule groups and27 lodging UI checks; no emulator capture | R06n adds type11 clerk dialogue, fee/debit, random room assignment, dynamic doors and version9 cash/access saves. Mid-payment and closed-bedroom reloads pass. See `lodging.md`. |
 | Tavern seating and conversation | Game18 procedures8/21/23/24/28; Game16 procedure39 and banks90/91/92/97/100/101/102 | Source-derived,196 browser rule groups and36 tavern UI checks; no emulator capture | R06p enables type8 entry, bartender12, visitor21/22, small talk/jokes, tips, localized presentation and version10 replay saves. Actual-speaker return and moving-visitor reload are checked. Food/item trading remains R07. See `tavern-dialogue.md`. |
 
-## New-game and campaign blockers
+## Resolution of the historical blockers
 
-R04b observes clean character creation on disposable disks; R05a implements the
-traced movement/collision rules. Attribute allocation is implemented in R04a.
-To finish R04, map the remaining utility procedures 10–21 and 25–30 into named
-state fields, including money, inventory/equipment, time, world generation and
-randomness. R05b implements storage transfers; R05c adds personal condition and
-food/rapidheal use; R05d adds a clock and landed-ship survival/sleep. R05 still
-needs engineering, exits and other consequential interactions. Original sleep
-UI and item-use observations remain incomplete.
-Before R11, decode phase requirement generation, delivery accounting and the
-remaining-goods predicate. These block gameplay fidelity, not the independent
-graphics loader, content viewer, localization or viewport work.
-
-The first ship fixture is specified as: a verified new state near the airlock,
-primary press/hold/release movement, secondary status open/close, one supported
-inventory transfer, save, fresh-session reload, continuation. It remains pending
-until initialization, status, inventory and campaign persistence pass. Development previews have their
-own UI state and must never be serialized as campaign saves.
+R04–R05 completed new-game creation, equipment, movement, storage, condition,
+sleep and the four-slot campaign save flow. The first ship scenario, including
+fresh-page continuation, is covered by the campaign UI journey. R11 completed
+the nine colony recipes through 61 ordinary deliveries, including 17 distinct
+cryogens, and reached the ending. Source records still have unnamed fields, but
+those are not unresolved core gameplay gates. The independent map inspector and
+ship walkthrough keep separate state and saves from the campaign.
 
 ## Discrepancies and decisions
 
 - Manual PDF 9 describes eight games and different disk roles. Use four slots
   and the observed supplied-image roles (disk1 title/utilities, disk2 play).
 - Source string lengths/ASCII are original constraints. Browser names and text
-  accept Korean; retain stable IDs and define a Unicode length limit in R04.
+  accept Korean; character names use a 15-grapheme-cluster limit and stable IDs.
 - Original display-control symbols (`|`, backslash, etc.) are preserved in the
   source index. Translate their meaning when building UI; never show them raw.
 - A bank-selected, overlaid city screen is not the bare 20×12 payload. The

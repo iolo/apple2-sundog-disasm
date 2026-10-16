@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Serve the remake for one Playwright CLI check, then shut down cleanly."""
 import argparse
+from contextlib import ExitStack
 import functools
 import http.server
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
+import tempfile
 import threading
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,10 +35,16 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('script', nargs='?', type=Path)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--clean-copy', action='store_true', help='Serve an isolated copy containing only remake/')
     args=parser.parse_args()
     code=args.script.read_text() if args.script else RULES
-    handler=functools.partial(QuietHandler,directory=str(ROOT/'remake'))
-    with http.server.ThreadingHTTPServer(('127.0.0.1',8000),handler) as server:
+    with ExitStack() as stack:
+        static_root=ROOT/'remake'
+        if args.clean_copy:
+            static_root=Path(stack.enter_context(tempfile.TemporaryDirectory(prefix='sundog-release-')))/'remake'
+            shutil.copytree(ROOT/'remake',static_root)
+        handler=functools.partial(QuietHandler,directory=str(static_root))
+        server=stack.enter_context(http.server.ThreadingHTTPServer(('127.0.0.1',8000),handler))
         threading.Thread(target=server.serve_forever,daemon=True).start()
         try:
             cli=['npx','--yes','--package','@playwright/cli','playwright-cli','-s=remake']
@@ -47,6 +56,8 @@ def main():
             if checked.returncode or not match or '### Error' in checked.stdout:
                 raise RuntimeError((checked.stdout+checked.stderr)[:4000])
             result=json.loads(match[1])
+            if args.clean_copy:
+                result['delivery']='isolated remake/ copy'
             if args.output:
                 args.output.parent.mkdir(parents=True,exist_ok=True)
                 args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')

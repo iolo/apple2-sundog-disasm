@@ -1,7 +1,7 @@
 // Ordinary UI actions in isolated browser storage; clock advances time only.
 async browserPage => {
   const browser=browserPage.context().browser(),checks=[],errors=[];
-  const context=await browser.newContext({viewport:{width:1280,height:720}});
+  const context=await browser.newContext({viewport:{width:1280,height:720},locale:'en-US'});
   let page=await context.newPage(),accept=true;
   const watch=p=>{p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>accept ? d.accept() : d.dismiss())};
   watch(page);

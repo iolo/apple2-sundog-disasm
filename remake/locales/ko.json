@@ -459,7 +459,7 @@
   "leaveService": "시설 나가기",
   "transstationTitle": "운송 터미널",
   "transstationDescription": "도시, 행성, 항성계를 오가는 교통 시설입니다.",
-  "transstationUnavailable": "이동 서비스는 아직 이용할 수 없습니다.",
+  "transstationUnavailable": "이 교통역 노선은 운행하지 않습니다. 함선 항법 또는 포드로 이동하세요.",
   "depotTitle": "{name} 정비소",
   "depotDescription": "우주선 급유, 수리, 보조 연료 판매 시설입니다.",
   "depotUnavailable": "여기에서는 정비 서비스를 이용할 수 없습니다.",

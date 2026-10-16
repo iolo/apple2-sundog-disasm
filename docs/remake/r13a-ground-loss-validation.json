@@ -1,0 +1,37 @@
+{
+  "browser": "155.0.8059.84",
+  "checks": 14,
+  "results": [
+    "Ordinary city walking reaches another natural chase",
+    "Natural chase catches the unarmed fresh character",
+    "Ordinary dialogue controls return to the natural encounter",
+    "Actual enemy fire knocks out the unarmed fresh character",
+    "Source knockout commits robbery once and returns a living campaign",
+    "Unarmed knockout preserves untouched stores and locker owners",
+    "Robbery removes personal cash while preserving regional bank accounts",
+    "Ordinary loss preserves immutable creation data",
+    "Fresh-page load retains exact ordinary injury and robbery",
+    "Paused restored loss freezes every campaign owner",
+    "Explicit earlier-slot recovery restores the exact fresh character",
+    "Ordinary ship walk reaches 54,86",
+    "Earlier-slot recovery resumes ordinary ship movement",
+    "No browser errors during ordinary ground loss and recovery"
+  ],
+  "errors": [],
+  "fixture": "fresh seed12345; ordinary city chase/catch, source dialogue, unarmed knockout, robbery and earlier-slot recovery; no state imports",
+  "delivery": "isolated remake/ copy",
+  "stageHashes": {
+    "initial": "a1d8336893d11d53c606a491f9107e66b7606f22d04e841f98347add10de0bee",
+    "encounters": "0cceaa2cbe144b64b2e91d00643ec2105a791c23a1087ac637d65b54ec27ff98",
+    "lost": "05cdd2569645941e38be1fd16b9a51271ee4f3272459e7ebd2b060e985ed325d"
+  },
+  "diagnosticCounts": {
+    "pose": 40
+  },
+  "final": {
+    "cash": 0,
+    "homeBank": 29474,
+    "rewards": [],
+    "defeat": null
+  }
+}
