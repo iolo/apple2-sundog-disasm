@@ -7,7 +7,9 @@ controls. Four versioned campaign slots and JSON import/export preserve progress
 character drafts and the independent ship walkthrough have separate saves.
 English and Korean are available throughout. See `../docs/remake/r11aq-r11-completion-validation.json`
 for the completed campaign receipt and `../docs/remake/behavior-matrix.md` for
-the source and adaptation record.
+the source and adaptation record. The [R13 release audit](../docs/remake/r13-release.md)
+has the standalone run instructions, acceptance evidence, screenshots and
+intentional differences.
 
 During ground encounters, move with arrows or a held pointer. In combat, aim
 with the pointer and hold Space or the right mouse button to fire. Toggle

@@ -1,0 +1,32 @@
+{
+  "browser": "155.0.8059.84",
+  "status": "pass",
+  "frames": [
+    {
+      "scene": "landed ship",
+      "median": 16.699999999999818,
+      "p95": 16.700000000000273,
+      "max": 16.800000000000182,
+      "frames": 180
+    },
+    {
+      "scene": "active Center",
+      "median": 16.699999999999818,
+      "p95": 16.700000000000728,
+      "max": 16.800000000000182,
+      "frames": 180
+    },
+    {
+      "scene": "composed city with pod",
+      "median": 16.69999999999891,
+      "p95": 16.700000000000728,
+      "max": 16.80000000000109,
+      "frames": 180
+    }
+  ],
+  "errors": [],
+  "machine": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+  },
+  "delivery": "isolated remake/ copy"
+}

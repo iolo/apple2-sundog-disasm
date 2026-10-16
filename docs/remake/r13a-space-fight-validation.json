@@ -1,0 +1,102 @@
+{
+  "browser": "155.0.8059.84",
+  "scope": "Fresh seed12345 character; ordinary paid fuel/cargo, flight contacts, shield overflow, manual laser aim/fresh fire, source victory and Tractor; no imports or state mutations outside UI",
+  "checks": [
+    "depart reached through normal movement (76 steps)",
+    "depart action is available at the reached location",
+    "depot reached through normal movement (71 steps)",
+    "depot action is available at the reached location",
+    "exchange reached through normal movement (216 steps)",
+    "exchange action is available at the reached location",
+    "Two ordinary board purchases are available to load",
+    "Fresh-page reload preserves the complete campaign state",
+    "Both normally purchased lots are loaded",
+    "dock reached through normal movement (270 steps)",
+    "dock action is available at the reached location",
+    "navigation reached through normal movement (87 steps)",
+    "navigation action is available at the reached location",
+    "The confirmed journey reaches its destination through the live clock",
+    "Powered flight naturally produces a contact and normal Navigation opens tactical controls",
+    "Encounter begins with legitimate initial hull and an actual living enemy",
+    "Fresh-page reload preserves the complete campaign state",
+    "The ordinary sublight journey reaches open space with actual fuel",
+    "Fresh-page reload preserves the complete campaign state",
+    "An ordinary contact remains active at the reached open-space location",
+    "Actual ordinary enemy fire consumes charged ship shields",
+    "The ordinary high-strength hit consumes the shield buffer before applying overflow",
+    "Ordinary overflow preserves hull and commits actual component damage/failure owners",
+    "Fresh-page reload preserves the complete campaign state",
+    "Fresh-page reload preserves the complete campaign state",
+    "Ordinary manual laser aim and fresh pointer fire defeat a real pirate",
+    "Ordinary laser victory produces a real source wreck",
+    "Fresh-page reload preserves the complete campaign state",
+    "Fresh-page reload preserves the complete campaign state",
+    "Ordinary Tractor loads the actual produced wreck into the explicitly emptied slot",
+    "Every ordinary fight and salvage checkpoint preserves immutable creation data",
+    "Ordinary victory credits the actual system bank once with its source3000Cr bounty",
+    "Ship victory preserves independent personal cash and purchased cargo owners",
+    "Fresh-page recovery and Tractor continuation never repeat the victory bounty",
+    "Tractor replaces only the explicitly discarded paid slot while retaining its actual loss and the other paid lot",
+    "Paused elapsed time cannot collect a wreck twice or duplicate its bounty"
+  ],
+  "failures": [],
+  "errors": [],
+  "creationHash": "28244a3c8d72d5698d47e9eb505eeae5a400ef51de7cbe8eab89553f4419598d",
+  "delivery": "isolated remake/ copy",
+  "stageHashes": {
+    "tactical": "2bcfdcf5b1a7714bf6df94069add8a1624eebf3b7977e304c4c985175ea3e460",
+    "arrived": "7faffa202a8176821322d7dd9e68cd38e01157b47111f0ba610b0bdb9048a9d8",
+    "fighting": "55d35e5716ecf763afc5c58fde2c776fecffe38e691e57444eb69f64c155fa7d",
+    "beforeShield": "34477fdc5edbd9c884c539138b1897aaf57dae2eb9a5f3cd0a5358f520c17e18",
+    "afterShield": "a0baaf53b1daf695e629acc063c4e4b1905dc53e5c02dbdb4f2f7ec3a7b25725",
+    "damaged": "a0baaf53b1daf695e629acc063c4e4b1905dc53e5c02dbdb4f2f7ec3a7b25725",
+    "won": "f0d28b6d9cb8e099815ddae099f2325c504b0a8e8b8245ecbfc10d21af449a75",
+    "pulling": "29aba49837c4a87b40e5a327b1c18a577c7f4bdd6b4a894ea30b60fc67260351",
+    "collected": "4b7db25fda9c7df62afacd3ea1dd1ea976a2a2d94434370ef57c5f72a9aff9e5",
+    "initial": "8878cd99e9f1b12304cb7a322388e2afdbe733ff0aeddb5fdcfe6de4d16aac04",
+    "loaded": "1bf2eb342ce182ae56ede79481e1a868c6b0d1eb0e847ffd3c1890ffbe9d0ef8",
+    "orbit": "9c3cdad728e6bf86ce85a1faa2dfbfd275be037509ba080da13abe0cb58d6b8c",
+    "contact": "b19a6e9469609e2dc2018929fc9b6cd9fee0c8180fe2c666aed2abf2a90f1844"
+  },
+  "diagnosticCounts": {
+    "samples": 38,
+    "pose": 40
+  },
+  "final": {
+    "hull": 15,
+    "fuel": 55,
+    "homeBank": 12862,
+    "podCargo": [
+      {
+        "commodityId": "cargo-24",
+        "quality": 4,
+        "originCity": "city-01",
+        "pricePaid": 8900
+      },
+      {
+        "commodityId": "cargo-23",
+        "quality": 6,
+        "originCity": null,
+        "pricePaid": 0
+      }
+    ],
+    "bounties": [
+      {
+        "systemId": "system-01",
+        "enemyType": 2,
+        "count": 1
+      }
+    ],
+    "losses": [
+      {
+        "lot": {
+          "commodityId": "cargo-25",
+          "quality": 6,
+          "originCity": "city-01",
+          "pricePaid": 8200
+        },
+        "count": 1
+      }
+    ]
+  }
+}

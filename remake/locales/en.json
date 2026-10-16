@@ -459,7 +459,7 @@
   "leaveService": "Leave service",
   "transstationTitle": "TransStation",
   "transstationDescription": "Transport between cities, planets and systems.",
-  "transstationUnavailable": "Transport is not available yet.",
+  "transstationUnavailable": "TransStation routes are unavailable. Use ship Navigation or your pod to travel.",
   "depotTitle": "{name} Depot",
   "depotDescription": "Ship refueling, repairs and auxiliary fuel.",
   "depotUnavailable": "Depot service is unavailable here.",
