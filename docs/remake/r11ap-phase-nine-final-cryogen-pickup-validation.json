@@ -1,0 +1,456 @@
+{
+  "milestone": "R11ap",
+  "sourceCheckpoint": "output/playwright/remake/r11-phase-nine-chronographs-delivered.json",
+  "resultCheckpoint": "output/playwright/remake/r11-phase-nine-cryo57-loaded.json",
+  "runCount": 12,
+  "uiChecks": 140,
+  "result": {
+    "activePhase": 9,
+    "completedPhase": 8,
+    "receipts": 60,
+    "shipLocation": {
+      "systemId": "system-12",
+      "worldId": "world-18",
+      "cityId": "city-57",
+      "orbit": {
+        "angle": 183,
+        "radius": 15
+      },
+      "surfacePosition": {
+        "x": 9,
+        "y": 12
+      },
+      "cityPosition": {
+        "x": 14,
+        "y": 9
+      },
+      "position": {
+        "x": 150,
+        "y": 115
+      }
+    },
+    "hull": 16,
+    "fuel": 255,
+    "homeBank": 2280,
+    "system12Bank": 1078,
+    "podCargo": [
+      {
+        "commodityId": "cargo-31",
+        "quality": 7,
+        "originCity": "city-57",
+        "pricePaid": 0
+      },
+      null
+    ],
+    "shipCondition": {
+      "vigor": 164,
+      "rest": 166,
+      "health": 255,
+      "nourishment": 75
+    }
+  },
+  "productionChanges": false,
+  "runs": [
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_outbound_launch_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty carrier has launch funds and nourishment for the final cryogen pickup",
+        "dock reached through normal movement (33 steps)",
+        "dock action is available",
+        "stores reached through normal movement (79 steps)",
+        "stores action is available",
+        "Ordinary forced rest recovers enough to wake",
+        "Normal sleep prepares the final cryogen pickup",
+        "navigation reached through normal movement (13 steps)",
+        "navigation action is available",
+        "The selected flight reaches its destination through the live clock",
+        "The empty carrier launches from Banville intact",
+        "Fresh-page save reload preserves Center progress",
+        "Ordinary rescue refuels the rested empty carrier",
+        "The final cryogen pickup launch checkpoint exports unchanged",
+        "No uncaught errors on the final cryogen pickup launch"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "condition": {
+          "vigor": 178,
+          "rest": 238,
+          "health": 255,
+          "nourishment": 95
+        },
+        "orbit": {
+          "angle": 121,
+          "radius": 20
+        }
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_home_point_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the empty pickup pod",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 129,
+          "radius": 24
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 180,
+          "rest": 234,
+          "health": 255,
+          "nourishment": 94
+        },
+        "minutes": 250451
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_home_point_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the empty pickup pod",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 139,
+          "radius": 30
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 182,
+          "rest": 230,
+          "health": 255,
+          "nourishment": 93
+        },
+        "minutes": 250547
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_home_point_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the empty pickup pod",
+        "Segment 7 has an ordinary rescue scheduled",
+        "Segment 7 rescue fills the stationary tank",
+        "Segment 7 starts under cloak",
+        "Segment 7 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 144,
+          "radius": 33
+        },
+        "fuel": 34,
+        "condition": {
+          "vigor": 186,
+          "rest": 222,
+          "health": 255,
+          "nourishment": 91
+        },
+        "minutes": 250643
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_home_point_approach_4_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 8 has an ordinary rescue scheduled",
+        "Segment 8 rescue fills the stationary tank",
+        "Segment 8 starts under cloak",
+        "Segment 8 preserves the empty pickup pod",
+        "Segment 9 has an ordinary rescue scheduled",
+        "Segment 9 rescue fills the stationary tank",
+        "Segment 9 starts under cloak",
+        "Segment 9 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 154,
+          "radius": 39
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 188,
+          "rest": 218,
+          "health": 255,
+          "nourishment": 90
+        },
+        "minutes": 250739
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_home_point_approach_5_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe home warp-point approach",
+        "Segment 10 has an ordinary rescue scheduled",
+        "Segment 10 rescue fills the stationary tank",
+        "Segment 10 starts under cloak",
+        "Segment 10 preserves the empty pickup pod",
+        "Segment 11 has an ordinary rescue scheduled",
+        "Segment 11 rescue fills the stationary tank",
+        "Segment 11 starts under cloak",
+        "Segment 11 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": true,
+        "orbit": {
+          "angle": 160,
+          "radius": 43
+        },
+        "fuel": 230,
+        "condition": {
+          "vigor": 184,
+          "rest": 210,
+          "health": 255,
+          "nourishment": 88
+        },
+        "minutes": 250820
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_system12_warp_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pickup carrier waits at the safe outbound warp point",
+        "Ordinary point rescue fills fuel for the direct jump",
+        "The direct system-twelve warp is within the live ship range",
+        "Ordinary machinery charges the direct system-twelve warp",
+        "Fresh-page save reload preserves Center progress",
+        "The charged warp carries the empty carrier to system twelve",
+        "The cryogen-source warp checkpoint exports unchanged",
+        "No uncaught errors on the direct system-twelve warp"
+      ],
+      "journey": {
+        "contact": false,
+        "stalled": false,
+        "fuel": 245,
+        "hull": 16,
+        "charge": 22,
+        "minutes": 250899
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_world18_approach_1_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-eighteen approach",
+        "Segment 2 starts under cloak",
+        "Segment 2 preserves the empty pickup pod",
+        "Segment 3 has an ordinary rescue scheduled",
+        "Segment 3 rescue fills the stationary tank",
+        "Segment 3 starts under cloak",
+        "Segment 3 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 168,
+          "radius": 33
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 178,
+          "rest": 198,
+          "health": 255,
+          "nourishment": 85
+        },
+        "minutes": 251000
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_world18_approach_2_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-eighteen approach",
+        "Segment 4 has an ordinary rescue scheduled",
+        "Segment 4 rescue fills the stationary tank",
+        "Segment 4 starts under cloak",
+        "Segment 4 preserves the empty pickup pod",
+        "Segment 5 has an ordinary rescue scheduled",
+        "Segment 5 rescue fills the stationary tank",
+        "Segment 5 starts under cloak",
+        "Segment 5 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 3,
+        "arrived": false,
+        "orbit": {
+          "angle": 175,
+          "radius": 24
+        },
+        "fuel": 22,
+        "condition": {
+          "vigor": 172,
+          "rest": 181,
+          "health": 255,
+          "nourishment": 80
+        },
+        "minutes": 251293
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_world18_approach_3_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The launched empty pickup carrier is ready for the cloaked safe world-eighteen approach",
+        "Segment 6 has an ordinary rescue scheduled",
+        "Segment 6 rescue fills the stationary tank",
+        "Segment 6 starts under cloak",
+        "Segment 6 preserves the empty pickup pod",
+        "Segment 7 has an ordinary rescue scheduled",
+        "Segment 7 rescue fills the stationary tank",
+        "Segment 7 starts under cloak",
+        "Segment 7 preserves the empty pickup pod",
+        "Fresh-page reload preserves the intermediate orbit",
+        "Two cloaked segments preserve the empty pod and stationary checkpoint",
+        "The cloaked segment checkpoint exports unchanged",
+        "No uncaught errors on the cloaked segments"
+      ],
+      "journey": {
+        "contact": false,
+        "segments": 2,
+        "arrived": true,
+        "orbit": {
+          "angle": 183,
+          "radius": 15
+        },
+        "fuel": 152,
+        "condition": {
+          "vigor": 166,
+          "rest": 169,
+          "health": 255,
+          "nourishment": 76
+        },
+        "minutes": 251549
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_city57_land_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The empty pickup carrier arrive safely at world 18",
+        "Ordinary rescue refuels the city-57 landing",
+        "The selected flight reaches its destination through the live clock",
+        "Fresh-page save reload preserves Center progress",
+        "The pickup carrier lands at city 17 with an empty pod",
+        "The pickup landing checkpoint exports unchanged",
+        "No uncaught errors on the pickup landing"
+      ],
+      "journey": {
+        "fuel": 255,
+        "hull": 16,
+        "bank": 1078,
+        "condition": {
+          "vigor": 164,
+          "rest": 166,
+          "health": 255,
+          "nourishment": 75
+        },
+        "minutes": 251584
+      }
+    },
+    {
+      "script": "tools/remake/r11_phase_nine_cryo57_load_smoke.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        "The city-57 landing is ready for its distinct cryogen",
+        "depart reached through normal movement (85 steps)",
+        "depart action is available",
+        "exchange reached through normal movement (209 steps)",
+        "exchange action is available",
+        "City 57 retains its distinct initialized cryogen",
+        "Fresh-page save reload preserves Center progress",
+        "The seventeenth distinct phase-nine cryogen survives a fresh-page reload",
+        "The city-57 cryogen checkpoint exports unchanged",
+        "No uncaught errors in city-57 cryogen collection"
+      ],
+      "journey": {
+        "bank": 1078,
+        "cargo": [
+          {
+            "commodityId": "cargo-31",
+            "quality": 7,
+            "originCity": "city-57",
+            "pricePaid": 0
+          },
+          null
+        ],
+        "condition": {
+          "vigor": 164,
+          "rest": 166,
+          "health": 255,
+          "nourishment": 75
+        },
+        "minutes": 251618
+      }
+    }
+  ]
+}
