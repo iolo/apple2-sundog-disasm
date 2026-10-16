@@ -1,3 +1,25 @@
+## R11ap — Final distinct cryogen collected — 2026-10-16
+
+The ordinary-controls campaign launched empty from Banville after rest,
+then took ten short cloaked segments with ordinary fuel rescues to the
+home-system point 10. The direct system-12 warp charged at that safe point
+and completed. Six more cloaked segments and rescues reached world 18.
+The ship landed at city 57 with hull 16 and 1,078 credits of local launch
+clearance. Its exchange warehouse retained the initialized cryogen from
+city 57. The lot was loaded through ordinary controls with no purchase
+charge. It is the seventeenth distinct cryogen source in this campaign.
+
+The active checkpoint is
+`output/playwright/remake/r11-phase-nine-cryo57-loaded.json`:
+60 receipts, phase 9 active, hull 16, fuel 255, with one city-57 cryogen
+aboard. 12 passing Chrome journeys recorded 140 UI checks without page
+errors or production changes. See
+`docs/remake/r11ap-phase-nine-final-cryogen-pickup-validation.json`.
+The user PRD remains untouched.
+
+R11 remains open. Return the city-57 cryogen to Banville and validate the
+ending before broader fragility cleanup, per the user's priority.
+
 ## R11ao — Phase-nine paid goods complete — 2026-10-16
 
 The ordinary-controls campaign launched the quality-one chronograph lot
