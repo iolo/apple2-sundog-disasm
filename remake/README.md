@@ -39,6 +39,20 @@ a subdirectory. No package install, build, external font request or backend is
 needed. ESM requires HTTP; double-clicking `index.html` is not supported.
 Local serving works without internet. A hosted copy does not yet cache for an
 offline restart.
+
+The separate [save editor](save-editor.html) is available at
+`http://127.0.0.1:8000/save-editor.html`. Pause the game, open a campaign or ship
+walkthrough slot (on the same site/browser), and edit condition or carried,
+locker and stores items. **Restore condition** fills all four condition values
+and revives a character who died, including from starvation. Download the
+original for a backup, then **Save to slot** and explicitly load that slot in
+the game. The editor also opens exported JSON and downloads edited JSON for
+import through the game's Saves screen. Files do not overwrite browser slots.
+Edits are checked by the game's existing save validators, and a slot changed
+in another tab cannot be overwritten. Finish active encounters/conversations
+before editing those saves. Personal condition does not repair a destroyed
+ship. The editor runs independently and does not change gameplay.
+
 The Sound button in the title, map inspector and ship header toggles short
 Apple II speaker inspired cues. Audio starts only after a user action; the mute
 choice persists in this browser. Sound timing and pitch are browser adaptations. See
