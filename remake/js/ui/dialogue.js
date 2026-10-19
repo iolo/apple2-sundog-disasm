@@ -1,5 +1,6 @@
 import { escapeHTML } from './html.js';
 import { itemLabel } from './inventory.js';
+import { infoButton } from './info.js';
 import { roomDialogueInputAllowed } from '../core/room-counter.js';
 import { dialoguePurchase, dialogueSale } from '../core/dialogue-runner.js';
 
@@ -12,11 +13,11 @@ export function dialogueMessage(frame,t,locale) {
 }
 
 export function dialoguePanel({frame,assets,t,locale,message='',encounter=false}) {
-  if(frame.fault)return `<div class="help-shade"><section id="dialogue-panel" class="help dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="dialogue-title">
-    <header><h2 id="dialogue-title">${t('dialogueInterrupted')}</h2><button id="dialogue-language" data-walk="language">${t('language')}</button></header>
+  if(frame.fault)return `<section id="dialogue-panel" class="pixel-window dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="dialogue-title">
+    <header class="window-header"><button id="dialogue-exit" data-walk="back" aria-label="${t('backShort')}" title="${t('backShort')}">←</button><h2 id="dialogue-title">${t('dialogueInterrupted')}</h2></header>
     <p id="dialogue-text" role="status">${escapeHTML(dialogueMessage(frame,t,locale))}</p>
-    <footer><button id="dialogue-exit" data-walk="back">${t('backShort')}</button><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
-  </section></div>`;
+    <footer><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
+  </section>`;
   const v=frame.state.locals;
   encounter ||= [15,16,18,19].includes(frame.state.kind);
   const visitor=[17,21,22].includes(frame.state.kind),bartender=frame.state.kind===12;
@@ -32,11 +33,11 @@ export function dialoguePanel({frame,assets,t,locale,message='',encounter=false}
     const path=assets.catalog.itemImages[item&31];
     return `<button id="dialogue-item-${index}" data-dialogue-item="${item}" class="dialogue-item" ${roomDialogueInputAllowed(frame,{type:'item',item}) ? '' : 'disabled'}>${path ? `<img src="${path}" alt="" draggable="false">` : ''}<span>${escapeHTML(itemLabel(item,t))}</span></button>`;
   }).join('') : '';
-  return `<div class="help-shade"><section id="dialogue-panel" class="help dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="dialogue-title">
-    <header><h2 id="dialogue-title">${t(encounter ? 'encounterDialogueTitle' : visitor ? 'tavernConversationTitle' : bartender ? 'tavernCounterTitle' : 'dialogueTitle')}</h2><button id="dialogue-language" data-walk="language">${t('language')}</button></header>
-    <p id="dialogue-text" role="status">${escapeHTML(dialogueMessage(frame,t,locale))}</p>
+  return `<section id="dialogue-panel" class="pixel-window dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="dialogue-title">
+    <header class="window-header"><button id="dialogue-cancel" data-dialogue="cancel" aria-label="${t('dialogueBack')}" title="${t('dialogueBack')}">←</button><h2 id="dialogue-title">${t(encounter ? 'encounterDialogueTitle' : visitor ? 'tavernConversationTitle' : bartender ? 'tavernCounterTitle' : 'dialogueTitle')}</h2><span class="right">${scope ? infoButton('dialogue-info', `<p>${t(scope)}</p>`, t) : ''}</span></header>
+    <div class="dialogue-body"><p id="dialogue-text" role="status">${escapeHTML(dialogueMessage(frame,t,locale))}</p>
     ${items ? `<div class="dialogue-items">${items}</div>` : ''}${slots}${selling}${offers}<div class="dialogue-choices">${choices}</div>
-    ${message||scope ? `<p class="dialogue-note">${t(message||scope)}</p>` : ''}
-    <footer><button id="dialogue-cancel" data-dialogue="cancel">${t('dialogueBack')}</button><button id="dialogue-continue" data-dialogue="timeout">${t('dialogueContinue')}</button><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
-  </section></div>`;
+    ${message ? `<p class="dialogue-note" role="status">${t(message)}</p>` : ''}</div>
+    <footer><button id="dialogue-continue" data-dialogue="timeout">${t('dialogueContinue')}</button><button id="dialogue-saves" data-walk="checkpoints">${t('shipSaves')}</button></footer>
+  </section>`;
 }

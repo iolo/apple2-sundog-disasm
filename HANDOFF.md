@@ -1,4 +1,63 @@
-# Successor handoff — 2026-09-25
+# Successor handoff — 2026-10-20
+
+## Web remake: limited color palette
+
+- `tools/remake/export_assets.py` restores source parity/phase colors for ship,
+  title, tiles, item icons and room artwork. `color_rows()` uses four hues plus
+  ivory; it does not simulate NTSC blur or shift artwork coordinates. Moving
+  sprites remain ivory. Regenerate SVGs with the exporter, not manual recoloring.
+- Room artwork uses a separate composition with full native pattern bytes.
+  Gameplay/collision JSON still uses low-seven-bit rows and remains unchanged.
+  Keep the ship SVG's explicit dimensions and `preserveAspectRatio="none"`.
+
+## Web remake: overlapping windows
+
+- Walking now draws the 280×192 world at 560×384. Room interiors are 280×192
+  windows over the saved city camera, including after loading an interior save.
+  `walkingBounds()` in `ship-walk.js` supplies both canvas projection and the
+  walking surface's inline bounds. Do not introduce separate CSS/input offsets.
+- Inventory is a compact window. Storage replaces the personal-condition view;
+  the condition meters and explanatory text remain in the inventory info popover.
+  Counter/shop/tavern conversations share the same window header and border,
+  with an undimmed backdrop and instructions behind ⓘ. Conversation content
+  scrolls separately so the header and actions stay reachable. Sound, language
+  and the clock stay outside these windows; do not inject duplicate settings
+  into `.pixel-window` dialogs.
+  `ui/info.js` owns dismissal/focus handling; opening info pauses the game.
+- UI smoke pointer helpers should derive coordinates from `#walk-surface` and
+  the scene's native dimensions, rather than hardcoding the old stage offsets.
+  `ship_hotspots_smoke.js` also checks retained city pixels behind room windows.
+
+## Web remake: Firefox compatibility and hotspot hints
+
+- The user's `/usr/bin/firefox-devedition` (159.0b3) padded the ship SVG inside
+  the canvas destination: source 280×192, destination 640×384. Chrome did not.
+  This changed the artwork's X scale relative to collision and hotspot coordinates.
+- The same padding affected the Cities/Worlds previews. The exporter now applies
+  explicit dimensions and `preserveAspectRatio="none"` to ship and tile SVGs.
+  Dimensions alone did not fix Firefox. `render/scene.js` also snaps shared tile
+  edges to backing pixels to avoid thin seams at fractional display scales.
+  Keep the generator and generated assets/provenance in sync;
+  do not compensate by shifting pointer coordinates or changing collision data.
+- The approved amber hints use reachable player-centre coordinates (`+3, −3`).
+  Preserve the `!campaignMode || campaignStart` guard when drawing them: main-menu
+  Saved games renders a ship background before any campaign exists. Reading its
+  location caused an exception that blocked Saved games and left Resume broken.
+- Serve `remake/` over HTTP and open `/tests/` in **Firefox Dev Edition and Chrome**.
+  `remake/tests/ship-stations.js` checks native source coverage and stretched
+  artwork; color fills between patterned dots are separate from collision bits.
+  `remake/tests/tile-rendering.js` checks all 85 tiles at preview/gameplay sizes
+  and verifies continuous opaque terrain at fractional display scales.
+  `tools/remake/ship_hotspots_smoke.js` checks cold-start Saves, Resume and overlapping windows.
+- Validation: 543 browser checks passed in Chrome and Firefox Dev Edition159.0,
+  including all tile banks and fractional-scale seams. 25 exporter tests passed
+  and `python3 tools/remake/export_assets.py --check`
+  verified 175 artifacts. Use disposable browser profiles; the user's saves are
+  browser-local. This was not an exhaustive Firefox campaign playthrough.
+
+## Historical reconstruction handoff — 2026-09-25
+
+The following completed reconstruction scope predates the authorized remake work.
 
 The user has asked to stop work and leave optional follow-ups to a successor.
 The required goal is complete under the revised acceptance criteria. Do not

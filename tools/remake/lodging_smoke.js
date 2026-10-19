@@ -1,4 +1,10 @@
 async browserPage => {
+  const changeDialogueLanguage = async () => {
+    await page.locator('#dialogue-saves').click();
+    await page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
+    await page.locator('#checkpoint-language').click();
+    await page.locator('#checkpoint-back').click();
+  };
   const browser=browserPage.context().browser(),checks=[],errors=[];
   const context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
@@ -47,7 +53,7 @@ async browserPage => {
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='96','Clerk starts lodging dialogue96');
     await page.locator('#dialogue-reply-1').click();const english=await page.locator('#dialogue-text').innerText();
     assert(english.includes(`${fixture.fee} Cr`),'Clerk quotes the source system fee');
-    await page.locator('#dialogue-language').click();const korean=await page.locator('#dialogue-text').innerText();
+    await changeDialogueLanguage();const korean=await page.locator('#dialogue-text').innerText();
     assert(/[가-힣]/.test(korean)&&korean.includes(String(fixture.fee)),'The same rental quote is localized in Korean');
     for(const [width,height] of [[640,480],[390,844],[844,390]]) {
       await page.setViewportSize({width,height});await page.clock.runFor(50);

@@ -70,6 +70,17 @@ layouts only. See `../docs/remake/colony-maps.md`.
 Choose **Walk aboard** in the ship preview. Hold the pointer or touch to walk;
 release to stop. Arrow keys work while the ship display has focus. Pause, reset
 and help are available in both languages; leaving the window pauses movement.
+While paused, click/touch the walking area or press an arrow key to resume,
+including after entering or leaving a scene. The Resume button also works.
+Small amber patches mark reachable station access points and brighten when
+reached. Only available controls are marked; exits disappear while airborne.
+The ship and outdoor maps use the same pixel scale. Building interiors open
+over the city, and Inventory opens as a compact window over the current scene.
+Counter and other conversations use the same compact window style, with
+instructions behind **ⓘ**. Sound, language and the clock stay outside these windows.
+Use **ⓘ** for instructions; Escape closes the explanation and returns focus.
+At stores or the locker, storage replaces the condition display; **ⓘ** also
+shows personal condition there. Opening an explanation pauses play.
 The walkthrough uses the original collision mask and movement attempts, with a
 browser-specific 50 ms cadence. Visible play advances one game minute per real
 second, including idle time; hunger and fatigue update hourly. Position and time
@@ -80,7 +91,7 @@ Open **Inventory** (or press I/Enter with the ship focused) for four carried slo
 Walk above the starting position to reach stores, or right to reach the locker;
 the inventory button then opens that container too. Select an item followed by a
 destination slot; occupied slots swap. Escape cancels a selection before closing.
-Resume continues walking. Carry food or rapidheal, select it, then choose its use
+Walking input or Resume continues play. Carry food or rapidheal, select it, then choose its use
 action. Food restores up to 80 nourishment; rapidheal restores up to 80 health.
 Both consume one item even when already full. Choose **Sleep** to recover rest
 while game time passes faster; food still depletes. Pause/Resume stops sleep,
@@ -93,7 +104,7 @@ Inventory, help and lost focus pause normal time. Save explicitly before reload;
 
 Choose **Saves** while awake to save, load or delete one of four ship checkpoints.
 Checkpoints preserve position, carried items, locker/stores, condition and game
-time. Load resumes paused; close Saves and choose Resume. The end-of-walkthrough
+time. Load resumes paused; close Saves and use walking input or Resume. The end-of-walkthrough
 dialog also offers Saves to recover a living checkpoint. Sleep cannot be saved.
 JSON export backs up the current state; import restores it without automatically
 writing a slot. Browser slots are tied to the current origin/profile. Invalid
@@ -252,6 +263,9 @@ python3 tools/remake/initialization_reference.py
 ```
 
 SVGs are generated from delivered Apple II assets; see `data/provenance.json`.
+Artwork uses a limited cyan/orange/green/magenta palette derived from the source
+HGR patterns and color-phase bits, with ivory text and moving sprites. This is a
+clean Apple II–inspired rendering, without CRT blur. Collision data is unchanged.
 Mulmaru is distributed under OFL 1.1; see `assets/fonts/LICENSE.txt` and its
 provenance record. This browser remake introduces no claim of new rights in
 the original SunDog artwork or game content.

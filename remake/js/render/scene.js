@@ -21,6 +21,14 @@ export function drawScene(canvas, state, assets, displayScale = 1) {
   ctx.setTransform(width / 640, 0, 0, height / 480, 0, 0);
   ctx.fillStyle = '#101411'; ctx.fillRect(0, 0, 640, 480);
   ctx.imageSmoothingEnabled = false;
+  // Shared tile edges must land on the same backing pixels at any UI scale.
+  const drawTile = (path, x, y, w, h) => {
+    const left = Math.round(x * width / 640), top = Math.round(y * height / 480);
+    const right = Math.round((x + w) * width / 640), bottom = Math.round((y + h) * height / 480);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(assets.images[path], left, top, right - left, bottom - top);
+    ctx.setTransform(width / 640, 0, 0, height / 480, 0, 0);
+  };
   if (state.view === 'title') {
     ctx.fillStyle = '#59604d';
     for (let i = 0; i < 62; i++) {
@@ -36,7 +44,7 @@ export function drawScene(canvas, state, assets, displayScale = 1) {
   if(city) {
     cityWindow(city,state.cityOrigin).forEach((row,y)=>row.forEach((cell,x)=>{
       const path=assets.catalog.tileBanks[`city-${cell.bank}`][cell.index];
-      ctx.drawImage(assets.images[path],CITY_BOUNDS.x+x*35,CITY_BOUNDS.y+y*40,35,40);
+      drawTile(path,CITY_BOUNDS.x+x*35,CITY_BOUNDS.y+y*40,35,40);
     }));
     if(state.selection) {
       ctx.strokeStyle='#eab975';ctx.lineWidth=1;
@@ -63,7 +71,7 @@ export function drawScene(canvas, state, assets, displayScale = 1) {
     ctx.fillStyle = '#101411';
     ctx.fillRect(MAP_BOUNDS.x, MAP_BOUNDS.y, MAP_BOUNDS.width, MAP_BOUNDS.height);
     record.tiles.forEach((row, y) => row.forEach((tile, x) => {
-      ctx.drawImage(assets.images[bank[tile]], MAP_BOUNDS.x + x * cw, MAP_BOUNDS.y + y * ch, cw, ch);
+      drawTile(bank[tile], MAP_BOUNDS.x + x * cw, MAP_BOUNDS.y + y * ch, cw, ch);
     }));
   }
   if (state.selection) {

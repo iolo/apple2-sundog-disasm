@@ -39,9 +39,7 @@ async browserPage => {
     await capture('Korean inspector');
     await page.locator('#help').click();
     await capture('Korean help');
-    await page.locator('#help-sound').click();
-    assert(await page.locator('#help-sound').getAttribute('aria-pressed')==='false',`${viewport.width} help can mute sound`);
-    await page.locator('#help-sound').click();
+    assert(await page.locator('#help-sound').count()===0,`${viewport.width} help has no duplicate sound control`);
     await page.locator('#close-help').click();
     await page.locator('#home').click();
     await page.locator('#create-character').click();
@@ -55,9 +53,16 @@ async browserPage => {
     assert(await page.locator('#walk-screen').isVisible(),`${viewport.width} campaign opens`);
     await capture('Korean ship');
     await page.locator('#walk-help').click();
+    await page.locator('#walk-close-help').scrollIntoViewIfNeeded();
     await capture('Korean campaign help');
-    assert((await page.locator('.help-shade').innerText()).includes('밴빌'),`${viewport.width} campaign help describes colony objective`);
+    assert(await page.locator('#modal-sound').count()===0,`${viewport.width} campaign help has no duplicate sound control`);
+    assert((await page.locator('#walk-help-panel').innerText()).includes('밴빌'),`${viewport.width} campaign help describes colony objective`);
     await page.locator('#walk-close-help').click();
+    await page.locator('#walk-inventory').click();
+    await capture('Korean inventory');
+    assert(await page.locator('#inventory-panel [data-walk="sound"], #inventory-panel [data-walk="language"], .inventory-clock').count()===0,`${viewport.width} inventory has no duplicate sound, language or clock`);
+    assert(await page.locator('#walk-sound').isVisible()&&await page.locator('#walk-language').isVisible()&&await page.locator('#walk-clock').isVisible(),`${viewport.width} main settings and clock remain visible behind inventory`);
+    await page.locator('#inventory-close').click();
     await page.locator('#walk-sound').click();
     assert(await page.locator('#walk-sound').getAttribute('aria-pressed')==='false',`${viewport.width} ship mute`);
     await page.locator('#walk-saves').click();

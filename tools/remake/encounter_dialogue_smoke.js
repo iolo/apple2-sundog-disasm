@@ -24,7 +24,6 @@ async browserPage => {
       ui.addEventListener('click',event=>{
         const button=event.target.closest('button');if(!button)return;
         let input;
-        if(button.id==='dialogue-language'){locale=locale==='en'?'ko':'en';render();return}
         if(button.id==='dialogue-saves') {
           saved=JSON.stringify(result.record);
           result.conversation=restoreEncounterDialogue(content,setup,JSON.parse(saved),{randomState:result.conversation.randomState});
@@ -44,6 +43,7 @@ async browserPage => {
             sceneMiddle,randomState:seed};
           result=startEncounterDialogue(content,setup);render();
         },
+        language(){locale=locale==='en'?'ko':'en';render()},
         get state(){return structuredClone(result)},get saved(){return saved},
       };
     });
@@ -65,7 +65,7 @@ async browserPage => {
     await page.setViewportSize({width:390,height:844});await open(16,'ko');
     await page.screenshot({path:'output/playwright/remake/r10f-mugger-ko-390.png'});
     await page.locator('#dialogue-reply-0').click();
-    const pending=JSON.stringify(await state());await page.locator('#dialogue-language').click();await page.locator('#dialogue-saves').click();
+    const pending=JSON.stringify(await state());await page.evaluate(()=>window.encounterFixture.language());await page.locator('#dialogue-saves').click();
     assert(JSON.stringify(await state())===pending,'Locale switch and JSON replay preserve pending surrender, text and RNG');
     await page.locator('#dialogue-cancel').click();assert((await state()).outcome.flags[48],'Agree returns source surrender flag48');
     await open(16);await page.locator('#dialogue-reply-1').click();await page.locator('#dialogue-cancel').click();

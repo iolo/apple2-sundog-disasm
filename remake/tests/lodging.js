@@ -58,13 +58,20 @@ export async function lodgingTests(test,equal) {
     equal(codec.snapshot(result),result);equal(result.start,initial.start);
   });
 
-  await test('Every lodging door SVG matches runtime collision, including combinations from repeated rentals',async()=>{
+  await test('Every lodging door SVG retains collision pixels and clear passages across repeated rentals',async()=>{
     const canvas=document.createElement('canvas');canvas.width=140;canvas.height=96;const context=canvas.getContext('2d');
     for(let openMask=0;openMask<16;openMask++) {
       const image=new Image();image.src=`../assets/svg/room-01${openMask ? `-doors-${openMask}` : ''}.svg`;await image.decode();
-      context.clearRect(0,0,140,96);context.drawImage(image,0,0);const pixels=context.getImageData(0,0,140,96).data;
+      context.clearRect(0,0,140,96);context.drawImage(image,0,0,140,96);const pixels=context.getImageData(0,0,140,96).data;
       const geometry=lodgingGeometry(room,{rented:1,openMask});
-      for(let y=0;y<96;y++)for(let x=0;x<140;x++)equal(pixels[(y*140+x)*4+3]>0,!!(geometry.backgrounds.ship[y][Math.floor(x/7)]&(1<<(x%7))));
+      for(let y=0;y<96;y++)for(let x=0;x<140;x++) {
+        const occupied=column=>column>=0&&column<140&&!!(geometry.backgrounds.ship[y][Math.floor(column/7)]&(1<<(column%7)));
+        const painted=pixels[(y*140+x)*4+3]>128;
+        if(occupied(x))equal(painted,true);
+        // HGR colors fill only the gaps between isolated patterned dots;
+        // actual doorway/passage blanks must remain unpainted.
+        else if(painted)equal(occupied(x-1)&&occupied(x+1)&&!occupied(x-2)&&!occupied(x+2),true);
+      }
     }
     const seen=new Set();
     for(const seed of [0,512,1024,1536,12345,0xffffffff]) {

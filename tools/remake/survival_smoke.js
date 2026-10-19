@@ -8,6 +8,11 @@ async browserPage => {
   page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`)});
   const minutes = async () => Number(await page.locator('#walk-screen').getAttribute('data-minutes'));
   const condition = () => page.locator('[role=meter]').evaluateAll(els=>els.map(el=>Number(el.getAttribute('aria-valuenow'))));
+  const changeLanguage = async () => {
+    await page.locator('#inventory-close').click();
+    await page.locator('#walk-language').click();
+    await page.locator('#walk-inventory').click();
+  };
   try {
     await page.clock.install();
     await page.goto('http://127.0.0.1:8000/');await page.waitForFunction(()=>document.documentElement.dataset.ready==='true');
@@ -38,7 +43,7 @@ async browserPage => {
     await page.locator('#sleep-wake').click();
     assert(await page.locator('#inventory-panel').count()===1 && await page.evaluate(()=>document.activeElement.id==='inventory-sleep'),'Wake returns to paused inventory with focus restored');
     for(const language of ['en','ko']) {
-      if(await page.locator('html').getAttribute('lang')!==language)await page.locator('#inventory-language').click();
+      if(await page.locator('html').getAttribute('lang')!==language)await changeLanguage();
       await page.locator('#inventory-sleep').click();await page.locator('#sleep-pause').click();
       for(const [width,height] of [[640,480],[1280,720],[390,844]]) {
         await page.setViewportSize({width,height});await page.clock.runFor(100);

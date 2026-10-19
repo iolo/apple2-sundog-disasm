@@ -10,9 +10,9 @@ async browserPage => {
   const label = (container, index) => slot(container, index).getAttribute('aria-label');
   const move = async (x, y) => {
     if (await page.locator('#walk-screen').getAttribute('data-paused') === 'true') await page.locator('#walk-pause').click();
-    const box = await page.locator('#stage').boundingBox();
+    const box = await page.locator('#walk-surface').boundingBox();
     // Aim inside the source pixel, not on a floating-point boundary.
-    await page.mouse.move(box.x + (32 + (x + 3.25) * 640 / 280) * box.width / 640, box.y + (46 + (y - 2.75) * 2) * box.height / 480);
+    await page.mouse.move(box.x + (x + 3.25) * box.width / 280, box.y + (y - 2.75) * box.height / 192);
     await page.mouse.down();
     await page.waitForFunction(({ x, y }) => { const el = document.querySelector('#walk-screen'); return Number(el.dataset.x) === x && Number(el.dataset.y) === y; }, { x, y });
     await page.mouse.up();
@@ -21,6 +21,11 @@ async browserPage => {
     await page.goto('http://127.0.0.1:8000/'); await page.waitForFunction(() => document.documentElement.dataset.ready === 'true');
     if (await page.locator('html').getAttribute('lang') !== 'en') await page.locator('[data-action="language"]').click();
     await page.locator('#explore').click(); await page.locator('#begin-walk').click();
+  };
+  const changeLanguage = async () => {
+    await page.locator('#inventory-close').click();
+    await page.locator('#walk-language').click();
+    await page.locator('#walk-inventory').click();
   };
   try {
     await open();
@@ -44,25 +49,24 @@ async browserPage => {
     assert((await label('stores', 0)).includes('Rapidheal') && await page.locator('.item-slot[aria-pressed=true]').count() === 0, 'Cancel button leaves inventory unchanged');
     await slot('stores', 0).click(); await page.locator('#inventory-close').click(); await page.locator('#walk-inventory').click();
     assert((await label('stores', 0)).includes('Rapidheal') && await page.locator('.item-slot[aria-pressed=true]').count() === 0, 'Closing with a selection never strands an item');
-    await slot('stores', 5).click(); await page.locator('#inventory-language').click();
-    assert((await label('stores', 5)).includes('방어막 (7)') && await slot('stores', 5).getAttribute('aria-pressed') === 'true', 'Korean switch preserves selected slot and charge');
-    await page.locator('#inventory-language').click();
-    assert(await slot('stores', 5).getAttribute('aria-pressed') === 'true', 'English switch preserves selection');
-    await page.locator('#inventory-cancel').click();
+    await slot('stores', 5).click(); await changeLanguage();
+    assert((await label('stores', 5)).includes('방어막 (7)') && await slot('stores', 5).getAttribute('aria-pressed') === 'false', 'Changing language on the ship preserves the item and charge');
+    await changeLanguage();
+    assert((await label('stores', 5)).includes('Shield (7)'), 'Reopened inventory uses the main screen language');
     for (const language of ['en', 'ko']) {
-      if (await page.locator('html').getAttribute('lang') !== language) await page.locator('#inventory-language').click();
+      if (await page.locator('html').getAttribute('lang') !== language) await changeLanguage();
       for (const [width, height] of [[640, 480], [1280, 720], [390, 844]]) {
         await page.setViewportSize({ width, height });
         await page.waitForFunction(() => Math.abs(document.querySelector('#stage').getBoundingClientRect().width - Math.min(innerWidth, innerHeight * 4 / 3)) < 1);
         assert(await page.evaluate(() => {
           const box = document.querySelector('#stage').getBoundingClientRect();
-          const fits = [...document.querySelectorAll('#inventory-panel button,#inventory-panel h2,.inventory-note,.inventory-columns,.inventory-bottom')].every(el => { const r = el.getBoundingClientRect(); return r.left >= box.left - 1 && r.right <= box.right + 1 && r.top >= box.top - 1 && r.bottom <= box.bottom + 1 && el.scrollWidth <= el.clientWidth + 1; });
+          const fits = [...document.querySelectorAll('#inventory-panel button,#inventory-panel h2,.inventory-note,.inventory-columns,.inventory-bottom')].filter(el=>el.getClientRects().length).every(el => { const r = el.getBoundingClientRect(); return r.left >= box.left - 1 && r.right <= box.right + 1 && r.top >= box.top - 1 && r.bottom <= box.bottom + 1 && el.scrollWidth <= el.clientWidth + 1; });
           return fits && document.querySelector('.inventory-columns').getBoundingClientRect().bottom < document.querySelector('.inventory-bottom').getBoundingClientRect().top;
         }), `${language} inventory fits ${width}x${height}`);
         await page.screenshot({ path: `output/playwright/remake/inventory-${language}-${width}.png` });
       }
     }
-    if (await page.locator('html').getAttribute('lang') !== 'en') await page.locator('#inventory-language').click();
+    if (await page.locator('html').getAttribute('lang') !== 'en') await changeLanguage();
     await page.locator('#inventory-close').click(); await move(54, 110); await move(83, 110);
     await page.locator('#walk-inventory').click();
     assert(await slot('locker', 19).count() === 1 && (await label('locker', 15)).includes('Shunt'), 'Locker is reachable and has the original five shunts');
@@ -83,8 +87,8 @@ async browserPage => {
       touch.on('pageerror', error => errors.push(error.message));
       await touch.goto('http://127.0.0.1:8000/'); await touch.waitForFunction(() => document.documentElement.dataset.ready === 'true');
       await touch.locator('#explore').tap(); await touch.locator('#begin-walk').tap();
-      const box = await touch.locator('#stage').boundingBox(), cdp = await touchContext.newCDPSession(touch);
-      const x = box.x + (32 + 57.25 * 640 / 280) * box.width / 640, y = box.y + (46 + 83.25 * 2) * box.height / 480;
+      const box = await touch.locator('#walk-surface').boundingBox(), cdp = await touchContext.newCDPSession(touch);
+      const x = box.x + 57.25 * box.width / 280, y = box.y + 83.25 * box.height / 192;
       await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
       await touch.waitForFunction(() => document.querySelector('#walk-screen').dataset.y === '86');
       await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });

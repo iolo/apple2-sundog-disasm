@@ -50,6 +50,8 @@ import { dialogueStateTests } from './dialogue-state.js';
 import { dialogueRunnerTests } from './dialogue-runner.js';
 import { characterTests } from './character.js';
 import { shipWalkTests } from './ship-walk.js';
+import { shipStationTests } from './ship-stations.js';
+import { tileRenderingTests } from './tile-rendering.js';
 import { audioTests } from './audio.js';
 import { inventoryTests } from './inventory.js';
 import { conditionTests } from './condition.js';
@@ -106,6 +108,8 @@ await test('Missing locale value falls back; unknown keys fail', () => {
 await audioTests(test, equal);
 await characterTests(test, equal);
 await shipWalkTests(test, equal);
+await shipStationTests(test, equal);
+await tileRenderingTests(test, equal);
 await inventoryTests(test, equal);
 await conditionTests(test, equal);
 await survivalTests(test, equal);
