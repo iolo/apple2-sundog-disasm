@@ -35,7 +35,6 @@ async browserPage => {
       openStore:()=>openCheckpointStore(codec,'sundog-declared-dialogue-fault'),describe:value=>`Declared dialogue fixture / seed${value.state.record.seed}`});
     ui.addEventListener('click',event=>{
       const button=event.target.closest('button');if(!button)return;
-      if(button.id==='dialogue-language'){locale=locale==='en'?'ko':'en';render();return}
       if(button.id==='dialogue-saves'){void checkpoints.show();return}
       let input;
       if(button.dataset.dialogueReply!==undefined)input={type:'reply',slot:Number(button.dataset.dialogueReply)};
@@ -79,9 +78,9 @@ async browserPage => {
     await page.setViewportSize({width:390,height:844});await open(true,'ko');const failed=await state();
     await page.screenshot({path:'output/playwright/remake/r10y-reward-fault-ko-390.png'});
     assert(failed.conversation.randomState===379799&&failed.conversation.state.locals[104]===500&&failed.outcome===null,'Fault owns exactly two native RNG draws, unchanged cash and no source return');
-    const before=JSON.stringify(failed);await page.locator('#dialogue-language').click();await page.keyboard.press('Escape');await page.clock.runFor(10000);
+    const before=JSON.stringify(failed);await page.locator('#dialogue-saves').click();await settled();await page.locator('#checkpoint-language').click();await page.locator('#checkpoint-back').click();await page.keyboard.press('Escape');await page.clock.runFor(10000);
     assert(JSON.stringify(await state())===before,'Locale, Escape and elapsed browser time preserve the stopped conversation');
-    await page.keyboard.press('Tab');assert(await page.locator('#dialogue-language').evaluate(el=>el===document.activeElement),'Fault keyboard focus cycles through its available controls');
+    await page.keyboard.press('Tab');assert(await page.locator('#dialogue-exit').evaluate(el=>el===document.activeElement),'Fault keyboard focus cycles through its available controls');
     await page.screenshot({path:'output/playwright/remake/r10y-reward-fault-390.png'});
     await page.locator('#dialogue-saves').click();await settled();await page.locator('#save-checkpoint-1').click();await settled();
     const pending=page.waitForEvent('download');await page.locator('#export-checkpoint').click();let exported='';for await(const chunk of await(await pending).createReadStream())exported+=chunk;

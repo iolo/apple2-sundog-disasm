@@ -8,10 +8,11 @@ async (browserPage) => {
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
   const position = () => page.locator('#walk-screen').evaluate(el => ({ x: Number(el.dataset.x), y: Number(el.dataset.y) }));
   const point = async (x, y) => {
-    const box = await page.locator('#stage').boundingBox();
-    return { x: box.x + (32 + x * 640 / 280) * box.width / 640, y: box.y + (46 + y * 384 / 192) * box.height / 480 };
+    const box = await page.locator('#walk-surface').boundingBox();
+    return { x: box.x + x * box.width / 280, y: box.y + y * box.height / 192 };
   };
   const open = async (target = page) => {
+    await target.addInitScript(() => localStorage.setItem('sundog.locale', 'en'));
     await target.goto('http://127.0.0.1:8000/');
     await target.waitForFunction(() => document.documentElement.dataset.ready === 'true');
     await target.locator('#explore').click(); await target.locator('#begin-walk').click();
@@ -35,14 +36,28 @@ async (browserPage) => {
     await page.waitForTimeout(260); await page.keyboard.up('ArrowUp');
     assert((await position()).y < 110, 'Keyboard movement uses focused ship');
     await page.locator('#walk-pause').click(); const paused = await position();
+    await page.waitForTimeout(180);
+    assert(JSON.stringify(await position()) === JSON.stringify(paused), 'Pause holds position until new walking input');
     await page.locator('#walk-surface').focus(); await page.keyboard.down('ArrowDown'); await page.waitForTimeout(180); await page.keyboard.up('ArrowDown');
-    assert(JSON.stringify(await position()) === JSON.stringify(paused), 'Pause blocks held keyboard movement');
+    assert((await position()).y > paused.y && await page.locator('#walk-pause').innerText() === 'Pause', 'Fresh arrow input resumes and moves after manual Pause');
     await page.locator('#walk-pause').click();
+    await page.locator('#walk-surface').focus();
+    await page.locator('#walk-surface').dispatchEvent('keydown', { key: 'ArrowDown', repeat: true });
+    await page.waitForTimeout(180);
+    assert(await page.locator('#walk-screen').getAttribute('data-paused') === 'true', 'Key repeat cannot undo a new pause');
+    await page.mouse.move(destination.x, destination.y); await page.waitForTimeout(100);
+    assert(await page.locator('#walk-screen').getAttribute('data-paused') === 'true', 'Pointer hover leaves the game paused');
+    await page.mouse.down(); await page.waitForTimeout(180); await page.mouse.up();
+    assert(await page.locator('#walk-screen').getAttribute('data-paused') === 'false', 'Pointer press resumes after manual Pause');
+    const released = await position(); await page.waitForTimeout(180);
+    assert(JSON.stringify(await position()) === JSON.stringify(released), 'Pointer release still stops movement after resuming');
     await page.keyboard.down('ArrowDown'); await page.waitForTimeout(100);
     await page.evaluate(() => window.dispatchEvent(new Event('blur'))); await page.keyboard.up('ArrowDown');
     const blurred = await position(); await page.waitForTimeout(180);
     assert(await page.locator('#walk-screen').getAttribute('data-paused') === 'true' && JSON.stringify(await position()) === JSON.stringify(blurred), 'Blur pauses and clears held input');
-    await page.locator('#walk-help').click(); await page.keyboard.press('Tab');
+    await page.locator('#walk-help').click(); await page.keyboard.press('ArrowUp');
+    assert(await page.locator('#walk-screen').getAttribute('data-paused') === 'true', 'Arrow input in help leaves the game paused');
+    await page.keyboard.press('Tab');
     assert(await page.evaluate(() => document.activeElement.id === 'walk-close-help'), 'Walk help traps focus');
     await page.keyboard.press('Escape');
     assert(await page.evaluate(() => document.activeElement.id === 'walk-help'), 'Help Escape restores focus without leaving ship');
@@ -55,7 +70,7 @@ async (browserPage) => {
         await page.waitForFunction(() => Math.abs(document.querySelector('#stage').getBoundingClientRect().width - Math.min(innerWidth, innerHeight * 4 / 3)) < 1);
         const fits = await page.evaluate(() => {
           const box = document.querySelector('#stage').getBoundingClientRect();
-          const controls = [...document.querySelectorAll('#walk-screen button,#walk-screen h1,.walk-note,#walk-status')];
+          const controls = [...document.querySelectorAll('#walk-screen button,#walk-screen h1,.walk-note,#walk-status')].filter(el=>el.getClientRects().length);
           const status = document.querySelector('#walk-status').getBoundingClientRect(), footer = document.querySelector('.walk-actions').getBoundingClientRect();
           return status.bottom <= footer.top && controls.every(el => {const r=el.getBoundingClientRect();return r.left >= box.left - 1 && r.right <= box.right + 1 && r.top >= box.top - 1 && r.bottom <= box.bottom + 1;}) && document.documentElement.scrollWidth <= innerWidth;
         });
@@ -82,11 +97,13 @@ async (browserPage) => {
     try {
       touch.on('pageerror', error => errors.push(error.message));
       await open(touch);
-      const box = await touch.locator('#stage').boundingBox();
-      const x = box.x + (32 + 53 * 640 / 280) * box.width / 640, y = box.y + (46 + 96 * 2) * box.height / 480;
+      await touch.locator('#walk-pause').tap();
+      const box = await touch.locator('#walk-surface').boundingBox();
+      const x = box.x + 53 * box.width / 280, y = box.y + 96 * box.height / 192;
       const cdp = await touchContext.newCDPSession(touch);
       await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
       await touch.waitForFunction(() => document.querySelector('#walk-screen').dataset.y !== '110');
+      assert(await touch.locator('#walk-screen').getAttribute('data-paused') === 'false', 'Real touch resumes and moves after manual Pause');
       await cdp.send('Input.dispatchTouchEvent', { type: 'touchCancel', touchPoints: [] });
       const stoppedTouch = await touch.locator('#walk-screen').getAttribute('data-y'); await touch.waitForTimeout(180);
       assert(await touch.locator('#walk-screen').getAttribute('data-y') === stoppedTouch, 'Real touch cancellation releases movement');

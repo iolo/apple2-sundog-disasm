@@ -12,14 +12,19 @@ async browserPage => {
     await page.waitForFunction(() => document.documentElement.dataset.ready === 'true');
     if (await page.locator('html').getAttribute('lang') !== 'en') await page.locator('[data-action="language"]').click();
     await page.locator('#explore').click(); await page.locator('#begin-walk').click();
-    const box = await page.locator('#stage').boundingBox();
-    await page.mouse.move(box.x + (32 + 57.25 * 640 / 280) * box.width / 640, box.y + (46 + 83.25 * 2) * box.height / 480);
+    const box = await page.locator('#walk-surface').boundingBox();
+    await page.mouse.move(box.x + 57.25 * box.width / 280, box.y + 83.25 * box.height / 192);
     await page.mouse.down();
     await page.waitForFunction(() => document.querySelector('#walk-screen').dataset.y === '86');
     await page.mouse.up(); await page.locator('#walk-inventory').click();
   };
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
+  const changeLanguage = async () => {
+    await page.locator('#inventory-close').click();
+    await page.locator('#walk-language').click();
+    await page.locator('#walk-inventory').click();
+  };
   try {
     await open();
     assert(JSON.stringify(await meters()) === '[255,255,255,255]', 'All four meters start at the observed clean-character maximum');
@@ -28,13 +33,13 @@ async browserPage => {
     await slot('carried', 0).click(); await slot('carried', 0).click();
     assert((await page.locator('#inventory-message').innerText()).includes('Already full'), 'Full nourishment warns that food will still be consumed');
     for (const language of ['en', 'ko']) {
-      if (await page.locator('html').getAttribute('lang') !== language) await page.locator('#inventory-language').click();
+      if (await page.locator('html').getAttribute('lang') !== language) { await changeLanguage(); await slot('carried', 0).click(); }
       for (const [width, height] of [[640,480],[1280,720],[390,844]]) {
         await page.setViewportSize({ width, height });
         await page.waitForFunction(() => Math.abs(document.querySelector('#stage').getBoundingClientRect().width - Math.min(innerWidth,innerHeight*4/3)) < 1);
         assert(await page.evaluate(() => {
           const box = document.querySelector('#stage').getBoundingClientRect();
-          const fits = [...document.querySelectorAll('#inventory-panel button,.condition-row,.inventory-bottom,.inventory-note')].every(el => {
+          const fits = [...document.querySelectorAll('#inventory-panel button,.condition-row,.inventory-bottom,.inventory-note')].filter(el=>el.getClientRects().length).every(el => {
             const r = el.getBoundingClientRect();
             return r.left >= box.left-1 && r.right <= box.right+1 && r.top >= box.top-1 && r.bottom <= box.bottom+1 && el.scrollWidth <= el.clientWidth+1;
           });
@@ -44,10 +49,10 @@ async browserPage => {
         await page.screenshot({ path: `output/playwright/remake/condition-${language}-${width}.png` });
       }
     }
-    assert(await slot('carried', 0).getAttribute('aria-pressed') === 'true', 'Locale and resize preserve selected food');
+    assert(await slot('carried', 0).getAttribute('aria-pressed') === 'true', 'Selected food remains selected across resizes');
     await page.locator('#inventory-cancel').click();
     assert(await slot('carried', 0).locator('img').count() === 1 && await page.locator('#inventory-use').count() === 0, 'Cancel preserves food and dismisses use');
-    if (await page.locator('html').getAttribute('lang') !== 'en') await page.locator('#inventory-language').click();
+    if (await page.locator('html').getAttribute('lang') !== 'en') await changeLanguage();
     await slot('carried', 0).click(); await page.locator('#inventory-use').focus(); await page.keyboard.press('Enter');
     assert(await slot('carried', 0).locator('img').count() === 0 && (await page.locator('#inventory-message').innerText()).includes('already full'), 'Keyboard activation consumes food at the cap and reports the result');
     assert(await page.evaluate(() => document.activeElement.id === 'slot-carried-0') && await page.locator('#inventory-use').count() === 0, 'Use restores focus to the empty slot and cannot repeat');
@@ -69,8 +74,8 @@ async browserPage => {
       touch.on('pageerror', error => errors.push(error.message));
       await touch.goto('http://127.0.0.1:8000/'); await touch.waitForFunction(() => document.documentElement.dataset.ready === 'true');
       await touch.locator('#explore').tap(); await touch.locator('#begin-walk').tap();
-      const box = await touch.locator('#stage').boundingBox(), cdp = await touchContext.newCDPSession(touch);
-      await cdp.send('Input.dispatchTouchEvent',{ type:'touchStart',touchPoints:[{ x:box.x+(32+57.25*640/280)*box.width/640,y:box.y+(46+83.25*2)*box.height/480 }] });
+      const box = await touch.locator('#walk-surface').boundingBox(), cdp = await touchContext.newCDPSession(touch);
+      await cdp.send('Input.dispatchTouchEvent',{ type:'touchStart',touchPoints:[{ x:box.x+57.25*box.width/280,y:box.y+83.25*box.height/192 }] });
       await touch.waitForFunction(() => document.querySelector('#walk-screen').dataset.y === '86');
       await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
       await touch.locator('#walk-inventory').tap(); await touch.locator('#slot-stores-5').tap(); await touch.locator('#slot-carried-0').tap(); await touch.locator('#slot-carried-0').tap(); await touch.locator('#inventory-use').tap();

@@ -6,7 +6,8 @@ import unittest
 import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).parent))
-from export_assets import build, pixel_rows, svg, navigation_defaults, packed_quantities, economy_defaults
+from export_assets import build, pixel_rows, color_rows, HGR_COLORS, HGR_WHITE, svg, navigation_defaults, packed_quantities, economy_defaults
+from room_assets import room_layouts, lodging_door_rows
 from economy_reference import reference as economy_reference
 from campaign_reference import reference as campaign_reference, decode_globals
 from hgr_asset import split_page, row_offset
@@ -226,7 +227,9 @@ class ExportTests(unittest.TestCase):
             self.assertTrue(any(rows[4][x] for x in range(2, 138)))
             counter = r['bounds'][2]
             self.assertTrue(any(rows[counter['top']][counter['left']:counter['right']+1]))
-            self.assertEqual(files[f'assets/svg/room-{r["index"]:02}.svg'], svg(rows))
+            drawing = ET.fromstring(files[f'assets/svg/room-{r["index"]:02}.svg'])
+            self.assertEqual(drawing.attrib['viewBox'], '0 0 140 96')
+            self.assertTrue(all(path.attrib['fill'] in (*HGR_COLORS, HGR_WHITE) for path in drawing))
 
     def test_tavern_tables_and_lodging_doors(self):
         data = json.loads(build()['data/room-walk.json'])
@@ -262,6 +265,34 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(root.attrib['viewBox'], '0 0 4 2')
         self.assertEqual(root[0].attrib['d'], 'M0 0h2v1h-2zM3 0h1v1h-1z')
 
+    def test_hgr_color_phase_parity_and_white_runs(self):
+        magenta, green, cyan, orange = HGR_COLORS
+        rows = [[1], [2], [129], [130], [3], [0x55], [128]]
+        original = [row[:] for row in rows]
+        colored = color_rows(rows)
+        self.assertEqual([colored[y][x] for y, x in [(0,0),(1,1),(2,0),(3,1)]],
+                         [magenta, green, cyan, orange])
+        self.assertEqual(colored[4][:3], [HGR_WHITE, HGR_WHITE, 0])
+        self.assertEqual(colored[5], [magenta]*7)
+        self.assertEqual(colored[6], [0]*7)  # Phase alone is never a pixel.
+        self.assertEqual(color_rows([[0, 1]])[0][7], green)  # Global, not byte-local parity.
+        self.assertEqual(color_rows([[64, 1]])[0][6:8], [HGR_WHITE]*2)
+        self.assertEqual(color_rows([[0xaa, 0xd5]])[0], [orange]*14)
+        self.assertEqual(color_rows([[0xd5, 0xaa]])[0], [cyan]*14)
+        self.assertEqual(rows, original)
+
+    def test_room_color_phase_does_not_change_collision_bits(self):
+        raw = (Path(__file__).resolve().parents[2] / 'assets/interaction-records/records.bin').read_bytes()
+        patterns = [[0,127,0,0,0,42,85,127,0,42,85,127],
+                    [0,127,0,0,0,85,42,127,0,85,42,127]]
+        mono = room_layouts(raw, patterns)
+        colored = room_layouts(raw, [[value | 128 for value in row] for row in patterns])
+        for before, after in zip(mono, colored):
+            self.assertEqual(pixel_rows(before['rows']), pixel_rows(after['rows']))
+        for mask in range(16):
+            self.assertEqual(pixel_rows(lodging_door_rows(mono[0], mask)),
+                             pixel_rows(lodging_door_rows(colored[0], mask)))
+
     def test_live_content_and_vector_only(self):
         files = build()
         maps = json.loads(files['data/maps.json'])
@@ -271,6 +302,13 @@ class ExportTests(unittest.TestCase):
         for name, data in files.items():
             if name.endswith('.svg'):
                 root = ET.fromstring(data)
+                if name in ('assets/svg/ship.svg', 'assets/svg/ship-section.svg'):
+                    self.assertEqual((root.attrib['width'], root.attrib['height']), ('280', '192'))
+                    self.assertEqual(root.attrib['preserveAspectRatio'], 'none')
+                if name.startswith('assets/svg/tiles/'):
+                    height = '24' if '/world-' in name else '32'
+                    self.assertEqual((root.attrib['width'], root.attrib['height']), ('28', height))
+                    self.assertEqual(root.attrib['preserveAspectRatio'], 'none')
                 self.assertTrue(all(e.tag.rsplit('}', 1)[-1] in ('svg', 'path') for e in root.iter()))
         items = json.loads(files['data/items.json'])
         self.assertEqual(items[63]['name'], 'cryogens')
@@ -329,7 +367,7 @@ class ExportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             navigation_defaults(bytes(1440))
 
-    def test_item_quadrants_and_phase_mask(self):
+    def test_item_quadrants_and_color_phase(self):
         files = build()
         root = Path(__file__).resolve().parents[2]
         raw = (root / 'assets/play-glyphs/bank1/glyphs.bin').read_bytes()
@@ -337,8 +375,8 @@ class ExportTests(unittest.TestCase):
         expected = []
         for left, right in [(78, 79), (110, 111)]:
             for row in range(7, -1, -1):
-                expected.append([int(bool(raw[glyph * 8 + row] & (1 << bit))) for glyph in [left, right] for bit in range(7)])
-        self.assertEqual(files['assets/svg/items/item-23.svg'], svg(expected))
+                expected.append([raw[glyph * 8 + row] for glyph in [left, right]])
+        self.assertEqual(files['assets/svg/items/item-23.svg'], svg(color_rows(expected)))
 
     def test_economy_matches_independent_clean_capture(self):
         data = json.loads(build()['data/initial-economy.json'])

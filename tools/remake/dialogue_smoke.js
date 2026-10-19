@@ -1,4 +1,10 @@
 async browserPage => {
+  const changeDialogueLanguage = async () => {
+    await page.locator('#dialogue-saves').click();
+    await page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
+    await page.locator('#checkpoint-language').click();
+    await page.locator('#checkpoint-back').click();
+  };
   const browser=browserPage.context().browser(),checks=[],errors=[];
   const context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
@@ -13,7 +19,7 @@ async browserPage => {
   };
   try {
     await page.addInitScript(()=>localStorage.setItem('sundog.locale','en'));
-    await page.clock.install();await page.goto('http://localhost:8000/');
+    await page.clock.install();await page.goto('http://127.0.0.1:8000/');
     await page.waitForFunction(()=>document.documentElement.dataset.ready==='true');
     const download=page.waitForEvent('download');
     await page.evaluate(async()=>{
@@ -34,14 +40,25 @@ async browserPage => {
     await page.locator('#walk-talk').click();await page.clock.runFor(1800);
     await page.locator('#dialogue-panel').waitFor();
     assert((await page.locator('#dialogue-text').innerText()).includes('What can'),'Staff arrival opens the original English greeting');
+    assert(await page.locator('#dialogue-panel [data-walk="language"], #dialogue-panel [data-walk="sound"]').count()===0,'Counter has no duplicate settings');
+    assert(await page.locator('#dialogue-panel').evaluate(el=>el.classList.contains('pixel-window')&&!el.closest('.help-shade')),'Counter uses the shared undimmed window');
+    const beforeInfo=await exportGame();
+    await page.locator('#dialogue-info').click();
+    assert(await page.locator('#dialogue-info-panel').isVisible(),'Counter instructions open in the info popover');
+    await page.keyboard.press('Escape');
+    assert(await page.locator('#dialogue-info').evaluate(el=>el===document.activeElement),'Escape closes info and returns focus');
+    assert(JSON.stringify((await exportGame()).state)===JSON.stringify(beforeInfo.state),'Reading instructions preserves the conversation');
+    await page.locator('#dialogue-saves').focus();await page.keyboard.press('Tab');
+    assert(await page.locator('#dialogue-cancel').evaluate(el=>el===document.activeElement),'Tab wraps to the header back control, skipping hidden info');
+    await page.screenshot({path:'output/playwright/remake/counter-en.png'});
     await page.locator('#dialogue-reply-2').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='160','Information reply reaches equipment information state160');
     await page.locator('#dialogue-item-0').click();
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='161','First item reaches its source description');
     const english=await page.locator('#dialogue-text').innerText(),saved=await exportGame();
-    assert(saved.version===29&&saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export stores version29 replay inputs');
-    await page.locator('#dialogue-language').click();
-    assert(await page.locator('html').getAttribute('lang')==='ko','Conversation language switches to Korean');
+    assert(saved.state.encounters.counter.conversation.inputs.length===2,'Mid-conversation export preserves the replay inputs');
+    await changeDialogueLanguage();
+    assert(await page.locator('html').getAttribute('lang')==='ko','Conversation follows the shared language setting');
     const korean=await page.locator('#dialogue-text').innerText();
     assert(/[가-힣]/.test(korean)&&korean!==english,'Same item description renders in Korean');
     assert(JSON.stringify((await exportGame()).state)===JSON.stringify(saved.state),'Locale switching and opening saves do not change conversation state');

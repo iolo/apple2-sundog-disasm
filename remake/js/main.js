@@ -88,7 +88,7 @@ function render() {
   if (help) {
     // Only the dialog is interactive while it is visible.
     for (const child of ui.children) child.inert = true;
-    ui.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help enter" role="dialog" aria-modal="true" aria-labelledby="help-title"><h2 id="help-title">${t('helpTitle')}</h2><p>${t('helpBody')}</p><p>${t('helpScope')}</p>${sound('help-sound')}<button id="close-help" data-action="close-help">${t('close')} · Esc</button></section></div>`);
+    ui.insertAdjacentHTML('beforeend', `<div class="help-shade"><section class="help enter" role="dialog" aria-modal="true" aria-labelledby="help-title"><h2 id="help-title">${t('helpTitle')}</h2><p>${t('helpBody')}</p><p>${t('helpScope')}</p><button id="close-help" data-action="close-help">${t('close')} · Esc</button></section></div>`);
     document.querySelector('#close-help').focus();
   } else if (focused) {
     document.getElementById(focused)?.focus({ preventScroll: true });

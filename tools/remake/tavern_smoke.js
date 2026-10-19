@@ -1,4 +1,10 @@
 async browserPage => {
+  const changeDialogueLanguage = async () => {
+    await page.locator('#dialogue-saves').click();
+    await page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
+    await page.locator('#checkpoint-language').click();
+    await page.locator('#checkpoint-back').click();
+  };
   const browser=browserPage.context().browser(),checks=[],errors=[];
   const context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
@@ -70,7 +76,7 @@ async browserPage => {
     await walk(30,40);await walk(30,31);await page.locator('#walk-talk').click();await page.clock.runFor(2000);
     assert((await state()).dialogue==='16','Bartender approaches and opens source dialogue16');
     assert(await page.locator('#dialogue-item-0').isEnabled(),'Bartender food selection is enabled');
-    await page.locator('#dialogue-language').click();assert(/[가-힣]/.test(await page.locator('#dialogue-text').innerText()),'Bartender greeting is localized');
+    await changeDialogueLanguage();assert(/[가-힣]/.test(await page.locator('#dialogue-text').innerText()),'Bartender greeting is localized');
     await page.locator('#dialogue-item-0').click();
     assert((await state()).dialogue==='18'&&await page.locator('[data-dialogue-purchase="0"]').isEnabled(),'Food selection opens a payable offer with an empty destination');
     const foodOffer=await exported();await reload();
@@ -94,8 +100,8 @@ async browserPage => {
     assert((await state()).dialogue==='128','Sitting opposite a visitor opens the source social branch');
     await page.locator('#dialogue-reply-1').click();assert((await state()).dialogue==='176','Accepting a chat reaches small talk');
     await page.locator('#dialogue-reply-2').click();assert((await state()).dialogue==='192','Responding reaches a source joke');
-    if(/[가-힣]/.test(await page.locator('#dialogue-text').innerText()))await page.locator('#dialogue-language').click();
-    const english=await page.locator('#dialogue-text').innerText();await page.locator('#dialogue-language').click();
+    if(/[가-힣]/.test(await page.locator('#dialogue-text').innerText()))await changeDialogueLanguage();
+    const english=await page.locator('#dialogue-text').innerText();await changeDialogueLanguage();
     const korean=await page.locator('#dialogue-text').innerText();
     assert(/[가-힣]/.test(korean)&&!/\{\w+\}/.test(korean),'Joke question renders in Korean without placeholders');
     for(const [width,height] of [[640,480],[390,844],[844,390]]) {
@@ -107,7 +113,7 @@ async browserPage => {
     await page.setViewportSize({width:1280,height:720});await page.clock.runFor(50);
     const saved=await exported();await reload();assert(JSON.stringify((await exported()).state)===JSON.stringify(saved.state),'Fresh-page IndexedDB reload preserves speaker, seat, joke and exact RNG');
     // Locale is a user setting, separate from the save and this fixture's init script.
-    if(!/[가-힣]/.test(await page.locator('#dialogue-text').innerText()))await page.locator('#dialogue-language').click();
+    if(!/[가-힣]/.test(await page.locator('#dialogue-text').innerText()))await changeDialogueLanguage();
     await page.locator('#dialogue-continue').click();assert((await state()).dialogue==='193','Continue gives the matching source punchline');
     await page.screenshot({path:'output/playwright/remake/tavern-joke-ko.png'});
     await page.locator('#dialogue-continue').click();await page.locator('#dialogue-cancel').click();

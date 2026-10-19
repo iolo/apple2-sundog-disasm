@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export source-backed browser data and standalone monochrome vector artwork."""
+"""Export source-backed browser data and limited-palette vector artwork."""
 import argparse
 import hashlib
 import json
@@ -19,12 +19,44 @@ def pixel_rows(rows):
     return [[int(bool(byte & (1 << bit))) for byte in row for bit in range(7)] for row in rows]
 
 
-def svg(rows):
+HGR_WHITE = '#e6e1ce'
+HGR_COLORS = ('#cf6de9', '#65d66e', '#60cbea', '#f3a34b')
+
+
+def color_rows(rows):
+    """Clean HGR-inspired colors, without NTSC blur or half-pixel displacement.
+
+    Adjacent lit bits stay white; isolated bits use screen parity and byte bit7.
+    Fill the gap between matching colored dots to make patterned areas solid.
+    This is presentation only: pixel_rows remains the collision/mask decoder.
+    """
+    result = []
+    for raw, bits in zip(rows, pixel_rows(rows)):
+        colors = []
+        for x, bit in enumerate(bits):
+            adjacent = (x > 0 and bits[x-1]) or (x+1 < len(bits) and bits[x+1])
+            colors.append(0 if not bit else HGR_WHITE if adjacent else
+                          HGR_COLORS[(2 if raw[x//7] & 128 else 0) + x % 2])
+        filled = [colors[x-1] if 0 < x < len(bits)-1 and not color and
+                  colors[x-1] == colors[x+1] and colors[x-1] in HGR_COLORS
+                  else color for x, color in enumerate(colors)]
+        # Continue a repeated color pattern through the half-dot at a tile
+        # boundary, rather than introducing a black grid when tiles meet.
+        if len(colors) >= 4:
+            if not colors[0] and colors[1] == colors[3] and colors[1] in HGR_COLORS:
+                filled[0] = colors[1]
+            if not colors[-1] and colors[-2] == colors[-4] and colors[-2] in HGR_COLORS:
+                filled[-1] = colors[-2]
+        result.append(filled)
+    return result
+
+
+def svg(rows, *, stretch=False):
     """Merge horizontal runs; each path remains a real vector, with no raster payload."""
     width, height = len(rows[0]), len(rows)
     if any(len(row) != width for row in rows):
         raise ValueError('Ragged pixel rows')
-    paths = []
+    paths = {}
     for y, row in enumerate(rows):
         x = 0
         while x < width:
@@ -32,11 +64,16 @@ def svg(rows):
                 x += 1
                 continue
             start = x
-            while x < width and row[x]:
+            value = row[x]
+            while x < width and row[x] == value:
                 x += 1
-            paths.append(f'M{start} {y}h{x-start}v1h{start-x}z')
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">'
-            f'<path fill="#e6e1ce" d="{"".join(paths)}"/></svg>\n').encode()
+            color = HGR_WHITE if value == 1 else value
+            paths.setdefault(color, []).append(f'M{start} {y}h{x-start}v1h{start-x}z')
+    # Ship and preview tile canvases stretch each axis; Firefox otherwise pads the SVG artwork.
+    sizing = f' width="{width}" height="{height}" preserveAspectRatio="none"' if stretch else ''
+    drawing = ''.join(f'<path fill="{color}" d="{"".join(runs)}"/>' for color, runs in paths.items())
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}"{sizing}>'
+            f'{drawing}</svg>\n').encode()
 
 
 def encode(value):
@@ -184,7 +221,7 @@ def build():
                          ('title', 'assets/title/title.hgr')]:
         rows, _ = split_page(read(source))
         path = f'assets/svg/{name}.svg'
-        outputs[path] = svg(pixel_rows(rows))
+        outputs[path] = svg(color_rows(rows), stretch=name in ('ship', 'ship-section'))
         images[name] = path
         if name in ('ship', 'ship-section'):
             # Library22 native procedure9 tests the same low seven HGR bits.
@@ -221,7 +258,7 @@ def build():
 
     # Library27 procedures3/4 compose four bank1 glyphs for each item.
     item_font = read('assets/play-glyphs/bank1/glyphs.bin')
-    item_glyph = lambda index: pixel_rows([[v & 127] for v in reversed(item_font[index * 8:index * 8 + 8])])
+    item_glyph = lambda index: [[v] for v in reversed(item_font[index * 8:index * 8 + 8])]
     item_images = {}
     for index in [7, *range(8, 14), *range(15, 32)]:
         base = index * 2 + (32 if index >= 16 else 0)
@@ -229,7 +266,7 @@ def build():
         rows = [a + b for a, b in zip(quadrants[0], quadrants[1])]
         rows += [a + b for a, b in zip(quadrants[2], quadrants[3])]
         path = f'assets/svg/items/item-{index:02}.svg'
-        outputs[path] = svg(rows)
+        outputs[path] = svg(color_rows(rows))
         item_images[str(index)] = path
     # Only deterministic, named inventory fields; no generated campaign data.
     for source in ['src/pcode/utility_disk1.s', 'src/pcode/game_14.s', 'src/pcode/library_27.s']:
@@ -268,7 +305,7 @@ def build():
         paths = []
         for i, rows in enumerate(tiles):
             path = f'assets/svg/tiles/{bank}-{i:02}.svg'
-            outputs[path] = svg(pixel_rows(rows))
+            outputs[path] = svg(color_rows(rows), stretch=True)
             paths.append(path)
         tile_banks[bank] = paths
 
@@ -297,23 +334,25 @@ def build():
         collisionRows=glyph(15), collisionByteMasks=[0x55,0x2a],
         source='game21 procedures11/17/18/23/28/29; library22 procedures9/11, pattern9'))
     native = read('src/pcode/library_22.s').decode()
-    patterns = [[int(v.strip().removeprefix('$'), 16) & 127 for v in
+    color_patterns = [[int(v.strip().removeprefix('$'), 16) for v in
                  re.search(label+r':\s+\.byte ([^;]+)', native)[1].split(',')]
                 for label in ['L_164A', 'L_163E']]
+    patterns = [[value & 127 for value in row] for row in color_patterns]
     outputs['data/ground-chase.json'] = encode(dict(
         version=1, glyphs={str(index): glyph(index) for index in [22, 23, 24]}, patterns=patterns,
         source='game21 procedures1/30/40; library22 procedures7/22/51, patterns8/11; shared font glyphs22–24'))
     read('src/pcode/game_18.s')
     rooms = room_layouts(read('assets/interaction-records/records.bin'), patterns)
-    for room in rooms:
+    color_rooms = room_layouts(read('assets/interaction-records/records.bin'), color_patterns)
+    for room in color_rooms:
         path = f'assets/svg/room-{room["index"]:02}.svg'
-        outputs[path] = svg(pixel_rows(room['rows']))
+        outputs[path] = svg(color_rows(room['rows']))
         images[f'room-{room["index"]:02}'] = path
         if room['index'] == 1:
             for mask in range(1, 16):
                 key = f'room-01-doors-{mask}'
                 path = f'assets/svg/{key}.svg'
-                outputs[path] = svg(pixel_rows(lodging_door_rows(room, mask)))
+                outputs[path] = svg(color_rows(lodging_door_rows(room, mask)))
                 images[key] = path
     outputs['assets/svg/room-player.svg'] = svg(pixel_rows([[v] for v in glyph(22)]))
     images['room-player'] = 'assets/svg/room-player.svg'
@@ -346,7 +385,7 @@ def build():
     catalog = dict(version=1, images=images, tileBanks=tile_banks, maps='data/maps.json',
                    items='data/items.json', shipWalk='data/ship-walk.json',
                    itemImages=item_images, shipInventory='data/ship-inventory.json',
-                   presentation='monochrome low-seven-bit vectors; raw maps without runtime overlays')
+                   presentation='limited HGR-inspired colors from source parity/phase; ivory sprites; raw maps without runtime overlays')
     outputs['data/catalog.json'] = encode(catalog)
     outputs['data/provenance.json'] = encode(dict(
         generator='tools/remake/export_assets.py', sources=sources,

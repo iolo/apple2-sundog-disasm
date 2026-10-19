@@ -14,8 +14,8 @@ def room_layouts(raw, patterns):
             for y in range(rect['top'], rect['bottom']+1):
                 for x in range(rect['left'], rect['right']+1):
                     byte, bit = x//7, 1 << (x % 7)
-                    rows[y][byte] = ((rows[y][byte] & ~bit) |
-                                    (patterns[byte % 2][style] & bit))
+                    rows[y][byte] = ((rows[y][byte] & ~(bit | 128)) |
+                                    (patterns[byte % 2][style] & (bit | 128)))
 
         # Library22 proc51 window bounds, then game18 proc16 in source order.
         fill(dict(left=2, right=137, top=2, bottom=93), record[21])
@@ -67,5 +67,5 @@ def lodging_door_rows(room, mask):
         for y in range(door['top'], door['bottom']+1):
             for x in range(door['left'], door['right']+1):
                 byte, bit = x//7, 1 << (x % 7)
-                rows[y][byte] = (rows[y][byte] & ~bit) | (room['floorPattern'][byte % 2] & bit)
+                rows[y][byte] = (rows[y][byte] & ~(bit | 128)) | (room['floorPattern'][byte % 2] & (bit | 128))
     return rows

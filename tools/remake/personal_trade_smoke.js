@@ -1,4 +1,10 @@
 async browserPage => {
+  const changeDialogueLanguage = async () => {
+    await page.locator('#dialogue-saves').click();
+    await page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
+    await page.locator('#checkpoint-language').click();
+    await page.locator('#checkpoint-back').click();
+  };
   const browser=browserPage.context().browser(),checks=[],errors=[];
   const context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
@@ -52,7 +58,7 @@ async browserPage => {
     const accepted=await exported();
     assert(accepted.state.dialogue.cash===initial.state.dialogue.cash&&JSON.stringify(accepted.state.ship.inventory)===JSON.stringify(initial.state.ship.inventory),'Accepting a quote changes neither cash nor inventory');
     for(const locale of ['en','ko']) {
-      if(locale==='ko')await page.locator('#dialogue-language').click();
+      if(locale==='ko')await changeDialogueLanguage();
       for(const [width,height] of [[1280,720],[640,480],[390,844],[844,390]]) {
         await page.setViewportSize({width,height});await page.clock.runFor(50);
         await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);

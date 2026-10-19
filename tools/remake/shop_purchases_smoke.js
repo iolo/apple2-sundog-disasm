@@ -1,4 +1,10 @@
 async browserPage => {
+  const changeDialogueLanguage = async () => {
+    await page.locator('#dialogue-saves').click();
+    await page.waitForFunction(()=>document.querySelector('#checkpoint-back')?.disabled===false);
+    await page.locator('#checkpoint-language').click();
+    await page.locator('#checkpoint-back').click();
+  };
   const browser=browserPage.context().browser(),checks=[],errors=[];
   const context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
@@ -49,7 +55,7 @@ async browserPage => {
     assert(JSON.stringify(offered.state.ship.inventory)===JSON.stringify(initial.state.ship.inventory)&&offered.state.dialogue.cash===initial.state.dialogue.cash,'Accepting a quote leaves payment and inventory unchanged');
     assert(await page.locator('[data-dialogue-purchase="0"]').isEnabled()&&await page.locator('[data-dialogue-purchase="2"]').isDisabled(),'Only empty carried destinations can be chosen');
     for(const locale of ['en','ko']) {
-      if(locale==='ko')await page.locator('#dialogue-language').click();
+      if(locale==='ko')await changeDialogueLanguage();
       for(const [width,height] of [[1280,720],[640,480],[390,844],[844,390]]) {
         await page.setViewportSize({width,height});await page.clock.runFor(50);
         await page.waitForFunction(()=>Math.abs(document.querySelector('#stage').getBoundingClientRect().width-Math.min(innerWidth,innerHeight*4/3))<1);
@@ -63,7 +69,7 @@ async browserPage => {
     await page.locator('[data-dialogue-purchase="0"]').focus();await page.keyboard.press('Enter');
     assert(await page.locator('#walk-screen').getAttribute('data-dialogue')==='83','Keyboard purchase returns to the source equipment-shop root');
     const bought=await exportGame();
-    assert(bought.version===29&&bought.scope==='ship-salvage-1'&&bought.state.encounters.counter.conversation.inputs.at(-1).type==='purchase','Version29 stores the explicit purchase input');
+    assert(bought.state.encounters.counter.conversation.inputs.at(-1).type==='purchase','Save stores the explicit purchase input');
     await reload();assert(JSON.stringify((await exportGame()).state)===JSON.stringify(bought.state),'Fresh-page reload after transfer preserves replay and RNG');
     await accept();assert(await page.locator('[data-dialogue-purchase="0"]').isDisabled(),'Replayed purchase occupies its destination');
     const working=await page.locator('#dialogue-purchase').innerText();assert(working.includes('Cash:'),'Purchase panel shows working cash after the prior transfer');

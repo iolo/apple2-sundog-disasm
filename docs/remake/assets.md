@@ -9,11 +9,21 @@ SVGs across four banks, 21 world tile SVGs, 60 live city layouts, 18 raw world
 layouts, 64 inventory/cargo name records, and the browser catalog. The four
 demo city records are excluded. Stable IDs retain the original record index.
 
-Each SVG is composed of horizontal vector paths from the seven displayed bits
-per byte. HGR row addressing uses the existing decoder. Memory holes and the
-color-phase bit never become monochrome pixels. Original source bytes remain
-unchanged. This first vector pass preserves source silhouettes; it does not
-claim a smooth hand-refined redraw or original artifact-color simulation.
+Each SVG is composed of horizontal vector paths. HGR row addressing uses the
+existing decoder; memory holes never become displayed pixels. Ship/title pages,
+tiles, rooms and item icons now use a limited cyan, orange, green, magenta and
+ivory palette over the dark background. Adjacent lit bits render ivory; isolated
+bits select a hue from screen parity and the source byte's color-phase bit.
+Gaps between matching colored dots are filled to reproduce solid patterned areas.
+This is a clean HGR-inspired presentation, without NTSC blur or half-pixel shifts.
+Moving sprites stay ivory for visibility.
+
+Room artwork is composed separately with the native pattern color-phase bits.
+The gameplay exports retain the same low-seven-bit rows: color does not alter
+collision, map coordinates, hotspot projection, or save data. Ship and tile SVGs
+declare their source dimensions and allow canvas stretching explicitly for
+Firefox. Original source bytes remain untouched. Palette constants live in
+`tools/remake/export_assets.py`.
 
 The browser preview can display a city using any of the four tile banks. That
 choice is illustrative: runtime bank selection, variants, clipping, NPCs and
@@ -37,6 +47,6 @@ release ZIP. Its source URL and archive/file hashes are in
 `remake/assets/fonts/provenance.json`. No runtime network font is used.
 
 R02 remains partial: interaction geometry, semantic place associations, complete
-localized item/dialogue content, colored/hand-refined artwork and status icons
+localized item/dialogue content, hand-refined artwork and status icons
 belong to the relevant gameplay steps. The current batch supports R03's
 explicit asset inspection scene, not a fabricated campaign.
