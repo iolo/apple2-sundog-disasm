@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "source": "docs/reference/remake-ground-encounter.json",
+  "scope": "Native initialization actor records, carried swap and RNG only; cash/other flags are not comparison outputs.",
+  "input": {
+    "kind": 16,
+    "direction": 3,
+    "attributes": [
+      66,
+      53,
+      61,
+      65,
+      16
+    ],
+    "condition": [
+      237,
+      231,
+      255,
+      225
+    ],
+    "carried": [
+      0,
+      12,
+      235,
+      0
+    ],
+    "randomState": 1183653752
+  },
+  "arena": {
+    "width": 280,
+    "height": 192,
+    "bounds": {
+      "left": 70,
+      "right": 209,
+      "top": 40,
+      "bottom": 135
+    }
+  },
+  "actors": [
+    [
+      91,
+      137,
+      5656,
+      47878,
+      256
+    ],
+    [
+      83,
+      137,
+      5912,
+      22018,
+      265
+    ],
+    [
+      109,
+      183,
+      5912,
+      39683,
+      264
+    ],
+    [
+      65,
+      124,
+      5912,
+      33543,
+      264
+    ],
+    [
+      72,
+      135,
+      5912,
+      30210,
+      265
+    ],
+    [
+      83,
+      161,
+      5912,
+      26626,
+      269
+    ]
+  ],
+  "draws": 29,
+  "randomState": 1537047451,
+  "carriedAfter": [
+    12,
+    0,
+    235,
+    0
+  ]
+}

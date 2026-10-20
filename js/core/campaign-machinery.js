@@ -1,0 +1,290 @@
+import { stepShipPower } from './ship-power.js';
+import { equipmentDependencyResult } from './equipment-failures.js';
+import { conditionHour } from './survival.js';
+import { stepCampaignFlight,finishCampaignFlight } from './campaign-flight.js';
+import { campaignShipSource,commitCampaignShipSource,stepCampaignSpaceProducer,stepCampaignSpaceCombat,
+  stepCampaignShipCommunication,leaveCampaignShipDeadline,clearCampaignTactical,neutralShipControl,recordCampaignShipKill } from './campaign-space.js';
+
+import { prepareShipTactical,beginShipTacticalFrame,finishShipTacticalFrame,shipTacticalControls,
+  initialShipTrigger,readShipTrigger,completeShipTacticalTractor } from './ship-tactical.js';
+import { currentShipLocation } from './regional-world.js';
+
+const integer=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
+export const initialMachinery=()=>({phase:0,cloaked:false});
+export function validateMachinery(value,equipment,resources,{tacticalGunLoop=false}={}) {
+  if(!value||Array.isArray(value)||Object.keys(value).length!==2||!Object.hasOwn(value,'phase')||!Object.hasOwn(value,'cloaked')||!integer(value.phase,0,3)||typeof value.cloaked!=='boolean'||
+    (value.cloaked&&!equipment[4].specialAvailable)||
+    (equipment[2].performance===0&&((resources.guns.powered&&!tacticalGunLoop)||resources.guns.charge!==0))||
+    (equipment[4].performance===0&&resources.shields.targetCharge!==0))throw Error('invalidMachinery');
+  return {phase:value.phase,cloaked:value.cloaked};
+}
+
+function sourceState(state) {
+  if(state.space)return campaignShipSource(state);
+  const r=state.resources,flags=Array(128).fill(false);
+  flags[0]=r.warp.charging;flags[1]=r.enginesPowered;
+  flags[2]=r.guns.powered;flags[4]=r.shields.targetCharge>0;flags[7]=state.pod.attached;flags[12]=state.machinery.cloaked;
+  return {flags,words:{222:r.warp.targetCharge,223:r.warp.charge,224:r.shields.targetCharge,225:r.shields.charge,226:r.guns.charge,227:r.fuel,349:0,350:0},
+    cargo:state.pod.cargo,randomState:state.encounters.randomState};
+}
+function applySource(state,source) {
+  if(state.space){commitCampaignShipSource(state,source);return}
+  const r=state.resources,w=source.words;
+  r.fuel=w[227];r.guns={charge:w[226],powered:source.flags[2]};r.shields={charge:w[225],targetCharge:w[224]};
+  state.machinery.cloaked=source.flags[12];state.pod.cargo=source.cargo;state.encounters.randomState=source.randomState;
+  if(state.flight) {
+    r.warp={charge:w[223],targetCharge:w[222],targetSystemId:source.flags[0]?r.warp.targetSystemId:null,charging:source.flags[0]};
+    r.enginesPowered=source.flags[1];
+  }
+}
+// Called after equipment recalculation, not on every power tick. A repaired
+// system remains off; removing its last working unit clears only source dependents.
+export function reconcileMachinery(state) {
+  const next=structuredClone(state);
+  applySource(next,equipmentDependencyResult(next.equipment,sourceState(next)));
+  return state.flight?finishCampaignFlight(next):next;
+}
+export function reduceMachineryControl(previous,action) {
+  if(previous.space?.tactical?.record.wreck&&previous.space.tactical.record.wreck.tractorSlot!==null)throw Error('shipTractorActive');
+  if(previous.travel.scene!=='ship'||previous.space?.defeat||previous.combat?.defeat||previous.space?.communication?.conversation||previous.space?.activity?.sleeping)throw Error('machineryUnavailable');
+  const next=structuredClone(previous),r=next.resources;
+  if(next.space?.tactical) {
+    const controls=shipTacticalControls(campaignShipSource(next),next.space.tactical.record);
+    if(action.type==='shields'&&!controls.shields||action.type==='cloak'&&!controls.cloak)throw Error('shipTacticalUnavailable');
+    if(action.type==='guns'&&next.space.tactical.record.firing)throw Error('machineryUnavailable');
+  }
+  if(action.type==='guns'&&typeof action.enabled==='boolean') {
+    if(action.enabled&&next.equipment[2].performance===0)throw Error('machineryInoperative');
+    r.guns.powered=action.enabled;
+  } else if(action.type==='shields'&&[-256,-64,64,256].includes(action.delta)) {
+    if(action.delta>0&&r.fuel===0)throw Error('machineryNoFuel');
+    if(action.delta>0&&next.equipment[4].performance===0)throw Error('machineryInoperative');
+    r.shields.targetCharge=Math.max(0,Math.min(255,r.shields.targetCharge+action.delta));
+  } else if(action.type==='cloak'&&typeof action.enabled==='boolean') {
+    if(action.enabled&&!next.equipment[4].specialAvailable)throw Error('machineryNoCloaker');
+    next.machinery.cloaked=action.enabled;
+  } else throw Error('machineryUnavailable');
+  return next;
+}
+
+
+function machineryCycle(previous,s,content,{dispatch=false,defeatExit=false,deadline=true}={}) {
+  let next=previous;const space=!!next.space;
+  const sleeping=s.sleeping;
+  const phase=next.machinery.phase+1;
+  if(phase===1) {
+    s.minutes++;
+    if(space&&Object.hasOwn(next.space,'tactical'))next.space.words[354]=0;
+    if(s.minutes%60===0) {
+      const hour=conditionHour(s.condition,sleeping);s.condition=hour.condition;s.dead=hour.dead;
+      if(hour.exhausted&&!s.sleeping&&!s.dead){s.sleeping=true;s.forced=true;s.sleepPhase=0}
+    }
+  }
+  next.ship.minutes=s.minutes;
+  let workingFuel=next.resources.fuel;
+  if(next.flight) {
+    const moved=stepCampaignFlight(next,phase);next=moved.state;workingFuel=moved.workingFuel;
+    if(space)next=stepCampaignSpaceProducer(next,content,{enabled:moved.encounterDue,arrived:moved.arrived,dispatch,defeatExit});
+  }
+  applySource(next,stepShipPower(sourceState(next),next.equipment.map(g=>g.performance),phase,workingFuel).state);
+  if(next.flight){next.ship.minutes=s.minutes;next=finishCampaignFlight(next)}
+  if(space){
+    next=stepCampaignSpaceCombat(next,{dispatch,defeatExit});
+    // Game12 proc12 continues its deadline branch after fatal damage. The
+    // Game13 display-return call is outside proc12 and does not poll it again.
+    if(deadline&&!defeatExit)next=stepCampaignShipCommunication(next,{terminal:!!next.space.tactical});
+    if(next.space.defeat)s.dead=true;
+  }
+  next.machinery.phase=phase%4;
+  if(space&&s.sleeping&&!sleeping){leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.view='ship'}
+  if(sleeping) {
+    s.sleepPhase=(s.sleepPhase+1)%2;
+    if(!s.dead&&s.sleepPhase===0)s.condition.rest=Math.min(255,s.condition.rest+1);
+    if(s.condition.rest>128)s.forced=false;
+  }
+  return next;
+}
+
+function tacticalMachineryCycle(previous,s,content,delta) {
+  let next=machineryCycle(previous,s,content),cycles=1;
+  if(next.space.tactical) {
+    const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,delta);
+    commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
+    if(next.space.defeat) {
+      // Game12 finishes post-hit movement before Game13's one display-return
+      // call. This applies to both ordinary frames and proc15 menu polling.
+      leaveCampaignShipDeadline(next);clearCampaignTactical(next);
+      next=machineryCycle(next,s,content,{defeatExit:true});cycles++;
+    }
+  }
+  return {state:next,cycles};
+}
+
+function finishFatalTacticalEntry(previous,s,content) {
+  let next=previous;
+  // A fatal startup call does not exit proc9. After its remaining calls,
+  // proc15 polls once and the main loop executes once before testing347.
+  for(const polling of [true,false]) {
+    const frame=beginShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,neutralShipControl(),
+      {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle,polling});
+    commitCampaignShipSource(next,frame.state);next.space.tactical.record=frame.tactical;
+    if(frame.due) {
+      next=machineryCycle(next,s,content,{defeatExit:true});
+      if(next.space.tactical) {
+        const finished=finishShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,frame.delta);
+        commitCampaignShipSource(next,finished.state);next.space.tactical.record=finished.tactical;
+      }
+    }
+  }
+  leaveCampaignShipDeadline(next);clearCampaignTactical(next);
+  return machineryCycle(next,s,content,{defeatExit:true});
+}
+
+// Game13 main dispatch $2588 runs one Library24 call before Game12 consumes
+// the Game16 return bits. Keep the conversation frozen until that call ends;
+// the cargo deadline is only armed by the subsequent Game12 return branch.
+export function advanceCampaignShipDispatch(previous,content) {
+  if(!content?.tactical||!previous.space?.communication?.conversation)throw Error('shipCommunicationUnavailable');
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  next=machineryCycle(next,s,content,{dispatch:true});
+  if(next.space.defeat) {
+    // Game13 $25E9 clears the Game16 return flag. Its first proc45 UI poll
+    // increments354 ($20DE-$20E4), then exits on347 before another due call.
+    next.dialogue.flags[51]=false;next.space.flags[35]=false;
+    next.space.words[354]=1;
+    next.space.communication={conversation:null,pending:false,ticks:0};
+  }
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  return next;
+}
+
+// Game13 proc27 $1F94 runs machinery before dispatching an accepted Nav
+// action. A fatal hit does not cancel the selected Warp command.
+export function beginCampaignShipWarp(previous,content) {
+  if(!Object.hasOwn(previous.space||{},'tactical'))return previous;
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  next=machineryCycle(next,s,content,{deadline:false});
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  if(next.combat.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
+  return next;
+}
+
+// Warp proc35 $18DA performs its post-jump call; Nav proc44 supplies the
+// display-return call before Game13 tests347. R10aa observes phase2->3->4,
+// counter6 and unchanged clock/RNG after a fatal pre-action hit. No Game12
+// startup occurs on that fatal return.
+export function finishCampaignShipWarpReturn(previous,content,{success}) {
+  if(!Object.hasOwn(previous.space||{},'tactical'))return previous;
+  let next=structuredClone(previous);
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false};
+  if(success){next.space.words[354]=6;next=machineryCycle(next,s,content,{defeatExit:!!next.space.defeat,deadline:false})}
+  next=machineryCycle(next,s,content,{defeatExit:true});
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  if(s.dead||next.space.defeat||next.combat.defeat) {
+    leaveCampaignShipDeadline(next);clearCampaignTactical(next);next.space.elapsed=0;
+    next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase};
+  }
+  return next;
+}
+
+export function enterCampaignShipTactical(previous,content,{warp=false}={}) {
+  if(!content?.tactical||!Object.hasOwn(previous.space||{},'tactical')||previous.travel.scene!=='ship'||
+    previous.pod.occupied||previous.space.activity.sleeping||previous.space.communication.conversation||
+    previous.space.defeat||previous.combat.defeat)throw Error('spaceUnavailable');
+  if(previous.space.tactical&&!warp)return previous;
+  let next=structuredClone(previous);next.space.view='tactical';next.space.elapsed=0;
+  const s={...next.space.activity,minutes:next.ship.minutes,condition:{...next.ship.condition},dead:false,elapsed:0};
+  if(warp){next.space.words[354]=6;next=machineryCycle(next,s,content)}
+  if(s.sleeping||s.dead||next.space.defeat) {
+    next.ship.condition={...s.condition};next.space.activity={sleeping:s.sleeping&&!s.dead,forced:s.forced&&!s.dead,sleepPhase:s.sleepPhase};
+    next.space.view='ship';clearCampaignTactical(next);
+    if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+    return next;
+  }
+  const prepared=prepareShipTactical(campaignShipSource(next),{
+    worldAngle:currentShipLocation(next).orbit.angle,frameLimit:5,grace:0});
+  commitCampaignShipSource(next,prepared.state);
+  next.space.tactical={record:prepared.tactical,control:neutralShipControl(),carry:0,trigger:initialShipTrigger()};
+  for(let i=0;i<prepared.startupCycles&&(!s.dead||next.space.defeat)&&!s.sleeping;i++)
+    next=machineryCycle(next,s,content,{defeatExit:!!next.space.defeat});
+  if(next.space.defeat&&next.space.tactical)next=finishFatalTacticalEntry(next,s,content);
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase};
+  if(s.dead||next.space.defeat){clearCampaignTactical(next);next.space.elapsed=0;next.space.activity={sleeping:false,forced:false,sleepPhase:s.sleepPhase}}
+  if(s.condition.vigor===0&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  return next;
+}
+
+// One owner for the aboard clock and power phases. Normal cycles250ms, sleep
+// cycles50ms; tactical frames50ms dispatch source calls through Game12. The
+// source clock advances at phase1. Space-enabled saves own the
+// integer millisecond remainder; historical hosts retain their transient clock.
+export function advanceCampaignMachinery(previous,survival,milliseconds,paused=false,content=null) {
+  if(previous.travel.scene!=='ship')throw Error('machineryUnavailable');
+  const space=!!previous.space;
+  if(space&&(!integer(milliseconds,0,60000)||!content?.dialogue?.systems))throw Error('invalidCampaignSpace');
+  const ownedSurvival=space?{...survival,...previous.space.activity,minutes:previous.ship.minutes,condition:{...previous.ship.condition},
+    dead:previous.ship.condition.vigor===0||!!previous.space.defeat||!!previous.combat.defeat}:survival;
+  if(paused||ownedSurvival.dead||previous.combat?.defeat||previous.space?.communication?.conversation)
+    return {state:previous,survival:{...ownedSurvival,elapsed:space?previous.space.elapsed:0},cycles:0};
+  const elapsed=(space?previous.space.elapsed+(previous.space.tactical?.carry||0):ownedSurvival.elapsed)+(space?milliseconds:Math.max(0,Math.min(250,milliseconds)));
+  const period=state=>ownedSurvival.sleeping?50:state.space?.tactical?50:250;
+  if(elapsed<period(previous)) {
+    const state=space?structuredClone(previous):previous;if(space){state.space.elapsed=elapsed;if(state.space.tactical)state.space.tactical.carry=0}
+    return {state,survival:{...ownedSurvival,elapsed},cycles:0};
+  }
+  let next=structuredClone(previous);if(next.space?.tactical)next.space.tactical.carry=0;const s={...ownedSurvival,condition:{...ownedSurvival.condition},elapsed};
+  let cycles=0,frames=0;
+  while(!s.dead&&s.elapsed>=(s.sleeping?50:next.space?.tactical?50:250)) {
+    const sleeping=s.sleeping;s.elapsed-=sleeping?50:next.space?.tactical?50:250;
+    if(next.space?.tactical&&!sleeping) {
+      const controller=next.space.tactical;
+      const firing=controller.record.firing;
+      const input=readShipTrigger(controller.trigger,controller.control.fire);controller.trigger=input.trigger;
+      const begun=beginShipTacticalFrame(campaignShipSource(next),controller.record,{...controller.control,fire:input.fire},
+        {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle});
+      commitCampaignShipSource(next,begun.state);controller.record=begun.tactical;
+      // Gun proc17 polls before proc12; proc12 polls again after its first
+      // movement. With one sampled input per logical frame no second edge can
+      // occur, but the second poll must clear a released buffered press.
+      if(firing)controller.trigger=readShipTrigger(controller.trigger,controller.control.fire).trigger;
+      if(begun.shot) {
+        const index=next.start.systems.findIndex(system=>system.id===currentShipLocation(next).systemId);
+        next.space.cooldowns[index]=(next.space.cooldowns[index]+begun.shot.cooldownIncrement)&15;
+      }
+      if(begun.aftermath)recordCampaignShipKill(next,begun.aftermath,content);
+      if(begun.due) {
+        const due=tacticalMachineryCycle(next,s,content,begun.delta);next=due.state;cycles+=due.cycles;
+      }
+      if(next.space.tactical?.record.wreck&&next.space.tactical.record.wreck.tractorSlot!==null&&!next.space.defeat&&!s.dead) {
+        const completed=completeShipTacticalTractor(campaignShipSource(next),next.space.tactical.record);
+        commitCampaignShipSource(next,completed.state);next.space.tactical.record=completed.tactical;
+        if(completed.loaded) {
+          // Proc18 returns through main $14CA -> proc15. Its first release
+          // poll calls proc12 at $0F19 without incrementing354, after the lot
+          // copy. R10s observes phase2->3/charge68->60 here before main returns.
+          const polled=beginShipTacticalFrame(campaignShipSource(next),next.space.tactical.record,neutralShipControl(),
+            {dexterity:next.dialogue.attributes[2],worldAngle:currentShipLocation(next).orbit.angle,polling:true});
+          commitCampaignShipSource(next,polled.state);next.space.tactical.record=polled.tactical;
+          if(polled.due) {
+            const due=tacticalMachineryCycle(next,s,content,polled.delta);next=due.state;cycles+=due.cycles;
+          }
+        }
+      }
+      frames++;
+    } else {next=machineryCycle(next,s,content);cycles++}
+  }
+  if(s.dead){s.sleeping=false;s.elapsed=0;if(space){s.forced=false;leaveCampaignShipDeadline(next);clearCampaignTactical(next)}}
+  next.ship.minutes=s.minutes;next.ship.condition={...s.condition};
+  if(space){next.space.elapsed=s.elapsed;if(next.space.activity)next.space.activity={sleeping:s.sleeping,forced:s.forced,sleepPhase:s.sleepPhase}}
+  if(s.condition.vigor===0&&next.combat&&!next.combat.defeat)next.combat.defeat={reason:'conditionDeath',minutes:s.minutes};
+  return {state:next,survival:s,cycles,frames};
+}
