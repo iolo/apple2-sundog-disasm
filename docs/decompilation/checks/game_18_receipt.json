@@ -1,0 +1,2498 @@
+{
+  "compiler_revision": "397cf201ddf22ca25a82d0ad5401e5d70a38f849",
+  "compiler_options": [
+    "--p-machine=ii.1",
+    "-f",
+    "no-range-check",
+    "-f",
+    "no-efj-nfj"
+  ],
+  "assembly_revision": "5c64227e095e86ba1e8c79b8e4425986cf9ae58f",
+  "input_component_sha256": "452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4",
+  "compile_fixture": "docs/decompilation/checks/game_18_compile.pas",
+  "source_sha256": {
+    "docs/decompilation/checks/game_18_compile.pas": "71ba0f5d6d2be4d6cf238f5613ab26ff521ddeafb70bb60c7cb4e251b93aa19d",
+    "src/pascal/game_17/locals.pas": "faac041f171d3d706d92e2bc4e020feb04d62070a339efa59381bbfc3ba6636f",
+    "src/pascal/game_17/proc_01.pas": "f15b7fde29766d3d4ad57eed66ba62d1f31512ea60a1e57d66be549d5e57d00d",
+    "src/pascal/game_17/proc_02.pas": "7551ecb7f71e4cddf27c8c5b6f9655e7ee1a301d4dbfc4e97ca8af975b886903",
+    "src/pascal/game_17/proc_03.pas": "1ee566783333863a3b356f2d50546ddf1c221ac2178e608e24f092608cc40092",
+    "src/pascal/game_17/proc_04.pas": "41c621e09c6b413cc7c44c82b39ae8b58e8925cfb59c5e9cb40f51c40f3bc632",
+    "src/pascal/game_17/proc_05.pas": "18c9ff284bef66b2c2651b33b51bea6bd268829818faaaeb8be1d07d75275285",
+    "src/pascal/game_17/proc_06.pas": "5b9bc0ad61d2f11ebee0c33fa11fafe420769935fb345b7d676a145142652b38",
+    "src/pascal/game_17/proc_07.pas": "7ad3e6e41abb72c0c6bed8401011f871e08b8f4e17d139af40c62f93b08b2752",
+    "src/pascal/game_17/proc_08.pas": "2cd20395801aa3d97fe5ec6a58854ae724a7964388dab8592783ceee26e24a4d",
+    "src/pascal/game_17/proc_09.pas": "3b8556cadc668fbda338c78c1516cde59381ffd9b006a6fc6b79c917f6f6ebc4",
+    "src/pascal/game_17/proc_10.pas": "8e67b7825582e553ca20ed87dbfaadca768860ab418b748c70f79871efb68cc1",
+    "src/pascal/game_17/proc_11.pas": "02d2c843e28ad4cdd7dc6f12f8e70bf5eb4183d669a6853f2e3355fe9c7c23f3",
+    "src/pascal/game_17/proc_12.pas": "48e2afd38077415c37fce3492ff2cf3a14bb97d12a7d664f67423c0d59e8d402",
+    "src/pascal/game_17/proc_13.pas": "dfb92c78a5952049411a4a145109ae446231782d120b4f0f458afbc05cf0fa3a",
+    "src/pascal/game_17/proc_14.pas": "ae4e059b8bf65e891175dbc940cdc57a37a7d2379fd4dcd120a96e6a09d55a5b",
+    "src/pascal/game_17/proc_15.pas": "14309c3e3e7ff23b872bb38988a69ab95ebf88b952945fbc2099fd2e875c0e33",
+    "src/pascal/game_17/proc_16.pas": "0214e934fc55939840d71bf1a2b79e274d13f0a0639efe5d9fb4f822ab649a9d",
+    "src/pascal/game_17/proc_17.pas": "17e473670d17c7a0800a50dbd7ba190c2035ae024ad91b07c4f716d5d62a1717",
+    "src/pascal/game_17/types.pas": "125e84264754804c3a3a6d1d695562f8ce216037df1d8a021289d1a127703743",
+    "src/pascal/game_18/locals.pas": "dc03b1c2fa3e07514c00f0542e6884cb8723a1241f30c5a220902b5a55650eaa",
+    "src/pascal/game_18/proc_01.pas": "69976b5354d8b1e94a18b850a16fb4e33e977a05d16b1857a013b0fc341273ad",
+    "src/pascal/game_18/proc_02.pas": "122a2b679ff27bd9f11e7cf614136ea110b4a2352ea038ed8f0d16f1eb3237db",
+    "src/pascal/game_18/proc_03.pas": "be013d0c1d49c840bec7459e4320aafa2508697423bd7e8e03fce3c63ae8ad7c",
+    "src/pascal/game_18/proc_04.pas": "181b718460a0d31cb9b7baa15480e66e48d4b4231aeff47bb9c5a4aa1e1a3bde",
+    "src/pascal/game_18/proc_05.pas": "736f4b0b4eed49f79d0059c3e91f3e70277e1518ee602e246fa79a0be4d7bd46",
+    "src/pascal/game_18/proc_06.pas": "0e477192ad3c968ed5704916b248d8abdd792f426625ee938f54bbb7e880bf35",
+    "src/pascal/game_18/proc_07.pas": "15ab14b965aac4d69a1346f7bdf46a3425ad8f1185277ae0c0db59f81cec4500",
+    "src/pascal/game_18/proc_08.pas": "c2b7d2ac6315a3b6373523009a291ab61415705c1f5967297e26affebaf70154",
+    "src/pascal/game_18/proc_09.pas": "19ed8afaa505a2d4805f00f3a0e4832b5d0687670f83140c0889f0e2fffe48e0",
+    "src/pascal/game_18/proc_10.pas": "80b83c9b999dd96641443ffa716a6738c26d57767c79099c60f3f9634a2ec22d",
+    "src/pascal/game_18/proc_11.pas": "9e571bdd8ccc4d87b9db133b7c6960ae9ff06904596f0db9b43fe440bcf79c30",
+    "src/pascal/game_18/proc_12.pas": "c45c42e51cefb80885b4b8270da0d56f281694db95896a0b94e15c4e81ec1d81",
+    "src/pascal/game_18/proc_13.pas": "b0f275a983295b62134628105f97417548177fe734777fb6fc0ffdcc1bc695f5",
+    "src/pascal/game_18/proc_14.pas": "0934206539bd89af9e4ccb47ab15ec2ec105681d6c068047a5f117b7be4f4b5b",
+    "src/pascal/game_18/proc_15.pas": "fcb48c519f60e13f365d1593ac95c432bca77c6954b18e25fafc5e53bfdb090c",
+    "src/pascal/game_18/proc_16.pas": "1b9e00a6930e04ae41d3ceb927348574e926879f54db340c37e44015bcf942a6",
+    "src/pascal/game_18/proc_17.pas": "0cc2e69a3418d99add90a5c27295bfa1531777ff0d1062c2fbed6de6b4359ee5",
+    "src/pascal/game_18/proc_18.pas": "5b2064fe50744d15bba67608e4fab4b7b177c1a4c1689074cfbc8ad87aee4be9",
+    "src/pascal/game_18/proc_19.pas": "a01f43d963474587343a16a3768e35640d2b87117a0f37d5928018c0be67ba16",
+    "src/pascal/game_18/proc_20.pas": "0520901a521c6af7a1e029c2918403fa0d72013c8f3a17227cfd7508f10a1ab4",
+    "src/pascal/game_18/proc_21.pas": "bf9b9c68bb0e8978098830eab14bc85ef5e2c37f58cf5aa42708561c78877487",
+    "src/pascal/game_18/proc_22.pas": "d2938ed2ee2d7b2b7dd7358bfa3d6d2cc695dc50dcc42212612df7b1926aefdd",
+    "src/pascal/game_18/proc_23.pas": "d3767b760bbe1a3598c9cec25b06a368bdba46569bb8b41ddb55bf9fe7690d07",
+    "src/pascal/game_18/proc_24.pas": "afc7f6f386f307065c9898c62e58de4be9ef3aa28081190bfcc86c485b8c7db0",
+    "src/pascal/game_18/proc_25.pas": "cf25836865ac14253d39e9d05ea5e2b3ca591dbd507a2a94ce1f4d6217f61e29",
+    "src/pascal/game_18/proc_26.pas": "d4f2f087c6dcbf2b8292907f22c433ac333f248c2cfccb38c6088e7aa747c63c",
+    "src/pascal/game_18/proc_27.pas": "d92d95afcf1630af57d80d21432423dba14a8919ae331eabe0adb7f12e346295",
+    "src/pascal/game_18/proc_28.pas": "e348fd56791ac1b2f7f44f0e3c8c58c56ff9ebe281016472a527d43dceddc476",
+    "src/pascal/game_18/types.pas": "8e3b718c6e04c47d66cc821791f474c733a323b31c8a714c5616c2efccb8e77a",
+    "src/pascal/game_19/locals.pas": "7d301ea61eeac5b73c69f7dbf9c0db136edde6ae0fffba1c9a0dd32614935e6c",
+    "src/pascal/game_19/proc_01.pas": "2b74f551c1902efce3043dc2a539f06844dd34e1cbe0da0573e09001124e0ad8",
+    "src/pascal/game_19/proc_02.pas": "c0948351cf58a68cdd7a881d72e9aa773e80f56caff2619996c884c2753496c5",
+    "src/pascal/game_19/proc_03.pas": "55943960542970892f8ce4d5fd9fc40ce398041e6a99e78f3a06f44908849caa",
+    "src/pascal/game_19/proc_04.pas": "a9e9984b4bda199c7d0a5b64cbbd844fcf62100762dacb83fbf7fd9d814a9db5",
+    "src/pascal/game_19/proc_05.pas": "64fd31d496284858ada8753ceea5a29e0e404e4b450dd1c496c6d9995a782459",
+    "src/pascal/game_19/proc_06.pas": "7cbafb6e1dbbfaafb8de3fda20938f9ce0d8d974ffb6f58cd4ec2335aa4fcb97",
+    "src/pascal/game_19/proc_07.pas": "6d4d861f152f999947ffeb7d41a1184b0f16d1d1815d8d54b4e34091aee12715",
+    "src/pascal/game_19/proc_08.pas": "4cee11700ed122c1b888ad5b932cf96a4889f1f80259f45a51653f12bf4aec12",
+    "src/pascal/game_19/proc_09.pas": "daa19b2a0f7d2cd5c8f3d8f514ae185039888b12e1a4713d5a7ade51cdd5ae27",
+    "src/pascal/game_19/proc_10.pas": "6984ff67effec3d4d97709029db5afceeb2f36bf4e6ceee389ef896d27f454c7",
+    "src/pascal/game_19/proc_11.pas": "f61117f59ab57e6e7ae71f979f054284edc1268603341d9122e01ba264c28076",
+    "src/pascal/game_19/proc_12.pas": "93ca445563f6520025265c557710358f0dc9156fb78e311681b15a06aef643b1",
+    "src/pascal/game_19/proc_13.pas": "7c5cb31c1223180d41e09d88a82063e9c45551cecb8f2155170dba0856b83902",
+    "src/pascal/game_19/proc_14.pas": "e4fb936296103d0a0d41dec44e62f68a8204324ba4f9a326ee791210a706b591",
+    "src/pascal/game_19/proc_15.pas": "545b44e2a19b3f924232f3084fc0b506ef99a1e2d0d29399704f49e0464def1c",
+    "src/pascal/game_19/proc_16.pas": "1bceb6a2497b9eb64ef7787aa04fa700661497485e552d2f9f666581498a8001",
+    "src/pascal/game_19/proc_17.pas": "5fd1902770437905870012e0480e2ce1e49bcc3a28bb31f8d651ced65ca41979",
+    "src/pascal/game_19/proc_18.pas": "70e7d458accd12d61f5e083f2bf2215a613b7e5898ab332cc498db167d4e5140",
+    "src/pascal/game_19/proc_19.pas": "9e1b5a3e8c2f715ef86d3450d5c442b65536542bed05e393c66ad361fff6f161",
+    "src/pascal/game_19/proc_20.pas": "539840afdb2bec96a8878b0430b083558224ff77aed4cec38447a503ad415f32",
+    "src/pascal/game_19/proc_21.pas": "b96313cb2c643202b5a5ec5b615aa3414555348eba2b4d45c2a1a5800adca9e0",
+    "src/pascal/game_19/proc_22.pas": "77ff567f59c0909b8a9085f4b2d73d7dc22938fba657da68b6ac69eb5504d247",
+    "src/pascal/game_19/proc_23.pas": "c8139e6e73c46a2464751a5ae88899aa7f99e3d9ef2214be86afdcf4136604c3",
+    "src/pascal/game_19/proc_24.pas": "926496e1f2ca80269cbdb157b12d408142c2d0934ba2b4e34c0048c9e088196c",
+    "src/pascal/game_19/proc_25.pas": "ebd1afd010776f6ff1ac9f36da0fddf4d4602620c2ea2768295bb55eb720f6bf",
+    "src/pascal/game_19/proc_26.pas": "bf89f3f4becd1c9e48b190af83ff0d88259835eaf604456743647cb9821ab69a",
+    "src/pascal/game_19/types.pas": "0951fa91e7d5724d1c062571bd46f3632f4b774aace1c1b2713894b577213712",
+    "src/pascal/game_20/locals.pas": "54d4c5119c91c138bec6b2e5d8cccbc76b70e22f4d81d6977ad522fe1581be8e",
+    "src/pascal/game_20/proc_01.pas": "96da5b4da0436d04f3fd0be1a49c728a8a9fa20d5e3fe571dd1b7dc6a8af3d5c",
+    "src/pascal/game_20/proc_02.pas": "12f5777fc2d144d0f757246e851bfb2510b3dd6a56b11cfa417549a9a7900ff7",
+    "src/pascal/game_20/proc_03.pas": "da49c8e8c07709cdeeae2225151b006d801f393223a33e2396f759567a158cb3",
+    "src/pascal/game_20/proc_04.pas": "c2c9547c8dddf221606fc798e1c0156fc2520baccb49460e20afe39157808ac5",
+    "src/pascal/game_20/proc_05.pas": "517d852ab3a384a2ed03b3e77c5ded5667b992e65c4df08f6d93fd55c323ef7a",
+    "src/pascal/game_20/proc_06.pas": "d5ed9cf2ce08320eddec495a97db01cf856fe6252d21c5e6f7064eaaca308d8a",
+    "src/pascal/game_20/proc_07.pas": "a439b87a07e200267c157ff1500a1a10b673b8a84b8d95054363d26bcee95605",
+    "src/pascal/game_20/proc_08.pas": "2d6357762674493c3fd5130f1cc0ea1a123138ada9e8b13259fbc5bfc9bebb69",
+    "src/pascal/game_20/proc_09.pas": "0f13fc70fcd5a843f13a70c1de99e4345b92c738c6652af5cef69bbde1c021bd",
+    "src/pascal/game_20/proc_10.pas": "06309e2d11250e52df4813b49023b74d61340f35f39f35d88bf1ba49d620e5a9",
+    "src/pascal/game_20/proc_11.pas": "7242b2ff9dd06f4b96bf806ae37d030ae4c30a374fec75f480427e543a401923",
+    "src/pascal/game_20/proc_12.pas": "b9a19983287311021fc91b35cbebe48c17bad4f7111dde1bde4c34ef0d4c10b8",
+    "src/pascal/game_20/proc_13.pas": "16f81ddeedc2dc915e58b1ff07beeac744f41df032c1a822be834af2c1124f93",
+    "src/pascal/game_20/proc_14.pas": "7cbb2ec3a6c151e021dc92cda914392f73799de716b12ce3156da62900bef9d4",
+    "src/pascal/game_20/proc_15.pas": "ff73801f954ef7a8b33ee74a922260f520d4b193349db978752e124a333b526b",
+    "src/pascal/game_20/proc_16.pas": "3d3fd0b5507879543f805551ef27dd6b01a88bedf717faf16d07a56f16dd95a8",
+    "src/pascal/game_20/proc_17.pas": "7ab960ff10fb339dff894c8b389fae9fa870757a409e121116794e588744bc1c",
+    "src/pascal/game_20/proc_18.pas": "3b5d9bcdeb034f0af6d3b831d0adf166515e0736959150e1176fa497a007d3a4",
+    "src/pascal/game_20/proc_19.pas": "3d5da63b75e3d3d6f48082a7c57bce1dff09fd664dbbbed3c05e8dd435de2262",
+    "src/pascal/game_20/proc_20.pas": "ce79f1997722248021e7745cbb7670fef80ee9e3d20a051f49f49c1f2031e860",
+    "src/pascal/game_20/proc_21.pas": "cc56677862de7bcc3795d91611f6dee50b31b74b738e28b3c994cd0e577359e9",
+    "src/pascal/game_20/proc_22.pas": "977960aba64521bc6bc6361eb6df309c1d3d9675e317a7b97bfe50f118686bf9",
+    "src/pascal/game_20/proc_23.pas": "7c3dfddf43c8a24ba6a4dbd32fa9e6af3a779f6c76f62470d82319abf972adbe",
+    "src/pascal/game_20/proc_24.pas": "a6358ca1b28fc529375fb07739c1a58cef7cdc3d08fa9e58ed8273204fd3d380",
+    "src/pascal/game_20/proc_25.pas": "60b8ceba983c1f3715900c8fb37e873e654af8b03d4d5b8b3e2cf10f7f7a8d13",
+    "src/pascal/game_20/proc_26.pas": "9500142988d570c5c75e0605c50c4fff6fecb8123a88b81e1a68c889e8f6bd62",
+    "src/pascal/game_20/proc_27.pas": "753c6edc22021e05c662b38c30f9132f1d185b540bde23b52eb8a499779d218a",
+    "src/pascal/game_20/proc_28.pas": "8cb963dde8ecd9a3d78e7274b7744dc1c3990e013599436beeee01569c7a5eb7",
+    "src/pascal/game_20/proc_29.pas": "d505a318b6ed4914bcc35ae1ea00177381233464dcc1f17728c7b6e35b8dfffe",
+    "src/pascal/game_20/proc_30.pas": "c12cd8045d737abecfe927710da6b0668fac8d0e05d1a2ef3c564a41a8f1c91f",
+    "src/pascal/game_20/proc_31.pas": "0917c37b087f9aeca91ed4fdfd44cf550580d40ed1f5aaf65de2bddfef1b73ca",
+    "src/pascal/game_20/proc_32.pas": "c52f379aeabe1ded110de7f46cb8e2a6612a9fe1c810461391b96faf099db791",
+    "src/pascal/game_20/types.pas": "2a86535bafa6030c102d7d0ab462ba733ab282d4963539dc0ab073a0dbec8945",
+    "src/pascal/game_21/locals.pas": "0807eeee78c8689d78590245e1d436309ba86b0e7ee6ecc129592fb56430364e",
+    "src/pascal/game_21/proc_02.pas": "e9a857d512a52843c4b232c8c973535f86fe998825ba691a5ed070df443eac39",
+    "src/pascal/game_21/proc_03.pas": "49f4d2244d65f2dadcf65e8a879809d6c7876dacaeacbf9a0d73e0af88581670",
+    "src/pascal/game_21/proc_04.pas": "cb2f5f1262ea4de2afb11d765c13dd8e8b0493b7c420c8fde8b7e96a0d13c941",
+    "src/pascal/game_21/proc_05.pas": "5139b89cfb4a1af6e06dae921b51689f0d90aa8e99466f62dfdac4fb916516c0",
+    "src/pascal/game_21/proc_06.pas": "618867f93beb2b0d9691605692c2f51831b80587d9914029d4a7bad41044563d",
+    "src/pascal/game_21/proc_07.pas": "df9d233b5fd13c214eeee3d233c2f2c1138bfa4c1ca27b1a7386dcec297a70de",
+    "src/pascal/game_21/proc_08.pas": "e15c822568efa6f22137618e85f6dabf2747c0511b1562ab311f8716d68017e3",
+    "src/pascal/game_21/proc_10.pas": "a0a04dcd094f6b53aa48d65f1479016cd4cd543633911b3f4de961a3f056dbac",
+    "src/pascal/game_21/proc_11.pas": "266fff2b1b0eef2a4df41780b02aa7f7363d0a3263da48ee460d722784699fc3",
+    "src/pascal/game_21/proc_13.pas": "b5b53c7b709718e7d6f45e4eb7d5c6e54666bc94d0185bf84f0ee64beb0d9825",
+    "src/pascal/game_21/proc_14.pas": "ee0d0956353d552401b747584e2de3e442814835600f042ed32db858e8bbf61d",
+    "src/pascal/game_21/proc_15.pas": "e0d312e79d7dab81816af7ef97d19c6ad6ebb637d195f29c45adca70552b7085",
+    "src/pascal/game_21/proc_16.pas": "625ffe2a7a8534f875a8dec8bf44e6a3731a2bb0cbebb7708dfe82a3d150800f",
+    "src/pascal/game_21/proc_17.pas": "293cbf7b0de3b76567f75a5088f0b12a77231f409a4babb5ee06c1fcca6b3c4e",
+    "src/pascal/game_21/proc_18.pas": "24619b27f39fd21ac491adbdbc17faf48ba04452dabea820a890e1359c637d36",
+    "src/pascal/game_21/proc_19.pas": "3c46f56b07c2bf206ba82eed535851b150a0d805d255e0cf24fc2e6ce4c9a058",
+    "src/pascal/game_21/proc_20.pas": "04774e0bfafe80bd751067f974743178a64b995630721ab34c6982ace24ec940",
+    "src/pascal/game_21/proc_21.pas": "a31daacd5b1ed25bd937e1d36ca25dfc448ef3277d2b2d5fe60e103744b867f8",
+    "src/pascal/game_21/proc_22.pas": "ab1907b583ac907c602b46071f2be3a97e686d0fedadcef84ec42a10a691dfbb",
+    "src/pascal/game_21/proc_23.pas": "145f621e1077487e157ab6e6a7b1ea4c25a2fab9a26c454fe0e3214969849f2c",
+    "src/pascal/game_21/proc_24.pas": "af5b77b8243801dd5e669a278f163e9fc2665f681f123e9e83aa4f22908a6f72",
+    "src/pascal/game_21/proc_25.pas": "23aaef769f4f1c3f6d508d53e96a58f02ab8bed929948cd357ceb9c0cd59483d",
+    "src/pascal/game_21/proc_32.pas": "bbb0c61175279d1329bf1822e2393229268c3b3c6a11ef65eb648bf24176493b",
+    "src/pascal/game_21/proc_33.pas": "bc3466b3dcf9422059fad0a44933046956350ae93ba6fbb2f254470f4dfe0a50",
+    "src/pascal/game_21/proc_34.pas": "4f4c6d61b682428d04ea789f24853c83cb46f789e0d17d0868f9929152f1711f",
+    "src/pascal/game_21/proc_35.pas": "2bedfa69fde96c9163a40a945583f80b033fedf9586620907c61a9bce35e7bff",
+    "src/pascal/game_21/proc_37.pas": "9ac4f31f479eb7f0559cd6fd35c62fb62b8bcb219cdd962030647a595ca5c9a2",
+    "src/pascal/game_21/proc_41.pas": "35b1fcb1f6655260bf9f18aaf1dcc5c7e67da286dffd4c09d6ef88c5a2760978",
+    "src/pascal/game_21/types.pas": "ace6d916cc405791d5418fa3d0de44025d9de893573a9b763aba6677b1ef3363",
+    "src/pascal/game_8/locals.pas": "8158914b963941cf86519da808c64ce05a78cfe0d18fe75c9e67d5f54216473c",
+    "src/pascal/game_8/proc_01.pas": "58e353f1c676681f985fcc1764b6ac84db4f5915f9925b6b45edd3026d2f11a0",
+    "src/pascal/game_8/proc_02.pas": "1500232e83a4f95306e84abe98d6c58aa49379b1a2bef0591d8a2ea571d9bebd",
+    "src/pascal/game_8/proc_03.pas": "49b27a7d8ba92b064cc5cf2db80bf0f280e2a7515e3d8c74fe3c91e79f673950",
+    "src/pascal/game_8/proc_04.pas": "e16d5f5b94a9ee3dc455561046f64b120574e1e331e7d9fb3167bb3f8dc59174",
+    "src/pascal/game_8/proc_05.pas": "3b5e6cc385626a82eb455b55f1c095d74dbba1d886ec5435c7881bb6279fefd7",
+    "src/pascal/game_8/proc_06.pas": "9915c74ad6a99920b16a50e7d651d6817ee19da137742264ea3f7a38a6d94aac",
+    "src/pascal/game_8/proc_07.pas": "f79f91d7a797f8b52f3c210688c384fc3d6354ca77801146015f5ce22410c8e1",
+    "src/pascal/game_8/proc_08.pas": "f058b5fa98df7be2a5f8c48fc6242fb5aef8f3edf20ad01978a224cd68e7c512",
+    "src/pascal/game_8/proc_09.pas": "f103b8a5e42dc5d854648b7529ae38b996e4a9e25b2435cc5fedb9d8f8529c34",
+    "src/pascal/game_8/proc_10.pas": "8bb14fcb309c0bbf741e5f001c3c2340dde0ece1c38a483afd0f4e92c3ff9ab1",
+    "src/pascal/game_8/proc_11.pas": "da2fb7392aa3dfada91aa0f091945d7373cd6b2ad550d9983d1a9f04241edff4",
+    "src/pascal/game_8/proc_12.pas": "a55a6612b15e524ec938b2772c45b0e89aa8d194c84db500b20ca9a939d1666e",
+    "src/pascal/game_8/proc_13.pas": "55bb22e15d781e58088d453b4e3aab241a3e304039544914a20ab3ec2d2357c4",
+    "src/pascal/game_8/proc_14.pas": "56ffee9f6153a4f9331667f09ff9ff787630f891ceafc0ceb4926c1cee71eeee",
+    "src/pascal/game_8/proc_15.pas": "62f8ceb96d1b69be8f34669902334e7ba797f374b16db2057374b9664d545c9a",
+    "src/pascal/game_8/proc_16.pas": "4775ea274bf7235c3f43ab5836b6d141e17ff715471549528b97832336e0cc71",
+    "src/pascal/game_8/proc_17.pas": "f5980019477264b456a465eefd28cbcbc195d0d7e337695ef2bea568aa8891e6",
+    "src/pascal/game_8/proc_18.pas": "68a366e7fb941bbe58ae8c56483bc72cb9170aff0a04c47059dea941be38a692",
+    "src/pascal/library_22/native_interfaces.pas": "9860070b87bd2539b1ff18ce164b0c065550a46765b4992dc4894d3558cc237f",
+    "src/pascal/library_22/native_table_interfaces.pas": "0a7b36a64ecde88cb35e4abef6442eb0f828fadcdbb24822cab8cb67a3dc3118",
+    "src/pascal/library_22/native_world_interfaces.pas": "6e2f8190abf16ab946debd0d128b7ba629a51d28e2981dd59c28246c2e3502ff",
+    "src/pascal/library_22/proc_10.pas": "f43c7395f04ae3115283e32d4e16f2726afce1becb018756619a2f6b270f43a2",
+    "src/pascal/library_22/proc_11.pas": "9a9d72f796415d053482a29fba5c11c49d7d3543988a3f71c584d85cc05a1b82",
+    "src/pascal/library_22/proc_12.pas": "53d2c964fba7ccaab7698aaa2b2ddb69c911c076ffff4944d7c539d960183383",
+    "src/pascal/library_22/proc_13.pas": "6f12ba590ece7b6ae980164982bb7a4fee0350b1b477b98b4f48cb7dda0a336f",
+    "src/pascal/library_22/proc_14.pas": "38da568fb121984141c30e40503a645d3d2c88ac2bb286e8f14f5e28fdbca114",
+    "src/pascal/library_22/proc_16.pas": "59b817fa1d452e0d6a4d39faaa99d7b41bbecde53cfd4b222d1bf4937833658a",
+    "src/pascal/library_22/proc_17.pas": "fe7b90274c31424fb7df68af9329566e638e46984f8070e396eebd1760017ea6",
+    "src/pascal/library_22/proc_18.pas": "6d90d692d0044b679c48131fd061351a3cafd7b5e8d29f33d57d317815960a53",
+    "src/pascal/library_22/proc_19.pas": "55d0992ec6ab4dd065fd319572006fde2616542d6ce9be4f1f9be6245aa0a4ec",
+    "src/pascal/library_22/proc_21.pas": "a6437e606deabc0d15f9cdfdad2006a634af8f240b6d31507eedab6eb2f5ba6c",
+    "src/pascal/library_22/proc_26.pas": "9aac68fe63e79704e67d460e5118b8219c07b2be8a9bd716dca33afff0e47e93",
+    "src/pascal/library_22/proc_27.pas": "ea72bae08df5250aa75db8dbc318ebf0364a9d8c52711965b594740e25030ba1",
+    "src/pascal/library_22/proc_28.pas": "80da69eadf0e40c3bf0f656de033d747b2f7aff28cd9d39756f8b2bc5ff32833",
+    "src/pascal/library_22/proc_29.pas": "201579644afc42f458bc749fc4e7bb0e3afe96297069db44fbf915ae4277f1d8",
+    "src/pascal/library_22/proc_34.pas": "ab17c7fd786c6da2bf02e7e78f04342a2a18f189eb9ee2ec00bbbfe71256eda8",
+    "src/pascal/library_22/proc_35.pas": "26ddd86f33e5611f16ffb6a229bf6eb2079323a77d200f83a604b20253f3dc69",
+    "src/pascal/library_22/proc_36.pas": "3d9a233dfde56566bd52160cef0190e7d9456f06d24f61f866cb5f6e29c9c6d4",
+    "src/pascal/library_22/proc_37.pas": "222e262d323eb0c11b28fddd198867c5bbc2720dc1340e8188cbb6b83a6ade23",
+    "src/pascal/library_22/proc_38.pas": "f2823ac4eec518f9bdae19e783a02de9f35c3cf6e1af6a95098797db6efff45e",
+    "src/pascal/library_22/proc_39.pas": "50d2184953c013cd6bae871d2ffe7b671c34ecbf2d5965c96b81e732be7cff69",
+    "src/pascal/library_22/proc_40.pas": "e1c221ebd428d62306d4c6308611c625c670ac3e7bb0b1f52e0d9d43e7a30f7b",
+    "src/pascal/library_22/proc_41.pas": "0acc9a9a5049a540019c18cf0d7afbb778ff95338026b6d5100c242081ebb8c3",
+    "src/pascal/library_22/proc_42.pas": "8154102f2854accbe749ed8f477f39c63c4cc1761c045d419e680da42c4ccf1c",
+    "src/pascal/library_22/proc_43.pas": "bbe935044ede12d35d78245f6d90bbf770b377d5e5c99720404b23f24811f994",
+    "src/pascal/library_22/proc_44.pas": "e414fafa886abc195abf51ed561f183ed8d36d0207c75e371c442374e714db1b",
+    "src/pascal/library_22/proc_45.pas": "be94978fc4eba09826aa79290433e6fd7e0c55394ab9f3a0e94e041c3125dce0",
+    "src/pascal/library_22/proc_46.pas": "74f7b56455d359c9f50cc86d8ccdb67d657af0a7e0145654d1f0c8053d134d3e",
+    "src/pascal/library_22/proc_47.pas": "a2be7244ee13c63f2d6525da7861375e214fed36f3e0db05d805a558bd9996e6",
+    "src/pascal/library_22/proc_48.pas": "564ac15c8699ba22ddb62b4705740e24a363266c002ecada9e6953ccee34b650",
+    "src/pascal/library_22/proc_49.pas": "b1b61984608d286103db16b589b3266a8cf1db8154bfb98c57648a8acb4fdded",
+    "src/pascal/library_22/proc_50.pas": "95a7a8be67349198b15a09bc9930e44cb0c573415a6bf04045d814b8d55ed1d2",
+    "src/pascal/library_22/proc_51.pas": "fc1e4f59dfba89f21948cc77595092f38bef702ec48ef3085e75464f84349f3a",
+    "src/pascal/library_22/proc_52.pas": "e4347c346464ede9f5cf4cc11875397f44daf4718b3c1ca9ea710cfa7eb8d615",
+    "src/pascal/library_22/proc_53.pas": "f09f289edc397aacc3779c83a291a669836e4955108f4892f6c75b47a3f20124",
+    "src/pascal/library_22/proc_57.pas": "400abc5ed3eded664f0ad7451037c7fd67cc21b76e8ef1a91c44fd37c507cabb",
+    "src/pascal/library_22/proc_58.pas": "911f4dc0291aa06a9aacd22fc93a2a94cb8cc3a167b396b2470a2acea4db1f96",
+    "src/pascal/library_22/proc_59.pas": "ae9cd748083409cb9d9db3eb7a94bf2634a545654c04f0e98a590b3e7bdac619",
+    "src/pascal/library_22/proc_60.pas": "acead04f2017f8fdd73d932e626b2932ecee9fade5f2bf015349aa937b673618",
+    "src/pascal/library_22/proc_61.pas": "99bd35c4e7f1bf25b9920b7228c7a218fd35b5a33ba9ced4f058787003168fbf",
+    "src/pascal/library_22/proc_62.pas": "ec55bdcaf48eac8dea82146c78beb98adb8f7520768a3cdc867fd03f4a3d6d2c",
+    "src/pascal/library_22/proc_63.pas": "dbe351279c3b7a9c57e30040a8e987660e13ab57f7b2d082ead97274347389dd",
+    "src/pascal/library_24/native_interfaces.pas": "2ede816966b81f7812924ea52062c2ec4230385352f49cd4aa3f1f305578f00b",
+    "src/pascal/library_24/proc_07.pas": "4956020af45f584142f5631176a5e3d0098d72cc4cfda6bf72521533367f4b75",
+    "src/pascal/library_24/proc_08.pas": "9b1c0af68870c309dbc74061d4fefb82fb8e81d2a144aa147b870f4bb2480116",
+    "src/pascal/library_24/proc_09.pas": "dbf059d7e2fd046aed0da88486d821e8a8e6499510fa3f108ee1b4e4c82f33a1",
+    "src/pascal/library_24/proc_11.pas": "c81dc93ccd5a12696e23483a517087cc5e7a55b7d216eb76f774a8e995263732",
+    "src/pascal/library_24/proc_12.pas": "5ec9b565f4260a0ec2e34dc537bc3888fdb48d899d1799b9db221a1672957d49",
+    "src/pascal/library_24/proc_13.pas": "0e45cee4e79535b86e255696456868a13bed8aab6dd48e166686023175d9ec01",
+    "src/pascal/library_24/proc_14.pas": "a68053aad82de5a35c7a5f1c68b2a4155ccd58e38748923aa5806faa4043cd68",
+    "src/pascal/library_24/proc_15.pas": "ca3f43e76b2d060227c69a7563eed641cba28a431271a522e88473ca08bf71ec",
+    "src/pascal/library_24/proc_16.pas": "0e3a8367f6832c307a04577fce91306c2dd4ee0c973559c1605872e5832f477a",
+    "src/pascal/library_24/proc_17.pas": "3221d0b2e40c130ff7268c0c99224a83c49fe2c533f0ce29183e5f2187b60270",
+    "src/pascal/library_25/proc_01.pas": "d5f2583517e2b2243035d47cbdad083449ae90e25a85f3c94fca570d7d7e7a87",
+    "src/pascal/library_25/proc_02.pas": "a9e47d9911c81f8e855cc15b6e055740ac64444eead141a79f167bb75b47bd3b",
+    "src/pascal/library_25/proc_03.pas": "702b2e9618dd5eb6eb5ac4f45cf0295641737b65a4a737f242a35dfaa64ff98d",
+    "src/pascal/library_25/proc_04.pas": "ff352c243f951e0c95d771d7987ff08a09547db57928dd0c2b1103f6341a35c8",
+    "src/pascal/library_25/proc_05.pas": "963ad9536083ab7914506923a32d2e532a041dfb3697a8018f119a923a9d4e9f",
+    "src/pascal/library_25/proc_06.pas": "db6e0a798ad42346b650b7c30a08f74a946c681345206c8f69655f0a6bc4df58",
+    "src/pascal/library_25/proc_07.pas": "c12d4c0792411309d170c4a6376b66ac5703c5a1717ed7c653d26dfadf683448",
+    "src/pascal/library_25/proc_08.pas": "581fd6eb6a17f9205f24289dfb6e5f784a2db33dad17cd9951a872cc76fe2f9c",
+    "src/pascal/library_25/proc_09.pas": "08b1c71b3569d1bfed45a7cb163bfb0abfcd1fc010733c829f960887e454b6f9",
+    "src/pascal/library_25/types.pas": "bf440e197a5bad9b0ff34a2c695d4db79210b22548b9c02580ee174900604de0",
+    "src/pascal/library_27/proc_01.pas": "eb9da3f54f9892f2fab0f516ce3182fb63772c45810e015d308a0503f7dd24d4",
+    "src/pascal/library_27/proc_02.pas": "1f3f8b134e4c37a66ff6bc4094c30fca7456922d88a04a7eb29ac6a25519266e",
+    "src/pascal/library_27/proc_03.pas": "2672f84d38d4d87390e0ccd6492ce77e8ba571339d6471442e58c9e69ecd1768",
+    "src/pascal/library_27/proc_04.pas": "4d49bbfd6f3bf6ff6c26ba46b8dd7306868670294757cd7715bde24a7f18503e",
+    "src/pascal/library_27/proc_05.pas": "5187a502f45e9ef9078e59c03dc5369a427cb797c2fcc58492f8e0f6a24c34a7",
+    "src/pascal/library_27/proc_06.pas": "d54c30c2088797932efc2b2a33e0425646f2f19dbc6a1fde149eee90ba58fded",
+    "src/pascal/library_27/proc_07.pas": "bf7b0467686cb194acb75dcdac688f3285a02c0a0c16d4578df7a3c1592d6096",
+    "src/pascal/library_27/proc_08.pas": "7f1327b97c3e9046f5a8a8b9bbd1e1d9b3fb4f0a4b27647272a89ae2e6e8e7f0",
+    "src/pascal/library_27/proc_09.pas": "1c7954046962dc94136c197c7004f5f3a7d9c6efe4717eaf338e1ec112578173",
+    "src/pascal/library_27/proc_10.pas": "9b7aaff94f46a79c801466e51016e0a1b0db6ed9c10a03d84d65055b7a19fc69",
+    "src/pascal/library_27/proc_11.pas": "fd950ad85afe709b2920f000da0691e44067278534a6b73f0df0aa689237189f",
+    "src/pascal/library_27/proc_12.pas": "2a6588ec82a739d23cd9a574c5fef11f0116330dfac863db7daf6b3ba4e632ae",
+    "src/pascal/library_27/proc_13.pas": "ad3bd694214500504bab8283ee70d5f9deab2ca41c6110d1302e57e1ff16aeac",
+    "src/pascal/library_27/proc_14.pas": "6feff687d292bf6311d512ffa6024554fe569e2142462de6742120dde6572164",
+    "src/pascal/library_27/proc_15.pas": "974346b126d9f0c79b54de483c30977ef6ae0ed195b13dd1cf33f1fc43e8f6a6",
+    "src/pascal/library_27/types.pas": "9cd5c86eed9e5742d093df8f343d6ed6c039c8303ed513eac9e51cae45f4b146",
+    "src/pascal/library_28/proc_01.pas": "1130e66088bf9e91e1e5021e2974988b02935301da32014c0e8b24aad630c1c7",
+    "src/pascal/library_28/proc_02.pas": "a0fd3d9eadfefc790faef4a2518c8fa25472ff49588145b3b597f3f82a755755",
+    "src/pascal/library_28/proc_03.pas": "dca46a2745e77dcbcffa1e8330680c86383901e8fdf58a1dfddafb9d4f351dc4",
+    "src/pascal/library_28/proc_04.pas": "33b671265c610858ed4a7f8cb5f693bb373072fd2d9e1515877f03476dad7d33",
+    "src/pascal/library_28/proc_05.pas": "b07e888877deb0cbb248f9047410ebaee64cf076112a9ea75ccd53dfa18bad4d",
+    "src/pascal/library_28/proc_06.pas": "325279f0cbe39d0a18896eaf5366cd67afb7178ddbd7c5f656195bed055b6cbe",
+    "src/pascal/runtime_interfaces.pas": "7e440cc75461d53271198219bf0f169a959e087d9b2f0c343d3ff80d68064344",
+    "src/pascal/storage.pas": "3c54b2a128996f69701eefd8d7f86ba80e6172049a207c2b208878e9e1ba73ad"
+  },
+  "compiler_output_sha256": "7d56cc1dc9558e72dfd810f5b4353ce0ffe35477bca84e391f3b2b667ca81753",
+  "compiled_procedure_mapping": {
+    "13": "library_22:11",
+    "14": "library_22:57",
+    "15": "library_22:58",
+    "16": "library_22:12",
+    "17": "library_22:14",
+    "18": "library_22:19",
+    "19": "library_22:34",
+    "20": "library_22:40",
+    "21": "library_22:35",
+    "22": "library_22:41",
+    "23": "library_22:16",
+    "24": "library_22:17",
+    "25": "library_22:18",
+    "26": "library_22:37",
+    "27": "library_22:50",
+    "28": "library_22:63",
+    "29": "library_22:51",
+    "30": "library_22:53",
+    "31": "library_22:52",
+    "32": "library_22:61",
+    "33": "library_22:42",
+    "34": "library_22:62",
+    "35": "library_22:10",
+    "36": "library_22:43",
+    "37": "library_22:44",
+    "38": "library_22:45",
+    "39": "library_22:46",
+    "40": "library_22:47",
+    "41": "library_22:48",
+    "42": "library_22:38",
+    "43": "library_22:39",
+    "47": "library_22:13",
+    "48": "library_22:21",
+    "49": "library_27:1",
+    "50": "library_27:2",
+    "51": "library_27:3",
+    "52": "library_27:4",
+    "53": "library_27:5",
+    "54": "library_27:6",
+    "55": "library_27:7",
+    "56": "library_27:8",
+    "57": "library_27:9",
+    "58": "library_27:10",
+    "59": "library_27:11",
+    "60": "library_27:14",
+    "61": "library_27:12",
+    "62": "library_27:15",
+    "63": "library_27:13",
+    "64": "library_22:26",
+    "65": "library_22:27",
+    "66": "library_22:28",
+    "67": "library_22:59",
+    "68": "library_22:29",
+    "69": "library_22:60",
+    "70": "library_22:49",
+    "72": "library_24:7",
+    "73": "library_24:8",
+    "74": "library_24:11",
+    "75": "library_24:14",
+    "76": "library_24:15",
+    "77": "library_24:16",
+    "78": "library_24:17",
+    "80": "library_24:12",
+    "81": "library_24:13",
+    "82": "library_24:9",
+    "83": "game_8:1",
+    "84": "game_8:2",
+    "85": "game_8:5",
+    "86": "game_8:6",
+    "87": "game_8:7",
+    "88": "game_8:8",
+    "89": "game_8:9",
+    "90": "game_8:18",
+    "91": "game_8:3",
+    "92": "game_8:4",
+    "93": "game_8:10",
+    "94": "game_8:11",
+    "95": "game_8:12",
+    "96": "game_8:13",
+    "97": "game_8:14",
+    "98": "game_8:15",
+    "99": "game_8:16",
+    "100": "game_8:17",
+    "103": "game_18:1",
+    "104": "game_18:2",
+    "105": "game_18:3",
+    "106": "game_18:4",
+    "107": "game_18:5",
+    "108": "game_18:6",
+    "109": "game_18:7",
+    "110": "game_18:8",
+    "111": "game_18:9",
+    "112": "game_18:10",
+    "113": "game_18:11",
+    "114": "game_18:12",
+    "115": "game_18:13",
+    "116": "game_18:14",
+    "117": "game_18:15",
+    "118": "game_18:16",
+    "119": "game_18:17",
+    "120": "game_18:18",
+    "121": "game_18:19",
+    "122": "game_18:20",
+    "123": "game_18:21",
+    "124": "game_18:22",
+    "125": "game_18:24",
+    "126": "game_18:25",
+    "127": "game_18:23",
+    "128": "game_18:26",
+    "129": "game_18:27",
+    "130": "game_18:28",
+    "131": "game_17:1",
+    "132": "game_17:2",
+    "133": "game_17:3",
+    "134": "game_17:4",
+    "135": "game_17:5",
+    "136": "game_17:6",
+    "137": "game_17:7",
+    "138": "game_17:8",
+    "139": "game_17:9",
+    "140": "game_17:10",
+    "141": "game_17:13",
+    "142": "game_17:14",
+    "143": "game_17:15",
+    "144": "game_17:11",
+    "145": "game_17:12",
+    "146": "game_17:16",
+    "147": "game_17:17",
+    "148": "library_22:36",
+    "149": "library_28:1",
+    "150": "library_28:2",
+    "151": "library_28:3",
+    "152": "library_28:4",
+    "153": "library_28:5",
+    "154": "library_28:6",
+    "155": "library_25:1",
+    "156": "library_25:2",
+    "157": "library_25:3",
+    "158": "library_25:4",
+    "159": "library_25:5",
+    "160": "library_25:6",
+    "161": "library_25:9",
+    "162": "library_25:7",
+    "163": "library_25:8",
+    "164": "game_19:1",
+    "165": "game_19:2",
+    "166": "game_19:3",
+    "167": "game_19:4",
+    "168": "game_19:5",
+    "169": "game_19:6",
+    "170": "game_19:8",
+    "171": "game_19:26",
+    "172": "game_19:7",
+    "173": "game_19:9",
+    "174": "game_19:10",
+    "175": "game_19:11",
+    "176": "game_19:12",
+    "177": "game_19:13",
+    "178": "game_19:14",
+    "179": "game_19:15",
+    "180": "game_19:16",
+    "181": "game_19:17",
+    "182": "game_19:18",
+    "183": "game_19:19",
+    "184": "game_19:20",
+    "185": "game_19:21",
+    "186": "game_19:22",
+    "187": "game_19:23",
+    "188": "game_19:24",
+    "189": "game_19:25",
+    "190": "game_20:1",
+    "191": "game_20:2",
+    "192": "game_20:3",
+    "193": "game_20:4",
+    "194": "game_20:5",
+    "195": "game_20:6",
+    "196": "game_20:7",
+    "197": "game_20:8",
+    "198": "game_20:9",
+    "199": "game_20:10",
+    "200": "game_20:11",
+    "201": "game_20:12",
+    "202": "game_20:13",
+    "203": "game_20:14",
+    "204": "game_20:15",
+    "205": "game_20:32",
+    "206": "game_20:16",
+    "207": "game_20:17",
+    "208": "game_20:18",
+    "209": "game_20:19",
+    "210": "game_20:20",
+    "211": "game_20:21",
+    "212": "game_20:22",
+    "213": "game_20:23",
+    "214": "game_20:24",
+    "215": "game_20:25",
+    "216": "game_20:26",
+    "217": "game_20:27",
+    "218": "game_20:28",
+    "219": "game_20:29",
+    "220": "game_20:30",
+    "221": "game_20:31",
+    "223": "game_21:2",
+    "224": "game_21:3",
+    "225": "game_21:4",
+    "226": "game_21:5",
+    "227": "game_21:6",
+    "228": "game_21:7",
+    "229": "game_21:8",
+    "230": "game_21:10",
+    "231": "game_21:11",
+    "232": "game_21:13",
+    "233": "game_21:14",
+    "234": "game_21:15",
+    "235": "game_21:16",
+    "236": "game_21:17",
+    "237": "game_21:18",
+    "238": "game_21:19",
+    "239": "game_21:20",
+    "240": "game_21:21",
+    "241": "game_21:22",
+    "242": "game_21:23",
+    "243": "game_21:24",
+    "244": "game_21:25",
+    "245": "game_21:32",
+    "246": "game_21:33",
+    "247": "game_21:34",
+    "248": "game_21:35",
+    "249": "game_21:41",
+    "250": "game_21:37"
+  },
+  "compiled_frames": {
+    "1": {
+      "entry_offset": 36218,
+      "exit_offset": 36218,
+      "local_bytes": 1254,
+      "parameter_bytes": 4,
+      "lexical_level": 0
+    },
+    "13": {
+      "entry_offset": 0,
+      "exit_offset": 36,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "14": {
+      "entry_offset": 102,
+      "exit_offset": 209,
+      "local_bytes": 32,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "15": {
+      "entry_offset": 48,
+      "exit_offset": 90,
+      "local_bytes": 0,
+      "parameter_bytes": 14,
+      "lexical_level": 2
+    },
+    "16": {
+      "entry_offset": 222,
+      "exit_offset": 247,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "17": {
+      "entry_offset": 260,
+      "exit_offset": 276,
+      "local_bytes": 0,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "18": {
+      "entry_offset": 288,
+      "exit_offset": 307,
+      "local_bytes": 8,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "19": {
+      "entry_offset": 320,
+      "exit_offset": 344,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "20": {
+      "entry_offset": 356,
+      "exit_offset": 373,
+      "local_bytes": 2,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "21": {
+      "entry_offset": 386,
+      "exit_offset": 400,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "22": {
+      "entry_offset": 412,
+      "exit_offset": 431,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "23": {
+      "entry_offset": 444,
+      "exit_offset": 452,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "24": {
+      "entry_offset": 464,
+      "exit_offset": 477,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "25": {
+      "entry_offset": 490,
+      "exit_offset": 508,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 1
+    },
+    "26": {
+      "entry_offset": 520,
+      "exit_offset": 540,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "27": {
+      "entry_offset": 552,
+      "exit_offset": 578,
+      "local_bytes": 0,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "28": {
+      "entry_offset": 590,
+      "exit_offset": 627,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "29": {
+      "entry_offset": 640,
+      "exit_offset": 760,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "30": {
+      "entry_offset": 772,
+      "exit_offset": 808,
+      "local_bytes": 2,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "31": {
+      "entry_offset": 820,
+      "exit_offset": 890,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "32": {
+      "entry_offset": 902,
+      "exit_offset": 972,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "33": {
+      "entry_offset": 1022,
+      "exit_offset": 1104,
+      "local_bytes": 8,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "34": {
+      "entry_offset": 984,
+      "exit_offset": 1010,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "35": {
+      "entry_offset": 1116,
+      "exit_offset": 1152,
+      "local_bytes": 86,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "36": {
+      "entry_offset": 1166,
+      "exit_offset": 1202,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "37": {
+      "entry_offset": 1214,
+      "exit_offset": 1232,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "38": {
+      "entry_offset": 1244,
+      "exit_offset": 1263,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "39": {
+      "entry_offset": 1276,
+      "exit_offset": 1294,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "40": {
+      "entry_offset": 1306,
+      "exit_offset": 1343,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "41": {
+      "entry_offset": 1356,
+      "exit_offset": 1581,
+      "local_bytes": 120,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "42": {
+      "entry_offset": 1604,
+      "exit_offset": 1698,
+      "local_bytes": 24,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "43": {
+      "entry_offset": 1712,
+      "exit_offset": 1771,
+      "local_bytes": 36,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "47": {
+      "entry_offset": 1786,
+      "exit_offset": 1822,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "48": {
+      "entry_offset": 1834,
+      "exit_offset": 1873,
+      "local_bytes": 2,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "49": {
+      "entry_offset": 1886,
+      "exit_offset": 1886,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "50": {
+      "entry_offset": 1898,
+      "exit_offset": 1950,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "51": {
+      "entry_offset": 1962,
+      "exit_offset": 2014,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "52": {
+      "entry_offset": 2026,
+      "exit_offset": 2065,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "53": {
+      "entry_offset": 2078,
+      "exit_offset": 2128,
+      "local_bytes": 2,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "54": {
+      "entry_offset": 2140,
+      "exit_offset": 2210,
+      "local_bytes": 10,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "55": {
+      "entry_offset": 2224,
+      "exit_offset": 2351,
+      "local_bytes": 8,
+      "parameter_bytes": 10,
+      "lexical_level": 1
+    },
+    "56": {
+      "entry_offset": 2364,
+      "exit_offset": 2463,
+      "local_bytes": 8,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "57": {
+      "entry_offset": 2478,
+      "exit_offset": 2501,
+      "local_bytes": 16,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "58": {
+      "entry_offset": 2514,
+      "exit_offset": 2577,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "59": {
+      "entry_offset": 2722,
+      "exit_offset": 2867,
+      "local_bytes": 16,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "60": {
+      "entry_offset": 2590,
+      "exit_offset": 2707,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "61": {
+      "entry_offset": 2880,
+      "exit_offset": 2932,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "62": {
+      "entry_offset": 2944,
+      "exit_offset": 2971,
+      "local_bytes": 2,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "63": {
+      "entry_offset": 2984,
+      "exit_offset": 3418,
+      "local_bytes": 16,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "64": {
+      "entry_offset": 3434,
+      "exit_offset": 3482,
+      "local_bytes": 2,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "65": {
+      "entry_offset": 3494,
+      "exit_offset": 3592,
+      "local_bytes": 4,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "66": {
+      "entry_offset": 3630,
+      "exit_offset": 3680,
+      "local_bytes": 4,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "67": {
+      "entry_offset": 3604,
+      "exit_offset": 3618,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "68": {
+      "entry_offset": 3862,
+      "exit_offset": 4138,
+      "local_bytes": 16,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "69": {
+      "entry_offset": 3692,
+      "exit_offset": 3849,
+      "local_bytes": 12,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "70": {
+      "entry_offset": 4156,
+      "exit_offset": 4232,
+      "local_bytes": 42,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "72": {
+      "entry_offset": 4246,
+      "exit_offset": 4309,
+      "local_bytes": 10,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "73": {
+      "entry_offset": 4322,
+      "exit_offset": 4613,
+      "local_bytes": 20,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "74": {
+      "entry_offset": 4632,
+      "exit_offset": 4687,
+      "local_bytes": 6,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "75": {
+      "entry_offset": 4700,
+      "exit_offset": 4721,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 1
+    },
+    "76": {
+      "entry_offset": 5002,
+      "exit_offset": 5483,
+      "local_bytes": 30,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "77": {
+      "entry_offset": 4734,
+      "exit_offset": 4860,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "78": {
+      "entry_offset": 4874,
+      "exit_offset": 4990,
+      "local_bytes": 12,
+      "parameter_bytes": 16,
+      "lexical_level": 2
+    },
+    "80": {
+      "entry_offset": 5500,
+      "exit_offset": 6394,
+      "local_bytes": 28,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "81": {
+      "entry_offset": 6416,
+      "exit_offset": 7427,
+      "local_bytes": 20,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "82": {
+      "entry_offset": 7454,
+      "exit_offset": 7515,
+      "local_bytes": 2,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "83": {
+      "entry_offset": 10230,
+      "exit_offset": 10395,
+      "local_bytes": 118,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "84": {
+      "entry_offset": 7528,
+      "exit_offset": 7635,
+      "local_bytes": 6,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "85": {
+      "entry_offset": 7648,
+      "exit_offset": 7679,
+      "local_bytes": 8,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "86": {
+      "entry_offset": 7692,
+      "exit_offset": 7754,
+      "local_bytes": 26,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "87": {
+      "entry_offset": 7766,
+      "exit_offset": 7954,
+      "local_bytes": 28,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "88": {
+      "entry_offset": 7970,
+      "exit_offset": 8219,
+      "local_bytes": 2,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "89": {
+      "entry_offset": 8236,
+      "exit_offset": 8270,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "90": {
+      "entry_offset": 8282,
+      "exit_offset": 8354,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "91": {
+      "entry_offset": 8406,
+      "exit_offset": 8482,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "92": {
+      "entry_offset": 8366,
+      "exit_offset": 8394,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 3
+    },
+    "93": {
+      "entry_offset": 8496,
+      "exit_offset": 8757,
+      "local_bytes": 14,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "94": {
+      "entry_offset": 8772,
+      "exit_offset": 8821,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "95": {
+      "entry_offset": 8834,
+      "exit_offset": 8876,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "96": {
+      "entry_offset": 8888,
+      "exit_offset": 8981,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "97": {
+      "entry_offset": 8994,
+      "exit_offset": 9166,
+      "local_bytes": 32,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "98": {
+      "entry_offset": 9180,
+      "exit_offset": 9437,
+      "local_bytes": 8,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "99": {
+      "entry_offset": 9450,
+      "exit_offset": 9808,
+      "local_bytes": 20,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "100": {
+      "entry_offset": 9824,
+      "exit_offset": 10209,
+      "local_bytes": 22,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "103": {
+      "entry_offset": 16306,
+      "exit_offset": 16368,
+      "local_bytes": 298,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "104": {
+      "entry_offset": 10410,
+      "exit_offset": 10441,
+      "local_bytes": 8,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "105": {
+      "entry_offset": 10454,
+      "exit_offset": 10467,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "106": {
+      "entry_offset": 10480,
+      "exit_offset": 10507,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "107": {
+      "entry_offset": 10520,
+      "exit_offset": 10638,
+      "local_bytes": 10,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "108": {
+      "entry_offset": 10702,
+      "exit_offset": 10831,
+      "local_bytes": 4,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "109": {
+      "entry_offset": 10654,
+      "exit_offset": 10690,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 3
+    },
+    "110": {
+      "entry_offset": 10846,
+      "exit_offset": 11195,
+      "local_bytes": 14,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "111": {
+      "entry_offset": 11214,
+      "exit_offset": 11347,
+      "local_bytes": 10,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "112": {
+      "entry_offset": 11362,
+      "exit_offset": 11449,
+      "local_bytes": 8,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "113": {
+      "entry_offset": 11462,
+      "exit_offset": 11568,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "114": {
+      "entry_offset": 11580,
+      "exit_offset": 12268,
+      "local_bytes": 18,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "115": {
+      "entry_offset": 12286,
+      "exit_offset": 12683,
+      "local_bytes": 14,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "116": {
+      "entry_offset": 12698,
+      "exit_offset": 13103,
+      "local_bytes": 6,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "117": {
+      "entry_offset": 13118,
+      "exit_offset": 13202,
+      "local_bytes": 8,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "118": {
+      "entry_offset": 13280,
+      "exit_offset": 13613,
+      "local_bytes": 20,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "119": {
+      "entry_offset": 13214,
+      "exit_offset": 13267,
+      "local_bytes": 4,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "120": {
+      "entry_offset": 13626,
+      "exit_offset": 13746,
+      "local_bytes": 6,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "121": {
+      "entry_offset": 13760,
+      "exit_offset": 13899,
+      "local_bytes": 16,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "122": {
+      "entry_offset": 13914,
+      "exit_offset": 14057,
+      "local_bytes": 8,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "123": {
+      "entry_offset": 14070,
+      "exit_offset": 14465,
+      "local_bytes": 12,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "124": {
+      "entry_offset": 14482,
+      "exit_offset": 14671,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "125": {
+      "entry_offset": 14684,
+      "exit_offset": 14868,
+      "local_bytes": 8,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "126": {
+      "entry_offset": 14880,
+      "exit_offset": 14956,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "127": {
+      "entry_offset": 14968,
+      "exit_offset": 15425,
+      "local_bytes": 18,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "128": {
+      "entry_offset": 15440,
+      "exit_offset": 15800,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "129": {
+      "entry_offset": 15814,
+      "exit_offset": 16083,
+      "local_bytes": 10,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "130": {
+      "entry_offset": 16100,
+      "exit_offset": 16292,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "131": {
+      "entry_offset": 19792,
+      "exit_offset": 19842,
+      "local_bytes": 196,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "132": {
+      "entry_offset": 16382,
+      "exit_offset": 16395,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "133": {
+      "entry_offset": 16408,
+      "exit_offset": 16435,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "134": {
+      "entry_offset": 16448,
+      "exit_offset": 16512,
+      "local_bytes": 4,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "135": {
+      "entry_offset": 16526,
+      "exit_offset": 16574,
+      "local_bytes": 2,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "136": {
+      "entry_offset": 16586,
+      "exit_offset": 16659,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "137": {
+      "entry_offset": 16674,
+      "exit_offset": 16797,
+      "local_bytes": 6,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "138": {
+      "entry_offset": 16812,
+      "exit_offset": 16874,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "139": {
+      "entry_offset": 16888,
+      "exit_offset": 17307,
+      "local_bytes": 10,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "140": {
+      "entry_offset": 17326,
+      "exit_offset": 17363,
+      "local_bytes": 0,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "141": {
+      "entry_offset": 17376,
+      "exit_offset": 17510,
+      "local_bytes": 14,
+      "parameter_bytes": 14,
+      "lexical_level": 2
+    },
+    "142": {
+      "entry_offset": 17524,
+      "exit_offset": 17849,
+      "local_bytes": 14,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "143": {
+      "entry_offset": 17864,
+      "exit_offset": 18101,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "144": {
+      "entry_offset": 18114,
+      "exit_offset": 18336,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "145": {
+      "entry_offset": 18350,
+      "exit_offset": 18536,
+      "local_bytes": 2,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "146": {
+      "entry_offset": 18548,
+      "exit_offset": 19163,
+      "local_bytes": 24,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "147": {
+      "entry_offset": 19182,
+      "exit_offset": 19773,
+      "local_bytes": 12,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "148": {
+      "entry_offset": 19856,
+      "exit_offset": 19905,
+      "local_bytes": 6,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "149": {
+      "entry_offset": 19920,
+      "exit_offset": 19920,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "150": {
+      "entry_offset": 19932,
+      "exit_offset": 20032,
+      "local_bytes": 6,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "151": {
+      "entry_offset": 20044,
+      "exit_offset": 20062,
+      "local_bytes": 8,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "152": {
+      "entry_offset": 20074,
+      "exit_offset": 20098,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "153": {
+      "entry_offset": 20110,
+      "exit_offset": 20166,
+      "local_bytes": 20,
+      "parameter_bytes": 4,
+      "lexical_level": 1
+    },
+    "154": {
+      "entry_offset": 20178,
+      "exit_offset": 20214,
+      "local_bytes": 8,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "155": {
+      "entry_offset": 20226,
+      "exit_offset": 20226,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "156": {
+      "entry_offset": 20238,
+      "exit_offset": 20246,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 1
+    },
+    "157": {
+      "entry_offset": 20258,
+      "exit_offset": 20360,
+      "local_bytes": 18,
+      "parameter_bytes": 12,
+      "lexical_level": 1
+    },
+    "158": {
+      "entry_offset": 20372,
+      "exit_offset": 20426,
+      "local_bytes": 2,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "159": {
+      "entry_offset": 20438,
+      "exit_offset": 20473,
+      "local_bytes": 2,
+      "parameter_bytes": 6,
+      "lexical_level": 1
+    },
+    "160": {
+      "entry_offset": 20660,
+      "exit_offset": 20748,
+      "local_bytes": 22,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "161": {
+      "entry_offset": 20486,
+      "exit_offset": 20648,
+      "local_bytes": 2,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "162": {
+      "entry_offset": 20762,
+      "exit_offset": 20904,
+      "local_bytes": 8,
+      "parameter_bytes": 8,
+      "lexical_level": 1
+    },
+    "163": {
+      "entry_offset": 20918,
+      "exit_offset": 21104,
+      "local_bytes": 20,
+      "parameter_bytes": 10,
+      "lexical_level": 1
+    },
+    "164": {
+      "entry_offset": 26010,
+      "exit_offset": 26091,
+      "local_bytes": 56,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "165": {
+      "entry_offset": 21122,
+      "exit_offset": 21168,
+      "local_bytes": 16,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "166": {
+      "entry_offset": 21180,
+      "exit_offset": 21304,
+      "local_bytes": 22,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "167": {
+      "entry_offset": 21318,
+      "exit_offset": 21425,
+      "local_bytes": 50,
+      "parameter_bytes": 12,
+      "lexical_level": 2
+    },
+    "168": {
+      "entry_offset": 21438,
+      "exit_offset": 21501,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "169": {
+      "entry_offset": 21514,
+      "exit_offset": 21604,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "170": {
+      "entry_offset": 21616,
+      "exit_offset": 21674,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "171": {
+      "entry_offset": 21686,
+      "exit_offset": 21796,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "172": {
+      "entry_offset": 21808,
+      "exit_offset": 22136,
+      "local_bytes": 18,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "173": {
+      "entry_offset": 22150,
+      "exit_offset": 22441,
+      "local_bytes": 44,
+      "parameter_bytes": 12,
+      "lexical_level": 2
+    },
+    "174": {
+      "entry_offset": 22458,
+      "exit_offset": 22701,
+      "local_bytes": 10,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "175": {
+      "entry_offset": 22716,
+      "exit_offset": 22933,
+      "local_bytes": 12,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "176": {
+      "entry_offset": 23146,
+      "exit_offset": 23645,
+      "local_bytes": 56,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "177": {
+      "entry_offset": 22950,
+      "exit_offset": 23004,
+      "local_bytes": 18,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "178": {
+      "entry_offset": 23016,
+      "exit_offset": 23134,
+      "local_bytes": 4,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "179": {
+      "entry_offset": 23662,
+      "exit_offset": 24065,
+      "local_bytes": 20,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "180": {
+      "entry_offset": 24080,
+      "exit_offset": 24211,
+      "local_bytes": 22,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "181": {
+      "entry_offset": 24224,
+      "exit_offset": 24642,
+      "local_bytes": 40,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "182": {
+      "entry_offset": 24778,
+      "exit_offset": 25225,
+      "local_bytes": 104,
+      "parameter_bytes": 12,
+      "lexical_level": 2
+    },
+    "183": {
+      "entry_offset": 24656,
+      "exit_offset": 24765,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 3
+    },
+    "184": {
+      "entry_offset": 25244,
+      "exit_offset": 25336,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "185": {
+      "entry_offset": 25436,
+      "exit_offset": 25530,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "186": {
+      "entry_offset": 25386,
+      "exit_offset": 25424,
+      "local_bytes": 2,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "187": {
+      "entry_offset": 25348,
+      "exit_offset": 25373,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 4
+    },
+    "188": {
+      "entry_offset": 25542,
+      "exit_offset": 25723,
+      "local_bytes": 10,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "189": {
+      "entry_offset": 25740,
+      "exit_offset": 25996,
+      "local_bytes": 46,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "190": {
+      "entry_offset": 32628,
+      "exit_offset": 32694,
+      "local_bytes": 328,
+      "parameter_bytes": 2,
+      "lexical_level": 1
+    },
+    "191": {
+      "entry_offset": 26104,
+      "exit_offset": 26141,
+      "local_bytes": 6,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "192": {
+      "entry_offset": 26156,
+      "exit_offset": 26257,
+      "local_bytes": 2,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "193": {
+      "entry_offset": 26270,
+      "exit_offset": 26585,
+      "local_bytes": 60,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "194": {
+      "entry_offset": 26704,
+      "exit_offset": 27134,
+      "local_bytes": 12,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "195": {
+      "entry_offset": 26602,
+      "exit_offset": 26689,
+      "local_bytes": 18,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "196": {
+      "entry_offset": 27148,
+      "exit_offset": 27332,
+      "local_bytes": 4,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "197": {
+      "entry_offset": 27344,
+      "exit_offset": 27485,
+      "local_bytes": 22,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "198": {
+      "entry_offset": 27500,
+      "exit_offset": 27618,
+      "local_bytes": 50,
+      "parameter_bytes": 12,
+      "lexical_level": 2
+    },
+    "199": {
+      "entry_offset": 27630,
+      "exit_offset": 27663,
+      "local_bytes": 20,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "200": {
+      "entry_offset": 27676,
+      "exit_offset": 27768,
+      "local_bytes": 2,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "201": {
+      "entry_offset": 27784,
+      "exit_offset": 28071,
+      "local_bytes": 10,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "202": {
+      "entry_offset": 28240,
+      "exit_offset": 28644,
+      "local_bytes": 22,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "203": {
+      "entry_offset": 28090,
+      "exit_offset": 28118,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 3
+    },
+    "204": {
+      "entry_offset": 28130,
+      "exit_offset": 28226,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "205": {
+      "entry_offset": 28660,
+      "exit_offset": 28722,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "206": {
+      "entry_offset": 28988,
+      "exit_offset": 29252,
+      "local_bytes": 18,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "207": {
+      "entry_offset": 28772,
+      "exit_offset": 28810,
+      "local_bytes": 2,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "208": {
+      "entry_offset": 28734,
+      "exit_offset": 28759,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 4
+    },
+    "209": {
+      "entry_offset": 28822,
+      "exit_offset": 28972,
+      "local_bytes": 8,
+      "parameter_bytes": 2,
+      "lexical_level": 3
+    },
+    "210": {
+      "entry_offset": 29264,
+      "exit_offset": 29353,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "211": {
+      "entry_offset": 29456,
+      "exit_offset": 29960,
+      "local_bytes": 60,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "212": {
+      "entry_offset": 29366,
+      "exit_offset": 29441,
+      "local_bytes": 4,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "213": {
+      "entry_offset": 29980,
+      "exit_offset": 30743,
+      "local_bytes": 26,
+      "parameter_bytes": 12,
+      "lexical_level": 2
+    },
+    "214": {
+      "entry_offset": 30762,
+      "exit_offset": 31278,
+      "local_bytes": 16,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "215": {
+      "entry_offset": 31290,
+      "exit_offset": 31449,
+      "local_bytes": 34,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "216": {
+      "entry_offset": 31464,
+      "exit_offset": 31547,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "217": {
+      "entry_offset": 31560,
+      "exit_offset": 31783,
+      "local_bytes": 42,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "218": {
+      "entry_offset": 32446,
+      "exit_offset": 32612,
+      "local_bytes": 20,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "219": {
+      "entry_offset": 31800,
+      "exit_offset": 31908,
+      "local_bytes": 6,
+      "parameter_bytes": 0,
+      "lexical_level": 3
+    },
+    "220": {
+      "entry_offset": 31922,
+      "exit_offset": 32169,
+      "local_bytes": 24,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "221": {
+      "entry_offset": 32184,
+      "exit_offset": 32434,
+      "local_bytes": 68,
+      "parameter_bytes": 0,
+      "lexical_level": 3
+    },
+    "222": {
+      "entry_offset": 36206,
+      "exit_offset": 36206,
+      "local_bytes": 114,
+      "parameter_bytes": 16,
+      "lexical_level": 1
+    },
+    "223": {
+      "entry_offset": 32706,
+      "exit_offset": 32725,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "224": {
+      "entry_offset": 32778,
+      "exit_offset": 32816,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "225": {
+      "entry_offset": 32738,
+      "exit_offset": 32766,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "226": {
+      "entry_offset": 32828,
+      "exit_offset": 32856,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "227": {
+      "entry_offset": 32868,
+      "exit_offset": 33090,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "228": {
+      "entry_offset": 33102,
+      "exit_offset": 33263,
+      "local_bytes": 20,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "229": {
+      "entry_offset": 33276,
+      "exit_offset": 33312,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "230": {
+      "entry_offset": 33324,
+      "exit_offset": 33337,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "231": {
+      "entry_offset": 33350,
+      "exit_offset": 33499,
+      "local_bytes": 2,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "232": {
+      "entry_offset": 33512,
+      "exit_offset": 33569,
+      "local_bytes": 12,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    },
+    "233": {
+      "entry_offset": 33582,
+      "exit_offset": 33593,
+      "local_bytes": 0,
+      "parameter_bytes": 10,
+      "lexical_level": 2
+    },
+    "234": {
+      "entry_offset": 33606,
+      "exit_offset": 33758,
+      "local_bytes": 14,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "235": {
+      "entry_offset": 33770,
+      "exit_offset": 33863,
+      "local_bytes": 8,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "236": {
+      "entry_offset": 33876,
+      "exit_offset": 33964,
+      "local_bytes": 0,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "237": {
+      "entry_offset": 33976,
+      "exit_offset": 34310,
+      "local_bytes": 18,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "238": {
+      "entry_offset": 34378,
+      "exit_offset": 34615,
+      "local_bytes": 28,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "239": {
+      "entry_offset": 34324,
+      "exit_offset": 34366,
+      "local_bytes": 4,
+      "parameter_bytes": 10,
+      "lexical_level": 3
+    },
+    "240": {
+      "entry_offset": 34632,
+      "exit_offset": 34864,
+      "local_bytes": 12,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "241": {
+      "entry_offset": 34876,
+      "exit_offset": 34928,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 2
+    },
+    "242": {
+      "entry_offset": 34964,
+      "exit_offset": 35075,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "243": {
+      "entry_offset": 34940,
+      "exit_offset": 34952,
+      "local_bytes": 0,
+      "parameter_bytes": 6,
+      "lexical_level": 3
+    },
+    "244": {
+      "entry_offset": 35088,
+      "exit_offset": 35556,
+      "local_bytes": 8,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "245": {
+      "entry_offset": 35576,
+      "exit_offset": 35745,
+      "local_bytes": 4,
+      "parameter_bytes": 8,
+      "lexical_level": 2
+    },
+    "246": {
+      "entry_offset": 35858,
+      "exit_offset": 35994,
+      "local_bytes": 12,
+      "parameter_bytes": 2,
+      "lexical_level": 2
+    },
+    "247": {
+      "entry_offset": 35766,
+      "exit_offset": 35792,
+      "local_bytes": 0,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "248": {
+      "entry_offset": 35804,
+      "exit_offset": 35846,
+      "local_bytes": 4,
+      "parameter_bytes": 4,
+      "lexical_level": 3
+    },
+    "249": {
+      "entry_offset": 36008,
+      "exit_offset": 36063,
+      "local_bytes": 0,
+      "parameter_bytes": 0,
+      "lexical_level": 2
+    },
+    "250": {
+      "entry_offset": 36076,
+      "exit_offset": 36191,
+      "local_bytes": 8,
+      "parameter_bytes": 6,
+      "lexical_level": 2
+    }
+  },
+  "checks": {
+    "original_game18_assembly_matches_manifest": true,
+    "compiler_acceptance": "passed with expected game20:31 string-capacity warning: string[24] passed to text15; original callee SAS15 check retained",
+    "compiled_frames": "all 230 parameter sizes and lexical levels compared with original metadata; expected local sizes recorded separately",
+    "original_pilot_instruction_bytes": "checked",
+    "compiled_pilot_instruction_bytes": "checked; pure Boolean short-circuit transformation reviewed",
+    "efj_nfj": "disabled; absent from disassembly",
+    "packed_fields": "reviewed entry word6 high byte, word7 flags/high byte, word8 low/high bytes, word9 low byte, slot95 nibble rows, slot98 Boolean flags, external flag57/65 and byte offsets548/550; external word45 bits12/13 overlay verified at fixture global47; external word45 nibble offsets0/4/8 and word37 width6/offset9 checked",
+    "whole_procedure_byte_equality": "not achieved or claimed",
+    "runtime_execution": "not performed",
+    "native_implementation": "external declaration only; original native body remains authoritative",
+    "original_library22_assembly_matches_manifest": true,
+    "exact_body_bytes": "library_22:58 (44 bytes), :34 (26), :35 (16), :37 (22), :53 (38); excludes attributes and dictionaries; library_27:1 (2-byte return-only body); library_24:14 (23 bytes); game_21:22 (54 bytes)",
+    "effectful_calls": "game_18:9 retains both collision calls; game_18:13 calls collision even on failed placement; checked straight-line byte windows",
+    "nested_access": "library_22:58 writes original parent slots 5..12; game_18:7 reads parent 1/grandparent 132",
+    "exit": "game_18:10,13,14 and library_22:27,51,52 CSP EXIT target their own fixture procedures in segment1",
+    "movement_branch": "game_18:12 branches on bit zero of the random result, matching interpreter FJP at D2A0",
+    "fill": "game_18:14 retains CSP 10 with parent slot5 address, zero offset, 180-byte count, and zero fill byte",
+    "setup_storage": "table at 16384 has 16-word stride; nested helper copies two words; address overlays load pointer words; game18 parent remains298 bytes; DATASEG29 stand-in760 bytes, DATASEG31 adds152 bytes",
+    "byte_copy": "library_22:63 uses forward CSP 2 for both 2048-byte directions, preserving aliasing",
+    "unit_io": "library_22:53 exact body matches original including both CSP 5/6 calls; no extra I/O checks",
+    "grid_init": "game_18:18 fills six bytes with low byte of external word293 and uses low-bit branch to round odd edges upward",
+    "setup_dispatch": "game_18:20 reads four blocks into 6144, uses lower clamp8 rather than library51 lower clamp7, and preserves flag139 precedence over136",
+    "parent_restore": "game_18:21/22 copy parent slots5..150 (292 bytes) in opposite directions with forward CSP2; address-return calls use slots151 and5",
+    "input_calls": "game_18:21 retains native2 selectors4,0,5,1 in order, including discarded results; library61 native5 destination is two adjacent local words",
+    "bounds_input": "library42 copies bounds before stores; nested62 writes then rereads VAR flag; input61 preserves both sequential output stores",
+    "original_game8_assembly_matches_manifest": true,
+    "strings": "library10/48 SAS80 before calls; formatter48 local layout120 bytes including 20-byte run buffer at slot49; game8:6 MOV4 before SAS15; concat/copy behavior checked against system_core procedures23/25 and interpreter SAS",
+    "game8_condition": "parent118 bytes, four bounds at slots46..61, explicit ordered two-pass drawing and final MOV4 restore",
+    "numeric_text": "library38 retains signed NGI/MODI/DVI and digit-prepend order; library39 retains padding loop and SAS15 capacity",
+    "original_library27_assembly_matches_manifest": true,
+    "library27_storage": "DATASEG31 word17,28 entries of two words; packed offsets second0/first8/code16/spare24; store order and spare preservation checked; pointer word1 used as existing caption-table address",
+    "library27_selection": "VAR store/reread order preserved, entry pointer captured, both distance calls retained, nested random update reads byte before native3",
+    "library27_setup": "mode first tested by low bit then full equality; original sequence of position calls and table-building calls reviewed; no missing library27 bodies",
+    "clock": "packed6/8/14-bit fields preserve spare bits; two-word value copies; comparison accepts equality; three EXITs retargeted; nested60 retains parent2/3/6; hour loop compares modulo24 hour fields only",
+    "game8_setup_restore": "save/restore bounds and slots21/20, low-bit rounding of parent arg2, item-selection call and drawing swaps retained",
+    "original_library24_assembly_matches_manifest": true,
+    "library24_storage": "28-byte record byte accesses, two stock entries at word234 with 5-bit field and untouched remainder, string15 labels at word238; distinct bounds words311/315/319 verified at compiled globals313/317/321",
+    "library24_calls": "bounds copied before effects; nested16 and17 retain parent slot15 sharing; low-bit phase gate; flag25 captured before unconditional timestamp check; VAR input read before random3",
+    "library24_movement": "phase and nibble thresholds captured before random; six-word arrival copies preserve word40/low41; ten-word table row captured once; native24:4 four-argument contract reviewed (fixture external79)",
+    "library24_damage": "unconditional random calls retained; duplicate bounds calls retained; group redirect does not recompute base; selected byte replaces work before subtract512; word216 restored",
+    "library24_tick": "save amount before clock update; movement then resource VAR calls; post-call flag40 test; amount store and bounds323 draw follow",
+    "game8_refresh": "two nested redraw calls around four-bar loop; flags one and coordinates two lexical levels up; low-bit parent flag; mode12 cleanup then ancestor EXIT targets recovered parent83",
+    "game8_input": "selection keeps value/VAR alias and unconditional selector1; wait polls selector4; pause hit test precedes enabled flag; both ancestor EXITs target recovered83 and bypass normal cleanup",
+    "game8_displays": "clock copies bounds31:6 to29:327; attributes retain SCOPY(0:25) and paired byte offsets; SAS D94B accepts original character58 as colon; name tables keep6/8/10-word strides",
+    "game8_rest": "stamp copy retained; phase toggles every2 updates; input poll always occurs; two-word NEQ12 comparison matches interpreter byte comparison; money cleared with MOV2; start MOD3 but cycle AND3 retained",
+    "game8_complete": "all18 bodies reviewed; fixture83 includes actual entry/dispatch/cleanup; game18 is now also recovered; no runtime binding or execution claimed",
+    "game18_complete": "all28 bodies reviewed; parent103 retains298 bytes and raw address arguments; selector23 preserves case/defaults and bounds around game8; routine27 captures destination before random and always calls random in availability test; routine28 preserves divisors and low-bit tests",
+    "runtime_segment_operations": "explicit external101/102 model CSP21/22 contracts at E66B/E675; source retains load8/load27 and release27/release8; original game18 EXIT attribute points to release epilogue182D, unlike fixture RNP exit; runtime binding remains unimplemented",
+    "original_game17_assembly_matches_manifest": true,
+    "game17_helpers": "all17 bodies now reviewed; parent131 retains196 bytes and three VAR integer arguments; entry stride5, packed byte/bit offsets and MOV5 retained; equipment scan reads fifth byte before bound; item scan uses strict count comparison",
+    "game17_setup_hits": "70-byte clear and 4-word trail stride; ordered random calls and post-call radius load; hit threshold random precedes distance test, both coordinate absolute-value calls retained; life captured before damage random; self EXIT and case1..9 coordinate selection checked",
+    "game17_save_restore": "child11/12 retain4/2 local bytes and count at2/1; parent99 minus child count address is212 bytes under original allocator, extending16 bytes past parent locals; preserved dynamic expression, forward CSP2 and correct MOV4 directions; no safe truncation or invented initialization",
+    "game17_updates": "input0/1 unconditional with flag48/mode78 snapshots; duplicate input5; two/three movement attempts; low-bit random branch; record removal decrements scan index; delay written through captured entry after hit/compaction; parent calls both updates then cleanup12",
+    "library25": "all9 bodies reviewed; DATASEG30 is342 bytes appended after DATASEG31 in fixture;21 five-word records with8/1/4/3-bit tag,8 captions; saturating counts, spare preservation, nested9 parent slots6..9, aliased output order, busy loop and flash parity retained",
+    "library28": "all6 bodies reviewed; two-word value copies before effects, MOD1000/sign handling and two ordered normalization branches retained; strict lexicographic comparison; return-only entry is evidenced original body",
+    "game19_helpers": "2/3/4/5/6/8/26 reviewed; recovered parent164 retains56-byte scope; same parent29 address supplied for both library25 input outputs; two-word amount transfers and6/8/10-word table strides checked; unlisted name selector leaves output unchanged",
+    "library22_36": "odd-number accumulation and native shift retained with original16-bit arithmetic; no overflow repair or floating-point substitution",
+    "game19_transport": "7/9/10/11/12/13/14/15 reviewed; six-word copy before packed writes; stored truncated indices used for table lookup; distance wrap and16-bit squares retained; nested slots8..28; both input calls execute on timeout iteration; two self EXIT targets; amount selection commits even on cancel; zero page selection can exit",
+    "game19_bank": "16/17 reviewed; bank row captured at entry for final store; transfer row captured after amount picker; heading append capacity9 rejects whole overlong name; bank withdrawal and transfer buttons share funds gate",
+    "game19_depot": "18..25 reviewed with three lexical levels of helpers; copied string slots remapped consistently; unconditional cost comparison and both input polling sites; byte subtraction uppercase; original threshold/division order; two stock entries retain ordered category/origin/kind writes and untouched second word",
+    "game19_complete": "all26 bodies reviewed; parent load25/load28 then setup and three-way dispatch; normal cleanup52 then release28/release25; original exit attribute targets release epilogue13FB while fixture exit is RNP; runtime binding and execution unverified",
+    "original_game20_assembly_matches_manifest": true,
+    "game20_storage": "recovered parent190 retains328-byte scope; slots18..21 pointer words,22/29/38/45 seven-word levels with padding,52 four two-word items,160/162/164 distinct amounts; eight-word warehouse and32/28/54-byte transfers retain original directions and extents; caption bytes60..143 and eight two-word offers144..159 added",
+    "game20_phase": "full14-byte nonzero SCAN retained; phase9 exits before phase-byte updates; phase table54-byte copy and5-bit indices; bonus precedes later cash snapshot; no repair to surprising original ordering",
+    "game20_setup": "fixed5120/22528/23552 buffers and read/write ordering retained; two random sites precede packed value reads; seven-word comparisons include padding; nested6 copies target and uses parent3; bank row captured through amount addition and zeroing",
+    "game20_warehouse": "2..15 and32 reviewed; both wait-input calls retained; timer update before menu polling; aliased flash outputs; two-word moves and4-byte clear; nested14 reads parent6/7; selected pod caption updated even after failed store; all32 game20 bodies now reviewed",
+    "game20_prices": "16..20 reviewed; copied item, raw name byte15, ordered scale/ceiling operations, 32767 division threshold and both integer division orders; ancestor slots9/10 searches; unconditional random decrement outside contract mode",
+    "game20_offers": "21/22 reviewed; eight two-word offers and168-byte caption ring; all7 level words copied including padding; tries persists across outer iterations, unchecked kind0 lookup retained: SunDog IXP5,3 uses magnitude remainder1 for index-1 and reads bits3..5 of first word; availability captured before random even on exhausted/contract paths; all8 duplicate entries scanned",
+    "game20_trading": "23..27 reviewed; strict cash comparison, caption raw byte14 length, two-word item and amount copies, unused amount copied on entry; charge before storage selection; capacity failure still polls input1, normal failure return distinct from explicit cancel EXIT",
+    "game20_complete": "all32 bodies reviewed; parent190 now actual entry;28..31 preserve nested suffix slot4, scrolling22 bytes/ring168, selected snapshot before unconditional input1, shared flash outputs, early setup EXIT bypasses7; load25/28 and release28/25 retained; original exit attribute targets1A53 release epilogue, fixture RNP binding unimplemented",
+    "original_game21_assembly_matches_manifest": true,
+    "game21_storage": "Compile-only parent222:114 local bytes,16 parameter bytes; eight VAR arguments from startup_disk1 $00F8..$0108. Shared six-word location view retains storage extent. Map55 has24 rows of40 bytes; glyph39/47 are distinct16-byte buffers.",
+    "game21_calls_and_copies": "Reviewed low-bit coordinate tests, single-wrap arithmetic, six-word location value copies/park/restore, clipped EXIT, and post-drawing result load. Both proximity calls execute before combined predicates; nested20 retains parent19 slots5/4; VAR output in16 is reread through arg1.",
+    "game21_transitions": "Reviewed city-row capture, city60 special case, edge priority,16-bit arithmetic/MOD order, packed field writes and map stride; parent19 retains28 local bytes and ABAA/OPOU tables.",
+    "game21_placement": "22 preserves byte-store order and untouched bytes10..15;23 rereads glyph byte and keeps buffers distinct;25 preserves parent15 as both coordinates on one path,49-candidate expanding search, counter/radius update before drawing probe, and low-bit result.",
+    "game21_selection": "32 traverses12 rows of20 cells, masks each byte through native22:32, preserves all16 case arms, and advances y by7.33 retains parent bases5/4, captures chosen before unconditional input1 and rereads chosen afterward.35 native5 fills adjacent words and both drawing calls precede ordered VAR stores.",
+    "game21_payment_update": "37 retains the single base1000 borrow and literal failure caption; both inputs execute after timeout snapshot on every loop iteration.41 retains erase/update/cursor order, then rereads the mode and clears parent38."
+  },
+  "source_components": {
+    "game_18": "build/decompile/game_18/original.bin",
+    "library_22": "build/decompile/game_18/library_22.bin",
+    "game_8": "build/decompile/game_18/game_8.bin",
+    "library_27": "build/decompile/game_18/library_27.bin",
+    "library_24": "build/decompile/game_18/library_24.bin",
+    "game_17": "build/decompile/game_18/game_17.bin",
+    "library_25": "build/decompile/game_18/library_25.bin",
+    "library_28": "build/decompile/game_18/library_28.bin",
+    "game_19": "build/decompile/game_18/game_19.bin",
+    "game_20": "build/decompile/game_18/game_20.bin",
+    "game_21": "build/decompile/game_18/game_21.bin"
+  },
+  "recovered_instructions": {
+    "library_22:11": 19,
+    "library_22:57": 80,
+    "library_22:58": 23,
+    "library_22:12": 14,
+    "library_22:14": 9,
+    "library_22:19": 15,
+    "library_22:34": 18,
+    "library_22:40": 13,
+    "library_22:35": 11,
+    "library_22:41": 14,
+    "library_22:16": 5,
+    "library_22:17": 8,
+    "library_22:18": 18,
+    "library_22:37": 18,
+    "library_22:50": 20,
+    "library_22:63": 21,
+    "library_22:51": 88,
+    "library_22:53": 28,
+    "library_22:52": 48,
+    "library_22:61": 41,
+    "library_22:42": 47,
+    "library_22:62": 24,
+    "library_22:10": 25,
+    "library_22:43": 30,
+    "library_22:44": 14,
+    "library_22:45": 14,
+    "library_22:46": 17,
+    "library_22:47": 24,
+    "library_22:48": 140,
+    "library_22:38": 69,
+    "library_22:39": 35,
+    "game_18:2": 20,
+    "game_18:3": 10,
+    "game_18:4": 18,
+    "game_18:5": 86,
+    "game_18:6": 67,
+    "game_18:7": 26,
+    "game_18:8": 250,
+    "game_18:9": 93,
+    "game_18:10": 62,
+    "game_18:11": 82,
+    "game_18:12": 508,
+    "game_18:13": 290,
+    "game_18:14": 288,
+    "game_18:15": 58,
+    "game_18:16": 186,
+    "game_18:17": 45,
+    "game_18:18": 75,
+    "game_18:19": 109,
+    "game_18:20": 83,
+    "game_18:21": 218,
+    "game_18:22": 122,
+    "game_18:24": 120,
+    "game_18:25": 53,
+    "game_8:2": 75,
+    "game_8:5": 20,
+    "game_8:6": 48,
+    "game_8:7": 95,
+    "library_22:13": 20,
+    "library_22:21": 21,
+    "library_27:1": 1,
+    "library_27:2": 33,
+    "library_27:3": 35,
+    "library_27:4": 29,
+    "library_27:5": 33,
+    "library_27:6": 51,
+    "library_27:7": 97,
+    "library_27:8": 73,
+    "library_27:9": 12,
+    "library_27:10": 44,
+    "library_27:11": 107,
+    "library_27:14": 66,
+    "library_27:12": 34,
+    "library_27:15": 19,
+    "library_27:13": 279,
+    "library_22:26": 47,
+    "library_22:27": 76,
+    "library_22:28": 38,
+    "library_22:59": 13,
+    "library_22:29": 180,
+    "library_22:60": 109,
+    "library_22:49": 47,
+    "game_8:8": 139,
+    "game_8:9": 19,
+    "game_8:18": 46,
+    "library_24:7": 50,
+    "library_24:8": 197,
+    "library_24:11": 42,
+    "library_24:14": 20,
+    "library_24:15": 291,
+    "library_24:16": 72,
+    "library_24:17": 83,
+    "library_24:9": 33,
+    "library_24:12": 539,
+    "library_24:13": 581,
+    "game_8:3": 53,
+    "game_8:4": 12,
+    "game_8:1": 104,
+    "game_8:10": 142,
+    "game_8:11": 28,
+    "game_8:12": 24,
+    "game_8:13": 46,
+    "game_8:14": 90,
+    "game_8:15": 124,
+    "game_8:16": 190,
+    "game_8:17": 248,
+    "game_18:1": 35,
+    "game_18:23": 270,
+    "game_18:26": 223,
+    "game_18:27": 169,
+    "game_18:28": 103,
+    "game_17:2": 10,
+    "game_17:3": 18,
+    "game_17:4": 41,
+    "game_17:5": 38,
+    "game_17:6": 39,
+    "game_17:7": 87,
+    "game_17:8": 43,
+    "game_17:9": 296,
+    "game_17:10": 24,
+    "game_17:13": 86,
+    "game_17:14": 217,
+    "game_17:15": 134,
+    "game_17:1": 30,
+    "game_17:11": 138,
+    "game_17:12": 124,
+    "game_17:16": 393,
+    "game_17:17": 353,
+    "library_22:36": 39,
+    "library_28:1": 1,
+    "library_28:2": 81,
+    "library_28:3": 13,
+    "library_28:4": 19,
+    "library_28:5": 41,
+    "library_28:6": 26,
+    "library_25:1": 1,
+    "library_25:2": 5,
+    "library_25:3": 66,
+    "library_25:4": 37,
+    "library_25:5": 26,
+    "library_25:6": 58,
+    "library_25:9": 115,
+    "library_25:7": 122,
+    "library_25:8": 143,
+    "game_19:2": 24,
+    "game_19:3": 88,
+    "game_19:4": 73,
+    "game_19:5": 32,
+    "game_19:6": 39,
+    "game_19:8": 29,
+    "game_19:26": 67,
+    "game_19:1": 49,
+    "game_19:7": 171,
+    "game_19:9": 194,
+    "game_19:10": 172,
+    "game_19:11": 149,
+    "game_19:12": 223,
+    "game_19:13": 32,
+    "game_19:14": 64,
+    "game_19:15": 223,
+    "game_19:16": 71,
+    "game_19:17": 160,
+    "game_19:18": 203,
+    "game_19:19": 43,
+    "game_19:20": 53,
+    "game_19:21": 51,
+    "game_19:22": 33,
+    "game_19:23": 20,
+    "game_19:24": 114,
+    "game_19:25": 106,
+    "game_20:2": 21,
+    "game_20:3": 52,
+    "game_20:4": 148,
+    "game_20:5": 245,
+    "game_20:6": 63,
+    "game_20:7": 99,
+    "game_20:8": 97,
+    "game_20:9": 81,
+    "game_20:10": 22,
+    "game_20:11": 68,
+    "game_20:12": 178,
+    "game_20:13": 185,
+    "game_20:14": 17,
+    "game_20:15": 56,
+    "game_20:32": 38,
+    "game_20:18": 20,
+    "game_20:17": 33,
+    "game_20:19": 95,
+    "game_20:16": 171,
+    "game_20:20": 56,
+    "game_20:22": 50,
+    "game_20:21": 331,
+    "game_20:23": 378,
+    "game_20:24": 218,
+    "game_20:25": 91,
+    "game_20:26": 33,
+    "game_20:27": 121,
+    "game_20:29": 65,
+    "game_20:30": 131,
+    "game_20:31": 77,
+    "game_20:28": 95,
+    "game_20:1": 50,
+    "game_21:2": 16,
+    "game_21:3": 25,
+    "game_21:4": 21,
+    "game_21:5": 13,
+    "game_21:6": 141,
+    "game_21:7": 115,
+    "game_21:8": 26,
+    "game_21:10": 10,
+    "game_21:11": 120,
+    "game_21:13": 43,
+    "game_21:14": 10,
+    "game_21:15": 101,
+    "game_21:16": 52,
+    "game_21:17": 56,
+    "game_21:18": 233,
+    "game_21:19": 146,
+    "game_21:20": 25,
+    "game_21:21": 142,
+    "game_21:22": 53,
+    "game_21:23": 68,
+    "game_21:24": 7,
+    "game_21:25": 292,
+    "game_21:32": 92,
+    "game_21:33": 99,
+    "game_21:34": 18,
+    "game_21:35": 35,
+    "game_21:41": 31,
+    "game_21:37": 56
+  },
+  "exact_body_matches": [
+    {
+      "original": "library_22:58",
+      "compiled_procedure": 15,
+      "bytes": 44,
+      "sha256": "f8f09a229401d75200426872614280eb5b9d97e99c61305e0f6bf596cefa95b8"
+    },
+    {
+      "original": "library_22:34",
+      "compiled_procedure": 19,
+      "bytes": 26,
+      "sha256": "8638c2a3b681369f190052c4c8116a7e461ebd24a53ca8a5e57f472ca3edd8ec"
+    },
+    {
+      "original": "library_22:35",
+      "compiled_procedure": 21,
+      "bytes": 16,
+      "sha256": "2b548a520df530c9e2150f59bb51147e6acdaad336737e454bd214cd062a4479"
+    },
+    {
+      "original": "library_22:37",
+      "compiled_procedure": 26,
+      "bytes": 22,
+      "sha256": "7137843bb03b0207371f936021345b36f849ae76bd9805f939d8ff01bd42429e"
+    },
+    {
+      "original": "library_22:53",
+      "compiled_procedure": 30,
+      "bytes": 38,
+      "sha256": "318d2ee784a95c4e75b10c9e86a347b8daafc0a981e70f5bdb416d552d04266c"
+    },
+    {
+      "original": "library_27:1",
+      "compiled_procedure": 49,
+      "bytes": 2,
+      "sha256": "b9480a070a71f9fc257c102916d39b0bf259385d3d4ab137e5e0cc46b549c596"
+    },
+    {
+      "original": "library_24:14",
+      "compiled_procedure": 75,
+      "bytes": 23,
+      "sha256": "0a750571a956e50161cc3a90e43ba25ac134899fc2d38362a1df9a5348473fa7"
+    },
+    {
+      "original": "game_21:22",
+      "compiled_procedure": 241,
+      "bytes": 54,
+      "sha256": "922c948dfddb75ad3539e7397edaf8d3fa2cc126eb66f92d11c0a2044fc1bed5"
+    }
+  ]
+}

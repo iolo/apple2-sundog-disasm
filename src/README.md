@@ -1,5 +1,10 @@
 # Reconstructed source
 
+Readable [Pascal source recovery](pascal/README.md) is complete for the planned
+570 p-code procedures and38 native interface contracts. The p-code assembly
+remains the authoritative disk-build input; recovered Pascal does not yet form
+a runnable game.
+
 The source tree contains native 6502 instructions, Pascal p-code instruction
 macros, custom dialogue instructions, and explicitly classified data. The
 [manifest](../reconstruction/manifest.json) maps assembled components into both
