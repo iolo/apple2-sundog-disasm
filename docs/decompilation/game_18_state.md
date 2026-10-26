@@ -7,16 +7,16 @@ reviewed. The assembly remains the disk-build source.
 
 | Procedure | Entry through return | Attributes | Instructions | Pascal |
 | --- | --- | --- | ---: | --- |
-| game 18:21 | `$0EB2..$1057` | `$1066` | 218 | [proc_21.pas](../../src/pascal/game_18/proc_21.pas) |
-| game 18:22 | `$1068..$113C` | `$1148` | 122 | [proc_22.pas](../../src/pascal/game_18/proc_22.pas) |
-| game 18:24 | `$1372..$142C` | `$1436` | 120 | [proc_24.pas](../../src/pascal/game_18/proc_24.pas) |
-| library 22:42 | `$079A..$07F9` | `$0804` | 47 | [proc_42.pas](../../src/pascal/library_22/proc_42.pas) |
-| library 22:61 | `$071A..$0768` | `$0772` | 41 | [proc_61.pas](../../src/pascal/library_22/proc_61.pas) |
-| library 22:62 | `$0774..$078E` | `$0798` | 24 | [proc_62.pas](../../src/pascal/library_22/proc_62.pas) |
+| game 18:21 | `$0EB2..$1057` | `$1066` | 218 | [restore_room_session.pas](../../src/pascal/building_interiors/restore_room_session.pas) |
+| game 18:22 | `$1068..$113C` | `$1148` | 122 | [save_room_session.pas](../../src/pascal/building_interiors/save_room_session.pas) |
+| game 18:24 | `$1372..$142C` | `$1436` | 120 | [probe_counter_neighbor.pas](../../src/pascal/building_interiors/probe_counter_neighbor.pas) |
+| library 22:42 | `$079A..$07F9` | `$0804` | 47 | [initialize_pointer.pas](../../src/pascal/graphics_and_io/initialize_pointer.pas) |
+| library 22:61 | `$071A..$0768` | `$0772` | 41 | [read_pointer_position.pas](../../src/pascal/graphics_and_io/read_pointer_position.pas) |
+| library 22:62 | `$0774..$078E` | `$0798` | 24 | [configure_pointer_axis.pas](../../src/pascal/graphics_and_io/configure_pointer_axis.pas) |
 
 ## Native interfaces
 
-The [native declarations](../../src/pascal/library_22/native_interfaces.pas)
+The [native declarations](../../src/pascal/graphics_and_io/native_interfaces.pas)
 preserve these stack contracts without replacing the native implementations:
 
 - **22:2**, entry `$0C4A`: removes the return address, four reserved result bytes,

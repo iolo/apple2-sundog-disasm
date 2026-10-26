@@ -5,7 +5,7 @@ listings: 15 bodies and 1,370 original instructions. At this checkpoint, coverag
 185 of 570 targeted bodies, covering 16,211 instructions. The remaining17 bodies are now covered by the
 [game20 completion group](game_20_complete.md); runtime execution is untested.
 
-The [source directory](../../src/pascal/game_20/) contains maintained Pascal.
+The [source directory](../../src/pascal/cargo_exchange/) contains maintained Pascal.
 The component hash is
 `f93e6492e63ad109ab1f4484b1fe9e61bc6de7c63b67dc7c69abf976f07aecdf`;
 the [inventory](inventory.json) pins procedure identities, offsets, and revision.

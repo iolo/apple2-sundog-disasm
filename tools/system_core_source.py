@@ -39,10 +39,10 @@ def remaining_source(report):
     remainder['size'] -= 36
     text = source(remainder)
     return ('; SYSTEM.PASCAL core plus separately loaded procedure 38.\n'
-            '; File output excludes the first 36 bytes, owned by system_entry.s.\n'
+            '; File output excludes the first 36 bytes, owned by runtime_entry.s.\n'
             '; Link origin 36 keeps all core offsets unchanged.\n'
             '; Procedure-38 dictionary delta follows captured $F248/$BC72 loads.\n'
-            'L_0022 = $0022 ; procedure-1 attributes, supplied by system_entry.s\n' + text)
+            'L_0022 = $0022 ; procedure-1 attributes, supplied by runtime_entry.s\n' + text)
 
 
 def main():

@@ -20,7 +20,7 @@
   "hole_value_counts": {
     "128": 512
   },
-  "consumer": "src/native/certificate_reveal.s; src/pcode/library_26_body.inc procedure 7",
+  "consumer": "src/native/certificate_reveal.s; src/pcode/title_and_boot_body.inc procedure 7",
   "classification_evidence": "docs/certificate-bitmap.md",
   "preview": "certificate-monochrome.png",
   "preview_note": "Layout only; later variable text, artifact colors, and phase shifts are not simulated.",

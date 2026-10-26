@@ -25,9 +25,9 @@ the colors.
 
 ## Play-side consumer
 
-`src/pcode/startup_7.s` sets segment-29 word 28 to `26+16+10+9=61` at
+`src/pcode/startup_and_save.s` sets segment-29 word 28 to `26+16+10+9=61` at
 `$0142`–`$015B`, and starts the next allocation 15 blocks later at `$0163`.
-Game 21 procedure 26 (`src/pcode/game_21.s`) reads a six-bit city identifier
+Game 21 procedure 26 (`src/pcode/surface_maps.s`) reads a six-bit city identifier
 from segment-29 word 37, starting at bit 9. At `$0EB8`–`$0ED2`, it computes:
 
 ```text
@@ -58,8 +58,8 @@ that every city has been visited live.
 
 ## Demo consumer
 
-`src/pcode/alternate_7.s` sets word 28 to `171+18+2+1=192` at
-`$00C5`–`$00E0`. Alternate 9 procedure 3 (`src/pcode/alternate_9.s`) reads one
+`src/pcode/retained_intro_display.s` sets word 28 to `171+18+2+1=192` at
+`$00C5`–`$00E0`. Alternate 9 procedure 3 (`src/pcode/retained_world_tour.s`) reads one
 block at `$0089`–`$0091` into `$1400`; with the same bias this is disk-1 block
 195. Procedure 2 selects a 128-byte record at `$0013`–`$0017` and uses the
 same x/y bounds and field access at `$003C`–`$004A`. Its runtime variant

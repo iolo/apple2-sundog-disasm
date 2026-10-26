@@ -1,6 +1,6 @@
 # Disk-1 utility p-code
 
-`src/pcode/utility_disk1.s` reconstructs the complete 8,644-byte UTILITY segment
+`src/pcode/save_game_utility.s` reconstructs the complete 8,644-byte UTILITY segment
 from disk 1, code header block 85, segment 1, beginning at logical block 86.
 Its 50 procedures contain 4,073 instructions (6,628 encoding bytes), 1,239
 inline string bytes, 150 branch/case-pointer bytes, 25 alignment bytes, and

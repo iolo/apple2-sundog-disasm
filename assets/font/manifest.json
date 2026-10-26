@@ -26,7 +26,7 @@
       ]
     }
   ],
-  "consumer": "src/pcode/library_22.s, procedures 20 and 9",
+  "consumer": "src/pcode/graphics_and_io.s, procedures 20 and 9",
   "classification_evidence": "docs/shared-font.md",
   "preview": "font.png",
   "preview_note": "Raw glyph masks; does not simulate positioning, draw modes, or artifact color",

@@ -109,7 +109,7 @@ bodies reproduce exact bytes. All38 targeted native contracts are now reviewed.
 Total temporary coverage beyond the338 maintained-fixture bodies is87 target
 bodies (42 game13,23 game12,22 across library26's two variants).
 
-The [startup7 source](../../src/pascal/startup_7/proc_01.pas) completes eight
+The [startup7 source](../../src/pascal/startup_and_save/run_startup_or_save.pas) completes eight
 bodies and778 instructions: disk-side checks, prompts, graphics/buffer setup,
 seed restoration, save/restart selection and completion display. Source comments
 map each body to the assembly. Both input polls, the initial six-block write,
@@ -130,7 +130,7 @@ Native linkage, nonlocal-exit release bindings and runtime behavior remain
 unvalidated. Shared storage views leave both maintained fixture outputs
 unchanged. Temporary coverage beyond the338 maintained bodies is now95.
 
-The [startup caller](../../src/pascal/startup_disk1/proc_01.pas) adds six bodies
+The [startup caller](../../src/pascal/game_dispatch/startup_program_entry.pas) adds six bodies
 and243 instructions. Its576-byte assembly matches both startup_disk1 and
 startup_disk2 manifest identities; the inventory counts this identical code
 once. It preserves the ordered, repeated segment loads/releases, the two
@@ -161,7 +161,7 @@ Temporary checks now cover101 target bodies outside the338 maintained bodies,
 including this explicitly adapted procedure4 check. No runtime execution or
 exact body match is claimed for the startup caller.
 
-The [utility helper group](../../src/pascal/utility_disk1/) adds ten bodies
+The [utility helper group](../../src/pascal/save_game_utility/) adds ten bodies
 (2/4/5/7/41–46),400 instructions and17 retained string occurrences. It covers
 error display, disk-side checks/prompts, delete confirmation/action, reboot,
 status labels and menu selection. The source preserves the256-byte unit read,
@@ -215,7 +215,7 @@ limited to utility files and recovery documentation/inventory. Temporary checks
 now cover117 target bodies outside the338 maintained bodies. Runtime remains
 unvalidated.
 
-The [name-entry scope31](../../src/pascal/utility_disk1/proc_31.pas) adds nine
+The [name-entry scope31](../../src/pascal/save_game_utility/enter_character_name.pas) adds nine
 bodies31–39,565 instructions and13 literal occurrences. Its340-byte frame
 contains30 five-word keyboard entries, saved bounds, the15-character name,
 confirmation and shift flags, and a separate editing count. The source retains
@@ -264,7 +264,7 @@ This supersedes the earlier utility fixture output; temporary coverage is133
 target bodies outside the338 maintained bodies. No shared decoder/storage,
 assembly, disk or runtime implementation changed, and runtime remains untested.
 
-The [complete initialization scope9](../../src/pascal/utility_disk1/proc_09.pas)
+The [complete initialization scope9](../../src/pascal/save_game_utility/create_game_state.pas)
 adds six bodies9/14–18 and575 instructions. It replaces the temporary parent
 scaffold with the actual save-area selection and ordered calls21/17/18.
 Procedure14 rotates18 templates, copies each second seven-word half before the
@@ -291,8 +291,8 @@ This supersedes the earlier utility fixture output; temporary coverage is139
 target bodies outside the338 maintained bodies. Shared storage and maintained
 fixtures are unchanged. Runtime remains unvalidated.
 
-The [attribute-editor scope22](../../src/pascal/utility_disk1/proc_22.pas) and
-[utility program block](../../src/pascal/utility_disk1/proc_01.pas) finish the
+The [attribute-editor scope22](../../src/pascal/save_game_utility/edit_start_attributes.pas) and
+[utility program block](../../src/pascal/save_game_utility/utility_main_loop.pas) finish the
 remaining12 utility bodies22–30/48/50/1, adding992 instructions and22 literal
 occurrences. Scope22 retains its five attribute bars, rounded points bar,
 initial30/30/30/30/0 values and440 points. Editor29 preserves the initially
@@ -329,12 +329,12 @@ assembly are unchanged. Runtime/native/error/segment-release bindings remain
 unvalidated.
 
 System segments1–3 add seven reviewed bodies and516 instructions. The entries
-in [system1](../../src/pascal/system_1/proc_01.pas) and
-[system3](../../src/pascal/system_3/proc_01.pas) call core0:2 with error9 and
+in [system1](../../src/pascal/unbound_program_entry/rt_unbound_entry_failure.pas) and
+[system3](../../src/pascal/empty_program_entry/rt_empty_program_failure.pas) call core0:2 with error9 and
 return with RBP0, but have different parameter metadata. The five
-[system2 bodies](../../src/pascal/system_2/) recover buffered file read/write,
+[system2 bodies](../../src/pascal/buffered_files/) recover buffered file read/write,
 repeated-space decoding, whole-record save/restore and return-only initialization.
-The [file storage views](../../src/pascal/system_types.pas) retain the580-byte
+The [file storage views](../../src/pascal/runtime_file_types.pas) retain the580-byte
 record, directory entry at word16 and512-byte sector at word33.
 
 Review preserves partial copies, dirty-flag clearing before writes, IORESULT
@@ -371,9 +371,9 @@ this shared fixture result does not erase their original metadata difference.
 Temporary coverage is158 target bodies outside the338 maintained bodies.
 Runtime integration and execution remain unvalidated.
 
-System4's [configuration scope3](../../src/pascal/system_4/proc_03.pas) and
+System4's [configuration scope3](../../src/pascal/runtime_initialization/rt_configure_console.pas) and
 helpers2/8/9/10 add eight bodies2–6/8–10,568 instructions and five literals.
-The [storage views](../../src/pascal/system_4/types.pas) distinguish the runtime
+The [storage views](../../src/pascal/runtime_initialization/types.pas) distinguish the runtime
 ancestor frame from the612-byte segment entry frame. Procedure2 preserves its
 fixed-address flag read, SYSTEM.CHARSET load, result store into local43 and both
 close calls;$004D remains a required nonlocal-exit cleanup target.
@@ -407,8 +407,8 @@ Only the address-of extension warning remains. Temporary coverage is166 target
 bodies outside the338 maintained bodies. No existing shared storage, assembly,
 decoder or maintained fixture changed; runtime remains unvalidated.
 
-The [system4 device scan7](../../src/pascal/system_4/proc_07.pas) and
-[entry1](../../src/pascal/system_4/proc_01.pas) complete all ten system4 bodies,
+The [system4 device scan7](../../src/pascal/runtime_initialization/rt_enumerate_devices.pas) and
+[entry1](../../src/pascal/runtime_initialization/rt_initialize_system.pas) complete all ten system4 bodies,
 adding287 instructions and11 nonempty literals. Scan7 preserves the six-word
 unit table, conditional UNITCLEAR/IORESULT/volume-read sequence, low-bit masks,
 and directory lookup's overwrite of the loop index before increment. It reads
@@ -418,7 +418,7 @@ release heap path, initialization order, version/flag reads at fixed addresses,
 all diagnostic calls and both infinite failure loops. Segment6 is released only
 on the normal path or through the original nonlocal-exit epilogue at$0796.
 
-The [explicit IO-check contract](../../src/pascal/system_4/runtime_interfaces.pas)
+The [explicit IO-check contract](../../src/pascal/runtime_initialization/runtime_interfaces.pas)
 binds `rtiochk` to CSP0, vector$D100 -> handler$EEDC. It reads the low error byte
 at$BDDE and transfers to interpreter error dispatch on nonzero, without clearing
 the result. This contract retains the twelve diagnostic checks; it does not
@@ -442,7 +442,7 @@ and the two deliberately constant-false loop conditions. Temporary coverage
 is168 target bodies outside the338 maintained bodies. Existing shared storage,
 assembly and maintained fixtures are unchanged; runtime remains unvalidated.
 
-The [system5 entry and children](../../src/pascal/system_5/proc_01.pas) recover
+The [system5 entry and children](../../src/pascal/program_loader/rt_select_program.pas) recover
 all ten bodies, accounting for 894 instructions. Filename normalization retains
 space removal, the early trailing-dot return, bounded bracket-suffix copying, ASCII
 uppercasing and the original extension-capacity test. Header helpers preserve
@@ -478,7 +478,7 @@ runtime integration and execution remain unvalidated. Temporary compilation
 coverage is 178 target bodies outside the 338 maintained fixture bodies.
 
 System6 procedures1/2/3/7/8/11/12/13 add eight reviewed bodies and 743 original
-instructions. The [name parser11](../../src/pascal/system_6/proc_11.pas) copies
+instructions. The [name parser11](../../src/pascal/file_manager/rt_parse_file_spec.pas) copies
 its input before clearing outputs, removes control/space characters, uppercases
 ASCII, resolves volume prefixes and parses the bracket amount and filename
 extension. It retains partial outputs on failure, accepts `[]` and `[*]`, and
@@ -489,7 +489,7 @@ Directory helpers7/8 retain descending insertion and ascending deletion with
 13-word copies, including the effect of a source aliased into the directory.
 Lookup12 tests the low bit of its class argument against the packed date field.
 Initializer2 preserves file-header write order and the special kinds0/-2.
-[Flush13](../../src/pascal/system_6/proc_13.pas) retains its two conditional
+[Flush13](../../src/pascal/file_manager/rt_flush_file.pas) retains its two conditional
 UNITWRITE sites, buffer padding and flag updates. Its extra-block predicate uses
 the low bit of word13; it has no IORESULT or automatic IO-check. Procedure3
 clears the runtime error word, calls13 and conditionally calls pending core7.
@@ -512,9 +512,9 @@ for one runtime frame. Core7/25/26/27 are still untranslated dependencies.
 Temporary coverage is 186 target bodies outside the 338 maintained fixture
 bodies. Runtime linkage and execution remain unvalidated.
 
-System6's [directory loader9](../../src/pascal/system_6/proc_09.pas),
-[writer10](../../src/pascal/system_6/proc_10.pas), and
-[lookup6](../../src/pascal/system_6/proc_06.pas) add three bodies and 620
+System6's [directory loader9](../../src/pascal/file_manager/rt_read_volume_directory.pas),
+[writer10](../../src/pascal/file_manager/rt_write_directory.pas), and
+[lookup6](../../src/pascal/file_manager/rt_resolve_volume.pas) add three bodies and 620
 instructions. Loader9 preserves the256-word allocation and512-byte read at
 block79, despite the original entry-count limit of77. The directory view does
 not enlarge that allocation. Sanitizing a changed volume deletes invalid
@@ -542,8 +542,8 @@ with system4; ancestor variables remain stand-ins for one runtime frame.
 Temporary coverage is 189 target bodies outside the338 maintained bodies.
 Runtime integration and execution remain unvalidated.
 
-The [open routine4](../../src/pascal/system_6/proc_04.pas), its nested
-allocation helpers14/15, and [close5](../../src/pascal/system_6/proc_05.pas)
+The [open routine4](../../src/pascal/file_manager/rt_open_file.pas), its nested
+allocation helpers14/15, and [close5](../../src/pascal/file_manager/rt_close_file.pas)
 complete system6: four more bodies and969 instructions,2332 in the module.
 Open4 passes the filename by reference until parser11 makes its value copy,
 preserving the early-error and aliasing order. It retains mode normalization,
@@ -577,7 +577,7 @@ stand-ins for one shared runtime frame, and core calls remain untranslated.
 Temporary coverage is193 target bodies outside the338 maintained bodies.
 Runtime integration and execution remain unvalidated.
 
-The [core string bodies23–27](../../src/pascal/system_core/) recover append,
+The [core string bodies23–27](../../src/pascal/runtime_core/) recover append,
 insert, substring, delete and search directly from the listings. Forwarding
 bodies3–6 call the recovered system6 routines without copying pointer arguments;
 10/11 return full file flag words, and9/14/15 are evidenced no-ops. These14
@@ -620,7 +620,7 @@ bodies. Runtime integration and execution remain unvalidated.
 
 Core7/8/16–22/29–31/33–35 add15 bodies and893 original instructions. This
 recovers file-byte input/output, string/line I/O, console editing and control,
-and directory extent extension. The [IO forwards](../../src/pascal/system_core/io_forwards.pas)
+and directory extent extension. The [IO forwards](../../src/pascal/runtime_core/io_forwards.pas)
 express actual mutual recursion with system2/6; all three forward declarations
 are now fulfilled by reviewed Pascal bodies.
 

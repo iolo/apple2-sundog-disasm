@@ -27,7 +27,7 @@ is a format parser, not a classification of every preceding byte as code.
 
 ## Shared library segment 23
 
-`src/pcode/library_23.s` reconstructs all 606 bytes at logical block 116 on both
+`src/pcode/tile_rendering.s` reconstructs all 606 bytes at logical block 116 on both
 disks. Procedure 1 is a p-code return with its metadata. Procedures 2–4 contain
 267 native instructions occupying 482 bytes. All remaining 122 bytes are data:
 60 lookup/mask bytes, two alignment bytes, native relocation/attribute records,

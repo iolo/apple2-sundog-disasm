@@ -7,34 +7,34 @@ instructions: total coverage is 75 of 570 bodies, 5,011 instructions, and 14 of
 
 The source component's SHA-256 is
 `90687f83d0ea2ae33be2e211b686b174fbf7cee15b886cebb52884f4ce687c80`.
-Physical disk mappings are in `src/pcode/library_27.adopt.json`. Assembly revision
+Physical disk mappings are in `src/pcode/item_panels.adopt.json`. Assembly revision
 is `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`. Library-22 identity is recorded in
 the [first group](game_18.md). Findings are static; no emulator was run.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 27:1 | `$0624` | `$062E` | 1 | [proc_01.pas](../../src/pascal/library_27/proc_01.pas) |
-| 27:2 | `$0000..$0037` | `$0042` | 33 | [proc_02.pas](../../src/pascal/library_27/proc_02.pas) |
-| 27:3 | `$0044..$0081` | `$008C` | 35 | [proc_03.pas](../../src/pascal/library_27/proc_03.pas) |
-| 27:4 | `$008E..$00B5` | `$00C0` | 29 | [proc_04.pas](../../src/pascal/library_27/proc_04.pas) |
-| 27:5 | `$00C2..$00F2` | `$00FC` | 33 | [proc_05.pas](../../src/pascal/library_27/proc_05.pas) |
-| 27:6 | `$00FE..$0148` | `$0154` | 51 | [proc_06.pas](../../src/pascal/library_27/proc_06.pas) |
-| 27:7 | `$0156..$01D6` | `$01E0` | 97 | [proc_07.pas](../../src/pascal/library_27/proc_07.pas) |
-| 27:8 | `$01E2..$0241` | `$024E` | 73 | [proc_08.pas](../../src/pascal/library_27/proc_08.pas) |
-| 27:9 | `$0250..$026A` | `$0274` | 12 | [proc_09.pas](../../src/pascal/library_27/proc_09.pas) |
-| 27:10 | `$0276..$02BA` | `$02C4` | 44 | [proc_10.pas](../../src/pascal/library_27/proc_10.pas) |
-| 27:11 | `$0346..$03DB` | `$03E6` | 107 | [proc_11.pas](../../src/pascal/library_27/proc_11.pas) |
-| 27:12 | `$03E8..$041C` | `$0426` | 34 | [proc_12.pas](../../src/pascal/library_27/proc_12.pas) |
-| 27:13 | `$044E..$0614` | `$0622` | 279 | [proc_13.pas](../../src/pascal/library_27/proc_13.pas) |
-| 27:14 | `$02C6..$0338` | `$0344` | 66 | [proc_14.pas](../../src/pascal/library_27/proc_14.pas) |
-| 27:15 | `$0428..$0442` | `$044C` | 19 | [proc_15.pas](../../src/pascal/library_27/proc_15.pas) |
-| 22:13 | `$0196..$01C1` | `$01CC` | 20 | [proc_13.pas](../../src/pascal/library_22/proc_13.pas) |
-| 22:21 | `$0254..$0281` | `$028C` | 21 | [proc_21.pas](../../src/pascal/library_22/proc_21.pas) |
+| 27:1 | `$0624` | `$062E` | 1 | [item_panel_library_entry.pas](../../src/pascal/item_panels/item_panel_library_entry.pas) |
+| 27:2 | `$0000..$0037` | `$0042` | 33 | [read_item_panel_position.pas](../../src/pascal/item_panels/read_item_panel_position.pas) |
+| 27:3 | `$0044..$0081` | `$008C` | 35 | [plot_item_icon.pas](../../src/pascal/item_panels/plot_item_icon.pas) |
+| 27:4 | `$008E..$00B5` | `$00C0` | 29 | [select_item_icon.pas](../../src/pascal/item_panels/select_item_icon.pas) |
+| 27:5 | `$00C2..$00F2` | `$00FC` | 33 | [append_panel_item.pas](../../src/pascal/item_panels/append_panel_item.pas) |
+| 27:6 | `$00FE..$0148` | `$0154` | 51 | [draw_panel_items_after.pas](../../src/pascal/item_panels/draw_panel_items_after.pas) |
+| 27:7 | `$0156..$01D6` | `$01E0` | 97 | [replace_panel_item.pas](../../src/pascal/item_panels/replace_panel_item.pas) |
+| 27:8 | `$01E2..$0241` | `$024E` | 73 | [find_panel_item.pas](../../src/pascal/item_panels/find_panel_item.pas) |
+| 27:9 | `$0250..$026A` | `$0274` | 12 | [write_item_caption.pas](../../src/pascal/item_panels/write_item_caption.pas) |
+| 27:10 | `$0276..$02BA` | `$02C4` | 44 | [show_item_description.pas](../../src/pascal/item_panels/show_item_description.pas) |
+| 27:11 | `$0346..$03DB` | `$03E6` | 107 | [apply_item_action.pas](../../src/pascal/item_panels/apply_item_action.pas) |
+| 27:12 | `$03E8..$041C` | `$0426` | 34 | [draw_empty_item_marker.pas](../../src/pascal/item_panels/draw_empty_item_marker.pas) |
+| 27:13 | `$044E..$0614` | `$0622` | 279 | [setup_item_panel.pas](../../src/pascal/item_panels/setup_item_panel.pas) |
+| 27:14 | `$02C6..$0338` | `$0344` | 66 | [apply_matching_item_effect.pas](../../src/pascal/item_panels/apply_matching_item_effect.pas) |
+| 27:15 | `$0428..$0442` | `$044C` | 19 | [append_inventory_item.pas](../../src/pascal/item_panels/append_inventory_item.pas) |
+| 22:13 | `$0196..$01C1` | `$01CC` | 20 | [set_line_mode.pas](../../src/pascal/graphics_and_io/set_line_mode.pas) |
+| 22:21 | `$0254..$0281` | `$028C` | 21 | [select_drawing_buffer.pas](../../src/pascal/graphics_and_io/select_drawing_buffer.pas) |
 
 ## Storage and interfaces
 
 The existing Pascal inventory records DATASEG31 as a 152-byte allocation.
-The [storage views](../../src/pascal/library_27/types.pas) retain all 76 words,
+The [storage views](../../src/pascal/item_panels/types.pas) retain all 76 words,
 with overlapping bounds at words 2 and 6, and 28 two-word entries starting at
 word 17. Each entry's first word contains second-coordinate offset in bits0..7
 and first-coordinate offset in bits8..15. Its second word contains an item code
@@ -46,7 +46,7 @@ loads that address, and indexes with an eight-word stride. A pointer view of
 new table. Procedure 13 writes the original address 5632 into word 1. The
 fixture does not supply runtime contents at that address.
 
-The [additional native declarations](../../src/pascal/library_22/native_table_interfaces.pas)
+The [additional native declarations](../../src/pascal/graphics_and_io/native_table_interfaces.pas)
 come directly from the native bodies. Procedure 23 at `$0EFE` consumes a value
 and destination address, writes two bytes, and returns no result. Procedures
 32/33 at `$0FE0/$1008` consume two arguments and four reserved result bytes;
@@ -138,8 +138,8 @@ Use the [fixture build commands](game_18.md#validation-and-reproduction), includ
 assembly of this component before the verifier:
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_18/library_27.o src/pcode/library_27.s
-ld65 -C src/pcode/library_27.cfg -o build/decompile/game_18/library_27.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_27.o src/pcode/item_panels.s
+ld65 -C src/pcode/item_panels.cfg -o build/decompile/game_18/library_27.bin \
   build/decompile/game_18/library_27.o
 python3 docs/decompilation/checks/verify_game_18.py
 ```

@@ -1,0 +1,25 @@
+{
+  "name": "alternate_7",
+  "source": "src/pcode/retained_intro_display.s",
+  "config": "src/pcode/retained_intro_display.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 78592,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 78336,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 78080,
+      "size": 252,
+      "input_offset": 512
+    }
+  ]
+}

@@ -18,7 +18,7 @@
       "source_audit": "docs/reference/step06g-pcode-audit.json",
       "sha256": "a83fb45a66c0885c19733ef46f7ef7f76ed25c03ac3677d74be4dbfd6c770a93",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/startup_disk1.s",
+      "source": "src/pcode/game_dispatch.s",
       "items": [
         {
           "offset": 0,
@@ -2900,7 +2900,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "a9edbfd44a46b743108cacc2aa8c003e61048bae372f56d11bda7fc397bee11b",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -3442,7 +3442,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "51a64c50b1dc1e20fd7eab89065fb365d47654e3d6dc2a1a2dd3603f1d5dab6d",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -3792,7 +3792,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "b99ddd20d1aa5c365b00d6921817131736795e1dd81e2c316ac18d511aa16619",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -4274,7 +4274,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "28d6297c188b8b7e073fc567e1ed2b95692fd209ab664c880192af9e9f584e4a",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -4732,7 +4732,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "5640efd469c4b9220248145cdc48dd60fd47a3f006d65cad6cfefa6cad5595ca",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -5202,7 +5202,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "faf8a147362934a2c5c13970771a66b4f4cda08feb811932330a0d8a4a9fd75f",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -6068,7 +6068,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "e2f9ae68855071bfe77c6e6bcacb71e307b25f02934c8259c6d9bfa467665ee3",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -6514,7 +6514,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "a04286d15bd2f52f09ffb5d1b7414c9686ff60405c4900ad1c8eecc9c76e39b6",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -7104,7 +7104,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "7d4b99cf05a1ecf3f9596ff7a2963deee25837686ad43855435a274e8dc34cd1",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -7682,7 +7682,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "a8d5660dfa8c3b222442157a4af29c0b465e50b7bc4bd295e379a9c8d289e316",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -7948,7 +7948,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "1793305a0b510a3c238ef0f1ccc3efc058e2db25c8685eca1dab1862538fd147",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -8874,7 +8874,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "b2f40387566e16c1f65b794795708c49c99371b41dd4769beadff7b88f08d661",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -9824,7 +9824,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "92140a3b723c7be9c21ffbbecd5fb2fae87c1f888e663cc24b0535ee4a1f2586",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -10978,7 +10978,7 @@
       "source_audit": "docs/reference/step06g-pcode-audit.json",
       "sha256": "a83fb45a66c0885c19733ef46f7ef7f76ed25c03ac3677d74be4dbfd6c770a93",
       "evidence": "Exact extended portion of an earlier startup/utility source module; nearby changed utility bytes are excluded. Preserve full source-item boundaries and classification.",
-      "source": "src/pcode/startup_disk1.s",
+      "source": "src/pcode/game_dispatch.s",
       "items": [
         {
           "offset": 0,

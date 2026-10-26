@@ -1,6 +1,6 @@
 # Disk-1 startup p-code
 
-`src/pcode/startup_disk1.s` reconstructs the complete 576-byte segment 1 from
+`src/pcode/game_dispatch.s` reconstructs the complete 576-byte segment 1 from
 disk-1 SYSTEM.STARTUP, starting at logical block 141. The loader capture places
 it at `$B2B4`, with procedure 1 entering at `$B49C` and attributes at `$B4E4`.
 The rebuilt segment matches every byte of that recorded load, before relocation

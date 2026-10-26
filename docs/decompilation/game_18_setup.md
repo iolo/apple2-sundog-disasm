@@ -7,24 +7,24 @@ interface; its implementation remains in assembly.
 
 | Procedure | Entry through return | Attributes | Instructions | Pascal |
 | --- | --- | --- | ---: | --- |
-| game 18:16 | `$0B78..$0CC3` | `$0CCE` | 186 | [proc_16.pas](../../src/pascal/game_18/proc_16.pas) |
-| game 18:17 | `$0B2C..$0B6B` | `$0B76` | 45 | [proc_17.pas](../../src/pascal/game_18/proc_17.pas) |
-| game 18:18 | `$0CD0..$0D50` | `$0D5C` | 75 | [proc_18.pas](../../src/pascal/game_18/proc_18.pas) |
-| game 18:19 | `$0D5E..$0DFE` | `$0E0A` | 109 | [proc_19.pas](../../src/pascal/game_18/proc_19.pas) |
-| game 18:20 | `$0E0C..$0EA5` | `$0EB0` | 83 | [proc_20.pas](../../src/pascal/game_18/proc_20.pas) |
-| library 22:16 | `$00A8..$00B2` | `$00BC` | 5 | [proc_16.pas](../../src/pascal/library_22/proc_16.pas) |
-| library 22:17 | `$01CE..$01DD` | `$01E8` | 8 | [proc_17.pas](../../src/pascal/library_22/proc_17.pas) |
-| library 22:18 | `$01EA..$01FF` | `$020A` | 18 | [proc_18.pas](../../src/pascal/library_22/proc_18.pas) |
-| library 22:37 | `$06DA..$06EE` | `$06F8` | 18 | [proc_37.pas](../../src/pascal/library_22/proc_37.pas) |
-| library 22:50 | `$0A36..$0A55` | `$0A60` | 20 | [proc_50.pas](../../src/pascal/library_22/proc_50.pas) |
-| library 22:51 | `$0A9A..$0B21` | `$0B2C` | 88 | [proc_51.pas](../../src/pascal/library_22/proc_51.pas) |
-| library 22:52 | `$0B2E..$0B7A` | `$0B84` | 48 | [proc_52.pas](../../src/pascal/library_22/proc_52.pas) |
-| library 22:53 | `$0B86..$0BAA` | `$0BB4` | 28 | [proc_53.pas](../../src/pascal/library_22/proc_53.pas) |
-| library 22:63 | `$0A62..$0A8E` | `$0A98` | 21 | [proc_63.pas](../../src/pascal/library_22/proc_63.pas) |
+| game 18:16 | `$0B78..$0CC3` | `$0CCE` | 186 | [load_room_layout.pas](../../src/pascal/building_interiors/load_room_layout.pas) |
+| game 18:17 | `$0B2C..$0B6B` | `$0B76` | 45 | [unpack_room_bounds.pas](../../src/pascal/building_interiors/unpack_room_bounds.pas) |
+| game 18:18 | `$0CD0..$0D50` | `$0D5C` | 75 | [paint_room_counter.pas](../../src/pascal/building_interiors/paint_room_counter.pas) |
+| game 18:19 | `$0D5E..$0DFE` | `$0E0A` | 109 | [paint_service_stations.pas](../../src/pascal/building_interiors/paint_service_stations.pas) |
+| game 18:20 | `$0E0C..$0EA5` | `$0EB0` | 83 | [prepare_room_scene.pas](../../src/pascal/building_interiors/prepare_room_scene.pas) |
+| library 22:16 | `$00A8..$00B2` | `$00BC` | 5 | [set_window_image_origin.pas](../../src/pascal/graphics_and_io/set_window_image_origin.pas) |
+| library 22:17 | `$01CE..$01DD` | `$01E8` | 8 | [use_linear_row_tables.pas](../../src/pascal/graphics_and_io/use_linear_row_tables.pas) |
+| library 22:18 | `$01EA..$01FF` | `$020A` | 18 | [assign_bounds.pas](../../src/pascal/graphics_and_io/assign_bounds.pas) |
+| library 22:37 | `$06DA..$06EE` | `$06F8` | 18 | [clamp_word.pas](../../src/pascal/graphics_and_io/clamp_word.pas) |
+| library 22:50 | `$0A36..$0A55` | `$0A60` | 20 | [set_text_window.pas](../../src/pascal/graphics_and_io/set_text_window.pas) |
+| library 22:51 | `$0A9A..$0B21` | `$0B2C` | 88 | [push_text_window.pas](../../src/pascal/graphics_and_io/push_text_window.pas) |
+| library 22:52 | `$0B2E..$0B7A` | `$0B84` | 48 | [pop_text_window.pas](../../src/pascal/graphics_and_io/pop_text_window.pas) |
+| library 22:53 | `$0B86..$0BAA` | `$0BB4` | 28 | [disk_blocks_io.pas](../../src/pascal/graphics_and_io/disk_blocks_io.pas) |
+| library 22:63 | `$0A62..$0A8E` | `$0A98` | 21 | [copy_window_buffer.pas](../../src/pascal/graphics_and_io/copy_window_buffer.pas) |
 
 ## Addresses, byte copies, and unit I/O
 
-The [storage declarations](../../src/pascal/storage.pas) overlay a 16-bit word
+The [storage declarations](../../src/pascal/shared_game_state.pas) overlay a 16-bit word
 with byte-buffer and integer pointers. These are views of existing addresses,
 not newly allocated buffers. DATASEG29 words 372/373 are pointer-valued storage;
 the compiled fixture loads their values from global slots 374/375. The entire

@@ -17,9 +17,9 @@ procedure offsets, and the assembly revision are in the
 
 ## Menu storage and interfaces
 
-[Library25](../../src/pascal/library_25/) uses DATASEG30, whose342-byte allocation
+[Library25](../../src/pascal/menus/) uses DATASEG30, whose342-byte allocation
 is recorded in library header slot9 (`docs/pascal-inventory.json`, kind7).
-Its [types](../../src/pascal/library_25/types.pas) retain these exact offsets:
+Its [types](../../src/pascal/menus/types.pas) retain these exact offsets:
 
 - Words1–64: eight16-byte caption slots (`string[15]`).
 - Words65/66: caption count and item count.
@@ -60,7 +60,7 @@ are recovered original behavior, not placeholders for missing code.
 
 ## Two-word arithmetic
 
-[Library28](../../src/pascal/library_28/) operates on the existing `wordpair`
+[Library28](../../src/pascal/amount_arithmetic/) operates on the existing `wordpair`
 view: first is the high part and second is the low part. Procedure2 copies the
 value argument before any writes to the VAR accumulator, preserving aliases.
 It adds low parts, performs MOD1000, explicitly restores the sign, updates the
@@ -78,14 +78,14 @@ Procedure5 preserves the caption/value copies and the original three formatting
 paths for zero, positive, and negative high parts. Procedure6 performs a strict
 lexicographic comparison of the signed words; equality returns false.
 
-[Library22:36](../../src/pascal/library_22/proc_36.pas) accumulates successive
+[Library22:36](../../src/pascal/graphics_and_io/rounded_word_sqrt.pas) accumulates successive
 odd numbers, uses native31 for a shift, and applies the original rounding test.
 Its16-bit overflow behavior and termination conditions are retained. No generic
 square-root implementation or numerical repair was introduced.
 
 ## Game19 helpers
 
-[The game19 sources](../../src/pascal/game_19/) currently include:
+[The game19 sources](../../src/pascal/civic_services/) currently include:
 
 | Procedure | Recovered behavior |
 | --- | --- |

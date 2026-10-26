@@ -58,42 +58,42 @@ byte-identical module replacements reuse the established reference behavior.
 | Shared native interpreter/device runtime | `src/native/native_shared.s` | Disk 1 block 227 byte 229 through block 236 byte 143 | 4,523 |
 | Copied runtime initializer | `src/native/native_init.s` | Disk 1 block 236 byte 144 through block 238 byte 399 | 1,280 |
 | High-memory native services and preserved tail | `src/native/native_high.s` | Disk 1 block 238 byte 400 through block 242 byte 511 | 2,160 |
-| SYSTEM.PASCAL first procedure | `src/pcode/system_entry.s` | Disk 1 image offset `$1F700` | 36 |
-| Disk-1 SYSTEM.STARTUP segment 1 | `src/pcode/startup_disk1.s` | Disk 1 block 141 through first 64 bytes of block 142 | 576 |
-| Disk-1 UTILITY segment 1 | `src/pcode/utility_disk1.s` | Disk 1 block 86 onward | 8,644 |
-| P-code library_25 | `src/pcode/library_25.s` | disk1 block 127 onward; disk2 block 127 onward | 1,916 |
-| P-code library_27 | `src/pcode/library_27.s` | disk1 block 135 onward; disk2 block 135 onward | 3,232 |
-| P-code library_28 | `src/pcode/library_28.s` | disk1 block 139 onward; disk2 block 139 onward | 656 |
-| P-code startup_7 | `src/pcode/startup_7.s` | disk1 block 143 onward; disk2 block 143 onward | 3,736 |
-| P-code alternate_7 | `src/pcode/alternate_7.s` | disk1 block 158 onward | 764 |
-| P-code alternate_8 | `src/pcode/alternate_8.s` | disk1 block 160 onward | 3,348 |
-| P-code alternate_9 | `src/pcode/alternate_9.s` | disk1 block 167 onward | 1,212 |
-| P-code alternate_10 | `src/pcode/alternate_10.s` | disk1 block 170 onward | 950 |
-| P-code system_1 | `src/pcode/system_1.s` | disk1 block 260 onward | 20 |
-| P-code system_3 | `src/pcode/system_3.s` | disk1 block 263 onward | 20 |
-| P-code system_4 | `src/pcode/system_4.s` | disk1 block 264 onward | 1,998 |
-| P-code system_5 | `src/pcode/system_5.s` | disk1 block 268 onward | 1,670 |
-| P-code game_8 | `src/pcode/game_8.s` | disk2 block 147 onward | 3,130 |
-| P-code game_12 | `src/pcode/game_12.s` | disk2 block 174 onward | 5,546 |
-| P-code game_13 | `src/pcode/game_13.s` | disk2 block 154 onward | 10,214 |
-| P-code game_14 | `src/pcode/game_14.s` | disk2 block 185 onward | 2,544 |
-| P-code game_15 | `src/pcode/game_15.s` | disk2 block 190 onward | 2,654 |
-| P-code game_16 | `src/pcode/game_16.s` | disk2 block 196 onward | 7,446 |
-| P-code game_17 | `src/pcode/game_17.s` | disk2 block 211 onward | 3,532 |
-| P-code game_18 | `src/pcode/game_18.s` | disk2 block 218 onward | 6,280 |
-| P-code game_19 | `src/pcode/game_19.s` | disk2 block 231 onward | 5,200 |
-| P-code game_20 | `src/pcode/game_20.s` | disk2 block 242 onward | 6,836 |
-| P-code game_21 | `src/pcode/game_21.s` | disk2 block 256 onward | 8,132 |
-| P-code system_2 | `src/pcode/system_2.s` | disk1 block 261 onward | 808 |
-| P-code system_6 | `src/pcode/system_6.s` | disk1 block 272 onward | 3,652 |
-| Mixed p-code/native library_23 | `src/pcode/library_23.s` | disk1 block 116 onward; disk2 block 116 onward | 1,212 |
-| Disk-2 startup segment 1 | `src/pcode/startup_disk1.s` (shared source) | Disk 2 block 141 onward | 576 |
-| P-code alternate_1 | `src/pcode/alternate_1.s` | disk1 block 172 onward | 880 |
-| P-code library_24 | `src/pcode/library_24.s` | disk1 block 118 onward; disk2 block 118 onward | 8,612 |
-| P-code library_26_disk1 | `src/pcode/library_26_disk1.s` | disk1 block 129 onward | 3,058 |
-| P-code library_26_disk2 | `src/pcode/library_26_disk2.s` | disk2 block 129 onward | 3,058 |
-| P-code library_22 | `src/pcode/library_22.s` | disk1 block 104 onward; disk2 block 104 onward | 12,252 |
-| Split SYSTEM.PASCAL remainder | `src/pcode/system_core.s` | Disk 1 core block 252 after byte 35; fragment at block 259 | 3,258 |
+| SYSTEM.PASCAL first procedure | `src/pcode/runtime_entry.s` | Disk 1 image offset `$1F700` | 36 |
+| Disk-1 SYSTEM.STARTUP segment 1 | `src/pcode/game_dispatch.s` | Disk 1 block 141 through first 64 bytes of block 142 | 576 |
+| Disk-1 UTILITY segment 1 | `src/pcode/save_game_utility.s` | Disk 1 block 86 onward | 8,644 |
+| P-code library_25 | `src/pcode/menus.s` | disk1 block 127 onward; disk2 block 127 onward | 1,916 |
+| P-code library_27 | `src/pcode/item_panels.s` | disk1 block 135 onward; disk2 block 135 onward | 3,232 |
+| P-code library_28 | `src/pcode/amount_arithmetic.s` | disk1 block 139 onward; disk2 block 139 onward | 656 |
+| P-code startup_7 | `src/pcode/startup_and_save.s` | disk1 block 143 onward; disk2 block 143 onward | 3,736 |
+| P-code alternate_7 | `src/pcode/retained_intro_display.s` | disk1 block 158 onward | 764 |
+| P-code alternate_8 | `src/pcode/retained_ship_tour.s` | disk1 block 160 onward | 3,348 |
+| P-code alternate_9 | `src/pcode/retained_world_tour.s` | disk1 block 167 onward | 1,212 |
+| P-code alternate_10 | `src/pcode/retained_credits.s` | disk1 block 170 onward | 950 |
+| P-code system_1 | `src/pcode/unbound_program_entry.s` | disk1 block 260 onward | 20 |
+| P-code system_3 | `src/pcode/empty_program_entry.s` | disk1 block 263 onward | 20 |
+| P-code system_4 | `src/pcode/runtime_initialization.s` | disk1 block 264 onward | 1,998 |
+| P-code system_5 | `src/pcode/program_loader.s` | disk1 block 268 onward | 1,670 |
+| P-code game_8 | `src/pcode/personal_panel.s` | disk2 block 147 onward | 3,130 |
+| P-code game_12 | `src/pcode/tactical_console.s` | disk2 block 174 onward | 5,546 |
+| P-code game_13 | `src/pcode/spaceflight.s` | disk2 block 154 onward | 10,214 |
+| P-code game_14 | `src/pcode/ship_components.s` | disk2 block 185 onward | 2,544 |
+| P-code game_15 | `src/pcode/ship_interior.s` | disk2 block 190 onward | 2,654 |
+| P-code game_16 | `src/pcode/dialogue.s` | disk2 block 196 onward | 7,446 |
+| P-code game_17 | `src/pcode/street_encounters.s` | disk2 block 211 onward | 3,532 |
+| P-code game_18 | `src/pcode/building_interiors.s` | disk2 block 218 onward | 6,280 |
+| P-code game_19 | `src/pcode/civic_services.s` | disk2 block 231 onward | 5,200 |
+| P-code game_20 | `src/pcode/cargo_exchange.s` | disk2 block 242 onward | 6,836 |
+| P-code game_21 | `src/pcode/surface_maps.s` | disk2 block 256 onward | 8,132 |
+| P-code system_2 | `src/pcode/buffered_files.s` | disk1 block 261 onward | 808 |
+| P-code system_6 | `src/pcode/file_manager.s` | disk1 block 272 onward | 3,652 |
+| Mixed p-code/native library_23 | `src/pcode/tile_rendering.s` | disk1 block 116 onward; disk2 block 116 onward | 1,212 |
+| Disk-2 startup segment 1 | `src/pcode/game_dispatch.s` (shared source) | Disk 2 block 141 onward | 576 |
+| P-code alternate_1 | `src/pcode/retained_intro_dispatch.s` | disk1 block 172 onward | 880 |
+| P-code library_24 | `src/pcode/flight_and_effects.s` | disk1 block 118 onward; disk2 block 118 onward | 8,612 |
+| P-code library_26_disk1 | `src/pcode/title_and_boot_disk1.s` | disk1 block 129 onward | 3,058 |
+| P-code library_26_disk2 | `src/pcode/title_and_boot_disk2.s` | disk2 block 129 onward | 3,058 |
+| P-code library_22 | `src/pcode/graphics_and_io.s` | disk1 block 104 onward; disk2 block 104 onward | 12,252 |
+| Split SYSTEM.PASCAL remainder | `src/pcode/runtime_core.s` | Disk 1 core block 252 after byte 35; fragment at block 259 | 3,258 |
 | Title HGR image data | `assets/title/title.hgr` | Disk 1 blocks 203–218 | 8,192 |
 | Pascal segment-header tables | `src/data/pascal_header_tables.s` | First 288 bytes of eight headers on both disks | 2,304 |
 | Raw screen-address initializer and table | `src/native/raw_screen_init.s` | Disk 1 block 2, first 297 bytes | 297 |

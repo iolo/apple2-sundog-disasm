@@ -454,7 +454,7 @@ and acceptance criteria.
 - **Status:** First full p-code segment checkpoint complete; overall step 06
   remains in progress.
 - **Work:** Added `tools/pcode_source.py` and expanded `encoding.inc` with
-  verified startup instruction formats. Added `startup_disk1.s`, configuration,
+  verified startup instruction formats. Added `game_dispatch.s`, configuration,
   and adoption mapping for the 576-byte segment at disk-1 block 141. Its six
   procedures contain 243 instructions, 447 instruction-encoding bytes, eight
   branch words, eighteen case words, three alignment bytes, and explicit

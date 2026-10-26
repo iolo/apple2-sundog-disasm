@@ -1,0 +1,97 @@
+{
+  "name": "system_6",
+  "source": "src/pcode/file_manager.s",
+  "config": "src/pcode/file_manager.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 139264,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 142848,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 142592,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 142336,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 142080,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk1",
+      "offset": 141824,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk1",
+      "offset": 141568,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk1",
+      "offset": 141312,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk1",
+      "offset": 141056,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk1",
+      "offset": 140800,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk1",
+      "offset": 140544,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk1",
+      "offset": 140288,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk1",
+      "offset": 140032,
+      "size": 256,
+      "input_offset": 3072
+    },
+    {
+      "disk": "disk1",
+      "offset": 139776,
+      "size": 256,
+      "input_offset": 3328
+    },
+    {
+      "disk": "disk1",
+      "offset": 139520,
+      "size": 68,
+      "input_offset": 3584
+    }
+  ]
+}

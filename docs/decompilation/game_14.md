@@ -1,8 +1,8 @@
 # Game14 complete source recovery
 
 All 12 procedures are recovered directly from
-[`game_14.s`](../../src/pcode/game_14.s), covering 1,300 original instructions.
-The maintained [entry](../../src/pascal/game_14/proc_01.pas) supplies the parent
+[`ship_components.s`](../../src/pcode/ship_components.s), covering 1,300 original instructions.
+The maintained [entry](../../src/pascal/ship_components/run_component_panel.pas) supplies the parent
 and all children. It replaces the temporary external interface used by game15.
 All required library bodies and native contracts were already recovered.
 

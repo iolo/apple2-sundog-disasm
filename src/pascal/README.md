@@ -8,45 +8,53 @@ This completes the source-recovery scope in [the plan](../../PLAN-decompile.md).
 Deferred variants and runtime integration are identified in the
 [completion audit](../../docs/decompilation/README.md#completion-audit).
 
+The identifier-naming pass covers all570 targeted p-code routines. The
+[naming notes](../../docs/decompilation/identifier-names.md) describe reviewed
+names, original symbol mappings, source paths, and validation. Directories
+describe each module’s role; procedure files use their inferred routine names.
+Original component/procedure IDs and offsets remain in comments and the catalog.
+Unresolved storage and separately deferred historical variants retain neutral
+names where a semantic binding is not established.
+
 | Source | Recovered content |
 | --- | --- |
-| [storage.pas](storage.pas) | Bounds, bounded strings, packed time, address-word/pointer views, and overlapping DATASEG29 views. |
-| [system_types.pas](system_types.pas) | Raw580-byte file record, embedded directory entry and512-byte sector views used by system2. |
-| [system_core/](system_core/) | All39 bodies: system entry/dispatch, file/console I/O, number conversion, block transfers, string operations, system6 forwarding and raw flag access. Includes separately loaded38. |
-| [system_1/](system_1/) / [system_3/](system_3/) | One entry each, calling core0:2 with error9; distinct original parameter metadata is retained in comments. |
-| [system_2/](system_2/) | All5 bodies: return-only entry, buffered read/write, repeated-space decoding and whole-record save/restore. Core0:7/8/33 dependencies are recovered. |
-| [system_4/](system_4/) | All10 bodies: character-set/configuration loading, device scan, file allocation, console setup and the [entry](system_4/proc_01.pas) with compatibility diagnostics. |
-| [system_5/](system_5/) | All10 bodies: filename normalization, code-header validation, segment registration, library loading and the [entry](system_5/proc_01.pas) selecting attach/startup/named code. |
-| [system_6/](system_6/) | All15 bodies: file initialization/open/close/flush, directory loading/writing/search/editing, allocation and name parsing. Helpers14/15 nest within open4. |
-| [startup_7/](startup_7/) | All8 bodies: disk-side checks, graphics/buffer setup, save/restart and completion display; [entry](startup_7/proc_01.pas) includes its seven children. |
-| [startup_disk1/](startup_disk1/) | All6 bodies, also covering the identical disk2 startup: game dispatch, heap setup, error display and the [program block](startup_disk1/proc_01.pas). |
-| [utility_disk1/](utility_disk1/) |All50 bodies: name entry, initialization, attribute editing, slot display/setup, play transition, deletion, reboot and menus, assembled by the [program block](utility_disk1/proc_01.pas). |
-| [game_8/](game_8/) | All 18 bodies, including the complete entry and nested scope in [proc_01.pas](game_8/proc_01.pas). |
-| [game_12/](game_12/) | All23 bodies: tactical setup, display, firing, cargo, menus, transitions and the enclosing [entry](game_12/proc_01.pas). |
-| [game_13/](game_13/) | All52 bodies: systems display, map rendering/selection, travel, menus, rescue setup and the enclosing [entry](game_13/proc_01.pas). |
-| [game_14/](game_14/) | All12 bodies, including menus, item transfers, repair updates and the entry in [proc_01.pas](game_14/proc_01.pas). |
-| [game_15/](game_15/) | All16 bodies, including drawing, setup, table updates, transitions, and the entry in [proc_01.pas](game_15/proc_01.pas). |
-| [game_18/](game_18/) | All 28 bodies, including the complete entry and nested scope in [proc_01.pas](game_18/proc_01.pas). |
-| [game_16/](game_16/) | All48 bodies, including setup, dialogue, trading, and the entry in [proc_01.pas](game_16/proc_01.pas). |
-| [game_17/](game_17/) | All 17 bodies, including the complete entry and nested scope in [proc_01.pas](game_17/proc_01.pas). |
-| [game_19/](game_19/) | All 26 bodies, including transport, bank/depot menus, and the entry in [proc_01.pas](game_19/proc_01.pas). |
-| [game_20/](game_20/) | All 32 bodies, including pricing, trading, warehouse menus, and the entry in [proc_01.pas](game_20/proc_01.pas). |
-| [game_21/](game_21/) | All 41 bodies, including the complete entry and nested scope in [proc_01.pas](game_21/proc_01.pas). |
-| [library_22/](library_22/) | All45 p-code bodies and all18 native contracts, including buffer setup, row-table initialization, and plotting. Raw-call declarations describe each evidenced target separately. |
-| [library_23/](library_23/) | Complete return-only entry1 and native interfaces2–4. Interface3 documents extra native stack consumption. |
-| [library_24/](library_24/) | All14 p-code bodies and all3 native contracts, including circle drawing, packed-coordinate distance, screen effects, and fixed-address image decoding. |
-| [library_25/](library_25/) | All 9 menu-item bodies; DATASEG30 caption/item views, with procedure9 nested in6. |
-| [library_26/](library_26/) | All11 p-code bodies and seven native contracts for each active disk variant; choose its identification constant as described in the [notes](../../docs/decompilation/library_26.md). |
-| [library_27/](library_27/) | All 15 bodies; DATASEG31 views for bounds, a packed item table, and a caption-table address. |
-| [library_28/](library_28/) | All 6 two-word amount arithmetic/formatting bodies. |
+| [shared_game_state.pas](shared_game_state.pas) | Bounds, bounded strings, packed time, address-word/pointer views, and overlapping DATASEG29 views. |
+| [runtime_file_types.pas](runtime_file_types.pas) | Raw580-byte file record, embedded directory entry and512-byte sector views used by system2. |
+| [runtime_core/](runtime_core/) | All39 bodies: system entry/dispatch, file/console I/O, number conversion, block transfers, string operations, system6 forwarding and raw flag access. Includes separately loaded38. |
+| [unbound_program_entry/](unbound_program_entry/) / [empty_program_entry/](empty_program_entry/) | One entry each, calling core0:2 with error9; distinct original parameter metadata is retained in comments. |
+| [buffered_files/](buffered_files/) | All5 bodies: return-only entry, buffered read/write, repeated-space decoding and whole-record save/restore. Core0:7/8/33 dependencies are recovered. |
+| [runtime_initialization/](runtime_initialization/) | All10 bodies: character-set/configuration loading, device scan, file allocation, console setup and the [entry](runtime_initialization/rt_initialize_system.pas) with compatibility diagnostics. |
+| [program_loader/](program_loader/) | All10 bodies: filename normalization, code-header validation, segment registration, library loading and the [entry](program_loader/rt_select_program.pas) selecting attach/startup/named code. |
+| [file_manager/](file_manager/) | All15 bodies: file initialization/open/close/flush, directory loading/writing/search/editing, allocation and name parsing. Helpers14/15 nest within open4. |
+| [startup_and_save/](startup_and_save/) | All8 bodies: disk-side checks, graphics/buffer setup, save/restart and completion display; [entry](startup_and_save/run_startup_or_save.pas) includes its seven children. |
+| [game_dispatch/](game_dispatch/) | All6 bodies, also covering the identical disk2 startup: game dispatch, heap setup, error display and the [program block](game_dispatch/startup_program_entry.pas). |
+| [save_game_utility/](save_game_utility/) |All50 bodies: name entry, initialization, attribute editing, slot display/setup, play transition, deletion, reboot and menus, assembled by the [program block](save_game_utility/utility_main_loop.pas). |
+| [personal_panel/](personal_panel/) | All 18 bodies, including the complete entry and nested scope in [run_personal_panel.pas](personal_panel/run_personal_panel.pas). |
+| [tactical_console/](tactical_console/) | All23 bodies: tactical setup, display, firing, cargo, menus, transitions and the enclosing [entry](tactical_console/run_tactical_console.pas). |
+| [spaceflight/](spaceflight/) | All52 bodies: systems display, map rendering/selection, travel, menus, rescue setup and the enclosing [entry](spaceflight/run_space_console.pas). |
+| [ship_components/](ship_components/) | All12 bodies, including menus, item transfers, repair updates and the entry in [run_component_panel.pas](ship_components/run_component_panel.pas). |
+| [ship_interior/](ship_interior/) | All16 bodies, including drawing, setup, table updates, transitions, and the entry in [run_ship_interior.pas](ship_interior/run_ship_interior.pas). |
+| [building_interiors/](building_interiors/) | All 28 bodies, including the complete entry and nested scope in [run_building_interior.pas](building_interiors/run_building_interior.pas). |
+| [dialogue/](dialogue/) | All48 bodies, including setup, dialogue, trading, and the entry in [run_dialogue_session.pas](dialogue/run_dialogue_session.pas). |
+| [street_encounters/](street_encounters/) | All 17 bodies, including the complete entry and nested scope in [run_street_encounter.pas](street_encounters/run_street_encounter.pas). |
+| [civic_services/](civic_services/) | All 26 bodies, including transport, bank/depot menus, and the entry in [run_civic_services.pas](civic_services/run_civic_services.pas). |
+| [cargo_exchange/](cargo_exchange/) | All 32 bodies, including pricing, trading, warehouse menus, and the entry in [run_cargo_exchange.pas](cargo_exchange/run_cargo_exchange.pas). |
+| [surface_maps/](surface_maps/) | All 41 bodies, including the complete entry and nested scope in [run_surface_maps.pas](surface_maps/run_surface_maps.pas). |
+| [graphics_and_io/](graphics_and_io/) | All45 p-code bodies and all18 native contracts, including buffer setup, row-table initialization, and plotting. Raw-call declarations describe each evidenced target separately. |
+| [tile_rendering/](tile_rendering/) | Complete return-only entry1 and native interfaces2–4. Interface3 documents extra native stack consumption. |
+| [flight_and_effects/](flight_and_effects/) | All14 p-code bodies and all3 native contracts, including circle drawing, packed-coordinate distance, screen effects, and fixed-address image decoding. |
+| [menus/](menus/) | All 9 menu-item bodies; DATASEG30 caption/item views, with procedure9 nested in6. |
+| [title_and_boot/](title_and_boot/) | All11 p-code bodies and seven native contracts for each active disk variant; choose its identification constant as described in the [notes](../../docs/decompilation/library_26.md). |
+| [item_panels/](item_panels/) | All 15 bodies; DATASEG31 views for bounds, a packed item table, and a caption-table address. |
+| [amount_arithmetic/](amount_arithmetic/) | All 6 two-word amount arithmetic/formatting bodies. |
 
-The `.pas` files are declaration/body includes. Include `storage.pas`,
-`startup_7/types.pas`,
-`game_12/types.pas`, `game_13/types.pas`, `game_14/types.pas`, `game_15/types.pas`, `game_16/types.pas`, `game_17/types.pas`, `game_18/types.pas`, `game_19/types.pas`, `game_20/types.pas`,
-`game_21/types.pas`, `game_21/map_types.pas`, `library_25/types.pas`, and `library_27/types.pas` in a type section. For the
+The `.pas` files are declaration/body includes. Include `shared_game_state.pas`,
+`startup_and_save/types.pas`,
+`tactical_console/types.pas`, `spaceflight/types.pas`, `ship_components/types.pas`, `ship_interior/types.pas`, `dialogue/types.pas`, `street_encounters/types.pas`, `building_interiors/types.pas`, `civic_services/types.pas`, `cargo_exchange/types.pas`,
+`surface_maps/types.pas`, `surface_maps/map_types.pas`, `menus/types.pas`, and `item_panels/types.pas` in a type section. For the
 game12/13 type views, include game19 types first. Include game12’s entry before
 game13’s entry; game12:16 is nested in15. For the completed games,
-`proc_01.pas` supplies the parent, locals, and children; include game8
+`run_personal_panel.pas` supplies the parent, locals, and children; include game8
 before game18, after their library dependencies and required runtime interfaces.
 Startup7 also requires its native target interface and the recovered library26
 scope with a disk identification constant. Its runtime binding must preserve
@@ -56,9 +64,9 @@ program header, shared declarations and dependencies. Procedure5 is nested in4.
 Its game18 call expresses raw addresses with `ord(@...)`; the reference compiler
 crashes on that cast. A temporary VAR-call check verifies the argument layout,
 but direct compilation of that expression and runtime bindings remain unresolved.
-Utility types belong after `storage.pas`; `u1: utilframe` represents its1044-byte
+Utility types belong after `shared_game_state.pas`; `u1: utilframe` represents its1044-byte
 program frame, not DATASEG29. Place it first among program variables to retain
-slots3–524. Its `proc_01.pas` includes all49 descendants in dependency order and
+slots3–524. Its `utility_main_loop.pas` includes all49 descendants in dependency order and
 ends in `end.`; include it after the recovered library dependencies and runtime
 interfaces. Slot views retain64-byte records,
 packed location, attributes and timestamps. Procedure3 retains raw string
@@ -81,9 +89,9 @@ match. Main's stand-in DATA variables add1254 bytes beyond the1044-byte utility
 frame; procedure3 has the documented COPY temporary. The utility's original
 error dispatch, native bindings and nonlocal-exit segment-release epilogue
 remain runtime integration requirements. No utility runtime execution is claimed.
-System types follow `storage.pas`. System2 bodies are separate lexical-level1
+System types follow `shared_game_state.pas`. System2 bodies are separate lexical-level1
 declarations;1 is a return-only segment initializer. Include
-[core IO forwards](system_core/io_forwards.pas) before them to declare the
+[core IO forwards](runtime_core/io_forwards.pas) before them to declare the
 recovered7/8/33 bodies involved in mutual recursion. `sysio: ^integer` must
 alias the runtime error pointer read by system2's `LOD 2,1`, also exposed as
 `sy0e.state^.words[0]` by the core. All5 system2 frame interfaces match;
@@ -93,13 +101,13 @@ remains a program-block include ending in `end.`. Both call recovered
 `sys0_2(code: integer)`. System3's original parameter
 area is0 bytes; the ordinary compiler program header emits4. Runtime static
 links, cross-segment calls and this unusual program ABI remain unvalidated.
-System4 types follow `system_types.pas`. `syse: s4env` denotes the runtime
+System4 types follow `runtime_file_types.pas`. `syse: s4env` denotes the runtime
 ancestor frame, accessed at lexical depth1/2/3 from entry/children/grandchildren;
 `s4work: s4root` denotes the612-byte entry frame. These are explicit storage
-views, not new DATA segments. Its `proc_01.pas` defines callable `sys4_1`,
+views, not new DATA segments. Its `rt_initialize_system.pas` defines callable `rt_initialize_system`,
 owns local `s4work` and includes all nine descendants;3 includes4–6, and7
 includes8. Include shared runtime interfaces
-and [system4's IO-check binding](system_4/runtime_interfaces.pas) before the entry.
+and [system4's IO-check binding](runtime_initialization/runtime_interfaces.pas) before the entry.
 All core dependencies are recovered. Core and system2/6 bodies compile with system4 callers in a
 combined temporary check. File arguments address raw header word0;
 buffer/caption arguments preserve the evidenced pointer words. All nine child
@@ -122,7 +130,7 @@ See the [progress notes](../../docs/decompilation/README.md) for the focused
 checks and the distinct success/failure cleanup behavior. No runtime execution
 is claimed.
 
-System6 types follow `system_types.pas` and the system4 types. `sy6e: s4env`
+System6 types follow `runtime_file_types.pas` and the system4 types. `sy6e: s4env`
 aliases the same runtime ancestor as `syse` and `sy5e.common`, including the
 configuration/error pointer at word1. Its recovered routines are separate
 lexical-level1 declarations except14/15;1 is only the segment initializer.
@@ -137,16 +145,16 @@ the nominal78-entry view does not resize that storage. Writer10 saves the first
 write's result across its optional second write. Lookup6 preserves the raw
 search word and its distinct cache-age and IO-result tests. Their TIME calls
 require SunDog's CSP9 handler, which writes zero to both outputs. The
-[parser](system_6/proc_11.pas) uses a value input and VAR outputs;
+[parser](file_manager/rt_parse_file_spec.pas) uses a value input and VAR outputs;
 its raw string views preserve core-call addresses and partial outputs. The
-[flush](system_6/proc_13.pas) preserves raw low-bit flags and unchecked IO.
+[flush](file_manager/rt_flush_file.pas) preserves raw low-bit flags and unchecked IO.
 Focused compilation/emission checks cover all fifteen bodies, with original
 parameter widths and lexical levels; runtime links and execution remain open.
 
-Core string types follow `storage.pas`; include23–27 before system6's parser.
+Core string types follow `shared_game_state.pas`; include23–27 before system6's parser.
 Core3–6 follow the system6 bodies and precede their system4 callers. They forward
 the original pointer words, including a borrowed VAR filename in5. Flag readers
-10/11 require `system_types.pas` and return full integer words;9/14/15 are
+10/11 require `runtime_file_types.pas` and return full integer words;9/14/15 are
 evidenced return-only bodies. These core bodies are originally lexical-level0,
 with RBP returns; ordinary host fixtures use level1/RNP and do not establish
 the runtime ABI. The string routines' extra pointer views alias caller storage.
@@ -171,7 +179,7 @@ always true, so its trailing control string is emitted for every nonzero code.
 All these bodies compile together and with system4/5 callers, with matching
 parameter widths. Source review and compiler checks do not establish runtime ABI.
 
-Core `io_types.pas` follows `system_types.pas`. Number input12 preserves its
+Core `io_types.pas` follows `runtime_file_types.pas`. Number input12 preserves its
 92-byte frame because raw editing reads can reach beyond its81-byte dummy text;
 formatting13 uses the ancestor power table and a separate -32768 literal.
 After the earlier core bodies, include12/13/36/28/2/37, callable system1/system4
@@ -189,8 +197,8 @@ are not a linked runtime replacement, and no runtime execution is claimed.
 Game17 uses three VAR integer parameters. Its save/restore routines require the
 documented physical frame layout and retain the original copy past the declared
 parent locals; see the [completion notes](../../docs/decompilation/game_17_complete.md).
-Game19's recovered `proc_01.pas` supplies its parent scope and includes its25 child bodies.
-Game20's recovered `proc_01.pas` supplies its parent scope and all 31 child bodies.
+The civic services `run_civic_services.pas` supplies its parent scope and includes its25 child bodies.
+The cargo exchange `run_cargo_exchange.pas` supplies its parent scope and all 31 child bodies.
 Procedure 8:4 is nested inside 8:3; 14:10 is nested inside14:9; 18:7 is nested inside 18:6;
 18:17 is nested inside 18:16; 24:10 is nested inside24:2; 22:58 is nested inside 22:57; 22:62 is nested inside
 22:42; 22:59/60 are nested in 22:28/29; 24:16/17 are nested in 24:15;
@@ -210,11 +218,11 @@ address views. The parent body is recovered; raw addresses retain the evidenced 
 stand-in storage and an empty main body. The completed game entries supply their recovered parent bodies. The smaller fixture includes game21's full scope;
 the older fixture retains its partial game21 scaffold. Game16's complete scope
 is also included in the smaller fixture. Game15's complete scope retains its
-original52-byte parent frame and calls the complete [game14 entry](game_14/proc_01.pas),
+original52-byte parent frame and calls the complete [game14 entry](ship_components/run_component_panel.pas),
 which retains its204-byte local frame and includes all11 children.
 Neither fixture binds the sources to the original runtime. Native `external` declarations describe signatures
 and do not link the original library by themselves. The explicit
-[runtime interfaces](runtime_interfaces.pas) also require bindings for segment
+[runtime interfaces](segment_runtime_interfaces.pas) also require bindings for segment
 load/release and the nonlocal-exit release epilogues of games15/16/18/19/20/21.
 
 The [inventory](../../docs/decompilation/inventory.json) records identities and

@@ -1,0 +1,13 @@
+{
+  "name": "system_1",
+  "source": "src/pcode/unbound_program_entry.s",
+  "config": "src/pcode/unbound_program_entry.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 132864,
+      "size": 20,
+      "input_offset": 0
+    }
+  ]
+}

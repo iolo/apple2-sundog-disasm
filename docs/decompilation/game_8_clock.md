@@ -11,20 +11,20 @@ The source is recovered directly from the listings, without a new translator.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 22:26 | `$028E..$02C1` | `$02CC` | 47 | [proc_26.pas](../../src/pascal/library_22/proc_26.pas) |
-| 22:27 | `$02CE..$033B` | `$0346` | 76 | [proc_27.pas](../../src/pascal/library_22/proc_27.pas) |
-| 22:28 | `$0362..$0394` | `$039E` | 38 | [proc_28.pas](../../src/pascal/library_22/proc_28.pas) |
-| 22:29 | `$0450..$0572` | `$0582` | 180 | [proc_29.pas](../../src/pascal/library_22/proc_29.pas) |
-| 22:49 | `$09DC..$0A27` | `$0A34` | 47 | [proc_49.pas](../../src/pascal/library_22/proc_49.pas) |
-| 22:59 | `$0348..$0356` | `$0360` | 13 | [proc_59.pas](../../src/pascal/library_22/proc_59.pas) |
-| 22:60 | `$03A0..$0443` | `$044E` | 109 | [proc_60.pas](../../src/pascal/library_22/proc_60.pas) |
-| 8:8 | `$025A..$0368` | `$0376` | 139 | [proc_08.pas](../../src/pascal/game_8/proc_08.pas) |
-| 8:9 | `$0378..$039E` | `$03A8` | 19 | [proc_09.pas](../../src/pascal/game_8/proc_09.pas) |
-| 8:18 | `$0AF4..$0B48` | `$0B52` | 46 | [proc_18.pas](../../src/pascal/game_8/proc_18.pas) |
+| 22:26 | `$028E..$02C1` | `$02CC` | 47 | [add_clock_minutes.pas](../../src/pascal/graphics_and_io/add_clock_minutes.pas) |
+| 22:27 | `$02CE..$033B` | `$0346` | 76 | [clock_has_reached.pas](../../src/pascal/graphics_and_io/clock_has_reached.pas) |
+| 22:28 | `$0362..$0394` | `$039E` | 38 | [draw_clock.pas](../../src/pascal/graphics_and_io/draw_clock.pas) |
+| 22:29 | `$0450..$0572` | `$0582` | 180 | [advance_clock_and_conditions.pas](../../src/pascal/graphics_and_io/advance_clock_and_conditions.pas) |
+| 22:49 | `$09DC..$0A27` | `$0A34` | 47 | [write_integer.pas](../../src/pascal/graphics_and_io/write_integer.pas) |
+| 22:59 | `$0348..$0356` | `$0360` | 13 | [draw_two_digits.pas](../../src/pascal/graphics_and_io/draw_two_digits.pas) |
+| 22:60 | `$03A0..$0443` | `$044E` | 109 | [update_hourly_condition.pas](../../src/pascal/graphics_and_io/update_hourly_condition.pas) |
+| 8:8 | `$025A..$0368` | `$0376` | 139 | [setup_personal_panel.pas](../../src/pascal/personal_panel/setup_personal_panel.pas) |
+| 8:9 | `$0378..$039E` | `$03A8` | 19 | [lift_inventory_item.pas](../../src/pascal/personal_panel/lift_inventory_item.pas) |
+| 8:18 | `$0AF4..$0B48` | `$0B52` | 46 | [close_personal_panel.pas](../../src/pascal/personal_panel/close_personal_panel.pas) |
 
 ## Packed time and comparison
 
-The new `clock4` view in [storage.pas](../../src/pascal/storage.pas) occupies
+The new `clock4` view in [shared_game_state.pas](../../src/pascal/shared_game_state.pas) occupies
 two words. Word0 holds minute in bits0..5, two untouched bits, and hour in
 bits8..15; word1 holds day in bits0..13 and two untouched bits. DATASEG29 words
 42/43 overlap this view. Bounds at word327 are another overlapping view within

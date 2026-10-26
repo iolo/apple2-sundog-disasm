@@ -91,7 +91,7 @@ def extract_certificate(output):
         disk='disk1', logical_blocks=[5,21], runtime_addresses=[0x4000,0x2000],
         displayed_size=[280,192], visible_bytes=7680, hole_bytes=512,
         hole_value_counts=dict(Counter(holes)),
-        consumer='src/native/certificate_reveal.s; src/pcode/library_26_body.inc procedure 7',
+        consumer='src/native/certificate_reveal.s; src/pcode/title_and_boot_body.inc procedure 7',
         classification_evidence='docs/certificate-bitmap.md',
         preview='certificate-monochrome.png',
         preview_note='Layout only; later variable text, artifact colors, and phase shifts are not simulated.',

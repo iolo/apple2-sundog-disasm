@@ -9,21 +9,21 @@ documented here, separately from native procedure-dictionary coverage.
 The component is `game_18`, SHA-256
 `452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4`, assembly
 revision `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`. Physical extents remain in
-`src/pcode/game_18.adopt.json`. Findings are static; the full plan is incomplete.
+`src/pcode/building_interiors.adopt.json`. Findings are static; the full plan is incomplete.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 18:1 | `$17F2..$183D` | `$184C` | 35 | [proc_01.pas](../../src/pascal/game_18/proc_01.pas) |
-| 18:23 | `$114A..$1363` | `$1370` | 270 | [proc_23.pas](../../src/pascal/game_18/proc_23.pas) |
-| 18:26 | `$149A..$1605` | `$1614` | 223 | [proc_26.pas](../../src/pascal/game_18/proc_26.pas) |
-| 18:27 | `$1616..$1711` | `$171E` | 169 | [proc_27.pas](../../src/pascal/game_18/proc_27.pas) |
-| 18:28 | `$1720..$17E1` | `$17F0` | 103 | [proc_28.pas](../../src/pascal/game_18/proc_28.pas) |
+| 18:1 | `$17F2..$183D` | `$184C` | 35 | [run_building_interior.pas](../../src/pascal/building_interiors/run_building_interior.pas) |
+| 18:23 | `$114A..$1363` | `$1370` | 270 | [switch_room_context.pas](../../src/pascal/building_interiors/switch_room_context.pas) |
+| 18:26 | `$149A..$1605` | `$1614` | 223 | [tick_room_player.pas](../../src/pascal/building_interiors/tick_room_player.pas) |
+| 18:27 | `$1616..$1711` | `$171E` | 169 | [tick_service_actor.pas](../../src/pascal/building_interiors/tick_service_actor.pas) |
+| 18:28 | `$1720..$17E1` | `$17F0` | 103 | [advance_room_customers.pas](../../src/pascal/building_interiors/advance_room_customers.pas) |
 
 ## Interfaces and selection
 
 The enclosing procedure retains four raw argument words. Arguments4/3/2 contain
 addresses of caller-owned words; argument1 is a selector. The caller in
-`startup_disk1.s:$0130..$0137` pushes local addresses4/3/1 and the value of local2,
+`game_dispatch.s:$0130..$0137` pushes local addresses4/3/1 and the value of local2,
 confirming that distinction. The raw address representation keeps existing
 child source and the original eight parameter bytes consistent. The complete
 parent includes its298-byte local declaration and all children.
@@ -66,7 +66,7 @@ The parent loads segments8 then27, initializes once through21, and repeats
 26/27/28 plus the clock/input checks. Normal completion redraws, calls22, then
 releases27 followed by8.
 
-[runtime_interfaces.pas](../../src/pascal/runtime_interfaces.pas) declares the
+[segment_runtime_interfaces.pas](../../src/pascal/segment_runtime_interfaces.pas) declares the
 two required operations without replacement bodies. CSP21's vector at `$D12A`
 targets `$E66B`; CSP22's vector at `$D12C` targets `$E675`. Each pops one word,
 uses the low byte as the segment number, invokes the existing load/release

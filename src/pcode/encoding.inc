@@ -1,3 +1,6 @@
+; Semantic procedure IDs and shared storage offsets; emits no bytes.
+.include "identifier_names.inc"
+
 ; Apple Pascal version-5 encoding subset verified for the initial system
 ; procedures and reconstructed modules. Expand only after checking the interpreter.
 ; This is not a

@@ -4,7 +4,7 @@ The game interprets a compact dialogue format in disk-2 blocks 90–102.
 `src/dialogue/scripts.s` expresses the stored control records through named
 ca65 macros; `src/dialogue/encoding.inc` defines their exact encoding. This
 custom format is separate from both native 6502 instructions and UCSD p-code.
-The interpreter itself is already disassembled in `src/pcode/game_16.s`.
+The interpreter itself is already disassembled in `src/pcode/dialogue.s`.
 
 `assets/dialogue-messages/` holds separately extracted counted message data.
 Every adopted range has an explicit map back to its bank offset. Unvisited

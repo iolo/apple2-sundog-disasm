@@ -15,7 +15,7 @@ is monochrome and does not emulate Apple II artifact colors or animation timing.
 
 ## Loader and native renderer
 
-All offsets below are relative to `src/pcode/library_26_body.inc`.
+All offsets below are relative to `src/pcode/title_and_boot_body.inc`.
 
 - Procedure 14 at `$0068`–`$006E` reads twelve blocks into `$4000` using
   relative disk block 64. Library 22 procedure 53 adds three, establishing

@@ -66,7 +66,7 @@ def extract(output):
         glyph_count=128, glyph_size=[7,8], stored_bytes_per_glyph=8,
         row_order='Stored bottom to top; bit 0 is the leftmost pixel',
         high_bit='Ignored by the glyph consumer; preserved in font.bin and rows.json',
-        origins=copies, consumer='src/pcode/library_22.s, procedures 20 and 9',
+        origins=copies, consumer='src/pcode/graphics_and_io.s, procedures 20 and 9',
         classification_evidence='docs/shared-font.md', preview='font.png',
         preview_note='Raw glyph masks; does not simulate positioning, draw modes, or artifact color',
         rows='rows.json uses top-to-bottom display order with all eight bits preserved')

@@ -18,8 +18,8 @@ starts at `$0C34`, so its attributes are labeled `$0CDC`; a `$420A` address delt
 makes the source expression reproduce the same word. The decoder explicitly
 checks this expression against the stored displacement.
 
-The existing `system_entry.s` retains ownership of procedure 1's first 36 bytes.
-`system_core.s` starts at source offset 36 and emits the remaining core bytes
+The existing `runtime_entry.s` retains ownership of procedure 1's first 36 bytes.
+`runtime_core.s` starts at source offset 36 and emits the remaining core bytes
 followed by the fragment, totaling 3,258 newly reconstructed output bytes. Its
 constant label for procedure-1 attributes refers to the existing component;
 preparation checked that component against the complete core prefix. The normal

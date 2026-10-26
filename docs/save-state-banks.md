@@ -33,13 +33,13 @@ unused storage inside the typed records. Many individual field meanings remain
 undecoded. Their classification as data is based on the following load/save
 paths and indexed data consumers, not on apparent strings, zeroes, or checksums:
 
-- `src/pcode/library_26_body.inc`, procedure 6, derives the selected save-bank
+- `src/pcode/title_and_boot_body.inc`, procedure 6, derives the selected save-bank
   relative block as `24 + 10*slot` at `$02F8`–`$02FD`. The one-block read at
   `$0305`–`$0312` targets the address of data-segment 29 word 36 directly.
   The same procedure reads all ten blocks into `$4000` at `$033D`–`$0345`.
   Library 22 procedure 53 adds three to disk block numbers, yielding the four
   physical logical starts above.
-- `src/pcode/startup_7.s`, procedure 6, restores the buffered state: `$0302`–
+- `src/pcode/startup_and_save.s`, procedure 6, restores the buffered state: `$0302`–
   `$0310` writes six blocks from `$4200` to the play-side working-state area
   (word30+3+3 = block 48, through block 53). `$0313`–`$0321` copies 1,440
   bytes from `$4E00` into the world-table storage at `$E901`.
@@ -52,8 +52,8 @@ paths and indexed data consumers, not on apparent strings, zeroes, or checksums:
 - Startup procedure 6 at `$02D1`–`$02F7` installs the three world-table pointers
   at `$E901`, `$E901+240`, and `$E901+240+288`. The total transfer size is 1,440,
   establishing the last table's 912-byte extent. Utility initialization uses
-  the same offsets and size at `$0074`–`$00B7` in `src/pcode/utility_disk1.s`.
-- `src/pcode/game_20.s`, procedure 5, reads two working blocks at `$0280`–
+  the same offsets and size at `$0074`–`$00B7` in `src/pcode/save_game_utility.s`.
+- `src/pcode/cargo_exchange.s`, procedure 5, reads two working blocks at `$0280`–
   `$028A` and addresses their data in 16-byte records (`IXA 8`) at `$02E2`–
   `$02E8`. `$02F4`–`$0302` selects a subsequent block with `5+city_index//16`,
   then selects a 32-byte record with `city_index%16`. Procedure 3 performs
@@ -66,7 +66,7 @@ paths and indexed data consumers, not on apparent strings, zeroes, or checksums:
 ## Descriptors and checksums
 
 Utility initialization explicitly iterates four slots, indexed by `IXA 32`
-(64 bytes), in `src/pcode/utility_disk1.s` at `$00D3`–`$00E0`. The first
+(64 bytes), in `src/pcode/save_game_utility.s` at `$00D3`–`$00E0`. The first
 16 bytes contain a counted name and its fixed-width residual storage. The next
 48 bytes are preserved as 24 little-endian words. The status word at offset 16
 is tested at `$00E2`–`$00EC`; the checksum word at offset 30 is compared with

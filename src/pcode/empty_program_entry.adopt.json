@@ -1,0 +1,13 @@
+{
+  "name": "system_3",
+  "source": "src/pcode/empty_program_entry.s",
+  "config": "src/pcode/empty_program_entry.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 131328,
+      "size": 20,
+      "input_offset": 0
+    }
+  ]
+}

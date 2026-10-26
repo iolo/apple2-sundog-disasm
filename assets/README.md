@@ -40,7 +40,7 @@ for image-preview generation, not ordinary disk assembly. The delivered
 previews can be inspected without regenerating them.
 
 Sound-producing instructions remain source code: speaker accesses occur in
-`src/pcode/library_22.s` at `$0D50/$0D5E`, `library_24.s` at `$0F07/$0F19`, and
+`src/pcode/graphics_and_io.s` at `$0D50/$0D5E`, `flight_and_effects.s` at `$0F07/$0F19`, and
 in native I/O, viewscreen and warp routines. These are not sampled audio files.
 No separate sound asset has been established by the current classification;
 audio equivalence has not been tested. This does not classify any unknown tail.

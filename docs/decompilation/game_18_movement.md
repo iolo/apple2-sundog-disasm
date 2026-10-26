@@ -7,11 +7,11 @@ preserved. No decompiler, replacement movement engine, or emulator was built.
 
 | Procedure | Entry through return | Attributes | Instructions | Pascal |
 | --- | --- | --- | ---: | --- |
-| game 18:12 | `$0498..$075D` | `$0778` | 508 | [proc_12.pas](../../src/pascal/game_18/proc_12.pas) |
-| game 18:13 | `$077A..$08FA` | `$0906` | 290 | [proc_13.pas](../../src/pascal/game_18/proc_13.pas) |
-| game 18:14 | `$0908..$0AB3` | `$0AC0` | 288 | [proc_14.pas](../../src/pascal/game_18/proc_14.pas) |
-| library 22:35 | `$05A8..$05B6` | `$05C0` | 11 | [proc_35.pas](../../src/pascal/library_22/proc_35.pas) |
-| library 22:41 | `$06FA..$070E` | `$0718` | 14 | [proc_41.pas](../../src/pascal/library_22/proc_41.pas) |
+| game 18:12 | `$0498..$075D` | `$0778` | 508 | [step_room_actor.pas](../../src/pascal/building_interiors/step_room_actor.pas) |
+| game 18:13 | `$077A..$08FA` | `$0906` | 290 | [create_room_actor.pas](../../src/pascal/building_interiors/create_room_actor.pas) |
+| game 18:14 | `$0908..$0AB3` | `$0AC0` | 288 | [seed_room_actors.pas](../../src/pascal/building_interiors/seed_room_actors.pas) |
+| library 22:35 | `$05A8..$05B6` | `$05C0` | 11 | [word_abs.pas](../../src/pascal/graphics_and_io/word_abs.pas) |
+| library 22:41 | `$06FA..$070E` | `$0718` | 14 | [toggle_pointer_glyph.pas](../../src/pascal/graphics_and_io/toggle_pointer_glyph.pas) |
 
 ## Library dependencies
 

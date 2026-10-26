@@ -1,6 +1,6 @@
 # Game21 map, placement, selection, and update recovery
 
-Recovered directly from `src/pcode/game_21.s`: all41 procedures, covering4,567
+Recovered directly from `src/pcode/surface_maps.s`: all41 procedures, covering4,567
 original instructions. The enclosing entry includes all40 child bodies. The
 continuations also recover library22:6, library23:1, native interfaces23:2–4,
 and the raw-call contract for native22:25.
@@ -14,7 +14,7 @@ slots39/47 hold distinct16-byte glyph buffers, and slots62..65 hold bounds.
 The map view has24 rows of40 bytes, matching `IXA20` and byte indexing.
 
 The six-word location views used by game19 and game21 now live in shared
-`storage.pas`, preserving the existing declarations and storage extent. Raw
+`shared_game_state.pas`, preserving the existing declarations and storage extent. Raw
 six-word views remain for whole-location transfers, including spare bits.
 Naming these views does not establish original record names or field meanings.
 Nested procedures4,20,24 live inside3,19,23 respectively;34/35 live inside33.
@@ -116,7 +116,7 @@ it does not establish deterministic behavior for uninitialized storage.
 
 ### Native library23 contracts
 
-The native source is still authoritative in `src/pcode/library_23.s`:
+The native source is still authoritative in `src/pcode/tile_rendering.s`:
 
 | Procedure | Caller words | Native cleanup and effects |
 | --- | ---: | --- |
@@ -160,8 +160,8 @@ by the [existing commands](game_18.md#validation-and-reproduction)):
 
 ```sh
 mkdir -p build/decompile/game_21
-ca65 -I src/pcode -o build/decompile/game_21/library_23.o src/pcode/library_23.s
-ld65 -C src/pcode/library_23.cfg -o build/decompile/game_21/library_23.bin \
+ca65 -I src/pcode -o build/decompile/game_21/library_23.o src/pcode/tile_rendering.s
+ld65 -C src/pcode/tile_rendering.cfg -o build/decompile/game_21/library_23.bin \
   build/decompile/game_21/library_23.o
 ../../tmp/ucsd-psystem-xc/build/ucsdpsys_compile/ucsdpsys_compile \
   --p-machine=ii.1 -f no-range-check -f no-efj-nfj \
@@ -210,7 +210,7 @@ for current totals after subsequent library work.
 
 Native22:25 (`$0F44..$0F58`) removes the target address, patches its jump, and
 passes the remaining stack to that target. Its arity is target-dependent. The
-[declaration](../../src/pascal/library_22/native_call_interfaces.pas) describes
+[declaration](../../src/pascal/graphics_and_io/native_call_interfaces.pas) describes
 this evidenced use: a VAR result word followed by the loaded checksum entry at
 parent9+64. The [checksum source](../../src/native/disk_checksum.s) consumes that
 one result address and writes independent modulo256 even/odd byte sums of

@@ -6,7 +6,7 @@ instructions to the [seven reviewed helpers](game_19_dependencies.md).
 Overall coverage at this checkpoint is 170 of 570 targeted bodies and 14,841
 instructions. Runtime execution remains untested.
 
-The [entry](../../src/pascal/game_19/proc_01.pas) supplies the enclosing frame
+The [entry](../../src/pascal/civic_services/run_civic_services.pas) supplies the enclosing frame
 and includes every child. The component remains SHA-256
 `9005760c7e42480562e06ce711baa4cd6edd2376bb46d8866af74b8461eb7b2f`.
 The [inventory](inventory.json) records procedure offsets, assembly revision,

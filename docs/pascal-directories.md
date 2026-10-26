@@ -38,7 +38,7 @@ zero or nonzero tails of executable files elsewhere on the disks.
   25 at `$6A02`, steps through records by `$1A` at `$6A43`, compares counted names
   at `$6A97`–`$6AA2`, and reads the matched file's first-block word at
   `$6AAF`–`$6AB8`. Thus even the reserved header byte is preserved explicitly.
-- `src/pcode/library_26_body.inc`, procedure 6, chooses relative directory block
+- `src/pcode/title_and_boot_body.inc`, procedure 6, chooses relative directory block
   77 or 78 at `$032D`/`$0335`. At `$06A4`–`$06AA` it reads one block into `$1400`
   and at `$06AD`–`$06B3` writes that buffer to the selected destination.
   Library 22 procedure 53 adds three to block numbers and multiplies the count

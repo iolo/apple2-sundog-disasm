@@ -23,8 +23,8 @@ def seed(output):
         "bootstrap": {"kind": "ca65-source", "source": "src/native/bootstrap.s",
                       "config": "src/native/bootstrap.cfg", "size": len(bootstrap),
                       "sha256": sha(bootstrap)},
-        "system_entry": {"kind": "ca65-source", "source": "src/pcode/system_entry.s",
-                         "config": "src/pcode/probe.cfg", "size": len(system_entry),
+        "system_entry": {"kind": "ca65-source", "source": "src/pcode/runtime_entry.s",
+                         "config": "src/pcode/runtime_entry.cfg", "size": len(system_entry),
                          "sha256": sha(system_entry)},
     }
     disks = []

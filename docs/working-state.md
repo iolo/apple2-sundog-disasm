@@ -21,7 +21,7 @@ consumer uses 28-byte records, unlike the 512-byte globals area in saved banks.
 
 ## Template record consumer
 
-Utility initialization (`src/pcode/utility_disk1.s`, `$0068`–`$0069`) sets
+Utility initialization (`src/pcode/save_game_utility.s`, `$0068`–`$0069`) sets
 data-segment 29 word 30 to 19. Procedure 14 reads one block using word 30 into
 `$0A00` at `$03F4`–`$0400`. With library 22 procedure 53's three-block bias,
 this identifies disk-1 block 22.

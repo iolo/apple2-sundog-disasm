@@ -8,23 +8,23 @@ native interfaces. Other modules remain incomplete.
 The source component is `game_8`, SHA-256
 `49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d`, assembly
 revision `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`. Physical extents are recorded
-in `src/pcode/game_8.adopt.json`. All validation in this group is static.
+in `src/pcode/personal_panel.adopt.json`. All validation in this group is static.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 8:1 | `$0B54..$0C05` | `$0C12` | 104 | [proc_01.pas](../../src/pascal/game_8/proc_01.pas) |
-| 8:10 | `$03AA..$04C1` | `$04CE` | 142 | [proc_10.pas](../../src/pascal/game_8/proc_10.pas) |
-| 8:11 | `$04D0..$0502` | `$050E` | 28 | [proc_11.pas](../../src/pascal/game_8/proc_11.pas) |
-| 8:12 | `$0510..$0545` | `$0550` | 24 | [proc_12.pas](../../src/pascal/game_8/proc_12.pas) |
-| 8:13 | `$0552..$05BF` | `$05CA` | 46 | [proc_13.pas](../../src/pascal/game_8/proc_13.pas) |
-| 8:14 | `$05CC..$0687` | `$0694` | 90 | [proc_14.pas](../../src/pascal/game_8/proc_14.pas) |
-| 8:15 | `$0696..$07B7` | `$07C2` | 124 | [proc_15.pas](../../src/pascal/game_8/proc_15.pas) |
-| 8:16 | `$07C4..$0934` | `$0942` | 190 | [proc_16.pas](../../src/pascal/game_8/proc_16.pas) |
-| 8:17 | `$0944..$0ADC` | `$0AF2` | 248 | [proc_17.pas](../../src/pascal/game_8/proc_17.pas) |
+| 8:1 | `$0B54..$0C05` | `$0C12` | 104 | [run_personal_panel.pas](../../src/pascal/personal_panel/run_personal_panel.pas) |
+| 8:10 | `$03AA..$04C1` | `$04CE` | 142 | [drag_inventory_item.pas](../../src/pascal/personal_panel/drag_inventory_item.pas) |
+| 8:11 | `$04D0..$0502` | `$050E` | 28 | [wait_personal_input.pas](../../src/pascal/personal_panel/wait_personal_input.pas) |
+| 8:12 | `$0510..$0545` | `$0550` | 24 | [paint_clock_caption.pas](../../src/pascal/personal_panel/paint_clock_caption.pas) |
+| 8:13 | `$0552..$05BF` | `$05CA` | 46 | [paint_cash_caption.pas](../../src/pascal/personal_panel/paint_cash_caption.pas) |
+| 8:14 | `$05CC..$0687` | `$0694` | 90 | [show_player_attributes.pas](../../src/pascal/personal_panel/show_player_attributes.pas) |
+| 8:15 | `$0696..$07B7` | `$07C2` | 124 | [paint_location_page.pas](../../src/pascal/personal_panel/paint_location_page.pas) |
+| 8:16 | `$07C4..$0934` | `$0942` | 190 | [run_pause_menu.pas](../../src/pascal/personal_panel/run_pause_menu.pas) |
+| 8:17 | `$0944..$0ADC` | `$0AF2` | 248 | [sleep_and_risk_theft.pas](../../src/pascal/personal_panel/sleep_and_risk_theft.pas) |
 
 ## Complete scope and input behavior
 
-`proc_01.pas` includes the local declarations and all children in dependency
+`run_personal_panel.pas` includes the local declarations and all children in dependency
 order. The entry performs setup, periodic updates, pointer/input handling, and
 the original ordered dispatch. Normal return calls18; child3's failure path
 and child16's save path call22:52 and exit the enclosing entry directly, skipping

@@ -1,0 +1,73 @@
+{
+  "name": "game_15",
+  "source": "src/pcode/ship_interior.s",
+  "config": "src/pcode/ship_interior.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 94976,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 94720,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 94464,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 98048,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 98304,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 101888,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 101632,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 101376,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk2",
+      "offset": 101120,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk2",
+      "offset": 100864,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk2",
+      "offset": 100608,
+      "size": 94,
+      "input_offset": 2560
+    }
+  ]
+}

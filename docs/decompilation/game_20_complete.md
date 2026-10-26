@@ -1,7 +1,7 @@
 # Game20 pricing, trading, and completion
 
 Game20 now has all 32 p-code bodies recovered directly into
-[Pascal](../../src/pascal/game_20/proc_01.pas). This group adds procedures 1 and 16–31:
+[Pascal](../../src/pascal/cargo_exchange/run_cargo_exchange.pas). This group adds procedures 1 and 16–31:
 17 bodies and 2,015 original instructions. Overall coverage is **202 of 570**
 targeted bodies, covering 18,226 instructions; 368 bodies remain. Native interface
 coverage remains 16 of 38. Runtime execution has not been performed.

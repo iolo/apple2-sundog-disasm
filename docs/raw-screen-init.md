@@ -8,7 +8,7 @@ reconstructs the remaining metadata and bounded zero storage separately.
 
 ## Load and call evidence
 
-`startup_disk1.s` at segment offset `$0199` calls library 22 procedure 53 with
+`game_dispatch.s` at segment offset `$0199` calls library 22 procedure 53 with
 buffer `$4000`, count 1, relative block 80, and read flag 1. Procedure 53 at
 `$0B86` adds 3 to the requested block and uses CSP 5 for reads, so this reads
 disk block 83. Startup reads byte 6 of that buffer, subtracts 3, and passes the

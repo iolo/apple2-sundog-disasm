@@ -7,20 +7,20 @@ the two groups contain 20 recovered bodies and 1,016 original instructions.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| game 18:3 | `$0022..$0034` | `$003E` | 10 | [proc_03.pas](../../src/pascal/game_18/proc_03.pas) |
-| game 18:4 | `$0040..$005C` | `$0066` | 18 | [proc_04.pas](../../src/pascal/game_18/proc_04.pas) |
-| game 18:6 | `$0122..$019F` | `$01AC` | 67 | [proc_06.pas](../../src/pascal/game_18/proc_06.pas) |
-| game 18:7 | `$00F2..$0115` | `$0120` | 26 | [proc_07.pas](../../src/pascal/game_18/proc_07.pas) |
-| game 18:8 | `$01AE..$0316` | `$0328` | 250 | [proc_08.pas](../../src/pascal/game_18/proc_08.pas) |
-| game 18:9 | `$032A..$03A9` | `$03B6` | 93 | [proc_09.pas](../../src/pascal/game_18/proc_09.pas) |
-| game 18:10 | `$03B8..$040D` | `$0418` | 62 | [proc_10.pas](../../src/pascal/game_18/proc_10.pas) |
-| game 18:11 | `$041A..$048C` | `$0496` | 82 | [proc_11.pas](../../src/pascal/game_18/proc_11.pas) |
-| library 22:11 | `$0052..$007C` | `$0086` | 19 | [proc_11.pas](../../src/pascal/library_22/proc_11.pas) |
-| library 22:12 | `$016C..$018A` | `$0194` | 14 | [proc_12.pas](../../src/pascal/library_22/proc_12.pas) |
-| library 22:34 | `$0584..$059C` | `$05A6` | 18 | [proc_34.pas](../../src/pascal/library_22/proc_34.pas) |
-| library 22:40 | `$06C0..$06CE` | `$06D8` | 13 | [proc_40.pas](../../src/pascal/library_22/proc_40.pas) |
-| library 22:57 | `$00F4..$015F` | `$016A` | 80 | [proc_57.pas](../../src/pascal/library_22/proc_57.pas) |
-| library 22:58 | `$00BE..$00E8` | `$00F2` | 23 | [proc_58.pas](../../src/pascal/library_22/proc_58.pas) |
+| game 18:3 | `$0022..$0034` | `$003E` | 10 | [query_actor_mask.pas](../../src/pascal/building_interiors/query_actor_mask.pas) |
+| game 18:4 | `$0040..$005C` | `$0066` | 18 | [toggle_room_actor.pas](../../src/pascal/building_interiors/toggle_room_actor.pas) |
+| game 18:6 | `$0122..$019F` | `$01AC` | 67 | [remove_room_actor.pas](../../src/pascal/building_interiors/remove_room_actor.pas) |
+| game 18:7 | `$00F2..$0115` | `$0120` | 26 | [fix_removed_actor_index.pas](../../src/pascal/building_interiors/fix_removed_actor_index.pas) |
+| game 18:8 | `$01AE..$0316` | `$0328` | 250 | [find_counter_position.pas](../../src/pascal/building_interiors/find_counter_position.pas) |
+| game 18:9 | `$032A..$03A9` | `$03B6` | 93 | [find_open_room_position.pas](../../src/pascal/building_interiors/find_open_room_position.pas) |
+| game 18:10 | `$03B8..$040D` | `$0418` | 62 | [redirect_room_actor.pas](../../src/pascal/building_interiors/redirect_room_actor.pas) |
+| game 18:11 | `$041A..$048C` | `$0496` | 82 | [send_actor_to_exit.pas](../../src/pascal/building_interiors/send_actor_to_exit.pas) |
+| library 22:11 | `$0052..$007C` | `$0086` | 19 | [set_glyph_mode.pas](../../src/pascal/graphics_and_io/set_glyph_mode.pas) |
+| library 22:12 | `$016C..$018A` | `$0194` | 14 | [move_pen.pas](../../src/pascal/graphics_and_io/move_pen.pas) |
+| library 22:34 | `$0584..$059C` | `$05A6` | 18 | [word_sign.pas](../../src/pascal/graphics_and_io/word_sign.pas) |
+| library 22:40 | `$06C0..$06CE` | `$06D8` | 13 | [random_between.pas](../../src/pascal/graphics_and_io/random_between.pas) |
+| library 22:57 | `$00F4..$015F` | `$016A` | 80 | [draw_line.pas](../../src/pascal/graphics_and_io/draw_line.pas) |
+| library 22:58 | `$00BE..$00E8` | `$00F2` | 23 | [prepare_line_steps.pas](../../src/pascal/graphics_and_io/prepare_line_steps.pas) |
 
 ## Library calls and native interfaces
 
@@ -48,7 +48,7 @@ value rather than an integer. The temporary in the recovered source captures
 one random call before the divisor calculation. The native call only modifies
 its external seed storage, not the scalar bounds parameters.
 
-The [native interface declarations](../../src/pascal/library_22/native_interfaces.pas)
+The [native interface declarations](../../src/pascal/graphics_and_io/native_interfaces.pas)
 are supported by these stack operations:
 
 - **22:3**, entry `$0BF6`: removes the return address and four reserved result

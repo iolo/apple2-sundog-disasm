@@ -1,7 +1,7 @@
 # Game16 complete source recovery
 
-All48 procedures are recovered directly from `src/pcode/game_16.s`, including
-the [enclosing entry](../../src/pascal/game_16/proc_01.pas). Their bodies cover
+All48 procedures are recovered directly from `src/pcode/dialogue.s`, including
+the [enclosing entry](../../src/pascal/dialogue/run_dialogue_session.pas). Their bodies cover
 3,856 original instructions. At game16 completion, recovery totaled
 300 of570 p-code procedures,26,837 instructions, and24 reviewed native
 interfaces; current totals are maintained in the [progress index](README.md).
@@ -11,7 +11,7 @@ interfaces; current totals are maintained in the [progress index](README.md).
 The parent has three value words and278 local bytes. Startup_disk1 `$0039..$003C`
 and `$0140..$0143` pass three words to16:1. The recovered entry retains that
 frame and includes all47 children. Raw slots4..142
-preserve child accesses. The [frame view](../../src/pascal/game_16/types.pas)
+preserve child accesses. The [frame view](../../src/pascal/dialogue/types.pas)
 adds overlapping views only where these bodies establish their offsets:
 
 - Four-word saved bounds at56/64, dialogue bounds at60, panel bounds at68, and button bounds at72
@@ -232,8 +232,8 @@ From the repository root, add the game16 binary to the existing
 [second-fixture commands](game_21_map.md#continuation-checks):
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_21/game_16.o src/pcode/game_16.s
-ld65 -C src/pcode/game_16.cfg -o build/decompile/game_21/game_16.bin \
+ca65 -I src/pcode -o build/decompile/game_21/game_16.o src/pcode/dialogue.s
+ld65 -C src/pcode/dialogue.cfg -o build/decompile/game_21/game_16.bin \
   build/decompile/game_21/game_16.o
 ```
 

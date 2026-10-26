@@ -28,7 +28,7 @@ source component reconstructs the other 126 bytes. All four blocks are classifie
 
 ## Load, draw, and restore evidence
 
-Game 18 procedure 20 (`src/pcode/game_18.s`) handles a branch where its type
+Game 18 procedure 20 (`src/pcode/building_interiors.s`) handles a branch where its type
 value equals 16. At `$0E18`–`$0E22`, it reads four blocks into `$1800` from
 segment-29 word32+8. Play startup sets word 32 to 26, and library 22's block
 wrapper adds three, giving disk blocks `26+8+3=37` through 40.
@@ -36,7 +36,7 @@ wrapper adds three, giving disk blocks `26+8+3=37` through 40.
 At `$0E25`–`$0E42`, game 18 derives and clamps the display position to byte
 columns 1..19 and rows 8..88. `$0E45`–`$0E4F` installs that position and calls
 library 22 procedure 15 with mode 1. That native routine is in
-`src/pcode/library_22.s` at segment offset `$0E2E`:
+`src/pcode/graphics_and_io.s` at segment offset `$0E2E`:
 
 - `$0E4E`–`$0E54` counts 96 rows. The loop visits source rows from the center
   outward (47, 48, 46, 49, ..., 0, 95).

@@ -4,7 +4,7 @@ This note records the initial helper checkpoint. The later
 [completion group](game_17_complete.md) recovers the remaining bodies and
 documents the current VAR parameter declarations and physical copy behavior.
 
-Twelve bodies are recovered directly from `src/pcode/game_17.s`: procedures2–10
+Twelve bodies are recovered directly from `src/pcode/street_encounters.s`: procedures2–10
 and13–15, totaling1,033 original instructions. The project now has123 of570
 targeted bodies recovered (10,527 instructions). Game17 procedures1,11,12,16,17
 remain outstanding. No new decompiler or native implementation was added.
@@ -31,9 +31,9 @@ in the [inventory](inventory.json). Segment17 alone is not the component identit
 
 ## Storage and interfaces
 
-[types.pas](../../src/pascal/game_17/types.pas) describes the original196-byte
+[types.pas](../../src/pascal/street_encounters/types.pas) describes the original196-byte
 parent local area, beginning at frame slot4 after three raw address arguments.
-`startup_disk1.s:$0125..$012B` supplies addresses of caller slots4,3,1, in that
+`game_dispatch.s:$0125..$012B` supplies addresses of caller slots4,3,1, in that
 order. The fixture retains this six-byte parameter convention; child10 and15
 dereference those words through the established address view.
 

@@ -15,7 +15,7 @@ row-mask relationship to the verified shared font.
 
 Play startup 7 procedure 5 sets segment-29 word 32 to 26, then derives word
 30=42, word 29=52, word 28=61 and word 27=76 at `$0142`–`$0163`.
-Game 18 procedure 16 (`src/pcode/game_18.s`) reads one block into $4000
+Game 18 procedure 16 (`src/pcode/building_interiors.s`) reads one block into $4000
 using word 27 at `$0B88`–`$0B90`. Library 22 procedure 53 adds three to the
 logical block number, identifying disk-2 block **79**.
 

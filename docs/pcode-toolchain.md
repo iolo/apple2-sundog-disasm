@@ -11,7 +11,7 @@ unmodified UCSD II.1 tool can decode every Apple Pascal instruction correctly.
 python3 tools/build_pcode_probe.py
 ```
 
-This assembles `src/pcode/system_entry.s` with ca65 and ld65, then compares the
+This assembles `src/pcode/runtime_entry.s` with ca65 and ld65, then compares the
 36-byte result with disk-1 block 252 bytes 0–35. The assembler consumes only
 project source. Original disk bytes are read afterwards for verification.
 The resulting SHA-256 is

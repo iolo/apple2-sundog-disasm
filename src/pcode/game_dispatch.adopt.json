@@ -1,0 +1,25 @@
+{
+  "name": "startup_disk1",
+  "source": "src/pcode/game_dispatch.s",
+  "config": "src/pcode/game_dispatch.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 70912,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 70656,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 70400,
+      "size": 64,
+      "input_offset": 512
+    }
+  ]
+}

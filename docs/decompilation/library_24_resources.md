@@ -8,18 +8,18 @@ The full plan remains incomplete; the [progress index](README.md) has current to
 
 The rebuilt library24 component has SHA-256
 `acaadfd85907933575a035fe67f716630e3c3695430008f90a4b48ea6b1fd68c`.
-Its disk extents are recorded in `src/pcode/library_24.adopt.json`. Assembly
+Its disk extents are recorded in `src/pcode/flight_and_effects.adopt.json`. Assembly
 revision remains `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`. All findings are static.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 24:7 | `$00F8..$013F` | `$014A` | 50 | [proc_07.pas](../../src/pascal/library_24/proc_07.pas) |
-| 24:8 | `$014C..$0261` | `$0272` | 197 | [proc_08.pas](../../src/pascal/library_24/proc_08.pas) |
-| 24:11 | `$0274..$02A8` | `$02B2` | 42 | [proc_11.pas](../../src/pascal/library_24/proc_11.pas) |
-| 24:14 | `$0AAC..$0AC1` | `$0ACC` | 20 | [proc_14.pas](../../src/pascal/library_24/proc_14.pas) |
-| 24:15 | `$0BE2..$0DF4` | `$0E04` | 291 | [proc_15.pas](../../src/pascal/library_24/proc_15.pas) |
-| 24:16 | `$0ACE..$0B4C` | `$0B58` | 72 | [proc_16.pas](../../src/pascal/library_24/proc_16.pas) |
-| 24:17 | `$0B5A..$0BD6` | `$0BE0` | 83 | [proc_17.pas](../../src/pascal/library_24/proc_17.pas) |
+| 24:7 | `$00F8..$013F` | `$014A` | 50 | [draw_vertical_gauge.pas](../../src/pascal/flight_and_effects/draw_vertical_gauge.pas) |
+| 24:8 | `$014C..$0261` | `$0272` | 197 | [recompute_component_group.pas](../../src/pascal/flight_and_effects/recompute_component_group.pas) |
+| 24:11 | `$0274..$02A8` | `$02B2` | 42 | [perturb_target_velocity.pas](../../src/pascal/flight_and_effects/perturb_target_velocity.pas) |
+| 24:14 | `$0AAC..$0AC1` | `$0ACC` | 20 | [limit_directed_change.pas](../../src/pascal/flight_and_effects/limit_directed_change.pas) |
+| 24:15 | `$0BE2..$0DF4` | `$0E04` | 291 | [update_ship_resources.pas](../../src/pascal/flight_and_effects/update_ship_resources.pas) |
+| 24:16 | `$0ACE..$0B4C` | `$0B58` | 72 | [consume_reserve_resource.pas](../../src/pascal/flight_and_effects/consume_reserve_resource.pas) |
+| 24:17 | `$0B5A..$0BD6` | `$0BE0` | 83 | [adjust_resource_and_gauge.pas](../../src/pascal/flight_and_effects/adjust_resource_and_gauge.pas) |
 
 ## Storage and native interface
 
@@ -35,7 +35,7 @@ compiler's first eight significant characters. Emitted addresses are checked
 individually: fixture globals 313/317/321. Merely compiling longer names that
 shared an eight-character prefix did not establish correct field resolution.
 
-[Native22:4](../../src/pascal/library_22/native_world_interfaces.pas) at `$0D26`
+[Native22:4](../../src/pascal/graphics_and_io/native_world_interfaces.pas) at `$0D26`
 pops 16 bytes including the return address, consumes seven argument words, and
 returns no result. The original body accesses the speaker and its own mutable
 state. Its arguments retain ordinal names because the observed constants do
@@ -111,8 +111,8 @@ equivalence claim; valid caller storage remains an assumption.
 Use the [fixture commands](game_18.md#validation-and-reproduction), now including:
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_18/library_24.o src/pcode/library_24.s
-ld65 -C src/pcode/library_24.cfg -o build/decompile/game_18/library_24.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_24.o src/pcode/flight_and_effects.s
+ld65 -C src/pcode/flight_and_effects.cfg -o build/decompile/game_18/library_24.bin \
   build/decompile/game_18/library_24.o
 python3 docs/decompilation/checks/verify_game_18.py
 ```
@@ -162,14 +162,14 @@ The subtraction, square, accumulation, and final helper call retain16-bit order.
 
 ### Remaining native contracts
 
-- [22:8](../../src/pascal/library_22/native_display_interfaces.pas) consumes two
+- [22:8](../../src/pascal/graphics_and_io/native_display_interfaces.pas) consumes two
   coordinate words and returns no Pascal result. It reads shared drawing modes,
   uses fixed row tables, and may plot one or two pixels. Its second coordinate
   uses only the low byte; no new clipping is implied.
 - 22:55's public entry is only `$1600..$1606`: reads `$C054`, reads `$C050`,
   then returns without arguments. Its subsequent `$1607` helper and lookup
   tables are dependencies of other native graphics code, not extra arguments.
-- [24:3](../../src/pascal/library_24/native_effect_interfaces.pas) consumes one
+- [24:3](../../src/pascal/flight_and_effects/native_effect_interfaces.pas) consumes one
   selector word. Low bits choose XOR7F, fillFF, or fill00; bit2 enables speaker
   reads. It writes the twelve table-defined shapes through the HGR row tables.
 - 24:5 consumes no Pascal arguments. It reads stride/run data at `$4000` and

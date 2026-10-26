@@ -21,8 +21,8 @@ def main():
     source = ROOT / "src/pcode"
     obj, binary = output / "system_entry.o", output / "system_entry.bin"
     subprocess.run(["ca65", "-I", str(source), "-o", str(obj),
-                    "-l", str(output / "system_entry.lst"), str(source / "system_entry.s")], check=True)
-    subprocess.run(["ld65", "-C", str(source / "probe.cfg"), "-o", str(binary),
+                    "-l", str(output / "system_entry.lst"), str(source / "runtime_entry.s")], check=True)
+    subprocess.run(["ld65", "-C", str(source / "runtime_entry.cfg"), "-o", str(binary),
                     "-m", str(output / "system_entry.map"), str(obj)], check=True)
     verify_inputs()
     expected = block_bytes((ROOT / INPUTS["disk1"]).read_bytes(), 252, 253)[:36]

@@ -5,7 +5,7 @@ instructions. This group adds procedures1,11,12,16,17 (1,038 instructions)
 to the [earlier helpers](game_17_helpers.md). Overall coverage is 128 of570
 targeted bodies and 11,565 instructions. No runtime execution is claimed.
 
-The [complete entry](../../src/pascal/game_17/proc_01.pas) supplies the parent
+The [complete entry](../../src/pascal/street_encounters/run_street_encounter.pas) supplies the parent
 scope and includes all children. The component identity remains SHA256
 `40a1e9a4fa6e0ea4276826a25cf91b480bada8c2b6392d3967c9aa33cee09515`;
 the [inventory](inventory.json) records the assembly revision and offsets.

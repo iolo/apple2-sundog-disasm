@@ -3,13 +3,13 @@
 Both active disk variants are recovered:11 p-code bodies and seven native
 contracts per variant, accounting for22 targeted bodies and1,822 original
 instructions. The native implementations remain assembly. The common Pascal
-sources are in [library_26](../../src/pascal/library_26/); select exactly one
-disk-specific CONST include, [disk1](../../src/pascal/library_26_disk1/identity.pas)
-or [disk2](../../src/pascal/library_26_disk2/identity.pas).
+sources are in [library_26](../../src/pascal/title_and_boot/); select exactly one
+disk-specific CONST include, [disk1](../../src/pascal/title_and_boot_disk1/identity.pas)
+or [disk2](../../src/pascal/title_and_boot_disk2/identity.pas).
 
-The original [disk1 listing](../../src/pcode/library_26_disk1.s) and
-[disk2 listing](../../src/pcode/library_26_disk2.s) include the same
-[body](../../src/pcode/library_26_body.inc). Independent reassembly matches each
+The original [disk1 listing](../../src/pcode/title_and_boot_disk1.s) and
+[disk2 listing](../../src/pcode/title_and_boot_disk2.s) include the same
+[body](../../src/pcode/title_and_boot_body.inc). Independent reassembly matches each
 manifest hash. Comparing the complete binaries confirms that they differ only
 inside the20-byte identification string at `$03F7..$040A`; the actual differing
 bytes occupy `$03F8..$0404`. The inventory retains both component identities,
@@ -58,7 +58,7 @@ retains both delay loops, and rereads each character after output before sound.
 
 ## Native contracts
 
-The [native interface source](../../src/pascal/library_26/native_interfaces.pas)
+The [native interface source](../../src/pascal/title_and_boot/native_interfaces.pas)
 records stack consumption, results, memory effects and dependencies for both
 variants. These contracts cover3/8/9/10/11/12/18:
 

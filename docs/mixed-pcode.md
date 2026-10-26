@@ -52,7 +52,7 @@ Adoption status is recorded in PROGRESS.md and the reconstruction manifest.
 
 Both 3,058-byte copies contain the same instructions and native lookup data.
 Only 13 bytes in the inline string at `$03F7` (20 bytes total) differ. The source
-uses a shared `library_26_body.inc` with an explicit disk selector for this data.
+uses a shared `title_and_boot_body.inc` with an explicit disk selector for this data.
 Each variant remains independently mapped and compared to its disk bytes.
 
 Procedure 18's loads at `$0A8C` and `$0A90` address a 280-byte table at `$0A94`.

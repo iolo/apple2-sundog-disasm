@@ -1,0 +1,55 @@
+{
+  "name": "system_4",
+  "source": "src/pcode/runtime_initialization.s",
+  "config": "src/pcode/runtime_initialization.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 135168,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 138752,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 138496,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 138240,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 137984,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk1",
+      "offset": 137728,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk1",
+      "offset": 137472,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk1",
+      "offset": 137216,
+      "size": 206,
+      "input_offset": 1792
+    }
+  ]
+}

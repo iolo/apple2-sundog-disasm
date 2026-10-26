@@ -21,24 +21,24 @@ The precise interpretation of every numeric value remains open.
 
 ## Load paths and field consumers
 
-- Play startup (`src/pcode/startup_7.s`, procedure 5, `$0142`–`$014B`) sets
+- Play startup (`src/pcode/startup_and_save.s`, procedure 5, `$0142`–`$014B`) sets
   segment-29 word 30 to `26+16=42`. Procedure 6, `$032E`–`$0338`, reads one
   block using `word30+1` into `$1600`. Library 22 procedure 53 adds a three-block
   disk bias, establishing physical logical block `42+1+3=46`.
-- `src/pcode/library_27.s` at `$0532`–`$0538` installs `$1600` as the inventory
+- `src/pcode/item_panels.s` at `$0532`–`$0538` installs `$1600` as the inventory
   name-table pointer in segment-31 word 1. `$0284`–`$028A` indexes it using
   `IXA 8`, whose scale is eight 16-bit words (16 bytes), then passes the record
   to procedure 9. That procedure copies the counted string at `$0250`–`$0253`
   and calls library 22 procedure 10 to render it at `$0265`–`$0267`.
-- `src/pcode/game_20.s`, procedure 5, sets the cargo-table pointer to `$5800`
+- `src/pcode/cargo_exchange.s`, procedure 5, sets the cargo-table pointer to `$5800`
   at `$028D`–`$0293`, then compares record 31 (using `IXA 8`) with `cryogens` at
   `$0296`–`$02A7`. If necessary, `$02AB`–`$02B5` reloads it from
   `word30+2+3=47`. Procedure 16, `$0B6F`–`$0B7A`, indexes the same pointer
   with a five-bit cargo ID, then reads byte 15 independently. This supplies
   direct evidence for both the complete 32-record bank and the separate byte.
-- Demo startup (`src/pcode/alternate_7.s`, `$00C5`–`$00D0`) sets word 30 to
+- Demo startup (`src/pcode/retained_intro_display.s`, `$00C5`–`$00D0`) sets word 30 to
   `171+18=189`. `$0159`–`$0161` reads block `189+3=192` into `$1600`, using the
-  same inventory consumer. `src/pcode/alternate_8.s` at `$05B1`–`$05BB` reads
+  same inventory consumer. `src/pcode/retained_ship_tour.s` at `$05B1`–`$05BB` reads
   the next block, `189+1+3=193`, into `$4000`. Its layout matches the 32-record
   cargo table. The two disk variants are retained separately, not normalized.
 

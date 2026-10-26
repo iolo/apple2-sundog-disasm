@@ -1,0 +1,31 @@
+{
+  "name": "library_28",
+  "source": "src/pcode/amount_arithmetic.s",
+  "config": "src/pcode/amount_arithmetic.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 71936,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 71680,
+      "size": 72,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 71936,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 71680,
+      "size": 72,
+      "input_offset": 256
+    }
+  ]
+}

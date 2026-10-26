@@ -1,8 +1,8 @@
 # Game13 complete source recovery
 
 All52 procedures are recovered directly from
-[game_13.s](../../src/pcode/game_13.s), covering4,854 original instructions.
-The [entry](../../src/pascal/game_13/proc_01.pas) includes the complete systems,
+[spaceflight.s](../../src/pcode/spaceflight.s), covering4,854 original instructions.
+The [entry](../../src/pascal/spaceflight/run_space_console.pas) includes the complete systems,
 map, travel and menu scopes. Tactical game12's [complete recovery](game_12.md)
 now supplies its dependency; a combined compilation includes both actual scopes.
 No decompiler or new translation tooling was added.
@@ -70,7 +70,7 @@ fixture or checking framework was added.
 
 ## Map rendering and selection
 
-[Procedure12](../../src/pascal/game_13/proc_12.pas) includes the full map scope,
+[Procedure12](../../src/pascal/spaceflight/select_map_location.pas) includes the full map scope,
 procedures13–26. These15 bodies account for1,917 original instructions. Its
 six-word `mapstate` preserves slots6–11: rendering writes the selection ranges,
 and selection uses the saved flag21 in slot11. Procedure13 retains its44-byte
@@ -119,7 +119,7 @@ compiled output unchanged.
 
 ## Travel scope and native calls
 
-[Procedure27](../../src/pascal/game_13/proc_27.pas) includes all14 children in
+[Procedure27](../../src/pascal/spaceflight/execute_flight_plan.pas) includes all14 children in
 its travel scope. Its six local bytes hold saved flag22 in slot3 and a four-byte
 packet in slots4/5. Procedure35 writes a fifth byte at parent slot6 despite that
 slot being outside the declared allocation. Original `$1853..$1858` and
@@ -135,7 +135,7 @@ complements both bytes, and the subsequent byte store keeps the low byte.
 Procedure35 therefore writes `255 - ord(flag122)`. The overlay tests bit0, but
 the recovered source also preserves the actual stored byte.
 
-The [native declarations](../../src/pascal/game_13/native_interfaces.pas) specify
+The [native declarations](../../src/pascal/spaceflight/native_interfaces.pas) specify
 two targets of the already reviewed library22:25 trampoline. Both receive one
 VAR address followed by target6144. The [warp overlay](../warp-animation.md)
 reads five bytes; the [viewscreen transition](../viewscreen-transition.md) reads
@@ -221,8 +221,8 @@ Build the original component before running the
 [existing compile/check commands](game_21_map.md#continuation-checks):
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_21/game_13.o src/pcode/game_13.s
-ld65 -C src/pcode/game_13.cfg -o build/decompile/game_21/game_13.bin \
+ca65 -I src/pcode -o build/decompile/game_21/game_13.o src/pcode/spaceflight.s
+ld65 -C src/pcode/spaceflight.cfg -o build/decompile/game_21/game_13.bin \
   build/decompile/game_21/game_13.o
 ```
 

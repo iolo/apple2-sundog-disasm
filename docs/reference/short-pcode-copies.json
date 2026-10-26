@@ -18,7 +18,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "f770ca2738a6610500c601ef8f3a9887af3f004a2807952a80195c69ec04c387",
       "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -332,7 +332,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "9b483f7d54e91cef10cb420aa17ff6a15d436d4955bb9d75f004cc432e90d9b2",
       "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -838,7 +838,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "827892809c83eebd168705b7b5d630460ebd12787ba925d8d31c06bdda0289a8",
       "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -1188,7 +1188,7 @@
       "source_audit": "docs/reference/step06h-pcode-audit.json",
       "sha256": "16f69b106c8ea5877bfcbbc1925a537b25394833d7c21adab2f078b452462db6",
       "evidence": "Reviewed exact span in the clipped utility procedure, bounded by explicit changed operands and supported by adjacent source copies and variant procedure metadata.",
-      "source": "src/pcode/utility_disk1.s",
+      "source": "src/pcode/save_game_utility.s",
       "items": [
         {
           "offset": 0,
@@ -1442,7 +1442,7 @@
       "source_audit": "docs/reference/pcode-modules/alternate_9.json",
       "sha256": "3e430913387b1aa3ddc634b19570aaf0584ff5ea2fa248f3cfe65d47f424fc8c",
       "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit.",
-      "source": "src/pcode/alternate_9.s",
+      "source": "src/pcode/retained_world_tour.s",
       "items": [
         {
           "offset": 0,
@@ -1492,7 +1492,7 @@
       "source_audit": "docs/reference/pcode-modules/system_4.json",
       "sha256": "b85c0f493be2f6a7492f3347424d5295294b4b2e66b38c8cba0332ee4d4e79c8",
       "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit.",
-      "source": "src/pcode/system_4.s",
+      "source": "src/pcode/runtime_initialization.s",
       "items": [
         {
           "offset": 0,
@@ -1794,7 +1794,7 @@
       "source_audit": "docs/reference/pcode-modules/game_17.json",
       "sha256": "fec89ccb73a7bec0be1b184f52e078a4a5a80c28ca814f60b789c5f65d4e80b3",
       "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit.",
-      "source": "src/pcode/game_17.s",
+      "source": "src/pcode/street_encounters.s",
       "items": [
         {
           "offset": 0,
@@ -2252,7 +2252,7 @@
       "source_audit": "docs/reference/pcode-modules/game_21.json",
       "sha256": "6309d65919963c2db1edf707775e38f9d44ae028d75fc97014b7997c4ada757c",
       "evidence": "Complete remaining block tail; exact instruction/data sequence from independently decoded source, with full source-item and clipped-boundary audit.",
-      "source": "src/pcode/game_21.s",
+      "source": "src/pcode/surface_maps.s",
       "items": [
         {
           "offset": 0,

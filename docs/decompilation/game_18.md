@@ -6,20 +6,20 @@ No new emulator session was run. Assembly revision:
 
 | Component | SHA-256 | Provenance |
 | --- | --- | --- |
-| `game_18` | `452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4` | Disk 2, header block 140, segment 18, first block 218. Physical extents: `src/pcode/game_18.adopt.json`. |
-| `library_22` | `7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49` | Shared library; physical extents: `src/pcode/library_22.adopt.json`. |
+| `game_18` | `452d8de86b4fc68e6c9827200418b67ca0f8a8c9fea1a86964baa667fafb37e4` | Disk 2, header block 140, segment 18, first block 218. Physical extents: `src/pcode/building_interiors.adopt.json`. |
+| `library_22` | `7d52f0e6959d0a8b9ac3f08bc78ced7e7af44ed87a00d80d4d82025ab7735f49` | Shared library; physical extents: `src/pcode/graphics_and_io.adopt.json`. |
 
 Offsets are segment-relative. Existing assembly/audits account for data and
 attributes; those bytes are not counted as recovered instructions.
 
 | Procedure | Entry through return | Attributes | Instructions | Pascal |
 | --- | --- | --- | ---: | --- |
-| game 18:2 | `$0000..$0016` | `$0020` | 20 | [proc_02.pas](../../src/pascal/game_18/proc_02.pas) |
-| game 18:5 | `$0068..$00E2` | `$00F0` | 86 | [proc_05.pas](../../src/pascal/game_18/proc_05.pas) |
-| game 18:15 | `$0AC2..$0B1F` | `$0B2A` | 58 | [proc_15.pas](../../src/pascal/game_18/proc_15.pas) |
-| game 18:25 | `$1438..$148D` | `$1498` | 53 | [proc_25.pas](../../src/pascal/game_18/proc_25.pas) |
-| library 22:14 | `$0088..$009C` | `$00A6` | 9 | [proc_14.pas](../../src/pascal/library_22/proc_14.pas) |
-| library 22:19 | `$020C..$021F` | `$022A` | 15 | [proc_19.pas](../../src/pascal/library_22/proc_19.pas) |
+| game 18:2 | `$0000..$0016` | `$0020` | 20 | [inside_actor_area.pas](../../src/pascal/building_interiors/inside_actor_area.pas) |
+| game 18:5 | `$0068..$00E2` | `$00F0` | 86 | [reindex_room_references.pas](../../src/pascal/building_interiors/reindex_room_references.pas) |
+| game 18:15 | `$0AC2..$0B1F` | `$0B2A` | 58 | [set_service_indicator.pas](../../src/pascal/building_interiors/set_service_indicator.pas) |
+| game 18:25 | `$1438..$148D` | `$1498` | 53 | [refresh_service_area.pas](../../src/pascal/building_interiors/refresh_service_area.pas) |
+| library 22:14 | `$0088..$009C` | `$00A6` | 9 | [set_clip_bounds.pas](../../src/pascal/graphics_and_io/set_clip_bounds.pas) |
+| library 22:19 | `$020C..$021F` | `$022A` | 15 | [apply_bounds.pas](../../src/pascal/graphics_and_io/apply_bounds.pas) |
 
 ## Calling convention and first function
 
@@ -59,7 +59,7 @@ copy, eight local bytes, and ten parameter bytes.
 ## Shared storage and packed accesses
 
 Game 18:1 has eight parameter bytes and 298 local bytes. Its local slots span
-5..153. The [local declarations](../../src/pascal/game_18/locals.pas) preserve
+5..153. The [local declarations](../../src/pascal/building_interiors/locals.pas) preserve
 that span; the parent's four parameters remain raw words. The
 [completion group](game_18_complete.md) now supplies the full parent body.
 
@@ -70,7 +70,7 @@ that span; the parent's four parameters remain raw words. The
 | Parent slots 95..97 | Outer stride one word, `IXP 4,4` four-bit fields. Procedure 5 visits columns 0..1 in rows 0..2. |
 | Parent slot 98 | `IXP 16,1` packed flags indexed by `index - 1`. |
 | Parent slots 99, 103, 107 | Four-word value parameters passed to procedure 2. |
-| DATASEG29 | Existing inventory: 760 allocated bytes. `storage.pas` overlays raw words, bounds at word 11, and flags starting at word 82, preserving aliases. |
+| DATASEG29 | Existing inventory: 760 allocated bytes. `shared_game_state.pas` overlays raw words, bounds at word 11, and flags starting at word 82, preserving aliases. |
 | External flag 57 from word 82 | Word `82 + 57 div 16 = 85`, bit `57 mod 16 = 9`. The 128-bit view is an access view, not a recovered original declaration. |
 
 Handlers `$DA1D`, `$DA60`, and `$DAB6` establish packed indexing, width, offset,
@@ -111,7 +111,7 @@ retaining the low argument byte. The zero-mode path restores the return address
 and returns at `$11DC`; other paths perform native work. There is no Pascal
 result. Global-relative operands `$02CE`, `$02D0`, `$02D2`, `$02D4` address the
 boundary words 360..363. The original native body remains authoritative; the
-[interface](../../src/pascal/library_22/native_interfaces.pas) introduces no
+[interface](../../src/pascal/graphics_and_io/native_interfaces.pas) introduces no
 purity assumption or replacement implementation.
 
 ## Validation and reproduction
@@ -179,39 +179,39 @@ arbitrary out-of-bounds calls and native corruption are not covered.
 Reproduce the source components used for analysis and verify the artifacts:
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_18/original.o src/pcode/game_18.s
-ld65 -C src/pcode/game_18.cfg -o build/decompile/game_18/original.bin \
+ca65 -I src/pcode -o build/decompile/game_18/original.o src/pcode/building_interiors.s
+ld65 -C src/pcode/building_interiors.cfg -o build/decompile/game_18/original.bin \
   build/decompile/game_18/original.o
 sha256sum build/decompile/game_18/original.bin
-ca65 -I src/pcode -o build/decompile/game_18/library_22.o src/pcode/library_22.s
-ld65 -C src/pcode/library_22.cfg -o build/decompile/game_18/library_22.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_22.o src/pcode/graphics_and_io.s
+ld65 -C src/pcode/graphics_and_io.cfg -o build/decompile/game_18/library_22.bin \
   build/decompile/game_18/library_22.o
-ca65 -I src/pcode -o build/decompile/game_18/game_8.o src/pcode/game_8.s
-ld65 -C src/pcode/game_8.cfg -o build/decompile/game_18/game_8.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_8.o src/pcode/personal_panel.s
+ld65 -C src/pcode/personal_panel.cfg -o build/decompile/game_18/game_8.bin \
   build/decompile/game_18/game_8.o
-ca65 -I src/pcode -o build/decompile/game_18/library_27.o src/pcode/library_27.s
-ld65 -C src/pcode/library_27.cfg -o build/decompile/game_18/library_27.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_27.o src/pcode/item_panels.s
+ld65 -C src/pcode/item_panels.cfg -o build/decompile/game_18/library_27.bin \
   build/decompile/game_18/library_27.o
-ca65 -I src/pcode -o build/decompile/game_18/library_24.o src/pcode/library_24.s
-ld65 -C src/pcode/library_24.cfg -o build/decompile/game_18/library_24.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_24.o src/pcode/flight_and_effects.s
+ld65 -C src/pcode/flight_and_effects.cfg -o build/decompile/game_18/library_24.bin \
   build/decompile/game_18/library_24.o
-ca65 -I src/pcode -o build/decompile/game_18/game_17.o src/pcode/game_17.s
-ld65 -C src/pcode/game_17.cfg -o build/decompile/game_18/game_17.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_17.o src/pcode/street_encounters.s
+ld65 -C src/pcode/street_encounters.cfg -o build/decompile/game_18/game_17.bin \
   build/decompile/game_18/game_17.o
-ca65 -I src/pcode -o build/decompile/game_18/library_25.o src/pcode/library_25.s
-ld65 -C src/pcode/library_25.cfg -o build/decompile/game_18/library_25.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_25.o src/pcode/menus.s
+ld65 -C src/pcode/menus.cfg -o build/decompile/game_18/library_25.bin \
   build/decompile/game_18/library_25.o
-ca65 -I src/pcode -o build/decompile/game_18/library_28.o src/pcode/library_28.s
-ld65 -C src/pcode/library_28.cfg -o build/decompile/game_18/library_28.bin \
+ca65 -I src/pcode -o build/decompile/game_18/library_28.o src/pcode/amount_arithmetic.s
+ld65 -C src/pcode/amount_arithmetic.cfg -o build/decompile/game_18/library_28.bin \
   build/decompile/game_18/library_28.o
-ca65 -I src/pcode -o build/decompile/game_18/game_19.o src/pcode/game_19.s
-ld65 -C src/pcode/game_19.cfg -o build/decompile/game_18/game_19.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_19.o src/pcode/civic_services.s
+ld65 -C src/pcode/civic_services.cfg -o build/decompile/game_18/game_19.bin \
   build/decompile/game_18/game_19.o
-ca65 -I src/pcode -o build/decompile/game_18/game_20.o src/pcode/game_20.s
-ld65 -C src/pcode/game_20.cfg -o build/decompile/game_18/game_20.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_20.o src/pcode/cargo_exchange.s
+ld65 -C src/pcode/cargo_exchange.cfg -o build/decompile/game_18/game_20.bin \
   build/decompile/game_18/game_20.o
-ca65 -I src/pcode -o build/decompile/game_18/game_21.o src/pcode/game_21.s
-ld65 -C src/pcode/game_21.cfg -o build/decompile/game_18/game_21.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_21.o src/pcode/surface_maps.s
+ld65 -C src/pcode/surface_maps.cfg -o build/decompile/game_18/game_21.bin \
   build/decompile/game_18/game_21.o
 python3 docs/decompilation/checks/verify_game_18.py
 ```

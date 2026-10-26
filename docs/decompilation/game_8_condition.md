@@ -7,25 +7,25 @@ unrecovered; no replacement entry point is supplied.
 
 The `game_8` component rebuilds to SHA-256
 `49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d`.
-Its disk-2 extents are recorded in `src/pcode/game_8.adopt.json`. Assembly revision
+Its disk-2 extents are recorded in `src/pcode/personal_panel.adopt.json`. Assembly revision
 remains `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`; library-22 identity is recorded
 in the [first group](game_18.md).
 
 | Procedure | Entry through return | Attributes | Instructions | Pascal |
 | --- | --- | --- | ---: | --- |
-| game 8:2 | `$0000..$006D` | `$0078` | 75 | [proc_02.pas](../../src/pascal/game_8/proc_02.pas) |
-| game 8:5 | `$010A..$0120` | `$012A` | 20 | [proc_05.pas](../../src/pascal/game_8/proc_05.pas) |
-| game 8:6 | `$012C..$0171` | `$017C` | 48 | [proc_06.pas](../../src/pascal/game_8/proc_06.pas) |
-| game 8:7 | `$017E..$0249` | `$0258` | 95 | [proc_07.pas](../../src/pascal/game_8/proc_07.pas) |
-| library 22:10 | `$001C..$0044` | `$0050` | 25 | [proc_10.pas](../../src/pascal/library_22/proc_10.pas) |
-| library 22:38 | `$0602..$0668` | `$0674` | 69 | [proc_38.pas](../../src/pascal/library_22/proc_38.pas) |
-| library 22:39 | `$0676..$06B1` | `$06BE` | 35 | [proc_39.pas](../../src/pascal/library_22/proc_39.pas) |
-| library 22:43 | `$0806..$0829` | `$0834` | 30 | [proc_43.pas](../../src/pascal/library_22/proc_43.pas) |
-| library 22:44 | `$0836..$0852` | `$085C` | 14 | [proc_44.pas](../../src/pascal/library_22/proc_44.pas) |
-| library 22:45 | `$085E..$0879` | `$0884` | 14 | [proc_45.pas](../../src/pascal/library_22/proc_45.pas) |
-| library 22:46 | `$0886..$089E` | `$08A8` | 17 | [proc_46.pas](../../src/pascal/library_22/proc_46.pas) |
-| library 22:47 | `$08AA..$08D7` | `$08E2` | 24 | [proc_47.pas](../../src/pascal/library_22/proc_47.pas) |
-| library 22:48 | `$08E4..$09C4` | `$09DA` | 140 | [proc_48.pas](../../src/pascal/library_22/proc_48.pas) |
+| game 8:2 | `$0000..$006D` | `$0078` | 75 | [draw_condition_bar.pas](../../src/pascal/personal_panel/draw_condition_bar.pas) |
+| game 8:5 | `$010A..$0120` | `$012A` | 20 | [point_in_item_area.pas](../../src/pascal/personal_panel/point_in_item_area.pas) |
+| game 8:6 | `$012C..$0171` | `$017C` | 48 | [draw_personal_button.pas](../../src/pascal/personal_panel/draw_personal_button.pas) |
+| game 8:7 | `$017E..$0249` | `$0258` | 95 | [paint_condition_panel.pas](../../src/pascal/personal_panel/paint_condition_panel.pas) |
+| library 22:10 | `$001C..$0044` | `$0050` | 25 | [draw_text.pas](../../src/pascal/graphics_and_io/draw_text.pas) |
+| library 22:38 | `$0602..$0668` | `$0674` | 69 | [integer_to_text.pas](../../src/pascal/graphics_and_io/integer_to_text.pas) |
+| library 22:39 | `$0676..$06B1` | `$06BE` | 35 | [draw_integer.pas](../../src/pascal/graphics_and_io/draw_integer.pas) |
+| library 22:43 | `$0806..$0829` | `$0834` | 30 | [update_pointer.pas](../../src/pascal/graphics_and_io/update_pointer.pas) |
+| library 22:44 | `$0836..$0852` | `$085C` | 14 | [clear_text_window.pas](../../src/pascal/graphics_and_io/clear_text_window.pas) |
+| library 22:45 | `$085E..$0879` | `$0884` | 14 | [text_newline.pas](../../src/pascal/graphics_and_io/text_newline.pas) |
+| library 22:46 | `$0886..$089E` | `$08A8` | 17 | [set_text_grid_position.pas](../../src/pascal/graphics_and_io/set_text_grid_position.pas) |
+| library 22:47 | `$08AA..$08D7` | `$08E2` | 24 | [write_text_glyph.pas](../../src/pascal/graphics_and_io/write_text_glyph.pas) |
+| library 22:48 | `$08E4..$09C4` | `$09DA` | 140 | [write_wrapped_text.pas](../../src/pascal/graphics_and_io/write_wrapped_text.pas) |
 
 ## Strings and text drawing
 
@@ -75,7 +75,7 @@ they are not counted as newly recovered procedures.
 ## Game 8 storage and condition display
 
 The parent has two parameter words and 118 local bytes, slots 3..61. The
-[local declarations](../../src/pascal/game_8/locals.pas) retain raw storage where
+[local declarations](../../src/pascal/personal_panel/locals.pas) retain raw storage where
 meanings are unresolved. Four bounds records at slots 46..61 use the observed
 four-word stride; earlier bounds views occupy slots 22..45. At this group's checkpoint the compile fixture
 had an empty parent body. The [completion group](game_8_complete.md) now supplies
@@ -120,8 +120,8 @@ now include game 8. In addition to the [existing commands](game_18.md#validation
 rebuild its source component before running the verifier:
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_18/game_8.o src/pcode/game_8.s
-ld65 -C src/pcode/game_8.cfg -o build/decompile/game_18/game_8.bin \
+ca65 -I src/pcode -o build/decompile/game_18/game_8.o src/pcode/personal_panel.s
+ld65 -C src/pcode/personal_panel.cfg -o build/decompile/game_18/game_8.bin \
   build/decompile/game_18/game_8.o
 ```
 

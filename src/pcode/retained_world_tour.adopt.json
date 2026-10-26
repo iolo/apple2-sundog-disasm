@@ -1,0 +1,37 @@
+{
+  "name": "alternate_9",
+  "source": "src/pcode/retained_world_tour.s",
+  "config": "src/pcode/retained_world_tour.cfg",
+  "mappings": [
+    {
+      "disk": "disk1",
+      "offset": 82176,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk1",
+      "offset": 85760,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk1",
+      "offset": 86016,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk1",
+      "offset": 89600,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk1",
+      "offset": 89344,
+      "size": 188,
+      "input_offset": 1024
+    }
+  ]
+}

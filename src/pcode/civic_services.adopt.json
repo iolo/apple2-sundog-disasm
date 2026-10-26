@@ -1,0 +1,133 @@
+{
+  "name": "game_19",
+  "source": "src/pcode/civic_services.s",
+  "config": "src/pcode/civic_services.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 114944,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 118528,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 118784,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 122368,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 122112,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 121856,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 121600,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 121344,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk2",
+      "offset": 121088,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk2",
+      "offset": 120832,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk2",
+      "offset": 120576,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk2",
+      "offset": 120320,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk2",
+      "offset": 120064,
+      "size": 256,
+      "input_offset": 3072
+    },
+    {
+      "disk": "disk2",
+      "offset": 119808,
+      "size": 256,
+      "input_offset": 3328
+    },
+    {
+      "disk": "disk2",
+      "offset": 119552,
+      "size": 256,
+      "input_offset": 3584
+    },
+    {
+      "disk": "disk2",
+      "offset": 119296,
+      "size": 256,
+      "input_offset": 3840
+    },
+    {
+      "disk": "disk2",
+      "offset": 119040,
+      "size": 256,
+      "input_offset": 4096
+    },
+    {
+      "disk": "disk2",
+      "offset": 122624,
+      "size": 256,
+      "input_offset": 4352
+    },
+    {
+      "disk": "disk2",
+      "offset": 122880,
+      "size": 256,
+      "input_offset": 4608
+    },
+    {
+      "disk": "disk2",
+      "offset": 126464,
+      "size": 256,
+      "input_offset": 4864
+    },
+    {
+      "disk": "disk2",
+      "offset": 126208,
+      "size": 80,
+      "input_offset": 5120
+    }
+  ]
+}

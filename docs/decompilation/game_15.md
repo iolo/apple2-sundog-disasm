@@ -1,8 +1,8 @@
 # Game15 complete source recovery
 
 All16 procedures are recovered directly from
-[`game_15.s`](../../src/pcode/game_15.s), covering1,310 original instructions.
-The maintained [entry](../../src/pascal/game_15/proc_01.pas) now supplies the
+[`ship_interior.s`](../../src/pcode/ship_interior.s), covering1,310 original instructions.
+The maintained [entry](../../src/pascal/ship_interior/run_ship_interior.pas) now supplies the
 parent and all15 children. The first nine helpers covered424 instructions;
 the remaining seven add886. No translator was added.
 
@@ -42,7 +42,7 @@ Procedure11 sets native entry7 to3904 before calling8. That conditional
 library22:25 call reuses the reviewed raw screen-initializer contract: one
 unused VAR address (here DATASEG29 word58), no Pascal result. The later5120
 value is a disk-read destination, not another raw call in this component.
-Game14's [recovered entry](../../src/pascal/game_14/proc_01.pas) accepts a
+Game14's [recovered entry](../../src/pascal/ship_components/run_component_panel.pas) accepts a
 VAR action plus two value words, established by both caller and callee accesses
 and its six-byte parameter metadata. The [complete game14 recovery](game_14.md)
 has replaced its temporary external declaration.
@@ -76,11 +76,11 @@ Build the original components, then use the
 [existing compilation/disassembly/check commands](game_21_map.md#continuation-checks):
 
 ```sh
-ca65 -I src/pcode -o build/decompile/game_21/game_15.o src/pcode/game_15.s
-ld65 -C src/pcode/game_15.cfg -o build/decompile/game_21/game_15.bin \
+ca65 -I src/pcode -o build/decompile/game_21/game_15.o src/pcode/ship_interior.s
+ld65 -C src/pcode/ship_interior.cfg -o build/decompile/game_21/game_15.bin \
   build/decompile/game_21/game_15.o
-ca65 -I src/pcode -o build/decompile/game_21/game_14.o src/pcode/game_14.s
-ld65 -C src/pcode/game_14.cfg -o build/decompile/game_21/game_14.bin \
+ca65 -I src/pcode -o build/decompile/game_21/game_14.o src/pcode/ship_components.s
+ld65 -C src/pcode/ship_components.cfg -o build/decompile/game_21/game_14.bin \
   build/decompile/game_21/game_14.o
 ```
 

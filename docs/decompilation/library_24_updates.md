@@ -9,23 +9,23 @@ interfaces. Library24 still lacks p-code bodies 1/2/6/10 and native interfaces
 The component is `library_24`, SHA-256
 `acaadfd85907933575a035fe67f716630e3c3695430008f90a4b48ea6b1fd68c`, from assembly
 revision `5c64227e095e86ba1e8c79b8e4425986cf9ae58f`. Disk extents remain in
-`src/pcode/library_24.adopt.json`. All findings and checks here are static.
+`src/pcode/flight_and_effects.adopt.json`. All findings and checks here are static.
 
 | Procedure | Entry through return | Attributes | Instructions | Source |
 | --- | --- | --- | ---: | --- |
-| 24:12 | `$02B4..$0676` | `$068E` | 539 | [proc_12.pas](../../src/pascal/library_24/proc_12.pas) |
-| 24:13 | `$0690..$0A8D` | `$0AAA` | 581 | [proc_13.pas](../../src/pascal/library_24/proc_13.pas) |
-| 24:9 | `$0E06..$0E50` | `$0E5A` | 33 | [proc_09.pas](../../src/pascal/library_24/proc_09.pas) |
-| 8:3 | `$00A4..$00FB` | `$0108` | 53 | [proc_03.pas](../../src/pascal/game_8/proc_03.pas) |
-| 8:4 | `$007A..$0098` | `$00A2` | 12 | [proc_04.pas](../../src/pascal/game_8/proc_04.pas) |
+| 24:12 | `$02B4..$0676` | `$068E` | 539 | [update_travel_and_encounters.pas](../../src/pascal/flight_and_effects/update_travel_and_encounters.pas) |
+| 24:13 | `$0690..$0A8D` | `$0AAA` | 581 | [update_encounter_and_damage.pas](../../src/pascal/flight_and_effects/update_encounter_and_damage.pas) |
+| 24:9 | `$0E06..$0E50` | `$0E5A` | 33 | [update_flight_state.pas](../../src/pascal/flight_and_effects/update_flight_state.pas) |
+| 8:3 | `$00A4..$00FB` | `$0108` | 53 | [tick_personal_panel.pas](../../src/pascal/personal_panel/tick_personal_panel.pas) |
+| 8:4 | `$007A..$0098` | `$00A2` | 12 | [hide_panel_overlay.pas](../../src/pascal/personal_panel/hide_panel_overlay.pas) |
 
 The game8 component hash is
 `49588749543660839355c65b1acaacc2cb5679ae726d914ed1c1c2a5be92d89d`;
-its disk extents are in `src/pcode/game_8.adopt.json`.
+its disk extents are in `src/pcode/personal_panel.adopt.json`.
 
 ## Storage and native contract
 
-[Storage views](../../src/pascal/storage.pas) add six-word aggregates at external
+[Storage views](../../src/pascal/shared_game_state.pas) add six-word aggregates at external
 words36/66/72/228; bounds303/307/323/343; and 4/5/7-bit views at words67/73.
 The existing byte view addresses both halves of word72 as bytes142/143 and
 the low half of word41 as byte80. Byte371 is word90's byte193. These overlays
@@ -36,7 +36,7 @@ the final two words expose eight nibbles. The four-bit selector uses a one-based
 row index. The declared 15-row window documents those accesses, not allocation,
 ownership, or validation of the pointer/selector. No range guards are invented.
 
-[Native24:4](../../src/pascal/library_24/native_interfaces.pas), entry `$0F5E`,
+[Native24:4](../../src/pascal/flight_and_effects/native_interfaces.pas), entry `$0F5E`,
 pops ten bytes into zero page: return address, second output pointer, first
 output pointer, second input, first input. It writes two-byte results first
 through `$04/$05`, then through `$02/$03`, and restores only the return address.

@@ -1,0 +1,268 @@
+{
+  "description": "Identifier renaming only; static comparison against pre-edit sources and existing compiler artifacts. No runtime execution claimed.",
+  "baseline_source_revision": "031b1a456c90a386e66ca42a579c9fc14cc43691",
+  "catalog": "docs/decompilation/identifier-names.json",
+  "catalog_sha256": "0bca38d43b11a4380c547caa90fbe86a7bb2aae5c7919ad1c3464111fd405077",
+  "pascal_source_token_comparison": {
+    "files": 608,
+    "result": "All606 Pascal files and both persistent compile fixtures match the pinned Git revision through the explicit source-path map after recorded routine/local/field renames and exact storage aliases; include paths and comments may change."
+  },
+  "named_procedures": {
+    "p-code": 570,
+    "native-entry-or-contract": 38
+  },
+  "compiler_revision": "397cf201ddf22ca25a82d0ad5401e5d70a38f849",
+  "compile_comparisons": {
+    "game_18": {
+      "fixture": "docs/decompilation/checks/game_18_compile.pas",
+      "compiled_procedures": 232,
+      "executable_segment_sha256": "97dcf8192d2c74aa1fd70ec91537133677f9a882ecf0c1e7b9f8d5594d2a39dc",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/cargo_exchange/paint_exchange_heading.pas: 17:\n    warning: call of procedure \"flash_exchange_title\": parameter one:\n    maximum string length of parameter (24) is greater than...\nucsdpsys_compile: src/pascal/cargo_exchange/flash_exchange_title.pas: 3:\n    warning: ... declared maximum string length (15)\nucsdpsys_compile: src/pascal/surface_maps/check_surface_interactions.pas:\n    7: warning: variable \"interaction_allowed\" shadows an earlier symbol...\nucsdpsys_compile: builtin: warning: ... here is the earlier \"interactive\"\n    named type declaration\n",
+      "previous_compiler_output_sha256": "7d56cc1dc9558e72dfd810f5b4353ce0ffe35477bca84e391f3b2b667ca81753",
+      "renamed_compiler_output_sha256": "d39589eaee92a492942446a9aaa26dc018238aef1476dd478cb1f35b08ea0a34",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "game_21": {
+      "fixture": "docs/decompilation/checks/game_21_compile.pas",
+      "compiled_procedures": 207,
+      "executable_segment_sha256": "302e03133455a4e7ff69f7e3c4a7be689ebd9375bd674881e97bb9ff2aa7c02a",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/surface_maps/check_surface_interactions.pas:\n    7: warning: variable \"interaction_allowed\" shadows an earlier symbol...\nucsdpsys_compile: builtin: warning: ... here is the earlier \"interactive\"\n    named type declaration\nucsdpsys_compile: src/pascal/surface_maps/setup_surface_session.pas: 6:\n    warning: Go To Statement Considered Harmful (Edsger Dijkstra, 1968); to\n    silence this message use (*$warning goto false*)\n",
+      "previous_compiler_output_sha256": "fe4b1d316da087ef3e727bf26b3031ea4967c0648884607e62d7d55c05d2d959",
+      "renamed_compiler_output_sha256": "47a4a082fe3618ebd49cc8181564e780b5d021221449ef862db605057acce0aa",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "game_12": {
+      "fixture": "build/decompile/game_12/check.pas",
+      "compiled_procedures": 161,
+      "executable_segment_sha256": "39eff40d81073d4383e7bfa28eb5d045524a351ca35a3bf7aaf03d1f3a76594e",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "",
+      "previous_compiler_output_sha256": "7b6754bb163c93feba44c6b8ec360ae4eaedf57b1dbdad49999c5990567e21d9",
+      "renamed_compiler_output_sha256": "e79ebb6a3f3139bf74d797566d68075b79ea239531cbd124ce484c1446b556d0",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "library_26_disk1": {
+      "fixture": "build/decompile/library_26_disk1/check.pas",
+      "compiled_procedures": 93,
+      "executable_segment_sha256": "70b0acbabb7a25c335a6affbabbaffe0fd7e4e7b036e7fa05a5f9fae709f114b",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "",
+      "previous_compiler_output_sha256": "5222b4474b573210395f2c719c7542e788f12d85b8ef80d95b5e180f343017e4",
+      "renamed_compiler_output_sha256": "e5ac888f6358cf25c6683251b9ef57f8974747f437a14794f1bff11867fd0d79",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "library_26_disk2": {
+      "fixture": "build/decompile/library_26_disk2/check.pas",
+      "compiled_procedures": 93,
+      "executable_segment_sha256": "45ec610e8da9d71a30280910c84583b7195f8b5db64ae4c821c6894f482cfddc",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "",
+      "previous_compiler_output_sha256": "2a08858cc0c622a33bbe6d2d92e4805fcb3e2636604eaa2c6a67b80ac09ea3f8",
+      "renamed_compiler_output_sha256": "bd7087036707ecac3c79b0ed0829d2d61556de8fe167d4cc488bcf687ce120ea",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "startup_7": {
+      "fixture": "build/decompile/startup_7/check.pas",
+      "compiled_procedures": 102,
+      "executable_segment_sha256": "62b3d04b493eae0e71d1dcc556349385b7a1a32d6c7aa5149287dddb7d75e12f",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/startup_and_save/run_startup_or_save.pas: 5:\n    warning: parameter \"initialize\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/graphics_and_io/initialize_pointer.pas: 3:\n    warning: ... here is the earlier \"initialize_pointer\" procedure\n    declaration\nucsdpsys_compile: src/pascal/startup_and_save/load_game_tables.pas: 9:\n    warning: variable \"table_address\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/shared_game_state.pas: 56: warning: ... here\n    is the earlier \"tableaddr\" named type declaration\n",
+      "previous_compiler_output_sha256": "2e16c1e6b2f87c6d348400810e512ee40a4d9eb5186fba9327dd4824ef49022c",
+      "renamed_compiler_output_sha256": "78bd16ec6e74d65241b8a000e6afe292bd4fc0dfb31e45cff2acb18b42686071",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "startup_disk1": {
+      "fixture": "build/decompile/startup_disk1/check.pas",
+      "compiled_procedures": 112,
+      "executable_segment_sha256": "f32983a053aa323930400f40e54c55cb897845a8f1ab0fb9cd9a89a4ece6f1f5",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/startup_and_save/run_startup_or_save.pas: 5:\n    warning: parameter \"initialize\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/graphics_and_io/initialize_pointer.pas: 3:\n    warning: ... here is the earlier \"initialize_pointer\" procedure\n    declaration\nucsdpsys_compile: src/pascal/startup_and_save/load_game_tables.pas: 9:\n    warning: variable \"table_address\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/shared_game_state.pas: 56: warning: ... here\n    is the earlier \"tableaddr\" named type declaration\nucsdpsys_compile: src/pascal/game_dispatch/halt_on_io_error.pas: 12:\n    warning: the repeat until statement control expression is constant, it\n    is always false\n",
+      "previous_compiler_output_sha256": "bd51dc26add3e342940210113fc46ea1304f27eeaea940b8ff45ead91625a992",
+      "renamed_compiler_output_sha256": "311dcc4a01ac3110cec8602cd5c1d56fdf4a9686a709d1481b595d1cdd11d2c3",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "utility_disk1": {
+      "fixture": "build/decompile/utility_disk1/check.pas",
+      "compiled_procedures": 153,
+      "executable_segment_sha256": "a4a5336c111420d0f50f4945f6719b05e6bb53a010fa68c8bcc38641b3b28b50",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/startup_and_save/run_startup_or_save.pas: 5:\n    warning: parameter \"initialize\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/graphics_and_io/initialize_pointer.pas: 3:\n    warning: ... here is the earlier \"initialize_pointer\" procedure\n    declaration\nucsdpsys_compile: src/pascal/startup_and_save/load_game_tables.pas: 9:\n    warning: variable \"table_address\" shadows an earlier symbol...\nucsdpsys_compile: src/pascal/shared_game_state.pas: 56: warning: ... here\n    is the earlier \"tableaddr\" named type declaration\nucsdpsys_compile: src/pascal/save_game_utility/confirm_slot_delete.pas: 11:\n    warning: the address-of operator was not present in UCSD Pascal, to\n    silence this message use (*$warning address-of false*)\n",
+      "previous_compiler_output_sha256": "ee7863b14d521d3d34d9ffa03b55f9fe3d6efce663218cf55ff55202c41dcafd",
+      "renamed_compiler_output_sha256": "32f849938592c4857b0f06b1bb8c431ff4382c8dca4657ea70e78e9d318d6cc3",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "system_complete": {
+      "fixture": "build/decompile/system_core/complete.pas",
+      "compiled_procedures": 80,
+      "executable_segment_sha256": "a716439b24e4396748431cdc9102586f5667330430e9163ee3f81f8b6e492a01",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "ucsdpsys_compile: src/pascal/buffered_files/rt_fetch_buffered.pas: 8:\n    warning: Go To Statement Considered Harmful (Edsger Dijkstra, 1968); to\n    silence this message use (*$warning goto false*)\nucsdpsys_compile: src/pascal/buffered_files/rt_fetch_buffered.pas: 19:\n    warning: the address-of operator was not present in UCSD Pascal, to\n    silence this message use (*$warning address-of false*)\nucsdpsys_compile: src/pascal/runtime_core/rt_system_failure.pas: 14:\n    warning: the repeat until statement control expression is constant, it\n    is always false\nucsdpsys_compile:\n    src/pascal/runtime_initialization/rt_initialize_system.pas: 42:\n    warning: the repeat until statement control expression is constant, it\n    is always false\nucsdpsys_compile:\n    src/pascal/runtime_initialization/rt_initialize_system.pas: 56:\n    warning: the repeat until statement control expression is constant, it\n    is always false\nucsdpsys_compile: src/pascal/runtime_core/runtime_main_loop.pas: 16:\n    warning: the repeat until statement control expression is constant, it\n    is always false\n",
+      "previous_compiler_output_sha256": "bfc682570b2b3f9308525e7a82598f6f450fb9799f5042a8d178dd5c48c72843",
+      "renamed_compiler_output_sha256": "bfc682570b2b3f9308525e7a82598f6f450fb9799f5042a8d178dd5c48c72843",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    },
+    "system_3": {
+      "fixture": "build/decompile/system_3/check.pas",
+      "compiled_procedures": 1,
+      "executable_segment_sha256": "35187602da24c95a060c29ad564f22c81fc4aa377a967f6f98b90e6c95f2ea4c",
+      "same_executable_segment": true,
+      "same_procedure_frames": true,
+      "diagnostics": "",
+      "previous_compiler_output_sha256": "869efa5c03953c3f81aebcb07198b418671d30bc4dd96d33f90197b30ee3cf8e",
+      "renamed_compiler_output_sha256": "d00d801bdb674f9bef3a53848c19819486915a09a53be56b106d94990ca92ec2",
+      "compiler_options": [
+        "--p-machine=ii.1",
+        "-f",
+        "no-range-check",
+        "-f",
+        "no-efj-nfj"
+      ]
+    }
+  },
+  "disk_build": [
+    {
+      "filename": "sundog-disk1-game.dsk",
+      "size": 143360,
+      "sha256": "79226c9a2d8df006097c9c69a7de46019a610c5486dc52e07616d39381eba082"
+    },
+    {
+      "filename": "sundog-disk2-util.dsk",
+      "size": 143360,
+      "sha256": "52676db37d9eb93aed9a16b44b705f630522db6e160ad51d5d2c2fd9ac691e7d"
+    }
+  ],
+  "commands": [
+    "python3 tools/build_disks.py --no-temporary",
+    "python3 docs/decompilation/checks/verify_identifier_names.py",
+    "python3 docs/decompilation/checks/verify_game_18.py",
+    "python3 docs/decompilation/checks/verify_game_21.py"
+  ],
+  "native_contract_note": "Includes register helper26:18 in each disk variant (no Pascal signature) and trampoline22:25 with 9 distinct target-specific Pascal call shapes.",
+  "named_storage": {
+    "dataseg29_word_aliases": 29,
+    "additional_context_aliases": 1,
+    "game_frame_word_aliases": 202,
+    "utility_frame_word_aliases": 44,
+    "amount_library_frame_slots": 26,
+    "existing_typed_field_names": 69,
+    "storage_variable_names": 27
+  },
+  "call_target_review": "CGP/CLP/CIP names use the caller component, not its segment number. Low-segment external system calls do not resolve to startup/utility program entries. Known application/library CXP names require an unambiguous active target; both library26 variants share names. CBP is left with its system-core identity when evidenced. CIP has one procedure-number operand; the callee dictionary determines lexical traversal. Core procedure1 source ownership is recorded separately in runtime_entry.s.",
+  "context_word_review": "Word217 is target_range in space combat and ground_encounter_mode in game17 plus game21:40. Both aliases retain the same physical word and original accesses.",
+  "semantic_branch_aliases": 16,
+  "deferred_scope_review": "Catalog deferred_review records reviewed historical variants and clipped donor contexts; active names are not substituted by reused segment/procedure numbers.",
+  "source_path_renaming": {
+    "mapped_files": 712,
+    "pascal_directories": 30,
+    "procedure_include_files": 559,
+    "mapping": "docs/decompilation/identifier-names.json:source_paths",
+    "compiler_output_before_after": {
+      "game_18": {
+        "sha256": "d39589eaee92a492942446a9aaa26dc018238aef1476dd478cb1f35b08ea0a34",
+        "same_complete_output": true
+      },
+      "game_21": {
+        "sha256": "47a4a082fe3618ebd49cc8181564e780b5d021221449ef862db605057acce0aa",
+        "same_complete_output": true
+      },
+      "game_12": {
+        "sha256": "e79ebb6a3f3139bf74d797566d68075b79ea239531cbd124ce484c1446b556d0",
+        "same_complete_output": true
+      },
+      "library_26_disk1": {
+        "sha256": "e5ac888f6358cf25c6683251b9ef57f8974747f437a14794f1bff11867fd0d79",
+        "same_complete_output": true
+      },
+      "library_26_disk2": {
+        "sha256": "bd7087036707ecac3c79b0ed0829d2d61556de8fe167d4cc488bcf687ce120ea",
+        "same_complete_output": true
+      },
+      "startup_7": {
+        "sha256": "78bd16ec6e74d65241b8a000e6afe292bd4fc0dfb31e45cff2acb18b42686071",
+        "same_complete_output": true
+      },
+      "startup_disk1": {
+        "sha256": "311dcc4a01ac3110cec8602cd5c1d56fdf4a9686a709d1481b595d1cdd11d2c3",
+        "same_complete_output": true
+      },
+      "utility_disk1": {
+        "sha256": "32f849938592c4857b0f06b1bb8c431ff4382c8dca4657ea70e78e9d318d6cc3",
+        "same_complete_output": true
+      },
+      "system_complete": {
+        "sha256": "bfc682570b2b3f9308525e7a82598f6f450fb9799f5042a8d178dd5c48c72843",
+        "same_complete_output": true
+      },
+      "system_3": {
+        "sha256": "d00d801bdb674f9bef3a53848c19819486915a09a53be56b106d94990ca92ec2",
+        "same_complete_output": true
+      }
+    },
+    "component_ids_and_binary_hashes_unchanged": true
+  }
+}

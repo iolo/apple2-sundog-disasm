@@ -1,8 +1,8 @@
 # Game12 tactical source recovery
 
 All23 procedures are recovered directly from
-[game_12.s](../../src/pcode/game_12.s), covering2,590 original instructions.
-The [entry](../../src/pascal/game_12/proc_01.pas) includes all22 children, with16
+[tactical_console.s](../../src/pcode/tactical_console.s), covering2,590 original instructions.
+The [entry](../../src/pascal/tactical_console/run_tactical_console.pas) includes all22 children, with16
 nested inside15. It supplies game13's tactical dependency as reviewed source.
 
 | Procedures | Reviewed behavior |
@@ -21,7 +21,7 @@ nested inside15. It supplies game13's tactical dependency as reviewed source.
 
 ## Storage and observable order
 
-[Types](../../src/pascal/game_12/types.pas) preserve the entry's94-byte frame,
+[Types](../../src/pascal/tactical_console/types.pas) preserve the entry's94-byte frame,
 slots1–47. Raw words share storage with the two-word cargo at34/35 and bounds
 at37–40. The native drawing address in43 points at words44–47. Flags use bit0;
 unused or conditionally initialized words remain uninitialized where the
@@ -57,7 +57,7 @@ result. The final target comparison still compiles as typed `NEQ6`.
 
 ## Raw overlay contracts
 
-The [native declarations](../../src/pascal/game_12/native_interfaces.pas) describe
+The [native declarations](../../src/pascal/tactical_console/native_interfaces.pas) describe
 three targets of the already reviewed library22:25 trampoline. The original
 [viewscreen overlay](../viewscreen-io.md) remains assembly:
 

@@ -13,7 +13,7 @@
       "component": "alternate_10",
       "input_offset": 922,
       "sha256": "95c721ad7392dad4bfb482607b7216788daa6622e98ef2e0a620400fadfb0b99",
-      "source": "src/pcode/alternate_10.s",
+      "source": "src/pcode/retained_credits.s",
       "source_sha256": "00fc5609291afd26b58c13fcf51f414bc4280ab27c58f4e281daa85a934c06e9",
       "source_audit": "docs/reference/pcode-modules/alternate_10.json",
       "items": [
@@ -207,7 +207,7 @@
       "component": "game_13",
       "input_offset": 9702,
       "sha256": "cb38654efe3233a17586c8faa3c49655f5b3a612357605cd58034b21358ecbc9",
-      "source": "src/pcode/game_13.s",
+      "source": "src/pcode/spaceflight.s",
       "source_sha256": "2c876905d523d89fc2c5216cbc199b01a18bf5dcc223addc188dc1510388211d",
       "source_audit": "docs/reference/pcode-modules/game_13.json",
       "items": [
@@ -389,7 +389,7 @@
       "component": "game_14",
       "input_offset": 2032,
       "sha256": "5144b2d83940c22f77e26c9433f881d4c47e24fb5dc8a7ccfaeb4adf18a5e3d3",
-      "source": "src/pcode/game_14.s",
+      "source": "src/pcode/ship_components.s",
       "source_sha256": "709a79599c6310b3930316bb849b9fc6ac9f4267f474ba0ab7165d893c9718d8",
       "source_audit": "docs/reference/pcode-modules/game_14.json",
       "items": [

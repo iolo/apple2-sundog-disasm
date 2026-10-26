@@ -1,0 +1,85 @@
+{
+  "name": "game_8",
+  "source": "src/pcode/personal_panel.s",
+  "config": "src/pcode/personal_panel.cfg",
+  "mappings": [
+    {
+      "disk": "disk2",
+      "offset": 76032,
+      "size": 256,
+      "input_offset": 0
+    },
+    {
+      "disk": "disk2",
+      "offset": 75776,
+      "size": 256,
+      "input_offset": 256
+    },
+    {
+      "disk": "disk2",
+      "offset": 75520,
+      "size": 256,
+      "input_offset": 512
+    },
+    {
+      "disk": "disk2",
+      "offset": 75264,
+      "size": 256,
+      "input_offset": 768
+    },
+    {
+      "disk": "disk2",
+      "offset": 75008,
+      "size": 256,
+      "input_offset": 1024
+    },
+    {
+      "disk": "disk2",
+      "offset": 74752,
+      "size": 256,
+      "input_offset": 1280
+    },
+    {
+      "disk": "disk2",
+      "offset": 74496,
+      "size": 256,
+      "input_offset": 1536
+    },
+    {
+      "disk": "disk2",
+      "offset": 74240,
+      "size": 256,
+      "input_offset": 1792
+    },
+    {
+      "disk": "disk2",
+      "offset": 73984,
+      "size": 256,
+      "input_offset": 2048
+    },
+    {
+      "disk": "disk2",
+      "offset": 77568,
+      "size": 256,
+      "input_offset": 2304
+    },
+    {
+      "disk": "disk2",
+      "offset": 77824,
+      "size": 256,
+      "input_offset": 2560
+    },
+    {
+      "disk": "disk2",
+      "offset": 81408,
+      "size": 256,
+      "input_offset": 2816
+    },
+    {
+      "disk": "disk2",
+      "offset": 81152,
+      "size": 58,
+      "input_offset": 3072
+    }
+  ]
+}
